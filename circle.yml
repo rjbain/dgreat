@@ -62,7 +62,7 @@ dependencies:
       # - terminus build-env:create -n "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
       # - terminus build-env:site-install -n "$TERMINUS_SITE.$TERMINUS_ENV" --site-name="$TEST_SITE_NAME" --account-mail="$ADMIN_EMAIL" --account-pass="$ADMIN_PASSWORD"
     - echo "Begin sub theme build commands.. npm and gulp"
-    - npm install
+    - cd web/themes/usf && npm install
     - cd web/themes/usf && gulp
 
 test:
