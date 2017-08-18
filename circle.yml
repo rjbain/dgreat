@@ -77,3 +77,6 @@ deployment:
       - |
         [ ! -f "config/system.site.yml" ] || terminus drush "$TERMINUS_SITE.dev" -- config-import --yes
       - terminus build-env:delete:pr -n "$TERMINUS_SITE" --yes
+      - echo "Begin sub theme build commands.. npm and gulp"
+      - npm install
+      - cd web/themes/usf && gulp
