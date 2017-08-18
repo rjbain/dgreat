@@ -39,14 +39,7 @@ dependencies:
         composer config --global github-oauth.github.com $GITHUB_TOKEN
       fi
     - git config --global user.email "$GIT_EMAIL"
-    - git config --global user.name "Circle CI"
-    - echo "Begin sub theme build commands.. npm and gulp"
-    - cd web/themes/usf && pwd    
-    - cd web/themes/usf && npm install
-    - cd web/themes/usf && pwd
-    - cd web/themes/usf && yarn install
-    - cd web/themes/usf && yarn add gulp
-    - cd web/themes/usf && gulp lint sass scripts    
+    - git config --global user.name "Circle CI"    
   override:
     - composer global require -n "hirak/prestissimo:^0.3"
     - composer global require -n "consolidation/cgr"
@@ -71,6 +64,13 @@ dependencies:
 
 test:
   override:
+    - echo "Begin sub theme build commands.. npm and gulp"
+    - cd web/themes/usf && pwd    
+    - cd web/themes/usf && npm install
+    - cd web/themes/usf && pwd
+    - cd web/themes/usf && yarn install
+    - cd web/themes/usf && yarn add gulp
+    - cd web/themes/usf && gulp lint sass scripts  
     - run-behat
   post:
     - terminus secrets:set -n "$TERMINUS_SITE.$TERMINUS_ENV" token "$GITHUB_TOKEN" --file='github-secrets.json' --clear --skip-if-empty
