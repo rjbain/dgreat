@@ -40,6 +40,13 @@ dependencies:
       fi
     - git config --global user.email "$GIT_EMAIL"
     - git config --global user.name "Circle CI"
+    - echo "Begin sub theme build commands.. npm and gulp"
+    - cd web/themes/usf && pwd    
+    - cd web/themes/usf && npm install
+    - cd web/themes/usf && pwd
+    - cd web/themes/usf && yarn install
+    - cd web/themes/usf && yarn add gulp
+    - cd web/themes/usf && gulp lint sass scripts    
   override:
     - composer global require -n "hirak/prestissimo:^0.3"
     - composer global require -n "consolidation/cgr"
@@ -61,13 +68,6 @@ dependencies:
       # Optional: replace lines above with lines below to re-install Drupal for every test.
       # - terminus build-env:create -n "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
       # - terminus build-env:site-install -n "$TERMINUS_SITE.$TERMINUS_ENV" --site-name="$TEST_SITE_NAME" --account-mail="$ADMIN_EMAIL" --account-pass="$ADMIN_PASSWORD"
-    - echo "Begin sub theme build commands.. npm and gulp"
-    - cd web/themes/usf && pwd    
-    - cd web/themes/usf && npm install
-    - cd web/themes/usf && pwd
-    - cd web/themes/usf && yarn install
-    - cd web/themes/usf && yarn add gulp
-    - cd web/themes/usf && gulp lint sass scripts
 
 test:
   override:
