@@ -61,6 +61,9 @@ dependencies:
       # Optional: replace lines above with lines below to re-install Drupal for every test.
       # - terminus build-env:create -n "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
       # - terminus build-env:site-install -n "$TERMINUS_SITE.$TERMINUS_ENV" --site-name="$TEST_SITE_NAME" --account-mail="$ADMIN_EMAIL" --account-pass="$ADMIN_PASSWORD"
+    - echo "Begin sub theme build commands.. npm and gulp"
+    - npm install
+    - cd web/themes/usf && gulp
 
 test:
   override:
@@ -77,6 +80,4 @@ deployment:
       - |
         [ ! -f "config/system.site.yml" ] || terminus drush "$TERMINUS_SITE.dev" -- config-import --yes
       - terminus build-env:delete:pr -n "$TERMINUS_SITE" --yes
-      - echo "Begin sub theme build commands.. npm and gulp"
-      - npm install
-      - cd web/themes/usf && gulp
+
