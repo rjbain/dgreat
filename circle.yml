@@ -5,6 +5,7 @@ machine:
   php:
     # https://circleci.com/docs/build-image-trusty/#php
     version: 7.0.11
+  node: 8.0.0    
   environment:
     # In addition to the environment variables defined in this file, also
     # add the following variables in the Circle CI UI.
@@ -40,6 +41,15 @@ dependencies:
       fi
     - git config --global user.email "$GIT_EMAIL"
     - git config --global user.name "Circle CI"    
+    - node --version
+    - npm --version
+    - echo "Begin sub theme build commands.. npm and gulp"
+    - cd web/themes/usf && pwd    
+    - cd web/themes/usf && npm install
+    - cd web/themes/usf && pwd
+    - cd web/themes/usf && yarn install
+    - cd web/themes/usf && yarn add gulp
+    - cd web/themes/usf && gulp lint sass scripts    
   override:
     - composer global require -n "hirak/prestissimo:^0.3"
     - composer global require -n "consolidation/cgr"
@@ -63,14 +73,7 @@ dependencies:
       # - terminus build-env:site-install -n "$TERMINUS_SITE.$TERMINUS_ENV" --site-name="$TEST_SITE_NAME" --account-mail="$ADMIN_EMAIL" --account-pass="$ADMIN_PASSWORD"
 
 test:
-  override:
-    - echo "Begin sub theme build commands.. npm and gulp"
-    - cd web/themes/usf && pwd    
-    - cd web/themes/usf && npm install
-    - cd web/themes/usf && pwd
-    - cd web/themes/usf && yarn install
-    - cd web/themes/usf && yarn add gulp
-    - cd web/themes/usf && gulp lint sass scripts  
+  override:  
     - run-behat
   post:
     - terminus secrets:set -n "$TERMINUS_SITE.$TERMINUS_ENV" token "$GITHUB_TOKEN" --file='github-secrets.json' --clear --skip-if-empty
