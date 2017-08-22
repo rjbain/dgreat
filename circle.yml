@@ -5,6 +5,8 @@ machine:
   php:
     # https://circleci.com/docs/build-image-trusty/#php
     version: 7.0.11
+  node: 
+    version: 7.0.0    
   environment:
     # In addition to the environment variables defined in this file, also
     # add the following variables in the Circle CI UI.
@@ -39,7 +41,16 @@ dependencies:
         composer config --global github-oauth.github.com $GITHUB_TOKEN
       fi
     - git config --global user.email "$GIT_EMAIL"
-    - git config --global user.name "Circle CI"
+    - git config --global user.name "Circle CI"    
+    - node --version
+    - npm --version
+    # - echo "Begin sub theme build commands.. npm and gulp"
+    # - cd web/themes/usf && pwd    
+    # - cd web/themes/usf && npm install
+    # - cd web/themes/usf && pwd
+    # - cd web/themes/usf && yarn install
+    # - cd web/themes/usf && yarn add gulp
+    # - cd web/themes/usf && npm install -g gulp   
   override:
     - composer global require -n "hirak/prestissimo:^0.3"
     - composer global require -n "consolidation/cgr"
@@ -61,9 +72,10 @@ dependencies:
       # Optional: replace lines above with lines below to re-install Drupal for every test.
       # - terminus build-env:create -n "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
       # - terminus build-env:site-install -n "$TERMINUS_SITE.$TERMINUS_ENV" --site-name="$TEST_SITE_NAME" --account-mail="$ADMIN_EMAIL" --account-pass="$ADMIN_PASSWORD"
+    # - cd web/themes/usf && gulp lint sass scripts       
 
 test:
-  override:
+  override:  
     - run-behat
   post:
     - terminus secrets:set -n "$TERMINUS_SITE.$TERMINUS_ENV" token "$GITHUB_TOKEN" --file='github-secrets.json' --clear --skip-if-empty
@@ -77,3 +89,4 @@ deployment:
       - |
         [ ! -f "config/system.site.yml" ] || terminus drush "$TERMINUS_SITE.dev" -- config-import --yes
       - terminus build-env:delete:pr -n "$TERMINUS_SITE" --yes
+
