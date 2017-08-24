@@ -2,6 +2,8 @@
 machine:
   timezone:
     America/Chicago
+  node:
+    version: 6.11.0    
   php:
     # https://circleci.com/docs/build-image-trusty/#php
     version: 7.0.11
@@ -61,6 +63,8 @@ dependencies:
       # Optional: replace lines above with lines below to re-install Drupal for every test.
       # - terminus build-env:create -n "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
       # - terminus build-env:site-install -n "$TERMINUS_SITE.$TERMINUS_ENV" --site-name="$TEST_SITE_NAME" --account-mail="$ADMIN_EMAIL" --account-pass="$ADMIN_PASSWORD"
+    - cd web/themes/custom/usf && npm install --only=production
+    - cd web/themes/custom/usf && npm run build
 
 test:
   override:
