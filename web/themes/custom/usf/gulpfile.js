@@ -87,7 +87,7 @@ var path = require('path');
 var paths = {
   styles: {
     source: 'sass/',
-    destination: 'css/'
+    destination: 'css/dist'
   },
   scripts: {
     source: 'js/src',
