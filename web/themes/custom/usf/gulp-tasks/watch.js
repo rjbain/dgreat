@@ -33,3 +33,4 @@ module.exports = function (gulp, plugins, options) {
       );
     });
   });
+};
