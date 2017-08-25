@@ -11,9 +11,7 @@
 //   `gulp build:dev`
 //   `gulp clean`
 //   `gulp clean:css`
-//   `gulp clean:styleguide`
 //   `gulp compile:sass`
-//   `gulp compile:styleguide`
 //   `gulp lint:js`
 //   `gulp lint:css`
 //   `gulp minify:css`
@@ -22,7 +20,6 @@
 //   `gulp watch`
 //   `gulp watch:js`
 //   `gulp watch:sass`
-//   `gulp watch:styleguide`
 //
 // -------------------------------------
 
@@ -90,9 +87,7 @@ var paths = {
   scripts: {
     source: 'js/src',
     destination: 'js/dist'
-  },
-  images: 'img/',
-  styleGuide: 'styleguide'
+  }
 };
 
 // These are passed to each task.
@@ -160,10 +155,8 @@ require('./gulp-tasks/browser-sync')(gulp, plugins, options);
 require('./gulp-tasks/build')(gulp, plugins, options);
 require('./gulp-tasks/clean')(gulp, plugins, options);
 require('./gulp-tasks/clean-css')(gulp, plugins, options);
-require('./gulp-tasks/clean-styleguide')(gulp, plugins, options);
 require('./gulp-tasks/compile-sass')(gulp, plugins, options);
 require('./gulp-tasks/compile-js')(gulp, plugins, options);
-require('./gulp-tasks/compile-styleguide')(gulp, plugins, options);
 require('./gulp-tasks/default')(gulp, plugins, options);
 require('./gulp-tasks/lint-js')(gulp, plugins, options);
 require('./gulp-tasks/lint-css')(gulp, plugins, options);
