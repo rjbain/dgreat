@@ -49,7 +49,6 @@
 // browser-sync      : Device and browser testing tool
 // del               : delete
 // eslint            : JavaScript code quality tool
-// kss               : Living Style Guide Generator
 // run-sequence      : Run a series of dependent Gulp tasks in order
 // -------------------------------------
 
@@ -57,7 +56,6 @@
 //   Front-End Dependencies
 // -------------------------------------
 // breakpoint-sass       : Really Simple Media Queries with Sass
-// kss                   : A methodology for documenting CSS and building style guides
 // node-sass             : Wrapper around libsass
 // node-sass-import-once : Custom importer for node-sass that only allows a file to be imported once
 // susy                  : Sass power-tools for web layout
@@ -155,23 +153,6 @@ var options = {
     }
 
   },
-
-  // ----- KSS Node ----- //
-  styleGuide: {
-    source: [
-      paths.styles.source
-    ],
-    builder: 'builder/twig',
-    destination: 'styleguide/',
-    css: [
-      path.relative(paths.styleGuide, paths.styles.destination + 'styles.css'),
-      path.relative(paths.styleGuide, paths.styles.destination + 'style-guide-only/kss-only.css')
-    ],
-    js: [],
-    homepage: 'style-guide-only/homepage.md',
-    title: 'Living Style Guide'
-  }
-
 };
 
 // Tasks
