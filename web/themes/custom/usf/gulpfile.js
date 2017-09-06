@@ -85,7 +85,7 @@ var paths = {
   },
   scripts: {
     source: 'js/src',
-    destination: 'js/dist'
+    destination: 'js/dist/usf.js'
   }
 };
 
