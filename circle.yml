@@ -2,6 +2,8 @@
 machine:
   timezone:
     America/Chicago
+  node:
+    version: 6.11.0    
   php:
     # https://circleci.com/docs/build-image-trusty/#php
     version: 7.0.11
@@ -49,6 +51,8 @@ dependencies:
     - mkdir -p ~/.terminus/plugins
     - composer create-project -n -d ~/.terminus/plugins pantheon-systems/terminus-build-tools-plugin:^1
     - composer create-project -n -d ~/.terminus/plugins pantheon-systems/terminus-secrets-plugin:^1
+    - cd web/themes/custom/usf && npm install
+    - cd web/themes/custom/usf && npm run build    
   post:
     - terminus auth:login -n --machine-token="$TERMINUS_TOKEN"
     - terminus build-env:delete:ci -n "$TERMINUS_SITE" --keep=2 --yes
