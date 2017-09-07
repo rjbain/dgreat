@@ -70,6 +70,9 @@ var plugins = require('gulp-load-plugins')({
     'gulp-sass-glob': 'sassGlob',
     'run-sequence': 'runSequence',
     'gulp-clean-css': 'cleanCSS',
+    'gulp-concat': 'concat',
+    'gulp-uglify': 'uglify',    
+    'gulp-rename': 'rename',        
     'gulp-babel': 'babel'
   }
 });
@@ -85,7 +88,7 @@ var paths = {
   },
   scripts: {
     source: 'js/src',
-    destination: 'js/dist/usf.js'
+    destination: 'js/dist'
   }
 };
 
@@ -97,9 +100,9 @@ var options = {
   browserSync: {
     // Put your local site URL here to prevent Browsersync
     // from prompting you to add additional scripts to your page.
-    // proxy: {
-    //   target: 'http://local.example.com'
-    // },
+    proxy: {
+      target: 'http://dgreat.kbox.site/'
+    },
     open: 'external',
     xip: true,
     logConnections: true
@@ -149,6 +152,24 @@ var options = {
   },
 };
 
+
+var concat = require('gulp-concat');
+var rename = require('gulp-rename');
+var uglify = require('gulp-uglify');
+
+//script paths
+var jsFiles = 'js/src/*.js',
+    jsDest = 'js/dist';
+
+gulp.task('scripts', function() {
+    return gulp.src(jsFiles)
+        .pipe(concat('theme.js'))
+        .pipe(gulp.dest(jsDest))
+        .pipe(rename('theme.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(jsDest));
+});
+
 // Tasks
 require('./gulp-tasks/browser-sync')(gulp, plugins, options);
 require('./gulp-tasks/build')(gulp, plugins, options);
@@ -163,10 +184,12 @@ require('./gulp-tasks/minify-css')(gulp, plugins, options);
 require('./gulp-tasks/serve')(gulp, plugins, options);
 require('./gulp-tasks/test-css')(gulp, plugins, options);
 require('./gulp-tasks/watch')(gulp, plugins, options);
+require('./gulp-tasks/watch')(gulp, plugins, options);
+require('./gulp-tasks/watch')(gulp, plugins, options);
+require('./gulp-tasks/watch')(gulp, plugins, options);
 
 // Credits:
 //
 // - http://drewbarontini.com/articles/building-a-better-gulpfile/
 // - https://teamgaslight.com/blog/small-sips-of-gulp-dot-js-4-steps-to-reduce-complexity
 // - http://cgit.drupalcode.org/zen/tree/STARTERKIT/gulpfile.js?h=7.x-6.x
-// - https://github.com/google/web-starter-kit/blob/master/gulpfile.js
