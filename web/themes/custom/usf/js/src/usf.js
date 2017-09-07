@@ -7,7 +7,7 @@
       if (typeof context['location'] !== 'undefined') { // Only fire on document load.
 
         /* code goes here */
-
+          
       }
     }
   };
