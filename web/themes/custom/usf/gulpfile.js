@@ -96,7 +96,7 @@ var paths = {
 var options = {
 
   // ----- Browsersync ----- //
-
+  
   browserSync: {
     // Put your local site URL here to prevent Browsersync
     // from prompting you to add additional scripts to your page.
@@ -105,7 +105,12 @@ var options = {
     },
     open: 'external',
     xip: true,
-    logConnections: true
+    stream: false,
+    injectChanges: false,
+    reloadOnRestart: true,
+    port: 3000,
+    logConnections: true,
+    notify: false
   },
 
   // ----- CSS ----- //
@@ -183,9 +188,6 @@ require('./gulp-tasks/lint-css')(gulp, plugins, options);
 require('./gulp-tasks/minify-css')(gulp, plugins, options);
 require('./gulp-tasks/serve')(gulp, plugins, options);
 require('./gulp-tasks/test-css')(gulp, plugins, options);
-require('./gulp-tasks/watch')(gulp, plugins, options);
-require('./gulp-tasks/watch')(gulp, plugins, options);
-require('./gulp-tasks/watch')(gulp, plugins, options);
 require('./gulp-tasks/watch')(gulp, plugins, options);
 
 // Credits:

@@ -15,6 +15,6 @@ module.exports = function (gulp, plugins, options) {
   });
 
   gulp.task('browser-sync:reload', function () {
-    browserSync.reload();
+    browserSync.reload();    
   });
 };
