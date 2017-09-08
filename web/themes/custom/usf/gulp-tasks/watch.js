@@ -14,13 +14,16 @@ module.exports = function (gulp, plugins, options) {
     return gulp.watch([
       options.js.files
     ], function () {
-      plugins.runSequence(
+      plugins.runSequence(        
         'lint:js',
         'lint:css',
         'browser-sync:reload'
       );
     });
   });
+
+  var browserSync = plugins.browserSync.create();
+  var reload = browserSync.reload;
 
   gulp.task('watch:sass', function () {
     return gulp.watch([
