@@ -110,7 +110,8 @@ var options = {
     reloadOnRestart: true,
     port: 3000,
     logConnections: true,
-    notify: false
+    notify: false,
+    reloadDelay: 1500
   },
 
   // ----- CSS ----- //
