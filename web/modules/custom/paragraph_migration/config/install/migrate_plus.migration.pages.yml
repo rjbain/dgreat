@@ -1,15 +1,13 @@
-id: pages
+id: basic_pages
 dependencies:
   enforced:
     module:
       - paragraph_migration
 source:
   plugin: csv
-  path: "modules/custom/paragraph_migration/assets/myusf-content-id.csv"
+  path: "modules/custom/paragraph_migration/assets/myusf-content-id-no-url.csv"
   # Column delimiter. Comma (,) by default.
   delimiter: ','
-  # Field enclosure. Double quotation marks (") by default.
-    enclosure: '"'
   # The number of rows at the beginning which are not data.
   header_row_count: 1
   keys:
@@ -24,10 +22,8 @@ source:
     0:
       id: 'Unique Id'
     1:
-      url: 'Alias'
-    2:
       title: 'Title'
-    3:
+    2:
       body: 'Body Content'
 
 process:
