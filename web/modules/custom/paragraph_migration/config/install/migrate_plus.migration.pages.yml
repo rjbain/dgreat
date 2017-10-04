@@ -1,0 +1,42 @@
+id: pages
+dependencies:
+  enforced:
+    module:
+      - paragraph_migration
+source:
+  plugin: csv
+  path: "modules/custom/paragraph_migration/assets/myusf-content-id.csv"
+  # Column delimiter. Comma (,) by default.
+  delimiter: ','
+  # Field enclosure. Double quotation marks (") by default.
+    enclosure: '"'
+  # The number of rows at the beginning which are not data.
+  header_row_count: 1
+  keys:
+    - id
+    # Here we identify the columns of interest in the source file.
+    # Each numeric key is the 0-based index of the column.
+    # For each column, the key below is the field name assigned to
+    # the data on import, to be used in field mappings below.
+    # The value is a user-friendly string for display by the
+    # migration UI.
+  column_names:
+    0:
+      id: 'Unique Id'
+    1:
+      url: 'Alias'
+    2:
+      title: 'Title'
+    3:
+      body: 'Body Content'
+
+process:
+  title: title
+  body: body
+  type:
+    plugin: default_value
+    default_value: page
+
+destination:
+  plugin: 'entity:node'
+  default_bundle: page
