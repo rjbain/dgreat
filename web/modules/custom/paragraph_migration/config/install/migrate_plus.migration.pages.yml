@@ -1,9 +1,12 @@
-id: basic_pages
+# The identifier of the migration.
+id: basics
 dependencies:
   enforced:
     module:
       - paragraph_migration
+
 source:
+  # The source plugin provides rows.
   plugin: csv
   path: "modules/custom/paragraph_migration/assets/myusf-content-id-no-url.csv"
   # Column delimiter. Comma (,) by default.
@@ -29,10 +32,12 @@ source:
 process:
   title: title
   body: body
+  # Each row is handed over to process plugins.
   type:
     plugin: default_value
-    default_value: page
+    default_value: pages
 
 destination:
-  plugin: 'entity:node'
-  default_bundle: page
+  # Finally, the rows are passed to the destination plugin for saving.
+  plugin: 'entity:node' # There's also a url_alias plugin for migrating URL aliases.
+   default_bundle: pages
