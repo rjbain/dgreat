@@ -1,43 +1,41 @@
-# The identifier of the migration.
-id: basics
+# https://www.drupal.org/docs/8/modules/migrate-source-csv/using-the-migrate-source-csv-plugin
+id: migs_mac_no_commahz
+label: Import pages
 dependencies:
   enforced:
     module:
       - paragraph_migration
 
 source:
-  # The source plugin provides rows.
   plugin: csv
-  path: "modules/custom/paragraph_migration/assets/myusf-content-id-no-url.csv"
+  # Full path to the file.
+  path: "/code/web/modules/custom/paragraph_migration/assets/myusf-content-mac-newlines.csv"
   # Column delimiter. Comma (,) by default.
   delimiter: ','
-  # The number of rows at the beginning which are not data.
-  header_row_count: 1
+  # Field enclosure. Double quotation marks (") by default.
+  enclosure: '"'
   keys:
     - id
-    # Here we identify the columns of interest in the source file.
-    # Each numeric key is the 0-based index of the column.
-    # For each column, the key below is the field name assigned to
-    # the data on import, to be used in field mappings below.
-    # The value is a user-friendly string for display by the
-    # migration UI.
+  # Here we identify the columns of interest in the source file.
+  # Each numeric key is the 0-based index of the column.
+  # For each column, the key below is the field name assigned to
+  # the data on import, to be used in field mappings below.
+  # The value is a user-friendly string for display by the
+  # migration UI.
   column_names:
     0:
       id: 'Unique Id'
-    1:
-      title: 'Title'
     2:
+      title: 'Title'
+    3:
       body: 'Body Content'
-
 process:
+  id: id
   title: title
   body: body
-  # Each row is handed over to process plugins.
   type:
     plugin: default_value
-    default_value: pages
+    default_value: page
 
 destination:
-  # Finally, the rows are passed to the destination plugin for saving.
-  plugin: 'entity:node' # There's also a url_alias plugin for migrating URL aliases.
-   default_bundle: pages
+  plugin: entity:node
