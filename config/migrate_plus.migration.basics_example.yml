@@ -1,0 +1,37 @@
+uuid: 9def2244-a15e-4054-8f6c-706f24ae504d
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ctF66DmXd1DAKk8ySpyJVNq6Ehvuzmb9tQ8YTYw0qVo
+id: basics_example
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: null
+label: 'Import articles'
+source:
+  plugin: csv
+  path: modules/custom/paragraph_migration/assets/myusf-content-id-no-url.csv
+  delimiter: ','
+  enclosure: '"'
+  header_row_count: 1
+  keys:
+    - id
+  column_names:
+    -
+      id: 'Unique Id'
+    -
+      title: Title
+    -
+      body: 'Body Content'
+process:
+  title: title
+  body: body
+  type:
+    plugin: default_value
+    default_value: article
+destination:
+  plugin: 'entity:node'
+migration_dependencies: null

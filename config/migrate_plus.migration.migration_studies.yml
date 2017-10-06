@@ -1,0 +1,35 @@
+uuid: 25a5515e-46e5-4ae6-b364-f9385796a44a
+langcode: en
+status: true
+dependencies: {  }
+id: migration_studies
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: null
+label: 'Import articles'
+source:
+  plugin: csv
+  path: ../web/modules/custom/paragraph_migration/assets/myusf-content-id-no-url.csv
+  delimiter: ','
+  enclosure: '"'
+  header_row_count: 1
+  keys:
+    - id
+  column_names:
+    -
+      id: 'Unique Id'
+    -
+      title: Title
+    -
+      body: 'Post body'
+process:
+  title: title
+  body: body
+  type:
+    plugin: default_value
+    default_value: article
+destination:
+  plugin: 'entity:node'
+migration_dependencies: null
