@@ -1,6 +1,8 @@
 # https://www.drupal.org/docs/8/modules/migrate-source-csv/using-the-migrate-source-csv-plugin
-id: migs_mac_no_commahz
+id: ex_25
 label: Import pages
+langcode: en
+status: true
 dependencies:
   enforced:
     module:
@@ -9,33 +11,38 @@ dependencies:
 source:
   plugin: csv
   # Full path to the file.
-  path: "/code/web/modules/custom/paragraph_migration/assets/myusf-content-mac-newlines.csv"
+  path: "/code/web/modules/custom/paragraph_migration/assets/myusf-content-id-mac.csv"
   # Column delimiter. Comma (,) by default.
   delimiter: ','
   # Field enclosure. Double quotation marks (") by default.
   enclosure: '"'
+  # The number of rows at the beginning which are not data.
+  header_row_count: 1
+  # Column name(s) which represent the key uniquely identifying each record.
   keys:
     - id
-  # Here we identify the columns of interest in the source file.
-  # Each numeric key is the 0-based index of the column.
-  # For each column, the key below is the field name assigned to
-  # the data on import, to be used in field mappings below.
-  # The value is a user-friendly string for display by the
-  # migration UI.
   column_names:
     0:
-      id: 'Unique Id'
+      id: Identifier
+    1:
+      url: Alias
     2:
-      title: 'Title'
+      title: Title
     3:
-      body: 'Body Content'
+      body: Body
+
 process:
-  id: id
-  title: title
-  body: body
   type:
     plugin: default_value
+    # Sets the node bundle.
     default_value: page
+  id: id
+  title: title
+  path: url
+  'body/format':
+    plugin: default_value
+    default_value: full_html
+  'body/value': body
 
 destination:
   plugin: entity:node
