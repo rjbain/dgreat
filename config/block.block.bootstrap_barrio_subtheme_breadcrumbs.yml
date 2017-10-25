@@ -1,8 +1,10 @@
-uuid: 171a0f98-53be-43b4-ae32-b8eb2209a5b7
+uuid: 7eecb388-5e2a-4d33-a20e-b5832f5b622e
 langcode: en
 status: true
 dependencies:
   module:
+    - ctools
+    - node
     - system
   theme:
     - bootstrap_barrio_subtheme
@@ -10,8 +12,8 @@ _core:
   default_config_hash: wDR9JKEATSWldBjw8du8s3G2zjEYeQf88nlld11hMLo
 id: bootstrap_barrio_subtheme_breadcrumbs
 theme: bootstrap_barrio_subtheme
-region: header
-weight: -100
+region: breadcrumb
+weight: -6
 provider: null
 plugin: system_breadcrumb_block
 settings:
@@ -19,4 +21,20 @@ settings:
   label: Breadcrumbs
   provider: system
   label_display: '0'
-visibility: {  }
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      article: article
+      page: page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+  node_type:
+    id: node_type
+    bundles:
+      article: article
+      page: page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
