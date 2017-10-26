@@ -1,12 +1,14 @@
 # https://circleci.com/docs/configuration#machine
 machine:
+  pre:
+    - sudo apt-get update; USE_PRECOMPILE=true sudo -E circleci-install php 7.1.0
   timezone:
     America/Chicago
   node:
     version: 6.11.0    
   php:
     # https://circleci.com/docs/build-image-trusty/#php
-    version: 7.0.11
+    version: 7.1.0
   environment:
     # In addition to the environment variables defined in this file, also
     # add the following variables in the Circle CI UI.
