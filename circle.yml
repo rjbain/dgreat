@@ -63,7 +63,7 @@ dependencies:
     - terminus build-env:create -n "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --clone-content --db-only --notify="$NOTIFY"
     - terminus drush -n "$TERMINUS_SITE.$TERMINUS_ENV" cr
     - terminus drush -n "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
-    - terminus drush -n "$TERMINUS_SITE.$TERMINUS_ENV" entity-updates
+    - terminus drush -n "$TERMINUS_SITE.$TERMINUS_ENV" entity-updates -y
     - |
       [ ! -f "config/system.site.yml" ] || terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes
       # Optional: replace lines above with lines below to re-install Drupal for every test.
