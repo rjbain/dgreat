@@ -64,6 +64,7 @@ dependencies:
     - terminus drush -n "$TERMINUS_SITE.$TERMINUS_ENV" cr
     - terminus drush -n "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
     - terminus drush -n "$TERMINUS_SITE.$TERMINUS_ENV" -- entity-updates -y
+    - terminus drush -n "$TERMINUS_SITE.$TERMINUS_ENV" cr
     - |
       [ ! -f "config/system.site.yml" ] || terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes
       # Optional: replace lines above with lines below to re-install Drupal for every test.
