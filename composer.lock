@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "529b6e97d99209370cf87b007e72ecf6",
+    "content-hash": "8cfac2c963f5780b7010d81bd09b35e3",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1135,30 +1135,34 @@
             }
         },
         {
-            "name": "drupal/bootstrap",
-            "version": "3.6.0",
+            "name": "drupal/bootstrap_kit",
+            "version": "4.2.0",
             "source": {
                 "type": "git",
-                "url": "https://git.drupal.org/project/bootstrap",
-                "reference": "8.x-3.6"
+                "url": "https://git.drupal.org/project/bootstrap_kit",
+                "reference": "8.x-4.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/bootstrap-8.x-3.6.zip",
-                "reference": "8.x-3.6",
-                "shasum": "fa05324302f837d614bc395286e463b77628854e"
+                "url": "https://ftp.drupal.org/files/projects/bootstrap_kit-8.x-4.2.zip",
+                "reference": "8.x-4.2",
+                "shasum": "ddd347cdc9633ce261d563380f2818c9756ef329"
             },
             "require": {
-                "drupal/core": "~8.0"
+                "drupal/core": "*"
             },
-            "type": "drupal-theme",
+            "require-dev": {
+                "drupal/bricks": "*",
+                "drupal/bricks_default": "*"
+            },
+            "type": "drupal-module",
             "extra": {
                 "branch-alias": {
-                    "dev-3.x": "3.x-dev"
+                    "dev-4.x": "4.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.6",
-                    "datestamp": "1506357844",
+                    "version": "8.x-4.2",
+                    "datestamp": "1497284043",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1171,71 +1175,15 @@
             ],
             "authors": [
                 {
-                    "name": "markcarver",
-                    "homepage": "https://www.drupal.org/user/501638"
-                },
-                {
-                    "name": "neardark",
-                    "homepage": "https://www.drupal.org/user/661076"
-                },
-                {
-                    "name": "sylus",
-                    "homepage": "https://www.drupal.org/user/339714"
-                },
-                {
-                    "name": "wundo",
-                    "homepage": "https://www.drupal.org/user/25523"
+                    "name": "tonystar",
+                    "homepage": "https://www.drupal.org/user/787240"
                 }
             ],
-            "homepage": "https://www.drupal.org/project/bootstrap",
+            "description": "Set of default layouts for Bootstrap 4.",
+            "homepage": "https://www.drupal.org/project/bootstrap_kit",
             "support": {
-                "source": "http://cgit.drupalcode.org/bootstrap"
+                "source": "http://cgit.drupalcode.org/bootstrap_kit"
             }
-        },
-        {
-            "name": "drupal/bootstrap_barrio",
-            "version": "dev-4.x",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/bootstrap_barrio",
-                "reference": "3b314464e263734ae1ebdfcfa598d7a101b496af"
-            },
-            "require": {
-                "drupal/core": "~8.0"
-            },
-            "type": "drupal-theme",
-            "extra": {
-                "branch-alias": {
-                    "dev-4.x": "4.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-4.6+1-dev",
-                    "datestamp": "1501951744",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Dev releases are not covered by Drupal security advisories."
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "WillAcon",
-                    "homepage": "https://www.drupal.org/user/2824325"
-                },
-                {
-                    "name": "hatuhay",
-                    "homepage": "https://www.drupal.org/user/827704"
-                }
-            ],
-            "homepage": "https://www.drupal.org/project/bootstrap_barrio",
-            "support": {
-                "source": "http://cgit.drupalcode.org/bootstrap_barrio"
-            },
-            "time": "2017-08-05 16:48:01"
         },
         {
             "name": "drupal/bootstrap_library",
@@ -1285,41 +1233,39 @@
             }
         },
         {
-            "name": "drupal/bootstrap_paragraphs",
-            "version": "2.0.0-beta2",
+            "name": "drupal/bricks",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
-                "url": "https://git.drupal.org/project/bootstrap_paragraphs",
-                "reference": "8.x-2.0-beta2"
+                "url": "https://git.drupal.org/project/bricks",
+                "reference": "8.x-1.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/bootstrap_paragraphs-8.x-2.0-beta2.zip",
-                "reference": "8.x-2.0-beta2",
-                "shasum": "79cf691ec76f04df6c45f400c0b79b10aca1ba03"
+                "url": "https://ftp.drupal.org/files/projects/bricks-8.x-1.6.zip",
+                "reference": "8.x-1.6",
+                "shasum": "0dc239049eee2d0cd244b7641fe96f88709d8543"
             },
             "require": {
-                "drupal/core": "*",
-                "drupal/entity_reference_revisions": "*",
-                "drupal/paragraphs": "*",
-                "drupal/viewsreference": "*"
+                "drupal/core": "~8.0"
             },
             "require-dev": {
-                "drupal/contact_formatter": "*",
-                "drupal/paragraphs": "*",
-                "drupal/webform": "*"
+                "drupal/bricks_inline": "*",
+                "drupal/eck": "*",
+                "drupal/entity_reference_revisions": "*",
+                "drupal/inline_entity_form": "*"
             },
             "type": "drupal-module",
             "extra": {
                 "branch-alias": {
-                    "dev-2.x": "2.x-dev"
+                    "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.0-beta2",
-                    "datestamp": "1507604046",
+                    "version": "8.x-1.6",
+                    "datestamp": "1497195242",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -1329,18 +1275,14 @@
             ],
             "authors": [
                 {
-                    "name": "albertski",
-                    "homepage": "https://www.drupal.org/user/1327432"
-                },
-                {
-                    "name": "thejimbirch",
-                    "homepage": "https://www.drupal.org/user/2507260"
+                    "name": "tonystar",
+                    "homepage": "https://www.drupal.org/user/787240"
                 }
             ],
-            "description": "A suite of Paragraph bundles made with the Boostrap framework.",
-            "homepage": "https://www.drupal.org/project/bootstrap_paragraphs",
+            "description": "Allows to create bricky content.",
+            "homepage": "https://www.drupal.org/project/bricks",
             "support": {
-                "source": "http://cgit.drupalcode.org/bootstrap_paragraphs"
+                "source": "http://cgit.drupalcode.org/bricks"
             }
         },
         {
@@ -2003,6 +1945,82 @@
             }
         },
         {
+            "name": "drupal/eck",
+            "version": "1.0.0-alpha3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/eck",
+                "reference": "8.x-1.0-alpha3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/eck-8.x-1.0-alpha3.zip",
+                "reference": "8.x-1.0-alpha3",
+                "shasum": "584f0867487608792ebcf46b2b79b27168be558f"
+            },
+            "require": {
+                "drupal/core": "^8"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-alpha3",
+                    "datestamp": "1483437543",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "See contributors",
+                    "homepage": "https://www.drupal.org/node/1155832/committers"
+                },
+                {
+                    "name": "dpopdan",
+                    "homepage": "https://www.drupal.org/user/2759811"
+                },
+                {
+                    "name": "eric.napier",
+                    "homepage": "https://www.drupal.org/user/501688"
+                },
+                {
+                    "name": "fmizzell",
+                    "homepage": "https://www.drupal.org/user/1312210"
+                },
+                {
+                    "name": "legolasbo",
+                    "homepage": "https://www.drupal.org/user/2480548"
+                },
+                {
+                    "name": "mducharme",
+                    "homepage": "https://www.drupal.org/user/616996"
+                },
+                {
+                    "name": "mihai_brb",
+                    "homepage": "https://www.drupal.org/user/2065978"
+                },
+                {
+                    "name": "wjaspers",
+                    "homepage": "https://www.drupal.org/user/813890"
+                }
+            ],
+            "description": "ECK (Entity Contruction Kit) allows users to create and administer entity types, bundles and entities from the UI.",
+            "homepage": "https://www.drupal.org/project/eck",
+            "support": {
+                "source": "http://git.drupal.org/project/eck.git",
+                "issues": "https://www.drupal.org/project/issues/eck"
+            }
+        },
+        {
             "name": "drupal/entity_reference_revisions",
             "version": "1.3.0",
             "source": {
@@ -2061,6 +2079,72 @@
             }
         },
         {
+            "name": "drupal/inline_entity_form",
+            "version": "1.0.0-beta1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/inline_entity_form",
+                "reference": "8.x-1.0-beta1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/inline_entity_form-8.x-1.0-beta1.zip",
+                "reference": "8.x-1.0-beta1",
+                "shasum": "185ffc28a7b68d19cce057855d1c111f1741a3ea"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "require-dev": {
+                "drupal/entity_reference_revisions": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-beta1",
+                    "datestamp": "1477868343",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "bojanz",
+                    "homepage": "https://www.drupal.org/user/86106"
+                },
+                {
+                    "name": "dawehner",
+                    "homepage": "https://www.drupal.org/user/99340"
+                },
+                {
+                    "name": "rszrama",
+                    "homepage": "https://www.drupal.org/user/49344"
+                },
+                {
+                    "name": "slashrsm",
+                    "homepage": "https://www.drupal.org/user/744628"
+                },
+                {
+                    "name": "webflo",
+                    "homepage": "https://www.drupal.org/user/254778"
+                }
+            ],
+            "description": "Provides a widget for inline management (creation, modification, removal) of referenced entities.",
+            "homepage": "https://www.drupal.org/project/inline_entity_form",
+            "support": {
+                "source": "http://cgit.drupalcode.org/inline_entity_form"
+            }
+        },
+        {
             "name": "drupal/libraries",
             "version": "dev-3.x",
             "source": {
@@ -2114,7 +2198,7 @@
                 "issues": "http://drupal.org/project/issues/libraries",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             },
-            "time": "2017-03-15 17:04:08"
+            "time": "2017-03-15T17:04:08+00:00"
         },
         {
             "name": "drupal/migrate_plus",
@@ -2536,33 +2620,30 @@
             }
         },
         {
-            "name": "drupal/viewsreference",
-            "version": "1.0.0",
+            "name": "drupal/tweme",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
-                "url": "https://git.drupal.org/project/viewsreference",
-                "reference": "8.x-1.0"
+                "url": "https://git.drupal.org/project/tweme",
+                "reference": "8.x-4.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/viewsreference-8.x-1.0.zip",
-                "reference": "8.x-1.0",
-                "shasum": "a763110eb85b5ac584efbc80a2f0e4f3aad3f951"
+                "url": "https://ftp.drupal.org/files/projects/tweme-8.x-4.1.zip",
+                "reference": "8.x-4.1",
+                "shasum": "d40a88e807befe9472363e8a381b4c5f32884364"
             },
             "require": {
                 "drupal/core": "~8.0"
             },
-            "conflict": {
-                "drupal/viewsreferennce": "*"
-            },
-            "type": "drupal-module",
+            "type": "drupal-theme",
             "extra": {
                 "branch-alias": {
-                    "dev-1.x": "1.x-dev"
+                    "dev-4.x": "4.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0",
-                    "datestamp": "1502947144",
+                    "version": "8.x-4.1",
+                    "datestamp": "1489922912",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2575,26 +2656,13 @@
             ],
             "authors": [
                 {
-                    "name": "New Zeal",
-                    "homepage": "https://www.drupal.org/user/93571"
-                },
-                {
-                    "name": "joekers",
-                    "homepage": "https://www.drupal.org/user/2229066"
-                },
-                {
-                    "name": "seanB",
-                    "homepage": "https://www.drupal.org/user/545912"
+                    "name": "tonystar",
+                    "homepage": "https://www.drupal.org/user/787240"
                 }
             ],
-            "description": "Views Reference",
-            "homepage": "http://drupal.org/project/viewsreference",
-            "keywords": [
-                "Drupal"
-            ],
+            "homepage": "https://www.drupal.org/project/tweme",
             "support": {
-                "source": "http://cgit.drupalcode.org/viewsreference",
-                "issues": "http://drupal.org/project/issues/viewsreference"
+                "source": "http://cgit.drupalcode.org/tweme"
             }
         },
         {
@@ -7972,8 +8040,6 @@
     "aliases": [],
     "minimum-stability": "alpha",
     "stability-flags": {
-        "drupal/bootstrap_barrio": 20,
-        "drupal/bootstrap_paragraphs": 10,
         "drupal/libraries": 20,
         "drupal/simple_block": 10
     },
