@@ -1,7 +1,8 @@
-# https://www.drupal.org/docs/8/modules/migrate-source-csv/using-the-migrate-source-csv-plugin
-id: ex_110
-
-label: Import pages
+id: dgreat_paragraphs15
+label: 'dgreat paragraphs'
+migration_tags:
+  - Drupal 7
+migration_group: dgreat
 langcode: en
 status: true
 dependencies:
@@ -31,10 +32,8 @@ source:
       title: Title
     3:
       body: Body
+
 process:
-#  id: id
-#  title: title
-#  path: url
   field_paragraph_wysiwyg:
     plugin: iterator
     source: body
@@ -43,12 +42,10 @@ process:
       format:
         plugin: default_value
         default_value: full_html
-#  'body/format':
-#    plugin: default_value
-#    default_value: full_html
-#  'body/value': body
 
 destination:
   plugin: 'entity_reference_revisions:paragraph'
-#  plugin: 'entity:node'
   default_bundle: body_paragraph
+migration_dependencies:
+  required: {  }
+  optional: {  }
