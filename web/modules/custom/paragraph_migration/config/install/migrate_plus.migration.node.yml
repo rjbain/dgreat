@@ -1,14 +1,14 @@
-# https://www.drupal.org/docs/8/modules/migrate-source-csv/using-the-migrate-source-csv-plugin
-id: ex_110
-
-label: Import pages
+id: dgreat_nodes15
+label: 'dgreat nodes'
+migration_tags:
+  - Drupal 7
+migration_group: dgreat
 langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - paragraph_migration
-
 source:
   plugin: csv
   # Full path to the file.
@@ -31,24 +31,29 @@ source:
       title: Title
     3:
       body: Body
+
 process:
-#  id: id
-#  title: title
-#  path: url
+  id: id
+  title: title
+  path: url
   field_paragraph_wysiwyg:
-    plugin: iterator
-    source: body
-    process:
-      value: value
-      format:
-        plugin: default_value
-        default_value: full_html
-#  'body/format':
-#    plugin: default_value
-#    default_value: full_html
-#  'body/value': body
+    plugin: migration
+    migration: dgreat_paragraphs
+    source: id
+  type:
+    plugin: default_value
+    default_value: bricky
 
 destination:
-  plugin: 'entity_reference_revisions:paragraph'
-#  plugin: 'entity:node'
-  default_bundle: body_paragraph
+  plugin: 'entity:node'
+#  uid:
+#    plugin: migration_lookup
+#    migration: yoursite_user
+#    source: node_uid
+migration_dependencies:
+  optional:
+    - dgreat_paragraphs15
+#  required:
+#    - dgreat_paragraphs5
+#    - yoursite_user
+#    - yoursite_files

@@ -1,0 +1,29 @@
+uuid: 8d31df4a-16b7-4e37-b4d0-7404f9cb1039
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.bricky.field_body
+    - node.type.bricky
+  module:
+    - bricks
+    - user
+_core:
+  default_config_hash: GBAR2lsA5Prob44vO5Xwe1qQa9K27XxgRmHRDpEh7-I
+id: node.bricky.teaser
+targetEntityType: node
+bundle: bricky
+mode: teaser
+content:
+  field_body:
+    type: bricks_nested
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+hidden:
+  links: true
