@@ -1,5 +1,5 @@
 # https://www.drupal.org/docs/8/modules/migrate-source-csv/using-the-migrate-source-csv-plugin
-id: ex_27
+id: page4
 label: Import pages
 langcode: en
 status: true
@@ -11,7 +11,7 @@ dependencies:
 source:
   plugin: csv
   # Full path to the file.
-  path: "/code/web/modules/custom/paragraph_migration/assets/myusf-content-id-mac.csv"
+  path: "public://myusf-content-id-mac2.csv"
   # Column delimiter. Comma (,) by default.
   delimiter: ','
   # Field enclosure. Double quotation marks (") by default.
@@ -39,10 +39,10 @@ process:
   id: id
   title: title
   path: url
-  'body/format':
+  'field_body/value': body
+  'field_body/format':
     plugin: default_value
     default_value: full_html
-  'body/value': body
 
 destination:
   plugin: entity:node
