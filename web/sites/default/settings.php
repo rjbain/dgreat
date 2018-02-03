@@ -38,3 +38,15 @@ $local_settings = __DIR__ . "/settings.local.php";
 if (file_exists($local_settings)) {
   include $local_settings;
 }
+
+$databases['default']['default'] = array (
+  'database' => 'drupal8',
+  'username' => 'drupal8',
+  'password' => 'drupal8',
+  'prefix' => '',
+  'host' => 'database',
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+);
+$settings['hash_salt'] = '4JfmOE4Lpxb9kMt-MRyJV76_1E7L9k8p4fRXLZI5p1v_0eST7zAM0kPhgAtsOg8ytQzg_bbGJA';

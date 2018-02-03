@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.page.field_add_content
     - field.field.node.page.field_body
+    - field.field.node.page.field_migrate_final
     - node.type.page
   module:
     - entity_reference_revisions
@@ -32,6 +33,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
+  field_migrate_final:
+    type: entity_reference_revisions_entity_view
+    weight: 104
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
     region: content
   links:
     weight: 101
