@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.page.field_add_content
+    - field.field.node.page.field_migrate_final
     - node.type.page
   module:
     - paragraphs
@@ -33,6 +34,18 @@ content:
       default_paragraph_type: ''
     third_party_settings: {  }
     region: content
+  field_migrate_final:
+    type: entity_reference_paragraphs
+    weight: 122
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
   path:
     type: path
     weight: 30
@@ -44,6 +57,13 @@ content:
     settings:
       display_label: true
     weight: 15
+    region: content
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 120
     region: content
     third_party_settings: {  }
   sticky:

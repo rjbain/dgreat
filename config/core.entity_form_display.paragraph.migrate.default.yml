@@ -1,0 +1,26 @@
+uuid: ece7a485-7479-44d3-ac05-339fd1645a5e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.migrate.field_migrate_test
+    - paragraphs.paragraphs_type.migrate
+  module:
+    - text
+id: paragraph.migrate.default
+targetEntityType: paragraph
+bundle: migrate
+mode: default
+content:
+  field_migrate_test:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true
