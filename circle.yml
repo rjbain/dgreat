@@ -54,6 +54,7 @@ dependencies:
     - composer create-project -n -d ~/.terminus/plugins pantheon-systems/terminus-build-tools-plugin:^1
     - composer create-project -n -d ~/.terminus/plugins pantheon-systems/terminus-secrets-plugin:^1
     - cd web/themes/contrib/bootstrap_barrio/subtheme/ && npm install
+    - cd web/ && drush cr
     - cd web/themes/contrib/bootstrap_barrio/subtheme/ && gulp
   post:
     - terminus auth:login -n --machine-token="$TERMINUS_TOKEN"
