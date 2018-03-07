@@ -1,6 +1,6 @@
 //Install GULP
 //Global
-//npm install -g gulp (If not installed globally before)
+//npm install gulp -g (If not installed globally before)
 //Per project, in theme folder
 //npm init (Create the package.json file)
 //npm install gulp gulp-sass gulp-cssmin gulp-concat gulp-imagemin gulp-smushit gulp-uglify  --save-dev
