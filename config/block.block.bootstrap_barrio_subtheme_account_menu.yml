@@ -5,6 +5,7 @@ dependencies:
   config:
     - system.menu.account
   module:
+    - ctools
     - system
   theme:
     - bootstrap_barrio_subtheme
@@ -12,8 +13,8 @@ _core:
   default_config_hash: R2K_qX0ZUMbUL6ie_-S9tZVjvqmlWKlscikgeRv9vhw
 id: bootstrap_barrio_subtheme_account_menu
 theme: bootstrap_barrio_subtheme
-region: top_header_form
-weight: -6
+region: secondary_menu
+weight: -7
 provider: null
 plugin: 'system_menu_block:account'
 settings:
@@ -23,4 +24,13 @@ settings:
   label_display: '0'
   level: 1
   depth: 2
-visibility: {  }
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      article: article
+      event: event
+      page: page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
