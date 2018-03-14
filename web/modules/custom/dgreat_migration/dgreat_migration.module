@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Contains dgreat_migration.module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ *
+ * Fixes the user for creating groups on migration.
+ */
+function dgreat_migration_group_insert(EntityInterface $entity) {
+  // This fixes the Migrate CSV issue of not having the right owner.
+  $group = \Drupal::entityTypeManager()->getStorage('group')->load($entity->id());
+  $group->set('uid', 1);
+  $group->save($group);
+}
