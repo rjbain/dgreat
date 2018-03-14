@@ -1,0 +1,38 @@
+<style>
+.body {
+}
+.image {
+  padding:0 0 0 10px;
+}
+</style>
+{% set description = node.body.value %}
+{% set title = node.title.value %}
+{% set additional_info = node.field_additional_info.value %}
+{% set start_date = node.field_start_date.value|date('l, F j')  %}
+{% set start_time = node.field_start_date.value|date('g:i A')  %}
+{% set end_time = node.field_end_date.value|date('g:i A')  %}
+{% set location = node.field_location.value %}
+{% set image = file_url(node.field_image.entity.uri.value) %}
+<article{{ attributes.addClass(classes) }}>
+
+<h2 {{ title_attributes }}>{#{ title }#}</h2>
+<h3>{{ start_date }}, {{ start_time }} - {{ end_time }}</h3>
+<h4>{{ location }}</h4>
+  <div{{ content_attributes.addClass('content') }}>
+    <div class="body">
+      <img src="{{ image }}" align="right" class="image">
+      	<div class="event_description">
+        	{% autoescape false %}
+          		{{ description }}
+        	{% endautoescape %}
+    	</div>
+      	<div class="event_additional_info">
+        	{% autoescape false %}
+          		{{ additional_info }}
+        	{% endautoescape %}
+        </div>
+    </div>
+  </div>
+</article>
+<br clear="all">
+<br clear="all">
