@@ -54,9 +54,8 @@ dependencies:
     - composer create-project -n -d ~/.terminus/plugins pantheon-systems/terminus-build-tools-plugin:^1
     - composer create-project -n -d ~/.terminus/plugins pantheon-systems/terminus-secrets-plugin:^1
     - cd web/themes/custom/myusf/ && npm install
-    - cd web/themes/custom/myusf/ && npm install gulp
     - cd web/themes/custom/myusf/ && npm install gulp -g
-    - cd web/themes/custom/myusf/ && npm install gulp-sass gulp-cssmin gulp-concat gulp-imagemin gulp-smushit gulp-uglify  --save-dev
+    - cd web/themes/custom/myusf/ && npm install gulp gulp-sass gulp-cssmin gulp-concat gulp-imagemin gulp-smushit gulp-uglify  --save-dev
     - cd web/themes/custom/myusf/ && gulp
   post:
     - terminus auth:login -n --machine-token="$TERMINUS_TOKEN"
