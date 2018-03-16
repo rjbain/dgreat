@@ -1,0 +1,28 @@
+uuid: 78958097-8d47-43ce-8efc-c58e0aae475e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.favorite_link.body
+    - node.type.favorite_link
+  module:
+    - text
+    - user
+id: node.favorite_link.teaser
+targetEntityType: node
+bundle: favorite_link
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden: {  }

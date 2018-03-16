@@ -1,0 +1,68 @@
+uuid: 8d6fd1da-8f0a-4f2f-8bdb-f153abc3ae31
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.favorite_link.body
+    - field.field.node.favorite_link.field_category
+    - field.field.node.favorite_link.field_link_type
+    - field.field.node.favorite_link.field_sso
+    - field.field.node.favorite_link.field_url
+    - field.field.node.favorite_link.og_group_ref
+    - node.type.favorite_link
+  module:
+    - link
+    - options
+    - text
+    - user
+id: node.favorite_link.default
+targetEntityType: node
+bundle: favorite_link
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_category:
+    label: inline
+    weight: 2
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_link_type:
+    label: above
+    weight: 6
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_sso:
+    label: inline
+    weight: 3
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_url:
+    label: inline
+    weight: 1
+    type: link
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  og_group_ref: true
