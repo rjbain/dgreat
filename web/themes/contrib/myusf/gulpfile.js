@@ -1,10 +1,10 @@
-//Install GULP in theme folder /web/themes/contrib/myusf
-//npm init (Create the package.json file)
-//npm install gulp -g gulp-sass gulp-cssmin gulp-concat gulp-imagemin gulp-smushit gulp-uglify --save-dev
+//Install GULP in theme folder /web/themes/custom/myusf
+//npm install gulp -g (If GULP has not been installed gloabally)
+//npm install gulp gulp-sass gulp-cssmin gulp-concat gulp-imagemin gulp-smushit gulp-uglify --save-dev
 //$ gulp (To run gulp once)
 //$ gulp watch (To continuously watch so changes are automatically compiled) 
 
-var sassFiles = 'sass/src/*.scss',
+var sassFiles = 'sass/src/**/*.scss',
     cssFiles = 'css',
     cssSiteFile = 'site.css',
     imageFiles = 'images/src/*',
@@ -52,5 +52,5 @@ gulp.task('smushit', function () {
 gulp.task('default',['sass','imagemin','smushit','js']);
 
 gulp.task('watch', function() {
-    gulp.watch(sassFiles, ['sass','js','imagemin','smushit'])
+    gulp.watch(sassFiles, ['sass','imagemin','smushit','js'])
 });
