@@ -5,10 +5,10 @@ dependencies:
   config:
     - field.field.node.favorite_link.body
     - field.field.node.favorite_link.field_category
+    - field.field.node.favorite_link.field_group_audience
     - field.field.node.favorite_link.field_link_type
     - field.field.node.favorite_link.field_sso
     - field.field.node.favorite_link.field_url
-    - field.field.node.favorite_link.og_group_ref
     - node.type.favorite_link
   module:
     - link
@@ -39,6 +39,15 @@ content:
     type: options_select
     settings: {  }
     third_party_settings: {  }
+    region: content
+  field_group_audience:
+    weight: 122
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   field_link_type:
     weight: 3
@@ -105,5 +114,4 @@ content:
       placeholder: ''
     region: content
     third_party_settings: {  }
-hidden:
-  og_group_ref: true
+hidden: {  }
