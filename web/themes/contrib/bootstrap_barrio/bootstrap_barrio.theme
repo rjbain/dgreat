@@ -66,18 +66,6 @@ function bootstrap_barrio_preprocess_html(&$variables) {
 
 }
 
-function bootstrap_barrio_page_attachments_alter(&$page) {
-  $viewport = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'name' => 'viewport',
-      'content' => 'width=device-width, initial-scale=1, shrink-to-fit=no',
-    ),
-  );
-  $page['#attached']['html_head'][] = [$viewport, 'viewport'];
-}
-
 /**
  * Implements hook_preprocess_HOOK() for page templates.
  */
@@ -112,9 +100,8 @@ function bootstrap_barrio_preprocess_page(&$variables) {
     $variables['#attached']['library'][] = 'bootstrap_barrio/' . $system_messages;
   }
 
-//  $width = _bootstrap_barrio_content_width(!empty($variables['page']['sidebar_first']), !empty($variables['page']['sidebar_second']));
-//  $content_width = 'col-md-' . $width;
-  $content_width = 'col';
+  $width = _bootstrap_barrio_content_width(!empty($variables['page']['sidebar_first']), !empty($variables['page']['sidebar_second']));
+  $content_width = 'col-md-' . $width;
   $sidebar_first_width = 'col-md-' . theme_get_setting('bootstrap_barrio_sidebar_first_width');
   $sidebar_second_width = 'col-md-' . theme_get_setting('bootstrap_barrio_sidebar_second_width');
 
@@ -128,27 +115,28 @@ function bootstrap_barrio_preprocess_page(&$variables) {
   $variables['navbar_attributes'] = array(
     'class' => array (
       'navbar',
+	  theme_get_setting('bootstrap_barrio_navbar_toggle'),
     ),
 	'id' => array ( 'navbar-main' ),
   );
   $variables['content_attributes'] = array(
     'class' => array (
       'main-content', 
-	    $content_width ),
+	  $content_width ),
 	'id' => array ( 'content' ),
 	'role' => array ( 'main' ),
   );
   $variables['sidebar_first_attributes'] = array(
     'class' => array (
       'sidebar', 
-	    $sidebar_first_width 
+	  $sidebar_first_width 
 	),
 	'id' => array ( 'sidebar_first' ),
   );
   $variables['sidebar_second_attributes'] = array(
     'class' => array (
       'sidebar', 
-	    $sidebar_second_width ),
+	  $sidebar_second_width ),
 	'id' => array ( 'sidebar_second' ),
   );
 
@@ -158,19 +146,19 @@ function bootstrap_barrio_preprocess_page(&$variables) {
   $affix_sidebar_first = theme_get_setting('bootstrap_barrio_sidebar_first_affix');
   $affix_sidebar_second = theme_get_setting('bootstrap_barrio_sidebar_second_affix');
   if ($affix_navbar_top || $affix_navbar || $affix_sidebar_first || $affix_sidebar_second) {
-    $variables['#attached']['library'][] = 'bootstrap_barrio/affix';
-    if ($affix_navbar_top) {
+	$variables['#attached']['library'][] = 'bootstrap_barrio/affix';
+	if ($affix_navbar_top) {
        $variables['navbar_top_attributes']['data-toggle'] = 'affix';
-    }
-    if ($affix_navbar) {
+	}
+	if ($affix_navbar) {
        $variables['navbar_attributes']['data-toggle'] = 'affix';
-    }
-    if ($affix_sidebar_first) {
+	}
+	if ($affix_sidebar_first) {
        $variables['sidebar_first_attributes']['data-toggle'] = 'affix';
-    }
-    if ($affix_sidebar_second) {
+	}
+	if ($affix_sidebar_second) {
        $variables['sidebar_second_attributes']['data-toggle'] = 'affix';
-    }
+	}
   }
   
   // Calculate widths
@@ -187,48 +175,82 @@ function bootstrap_barrio_preprocess_page(&$variables) {
   // Define column layout classes
   switch (theme_get_setting('bootstrap_barrio_sidebar_position')) {
 	case 'left':
-    $variables['sidebar_first_attributes']['class'][] = 'order-first';
-    $variables['content_attributes']['class'][] = 'order-last';
+	  $variables['content_attributes']['class'][] = 'float-right';
 	  break;
 	case 'both':
-    $variables['sidebar_first_attributes']['class'][] = 'order-first';
-    $variables['sidebar_second_attributes']['class'][] = 'order-last';
+      if (!empty($variables['page']['sidebar_first'])) {
+	    $variables['content_attributes']['class'][] = 'push-md-' . ( theme_get_setting('bootstrap_barrio_sidebar_first_width') + theme_get_setting('bootstrap_barrio_sidebar_first_offset') );
+      }
+	  $variables['sidebar_first_attributes']['class'][] = 'pull-md-' . ( $width + theme_get_setting('bootstrap_barrio_content_offset') );
 	  break;
 	case 'right':
-    $variables['sidebar_second_attributes']['class'][] = 'order-first';
-    $variables['content_attributes']['class'][] = 'order-last';
 	  break;
   }
 
   // Define navigation position
-  $variables['navbar_top_attributes']['class'][] = theme_get_setting('bootstrap_barrio_navbar_top_position');
-  $variables['navbar_attributes']['class'][] = theme_get_setting('bootstrap_barrio_navbar_position');
+  switch (theme_get_setting('bootstrap_barrio_navbar_top_position')) {
+	case 'fixed-top':
+	  $variables['navbar_top_attributes']['class'][] = 'navbar-fixed-top';
+	  break;
+	case 'fixed-bottom':
+	  $variables['navbar_top_attributes']['class'][] = 'navbar-fixed-bottom';
+	  break;
+  }
+  switch (theme_get_setting('bootstrap_barrio_navbar_position')) {
+	case 'fixed-top':
+	  $variables['navbar_attributes']['class'][] = 'navbar-fixed-top';
+	  break;
+	case 'fixed-bottom':
+	  $variables['navbar_attributes']['class'][] = 'navbar-fixed-bottom';
+	  break;
+  }
 
   // Define navigation color scheme
-  $variables['navbar_top_attributes']['class'][] = theme_get_setting('bootstrap_barrio_navbar_top_color');
-  $variables['navbar_attributes']['class'][] = theme_get_setting('bootstrap_barrio_navbar_color');
-
-  // Define navigation background classes
-  $variables['navbar_top_attributes']['class'][] = theme_get_setting('bootstrap_barrio_navbar_top_background');
-  $variables['navbar_attributes']['class'][] = theme_get_setting('bootstrap_barrio_navbar_background');
-
- // Define navigation toggle size
-  switch (theme_get_setting('bootstrap_barrio_navbar_toggle')) {
-	case 'navbar-toggleable-lg':
-	  $variables['navbar_attributes']['class'][] = 'navbar-expand-lg';
+  switch (theme_get_setting('bootstrap_barrio_navbar_top_color')) {
+	case 'light':
+	  $variables['navbar_top_attributes']['class'][] = 'navbar-light';
 	  break;
-	case 'navbar-toggleable-md':
-	  $variables['navbar_attributes']['class'][] = 'navbar-expand-md';
-	  break;
-	case 'navbar-toggleable-sm':
-	  $variables['navbar_attributes']['class'][] = 'navbar-expand-sm';
-	  break;
-	case 'navbar-toggleable-xs':
-	  $variables['navbar_attributes']['class'][] = 'navbar-expand-xs';
+	case 'dark':
+	  $variables['navbar_top_attributes']['class'][] = 'navbar-inverse';
 	  break;
 	default:
-    $variables['navbar_attributes']['class'][] = 'navbar-expand-md';
-    break;
+	  $variables['navbar_top_attributes']['class'][] = 'navbar-default';
+	  break;
+  }
+  switch (theme_get_setting('bootstrap_barrio_navbar_color')) {
+	case 'light':
+	  $variables['navbar_attributes']['class'][] = 'navbar-light';
+	  break;
+	case 'inverse':
+	  $variables['navbar_attributes']['class'][] = 'navbar-inverse';
+	  break;
+	default:
+	  $variables['navbar_attributes']['class'][] = 'navbar-default';
+	  break;
+  }
+
+  // Define navigation background classes
+  switch (theme_get_setting('bootstrap_barrio_navbar_top_background')) {
+	case 'primary':
+	  $variables['navbar_top_attributes']['class'][] = 'bg-primary';
+	  break;
+	case 'faded':
+	  $variables['navbar_top_attributes']['class'][] = 'bg-faded';
+	  break;
+	case 'inverse':
+	  $variables['navbar_top_attributes']['class'][] = 'bg-inverse';
+	  break;
+  }
+  switch (theme_get_setting('bootstrap_barrio_navbar_background')) {
+	case 'primary':
+	  $variables['navbar_attributes']['class'][] = 'bg-primary';
+	  break;
+	case 'faded':
+	  $variables['navbar_attributes']['class'][] = 'bg-faded';
+	  break;
+	case 'inverse':
+	  $variables['navbar_attributes']['class'][] = 'bg-inverse';
+	  break;
   }
 
   if (theme_get_setting('bootstrap_barrio_sidebar_collapse')) {
@@ -310,18 +332,13 @@ function bootstrap_barrio_preprocess_block(&$variables) {
 }
 
 function bootstrap_barrio_preprocess_form_element(&$variables) {
-  if ( is_object($variables['label']['#title']) && !$variables['label']['#title'] instanceof \Drupal\Component\Render\MarkupInterface) {
-    $variables['input_title'] = NULL;
-  }
-  elseif ( is_object($variables['label']['#title']) ) {
-    $variables['input_title'] = $variables['label']['#title'];
+  if ( is_object($variables['label']['#title']) ) {
+    $variables['input_title'] = $variables['label']['#title']->render();
   }
   else {
     $variables['input_title'] = $variables['label']['#title'];
   }
-  if (isset($variables['element']['#attributes'])) {
-    $variables['input_attributes'] = new Attribute($variables['element']['#attributes']);
-  }
+  $variables['input_attributes'] = new Attribute($variables['element']['#attributes']);
 }
 
 /**
