@@ -28,22 +28,29 @@ class DgreatGroup {
    */
   public function addNodeToGroup($field) {
     $plugin_id = 'group_node:' . $this->entity->bundle();
-    $group_id = $entity->get($field)->getValue();
+    $group_ids = $this->entity->get($field)->getValue();
 
-    // If it is assigned, then lets do the magix.
-    if (isset($group_id[0]['target_id'])) {
-      $group = Group::load($group_id[0]['target_id']);
+    foreach ($group_ids as $group_id) {
+      // If it is assigned, then lets do the magix.
+      if (isset($group_id['target_id'])) {
+        $group = Group::load($group_id['target_id']);
 
-      $check = $group->getContentByEntityId($plugin_id, $entity->id());
-      // Lets remove the existing content to prevent errors.
-      if (!empty($check)) {
-        $check->delete();
+
+        // Lets remove the existing content to prevent errors.
+        $check = $group->getContentByEntityId($plugin_id, $this->entity->id());
+        if (!empty($check)) {
+          foreach ($check as $g) {
+            $g->delete();
+          }
+        }
+
+        // Add the content to the group.
+        $group->addContent($this->entity, $plugin_id);
       }
-      // Add the content to the group.
-      $group->addContent($entity, $plugin_id);
-
-      return TRUE;
     }
+
+
+
 
     // Fail safe return
     return FALSE;

@@ -7,6 +7,7 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\dgreat_group\DgreatGroup;
+use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Implements hook_help().
@@ -34,7 +35,7 @@ function dgreat_group_node_insert(EntityInterface $entity) {
 
   switch ($entity->bundle()) {
     case 'favorite_link':
-      // $add = (new DgreatGroup($entity))->addNodeToGroup('ddd');
+      $add = (new DgreatGroup($entity))->addNodeToGroup('field_group_audience');
       break;
   }
 
