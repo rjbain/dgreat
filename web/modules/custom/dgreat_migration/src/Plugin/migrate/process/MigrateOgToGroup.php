@@ -11,7 +11,7 @@ use Drupal\migrate\MigrateSkipRowException;
  * Convert a taxonomy tid into a group gid.
  *
  * @MigrateProcessPlugin(
- *   id = "committee_to_group",
+ *   id = "og_to_group",
  * )
  */
 class MigrateOgToGroup extends ProcessPluginBase {
@@ -20,6 +20,8 @@ class MigrateOgToGroup extends ProcessPluginBase {
    * {@inheritdoc}
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
+
+    var_dump($value);
     // If the tid is not in this array, it doesn't get migrated.
     if (!array_key_exists($value, $this->match())) {
       throw new MigrateSkipRowException('', TRUE);
