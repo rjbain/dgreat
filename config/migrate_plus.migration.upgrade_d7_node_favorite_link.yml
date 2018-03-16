@@ -8,7 +8,7 @@ field_plugin_method: null
 cck_plugin_method: null
 migration_tags:
   - 'Drupal 7'
-migration_group: migrate_drupal_7
+migration_group: nodes
 label: 'Nodes (Favorite Link)'
 source:
   plugin: d7_node
@@ -46,7 +46,7 @@ process:
     plugin: field_link
     source: field_url
   og_group_ref:
-    plugin: get
+    plugin: og_to_group
     source: og_group_ref
   field_link_type:
     plugin: get
@@ -56,8 +56,8 @@ destination:
   default_bundle: favorite_link
 migration_dependencies:
   required:
-    - upgrade_d7_user
     - upgrade_d7_node_type
   optional:
+    - upgrade_d7_user
     - upgrade_d7_field_instance
     - upgrade_d7_comment_field_instance
