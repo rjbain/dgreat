@@ -146,14 +146,6 @@ function dgreat_migration_migrate_prepare_row(Row $row, MigrateSourceInterface $
 
       break;
 
-    case 'upgrade_d7_node_favorite_link':
-      var_dump($row->getSourceProperty('og_group_ref'));
-      if ($values = $row->getSourceProperty('og_group_ref')) {
-        var_dump($values);
-
-      }
-      break;
-
     // All cases above this are temporary and you need to change them out
     // per content type that you are migrating.
 
