@@ -44,9 +44,8 @@ function dgreat_migration_migrate_prepare_row(Row $row, MigrateSourceInterface $
       break;
 
     case 'upgrade_d7_field':
-    case 'upgrade_d7_field_instance':
 
-      // Filed types we are skipping.
+      // Field types we are skipping.
       $entities = [
         'command_button',
         'field_collection_item',
@@ -58,15 +57,14 @@ function dgreat_migration_migrate_prepare_row(Row $row, MigrateSourceInterface $
         'message_type'
       ];
 
-      // Specific fields we are skipping.
-      $field_skip = [
-        'field_usfcat_updates',
-        'field_oa_related'
-      ];
-
-      // Content Types we are importing.
-      $bundles = [
-        'favorite_link'
+      // Fields we are importing.
+      $fields = [
+        'field_url',
+        'field_link_type',
+        'field_category',
+        'field_sso',
+        'og_group_ref',
+        'title',
       ];
 
       $entity = $row->getSourceProperty('instances')[0]['entity_type'];
@@ -76,13 +74,22 @@ function dgreat_migration_migrate_prepare_row(Row $row, MigrateSourceInterface $
       }
 
       $field = $row->getSourceProperty('field_name');
-      if (in_array($field, $field_skip)) {
+      if (!in_array($field, $fields)) {
         // This makes it so we don't need to reprocess the row.
         throw new MigrateSkipRowException('', TRUE);
       }
 
+      break;
+
+    case 'upgrade_d7_field_instance':
+
+      // Content Types we are importing.
+      $bundles = [
+        'favorite_link'
+      ];
+
       $bundle = $row->getSourceProperty('bundle');
-      if ($bundle !== NULL && !in_array($bundle, $bundles)) {
+      if (!in_array($bundle, $bundles)) {
         // This makes it so we don't need to reprocess the row.
         throw new MigrateSkipRowException('', TRUE);
       }
