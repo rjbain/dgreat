@@ -1,0 +1,7 @@
+<?php
+
+function bootstrap_barrio_subtheme_preprocess_page(&$variables) {
+   $variables['search_content'] = htmlentities($_GET["search_content"], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+   $variables['event_category'] = htmlentities($_GET["event_category"], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+   $variables['event_date'] = htmlentities($_GET["event_date"], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+}
