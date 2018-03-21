@@ -33,7 +33,14 @@ class DgreatGroup {
     foreach ($group_ids as $group_id) {
       // If it is assigned, then lets do the magix.
       if (isset($group_id['target_id'])) {
+
         $group = Group::load($group_id['target_id']);
+
+        // Unpublished groups were not migrated.
+        // This prevents the failure due to this.
+        if ($group === NULL) {
+          continue;
+        }
 
         // Lets remove the existing content to prevent errors.
         $check = $group->getContentByEntityId($plugin_id, $this->entity->id());
