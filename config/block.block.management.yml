@@ -1,0 +1,35 @@
+uuid: 3be4fd68-b545-4657-9232-b114b36637c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.management
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - bootstrap_barrio_subtheme
+id: management
+theme: bootstrap_barrio_subtheme
+region: sidebar_second
+weight: -8
+provider: null
+plugin: 'system_menu_block:management'
+settings:
+  id: 'system_menu_block:management'
+  label: Management
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/management\r\n/management/*"
+    negate: false
+    context_mapping: {  }
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
