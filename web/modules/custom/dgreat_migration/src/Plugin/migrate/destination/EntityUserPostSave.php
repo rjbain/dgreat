@@ -23,6 +23,7 @@ class EntityUserPostSave extends EntityUser {
    */
   private $gids;
 
+
   /**
    * {@inheritdoc}
    */
@@ -77,59 +78,15 @@ class EntityUserPostSave extends EntityUser {
 
     // Let's go through Each Group and add users.
     foreach ($this->gids as $gid) {
-      $group_id = $this->match()[$gid];
-      if ($group_id !== NULL) {
-        $group = Group::load($group_id);
-        $group->addMember($entity);
+      if ($gid !== NULL) {
+        $group = Group::load($gid);
+        if ($group !== NULL) {
+          $group->addMember($entity);
+        }
       }
     }
 
     // return the entity ids as in EntityContentBase::save().
     return [$entity->id()];
-  }
-
-  /**
-   * Matches an array of rids to gids.
-   * This was matched up in the discovery docs.
-   *
-   * @return array
-   *   A rid to role name array to chose from.
-   */
-  private function match() {
-    // Format is rid => gid.
-    return [
-      '7' => '1',
-      '8' => '3',
-      '41' => '4',
-      '39' => '5',
-      '15' => '6',
-      '40' => '7',
-      '16' => '8',
-      '69' => '9',
-      '17' => '10',
-      '27' => '11',
-      '13' => '12',
-      '25' => '17',
-      '9' => '18',
-      '20' => '18',
-      '21' => '19',
-      '29' => '19',
-      '18' => '20',
-      '19' => '21',
-      '28' => '22',
-      '12' => '24',
-      '26' => '28',
-      '14' => '29',
-      '22' => '31',
-      '31' => '34',
-      '32' => '35',
-      '33' => '36',
-      '35' => '37',
-      '34' => '38',
-      '36' => '39',
-      '37' => '40',
-      '23' => '42',
-      '11' => '58',
-    ];
   }
 }

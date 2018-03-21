@@ -28,9 +28,9 @@ class OgGroupsToGroup extends DrupalSqlBase {
   public function query() {
     $query = $this->select('node', 'n')
       ->distinct()
-      ->fields('n', ['nid', 'title']);
-    $query->innerJoin('og_users_roles', 'our', 'our.gid = n.nid');
-    $query->innerJoin('og_membership', 'og', 'og.gid = n.nid');
+      ->fields('n', ['nid', 'title'])
+      ->condition('type', ['oa_group', 'oa_space'], 'IN')
+      ->condition('status', 1);
 
     return $query;
   }

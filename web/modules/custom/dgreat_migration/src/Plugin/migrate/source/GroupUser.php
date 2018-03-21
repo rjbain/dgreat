@@ -21,10 +21,20 @@ class GroupUser extends User {
   public function prepareRow(Row $row) {
     // Grab our nid and grab the Group ID from the D7 OG table.
     $uid = $row->getSourceProperty('uid');
+
+    // For some reason I could not get the joins to work on this.
+    // I don't like the fact I need to run two sql queries.
+    // However it works for now @todo make this happier.
     $query = $this->select('og_membership', 'og')
       ->fields('og', ['gid'])
       ->condition('etid', $uid)
       ->condition('entity_type', 'user')
+      ->execute()
+      ->fetchAll();
+
+    $query2 = $this->select('og_users_roles', 'our')
+      ->fields('our', ['gid'])
+      ->condition('uid', $uid)
       ->execute()
       ->fetchAll();
 
@@ -34,8 +44,14 @@ class GroupUser extends User {
       $gids[] = $gid['gid'];
     }
 
+    foreach ($query2 as $gid) {
+      $gids[] = $gid['gid'];
+    }
+
     // Set the property to use as source in the yaml.
     $row->setDestinationProperty('gids', $gids);
+
+    return parent::prepareRow($row);
   }
 
 }
