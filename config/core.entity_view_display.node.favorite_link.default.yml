@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.favorite_link.field_group_audience
     - field.field.node.favorite_link.field_link_type
     - field.field.node.favorite_link.field_sso
+    - field.field.node.favorite_link.field_top_quick_link
     - field.field.node.favorite_link.field_url
     - node.type.favorite_link
   module:
@@ -56,6 +57,16 @@ content:
     type: list_default
     settings: {  }
     third_party_settings: {  }
+    region: content
+  field_top_quick_link:
+    weight: 103
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
     region: content
   field_url:
     label: inline

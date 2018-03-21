@@ -1,0 +1,26 @@
+uuid: 2dd455d8-c283-41e1-a839-621372f75264
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_oa_group_fav_links
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: nodes
+label: 'Insert Fav Links to Group'
+source:
+  plugin: d7_node
+  node_type: oa_group
+process:
+  type:
+    plugin: default_value
+    default_value: groups
+  id: nid
+  field_default_favorite_links: field_default_favorite_links
+destination:
+  plugin: 'entity:group'
+migration_dependencies:
+  required:
+    - upgrade_d7_node_favorite_link
