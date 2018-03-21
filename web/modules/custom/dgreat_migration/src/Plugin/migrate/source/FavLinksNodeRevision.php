@@ -2,18 +2,18 @@
 
 namespace Drupal\dgreat_migration\Plugin\migrate\source;
 
-use Drupal\node\Plugin\migrate\source\d7\Node;
+use Drupal\node\Plugin\migrate\source\d7\NodeRevision;
 use Drupal\migrate\Row;
 
 /**
  * Extends the D7 Node source plugin so we can grab OG info.
  *
  * @MigrateSource(
- *   id = "d7_node_fav_links",
+ *   id = "d7_node_revision_fav_links",
  *   source_module = "node"
  * )
  */
-class FavLinksNode extends Node {
+class FavLinksNodeRevision extends NodeRevision {
 
   /**
    * {@inheritdoc}

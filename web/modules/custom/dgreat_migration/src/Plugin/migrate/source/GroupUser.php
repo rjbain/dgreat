@@ -2,29 +2,29 @@
 
 namespace Drupal\dgreat_migration\Plugin\migrate\source;
 
-use Drupal\node\Plugin\migrate\source\d7\Node;
+use Drupal\user\Plugin\migrate\source\d7\User;
 use Drupal\migrate\Row;
 
 /**
  * Extends the D7 Node source plugin so we can grab OG info.
  *
  * @MigrateSource(
- *   id = "d7_node_fav_links",
- *   source_module = "node"
+ *   id = "d7_group_user",
+ *   source_module = "user"
  * )
  */
-class FavLinksNode extends Node {
+class GroupUser extends User {
 
   /**
    * {@inheritdoc}
    */
   public function prepareRow(Row $row) {
     // Grab our nid and grab the Group ID from the D7 OG table.
-    $nid = $row->getSourceProperty('nid');
+    $uid = $row->getSourceProperty('uid');
     $query = $this->select('og_membership', 'og')
       ->fields('og', ['gid'])
-      ->condition('etid', $nid)
-      ->condition('entity_type', 'node')
+      ->condition('etid', $uid)
+      ->condition('entity_type', 'user')
       ->execute()
       ->fetchAll();
 
@@ -34,16 +34,8 @@ class FavLinksNode extends Node {
       $gids[] = $gid['gid'];
     }
 
-    // Grab the field on the node.
-    $field = $row->getSourceProperty('og_group_ref');
-    if ($field !== NULL) {
-      $gids = array_merge($gids, $field);
-    }
-
     // Set the property to use as source in the yaml.
-    $row->setSourceProperty('gids', $gids);
-
-    return parent::prepareRow($row);
+    $row->setDestinationProperty('gids', $gids);
   }
 
 }

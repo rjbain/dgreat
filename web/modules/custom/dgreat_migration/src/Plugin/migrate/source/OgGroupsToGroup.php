@@ -1,0 +1,75 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: john
+ * Date: 3/21/18
+ * Time: 11:55 AM
+ */
+
+namespace Drupal\dgreat_migration\Plugin\migrate\source;
+
+use Drupal\migrate\Row;
+use Drupal\Component\Utility\Html;
+use Drupal\migrate_drupal\Plugin\migrate\source\DrupalSqlBase;
+
+
+/**
+ * Migrate OG Groups to Group.
+ *
+ * @MigrateSource(
+ *   id = "og_groups_to_group"
+ * )
+ */
+class OgGroupsToGroup extends DrupalSqlBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function query() {
+    $query = $this->select('node', 'n')
+      ->distinct()
+      ->fields('n', ['nid', 'title']);
+    $query->innerJoin('og_users_roles', 'our', 'our.gid = n.nid');
+    $query->innerJoin('og_membership', 'og', 'og.gid = n.nid');
+
+    return $query;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function fields() {
+    $fields = [
+      'nid' => $this->t('OG Node ID'),
+      'title' => $this->t('OG Node Title'),
+    ];
+
+    return $fields;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function prepareRow(Row $row) {
+    // Slugify the title then set that as the alias for the group
+    $title = $row->getSourceProperty('title');
+    $alias = Html::cleanCssIdentifier($title);
+    $alias = '/'. strtolower($alias);
+    $row->setSourceProperty('alias', $alias);
+
+    return parent::prepareRow($row);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getIds() {
+    return [
+      'nid' => [
+        'type' => 'integer',
+        'alias' => 'n',
+      ],
+    ];
+  }
+
+}

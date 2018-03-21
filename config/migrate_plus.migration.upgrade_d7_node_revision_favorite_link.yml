@@ -11,7 +11,7 @@ migration_tags:
 migration_group: nodes
 label: 'Node revisions (Favorite Link)'
 source:
-  plugin: d7_node_revision
+  plugin: d7_node_revision_fav_links
   node_type: favorite_link
 process:
   nid: nid
@@ -47,7 +47,7 @@ process:
     source: field_url
   field_group_audience:
     plugin: og_to_group
-    source: og_group_ref
+    source: gids
   field_link_type:
     plugin: get
     source: field_link_type

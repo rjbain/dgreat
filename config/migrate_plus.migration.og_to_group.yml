@@ -10,27 +10,14 @@ migration_tags: null
 migration_group: insert_group
 label: 'Migrate OG Groups To Group'
 source:
-  plugin: csv
-  path: 'public://migrate-og-to-groups.csv'
-  delimiter: ','
-  enclosure: '"'
-  header_row_count: 1
-  keys:
-    - id
-  column_names:
-    -
-      id: id
-    -
-      group: Group
-    -
-      url: Alias
+  plugin: og_groups_to_group
 process:
   type:
     plugin: default_value
     default_value: groups
-  id: id
-  label: group
-  path: url
+  id: nid
+  label: title
+  path: alias
 destination:
   plugin: 'entity:group'
 migration_dependencies: null

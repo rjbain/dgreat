@@ -35,7 +35,6 @@ class DgreatGroup {
       if (isset($group_id['target_id'])) {
         $group = Group::load($group_id['target_id']);
 
-
         // Lets remove the existing content to prevent errors.
         $check = $group->getContentByEntityId($plugin_id, $this->entity->id());
         if (!empty($check)) {
@@ -48,8 +47,6 @@ class DgreatGroup {
         $group->addContent($this->entity, $plugin_id);
       }
     }
-
-
 
 
     // Fail safe return
