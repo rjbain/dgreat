@@ -51,11 +51,7 @@ class OgGroupsToGroup extends DrupalSqlBase {
    * {@inheritdoc}
    */
   public function prepareRow(Row $row) {
-    // Slugify the title then set that as the alias for the group
-    $title = $row->getSourceProperty('title');
-    $alias = Html::cleanCssIdentifier($title);
-    $alias = '/'. strtolower($alias);
-    $row->setSourceProperty('alias', $alias);
+
 
     return parent::prepareRow($row);
   }
