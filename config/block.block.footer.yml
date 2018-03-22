@@ -1,26 +1,30 @@
-uuid: b1f5a5f2-a7a7-4bbe-b29c-72ea55d720e8
+uuid: 55e926e5-e174-4e75-92e5-d79f8611542e
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - system.menu.footer
   module:
+    - block_visibility_groups
     - system
   theme:
     - bootstrap_barrio_subtheme
-_core:
-  default_config_hash: h06zhb3xV9_2_3Zy9NsyylL7YBaEDlMwMEqNwAn8kMo
-id: bootstrap_barrio_subtheme_footer
+id: footer
 theme: bootstrap_barrio_subtheme
 region: footer_first
-weight: -6
+weight: 0
 provider: null
 plugin: 'system_menu_block:footer'
 settings:
   id: 'system_menu_block:footer'
-  label: 'Footer menu'
+  label: Footer
   provider: system
-  label_display: '0'
+  label_display: visible
   level: 1
   depth: 0
-visibility: {  }
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
