@@ -122,19 +122,19 @@
             </div>
           {% endif %}
           <div class="row row-offcanvas row-offcanvas-left clearfix">
+              {% if page.sidebar_first %}
+                  <div{{ sidebar_first_attributes }}>
+                      <aside class="section" role="complementary">
+                          {{ page.sidebar_first }}
+                      </aside>
+                  </div>
+              {% endif %}
               <main{{ content_attributes }}>
                 <section class="section">
                   <a id="main-content" tabindex="-1"></a>
                   {{ page.content }}
                 </section>
               </main>
-            {% if page.sidebar_first %}
-              <div{{ sidebar_first_attributes }}>
-                <aside class="section" role="complementary">
-                  {{ page.sidebar_first }}
-                </aside>
-              </div>
-            {% endif %}
             {% if page.sidebar_second %}
               <div{{ sidebar_second_attributes }}>
                 <aside class="section" role="complementary">
