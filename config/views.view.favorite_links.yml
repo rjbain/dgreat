@@ -956,9 +956,60 @@ display:
             group_items: {  }
           reduce_duplicates: false
           plugin_id: list_field
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
       sorts: {  }
       title: 'Favorite Links'
-      header: {  }
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content:
+            value: '<a class="btn btn-default" href="/node/add/favorite_link?destination=favorite-links/allapps" role="button" style="float:right"><span class="icon-plus"></span> Add Favorite Link</a>'
+            format: full_html
+          plugin_id: text
       footer: {  }
       empty: {  }
       relationships:

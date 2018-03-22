@@ -32,7 +32,10 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
   $display = $view->current_display;
 
   // Removes the duplicates from the Group Content View.
-  if ($name == 'favorite_links' && $display == 'all_apps') {
+  if (
+      ($name == 'favorite_links' && $display == 'all_apps') ||
+      ($name == 'favorite_links_quick_menu' && $display = 'quick_menu_block')
+  ) {
     $unique_nids = $new_results = [];
     foreach ($view->result as $index => $result) {
       // Grab the nid from the related node.
