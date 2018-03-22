@@ -1,6 +1,6 @@
-uuid: 69a59ffb-aff7-4acb-bb46-71b9bb8effc9
+uuid: 2f59b622-b277-402d-bebf-e08e983f4cea
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - system.menu.main
@@ -8,11 +8,13 @@ dependencies:
     - ctools
     - system
   theme:
-    - bootstrap_barrio_subtheme
-id: mainnavigation
-theme: bootstrap_barrio_subtheme
+    - myusf
+_core:
+  default_config_hash: GT_zYl7I9VAILH8OxMRe-VDvFadCDHxRcnmBc5xEmf0
+id: myusf_main_menu
+theme: myusf
 region: primary_menu
-weight: -8
+weight: -7
 provider: null
 plugin: 'system_menu_block:main'
 settings:
@@ -20,12 +22,13 @@ settings:
   label: 'Main navigation'
   provider: system
   label_display: '0'
-  level: 1
+  level: 2
   depth: 0
 visibility:
   'entity_bundle:node':
     id: 'entity_bundle:node'
     bundles:
+      article: article
       page: page
     negate: false
     context_mapping:
