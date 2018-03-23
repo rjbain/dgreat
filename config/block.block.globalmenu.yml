@@ -1,31 +1,34 @@
-uuid: ae8e3369-ca5d-4a88-aafb-30118667be87
+uuid: cc7e8685-1e6c-439c-bbbe-24c86c196c5e
 langcode: en
-status: false
+status: true
 dependencies:
   config:
-    - system.menu.main
+    - system.menu.global-menu
   module:
     - block_visibility_groups
     - ctools
     - system
   theme:
     - bootstrap_barrio_subtheme
-_core:
-  default_config_hash: GT_zYl7I9VAILH8OxMRe-VDvFadCDHxRcnmBc5xEmf0
-id: bootstrap_barrio_subtheme_main_menu
+id: globalmenu
 theme: bootstrap_barrio_subtheme
 region: primary_menu
-weight: -6
+weight: 0
 provider: null
-plugin: 'system_menu_block:main'
+plugin: 'system_menu_block:global-menu'
 settings:
-  id: 'system_menu_block:main'
-  label: 'Main navigation'
+  id: 'system_menu_block:global-menu'
+  label: 'Global Menu'
   provider: system
   label_display: '0'
-  level: 2
+  level: 1
   depth: 0
 visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
   'entity_bundle:node':
     id: 'entity_bundle:node'
     bundles:
@@ -35,8 +38,3 @@ visibility:
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
-  condition_group:
-    id: condition_group
-    negate: false
-    block_visibility_group: ''
-    context_mapping: {  }
