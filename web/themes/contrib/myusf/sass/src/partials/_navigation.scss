@@ -1,0 +1,284 @@
+
+/* MAIN NAV 
+===================================================*/ 
+.navbar-menu-wrapper {  //centers menu
+	display: table;
+  	margin: 0 auto;
+}
+
+nav {
+	padding-top:0!important;
+	padding-bottom:0!important;
+}
+
+.bg-dark {
+    background-color: $green!important;
+}
+
+a.nav-link {
+    color: $white!important;
+    text-decoration:none;
+}
+
+a.nav-link:hover, a.nav-link:focus, li.nav-item :hover, li.nav-item :focus {
+    color: $yellow!important;
+    background-color: transparent;
+}
+
+.navbar-brand {
+    color: $green!important;
+}
+.navbar-brand:hover {
+    color: $green!important;
+    background: transparent;
+}
+
+a.navbar-brand:before {
+    background-position: 0 0;
+    width: 60px;
+    height: 57px;
+    position: absolute;
+    top: 3px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-left: 20px;
+    background: url(/themes/contrib/myusf/images/site/icons.svg) no-repeat 0 0;
+    content: "";
+    display: inline-block;
+ }
+
+button.header_search {
+    background: transparent;
+    border: 0;
+}
+
+button.header_search:before {
+    width: 24px;
+    height: 25px;
+    position: absolute;
+    top: 0;
+    right: 130px;
+    bottom: 0;
+    margin: auto;
+    background: url(/themes/contrib/myusf/images/site/icons.svg) no-repeat -190px -95px;
+    content: "";
+    display: inline-block;
+}
+
+button.header_search:hover:before {
+    width: 23px;
+    height: 25px;
+    top: 0;
+    right: 130px;
+    margin: auto;
+    background: url(/themes/contrib/myusf/images/site/icons.svg) -212px -95px no-repeat;
+}
+
+.btn-outline-success {
+    color: $white;
+    background-color: transparent;
+    background-image: none;
+    border-radius: 0px;
+    border: 2px solid $white;
+    text-transform: uppercase;
+    font-size: .8rem;
+    padding: 3px 15px;
+    margin-left: 20px;
+}
+
+.btn-outline-success:hover, .btn-outline-success:focus {
+	color: $yellow;
+	border-color: $yellow;
+	background-color: transparent;
+}
+
+input.form-control {
+    display: none!important;
+}
+
+/* BREADCRUMBS 
+===================================================*/ 
+
+.breadcrumb-item {
+	font-size: .6rem;
+	text-transform: uppercase;
+}
+
+.breadcrumb-item a {
+	font-weight: 600;
+	text-decoration: none;
+	color: $text_gray;
+}
+
+.breadcrumb-item a:hover {
+	background-color: $white;
+	color: $green;
+	text-decoration: underline;
+}
+
+.breadcrumb {
+	padding: .75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: transparent;
+    border-radius: .25rem;
+}
+
+
+/* QUICK LINKS right column 
+=================================================*/
+
+
+.quicklinks {
+	border: 5px solid $green;
+	float: right;
+	padding-top: 15px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.quicklinks ul {
+	margin-left: 0;
+	padding-left: 0;
+	list-style-type: none;
+}
+
+.quicklinks li {
+	color: $green !important;
+	font-size: .85rem;
+	font-weight: 600;
+}
+
+.quicklinks li a:hover {
+	text-decoration: underline;
+}
+
+.quicklinks p {
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 1.1rem;
+	color: $green !important;
+}
+
+
+/* FOOTER
+=================================================*/
+.site-footer {
+	background:$green;
+}
+
+/*.footer { 
+	position: relative;
+	display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+		padding: 1rem;
+}*/
+
+.footer-link {
+	font-size:0.8rem;
+	color:$white;
+	text-decoration:none;
+	display: block;
+	padding: .15rem 1rem;
+	
+}
+.footer-link:focus, .footer-link:hover {
+	color:$yellow!important;
+	background: transparent;
+}
+
+.footer-nav {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	padding-left: 0;
+	margin-bottom: 0;
+	list-style: none
+}
+
+@media (max-width:991.98px) {
+	/*.footer { 
+		padding: 1.5rem 1rem 1rem;
+	}*/
+	.footer-expand-lg>.container, .footer-expand-lg>.container-fluid {
+		padding-right: 0;
+		padding-left: 0
+	}
+	
+	ul.footer-nav {
+		display: inline-block;
+		
+		margin: 0!important;
+		column-count: 3;
+		column-gap: 10px;
+		width: 100%;
+		text-align:center;
+	}
+	
+	.footer-link {
+		padding: .15rem 0!important;
+	}
+	
+	a.footer-link {
+		display:inline-block;
+	}
+	
+	a.logo {				
+		
+		width:100%;
+	}
+	.logo img {
+		display: block;
+		margin: 20px auto 10px
+	}
+}
+
+@media (min-width:992px) {
+	.footer-expand-lg {
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-flow: row nowrap;
+		flex-flow: row nowrap;
+		-webkit-box-pack: start;
+		-ms-flex-pack: start;
+		justify-content: flex-start
+	}
+	.footer-expand-lg .footer-nav {
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: row;
+		flex-direction: row
+	}
+
+	.footer-expand-lg .footer-nav .footer-link {
+		padding-right: .5rem;
+		padding-left: .5rem
+	}
+}
+
+a.logo:before {
+    width: 450px;
+    height: 38px;
+    position: absolute;
+    top: 5px;
+    right: -9%;
+    bottom: 0;
+    background: url(/themes/contrib/myusf/images/site/icons.svg) no-repeat;
+    content: "";
+    display: inline-block;
+    background-size: 90%;
+}
