@@ -43,14 +43,14 @@ gulp.task('imagemin', function() {
         .pipe(gulp.dest(imageMinFiles))
 });
 
-gulp.task('smushit', function () {
-    gulp.src(imageFiles)
-        .pipe(smushit())
-        .pipe(gulp.dest(imageMinFiles));
-});
+//gulp.task('smushit', function () {
+  //  gulp.src(imageFiles)
+   //     .pipe(smushit())
+   //     .pipe(gulp.dest(imageMinFiles));
+//});
 
-gulp.task('default',['sass','imagemin','smushit','js']);
+gulp.task('default',['sass','imagemin','js']);
 
 gulp.task('watch', function() {
-    gulp.watch(sassFiles, ['sass','js','imagemin','smushit'])
+    gulp.watch(sassFiles, ['sass','js','imagemin'])
 });
