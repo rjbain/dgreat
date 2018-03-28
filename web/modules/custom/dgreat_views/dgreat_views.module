@@ -35,6 +35,7 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
   switch ($name) {
     case 'favorite_links':
     case 'favorite_links_quick_menu':
+    case 'quick_links':
       $unique_nids = $new_results = [];
       foreach ($view->result as $index => $result) {
         // Grab the nid from the related node.
