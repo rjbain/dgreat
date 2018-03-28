@@ -32,24 +32,26 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
   $display = $view->current_display;
 
   // Removes the duplicates from the Group Content View.
-  if (
-      ($name == 'favorite_links' && $display == 'all_apps') ||
-      ($name == 'favorite_links_quick_menu' && $display = 'quick_menu_block')
-  ) {
-    $unique_nids = $new_results = [];
-    foreach ($view->result as $index => $result) {
-      // Grab the nid from the related node.
-      $node = $result->_relationship_entities["gc__node"];
-      $nid = $node->id();
+  switch ($name) {
+    case 'favorite_links':
+    case 'favorite_links_quick_menu':
+      $unique_nids = $new_results = [];
+      foreach ($view->result as $index => $result) {
+        // Grab the nid from the related node.
+        $node = $result->_relationship_entities["gc__node"];
+        $nid = $node->id();
 
-      // If it isn;t in there, add it and the result.
-      if (!in_array($nid, $unique_nids)) {
-        $unique_nids[] = $nid;
-        $new_results[] = $result;
+        // If it isn;t in there, add it and the result.
+        if (!in_array($nid, $unique_nids)) {
+          $unique_nids[] = $nid;
+          $new_results[] = $result;
+        }
       }
-    }
 
-    // Set our unique set of results based of of nid.
-    $view->result = $new_results;
+      // Set our unique set of results based of of nid.
+      $view->result = $new_results;
+
+      break;
   }
+
 }
