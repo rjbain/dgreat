@@ -37,6 +37,10 @@ function dgreat_group_node_insert(EntityInterface $entity) {
     case 'favorite_link':
       $add = (new DgreatGroup($entity))->addNodeToGroup('field_group_audience');
       break;
+
+    case 'usf_service':
+      $add = (new DgreatGroup($entity))->addNodeToGroup('field_usfcat_audience_ref');
+      break;
   }
 
 }
