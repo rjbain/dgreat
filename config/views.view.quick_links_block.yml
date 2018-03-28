@@ -1,4 +1,4 @@
-uuid: 5262cb88-6750-4509-bbdb-253152531a04
+uuid: 2b96e833-8c12-486b-a3e3-bff50d164914
 langcode: en
 status: true
 dependencies:
@@ -22,8 +22,8 @@ dependencies:
     - taxonomy
     - text
     - user
-id: quick_links
-label: 'Quick Links'
+id: quick_links_block
+label: 'Quick Links: Block'
 module: views
 description: ''
 tag: ''
@@ -1068,66 +1068,15 @@ display:
         - 'config:field.storage.node.field_category'
         - 'config:field.storage.node.field_group_audience'
         - 'config:field.storage.node.field_sso'
-  all_apps:
-    display_plugin: page
-    id: all_apps
-    display_title: Administrator
+  block:
+    display_plugin: block
+    id: block
+    display_title: Block
     position: 1
     display_options:
       display_extenders: {  }
-      path: quick-links/allapps
       display_description: ''
-      menu:
-        type: tab
-        title: 'All Quick Links'
-        description: ''
-        expanded: false
-        parent: ''
-        weight: 0
-        context: '0'
-        menu_name: main
-      title: 'Quick Links'
-      defaults:
-        title: false
-        header: false
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: false
-          tokenize: false
-          content:
-            value: '<a class="btn btn-default" href="/node/add/favorite-link?edit[field_link_type][und]=quick?destination=favorite-links/allapps" role="button" style="float:right"><span class="icon-plus"></span> Add Favorite Link</a>'
-            format: full_html
-          plugin_id: text
-    cache_metadata:
-      max-age: 0
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url
-        - url.query_args
-        - user
-        - user.roles
-      tags:
-        - 'config:field.storage.node.body'
-        - 'config:field.storage.node.field_category'
-        - 'config:field.storage.node.field_group_audience'
-        - 'config:field.storage.node.field_sso'
-  my_favorite_links:
-    display_plugin: page
-    id: my_favorite_links
-    display_title: 'My Quick Links'
-    position: 1
-    display_options:
-      display_extenders: {  }
-      path: quick-links
-      display_description: ''
-      title: 'My Quick Links'
+      title: 'Quick Links Block'
       defaults:
         title: false
         relationships: false
@@ -1423,20 +1372,6 @@ display:
         operator: AND
         groups:
           1: AND
-      menu:
-        type: 'default tab'
-        title: 'My Quick Apps'
-        description: 'Manage your Favorite Links.'
-        expanded: false
-        parent: ''
-        weight: -10
-        context: '0'
-        menu_name: main
-      tab_options:
-        type: none
-        title: ''
-        description: ''
-        weight: 0
       header: {  }
     cache_metadata:
       max-age: 0
