@@ -34,7 +34,8 @@ function dgreat_migration_migrate_prepare_row(Row $row, MigrateSourceInterface $
     case 'upgrade_d7_node_type':
       // Content Types we are importing.
       $types = [
-        'favorite_link'
+        'favorite_link',
+        'usf_service',
       ];
 
       $type = $row->getSourceProperty('type');
@@ -64,8 +65,17 @@ function dgreat_migration_migrate_prepare_row(Row $row, MigrateSourceInterface $
         'field_link_type',
         'field_category',
         'field_sso',
-        'og_group_ref',
         'title',
+        'field_usfcat_synonyms',
+        'field_usfcat_description_short',
+        'body',
+        'field_usfcat_policies',
+        'field_usfcat_howdoi',
+        'field_usfcat_training',
+        'field_usfcat_updates',
+        'field_usfcat_category_ref',
+        'field_usfcat_provider_ref',
+        'field_usfcat_audience_ref',
       ];
 
       $entity = $row->getSourceProperty('instances')[0]['entity_type'];
@@ -86,7 +96,8 @@ function dgreat_migration_migrate_prepare_row(Row $row, MigrateSourceInterface $
 
       // Content Types we are importing.
       $bundles = [
-        'favorite_link'
+        'favorite_link',
+        'usf_service'
       ];
 
       $bundle = $row->getSourceProperty('bundle');
@@ -123,7 +134,8 @@ function dgreat_migration_migrate_prepare_row(Row $row, MigrateSourceInterface $
 
       // Content Types we are importing.
       $bundles = [
-        'favorite_link'
+        'favorite_link',
+        'usf_service'
       ];
 
       // Fields to skip.

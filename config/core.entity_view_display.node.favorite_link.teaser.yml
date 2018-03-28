@@ -5,6 +5,12 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.favorite_link.body
+    - field.field.node.favorite_link.field_category
+    - field.field.node.favorite_link.field_group_audience
+    - field.field.node.favorite_link.field_link_type
+    - field.field.node.favorite_link.field_sso
+    - field.field.node.favorite_link.field_top_quick_link
+    - field.field.node.favorite_link.field_url
     - node.type.favorite_link
   module:
     - text
@@ -16,11 +22,14 @@ mode: teaser
 content:
   body:
     label: hidden
+    weight: 0
     type: text_summary_or_trimmed
-    weight: 101
     settings:
       trim_length: 600
     third_party_settings: {  }
+    region: content
+  flag_favorite:
+    weight: 10
     region: content
   links:
     weight: 100
@@ -30,4 +39,5 @@ hidden:
   field_group_audience: true
   field_link_type: true
   field_sso: true
+  field_top_quick_link: true
   field_url: true
