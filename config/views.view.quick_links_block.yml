@@ -7,6 +7,8 @@ dependencies:
     - field.storage.node.field_category
     - field.storage.node.field_group_audience
     - field.storage.node.field_sso
+    - field.storage.node.field_top_quick_link
+    - field.storage.node.field_url
     - flag.flag.favorite
     - group.content_type.groups-group_node-favorite_link
     - group.type.groups
@@ -17,6 +19,7 @@ dependencies:
     - better_exposed_filters
     - flag
     - group
+    - link
     - node
     - options
     - taxonomy
@@ -113,82 +116,14 @@ display:
             offset_label: Offset
           quantity: 9
       style:
-        type: table
+        type: html_list
         options:
           grouping: {  }
           row_class: ''
           default_row_class: true
-          override: true
-          sticky: false
-          caption: ''
-          summary: ''
-          description: ''
-          columns:
-            link_flag: link_flag
-            label: label
-            body: body
-            field_category: field_category
-            field_sso: field_sso
-            field_group_audience: field_group_audience
-            edit_node: delete_node
-            delete_node: delete_node
-          info:
-            link_flag:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            label:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            body:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_category:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_sso:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_group_audience:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            edit_node:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            delete_node:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-          default: label
-          empty_table: false
+          type: ul
+          wrapper_class: item-list
+          class: ''
       row:
         type: fields
       fields:
@@ -994,7 +929,19 @@ display:
           entity_type: node
           entity_field: status
           plugin_id: boolean
-      sorts: {  }
+      sorts:
+        field_top_quick_link_value:
+          id: field_top_quick_link_value
+          table: node__field_top_quick_link
+          field: field_top_quick_link_value
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
       title: 'Favorite Links'
       header:
         area:
@@ -1010,7 +957,33 @@ display:
             value: '<a class="btn btn-default" href="/node/add/favorite_link?destination=favorite-links/allapps" role="button" style="float:right"><span class="icon-plus"></span> Add Favorite Link</a>'
             format: full_html
           plugin_id: text
-      footer: {  }
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: 'Add new Quick Link'
+          empty: false
+          tokenize: false
+          content:
+            value: '<hr><a href="/node/add/favorite-link?edit[field_link_type][und]=quick">Add new Quick Link</a>'
+            format: full_html
+          plugin_id: text
+        area_1:
+          id: area_1
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: 'Manage Quick Links'
+          empty: false
+          tokenize: false
+          content:
+            value: '<a href="/quick-links">Manage Quick Links</a>'
+            format: full_html
+          plugin_id: text
       empty: {  }
       relationships:
         gc__node:
@@ -1055,7 +1028,7 @@ display:
       display_extenders: {  }
       group_by: false
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
@@ -1124,6 +1097,136 @@ display:
           entity_type: node
           plugin_id: flag_relationship
       fields:
+        field_top_quick_link:
+          id: field_top_quick_link
+          table: node__field_top_quick_link
+          field: field_top_quick_link
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: boolean
+          settings:
+            format: custom
+            format_custom_true: topquicklink
+            format_custom_false: not-topquicklink
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        label:
+          id: label
+          table: group_content_field_data
+          field: label
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: group_content
+          entity_field: label
+          plugin_id: field
         link_flag:
           id: link_flag
           table: flagging
@@ -1132,7 +1235,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -1174,20 +1277,20 @@ display:
           hide_alter_empty: true
           entity_type: flagging
           plugin_id: flag_link
-        label:
-          id: label
-          table: group_content_field_data
-          field: label
-          relationship: none
+        field_url:
+          id: field_url
+          table: node__field_url
+          field: field_url
+          relationship: gc__node
           group_type: group
           admin_label: ''
-          label: Title
+          label: ''
           exclude: false
           alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
+            alter_text: true
+            text: '{{ label }}'
+            make_link: true
+            path: '{{ field_url__uri }} '
             absolute: false
             external: false
             replace_spaces: false
@@ -1198,7 +1301,7 @@ display:
             link_class: ''
             prefix: ''
             suffix: ''
-            target: ''
+            target: _blank
             nl2br: false
             max_length: 0
             word_boundary: true
@@ -1214,7 +1317,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -1222,13 +1325,16 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: value
-          type: string
+          click_sort_column: uri
+          type: link
           settings:
-            link_to_entity: false
-          group_column: value
-          group_columns:
-            entity_id: entity_id
+            trim_length: 80
+            url_only: false
+            url_plain: false
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
           group_rows: true
           delta_limit: 0
           delta_offset: 0
@@ -1237,8 +1343,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: null
-          entity_field: label
           plugin_id: field
       filters:
         type:
@@ -1374,10 +1478,12 @@ display:
           1: AND
       header: {  }
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
         - user.roles
-      tags: {  }
+      tags:
+        - 'config:field.storage.node.field_top_quick_link'
+        - 'config:field.storage.node.field_url'
