@@ -40,3 +40,12 @@ function dgreat_group_node_insert(EntityInterface $entity) {
   }
 
 }
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ *
+ * Adds a user to the respective group identified.
+ */
+function dgreat_group_user_insert(EntityInterface $entity) {
+  $add = (new DgreatGroup($entity))->addUserToGroup('field_user_group');
+}

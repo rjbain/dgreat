@@ -48,8 +48,12 @@ class GroupUser extends User {
       $gids[] = $gid['gid'];
     }
 
-    // Set the property to use as source in the yaml.
+    // Set the property to use for the user yaml ER field.
+    $row->setSourceProperty('gids', $gids);
+
+    // Set the property to use in the custom_user destination.
     $row->setDestinationProperty('gids', $gids);
+
 
     return parent::prepareRow($row);
   }
