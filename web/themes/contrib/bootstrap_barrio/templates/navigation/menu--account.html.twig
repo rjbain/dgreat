@@ -31,16 +31,28 @@
   {% if items %}
     {% if menu_level == 0 %}
       <ul{{ attributes.addClass('nav') }}>
-      {% for item in items %}
-        {%
-          set classes = [
-           'nav-link',
-            item.in_active_trail ? 'active',
-          ]
-        %}
-        {{ link(item.title, item.url, {'class': classes}) }}
-      {% endfor %}
-      </ul>
+    {% else %}
+      <ul class="dropdown-menu">
     {% endif %}
+    {% for item in items %}
+      {%
+        set classes = [
+          menu_level ? 'dropdown-item' : 'nav-item',
+          item.is_expanded ? 'menu-item--expanded',
+          item.is_collapsed ? 'menu-item--collapsed',
+          item.in_active_trail ? 'active',
+          item.below ? 'dropdown',
+        ]
+      %}
+      <li{{ item.attributes.addClass(classes) }}>
+        {% if item.below %}
+          {{ link(item.title, item.url, {'class': 'nav-link', 'data-target': '#', 'data-toggle': 'dropdown', 'aria-expanded': 'false'}) }}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+        {% else %}
+          {{ link(item.title, item.url, {'class': 'nav-link'}) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
   {% endif %}
 {% endmacro %}

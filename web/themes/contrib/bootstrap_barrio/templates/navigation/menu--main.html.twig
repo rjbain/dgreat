@@ -49,11 +49,10 @@
           set link_classes = [
             not menu_level ? 'nav-link',
             item.in_active_trail ? 'active',
-            item.below ? 'dropdown-toggle',
           ]
         %}
         {% if item.below %}
-          {{ link(item.title, item.url, {'class': link_classes, 'data-toggle': 'dropdown', 'aria-expanded': 'false', 'aria-haspopup': 'true' }) }}
+          {{ link(item.title, item.url, {'class': link_classes, 'data-target': '#', 'data-toggle': 'dropdown', 'aria-expanded': 'false'}) }}
           {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
         {% else %}
           {{ link(item.title, item.url, {'class': link_classes}) }}
