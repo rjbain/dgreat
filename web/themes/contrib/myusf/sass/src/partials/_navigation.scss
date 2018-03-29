@@ -15,16 +15,6 @@ nav {
     background-color: $green!important;
 }
 
-nav.navbar a.nav-link {
-    color: $white!important;
-    text-decoration:none;
-}
-
-nav.navbar a.nav-link:hover, nav.navbar a.nav-link:focus, nav.navbar li.nav-item :hover, nav.navbar li.nav-item :focus {
-    color: $yellow!important;
-    background-color: transparent;
-}
-
 .navbar-brand {
     color: $green!important;
 }
@@ -47,6 +37,17 @@ a.navbar-brand:before {
     content: "";
     display: inline-block;
  }
+
+nav.navbar a.nav-link {
+    color: $white!important;
+    text-decoration:none;
+}
+
+nav.navbar a.nav-link:hover, nav.navbar a.nav-link:focus, 
+nav.navbar li.nav-item :hover, nav.navbar li.nav-item :focus {
+    color: $yellow!important;
+    background-color: transparent;
+}
 
 button.header_search {
     background: transparent;
@@ -95,6 +96,21 @@ button.header_search:hover:before {
 
 nav input.form-control[type="search"] {
     display: none!important;
+}
+
+nav#block-bootstrap-barrio-subtheme-account-menu a {
+    color: $green!important;
+    margin-left:5px;
+    margin-right:5px;
+    text-transform: initial;
+    font-weight: 400;
+}
+
+ @include media-breakpoint-up(desktop) {
+	.navbar-expand-lg .navbar-nav .nav-link {
+    	padding-right: 1rem;
+    	padding-left: 1rem;
+	}
 }
 
 /* BREADCRUMBS 
@@ -166,23 +182,13 @@ nav input.form-control[type="search"] {
 =================================================*/
 .site-footer {
 	background:$green;
+	padding: 10px 0 15px;
 }
 
-/*.footer { 
-	position: relative;
-	display: -webkit-box;
-		display: -ms-flexbox;
-		display: flex;
-		-ms-flex-wrap: wrap;
-		flex-wrap: wrap;
-		-webkit-box-align: center;
-		-ms-flex-align: center;
-		align-items: center;
-		-webkit-box-pack: justify;
-		-ms-flex-pack: justify;
-		justify-content: space-between;
-		padding: 1rem;
-}*/
+.site-footer .block {
+    border: 0;
+    padding: 5px;
+}
 
 .footer-link {
 	font-size:0.8rem;
@@ -190,7 +196,10 @@ nav input.form-control[type="search"] {
 	text-decoration:none;
 	display: block;
 	padding: .15rem 1rem;
-	
+
+	@include media-breakpoint-down(desktop) {
+		padding: .15rem 0!important;
+	}	
 }
 .footer-link:focus, .footer-link:hover {
 	color:$yellow!important;
@@ -207,56 +216,81 @@ nav input.form-control[type="search"] {
 	flex-direction: column;
 	padding-left: 0;
 	margin-bottom: 0;
-	list-style: none
-}
+	list-style: none;
 
-@media (max-width:991.98px) {
-	/*.footer { 
-		padding: 1.5rem 1rem 1rem;
-	}*/
-	.footer-expand-lg>.container, .footer-expand-lg>.container-fluid {
-		padding-right: 0;
-		padding-left: 0
+	display: inherit;
+    margin: -5% 1% 5% -7%!important;
+    column-count: 3;
+    column-gap: 10px;
+    text-align: center;
+
+	@include media-breakpoint-up(tablet) {
+		display: flex;
+    	margin: 0 auto!important;
+    	columns: unset;
+    	justify-content: center;
 	}
-	
-	ul.footer-nav {
-		display: inline-block;
-		
-		margin: -3px!important;
-		column-count: 3;
-		column-gap: 10px;
-		width: 100%;
-		text-align:center;
-	}
-	
-	.footer-link {
-		padding: .15rem 0!important;
-	}
-	
-	a.footer-link {
-		display:inline-block;
-	}
-	
-	a.logo {				
-		
-		width:100%;
-	}
-	.logo img {
-		display: block;
-		margin: 20px auto 10px
+
+	@include media-breakpoint-up(desktop) {
+		justify-content: left;
 	}
 }
 
-@media (min-width:992px) {
-	.footer-expand-lg {
+a.logo {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 325px;
+    margin: 24px auto;
+
+    @include media-breakpoint-up(desktop) {
+    	width: 690px;
+    	height: 38px;
+    	margin: -38px;
+    	float: right;
+    }
+}
+
+a.logo:before {
+	width: 440px;
+    height: 34px;
+    position: relative;
+    background: url(/themes/contrib/myusf/images/site/icons.svg) no-repeat;
+    content: "";    
+    background-size: 90%;
+    display: inline-block;
+
+    @include media-breakpoint-up(desktop) {
+    	margin-left: -15px;
+    	position: absolute;
+    	right: -12.5%;
+
+    	/*
+    	width: 450px;
+    height: 38px;    
+    position: relative;
+    background: url(/themes/contrib/myusf/images/site/icons.svg) no-repeat;
+    content: "";
+    display: inline-block;
+    background-size: 90%;
+    margin-left:-20px;
+    */
+	}
+}
+
+
+
+@include media-breakpoint-up(tablet) {
+	/*.footer-expand-lg {
 		-webkit-box-orient: horizontal;
 		-webkit-box-direction: normal;
 		-ms-flex-flow: row nowrap;
 		flex-flow: row nowrap;
 		-webkit-box-pack: start;
 		-ms-flex-pack: start;
-		justify-content: flex-start
-	}
+		justify-content: flex-start 
+	}*/
 	.footer-expand-lg .footer-nav {
 		-webkit-box-orient: horizontal;
 		-webkit-box-direction: normal;
@@ -265,20 +299,7 @@ nav input.form-control[type="search"] {
 	}
 
 	.footer-expand-lg .footer-nav .footer-link {
-		padding-right: .5rem;
-		padding-left: .5rem
+		padding-right: .5rem!important;
+    	padding-left: .5rem!important;
 	}
-}
-
-a.logo:before {
-    width: 450px;
-    height: 38px;
-    position: absolute;
-    top: 5px;
-    right: -9.5%;
-    bottom: 0;
-    background: url(/themes/contrib/myusf/images/site/icons.svg) no-repeat;
-    content: "";
-    display: inline-block;
-    background-size: 90%;
 }

@@ -11,7 +11,7 @@ $black: 		#2A2A2A;
 $gray:			#919194;
 $gray_medium:	#B2B2B4;
 $text_gray:		#6B6B6B;
-
+$light_beige:   #F3F0E4;
 $beige:			#DED5B4;
 $blue:			#007EA5;
 $green:			#00543C;
@@ -23,3 +23,51 @@ $tan:			#996E3B;
 $terra_cotta:	#b30000;
 $turquoise:		#008575;
 $yellow:		#FDBB30;
+
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+/*$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+ 
+) !default;
+*/
+$grid-breakpoints: (
+  phone: 0,
+  landscape_phone: 576px,
+  tablet: 768px,
+  desktop: 992px,
+  large_desktop: 1200px
+
+) !default;
+
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints);
+
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+/*$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+) !default;
+*/
+$container-max-widths: (
+  landscape_phone: 540px,
+  tablet: 720px,
+  desktop: 960px,
+  large_desktop: 1140px
+) !default;
+
+@include _assert-ascending($container-max-widths, "$container-max-widths");
