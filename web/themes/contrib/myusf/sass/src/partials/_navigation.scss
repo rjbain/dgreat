@@ -14,11 +14,15 @@ nav {
 .bg-dark {
     background-color: $green!important;
 }
-
+.navbar {
+	@include media-breakpoint-up(tablet) {
+		padding-right: 2.4rem;
+	}
+}
 .navbar-brand {
     color: $green!important;
 }
-.navbar-brand:hover {
+.navbar-brand:hover, .navbar-brand:focus {
     color: $green!important;
     background: transparent;
 }
@@ -37,7 +41,9 @@ a.navbar-brand:before {
     content: "";
     display: inline-block;
  }
-
+nav.navbar li {
+	font-size: .9rem;
+}
 nav.navbar a.nav-link {
     color: $white!important;
     text-decoration:none;
@@ -48,6 +54,48 @@ nav.navbar li.nav-item :hover, nav.navbar li.nav-item :focus {
     color: $yellow!important;
     background-color: transparent;
 }
+// ---- Dropdown --- //
+
+.navbar-expand-lg .navbar-nav .dropdown-menu, 
+.navbar-expand-lg .navbar-nav .dropdown-menu:hover, .navbar-expand-lg .navbar-nav .dropdown-menu:focus {
+	@include media-breakpoint-up(large_desktop) {
+		background: $light_beige;
+		border-radius: 0;
+		border: 0;
+		margin-top: 0;
+	}
+}
+.navbar-expand-lg .navbar-nav .dropdown-item {
+	@include media-breakpoint-up(large_desktop) {
+			padding: .25rem 1rem;
+		}
+}
+.navbar-expand-lg .navbar-nav .dropdown-item:hover, .navbar-expand-lg .navbar-nav .dropdown-item:focus  {
+	@include media-breakpoint-up(large_desktop) {
+			background: $beige;
+		}
+	}
+.navbar-nav .dropdown-menu {
+	padding: 0;
+}
+.navbar-nav .dropdown-menu .dropdown-item {
+	border-bottom:1px solid $white;
+}
+.navbar-nav .dropdown-menu .dropdown-item a, 
+.navbar-nav .dropdown-menu .dropdown-item a:hover, .navbar-nav .dropdown-menu .dropdown-item a:focus   {
+	font-weight: 500;
+	text-decoration: none;
+	text-transform: capitalize;
+	color: $black!important;
+}
+.navbar-nav .dropdown-item.active, .dropdown-item:active {
+	background: transparent;
+}
+
+.navbar-nav .dropdown.show a.nav-link.active {
+    color: #fdbb30!important;
+}
+// -- //
 
 button.header_search {
     background: transparent;
@@ -61,13 +109,13 @@ button.header_search:before {
     top: 0;
     right: 130px;
     bottom: 0;
-    margin: auto;
+    margin: auto 10px auto auto;
     background: url(/themes/contrib/myusf/images/site/icons.svg) no-repeat -190px -95px;
     content: "";
     display: inline-block;
 }
 
-button.header_search:hover:before {
+button.header_search:hover:before, button.header_search:focus:before {
     width: 23px;
     height: 25px;
     top: 0;
@@ -127,7 +175,7 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 	color: $text_gray;
 }
 
-.breadcrumb-item a:hover {
+.breadcrumb-item a:hover, .breadcrumb-item a:focus {
 	background-color: $white;
 	color: $green;
 	text-decoration: underline;
@@ -166,7 +214,7 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 	font-weight: 600;
 }
 
-.quicklinks li a:hover {
+.quicklinks li a:hover, quicklinks li a:hover {
 	text-decoration: underline;
 }
 
@@ -184,12 +232,10 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 	background:$green;
 	padding: 10px 0 15px;
 }
-
 .site-footer .block {
     border: 0;
     padding: 5px;
 }
-
 .footer-link {
 	font-size:0.8rem;
 	color:$white;
@@ -205,7 +251,6 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 	color:$yellow!important;
 	background: transparent;
 }
-
 .footer-nav {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -224,6 +269,7 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
     column-gap: 10px;
     text-align: center;
 
+
 	@include media-breakpoint-up(tablet) {
 		display: flex;
     	margin: 0 auto!important;
@@ -231,11 +277,10 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
     	justify-content: center;
 	}
 
-	@include media-breakpoint-up(desktop) {
-		justify-content: left;
+	@include media-breakpoint-up(large_desktop) {
+		justify-content: flex-start;
 	}
 }
-
 a.logo {
     position: relative;
     display: block;
@@ -244,14 +289,16 @@ a.logo {
     width: 325px;
     margin: 24px auto;
 
-    @include media-breakpoint-up(desktop) {
-    	width: 690px;
+    @include media-breakpoint-up(large_desktop) {
+    	width: 390px;
     	height: 38px;
-    	margin: -38px;
+    	margin: -38px -76px -38px;
     	float: right;
     }
 }
-
+a.logo:hover, a.logo:focus  {
+    background: transparent;
+}
 a.logo:before {
 	width: 440px;
     height: 34px;
@@ -261,44 +308,22 @@ a.logo:before {
     background-size: 90%;
     display: inline-block;
 
-    @include media-breakpoint-up(desktop) {
+    @include media-breakpoint-up(large_desktop) {
     	margin-left: -15px;
     	position: absolute;
     	right: -12.5%;
-
-    	/*
-    	width: 450px;
-    height: 38px;    
-    position: relative;
-    background: url(/themes/contrib/myusf/images/site/icons.svg) no-repeat;
-    content: "";
-    display: inline-block;
-    background-size: 90%;
-    margin-left:-20px;
-    */
 	}
 }
-
-
-
-@include media-breakpoint-up(tablet) {
-	/*.footer-expand-lg {
-		-webkit-box-orient: horizontal;
-		-webkit-box-direction: normal;
-		-ms-flex-flow: row nowrap;
-		flex-flow: row nowrap;
-		-webkit-box-pack: start;
-		-ms-flex-pack: start;
-		justify-content: flex-start 
-	}*/
-	.footer-expand-lg .footer-nav {
+.footer-expand-lg .footer-nav {
+	@include media-breakpoint-up(tablet) {
 		-webkit-box-orient: horizontal;
 		-webkit-box-direction: normal;
 		-ms-flex-direction: row;
 		flex-direction: row
 	}
-
-	.footer-expand-lg .footer-nav .footer-link {
+}
+.footer-expand-lg .footer-nav .footer-link {
+	@include media-breakpoint-up(tablet) {
 		padding-right: .5rem!important;
     	padding-left: .5rem!important;
 	}
