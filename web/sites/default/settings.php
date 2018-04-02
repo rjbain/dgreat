@@ -41,3 +41,9 @@ if (file_exists($local_settings)) {
 
 
 $settings['hash_salt'] = '4JfmOE4Lpxb9kMt-MRyJV76_1E7L9k8p4fRXLZI5p1v_0eST7zAM0kPhgAtsOg8ytQzg_bbGJA';
+
+# When on Pantheon, connect to a D7 database.
+$migrate_settings = __DIR__ . "/settings.migrate-on-pantheon.php";
+if (file_exists($migrate_settings) && isset($_ENV['PANTHEON_ENVIRONMENT'])) {
+  include $migrate_settings;
+}
