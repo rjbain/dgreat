@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - block_visibility_groups
     - ctools
     - node
     - system
@@ -20,7 +21,7 @@ settings:
   id: system_breadcrumb_block
   label: Breadcrumbs
   provider: system
-  label_display: '0'
+  label_display: visible
 visibility:
   'entity_bundle:node':
     id: 'entity_bundle:node'
@@ -33,8 +34,13 @@ visibility:
   node_type:
     id: node_type
     bundles:
-      article: article
       page: page
+      article: article
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }

@@ -1,6 +1,7 @@
-//Install GULP in theme folder /web/themes/contrib/myusf
+//Install GULP in theme folder /web/themes/custom/myusf
 //npm init (Create the package.json file)
-//npm install gulp -g gulp-sass gulp-cssmin gulp-concat gulp-imagemin gulp-smushit gulp-uglify --save-dev
+//npm install gulp -g if it hasn't been done globally
+//npm install gulp gulp-sass gulp-cssmin gulp-concat gulp-imagemin gulp-smushit gulp-uglify --save-dev
 //$ gulp (To run gulp once)
 //$ gulp watch (To continuously watch so changes are automatically compiled) 
 
