@@ -1,0 +1,36 @@
+uuid: f9e6fc02-38f5-4a8b-9598-d43c9a161c17
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - ctools
+    - system
+  theme:
+    - myusf
+_core:
+  default_config_hash: R2K_qX0ZUMbUL6ie_-S9tZVjvqmlWKlscikgeRv9vhw
+id: myusf_account_menu
+theme: myusf
+region: secondary_menu
+weight: -7
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'User account menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 2
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      article: article
+      event: event
+      page: page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
