@@ -1,0 +1,25 @@
+uuid: 7a53ef62-bf53-412d-bd72-fbcc3e559123
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_filter_settings
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: migrate_drupal_7
+label: 'Drupal 7 filter settings'
+source:
+  plugin: variable
+  variables:
+    - filter_fallback_format
+  source_module: filter
+process:
+  fallback_format: filter_fallback_format
+destination:
+  plugin: config
+  config_name: filter.settings
+migration_dependencies:
+  required: {  }
+  optional: {  }

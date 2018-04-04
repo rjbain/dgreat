@@ -1,0 +1,34 @@
+uuid: 32990f82-2a96-4593-83c1-5007d4ecaa3d
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_update_settings
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 6'
+  - 'Drupal 7'
+migration_group: migrate_drupal_7
+label: 'Update configuration'
+source:
+  plugin: variable
+  variables:
+    - update_max_fetch_attempts
+    - update_fetch_url
+    - update_notification_threshold
+    - update_notify_emails
+    - update_check_frequency
+  source_module: update
+process:
+  fetch/max_attempts: update_max_fetch_attempts
+  fetch/url: update_fetch_url
+  notification/threshold: update_notification_threshold
+  notification/emails: update_notify_emails
+  check/interval_days: update_check_frequency
+destination:
+  plugin: config
+  config_name: update.settings
+migration_dependencies:
+  required: {  }
+  optional: {  }
