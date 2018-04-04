@@ -1,0 +1,28 @@
+uuid: 6d6b6dec-416a-4901-9429-55f404d1a098
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_title_label
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: migrate_drupal_7
+label: 'Node title label'
+source:
+  plugin: d7_node_type
+  constants:
+    entity_type: node
+    field_name: title
+process:
+  entity_type: constants/entity_type
+  bundle: type
+  field_name: constants/field_name
+  label: title_label
+destination:
+  plugin: 'entity:base_field_override'
+migration_dependencies:
+  required:
+    - upgrade_d7_node_type
+  optional: {  }

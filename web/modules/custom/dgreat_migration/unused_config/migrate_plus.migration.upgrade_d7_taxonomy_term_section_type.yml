@@ -1,0 +1,68 @@
+uuid: 29b8c3dc-71d4-4385-bd4d-e8e2dd21beba
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_taxonomy_term_section_type
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: migrate_drupal_7
+label: 'Taxonomy terms (Section Type)'
+source:
+  plugin: d7_taxonomy_term
+  bundle: section_type
+process:
+  tid: tid
+  vid:
+    plugin: migration_lookup
+    migration: upgrade_d7_taxonomy_vocabulary
+    source: vid
+  name: name
+  description/value: description
+  description/format: format
+  weight: weight
+  parent_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent
+    -
+      plugin: migration_lookup
+      migration: upgrade_d7_taxonomy_term
+  parent:
+    plugin: default_value
+    default_value: 0
+    source: '@parent_id'
+  forum_container: is_container
+  changed: timestamp
+  field_oa_section_layout:
+    plugin: get
+    source: field_oa_section_layout
+  field_oa_node_types:
+    plugin: get
+    source: field_oa_node_types
+  field_oa_icon_class:
+    plugin: get
+    source: field_oa_icon_class
+  field_oa_icon_image:
+    plugin: sub_process
+    source: field_oa_icon_image
+    process:
+      target_id: fid
+      alt: alt
+      title: title
+      width: width
+      height: height
+  field_oa_section_type_menu:
+    plugin: get
+    source: field_oa_section_type_menu
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: section_type
+migration_dependencies:
+  required:
+    - upgrade_d7_taxonomy_vocabulary
+  optional:
+    - upgrade_d7_field_instance

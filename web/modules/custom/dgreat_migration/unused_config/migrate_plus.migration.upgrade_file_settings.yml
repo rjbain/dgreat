@@ -1,0 +1,30 @@
+uuid: 6836f851-5442-469a-9812-d42de9d9a93a
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_file_settings
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 6'
+  - 'Drupal 7'
+migration_group: migrate_drupal_7
+label: 'File configuration'
+source:
+  plugin: variable
+  variables:
+    - file_description_type
+    - file_description_length
+    - file_icon_directory
+  source_module: system
+process:
+  description/type: file_description_type
+  description/length: file_description_length
+  icon/directory: file_icon_directory
+destination:
+  plugin: config
+  config_name: file.settings
+migration_dependencies:
+  required: {  }
+  optional: {  }

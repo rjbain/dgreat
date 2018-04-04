@@ -1,0 +1,52 @@
+uuid: 0951620a-2881-452b-8d45-c251b2514a2b
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_box_center_column
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: migrate_drupal_7
+label: 'Nodes (Box - Center Column)'
+source:
+  plugin: d7_node
+  node_type: box_center_column
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_box_center_column/0/status: comment
+  og_group_ref:
+    plugin: get
+    source: og_group_ref
+  body:
+    plugin: get
+    source: body
+  group_content_access:
+    plugin: get
+    source: group_content_access
+destination:
+  plugin: 'entity:node'
+  default_bundle: box_center_column
+migration_dependencies:
+  required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance
