@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * @file
+ * Contains dgreat_group.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\dgreat_group\DgreatGroup;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_help().
+ */
+function dgreat_group_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the dgreat_group module.
+    case 'help.page.dgreat_group':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Custom module needed for the workflows of group nodes/users') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ *
+ * Adds a node to the respective group identified.
+ */
+function dgreat_group_node_insert(EntityInterface $entity) {
+
+  switch ($entity->bundle()) {
+    case 'favorite_link':
+      $add = (new DgreatGroup($entity))->addNodeToGroup('field_group_audience');
+      break;
+
+    case 'usf_service':
+      $add = (new DgreatGroup($entity))->addNodeToGroup('field_usfcat_audience_ref');
+      break;
+  }
+
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ *
+ * Adds a user to the respective group identified.
+ */
+function dgreat_group_user_insert(EntityInterface $entity) {
+  $add = (new DgreatGroup($entity))->addUserToGroup('field_user_group');
+}

@@ -1,0 +1,43 @@
+uuid: 78958097-8d47-43ce-8efc-c58e0aae475e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.favorite_link.body
+    - field.field.node.favorite_link.field_category
+    - field.field.node.favorite_link.field_group_audience
+    - field.field.node.favorite_link.field_link_type
+    - field.field.node.favorite_link.field_sso
+    - field.field.node.favorite_link.field_top_quick_link
+    - field.field.node.favorite_link.field_url
+    - node.type.favorite_link
+  module:
+    - text
+    - user
+id: node.favorite_link.teaser
+targetEntityType: node
+bundle: favorite_link
+mode: teaser
+content:
+  body:
+    label: hidden
+    weight: 0
+    type: text_summary_or_trimmed
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  flag_favorite:
+    weight: 10
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_category: true
+  field_group_audience: true
+  field_link_type: true
+  field_sso: true
+  field_top_quick_link: true
+  field_url: true
