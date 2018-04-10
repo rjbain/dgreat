@@ -61,56 +61,102 @@
 #}
 {{ attach_library('bootstrap_barrio/node') }}
 
-{%
-  set classes = [
-    'node',
-    'node--type-' ~ node.bundle|clean_class,
-    node.isPromoted() ? 'node--promoted',
-    node.isSticky() ? 'node--sticky',
-    not node.isPublished() ? 'node--unpublished',
-    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-    'clearfix',
-  ]
-%}
+{% if search_content is empty %}
+  {% set search_content = "all" %}
+  {% set search_content_form = null %}
+{% else %}
+  {% set search_content = search_content %}
+  {% set search_content_form = search_content %}
+{% endif %}
+
+{% if event_category is empty %}
+  {% set event_category = "all" %}
+{% else %}
+  {% set event_category = event_category %}
+{% endif %}
+
+{% if event_date is empty %}
+  {% set event_date = null %}
+{% else %}
+  {% set event_date = event_date %}
+{% endif %}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker({ 
+      altField: "#event_date",
+      dateFormat: 'yy-mm-dd'})
+     .datepicker("setDate", "{{ event_date }}");
+ } );
+</script>
 <style>
-.body {
+.search-form {
+  width:210px;
+  float:left;
 }
-.image {
-  padding:0 0 0 10px;
+
+.category-form {
+  float:left;
+}
+
+.button-form {
+  width:200px;
+  float:left;
+}
+
+.search-input {
+  width:200px;
+}
+
+.date-widget {
+  float:left;
+   padding: 0 10px 0 10px;
+}
+
+.form {
+}
+
+div.ui-datepicker, .ui-datepicker td{
+ font-size:14px;
+}
+
+article {
+  border-top:1px solid #eeeeee;
+  padding:20px 0 20px 0;
+
+}
+
+img {
+  height:60px;
 }
 </style>
-{% set description = node.body.value %}
-{% set title = node.title.value %}
-{% set additional_info = node.field_additional_info.value %}
-{% set start_date = node.field_start_date.value|date('l, F j')  %}
-{% set start_time = node.field_start_date.value|date('g:i A')  %}
-{% set end_time = node.field_end_date.value|date('g:i A')  %}
-{% set location = node.field_location.value %}
-{% set image = file_url(node.field_image.entity.uri.value) %}
-{% set image_url = node.field_image_url.uri %}
-<article{{ attributes.addClass(classes) }}>
 
-<h2 {{ title_attributes }}>{#{ title }#}</h2>
-<h3>{{ start_date }}, {{ start_time }} - {{ end_time }}</h3>
-<h4>{{ location }}</h4>
-  <div{{ content_attributes.addClass('content') }}>
-    <div class="body">
-      {% if node.field_image_url.value %}
-        <img src="{{ image_url }}" align="right" class="image">
-      {% endif %}
-
-      	<div class="event_description">
-        	{% autoescape false %}
-          		{{ description }}
-        	{% endautoescape %}
-    	</div>
-      	<div class="event_additional_info">
-        	{% autoescape false %}
-          		{{ additional_info }}
-        	{% endautoescape %}
-        </div>
+<form action = "{{ url('<current>') }}" method="get">
+  <div class="form">
+    <div class="search-form">
+      <input type="text" name="search_content" value="{{ search_content_form }}" class="search-input">
+    </div>
+    <div class="category-form">
+      <select name="event_category">
+        <option value="">Select Category</option>
+          {{ drupal_view('event_category_term', 'block_1') }}
+      </select>
+    </div>
+    <div class="date-widget">
+      <div id="datepicker" class="datepicker"></div>
+        <input type="hidden" id="event_date" name="event_date" value="{{ event_date }}"/>
+      </div>
+    <div class="button-form">
+      <input type="submit" value="Search">
     </div>
   </div>
-</article>
+</form>
 <br clear="all">
-<br clear="all">
+<a href="{{ url('<current>') }}">Reset Search</a>
+<div>
+  {{ drupal_view('events_search', 'block_1', search_content, event_category, event_date) }}
+</div>
