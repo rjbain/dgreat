@@ -7,6 +7,7 @@ dependencies:
   module:
     - block_visibility_groups
     - ctools
+    - node
     - system
   theme:
     - myusf
@@ -37,6 +38,15 @@ visibility:
   'entity_bundle:node':
     id: 'entity_bundle:node'
     bundles:
+      page: page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+  node_type:
+    id: node_type
+    bundles:
+      event: event
+      article: article
       page: page
     negate: false
     context_mapping:
