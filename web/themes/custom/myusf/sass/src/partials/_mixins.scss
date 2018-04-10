@@ -1,0 +1,62 @@
+// BUTTONS //
+
+@mixin button ($btn_color) {
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.2rem;
+    color: $white;      
+    text-align: center;
+    text-decoration: none;
+    text-transform:uppercase;
+    display: block;
+    width: 210px;
+    min-height:40px;
+    padding: 10px 8px;
+    background:$btn_color;
+
+    &:hover,
+    &:focus {
+        color: $black;
+        background-color: $white;
+        transition: background-color .25s linear 0s,border-color .25s linear 0s,box-shadow .25s linear 0s,color .25s linear 0s,opacity .25s linear 0s !important;
+
+        box-shadow: inset 0 0 0 4px $btn_color;
+    }
+
+}
+
+@mixin social($social_media, $x, $y) {
+	font-size: 0.8rem;
+    font-weight: 700;
+    color: $gray;  
+    background: $white;
+    text-align: center; 
+    text-transform: uppercase;
+    text-decoration: none;    
+    white-space: nowrap;   
+    display: block;
+    width: 180px;
+    height: 40px;  
+    border: 3px solid $social_media;
+    padding: 8px 6px 5px 6px;
+
+    &:hover,
+    &:focus {
+    	color: $text_gray!important;
+    	background: $white;
+    	box-shadow: inset 0 0 0 2px $social_media;
+    	transition: background-color .25s linear 0s,border-color .25s linear 0s,box-shadow .25s linear 0s,color .25s linear 0s,opacity .25s linear 0s !important;
+    }
+
+    &:after {
+    	vertical-align: middle;
+    	display: inline-block;
+    	content: "";
+    	width: 36px;
+    	height: 40px;
+    	position: absolute;
+    	top: 0px;
+    	right: -1px;
+    	background: url(/themes/custom/myusf/images/site/myusf-icons.svg) no-repeat $x $y;
+    }
+}

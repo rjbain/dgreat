@@ -6,10 +6,10 @@
 
 // Import static elements after///
 @import 'partials/normalize';
+@import 'partials/mixins';
 @import 'partials/typography';
 @import 'partials/boxes';
 @import 'partials/buttons';
-@import 'partials/mixins';
 @import 'partials/navigation';
 @import 'partials/components';
 
@@ -26,4 +26,12 @@ html, body { //fixes mobile view sliding left and right issue
 	margin-left:auto;
 	margin-right:auto;
 }
+
+ @include media-breakpoint-down(phone) {
+	.sidebar {
+    	padding-left: 30px;
+    	padding-right: 30px;
+	}
+}
+
 
