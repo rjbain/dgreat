@@ -1,0 +1,122 @@
+uuid: e5613538-8e69-4d6e-af40-3aad5c73f2e8
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_revision_oa_space
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: migrate_drupal_7
+label: 'Node revisions (Space)'
+source:
+  plugin: d7_node_revision
+  node_type: oa_space
+process:
+  nid: nid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_oa_space/0/status: comment
+  body:
+    plugin: get
+    source: body
+  field_featured_image:
+    plugin: sub_process
+    source: field_featured_image
+    process:
+      target_id: fid
+      alt: alt
+      title: title
+      width: width
+      height: height
+  field_oa_section_override:
+    plugin: get
+    source: field_oa_section_override
+  field_oa_space_type:
+    plugin: sub_process
+    source: field_oa_space_type
+    process:
+      target_id: tid
+  group_access:
+    plugin: get
+    source: group_access
+  group_group:
+    plugin: get
+    source: group_group
+  og_roles_permissions:
+    plugin: get
+    source: og_roles_permissions
+  field_oa_banner:
+    plugin: sub_process
+    source: field_oa_banner
+    process:
+      target_id: fid
+      alt: alt
+      title: title
+      width: width
+      height: height
+  field_oa_banner_position:
+    plugin: get
+    source: field_oa_banner_position
+  field_oa_banner_text:
+    plugin: get
+    source: field_oa_banner_text
+  field_oa_node_types:
+    plugin: get
+    source: field_oa_node_types
+  oa_parent_space:
+    plugin: get
+    source: oa_parent_space
+  og_user_inheritance:
+    plugin: get
+    source: og_user_inheritance
+  og_user_permission_inheritance:
+    plugin: get
+    source: og_user_permission_inheritance
+  field_oa_related: field_oa_related
+destination:
+  plugin: 'entity_revision:node'
+  default_bundle: oa_space
+migration_dependencies:
+  required:
+    52: upgrade_d7_node_announcements_og
+    53: upgrade_d7_node_box_center_column
+    54: upgrade_d7_node_box_right_column
+    55: upgrade_d7_node_cit_calendar_events
+    56: upgrade_d7_node_content_og
+    57: upgrade_d7_node_favorite_link
+    58: upgrade_d7_node_feed
+    59: upgrade_d7_node_feed_item
+    60: upgrade_d7_node_its_calendar_events
+    61: upgrade_d7_node_link
+    62: upgrade_d7_node_myusf_events_og
+    63: upgrade_d7_node_oa_discussion_post
+    64: upgrade_d7_node_oa_group
+    65: upgrade_d7_node_oa_ical_importer
+    66: upgrade_d7_node_oa_section
+    67: upgrade_d7_node_oa_space
+    68: upgrade_d7_node_oa_team
+    69: upgrade_d7_node_oa_wiki_page
+    70: upgrade_d7_node_oa_worktracker_task
+    71: upgrade_d7_node_panopoly_landing_page
+    72: upgrade_d7_node_panopoly_page
+    73: upgrade_d7_node_poll
+    74: upgrade_d7_node_usfi_hashtag
+    75: upgrade_d7_node_usf_dashboard_content
+    76: upgrade_d7_node_usf_service
+    77: upgrade_d7_node_webform
+  optional: {  }

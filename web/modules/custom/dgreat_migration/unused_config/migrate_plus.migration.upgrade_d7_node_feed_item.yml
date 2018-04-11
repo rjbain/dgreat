@@ -1,0 +1,46 @@
+uuid: be4b9e7c-476e-4718-b732-6ef4f0057c67
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_feed_item
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: migrate_drupal_7
+label: 'Nodes (Feed item)'
+source:
+  plugin: d7_node
+  node_type: feed_item
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_feed_item/0/status: comment
+  field_feed_item_description:
+    plugin: get
+    source: field_feed_item_description
+destination:
+  plugin: 'entity:node'
+  default_bundle: feed_item
+migration_dependencies:
+  required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance

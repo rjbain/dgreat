@@ -1,0 +1,79 @@
+uuid: 818a3e3b-8ffb-4441-8d7f-9c8822913058
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_oa_group
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: nodes
+label: 'Nodes (Group)'
+source:
+  plugin: d7_node
+  node_type: oa_group
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_oa_group/0/status: comment
+  body:
+    plugin: get
+    source: body
+  field_featured_image:
+    plugin: sub_process
+    source: field_featured_image
+    process:
+      target_id: fid
+      alt: alt
+      title: title
+      width: width
+      height: height
+  group_access:
+    plugin: get
+    source: group_access
+  group_group:
+    plugin: get
+    source: group_group
+  og_roles_permissions:
+    plugin: get
+    source: og_roles_permissions
+  oa_parent_space:
+    plugin: get
+    source: oa_parent_space
+  og_user_inheritance:
+    plugin: get
+    source: og_user_inheritance
+  og_user_permission_inheritance:
+    plugin: get
+    source: og_user_permission_inheritance
+  field_default_favorite_links:
+    plugin: get
+    source: field_default_favorite_links
+  field_default_quick_links:
+    plugin: get
+    source: field_default_quick_links
+destination:
+  plugin: 'entity:node'
+  default_bundle: oa_group
+migration_dependencies:
+  required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance

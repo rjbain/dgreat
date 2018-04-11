@@ -1,0 +1,29 @@
+uuid: fd7f3f5d-32b0-4f3c-9bd8-15252f8055ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_social_media_platform
+    - paragraphs.paragraphs_type.social_media_link
+    - taxonomy.vocabulary.social_media
+id: paragraph.social_media_link.field_social_media_platform
+field_name: field_social_media_platform
+entity_type: paragraph
+bundle: social_media_link
+label: 'Social Media Platform'
+description: 'Choose a social media platform.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      social_media: social_media
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,76 @@
+uuid: 53492a9e-88a6-459e-b97e-c50068f8ba1d
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_comment
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: migrate_drupal_7
+label: Comments
+source:
+  plugin: d7_comment
+  constants:
+    entity_type: node
+process:
+  cid: cid
+  pid:
+    plugin: migration_lookup
+    migration: upgrade_d7_comment
+    source: pid
+  entity_id: nid
+  entity_type: constants/entity_type
+  comment_type:
+    -
+      plugin: migration_lookup
+      source: node_type
+      migration: upgrade_d7_comment_type
+    -
+      plugin: skip_on_empty
+      method: row
+  field_name: '@comment_type'
+  subject: subject
+  uid: uid
+  name: name
+  mail: mail
+  homepage: homepage
+  hostname: hostname
+  created: created
+  changed: changed
+  status: status
+  thread: thread
+  comment_body: comment_body
+destination:
+  plugin: 'entity:comment'
+migration_dependencies:
+  required:
+    52: upgrade_d7_node_announcements_og
+    53: upgrade_d7_node_box_center_column
+    54: upgrade_d7_node_box_right_column
+    55: upgrade_d7_node_cit_calendar_events
+    56: upgrade_d7_node_content_og
+    57: upgrade_d7_node_favorite_link
+    58: upgrade_d7_node_feed
+    59: upgrade_d7_node_feed_item
+    60: upgrade_d7_node_its_calendar_events
+    61: upgrade_d7_node_link
+    62: upgrade_d7_node_myusf_events_og
+    63: upgrade_d7_node_oa_discussion_post
+    64: upgrade_d7_node_oa_group
+    65: upgrade_d7_node_oa_ical_importer
+    66: upgrade_d7_node_oa_section
+    67: upgrade_d7_node_oa_space
+    68: upgrade_d7_node_oa_team
+    69: upgrade_d7_node_oa_wiki_page
+    70: upgrade_d7_node_oa_worktracker_task
+    71: upgrade_d7_node_panopoly_landing_page
+    72: upgrade_d7_node_panopoly_page
+    73: upgrade_d7_node_poll
+    74: upgrade_d7_node_usfi_hashtag
+    75: upgrade_d7_node_usf_dashboard_content
+    76: upgrade_d7_node_usf_service
+    77: upgrade_d7_node_webform
+    78: upgrade_d7_comment_type
+  optional: {  }

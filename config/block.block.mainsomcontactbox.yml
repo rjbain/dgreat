@@ -1,0 +1,37 @@
+uuid: 17604ff5-550c-4401-abc3-e05811d8fa4b
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:contact:dd93d9b2-b886-4417-9cab-9d6733e9c58a'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: mainsomcontactbox
+theme: myusf
+region: sidebar_second
+weight: -3
+provider: null
+plugin: 'block_content:dd93d9b2-b886-4417-9cab-9d6733e9c58a'
+settings:
+  id: 'block_content:dd93d9b2-b886-4417-9cab-9d6733e9c58a'
+  label: 'Main SOM Contact Box'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: '/management*'
+    negate: false
+    context_mapping: {  }
