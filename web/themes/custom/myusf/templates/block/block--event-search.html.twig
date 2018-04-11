@@ -67,17 +67,10 @@
 
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-  $( function() {
-    $( "#datepicker" ).datepicker({ 
-      altField: "#event_date",
-      dateFormat: 'yy-mm-dd'})
-     .datepicker("setDate", "{{ event_date }}");
- } );
-</script>
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 <style>
 .search-form {
   width:210px;
@@ -143,10 +136,16 @@ img {
     </div>
   </div>
 </form>
-<br clear="all">
 <!--<a href="{{ url('<current>') }}">Reset Search</a>-->
+</div>
+<script>
+    $( "#datepicker" ).datepicker({ 
+      altField: "#event_date",
+      dateFormat: 'yy-mm-dd'})
+     .datepicker("setDate", "{{ event_date }}");
+ </script>
 
 
-    </div>
+
   {% endblock %}
 </div>
