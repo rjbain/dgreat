@@ -1,0 +1,37 @@
+uuid: cf33e74e-8762-49b0-9cdc-43479d579696
+langcode: en
+status: true
+dependencies:
+  config:
+    - simple_block.simple_block.event_search
+  module:
+    - block_visibility_groups
+    - node
+    - simple_block
+  theme:
+    - myusf
+id: event_search
+theme: myusf
+region: sidebar_second
+weight: -8
+provider: null
+plugin: 'simple_block:event_search'
+settings:
+  id: 'simple_block:event_search'
+  label: 'Search Calendar'
+  provider: simple_block
+  label_display: visible
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  node_type:
+    id: node_type
+    bundles:
+      event: event
+      event_search: event_search
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
