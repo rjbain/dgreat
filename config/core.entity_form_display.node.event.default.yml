@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.event.field_group
     - field.field.node.event.field_guid
     - field.field.node.event.field_image
+    - field.field.node.event.field_image_url
     - field.field.node.event.field_location
     - field.field.node.event.field_search_date
     - field.field.node.event.field_start_date
@@ -20,6 +21,7 @@ dependencies:
   module:
     - datetime
     - image
+    - link
     - path
     - text
 id: node.event.default
@@ -96,6 +98,14 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
+  field_image_url:
+    weight: 134
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
     region: content
   field_location:
     weight: 130

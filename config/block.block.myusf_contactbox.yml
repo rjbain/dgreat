@@ -5,6 +5,8 @@ dependencies:
   config:
     - simple_block.simple_block.contact_box
   module:
+    - block_visibility_groups
+    - node
     - simple_block
   theme:
     - myusf
@@ -19,4 +21,18 @@ settings:
   label: 'Contact Box'
   provider: simple_block
   label_display: visible
-visibility: {  }
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  node_type:
+    id: node_type
+    bundles:
+      article: article
+      event: event
+      page: page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
