@@ -1,0 +1,152 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main content
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if search_content is empty %}
+  {% set search_content = "all" %}
+  {% set search_content_form = null %}
+{% else %}
+  {% set search_content = search_content %}
+  {% set search_content_form = search_content %}
+{% endif %}
+
+{% if event_category is empty %}
+  {% set event_category = "all" %}
+{% else %}
+  {% set event_category = event_category %}
+{% endif %}
+
+{% if event_date is empty %}
+  {% set event_date = null %}
+{% else %}
+  {% set event_date = event_date %}
+{% endif %}
+
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes }}>{{ label }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+  {% block content %}
+    <div{{ content_attributes.addClass('content') }}>
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker({ 
+      altField: "#event_date",
+      dateFormat: 'yy-mm-dd'})
+     .datepicker("setDate", "{{ event_date }}");
+ } );
+</script>
+<style>
+.search-form {
+  width:210px;
+  padding: 0 0 10px 0;
+}
+
+
+.button-form {
+  width:200px;
+  padding: 10px 0 0 0;
+
+}
+
+.search-input {
+  width:200px;
+}
+
+.date-widget {
+  padding:10px 0 0 0;
+}
+
+.form {
+}
+
+div.ui-datepicker, .ui-datepicker td{
+ font-size:12px;
+}
+
+article {
+  border-top:1px solid #eeeeee;
+  padding:20px 0 20px 0;
+
+}
+
+img {
+  height:80px;
+}
+
+.event_category {
+  width:200px;
+}
+
+
+</style>
+
+<form action = "/calendar" method="get">
+  <div class="form">
+    <div class="search-form">
+      <input type="text" name="search_content" value="{{ search_content_form }}" class="search-input form-search form-control">
+    </div>
+    <div class="category-form">
+      <select name="event_category" class="event_category">
+        <option value="">Select Category</option>
+          {{ drupal_view('event_category_term', 'block_1') }}
+      </select>
+    </div>
+    <div class="date-widget">
+      <div id="datepicker" class="datepicker"></div>
+        <input type="hidden" id="event_date" name="event_date" value="{{ event_date }}"/>
+      </div>
+    <div class="button-form">
+      <input type="submit" value="Search" class="button btn btn-primary">
+    </div>
+  </div>
+</form>
+<br clear="all">
+<!--<a href="{{ url('<current>') }}">Reset Search</a>-->
+
+
+    </div>
+  {% endblock %}
+</div>
