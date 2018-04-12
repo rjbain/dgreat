@@ -30,6 +30,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: title
     type: text
+    boost: !!float 2
   field_category:
     label: Category
     datasource_id: 'entity:node'
@@ -75,17 +76,6 @@ processor_settings:
   rendered_item: {  }
   add_url: {  }
   aggregated_field: {  }
-  stemmer:
-    all_fields: false
-    fields:
-      - body
-      - title
-    exceptions:
-      texan: texa
-      mexican: mexic
-    weights:
-      preprocess_index: 0
-      preprocess_query: 0
   ignorecase:
     all_fields: false
     fields:
@@ -98,7 +88,6 @@ processor_settings:
     all_fields: false
     fields:
       - body
-      - title
     title: true
     alt: true
     tags:
@@ -107,8 +96,6 @@ processor_settings:
       h3: 2
       strong: 2
       b: 2
-      em: 1
-      u: 1
     weights:
       preprocess_index: -15
       preprocess_query: -15
