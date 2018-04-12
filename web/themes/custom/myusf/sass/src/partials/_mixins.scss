@@ -23,6 +23,10 @@
         box-shadow: inset 0 0 0 4px $btn_color;
     }
 
+    @include media-breakpoint-down(phone) {
+        width:272px;
+    }
+
 }
 
 @mixin social($social_media, $x, $y) {
@@ -59,4 +63,36 @@
     	right: -1px;
     	background: url(/themes/custom/myusf/images/site/myusf-icons.svg) no-repeat $x $y;
     }
+
+    @include media-breakpoint-down(phone) {
+        width:240px;
+    }
+}
+
+@mixin mobilenav-dropdown($amount) {
+    ul.dropdown-menu {
+                    width: 100vw;
+                    border:0!important;
+                    border-radius:0;
+                    background: $light_beige!important; 
+                    margin-top: -5px;
+
+                    position:absolute;
+                    left:$amount; 
+
+
+                    li.dropdown-item {
+                    border:0!important;
+                    height: unset!important;
+                    padding: 5px 5px 5px 12px!important;
+                    border-bottom: 1px solid #fff!important;
+                    width: 100vw;
+                    
+
+                        &:hover,
+                        &:focus {
+                            background: $beige;
+                        }
+                    }           
+                }
 }

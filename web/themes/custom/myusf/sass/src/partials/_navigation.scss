@@ -18,7 +18,26 @@ nav {
 .bg-dark {
     background-color: $green!important;
 }
-.navbar {
+
+nav.navbar {
+	a.nav-link {
+    	color: $white!important;
+    	text-decoration:none;
+
+    	&:hover, &:focus {
+    		color: $yellow!important;
+    		background-color: transparent;
+		}
+	}
+	li {
+		font-size: .9rem;
+
+		&.nav-item :hover,
+		&.nav-item :focus {
+			color: $yellow!important;
+    		background-color: transparent;
+		}
+	}
 	@include media-breakpoint-down(phone) {
 		padding:0;
 		height:98px;
@@ -28,6 +47,7 @@ nav {
 		padding-right: 2.4rem;
 	}
 }
+
 .navbar-brand {
     color: $green!important;
 
@@ -55,25 +75,7 @@ nav {
 		}
 	}
 }
-nav.navbar a.nav-link {
-    color: $white!important;
-    text-decoration:none;
 
-    &:hover, &:focus {
-    	color: $yellow!important;
-    	background-color: transparent;
-	}
-}
-nav.navbar li {
-	font-size: .9rem;
-
-	&.nav-item :hover,
-	&.nav-item :focus {
-		color: $yellow!important;
-    	background-color: transparent;
-	}
-}
-//TEST
 .navbar-nav {
 	border:0;
 	margin-left: 120px;
@@ -83,98 +85,38 @@ nav.navbar li {
 		margin-left: 0;
 		li {
 			flex-direction: row!important;
-			padding: 0 5px!important;
+			width: 20%;
 			height: 50px;
-			
-			
-			&:nth-child(5) {
-			    width: 20%;
-			    /*padding-left: 5px;*/
-			    border-top: 1px solid transparentize( $gray, 0.5);
-			}
-			&:nth-child(4) {
+			margin-top: 5px;
+			padding: 0 5px!important;			
 
-			    /* background: green; */
-			    width: 20%;
-			   /*padding-right: 5px;
-			    padding-left: 5px;*/
-			    border-top: 1px solid transparentize( $gray, 0.5);
-			    border-right: 1px solid transparentize( $gray, 0.5);
-			    
-
-			}
-			&:nth-child(3) {
-			    /* background: blue; */
-			    width: 20%;
-			    /*padding-right: 5px;
-			    padding-left: 5px;*/
-			    border-top: 1px solid transparentize( $gray, 0.5);
-			    border-right: 1px solid transparentize( $gray, 0.5);
-			}
-			&:nth-child(2) {
-			    /* background: orange; */
-			    width: 20%;
-			   
-			    border-top: 1px solid transparentize( $gray, 0.5);
-			    border-right: 1px solid transparentize( $gray, 0.5);
-			}
-			&:first-child {
-			    width: 20%;
-			    /* background: red; 
-			    padding-right: 5px;*/
-			    border-top: 1px solid transparentize( $gray, 0.5);
-			    border-right: 1px solid transparentize( $gray, 0.5);
-			    left:0;
-			}
 			a {
-				text-transform:capitalize;
-				font-size: .8rem;
-			    line-height: 1rem;
+				font-size: .6rem;
+			    line-height: .8rem;
 			    text-align: center;
+			    letter-spacing: .025rem;
 			}
 		}
-		.menu-item--expanded.dropdown.show {
+		.menu-item--expanded.dropdown {
     		padding-left: unset!important;
     		padding-right: unset!important;
 
-    		ul.dropdown-menu {
-    			border:0!important;
-    			background: $light_beige!important;
-    			width: 100vw;
-
-				li.dropdown-item {
-					border:0!important;
-					height: unset!important;
-    				padding: 5px 5px 5px 12px!important;
-    				border-bottom: 1px solid #fff!important;
-    				width: 100vw;
-    				
-
-    				&:hover,
-					&:focus {
-						background: $beige;
-					}
-
-					&:nth-child(5) {
-					    
-					}
-					&:nth-child(4) {
-										    
-					}
-					&:nth-child(3) {
-					    
-					}
-					&:nth-child(2) {
-					    
-					}
-					&:first-child {
-					    
-					}
-				}
-				
+    		&:first-child {
+    			@include mobilenav-dropdown(0);
+    		}
+    		&:nth-child(2) {
+    			@include mobilenav-dropdown(-20vw);
 			}
-		}	
-		
+			&:nth-child(3) {
+    			@include mobilenav-dropdown(-40vw);
+			}
+			&:nth-child(4) {
+    			@include mobilenav-dropdown(-60vw);
+			}
+			&:nth-child(5) {
+    			@include mobilenav-dropdown(-80vw);
+			}	
+		}			
 	}
 }
 
@@ -188,16 +130,39 @@ nav.navbar li {
     	margin-top: 30px;
 	}
 }
-//END TEST
 .navbar-expand-lg .navbar-nav .nav-link {
 	@include media-breakpoint-up(desktop) {
     	padding-right: 1rem;
     	padding-left: 1rem;
 	}
 }
-// ---- Dropdown --- //
+// ----MAIN NAV DROPDOWN --- //
 
-.navbar-expand-lg .navbar-nav .dropdown-menu{
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+	padding: 0;
+
+	.dropdown-item {
+		border-bottom:1px solid $white;
+
+		a {
+			font-size: .7rem;
+			font-weight: 500;
+			text-decoration: none;
+			text-transform: capitalize;
+			color: $black!important;
+			padding-left: 5px;
+		
+			&:hover,
+			&:focus {
+				color: $black!important;
+			}
+		}
+		&.active,
+		&:active {
+			background: transparent;
+		}
+	}
+
 	@include media-breakpoint-up(large_desktop) {
 		background: $light_beige;
 		border-radius: 0;
@@ -208,9 +173,7 @@ nav.navbar li {
 			background: $light_beige;
 		}
 	}
-}
-.navbar-expand-lg .navbar-nav .dropdown-item {
-	@include media-breakpoint-up(large_desktop) {
+	.dropdown-item {	
 		padding: .25rem 1rem;
 
 		&:hover,
@@ -219,34 +182,12 @@ nav.navbar li {
 		}
 	}
 }
-.navbar-nav .dropdown-menu {
-	padding: 0;
-}
-.navbar-nav .dropdown-menu .dropdown-item {
-	border-bottom:1px solid $white;
-
-	a {
-		font-weight: 500;
-		text-decoration: none;
-		text-transform: capitalize;
-		color: $black!important;
-	
-		&:hover,
-		&:focus {
-			color: $black!important;
-		}
-	}
-}
-
-.navbar-nav .dropdown-item.active, .dropdown-item:active {
-	background: transparent;
-}
 
 .navbar-nav .dropdown.show a.nav-link.active {
     color: $yellow!important;
 }
 
-// end dropdown //
+// end main nav dropdown //
 
 button.header_search {
     background: transparent;
@@ -284,7 +225,6 @@ button.header_search {
     		right: 103px;
     	}
 	}
-
 	
 }
 
@@ -340,7 +280,7 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
     margin-right:5px;   
 }
 
- //--- Toolbar menu ---//
+ //--- TOOLBAR MENU for Content Editors ---//
 
 .toolbar-tab {
 
@@ -357,20 +297,22 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 
 //--- Navtabs --//
 
-.nav-tabs .nav-item {
- 	padding-bottom: 0;
-}
+.nav-tabs {
+	.nav-item {
+ 		padding-bottom: 0;
+	}
 
-.nav-tabs a.nav-link {
-    font-size: 0.8rem;
+	 a.nav-link {
+    	font-size: 0.8rem;
 
-    &:hover,
-    &:focus{
-    	background-color: transparentize( $black, 0.95);
-    }
+    	&:hover,
+    	&:focus{
+    		background-color: transparentize( $black, 0.95);
+    	}
 
-    @include media-breakpoint-down(phone) {
-    	padding: .4rem 0.8rem;
+    	@include media-breakpoint-down(phone) {
+    		padding: .4rem 0.8rem;
+		}
 	}
 }
 
@@ -590,7 +532,7 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 }
 
 .footer-link {
-	font-size:0.8rem;
+	font-size:0.7rem;
 	color:$white;
 	text-decoration:none;
 	display: block;
