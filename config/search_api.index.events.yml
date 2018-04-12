@@ -75,10 +75,47 @@ processor_settings:
   rendered_item: {  }
   add_url: {  }
   aggregated_field: {  }
+  stemmer:
+    all_fields: false
+    fields:
+      - body
+      - title
+    exceptions:
+      texan: texa
+      mexican: mexic
+    weights:
+      preprocess_index: 0
+      preprocess_query: 0
+  ignorecase:
+    all_fields: false
+    fields:
+      - body
+      - title
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
+  html_filter:
+    all_fields: false
+    fields:
+      - body
+      - title
+    title: true
+    alt: true
+    tags:
+      h1: 5
+      h2: 3
+      h3: 2
+      strong: 2
+      b: 2
+      em: 1
+      u: 1
+    weights:
+      preprocess_index: -15
+      preprocess_query: -15
 tracker_settings:
   default:
     indexing_order: fifo
 options:
   index_directly: true
-  cron_limit: 50
+  cron_limit: -1
 server: events
