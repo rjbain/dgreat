@@ -145,13 +145,17 @@ nav.navbar {
 		border-bottom:1px solid $white;
 
 		a {
-			font-size: .7rem;
+			font-size: .85rem;
 			font-weight: 500;
 			text-decoration: none;
 			text-transform: capitalize;
-			color: $black!important;
-			padding-left: 5px;
+			color: $black!important;			
 		
+			@include media-breakpoint-down(phone) {
+				font-size: .7rem;
+				padding-left: 5px;
+			}
+
 			&:hover,
 			&:focus {
 				color: $black!important;

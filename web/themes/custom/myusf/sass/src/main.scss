@@ -27,15 +27,29 @@ html, body { //fixes mobile view sliding left and right issue
 	margin-right:auto;
 }
 
- @include media-breakpoint-down(phone) {
-	.sidebar {
+ .sidebar {
+ 	@include media-breakpoint-down(phone) {	
     	padding-left: 30px;
     	padding-right: 30px;
 	}
 }
 
-@include media-breakpoint-up(tablet) {
-	.col-md-3{
-		max-width: unset;
+
+.col-md-3{
+	@include media-breakpoint-only(tablet) {
+	    max-width: 256px;
+    	float: right!important;
+    	position: relative;
+    	right: 0!important;
+    	margin-right: -30px;
+	}
+}
+
+.col-md-9 {
+	@include media-breakpoint-only(tablet) {
+		position: relative;
+    	margin-left: -25px;
+    	flex: 0 0 70%;
+    	max-width: 70%;
 	}
 }

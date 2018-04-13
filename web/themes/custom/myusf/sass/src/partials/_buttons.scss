@@ -21,7 +21,7 @@
     @include button($turquoise);
 }
 
-// SOCIAL MEDIA BUTTONS
+// SOCIAL MEDIA BUTTONS with text
 
 .facebook {
     @include social($facebook, -44px, 0);
@@ -54,6 +54,44 @@
     @include social($youtube,-129px, 0);
 }
 
+// SOCIAL MEDIA BUTTONS gray with no text 
+
+
+.facebook_gray {
+    @include social_gray($facebook, -43px, -87px);
+}
+.flickr_gray {
+    @include social_gray($flickr, -43px, -129px);
+}
+.googleplus_gray {
+    @include social_gray($googleplus, -170px, -128px);
+}
+.instagram_gray {
+    @include social_gray($instagram, -1px, -86px);
+}
+.linkedin_gray {
+    @include social_gray($linkedin, -1px, -129px);
+}
+.pinterest_gray {
+    @include social_gray($pinterest, -128px, -129px);
+}
+.tumblr_gray {
+    @include social_gray($tumblr, -86px, -129px);
+}
+.twitter_gray {
+    @include social_gray($twitter, -86px, -86px);
+}
+.vimeo_gray {
+    @include social_gray($vimeo,-170px, -86px);
+}
+.youtube_gray {
+    @include social_gray($youtube,-129px, -86px);
+}
+
+.facebook_gray span, .flickr_gray span, .googleplus_gray span, .instagram_gray span, .linkedin_gray span, 
+.pinterest_gray span, .tumblr_gray span, .twitter_gray span, .vimeo_gray span, .youtube_gray span {
+    display: none;
+}
 
 
 .btn {
@@ -61,5 +99,30 @@
 }
 
 .btn-primary {
-    border-color: transparent;
+    background: $green;
+    box-shadow: inset 0 0 0 4px $green;
+
+    &:hover,
+    &:focus {
+        background: $white;
+        color: $black;
+    }
+}
+
+button.bp-accordion--button {
+    font-size: 0.7rem;
+    font-weight: 600!important;
+    background: transparent;
+    color: #00543c;
+    text-decoration: underline;
+    border: 0;
+    box-shadow: unset;
+    margin-right: 20px;
+
+    &:hover,
+    &:focus {
+        color:$black!important;
+        text-decoration: none;
+        background-color: transparentize( $yellow, 0.8);
+    }
 }
