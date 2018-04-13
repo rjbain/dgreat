@@ -204,21 +204,29 @@ function bootstrap_barrio_form_system_theme_settings_alter(&$form, FormStateInte
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
   );
-  $form['components']['navbar']['bootstrap_barrio_navbar_toggle'] = array(
-    '#type' => 'select',
-    '#title' => t('Navbar top toggle size'),
-    '#description' => t('Select size for navbar to collapse.'),
-    '#default_value' => theme_get_setting('bootstrap_barrio_navbar_toggle'),
-    '#options' => array(
-      'navbar-toggleable-md' => t('Medium'),
-      'navbar-toggleable-sm' => t('Small'),
-    ),
-  );
   $form['components']['navbar']['bootstrap_barrio_navbar_container'] = array(
     '#type' => 'checkbox',
     '#title' => t('Navbar Width Container'),
     '#description' => t('Check if Navbar width will be inside container or fluid width.'),
     '#default_value' => theme_get_setting('bootstrap_barrio_navbar_container'),
+  );
+  $form['components']['navbar']['bootstrap_barrio_navbar_toggle'] = array(
+    '#type' => 'select',
+    '#title' => t('Navbar toggle size'),
+    '#description' => t('Select size for navbar to collapse.'),
+    '#default_value' => theme_get_setting('bootstrap_barrio_navbar_toggle'),
+    '#options' => array(
+      'navbar-toggleable-lg' => t('Large'),
+      'navbar-toggleable-md' => t('Medium'),
+      'navbar-toggleable-sm' => t('Small'),
+      'navbar-toggleable-xs' => t('Extra Small'),
+    ),
+  );
+  $form['components']['navbar']['bootstrap_barrio_navbar_top_navbar'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Navbar Top is Navbar'),
+    '#description' => t('Check if Navbar Top .navbar class should be added.'),
+    '#default_value' => theme_get_setting('bootstrap_barrio_navbar_top_navbar'),
   );
   $form['components']['navbar']['bootstrap_barrio_navbar_top_position'] = array(
     '#type' => 'select',
@@ -228,6 +236,7 @@ function bootstrap_barrio_form_system_theme_settings_alter(&$form, FormStateInte
     '#options' => array(
       'fixed-top' => t('Fixed Top'),
       'fixed-bottom' => t('Fixed Bottom'),
+      'sticky-top' => t('Sticky Top'),
     ),
     '#empty_option' => t('Normal'),
   );
@@ -237,8 +246,8 @@ function bootstrap_barrio_form_system_theme_settings_alter(&$form, FormStateInte
     '#description' => t('Select a color for links in navbar top.'),
     '#default_value' => theme_get_setting('bootstrap_barrio_navbar_top_color'),
     '#options' => array(
-      'light' => t('Light'),
-      'inverse' => t('Inverse'),
+      'navbar-light' => t('Light'),
+      'navbar-dark' => t('Dark'),
     ),
     '#empty_option' => t('Default'),
   );
@@ -248,9 +257,9 @@ function bootstrap_barrio_form_system_theme_settings_alter(&$form, FormStateInte
     '#description' => t('Select a color for background in navbar top.'),
     '#default_value' => theme_get_setting('bootstrap_barrio_navbar_top_background'),
     '#options' => array(
-      'primary' => t('Primary'),
-      'faded' => t('Faded'),
-      'inverse' => t('Inverse'),
+      'bg-primary' => t('Primary'),
+      'bg-light' => t('Light'),
+      'bg-dark' => t('Dark'),
     ),
     '#empty_option' => t('Default'),
   );
@@ -262,6 +271,7 @@ function bootstrap_barrio_form_system_theme_settings_alter(&$form, FormStateInte
     '#options' => array(
       'fixed-top' => t('Fixed Top'),
       'fixed-bottom' => t('Fixed Bottom'),
+      'sticky-top' => t('Sticky Top'),
     ),
     '#empty_option' => t('Normal'),
   );
@@ -271,8 +281,8 @@ function bootstrap_barrio_form_system_theme_settings_alter(&$form, FormStateInte
     '#description' => t('Select a color for links in navbar style.'),
     '#default_value' => theme_get_setting('bootstrap_barrio_navbar_color'),
     '#options' => array(
-      'light' => t('Light'),
-      'inverse' => t('Inverse'),
+      'navbar-light' => t('Light'),
+      'navbar-dark' => t('Dark'),
     ),
     '#empty_option' => t('Default'),
   );
@@ -282,9 +292,9 @@ function bootstrap_barrio_form_system_theme_settings_alter(&$form, FormStateInte
     '#description' => t('Select a color for background in navbar.'),
     '#default_value' => theme_get_setting('bootstrap_barrio_navbar_background'),
     '#options' => array(
-      'primary' => t('Primary'),
-      'faded' => t('Faded'),
-      'inverse' => t('Inverse'),
+      'bg-primary' => t('Primary'),
+      'bg-light' => t('Light'),
+      'bg-dark' => t('Dark'),
     ),
     '#empty_option' => t('Default'),
   );
