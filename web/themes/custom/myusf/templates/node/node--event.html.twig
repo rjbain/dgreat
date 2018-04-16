@@ -72,13 +72,6 @@
     'clearfix',
   ]
 %}
-<style>
-.body {
-}
-.image {
-  padding:0 0 0 10px;
-}
-</style>
 {% set description = node.body.value %}
 {% set title = node.title.value %}
 {% set additional_info = node.field_additional_info.value %}
@@ -89,10 +82,9 @@
 {% set image = file_url(node.field_image.entity.uri.value) %}
 {% set image_url = node.field_image_url.uri %}
 <article{{ attributes.addClass(classes) }}>
-
-<h2 {{ title_attributes }}>{#{ title }#}</h2>
-<h3>{{ start_date }}, {{ start_time }} - {{ end_time }}</h3>
-<h4>{{ location }}</h4>
+<!--<h2 {{ title_attributes }}>{#{ title }#}</h2>-->
+<p class="event-date">{{ start_date }}, {{ start_time }} - {{ end_time }}</p>
+<p class="event-location">{{ location }}</p>
   <div{{ content_attributes.addClass('content') }}>
     <div class="body">
       {% if node.field_image_url.value %}

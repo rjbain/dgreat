@@ -1,4 +1,4 @@
-uuid: 1d704bd5-950b-45ad-81fc-850b4b0baf6c
+uuid: 7fe4faa9-0343-4b7d-b3fa-891163f96e4d
 langcode: en
 status: true
 dependencies:
@@ -75,6 +75,31 @@ processor_settings:
   rendered_item: {  }
   add_url: {  }
   aggregated_field: {  }
+  ignorecase:
+    all_fields: false
+    fields:
+      - body
+      - title
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
+  html_filter:
+    all_fields: false
+    fields:
+      - body
+    title: true
+    alt: true
+    tags:
+      h1: 5
+      h2: 3
+      h3: 2
+      strong: 2
+      b: 2
+      em: 1
+      u: 1
+    weights:
+      preprocess_index: -15
+      preprocess_query: -15
 tracker_settings:
   default:
     indexing_order: fifo
