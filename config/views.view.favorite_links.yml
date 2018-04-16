@@ -1087,6 +1087,12 @@ display:
         weight: 0
         context: '0'
         menu_name: main
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      defaults:
+        access: false
     cache_metadata:
       max-age: -1
       contexts:
@@ -1095,7 +1101,7 @@ display:
         - url
         - url.query_args
         - user
-        - user.roles
+        - user.permissions
       tags:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_category'
@@ -1118,6 +1124,7 @@ display:
         filters: false
         filter_groups: false
         header: false
+        access: false
       relationships:
         gc__node:
           id: gc__node
@@ -1421,11 +1428,15 @@ display:
         description: ''
         weight: 0
       header: {  }
+      access:
+        type: perm
+        options:
+          perm: 'access content'
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
-        - user.roles
+        - user.permissions
       tags: {  }
