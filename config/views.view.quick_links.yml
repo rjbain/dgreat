@@ -1091,6 +1091,7 @@ display:
       defaults:
         title: false
         header: false
+        access: false
       header:
         area:
           id: area
@@ -1105,6 +1106,10 @@ display:
             value: '<a class="btn btn-default" href="/node/add/favorite-link?edit[field_link_type][und]=quick?destination=favorite-links/allapps" role="button" style="float:right"><span class="icon-plus"></span> Add Favorite Link</a>'
             format: full_html
           plugin_id: text
+      access:
+        type: perm
+        options:
+          perm: 'access content'
     cache_metadata:
       max-age: -1
       contexts:
@@ -1113,7 +1118,7 @@ display:
         - url
         - url.query_args
         - user
-        - user.roles
+        - user.permissions
       tags:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_category'
@@ -1136,6 +1141,7 @@ display:
         filters: false
         filter_groups: false
         header: false
+        access: false
       relationships:
         gc__node:
           id: gc__node
@@ -1439,11 +1445,15 @@ display:
         description: ''
         weight: 0
       header: {  }
+      access:
+        type: perm
+        options:
+          perm: 'access content'
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
-        - user.roles
+        - user.permissions
       tags: {  }
