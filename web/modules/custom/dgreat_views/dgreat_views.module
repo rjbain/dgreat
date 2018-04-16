@@ -55,5 +55,28 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
 
       break;
   }
+}
 
+/**
+ * Implements hook_views_pre_view().
+ */
+function dgreat_views_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
+  $name = $view->id();
+  $display = $view->current_display;
+
+  switch ($name) {
+    case 'favorite_links':
+    case 'quick_links':
+
+      // Removes fields and header for non admins.
+      if ($display == 'all_apps') {
+        $user_roles = \Drupal::currentUser()->getRoles();
+        if (!in_array('administrator', $user_roles)) {
+          $view->removeHandler($display, 'field', 'edit_node');
+          $view->removeHandler($display, 'field', 'delete_node');
+          $view->removeHandler($display, 'header', 'area');
+        }
+      }
+      break;
+  }
 }
