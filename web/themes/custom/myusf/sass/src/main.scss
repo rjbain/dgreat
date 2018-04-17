@@ -6,10 +6,10 @@
 
 // Import static elements after///
 @import 'partials/normalize';
+@import 'partials/mixins';
 @import 'partials/typography';
 @import 'partials/boxes';
 @import 'partials/buttons';
-@import 'partials/mixins';
 @import 'partials/navigation';
 @import 'partials/components';
 
@@ -27,3 +27,29 @@ html, body { //fixes mobile view sliding left and right issue
 	margin-right:auto;
 }
 
+ .sidebar {
+ 	@include media-breakpoint-down(phone) {	
+    	padding-left: 30px;
+    	padding-right: 30px;
+	}
+}
+
+
+.col-md-3{
+	@include media-breakpoint-only(tablet) {
+	    max-width: 256px;
+    	float: right!important;
+    	position: relative;
+    	right: 0!important;
+    	margin-right: -30px;
+	}
+}
+
+.col-md-9 {
+	@include media-breakpoint-only(tablet) {
+		position: relative;
+    	margin-left: -25px;
+    	flex: 0 0 70%;
+    	max-width: 70%;
+	}
+}

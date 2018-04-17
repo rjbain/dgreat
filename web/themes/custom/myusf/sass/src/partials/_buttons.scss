@@ -1,157 +1,128 @@
+
 .button {
-	background-color: $green;
-	padding: 10px 10px 10px 10px;
-	width: 100%;
-	text-align: center;
+    @include button($green);
+}
+.button.blue {
+    @include button($blue);
+}
+.button.olive {
+    @include button($olive);
+}
+.button.orange {
+    @include button($orange);
+}
+.button.plum {
+    @include button($plum);
+}
+.button.terra_cotta {
+    @include button($terra_cotta);
+}
+.button.turquoise {
+    @include button($turquoise);
 }
 
-.button:hover, .button:focus {
-	background-color: $white;
-	box-shadow: inset 0 0 0 4px $green;
-	transition: background-color .25s linear 0s,border-color .25s linear 0s,box-shadow .25s linear 0s,color .25s linear 0s,opacity .25s linear 0s !important;
-	color: $green;
+// SOCIAL MEDIA BUTTONS with text
+
+.facebook {
+    @include social($facebook, -44px, 0);
+}
+.flickr {
+    @include social($flickr, -44px, -42px);
+}
+.googleplus {
+    @include social($googleplus, -171px, -42px);
+}
+.instagram {
+    @include social($instagram, -2px, 0);
+}
+.linkedin {
+    @include social($linkedin, -2px, -42px);
+}
+.pinterest {
+    @include social($pinterest, -128px, -42px);
+}
+.tumblr{
+    @include social($tumblr, -86px, -42px);
+}
+.twitter {
+    @include social($twitter, -86px, 0);
+}
+.vimeo {
+    @include social($vimeo,-170px, 0);
+}
+.youtube {
+    @include social($youtube,-129px, 0);
 }
 
-
-.button a {
-	font-size: .8rem;
-	line-height: 1.5rem;
-	font-weight: 700;
-	text-transform: uppercase;
-	color: $white;
-	font-family: $base-font;
-	text-decoration: none;
-	display: block !important;
-	position: relative;
-}
-
-.button a:hover, .button a:focus {
-	color: $green;
-	text-decoration: none !important;
-	background: none;
-}
+// SOCIAL MEDIA BUTTONS gray with no text 
 
 
-p.instagram, p.facebook, p.twitter, p.youtube, p.vimeo, p.linkedin, p.flickr, p.tumblr, p.pinterest, p.googleplus {
-    height: 40px;
-    width: 100%;
-    text-align: center;
-    vertical-align: middle;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin: 20px auto;
-    text-transform: uppercase;
+.facebook_gray {
+    @include social_gray($facebook, -43px, -87px);
 }
-.instagram, .facebook, .twitter, .youtube, .vimeo, .linkedin, .flickr, .tumblr, .pinterest, .googleplus {
-    background-color: #ffffff;
+.flickr_gray {
+    @include social_gray($flickr, -43px, -129px);
 }
-
-p.facebook {
-    border: 3px solid #3b5998;
+.googleplus_gray {
+    @include social_gray($googleplus, -170px, -128px);
 }
-p.instagram {
-	border:3px solid #eb821e;
-
+.instagram_gray {
+    @include social_gray($instagram, -1px, -86px);
 }
-p.twitter {
-	border:3px solid #1da1f2;
+.linkedin_gray {
+    @include social_gray($linkedin, -1px, -129px);
 }
-p.youtube {
-	border:3px solid #bb0000;
+.pinterest_gray {
+    @include social_gray($pinterest, -128px, -129px);
 }
-p.vime {
-	border:3px solid #1ab7ea;
+.tumblr_gray {
+    @include social_gray($tumblr, -86px, -129px);
 }
-p.linkedin {
-	border:3px solid #007bb6;
+.twitter_gray {
+    @include social_gray($twitter, -86px, -86px);
 }
-p.flickr {
-	border:3px solid #a8228e;
+.vimeo_gray {
+    @include social_gray($vimeo,-170px, -86px);
 }
-p.tumblr {
-	border:3px solid #35465c;
-}
-p.pinterest {
-	border:3px solid #bd081c;
-}
-p.googleplus {
-	border:3px solid #dd5044;
+.youtube_gray {
+    @include social_gray($youtube,-129px, -86px);
 }
 
-
-.instagram a, .facebook a, .twitter a, .youtube a, .vimeo a, .linkedin a, .flickr a, .tumblr a, .pinterest a, .googleplus a {
-    font-size: 0.8rem !important;
-    font-family: $base-font;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: $gray;
-}
-
-
-
-.instagram a, .facebook a, .twitter a, .youtube a, .vimeo a, .linkedin a, .flickr a, .tumblr a, .pinterest a, .googleplus a {
-    background-color: $white;
-    display: block;
-    padding-top: 6px;
-    padding-bottom: 4px;
-    padding-right: 30px;
-    padding-left: 4px;
-    line-height: 1.3rem;
-}
-
-.facebook:after {
-    background: url(/themes/custom/myusf/images/site/myusf-icons.svg) no-repeat -36px 0;
-}
-.instagram:after {
-	background: url(/themes/custom/myusf/images/site/myusf-icons.svg) no-repeat 2px 0;
-}
-.twitter:after {
-	background: url(/themes/custom/myusf/images/site/myusf-icons.svg) no-repeat -75px 0;
-}
-.youtube:after {
-	background: url(/themes/custom/myusf/images/site/myusf-icons.svg) no-repeat -112px 0;
-}
-.vimeo:after {
-	background: url(/themes/custom/myusf/images/site/myusf-icons.svg) no-repeat -150px 2px;
-}
-.linkedin:after {
-	background: url(/themes/custom/myusf/images/site/myusf-icons.svg) no-repeat 2px -38px;
-}
-.flickr:after {
-	background: url(/themes/custom/myusf/images/site/myusf-icons.svg) no-repeat -36px -38px;
-}
-.tumblr:after {
-	background: url(/themes/custom/myusf/images/site/myusf-icons.svg) no-repeat -75px -37px;
-}
-.pinterest:after {
-	background: url(/themes/custom/myusf/images/site/myusf-icons.svg) no-repeat -113px -38px;
-}
-.googleplus:after {
-	background: url(/themes/custom/myusf/images/site/myusf-icons.svg) no-repeat -150px -37px;
+.facebook_gray span, .flickr_gray span, .googleplus_gray span, .instagram_gray span, .linkedin_gray span, 
+.pinterest_gray span, .tumblr_gray span, .twitter_gray span, .vimeo_gray span, .youtube_gray span {
+    display: none;
 }
 
 
-.instagram:after, .facebook:after, .twitter:after, .youtube:after, .vimeo:after, .linkedin:after, .flickr:after, .tumblr:after, .pinterest:after, .googleplus:after {
-    vertical-align: middle;
-    display: inline-block;
-    content: "";
-    width: 36px;
-    height: 36px;
-    float: right;
-    position: relative;
-    top: -32px;
-    right: -2px;
+.btn {
+	border-radius: 0;
 }
 
-.instagram:hover, .facebook:hover, .twitter:hover, .youtube:hover, .vimeo:hover, .linkedin:hover, .flickr:hover, .tumblr:hover, .pinterest:hover, .googleplus:hover,
-.instagram:focus, .facebook:focus, .twitter:focus, .youtube:focus, .vimeo:focus, .linkedin:focus, .flickr:focus, .tumblr:focus, .pinterest:focus, .googleplus:focus {
-    box-shadow: inset 0 0 0 3px;
-    transition: background-color .25s linear 0s,border-color .25s linear 0s,box-shadow .25s linear 0s,color .25s linear 0s,opacity .25s linear 0s !important;
+.btn-primary {
+    background: $green;
+    box-shadow: inset 0 0 0 4px $green;
+
+    &:hover,
+    &:focus {
+        background: $white;
+        color: $black;
+    }
 }
 
-.instagram a:hover, .facebook a:hover, .twitter a:hover, .youtube a:hover, .vimeo a:hover, .linkedin a:hover, .flickr a:hover, .tumblr a:hover, .pinterest a:hover, .googleplus a:hover,
-.instagram a:focus, .facebook a:focus, .twitter a:focus, .youtube a:focus, .vimeo a:focus, .linkedin a:focus, .flickr a:focus, .tumblr a:focus, .pinterest a:focus, .googleplus a:focus {
-	color: $text_gray !important;
-	text-decoration: none !important;
+button.bp-accordion--button {
+    font-size: 0.7rem;
+    font-weight: 600!important;
+    background: transparent;
+    color: #00543c;
+    text-decoration: underline;
+    border: 0;
+    box-shadow: unset;
+    margin-right: 20px;
+
+    &:hover,
+    &:focus {
+        color:$black!important;
+        text-decoration: none;
+        background-color: transparentize( $yellow, 0.8);
+    }
 }

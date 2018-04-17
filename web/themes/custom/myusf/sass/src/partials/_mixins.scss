@@ -1,0 +1,172 @@
+// BUTTONS //
+
+@mixin button ($btn_color) {
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.2rem;
+    color: $white;      
+    text-align: center;
+    text-decoration: none;
+    text-transform:uppercase;
+    display: block;
+    width: 210px;
+    min-height:40px;
+    padding: 10px 8px;
+    background:$btn_color;
+
+    &:hover,
+    &:focus {
+        color: $black;
+        background-color: $white;
+        transition: background-color .25s linear 0s,border-color .25s linear 0s,box-shadow .25s linear 0s,color .25s linear 0s,opacity .25s linear 0s !important;
+
+        box-shadow: inset 0 0 0 4px $btn_color;
+    }
+
+    @include media-breakpoint-down(phone) {
+        width:272px;
+    }
+
+     @include media-breakpoint-only (tablet) {
+        width: 207px;
+     }
+
+}
+
+@mixin diamond_button ($degree, $borderColor, $bgColorBefore, $bgColorBeforeHover, $bgX, $bgY) {
+    
+    &:before {
+        position: relative;
+        display: block;
+        content: "";
+        width: 25px;
+        height: 25px;
+        top: -5px;
+        right: 0px;
+        float: right;
+        bottom: 0;
+        -ms-transform: rotate($degree);
+        transform: rotate($degree);
+        border: 1px solid $borderColor;
+        background: $bgColorBefore;
+        transition: box-shadow .25s,transform .25s;
+
+    }
+
+    &:hover:before,
+    &:focus:before {
+            background: $bgColorBeforeHover;
+        }
+    
+    &:hover,
+    &:focus {
+        background: transparent;
+    }
+    &:after {
+        position: relative;
+        display: block;
+        content: "";
+        width: 8px;
+        height: 5px;
+        top: 6px;
+        right: -17px;
+        bottom: 0;
+        background: url(/themes/custom/myusf/images/site/icons.svg) $bgX $bgY no-repeat;
+    }
+
+}
+
+@mixin social($social_media, $x, $y) {
+	font-size: 0.8rem;
+    font-weight: 700;
+    color: $gray;  
+    background: $white;
+    text-align: center; 
+    text-transform: uppercase;
+    text-decoration: none;    
+    white-space: nowrap;   
+    display: block;
+    width: 180px;
+    height: 40px;  
+    border: 3px solid $social_media;
+    padding: 8px 6px 5px 6px;
+
+    &:hover,
+    &:focus {
+    	color: $text_gray!important;
+    	background: $white;
+    	box-shadow: inset 0 0 0 2px $social_media;
+    	transition: background-color .25s linear 0s,border-color .25s linear 0s,box-shadow .25s linear 0s,color .25s linear 0s,opacity .25s linear 0s !important;
+    }
+
+    &:after {
+    	vertical-align: middle;
+    	display: inline-block;
+    	content: "";
+    	width: 36px;
+    	height: 40px;
+    	position: absolute;
+    	top: 0px;
+    	right: -1px;
+    	background: url(/themes/custom/myusf/images/site/myusf-icons.svg) no-repeat $x $y;
+    }
+
+    @include media-breakpoint-down(phone) {
+        width:240px;
+    }
+}
+
+
+@mixin social_gray($social_media, $x, $y) {
+    &:before {
+        position: relative;
+        display: inline-block;
+        content: "";
+        width: 40px;
+        height: 40px;
+        top: 11px;
+        background: url(/themes/custom/myusf/images/site/myusf-icons.svg) no-repeat $x $y;
+    }
+
+    &:hover:before,
+    &:focus:before {
+        opacity: 0.5;
+    }
+
+    &:hover, &:focus {
+        background-color:transparent;
+    }
+
+}
+
+
+
+// MENU
+
+@mixin mobilenav-dropdown($amount) {
+    ul.dropdown-menu {
+                    width: 100vw;
+                    border:0!important;
+                    border-radius:0;
+                    background: $light_beige!important; 
+                    margin-top: -5px;
+
+                    position:absolute;
+                    left:$amount; 
+
+
+                    li.dropdown-item {
+                    border:0!important;
+                    height: unset!important;
+                    padding: 0px 5px 5px 12px!important;
+                    border-bottom: 1px solid #fff!important;
+                    width: 100vw;
+                    
+
+                        &:hover,
+                        &:focus {
+                            background: $beige;
+                        }
+                    }           
+                }
+}

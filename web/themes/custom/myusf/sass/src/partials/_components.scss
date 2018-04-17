@@ -1,13 +1,66 @@
-/* ACCORDIAN (card) 
+/* ACCORDION (card) 
 ================================================ */
 
-.card-header .panel-title a {
-	font-family: $base-font;
-	font-size: 1.0rem;
-	font-weight: 700;
-	margin-bottom: .5rem;
-	line-height: 1.1;
-	color: inherit;
-	text-transform: uppercase;
-	text-decoration: none;
+.card {
+	border: 0;
+	border-radius: 0;
+}
+
+.card-header {
+	background: transparent;
+	padding: .75rem 1.25rem .25rem 0;
+	border-bottom: 1px solid $yellow;
+
+	.panel-title a {
+		font-family: $base-font;
+		font-size: 1.0rem;
+		font-weight: 700;
+		color: inherit;
+		line-height: 1.1;
+		text-transform: uppercase;
+		text-decoration: none;
+		padding-left: 0!important;
+    	margin: 0 0 .5rem 0;
+	}
+}
+
+
+.paragraph.paragraph--type--bp-accordion {
+
+	.panel-heading {
+		a:hover,
+		a:focus {
+			background: transparent;
+		}
+
+	 	a[aria-expanded=false]{
+			@include diamond_button(45deg, $yellow, transparent, $yellow,  -240px, -150px);
+
+			&:before {
+				 @include media-breakpoint-down(phone) {
+				 	right:-20px;
+				 }
+			}
+			&:after {
+				@include media-breakpoint-down(phone) {
+				 	right:-37px;
+				 }
+			}
+		}
+
+		a[aria-expanded=true]{
+			@include diamond_button(225deg, $yellow, $yellow, $yellow, -240px, -170px);
+
+			&:before {
+				 @include media-breakpoint-down(phone) {
+				 	right:-20px;
+				 }
+			}
+			&:after {
+				@include media-breakpoint-down(phone) {
+				 	right:-37px;
+				 }
+			}
+		}
+	}
 }
