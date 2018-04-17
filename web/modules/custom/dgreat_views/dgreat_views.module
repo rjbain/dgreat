@@ -8,6 +8,8 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\views\ViewExecutable;
 use Drupal\user\Entity\User;
+use Drupal\node\Entity\Node;
+use Drupal\Core\Render\Markup;
 
 /**
  * Implements hook_help().
@@ -95,9 +97,10 @@ function dgreat_views_preprocess_views_view_table(&$vars) {
     case 'favorite_links':
     case 'quick_links':
 
-      // Adds default to both links.
+      // This adds the default links to the top of the view.
+      // Tried to do this in the view, but it just wouldn't work well.
       if ($display == 'my_links') {
-        $gids = $nids = [];
+        $gids = $nids = $nodes = [];
 
         // Grab the current users groups.
         $user = User::load(\Drupal::currentUser()->id());
@@ -128,7 +131,41 @@ function dgreat_views_preprocess_views_view_table(&$vars) {
           return;
         }
 
-        $t = 1;
+        foreach ($nids as $nid) {
+          $nodes[] = Node::load($nid);
+        }
+
+        // Set and reset other rows so we can add defaults to top.
+        $rows = $vars['rows'];
+        $vars['rows'] = [];
+
+        // Create the rows of default items.
+        foreach ($nodes as $node) {
+          $markup = $node->toLink()->toString();
+
+          $vars['rows'][] = [
+            'columns' => [
+              'link_flag' => NULL,
+              'label' => [
+                'default_classes' => TRUE,
+                'content' => [
+                  0 => [
+                    'field_output' => [
+                      '#markup' => $markup,
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ];
+        }
+
+        // Add back in old rows but renumbered.
+        $count = count($vars['rows']);
+        foreach ($rows as $row) {
+          $vars['rows'][$count] = $row;
+          $count++;
+        }
       }
 
       break;
