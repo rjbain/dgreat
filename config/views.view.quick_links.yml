@@ -125,13 +125,8 @@ display:
           description: ''
           columns:
             link_flag: link_flag
+            view: label
             label: label
-            body: body
-            field_category: field_category
-            field_sso: field_sso
-            field_group_audience: field_group_audience
-            edit_node: delete_node
-            delete_node: delete_node
           info:
             link_flag:
               sortable: false
@@ -140,47 +135,12 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
+            view:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
             label:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            body:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_category:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_sso:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_group_audience:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            edit_node:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            delete_node:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -1124,9 +1084,9 @@ display:
         - 'config:field.storage.node.field_category'
         - 'config:field.storage.node.field_group_audience'
         - 'config:field.storage.node.field_sso'
-  my_favorite_links:
+  my_links:
     display_plugin: page
-    id: my_favorite_links
+    id: my_links
     display_title: 'My Quick Links'
     position: 1
     display_options:
@@ -1142,6 +1102,7 @@ display:
         filter_groups: false
         header: false
         access: false
+        footer: false
       relationships:
         gc__node:
           id: gc__node
@@ -1283,7 +1244,7 @@ display:
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: false
+            link_to_entity: true
           group_column: value
           group_columns:
             entity_id: entity_id
@@ -1449,6 +1410,7 @@ display:
         type: perm
         options:
           perm: 'access content'
+      footer: {  }
     cache_metadata:
       max-age: -1
       contexts:

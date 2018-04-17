@@ -7,6 +7,7 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\views\ViewExecutable;
+use Drupal\user\Entity\User;
 
 /**
  * Implements hook_help().
@@ -77,6 +78,59 @@ function dgreat_views_views_pre_view(ViewExecutable $view, $display_id, array &$
           $view->removeHandler($display, 'header', 'area');
         }
       }
+      break;
+  }
+}
+
+/**
+ * Prepares variables for views table templates.
+ *
+ * Default template: views-view-table.html.twig.
+ */
+function dgreat_views_preprocess_views_view_table(&$vars) {
+  $view = $vars['view']->id();
+  $display = $vars['view']->current_display;
+
+  switch ($view) {
+    case 'favorite_links':
+    case 'quick_links':
+
+      // Adds default to both links.
+      if ($display == 'my_links') {
+        $gids = $nids = [];
+
+        // Grab the current users groups.
+        $user = User::load(\Drupal::currentUser()->id());
+        $groups = $user->get('field_user_group')->getValue();
+        foreach ($groups as $gid) {
+          $gids[] = $gid['target_id'];
+        }
+
+        if (empty($gids)) {
+          return;
+        }
+
+        $db = \Drupal::database();
+
+        // Grab all the default entity ids of the group.
+        $query = $db
+          ->select('group__field_default_favorite_links', 'g')
+          ->fields('g', ['field_default_favorite_links_target_id'])
+          ->condition('entity_id', $gids, 'IN');
+
+        $results = $query->execute()->fetchAll();
+
+        foreach ($results as $result) {
+          $nids[] = $result->field_default_favorite_links_target_id;
+        }
+
+        if (empty($nids)) {
+          return;
+        }
+
+        $t = 1;
+      }
+
       break;
   }
 }
