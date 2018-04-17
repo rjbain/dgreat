@@ -61,6 +61,24 @@
 #}
 {{ attach_library('bootstrap_barrio/node') }}
 
+<style>
+
+.w-480 {
+  width:800px;
+  height:450px;
+}
+
+.carousel-caption {
+  
+  width:800px;
+  right:0 !important;
+  left:0 !important;
+  bottom:0px !important;
+  background:rgba(255,255,255,0.7);
+}
+</style>
+
+
 {% if search_content is empty %}
   {% set search_content = "all" %}
   {% set search_content_form = null %}
@@ -80,6 +98,10 @@
 {% else %}
   {% set event_date = event_date %}
 {% endif %}
+
+<div>
+  {{ drupal_view('events_featured', 'block_1') }}
+</div>
 
 <div>
   {{ drupal_view('events_search', 'block_1', search_content, event_category, event_date) }}
