@@ -64,15 +64,29 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
         $db = \Drupal::database();
 
         // Grab all the default entity ids of the group.
-        $query = $db
-          ->select('group__field_default_favorite_links', 'g')
-          ->fields('g', ['field_default_favorite_links_target_id'])
-          ->condition('entity_id', $gids, 'IN');
+        if ($name == 'favorite_links') {
+          $query = $db
+            ->select('group__field_default_favorite_links', 'g')
+            ->fields('g', ['field_default_favorite_links_target_id'])
+            ->condition('entity_id', $gids, 'IN');
+        }
+
+        if ($name == 'quick_links') {
+          $query = $db
+            ->select('group__field_default_quick_links', 'g')
+            ->fields('g', ['field_default_quick_links_target_id'])
+            ->condition('entity_id', $gids, 'IN');
+        }
 
         $results = $query->execute()->fetchAll();
 
         foreach ($results as $result) {
-          $nids[] = $result->field_default_favorite_links_target_id;
+          if ($name == 'favorite_links') {
+            $nids[] = $result->field_default_favorite_links_target_id;
+          }
+          if ($name == 'quick_links') {
+            $nids[] = $result->field_default_quick_links_target_id;
+          }
         }
 
         if (empty($nids)) {
