@@ -1103,6 +1103,7 @@ display:
         header: false
         access: false
         footer: false
+        empty: false
       relationships:
         gc__node:
           id: gc__node
@@ -1193,11 +1194,11 @@ display:
           hide_alter_empty: true
           entity_type: flagging
           plugin_id: flag_link
-        label:
-          id: label
-          table: group_content_field_data
-          field: label
-          relationship: none
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: gc__node
           group_type: group
           admin_label: ''
           label: Title
@@ -1246,8 +1247,7 @@ display:
           settings:
             link_to_entity: true
           group_column: value
-          group_columns:
-            entity_id: entity_id
+          group_columns: {  }
           group_rows: true
           delta_limit: 0
           delta_offset: 0
@@ -1256,8 +1256,8 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: null
-          entity_field: label
+          entity_type: node
+          entity_field: title
           plugin_id: field
       filters:
         type:
@@ -1411,6 +1411,7 @@ display:
         options:
           perm: 'access content'
       footer: {  }
+      empty: {  }
     cache_metadata:
       max-age: -1
       contexts:

@@ -9,7 +9,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\views\ViewExecutable;
 use Drupal\user\Entity\User;
 use Drupal\node\Entity\Node;
-use Drupal\Core\Render\Markup;
+use Drupal\views\ResultRow;
 
 /**
  * Implements hook_help().
@@ -40,7 +40,64 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
     case 'favorite_links_quick_menu':
     case 'quick_links':
     case 'quick_links_block':
-      $unique_nids = $new_results = [];
+      $defaults = $view_results = $unique_nids = $new_results = [];
+
+      // Adds in the default links for my_links.
+      if ($display == 'my_links') {
+        foreach ($view->result as $index => $result) {
+          $view_results[] = $result;
+        }
+
+        $gids = $nids = $nodes = [];
+
+        // Grab the current users groups.
+        $user = User::load(\Drupal::currentUser()->id());
+        $groups = $user->get('field_user_group')->getValue();
+        foreach ($groups as $gid) {
+          $gids[] = $gid['target_id'];
+        }
+
+        if (empty($gids)) {
+          return;
+        }
+
+        $db = \Drupal::database();
+
+        // Grab all the default entity ids of the group.
+        $query = $db
+          ->select('group__field_default_favorite_links', 'g')
+          ->fields('g', ['field_default_favorite_links_target_id'])
+          ->condition('entity_id', $gids, 'IN');
+
+        $results = $query->execute()->fetchAll();
+
+        foreach ($results as $result) {
+          $nids[] = $result->field_default_favorite_links_target_id;
+        }
+
+        if (empty($nids)) {
+          return;
+        }
+
+        foreach ($nids as $nid) {
+          $nodes[] = Node::load($nid);
+        }
+
+        foreach ($nodes as $node) {
+          $defaults[] = new ResultRow([
+            '_relationship_entities' => [
+              'gc__node' => $node,
+            ],
+            'node_field_data_group_content_field_data_nid' => NULL,
+            'groups_field_data_group_content_field_data_id' => NULL,
+            'flagging_node_field_data_id' => NULL,
+          ]);
+        }
+
+        $view->result = array_merge($defaults, $view_results);
+      }
+
+      // Now remove the duplicates from all the displays.
       foreach ($view->result as $index => $result) {
         // Grab the nid from the related node.
         $node = $result->_relationship_entities["gc__node"];
@@ -80,94 +137,6 @@ function dgreat_views_views_pre_view(ViewExecutable $view, $display_id, array &$
           $view->removeHandler($display, 'header', 'area');
         }
       }
-      break;
-  }
-}
-
-/**
- * Prepares variables for views table templates.
- *
- * Default template: views-view-table.html.twig.
- */
-function dgreat_views_preprocess_views_view_table(&$vars) {
-  $view = $vars['view']->id();
-  $display = $vars['view']->current_display;
-
-  switch ($view) {
-    case 'favorite_links':
-    case 'quick_links':
-
-      // This adds the default links to the top of the view.
-      // Tried to do this in the view, but it just wouldn't work well.
-      if ($display == 'my_links') {
-        $gids = $nids = $nodes = [];
-
-        // Grab the current users groups.
-        $user = User::load(\Drupal::currentUser()->id());
-        $groups = $user->get('field_user_group')->getValue();
-        foreach ($groups as $gid) {
-          $gids[] = $gid['target_id'];
-        }
-
-        if (empty($gids)) {
-          return;
-        }
-
-        $db = \Drupal::database();
-
-        // Grab all the default entity ids of the group.
-        $query = $db
-          ->select('group__field_default_favorite_links', 'g')
-          ->fields('g', ['field_default_favorite_links_target_id'])
-          ->condition('entity_id', $gids, 'IN');
-
-        $results = $query->execute()->fetchAll();
-
-        foreach ($results as $result) {
-          $nids[] = $result->field_default_favorite_links_target_id;
-        }
-
-        if (empty($nids)) {
-          return;
-        }
-
-        foreach ($nids as $nid) {
-          $nodes[] = Node::load($nid);
-        }
-
-        // Set and reset other rows so we can add defaults to top.
-        $rows = $vars['rows'];
-        $vars['rows'] = [];
-
-        // Create the rows of default items.
-        foreach ($nodes as $node) {
-          $markup = $node->toLink()->toString();
-
-          $vars['rows'][] = [
-            'columns' => [
-              'link_flag' => NULL,
-              'label' => [
-                'default_classes' => TRUE,
-                'content' => [
-                  0 => [
-                    'field_output' => [
-                      '#markup' => $markup,
-                    ]
-                  ]
-                ]
-              ]
-            ]
-          ];
-        }
-
-        // Add back in old rows but renumbered.
-        $count = count($vars['rows']);
-        foreach ($rows as $row) {
-          $vars['rows'][$count] = $row;
-          $count++;
-        }
-      }
-
       break;
   }
 }
