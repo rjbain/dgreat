@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.group.groups.field_default_favorite_links
+    - field.field.group.groups.field_default_quick_links
     - group.type.groups
   module:
     - path
@@ -14,6 +15,15 @@ mode: default
 content:
   field_default_favorite_links:
     weight: 31
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_default_quick_links:
+    weight: 32
     settings:
       match_operator: CONTAINS
       size: 60
