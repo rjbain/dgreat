@@ -1,0 +1,73 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main content
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+    set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+]
+%}
+
+{# Set vars so we can use filters #}
+{% set addy1 %}{{ content.field_address_1 }}{% endset %}
+{% set addy2 %}{{ content.field_address_2 }}{% endset %}
+{% set addy3 %}{{ content.field_address_3 }}{% endset %}
+{% set contact_title %}{{ content.field_contact_title }}{% endset %}
+{% set hours %}{{ content.field_hours_of_operation }}{% endset %}
+{% set fax %}{{ content.field_fax_number|render }}{% endset %}
+{% set email %}{{ content.field_email_address }}{% endset %}
+{% set body %}{{ content.body }}{% endset %}
+{% set appt %}{{ content.field_schedule_an_appointment }}{% endset %}
+
+<div {{ attributes.setAttribute('id', 'block-myusf-contactbox') }}>
+    {{ title_prefix }}
+    {{ title_suffix }}
+    <div{{ attributes.addClass(classes) }} >
+        <h2>{{ contact_title|striptags|trim }}</h2>
+        <p class="address">
+            {{ addy1|striptags|trim }}<br>
+            {{ addy2|striptags|trim }}<br>
+            {{ addy3|striptags|trim }}
+        </p>
+        <p><strong>Hours</strong>: {{ hours|striptags|trim }}</p>
+        {% include "@myUSFLib/fields/field--field-telephone-number.html.twig" %}
+
+        {% if fax %}
+            <p class="contact fax"><strong>Fax</strong>: {{ fax|striptags|trim }}</p>
+        {% endif %}
+        {% include "@myUSFLib/fields/field--field-email-address.html.twig" %}
+        {#<p class="contact email"><strong>Email</strong>: <a href="mailto:{{ email|striptags|trim }}">{{ email|striptags|trim }}</a></p>#}
+        <p><a class="button" href="{{ appt|striptags|trim }}">Schedule Appointment</a></p>
+        {% include "@myUSFLib/fields/field--paragraph--field-social-media-link.html.twig" %}
+    </div>
+</div>
+{#{{ dump(phone) }}#}
