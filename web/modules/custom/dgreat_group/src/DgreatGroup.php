@@ -3,6 +3,8 @@
 namespace Drupal\dgreat_group;
 
 use Drupal\group\Entity\Group;
+use Drupal\node\Entity\Node;
+use Drupal\user\Entity\User;
 
 class DgreatGroup {
 
@@ -86,5 +88,37 @@ class DgreatGroup {
     // Fail safe return
     return FALSE;
   }
+
+  /**
+   * Adds a default global flag based on the groups field.
+   *
+   * @param $field
+   *   The field we are using as a reference for the group.
+   *
+   * @return bool
+   */
+  public function addDefaultFlag($field) {
+    $ids = $this->entity->get($field)->getValue();
+    $flag_service = \Drupal::service('flag');
+    $flag = $flag_service->getFlagById('favorite');
+    $account = User::load(1);
+
+    // Let's go through Each Node and flag each node.
+    foreach ($ids as $gid) {
+      if (isset($gid['target_id'])) {
+        $node = Node::load($gid['target_id']);
+        $flag->setGlobal(TRUE);
+        $is_flagged = $flag->isFlagged($node, $account);
+        if ($is_flagged) {
+          $flag_service->unflag($flag, $node, $account);
+        }
+        $flag_service->flag($flag, $node, $account);
+      }
+    }
+
+    // Fail safe return
+    return FALSE;
+  }
+
 
 }

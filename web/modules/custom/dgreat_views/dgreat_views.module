@@ -40,15 +40,36 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
     case 'favorite_links_quick_menu':
     case 'quick_links':
     case 'quick_links_block':
+      // Initialize our vars.
       $defaults = $view_results = $unique_nids = $new_results = [];
+      $query = '';
 
-      // Adds in the default links for my_links.
+      // Now remove the duplicates from all the displays.
+      foreach ($view->result as $index => $result) {
+        // Grab the nid from the related node.
+        $node = $result->_relationship_entities['gc__node'];
+        $nid = $node->id();
+
+        // If it isn;t in there, add it and the result.
+        if (!in_array($nid, $unique_nids)) {
+          $unique_nids[] = $nid;
+          $new_results[] = $result;
+        }
+      }
+
+      $view->result = $new_results;
+
+      // Adds in the default links for my_links displays.
       if ($display == 'my_links') {
+        // Initialize our vars.
+        $gids = $nids = $nodes = [];
+
+        // Grab the existing results to store later.
+        // So we can put that after the defaults.
         foreach ($view->result as $index => $result) {
           $view_results[] = $result;
         }
 
-        $gids = $nids = $nodes = [];
 
         // Grab the current users groups.
         $user = User::load(\Drupal::currentUser()->id());
@@ -61,6 +82,10 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
           return;
         }
 
+        // Remove duplicates.
+        $gids = array_unique($gids);
+
+        // Initialize the db.
         $db = \Drupal::database();
 
         // Grab all the default entity ids of the group.
@@ -78,9 +103,8 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
             ->condition('entity_id', $gids, 'IN');
         }
 
-        $results = $query->execute()->fetchAll();
-
-        foreach ($results as $result) {
+        // Loop through and grab our content ids.
+        foreach ($query->execute()->fetchAll() as $result) {
           if ($name == 'favorite_links') {
             $nids[] = $result->field_default_favorite_links_target_id;
           }
@@ -93,39 +117,32 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
           return;
         }
 
+        // Remove duplicates.
+        $nids = array_unique($nids);
+
+        // Load each node to use as the default.
         foreach ($nids as $nid) {
           $nodes[] = Node::load($nid);
         }
 
         foreach ($nodes as $node) {
+
           $defaults[] = new ResultRow([
             '_relationship_entities' => [
               'gc__node' => $node,
             ],
-            'node_field_data_group_content_field_data_nid' => NULL,
+            'node_field_data_group_content_field_data_nid' => $node->nid,
             'groups_field_data_group_content_field_data_id' => NULL,
             'flagging_node_field_data_id' => NULL,
           ]);
         }
 
-        $view->result = array_merge($defaults, $view_results);
+        // Merge the results.
+        $merge = array_merge_recursive($defaults, $view_results);
+        $view->result = $merge;
       }
 
-      // Now remove the duplicates from all the displays.
-      foreach ($view->result as $index => $result) {
-        // Grab the nid from the related node.
-        $node = $result->_relationship_entities["gc__node"];
-        $nid = $node->id();
 
-        // If it isn;t in there, add it and the result.
-        if (!in_array($nid, $unique_nids)) {
-          $unique_nids[] = $nid;
-          $new_results[] = $result;
-        }
-      }
-
-      // Set our unique set of results based of of nid.
-      $view->result = $new_results;
 
       break;
   }

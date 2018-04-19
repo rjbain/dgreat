@@ -125,13 +125,8 @@ display:
           description: ''
           columns:
             link_flag: link_flag
-            label: label
-            body: body
-            field_category: field_category
-            field_sso: field_sso
-            field_group_audience: field_group_audience
-            edit_node: delete_node
-            delete_node: delete_node
+            title: title
+            field_default_favorite_links: title
           info:
             link_flag:
               sortable: false
@@ -140,54 +135,21 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            label:
+            title:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            body:
+            field_default_favorite_links:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            field_category:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_sso:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_group_audience:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            edit_node:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            delete_node:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-          default: label
+          default: '-1'
           empty_table: false
       row:
         type: fields
@@ -1125,6 +1087,8 @@ display:
         filter_groups: false
         header: false
         access: false
+        query: false
+        pager: false
       relationships:
         gc__node:
           id: gc__node
@@ -1431,11 +1395,22 @@ display:
         type: perm
         options:
           perm: 'access content'
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: false
+          distinct: true
+          replica: false
+          query_comment: ''
+          query_tags: {  }
+      pager:
+        type: none
+        options:
+          offset: 0
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url.query_args
         - user.permissions
       tags: {  }
