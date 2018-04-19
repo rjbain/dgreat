@@ -2,6 +2,7 @@
 
 namespace Drupal\dgreat_group;
 
+use Drupal\group\Entity\GroupContent;
 use Drupal\group\Entity\Group;
 use Drupal\node\Entity\Node;
 use Drupal\user\Entity\User;
@@ -90,35 +91,57 @@ class DgreatGroup {
   }
 
   /**
-   * Adds a default global flag based on the groups field.
+   * Flags the Defaults for content per user.
    *
    * @param $field
    *   The field we are using as a reference for the group.
    *
    * @return bool
    */
-  public function addDefaultFlag($field) {
+  public function flagUserDefaultContent($field) {
     $ids = $this->entity->get($field)->getValue();
     $flag_service = \Drupal::service('flag');
     $flag = $flag_service->getFlagById('favorite');
-    $account = User::load(1);
 
     // Let's go through Each Node and flag each node.
     foreach ($ids as $gid) {
       if (isset($gid['target_id'])) {
-        $node = Node::load($gid['target_id']);
-        $flag->setGlobal(TRUE);
-        $is_flagged = $flag->isFlagged($node, $account);
-        if ($is_flagged) {
-          $flag_service->unflag($flag, $node, $account);
+
+        $group = Group::load($gid['target_id']);
+
+        if ($group->hasField('field_default_favorite_links')) {
+          $gidz = $group->get('field_default_favorite_links')->getValue();
+          foreach ($gidz as $gid) {
+            $nids[] = $gid['target_id'];
+          }
         }
-        $flag_service->flag($flag, $node, $account);
+        if ($group->hasField('field_default_quick_links')) {
+          $gidz = $group->get('field_default_quick_links')->getValue();
+          foreach ($gidz as $gid) {
+            $nids[] = $gid['target_id'];
+          }
+        }
+      }
+    }
+
+    if (!empty($nids)) {
+      foreach ($nids as $nid) {
+        $node = Node::load($nid);
+        $check = $flag_service->getFlagging($flag, $node, $this->entity);
+
+        // Check to remove flags when resaving users.
+        if ($check !== NULL) {
+          $t = 1;
+          $is_flagged = $flag->isFlagged($node, $this->entity);
+          if ($is_flagged) {
+            $flag_service->unflag($flag, $node, $this->entity);
+          }
+        }
+        $flag_service->flag($flag, $node, $this->entity);
       }
     }
 
     // Fail safe return
     return FALSE;
   }
-
-
 }
