@@ -1,0 +1,8 @@
+{% set email_one %}{{ content.field_email_address[0]|render }}{% endset %}
+{% set email_two %}{{ content.field_email_address[1]|render }}{% endset %}
+
+<p class="contact email"><strong>Email</strong>: <a href="mailto:{{ email_one|striptags|trim }}">{{ email_one|striptags|trim }}</a></p>
+
+{% if email_two %}
+    <p class="contact email"><strong>Email</strong>: <a href="mailto:{{ email_two|striptags|trim }}">{{ email_two|striptags|trim }}</a></p>
+{% endif %}
