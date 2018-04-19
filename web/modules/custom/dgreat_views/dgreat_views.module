@@ -113,30 +113,24 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
           ->condition('entity_id', $nids, 'IN')
           ->condition('uid', $uid);
 
-        // Load each node to use as the default.
+        // Flatten on the nids to check against.
         foreach ($query->execute()->fetchAll() as $nid) {
-          $nodes[] = Node::load($nid->entity_id);
+          $nids[] = $nid->entity_id;
         }
 
-        foreach ($nodes as $node) {
-
-          $defaults[] = new ResultRow([
-            '_relationship_entities' => [
-              'gc__node' => $node,
-            ],
-            'node_field_data_group_content_field_data_nid' => $node->id(),
-            'groups_field_data_group_content_field_data_id' => NULL,
-            'flagging_node_field_data_id' => NULL,
-          ]);
+        // Check for the defaults in the loaded array.
+        foreach ($view_results as $key => $result) {
+          $check = $result->node_field_data_group_content_field_data_nid;
+          if (in_array($check, $nids)) {
+            $defaults[] = $result;
+          }
         }
 
-        // Merge the results.
+        // Merge the results setting defaults on top.
         $merge = array_merge_recursive($defaults, $view_results);
         $view->result = _dgreat_views_remove_duplicates($merge);
       }
-
-
-
+      
       break;
   }
 }
