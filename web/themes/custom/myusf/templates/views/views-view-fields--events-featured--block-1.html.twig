@@ -43,9 +43,9 @@
 
 	<div class="carousel-item {{ active }}">
 		<a href="{{ path('entity.node.canonical', {'node': fields.nid.content}) }}">
-			<img class="d-block w-480" src="{{ fields.field_f_image_url.content }}" alt="First slide">
+			<img class="d-block img-fluid" src="{{ fields.field_f_image_url.content }}" alt="{{ fields.title.content }}">
 		</a>
-		<div class="carousel-caption d-none d-md-block">
+		<div class="carousel-caption d-block">
     		<h5>{{ fields.title.content }}</h5>
     		<p>{{ fields.field_start_date.content }}, {{ fields.field_start_date_1.content }} - {{ fields.field_end_date.content }}</p>
   		</div>
