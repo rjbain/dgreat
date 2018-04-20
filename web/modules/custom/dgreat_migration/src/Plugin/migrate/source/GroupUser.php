@@ -4,6 +4,7 @@ namespace Drupal\dgreat_migration\Plugin\migrate\source;
 
 use Drupal\user\Plugin\migrate\source\d7\User;
 use Drupal\migrate\Row;
+use Drupal\migrate\MigrateSkipRowException;
 
 /**
  * Extends the D7 Node source plugin so we can grab OG info.

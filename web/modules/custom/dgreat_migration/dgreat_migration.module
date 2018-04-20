@@ -129,6 +129,23 @@ function dgreat_migration_migrate_prepare_row(Row $row, MigrateSourceInterface $
 
       break;
 
+    case 'upgrade_d7_user':
+      $login = $row->getSourceProperty('login');
+
+      // Has never logged in.
+      if ($login == '0') {
+        throw new MigrateSkipRowException('', TRUE);
+      }
+
+      $ago = strtotime('-1 year');
+
+      // Hasn't logged on in over a year.
+      if ($login < $ago) {
+        throw new MigrateSkipRowException('', TRUE);
+      }
+
+      break;
+
     case 'upgrade_d7_field_formatter_settings':
     case 'upgrade_d7_field_instance_widget_settings':
 

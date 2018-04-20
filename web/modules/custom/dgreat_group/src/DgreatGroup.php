@@ -2,10 +2,9 @@
 
 namespace Drupal\dgreat_group;
 
-use Drupal\group\Entity\GroupContent;
 use Drupal\group\Entity\Group;
 use Drupal\node\Entity\Node;
-use Drupal\user\Entity\User;
+
 
 class DgreatGroup {
 
@@ -109,16 +108,18 @@ class DgreatGroup {
 
         $group = Group::load($gid['target_id']);
 
-        if ($group->hasField('field_default_favorite_links')) {
-          $gidz = $group->get('field_default_favorite_links')->getValue();
-          foreach ($gidz as $gid) {
-            $nids[] = $gid['target_id'];
+        if ($group !== NULL) {
+          if ($group->hasField('field_default_favorite_links')) {
+            $gidz = $group->get('field_default_favorite_links')->getValue();
+            foreach ($gidz as $gid) {
+              $nids[] = $gid['target_id'];
+            }
           }
-        }
-        if ($group->hasField('field_default_quick_links')) {
-          $gidz = $group->get('field_default_quick_links')->getValue();
-          foreach ($gidz as $gid) {
-            $nids[] = $gid['target_id'];
+          if ($group->hasField('field_default_quick_links')) {
+            $gidz = $group->get('field_default_quick_links')->getValue();
+            foreach ($gidz as $gid) {
+              $nids[] = $gid['target_id'];
+            }
           }
         }
       }
@@ -128,16 +129,15 @@ class DgreatGroup {
       foreach ($nids as $nid) {
         $node = Node::load($nid);
         $check = $flag_service->getFlagging($flag, $node, $this->entity);
+        $is_flagged = $flag->isFlagged($node, $this->entity);
 
         // Check to remove flags when resaving users.
-        if ($check !== NULL) {
-          $t = 1;
-          $is_flagged = $flag->isFlagged($node, $this->entity);
-          if ($is_flagged) {
-            $flag_service->unflag($flag, $node, $this->entity);
-          }
+        if ($is_flagged && $check !== NULL) {
+          $flag_service->unflag($flag, $node, $this->entity);
         }
-        $flag_service->flag($flag, $node, $this->entity);
+        if (!$is_flagged) {
+          $flag_service->flag($flag, $node, $this->entity);
+        }
       }
     }
 

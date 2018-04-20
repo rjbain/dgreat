@@ -25,7 +25,6 @@ function dgreat_group_help($route_name, RouteMatchInterface $route_match) {
   }
 }
 
-
 /**
  * Implements hook_ENTITY_TYPE_insert().
  *
@@ -69,7 +68,7 @@ function dgreat_group_node_update(EntityInterface $entity) {
  */
 function dgreat_group_user_insert(EntityInterface $entity) {
   $add = (new DgreatGroup($entity))->addUserToGroup('field_user_group');
-  $add = (new DgreatGroup($entity))->flagUserDefaultContent('field_user_group');
+  //$add = (new DgreatGroup($entity))->flagUserDefaultContent('field_user_group');
 }
 
 /**
