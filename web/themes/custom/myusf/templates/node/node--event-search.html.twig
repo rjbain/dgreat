@@ -94,7 +94,9 @@
 {% endif %}
 
 <div>
-  {{ drupal_view('events_featured', 'block_1') }}
+  {% if action is empty %}
+    {{ drupal_view('events_featured', 'block_1') }}
+  {% endif %}
 </div>
 
 <div>

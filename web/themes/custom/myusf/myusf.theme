@@ -3,8 +3,10 @@ function myusf_preprocess(&$variables) {
     isset($_GET["search_content"]) ? $search_content = $_GET["search_content"] : $search_content = "";
     isset($_GET["event_category"]) ? $event_category = $_GET["event_category"] : $event_category = "";
     isset($_GET["event_date"]) ? $event_date = $_GET["event_date"] : $event_date = "";
+    isset($_GET["action"]) ? $action = $_GET["action"] : $action = "";
 
     $variables['search_content'] = htmlentities($search_content, ENT_QUOTES | ENT_HTML5, 'UTF-8');
     $variables['event_category'] = htmlentities($event_category, ENT_QUOTES | ENT_HTML5, 'UTF-8');
     $variables['event_date'] = htmlentities($event_date, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    $variables['action'] = htmlentities($action, ENT_QUOTES | ENT_HTML5, 'UTF-8');
 }

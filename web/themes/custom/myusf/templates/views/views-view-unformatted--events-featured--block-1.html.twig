@@ -15,7 +15,24 @@
  * @see template_preprocess_views_view_unformatted()
  */
 #}
+
+
+
 <div id="carouselControls" class="carousel slide" data-ride="carousel"  data-interval="10000">
+  <ol class="carousel-indicators">
+
+{% for row in rows %}
+ {% set counter = row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ counter_1 }}'] %}
+    {% if counter == 0 %}
+      {% set active = "active" %}
+    {% else %}
+      {% set active = "" %}
+    {% endif %}
+
+  <li data-target="#carouselControls" data-slide-to="{{ counter }}" class="{{ active }}"></li>
+{% endfor %}
+
+  </ol>
   <div class="carousel-inner">
 {% for row in rows %}
 	{{ row.content }}
