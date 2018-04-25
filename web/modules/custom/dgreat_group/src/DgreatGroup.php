@@ -101,6 +101,7 @@ class DgreatGroup {
     $ids = $this->entity->get($field)->getValue();
     $flag_service = \Drupal::service('flag');
     $flag = $flag_service->getFlagById('favorite');
+    $db = \Drupal::database();
 
     // Grabs each groups' default links ids.
     foreach ($ids as $gid) {
@@ -125,18 +126,16 @@ class DgreatGroup {
       }
     }
 
+    // Purge all their defaults.
+    $query = $db->delete('flagging')
+      ->condition('uid', $this->entity->id())
+      ->execute();
+
     // Let's go through Each Node and flag each node.
     if (!empty($nids)) {
       foreach ($nids as $nid) {
         $node = Node::load($nid);
-        $check = $flag_service->getFlagging($flag, $node, $this->entity);
-        $is_flagged = $flag->isFlagged($node, $this->entity);
-
-        // Check to remove flags when resaving users.
-        if ($is_flagged && $check !== NULL) {
-          $flag_service->unflag($flag, $node, $this->entity);
-        }
-        if (!$is_flagged) {
+        if (!$flag->isFlagged($node, $this->entity)) {
           $flag_service->flag($flag, $node, $this->entity);
         }
       }

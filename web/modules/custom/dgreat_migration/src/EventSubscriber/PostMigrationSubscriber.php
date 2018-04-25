@@ -47,7 +47,12 @@ class PostMigrationSubscriber implements EventSubscriberInterface {
   private function flagAllUsers() {
     $users = User::loadMultiple();
     foreach ($users as $user) {
-      drush_print(dt('Adding flags to uid !uid', ['!uid' => $user->id()]));
+      if ($user->id() == 0) {
+        continue;
+      }
+      if (php_sapi_name() === 'cli') {
+        drush_print(dt('Adding flags to uid !uid', ['!uid' => $user->id()]));
+      }
       $add = (new DgreatGroup($user))->flagUserDefaultContent('field_user_group');
     }
   }

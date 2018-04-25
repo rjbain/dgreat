@@ -28,6 +28,25 @@ function dgreat_views_help($route_name, RouteMatchInterface $route_match) {
 }
 
 /**
+ * Implements hook_views_data_alter().
+ */
+function dgreat_views_views_data_alter(array &$data) {
+  $data['node_field_data']['dgreat_flag_relationship'] = [
+    'title' => t('Quick Link Special Flag Relationship'),
+    'help' => t('Alters view based off user role and what is seen.'),
+    'relationship' => [
+      'group' => t('Flag'),
+      'label' => t('Flags'),
+      'base' => 'flagging',
+      'base field' => 'entity_id',
+      'relationship field' => 'nid',
+      'id' => 'dgreat_flag_relationship',
+      'flaggable' => 'node',
+    ],
+  ];
+}
+
+/**
  * Implements hook_views_pre_render().
  */
 function dgreat_views_views_pre_render(ViewExecutable $view) {
@@ -185,3 +204,4 @@ function _dgreat_views_remove_duplicates($results) {
 
   return $new_results;
 }
+
