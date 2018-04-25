@@ -104,7 +104,6 @@ function dgreat_group_form_group_groups_edit_form_alter(&$form, FormStateInterfa
   }
 
   foreach ($ql_current as $nid) {
-    $node = $nid['target_id']['#default_value'];
     if (isset($nid['target_id'])) {
       $node = $nid['target_id']['#default_value'];
       if (isset($node) && $node instanceof Node) {
@@ -113,6 +112,7 @@ function dgreat_group_form_group_groups_edit_form_alter(&$form, FormStateInterfa
     }
   }
 
+  // Set the defaults to the utility class.
   DgreatGroupUtility::setOriginal($nids);
 }
 
@@ -145,15 +145,21 @@ function _dgreat_group_form_submit($form, FormStateInterface $form_state) {
     }
   }
 
-  // Grab the differences.
+  // Grab new nids.
   $new_nids = array_diff($nids, $orig_defaults);
 
+  // Grab removed defaults.
+  $removed_nids = array_diff($orig_defaults, $nids);
 
-  if (!empty($new_nids) && $group = \Drupal::routeMatch()->getParameter('group')) {
+  if ((!empty($new_nids) || !empty($removed_nids))
+      && $group = \Drupal::routeMatch()->getParameter('group')) {
+
+    // Grab all thy members.
     $members = $group->getMembers();
 
+    // Lets do this.
     foreach ($members as $member) {
-      $operations[] = ['Drupal\kalalead\Batch\KalaleadBatch::batchProcess', [$new_nids, $group, $members]];
+      $operations[] = ['Drupal\dgreat_group\Batch\DgreatGroupBatch::batchProcess', [$new_nids, $removed_nids, $group, $member]];
     }
 
     // Fail safe in case the batch fails in building the operations.
