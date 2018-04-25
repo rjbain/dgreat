@@ -7,7 +7,10 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\dgreat_group\DgreatGroup;
+use Drupal\dgreat_group\DgreatGroupUtility;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\Entity\Node;
 
 /**
  * Implements hook_help().
@@ -79,4 +82,96 @@ function dgreat_group_user_insert(EntityInterface $entity) {
 function dgreat_group_user_update(EntityInterface $entity) {
   $add = (new DgreatGroup($entity))->addUserToGroup('field_user_group');
   $add = (new DgreatGroup($entity))->flagUserDefaultContent('field_user_group');
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dgreat_group_form_group_groups_edit_form_alter(&$form, FormStateInterface $form_state) {
+  $form['actions']['submit']['#submit'][] = '_dgreat_group_form_submit';
+  $fl_current = $form['field_default_favorite_links']['widget'];
+  $ql_current = $form['field_default_quick_links']['widget'];
+  $nids = [];
+
+  // Grab the current nids.
+  foreach ($fl_current as $nid) {
+    if (isset($nid['target_id'])) {
+      $node = $nid['target_id']['#default_value'];
+      if (isset($node) && $node instanceof Node) {
+        $nids[] = $node->id();
+      }
+    }
+  }
+
+  foreach ($ql_current as $nid) {
+    $node = $nid['target_id']['#default_value'];
+    if (isset($nid['target_id'])) {
+      $node = $nid['target_id']['#default_value'];
+      if (isset($node) && $node instanceof Node) {
+        $nids[] = $node->id();
+      }
+    }
+  }
+
+  DgreatGroupUtility::setOriginal($nids);
+}
+
+/**
+ * Submit handler for dgreat_group_form_group_groups_edit_form_alter().
+ *
+ * @param $form
+ *   The form object.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form_state object.
+ */
+function _dgreat_group_form_submit($form, FormStateInterface $form_state) {
+  // Grab our default items.
+  $fl_defaults = $form_state->getValue('field_default_favorite_links');
+  $ql_defaults = $form_state->getValue('field_default_quick_links');
+  $nids = [];
+
+  $orig_defaults = DgreatGroupUtility::getOriginal();
+
+  // Grab their nids.
+  foreach ($fl_defaults as $nid) {
+    if (isset($nid['target_id']) && $nid['target_id'] !== NULL) {
+      $nids[] = $nid['target_id'];
+    }
+  }
+
+  foreach ($ql_defaults as $nid) {
+    if (isset($nid['target_id']) && $nid['target_id'] !== NULL) {
+      $nids[] = $nid['target_id'];
+    }
+  }
+
+  // Grab the differences.
+  $new_nids = array_diff($nids, $orig_defaults);
+
+
+  if (!empty($new_nids) && $group = \Drupal::routeMatch()->getParameter('group')) {
+    $members = $group->getMembers();
+
+    foreach ($members as $member) {
+      $operations[] = ['Drupal\kalalead\Batch\KalaleadBatch::batchProcess', [$new_nids, $group, $members]];
+    }
+
+    // Fail safe in case the batch fails in building the operations.
+    if (isset($operations)) {
+      // Set the batch to win the stuff.
+      $batch = array(
+        'title' => t('Updating...'),
+        'operations' => $operations,
+        'init_message' => t('Importing users to process.'),
+        'finished' => 'Drupal\dgreat_group\Batch\DgreatGroupBatch::batchFinished',
+        'file' => drupal_get_path('module', 'dgreat_group') . '/src/Batch/DgreatGroupBatch.php'
+      );
+
+      // Engage.
+      batch_set($batch);
+    }
+    else {
+      drupal_set_message(t('No users need to be updated!'), 'warning', TRUE);
+    }
+  }
 }

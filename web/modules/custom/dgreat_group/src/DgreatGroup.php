@@ -102,7 +102,7 @@ class DgreatGroup {
     $flag_service = \Drupal::service('flag');
     $flag = $flag_service->getFlagById('favorite');
 
-    // Let's go through Each Node and flag each node.
+    // Grabs each groups' default links ids.
     foreach ($ids as $gid) {
       if (isset($gid['target_id'])) {
 
@@ -111,20 +111,21 @@ class DgreatGroup {
         if ($group !== NULL) {
           if ($group->hasField('field_default_favorite_links')) {
             $gidz = $group->get('field_default_favorite_links')->getValue();
-            foreach ($gidz as $gid) {
-              $nids[] = $gid['target_id'];
+            foreach ($gidz as $gidd) {
+              $nids[] = $gidd['target_id'];
             }
           }
           if ($group->hasField('field_default_quick_links')) {
             $gidz = $group->get('field_default_quick_links')->getValue();
-            foreach ($gidz as $gid) {
-              $nids[] = $gid['target_id'];
+            foreach ($gidz as $gidd) {
+              $nids[] = $gidd['target_id'];
             }
           }
         }
       }
     }
 
+    // Let's go through Each Node and flag each node.
     if (!empty($nids)) {
       foreach ($nids as $nid) {
         $node = Node::load($nid);
