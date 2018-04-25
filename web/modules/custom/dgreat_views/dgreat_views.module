@@ -171,7 +171,9 @@ function dgreat_views_views_pre_view(ViewExecutable $view, $display_id, array &$
         if (!in_array('administrator', $user_roles)) {
           $view->removeHandler($display, 'field', 'edit_node');
           $view->removeHandler($display, 'field', 'delete_node');
-          $view->removeHandler($display, 'header', 'area');
+          if ($name == 'favorite_links') {
+            $view->removeHandler($display, 'header', 'area');
+          }
         }
       }
       break;
