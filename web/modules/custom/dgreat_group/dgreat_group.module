@@ -55,11 +55,17 @@ function dgreat_group_node_update(EntityInterface $entity) {
 
   switch ($entity->bundle()) {
     case 'favorite_link':
-      $add = (new DgreatGroup($entity))->addNodeToGroup('field_group_audience');
+      // Prevents memory crashes on new node saves.
+      if (isset($_POST['form_id']) && $_POST['form_id'] == 'node_favorite_link_edit_form') {
+        $update = (new DgreatGroup($entity))->addNodeToGroup('field_group_audience');
+      }
       break;
 
     case 'usf_service':
-      $add = (new DgreatGroup($entity))->addNodeToGroup('field_usfcat_audience_ref');
+      // Prevents memory crashes on new node saves.
+      if (isset($_POST['form_id']) && $_POST['form_id'] == 'node_usf_service_edit_form') {
+        $update = (new DgreatGroup($entity))->addNodeToGroup('field_usfcat_audience_ref');
+      }
       break;
   }
 }
