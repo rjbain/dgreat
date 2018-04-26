@@ -44,12 +44,10 @@ class DgreatGroup {
           continue;
         }
 
-        // Lets remove the existing content to prevent errors.
+        // Lets skip if the node already exists in that group.
         $check = $group->getContentByEntityId($plugin_id, $this->entity->id());
         if (!empty($check)) {
-          foreach ($check as $g) {
-            $g->delete();
-          }
+          continue;
         }
 
         // Add the content to the group.
