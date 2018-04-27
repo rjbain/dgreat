@@ -23,8 +23,12 @@ html, body { //fixes mobile view sliding left and right issue
 	width:94%;
 	padding-left:2%;
 	padding-right:2%;
-	margin-left:auto;
-	margin-right:auto;
+	@include margin-L-R-auto;
+
+	@include media-breakpoint-up(large_desktop) { 
+		/*max-width: 100%!important;*/
+	}
+
 }
 
  .sidebar {
@@ -42,6 +46,10 @@ html, body { //fixes mobile view sliding left and right issue
     	position: relative;
     	right: 0!important;
     	margin-right: -30px;
+	}
+
+	@include media-breakpoint-up(large_desktop) {
+		max-width: 280px;
 	}
 }
 
