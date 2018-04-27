@@ -7,12 +7,14 @@
 
   	@include media-breakpoint-down(phone) {
   		width:100%;
+  		margin-top: 40px;
   	}
 }
 
 nav {
 	padding-top:0!important;
 	padding-bottom:0!important;
+
 }
 
 .bg-dark {
@@ -28,6 +30,12 @@ nav.navbar {
     		color: $yellow!important;
     		background-color: transparent;
 		}
+
+		@include media-breakpoint-up(tablet) {
+			font-size: .7rem;
+    		padding-left: 5px;
+    		padding-right: 5px;
+    	}
 	}
 	li {
 		font-size: .9rem;
@@ -70,8 +78,12 @@ nav.navbar {
 	}
 	@include media-breakpoint-down(phone) {
 		&:before {
-			left:-15px;
-			margin-top:0px;
+			margin-top: 0px;
+		}
+	}
+	@include media-breakpoint-down(tablet) {
+		&:before {
+			left: -5px;
 		}
 	}
 }
@@ -80,9 +92,15 @@ nav.navbar {
 	border:0;
 	margin-left: 120px;
 
-	@include media-breakpoint-down(phone) {
+	@include media-breakpoint-down(tablet) {
 		flex-direction: row;
+		margin-left: 0px;
+	}
+
+	@include media-breakpoint-down(phone) {		
 		margin-left: 0;
+		width:100vw;
+
 		li {
 			flex-direction: row!important;
 			width: 20%;
@@ -126,9 +144,7 @@ nav.navbar {
 	}
 }
 #CollapsingNavbar {
-	@include media-breakpoint-down(phone) {
-    	margin-top: 30px;
-	}
+	flex-grow: 1;
 }
 .navbar-expand-lg .navbar-nav .nav-link {
 	@include media-breakpoint-up(desktop) {
@@ -210,7 +226,7 @@ button.header_search {
     	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -190px -96px;
 
     	@include media-breakpoint-down(phone) {
-			right: 95px;
+			right: 115px;
     		top: 13px;
     		bottom: unset;
     	}
@@ -226,7 +242,7 @@ button.header_search {
 
     	@include media-breakpoint-down(phone) {
     		top: 13px;
-    		right: 103px;
+    		right: 123px;
     	}
 	}
 	
@@ -255,6 +271,11 @@ button.header_search {
     	right: 10px;
     	top: 10px;
     }
+
+    @include media-breakpoint-down(tablet) {
+	    position: absolute;
+	    right:30px;    	
+    }
 }
 
 nav input.form-control[type="search"] {
@@ -263,8 +284,8 @@ nav input.form-control[type="search"] {
     @include media-breakpoint-down(phone) {
     	position: absolute;
     	top: 7px;
-    	width: 230px;
-    	left: 10px;
+    	width: 200px;
+    	left: 20px;
     	height: 35px;
 	}
 }
@@ -300,7 +321,11 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 }
 
 //--- Navtabs --//
-
+nav.tabs {
+	@include media-breakpoint-down(phone) {
+		@include margin-L-R-auto;
+	}
+}
 .nav-tabs {
 	.nav-item {
  		padding-bottom: 0;
@@ -326,6 +351,7 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 .breadcrumb-item {
 	font-size: .6rem;
 	text-transform: uppercase;
+	padding-bottom: 0;
 }
 
 .breadcrumb-item a {
@@ -342,7 +368,7 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 }
 
 .breadcrumb {
-	padding: .75rem 1rem;
+	padding: .75rem 1rem 0 .75rem;
     margin-bottom: 1rem;
     list-style: none;
     background-color: transparent;
@@ -362,6 +388,7 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 	border: 0;
 	border-top: 4px solid $yellow;
 	border-bottom: 4px solid $yellow;
+	width: 250px;
 }
 
 /*#sidebar_first ul.clearfix.nav {
@@ -438,17 +465,23 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 							text-decoration: underline;
 						}
 
-						&.active:before {
-							display: block;
-							position: relative;
-							content: "";
-							width: 8px;
-							height: 8px;
-							top:13px;
-							left: -18px;
-							background: $yellow;
-							-webkit-transform: rotate(45deg); /* Ch <36, Saf 5.1+, iOS < 9.2, An =<4.4.4 */
-					      	transform: rotate(45deg); /* IE 10, Fx 16+, Op 12.1+ */
+						&.active {
+
+							padding-top: 0.25rem!important;
+							padding-bottom: 0.25rem;
+
+							&:before {
+								display: block;
+								position: relative;
+								content: "";
+								width: 8px;
+								height: 8px;
+								top:13px;
+								left: -18px;
+								background: $yellow;
+								-webkit-transform: rotate(45deg); /* Ch <36, Saf 5.1+, iOS < 9.2, An =<4.4.4 */
+						      	transform: rotate(45deg); /* IE 10, Fx 16+, Op 12.1+ */
+					      	}
 						}
 					}
 				}
@@ -458,7 +491,11 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 
 					li {
 						margin: 0 0 -10px;
-					    width: 228px;
+					    width: 230px;
+
+					    &:last-of-type {
+					    	padding-bottom: 0;
+					    }
 					}
 
 					a {
@@ -466,16 +503,23 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 						color:$black;
 						padding: 5px;
     					margin-top: 0.5rem!important;
-    					margin-bottom: 0.5rem;
-    					display: inline-block!important;
-
+    					margin-bottom: 1rem;  /* margin-bottom: 0.5rem;
+    					display: inline-block!important;*/
+    					margin-left: 9px;
+    					padding-left: 13px;
 					
 						&.active:before {
 							display: none;
 				      	}
 
 				      	&.active {
-				      		background-color: transparentize( $yellow, 0.8);				      		
+				      		background-color: transparentize( $green, 0.2);	
+				      		color:$white;	
+
+				      		&:hover,
+				      		&:focus {
+				      			color:$white!important;
+				      		}		      		
 				      	}				      	
 					}
 				}
@@ -532,12 +576,21 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 	.block {
     	border: 0;
     	padding: 5px;
+
+    	@include media-breakpoint-up(large_desktop) {
+    		margin-left: calc(( 100% - 924px) / 2 ); /*links+logo+padding*/
+    		margin-right: calc(( 100% - 924px) / 2 );
+    	}
+
+    	@include media-breakpoint-down(phone) {
+    		@include margin-L-R-auto;
+    	}
 	}
 }
 
 .footer-link {
 	font-size:0.7rem;
-	color:$white;
+	color:$white!important;
 	text-decoration:none;
 	display: block;
 	padding: .15rem 1rem;
@@ -599,7 +652,7 @@ a.logo {
     &:before {
     	display: inline-block;
     	content: "";
-		width: 440px;
+		width: 438px;
     	height: 34px;
     	position: relative;
     	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat;    	    
@@ -615,7 +668,7 @@ a.logo {
     @include media-breakpoint-up(large_desktop) {
     	width: 390px;
     	height: 38px;
-    	margin: -38px -76px -38px;
+    	margin: -38px -410px -38px;
     	float: right;
     }
 }
