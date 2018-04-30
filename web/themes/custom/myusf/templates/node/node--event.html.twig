@@ -85,19 +85,19 @@
 <article{{ attributes.addClass(classes) }}>
   <p class="event-date">{{ start_date }}, {{ start_time }} - {{ end_time }}</p>
   <p class="event-location">{{ location }}</p>
-  <div class="event_additional_info">
+  <div class="event-additional-info">
     {% autoescape false %}
       {{ additional_info }}
     {% endautoescape %}
   </div>
   <div{{ content_attributes.addClass('content') }}>
-    <div class="event_image">
+    <div class="event-image">
       {% if node.field_image_url.value %}
         <img src="{{ image_url }}" class="image">
       {% endif %}
     </div>
     <div class="body">
-  	 <div class="event_description">
+  	 <div class="event-description">
        {% autoescape false %}
           {{ description }}
         {% endautoescape %}
