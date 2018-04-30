@@ -61,18 +61,6 @@
 #}
 {{ attach_library('bootstrap_barrio/node') }}
 
-<style>
-
-.carousel-caption {
-  
-  right: 0 !important;
-  left: 0 !important;
-  bottom: 0px !important;
-  background:rgba(255,255,255,0.7);
-}
-</style>
-
-
 {% if search_content is empty %}
   {% set search_content = "all" %}
   {% set search_content_form = null %}
@@ -99,6 +87,10 @@
   {% endif %}
 </div>
 
+<div class="event_search_anchor"><a href="#event_search_anchor">Search</a></div>
+
 <div>
   {{ drupal_view('events_search', 'block_1', search_content, event_category, event_date) }}
 </div>
+
+<a name="event_search_anchor"></a>

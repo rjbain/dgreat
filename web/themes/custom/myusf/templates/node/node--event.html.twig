@@ -81,26 +81,27 @@
 {% set location = node.field_location.value %}
 {% set image = file_url(node.field_image.entity.uri.value) %}
 {% set image_url = node.field_image_url.uri %}
+{% set f_image_url = node.field_f_image_url.uri %}
 <article{{ attributes.addClass(classes) }}>
-<!--<h2 {{ title_attributes }}>{#{ title }#}</h2>-->
-<p class="event-date">{{ start_date }}, {{ start_time }} - {{ end_time }}</p>
-<p class="event-location">{{ location }}</p>
+  <p class="event-date">{{ start_date }}, {{ start_time }} - {{ end_time }}</p>
+  <p class="event-location">{{ location }}</p>
+  <div class="event-additional-info">
+    {% autoescape false %}
+      {{ additional_info }}
+    {% endautoescape %}
+  </div>
   <div{{ content_attributes.addClass('content') }}>
-    <div class="body">
+    <div class="event-image">
       {% if node.field_image_url.value %}
-        <img src="{{ image_url }}" align="right" class="image">
+        <img src="{{ image_url }}" class="image">
       {% endif %}
-
-      	<div class="event_description">
-        	{% autoescape false %}
-          		{{ description }}
-        	{% endautoescape %}
-    	</div>
-      	<div class="event_additional_info">
-        	{% autoescape false %}
-          		{{ additional_info }}
-        	{% endautoescape %}
-        </div>
+    </div>
+    <div class="body">
+  	 <div class="event-description">
+       {% autoescape false %}
+          {{ description }}
+        {% endautoescape %}
+      </div>
     </div>
   </div>
 </article>
