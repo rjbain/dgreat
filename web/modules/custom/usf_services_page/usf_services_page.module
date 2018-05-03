@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Contains usf_services_page.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function usf_services_page_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the usf_services_page module.
+    case 'help.page.usf_services_page':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This page will display ITS services and applications.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function usf_services_page_theme($existing, $type, $theme, $path) {
+  return array(
+    'usf_services_page' => array(
+      'path' => $path . '/templates',
+      'variables' => array('test_var' => NULL),
+    ),
+  );
+}
