@@ -25,8 +25,10 @@ html, body { //fixes mobile view sliding left and right issue
 	padding-right:2%;
 	@include margin-L-R-auto;
 
-	@include media-breakpoint-up(large_desktop) { 
-		/*max-width: 100%!important;*/
+	@include media-breakpoint-only(tablet)  { 
+		width:99%;
+		padding-left:.5%;
+		padding-right:.5%;
 	}
 
 }
@@ -38,14 +40,23 @@ html, body { //fixes mobile view sliding left and right issue
 	}
 }
 
-
+.col {
+	@include media-breakpoint-only(tablet) {
+		max-width: 70%;
+		flex-basis: auto;
+	}
+}
 .col-md-3{
 	@include media-breakpoint-only(tablet) {
 	    max-width: 256px;
     	float: right!important;
     	position: relative;
     	right: 0!important;
-    	margin-right: -30px;
+
+    	&.order-last {
+    		flex: 0 0 100%;
+    		max-width: 100%!important;
+    	}
 	}
 
 	@include media-breakpoint-up(large_desktop) {
@@ -61,3 +72,18 @@ html, body { //fixes mobile view sliding left and right issue
     	max-width: 70%;
 	}
 }
+
+/*#main-wrapper {     --------- to be used when we apply sticky footer
+	margin-bottom: 210px;
+
+	@include media-breakpoint-only(tablet) {
+		margin-bottom: 130px;
+	}
+
+	@include media-breakpoint-up(desktop) {
+		margin-bottom: 80px;
+	}
+}. */
+
+
+
