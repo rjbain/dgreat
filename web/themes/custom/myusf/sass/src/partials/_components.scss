@@ -69,6 +69,42 @@
 /* Calendar -- landing list view
 ================================================ */
 
+.event_search_anchor {
+	display: none;
+
+	@include media-breakpoint-down(phone) {
+		display: unset;
+			    
+	    width: 300px;
+	    display: block;
+	    text-align: center;
+	    padding: 8px;
+	    margin-top: 30px;
+	    margin-left: auto;
+	    margin-right: auto;
+	    border: 1px solid $light_gray;
+
+	    a {
+	    	color: $text_gray;
+	    }
+	    
+
+		&:after {
+			position: relative;
+		    display: inline-block;
+		    content: "";
+		    width: 10px;
+		    height: 8px;
+		    top: 0px;
+		    right: 0px;
+		    margin-left: 5px;
+		    z-index: 1;
+		    background: url(/themes/custom/myusf/images/site/icons.svg) -239px -150px no-repeat;
+		    opacity: .7;
+		}
+	}
+}
+
 .view-events-search {
 	margin-top: 1rem;
 

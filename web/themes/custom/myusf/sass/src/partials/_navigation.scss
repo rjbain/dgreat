@@ -5,9 +5,13 @@
 	display: table;
   	margin: 0 auto;
 
+  	@include media-breakpoint-only(tablet) {
+  		margin-top: -9px;
+  	}
+
   	@include media-breakpoint-down(phone) {
   		width:100%;
-  		margin-top: 40px;
+  		margin-top: 30px;
   	}
 }
 
@@ -22,6 +26,7 @@ nav {
 }
 
 nav.navbar {
+	margin-bottom: 2rem;
 	a.nav-link {
     	color: $white!important;
     	text-decoration:none;
@@ -33,8 +38,8 @@ nav.navbar {
 
 		@include media-breakpoint-up(tablet) {
 			font-size: .7rem;
-    		padding-left: 5px;
-    		padding-right: 5px;
+    		padding-left: 7px;
+    		padding-right: 7px;
     	}
 	}
 	li {
@@ -53,6 +58,7 @@ nav.navbar {
 	}
 	@include media-breakpoint-up(tablet) {
 		padding-right: 2.4rem;
+		height: 60px;
 	}
 }
 
@@ -78,12 +84,13 @@ nav.navbar {
 	}
 	@include media-breakpoint-down(phone) {
 		&:before {
-			margin-top: 0px;
+			margin-top: 3px;
 		}
 	}
 	@include media-breakpoint-down(tablet) {
 		&:before {
 			left: -5px;
+			margin-top: 7px;
 		}
 	}
 }
@@ -94,11 +101,11 @@ nav.navbar {
 
 	@include media-breakpoint-down(tablet) {
 		flex-direction: row;
-		margin-left: 0px;
+		margin-left: 15px;
 	}
 
 	@include media-breakpoint-down(phone) {		
-		margin-left: 0;
+		margin-left: 15px;
 		width:100vw;
 
 		li {
@@ -157,8 +164,17 @@ nav.navbar {
 .navbar-expand-lg .navbar-nav .dropdown-menu {
 	padding: 0;
 
+	@include media-breakpoint-only(tablet) {
+		position: absolute;
+	}
+
 	.dropdown-item {
 		border-bottom:1px solid $white;
+
+		@include media-breakpoint-down(tablet) {
+			padding: .5rem 1rem!important;
+			line-height: 1.2rem!important;
+		}
 
 		a {
 			font-size: .85rem;
@@ -183,14 +199,13 @@ nav.navbar {
 		}
 	}
 
-	@include media-breakpoint-up(large_desktop) {
-		background: $light_beige;
+	@include media-breakpoint-up(tablet) {
+		background: $beige;
 		border-radius: 0;
 		border: 0;
-		margin-top: 1px;
 		
 		&:hover, &:focus {
-			background: $light_beige;
+			background: $beige;
 		}
 	}
 	.dropdown-item {	
@@ -198,13 +213,29 @@ nav.navbar {
 
 		&:hover,
 		&:focus {
-			background: $beige;
+			background: $light_beige;
 		}
 	}
 }
 
 .navbar-nav .dropdown.show a.nav-link.active {
     color: $yellow!important;
+}
+
+.navbar-nav {
+	@include media-breakpoint-only(tablet) {
+		li.nav-item.menu-item--expanded.dropdown:last-of-type {
+
+			ul {
+				width:233px;
+
+				li a {
+				    white-space: normal;
+				}
+			}
+
+		}
+	}
 }
 
 // end main nav dropdown //
@@ -225,6 +256,10 @@ button.header_search {
     	margin: auto 10px auto auto;
     	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -190px -96px;
 
+    	@include media-breakpoint-only(tablet) {
+    		right: 115px;
+    	}
+
     	@include media-breakpoint-down(phone) {
 			right: 115px;
     		top: 13px;
@@ -239,6 +274,10 @@ button.header_search {
     	right: 138px;
     	margin: auto;
     	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -214px -96px;
+
+    	@include media-breakpoint-only(tablet) {
+    		right: 123px;
+    	}
 
     	@include media-breakpoint-down(phone) {
     		top: 13px;
@@ -274,19 +313,29 @@ button.header_search {
 
     @include media-breakpoint-down(tablet) {
 	    position: absolute;
-	    right:30px;    	
+	    top: 15px;
+	    right: 20px;    	
     }
 }
 
 nav input.form-control[type="search"] {
     display: none!important;
+    border-radius: 0;
+
+    @include media-breakpoint-down(tablet) {
+    	position: absolute;
+    	top: 15px;
+    	width: 250px;
+    	right: 150px;
+    	height: 30px;
+	}
 
     @include media-breakpoint-down(phone) {
     	position: absolute;
-    	top: 7px;
+    	top: 12px;
     	width: 200px;
     	left: 20px;
-    	height: 35px;
+    	height: 30px;
 	}
 }
 
@@ -322,6 +371,7 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 
 //--- Navtabs --//
 nav.tabs {
+	margin-left: 17px;
 	@include media-breakpoint-down(phone) {
 		@include margin-L-R-auto;
 	}
@@ -369,6 +419,7 @@ nav.tabs {
 
 .breadcrumb {
 	padding: .75rem 1rem 0 .75rem;
+	margin-top: 1rem;
     margin-bottom: 1rem;
     list-style: none;
     background-color: transparent;
@@ -389,6 +440,14 @@ nav.tabs {
 	border-top: 4px solid $yellow;
 	border-bottom: 4px solid $yellow;
 	width: 250px;
+
+	@include media-breakpoint-down(tablet) { 
+		width: 190px;
+	}
+
+	@include media-breakpoint-down(phone) { 
+		width: 100%;
+	}
 }
 
 /*#sidebar_first ul.clearfix.nav {
@@ -406,6 +465,9 @@ nav.tabs {
 			border-bottom: 1px solid #DDDAD1;
 			padding-bottom: 0;
 			
+			@include media-breakpoint-down(tablet) { 
+				width: 190px;
+			}
 
 			&:last-of-type {
 				border: 0;
@@ -432,6 +494,11 @@ nav.tabs {
 		    		color: $green!important;
 		    		background: $light_beige;
 		    	}
+
+		    	@include media-breakpoint-down(tablet) { 
+					font-size: 0.8rem;
+					line-height: 1.1rem;
+				}
 			}
 
 			//Second-level menu
@@ -444,6 +511,10 @@ nav.tabs {
 					border-bottom: 0;
 					padding-left: 0;
 					width:240px;
+
+					@include media-breakpoint-down(tablet) { 
+						width: 170px;
+					}
 
 					&:first-of-type {
 						margin-top:-10px;
@@ -492,6 +563,10 @@ nav.tabs {
 					li {
 						margin: 0 0 -10px;
 					    width: 230px;
+
+					    @include media-breakpoint-down(tablet) { 
+					    	width: 170px;
+					    }
 
 					    &:last-of-type {
 					    	padding-bottom: 0;
@@ -571,7 +646,14 @@ nav.tabs {
 =================================================*/
 .site-footer {
 	background:$green;
-	padding: 10px 0 15px;
+	padding: 0;
+	/*position: absolute;
+    bottom: 0;
+    width: 100%; - to be used when we apply sticky footer */
+
+	@include media-breakpoint-only(phone) {		
+		padding: 10px 0 0;
+	}
 
 	.block {
     	border: 0;
@@ -582,8 +664,8 @@ nav.tabs {
     		margin-right: calc(( 100% - 924px) / 2 );
     	}
 
-    	@include media-breakpoint-down(phone) {
-    		@include margin-L-R-auto;
+    	@include media-breakpoint-down(tablet) {   		
+    		margin: 10px auto;
     	}
 	}
 }
@@ -622,13 +704,14 @@ nav.tabs {
     column-count: 3;
     column-gap: 10px;
     text-align: center;
-
+    padding-top: 15px;
 
 	@include media-breakpoint-up(tablet) {
 		display: flex;
     	margin: 0 auto!important;
     	columns: unset;
     	justify-content: center;
+    	padding-top: 0;
 	}
 
 	@include media-breakpoint-up(large_desktop) {
@@ -642,7 +725,10 @@ a.logo {
     overflow: hidden;
     white-space: nowrap;
     width: 325px;
-    margin: 24px auto;
+
+    @include media-breakpoint-only(tablet) {
+    	margin: 5px auto;
+    }
 
     &:hover, 
     &:focus  {
