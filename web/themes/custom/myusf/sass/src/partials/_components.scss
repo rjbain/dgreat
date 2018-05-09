@@ -69,20 +69,57 @@
 /* Calendar -- landing list view
 ================================================ */
 
+.event_search_anchor {
+	display: none;
+
+	@include media-breakpoint-down(phone) {
+		display: unset;
+			    
+	    width: 300px;
+	    display: block;
+	    text-align: center;
+	    padding: 8px;
+	    margin-top: 30px;
+	    margin-left: auto;
+	    margin-right: auto;
+	    border: 1px solid $light_gray;
+
+	    a {
+	    	color: $text_gray;
+	    	text-decoration: none;
+	    }
+	    
+
+		&:after {
+			position: relative;
+		    display: inline-block;
+		    content: "";
+		    width: 10px;
+		    height: 8px;
+		    top: 0px;
+		    right: 0px;
+		    margin-left: 5px;
+		    z-index: 1;
+		    background: url(/themes/custom/myusf/images/site/icons.svg) -239px -150px no-repeat;
+		    opacity: .7;
+		}
+	}
+}
+
 .view-events-search {
 	margin-top: 1rem;
 
 	 .views-row {
-		  a, a:hover, a:focus {
+		a, a:hover, a:focus {
 			font-weight: 400 !important;
 			text-decoration: none;
 			color: $text_gray;
-			
 		}
-
-		.views-row b {
+		 h3.event-list-title {  /* was .views-row b */
 			font-weight: 800 !important;
-			color: $green;
+			color: $green!important;
+			font-size: 1rem;
+			text-transform: capitalize;
 		}
 
 		&:hover,
@@ -133,7 +170,7 @@
 	margin-top: .8rem;
 
 	@include media-breakpoint-down(phone) {
-	   margin-left: -25px;
+	  /* margin-left: -25px;*/
 	}
 
 	.page-item a, .pager__item--next a {
@@ -143,7 +180,7 @@
 	    line-height: 1.125;
 	    text-decoration: none;	    
 	    display: inline-block;	    
-	    padding: 12px;
+	    padding: 10px;
 	    border: 0;
 	    vertical-align: top;
 	}
@@ -191,11 +228,37 @@
 	}
 }
 
+
+
+a.search_clear{	 
+		position: relative;
+		float: right;
+    	right: 0;
+    	margin-top: 10px;
+    	text-decoration: none;
+
+	&:before {
+		position: absolute;
+	    display: inline-block;
+	    content: "";
+	    bottom: 3px;
+	    left: -15px;
+	    width: 11px;
+	    height: 11px;
+		background: url(/themes/custom/myusf/images/site/icons.svg) -300px -113px no-repeat;
+	}
+}
+
 /* Calendar -- event detail page
 ================================================ */
 h1.js-quickedit-page-title.page-title {
 	padding-left: 0;
 	padding-bottom: 0;
+
+	@include media-breakpoint-up(tablet) {
+	    margin-top: -.35rem;
+	    margin-bottom: 1.1rem;
+	}
 }
 
 .event-date {
@@ -214,11 +277,17 @@ h1.js-quickedit-page-title.page-title {
 	text-transform: uppercase;
 }
 
-.event_additional_info p, a {
-	color: $green;
-	font-weight: 600;
-	text-decoration: none;
+.event-additional-info {
+    padding-left: 18px;
+    border-left: 5px solid #fdbb30;
+
+    p, a {
+		color: $green;
+		font-weight: 600;
+		text-decoration: none;
+	}
 }
+
 
 .diamond_link {
     @include diamond_button(-300px, -129px, 45deg, $yellow, $white, $yellow);

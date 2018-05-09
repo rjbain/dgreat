@@ -92,9 +92,22 @@
 #block-event-search {
     background-color: $light_beige;
     border: none;
-    padding: 0 15px 15px 15px;
+    padding: 0 15px 45px 15px;
     margin-top: 4rem;
     width: inherit;
+
+    @include media-breakpoint-only(tablet) {
+        /*position: absolute;
+        width: 25%;
+        top: -1815px;
+        right: 15px;*/
+
+        position: fixed;
+        width: 25%;
+        right: 30px;
+        top: 190px;
+        margin-top: -22px;
+    }
 
     @include media-breakpoint-down(phone) {
         margin-top: 1rem;
@@ -285,6 +298,9 @@
 =============================================== */ 
 
 #carouselControls {
+    margin-left: 15px;
+    margin-right: 15px;
+
     @include media-breakpoint-down(phone) {
         /*width: 84%;
         margin-left: 8%;*/
@@ -295,25 +311,40 @@
 
 .carousel-control-prev {
     opacity: 1;
-    @include diamond_button(-80px, -130px, 45deg, transparent, $yellow, $green);
+    @include diamond_button(-80px, -128px, 45deg, transparent, $yellow, $green);
 
     &:before {
         width: 10px;
         height: 14px;
         top: 236px;
-        left: 56px;
+        left: 41px;
 
     }
     &:after {
         width: 45px;
         height: 45px;
         top: 220px;
-        left: 40px;
+        left: 25px;
     }
     &:hover,
     &:focus {
         opacity: 1;
     } 
+
+    @include media-breakpoint-down(tablet) { 
+        margin-top: -50px;
+
+        &:before {
+            top: 192px;
+            left: 26px;
+        }
+        &:after {
+            width: 35px;
+            height: 35px;
+            top: 180px;
+            left: 15px;
+        }
+    }
 
     @include media-breakpoint-down(phone) { 
         margin-top: -50px;
@@ -323,6 +354,8 @@
             left: -6px;
         }
         &:after {
+            width: 45px;
+            height: 45px;
             top: 196px;
             left: -23px;
         }
@@ -331,13 +364,13 @@
 
 .carousel-control-next {
     opacity: 1;
-    @include diamond_button( -100px, -130px, 45deg, transparent, $yellow, $green);
+    @include diamond_button( -100px, -128px, 45deg, transparent, $yellow, $green);
 
     &:before {
         width: 10px;
         height: 14px;
         top: 236px;
-        left: 59px;
+        right: 38px;
 
     } 
 
@@ -345,13 +378,28 @@
         width: 45px;
         height: 45px;
         top: 220px;
-        left: 40px;
+        right: 23px;
     }
     
     &:hover,
     &:focus {
         opacity: 1;
     } 
+
+    @include media-breakpoint-down(tablet) { 
+        margin-top: -50px;
+
+        &:before {
+            top: 192px;
+            left: 39px;
+        }
+        &:after {
+            width: 35px;
+            height: 35px;
+            top: 180px;
+            left: 25px;
+        }
+    }
 
     @include media-breakpoint-down(phone) { 
         margin-top: -50px;
@@ -361,6 +409,8 @@
             left: 41px;
         }
         &:after {
+            width: 45px;
+            height: 45px;
             top: 196px;
             left: 23px;
         }
@@ -377,17 +427,39 @@
     height:300px;
     background: linear-gradient(to bottom, transparentize($black, 1) 20%,transparentize( $black, 0) 100%)!important;
     text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
 
-    .carousel-event-title {
+    h3.carousel-event-title {
         font-size: 1.4rem;
         font-weight:700;
         padding-top: 150px;
         color: $white!important;
+
+         @include media-breakpoint-down(tablet) { 
+            font-size: 1.1rem;
+            text-transform: capitalize;
+            padding-left: 70px;
+            padding-right: 70px;
+            padding-bottom: 5px;
+         }
+
+         @include media-breakpoint-down(phone) {  
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 0px;
+         }
     }
 
     p {
         color: $white;
         margin-top: -10px;
+
+         @include media-breakpoint-down(tablet) { 
+            font-size: 0.9rem;
+            line-height: 1.2rem;
+        }
     }
     p:last-of-type {
         margin-top: -15px;
@@ -416,11 +488,18 @@
 
 }
 
-.carousel-indicators li {
-    width: 9px;
-    border-radius: 5px;
-    margin-right: 5px;
-    margin-left: 5px;
+.carousel-indicators {
+
+    @include media-breakpoint-down(tablet) {
+        bottom: 0px;
+    }
+
+    li {
+        width: 9px;
+        border-radius: 5px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
 }
 
 
