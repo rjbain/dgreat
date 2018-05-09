@@ -92,7 +92,7 @@
 #block-event-search {
     background-color: $light_beige;
     border: none;
-    padding: 0 15px 15px 15px;
+    padding: 0 15px 45px 15px;
     margin-top: 4rem;
     width: inherit;
 
@@ -106,6 +106,7 @@
         width: 25%;
         right: 30px;
         top: 190px;
+        margin-top: -22px;
     }
 
     @include media-breakpoint-down(phone) {
@@ -310,7 +311,7 @@
 
 .carousel-control-prev {
     opacity: 1;
-    @include diamond_button(-80px, -130px, 45deg, transparent, $yellow, $green);
+    @include diamond_button(-80px, -128px, 45deg, transparent, $yellow, $green);
 
     &:before {
         width: 10px;
@@ -363,13 +364,13 @@
 
 .carousel-control-next {
     opacity: 1;
-    @include diamond_button( -100px, -130px, 45deg, transparent, $yellow, $green);
+    @include diamond_button( -100px, -128px, 45deg, transparent, $yellow, $green);
 
     &:before {
         width: 10px;
         height: 14px;
         top: 236px;
-        left: 70px;
+        right: 38px;
 
     } 
 
@@ -377,7 +378,7 @@
         width: 45px;
         height: 45px;
         top: 220px;
-        left: 51px;
+        right: 23px;
     }
     
     &:hover,
@@ -430,7 +431,7 @@
     right: 0%;
     bottom: 0%;
 
-    .carousel-event-title {
+    h3.carousel-event-title {
         font-size: 1.4rem;
         font-weight:700;
         padding-top: 150px;
@@ -447,6 +448,7 @@
          @include media-breakpoint-down(phone) {  
             padding-left: 15px;
             padding-right: 15px;
+            padding-top: 0px;
          }
     }
 

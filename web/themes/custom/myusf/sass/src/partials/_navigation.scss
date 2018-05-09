@@ -30,11 +30,17 @@ nav.navbar {
 	a.nav-link {
     	color: $white!important;
     	text-decoration:none;
-    	padding-bottom: .85rem;
+    	padding-bottom: .87rem;
     	padding-top: .75rem;
     	font-weight: 700;
 
-		@include media-breakpoint-up(tablet) {
+    	@include media-breakpoint-up(desktop) {
+    		font-size: .8rem!important;
+    		padding-left: 1.1rem!important;
+    		padding-right: 1.1rem!important;
+    	}
+
+		@include media-breakpoint-only(tablet) {
 			font-size: .7rem;
     		padding-left: 7px;
     		padding-right: 7px;
@@ -435,14 +441,14 @@ nav.tabs {
 }
 
 .breadcrumb {
-	padding: .75rem 1rem 0 .75rem;
+	padding: .75rem 1rem 0 0;
 	margin-top: 1rem;
     margin-bottom: 1rem;
     list-style: none;
     background-color: transparent;
     border-radius: .25rem;
 
-	@include media-breakpoint-down(phone) {
+	@include media-breakpoint-down(tablet) {
 		display: none;
 	}    
 }
@@ -454,17 +460,20 @@ nav.tabs {
 =================================================*/
 #sidebar_first.sidebar .block {
     padding: 0!important;
+
+    @include media-breakpoint-up(tablet) { 
+        margin-bottom: 40px;
+    }
 }
 #sidebar_first nav {
 	margin-left: 0px;
 	border: 0;
 	border-top: 4px solid $yellow;
 	border-bottom: 4px solid $yellow;
-	width: 250px;
+	width: 240px;
 
 	@include media-breakpoint-down(tablet) { 
 		width: 190px;
-		margin-bottom: 40px;
 	}
 
 	@include media-breakpoint-down(phone) { 
@@ -472,9 +481,6 @@ nav.tabs {
 	}
 }
 
-/*#sidebar_first ul.clearfix.nav {
-    padding-top: 0;
-}*/
 
 #sidebar_first nav {
 
@@ -482,7 +488,7 @@ nav.tabs {
 		padding-top:0;
 
 		li {
-			width: 250px;
+			width: 240px;
 			list-style-type: none;
 			border-bottom: 1px solid #DDDAD1;
 			padding-bottom: 0;
@@ -540,7 +546,7 @@ nav.tabs {
 				li {
 					border-bottom: 0;
 					padding-left: 0;
-					width:240px;
+					width:230px;
 
 					@include media-breakpoint-down(tablet) { 
 						width: 170px;
@@ -596,7 +602,7 @@ nav.tabs {
 
 					li {
 						margin: 0 0 -10px;
-					    width: 230px;
+					    width: 220px;
 
 					    @include media-breakpoint-down(tablet) { 
 					    	width: 170px;
@@ -695,6 +701,7 @@ nav.tabs {
 	.block {
     	border: 0;
     	padding: 5px;
+    	width:100vw;
 
     	@include media-breakpoint-up(large_desktop) {
     		/*margin-left: calc(( 100% - 924px) / 2 ); /*links+logo+padding*/
@@ -741,14 +748,16 @@ nav.tabs {
     column-count: 3;
     column-gap: 10px;
     text-align: center;
-    padding-top: 15px;
+    padding-top: 25px;
 
 	@include media-breakpoint-up(tablet) {
 		display: flex;
     	margin: 0 auto!important;
     	columns: unset;
-    	justify-content: center;
     	padding-top: 0;
+	}
+	@include media-breakpoint-only(tablet) {
+		justify-content: center;
 	}
 
 	@include media-breakpoint-up(large_desktop) {
@@ -757,14 +766,15 @@ nav.tabs {
 }
 
 a.logo {
-    position: relative;
+    position: absolute;
     display: block;
     overflow: hidden;
     white-space: nowrap;
     width: 325px;
-    margin: 24px auto;
+    margin: 10px auto;
 
-    @include media-breakpoint-only(tablet) {
+    @include media-breakpoint-down(tablet) {
+    	position: relative;
     	margin: 5px auto;
     }
 
@@ -792,13 +802,9 @@ a.logo {
     @include media-breakpoint-up(desktop) {
     	width: 390px;
     	height: 38px;
-    	margin: -38px -420px -38px; 
+    	margin-top: -38px; 
     	float: right;
-    }
-
-
-    @include media-breakpoint-up(large_desktop) {
-    	margin: -38px -600px -38px; /*was -410px */
+    	right: -50px;
     }
 }
 

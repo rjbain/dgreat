@@ -20,9 +20,9 @@ html, body { //fixes mobile view sliding left and right issue
 }
 
 .container {
-	width:94%;
-	padding-left:2%;
-	padding-right:2%;
+	width:96%;
+	padding-left:30px;
+	padding-right:30px;
 	@include margin-L-R-auto;
 
 	@include media-breakpoint-only(tablet)  { 
@@ -30,14 +30,10 @@ html, body { //fixes mobile view sliding left and right issue
 		padding-left:.5%;
 		padding-right:.5%;
 	}
-
-}
-
- .sidebar {
- 	@include media-breakpoint-down(phone) {	
-    	padding-left: 30px;
-    	padding-right: 30px;
+	@include media-breakpoint-only(desktop) {
+		max-width: 1060px;
 	}
+
 }
 
 .col {
@@ -59,7 +55,9 @@ html, body { //fixes mobile view sliding left and right issue
     		margin-bottom: 20px;
     	}
 	}
-
+	@include media-breakpoint-up(tablet) {
+		max-width: unset;
+	}
 	@include media-breakpoint-up(large_desktop) {
 		max-width: 280px;
 	}
