@@ -441,7 +441,7 @@ nav.tabs {
 }
 
 .breadcrumb {
-	padding: .75rem 1rem 0 0;
+	padding: .75rem 1rem 0 4px;
 	margin-top: 1rem;
     margin-bottom: 1rem;
     list-style: none;
@@ -480,7 +480,6 @@ nav.tabs {
 		width: 100%;
 	}
 }
-
 
 #sidebar_first nav {
 
@@ -646,6 +645,70 @@ nav.tabs {
 	}
 }
 
+#sidebar_first .sidebar h2 {
+	@include media-breakpoint-down(phone) { 
+    	font-weight: 600;
+    	color: #6b6b6b!important;
+    	text-align: center;
+    	text-shadow: unset;
+    	margin-top: -45px;
+		padding-bottom: 0px;
+		border: 0;
+
+		
+	}
+}
+.navbar-toggler-icon:focus, button.navbar-toggler.navbar-toggler-right:focus {
+    outline-color: $white;
+}
+
+button.navbar-toggler.navbar-toggler-right {
+
+
+	    border: 1px solid $light_gray;
+	    border-radius: 0;
+	    width: 100%;
+	    padding-right: 10px;
+
+	    &:after {
+			position: relative;
+		    display: inline-block;
+		    content: "";
+		    width: 10px;
+		    height: 8px;
+		    top: 2px;
+	    	right: -20px;
+		    margin-left: 5px;
+		    z-index: 1;
+		    background: url(/themes/custom/myusf/images/site/icons.svg) -260px -148px no-repeat;
+		    opacity: .7;
+		}
+	
+}
+button.navbar-toggler.navbar-toggler-right.collapsed{
+	&:after {
+		position: relative;
+	    display: inline-block;
+	    content: "";
+	    width: 10px;
+	    height: 8px;
+	    top: 2px;
+    	right: -20px;
+	    margin-left: 5px;
+	    z-index: 1;
+		background: url(/themes/custom/myusf/images/site/icons.svg) -239px -148px no-repeat;
+	}
+}
+.navbar-toggler-icon {
+    padding-top: 10px;
+    font-size: .9rem;
+    height: 30px;
+}
+#CollapsingNavbar {
+	@include media-breakpoint-down(phone) { 
+    	margin-top: -30px;
+	}
+}
 
 /* QUICK LINKS right column 
 =================================================*/
@@ -687,6 +750,10 @@ nav.tabs {
 
 /* FOOTER
 =================================================*/
+nav#block-myusf-footer {
+    position: relative;
+}
+
 .site-footer {
 	background:$green;
 	padding: 0;
@@ -762,6 +829,7 @@ nav.tabs {
 
 	@include media-breakpoint-up(large_desktop) {
 		justify-content: flex-start;
+		padding-left: 6px;
 	}
 }
 
