@@ -103,7 +103,7 @@
     <!--<div class="container">-->
       {% endif %}
         <a class="navbar-brand" href="/"></a>
-        <div class="navbar-collapse" id="CollapsingNavbar">
+        <div class="navbar-collapse">
           <div class="navbar-menu-wrapper">
             {{ page.primary_menu }}
           </div>
@@ -144,9 +144,15 @@
           </section>
         </main>
       {% if page.sidebar_first %}
+
         <div{{ sidebar_first_attributes }}>
           <aside class="section" role="complementary">
-            {{ page.sidebar_first }}
+            <button id="submenuButton" class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#CollapsingNavbar" aria-controls="CollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon">MENU</span></button>
+             <div class="collapse navbar-collapse" id="CollapsingNavbar">
+              <div class="navbar-menu-wrapper">
+                {{ page.sidebar_first }}
+              </div>
+             </div>
           </aside>
         </div>
       {% endif %}
@@ -178,3 +184,5 @@
     {% endif %}
   </div>
 {% endblock %}
+
+
