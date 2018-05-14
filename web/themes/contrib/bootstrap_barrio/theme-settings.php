@@ -288,7 +288,7 @@ function bootstrap_barrio_form_system_theme_settings_alter(&$form, FormStateInte
   );
   $form['components']['navbar']['bootstrap_barrio_navbar_background'] = array(
     '#type' => 'select',
-    '#title' => t('Backgroun navbar'),
+    '#title' => t('Navbar background'),
     '#description' => t('Select a color for background in navbar.'),
     '#default_value' => theme_get_setting('bootstrap_barrio_navbar_background'),
     '#options' => array(

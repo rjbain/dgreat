@@ -310,14 +310,16 @@ function bootstrap_barrio_preprocess_block(&$variables) {
 }
 
 function bootstrap_barrio_preprocess_form_element(&$variables) {
-  if ( is_object($variables['label']['#title']) && !$variables['label']['#title'] instanceof \Drupal\Component\Render\MarkupInterface) {
-    $variables['input_title'] = NULL;
-  }
-  elseif ( is_object($variables['label']['#title']) ) {
-    $variables['input_title'] = $variables['label']['#title'];
-  }
-  else {
-    $variables['input_title'] = $variables['label']['#title'];
+  if (isset($variables['label']['#title'])) {
+    if ( is_object($variables['label']['#title']) && !$variables['label']['#title'] instanceof \Drupal\Component\Render\MarkupInterface) {
+      $variables['input_title'] = NULL;
+    }
+    elseif ( is_object($variables['label']['#title']) ) {
+      $variables['input_title'] = $variables['label']['#title'];
+    }
+    else {
+      $variables['input_title'] = $variables['label']['#title'];
+    }
   }
   if (isset($variables['element']['#attributes'])) {
     $variables['input_attributes'] = new Attribute($variables['element']['#attributes']);
