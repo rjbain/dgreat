@@ -1,5 +1,4 @@
 {% extends "@bootstrap_barrio/layout/page.html.twig" %}
-
 {#
 /**
  * @file
@@ -68,10 +67,6 @@
  * @see html.html.twig
  */
 #}
-
-
-
-
 {% block head %}
   {% if page.secondary_menu or page.page.top_header or page.top_header_form %}
   <!--<nav{{ navbar_top_attributes }}>
@@ -99,11 +94,12 @@
   {% endif %}
   <!--<nav{{ navbar_attributes }}>-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    
     {% if container_navbar %}
     <!--<div class="container">-->
       {% endif %}
         <a class="navbar-brand" href="/"></a>
-        <div class="navbar-collapse" id="CollapsingNavbar">
+        <div class="navbar-collapse">
           <div class="navbar-menu-wrapper">
             {{ page.primary_menu }}
           </div>
@@ -145,10 +141,18 @@
         </main>
       {% if page.sidebar_first %}
         <div{{ sidebar_first_attributes }}>
-          <aside class="section" role="complementary">
-            {{ page.sidebar_first }}
-          </aside>
-        </div>
+         <aside class="section" role="complementary">
+         <!--<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseMenu" aria-expanded="false" aria-controls="collapseMenu" id="collapseButton">
+              Button with data-target
+          </button>-->
+          <button id="submenuButton" class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#CollapsingNavbar" aria-controls="CollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon">MENU</span></button>
+          <div class="collapse show" id="CollapsingNavbar">
+            <div class="submenu">
+              {{ page.sidebar_first }}
+            </div>
+          </div>
+        </aside>
+      </div>
       {% endif %}
       {% if page.sidebar_second %}
         <div{{ sidebar_second_attributes }}>
@@ -159,6 +163,9 @@
       {% endif %}
     </div>
   </div>
+<style>
+
+</style>
 {% endblock %}
 
 {% block footer %}
