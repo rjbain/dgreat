@@ -1,0 +1,43 @@
+uuid: 9a11aba7-5c7c-41eb-82b4-4745a2b993c6
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - ctools
+    - group
+  theme:
+    - myusf
+id: groupoperations
+theme: myusf
+region: sidebar_second
+weight: 0
+provider: null
+plugin: group_operations
+settings:
+  id: group_operations
+  label: 'Group operations'
+  provider: group
+  label_display: visible
+  context_mapping:
+    group: '@group.group_route_context:group'
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  'entity_bundle:group':
+    id: 'entity_bundle:group'
+    bundles:
+      private: private
+    negate: false
+    context_mapping:
+      group: '@group.group_route_context:group'
+  group_type:
+    id: group_type
+    group_types:
+      private: private
+    negate: false
+    context_mapping:
+      group: '@group.group_route_context:group'

@@ -1,0 +1,39 @@
+uuid: 7adf96a4-3c7a-4230-91bc-14344725b774
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.private.field_description
+    - group.type.private
+  module:
+    - path
+    - text
+id: group.private.default
+targetEntityType: group
+bundle: private
+mode: default
+content:
+  field_description:
+    weight: 31
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  label:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  uid: true
