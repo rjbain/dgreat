@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_usfcat_howdoi
     - search_api.index.database_node_index
   module:
+    - better_exposed_filters
     - link
     - search_api
 id: services
@@ -197,6 +198,124 @@ display:
             group_items: {  }
           reduce_duplicates: false
           plugin_id: search_api_options
+      sorts: {  }
+      header: {  }
+      footer: {  }
+      empty: {  }
+      relationships: {  }
+      arguments: {  }
+      display_extenders: {  }
+      use_ajax: true
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+      tags: {  }
+  block_1:
+    display_plugin: block
+    id: block_1
+    display_title: 'Service Catalog'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+      defaults:
+        style: false
+        row: false
+        pager: false
+        exposed_form: false
+        filters: false
+        filter_groups: false
+      row:
+        type: search_api
+        options:
+          view_modes:
+            'entity:node':
+              article: default
+              event: default
+              event_search: default
+              favorite_link: default
+              page: default
+              usf_service: applications_services
+      pager:
+        type: none
+        options:
+          offset: 0
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          input_required: false
+          text_input_required: 'Select any filter and click on Apply to see results'
+          bef:
+            general:
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_hide: false
+            search_api_fulltext:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+          text_input_required_format: basic_html
+      filters:
+        type:
+          id: type
+          table: search_api_index_database_node_index
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            usf_service: usf_service
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          plugin_id: search_api_options
         search_api_fulltext:
           id: search_api_fulltext
           table: search_api_index_database_node_index
@@ -204,7 +323,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          operator: and
+          operator: or
           value: ''
           group: 1
           exposed: true
@@ -246,6 +365,7 @@ display:
               soe: '0'
               box_editor: '0'
               webform_editor: '0'
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -263,59 +383,17 @@ display:
           fields:
             title: title
             field_usfcat_description_short: field_usfcat_description_short
-            body: body
-            summary: summary
           plugin_id: search_api_fulltext
-      sorts: {  }
-      header: {  }
-      footer: {  }
-      empty: {  }
-      relationships: {  }
-      arguments: {  }
-      display_extenders: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - url.query_args
-      tags: {  }
-  block_1:
-    display_plugin: block
-    id: block_1
-    display_title: 'Service Catalog'
-    position: 1
-    display_options:
-      display_extenders: {  }
-      display_description: ''
-      style:
-        type: default
-        options:
-          grouping: {  }
-          row_class: ''
-          default_row_class: true
-          uses_fields: false
-      defaults:
-        style: false
-        row: false
-      row:
-        type: search_api
-        options:
-          view_modes:
-            'entity:node':
-              article: default
-              event: default
-              favorite_link: default
-              page: default
-              usf_service: default
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url
-        - url.query_args
       tags: {  }
   block_2:
     display_plugin: block
