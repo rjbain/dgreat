@@ -6,24 +6,83 @@
 
 // Import static elements after///
 @import 'partials/normalize';
+@import 'partials/mixins';
 @import 'partials/typography';
 @import 'partials/boxes';
 @import 'partials/buttons';
-@import 'partials/mixins';
 @import 'partials/navigation';
 @import 'partials/components';
 
 
 html, body { //fixes mobile view sliding left and right issue
 	width: auto!important; 
-	overflow-x: hidden!important
+	overflow-x: hidden!important;
 }
 
 .container {
-	width:94%;
-	padding-left:2%;
-	padding-right:2%;
-	margin-left:auto;
-	margin-right:auto;
+	width:96%;
+	padding-left:30px;
+	padding-right:30px;
+	@include margin-L-R-auto;
+
+	@include media-breakpoint-only(tablet)  { 
+		width:99%;
+		padding-left:.5%;
+		padding-right:.5%;
+	}
+	@include media-breakpoint-only(desktop) {
+		max-width: 1060px;
+	}
+
 }
+
+.col {
+	@include media-breakpoint-only(tablet) {
+		max-width: 70%;
+		flex-basis: auto;
+	}
+}
+.col-md-3{
+	@include media-breakpoint-only(tablet) {
+	    max-width: 256px;
+    	float: right!important;
+    	position: relative;
+    	right: 0!important;
+
+    	&.order-last {
+    		flex: 0 0 100%;
+    		max-width: 100%!important;
+    		margin-bottom: 20px;
+    	}
+	}
+	@include media-breakpoint-up(tablet) {
+		max-width: unset;
+	}
+	@include media-breakpoint-up(large_desktop) {
+		max-width: 280px;
+	}
+}
+
+.col-md-9 {
+	@include media-breakpoint-only(tablet) {
+		position: relative;
+    	margin-left: -25px;
+    	flex: 0 0 70%;
+    	max-width: 70%;
+	}
+}
+
+/*#main-wrapper {     --------- to be used when we apply sticky footer
+	margin-bottom: 210px;
+
+	@include media-breakpoint-only(tablet) {
+		margin-bottom: 130px;
+	}
+
+	@include media-breakpoint-up(desktop) {
+		margin-bottom: 80px;
+	}
+}. */
+
+
 

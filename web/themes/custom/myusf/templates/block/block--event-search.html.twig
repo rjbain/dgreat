@@ -70,53 +70,8 @@
 <script src="//code.jquery.com/jquery-1.12.4.js"></script>
 <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-
-<style>
-.search-form {
-  width:210px;
-  padding: 0 0 10px 0;
-}
-
-
-.button-form {
-  width:200px;
-  padding: 10px 0 0 0;
-
-}
-
-.search-input {
-  width:200px;
-}
-
-.date-widget {
-  padding:10px 0 0 0;
-}
-
-.form {
-}
-
-div.ui-datepicker, .ui-datepicker td{
- font-size:12px;
-}
-
-article {
-  border-top:1px solid #eeeeee;
-  padding:20px 0 20px 0;
-
-}
-
-img {
-  height:80px;
-}
-
-.event_category {
-  width:200px;
-}
-
-
-</style>
-
 <form action = "/calendar" method="get">
+  <input type="hidden" name="action" value="search">
   <div class="form">
     <div class="search-form">
       <input type="text" name="search_content" value="{{ search_content_form }}" class="search-input form-search form-control">
@@ -134,8 +89,14 @@ img {
     <div class="button-form">
       <input type="submit" value="Search" class="button btn btn-primary">
     </div>
-  </div>
+    <div>
+      <a href="/calendar" class="search_clear"> Reset</a>
+    </div>
 </form>
+
+  </div>
+
+
 <!--<a href="{{ url('<current>') }}">Reset Search</a>-->
 </div>
 <script>

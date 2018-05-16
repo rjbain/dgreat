@@ -1,13 +1,306 @@
-/* ACCORDIAN (card) 
+/* ACCORDION (card) 
 ================================================ */
 
-.card-header .panel-title a {
-	font-family: $base-font;
-	font-size: 1.0rem;
-	font-weight: 700;
-	margin-bottom: .5rem;
-	line-height: 1.1;
-	color: inherit;
-	text-transform: uppercase;
-	text-decoration: none;
+.card {
+	border: 0;
+	border-radius: 0;
 }
+
+.card-header {
+	background: transparent;
+	padding: .75rem 1.25rem .25rem 0;
+	border-bottom: 1px solid $yellow;
+
+	.panel-title a {
+		font-family: $base-font;
+		font-size: 1.0rem;
+		font-weight: 700;
+		color: inherit;
+		line-height: 1.1;
+		text-transform: uppercase;
+		text-decoration: none;
+		padding-left: 0!important;
+    	margin: 0 0 .5rem 0;
+	}
+}
+
+
+.paragraph.paragraph--type--bp-accordion {
+
+	.panel-heading {
+		a:hover,
+		a:focus {
+			background: transparent;
+		}
+
+	 	a[aria-expanded=false]{
+			@include diamond_button(-240px, -150px, 45deg, $yellow, transparent, $yellow);
+
+			&:after {
+				 @include media-breakpoint-down(phone) {
+				 	right:-20px;
+				 }
+			}
+			&:before {
+				@include media-breakpoint-down(phone) {
+				 	right:-37px;
+				 }
+			}
+		}
+
+		a[aria-expanded=true]{
+			@include diamond_button(-240px, -170px, 225deg, $yellow, $yellow, $yellow);
+
+			&:after {
+				 @include media-breakpoint-down(phone) {
+				 	right:-20px;
+				 }
+			}
+			&:before {
+				@include media-breakpoint-down(phone) {
+				 	right:-37px;
+				 }
+			}
+		}
+	}
+}
+
+
+/* Calendar -- landing list view
+================================================ */
+
+.event_search_anchor {
+	display: none;
+
+	@include media-breakpoint-down(phone) {
+		display: unset;
+			    
+	    width: 300px;
+	    display: block;
+	    text-align: center;
+	    padding: 8px;
+	    margin-top: 30px;
+	    margin-left: auto;
+	    margin-right: auto;
+	    border: 1px solid $light_gray;
+
+	    a {
+	    	color: $text_gray;
+	    	text-decoration: none;
+	    }
+	    
+
+		&:after {
+			position: relative;
+		    display: inline-block;
+		    content: "";
+		    width: 10px;
+		    height: 8px;
+		    top: 0px;
+		    right: 0px;
+		    margin-left: 5px;
+		    z-index: 1;
+		    background: url(/themes/custom/myusf/images/site/icons.svg) -239px -150px no-repeat;
+		    opacity: .7;
+		}
+	}
+}
+
+.view-events-search {
+	margin-top: 1rem;
+
+	 .views-row {
+		a, a:hover, a:focus {
+			font-weight: 400 !important;
+			text-decoration: none;
+			color: $text_gray;
+		}
+		 h3.event-list-title {  /* was .views-row b */
+			font-weight: 800 !important;
+			color: $green!important;
+			font-size: 1rem;
+			text-transform: capitalize;
+		}
+
+		&:hover,
+		&:focus {
+			background-color: $light_beige;
+		}
+
+		article {
+			padding-left: 10px;
+			padding-bottom: 20px;
+			padding-top: 15px;
+			border-bottom: 1px solid $light_gray;
+		}
+
+		img {
+			height: 80px;
+			width: 107px;
+			margin-right: 20px;
+
+			@include media-breakpoint-down(phone) {
+				width: 80px;
+				height: 60px;
+				margin-left: 10px;
+				margin-right: 0;
+			}
+			@include media-breakpoint-down(tablet) {
+				margin-right: 0;
+			}
+		}
+	}
+
+	@include media-breakpoint-down(phone) {
+        width: 300px;
+        @include margin-L-R-auto;
+
+        .views-row article {
+            padding-left: 0!important;
+
+            /*img {
+                display: none;
+            }*/
+        }
+    }
+}
+
+
+.pagination {
+	margin-top: .8rem;
+
+	@include media-breakpoint-down(phone) {
+	  /* margin-left: -25px;*/
+	}
+
+	.page-item a, .pager__item--next a {
+	    font-size: .85rem;
+	    font-weight: 300;
+	    color: $text_gray;
+	    line-height: 1.125;
+	    text-decoration: none;	    
+	    display: inline-block;	    
+	    padding: 10px;
+	    border: 0;
+	    vertical-align: top;
+	}
+
+	.page-item{
+		&.active{ 
+			a {
+				font-size: .85rem;
+				font-weight: 700;				
+				color: $green;
+				line-height: 1rem;
+			}
+			.page-link {
+				z-index: 1;
+				color: inherit;
+				background-color: inherit;
+				border-color: inherit;
+				font-weight: 700;
+				line-height: 1rem;
+				color: $green;
+			}
+		}
+		.page-link {
+			border: none;
+
+			&:hover,
+			&:focus{
+				background-color: transparentize($light_gray, .5);
+			}
+		}
+	}
+
+	.pager__item--next {
+		.page-link {
+			&:hover,
+			&:focus{
+				background-color: transparentize($light_gray, .5);
+			}
+		}
+	}
+	[role=presentation] {
+		line-height: 1.9rem;
+		padding-right: 5px;
+		padding-left: 5px;
+	}
+}
+
+
+
+a.search_clear{	 
+		position: relative;
+		float: right;
+    	right: 0;
+    	margin-top: 10px;
+    	text-decoration: none;
+
+	&:before {
+		position: absolute;
+	    display: inline-block;
+	    content: "";
+	    bottom: 3px;
+	    left: -15px;
+	    width: 11px;
+	    height: 11px;
+		background: url(/themes/custom/myusf/images/site/icons.svg) -300px -113px no-repeat;
+	}
+}
+
+/* Calendar -- event detail page
+================================================ */
+h1.js-quickedit-page-title.page-title {
+	padding-left: 0;
+	padding-bottom: 0;
+
+	@include media-breakpoint-up(tablet) {
+	    margin-top: -.35rem;
+	    margin-bottom: 1.1rem;
+	}
+}
+
+.event-date {
+	font-size: 1.2rem;
+	font-weight: 600;
+	margin-bottom: .5rem;
+	margin-top: .3rem;
+	line-height: 1.2rem;
+}
+
+.event-location {
+	font-size: 1rem;
+	font-weight: 600;
+	margin-bottom: 1.5rem;
+	line-height: 1.5rem;
+	text-transform: uppercase;
+}
+
+.event-additional-info {
+    padding-left: 18px;
+    border-left: 5px solid #fdbb30;
+
+    p, a {
+		color: $green;
+		font-weight: 600;
+		text-decoration: none;
+	}
+}
+
+
+.diamond_link {
+    @include diamond_button(-300px, -129px, 45deg, $yellow, $white, $yellow);
+
+    font-size: 1rem;
+    font-weight: 800!important;
+    color: $green;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    letter-spacing: .5px;
+    padding: 6px 43px 8px 0;   
+}
+
+
+

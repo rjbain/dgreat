@@ -4,84 +4,507 @@
 #block-myusf-contactbox {
 	border-style: none !important;
 	background-color: $light_beige;
-	padding: 0 15 0 15 !important;
-}
+	padding: 5px 18px !important;
 
-#block-myusf-contactbox h2 {
-	font-size: .85rem !important;
-	text-transform: uppercase !important;
-	font-weight: 700;
-	text-shadow: none;
-	color: $text-gray !important;
-	border-bottom: none;
-}
+    @include media-breakpoint-only(tablet) {
+        padding: 5px 10px !important;
+    }
 
-#block-myusf-contactbox h3, h3 a {
-	font-size: 1.2rem;
-	line-height: 1.3rem;
-	font-weight: 700;
-	padding-bottom: 10px;
-}
+    h2 {
+	   font-size: .85rem !important;
+	   text-transform: uppercase !important;
+	   font-weight: 700;
+	   text-shadow: none;
+	   color: $text-gray !important;
+	   border-bottom: none;
+    }
 
-#block-myusf-contactbox h3 a {
-	text-decoration: none !important;
-	text-transform: none !important;
-}
+    h3, h3 a {
+	   font-size: 1.2rem;
+	   line-height: 1.3rem;
+	   font-weight: 700;
+	   padding-bottom: 10px;
+    }
 
-#block-myusf-contactbox h3 a:hover, #block-myusf-contactbox h3 a:focus {
-	background: none !important;
-	color: $green !important;
-	text-decoration: underline !important;
-}
+    h3 a {
+	   text-decoration: none !important;
+	   text-transform: none !important;
 
-
-
-#block-myusf-contactbox p {
-    font-size: .9rem;
-    font-family: $base-font;
-    font-weight: 400;
-    position: relative;
-    color: $text-gray;
-    display: block;
-    line-height: 1.2rem;
-}
-
-
-
-#block-myusf-contactbox .contact:before {
-    background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat 0 0;
-    position: absolute;
-    top: 2px;
-    left: 0;
-    content: '';
-    display: block;
-    margin: 0 0 10px;
-    padding: 0 0 0 20px;
+        &:hover, 
+        &:focus {
+	       background: none !important;
+	       color: $green !important;
+	       text-decoration: underline !important;
+        }
+    }
+    
+    p {
+        font-size: .9rem;
+        font-family: $base-font;
+        font-weight: 400;
+        position: relative;
+        color: $text-gray;
+        display: block;
+        line-height: 1.2rem;
+    }
 }
 
 .contact {
 	line-height: 1.3rem !important;
 	margin-bottom: 0;
 	padding-left: 30px;
+
+    &:before {
+        display: block;
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 0;
+        margin: 0 0 10px;
+        padding: 0 0 0 20px;
+        background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat;
+    }    
 }
 
 
 .tel:before {
     width: 16px;
     height: 16px;
-    background-position: -220px -60px !important;
+    background-position: -219px -60px !important;
 }
 
 .fax:before {
     width: 16px;
     height: 16px;
-    background-position: -240px -60px !important;
+    background-position: -239px -60px !important;
 }
 
 .email:before {
+    top:3px;
     width: 16px;
     height: 16px;
-    background-position: -200px -60px !important;
+    background-position: -199px -60px !important;
 }
 
 
+/* SIDEBAR BOX Calendar Events Search Controls 
+=============================================== */ 
+#block-event-search {
+    background-color: $light_beige;
+    border: none;
+    padding: 0 15px 45px 15px;
+    margin-top: 4rem;
+    width: inherit;
+
+    @include media-breakpoint-only(tablet) {
+        /*position: absolute;
+        width: 25%;
+        top: -1815px;
+        right: 15px;*/
+
+        position: fixed;
+        width: 25%;
+        right: 30px;
+        top: 190px;
+        margin-top: -22px;
+    }
+
+    @include media-breakpoint-down(phone) {
+        margin-top: 1rem;
+    }
+
+    h2 {
+        margin: 0;
+        border-bottom: none;
+        text-shadow: none;
+        font-size: inherit;
+        line-height: inherit;
+        padding-bottom: .5rem;
+    }
+    .button-form {
+        padding: 10px 0 0 0;
+
+        .button {
+            width:100%;
+            padding: 12px;
+            margin-top: 0.5rem;
+
+            &:hover {
+                color: $green;
+            }
+        }
+    }
+    .search-form {
+        padding: 0 0 10px 0;
+        border-radius: 0 !important;
+    }   
+    .search-input {
+        border-radius: 0;
+        height: 2rem;
+        margin-bottom: .5rem;
+        width: 100%;
+        border-color: $light_gray;
+    }
+    .category-form .event_category {
+        width: 100%;
+        height: 30px;
+        margin-bottom: .5rem;
+        border: 0;
+        border-radius: 0;
+        outline: 1px solid $light_gray;
+        outline-offset: -1px;
+    }
+    .date-widget {
+      padding:10px 0 0 0;
+
+        .ui-datepicker, .ui-widget, .ui-widget-content {
+            width: inherit;
+            padding: inherit;   
+            background-color: inherit;  
+        }
+        .ui-widget {
+            border: 0 !important;
+        
+            .ui-widget-header {
+                border: 0;
+                background: rgba(0,0,0, .15);
+                color: $text_gray !important;
+                font-weight: bold;  
+                font-family: $base-font;
+                border-radius: 0;
+            }   
+        }
+        .ui-datepicker {
+            font-size:0.75rem;
+
+            thead tr {
+                border-bottom: 0;
+            }
+            table tr th {
+                background: rgba(0, 0, 0, .3);
+                padding: 3px 3px 3px 5px;
+                font-size: .6rem;
+                text-transform: uppercase;
+            }
+            tbody tr  {
+                border-bottom: 0 !important;
+
+                td {
+                    font-size:0.75rem;
+
+                    a {
+                        background: inherit !important;
+                        border: 0 !important;
+
+                        &:hover,
+                        &:focus {
+                            background-color: $white !important;
+                        }
+                        &.ui-state-active {
+                            color: $black !important;
+                            font-weight: 700!important;
+                        }
+                        &.ui-state-highlight {
+                            color: inherit;
+                        }
+                    }
+
+                    /*@include media-breakpoint-down(phone) {*/
+                        padding-top: 5px;
+                        padding-bottom: 5px;
+                   /* } */
+
+                }
+
+                &:first-of-type {
+                    td {
+                       /* @include media-breakpoint-down(phone) {*/
+                            padding-top: 15px;
+                       /* } */
+                    }
+                }
+                &:last-of-type {
+                    td {
+                       /* @include media-breakpoint-down(phone) {*/
+                            padding-bottom: 15px;
+                       /* } */
+                    }
+                }
+            }
+        }
+
+        .ui-datepicker-calendar {
+            padding-bottom: 5px;
+        
+             tbody a {
+                text-align: center !important;
+            }
+        }
+    }
+    .ui-widget-header {
+        .ui-state-hover {
+            background:unset;
+            border-radius: 0;
+            border:0;
+        }
+
+        .ui-datepicker-prev-hover {
+            top: 2px;
+            left:2px;
+        }
+        .ui-datepicker-next-hover {
+            top: 2px;
+            right: 2px; 
+        }
+
+        .ui-icon {
+            background-image: unset;
+    
+            &.ui-icon-circle-triangle-w:after {
+                position: absolute;
+                display: block;
+                content: "";
+                z-index: 1;
+                background: url(/themes/custom/myusf/images/site/icons.svg) -196px -140px no-repeat;
+                width: 30px;
+                height: 30px;
+                top: -5px;
+                margin-left:5px;
+            }
+            &.ui-icon-circle-triangle-w:hover:after {
+                background: url(/themes/custom/myusf/images/site/icons.svg) -196px -160px no-repeat;
+
+            }
+            &.ui-icon-circle-triangle-e:after {
+                position: absolute;
+                display: block;
+                content: "";
+                z-index: 1;
+                background: url(/themes/custom/myusf/images/site/icons.svg) -218px -140px no-repeat;
+                width: 30px;
+                height: 30px;
+                top: -5px;
+            }
+            &.ui-icon-circle-triangle-e:hover:after {
+                background: url(/themes/custom/myusf/images/site/icons.svg) -218px -160px no-repeat;
+            }
+        }
+    }
+}
+
+
+
+/* EVENTS Carousel
+=============================================== */ 
+
+#carouselControls {
+    margin-left: 15px;
+    margin-right: 15px;
+
+    @include media-breakpoint-down(phone) {
+        /*width: 84%;
+        margin-left: 8%;*/
+        width: 300px;
+        @include margin-L-R-auto;
+    }
+}   
+
+.carousel-control-prev {
+    opacity: 1;
+    @include diamond_button(-80px, -128px, 45deg, transparent, $yellow, $green);
+
+    &:before {
+        width: 10px;
+        height: 14px;
+        top: 236px;
+        left: 41px;
+
+    }
+    &:after {
+        width: 45px;
+        height: 45px;
+        top: 220px;
+        left: 25px;
+    }
+    &:hover,
+    &:focus {
+        opacity: 1;
+    } 
+
+    @include media-breakpoint-down(tablet) { 
+        margin-top: -50px;
+
+        &:before {
+            top: 192px;
+            left: 26px;
+        }
+        &:after {
+            width: 35px;
+            height: 35px;
+            top: 180px;
+            left: 15px;
+        }
+    }
+
+    @include media-breakpoint-down(phone) { 
+        margin-top: -50px;
+
+        &:before {
+            top: 213px;
+            left: -6px;
+        }
+        &:after {
+            width: 45px;
+            height: 45px;
+            top: 196px;
+            left: -23px;
+        }
+    }
+}
+
+.carousel-control-next {
+    opacity: 1;
+    @include diamond_button( -100px, -128px, 45deg, transparent, $yellow, $green);
+
+    &:before {
+        width: 10px;
+        height: 14px;
+        top: 236px;
+        right: 38px;
+
+    } 
+
+    &:after {
+        width: 45px;
+        height: 45px;
+        top: 220px;
+        right: 23px;
+    }
+    
+    &:hover,
+    &:focus {
+        opacity: 1;
+    } 
+
+    @include media-breakpoint-down(tablet) { 
+        margin-top: -50px;
+
+        &:before {
+            top: 192px;
+            left: 39px;
+        }
+        &:after {
+            width: 35px;
+            height: 35px;
+            top: 180px;
+            left: 25px;
+        }
+    }
+
+    @include media-breakpoint-down(phone) { 
+        margin-top: -50px;
+
+        &:before {
+            top: 213px;
+            left: 41px;
+        }
+        &:after {
+            width: 45px;
+            height: 45px;
+            top: 196px;
+            left: 23px;
+        }
+    } 
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-image: none;
+}
+
+
+.carousel-caption {
+    background: none;
+    height:300px;
+    background: linear-gradient(to bottom, transparentize($black, 1) 20%,transparentize( $black, 0) 100%)!important;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+
+    h3.carousel-event-title {
+        font-size: 1.4rem;
+        font-weight:700;
+        padding-top: 150px;
+        color: $white!important;
+
+         @include media-breakpoint-down(tablet) { 
+            font-size: 1.1rem;
+            text-transform: capitalize;
+            padding-left: 70px;
+            padding-right: 70px;
+            padding-bottom: 5px;
+         }
+
+         @include media-breakpoint-down(phone) {  
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 0px;
+         }
+    }
+
+    p {
+        color: $white;
+        margin-top: -10px;
+
+         @include media-breakpoint-down(tablet) { 
+            font-size: 0.9rem;
+            line-height: 1.2rem;
+        }
+    }
+    p:last-of-type {
+        margin-top: -15px;
+    }
+
+    @include media-breakpoint-down(phone) { 
+        position: relative;
+        /*margin-top: -150px;*/
+        background:$plum!important;
+        height:200px;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        .carousel-event-title { 
+            font-size: 1rem;
+            line-height: 1.3rem!important;
+            padding-top: 15px;
+            
+        }
+
+        p {
+            font-size: 0.8rem;
+            line-height: 1.1rem;
+        }
+    }
+
+}
+
+.carousel-indicators {
+
+    @include media-breakpoint-down(tablet) {
+        bottom: 0px;
+    }
+
+    li {
+        width: 9px;
+        border-radius: 5px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+}
+
+
+
+
+
+
+ 

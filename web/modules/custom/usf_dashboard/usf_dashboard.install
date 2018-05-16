@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Installation functions for the usf_dashboard module.
+ */
+
+use Drupal\user\RoleInterface;
+
+/**
+ * Implements hook_install().
+ */
+function usf_dashboard_install() {
+  user_role_change_permissions(RoleInterface::ANONYMOUS_ID, array(
+    'USF Dashboard' => TRUE,
+  ));
+}

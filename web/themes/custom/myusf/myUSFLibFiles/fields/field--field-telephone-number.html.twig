@@ -1,0 +1,6 @@
+{% set second_num = content.field_telephone_number[1]|render %}
+
+<p class="contact tel"><strong>Tel</strong>: {{ content.field_telephone_number[0] }}</p>
+{% if second_num %}
+    <p class="contact tel"><strong>Tel</strong>: {{ content.field_telephone_number[1] }}</p>
+{% endif %}
