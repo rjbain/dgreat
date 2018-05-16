@@ -147,6 +147,7 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
 
         // Merge the results setting defaults on top.
         $merge = array_merge_recursive($defaults, $view_results);
+        $t = 1;
         $view->result = _dgreat_views_remove_duplicates($merge);
       }
 
