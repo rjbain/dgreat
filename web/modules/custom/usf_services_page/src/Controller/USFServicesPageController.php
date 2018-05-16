@@ -39,7 +39,7 @@ class USFServicesPageController extends ControllerBase {
   }
 
   /**
-   * Returns a simple page.
+   * Returns the services page.
    *
    * @return array
    *   A simple renderable array.
@@ -59,6 +59,25 @@ class USFServicesPageController extends ControllerBase {
 
     return [
       '#theme' => 'usf_services_page',
+      '#page' => $render,
+    ];
+  }
+
+  /**
+   * Returns the How Do I page.
+   *
+   * @return array
+   *   A simple renderable array.
+   */
+  public function pageHowDoI() {
+    // Loads the how do i page
+    $block = Block::load('views_block__services_block_2');
+    $render['howdoi'] = $this->entityTypeManager
+      ->getViewBuilder('block')
+      ->view($block);
+
+    return [
+      '#theme' => 'how_do_i_page',
       '#page' => $render,
     ];
   }
