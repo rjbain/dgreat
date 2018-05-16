@@ -163,7 +163,6 @@ function dgreat_views_views_pre_view(ViewExecutable $view, $display_id, array &$
 
   switch ($name) {
     case 'favorite_links':
-    case 'quick_links':
 
       // Removes fields and header for non admins.
       if ($display == 'all_apps') {
@@ -172,9 +171,23 @@ function dgreat_views_views_pre_view(ViewExecutable $view, $display_id, array &$
           $view->removeHandler($display, 'field', 'field_group_audience');
           $view->removeHandler($display, 'field', 'edit_node');
           $view->removeHandler($display, 'field', 'delete_node');
-          if ($name == 'favorite_links') {
-            $view->removeHandler($display, 'header', 'area');
-          }
+          $view->removeHandler($display, 'header', 'area');
+
+        }
+      }
+      break;
+
+    case 'quick_links':
+      // Removes fields and header for non admins.
+      if ($display == 'all_apps') {
+        $user_roles = \Drupal::currentUser()->getRoles();
+        if (!in_array('administrator', $user_roles)) {
+          $view->removeHandler($display, 'field', 'body');
+          $view->removeHandler($display, 'field', 'field_category');
+          $view->removeHandler($display, 'field', 'field_sso');
+          $view->removeHandler($display, 'field', 'field_group_audience');
+          $view->removeHandler($display, 'field', 'edit_node');
+          $view->removeHandler($display, 'field', 'delete_node');
         }
       }
       break;
