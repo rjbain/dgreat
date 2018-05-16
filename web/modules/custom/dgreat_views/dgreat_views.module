@@ -147,8 +147,8 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
 
         // Merge the results setting defaults on top.
         $merge = array_merge_recursive($defaults, $view_results);
-        $t = 1;
-        $view->result = _dgreat_views_remove_duplicates($merge);
+        $merge = _dgreat_views_remove_duplicates($merge);
+        $view->result = _dgreat_views_alpha_sort($merge);
       }
 
       break;
@@ -207,5 +207,32 @@ function _dgreat_views_remove_duplicates($results) {
   }
 
   return $new_results;
+}
+
+/**
+ * Helper function to alpha sort the title of the defaults.
+ * Needs this since views groups them into their groups.
+ *
+ * @param $results
+ *   The views object of ResultRow items.
+ *
+ * @return array
+ */
+function _dgreat_views_alpha_sort($results) {
+  $alpha = [];
+  // Loop through and set each title.
+  foreach ($results as $key => $r) {
+    $alpha[$key] = $r->_entity->label();
+  }
+  // Alpha sort this.
+  asort($alpha);
+
+  $merge = [];
+  // Loop through again and set the right order.
+  foreach ($alpha as $key => $a) {
+    $merge[] = $results[$key];
+  }
+
+  return $merge;
 }
 
