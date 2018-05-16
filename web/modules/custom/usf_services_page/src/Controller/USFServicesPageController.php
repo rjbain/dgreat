@@ -76,6 +76,18 @@ class USFServicesPageController extends ControllerBase {
       ->getViewBuilder('block')
       ->view($block);
 
+    // Top Student Questions custom block.
+    $block = Block::load('topstudentquestions');
+    $render['topstudent'] = $this->entityTypeManager
+      ->getViewBuilder('block')
+      ->view($block);
+
+    // Top Faculty Questions custom block.
+    $block = Block::load('topfacultystaffquestions');
+    $render['topfaculty'] = $this->entityTypeManager
+      ->getViewBuilder('block')
+      ->view($block);
+
     return [
       '#theme' => 'how_do_i_page',
       '#page' => $render,
