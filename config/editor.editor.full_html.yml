@@ -6,6 +6,13 @@ dependencies:
     - filter.format.full_html
   module:
     - ckeditor
+    - editor_file
+third_party_settings:
+  editor_file:
+    status: true
+    scheme: public
+    directory: inline-files
+    extensions: txt
 _core:
   default_config_hash: 967ijj7p6i7rwrYl7r08WQFeCY_c23YAh0h8u-w_CXM
 format: full_html
@@ -38,9 +45,11 @@ settings:
           name: Media
           items:
             - Blockquote
-            - DrupalImage
             - Table
             - HorizontalRule
+            - media
+            - DrupalFile
+            - video_embed
         -
           name: 'Block Formatting'
           items:
@@ -53,11 +62,20 @@ settings:
   plugins:
     stylescombo:
       styles: ''
+    language:
+      language_list: un
+    video_embed:
+      defaults:
+        children:
+          autoplay: true
+          responsive: true
+          width: '854'
+          height: '480'
 image_upload:
   status: true
   scheme: public
   directory: inline-images
   max_size: ''
   max_dimensions:
-    width: 0
-    height: 0
+    width: null
+    height: null

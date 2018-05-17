@@ -1,0 +1,33 @@
+uuid: cc33fe95-ff25-4c57-a8e5-0e9fd292c508
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.private.field_description
+    - group.type.private
+  module:
+    - text
+id: group.private.default
+targetEntityType: group
+bundle: private
+mode: default
+content:
+  field_description:
+    weight: -4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  label:
+    label: hidden
+    type: string
+    weight: -5
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  uid: true
