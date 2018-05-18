@@ -13,44 +13,45 @@ Available variables (usf_dashboard.module)
 
 #}
 
-<div class="row clearfix">
-    <main class="main-content col" id="content" role="main">
-        <section class="section">
-            <a id="main-content" tabindex="-1"></a>
-            <div class="region row region-content">
+    <div class="row usf_dash">
 
-                {# Print the user's roles#}
-                {% for user_role in user.roles %}
-                    User's Role: {{ user_role }}<br>
-                {% endfor %}
-                <br>
-                {# Print the system roles #}
-                {% for sys_role in dashboard_content.system_roles %}
-                    System Role: {{ sys_role.id }}<br>
-                {% endfor %}<br>
-
-                {# Is the user an admin? #}
-                Is Admin? {{ is_admin }}<br>
-                {# Print the users's ID #}
-                User ID: {{ dashboard_content.dashboard_user.id }}<br>
-                <br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+        <div class="col-9"> {# Left "main" column #}
+            <div class="row">
+            <div class="col-sm">
+            {#{% if dashboard_content.my_block %}#}
+            {#{{ dashboard_content.my_block }}#}
+            {#{% endif %}#}
+                <p>
+                    {% if dashboard_content.dashboard_user.name.value is not empty %}
+                        <strong>Welcome to myUSF, {{ dashboard_content.dashboard_user.name.value }}!</strong><br>
+                    {% endif %}
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
-
-        </section>
-    </main>
-    <div class="sidebar col-md-3 order-first" id="sidebar_first">
-        <aside class="section" role="complementary">
-            <p><strong>Welcome, {{ dashboard_content.dashboard_user.name.value }}!</strong></p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-        </aside>
+            <div class="col-sm">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    {#{% for item in dashboard_content.events_slider %}#}
+                        {#{% for row in item.result %}#}
+                            {#{{ kint(row._entity.field_building.value) }}#}
+                        {#{% endfor %}#}
+                    {#{% endfor %}#}
+                    {#{% include "@myusf/views/views-view-fields--events-featured--block-1.html.twig" %}#}
+                    {#{% include "@myusf/views/views-view-fields--events-featured--block-1.html.twig" %}#}
+                    {#{{ drupal_view('events_featured', 'block_1') }}#}
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            {# Print the user's roles#}
+            {% for user_role in user.roles %}
+                User's Role: {{ user_role }}<br>
+            {% endfor %}
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
     </div>
-    <div class="sidebar col-md-3 order-last" id="sidebar_second">
-        <aside class="section" role="complementary">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-        </aside>
-    </div>
-</div>
+
