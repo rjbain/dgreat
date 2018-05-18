@@ -1,0 +1,222 @@
+<?php
+
+/**
+ * @file
+ * Contains dgreat_views.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\views\ViewExecutable;
+use Drupal\user\Entity\User;
+use Drupal\node\Entity\Node;
+use Drupal\views\ResultRow;
+
+/**
+ * Implements hook_help().
+ */
+function dgreat_views_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the dgreat_views module.
+    case 'help.page.dgreat_views':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Custom code related to the views on the site.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function dgreat_views_views_data_alter(array &$data) {
+  $data['node_field_data']['dgreat_flag_relationship'] = [
+    'title' => t('Quick Link Special Flag Relationship'),
+    'help' => t('Alters view based off user role and what is seen.'),
+    'relationship' => [
+      'group' => t('Flag'),
+      'label' => t('Flags'),
+      'base' => 'flagging',
+      'base field' => 'entity_id',
+      'relationship field' => 'nid',
+      'id' => 'dgreat_flag_relationship',
+      'flaggable' => 'node',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function dgreat_views_views_pre_render(ViewExecutable $view) {
+  $name = $view->id();
+  $display = $view->current_display;
+
+  // Removes the duplicates from the Group Content View.
+  switch ($name) {
+    case 'favorite_links':
+    case 'favorite_links_quick_menu':
+    case 'quick_links':
+    case 'quick_links_block':
+
+      // Remove the duplicates for all displays.
+      $view->result = _dgreat_views_remove_duplicates($view->result);
+
+      // Adds in the default links for my_links displays.
+      if ($display == 'my_links') {
+        // Initialize our vars.
+        $gids = $nids = $nodes = $defaults = $view_results = [];
+        $query = NULL;
+
+        // Grab the existing results to store later.
+        // So we can put that after the defaults.
+        foreach ($view->result as $index => $result) {
+          $view_results[] = $result;
+        }
+
+        // Grab the current users groups.
+        $uid = \Drupal::currentUser()->id();
+        $user = User::load($uid);
+        $groups = $user->get('field_user_group')->getValue();
+        foreach ($groups as $gid) {
+          $gids[] = $gid['target_id'];
+        }
+
+        if (empty($gids)) {
+          return;
+        }
+
+        // Remove duplicates.
+        $gids = array_unique($gids);
+
+        // Initialize the db.
+        $db = \Drupal::database();
+
+        // Grab all the default entity ids of the group.
+        if ($name == 'favorite_links') {
+          $query = $db
+            ->select('group__field_default_favorite_links', 'g')
+            ->fields('g', ['field_default_favorite_links_target_id'])
+            ->condition('entity_id', $gids, 'IN');
+        }
+
+        if ($name == 'quick_links') {
+          $query = $db
+            ->select('group__field_default_quick_links', 'g')
+            ->fields('g', ['field_default_quick_links_target_id'])
+            ->condition('entity_id', $gids, 'IN');
+        }
+
+        // Loop through and grab our content ids.
+        foreach ($query->execute()->fetchAll() as $result) {
+          if ($name == 'favorite_links') {
+            $nids[] = $result->field_default_favorite_links_target_id;
+          }
+          if ($name == 'quick_links') {
+            $nids[] = $result->field_default_quick_links_target_id;
+          }
+        }
+
+        if (empty($nids)) {
+          return;
+        }
+
+        // Remove duplicates.
+        $nids = array_unique($nids);
+
+        // Check against the users flagged items.
+        $query = $db
+          ->select('flagging', 'f')
+          ->fields('f', ['entity_id'])
+          ->condition('entity_id', $nids, 'IN')
+          ->condition('uid', $uid);
+
+        // Flatten on the nids to check against.
+        foreach ($query->execute()->fetchAll() as $nid) {
+          $nids[] = $nid->entity_id;
+        }
+
+        // Check for the defaults in the loaded array.
+        foreach ($view_results as $key => $result) {
+          $check = $result->node_field_data_group_content_field_data_nid;
+          if (in_array($check, $nids)) {
+            $defaults[] = $result;
+          }
+        }
+
+        // Merge the results setting defaults on top.
+        $merge = array_merge_recursive($defaults, $view_results);
+        $view->result = _dgreat_views_remove_duplicates($merge);
+      }
+
+      break;
+  }
+}
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function dgreat_views_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
+  $name = $view->id();
+  $display = $view->current_display;
+
+  switch ($name) {
+    case 'favorite_links':
+
+      // Removes fields and header for non admins.
+      if ($display == 'all_apps') {
+        $user_roles = \Drupal::currentUser()->getRoles();
+        if (!in_array('administrator', $user_roles)) {
+          $view->removeHandler($display, 'field', 'field_group_audience');
+          $view->removeHandler($display, 'field', 'edit_node');
+          $view->removeHandler($display, 'field', 'delete_node');
+          $view->removeHandler($display, 'header', 'area');
+
+        }
+      }
+      break;
+
+    case 'quick_links':
+      // Removes fields and header for non admins.
+      if ($display == 'all_apps') {
+        $user_roles = \Drupal::currentUser()->getRoles();
+        if (!in_array('administrator', $user_roles)) {
+          $view->removeHandler($display, 'field', 'body');
+          $view->removeHandler($display, 'field', 'field_category');
+          $view->removeHandler($display, 'field', 'field_sso');
+          $view->removeHandler($display, 'field', 'field_group_audience');
+          $view->removeHandler($display, 'field', 'edit_node');
+          $view->removeHandler($display, 'field', 'delete_node');
+        }
+      }
+      break;
+  }
+}
+
+/**
+ * Helper function to remove duplicates from the view.
+ *
+ * @param $results
+ *   The views object of ResultRow items.
+ *
+ * @return array
+ */
+function _dgreat_views_remove_duplicates($results) {
+  $new_results = $unique_nids = [];
+
+  // Cycle through and remove duplicates.
+  foreach ($results as $index => $result) {
+    // Grab the nid from the related node.
+    $node = $result->_relationship_entities['gc__node'];
+    $nid = $node->id();
+
+    // If it isn;t in there, add it and the result.
+    if (!in_array($nid, $unique_nids)) {
+      $unique_nids[] = $nid;
+      $new_results[] = $result;
+    }
+  }
+
+  return $new_results;
+}

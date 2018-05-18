@@ -7,9 +7,20 @@ config:
   id: 41cad7fe-472d-43a9-a470-d391b9622376
   xdebug: true
 services:
- d7db:
+  d7db:
    type: mariadb
    creds:
      user: drupal7db
      password: drupal7db
      database: drupal7db
+  node:
+    type: node:6.10
+    build:
+      - "cd $LANDO_MOUNT/web/themes/custom/myusf && npm install && gulp"
+    globals:
+      gulp-cli: "latest"
+tooling:
+  npm:
+    service: node
+  gulp:
+    service: node
