@@ -189,5 +189,12 @@ function dgreat_migration_migrate_prepare_row(Row $row, MigrateSourceInterface $
 
       break;
 
+    case 'upgrade_d7_node_usf_service':
+      if ($value = $row->getSourceProperty('body')) {
+        $row->setSourceProperty('body_value', $value[0]['value']);
+        $row->setSourceProperty('body_format', $value[0]['format']);
+      }
+      break;
+
   }
 }
