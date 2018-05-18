@@ -72,7 +72,7 @@ function template_preprocess_usf_dashboard(&$variables) {
     "system_roles" => $role_objects,
     "my_block" => \Drupal::entityTypeManager()
       ->getViewBuilder('block')
-      ->view($block),
+      ->view($block, 'full', NULL),
     "events_slider" => $events_slider->buildRenderable($display_id)
   );
 
