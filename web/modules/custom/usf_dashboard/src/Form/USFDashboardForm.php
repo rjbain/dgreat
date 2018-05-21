@@ -53,7 +53,7 @@ class USFDashboardForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $config = $this->config('usf_dashboard.settings');
-    $config->set('usf_dashboard.block_text', $form_state->getValue('source_text'));
+    $config->set('usf_dashboard.block_text', $form_state->getValue('block_text'));
     $config->set('usf_dashboard.page_title', $form_state->getValue('page_title'));
     $config->save();
     return parent::submitForm($form, $form_state);
