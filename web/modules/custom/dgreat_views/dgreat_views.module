@@ -44,6 +44,17 @@ function dgreat_views_views_data_alter(array &$data) {
       'flaggable' => 'node',
     ],
   ];
+
+  $desc = t('Filters Quick Links based off of user and excludes defaults.');
+  $data['node_field_data']['user_filter'] = [
+    'title' => t('Filter by User + Default'),
+    'filter' => [
+      'title' => t('Filter by User + Default'),
+      'help' => $desc,
+      'field' => 'nid',
+      'id' => 'dgreat_views_filter_by_user'
+    ],
+  ];
 }
 
 /**
@@ -64,7 +75,7 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
       $view->result = _dgreat_views_remove_duplicates($view->result);
 
       // Adds in the default links for my_links displays.
-      if ($display == 'my_links') {
+      if ($display == 'my_links' || ($name == 'quick_links' && $display == 'all_apps')) {
         // Initialize our vars.
         $gids = $nids = $nodes = $defaults = $view_results = [];
         $query = NULL;

@@ -37,6 +37,7 @@ function dgreat_group_node_insert(EntityInterface $entity) {
 
   switch ($entity->bundle()) {
     case 'favorite_link':
+      $quick = (new DgreatGroup($entity))->addQuickLinkGroups();
       $add = (new DgreatGroup($entity))->addNodeToGroup('field_group_audience');
       break;
 
