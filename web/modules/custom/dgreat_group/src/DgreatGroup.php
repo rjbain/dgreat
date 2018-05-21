@@ -4,7 +4,7 @@ namespace Drupal\dgreat_group;
 
 use Drupal\group\Entity\Group;
 use Drupal\node\Entity\Node;
-
+use Drupal\user\Entity\User;
 
 class DgreatGroup {
 
@@ -84,6 +84,45 @@ class DgreatGroup {
     }
 
     // Fail safe return
+    return FALSE;
+  }
+
+  /**
+   * Adds the groups to the quick links on creation.
+   *
+   * @return bool
+   */
+  public function addQuickLinkGroups() {
+    // Grab the quick link field
+    $quick_link = $this->entity->get('field_link_type')->getValue();
+
+    if (isset($quick_link[0]['value']) && $quick_link[0]['value'] == 'quick') {
+      // Grab our current user and their group ids.
+      $uid = \Drupal::currentUser()->id();
+      $user = User::load($uid);
+      $groups = $user->get('field_user_group')->getValue();
+      $gids = [];
+      foreach ($groups as $gid) {
+        $gids[] = $gid['target_id'];
+      }
+
+      if (empty($gids)) {
+        return FALSE;
+      }
+
+      // Apply the groups
+      $this->entity->set('field_group_audience', $gids);
+      $this->entity->save();
+
+      // Flag the content.
+      $flag_service = \Drupal::service('flag');
+      $flag = $flag_service->getFlagById('favorite');
+      $node = Node::load($this->entity->id());
+      $flag_service->flag($flag, $node, $user);
+
+      return TRUE;
+    }
+
     return FALSE;
   }
 
