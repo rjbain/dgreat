@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.favorite_link.field_sso
     - field.field.node.favorite_link.field_top_quick_link
     - field.field.node.favorite_link.field_url
+    - field.field.node.favorite_link.field_weight
     - node.type.favorite_link
   module:
     - link
@@ -30,7 +31,7 @@ content:
     region: content
   field_category:
     label: inline
-    weight: 2
+    weight: 3
     type: entity_reference_label
     settings:
       link: true
@@ -53,9 +54,12 @@ content:
     region: content
   field_sso:
     label: inline
-    weight: 3
-    type: list_default
-    settings: {  }
+    weight: 4
+    type: boolean
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
     third_party_settings: {  }
     region: content
   field_top_quick_link:
@@ -81,7 +85,7 @@ content:
     third_party_settings: {  }
     region: content
   flag_favorite:
-    weight: 1
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -90,4 +94,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_weight: true
