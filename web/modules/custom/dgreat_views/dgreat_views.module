@@ -136,16 +136,18 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
         // Remove duplicates.
         $nids = array_unique($nids);
 
-        // Check against the users flagged items.
-        $query = $db
-          ->select('flagging', 'f')
-          ->fields('f', ['entity_id'])
-          ->condition('entity_id', $nids, 'IN')
-          ->condition('uid', $uid);
+        if ($name == 'favorite_links') {
+          // Check against the users flagged items.
+          $query = $db
+            ->select('flagging', 'f')
+            ->fields('f', ['entity_id'])
+            ->condition('entity_id', $nids, 'IN')
+            ->condition('uid', $uid);
 
-        // Flatten on the nids to check against.
-        foreach ($query->execute()->fetchAll() as $nid) {
-          $nids[] = $nid->entity_id;
+          // Flatten on the nids to check against.
+          foreach ($query->execute()->fetchAll() as $nid) {
+            $nids[] = $nid->entity_id;
+          }
         }
 
         // Check for the defaults in the loaded array.
