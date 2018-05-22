@@ -1,0 +1,99 @@
+uuid: 1e01c2cd-1efb-415c-adc9-828db34121bb
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 1510
+template: false
+id: webform_138277
+title: 'Part-Time Student Welcome Reception'
+description: null
+category: null
+elements: "first_name:\n  '#type': textfield\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\nwho_are_you:\n  '#type': select\n  '#options':\n    1: 1L Part time\n    2: 2L Part time\n    3: 3L Part time\n    4: 4L Part time\n    5: Alumni\n    6: Faculty/Staff\n  '#title': Who are you?\n  '#description': \"\"\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': \"\"\n  '#required': true\nphone:\n  '#type': textfield\n  '#title': Phone\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: '<p>We look forward to seeing you at the reception. For information, please email lawevents@usfca.edu or call (415) 422-6304.</p><p><strong>Date:</strong> Thursday, August 10, 2017<br> <strong>Time: 5:30-7:30 p.m.</strong><br> Please check in with security upon entering the building. Registration will be from 5:30-6 p.m. <br> <strong>Location:</strong> Sedgwick, LLP, 333 Bush St, 30th Floor, San Francisco, CA 94104, San Francisco</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>'
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: lawevents@usfca.edu
+      from_mail: '[webform-submission:values:email:raw]'
+      from_name: '[webform-submission:values:first_name:raw]'
+      subject: 'Part-Time Law Student Reception'
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_2:
+    id: email
+    label: 'Email 2'
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      to_mail: '[webform-submission:values:email:raw]'
+      from_mail: lawevents@usfca.edu
+      from_name: default
+      subject: 'Part-Time Law Student Reception Form'
+      body: "<p>We look forward to seeing you at the reception. For information, please email lawevents@usfca.edu or call (415) 422-6304.</p>\n \n<p><strong>Date:</strong> Thursday, August 10, 2017<br />\n<strong>Time: 5:30-7:30 p.m.</strong><br />\nRegistration will be from 5:30-6 p.m. Please check in with security upon entering the building. <br />\n<strong>Location:</strong> Sedgwick, LLP, 333 Bush St, 30th Floor, San Francisco, CA 94104, San Francisco <p>\n\nSubmitted values are:\n[submission:values]\n"
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

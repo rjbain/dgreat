@@ -1,0 +1,67 @@
+uuid: 2e7242f6-35ff-440f-a55c-7b44917d3fce
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 350
+template: false
+id: webform_136969
+title: 'Say Thanks'
+description: null
+category: null
+elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#description': \"\"\n  '#required': true\nmajor:\n  '#type': textfield\n  '#title': Major\n  '#description': \"\"\n  '#required': true\ngraduation_year:\n  '#type': textfield\n  '#size': 20\n  '#min': \n  '#max': \n  '#step': \n  '#unique': false\n  '#title': Graduation Year\n  '#description': \"\"\n  '#required': true\nyour_message_of_thanks_to_donors:\n  '#type': textarea\n  '#title': Your message of thanks to donors\n  '#description': \"\"\n  '#required': true\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: spc@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]\n"
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

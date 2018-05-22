@@ -1,0 +1,131 @@
+uuid: c3a0d96a-0fcd-46e8-bbeb-0bf40d6b4cd5
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 415
+template: false
+id: webform_136778
+title: 'UM 2016-2017 University Ministry CORE Participation Form'
+description: null
+category: null
+elements: "communities_of_reflection_cores:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>Communities of Reflection &amp; Engagement (COREs) are small faith sharing groups led by trained student leaders and rooted in Ignatian Spirituality and the three pillars of community, faith, and justice. These groups afford students ways to build community, share life experiences, support one another, explore and share spirituality and faith, and discuss and engage in issues of social justice. Picture small group time on retreats, but running the entire year!</p><p>Each CORE group is open to all students of any faith background and year at USF. Every CORE group meets on campus. CORE participants and leaders learn from and support one another through weekly meetings and monthly gatherings. The CORE groups are identity-based this year, with a general/non-themed CORE, a Catholic CORE, and more. CORE activities are rooted in Ignatian Spirituality and in community, faith, and justice - for example, students watch and discuss TED Talks, discuss religion, meditate and pray together, go out for brunch, volunteer and engage in the SF community, and more!</p><p>Please enter your contact information below to get connected with a University Ministry CORE (Communities of Reflection &amp; Engagement) group starting in fall 2016. Once you fill out this form, the University Ministry Assistant Director of Retreats, Emily Czarnik-Neimeyer, will contact you to get you connected with a CORE starting this fall! Please feel free to contact Emily with questions on her direct office line at&nbsp;<a href='tel:415-422-6548' value='+14154226548' target='_blank'>415-422-6548</a><span>&nbsp;and/or via e-mail at&nbsp;</span><a href='mailto:eaczarnikneimeyer@usfca.edu' target='_blank'>eaczarnikneimeyer@usfca.edu</a></p><p>Thank you for your information and interest in CORE! The University Ministry Assistant Director for Retreats, Emily Czarnik-Neimeyer, will be in touch with you soon via e-mail and/or cell phone. You can learn more about the CORE program on the USF <a href='https://www.usfca.edu/university-ministry/retreats-spirituality/communities-reflection' target='_blank'>University Ministry CORE website</a> and by watching the <a href='http://youtube.com/watch?v=-TKkpPWgNZ4' target='_blank'>CORE video</a>!</p>\"\n  '#title': Communities of Reflection (COREs)\n  '#description': \"\"\nfieldset_space:\n  '#type': fieldset\n  '#open': true\n  '#title': Contact Information\n  '#description': \"\"\nfirst__last_name:\n  '#type': textfield\n  '#title': First & Last Name\n  '#description': \"\"\n  '#required': true\nusf_student_id__8_digits:\n  '#type': textfield\n  '#size': 20\n  '#min': \n  '#max': \n  '#step': \n  '#unique': false\n  '#title': USF student ID # (8 digits)\n  '#description': \"\"\n  '#required': true\nusf_e_mail:\n  '#type': email\n  '#size': 20\n  '#title': USF E-mail\n  '#description': \"\"\n  '#required': true\ncell_phone_number:\n  '#type': textfield\n  '#size': 20\n  '#min': \n  '#max': \n  '#step': \n  '#unique': false\n  '#title': Cell Phone Number\n  '#description': \"\"\n  '#required': true\nyear_at_usf:\n  '#type': textfield\n  '#title': Year at USF\n  '#description': \"\"\nweekday_day_meeting_availability_m_f_weekly:\n  '#description': \"Mondays\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Mondays\n    2: Tuesdays\n    3: Wednesdays\n    4: Thursdays\n    5: Fridays\n  '#multiple': true\n  '#title': Weekday DAY meeting availability (M-F, weekly)\n  '#description': \"\"\nweekday_time_meeting_availability_1_hour_meeting_weekly:\n  '#description': \"4-5p.m.\\n2\"\n  '#type': checkbox\n  '#options':\n    1: 4-5p.m.\n    2: 5-6p.m.\n    3: 6-7p.m.\n    4: 7-8p.m.\n    5: 8-9p.m.\n  '#multiple': true\n  '#title': Weekday TIME meeting availability (1 hour/meeting, weekly)\n  '#description': \"\"\nare_you_interested_in_applying_to_be_a_core_student_leader_for_the_2016_2017_academic_year:\n  '#type': radios\n  '#options':\n    1: Yes\n    2: No\n    3: Maybe\n  '#title': Are you interested in applying to be a CORE Student Leader for the 2016-2017 academic year?\n  '#description': \"\"\n  '#required': true\ncore_group_identity_theme_preference:\n  '#description': \"General/Non-themed CORE\\n2\"\n  '#type': checkbox\n  '#options':\n    1: General/Non-themed CORE\n    2: LGBTQ+ CORE\n    3: Catholic CORE\n    4: International Student CORE\n  '#multiple': true\n  '#title': Core Group Identity/Theme Preference\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: um@usfca.edu
+      from_mail: '[webform-submission:values:usf_e_mail:raw]'
+      from_name: default
+      subject: default
+      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]\n"
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_2:
+    id: email
+    label: 'Email 2'
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      to_mail: eaczarnikneimeyer@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_3:
+    id: email
+    label: 'Email 3'
+    handler_id: email_3
+    status: true
+    conditions: {  }
+    weight: 3
+    settings:
+      to_mail: '[webform-submission:values:usf_e_mail:raw]'
+      from_mail: default
+      from_name: default
+      subject: default
+      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]\n"
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

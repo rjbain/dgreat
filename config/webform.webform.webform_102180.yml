@@ -1,0 +1,67 @@
+uuid: 7ecc5f2d-507b-49f4-bc05-c355fd14d573
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 1293
+template: false
+id: webform_102180
+title: 'HR Commuter Plan and Subsidy Form'
+description: null
+category: null
+elements: "first_name:\n  '#type': textfield\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\ncwid_:\n  '#type': textfield\n  '#title': CWID #\n  '#description': \"\"\n  '#required': true\nphone:\n  '#type': textfield\n  '#title': Phone\n  '#description': \"\"\n  '#required': true\nusf_email:\n  '#type': email\n  '#size': 20\n  '#title': USF Email\n  '#description': \"\"\n  '#required': true\nzip_code:\n  '#type': textfield\n  '#title': Zip Code\n  '#description': \"\"\n  '#required': true\ndo_you_have_a_usf_parking_permit:\n  '#type': radios\n  '#options':\n    1: Yes\n    2: No\n  '#title': Do you have a USF parking permit?\n  '#description': \"\"\n  '#required': true\nconfirmation_message:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p><em>By entering my name below I agree that I have read and understand the <a href='/node/101813' target='_blank'>pre-tax commuter program and USF subsidy eligibility and terms</a> and that I will read and comply with the terms and conditions of My Commuter Check (MYCC). I agree and certify that orders/products will be used by me only for the purposes of commuting to and from work. I authorize USF to deduct the amount of my order (minus any applicable subsidy) up to the applicable IRS pre-tax limit and any additional post-tax amounts from my paycheck.</em></p>\"\n  '#title': Confirmation Message\n  '#description': \"\"\nname:\n  '#type': textfield\n  '#title': Name\n  '#description': \"\"\n  '#required': true\ndate:\n  '#type': date\n  '#title': Date\n  '#description': \"\"\n  '#required': true\nprocessing:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>Allow 10 Business Days for Processing.</p>\"\n  '#title': Processing\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: '<p>Thank you for submitting a commuter plan/subsidy form. If you have any questions, please email <a href="mailto:benefits@usfca.edu">benefits@usfca.edu</a>.</p>'
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: 'lhumphrey2@usfca.edu,benefits@usfca.edu'
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: false
+      attachments: true
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

@@ -1,0 +1,131 @@
+uuid: ac9cbb53-e0cf-47e5-ab98-a76029018bb1
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 415
+template: false
+id: webform_122456
+title: 'Advocates for Community Engagement (ACE) Community Partner Application Form 2016-2017'
+description: null
+category: null
+elements: "application_deadline:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>Application Deadline: <strong>Friday, March 11th by 6 p.m.</strong></p>\"\n  '#title': Application Deadline\n  '#description': \"\"\njob_description:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p><span data-fid='11123' data-media-element='1'><img class='file-icon' src='/modules/file/icons/application-pdf.png' title='application/pdf' alt='PDF icon'> <a href='https://myusf.usfca.edu/sites/default/files/ACE_Job_Description1.pdf'>Job Description</a></span></p>\"\n  '#title': Job Description\n  '#description': \"\"\norganization:\n  '#type': textfield\n  '#title': Organization:\n  '#description': \"\"\n  '#required': true\naddress:\n  '#type': textfield\n  '#title': Address:\n  '#description': \"\"\n  '#required': true\nwebsite:\n  '#type': textfield\n  '#title': Website:\n  '#description': \"\"\ncontact_person:\n  '#type': textfield\n  '#title': Contact Person and Title:\n  '#description': \"\"\n  '#required': true\nphone:\n  '#type': textfield\n  '#title': Phone:\n  '#description': \"\"\n  '#required': true\nfax:\n  '#type': textfield\n  '#title': Fax:\n  '#description': \"\"\nemail_:\n  '#type': email\n  '#size': 20\n  '#title': Email:\n  '#description': \"\"\n  '#required': true\nthank_you_for_applying:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>Thank you for applying to host one of our Advocates for Community Engagement! <strong><br>Please provide thorough and thoughtful answers to each question (at least one paragraph).</strong></p>\"\n  '#title': Thank you for applying\n  '#description': \"\"\n1:\n  '#type': textarea\n  '#title': 1. Please provide a description of your organization and list some of the service-learning opportunities you can offer to students. This description may also be used in recruitment materials and applications for student ACEs.\n  '#description': \"\"\n2:\n  '#type': textarea\n  '#title': 2. How many USF service-learners do you work with each semester? With which courses have you partnered or would you like to partner?\n  '#description': \"\"\n  '#required': true\n3:\n  '#type': textarea\n  '#title': 3. Take a moment to review the ACE job description. Describe the responsibilities you would assign to an ACE at your organization and tell how the ACE will expand your capacity to work with USF service-learners. Please be specific.\n  '#description': \"\"\n  '#required': true\nquestion_4:\n  '#type': textarea\n  '#title': 4. What knowledge and skills should an ACE have to be successful in your organization? What knowledge and skills might an ACE gain by working with your organization? How will your organization facilitate the ACE’s professional development (assigned readings, invitations to meetings or other program activities, etc.)?\n  '#description': \"\"\n  '#required': true\nquestion_5:\n  '#type': textarea\n  '#title': 5. As the ACE supervisor, in what ways will you support the ACE and service-learners? What would be your preferred schedule (days and times) for the ACE to be on-site (approximately 6 hours of their 8-10 hours work week)? Are there specific days/times that won’t work based on your availability?\n  '#description': \"\"\n  '#required': true\n6_please_list_your_availability_during_the_week_of_3_7_3_11_for_a_phone_conversation_or_in_person_interview_if_necessary:\n  '#type': textfield\n  '#title': 6. Please list your availability during the week of 3/14-3/18 for a phone conversation or in-person interview, if necessary?\n  '#description': \"\"\n  '#required': true\nfor_questions:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p><strong>For questions, please contact Fernando Enciso-Márquez at <a href='mailto:fjencisomarquez@usfca.edu?subject=ACE%20CP%20Application' title='ACE CP Application'>fjencisomarquez@usfca.edu</a> or (415) 422-2033.</strong></p>\"\n  '#title': For Questions\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: '<p>Your application to host an Advocate for Community Engagement was submitted successfully. Thank you for your interest!</p><p><span>We will get back to you soon. For more info or questions, please contact Fernando Enciso-Márquez at (415) 422-2033 or <a href="mailto:fjencisomarquez@usfca.edu?subject=ACE%20CP%20application" title="ACE CP application">fjencisomarquez@usfca.edu</a>.<br></span></p><p>- The McCarthy Center.</p>'
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: mccarthycenter@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_2:
+    id: email
+    label: 'Email 2'
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      to_mail: fjencisomarquez@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_3:
+    id: email
+    label: 'Email 3'
+    handler_id: email_3
+    status: true
+    conditions: {  }
+    weight: 3
+    settings:
+      to_mail: '[webform-submission:values:email_:raw]'
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

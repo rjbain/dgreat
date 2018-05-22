@@ -1,0 +1,99 @@
+uuid: 821960f2-5c8e-47d4-85d4-a3902cd68674
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 328
+template: false
+id: webform_107007
+title: 'Lab Health & Safety Issue or Concern'
+description: null
+category: null
+elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#description': \"\"\nemail:\n  '#type': textfield\n  '#title': Email\n  '#description': \"\"\nincident_location:\n  '#type': textfield\n  '#title': Incident Location\n  '#description': \"\"\ndescription:\n  '#type': textarea\n  '#title': Description\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: "<p >Thanks you for bringing this to our attention.</p>\r\n<p><a href=\"/arts-sciences/lab-safety\"><< Back to the Lab Safety Page</a></p>"
+  limit_total: 10
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: mrouthier@usfca.edu
+      from_mail: default
+      from_name: 'myUSF Lab Safety Form'
+      subject: default
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_2:
+    id: email
+    label: 'Email 2'
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      to_mail: caconforti@usfca.edu
+      from_mail: default
+      from_name: 'myUSF Lab Safety Form'
+      subject: default
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

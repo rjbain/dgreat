@@ -1,0 +1,67 @@
+uuid: ca9b65a1-ef36-41dc-95fb-0c7c76160c6f
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 1293
+template: false
+id: webform_112715
+title: 'HR GoUSF Go Play Form'
+description: null
+category: null
+elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#description': \"\"\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': \"\"\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': \"\"\nactivities_interested_in:\n  '#description': \"Running\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Running\n    2: Walking\n    3: Cycling\n    4: Swimming\n    5: Yoga\n    7: Other\n  '#multiple': true\n  '#title': Activities Interested In\n  '#description': \"\"\n  '#required': true\nbest_days_for_me:\n  '#description': \"Monday\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Monday\n    2: Tuesday\n    3: Wednesday\n    4: Thursday\n    5: Friday\n  '#multiple': true\n  '#title': Best Days For Me\n  '#description': \"\"\n  '#required': true\nbest_time_s_for_me:\n  '#description': \"Before work\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Before work\n    2: Lunch time\n    3: After work\n  '#multiple': true\n  '#title': Best Time/s For Me\n  '#description': \"\"\n  '#required': true\nfooter:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>Join our list to connect with others to get moving!</p>\"\n  '#title': Footer\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: '<p>Thank you for submitting a Go Play form. If you have any questions, please email <a href="mailto:gousf@usfca.edu">gousf@usfca.edu</a>.</p>'
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: skisylia@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: false
+      attachments: true
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
