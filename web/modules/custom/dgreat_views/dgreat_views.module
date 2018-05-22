@@ -10,6 +10,7 @@ use Drupal\views\ViewExecutable;
 use Drupal\user\Entity\User;
 use Drupal\node\Entity\Node;
 use Drupal\views\ResultRow;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
 
 /**
  * Implements hook_help().
@@ -25,6 +26,33 @@ function dgreat_views_help($route_name, RouteMatchInterface $route_match) {
 
     default:
   }
+}
+
+/**
+ * Implements hook_views_data().
+ */
+function dgreat_views_views_data() {
+
+  $data['user_weights']['table']['group'] = t('User Weights');
+  $data['user_weights']['table']['base'] = [
+    'field' => 'entity_id',
+    'title' => t('User Weights'),
+  ];
+
+  $data['user_weights']['table']['join']['node_field_data'] = [
+    'left_field' => 'nid',
+    'field' => 'entity_id',
+  ];
+
+  $data['user_weights']['weight'] = [
+    'title' => t('User Weight'),
+    'help' => t('User Weight.'),
+    'sort' => [
+      'id' => 'standard',
+    ],
+  ];
+
+  return $data;
 }
 
 /**
@@ -53,6 +81,17 @@ function dgreat_views_views_data_alter(array &$data) {
       'help' => $desc,
       'field' => 'nid',
       'id' => 'dgreat_views_filter_by_user'
+    ],
+  ];
+
+  $desc = t('Filters Quick Links based off of user and excludes defaults.');
+  $data['node_field_data']['user_weights'] = [
+    'title' => t('Filter by User Weights and Sort ASC'),
+    'filter' => [
+      'title' => t('Filter by User Weights and Sort ASC'),
+      'help' => $desc,
+      'field' => 'nid',
+      'id' => 'user_weight_filter_sort'
     ],
   ];
 

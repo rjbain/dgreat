@@ -4,9 +4,78 @@
  * Contains dgreat_views.install.
  */
 
+
+/**
+ * Implements hook_schema().
+ */
+function dgreat_views_schema() {
+  $schema['user_weights'] = [
+    'description' => 'The base table for OneHub file data.',
+    'fields' => [
+      'entity_id' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The id of the entity',
+      ],
+      'uid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The uid of the user.',
+      ],
+      'weight' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The weight of this term for the specific user.',
+      ],
+    ],
+    'primary key' => ['entity_id', 'uid'],
+  ];
+
+  return $schema;
+}
+
 /**
  * Updates this modules weight.
  */
 function dgreat_views_update_8001() {
   module_set_weight('dgreat_views', 10);
+}
+
+/**
+ * Adds the user_weights table.
+ */
+function dgreat_views_update_8002() {
+  $user_weights = [
+    'description' => 'The base table for OneHub file data.',
+    'fields' => [
+      'entity_id' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The id of the entity',
+      ],
+      'uid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The uid of the user.',
+      ],
+      'weight' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The weight of this term for the specific user.',
+      ],
+    ],
+    'primary key' => ['entity_id', 'uid'],
+  ];
+
+  // Check and add our new table;
+  $schema = \Drupal::database()->schema();
+  if (!$schema->tableExists('user_weights')) {
+    $schema->createTable('user_weights', $user_weights);
+  }
 }
