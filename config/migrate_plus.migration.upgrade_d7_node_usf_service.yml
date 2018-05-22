@@ -31,13 +31,9 @@ process:
   revision_log: log
   revision_timestamp: timestamp
   comment_node_usf_service/0/status: comment
-  body/format:
-    plugin: static_map
-    bypass: true
-    source: body_format
-    map:
-      panopoly_wysiwyg_text: basic_html
-  body/value: body_value
+  body:
+    plugin: get
+    source: body
   field_usfcat_audience_ref:
     plugin: get
     source: field_usfcat_audience_ref
