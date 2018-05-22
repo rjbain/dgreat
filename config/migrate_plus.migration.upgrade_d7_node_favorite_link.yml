@@ -13,6 +13,8 @@ label: 'Nodes (Favorite Link)'
 source:
   plugin: d7_node_fav_links
   node_type: favorite_link
+  constants:
+    value: 0
 process:
   nid: tnid
   vid: vid
@@ -51,6 +53,7 @@ process:
   field_link_type:
     plugin: get
     source: field_link_type
+  field_weight: constants/value
 destination:
   plugin: 'entity:node'
   default_bundle: favorite_link
