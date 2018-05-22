@@ -1,0 +1,99 @@
+uuid: 94f8c3b7-9ccd-4479-a9c7-284fd31f888a
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 1746
+template: false
+id: webform_67051
+title: 'ISSS Airport Shuttle Pick-up Form'
+description: null
+category: null
+elements: "intro:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p><strong>Please complete the following information about your flight to San Francisco:</strong></p><p><strong>Note:&nbsp;</strong><span>The shuttle registration will close at 11:59pm on Sunday, August 6th 2017.<br><br></span></p>\"\n  '#title': Intro\n  '#description': \"\"\nlast_family_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': Last (Family) Name:\n  '#description': \"\"\n  '#required': true\nfirst_given_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': First (Given) Name:\n  '#description': \"\"\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#default_value': [current-user:mail]\n  '#title_display': inline\n  '#title': Email:\n  '#description': \"\"\n  '#required': true\ncell_phone:\n  '#type': textfield\n  '#title_display': inline\n  '#title': Cell Phone Number in US (if applicable):\n  '#description': \"\"\nusf_student_id_number:\n  '#type': textfield\n  '#title_display': inline\n  '#title': USF Student ID Number (Example: 12345678):\n  '#description': \"\"\n  '#required': true\nspacer_4:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p class='clear'></p>\"\n  '#title': Spacer 4\n  '#description': \"\"\nsan_francisco_airport:\n  '#type': radios\n  '#options':\n    2: Tuesday, August 15\n  '#title': San Francisco Airport Arrival Date:\n  '#description': \"\"\n  '#required': true\nspacer_5:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p class='clear'></p>\"\n  '#title': Spacer 5\n  '#description': \"\"\nsan_francisco_airport_arrival_time:\n  '#type': time\n  '#time_format': 'H:i'\n  '#title': San Francisco Airport Arrival Time:\n  '#description': \"\"\n  '#required': true\nairline:\n  '#type': textfield\n  '#title_display': inline\n  '#title': Airline:\n  '#description': \"\"\n  '#required': true\nflight_number:\n  '#type': textfield\n  '#title_display': inline\n  '#title': Flight Number:\n  '#description': \"\"\n  '#required': true\nspacer_1:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p class='clear'></p>\"\n  '#title': Spacer 1\n  '#description': \"\"\nwill_you_arrive:\n  '#type': radios\n  '#options':\n    1: Domestic Terminal\n    2: International Terminal\n  '#title': Will you arrive in the Domestic or the International terminal at San Francisco International Airport?\n  '#description': \"\"\n  '#required': true\nspacer_2:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p class='clear'></p>\"\n  '#title': Spacer 2\n  '#description': \"\"\ndo_you_have_housing:\n  '#type': radios\n  '#options':\n    1: Yes\n    2: No\n  '#title_display': inline\n  '#title': Do you have confirmed on-campus housing?\n  '#description': \"\"\nspacer_3:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p class='clear'></p>\"\n  '#title': Spacer 3\n  '#description': \"\"\nwhich_residence_hall:\n  '#type': radios\n  '#options':\n    1: Toler Hall\n    2: Gillson Hall\n    3: Fromm Hall\n    4: Hayes-Healy Hall\n    5: Lone Mountain\n    6: Loyola Village\n    7: Pedro Arrupe Hall\n  '#title': If you have been assigned a room on campus, which Residence Hall are you in?\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: isss@usfca.edu
+      from_mail: default
+      from_name: '[webform-submission:values:last_family_name:raw]'
+      subject: 'New ISSS Airport Shuttle Pick-up'
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_2:
+    id: email
+    label: 'Email 2'
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      to_mail: '[webform-submission:values:email:raw]'
+      from_mail: default
+      from_name: default
+      subject: default
+      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]"
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

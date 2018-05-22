@@ -1,0 +1,99 @@
+uuid: 7c894ed3-39d3-4e78-9f20-73cf0fa2cc75
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 27000
+template: false
+id: webform_93894
+title: 'Enter the IEW Photo Contest!'
+description: null
+category: null
+elements: "first_name:\n  '#type': textfield\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': \"You will receive an email with instructions on how to submit your photos.\"\n  '#required': true\nnotice:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>Submissions will be accepted from Monday, October 23, until Monday, November 6, 2017</p>\"\n  '#title': Notice\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_2:
+    id: email
+    label: 'Email 2'
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      to_mail: '[webform-submission:values:email:raw]'
+      from_mail: usf.iew@gmail.com
+      from_name: 'University of San Francisco'
+      subject: 'IEW Photo Contest | USF'
+      body: "Thank you for your interest in University of San Francisco's International Education Week Photo Contest!\n\nSubmitted on [submission:date:long]\nSubmitted by user: [submission:user]\n[submission:values]\n\nTo enter the contest:\n1. Please reply directly back to this message, attaching up to five (5) photographs you wish to enter.\n2. For each photograph, please provide the location, and the date it was taken (if you know it).\n\nGood luck!\n\nNotice:\nBy submitting your photographs, you hereby irrevocably authorize the University of San Francisco (USF) to copy, exhibit, publish or distribute, any and all such images of you or wherein you appear, including composite or artistic forms and media including electronic posting on the Web, for purposes of publicizing USF programs and for any other lawful purpose.  In addition, you waive any right to inspect or approve the finished product, including written copy, wherein your likeness appears. You hereby hold harmless and release and forever discharge University of San Francisco from all claims, demands and causes of action which you, your heirs, representatives, executors, administrators or any other persons acting on your behalf of your estate."
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_3:
+    id: email
+    label: 'Email 3'
+    handler_id: email_3
+    status: true
+    conditions: {  }
+    weight: 3
+    settings:
+      to_mail: usf.iew@gmail.com
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

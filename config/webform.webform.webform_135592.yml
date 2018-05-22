@@ -1,0 +1,35 @@
+uuid: 2f4a835e-2505-4980-a908-f75be06152d7
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 2168
+template: false
+id: webform_135592
+title: 'Concur Quiz'
+description: null
+category: null
+elements: "instructions:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p><span>Please answer the following questions and hit '</span><strong>Submit</strong><span>'. Upon successful completion of this Concur Quiz, please allow up to 3 business days for Business and Finance to contact you with your account information.</span></p>\"\n  '#title': Instructions\n  '#description': \"\"\nquestion_1_correct:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p class='intro_text_lg'>Correct!</p>\"\n  '#title': Question-1-Correct!\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"1_i_must_acknowledge_compliance_with_usfs_travel_and_entertainment_policy_for_each_expense_report_that_is_created[1]\"]':\n        checked: true\n      ':input[name=\"question_1_correct[1]\"]':\n        value: '1'\nquestion_2_correct:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>Incorrect.</p>\"\n  '#title': Question-2-Correct!\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"1_i_must_acknowledge_compliance_with_usfs_travel_and_entertainment_policy_for_each_expense_report_that_is_created[2]\"]':\n        checked: true\n      ':input[name=\"question_2_correct[2]\"]':\n        value: '2'\n1_i_must_acknowledge_compliance_with_usfs_travel_and_entertainment_policy_for_each_expense_report_that_is_created:\n  '#type': radios\n  '#options':\n    1: A. Yes\n    2: B. No\n  '#title': 1. I must acknowledge compliance with USF's Travel and Entertainment Policy for each expense report that is created?\n  '#description': \"\"\n  '#required': true\n2_if_i_dont_provide_original_itemized_receipts_in_digital_form_usf_may_add_the_expense_amount_to_my_taxable_wages:\n  '#type': radios\n  '#options':\n    1: A. Yes\n    2: B. No\n  '#title': 2. If I don't provide original, itemized receipts in digital form, USF may add the expense amount to my taxable wages?\n  '#description': \"\"\n  '#required': true\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers: {  }
