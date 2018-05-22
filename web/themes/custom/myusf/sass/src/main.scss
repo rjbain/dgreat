@@ -12,12 +12,14 @@
 @import 'partials/buttons';
 @import 'partials/navigation';
 @import 'partials/components';
+@import 'partials/forms';
 
 
 html, body { //fixes mobile view sliding left and right issue
 	width: auto!important; 
 	overflow-x: hidden!important;
 }
+
 
 .container {
 	width:96%;
@@ -30,13 +32,13 @@ html, body { //fixes mobile view sliding left and right issue
 		padding-left:.5%;
 		padding-right:.5%;
 	}
-	@include media-breakpoint-only(desktop) {
-		max-width: 1060px;
-	}
-	/*@include media-breakpoint-only(large_desktop) {
-		max-width: 96%;
-	}*/
 
+	@include media-breakpoint-up(desktop) {
+		max-width: 90%;
+	}
+	@include media-breakpoint-up(xl_desktop) {
+		max-width: 1500px;
+	}
 }
 
 .col {
@@ -75,17 +77,39 @@ html, body { //fixes mobile view sliding left and right issue
 	}
 }
 
-/*#main-wrapper {     --------- to be used when we apply sticky footer
-	margin-bottom: 210px;
+.paragraph>.paragraph__column {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+
+//Sticky Footer code
+html {
+  height: 100%;
+}
+body {
+  position: relative;
+  min-height: 100%;
+  margin-bottom:0;
+}
+#main-wrapper {
+	margin-bottom:80px;
 
 	@include media-breakpoint-only(tablet) {
-		margin-bottom: 130px;
+		margin-bottom:100px;
+	}
+	@include media-breakpoint-down(landscape_phone) {
+		margin-bottom:215px;
+	}
+	@include media-breakpoint-down(phone) {
+		margin-bottom:205px;
 	}
 
-	@include media-breakpoint-up(desktop) {
-		margin-bottom: 80px;
-	}
-}. */
-
-
+}
+.site-footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
 

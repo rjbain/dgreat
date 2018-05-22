@@ -4,7 +4,8 @@
 #block-myusf-contactbox {
 	border-style: none !important;
 	background-color: $light_beige;
-	padding: 5px 18px !important;
+	padding: 5px 10px !important;
+        margin-bottom: 20px;
 
     @include media-breakpoint-only(tablet) {
         padding: 5px 10px !important;
@@ -39,13 +40,19 @@
     }
     
     p {
-        font-size: .9rem;
+        font-size: .85rem;
         font-family: $base-font;
         font-weight: 400;
         position: relative;
         color: $text-gray;
         display: block;
         line-height: 1.2rem;
+
+        a.button {
+            @include media-breakpoint-down(phone) {
+                width:100%;
+            }
+        }
     }
 }
 
@@ -84,6 +91,11 @@
     width: 16px;
     height: 16px;
     background-position: -199px -60px !important;
+}
+
+p[class~="contact"]:last-of-type{
+    margin-bottom: 30px;
+
 }
 
 
