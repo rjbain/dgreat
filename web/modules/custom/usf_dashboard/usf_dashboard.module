@@ -57,7 +57,7 @@ function template_preprocess_usf_dashboard(&$variables) {
   $user = \Drupal\user\Entity\User::load($uid);
 
   // Get a block
-  $block = \Drupal\block\Entity\Block::load('poweredbydrupal');
+  $block = \Drupal\block\Entity\Block::load('dashboardannouncements');
   // Get the events_slider view
   $display_id = 'default';
   $view_name = 'events_featured';
@@ -70,7 +70,7 @@ function template_preprocess_usf_dashboard(&$variables) {
   $variables['dashboard_content'] = array(
     "dashboard_user" => $user,
     "system_roles" => $role_objects,
-    "my_block" => \Drupal::entityTypeManager()
+    "announcements" => \Drupal::entityTypeManager()
       ->getViewBuilder('block')
       ->view($block, 'full', NULL),
     "events_slider" => $events_slider->buildRenderable($display_id)
