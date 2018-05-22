@@ -1,0 +1,99 @@
+uuid: 241d6ed7-314d-4a42-98ae-d4e6f91b7f70
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 492
+template: false
+id: webform_86713
+title: 'Study Abroad - JEEP - Housing Form'
+description: null
+category: null
+elements: "fieldset_student_name:\n  '#type': fieldset\n  '#open': true\n  '#title': Student Name\n  '#description': \"\"\n  last_name_1:\n    '#type': textfield\n    '#title_display': inline\n    '#title': Last Name\n    '#description': \"\"\n    '#required': true\n  first_name_1:\n    '#type': textfield\n    '#title_display': inline\n    '#title': First Name\n    '#description': \"\"\n    '#required': true\n  email_1:\n    '#type': email\n    '#size': 20\n    '#title_display': inline\n    '#title': Email\n    '#description': \"\"\n    '#required': true\n  application_for_1:\n    '#type': select\n    '#options':\n      1: Fall 2015 (August-December)\n      2: Academic Year 2015-2016 (August-May)\n      3: Spring 2016 (January-May)\n      4: Fall 2016 (August-December)\n      5: Academic Year 2016-2017 (August -May)\n      6: Spring 2017 (January-May)\n      7: Fall 2017 (August-December)\n    '#title_display': inline\n    '#title': Application for\n    '#description': \"\"\n    '#required': true\nhousing_statements:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p><span>Please read the following statements, then check the appropriate choice.</span></p>\"\n  '#title': Housing Statements\n  '#description': \"\"\nneed_usf_housing:\n  '#description': \"I will need USF on-campus housing.\\n\"\n  '#type': checkbox\n  '#options':\n    1: I will need USF on-campus housing.\n  '#multiple': true\n  '#title_display': invisible\n  '#title': Need USF housing\n  '#description': \"\"\nusf_housing_information:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>I understand that the online housing application<strong>&nbsp;</strong>will only be available once I have been accepted into USF as an exchange student. &nbsp;For more information on housing application instructions and costs, please visit:&nbsp;<a href='http://www.usfca.edu/residence_life' title='http://www.usfca.edu/residence_life'>http://www.usfca.edu/residence_life</a></p><p>Once admitted, I will apply online for housing and submit the housing deposit of $300.00 US Dollars.&nbsp;USF is no longer able to process International Money orders as it is a foreign item payment. Students are advised to submit online payment with an e-check or send USF a bank wire transfer payment. For instructions on sending payment please read the section 'Methods of Payment' from the following link:<a href='http://www.usfca.edu/payment' title='http://www.usfca.edu/payment'>http://www.usfca.edu/payment</a></p><p>If you do not have a US Bank Account, then you cannot use e-check to pay online.</p>\"\n  '#title': USF Housing Information\n  '#description': \"\"\nnot_living_on_campus:\n  '#description': \"I will not be living on campus.\\n\"\n  '#type': checkbox\n  '#options':\n    1: I will not be living on campus.\n  '#multiple': true\n  '#title_display': invisible\n  '#title': Not living on campus\n  '#description': \"\"\nliving_off_campus_information:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p><span>I have already made my own arrangements for housing for the term(s) of my Jesuit Exchange Program study at the University of San Francisco.</span><br><br><span>Students should be aware that apartments in the City of San Francisco are expensive. Students should not arrive in San Francisco without having an off-campus place to live. USF will not arrange off-campus housing for you.</span></p>\"\n  '#title': Living Off Campus Information\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: nobles@usfca.edu
+      from_mail: '[webform-submission:values:email:raw]'
+      from_name: '[webform-submission:values:last_name:raw]'
+      subject: default
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_2:
+    id: email
+    label: 'Email 2'
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      to_mail: '[webform-submission:values:email:raw]'
+      from_mail: studyabroad@usfca.edu
+      from_name: 'Study Abroad'
+      subject: 'Confirmation of JEEP Housing Form'
+      body: "Submitted on [submission:date:long]\n\nYour information has been received by the Center for Global Education.\n[submission:values]\n\nIf you have any questions feel free to contact the CGE at (415) 422-6848"
+      html: false
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

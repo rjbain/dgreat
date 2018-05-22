@@ -1,0 +1,35 @@
+uuid: 9d7fe904-3c53-4fe8-ad0f-82c7b6baeeab
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 9503
+template: false
+id: webform_137217
+title: 'USF Women - Stories'
+description: null
+category: null
+elements: "please_nominate:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>Please nominate someone you feel embodies a positive leadership example for USF Women.</p><hr><h2>Your Information</h2>\"\n  '#title': Please nominate\n  '#description': \"\"\nfirst_name:\n  '#type': textfield\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': \"\"\n  '#required': true\njob_title:\n  '#type': textfield\n  '#title': Job Title\n  '#description': \"\"\n  '#required': true\nphone_number:\n  '#type': textfield\n  '#title': Phone Number\n  '#description': \"\"\n  '#required': true\ne_mail_address:\n  '#type': email\n  '#size': 20\n  '#title': E-mail address\n  '#description': \"\"\n  '#required': true\nfieldset_instructions:\n  '#type': fieldset\n  '#open': true\n  '#title': Story Submission\n  '#description': \"Please nominate an individual/group you feel is a leader for the advancement of women and/or the advancement of understanding around gender roles.\\n\"\nhas_this_story_been_published:\n  '#type': radios\n  '#options':\n    1: Yes\n    2: No\n  '#title': Has this story been published?\n  '#description': \"\"\n  '#required': true\nplease_copy_and_paste_the_link_to_the_article:\n  '#type': textfield\n  '#title': Please copy and paste the link to the article.\n  '#description': \"\"\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"has_this_story_been_published[1]\"]':\n        checked: true\ntitle_of_article:\n  '#type': textfield\n  '#title': Title of article\n  '#description': \"\"\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"has_this_story_been_published[1]\"]':\n        checked: true\nplease_write_a_short_summary_of_the_story:\n  '#type': textarea\n  '#title': Please write a short summary of the story.\n  '#description': \"\"\n  '#required': true\nif_not_published_why_do_you_believe_that_this_individual_group_deserves_to_be_nominated:\n  '#type': textarea\n  '#title': If not published, why do you believe that this individual/group deserves to be nominated?\n  '#description': \"\"\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"has_this_story_been_published[2]\"]':\n        checked: true\ncan_we_contact_this_persons_for_more_information:\n  '#type': radios\n  '#options':\n    1: Yes\n    2: No\n  '#title': Can we contact this person(s) for more information?\n  '#description': \"\"\n  '#required': true\nplease_provide_the_individual_groups_contact_information:\n  '#type': textarea\n  '#title': Please provide the individual/group's contact information.\n  '#description': \"\"\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"can_we_contact_this_persons_for_more_information[1]\"]':\n        checked: true\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers: {  }

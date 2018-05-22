@@ -1,0 +1,99 @@
+uuid: 18fb5594-9f36-4b0f-a101-74d6ccb96c87
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 1510
+template: false
+id: webform_63592
+title: 'New Student Visitor Form'
+description: null
+category: null
+elements: "first_name:\n  '#type': textfield\n  '#title': First Name:\n  '#description': \"\"\nlast_name:\n  '#type': textfield\n  '#title': Last Name:\n  '#description': \"\"\ntelephone:\n  '#type': textfield\n  '#title': Telephone:\n  '#description': \"\"\nemail:\n  '#type': textfield\n  '#title': Email:\n  '#description': \"\"\ni_will_participate_in_the_new_student_visitor_program:\n  '#type': radios\n  '#options':\n    1: Yes\n    2: No\n  '#title': I will participate in the New Student Visitor Program:\n  '#description': \"\"\ni_would_like_to_be_contacted_by:\n  '#description': \"A faculty member\\n2\"\n  '#type': checkbox\n  '#options':\n    1: A faculty member\n    2: An alumnus\n    3: A current student\n  '#multiple': true\n  '#title': I would like to be contacted by: (you may choose more than one)\n  '#description': \"\"\npossible_areas_of_legal_interests:\n  '#description': \"Alternative Dispute Resolution\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Alternative Dispute Resolution\n    2: Constitutional Law\n    3: Corporate and Commercial Law\n    4: Criminal Law\n    5: Environmental Law\n    6: Family Law\n    7: Intellectual Property, Science, and Technology Law\n    8: International and Comparative Law\n    9: Labor and Employment Law\n    10: Public Interest Law\n    11: Sports and Entertainment Law\n    12: Tax Law\n    13: Trial Advocacy\n  '#multiple': true\n  '#title': Possible areas of legal interest(s):\n  '#description': \"\"\nundergraduate_school:\n  '#type': textfield\n  '#title': Undergraduate School:\n  '#description': \"\"\nmajor:\n  '#type': textfield\n  '#title': Major:\n  '#description': \"\"\ngraduate_school:\n  '#type': textfield\n  '#title': Graduate School:\n  '#description': \"\"\nmajor2:\n  '#type': textfield\n  '#title': Major:\n  '#description': \"\"\nthree_dates:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p><strong>Please choose up to three dates to participate in the New Student Visitor Program:</strong></p>\"\n  '#title': Please choose up to three dates\n  '#description': \"\"\nfebruary:\n  '#description': \"Tuesday, February 6\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Tuesday, February 6\n    2: Thursday, February 8\n    3: Monday, February 12\n    4: Wednesday, February 14\n    5: Tuesday, February 20\n    6: Thursday, February 22\n    7: Tuesday, February 27\n  '#multiple': true\n  '#title': February:\n  '#description': \"\"\nmarch:\n  '#description': \"Thursday, March 1\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Thursday, March 1\n    2: Tuesday, March 13\n    3: Thursday, March 15\n    4: Monday, March 19\n    5: Thursday, March 22\n    6: Monday, March 26\n    7: Wednesday, March 28\n  '#multiple': true\n  '#title': March:\n  '#description': \"\"\napril:\n  '#description': \"Tuesday, April 3\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Tuesday, April 3\n    2: Thursday, April 5\n    3: Tuesday, April 10\n    4: Thursday, April 12\n  '#multiple': true\n  '#title': April:\n  '#description': \"\"\nwhich_classes:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p><strong>Please indicate which classes you would like to observe during your&nbsp;visit:</strong></p>\"\n  '#title': Which Classes\n  '#description': \"\"\nmonday_classes:\n  '#description': \"Property (9:30-11:20 am)\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Property (9:30-11:20 am)\n    2: Property (1:30-3:50 pm)\n  '#multiple': true\n  '#title': Monday Classes:\n  '#description': \"\"\ntuesday_classes:\n  '#description': \"Contracts (10:30 am-12:20 pm)\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Contracts (10:30 am-12:20 pm)\n    2: Federal Income Taxation (1:30-2:50 pm)\n    3: Criminal Procedure (1:30-2:50 pm)\n  '#multiple': true\n  '#title': Tuesday Classes:\n  '#description': \"\"\nwednesday_classes:\n  '#description': \"Property (9:30-11:50 am)\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Property (9:30-11:50 am)\n    2: Contracts (1:30-3:20 pm)\n  '#multiple': true\n  '#title': Wednesday Classes:\n  '#description': \"\"\nthursday_classes:\n  '#description': \"Property (10:30-12:20 pm)\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Property (10:30-12:20 pm)\n    2: Federal Income Taxation (1:30-2:50 pm)\n    3: Criminal Procedure (1:30-2:50 pm)\n  '#multiple': true\n  '#title': Thursday Classes:\n  '#description': \"\"\nwill_you_need_a_vegetarian_meal:\n  '#type': radios\n  '#options':\n    1: Yes\n    2: No\n  '#title': Will you need a vegetarian meal?\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: demartinez2@usfca.edu
+      from_mail: default
+      from_name: '[webform-submission:values:first_name:raw]'
+      subject: 'Form submission from: New Student Visitor Form'
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_2:
+    id: email
+    label: 'Email 2'
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      to_mail: mtjohnson2@usfca.edu
+      from_mail: default
+      from_name: '[webform-submission:values:first_name:raw]'
+      subject: default
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

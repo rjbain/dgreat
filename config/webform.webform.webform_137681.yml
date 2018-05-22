@@ -1,0 +1,67 @@
+uuid: 2b8032db-6588-46eb-b8d1-de0acd374a87
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 21756
+template: false
+id: webform_137681
+title: 'Event Request Form'
+description: null
+category: null
+elements: "your_name:\n  '#type': textfield\n  '#title': Your Name\n  '#description': \"\"\n  '#required': true\nyour_department:\n  '#type': textfield\n  '#title': Your Department\n  '#description': \"\"\n  '#required': true\nwhat_is_the_name_of_your_requested_event:\n  '#type': textfield\n  '#title': What is the name of your requested event?\n  '#description': \"(Use a brief description if your event has no name. For example: 'Arts and Sciences Alumni Event')\"\n  '#required': true\nwhat_specific_objective_will_this_event_accomplish:\n  '#type': textfield\n  '#title': What specific objective will this event accomplish?\n  '#description': \"\"\n  '#required': true\nwho_is_the_target_audience:\n  '#type': textfield\n  '#title': Who is the target audience? Please be specific. \n  '#description': \"(Examples: 'Donors of $100k+ who live in LA' or 'Alumni, Parents, Friends who live in the North Bay')\"\n  '#required': true\nwhat_is_your_expected_attendance_for_this_event:\n  '#type': textfield\n  '#title': What is your expected attendance for this event? \n  '#description': \"(Examples: '15 donors and 4 staff in Petaluma' or '80-100 Alumni, Parents, and Friends in Los Angeles')\"\n  '#required': true\nwhat_specific_time_frame_would_you_like_this_event_to_fall_under:\n  '#type': textfield\n  '#title': What specific time frame would you like this event to fall under? \n  '#description': \"(Examples: 'A Thursday evening in November' or 'Any weekend in the Spring')\"\n  '#required': true\nwhat_is_your_vision_for_a_location:\n  '#type': textfield\n  '#title': What is your vision for a location? \n  '#description': \"(Examples: 'A hotel ballroom in West Hollywood' or 'The private residence of a former USF parent in Novato')\"\n  '#required': true\nidentify_any_university_leadership_or_trustees_you_would_like_to_invite_or_highlight_at_your_event:\n  '#type': textfield\n  '#title': Identify any University Leadership or Trustees you would like to invite or highlight at your event.\n  '#description': \"(Please note that if Fr. Paul is attending an event, it must also be on Peter's calendar). \"\n  '#required': true\nis_there_another_department_or_pre_existing_event_that_you_see_fit_for_collaboration:\n  '#type': textfield\n  '#title': Is there another department or pre-existing event that you see fit for collaboration? \n  '#description': \"(Ex: 'Athletics Pre-Game Reception at Roselyn House' or 'I want to collaborate with the College of Arts and Sciences')\"\n  '#required': true\ndo_you_need_speakers_for_this_event:\n  '#type': textfield\n  '#title': Do you need speakers for this event? If yes, approximately how many and what subject matter? \n  '#description': \"(Note: This information will be shared with the rest of the department to best assist your event needs) (Example: 'I am looking for three panelists and one moderator who work in Sports in the East Bay')\"\n  '#required': true\nare_you_looking_to_get_this_event_hosted_by_a_donor_or_alumnus:\n  '#type': textfield\n  '#title': Are you looking to get this event hosted by a donor or alumnus? If so, describe your specific parameters. \n  '#description': \"(Note: This information will be shared with the rest of the department to best assist your event needs) * (Example: 'I would like to have a dinner hosted by an alumni, who is willing to cover costs and has a private residence located in Orange County with a view of the Pacific Ocean')\"\n  '#required': true\nwill_this_event_require_an_invitation:\n  '#type': textfield\n  '#title': Will this event require an invitation? If so, please describe if it will be printed or email or both.\n  '#description': \"(If so, please describe if it will be printed or email)\"\n  '#required': true\nhow_do_you_plan_on_receiving_your_data_list:\n  '#type': radios\n  '#options':\n    1: Salesforce\n    2: CLASS\n    3: UAReports (Note: There is a 2-week turnaround time from UAReport)\n    4: Other\n  '#title': How do you plan on receiving your data list of invitees? \n  '#description': \"\"\n  '#required': true\nadditional_comments:\n  '#type': textfield\n  '#title': Additional Comments:\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: usfevents@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]"
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
