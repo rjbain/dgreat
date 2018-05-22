@@ -1,0 +1,106 @@
+/* Webforms
+================================================ */
+
+.progress-step.is-active {
+
+	.progress-marker {
+    	background: $green;
+	}
+
+	&:hover {
+		.progress-marker {
+			background: $yellow!important;
+			color: $black;
+		}
+	}
+}
+
+form {
+	font-size: 1rem;
+
+	label {
+    	font-weight: 700;
+	}
+
+	.form-control {
+		border-radius: 0;
+	}
+
+	.form-group {
+    	padding-left: 0;
+    	padding-right:0;
+	}
+
+	.checkbox {
+    	padding-left: 20px;
+	}
+
+	legend {
+		font-size: 1.3rem;
+		margin-bottom: 1rem;
+	}
+	
+	#edit-radio-buttons--wrapper {
+    	margin-top: 30px!important;
+
+    	.radio {
+    		padding-left: 10px;
+		}
+	}
+
+	button#edit-actions-submit {
+    	margin-top: 2rem;
+
+    	@include media-breakpoint-down(phone) { 
+    		width: 100%;
+    	}
+	}
+
+	.ui-state-active, .ui-button:active, .ui-button:hover, .ui-button:focus, .ui-button.ui-state-active:hover {
+    	border: 1px solid $gray_medium!important;
+    	background: $beige;
+    	color: $black;
+	}	
+}
+
+.form-select {
+    border: 0;
+    border-radius: 0;
+    outline: $light_gray_cold solid 1px;
+    outline-offset: -1px;
+}
+
+.webform-signature-pad .button {
+	top: unset;
+    right: 0px;
+    border: 0;
+
+    @include media-breakpoint-down(phone) { 
+    	width: 50%;
+    }
+}
+.webform-options-display-side-by-side.radio {
+    margin-left: -4px;
+}
+
+label.ui-checkboxradio-label.ui-corner-all.ui-button.ui-widget.ui-checkboxradio-radio-label {
+    border-radius: 0;
+}
+
+
+#edit-date-time fieldset.form-item-date-time-date {
+	/*@include media-breakpoint-down(phone) { */
+    	width: 50%;
+	/*}*/
+}
+input#edit-date-time-date {
+	@include media-breakpoint-down(phone) { 
+    	padding-right: 0px;
+    }
+}
+
+.ui-button {
+	border: 1px solid $gray_medium!important;
+	background: $light_beige;
+	color: $black;
+}
