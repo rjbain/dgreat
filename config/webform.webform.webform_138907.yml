@@ -1,0 +1,67 @@
+uuid: bcd3a1ad-9349-41b8-b7b7-c13974a93383
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 1293
+template: false
+id: webform_138907
+title: 'HR GoUSF Go Move Challenge Story and Photo Submissions Form'
+description: null
+category: null
+elements: "first_name:\n  '#type': textfield\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\nwhat_jesuit_institution_are_you_affiliated_with:\n  '#type': textfield\n  '#title': What Jesuit Institution are you affiliated with?\n  '#description': \"\"\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': \"\"\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': Title\n  '#description': \"\"\n  '#required': true\nhow_many_years_have_you_participated_in_the_go_move_challenge:\n  '#type': textfield\n  '#size': 20\n  '#min': 0\n  '#max': 10\n  '#step': \n  '#unique': false\n  '#title': How many years have you participated in the Go Move Challenge?\n  '#description': \"\"\n  '#required': true\nwhat_inspired_you_to_join_the_go_move_challenge:\n  '#type': textarea\n  '#title': What inspired you to join the Go Move Challenge?\n  '#description': \"\"\n  '#required': true\nwhat_are_the_positive_outcomes_if_any_of_your_participation_in_the_go_move_challenge:\n  '#type': textarea\n  '#title': What are the positive outcomes, if any, of your participation in the Go Move Challenge?\n  '#description': \"\"\n  '#required': true\nis_there_anything_else_you_would_like_to_share:\n  '#type': textarea\n  '#title': Is there anything else you would like to share?\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: '<p>Thank you for submitting your <a href="http://www.gomovechallenge.org/" target="_blank">Go Move Challenge</a> story! If you have any questions, please contact GoUSF@usfca.edu.</p>'
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: skisylia@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: false
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

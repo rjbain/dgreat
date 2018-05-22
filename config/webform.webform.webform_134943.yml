@@ -1,0 +1,99 @@
+uuid: 96feb5cf-0066-4b85-8652-acd7e7af90b0
+langcode: en
+status: closed
+dependencies: {  }
+open: null
+close: null
+uid: 4505
+template: false
+id: webform_134943
+title: 'Kai Chong Tong Scholarship Opportunity'
+description: null
+category: null
+elements: "scholarships_intro:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>Up to six scholarships of $1,500 each will be awarded to undergraduate students in the following programs: College of Arts &amp; Sciences, School of Management, and School of Nursing and Health Professions.</p><p>Requirements:<br />Demonstrated financial need.<br />Student whose ancestors are from China.<br />Full time student in good standing.<br />Available to undergraduate student who has completed at least one year of full time studies at USF with a cumulative 3.5 GPA or higher.</p><p>Scholarship recipients are <strong>required</strong> to attend the Pon Yup Chong How Benevolent Association Annual Spring Celebration, which will be held in the early Spring of 2019 (in San Francisco).</p><p>Must have already filed a valid 2018–19 FAFSA (Free Application for Federal Student Aid) with the Federal Processor and the FAFSA must be on file with the USF Financial Aid office prior to March 1. (All information submitted will be verified by the Office of Financial Aid).</p><p>Complete and return this application by Thursday, March 22.</p>\"\n  '#title': Scholarships Intro\n  '#description': \"\"\ncwid:\n  '#min': 0\n  '#max': 99999999\n  '#title': CWID\n  '#description': \"\"\n  '#required': true\nfirst_name:\n  '#type': textfield\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\nusf_email:\n  '#type': email\n  '#size': 20\n  '#title': USF Email\n  '#description': \"\"\n  '#required': true\ngpa:\n  '#min': 0\n  '#max': 4\n  '#title': GPA\n  '#description': \"\"\n  '#required': true\ngraduation_date:\n  '#type': date\n  '#title': Graduation Date\n  '#description': \"\"\n  '#required': true\nchinese_district_and_province_where_ancestors_are_from:\n  '#type': textfield\n  '#title': Chinese District and Province Where Ancestors are From\n  '#description': \"\"\n  '#required': true\nplease_enter_your_full_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': Please Enter Your Full Name\n  '#description': \"*BY DOING SO YOU CONSENT THAT THE INFORMATION PROVIDED IS ACCURATE. ADDITIONALLY, IF SELECTED AS A RECIPIENT, YOU CONSENT TO THE UNIVERSITY OF SAN FRANCISCO IDENTIFYING YOU AS A SCHOLARSHIP RECIPIENT TO DONORS OF THIS SCHOLARSHIP.\"\n  '#required': true\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: '<p>Thank you for completing the Kai Chong Tong Scholarship application. Selected scholarship recipients will be notified by the beginning of April via their usfca email. If you do not hear back by then, please know that the scholarship will be open to all eligible students once again next year. Thank you once again for your time. If you have any questions, please reach out to Sara Rinaldi, Stewardship Coordinator, at srinaldi@usfca.edu</p>'
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: srinaldi@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]\n"
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_2:
+    id: email
+    label: 'Email 2'
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      to_mail: '[webform-submission:values:usf_email:raw]'
+      from_mail: default
+      from_name: default
+      subject: default
+      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]\n"
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

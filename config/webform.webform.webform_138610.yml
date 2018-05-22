@@ -1,0 +1,67 @@
+uuid: e48b5db3-437f-4597-b082-85983922806f
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 1293
+template: false
+id: webform_138610
+title: 'HR GoUSF Run Wild Registration Form'
+description: null
+category: null
+elements: "employees_information:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h2>Employee's Information</h2>\"\n  '#title': Employee's Information\n  '#description': \"\"\nfirst_name:\n  '#type': textfield\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': \"\"\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#size': 20\n  '#title': USF Email Address\n  '#description': \"\"\n  '#required': true\nyour_guests_first_and_last_name:\n  '#type': textfield\n  '#title': Your Guest's First and Last Name (optional)\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: '<p>Thank you for submitting your&nbsp;RSVP form. You will receive an email including your Run Wild San(ta) Francisco registration code, which waives all race fees. Once you receive the code via email, register at <a href="https://sweattracker.com/Registration/RunWildSF" target="_blank">Run Wild San(ta) Francisco website</a>.</p>'
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: gousf@usfca.edu
+      from_mail: default
+      from_name: 'GoUSF Run Wild Registration Form'
+      subject: default
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

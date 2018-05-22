@@ -1,0 +1,67 @@
+uuid: 23e53d8b-055f-4a0d-8c20-2fe945d263fd
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 23555
+template: false
+id: webform_63269
+title: 'Behavior Contract Form'
+description: null
+category: null
+elements: "header_short_term_program_behavior_contract:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h2>Short Term Program Behavior Contract</h2>\"\n  '#title': [HEADER] Short Term Program Behavior Contract\n  '#description': \"\"\nfull_name:\n  '#type': textfield\n  '#title': Full Name\n  '#description': \"\"\n  '#required': true\nprogram:\n  '#type': textfield\n  '#title': Program\n  '#description': \"\"\n  '#required': true\ncity:\n  '#type': textfield\n  '#title': City\n  '#description': \"\"\n  '#required': true\ncountry:\n  '#type': textfield\n  '#title': Country\n  '#description': \"\"\n  '#required': true\ntext_main_text:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>In consideration for being permitted to participate in the University of San Francisco Study Abroad program in the above specified City and Country, with the above specified Program, I hereby acknowledge and agree to the following:</p><p>1. At all times during the Program, my conduct must conform with the Mission of the University of San Francisco, hereby known as the University, the standards set forth in the <em>Fogcutter Student Handbook, </em>all rules then in effect as contained in Program literature and as stated by Program personnel, and all rules established by the program site.</p><p>2. I understand I am responsible for knowing and abiding by the laws of those countries through which I travel while participating in the Program.</p><p>3. I understand the University considers some offenses to be serious including, but not limited to the following:</p><ul><li>• Illegal drug use</li><li>• Use of abusive language</li><li>• Failure to inform appropriate personnel regarding travel plans</li><li>• Alcohol use that impairs judgment and/or leads to improper social behavior</li><li>• Disruptive behavior and/or noise in residences, hotels, transportation or campus</li><li>• Disregard for local laws and more</li><li>• Disruption or obstruction of teaching</li><li>• Failure to attend classes or other Program activities regularly (without an excused absence or permission)</li></ul><p>4. I understand and agree that my failure to comply with any part of this behavior contract may result in disciplinary action&nbsp;including the following:</p><ul><li>• Immediate expulsion from the Program</li><li>• Total forfeiture of all fees and monies paid to the University of San Francisco</li><li>• Loss of all course/academic credit in progress</li><li>• Permanent disqualification from all future University of San Francisco Study Abroad or international programs.</li></ul><br>&nbsp;\"\n  '#title': [TEXT] Main Text\n  '#description': \"\"\nconfirmation:\n  '#type': radios\n  '#options':\n    1: &nbsp;By checking here, I understand and agree to all of the terms listed above.\n  '#title_display': invisible\n  '#title': Confirmation\n  '#description': \"\"\n  '#required': true\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: 'stp@usfca.edu,macalderon2@dons.usfca.edu'
+      from_mail: default
+      from_name: default
+      subject: 'Behavior Contract Form'
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

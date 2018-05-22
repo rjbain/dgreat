@@ -1,0 +1,67 @@
+uuid: d58884df-7556-4c8d-9cde-de5b06cabe79
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 350
+template: false
+id: webform_136724
+title: 'UM Fall Faculty Lecture Series'
+description: null
+category: null
+elements: "callout:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<div>Thursday, 12/1/16</div><div>11:30am - 1:00pm, Lone Mountain Main 100</div>\"\n  '#title': Callout\n  '#description': \"\"\nfirst_name:\n  '#type': textfield\n  '#title': First Name:\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name:\n  '#description': \"\"\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department:\n  '#description': \"\"\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': Title:\n  '#description': \"\"\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#size': 20\n  '#title': USF Email Address:\n  '#description': \"\"\n  '#required': true\nphone_number:\n  '#title': Phone Number:\n  '#description': \"\"\n  '#required': true\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: um@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]\n"
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

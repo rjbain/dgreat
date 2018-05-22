@@ -1,0 +1,67 @@
+uuid: 6659c241-fd49-42c0-90f3-179874ed9899
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 51633
+template: false
+id: webform_138053
+title: 'New Student Orientation Volunteers'
+description: null
+category: null
+elements: "intro:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p><span>Thank you for volunteering your time during New Student Orientation weekend! Your presence will make a tremendous impact on our incoming students and their families. Please mark any/all events for which you are available. For the Family Orientation check-in, please mark which shifts you'd be available for. More information regarding support of these events will be emailed to you directly in August.</span></p>\"\n  '#title': Introduction\n  '#description': \"\"\nfirst_name:\n  '#type': textfield\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': \"\"\n  '#required': true\nposition_title:\n  '#type': radios\n  '#options':\n    1: Staff\n    2: Faculty\n  '#title': Role\n  '#description': \"\"\n  '#required': true\nposition_title_textfield:\n  '#type': textfield\n  '#title': Position Title\n  '#description': \"\"\n  '#required': true\ndepartment_name:\n  '#type': textfield\n  '#title': Department Name\n  '#description': \"\"\n  '#required': true\nname_of_supervisor:\n  '#type': textfield\n  '#title': Name of Supervisor\n  '#description': \"\"\n  '#required': true\nfieldset_volunteer_options:\n  '#type': fieldset\n  '#open': true\n  '#title': Volunteer Options\n  '#description': \"\"\nfamily_orientation_check_in_saturday_1030am___230pm___2_hour_shifts:\n  '#description': \"10a.m.-12p.m.\\n2\"\n  '#type': checkbox\n  '#options':\n    1: 10a.m.-12p.m.\n    2: 12p.m.-2p.m.\n    3: 12:30p.m.-2:30p.m.\n  '#multiple': true\n  '#title': Family Orientation Check-In (Saturday) 10:30am - 2:30pm - 2 hour shifts\n  '#description': \"\"\nmove_in_day_welcoming_team_saturday_730am___330pm___3_hour_shifts:\n  '#description': \"7:30a.m.-10:30a.m.\\n2\"\n  '#type': checkbox\n  '#options':\n    1: 7:30a.m.-10:30a.m.\n    2: 10:30a.m.-1:30p.m.\n    3: 12:30p.m.-3:30p.m.\n  '#multiple': true\n  '#title': Move-In Day Welcoming Team (Saturday) 7:30am - 3:30pm - 3 hour shifts\n  '#description': \"\"\nbrunch_with_new_students_and_families_sunday:\n  '#description': \"11:00a.m. - 12:45p.m.\\n\"\n  '#type': checkbox\n  '#options':\n    1: 11:00a.m. - 12:45p.m.\n  '#multiple': true\n  '#title': Brunch with New Students and Families (Sunday) \n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: '<p>Thank you for your interest. See you in August!&nbsp;</p>'
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: '[webform-submission:values:email:raw]'
+      from_mail: default
+      from_name: default
+      subject: default
+      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]"
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

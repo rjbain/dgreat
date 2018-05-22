@@ -1,0 +1,99 @@
+uuid: 843fe976-57cd-4d0b-9b44-e375fae1bcd7
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 492
+template: false
+id: webform_86709
+title: 'Study Abroad - JEEP - Application Essay'
+description: null
+category: null
+elements: "fieldset_student_name:\n  '#type': fieldset\n  '#open': true\n  '#title': Student Name\n  '#description': \"\"\n  last_name_1:\n    '#type': textfield\n    '#title_display': inline\n    '#title': Last Name\n    '#description': \"\"\n    '#required': true\n  first_name_1:\n    '#type': textfield\n    '#title_display': inline\n    '#title': First Name\n    '#description': \"\"\n    '#required': true\n  email_1:\n    '#type': email\n    '#size': 20\n    '#title_display': inline\n    '#title': Email\n    '#description': \"\"\n    '#required': true\nessay_text:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p><span>Please compose an essay, in English, telling us your reasons for wishing to study at the University of San Francisco, and explain why you have chosen a particular field of study.</span></p>\"\n  '#title': Essay Text\n  '#description': \"\"\nessay:\n  '#type': textarea\n  '#title_display': invisible\n  '#title': Essay\n  '#description': \"\"\n  '#required': true\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: nobles@usfca.edu
+      from_mail: '[webform-submission:values:email:raw]'
+      from_name: '[webform-submission:values:last_name:raw]'
+      subject: default
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_2:
+    id: email
+    label: 'Email 2'
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      to_mail: '[webform-submission:values:email:raw]'
+      from_mail: studyabroad@usfca.edu
+      from_name: 'Study Abroad'
+      subject: 'Confirmation of JEEP Application Essay'
+      body: "Submitted on [submission:date:long]\n\nYour information has been received by the Center for Global Education.\n[submission:values]\n\nIf you have any questions feel free to contact the CGE at (415) 422-6848."
+      html: false
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

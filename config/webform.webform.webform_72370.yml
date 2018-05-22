@@ -1,0 +1,131 @@
+uuid: 4b858fb1-fa71-49bb-b838-3465f8741e87
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 6254
+template: false
+id: webform_72370
+title: 'One Stop - Marshal Registration - May'
+description: null
+category: null
+elements: "your_information:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h3>Your Information:</h3>\"\n  '#title': Your Information:\n  '#description': \"\"\nfirst_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': First Name:\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': Last Name:\n  '#description': \"\"\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title_display': inline\n  '#title': Email: \n  '#description': \"\"\n  '#required': true\ndepartment_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': Department Name  (i.e. Financial Aid):\n  '#description': \"\"\n  '#required': true\nsol_staff:\n  '#type': radios\n  '#options':\n    1: Yes\n    2: No\n  '#title_display': inline\n  '#title': Are you School of Law staff?\n  '#description': \"\"\n  '#required': true\npast_participation:\n  '#type': radios\n  '#options':\n    1: Yes\n    2: No\n  '#title_display': inline\n  '#title': Have you participated as a Marshal in the past?\n  '#description': \"\"\n  '#required': true\nyour_supervisors_information:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h3>&nbsp;<br>Your Supervisor's Information:</h3>\"\n  '#title': Your Supervisor's Information:\n  '#description': \"\"\nsupervisors_first_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': Supervisor's First Name:\n  '#description': \"\"\n  '#required': true\nsupervisors_last_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': Supervisor's Last Name:\n  '#description': \"\"\n  '#required': true\nsupervisors_email:\n  '#type': email\n  '#size': 20\n  '#title_display': inline\n  '#title': Supervisor's Email:\n  '#description': \"\"\n  '#required': true\nceremonies:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h3>&nbsp;<br><span>Ceremonies:</span></h3><p><span>\\nPlease consider signing up for multiple ceremonies for an entire day or across several days.  Check below to see which ceremonies you are able to volunteer for. Check-in is generally 1 hr 15 min before the ceremony starts (ceremony start times are listed below) and the total time commitment is 2.5-3 hrs per ceremony.</span></p>\"\n  '#title': Ceremonies\n  '#description': \"\"\nthursday_options:\n  '#description': \"6 pm, School of Nursing and Health Professions Ceremony\\n\"\n  '#type': checkbox\n  '#options':\n    2: 6 pm, School of Nursing and Health Professions Ceremony\n  '#multiple': true\n  '#title': Thursday, May 17, 2018\n  '#description': \"\"\nbr1:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<br>\"\n  '#title': br1\n  '#description': \"\"\nfriday_options:\n  '#description': \"9 am, Undergraduate Humanities and Sciences Students in College of Arts and Sciences Ceremony\\n2\"\n  '#type': checkbox\n  '#options':\n    1: 9 am, Undergraduate Humanities and Sciences Students in College of Arts and Sciences Ceremony\n    2: 12 pm, Undergraduate Arts and Social Sciences Students in the College of Arts and Sciences Ceremony\n    3: 3 pm, Graduate Students in the College of Arts and Sciences Ceremony\n    4: 6 pm, School of Education Ceremony\n  '#multiple': true\n  '#title': Friday, May 18, 2018\n  '#description': \"\"\nbr2:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<br>\"\n  '#title': br2\n  '#description': \"\"\nsaturday_options:\n  '#description': \"9 am, Undergraduate Bachelor Science in Business Administration Students in the School of Management Ceremony\\n2\"\n  '#type': checkbox\n  '#options':\n    1: 9 am, Undergraduate Bachelor Science in Business Administration Students in the School of Management Ceremony\n    2: 12 pm, Undergraduate Professional Bachelor’s Degree Students and Graduate Students in the School of Management Ceremony\n    3: 3 pm, School of Law Ceremony\n  '#multiple': true\n  '#title': Saturday, May 19, 2018\n  '#description': \"\"\nbr3:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<br>\"\n  '#title': br3\n  '#description': \"\"\nposition_preferences:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h3>&nbsp;<br>Position Preferences:</h3><p><span>Not all preferences can be fulfilled. Typically student preparation is the most popular and has less need than other areas. Outdoor and indoor areas are usually always in need of more marshals. For detailed position descriptions, please see the Marshal Position Descriptions page.</span></p>\"\n  '#title': Position Preferences:\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"thursday_options\"]':\n        filled: false\n      ':input[name=\"friday_options\"]':\n        filled: false\n      ':input[name=\"saturday_options\"]':\n        filled: false\nfirst_preference:\n  '#type': select\n  '#options':\n    1: No Preference\n    5: General Seating Marshal\n    4: Student Preparation Marshal\n  '#title': First Preference:\n  '#description': \"\"\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"thursday_options\"]':\n        filled: false\n      ':input[name=\"friday_options\"]':\n        filled: false\n      ':input[name=\"saturday_options\"]':\n        filled: false\nnormal_position:\n  '#type': textarea\n  '#title': If you have a specific area where you normally volunteer or are a coordinator for a specific area, please indicate below:\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: url
+  confirmation_url: 'https://myusf.usfca.edu/onestop/graduation/marshal-volunteers/thank-you'
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_3:
+    id: email
+    label: 'Email 3'
+    handler_id: email_3
+    status: true
+    conditions: {  }
+    weight: 3
+    settings:
+      to_mail: '[webform-submission:values:email:raw]'
+      from_mail: gradcenter@usfca.edu
+      from_name: 'Graduation Center'
+      subject: 'Commencement Marshal Registration Confirmation'
+      body: "Thank you for volunteering [submission:values:first_name]!<br><br>\nIf you have any questions about volunteering, please contact William Vitagliano at wbvitagliano@usfca.edu or x4532.\n<br><br>\n\nThis is confirmation of your commencement marshal registration:\n<br>\nName: [submission:values:first_name] [submission:values:last_name]\n<br>\nEmail: [submission:values:email]\n<br>\nDepartment Name: [submission:values:department_name]\n<br>\nAre you School of Law staff?: [submission:values:sol_staff]\n<br>\nHave you participated as a Marshal in the past? [submission:values:past_participation]\n<br><br>\nSupervisor's Information:\n<br>\nName: [submission:values:supervisors_first_name] [submission:values:supervisors_last_name]\n<br>\nEmail: [submission:values:supervisors_email]\n<br><br>\nCeremonies at which you would like to volunteer:\n<br>\n[submission:values:thursday_options]<br>\n[submission:values:friday_options]<br>\n[submission:values:saturday_options]\n<br><br>\nCeremony Preferred Position: [submission:values:first_preference]\n<br><br>\nIf you have a specific area where you normally volunteer or are a coordinator for a specific area, please indicate below:\n<br>\n[submission:values:normal_position]"
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_5:
+    id: email
+    label: 'Email 5'
+    handler_id: email_5
+    status: true
+    conditions: {  }
+    weight: 5
+    settings:
+      to_mail: aarmstrong3@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: 'Commencement Marshal Registration Submission'
+      body: "Name: [submission:values:first_name] [submission:values:last_name]\n<br>\nEmail: [submission:values:email]\n<br>\nDepartment Name: [submission:values:department_name]\n<br>\nAre you School of Law staff?: [submission:values:sol_staff]\n<br>\nHave you participated as a Marshal in the past? [submission:values:past_participation]\n\n<br><br>\n\nSupervisor's Information:\n<br>\nName: [submission:values:supervisors_first_name] [submission:values:supervisors_last_name]\n<br>\nEmail: [submission:values:supervisors_email]\n\n<br><br>\nCeremonies at which you would like to volunteer:\n<br>\n[submission:values:thursday_options]<br>\n[submission:values:friday_options]<br>\n[submission:values:saturday_options]\n<br><br>\nCeremony Preferred Position: [submission:values:first_preference]\n<br><br>\nIf you have a specific area where you normally volunteer or are a coordinator for a specific area, please indicate below:\n<br>\n[submission:values:normal_position]\n<br><br>\nThen results of this forms submission may be downloaded at:\nhttps://myusf.usfca.edu/node/72370/webform-results/download"
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_6:
+    id: email
+    label: 'Email 6'
+    handler_id: email_6
+    status: true
+    conditions: {  }
+    weight: 6
+    settings:
+      to_mail: wbvitagliano@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: 'Commencement Marshal Registration Submission'
+      body: "Name: [submission:values:first_name] [submission:values:last_name]\n<br>\nEmail: [submission:values:email]\n<br>\nDepartment Name: [submission:values:department_name]\n<br>\nAre you School of Law staff?: [submission:values:sol_staff]\n<br>\nHave you participated as a Marshal in the past? [submission:values:past_participation]\n\n<br><br>\n\nSupervisor's Information:\n<br>\nName: [submission:values:supervisors_first_name] [submission:values:supervisors_last_name]\n<br>\nEmail: [submission:values:supervisors_email]\n\n<br><br>\nCeremonies at which you would like to volunteer:\n<br>\n[submission:values:thursday_options]<br>\n[submission:values:friday_options]<br>\n[submission:values:saturday_options]\n<br><br>\nCeremony Preferred Position: [submission:values:first_preference]\n<br><br>\nIf you have a specific area where you normally volunteer or are a coordinator for a specific area, please indicate below:\n<br>\n[submission:values:normal_position]\n<br><br>\nThen results of this forms submission may be downloaded at:\nhttps://myusf.usfca.edu/node/72370/webform-results/download"
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

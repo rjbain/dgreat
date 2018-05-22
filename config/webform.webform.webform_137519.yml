@@ -1,0 +1,99 @@
+uuid: 5b470016-1d8d-4134-a146-79bd077f4971
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 24225
+template: false
+id: webform_137519
+title: 'Learning Outcomes'
+description: null
+category: null
+elements: "outcomes:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>The law school has developed a list of potential learning outcomes. We are seeking feedback about them from various stakeholders, including alumni, students, faculty and staff. We are asking for your thoughts and suggestions.</p><p>These learning outcomes are part of a larger project to improve how we educate and assess our students. Our learning outcomes identify the core knowledge, skills, and values that we want all of our students to acquire by the time they graduate. Once the learning outcomes are finalized, we will develop a plan for all students to achieve them by graduation, regularly assess whether students are in fact achieving them, and then change our practices, the learning outcomes, or both based on what we learn.</p><p>Consistent with the USF mission the learning outcomes are meant to frame in general terms what we commit to teach all of our students. They form a floor, not a ceiling. They thus do not define or exhaust our aspirations for the education we provide. Nor do they address explicitly every practical goal we have, such as ensuring all of our students have strong prospects for passing the bar. The learning outcomes are consistent with and support that goal, but they are deliberately framed in more general terms. Further, the outcomes are not necessarily listed in order of priority or in sequential order based on when they would likely be taught in law school. Also, they are for the law school in general; we do not expect any particular program or course to teach all of them. The law school should address each one, however, somewhere in the curriculum or co-curriculum.</p><p>With that in mind, we propose that the law school ensure that students achieve competence in all of the following:</p><ol><li>Knowledge and understanding of doctrine and policy.</li><li>Legal analysis and reasoning.</li><li>Legal research.</li><li>Professional skills, including independent and critical thought, effective problem solving, and good work habits.</li><li>Communication, including written and oral.</li><li>Professional identity and ethical responsibility.</li><li>Capacity for, awareness of, and openness to working in a diverse environment, from a global perspective, and toward the advancement of social justice.</li></ol>\"\n  '#title': Learning Outcomes\n  '#description': \"\"\nusf_affiliation:\n  '#description': \"Student\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Student\n    2: Alumni\n    3: Adjunct Professor\n    4: Staff\n  '#multiple': true\n  '#title': USF Affiliation\n  '#description': \"Select all that apply\"\n  '#required': true\ngraduation_year:\n  '#type': textfield\n  '#title': Graduation Year\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"usf_affiliation\"]':\n        checked: true\nlearning_objective_1:\n  '#type': textarea\n  '#title': Do you think any of the learning outcomes are particularly important? If so, which ones?\n  '#description': \"\"\nlearning_objective_2:\n  '#type': textarea\n  '#title': Do you question the appropriateness of including any of the learning outcomes? If so, which ones?\n  '#description': \"\"\nlearning_objective_3:\n  '#type': textarea\n  '#title': Would you modify any of the learning outcomes? If so, how?\n  '#description': \"\"\nlearning_objective_4:\n  '#type': textarea\n  '#title': Would you add any learning outcomes? If so, what would they be?\n  '#description': \"\"\nlearning_objective_5:\n  '#type': textarea\n  '#title': Do you have any other comments or feedback?\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: mwatt@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: false
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_2:
+    id: email
+    label: 'Email 2'
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      to_mail: dlcreasman@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: false
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

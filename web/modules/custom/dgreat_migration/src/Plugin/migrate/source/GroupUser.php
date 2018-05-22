@@ -42,7 +42,8 @@ class GroupUser extends User {
     // Set our array of values.
     $gids = [];
     foreach ($query as $gid) {
-      $gids[] = $gid['gid'];
+      $gids[] = $gid['gid']config/core.base_field_override.node.webform.promote.yml
+      ;
     }
 
     foreach ($query2 as $gid) {

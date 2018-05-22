@@ -1,0 +1,131 @@
+uuid: bc82dd38-0fbd-42af-b6b6-da291fee5c58
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 6254
+template: false
+id: webform_72174
+title: 'One Stop - Commencement Faculty Attendance - May'
+description: null
+category: null
+elements: "your_information:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h3>Your Information:</h3>\"\n  '#title': Your Information:\n  '#description': \"\"\nfirst_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': First Name:\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': Last Name:\n  '#description': \"\"\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title_display': inline\n  '#title': Email:\n  '#description': \"\"\n  '#required': true\nschool_library:\n  '#type': select\n  '#options':\n    1: College of Arts and Sciences\n    2: School of Management\n    3: School of Education\n    4: School of Nursing and Health Professions\n    5: Gleeson Library\n  '#title_display': inline\n  '#title': Your School/College or Gleeson Library:\n  '#description': \"\"\n  '#required': true\nceremonies:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h3><br>Ceremonies:</h3>\"\n  '#title': Ceremonies:\n  '#description': \"\"\nceremony_selection:\n  '#description': \"Commencement Mass, Thursday, May 17, 3pm\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Commencement Mass, Thursday, May 17, 3pm\n    2: School of Nursing and Health Professions, Thursday, May 17, 6pm\n    3: UG Arts and Sciences - Humanities and Sciences, Friday, May 18, 9am\n    4: UG Arts and Sciences - Arts and Social Sciences, Friday, May 18, 12pm\n    5: Graduate Arts and Sciences, Friday, May 18, 3pm\n    6: School of Education, Friday, May 18, 6pm\n    8: School of Management - Bachelor of Science in Business Administration, Saturday, May 19, 9am\n    9: School of Management - Professional Bachelor's Degree and Graduate Students Saturday, May 19, 12pm\n    7: School of Law, Saturday, May 19, 3pm\n  '#multiple': true\n  '#title': Choose the ceremonies you would like to attend:\n  '#description': \"\"\n  '#required': true\n  '#states':\n    optional:\n      ':input[name=\"non_attendance\"]':\n        checked: true\nbr1:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<br>\"\n  '#title': br1\n  '#description': \"\"\nnon_attendance:\n  '#description': \"Not attending\\n\"\n  '#type': checkbox\n  '#options':\n    1: Not attending\n  '#multiple': true\n  '#title': I will not attend any ceremonies:\n  '#description': \"\"\nregalia:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h3><br>Regalia:</h3>\"\n  '#title': Regalia:\n  '#description': \"\"\nneed_regalia:\n  '#type': radios\n  '#options':\n    1: Yes\n    2: No\n  '#title': Do you need rental regalia?\n  '#description': \"\"\n  '#required': true\nbr2:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<br>\"\n  '#title': br2\n  '#description': \"\"\nregalia_type:\n  '#description': \"Cap\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Cap\n    2: Gown\n    3: Hood\n  '#multiple': true\n  '#title': If yes, which?\n  '#description': \"\"\nbr3:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<br>\"\n  '#title': br3\n  '#description': \"\"\ncomments_questions:\n  '#type': textarea\n  '#title_display': inline\n  '#title': Comments or questions?\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: url
+  confirmation_url: 'https://myusf.usfca.edu/onestop/graduation/faculty-information'
+  confirmation_message: '<p><span style="font-family: QSans, Arial, Helvetica, sans-serif; font-size: 1em; font-weight: lighter; line-height: 1.5em; background-color: transparent;">&nbsp;</span></p>'
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: aarmstrong3@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: 'New Commencement Faculty Attendance form has been submitted'
+      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\n\nSubmitted values are:\n[submission:values]\n\nThe results of this submission may be viewed at:\n[submission:url]"
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_2:
+    id: email
+    label: 'Email 2'
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      to_mail: wilson@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: 'New Commencement Faculty Attendance form has been submitted'
+      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\n\nSubmitted values are:\n[submission:values]\n\nThe results of this submission may be viewed at:\n[submission:url]"
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_3:
+    id: email
+    label: 'Email 3'
+    handler_id: email_3
+    status: true
+    conditions: {  }
+    weight: 3
+    settings:
+      to_mail: '[webform-submission:values:email:raw]'
+      from_mail: gradcenter@usfca.edu
+      from_name: 'Graduation Center'
+      subject: 'Commencement Faculty Attendance Form'
+      body: "Thank you for completing the Commencement Faculty Attendance Form.\n\nYour response was:\n[submission:values]\n\nFor information on assembly and regalia, please see: \nhttps://myusf.usfca.edu/onestop/graduation/faculty-information"
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
