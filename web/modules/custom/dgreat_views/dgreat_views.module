@@ -8,9 +8,7 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\views\ViewExecutable;
 use Drupal\user\Entity\User;
-use Drupal\node\Entity\Node;
-use Drupal\views\ResultRow;
-use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\Plugin\views\cache\CachePluginBase;
 
 /**
  * Implements hook_help().
@@ -96,6 +94,46 @@ function dgreat_views_views_data_alter(array &$data) {
   ];
 
   $data['node__field_weight']['field_weight']['field']['id'] = 'custom_weight_selector';
+}
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function dgreat_views_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
+  $name = $view->id();
+  $display = $view->current_display;
+
+  switch ($name) {
+    case 'favorite_links':
+
+      // Removes fields and header for non admins.
+      if ($display == 'all_apps') {
+        $user_roles = \Drupal::currentUser()->getRoles();
+        if (!in_array('administrator', $user_roles)) {
+          $view->removeHandler($display, 'field', 'field_group_audience');
+          $view->removeHandler($display, 'field', 'edit_node');
+          $view->removeHandler($display, 'field', 'delete_node');
+          $view->removeHandler($display, 'header', 'area');
+
+        }
+      }
+      break;
+
+    case 'quick_links':
+      // Removes fields and header for non admins.
+      if ($display == 'all_apps') {
+        $user_roles = \Drupal::currentUser()->getRoles();
+        if (!in_array('administrator', $user_roles)) {
+          $view->removeHandler($display, 'field', 'body');
+          $view->removeHandler($display, 'field', 'field_category');
+          $view->removeHandler($display, 'field', 'field_sso');
+          $view->removeHandler($display, 'field', 'field_group_audience');
+          $view->removeHandler($display, 'field', 'edit_node');
+          $view->removeHandler($display, 'field', 'delete_node');
+        }
+      }
+      break;
+  }
 }
 
 /**
@@ -204,48 +242,53 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
         $view->result = _dgreat_views_remove_duplicates($merge);
       }
 
+      // Sorts our user weights items for proper display.
+      // Only place I could get this to work right.
+      // Normal sort won't work since we have to do it by user.
+      if ($name == 'favorite_links' || $name == 'quick_links') {
+        // Initialize the db.
+        $db = \Drupal::database();
+
+        $uid = \Drupal::currentUser()->id();
+        $query = $db
+          ->select('user_weights', 'u')
+          ->fields('u', ['entity_id'])
+          ->condition('uid', $uid)
+          ->execute();
+        $query->allowRowCount = TRUE;
+        $count = $query->rowCount();
+
+        if ($count && isset($view->result)) {
+          $new_results = [];
+
+          foreach ($view->result as $result) {
+            $nid = $result->node_field_data_group_content_field_data_nid;
+
+            $weight = $db->select('user_weights', 'u')
+              ->fields('u', ['weight'])
+              ->condition('uid', $uid)
+              ->condition('entity_id', $nid)
+              ->execute()
+              ->fetchField();
+
+            $new_results[$weight] = $result;
+          }
+
+          ksort($new_results);
+          $new_results = array_values(array_filter($new_results));
+          $view->result = $new_results;
+        }
+      }
+
       break;
   }
 }
 
 /**
- * Implements hook_views_pre_view().
+ * Implements hook_views_post_render().
  */
-function dgreat_views_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
-  $name = $view->id();
-  $display = $view->current_display;
+function dgreat_views_views_post_render(ViewExecutable $view, &$output, CachePluginBase $cache) {
 
-  switch ($name) {
-    case 'favorite_links':
-
-      // Removes fields and header for non admins.
-      if ($display == 'all_apps') {
-        $user_roles = \Drupal::currentUser()->getRoles();
-        if (!in_array('administrator', $user_roles)) {
-          $view->removeHandler($display, 'field', 'field_group_audience');
-          $view->removeHandler($display, 'field', 'edit_node');
-          $view->removeHandler($display, 'field', 'delete_node');
-          $view->removeHandler($display, 'header', 'area');
-
-        }
-      }
-      break;
-
-    case 'quick_links':
-      // Removes fields and header for non admins.
-      if ($display == 'all_apps') {
-        $user_roles = \Drupal::currentUser()->getRoles();
-        if (!in_array('administrator', $user_roles)) {
-          $view->removeHandler($display, 'field', 'body');
-          $view->removeHandler($display, 'field', 'field_category');
-          $view->removeHandler($display, 'field', 'field_sso');
-          $view->removeHandler($display, 'field', 'field_group_audience');
-          $view->removeHandler($display, 'field', 'edit_node');
-          $view->removeHandler($display, 'field', 'delete_node');
-        }
-      }
-      break;
-  }
 }
 
 /**
