@@ -8,6 +8,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Database\Query\Condition;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Sorts entities by flagged or unflagged in a view.
@@ -86,16 +87,23 @@ class UserWeightsSortFilter extends FilterPluginBase implements ContainerFactory
       ->execute()
       ->fetchAll();
 
+    $weights = [];
     foreach ($results as $result) {
       $weights[] = $result->entity_id;
     }
 
+    // Sort by our user weights.
+    if (!empty($weights)) {
+      $conditions = new Condition('AND');
+      $conditions->condition('nid', $weights, 'IN');
 
-    $conditions = new Condition('AND');
-    $conditions->condition('nid', $weights, 'IN');
-
-    // Hook up the query.
-    $this->query->addWhere(0, $conditions);
+      // Hook up the query.
+      $this->query->addWhere(0, $conditions);
+    }
+    else {
+      // Just sort by title if there are no user weights yet.
+      $this->query->addOrderBy($this->tableAlias, 'title', 'ASC');
+    }
   }
 
 }

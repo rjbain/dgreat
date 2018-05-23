@@ -120,6 +120,7 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
       ->execute()
       ->fetchAll();
 
+    $result = [];
     foreach ($results as $r) {
       $result[$r->entity_id] = $r->weight;
     }
@@ -127,16 +128,27 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
     // At this point, the query has already been run, so we can access the results
     foreach ($this->view->result as $row_index => $row) {
       $entity = $row->_entity;
-      $nid = $entity->get('entity_id')->getValue();
-      $weight = (isset($nid[0]["target_id"]))
-        ? $result[$nid[0]["target_id"]] : 0;
 
-      $form[$this->options['id']][$row_index]['weight'] = array(
-        '#type' => 'select',
-        '#options' =>  $options,
-        '#default_value' => $weight,
-        '#attributes' => array('class' => array('weight-selector')),
-      );
+      if (!empty($result)) {
+        $nid = $entity->get('entity_id')->getValue();
+        $weight = (isset($nid[0]["target_id"]))
+          ? $result[$nid[0]["target_id"]] : 0;
+
+        $form[$this->options['id']][$row_index]['weight'] = array(
+          '#type' => 'select',
+          '#options' =>  $options,
+          '#default_value' => $weight,
+          '#attributes' => array('class' => array('weight-selector')),
+        );
+      }
+      else {
+        $form[$this->options['id']][$row_index]['weight'] = array(
+          '#type' => 'select',
+          '#options' =>  $options,
+          '#default_value' => $this->getValue($row),
+          '#attributes' => array('class' => array('weight-selector')),
+        );
+      }
 
       $form[$this->options['id']][$row_index]['entity'] = array(
         '#type' => 'value',

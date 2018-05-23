@@ -14,7 +14,7 @@ use Drupal\user\Entity\User;
 
 
 /**
- * Filters OneHub Documents via what groups the current user belongs to.
+ * Filter by User + Default.
  *
  * @ingroup views_field_handlers
  *
