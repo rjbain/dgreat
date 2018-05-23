@@ -11,7 +11,7 @@ use Drupal\Core\Database\Query\Condition;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Sorts entities by flagged or unflagged in a view.
+ * Just sorts stuff alpha if there are no user weights.
  *
  * @ViewsFilter("user_weight_filter_sort")
  */
@@ -87,24 +87,13 @@ class UserWeightsSortFilter extends FilterPluginBase implements ContainerFactory
       ->condition('view_name', $this->view->id())
       ->condition('view_display', $this->view->current_display)
       ->orderBy('weight', 'ASC')
-      ->execute()
-      ->fetchAll();
+      ->execute();
 
-    $weights = [];
-    foreach ($results as $result) {
-      $weights[] = $result->entity_id;
-    }
-
+    $results->allowRowCount = TRUE;
+    $count = $results->rowCount();
 
     // Sort by our user weights.
-    if (!empty($weights)) {
-      $conditions = new Condition('AND');
-      $conditions->condition('nid', $weights, 'IN');
-
-      // Hook up the query.
-      $this->query->addWhere(0, $conditions);
-    }
-    else {
+    if ($count) {
       // Just sort by title if there are no user weights yet.
       $this->query->addOrderBy($this->tableAlias, 'title', 'ASC');
     }

@@ -8,7 +8,7 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\views\ViewExecutable;
 use Drupal\user\Entity\User;
-use Drupal\views\Plugin\views\cache\CachePluginBase;
+use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Implements hook_help().
@@ -24,6 +24,139 @@ function dgreat_views_help($route_name, RouteMatchInterface $route_match) {
 
     default:
   }
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function dgreat_views_flagging_insert(EntityInterface $entity) {
+  // Adds items from user_weights after flagging.
+  $nid = $entity->get('entity_id')->getValue();
+  $uid = $entity->get('uid')->getValue();
+
+  if (isset($nid[0]["value"]) && isset($uid[0]["target_id"])) {
+
+    // Need to use the $_GET params here since we are within the flagging
+    // mechanisms and can;t get proper routes otherwise.
+    $current_path = isset($_GET["destination"]) ? $_GET["destination"] : NULL;
+    if ($current_path !== NULL) {
+      $url_object = \Drupal::service('path.validator')->getUrlIfValid($current_path);
+      $route_name = $url_object->getRouteName();
+
+      $view = explode('.', $route_name);
+      $name = isset($view[1]) ? $view[1] : '';
+      $display = isset($view[2]) ? $view[2] : '';
+
+      if (!empty($name) && !empty($display)) {
+        $db = \Drupal::database();
+        $check = $db
+          ->select('user_weights', 'u')
+          ->fields('u', ['weight'])
+          ->condition('uid', $uid[0]["target_id"])
+          ->condition('entity_id', $nid[0]["value"])
+          ->condition('view_name', $name)
+          ->condition('view_display', $display)
+          ->execute()
+          ->fetchField();
+
+        $t = 1;
+        if ($check === FALSE) {
+          // Insert new item in weights table.
+          $db->insert('user_weights')
+            ->fields([
+              'entity_id' => $nid[0]["value"],
+              'uid' => $uid[0]["target_id"],
+              'view_name' => $name,
+              'view_display' => $display,
+            ])
+            ->execute();
+
+          // Also add it to the my_links.
+          if ($display == 'all_apps') {
+            $db->insert('user_weights')
+              ->fields([
+                'entity_id' => $nid[0]["value"],
+                'uid' => $uid[0]["target_id"],
+                'view_name' => $name,
+                'view_display' => 'my_links',
+              ])
+              ->execute();
+          }
+        }
+        else {
+          // Update the weights table.
+          $db->update('user_weights')
+            ->condition('uid', $uid[0]["target_id"])
+            ->condition('entity_id', $nid[0]["value"])
+            ->condition('view_name', $name)
+            ->condition('view_display', $display)
+            ->fields([
+              'entity_id' => $nid[0]["value"],
+              'uid' => $uid[0]["target_id"],
+              'view_name' => $name,
+              'view_display' => $display,
+            ])
+            ->execute();
+
+          // Also add it to the my_links.
+          if ($display == 'all_apps') {
+            $db->update('user_weights')
+              ->condition('uid', $uid[0]["target_id"])
+              ->condition('entity_id', $nid[0]["value"])
+              ->condition('view_name', $name)
+              ->condition('view_display', $display)
+              ->fields([
+                'entity_id' => $nid[0]["value"],
+                'uid' => $uid[0]["target_id"],
+                'view_name' => $name,
+                'view_display' => 'my_links',
+              ])
+              ->execute();
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_predelete().
+ */
+function dgreat_views_flagging_predelete(EntityInterface $entity) {
+  // Removes items from user_weights after unflagging.
+  $nid = $entity->get('entity_id')->getValue();
+  $uid = $entity->get('uid')->getValue();
+
+  if (isset($nid[0]["value"]) && isset($uid[0]["target_id"])) {
+
+    // Need to use the $_GET params here since we are within the flagging
+    // mechanisms and can;t get proper routes otherwise.
+    $current_path = isset($_GET["destination"]) ? $_GET["destination"] : NULL;
+    if ($current_path !== NULL) {
+      $url_object = \Drupal::service('path.validator')->getUrlIfValid($current_path);
+      $route_name = $url_object->getRouteName();
+
+      $view = explode('.', $route_name);
+      $name = isset($view[1]) ? $view[1] : '';
+      $display = isset($view[2]) ? $view[2] : '';
+
+      if (!empty($name) && !empty($display)) {
+        $db = \Drupal::database();
+
+        // Don't remove from all apps, causes problems.
+        if ($display != 'all_apps') {
+          $query = $db
+            ->delete('user_weights')
+            ->condition('uid', $uid[0]["target_id"])
+            ->condition('entity_id', $nid[0]["value"])
+            ->condition('view_name', $name)
+            ->condition('view_display', $display)
+            ->execute();
+        }
+      }
+    }
+  }
+
 }
 
 /**
@@ -74,11 +207,11 @@ function dgreat_views_views_data_alter(array &$data) {
     ],
   ];
 
-  $desc = t('Filters Quick Links based off of user and excludes defaults.');
+  $desc = t('Check User Weights and sorts by title asc if there are none.');
   $data['node_field_data']['user_weights'] = [
-    'title' => t('Filter by User Weights and Sort ASC'),
+    'title' => t('Check User Weights'),
     'filter' => [
-      'title' => t('Filter by User Weights and Sort ASC'),
+      'title' => t('Check User Weights'),
       'help' => $desc,
       'field' => 'nid',
       'id' => 'user_weight_filter_sort'
