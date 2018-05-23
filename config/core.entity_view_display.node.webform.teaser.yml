@@ -1,17 +1,20 @@
-uuid: 8fe68a18-eff6-449d-8f47-2d169b01339e
+uuid: 2516305b-3a6d-455f-97df-b9c09749896f
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.news.body
-    - node.type.news
+    - field.field.node.webform.body
+    - field.field.node.webform.webform
+    - node.type.webform
   module:
     - text
     - user
-id: node.news.teaser
+_core:
+  default_config_hash: Ls5l3Xs7-YstJnurxFLKj38Exqr2JMZs1j9YeX1Kh2o
+id: node.webform.teaser
 targetEntityType: node
-bundle: news
+bundle: webform
 mode: teaser
 content:
   body:
@@ -24,10 +27,8 @@ content:
     region: content
   links:
     weight: 100
+    settings: {  }
+    third_party_settings: {  }
     region: content
 hidden:
-  field_guid: true
-  field_image_url: true
-  field_news_link: true
-  field_news_type: true
-  field_type: true
+  webform: true
