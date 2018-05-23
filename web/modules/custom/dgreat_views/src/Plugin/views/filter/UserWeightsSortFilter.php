@@ -80,9 +80,12 @@ class UserWeightsSortFilter extends FilterPluginBase implements ContainerFactory
   public function query() {
     $this->ensureMyTable();
 
+
     $results = $this->db->select('user_weights', 'u')
       ->fields('u', ['entity_id'])
       ->condition('uid', $this->currentUser->id())
+      ->condition('view_name', $this->view->id())
+      ->condition('view_display', $this->view->current_display)
       ->orderBy('weight', 'ASC')
       ->execute()
       ->fetchAll();
@@ -91,6 +94,7 @@ class UserWeightsSortFilter extends FilterPluginBase implements ContainerFactory
     foreach ($results as $result) {
       $weights[] = $result->entity_id;
     }
+
 
     // Sort by our user weights.
     if (!empty($weights)) {

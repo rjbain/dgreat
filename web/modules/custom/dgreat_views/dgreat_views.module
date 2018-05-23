@@ -245,11 +245,14 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
         // Initialize the db.
         $db = \Drupal::database();
 
+        // Grab the count first to make sure we have rows to manipulate.
         $uid = \Drupal::currentUser()->id();
         $query = $db
           ->select('user_weights', 'u')
           ->fields('u', ['entity_id'])
           ->condition('uid', $uid)
+          ->condition('view_name', $name)
+          ->condition('view_display', $display)
           ->execute();
         $query->allowRowCount = TRUE;
         $count = $query->rowCount();
@@ -264,6 +267,8 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
               ->fields('u', ['weight'])
               ->condition('uid', $uid)
               ->condition('entity_id', $nid)
+              ->condition('view_name', $name)
+              ->condition('view_display', $display)
               ->execute()
               ->fetchField();
 
@@ -278,13 +283,6 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
 
       break;
   }
-}
-
-/**
- * Implements hook_views_post_render().
- */
-function dgreat_views_views_post_render(ViewExecutable $view, &$output, CachePluginBase $cache) {
-
 }
 
 /**

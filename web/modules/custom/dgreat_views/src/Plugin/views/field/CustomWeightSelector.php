@@ -117,8 +117,11 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
     $results = $this->db->select('user_weights', 'u')
       ->fields('u', ['weight', 'entity_id'])
       ->condition('uid', $this->currentUser->id())
+      ->condition('view_name', $this->view->id())
+      ->condition('view_display', $this->view->current_display)
       ->execute()
       ->fetchAll();
+
 
     $result = [];
     foreach ($results as $r) {
@@ -168,6 +171,7 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
     $field_name = $form_state->getValue('views_field');
     $rows = $form_state->getValue($field_name);
 
+
     foreach ($rows as $row) {
       $entity = $row['entity'];
       $nid = $entity->get('entity_id')->getValue();
@@ -178,6 +182,8 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
           ->fields('u', ['weight'])
           ->condition('entity_id', $nid[0]["target_id"])
           ->condition('uid', $uid)
+          ->condition('view_name', $this->view->id())
+          ->condition('view_display', $this->view->current_display)
           ->execute()
           ->fetchField();
 
@@ -188,6 +194,8 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
               'entity_id' => $nid[0]["target_id"],
               'uid' => $uid,
               'weight' => $row['weight'],
+              'view_name' => $this->view->id(),
+              'view_display' => $this->view->current_display,
             ])
             ->execute();
         }
@@ -196,10 +204,14 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
           $this->db->update('user_weights')
             ->condition('entity_id', $nid[0]["target_id"])
             ->condition('uid', $uid)
+            ->condition('view_name', $this->view->id())
+            ->condition('view_display', $this->view->current_display)
             ->fields([
               'entity_id' => $nid[0]["target_id"],
               'uid' => $uid,
               'weight' => $row['weight'],
+              'view_name' => $this->view->id(),
+              'view_display' => $this->view->current_display,
             ])
             ->execute();
         }
