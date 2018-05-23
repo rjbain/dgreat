@@ -18,9 +18,13 @@ Available variables (usf_dashboard.module)
         <div class="col-9"> {# Left "main" column #}
             <div class="row">
             <div class="col-sm">
-            {#{% if dashboard_content.my_block %}#}
-            {#{{ dashboard_content.my_block }}#}
-            {#{% endif %}#}
+{#{{ dump(dashboard_content.announcements) }}#}
+            {% if dashboard_content.announcements %}
+            {{ dashboard_content.announcements }}
+            {% endif %}
+
+
+
                 <p>
                     {% if dashboard_content.dashboard_user.name.value is not empty %}
                         <strong>Welcome to myUSF, {{ dashboard_content.dashboard_user.name.value }}!</strong><br>
