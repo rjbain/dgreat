@@ -1,22 +1,23 @@
-uuid: a7ed6b0b-50f0-4215-87a8-e76f0c66b77a
+uuid: ca2df90b-119c-48bc-81ea-4111ec3ec2a2
 langcode: en
 status: true
 dependencies:
   config:
-    - views.view.dashboard_announements
+    - views.view.hero_image
   module:
     - block_visibility_groups
+    - system
     - views
   theme:
     - myusf
-id: dashboardannouncements
+id: views_block__hero_image_block_1
 theme: myusf
-region: top_header
-weight: -11
+region: hero_image
+weight: 0
 provider: null
-plugin: 'views_block:dashboard_announements-dashboardannouncements'
+plugin: 'views_block:hero_image-block_1'
 settings:
-  id: 'views_block:dashboard_announements-dashboardannouncements'
+  id: 'views_block:hero_image-block_1'
   label: ''
   provider: views
   label_display: visible
@@ -27,4 +28,9 @@ visibility:
     id: condition_group
     negate: false
     block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /home
+    negate: false
     context_mapping: {  }
