@@ -1,3 +1,4 @@
+{{ attach_library('myusf/datepicker-block') }}
 {#
 /**
  * @file
@@ -65,12 +66,8 @@
   {% block content %}
     <div{{ content_attributes.addClass('content') }}>
 
-
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.12.4.js"></script>
-<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 <form action = "/calendar" method="get">
+  <input type="hidden" name="action" value="search">
   <div class="form">
     <div class="search-form">
       <input type="text" name="search_content" value="{{ search_content_form }}" class="search-input form-search form-control">
@@ -88,17 +85,16 @@
     <div class="button-form">
       <input type="submit" value="Search" class="button btn btn-primary">
     </div>
-  </div>
+    <div>
+      <a href="/calendar" class="search_clear"> Reset</a>
+    </div>
 </form>
+
+  </div>
+
+
 <!--<a href="{{ url('<current>') }}">Reset Search</a>-->
 </div>
-<script>
-    $( "#datepicker" ).datepicker({ 
-      altField: "#event_date",
-      dateFormat: 'yy-mm-dd'})
-     .datepicker("setDate", "{{ event_date }}");
- </script>
-
 
 
   {% endblock %}

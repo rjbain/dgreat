@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * Contains dgreat_nodes.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+
+/**
+ * Implements hook_help().
+ */
+function dgreat_nodes_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the dgreat_nodes module.
+    case 'help.page.dgreat_nodes':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Custom functions related to nodes on the site.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function dgreat_nodes_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  $fav_links_nodes = [
+    'node_favorite_link_form',
+    'node_favorite_link_edit_form'
+  ];
+
+
+  if (in_array($form_id, $fav_links_nodes)) {
+
+    $query =  \Drupal::request()->query->get('edit');
+    if (isset($query['field_link_type']['und'])) {
+      $form['field_link_type']['widget']['#default_value'] = $query['field_link_type']['und'];
+    }
+
+    $user = \Drupal::currentUser()->getRoles();
+    if (!in_array('administrator', $user)) {
+      unset($form['field_link_type']['widget']['#options']['favorite']);
+      $form['field_top_quick_link']['#access'] = FALSE;
+      $form['field_group_audience']['#access'] = FALSE;
+    }
+  }
+}

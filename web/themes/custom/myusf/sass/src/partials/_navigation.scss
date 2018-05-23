@@ -5,14 +5,20 @@
 	display: table;
   	margin: 0 auto;
 
+  	@include media-breakpoint-only(tablet) {
+  		margin-top: -9px;
+  	}
+
   	@include media-breakpoint-down(phone) {
   		width:100%;
+  		margin-top: 30px;
   	}
 }
 
 nav {
 	padding-top:0!important;
 	padding-bottom:0!important;
+
 }
 
 .bg-dark {
@@ -20,22 +26,38 @@ nav {
 }
 
 nav.navbar {
+	margin-bottom: 2rem;
 	a.nav-link {
     	color: $white!important;
     	text-decoration:none;
+    	padding-bottom: .87rem;
+    	padding-top: .75rem;
+    	font-weight: 700;
 
-    	&:hover, &:focus {
-    		color: $yellow!important;
-    		background-color: transparent;
-		}
+    	@include media-breakpoint-up(desktop) {
+    		font-size: .8rem!important;
+    		padding-left: 1.1rem!important;
+    		padding-right: 1.1rem!important;
+    	}
+
+		@include media-breakpoint-only(tablet) {
+			font-size: .7rem;
+    		padding-left: 7px;
+    		padding-right: 7px;
+    	}
+    	@include media-breakpoint-down(phone) {
+    		padding-bottom: 1.2rem;
+    		margin-top: .25rem;
+    	}
 	}
 	li {
 		font-size: .9rem;
+		padding-bottom: 0;
 
 		&.nav-item :hover,
 		&.nav-item :focus {
-			color: $yellow!important;
-    		background-color: transparent;
+			color: $green!important;
+	    	background-color: $beige;
 		}
 	}
 	@include media-breakpoint-down(phone) {
@@ -45,6 +67,7 @@ nav.navbar {
 	}
 	@include media-breakpoint-up(tablet) {
 		padding-right: 2.4rem;
+		height: 50px;
 	}
 }
 
@@ -63,15 +86,20 @@ nav.navbar {
     	position: absolute;
     	width: 160px;
     	height: 50px;
-    	margin-top: 5px;
+    	margin-top: 2px;
     	top: 0px;
    		bottom: 0;   	
     	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -350px -315px ; 	
 	}
 	@include media-breakpoint-down(phone) {
 		&:before {
-			left:-15px;
-			margin-top:0px;
+			margin-top: 3px;
+		}
+	}
+	@include media-breakpoint-down(tablet) {
+		&:before {
+			left: -5px;
+			margin-top: 3px;
 		}
 	}
 }
@@ -79,10 +107,17 @@ nav.navbar {
 .navbar-nav {
 	border:0;
 	margin-left: 120px;
+	padding-top: 0px;
 
-	@include media-breakpoint-down(phone) {
+	@include media-breakpoint-down(tablet) {
 		flex-direction: row;
-		margin-left: 0;
+		margin-left: 15px;
+	}
+
+	@include media-breakpoint-down(phone) {		
+		margin-left: 15px;
+		width:100vw;
+
 		li {
 			flex-direction: row!important;
 			width: 20%;
@@ -126,9 +161,7 @@ nav.navbar {
 	}
 }
 #CollapsingNavbar {
-	@include media-breakpoint-down(phone) {
-    	margin-top: 30px;
-	}
+	flex-grow: 1;
 }
 .navbar-expand-lg .navbar-nav .nav-link {
 	@include media-breakpoint-up(desktop) {
@@ -138,18 +171,30 @@ nav.navbar {
 }
 // ----MAIN NAV DROPDOWN --- //
 
-.navbar-expand-lg .navbar-nav .dropdown-menu {
+.navbar-nav .dropdown-menu {
 	padding: 0;
+	margin-top: 0;
+
+	@include media-breakpoint-only(tablet) {
+		position: absolute;
+		margin-top: -1px;
+	}
 
 	.dropdown-item {
 		border-bottom:1px solid $white;
+
+		@include media-breakpoint-down(tablet) {
+			padding: .5rem 1rem!important;
+			line-height: 1.2rem!important;
+		}
 
 		a {
 			font-size: .85rem;
 			font-weight: 500;
 			text-decoration: none;
 			text-transform: capitalize;
-			color: $black!important;			
+			color: $black!important;
+						
 		
 			@include media-breakpoint-down(phone) {
 				font-size: .7rem;
@@ -159,6 +204,7 @@ nav.navbar {
 			&:hover,
 			&:focus {
 				color: $black!important;
+				background: transparent;
 			}
 		}
 		&.active,
@@ -167,14 +213,13 @@ nav.navbar {
 		}
 	}
 
-	@include media-breakpoint-up(large_desktop) {
-		background: $light_beige;
+	@include media-breakpoint-up(tablet) {
+		background: $beige;
 		border-radius: 0;
 		border: 0;
-		margin-top: 1px;
 		
 		&:hover, &:focus {
-			background: $light_beige;
+			background: $beige;
 		}
 	}
 	.dropdown-item {	
@@ -182,13 +227,29 @@ nav.navbar {
 
 		&:hover,
 		&:focus {
-			background: $beige;
+			background: $light_beige;
 		}
 	}
 }
 
 .navbar-nav .dropdown.show a.nav-link.active {
-    color: $yellow!important;
+    color: $green!important;
+}
+
+.navbar-nav {
+	@include media-breakpoint-only(tablet) {
+		li.nav-item.menu-item--expanded.dropdown:last-of-type {
+
+			ul {
+				width:233px;
+
+				li a {
+				    white-space: normal;
+				}
+			}
+
+		}
+	}
 }
 
 // end main nav dropdown //
@@ -209,8 +270,12 @@ button.header_search {
     	margin: auto 10px auto auto;
     	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -190px -96px;
 
+    	@include media-breakpoint-only(tablet) {
+    		right: 115px;
+    	}
+
     	@include media-breakpoint-down(phone) {
-			right: 95px;
+			right: 115px;
     		top: 13px;
     		bottom: unset;
     	}
@@ -224,9 +289,13 @@ button.header_search {
     	margin: auto;
     	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -214px -96px;
 
+    	@include media-breakpoint-only(tablet) {
+    		right: 123px;
+    	}
+
     	@include media-breakpoint-down(phone) {
     		top: 13px;
-    		right: 103px;
+    		right: 123px;
     	}
 	}
 	
@@ -242,12 +311,19 @@ button.header_search {
     border: 2px solid $white;   
     padding: 3px 15px;
     margin-left: 20px;
+    margin-top: -2px;
 	
 	&:hover, 
-	&:focus {
+	&:focus,
+	&:not(:disabled):not(.disabled):active {
 		color: $yellow;
 		border-color: $yellow;
 		background-color: transparent;
+	}
+	
+	&.focus,
+	&:focus {
+		box-shadow: none;
 	}
 	@include media-breakpoint-down(phone) {
 		font-size: .7rem;
@@ -255,17 +331,34 @@ button.header_search {
     	right: 10px;
     	top: 10px;
     }
+
+    @include media-breakpoint-down(tablet) {
+	    position: absolute;
+	    top: 15px;
+	    right: 20px;    
+	    margin-top: -5px;	
+    }
 }
+
 
 nav input.form-control[type="search"] {
     display: none!important;
+    border-radius: 0;
+
+    @include media-breakpoint-down(tablet) {
+    	position: absolute;
+    	top: 15px;
+    	width: 250px;
+    	right: 150px;
+    	height: 30px;
+	}
 
     @include media-breakpoint-down(phone) {
     	position: absolute;
-    	top: 7px;
-    	width: 230px;
-    	left: 10px;
-    	height: 35px;
+    	top: 12px;
+    	width: 200px;
+    	left: 20px;
+    	height: 30px;
 	}
 }
 
@@ -300,7 +393,12 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 }
 
 //--- Navtabs --//
-
+nav.tabs {
+	margin-left: 17px;
+	@include media-breakpoint-down(phone) {
+		@include margin-L-R-auto;
+	}
+}
 .nav-tabs {
 	.nav-item {
  		padding-bottom: 0;
@@ -326,6 +424,7 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 .breadcrumb-item {
 	font-size: .6rem;
 	text-transform: uppercase;
+	padding-bottom: 0;
 }
 
 .breadcrumb-item a {
@@ -342,11 +441,16 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 }
 
 .breadcrumb {
-	padding: .75rem 1rem;
+	padding: .75rem 1rem 0 4px;
+	margin-top: 1rem;
     margin-bottom: 1rem;
     list-style: none;
     background-color: transparent;
     border-radius: .25rem;
+
+	@include media-breakpoint-down(tablet) {
+		display: none;
+	}    
 }
 
 
@@ -356,17 +460,26 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 =================================================*/
 #sidebar_first.sidebar .block {
     padding: 0!important;
+
+    @include media-breakpoint-up(tablet) { 
+        margin-bottom: 40px;
+    }
 }
 #sidebar_first nav {
 	margin-left: 0px;
 	border: 0;
 	border-top: 4px solid $yellow;
 	border-bottom: 4px solid $yellow;
-}
+	width: 240px;
 
-/*#sidebar_first ul.clearfix.nav {
-    padding-top: 0;
-}*/
+	@include media-breakpoint-down(tablet) { 
+		width: 190px;
+	}
+
+	@include media-breakpoint-down(phone) { 
+		width: 100%;
+	}
+}
 
 #sidebar_first nav {
 
@@ -374,11 +487,18 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 		padding-top:0;
 
 		li {
-			width: 250px;
+			width: 240px;
 			list-style-type: none;
 			border-bottom: 1px solid #DDDAD1;
 			padding-bottom: 0;
 			
+			@include media-breakpoint-down(tablet) { 
+				width: 190px;
+			}
+
+			@include media-breakpoint-down(phone) { 
+				width: 100%;
+			}
 
 			&:last-of-type {
 				border: 0;
@@ -405,6 +525,15 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 		    		color: $green!important;
 		    		background: $light_beige;
 		    	}
+
+		    	@include media-breakpoint-down(tablet) { 
+					font-size: 0.8rem;
+					line-height: 1.1rem;
+				}
+
+				@include media-breakpoint-down(phone) { 
+					padding: 1rem 10px;
+				}
 			}
 
 			//Second-level menu
@@ -416,7 +545,15 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 				li {
 					border-bottom: 0;
 					padding-left: 0;
-					width:240px;
+					width:230px;
+
+					@include media-breakpoint-down(tablet) { 
+						width: 170px;
+					}
+					@include media-breakpoint-down(phone) { 
+						width: 100%;
+						padding-right: 10px;
+					}
 
 					&:first-of-type {
 						margin-top:-10px;
@@ -438,17 +575,23 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 							text-decoration: underline;
 						}
 
-						&.active:before {
-							display: block;
-							position: relative;
-							content: "";
-							width: 8px;
-							height: 8px;
-							top:13px;
-							left: -18px;
-							background: $yellow;
-							-webkit-transform: rotate(45deg); /* Ch <36, Saf 5.1+, iOS < 9.2, An =<4.4.4 */
-					      	transform: rotate(45deg); /* IE 10, Fx 16+, Op 12.1+ */
+						&.active {
+
+							padding-top: 0.25rem!important;
+							padding-bottom: 0.25rem;
+
+							&:before {
+								display: block;
+								position: relative;
+								content: "";
+								width: 8px;
+								height: 8px;
+								top:13px;
+								left: -18px;
+								background: $yellow;
+								-webkit-transform: rotate(45deg); /* Ch <36, Saf 5.1+, iOS < 9.2, An =<4.4.4 */
+						      	transform: rotate(45deg); /* IE 10, Fx 16+, Op 12.1+ */
+					      	}
 						}
 					}
 				}
@@ -458,7 +601,18 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 
 					li {
 						margin: 0 0 -10px;
-					    width: 228px;
+					    width: 220px;
+
+					    @include media-breakpoint-down(tablet) { 
+					    	width: 170px;
+					    }
+					    @include media-breakpoint-down(phone) { 
+					    	width: 100%;
+					    }
+
+					    &:last-of-type {
+					    	padding-bottom: 0;
+					    }
 					}
 
 					a {
@@ -466,16 +620,23 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 						color:$black;
 						padding: 5px;
     					margin-top: 0.5rem!important;
-    					margin-bottom: 0.5rem;
-    					display: inline-block!important;
-
+    					margin-bottom: 1rem;  /* margin-bottom: 0.5rem;
+    					display: inline-block!important;*/
+    					margin-left: 9px;
+    					padding-left: 13px;
 					
 						&.active:before {
 							display: none;
 				      	}
 
 				      	&.active {
-				      		background-color: transparentize( $yellow, 0.8);				      		
+				      		background-color: transparentize( $green, 0.2);	
+				      		color:$white;	
+
+				      		&:hover,
+				      		&:focus {
+				      			color:$white!important;
+				      		}		      		
 				      	}				      	
 					}
 				}
@@ -484,7 +645,78 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 	}
 }
 
+#sidebar_first .sidebar h2 {
+	@include media-breakpoint-down(phone) { 
+    	font-weight: 600;
+    	color: #6b6b6b!important;
+    	text-align: center;
+    	text-shadow: unset;
+    	margin-top: -45px;
+		padding-bottom: 0px;
+		border: 0;
 
+		
+	}
+}
+.navbar-toggler-icon:focus, button.navbar-toggler.navbar-toggler-right:focus {
+    outline-color: $white;
+}
+
+button.navbar-toggler.navbar-toggler-right {
+
+
+	    border: 1px solid $light_gray;
+	    border-radius: 0;
+	    width: 100%;
+	    padding-right: 10px;
+
+	    &:after {
+			position: relative;
+		    display: inline-block;
+		    content: "";
+		    width: 10px;
+		    height: 8px;
+		    top: 2px;
+	    	right: -20px;
+		    margin-left: 5px;
+		    z-index: 1;
+		    background: url(/themes/custom/myusf/images/site/icons.svg) -260px -148px no-repeat;
+		    opacity: .7;
+		}
+	
+}
+button.navbar-toggler.navbar-toggler-right.collapsed{
+	&:after {
+		position: relative;
+	    display: inline-block;
+	    content: "";
+	    width: 10px;
+	    height: 8px;
+	    top: 2px;
+    	right: -20px;
+	    margin-left: 5px;
+	    z-index: 1;
+		background: url(/themes/custom/myusf/images/site/icons.svg) -239px -148px no-repeat;
+	}
+}
+.navbar-toggler-icon {
+    padding-top: 10px;
+    font-size: .9rem;
+    height: 30px;
+}
+#CollapsingNavbar {
+	@include media-breakpoint-down(phone) { 
+    	margin-top: -30px;
+	}
+}
+
+#submenuButton.hideButton {
+  display:none;
+}
+
+.submenu {
+    margin-top: 30px;
+}
 /* QUICK LINKS right column 
 =================================================*/
 
@@ -525,19 +757,40 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 
 /* FOOTER
 =================================================*/
+nav#block-myusf-footer {
+    position: relative;
+}
+
 .site-footer {
 	background:$green;
-	padding: 10px 0 15px;
+	padding: 0;
+	/*position: absolute;
+    bottom: 0;
+    width: 100%; - to be used when we apply sticky footer */
+
+	@include media-breakpoint-only(phone) {		
+		padding: 10px 0 0;
+	}
 
 	.block {
     	border: 0;
     	padding: 5px;
+    	width:100vw;
+
+    	@include media-breakpoint-up(large_desktop) {
+    		/*margin-left: calc(( 100% - 924px) / 2 ); /*links+logo+padding*/
+    		/*margin-right: calc(( 100% - 924px) / 2 );*/
+    	}
+
+    	@include media-breakpoint-down(tablet) {   		
+    		margin: 10px auto;
+    	}
 	}
 }
 
 .footer-link {
 	font-size:0.7rem;
-	color:$white;
+	color:$white!important;
 	text-decoration:none;
 	display: block;
 	padding: .15rem 1rem;
@@ -569,27 +822,36 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
     column-count: 3;
     column-gap: 10px;
     text-align: center;
-
+    padding-top: 25px;
 
 	@include media-breakpoint-up(tablet) {
 		display: flex;
     	margin: 0 auto!important;
     	columns: unset;
-    	justify-content: center;
+    	padding-top: 0;
+	}
+	@include media-breakpoint-only(tablet) {
+		justify-content: center;
 	}
 
 	@include media-breakpoint-up(large_desktop) {
 		justify-content: flex-start;
+		padding-left: 6px;
 	}
 }
 
 a.logo {
-    position: relative;
+    position: absolute;
     display: block;
     overflow: hidden;
     white-space: nowrap;
     width: 325px;
-    margin: 24px auto;
+    margin: 10px auto;
+
+    @include media-breakpoint-down(tablet) {
+    	position: relative;
+    	margin: 5px auto;
+    }
 
     &:hover, 
     &:focus  {
@@ -599,7 +861,7 @@ a.logo {
     &:before {
     	display: inline-block;
     	content: "";
-		width: 440px;
+		width: 438px;
     	height: 34px;
     	position: relative;
     	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat;    	    
@@ -612,11 +874,12 @@ a.logo {
 		}
     }
 
-    @include media-breakpoint-up(large_desktop) {
+    @include media-breakpoint-up(desktop) {
     	width: 390px;
     	height: 38px;
-    	margin: -38px -76px -38px;
+    	margin-top: -38px; 
     	float: right;
+    	right: -50px;
     }
 }
 

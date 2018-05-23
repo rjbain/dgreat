@@ -1,0 +1,49 @@
+uuid: 2c008614-6568-46eb-acde-ac82191071e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.groups.field_default_favorite_links
+    - field.field.group.groups.field_default_quick_links
+    - group.type.groups
+  module:
+    - path
+id: group.groups.default
+targetEntityType: group
+bundle: groups
+mode: default
+content:
+  field_default_favorite_links:
+    weight: 31
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_default_quick_links:
+    weight: 32
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  label:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  uid: true

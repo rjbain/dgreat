@@ -1,0 +1,30 @@
+uuid: a7ed6b0b-50f0-4215-87a8-e76f0c66b77a
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.dashboard_announements
+  module:
+    - block_visibility_groups
+    - views
+  theme:
+    - myusf
+id: dashboardannouncements
+theme: myusf
+region: top_header
+weight: 0
+provider: null
+plugin: 'views_block:dashboard_announements-dashboardannouncements'
+settings:
+  id: 'views_block:dashboard_announements-dashboardannouncements'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }

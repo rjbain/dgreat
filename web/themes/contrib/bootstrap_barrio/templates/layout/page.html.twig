@@ -92,9 +92,7 @@
           {% if container_navbar %}
           <div class="container">
           {% endif %}
-            <div class="navbar-brand">
-              {{ page.header }}
-            </div>
+            {{ page.header }}
             {% if page.primary_menu or page.header_form %}
               <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#CollapsingNavbar" aria-controls="CollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
               <div class="collapse navbar-collapse" id="CollapsingNavbar">
@@ -134,11 +132,7 @@
     <div id="main-wrapper" class="layout-main-wrapper clearfix">
       {% block content %}
         <div id="main" class="{{ container }}">
-          {% if page.breadcrumb %}
-            <div class="row">
-              {{ page.breadcrumb }}
-            </div>
-          {% endif %}
+          {{ page.breadcrumb }}
           <div class="row row-offcanvas row-offcanvas-left clearfix">
               <main{{ content_attributes }}>
                 <section class="section">

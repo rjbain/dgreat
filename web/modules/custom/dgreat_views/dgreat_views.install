@@ -1,0 +1,188 @@
+<?php
+/**
+ * @file
+ * Contains dgreat_views.install.
+ */
+
+
+/**
+ * Implements hook_schema().
+ */
+function dgreat_views_schema() {
+  $schema['user_weights'] = [
+    'description' => 'The base table for User Weights.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'description' => "The rows id",
+      ],
+      'entity_id' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The id of the entity',
+      ],
+      'uid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The uid of the user.',
+      ],
+      'weight' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The weight of this term for the specific user.',
+      ],
+      'view_name' => [
+        'type' => 'varchar',
+        'length' => '512',
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The View Name.',
+      ],
+      'view_display' => [
+        'type' => 'varchar',
+        'length' => '512',
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The View Display.',
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Updates this modules weight.
+ */
+function dgreat_views_update_8001() {
+  module_set_weight('dgreat_views', 10);
+}
+
+/**
+ * Adds the user_weights table.
+ */
+function dgreat_views_update_8002() {
+  $user_weights = [
+    'description' => 'The base table for User Weights.',
+    'fields' => [
+      'entity_id' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The id of the entity',
+      ],
+      'uid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The uid of the user.',
+      ],
+      'weight' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The weight of this term for the specific user.',
+      ],
+    ],
+    'primary key' => ['entity_id', 'uid'],
+  ];
+
+  // Check and add our new table;
+  $schema = \Drupal::database()->schema();
+  if (!$schema->tableExists('user_weights')) {
+    $schema->createTable('user_weights', $user_weights);
+  }
+}
+
+/**
+ * Adds fields to the user_weight module.
+ */
+function dgreat_views_update_8003() {
+
+  $view_name = [
+    'type' => 'varchar',
+    'length' => '512',
+    'not null' => TRUE,
+    'description' => 'The View Name.',
+    'default' => '',
+  ];
+  $view_display = [
+    'type' => 'varchar',
+    'length' => '512',
+    'not null' => TRUE,
+    'description' => 'The View Display.',
+    'default' => '',
+  ];
+
+  // Check and add our new fields;
+  $schema = \Drupal::database()->schema();
+  if (!$schema->fieldExists('user_weights', 'view_name')) {
+    $schema->addField('user_weights', 'view_name', $view_name);
+  }
+  if (!$schema->fieldExists('user_weights', 'view_display')) {
+    $schema->addField('user_weights', 'view_display', $view_display);
+  }
+}
+
+/**
+ * Drop the table and rebuild it.
+ */
+function dgreat_views_update_8004() {
+
+  $user_weights = [
+    'description' => 'The base table for User Weights.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'description' => "The rows id",
+      ],
+      'entity_id' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The id of the entity',
+      ],
+      'uid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The uid of the user.',
+      ],
+      'weight' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The weight of this term for the specific user.',
+      ],
+      'view_name' => [
+        'type' => 'varchar',
+        'length' => '512',
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The View Name.',
+      ],
+      'view_display' => [
+        'type' => 'varchar',
+        'length' => '512',
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The View Display.',
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  // Check and add our new table;
+  $schema = \Drupal::database()->schema();
+  if ($schema->tableExists('user_weights')) {
+    $schema->dropTable('user_weights');
+    $schema->createTable('user_weights', $user_weights);
+  }
+}
+

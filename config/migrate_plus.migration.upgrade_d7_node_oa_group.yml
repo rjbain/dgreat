@@ -1,0 +1,25 @@
+uuid: 96611b41-f7ef-4f6f-a458-69661445600d
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_oa_group
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: insert_group
+label: 'Insert OA Group'
+source:
+  plugin: d7_node
+  node_type: oa_group
+process:
+  type:
+    plugin: default_value
+    default_value: groups
+  id: nid
+  label: title
+  path: alias
+destination:
+  plugin: 'entity:group'
+migration_dependencies: null

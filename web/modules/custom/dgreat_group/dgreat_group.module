@@ -1,0 +1,184 @@
+<?php
+
+/**
+ * @file
+ * Contains dgreat_group.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\dgreat_group\DgreatGroup;
+use Drupal\dgreat_group\DgreatGroupUtility;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_help().
+ */
+function dgreat_group_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the dgreat_group module.
+    case 'help.page.dgreat_group':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Custom module needed for the workflows of group nodes/users') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ *
+ * Adds a node to the respective group identified.
+ */
+function dgreat_group_node_insert(EntityInterface $entity) {
+
+  switch ($entity->bundle()) {
+    case 'favorite_link':
+      $quick = (new DgreatGroup($entity))->addQuickLinkGroups();
+      $add = (new DgreatGroup($entity))->addNodeToGroup('field_group_audience');
+      break;
+
+    case 'usf_service':
+      $add = (new DgreatGroup($entity))->addNodeToGroup('field_usfcat_audience_ref');
+      break;
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ *
+ * Adds a node to the respective group identified.
+ */
+function dgreat_group_node_update(EntityInterface $entity) {
+
+  switch ($entity->bundle()) {
+    case 'favorite_link':
+      $add = (new DgreatGroup($entity))->addNodeToGroup('field_group_audience');
+      break;
+
+    case 'usf_service':
+      $add = (new DgreatGroup($entity))->addNodeToGroup('field_usfcat_audience_ref');
+      break;
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ *
+ * Adds a user to the respective group identified.
+ */
+function dgreat_group_user_insert(EntityInterface $entity) {
+  $add = (new DgreatGroup($entity))->addUserToGroup('field_user_group');
+  //$add = (new DgreatGroup($entity))->flagUserDefaultContent('field_user_group');
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ *
+ * Adds a user to the respective group identified.
+ */
+function dgreat_group_user_update(EntityInterface $entity) {
+  $add = (new DgreatGroup($entity))->addUserToGroup('field_user_group');
+  $add = (new DgreatGroup($entity))->flagUserDefaultContent('field_user_group');
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dgreat_group_form_group_groups_edit_form_alter(&$form, FormStateInterface $form_state) {
+  $form['actions']['submit']['#submit'][] = '_dgreat_group_form_submit';
+  $fl_current = $form['field_default_favorite_links']['widget'];
+  $ql_current = $form['field_default_quick_links']['widget'];
+  $nids = [];
+
+  // Grab the current nids.
+  foreach ($fl_current as $nid) {
+    if (isset($nid['target_id'])) {
+      $node = $nid['target_id']['#default_value'];
+      if (isset($node) && $node instanceof Node) {
+        $nids[] = $node->id();
+      }
+    }
+  }
+
+  foreach ($ql_current as $nid) {
+    if (isset($nid['target_id'])) {
+      $node = $nid['target_id']['#default_value'];
+      if (isset($node) && $node instanceof Node) {
+        $nids[] = $node->id();
+      }
+    }
+  }
+
+  // Set the defaults to the utility class.
+  DgreatGroupUtility::setOriginal($nids);
+}
+
+/**
+ * Submit handler for dgreat_group_form_group_groups_edit_form_alter().
+ *
+ * @param $form
+ *   The form object.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form_state object.
+ */
+function _dgreat_group_form_submit($form, FormStateInterface $form_state) {
+  // Grab our default items.
+  $fl_defaults = $form_state->getValue('field_default_favorite_links');
+  $ql_defaults = $form_state->getValue('field_default_quick_links');
+  $nids = [];
+
+  $orig_defaults = DgreatGroupUtility::getOriginal();
+
+  // Grab their nids.
+  foreach ($fl_defaults as $nid) {
+    if (isset($nid['target_id']) && $nid['target_id'] !== NULL) {
+      $nids[] = $nid['target_id'];
+    }
+  }
+
+  foreach ($ql_defaults as $nid) {
+    if (isset($nid['target_id']) && $nid['target_id'] !== NULL) {
+      $nids[] = $nid['target_id'];
+    }
+  }
+
+  // Grab new nids.
+  $new_nids = array_diff($nids, $orig_defaults);
+
+  // Grab removed defaults.
+  $removed_nids = array_diff($orig_defaults, $nids);
+
+  if ((!empty($new_nids) || !empty($removed_nids))
+      && $group = \Drupal::routeMatch()->getParameter('group')) {
+
+    // Grab all thy members.
+    $members = $group->getMembers();
+
+    // Lets do this.
+    foreach ($members as $member) {
+      $operations[] = ['Drupal\dgreat_group\Batch\DgreatGroupBatch::batchProcess', [$new_nids, $removed_nids, $group, $member]];
+    }
+
+    // Fail safe in case the batch fails in building the operations.
+    if (isset($operations)) {
+      // Set the batch to win the stuff.
+      $batch = array(
+        'title' => t('Updating...'),
+        'operations' => $operations,
+        'init_message' => t('Importing users to process.'),
+        'finished' => 'Drupal\dgreat_group\Batch\DgreatGroupBatch::batchFinished',
+        'file' => drupal_get_path('module', 'dgreat_group') . '/src/Batch/DgreatGroupBatch.php'
+      );
+
+      // Engage.
+      batch_set($batch);
+    }
+    else {
+      drupal_set_message(t('No users need to be updated!'), 'warning', TRUE);
+    }
+  }
+}

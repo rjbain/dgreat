@@ -116,6 +116,48 @@ li {
 	padding-bottom: .6rem;
 }
 
+//Table
+
+table {
+	font-size: .8rem!important;
+}
+
+th {
+	line-height:1.2rem;
+	padding-top: 10px!important;
+	padding-bottom: 10px!important;
+
+	&[scope="col"] {
+		text-transform: uppercase;
+		height: 45px;
+	    vertical-align: middle;  
+	    background: $green;  
+	}
+
+	&[scope="row"] {
+		font-weight:400;
+		color: $black;
+		/*background: transparentize( $olive, 0.7);		*/
+		background: transparentize( $light_gray, 0.5);	
+	}
+
+	a {
+		color:$green!important;
+	}
+}
+
+tr {
+	border-bottom: 0;
+
+	&:nth-child(2n) {
+		background: transparentize( $light_beige, 0.7);
+	}
+	&:nth-child(2n+1){
+		background: transparentize( $beige, 0.5);
+	}
+
+}
+
 .note {
 	font-size: .7rem;
 	line-height: 1rem;
@@ -129,7 +171,17 @@ li {
 	padding-bottom: .25rem;
 }
 
+.ui-datepicker-calendar {
+	tr {
+		background: rgba(0, 0, 0, 0.063);
+	}
+	th{
+		padding-top:3px!important;
+		padding-bottom:3px!important;
 
-/*.paragraph>.paragraph__column {
-	padding-left: 0px !important;
-}*/
+		&[scope=col] {
+			height:unset;
+		}
+	}
+}
+
