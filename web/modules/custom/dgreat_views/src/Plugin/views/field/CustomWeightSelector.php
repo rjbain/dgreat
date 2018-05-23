@@ -164,6 +164,8 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
       '#value' => $this->field,
     );
 
+    $form['#cache'] = ['max-age' => 0];
+
     $form['#action'] = \Drupal::request()->getRequestUri();
   }
 
