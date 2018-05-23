@@ -8,8 +8,7 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\views\ViewExecutable;
 use Drupal\user\Entity\User;
-use Drupal\node\Entity\Node;
-use Drupal\views\ResultRow;
+use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Implements hook_help().
@@ -25,6 +24,158 @@ function dgreat_views_help($route_name, RouteMatchInterface $route_match) {
 
     default:
   }
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function dgreat_views_flagging_insert(EntityInterface $entity) {
+  // Adds items from user_weights after flagging.
+  $nid = $entity->get('entity_id')->getValue();
+  $uid = $entity->get('uid')->getValue();
+
+  if (isset($nid[0]["value"]) && isset($uid[0]["target_id"])) {
+
+    // Need to use the $_GET params here since we are within the flagging
+    // mechanisms and can;t get proper routes otherwise.
+    $current_path = isset($_GET["destination"]) ? $_GET["destination"] : NULL;
+    if ($current_path !== NULL) {
+      $url_object = \Drupal::service('path.validator')->getUrlIfValid($current_path);
+      $route_name = $url_object->getRouteName();
+
+      $view = explode('.', $route_name);
+      $name = isset($view[1]) ? $view[1] : '';
+      $display = isset($view[2]) ? $view[2] : '';
+
+      if (!empty($name) && !empty($display)) {
+        $db = \Drupal::database();
+        $check = $db
+          ->select('user_weights', 'u')
+          ->fields('u', ['weight'])
+          ->condition('uid', $uid[0]["target_id"])
+          ->condition('entity_id', $nid[0]["value"])
+          ->condition('view_name', $name)
+          ->condition('view_display', $display)
+          ->execute()
+          ->fetchField();
+
+        $t = 1;
+        if ($check === FALSE) {
+          // Insert new item in weights table.
+          $db->insert('user_weights')
+            ->fields([
+              'entity_id' => $nid[0]["value"],
+              'uid' => $uid[0]["target_id"],
+              'view_name' => $name,
+              'view_display' => $display,
+            ])
+            ->execute();
+
+          // Also add it to the my_links.
+          if ($display == 'all_apps') {
+            $db->insert('user_weights')
+              ->fields([
+                'entity_id' => $nid[0]["value"],
+                'uid' => $uid[0]["target_id"],
+                'view_name' => $name,
+                'view_display' => 'my_links',
+              ])
+              ->execute();
+          }
+        }
+        else {
+          // Update the weights table.
+          $db->update('user_weights')
+            ->condition('uid', $uid[0]["target_id"])
+            ->condition('entity_id', $nid[0]["value"])
+            ->condition('view_name', $name)
+            ->condition('view_display', $display)
+            ->fields([
+              'entity_id' => $nid[0]["value"],
+              'uid' => $uid[0]["target_id"],
+              'view_name' => $name,
+              'view_display' => $display,
+            ])
+            ->execute();
+
+          // Also add it to the my_links.
+          if ($display == 'all_apps') {
+            $db->update('user_weights')
+              ->condition('uid', $uid[0]["target_id"])
+              ->condition('entity_id', $nid[0]["value"])
+              ->condition('view_name', $name)
+              ->condition('view_display', $display)
+              ->fields([
+                'entity_id' => $nid[0]["value"],
+                'uid' => $uid[0]["target_id"],
+                'view_name' => $name,
+                'view_display' => 'my_links',
+              ])
+              ->execute();
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_predelete().
+ */
+function dgreat_views_flagging_predelete(EntityInterface $entity) {
+  // Removes items from user_weights after unflagging.
+  $nid = $entity->get('entity_id')->getValue();
+  $uid = $entity->get('uid')->getValue();
+
+  if (isset($nid[0]["value"]) && isset($uid[0]["target_id"])) {
+
+    // Need to use the $_GET params here since we are within the flagging
+    // mechanisms and can;t get proper routes otherwise.
+    $current_path = isset($_GET["destination"]) ? $_GET["destination"] : NULL;
+    if ($current_path !== NULL) {
+      $url_object = \Drupal::service('path.validator')->getUrlIfValid($current_path);
+      $route_name = $url_object->getRouteName();
+
+      $view = explode('.', $route_name);
+      $name = isset($view[1]) ? $view[1] : '';
+      $display = isset($view[2]) ? $view[2] : '';
+
+      if (!empty($name) && !empty($display)) {
+        $db = \Drupal::database();
+
+        // Don't remove from all apps, causes problems.
+        if ($display != 'all_apps') {
+          $query = $db
+            ->delete('user_weights')
+            ->condition('uid', $uid[0]["target_id"])
+            ->condition('entity_id', $nid[0]["value"])
+            ->condition('view_name', $name)
+            ->condition('view_display', $display)
+            ->execute();
+        }
+      }
+    }
+  }
+
+}
+
+/**
+ * Implements hook_views_data().
+ */
+function dgreat_views_views_data() {
+
+  $data['user_weights']['table']['group'] = t('User Weights');
+  $data['user_weights']['table']['base'] = [
+    'field' => 'entity_id',
+    'title' => t('User Weights'),
+  ];
+
+  $data['user_weights']['table']['join']['node_field_data'] = [
+    'left_field' => 'nid',
+    'field' => 'entity_id',
+  ];
+
+  return $data;
 }
 
 /**
@@ -56,7 +207,62 @@ function dgreat_views_views_data_alter(array &$data) {
     ],
   ];
 
+  $desc = t('Check User Weights and sorts by title asc if there are none.');
+  $data['node_field_data']['user_weights'] = [
+    'title' => t('Check User Weights'),
+    'filter' => [
+      'title' => t('Check User Weights'),
+      'help' => $desc,
+      'field' => 'nid',
+      'id' => 'user_weight_filter_sort'
+    ],
+  ];
+
+  // This overrides the existing weights views field.
+  // If for some reason you try to add weights to another view
+  // And the js isn't kicking in.  Comment this out, remove and readd the weight field
+  // And then uncomment this, will fix your issue.
   $data['node__field_weight']['field_weight']['field']['id'] = 'custom_weight_selector';
+}
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function dgreat_views_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
+  $name = $view->id();
+  $display = $view->current_display;
+
+  switch ($name) {
+    case 'favorite_links':
+
+      // Removes fields and header for non admins.
+      if ($display == 'all_apps') {
+        $user_roles = \Drupal::currentUser()->getRoles();
+        if (!in_array('administrator', $user_roles)) {
+          $view->removeHandler($display, 'field', 'field_group_audience');
+          $view->removeHandler($display, 'field', 'edit_node');
+          $view->removeHandler($display, 'field', 'delete_node');
+          $view->removeHandler($display, 'header', 'area');
+
+        }
+      }
+      break;
+
+    case 'quick_links':
+      // Removes fields and header for non admins.
+      if ($display == 'all_apps') {
+        $user_roles = \Drupal::currentUser()->getRoles();
+        if (!in_array('administrator', $user_roles)) {
+          $view->removeHandler($display, 'field', 'body');
+          $view->removeHandler($display, 'field', 'field_category');
+          $view->removeHandler($display, 'field', 'field_sso');
+          $view->removeHandler($display, 'field', 'field_group_audience');
+          $view->removeHandler($display, 'field', 'edit_node');
+          $view->removeHandler($display, 'field', 'delete_node');
+        }
+      }
+      break;
+  }
 }
 
 /**
@@ -165,46 +371,49 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
         $view->result = _dgreat_views_remove_duplicates($merge);
       }
 
-      break;
-  }
-}
+      // Sorts our user weights items for proper display.
+      // Only place I could get this to work right.
+      // Normal sort won't work since we have to do it by user.
+      if ($name == 'favorite_links' || $name == 'quick_links') {
+        // Initialize the db.
+        $db = \Drupal::database();
 
-/**
- * Implements hook_views_pre_view().
- */
-function dgreat_views_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
-  $name = $view->id();
-  $display = $view->current_display;
+        // Grab the count first to make sure we have rows to manipulate.
+        $uid = \Drupal::currentUser()->id();
+        $query = $db
+          ->select('user_weights', 'u')
+          ->fields('u', ['entity_id'])
+          ->condition('uid', $uid)
+          ->condition('view_name', $name)
+          ->condition('view_display', $display)
+          ->execute();
+        $query->allowRowCount = TRUE;
+        $count = $query->rowCount();
 
-  switch ($name) {
-    case 'favorite_links':
+        if ($count && isset($view->result)) {
+          $new_results = [];
 
-      // Removes fields and header for non admins.
-      if ($display == 'all_apps') {
-        $user_roles = \Drupal::currentUser()->getRoles();
-        if (!in_array('administrator', $user_roles)) {
-          $view->removeHandler($display, 'field', 'field_group_audience');
-          $view->removeHandler($display, 'field', 'edit_node');
-          $view->removeHandler($display, 'field', 'delete_node');
-          $view->removeHandler($display, 'header', 'area');
+          foreach ($view->result as $result) {
+            $nid = $result->node_field_data_group_content_field_data_nid;
 
+            $weight = $db->select('user_weights', 'u')
+              ->fields('u', ['weight'])
+              ->condition('uid', $uid)
+              ->condition('entity_id', $nid)
+              ->condition('view_name', $name)
+              ->condition('view_display', $display)
+              ->execute()
+              ->fetchField();
+
+            $new_results[$weight] = $result;
+          }
+
+          ksort($new_results);
+          $new_results = array_values(array_filter($new_results));
+          $view->result = $new_results;
         }
       }
-      break;
 
-    case 'quick_links':
-      // Removes fields and header for non admins.
-      if ($display == 'all_apps') {
-        $user_roles = \Drupal::currentUser()->getRoles();
-        if (!in_array('administrator', $user_roles)) {
-          $view->removeHandler($display, 'field', 'body');
-          $view->removeHandler($display, 'field', 'field_category');
-          $view->removeHandler($display, 'field', 'field_sso');
-          $view->removeHandler($display, 'field', 'field_group_audience');
-          $view->removeHandler($display, 'field', 'edit_node');
-          $view->removeHandler($display, 'field', 'delete_node');
-        }
-      }
       break;
   }
 }
