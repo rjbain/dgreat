@@ -1,0 +1,32 @@
+uuid: 3224266e-9fe9-42fc-88f4-6ecb8adb1fef
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.test_custom_block
+    - field.field.block_content.test_custom_block.body
+  module:
+    - text
+id: block_content.test_custom_block.default
+targetEntityType: block_content
+bundle: test_custom_block
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 26
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

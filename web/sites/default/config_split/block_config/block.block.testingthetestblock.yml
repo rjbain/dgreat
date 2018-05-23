@@ -1,22 +1,24 @@
-uuid: d597db38-bf55-4dd4-97e3-d8b81167a58a
+uuid: 24ca2843-d073-4515-9cb2-48cb307af89a
 langcode: en
 status: true
 dependencies:
+  content:
+    - 'block_content:test_custom_block:38addcaf-d6df-4a8d-9192-f149a9ece8d3'
   module:
+    - block_content
     - block_visibility_groups
-    - system
   theme:
     - myusf
-id: mainsomcontactbox
+id: testingthetestblock
 theme: myusf
 region: sidebar_first
 weight: 0
 provider: null
-plugin: 'block_content:bd518116-06f4-4114-a5e1-dc4665954544'
+plugin: 'block_content:38addcaf-d6df-4a8d-9192-f149a9ece8d3'
 settings:
-  id: 'block_content:bd518116-06f4-4114-a5e1-dc4665954544'
-  label: 'Main SOM Contact Box'
-  provider: core
+  id: 'block_content:38addcaf-d6df-4a8d-9192-f149a9ece8d3'
+  label: 'Testing the test block'
+  provider: block_content
   label_display: visible
   status: true
   info: ''
@@ -26,9 +28,4 @@ visibility:
     id: condition_group
     negate: false
     block_visibility_group: ''
-    context_mapping: {  }
-  request_path:
-    id: request_path
-    pages: '/management*'
-    negate: false
     context_mapping: {  }
