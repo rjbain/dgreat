@@ -5,11 +5,13 @@ dependencies:
   config:
     - field.field.node.hero_image.body
     - field.field.node.hero_image.field_image
+    - field.field.node.hero_image.field_news_link
     - field.field.node.hero_image.field_sub_title
     - image.style.thumbnail
     - node.type.hero_image
   module:
     - image
+    - link
     - path
     - text
 id: node.hero_image.default
@@ -39,6 +41,14 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
+  field_news_link:
+    weight: 26
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
     region: content
   field_sub_title:
     weight: 7
