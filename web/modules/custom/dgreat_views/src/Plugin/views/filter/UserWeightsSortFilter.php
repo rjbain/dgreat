@@ -93,7 +93,7 @@ class UserWeightsSortFilter extends FilterPluginBase implements ContainerFactory
     $count = $results->rowCount();
 
     // Sort by our user weights.
-    if ($count) {
+    if (!$count) {
       // Just sort by title if there are no user weights yet.
       $this->query->addOrderBy($this->tableAlias, 'title', 'ASC');
     }
