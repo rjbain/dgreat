@@ -2,25 +2,20 @@
 
 namespace Drupal\dgreat_views\Plugin\views\filter;
 
-use Drupal\Core\Database\Query\Condition;
 use Drupal\views\Plugin\views\filter\FilterPluginBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Database\Connection;
-use Drupal\Component\Utility\Html;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\user\Entity\User;
-
+use Drupal\Core\Database\Query\Condition;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Filter by User + Default.
+ * Just sorts stuff alpha if there are no user weights.
  *
- * @ingroup views_field_handlers
- *
- * @ViewsFilter("dgreat_views_filter_by_user")
+ * @ViewsFilter("user_weight_filter_sort")
  */
-class DgreatViewsFilterByUser extends FilterPluginBase implements ContainerFactoryPluginInterface {
+class UserWeightsSortFilter extends FilterPluginBase implements ContainerFactoryPluginInterface {
 
   /**
    * The database connection to which to dump route information.
@@ -70,7 +65,6 @@ class DgreatViewsFilterByUser extends FilterPluginBase implements ContainerFacto
     );
   }
 
-
   /**
    * {@inheritdoc}
    */
@@ -86,56 +80,23 @@ class DgreatViewsFilterByUser extends FilterPluginBase implements ContainerFacto
   public function query() {
     $this->ensureMyTable();
 
-    $uid = $this->currentUser->id();
-    $user = User::load($uid);
-    $groups = $user->get('field_user_group')->getValue();
-    $gids = [];
-    foreach ($groups as $gid) {
-      $gids[] = $gid['target_id'];
-    }
 
-    if (empty($gids)) {
-      $this->query->addWhere(0, 0);
-      return;
-    }
+    $results = $this->db->select('user_weights', 'u')
+      ->fields('u', ['entity_id'])
+      ->condition('uid', $this->currentUser->id())
+      ->condition('view_name', $this->view->id())
+      ->condition('view_display', $this->view->current_display)
+      ->orderBy('weight', 'ASC')
+      ->execute();
 
-    // Remove duplicates.
-    $gids = array_unique($gids);
+    $results->allowRowCount = TRUE;
+    $count = $results->rowCount();
 
-    $query = $this->db
-      ->select('group__field_default_quick_links', 'g')
-      ->fields('g', ['field_default_quick_links_target_id'])
-      ->condition('entity_id', $gids, 'IN');
-
-    // Loop through and grab our content ids.
-    foreach ($query->execute()->fetchAll() as $result) {
-      $nids[] = $result->field_default_quick_links_target_id;
-    }
-
-    // Remove duplicates.
-    $nids = array_unique($nids);
-
-    $query = $this->db
-      ->select('node_field_data', 'n')
-      ->fields('n', ['nid'])
-      ->condition('type', 'favorite_link')
-      ->condition('uid', $uid);
-
-    // Loop through and grab our content ids.
-    foreach ($query->execute()->fetchAll() as $result) {
-      $nids[] = $result->nid;
-    }
-
-    if (!empty($nids)) {
-      // Setup the conditions.
-      $conditions = new Condition('AND');
-      $conditions->condition('nid', $nids, 'IN');
-
-      // Hook up the query.
-      $this->query->addWhere(0, $conditions);
-    }
-    else {
-      $this->query->addWhere(0, 0);
+    // Sort by our user weights.
+    if (!$count) {
+      // Just sort by title if there are no user weights yet.
+      $this->query->addOrderBy($this->tableAlias, 'title', 'ASC');
     }
   }
+
 }

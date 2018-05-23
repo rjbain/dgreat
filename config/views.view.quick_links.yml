@@ -7,6 +7,7 @@ dependencies:
     - field.storage.node.field_category
     - field.storage.node.field_group_audience
     - field.storage.node.field_sso
+    - field.storage.node.field_url
     - flag.flag.favorite
     - group.content_type.groups-group_node-favorite_link
     - group.type.groups
@@ -18,12 +19,12 @@ dependencies:
     - dgreat_views
     - flag
     - group
+    - link
     - node
     - options
     - taxonomy
     - text
     - user
-    - weight
 id: quick_links
 label: 'Quick Links'
 module: views
@@ -46,7 +47,7 @@ display:
             administrator: administrator
             editor: editor
       cache:
-        type: tag
+        type: none
         options: {  }
       query:
         type: views_query
@@ -127,8 +128,15 @@ display:
           description: ''
           columns:
             link_flag: link_flag
-            title: title
-            draggableviews: draggableviews
+            field_url: field_url
+            label: label
+            body: body
+            field_category: field_category
+            field_sso: field_sso
+            field_group_audience: field_group_audience
+            edit_node: edit_node
+            delete_node: delete_node
+            field_weight: field_weight
           info:
             link_flag:
               sortable: false
@@ -137,14 +145,61 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            title:
+            field_url:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            label:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            draggableviews:
+            body:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_category:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_sso:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_group_audience:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            edit_node:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            delete_node:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_weight:
+              sortable: false
+              default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
@@ -810,76 +865,6 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
-        field_group_audience_target_id:
-          id: field_group_audience_target_id
-          table: node__field_group_audience
-          field: field_group_audience_target_id
-          relationship: gc__node
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_group_audience_target_id_op
-            label: 'Group audience (field_group_audience)'
-            description: ''
-            use_operator: false
-            operator: field_group_audience_target_id_op
-            identifier: field_group_audience_target_id
-            required: false
-            remember: false
-            multiple: true
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              faculty: '0'
-              all_access: '0'
-              student: '0'
-              online_student: '0'
-              admitted_student: '0'
-              finance: '0'
-              employee: '0'
-              prehire_faculty: '0'
-              prehire_staff: '0'
-              bi_group: '0'
-              vcl_staff: '0'
-              online_intaccept: '0'
-              service_editor: '0'
-              som_ug: '0'
-              som_grad: '0'
-              as_ug: '0'
-              as_grad: '0'
-              sonhp_ug: '0'
-              sonhp_grad: '0'
-              law: '0'
-              soe: '0'
-              box_editor: '0'
-              webform_editor: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select-list
-          sort: {  }
-          value_selection_type: '0'
-          target_bundles:
-            groups: groups
-          handler_view: 0
-          plugin_id: entity_reference
         field_link_type_value:
           id: field_link_type_value
           table: node__field_link_type
@@ -1057,6 +1042,9 @@ display:
         relationships: false
         fields: false
         sorts: false
+        arguments: false
+        filters: false
+        filter_groups: false
       header:
         area:
           id: area
@@ -1165,15 +1153,15 @@ display:
           hide_alter_empty: true
           entity_type: flagging
           plugin_id: flag_link
-        label:
-          id: label
-          table: group_content_field_data
-          field: label
-          relationship: none
+        field_url:
+          id: field_url
+          table: node__field_url
+          field: field_url
+          relationship: gc__node
           group_type: group
           admin_label: ''
-          label: Title
-          exclude: false
+          label: URL
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -1190,6 +1178,73 @@ display:
             prefix: ''
             suffix: ''
             target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: 80
+            url_only: false
+            url_plain: false
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        label:
+          id: label
+          table: group_content_field_data
+          field: label
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Title
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: true
+            path: '{{ field_url }}'
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: _blank
             nl2br: false
             max_length: 0
             word_boundary: true
@@ -1636,33 +1691,349 @@ display:
           hide_alter_empty: true
           range: '1000'
           plugin_id: weight_selector
-      sorts:
-        field_weight_value:
-          id: field_weight_value
-          table: node__field_weight
-          field: field_weight_value
+      sorts: {  }
+      arguments: {  }
+      filters:
+        type:
+          id: type
+          table: group_content_field_data
+          field: type
+          value:
+            groups-group_node-favorite_link: groups-group_node-favorite_link
+          entity_type: group_content
+          entity_field: type
+          plugin_id: bundle
+          group: 1
+        type_1:
+          id: type_1
+          table: groups_field_data
+          field: type
+          relationship: gid
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            groups: groups
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: group
+          entity_field: type
+          plugin_id: bundle
+        combine:
+          id: combine
+          table: views
+          field: combine
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: combine_op
+            label: 'Combine fields filter'
+            description: ''
+            use_operator: false
+            operator: combine_op
+            identifier: combine
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              editor: '0'
+              faculty: '0'
+              all_access: '0'
+              student: '0'
+              online_student: '0'
+              admitted_student: '0'
+              finance: '0'
+              employee: '0'
+              prehire_faculty: '0'
+              prehire_staff: '0'
+              bi_group: '0'
+              vcl_staff: '0'
+              online_intaccept: '0'
+              service_editor: '0'
+              som_ug: '0'
+              som_grad: '0'
+              as_ug: '0'
+              as_grad: '0'
+              sonhp_ug: '0'
+              sonhp_grad: '0'
+              law: '0'
+              soe: '0'
+              box_editor: '0'
+              webform_editor: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          fields:
+            label: label
+            body: body
+          plugin_id: combine
+        field_category_target_id:
+          id: field_category_target_id
+          table: node__field_category
+          field: field_category_target_id
           relationship: gc__node
           group_type: group
           admin_label: ''
-          order: ASC
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_category_target_id_op
+            label: 'Category (field_category)'
+            description: ''
+            use_operator: false
+            operator: field_category_target_id_op
+            identifier: field_category_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              editor: '0'
+              faculty: '0'
+              all_access: '0'
+              student: '0'
+              online_student: '0'
+              admitted_student: '0'
+              finance: '0'
+              employee: '0'
+              prehire_faculty: '0'
+              prehire_staff: '0'
+              bi_group: '0'
+              vcl_staff: '0'
+              online_intaccept: '0'
+              service_editor: '0'
+              som_ug: '0'
+              som_grad: '0'
+              as_ug: '0'
+              as_grad: '0'
+              sonhp_ug: '0'
+              sonhp_grad: '0'
+              law: '0'
+              soe: '0'
+              box_editor: '0'
+              webform_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: event_category
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_link_type_value:
+          id: field_link_type_value
+          table: node__field_link_type
+          field: field_link_type_value
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            quick: quick
+          group: 1
           exposed: false
           expose:
+            operator_id: ''
             label: ''
-          plugin_id: standard
-        title:
-          id: title
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          plugin_id: list_field
+        status:
+          id: status
           table: node_field_data
-          field: title
+          field: status
           relationship: gc__node
           group_type: group
           admin_label: ''
-          order: ASC
+          operator: '='
+          value: '1'
+          group: 1
           exposed: false
           expose:
+            operator_id: ''
             label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
           entity_type: node
-          entity_field: title
-          plugin_id: standard
+          entity_field: status
+          plugin_id: boolean
+        user_filter:
+          id: user_filter
+          table: node_field_data
+          field: user_filter
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          plugin_id: dgreat_views_filter_by_user
+        user_weights:
+          id: user_weights
+          table: node_field_data
+          field: user_weights
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          plugin_id: user_weight_filter_sort
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: -1
       contexts:
@@ -1677,6 +2048,7 @@ display:
         - 'config:field.storage.node.field_category'
         - 'config:field.storage.node.field_group_audience'
         - 'config:field.storage.node.field_sso'
+        - 'config:field.storage.node.field_url'
   my_links:
     display_plugin: page
     id: my_links
@@ -1698,6 +2070,7 @@ display:
         footer: false
         empty: false
         sorts: false
+        arguments: false
       relationships:
         gc__node:
           id: gc__node
@@ -1788,15 +2161,15 @@ display:
           hide_alter_empty: true
           entity_type: flagging
           plugin_id: flag_link
-        title:
-          id: title
-          table: node_field_data
-          field: title
+        field_url:
+          id: field_url
+          table: node__field_url
+          field: field_url
           relationship: gc__node
           group_type: group
           admin_label: ''
-          label: Title
-          exclude: false
+          label: URL
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -1836,10 +2209,77 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: 80
+            url_only: false
+            url_plain: false
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          label: Title
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: true
+            path: '{{ field_url }}'
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: _blank
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: true
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -1901,7 +2341,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          range: '20'
+          range: '1000'
           plugin_id: weight_selector
       filters:
         type:
@@ -2031,6 +2471,80 @@ display:
           entity_type: node
           entity_field: status
           plugin_id: boolean
+        user_filter:
+          id: user_filter
+          table: node_field_data
+          field: user_filter
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          plugin_id: dgreat_views_filter_by_user
+        user_weights:
+          id: user_weights
+          table: node_field_data
+          field: user_weights
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          plugin_id: user_weight_filter_sort
       filter_groups:
         operator: AND
         groups:
@@ -2057,18 +2571,6 @@ display:
       footer: {  }
       empty: {  }
       sorts:
-        field_weight_value:
-          id: field_weight_value
-          table: node__field_weight
-          field: field_weight_value
-          relationship: gc__node
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          plugin_id: standard
         field_top_quick_link_value:
           id: field_top_quick_link_value
           table: node__field_top_quick_link
@@ -2081,20 +2583,7 @@ display:
           expose:
             label: ''
           plugin_id: standard
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: gc__node
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          entity_type: node
-          entity_field: title
-          plugin_id: standard
+      arguments: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -2102,4 +2591,5 @@ display:
         - 'languages:language_interface'
         - url.query_args
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:field.storage.node.field_url'
