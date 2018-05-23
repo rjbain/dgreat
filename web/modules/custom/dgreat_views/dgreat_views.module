@@ -42,14 +42,6 @@ function dgreat_views_views_data() {
     'field' => 'entity_id',
   ];
 
-  $data['user_weights']['weight'] = [
-    'title' => t('User Weight'),
-    'help' => t('User Weight.'),
-    'sort' => [
-      'id' => 'standard',
-    ],
-  ];
-
   return $data;
 }
 
@@ -93,6 +85,10 @@ function dgreat_views_views_data_alter(array &$data) {
     ],
   ];
 
+  // This overrides the existing weights views field.
+  // If for some reason you try to add weights to another view
+  // And the js isn't kicking in.  Comment this out, remove and readd the weight field
+  // And then uncomment this, will fix your issue.
   $data['node__field_weight']['field_weight']['field']['id'] = 'custom_weight_selector';
 }
 

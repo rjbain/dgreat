@@ -1689,21 +1689,9 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          range: '1000'
+          range: '490'
           plugin_id: weight_selector
-      sorts:
-        weight:
-          id: weight
-          table: user_weights
-          field: weight
-          relationship: gc__node
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          plugin_id: standard
+      sorts: {  }
       arguments: {  }
       filters:
         type:
@@ -2520,6 +2508,43 @@ display:
             group_items: {  }
           entity_type: node
           plugin_id: dgreat_views_filter_by_user
+        user_weights:
+          id: user_weights
+          table: node_field_data
+          field: user_weights
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          plugin_id: user_weight_filter_sort
       filter_groups:
         operator: AND
         groups:
@@ -2546,18 +2571,6 @@ display:
       footer: {  }
       empty: {  }
       sorts:
-        field_weight_value:
-          id: field_weight_value
-          table: node__field_weight
-          field: field_weight_value
-          relationship: gc__node
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          plugin_id: standard
         field_top_quick_link_value:
           id: field_top_quick_link_value
           table: node__field_top_quick_link
@@ -2569,20 +2582,6 @@ display:
           exposed: false
           expose:
             label: ''
-          plugin_id: standard
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: gc__node
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          entity_type: node
-          entity_field: title
           plugin_id: standard
       arguments: {  }
     cache_metadata:
