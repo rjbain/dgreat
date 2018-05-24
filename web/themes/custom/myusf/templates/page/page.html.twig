@@ -127,8 +127,9 @@
     <!--</div>-->
     {% endif %}
       </nav>
-
-<div class="hero-image-block">{{ page.hero_image }}</div>
+      {% if page.hero_image %}
+        <div class="hero-image-block">{{ page.hero_image }}</div>
+      {% endif %}
 <style>
   .hero-image-block {
   margin: -32px 0 0 0 !important;
