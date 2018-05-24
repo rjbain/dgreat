@@ -394,7 +394,6 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 
 //--- Navtabs --//
 nav.tabs {
-	margin-left: 17px;
 	@include media-breakpoint-down(phone) {
 		@include margin-L-R-auto;
 	}
@@ -441,8 +440,8 @@ nav.tabs {
 }
 
 .breadcrumb {
-	padding: .75rem 1rem 0 4px;
-	margin-top: 1rem;
+	padding: 0rem 1rem 0 4px;
+	margin-left: 10px;
     margin-bottom: 1rem;
     list-style: none;
     background-color: transparent;
@@ -715,8 +714,11 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 }
 
 .submenu {
-    margin-top: 30px;
+   @include media-breakpoint-down(phone) { 
+    	margin-top: 30px;
+	}
 }
+
 /* QUICK LINKS right column 
 =================================================*/
 
@@ -753,6 +755,8 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	}
 	
 }
+
+
 
 
 /* FOOTER

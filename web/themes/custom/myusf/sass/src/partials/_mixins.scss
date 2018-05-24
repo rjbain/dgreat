@@ -37,13 +37,6 @@
         position: absolute;
         display: inline-block;
         content: "";
-        /*width: 8px;
-        height: 5px;
-        top: 6px;
-        right: -17px;
-        bottom: 0;*/
-
-
         width: 6px;
         height: 8px;
         top: 13px;
@@ -58,11 +51,6 @@
         content: "";
         width: 25px;
         height: 25px;
-        /*top: -5px;
-        right: 0px;
-        float: right;
-        bottom: 0;*/
-
         top: 4px;
         right: 5px;
         -ms-transform: rotate($degree);
@@ -70,7 +58,6 @@
         border: 1px solid $borderColor;
         background: $bgColor;
         transition: box-shadow .25s,transform .25s;
-
     }
 
     &:hover:after,
@@ -82,8 +69,44 @@
     &:focus {
         background: transparent;
     }
-    
+}
+@mixin diamond_button_small ($bgX, $bgY, $degree, $borderColor, $bgColor, $bgColorHover) {
+    &:before {
+        position: absolute;
+        display: inline-block;
+        content: "";
+        width: 6px;
+        height: 8px;
+        top: 11px;
+        right: 15px;
+        z-index: 1;
+        background: url(/themes/custom/myusf/images/site/icons.svg) $bgX $bgY no-repeat;
+    }
 
+    &:after {
+        position: absolute;
+        display: inline-block;
+        content: "";
+        width: 20px;
+        height: 20px;
+        top: 5px;
+        right: 10px;
+        -ms-transform: rotate($degree);
+        transform: rotate($degree);
+        border: 1px solid $borderColor;
+        background: $bgColor;
+        transition: box-shadow .25s,transform .25s;
+    }
+
+    &:hover:after,
+    &:focus:after {
+            background: $bgColorHover;
+        }
+    
+    &:hover,
+    &:focus {
+        background: transparent;
+    }
 }
 
 @mixin social($social_media, $x, $y) {
