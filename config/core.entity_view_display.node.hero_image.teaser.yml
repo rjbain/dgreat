@@ -1,0 +1,31 @@
+uuid: bc024e9a-5109-4218-be52-0e51196927ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.hero_image.body
+    - node.type.hero_image
+  module:
+    - text
+    - user
+id: node.hero_image.teaser
+targetEntityType: node
+bundle: hero_image
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_image: true
+  field_news_link: true
+  field_sub_title: true

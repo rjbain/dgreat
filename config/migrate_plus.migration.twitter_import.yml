@@ -1,0 +1,71 @@
+uuid: 7743b6ca-9b91-43a8-8343-338f0fbde074
+langcode: en
+status: true
+dependencies: {  }
+id: twitter_import
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: null
+label: 'Twitter Import to MyUSF'
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  urls: 'https://www.usfca.edu/feeds/myusf/twitter'
+  data_parser_plugin: simple_xml
+  item_selector: /twitter_feed/item
+  fields:
+    -
+      name: title
+      label: Title
+      selector: title
+    -
+      name: description
+      label: Description
+      selector: description
+    -
+      name: image_url
+      label: 'Image URL'
+      selector: image
+    -
+      name: account_name
+      label: 'Account Name'
+      selector: account
+    -
+      name: tweet_link
+      label: 'Tweet Link'
+      selector: link
+    -
+      name: external_id
+      label: 'External ID'
+      selector: eid
+    -
+      name: guid
+      label: GUID
+      selector: nid
+    -
+      name: content_type
+      label: Type
+      selector: type
+  ids:
+    guid:
+      type: string
+process:
+  title: title
+  body: description
+  field_image_url: image_url
+  field_account_name: account_name
+  field_news_link: tweet_link
+  field_external_id: external_id
+  field_guid: guid
+  field_type: content_type
+  status:
+    plugin: default_value
+    default_value: 1
+  type:
+    plugin: default_value
+    default_value: twitter
+destination:
+  plugin: 'entity:node'
+migration_dependencies: null

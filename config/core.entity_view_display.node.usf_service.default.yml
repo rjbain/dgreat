@@ -31,6 +31,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
+  field_usfcat_audience_ref:
+    weight: 102
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
   field_usfcat_howdoi:
     label: above
     weight: 2
@@ -60,7 +68,15 @@ content:
     weight: 1
     type: entity_reference_label
     settings:
-      link: false
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_usfcat_synonyms:
+    label: above
+    weight: 6
+    type: string
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
     region: content
   field_usfcat_training:
@@ -77,16 +93,18 @@ content:
     region: content
   field_usfcat_updates:
     type: entity_reference_revisions_entity_view
-    weight: 5
-    region: content
+    weight: 101
     label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
-  field_usfcat_audience_ref: true
   field_usfcat_category_ref: true
   field_usfcat_description_short: true
-  field_usfcat_synonyms: true
-  links: true
