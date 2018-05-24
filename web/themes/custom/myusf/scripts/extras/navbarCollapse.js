@@ -11,6 +11,6 @@ function rClass(x) {
         cbt.classList.add("hideButton");
     }
 }
-var x = window.matchMedia("(max-width: 575px)")
+var x = window.matchMedia("(max-width: 767px)")
 rClass(x)
 x.addListener(rClass)

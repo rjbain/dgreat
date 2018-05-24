@@ -109,7 +109,9 @@ span.diamond_link {
     border-color: $green;
 
     &:hover,
-    &:focus {
+    &:focus,
+    &:active,
+    &:not(:disabled):not(.disabled):active {
         background: $white;
         color: $black;
         border-color: $green;
@@ -133,3 +135,55 @@ button.bp-accordion--button {
         background-color: transparentize( $yellow, 0.8);
     }
 }
+
+.diamond_link {
+    @include diamond_button(-300px, -129px, 45deg, $yellow, $white, $yellow);
+
+    font-size: 1rem;
+    font-weight: 800!important;
+    color: $green;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    letter-spacing: .5px;
+    padding: 6px 43px 8px 0;   
+}
+.diamond_link_small {
+    @include diamond_button_small(-300px, -129px, 45deg, $yellow, $white, $yellow);
+
+    font-size: .8rem;
+    font-weight: 800!important;
+    color: $green;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    letter-spacing: .5px;
+    padding: 6px 43px 8px 0;   
+}
+.diamond_link_white {
+    @include diamond_button(-300px, -129px, 45deg, $yellow, $white, $yellow);
+
+    font-size: 1rem;
+    font-weight: 800!important;
+    color: $white;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    letter-spacing: .5px;
+    padding: 6px 43px 8px 0;   
+}
+.diamond_link_small_white {
+    @include diamond_button_small(-300px, -129px, 45deg, $yellow, $white, $yellow);
+
+    font-size: .8rem;
+    font-weight: 800!important;
+    color: $white;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    letter-spacing: .5px;
+    padding: 6px 43px 8px 0;   
+}
+
+
+
