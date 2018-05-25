@@ -56,7 +56,7 @@ function dgreat_views_flagging_insert(EntityInterface $entity) {
           ->condition('view_name', $name)
           ->execute()
           ->fetchField();
-        
+
         if ($check === FALSE) {
           // Insert new item in weights table.
           $db->insert('user_weights')
