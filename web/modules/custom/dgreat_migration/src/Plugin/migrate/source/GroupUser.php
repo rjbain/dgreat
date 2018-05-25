@@ -32,17 +32,17 @@ class GroupUser extends User {
     // I don't like the fact I need to run two sql queries.
     // However it works for now @todo make this happier.
     $query = $this->select('og_membership', 'og')
-      ->fields('og', ['gid'])
-      ->condition('etid', $uid)
-      ->condition('entity_type', 'user')
-      ->execute()
-      ->fetchAll();
+                  ->fields('og', ['gid'])
+                  ->condition('etid', $uid)
+                  ->condition('entity_type', 'user')
+                  ->execute()
+                  ->fetchAll();
 
     $query2 = $this->select('og_users_roles', 'our')
-      ->fields('our', ['gid'])
-      ->condition('uid', $uid)
-      ->execute()
-      ->fetchAll();
+                   ->fields('our', ['gid'])
+                   ->condition('uid', $uid)
+                   ->execute()
+                   ->fetchAll();
 
     // Set our array of values.
     $gids = [];
