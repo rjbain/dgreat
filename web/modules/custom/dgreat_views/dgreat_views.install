@@ -186,3 +186,54 @@ function dgreat_views_update_8004() {
   }
 }
 
+
+/**
+ * Drop the table again and rebuild it.
+ */
+function dgreat_views_update_8005() {
+
+  $user_weights = [
+    'description' => 'The base table for User Weights.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'description' => "The rows id",
+      ],
+      'entity_id' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The id of the entity',
+      ],
+      'uid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The uid of the user.',
+      ],
+      'weight' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The weight of this term for the specific user.',
+      ],
+      'view_name' => [
+        'type' => 'varchar',
+        'length' => '512',
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The View Name.',
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  // Check and add our new table;
+  $schema = \Drupal::database()->schema();
+  if ($schema->tableExists('user_weights')) {
+    $schema->dropTable('user_weights');
+    $schema->createTable('user_weights', $user_weights);
+  }
+}
+

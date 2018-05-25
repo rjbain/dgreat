@@ -85,7 +85,6 @@ class UserWeightsSortFilter extends FilterPluginBase implements ContainerFactory
       ->fields('u', ['entity_id'])
       ->condition('uid', $this->currentUser->id())
       ->condition('view_name', $this->view->id())
-      ->condition('view_display', $this->view->current_display)
       ->orderBy('weight', 'ASC')
       ->execute();
 
