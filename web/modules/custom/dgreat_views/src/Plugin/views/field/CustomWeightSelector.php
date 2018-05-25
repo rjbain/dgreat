@@ -118,7 +118,6 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
       ->fields('u', ['weight', 'entity_id'])
       ->condition('uid', $this->currentUser->id())
       ->condition('view_name', $this->view->id())
-      ->condition('view_display', $this->view->current_display)
       ->execute()
       ->fetchAll();
 
@@ -185,7 +184,6 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
           ->condition('entity_id', $nid[0]["target_id"])
           ->condition('uid', $uid)
           ->condition('view_name', $this->view->id())
-          ->condition('view_display', $this->view->current_display)
           ->execute()
           ->fetchField();
 
@@ -197,7 +195,6 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
               'uid' => $uid,
               'weight' => $row['weight'],
               'view_name' => $this->view->id(),
-              'view_display' => $this->view->current_display,
             ])
             ->execute();
         }
@@ -207,13 +204,11 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
             ->condition('entity_id', $nid[0]["target_id"])
             ->condition('uid', $uid)
             ->condition('view_name', $this->view->id())
-            ->condition('view_display', $this->view->current_display)
             ->fields([
               'entity_id' => $nid[0]["target_id"],
               'uid' => $uid,
               'weight' => $row['weight'],
               'view_name' => $this->view->id(),
-              'view_display' => $this->view->current_display,
             ])
             ->execute();
         }

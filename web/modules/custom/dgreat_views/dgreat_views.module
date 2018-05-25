@@ -45,9 +45,8 @@ function dgreat_views_flagging_insert(EntityInterface $entity) {
 
       $view = explode('.', $route_name);
       $name = isset($view[1]) ? $view[1] : '';
-      $display = isset($view[2]) ? $view[2] : '';
 
-      if (!empty($name) && !empty($display)) {
+      if (!empty($name)) {
         $db = \Drupal::database();
         $check = $db
           ->select('user_weights', 'u')
@@ -55,11 +54,9 @@ function dgreat_views_flagging_insert(EntityInterface $entity) {
           ->condition('uid', $uid[0]["target_id"])
           ->condition('entity_id', $nid[0]["value"])
           ->condition('view_name', $name)
-          ->condition('view_display', $display)
           ->execute()
           ->fetchField();
 
-        $t = 1;
         if ($check === FALSE) {
           // Insert new item in weights table.
           $db->insert('user_weights')
@@ -67,21 +64,9 @@ function dgreat_views_flagging_insert(EntityInterface $entity) {
               'entity_id' => $nid[0]["value"],
               'uid' => $uid[0]["target_id"],
               'view_name' => $name,
-              'view_display' => $display,
             ])
             ->execute();
 
-          // Also add it to the my_links.
-          if ($display == 'all_apps') {
-            $db->insert('user_weights')
-              ->fields([
-                'entity_id' => $nid[0]["value"],
-                'uid' => $uid[0]["target_id"],
-                'view_name' => $name,
-                'view_display' => 'my_links',
-              ])
-              ->execute();
-          }
         }
         else {
           // Update the weights table.
@@ -89,30 +74,12 @@ function dgreat_views_flagging_insert(EntityInterface $entity) {
             ->condition('uid', $uid[0]["target_id"])
             ->condition('entity_id', $nid[0]["value"])
             ->condition('view_name', $name)
-            ->condition('view_display', $display)
             ->fields([
               'entity_id' => $nid[0]["value"],
               'uid' => $uid[0]["target_id"],
               'view_name' => $name,
-              'view_display' => $display,
             ])
             ->execute();
-
-          // Also add it to the my_links.
-          if ($display == 'all_apps') {
-            $db->update('user_weights')
-              ->condition('uid', $uid[0]["target_id"])
-              ->condition('entity_id', $nid[0]["value"])
-              ->condition('view_name', $name)
-              ->condition('view_display', $display)
-              ->fields([
-                'entity_id' => $nid[0]["value"],
-                'uid' => $uid[0]["target_id"],
-                'view_name' => $name,
-                'view_display' => 'my_links',
-              ])
-              ->execute();
-          }
         }
       }
     }
@@ -138,21 +105,17 @@ function dgreat_views_flagging_predelete(EntityInterface $entity) {
 
       $view = explode('.', $route_name);
       $name = isset($view[1]) ? $view[1] : '';
-      $display = isset($view[2]) ? $view[2] : '';
 
-      if (!empty($name) && !empty($display)) {
+      if (!empty($name)) {
         $db = \Drupal::database();
 
-        // Don't remove from all apps, causes problems.
-        if ($display != 'all_apps') {
-          $query = $db
-            ->delete('user_weights')
-            ->condition('uid', $uid[0]["target_id"])
-            ->condition('entity_id', $nid[0]["value"])
-            ->condition('view_name', $name)
-            ->condition('view_display', $display)
-            ->execute();
-        }
+        $query = $db
+          ->delete('user_weights')
+          ->condition('uid', $uid[0]["target_id"])
+          ->condition('entity_id', $nid[0]["value"])
+          ->condition('view_name', $name)
+          ->execute();
+
       }
     }
   }
@@ -385,7 +348,6 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
           ->fields('u', ['entity_id'])
           ->condition('uid', $uid)
           ->condition('view_name', $name)
-          ->condition('view_display', $display)
           ->execute();
         $query->allowRowCount = TRUE;
         $count = $query->rowCount();
@@ -401,7 +363,6 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
               ->condition('uid', $uid)
               ->condition('entity_id', $nid)
               ->condition('view_name', $name)
-              ->condition('view_display', $display)
               ->execute()
               ->fetchField();
 
