@@ -23,6 +23,11 @@ class GroupUser extends User {
     // Grab our nid and grab the Group ID from the D7 OG table.
     $uid = $row->getSourceProperty('uid');
 
+    // Filter out users who already exist in the new database. This avoids collusions.
+    if ($row->getSource('name') && $this->userExists($row->getSource('name'))) {
+      return FALSE;
+    }
+
     // For some reason I could not get the joins to work on this.
     // I don't like the fact I need to run two sql queries.
     // However it works for now @todo make this happier.
@@ -58,6 +63,22 @@ class GroupUser extends User {
 
 
     return parent::prepareRow($row);
+  }
+
+  /**
+   * Determine if this row's name matches an existing user.
+   * @param string $name
+   *
+   * @return bool
+   */
+  private function userExists($name = '') {
+    return \Drupal::database()->select('users_field_data', 'ufd')
+                       ->fields('ufd', ['name'])
+                       ->condition('name', $name, '=')
+                       ->countQuery()
+                       ->execute()
+                       ->fetch()
+                       ->expression >= 1;
   }
 
 }
