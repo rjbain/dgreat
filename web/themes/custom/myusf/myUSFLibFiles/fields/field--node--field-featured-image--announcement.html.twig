@@ -1,0 +1,15 @@
+{#{{ dump(element['#object'].field_featured_image) }}#}
+
+{#{{ kint(element['#object'].fields.field_featured_image) }}#}
+
+{#{{ kint(element['#object'].fields.field_featured_image) }}#}
+
+{#{% for item in element['#object'].fields.field_featured_image %}#}
+    {#{{ dump(item.value.alt) }}#}
+{#{% endfor %}#}
+
+{#{{ dump(_context|keys) }}#}
+
+{% set featured_image = element['#object'].fields.field_featured_image %}
+
+{{ drupal_image(featured_image.target_id, 'full') }}
