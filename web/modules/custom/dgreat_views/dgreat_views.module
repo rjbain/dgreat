@@ -9,6 +9,8 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\views\ViewExecutable;
 use Drupal\user\Entity\User;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\Views;
 
 /**
  * Implements hook_help().
@@ -226,6 +228,10 @@ function dgreat_views_views_pre_view(ViewExecutable $view, $display_id, array &$
       }
       break;
   }
+}
+
+function dgreat_views_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
+  $query->distinct = TRUE;
 }
 
 /**
