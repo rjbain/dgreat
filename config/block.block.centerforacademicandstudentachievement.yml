@@ -1,0 +1,35 @@
+uuid: 8338b732-eda4-4356-bb0b-7409ee51d33f
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.center-for-academic-and-stu
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: centerforacademicandstudentachievement
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:center-for-academic-and-stu'
+settings:
+  id: 'system_menu_block:center-for-academic-and-stu'
+  label: 'Center for Academic and Student Achievement'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/student-life/casa\r\n/student-life/casa/*"
+    negate: false
+    context_mapping: {  }
