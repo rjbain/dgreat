@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.announcement.field_announcement_teaser
     - field.field.node.announcement.field_expiration_date
     - field.field.node.announcement.field_featured_image
+    - field.field.node.announcement.field_featured_image_caption
     - field.field.node.announcement.field_published_date
     - field.field.node.announcement.field_subtitle
     - node.type.announcement
@@ -25,28 +26,20 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 3
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     region: content
-  field_announcement_audience:
-    weight: 8
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   field_announcement_tags:
-    weight: 6
-    label: hidden
+    weight: 7
+    label: inline
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
     region: content
   field_announcement_teaser:
-    weight: 2
+    weight: 4
     label: hidden
     settings:
       link_to_entity: false
@@ -54,7 +47,7 @@ content:
     type: string
     region: content
   field_expiration_date:
-    weight: 7
+    weight: 8
     label: hidden
     settings:
       format_type: medium
@@ -63,7 +56,7 @@ content:
     type: datetime_default
     region: content
   field_featured_image:
-    weight: 1
+    weight: 2
     label: hidden
     settings:
       image_style: ''
@@ -71,8 +64,15 @@ content:
     third_party_settings: {  }
     type: image
     region: content
+  field_featured_image_caption:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
   field_published_date:
-    weight: 4
+    weight: 1
     label: hidden
     settings:
       timezone_override: America/Los_Angeles
@@ -89,8 +89,9 @@ content:
     type: string
     region: content
   links:
-    weight: 5
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_announcement_audience: true
