@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.announcement.field_announcement_teaser
     - field.field.node.announcement.field_expiration_date
     - field.field.node.announcement.field_featured_image
+    - field.field.node.announcement.field_featured_image_caption
     - field.field.node.announcement.field_published_date
     - field.field.node.announcement.field_subtitle
     - image.style.thumbnail
@@ -17,6 +18,7 @@ dependencies:
     - datetime
     - image
     - path
+    - scheduler
     - text
 id: node.announcement.default
 targetEntityType: node
@@ -34,12 +36,12 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   field_announcement_audience:
-    weight: 9
+    weight: 10
     settings:
       match_operator: CONTAINS
       size: 60
@@ -48,7 +50,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_announcement_tags:
-    weight: 12
+    weight: 13
     settings:
       match_operator: CONTAINS
       size: 60
@@ -65,7 +67,7 @@ content:
     type: string_textfield
     region: content
   field_expiration_date:
-    weight: 8
+    weight: 9
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -78,8 +80,16 @@ content:
     third_party_settings: {  }
     type: image_image
     region: content
+  field_featured_image_caption:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
   field_published_date:
-    weight: 3
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -94,7 +104,7 @@ content:
     region: content
   path:
     type: path
-    weight: 2
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -102,21 +112,27 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 14
+    weight: 15
     region: content
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 16
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 7
+    weight: 8
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 13
+    weight: 14
     region: content
     third_party_settings: {  }
   title:
@@ -129,11 +145,17 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 11
+    weight: 12
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
     region: content
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 17
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden: {  }
