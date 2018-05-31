@@ -1,0 +1,14 @@
+
+{% set featured_image = element['#object'].fields.field_featured_image %}
+{% set featured_image_caption = element['#object'].fields.field_featured_image_caption %}
+{% set node_id = element['#object'].id %}
+
+<figure>
+
+    <img src="{{ featured_image.entity.uri.value | image_style('full')  }}" alt="{{ featured_image.0.alt }}" class="img-fluid">
+
+    {% if featured_image_caption.0.value %}
+    <figcaption>{{ featured_image_caption.0.value }}</figcaption>
+    {% endif %}
+
+</figure>
