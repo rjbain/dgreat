@@ -247,97 +247,96 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
     case 'quick_links':
     case 'quick_links_block':
 
-      // Leaving this commented out for now.
-      // Not sure if we need it anymore but don't want to remove it quite yet.
-
+      $view->result = _dgreat_views_remove_duplicates($view->result);
 
       // Adds in the default links for my_links displays.
-//      if ($display == 'my_links' || $display == 'all_apps') {
-//        // Initialize our vars.
-//        $gids = $nids = $nodes = $defaults = $view_results = [];
-//        $query = NULL;
-//
-//        // Grab the existing results to store later.
-//        // So we can put that after the defaults.
-//        foreach ($view->result as $index => $result) {
-//          $view_results[] = $result;
-//        }
-//
-//        // Grab the current users groups.
-//        $uid = \Drupal::currentUser()->id();
-//        $user = User::load($uid);
-//        $groups = $user->get('field_user_group')->getValue();
-//        foreach ($groups as $gid) {
-//          $gids[] = $gid['target_id'];
-//        }
-//
-//        if (empty($gids)) {
-//          return;
-//        }
-//
-//        // Remove duplicates.
-//        $gids = array_unique($gids);
-//
-//        // Initialize the db.
-//        $db = \Drupal::database();
-//
-//        // Grab all the default entity ids of the group.
-//        if ($name == 'favorite_links') {
-//          $query = $db
-//            ->select('group__field_default_favorite_links', 'g')
-//            ->fields('g', ['field_default_favorite_links_target_id'])
-//            ->condition('entity_id', $gids, 'IN');
-//        }
-//
-//        if ($name == 'quick_links') {
-//          $query = $db
-//            ->select('group__field_default_quick_links', 'g')
-//            ->fields('g', ['field_default_quick_links_target_id'])
-//            ->condition('entity_id', $gids, 'IN');
-//        }
-//
-//        // Loop through and grab our content ids.
-//        foreach ($query->execute()->fetchAll() as $result) {
-//          if ($name == 'favorite_links') {
-//            $nids[] = $result->field_default_favorite_links_target_id;
-//          }
-//          if ($name == 'quick_links') {
-//            $nids[] = $result->field_default_quick_links_target_id;
-//          }
-//        }
-//
-//        if (empty($nids)) {
-//          return;
-//        }
-//
-//        // Remove duplicates.
-//        $nids = array_unique($nids);
-//
-//        if ($name == 'favorite_links') {
-//          // Check against the users flagged items.
-//          $query = $db
-//            ->select('flagging', 'f')
-//            ->fields('f', ['entity_id'])
-//            ->condition('entity_id', $nids, 'IN')
-//            ->condition('uid', $uid);
-//
-//          // Flatten on the nids to check against.
-//          foreach ($query->execute()->fetchAll() as $nid) {
-//            $nids[] = $nid->entity_id;
-//          }
-//        }
-//
-//        // Check for the defaults in the loaded array.
-//        foreach ($view_results as $key => $result) {
-//          $check = $result->node_field_data_group_content_field_data_nid;
-//          if (in_array($check, $nids)) {
-//            $defaults[] = $result;
-//          }
-//        }
-//
-//        // Merge the results setting defaults on top.
-//        $view->result = array_merge_recursive($defaults, $view_results);
-//      }
+      if ($display == 'my_links' || $display == 'all_apps') {
+        // Initialize our vars.
+        $gids = $nids = $nodes = $defaults = $view_results = [];
+        $query = NULL;
+
+        // Grab the existing results to store later.
+        // So we can put that after the defaults.
+        foreach ($view->result as $index => $result) {
+          $view_results[] = $result;
+        }
+
+        // Grab the current users groups.
+        $uid = \Drupal::currentUser()->id();
+        $user = User::load($uid);
+        $groups = $user->get('field_user_group')->getValue();
+        foreach ($groups as $gid) {
+          $gids[] = $gid['target_id'];
+        }
+
+        if (empty($gids)) {
+          return;
+        }
+
+        // Remove duplicates.
+        $gids = array_unique($gids);
+
+        // Initialize the db.
+        $db = \Drupal::database();
+
+        // Grab all the default entity ids of the group.
+        if ($name == 'favorite_links') {
+          $query = $db
+            ->select('group__field_default_favorite_links', 'g')
+            ->fields('g', ['field_default_favorite_links_target_id'])
+            ->condition('entity_id', $gids, 'IN');
+        }
+
+        if ($name == 'quick_links') {
+          $query = $db
+            ->select('group__field_default_quick_links', 'g')
+            ->fields('g', ['field_default_quick_links_target_id'])
+            ->condition('entity_id', $gids, 'IN');
+        }
+
+        // Loop through and grab our content ids.
+        foreach ($query->execute()->fetchAll() as $result) {
+          if ($name == 'favorite_links') {
+            $nids[] = $result->field_default_favorite_links_target_id;
+          }
+          if ($name == 'quick_links') {
+            $nids[] = $result->field_default_quick_links_target_id;
+          }
+        }
+
+        if (empty($nids)) {
+          return;
+        }
+
+        // Remove duplicates.
+        $nids = array_unique($nids);
+
+        if ($name == 'favorite_links') {
+          // Check against the users flagged items.
+          $query = $db
+            ->select('flagging', 'f')
+            ->fields('f', ['entity_id'])
+            ->condition('entity_id', $nids, 'IN')
+            ->condition('uid', $uid);
+
+          // Flatten on the nids to check against.
+          foreach ($query->execute()->fetchAll() as $nid) {
+            $nids[] = $nid->entity_id;
+          }
+        }
+
+        // Check for the defaults in the loaded array.
+        foreach ($view_results as $key => $result) {
+          $check = $result->node_field_data_group_content_field_data_nid;
+          if (in_array($check, $nids)) {
+            $defaults[] = $result;
+          }
+        }
+
+        // Merge the results setting defaults on top.
+        $merge = array_merge_recursive($defaults, $view_results);
+        $view->result = _dgreat_views_remove_duplicates($merge);
+      }
 
       // Sorts our user weights items for proper display.
       // Only place I could get this to work right.
