@@ -15,6 +15,7 @@ dependencies:
     - user.role.editor
   module:
     - better_exposed_filters
+    - dgreat_views
     - flag
     - group
     - node
@@ -22,7 +23,6 @@ dependencies:
     - taxonomy
     - text
     - user
-    - weight
 id: favorite_links
 label: 'Favorite Links'
 module: views
@@ -45,7 +45,7 @@ display:
             administrator: administrator
             editor: editor
       cache:
-        type: tag
+        type: none
         options: {  }
       query:
         type: views_query
@@ -93,26 +93,9 @@ display:
                 placeholder_text: ''
           text_input_required_format: basic_html
       pager:
-        type: full
+        type: none
         options:
-          items_per_page: 100
           offset: 0
-          id: 0
-          total_pages: null
-          tags:
-            previous: ‹‹
-            next: ››
-            first: '« First'
-            last: 'Last »'
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
-          quantity: 9
       style:
         type: table
         options:
@@ -1024,7 +1007,6 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - url.query_args
         - user
         - user.roles
       tags:
@@ -1060,6 +1042,8 @@ display:
         filters: false
         filter_groups: false
         sorts: false
+        query: false
+        group_by: false
       fields:
         link_flag:
           id: link_flag
@@ -1163,7 +1147,7 @@ display:
           type: string
           settings:
             link_to_entity: true
-          group_column: value
+          group_column: entity_id
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -1418,7 +1402,7 @@ display:
           type: entity_reference_label
           settings:
             link: true
-          group_column: target_id
+          group_column: entity_id
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -1918,6 +1902,18 @@ display:
         groups:
           1: AND
       sorts:
+        field_weight_value:
+          id: field_weight_value
+          table: node__field_weight
+          field: field_weight_value
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
         title:
           id: title
           table: node_field_data
@@ -1932,13 +1928,21 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: standard
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_comment: ''
+          query_tags: null
+      group_by: true
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - url.query_args
         - user
         - user.permissions
       tags:
@@ -1967,6 +1971,7 @@ display:
         query: false
         pager: false
         sorts: false
+        group_by: false
       relationships:
         gc__node:
           id: gc__node
@@ -2109,7 +2114,7 @@ display:
           type: string
           settings:
             link_to_entity: true
-          group_column: value
+          group_column: entity_id
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -2327,7 +2332,7 @@ display:
         type: views_query
         options:
           disable_sql_rewrite: false
-          distinct: true
+          distinct: false
           replica: false
           query_comment: ''
           query_tags: {  }
@@ -2362,6 +2367,7 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: standard
+      group_by: true
     cache_metadata:
       max-age: -1
       contexts:
