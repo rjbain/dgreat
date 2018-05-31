@@ -970,6 +970,7 @@ display:
         sorts: false
         query: false
         group_by: false
+        pager: false
       header:
         area:
           id: area
@@ -1549,6 +1550,31 @@ display:
           range: '1000'
           plugin_id: weight_selector
       sorts:
+        field_top_quick_link_value:
+          id: field_top_quick_link_value
+          table: node__field_top_quick_link
+          field: field_top_quick_link_value
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
+        flagged:
+          id: flagged
+          table: flagging
+          field: flagged
+          relationship: dgreat_flag_relationship
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: flagging
+          plugin_id: flag_sort
         field_weight_value:
           id: field_weight_value
           table: node__field_weight
@@ -1584,12 +1610,34 @@ display:
           query_comment: ''
           query_tags: null
       group_by: true
+      pager:
+        type: full
+        options:
+          items_per_page: 100
+          offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
         - user
         - user.permissions
       tags:
@@ -1953,6 +2001,43 @@ display:
           entity_type: node
           entity_field: status
           plugin_id: boolean
+        user_weights:
+          id: user_weights
+          table: node_field_data
+          field: user_weights
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          plugin_id: user_weight_filter_sort
       filter_groups:
         operator: AND
         groups:
