@@ -1,0 +1,28 @@
+uuid: d08e541b-75e9-487f-9ff3-d1abe058f5da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_announcement_audience
+    - group.type.announcement
+    - node.type.announcement
+id: group.announcement.field_announcement_audience
+field_name: field_announcement_audience
+entity_type: group
+bundle: announcement
+label: 'Announcement Audience'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      announcement: announcement
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
