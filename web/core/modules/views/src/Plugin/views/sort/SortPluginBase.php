@@ -37,8 +37,10 @@ abstract class SortPluginBase extends HandlerBase implements CacheableDependency
    */
   public function query() {
     $this->ensureMyTable();
+    // Handle aggregation settings.
+    $params = $this->options['group_type'] != 'group' ? array('function' => $this->options['group_type']) : [];
     // Add the field.
-    $this->query->addOrderBy($this->tableAlias, $this->realField, $this->options['order']);
+    $this->query->addOrderBy($this->tableAlias, $this->realField, $this->options['order'] ,'', $params);
   }
 
   protected function defineOptions() {
