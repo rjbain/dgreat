@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_announcement_audience
-    - group.type.groups
     - node.type.announcement
 id: node.announcement.field_announcement_audience
 field_name: field_announcement_audience
@@ -18,12 +17,5 @@ default_value: {  }
 default_value_callback: ''
 settings:
   handler: 'default:group'
-  handler_settings:
-    target_bundles:
-      groups: groups
-    sort:
-      field: label
-      direction: ASC
-    auto_create: false
-    auto_create_bundle: ''
+  handler_settings: {  }
 field_type: entity_reference
