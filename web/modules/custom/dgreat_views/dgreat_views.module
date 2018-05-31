@@ -224,6 +224,10 @@ function dgreat_views_views_pre_view(ViewExecutable $view, $display_id, array &$
           $view->removeHandler($display, 'field', 'edit_node');
           $view->removeHandler($display, 'field', 'delete_node');
         }
+
+        if (in_array('administrator', $user_roles)) {
+          $view->removeHandler($display, 'filter', 'user_filter');
+        }
       }
       break;
   }
@@ -242,6 +246,10 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
     case 'favorite_links_quick_menu':
     case 'quick_links':
     case 'quick_links_block':
+
+      // Leaving this commented out for now.
+      // Not sure if we need it anymore but don't want to remove it quite yet.
+
 
       // Adds in the default links for my_links displays.
 //      if ($display == 'my_links' || $display == 'all_apps') {
