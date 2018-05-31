@@ -9,8 +9,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\views\ViewExecutable;
 use Drupal\user\Entity\User;
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\views\Plugin\views\query\QueryPluginBase;
-use Drupal\views\Views;
+use Drupal\Core\Database\Query\AlterableInterface;
 
 /**
  * Implements hook_help().
@@ -230,10 +229,6 @@ function dgreat_views_views_pre_view(ViewExecutable $view, $display_id, array &$
   }
 }
 
-function dgreat_views_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
-  $query->distinct = TRUE;
-}
-
 /**
  * Implements hook_views_pre_render().
  */
@@ -247,9 +242,6 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
     case 'favorite_links_quick_menu':
     case 'quick_links':
     case 'quick_links_block':
-
-      // Remove the duplicates for all displays.
-      $view->result = _dgreat_views_remove_duplicates($view->result);
 
       // Adds in the default links for my_links displays.
       if ($display == 'my_links' || ($name == 'quick_links' && $display == 'all_apps')) {
@@ -336,8 +328,7 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
         }
 
         // Merge the results setting defaults on top.
-        $merge = array_merge_recursive($defaults, $view_results);
-        $view->result = _dgreat_views_remove_duplicates($merge);
+        $view->result = array_merge_recursive($defaults, $view_results);
       }
 
       // Sorts our user weights items for proper display.
