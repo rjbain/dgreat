@@ -87,41 +87,6 @@ function dgreat_views_flagging_insert(EntityInterface $entity) {
   }
 }
 
-/**
- * Implements hook_entity_predelete().
- */
-function dgreat_views_flagging_predelete(EntityInterface $entity) {
-  // Removes items from user_weights after unflagging.
-  $nid = $entity->get('entity_id')->getValue();
-  $uid = $entity->get('uid')->getValue();
-
-  if (isset($nid[0]["value"]) && isset($uid[0]["target_id"])) {
-
-    // Need to use the $_GET params here since we are within the flagging
-    // mechanisms and can;t get proper routes otherwise.
-    $current_path = isset($_GET["destination"]) ? $_GET["destination"] : NULL;
-    if ($current_path !== NULL) {
-      $url_object = \Drupal::service('path.validator')->getUrlIfValid($current_path);
-      $route_name = $url_object->getRouteName();
-
-      $view = explode('.', $route_name);
-      $name = isset($view[1]) ? $view[1] : '';
-
-      if (!empty($name)) {
-        $db = \Drupal::database();
-
-        $query = $db
-          ->delete('user_weights')
-          ->condition('uid', $uid[0]["target_id"])
-          ->condition('entity_id', $nid[0]["value"])
-          ->condition('view_name', $name)
-          ->execute();
-
-      }
-    }
-  }
-
-}
 
 /**
  * Implements hook_views_data().
