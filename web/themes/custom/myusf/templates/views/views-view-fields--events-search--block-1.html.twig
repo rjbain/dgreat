@@ -31,7 +31,7 @@
  * @ingroup themeable
  */
 #}
-<a href="{{ path('entity.node.canonical', {'node': fields.nid.content}) }}">
+<a href="{{ path('entity.node.canonical', {'node': fields.nid.content|trim }) }}">
 	<article>
 		<div>
 			{% if fields.field_image_url.content %}
