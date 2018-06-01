@@ -65,8 +65,9 @@
             <p class="contact fax"><strong>Fax</strong>: {{ fax|striptags|trim }}</p>
         {% endif %}
         {% include "@myUSFLib/fields/field--field-email-address.html.twig" %}
-        {#<p class="contact email"><strong>Email</strong>: <a href="mailto:{{ email|striptags|trim }}">{{ email|striptags|trim }}</a></p>#}
+        {% if appt %}
         <p><a class="button" href="{{ appt|striptags|trim }}">Schedule Appointment</a></p>
+        {% endif %}
         {% include "@myUSFLib/fields/field--paragraph--field-social-media-link.html.twig" %}
     </div>
 </div>

@@ -19,45 +19,62 @@ settings:
           items:
             - Bold
             - Italic
-            - Strike
             - Superscript
-            - Subscript
             - '-'
+            - SpecialChar
+            - JustifyLeft
+            - JustifyCenter
+            - JustifyRight
+            - Indent
+            - Outdent
             - RemoveFormat
         -
-          name: Linking
+          name: 'Copy Paste'
           items:
-            - DrupalLink
-            - DrupalUnlink
+            - Cut
+            - Copy
+            - Paste
+            - PasteText
+            - PasteFromWord
         -
           name: Lists
           items:
             - BulletedList
             - NumberedList
         -
-          name: Media
-          items:
-            - Blockquote
-            - DrupalImage
-            - Table
-            - HorizontalRule
-        -
           name: 'Block Formatting'
           items:
+            - Blockquote
+            - HorizontalRule
             - Format
+        -
+          name: Custom
+          items:
+            - Styles
+        -
+          name: Linking
+          items:
+            - DrupalLink
+            - DrupalUnlink
+        -
+          name: Media
+          items:
+            - DrupalImage
+            - Table
         -
           name: Tools
           items:
-            - ShowBlocks
             - Source
   plugins:
+    language:
+      language_list: un
     stylescombo:
-      styles: ''
+      styles: "p.text-intro|text intro\r\nspan.caps|CAPS\r\np.note|note\r\np.cite|CITE\r\np.indent|indent\r\np.callout|Callout\r\np.callout.narrow.block-right|Narrow Callout\r\np.callout-tinted|Full Callout\r\np.callout-tinted.narrow.block-right|Tinted Narrow Callout\r\na.diamond_link_small|Green Diamond Link \r\na.diamond_link_small_white|White Diamond Link \r\na.button.green|Green Button\r\ndiv.two-column|Two column"
 image_upload:
   status: true
   scheme: public
   directory: inline-images
   max_size: ''
   max_dimensions:
-    width: 0
-    height: 0
+    width: null
+    height: null
