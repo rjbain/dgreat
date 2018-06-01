@@ -3,6 +3,7 @@
 @import 'partials/functions';
 @import 'partials/variables';
 @import 'partials/media_queries';
+@import 'partials/wysiwyg';
 
 // Import static elements after///
 @import 'partials/normalize';
@@ -15,9 +16,22 @@
 @import 'partials/forms';
 
 
+
+
 html, body { //fixes mobile view sliding left and right issue
 	width: auto!important; 
 	overflow-x: hidden!important;
+}
+html {
+	height: 100%
+}
+body {
+	position: relative;
+	min-height: 100%;
+	margin-bottom: 0;
+}
+#main-wrapper {
+	margin-bottom: 80px;
 }
 
 .container {
@@ -34,10 +48,12 @@ html, body { //fixes mobile view sliding left and right issue
 	@include media-breakpoint-only(desktop) {
 		max-width: 1060px;
 	}
-	/*@include media-breakpoint-only(large_desktop) {
-		max-width: 96%;
-	}*/
-
+	@include media-breakpoint-only(large_desktop) {
+		max-width: 90%;
+	}
+	@include media-breakpoint-down(xl_desktop) {
+		max-width: 1500px		
+	}
 }
 
 .col {
@@ -73,23 +89,33 @@ html, body { //fixes mobile view sliding left and right issue
     	margin-left: -25px;
     	flex: 0 0 70%;
     	max-width: 70%;
+    	
+    	#main-wrapper {
+			margin-bottom: 100px;
+		}
 	}
+	@include media-breakpoint-down(landscape_phone) {
+		#main-wrapper {
+			margin-bottom: 215px;
+		}
+	}	
+	@include media-breakpoint-down(phone) {
+		#main-wrapper {
+			margin-bottom: 205px;
+		}
+	}	
 }
 
-/*#main-wrapper {     --------- to be used when we apply sticky footer
-	margin-bottom: 210px;
-
-	@include media-breakpoint-only(tablet) {
-		margin-bottom: 130px;
+.node__content {
+	@include media-breakpoint-up(landscape_phone) {
+		margin-top: -10px;
 	}
-
-	@include media-breakpoint-up(desktop) {
-		margin-bottom: 80px;
-	}
-}. */
+}
 
 .paragraph>.paragraph__column {
     padding-left: 0;
     padding-right: 0;
 }
+
+
 

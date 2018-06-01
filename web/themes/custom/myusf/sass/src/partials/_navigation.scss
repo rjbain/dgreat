@@ -9,7 +9,7 @@
   		margin-top: -9px;
   	}
 
-  	@include media-breakpoint-down(phone) {
+  	@include media-breakpoint-down(landscape_phone) {
   		width:100%;
   		margin-top: 30px;
   	}
@@ -45,9 +45,9 @@ nav.navbar {
     		padding-left: 7px;
     		padding-right: 7px;
     	}
-    	@include media-breakpoint-down(phone) {
+    	@include media-breakpoint-down(landscape_phone) {
     		padding-bottom: 1.2rem;
-    		margin-top: .25rem;
+    		margin-top: .6rem;
     	}
 	}
 	li {
@@ -60,7 +60,7 @@ nav.navbar {
 	    	background-color: $beige;
 		}
 	}
-	@include media-breakpoint-down(phone) {
+	@include media-breakpoint-down(landscape_phone) {
 		padding:0;
 		height:98px;
 		z-index: 1;
@@ -91,7 +91,7 @@ nav.navbar {
    		bottom: 0;   	
     	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -350px -315px ; 	
 	}
-	@include media-breakpoint-down(phone) {
+	@include media-breakpoint-down(landscape_phone) {
 		&:before {
 			margin-top: 3px;
 		}
@@ -114,8 +114,8 @@ nav.navbar {
 		margin-left: 15px;
 	}
 
-	@include media-breakpoint-down(phone) {		
-		margin-left: 15px;
+	@include media-breakpoint-down(landscape_phone) {		
+		margin-left: 0;
 		width:100vw;
 
 		li {
@@ -156,7 +156,7 @@ nav.navbar {
 }
 
 .navbar-dark .navbar-toggler {
-	@include media-breakpoint-down(phone) {
+	@include media-breakpoint-down(landscape_phone) {
     	display: none;
 	}
 }
@@ -196,7 +196,7 @@ nav.navbar {
 			color: $black!important;
 						
 		
-			@include media-breakpoint-down(phone) {
+			@include media-breakpoint-down(landscape_phone) {
 				font-size: .7rem;
 				padding-left: 5px;
 			}
@@ -274,7 +274,7 @@ button.header_search {
     		right: 115px;
     	}
 
-    	@include media-breakpoint-down(phone) {
+    	@include media-breakpoint-down(landscape_phone) {
 			right: 115px;
     		top: 13px;
     		bottom: unset;
@@ -293,7 +293,7 @@ button.header_search {
     		right: 123px;
     	}
 
-    	@include media-breakpoint-down(phone) {
+    	@include media-breakpoint-down(landscape_phone) {
     		top: 13px;
     		right: 123px;
     	}
@@ -325,7 +325,7 @@ button.header_search {
 	&:focus {
 		box-shadow: none;
 	}
-	@include media-breakpoint-down(phone) {
+	@include media-breakpoint-down(landscape_phone) {
 		font-size: .7rem;
 	    position: absolute;
     	right: 10px;
@@ -353,7 +353,7 @@ nav input.form-control[type="search"] {
     	height: 30px;
 	}
 
-    @include media-breakpoint-down(phone) {
+    @include media-breakpoint-down(landscape_phone) {
     	position: absolute;
     	top: 12px;
     	width: 200px;
@@ -363,7 +363,7 @@ nav input.form-control[type="search"] {
 }
 
 form.form-inline.my-2.my-lg-0 {
-	@include media-breakpoint-down(phone) {
+	@include media-breakpoint-down(landscape_phone) {
     	/*position: absolute;*/
    	 	top: -8px;
     	height:30px;
@@ -380,6 +380,10 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
  //--- TOOLBAR MENU for Content Editors ---//
 
 .toolbar-tab {
+	@include media-breakpoint-down(landscape_phone) { 
+		margin-left: -2px;
+    	margin-right: -3px;
+	}
 
 	a:hover {
     	background: transparent!important;
@@ -394,7 +398,7 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 
 //--- Navtabs --//
 nav.tabs {
-	@include media-breakpoint-down(phone) {
+	@include media-breakpoint-down(landscape_phone) {
 		@include margin-L-R-auto;
 	}
 }
@@ -411,7 +415,7 @@ nav.tabs {
     		background-color: transparentize( $black, 0.95);
     	}
 
-    	@include media-breakpoint-down(phone) {
+    	@include media-breakpoint-down(landscape_phone) {
     		padding: .4rem 0.8rem;
 		}
 	}
@@ -441,7 +445,7 @@ nav.tabs {
 
 .breadcrumb {
 	padding: 0rem 1rem 0 4px;
-	margin-left: 10px;
+	margin-left: 12px;
     margin-bottom: 1rem;
     list-style: none;
     background-color: transparent;
@@ -469,13 +473,13 @@ nav.tabs {
 	border: 0;
 	border-top: 4px solid $yellow;
 	border-bottom: 4px solid $yellow;
-	width: 240px;
+	width: 230px;
 
 	@include media-breakpoint-down(tablet) { 
 		width: 190px;
 	}
 
-	@include media-breakpoint-down(phone) { 
+	@include media-breakpoint-down(landscape_phone) { 
 		width: 100%;
 	}
 }
@@ -486,7 +490,7 @@ nav.tabs {
 		padding-top:0;
 
 		li {
-			width: 240px;
+			width: 230px;
 			list-style-type: none;
 			border-bottom: 1px solid #DDDAD1;
 			padding-bottom: 0;
@@ -495,7 +499,7 @@ nav.tabs {
 				width: 190px;
 			}
 
-			@include media-breakpoint-down(phone) { 
+			@include media-breakpoint-down(landscape_phone) { 
 				width: 100%;
 			}
 
@@ -525,12 +529,12 @@ nav.tabs {
 		    		background: $light_beige;
 		    	}
 
-		    	@include media-breakpoint-down(tablet) { 
+		    	@include media-breakpoint-down(desktop) { 
 					font-size: 0.8rem;
 					line-height: 1.1rem;
 				}
 
-				@include media-breakpoint-down(phone) { 
+				@include media-breakpoint-down(landscape_phone) { 
 					padding: 1rem 10px;
 				}
 			}
@@ -544,14 +548,14 @@ nav.tabs {
 				li {
 					border-bottom: 0;
 					padding-left: 0;
-					width:230px;
+					width:220px;
 
 					@include media-breakpoint-down(tablet) { 
 						width: 170px;
 					}
-					@include media-breakpoint-down(phone) { 
+					@include media-breakpoint-down(landscape_phone) { 
 						width: 100%;
-						padding-right: 10px;
+						/*padding-right: 10px;*/
 					}
 
 					&:first-of-type {
@@ -600,12 +604,12 @@ nav.tabs {
 
 					li {
 						margin: 0 0 -10px;
-					    width: 220px;
+					    width: 210px;
 
 					    @include media-breakpoint-down(tablet) { 
 					    	width: 170px;
 					    }
-					    @include media-breakpoint-down(phone) { 
+					    @include media-breakpoint-down(landscape_phone) { 
 					    	width: 100%;
 					    }
 
@@ -645,7 +649,7 @@ nav.tabs {
 }
 
 #sidebar_first .sidebar h2 {
-	@include media-breakpoint-down(phone) { 
+	@include media-breakpoint-down(landscape_phone) { 
     	font-weight: 600;
     	color: #6b6b6b!important;
     	text-align: center;
@@ -678,7 +682,7 @@ button.navbar-toggler.navbar-toggler-right {
 		    top: 2px;
 	    	right: -20px;
 		    margin-left: 5px;
-		    z-index: 1;
+		    z-index: 0;
 		    background: url(/themes/custom/myusf/images/site/icons.svg) -260px -148px no-repeat;
 		    opacity: .7;
 		}
@@ -694,7 +698,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	    top: 2px;
     	right: -20px;
 	    margin-left: 5px;
-	    z-index: 1;
+	    z-index: 0;
 		background: url(/themes/custom/myusf/images/site/icons.svg) -239px -148px no-repeat;
 	}
 }
@@ -703,19 +707,15 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
     font-size: .9rem;
     height: 30px;
 }
-#CollapsingNavbar {
-	@include media-breakpoint-down(phone) { 
-    	margin-top: -30px;
-	}
-}
+
 
 #submenuButton.hideButton {
   display:none;
 }
 
 .submenu {
-   @include media-breakpoint-down(phone) { 
-    	margin-top: 30px;
+	@include media-breakpoint-down(landscape_phone) { 
+    	/*margin-top: 30px;*/
 	}
 }
 
@@ -768,11 +768,14 @@ nav#block-myusf-footer {
 .site-footer {
 	background:$green;
 	padding: 0;
-	/*position: absolute;
-    bottom: 0;
-    width: 100%; - to be used when we apply sticky footer */
 
-	@include media-breakpoint-only(phone) {		
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	
+
+	@include media-breakpoint-down(landscape_phone) {		
 		padding: 10px 0 0;
 	}
 
@@ -840,7 +843,6 @@ nav#block-myusf-footer {
 
 	@include media-breakpoint-up(large_desktop) {
 		justify-content: flex-start;
-		padding-left: 6px;
 	}
 }
 
@@ -883,7 +885,7 @@ a.logo {
     	height: 38px;
     	margin-top: -38px; 
     	float: right;
-    	right: -50px;
+    	right: -53px;
     }
 }
 
