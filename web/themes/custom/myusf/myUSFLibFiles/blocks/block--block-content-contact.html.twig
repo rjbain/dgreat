@@ -59,15 +59,19 @@
             {{ addy3|striptags|trim }}
         </p>
         <p><strong>Hours</strong>: {{ hours|striptags|trim }}</p>
+        <div class="contact-info">
         {% include "@myUSFLib/fields/field--field-telephone-number.html.twig" %}
 
         {% if fax %}
             <p class="contact fax"><strong>Fax</strong>: {{ fax|striptags|trim }}</p>
         {% endif %}
         {% include "@myUSFLib/fields/field--field-email-address.html.twig" %}
+        </div>
+        <div class="contact-info-links">
         {% if appt %}
         <p><a class="button" href="{{ appt|striptags|trim }}">Schedule Appointment</a></p>
         {% endif %}
         {% include "@myUSFLib/fields/field--paragraph--field-social-media-link.html.twig" %}
+        </div>
     </div>
 </div>
