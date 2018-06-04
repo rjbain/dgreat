@@ -9,7 +9,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\views\ViewExecutable;
 use Drupal\user\Entity\User;
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Database\Query\AlterableInterface;
+use Drupal\views\Form\ViewsForm;
 
 /**
  * Implements hook_help().
@@ -44,8 +44,8 @@ function dgreat_views_flagging_insert(EntityInterface $entity) {
       $url_object = \Drupal::service('path.validator')->getUrlIfValid($current_path);
       $route_name = $url_object->getRouteName();
 
-      $view = explode('.', $route_name);
-      $name = isset($view[1]) ? $view[1] : '';
+      $view_get = explode('.', $route_name);
+      $name = isset($view_get[1]) ? $view_get[1] : '';
 
       if (!empty($name)) {
         $db = \Drupal::database();
@@ -341,6 +341,49 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
           ksort($new_results);
           $new_results = array_values(array_filter($new_results));
           $view->result = $new_results;
+        }
+        else {
+          $weight = 0;
+          // Add the defaults to the user weight on first pass.
+          foreach ($view->result as $result) {
+            $nid = $result->node_field_data_group_content_field_data_nid;
+            $check = $db
+              ->select('user_weights', 'u')
+              ->fields('u', ['weight'])
+              ->condition('uid', $uid)
+              ->condition('entity_id', $nid)
+              ->condition('view_name', $name)
+              ->execute()
+              ->fetchField();
+
+            $weight++;
+            if ($check === FALSE) {
+              // Insert new item in weights table.
+              $db->insert('user_weights')
+                ->fields([
+                  'entity_id' => $nid,
+                  'uid' => $uid,
+                  'view_name' => $name,
+                  'weight' => $weight,
+                ])
+                ->execute();
+
+            }
+            else {
+              // Update the weights table.
+              $db->update('user_weights')
+                ->condition('uid', $uid)
+                ->condition('entity_id', $nid)
+                ->condition('view_name', $name)
+                ->fields([
+                  'entity_id' => $nid,
+                  'uid' => $uid,
+                  'view_name' => $name,
+                  'weight' => $weight,
+                ])
+                ->execute();
+            }
+          }
         }
       }
 
