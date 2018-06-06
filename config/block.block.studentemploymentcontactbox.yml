@@ -1,21 +1,24 @@
-uuid: d597db38-bf55-4dd4-97e3-d8b81167a58a
+uuid: 7aac10d6-4f05-4bc0-ac23-f10dc576d6e5
 langcode: en
 status: true
 dependencies:
+  content:
+    - 'block_content:contact:70510477-f527-495a-8646-b5525f4e5598'
   module:
+    - block_content
     - block_visibility_groups
     - system
   theme:
     - myusf
-id: mainsomcontactbox
+id: studentemploymentcontactbox
 theme: myusf
 region: sidebar_second
-weight: -9
+weight: 0
 provider: null
-plugin: 'block_content:bd518116-06f4-4114-a5e1-dc4665954544'
+plugin: 'block_content:70510477-f527-495a-8646-b5525f4e5598'
 settings:
-  id: 'block_content:bd518116-06f4-4114-a5e1-dc4665954544'
-  label: 'Main SOM Contact Box'
+  id: 'block_content:70510477-f527-495a-8646-b5525f4e5598'
+  label: 'Student Employment Contact Box'
   provider: block_content
   label_display: visible
   status: true
@@ -29,6 +32,6 @@ visibility:
     context_mapping: {  }
   request_path:
     id: request_path
-    pages: '/management*'
-    negate: false
+    pages: ''
+    negate: true
     context_mapping: {  }

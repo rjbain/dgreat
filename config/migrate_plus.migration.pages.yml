@@ -14,7 +14,7 @@ migration_group: null
 label: 'Import pages'
 source:
   plugin: csv
-  path: 'public://myusf-content-body-classes-newlines.csv'
+  path: 'public://myusf-content-short-newlines.csv'
   delimiter: '`'
   enclosure: '"'
   header_row_count: 1
@@ -58,6 +58,6 @@ process:
         - 1
 destination:
   plugin: 'entity:node'
-#migration_dependencies:
-#  required:
-#    - body_to_paragraph
+migration_dependencies:
+  required:
+    - body_to_paragraph
