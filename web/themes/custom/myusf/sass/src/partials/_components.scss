@@ -66,48 +66,156 @@
 	}
 }
 
-/* Card -- feeds 
+/* Card -- Homepage feeds 
 ================================================ */
+.card-deck {
+	margin-left: 0;
+	margin-right: 0;
+}
+.view-usf-news-tiles .card,
+.view-twitter-tiles .card,
+.view-instagram-tiles .card {
+    margin: 10px 10px 10px 10px;
+
+    &:first-of-type {
+    	margin-left: 0px;
+    }
+    &:last-of-type {
+    	margin-right: 0px;
+    }
+}
+.view-usf-news-tiles .card {
+	margin-top:20px;
+}
+.view-twitter-tiles .card {
+	margin-bottom:-10px;
+}
+
 .card {
+    border: 0;
     border-radius: 0;
     display: inline-block;
-    margin: 20px;
+    height:410px;
+
+    &.green {
+		background: $green;
+	}
+	&.blue {
+		background: $blue;
+	}
+	&.olive {
+		background: $olive;
+	}
+	&.orange {
+		background: $orange;
+	}
+	&.plum {
+		background: $plum;
+	}
+	&.terra_cotta {
+		background: $terra_cotta;
+	}
+	&.turquoise {
+		background: $turquoise;
+	}
+    &.twitter-bg{
+		background: $twitter;		
+	}
 }
 
 a.card-rollover {
 	text-decoration: none;
     color: $white;
 
-	&.news-category,
-	&.instagram-category,
-	&.twitter-category{
-		&:before {
-	  		position: absolute;
-	  		font-size: .9rem;
-	  		margin: 0;
-	    	top: 5px;
-	    	left: 20px;
-	    	z-index: 1;	    	
-	    	/*text-shadow: -1px 2px 3px rgba(0,0,0,.6);*/
-	    	text-shadow: 1px 1px 2px rgba(0,0,0,.9);
-	  	}
-	} 
-	&.news-category {
-		&:before {
-			content:"News";
+    .card-body {
+		height: 250px;
+		width: 100%;
+
+		.card-title {
+			font-size: .85rem;
+		    font-weight: 700;
+		    line-height: 1.15rem;
+		    color: $white!important;
+		}
+		.card-text {
+		    font-size: .85rem;
+		    line-height: 1.15rem;
+		    color: $white!important;
+		}
+		&.orange {
+			.card-text {
+		    	font-size: 1rem;
+		    	line-height: 1.5rem;
+			}
+		}
+		&.twitter-bg {
+			margin-top: 180px;
+
+			.card-text {
+				font-size: 1rem;
+		    	line-height: 1.5rem;
+			}
+		}
+		.diamond_link_small_white {
+			position: absolute;
+			bottom: 10px;   
 		}
 	}
-	&.instagram-category {
-		&:before {
-	  		content:"Instagram";
-	  	}
-	} 
-	&.twitter-category {
-		&:before {
-	  		content:"Twitter";
-	  	}
-	}  	
-
+   
+	.category{		
+		position: absolute;
+	    display: block;
+	    font-size: .8rem;
+		color:$white;
+		margin: 0;
+		padding-left:30px;
+		top: 0px;
+		left: 0px;
+		z-index: 2;	
+		text-shadow: 1px 1px 2px rgba(0,0,0,.9);
+	    
+	}
+	.category-icon {
+		&:before { 
+			position: absolute;
+		    display: block;
+			content: "";
+			width: 100px;
+		    height:25px;	
+			top: 0px;
+		    left: 0px;
+			z-index: -1;
+			background-color: rgba(0,0,0,.5);	
+		}
+		&:after {
+			position: absolute;
+		    display: block;
+			content: "";
+		    width: 15px;
+		    height:15px;
+			top: 6px;
+		    left: 10px;   
+			z-index: -1;      
+		}
+		
+		&.news-icon {
+			&:after {
+				background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -20px -60px ;
+				top: 7px;
+			}
+		}
+		&.instagram-icon {
+			&:after {
+		  		background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat  -40px -58px ;
+		  	}
+		} 
+		&.twitter-icon {
+			&:after {
+		  		background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -100px -58px ;
+		  	}
+		} 	
+	}
+	
     img.card-img-top {
     	height: 180px; 
     	width: 100%; 
@@ -121,16 +229,13 @@ a.card-rollover {
 		}
     }
 
-
     &:hover,
     &:focus {
 	    color: $white!important;
 	    background: 0 0!important;
-
 	    /*&:after {
 		    background-image: linear-gradient(to bottom,transparent 0,rgba(0,0,0,.6) 100%);
 		}*/
-
 		&:after {
 	    	display: block;
 		    position: absolute;
@@ -146,54 +251,6 @@ a.card-rollover {
 
 		.diamond_link_small_white {
 		    color: $yellow!important;
-		}
-	}
-
-	.card-body {
-		height: 250px;
-		width: 100%;
-
-		.card-title {
-		    font-weight: 700;
-		    line-height: 1.3rem;
-		    color: $white!important;
-		}
-		.card-text {
-		    font-size: .8rem;
-		    line-height: 1.3rem;
-		    color: $white!important;
-		}
-
-		.diamond_link_small_white {
-			position: absolute;
-			bottom: 15px;   
-		}
-
-		&.green {
-			background: $green;
-		}
-		&.blue {
-			background: $blue;
-		}
-		&.olive {
-			background: $olive;
-		}
-		&.orange {
-			background: $orange;
-			height: 170px;
-		}
-		&.plum {
-			background: $plum;
-		}
-		&.terra_cotta {
-			background: $terra_cotta;
-		}
-		&.turquoise {
-			background: $turquoise;
-		}
-		&.twitter-bg{
-			background: $twitter;
-			padding-top: 35px;
 		}
 	}
 

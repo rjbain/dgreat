@@ -33,11 +33,13 @@
 #}
 
 
-<div class="card" style="width: 18rem;">
-	<a class="card-rollover twitter-category" href="{{ fields.field_news_link.content }}">
+<div class="card twitter-bg">
+	<a class="card-rollover " href="{{ fields.field_news_link.content }}" target="_blank">
+		<div class="category category-icon twitter-icon">Twitter</div>
 		{% if fields.field_image_url.content %}
 			<img alt="Card image cap" class="card-img-top" src="{{ fields.field_image_url.content }}" />
 		{% endif %}
+		
 		<div class="card-body twitter-bg">
 			<!--<h5 class="card-title">Card title</h5>-->
 			<p class="card-text">{{ fields.body.content }}</p>

@@ -35,15 +35,15 @@ body {
 }
 
 .container {
-	width:96%;
-	padding-left:30px;
-	padding-right:30px;
+	width: 96%;
+	padding-left: 30px;
+	padding-right: 30px;
 	@include margin-L-R-auto;
 
 	@include media-breakpoint-only(tablet)  { 
-		width:99%;
-		padding-left:.5%;
-		padding-right:.5%;
+		width: 97%;
+		padding-left: 1.5%;
+		padding-right: 1.5%;
 	}
 	@include media-breakpoint-only(desktop) {
 		max-width: 1060px;
@@ -62,6 +62,12 @@ body {
 		flex-basis: auto;
 	}
 }
+.page-node-139634 .col { //Only for Home page
+	@include media-breakpoint-only(tablet) {
+    	max-width: 100%!important;
+	}
+}
+
 .col-md-3{
 	@include media-breakpoint-only(tablet) {
 	    max-width: 256px;
@@ -72,7 +78,7 @@ body {
     	&.order-last {
     		flex: 0 0 100%;
     		max-width: 100%!important;
-    		margin-bottom: 20px;
+    		margin-bottom: 50px!important;
     	}
 	}
 	@include media-breakpoint-up(tablet) {
@@ -117,5 +123,15 @@ body {
     padding-right: 0;
 }
 
-
-
+/* HOME PAGE */
+.view-usf-news-tiles .view-content.row,
+.view-twitter-tiles .view-content.row,
+.view-instagram-tiles .view-content.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+//test
+.page-node-139634 div#sidebar_second {
+    background: #fdbb30;
+    height: 200px;
+}
