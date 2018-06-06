@@ -22,9 +22,8 @@ class GroupUser extends User {
   public function prepareRow(Row $row) {
     // Grab our nid and grab the Group ID from the D7 OG table.
     $uid = $row->getSourceProperty('uid');
-
     // Filter out users who already exist in the new database. This avoids collusions.
-    if ($row->getSource('name') && $this->userExists($row->getSource('name'))) {
+    if ($row->getSourceProperty('name') && $this->userExists($row->getSourceProperty('name'))) {
       return FALSE;
     }
 
@@ -47,8 +46,7 @@ class GroupUser extends User {
     // Set our array of values.
     $gids = [];
     foreach ($query as $gid) {
-      $gids[] = $gid['gid']config/core.base_field_override.node.webform.promote.yml
-      ;
+      $gids[] = $gid['gid'];
     }
 
     foreach ($query2 as $gid) {
@@ -71,14 +69,14 @@ class GroupUser extends User {
    *
    * @return bool
    */
-  private function userExists($name = '') {
-    return \Drupal::database()->select('users_field_data', 'ufd')
+  private function userExists($name) {
+    $result = \Drupal::database()->select('users_field_data', 'ufd')
                        ->fields('ufd', ['name'])
                        ->condition('name', $name, '=')
-                       ->countQuery()
                        ->execute()
                        ->fetch()
                        ->expression >= 1;
+
   }
 
 }
