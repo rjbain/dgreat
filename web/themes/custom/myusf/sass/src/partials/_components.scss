@@ -79,9 +79,17 @@
 
     &:first-of-type {
     	margin-left: 0px;
+    	@include media-breakpoint-down(phone) {
+    		
+    	}
     }
     &:last-of-type {
     	margin-right: 0px;
+    }
+
+    @include media-breakpoint-down(phone) {
+    	margin: 20px 0 0;
+    	
     }
 }
 .view-usf-news-tiles .card {
@@ -89,7 +97,12 @@
 }
 .view-twitter-tiles .card {
 	margin-bottom:-10px;
+
+	@include media-breakpoint-down(phone) {
+		margin-bottom: 0;
+	}
 }
+
 
 .card {
     border: 0;
@@ -136,16 +149,29 @@ a.card-rollover {
 		    font-weight: 700;
 		    line-height: 1.15rem;
 		    color: $white!important;
+		    @include media-breakpoint-only(landscape_phone) {
+		    	font-size: .8rem;
+		    	line-height: 1rem;
+		    	margin-bottom: .4rem;
+		    }
 		}
 		.card-text {
 		    font-size: .85rem;
 		    line-height: 1.15rem;
 		    color: $white!important;
+			@include media-breakpoint-only(landscape_phone) {
+		    	font-size: .80rem;
+		    	line-height: 1rem;
+		    }
 		}
 		&.orange {
 			.card-text {
 		    	font-size: 1rem;
 		    	line-height: 1.5rem;
+		    	@include media-breakpoint-only(landscape_phone) {
+		    		font-size: .85rem;
+		    		line-height: 1.2rem;
+		    	}
 			}
 		}
 		&.twitter-bg {
@@ -154,6 +180,10 @@ a.card-rollover {
 			.card-text {
 				font-size: 1rem;
 		    	line-height: 1.5rem;
+		    	@include media-breakpoint-only(landscape_phone) {
+		    		font-size: .85rem;
+		    		line-height: 1.2rem;
+		    	}
 			}
 		}
 		.diamond_link_small_white {

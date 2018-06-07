@@ -6,8 +6,16 @@
 	background-color: $light_beige;
 	padding: 5px 18px !important;
 
-    @include media-breakpoint-only(tablet) {
+    @include media-breakpoint-only(tablet) {        
+        position: relative;
+        width: 250px;
+        left: 30%;
         padding: 5px 10px !important;
+
+        h2, p {
+            margin-left: 8px;
+            margin-right: 8px;
+        }
     }
 
     h2 {
@@ -47,6 +55,10 @@
         display: block;
         line-height: 1.2rem;
     }
+}
+
+.contact-info {
+    margin-bottom: 20px;
 }
 
 .contact {
@@ -302,12 +314,10 @@
     margin-right: 15px;
 
     @include media-breakpoint-down(phone) {
-        /*width: 84%;
-        margin-left: 8%;*/
         width: 300px;
         @include margin-L-R-auto;
     }
-}   
+} 
 
 .carousel-control-prev {
     opacity: 1;
@@ -345,9 +355,13 @@
             left: 15px;
         }
     }
+    @include media-breakpoint-only(landscape_phone) {  
+        margin-top: 0px;
+        left: 8px;
+    }
 
     @include media-breakpoint-down(phone) { 
-        margin-top: -50px;
+        margin-top: -42px;
 
         &:before {
             top: 213px;
@@ -400,9 +414,13 @@
             left: 25px;
         }
     }
+    @include media-breakpoint-only(landscape_phone) {  
+        margin-top: 0px;
+         right: -5px;
+    }
 
     @include media-breakpoint-down(phone) { 
-        margin-top: -50px;
+        margin-top: -42px;
 
         &:before {
             top: 213px;
@@ -419,21 +437,36 @@
 //Home page Carousel
 .page-node-139634 .carousel-control-prev {
     @include media-breakpoint-down(tablet) { 
-        margin-top: 0px;
+        margin-top: 50px;
         left: 5px;
+    }
+    @include media-breakpoint-only(landscape_phone) {  
+        margin-top: 0px;
+        left: 8px;
+    }
+    @include media-breakpoint-down(phone) {  
+        margin-top: -42px;
+        left: 0px;
     }
 }
 .page-node-139634 .carousel-control-next {
     @include media-breakpoint-down(tablet) { 
-        margin-top: 0px;
+        margin-top: 50px;
         right: -25px;
+    }
+    @include media-breakpoint-only(landscape_phone) {  
+        margin-top: 0px;
+         right: -5px;
+    }
+    @include media-breakpoint-down(phone) {  
+        margin-top: -42px;
+        right: 0px;
     }
 }
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
     background-image: none;
 }
-
 
 .carousel-caption {
     background: none;
@@ -481,7 +514,7 @@
     @include media-breakpoint-down(phone) { 
         position: relative;
         /*margin-top: -150px;*/
-        background:$plum!important;
+        background:$text_gray!important;
         height:200px;
         padding-left: 20px;
         padding-right: 20px;
@@ -525,6 +558,14 @@
 
 /* Hero Image Header - Jumbotron with text
 =============================================== */ 
+.region-hero-image {
+     @include media-breakpoint-down(phone) {
+        height: 160px;
+    }
+}
+.view-content-hero-image {
+    position: relative;
+}
 .hero-image-block {
     margin: -32px 0 -50px 0 !important;
 
