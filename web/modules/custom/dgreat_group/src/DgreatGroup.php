@@ -162,7 +162,7 @@ class DgreatGroup {
           ])
           ->execute();
       }
-      
+
       return TRUE;
     }
 
