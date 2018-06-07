@@ -120,6 +120,49 @@ class DgreatGroup {
       $node = Node::load($this->entity->id());
       $flag_service->flag($flag, $node, $user);
 
+      // Add this to the user weights table.
+      $db = \Drupal::database();
+      $check = $db
+        ->select('user_weights', 'u')
+        ->fields('u', ['entity_id'])
+        ->condition('uid', $uid)
+        ->condition('entity_id', $this->entity->id())
+        ->condition('view_name', 'quick_links')
+        ->execute()
+        ->fetchField();
+
+      // Grab the new weight.
+      $sql = "SELECT MAX(weight) FROM {user_weights} WHERE uid = :uid";
+      $weight = $db
+        ->query($sql, [':uid' => $uid])
+        ->fetchField();
+
+      if ($check === FALSE) {
+        // Insert new item in weights table.
+        $db->insert('user_weights')
+          ->fields([
+            'entity_id' => $this->entity->id(),
+            'uid' => $uid,
+            'view_name' => 'quick_links',
+            'weight' => $weight + 1,
+          ])
+          ->execute();
+      }
+      else {
+        // Update the weights table.
+        $db->update('user_weights')
+          ->condition('uid', $uid)
+          ->condition('entity_id', $this->entity->id())
+          ->condition('view_name', 'quick_links')
+          ->fields([
+            'entity_id' => $this->entity->id(),
+            'uid' => $uid,
+            'view_name' => 'quick_links',
+            'weight' => $weight + 1,
+          ])
+          ->execute();
+      }
+      
       return TRUE;
     }
 

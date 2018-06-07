@@ -15,8 +15,8 @@ dependencies:
   module:
     - link
     - path
+    - scheduler
     - text
-    - weight
 id: node.favorite_link.default
 targetEntityType: node
 bundle: favorite_link
@@ -80,12 +80,6 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     region: content
-  field_weight:
-    type: weight_selector
-    weight: 14
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   path:
     type: path
     weight: 11
@@ -98,6 +92,12 @@ content:
       display_label: true
     weight: 9
     region: content
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 14
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -130,4 +130,11 @@ content:
       placeholder: ''
     region: content
     third_party_settings: {  }
-hidden: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_weight: true
