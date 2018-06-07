@@ -8,6 +8,7 @@ dependencies:
     - block_visibility_groups
     - node
     - simple_block
+    - system
   theme:
     - myusf
 id: event_search
@@ -18,7 +19,7 @@ provider: null
 plugin: 'simple_block:event_search'
 settings:
   id: 'simple_block:event_search'
-  label: 'Search Calendar'
+  label: 'Event Search Block'
   provider: simple_block
   label_display: visible
 visibility:
@@ -35,3 +36,8 @@ visibility:
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
+  request_path:
+    id: request_path
+    pages: ''
+    negate: true
+    context_mapping: {  }

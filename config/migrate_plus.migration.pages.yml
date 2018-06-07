@@ -28,6 +28,8 @@ source:
     -
       title: Title
     -
+      display: Display
+    -
       body: Body
 process:
   type:
@@ -36,6 +38,7 @@ process:
   id: id
   title: title
   path: url
+  field_display_title: display
   field_migrate_final/target_id:
     -
       plugin: migration
@@ -58,6 +61,6 @@ process:
         - 1
 destination:
   plugin: 'entity:node'
-migration_dependencies:
-  required:
-    - body_to_paragraph
+#migration_dependencies:
+#  required:
+#    - body_to_paragraph
