@@ -39,12 +39,21 @@
 <div{{ attributes.addClass(classes) }}>
     {{ title_prefix }}
     {% if label %}
-        <h2{{ title_attributes }}>{{ label }}</h2>
+        <h2{{ title_attributes.addClass('quick-links-heading') }}>Quick Links</h2>
     {% endif %}
     {{ title_suffix }}
     {% block content %}
+        {% set links = content.field_quick_link['#object'].field_quick_link %}
         <div{{ content_attributes.addClass('content') }}>
-            {{ content }}
+            <nav class="quick-links-nav">
+                <ul>
+                    {% for link in links %}
+                    <li>
+                        <a href="{{ link.uri }}" target="_blank">{{ link.title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </nav>
         </div>
     {% endblock %}
 </div>
