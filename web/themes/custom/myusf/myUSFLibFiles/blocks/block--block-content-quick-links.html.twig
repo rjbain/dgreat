@@ -43,8 +43,17 @@
     {% endif %}
     {{ title_suffix }}
     {% block content %}
+        {% set links = content.field_quick_link['#object'].field_quick_link %}
         <div{{ content_attributes.addClass('content') }}>
-            {{ content }}
+            {% for link in links %}
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="{{ link.uri }}" target="_blank">{{ link.title }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            {% endfor %}
         </div>
     {% endblock %}
 </div>
