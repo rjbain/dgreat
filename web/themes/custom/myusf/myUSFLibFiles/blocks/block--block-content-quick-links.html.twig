@@ -45,15 +45,15 @@
     {% block content %}
         {% set links = content.field_quick_link['#object'].field_quick_link %}
         <div{{ content_attributes.addClass('content') }}>
-            {% for link in links %}
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="{{ link.uri }}" target="_blank">{{ link.title }}</a>
-                        </li>
-                    </ul>
-                </nav>
-            {% endfor %}
+            <nav class="quick-links-nav">
+                <ul>
+                    {% for link in links %}
+                    <li>
+                        <a href="{{ link.uri }}" target="_blank">{{ link.title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </nav>
         </div>
     {% endblock %}
 </div>
