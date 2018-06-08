@@ -305,10 +305,12 @@ class MigrateExecutable implements MigrateExecutableInterface {
       $destination_key = $id_map->currentDestination();
       if ($destination_key) {
         $map_row = $id_map->getRowByDestination($destination_key);
+        $t = 1;
         if ($map_row['rollback_action'] == MigrateIdMapInterface::ROLLBACK_DELETE) {
           $this->getEventDispatcher()
             ->dispatch(MigrateEvents::PRE_ROW_DELETE, new MigrateRowDeleteEvent($this->migration, $destination_key));
           $destination->rollback($destination_key);
+          $t = 1;
           $this->getEventDispatcher()
             ->dispatch(MigrateEvents::POST_ROW_DELETE, new MigrateRowDeleteEvent($this->migration, $destination_key));
         }
@@ -321,6 +323,7 @@ class MigrateExecutable implements MigrateExecutableInterface {
         $source_key = $id_map->currentSource();
         $id_map->delete($source_key);
       }
+
 
       // Check for memory exhaustion.
       if (($return = $this->checkStatus()) != MigrationInterface::RESULT_COMPLETED) {
