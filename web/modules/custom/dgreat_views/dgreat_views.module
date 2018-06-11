@@ -28,70 +28,17 @@ function dgreat_views_help($route_name, RouteMatchInterface $route_match) {
 }
 
 /**
- * Implements hook_entity_insert().
+ * Implements hook_ENTITY_TYPE_insert().
  */
 function dgreat_views_flagging_insert(EntityInterface $entity) {
-  // Adds items from user_weights after flagging.
-  $nid = $entity->get('entity_id')->getValue();
-  $uid = $entity->get('uid')->getValue();
+  _dgreat_views_adjust_flag_entities($entity);
+}
 
-  if (isset($nid[0]["value"]) && isset($uid[0]["target_id"])) {
-
-    // Need to use the $_GET params here since we are within the flagging
-    // mechanisms and can;t get proper routes otherwise.
-    $current_path = isset($_GET["destination"]) ? $_GET["destination"] : NULL;
-    if ($current_path !== NULL) {
-      $url_object = \Drupal::service('path.validator')->getUrlIfValid($current_path);
-      $route_name = $url_object->getRouteName();
-
-      $view_get = explode('.', $route_name);
-      $name = isset($view_get[1]) ? $view_get[1] : '';
-
-      if (!empty($name)) {
-        $db = \Drupal::database();
-        $check = $db
-          ->select('user_weights', 'u')
-          ->fields('u', ['entity_id'])
-          ->condition('uid', $uid[0]["target_id"])
-          ->condition('entity_id', $nid[0]["value"])
-          ->condition('view_name', $name)
-          ->execute()
-          ->fetchField();
-
-        // Grab the new weight.
-        $sql = "SELECT MAX(weight) FROM {user_weights} WHERE uid = :uid";
-        $weight = $db
-          ->query($sql, [':uid' => $uid[0]["target_id"]])
-          ->fetchField();
-
-        if ($check === FALSE) {
-          // Insert new item in weights table.
-          $db->insert('user_weights')
-            ->fields([
-              'entity_id' => $nid[0]["value"],
-              'uid' => $uid[0]["target_id"],
-              'view_name' => $name,
-              'weight' => $weight + 1,
-            ])
-            ->execute();
-        }
-        else {
-          // Update the weights table.
-          $db->update('user_weights')
-            ->condition('uid', $uid[0]["target_id"])
-            ->condition('entity_id', $nid[0]["value"])
-            ->condition('view_name', $name)
-            ->fields([
-              'entity_id' => $nid[0]["value"],
-              'uid' => $uid[0]["target_id"],
-              'view_name' => $name,
-              'weight' => $weight + 1,
-            ])
-            ->execute();
-        }
-      }
-    }
-  }
+/**
+ * Implements hook_ENTITY_TYPE_delete().
+ */
+function dgreat_views_flagging_delete(EntityInterface $entity) {
+  _dgreat_views_adjust_flag_entities($entity);
 }
 
 
@@ -447,4 +394,75 @@ function _dgreat_views_apply_defaults($results, $name) {
   $merge = array_merge_recursive($defaults, $view_results);
   $results = _dgreat_views_remove_duplicates($merge);
   return $results;
+}
+
+/**
+ * Helper function update the user weights table for flagged entities.
+ *
+ * @param $entity
+ *   The EntityInterface object.
+
+ */
+function _dgreat_views_adjust_flag_entities($entity) {
+  // Adds items from user_weights after flagging.
+  $nid = $entity->get('entity_id')->getValue();
+  $uid = $entity->get('uid')->getValue();
+
+  if (isset($nid[0]["value"]) && isset($uid[0]["target_id"])) {
+
+    // Need to use the $_GET params here since we are within the flagging
+    // mechanisms and can;t get proper routes otherwise.
+    $current_path = isset($_GET["destination"]) ? $_GET["destination"] : NULL;
+    if ($current_path !== NULL) {
+      $url_object = \Drupal::service('path.validator')->getUrlIfValid($current_path);
+      $route_name = $url_object->getRouteName();
+
+      $view_get = explode('.', $route_name);
+      $name = isset($view_get[1]) ? $view_get[1] : '';
+
+      if (!empty($name)) {
+        $db = \Drupal::database();
+        $check = $db
+          ->select('user_weights', 'u')
+          ->fields('u', ['entity_id'])
+          ->condition('uid', $uid[0]["target_id"])
+          ->condition('entity_id', $nid[0]["value"])
+          ->condition('view_name', $name)
+          ->execute()
+          ->fetchField();
+
+        // Grab the new weight.
+        $sql = "SELECT MAX(weight) FROM {user_weights} WHERE uid = :uid";
+        $weight = $db
+          ->query($sql, [':uid' => $uid[0]["target_id"]])
+          ->fetchField();
+
+        if ($check === FALSE) {
+          // Insert new item in weights table.
+          $db->insert('user_weights')
+            ->fields([
+              'entity_id' => $nid[0]["value"],
+              'uid' => $uid[0]["target_id"],
+              'view_name' => $name,
+              'weight' => $weight + 1,
+            ])
+            ->execute();
+        }
+        else {
+          // Update the weights table.
+          $db->update('user_weights')
+            ->condition('uid', $uid[0]["target_id"])
+            ->condition('entity_id', $nid[0]["value"])
+            ->condition('view_name', $name)
+            ->fields([
+              'entity_id' => $nid[0]["value"],
+              'uid' => $uid[0]["target_id"],
+              'view_name' => $name,
+              'weight' => $weight + 1,
+            ])
+            ->execute();
+        }
+      }
+    }
+  }
 }
