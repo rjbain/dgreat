@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.page.field_add_content
+    - field.field.node.page.field_display_title
     - field.field.node.page.field_migrate_final
     - node.type.page
   module:
@@ -18,16 +19,24 @@ mode: default
 content:
   field_add_content:
     type: entity_reference_revisions_entity_view
-    weight: 102
+    weight: 1
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
     region: content
+  field_display_title:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   field_migrate_final:
     type: entity_reference_revisions_entity_view
-    weight: 104
+    weight: 3
     label: hidden
     settings:
       view_mode: default
@@ -35,7 +44,7 @@ content:
     third_party_settings: {  }
     region: content
   links:
-    weight: 101
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }

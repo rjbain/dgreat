@@ -4,7 +4,6 @@ status: true
 dependencies:
   module:
     - block_visibility_groups
-    - ctools
     - system
   theme:
     - myusf
@@ -13,7 +12,7 @@ _core:
 id: myusf_page_title
 theme: myusf
 region: content
-weight: -52
+weight: -5
 provider: null
 plugin: page_title_block
 settings:
@@ -29,23 +28,6 @@ visibility:
     context_mapping: {  }
   request_path:
     id: request_path
-    pages: ''
+    pages: /home
     negate: true
     context_mapping: {  }
-  'entity_bundle:webform_submission':
-    id: 'entity_bundle:webform_submission'
-    bundles:
-      contact: contact
-      template_contact: template_contact
-      template_employee_evaluation: template_employee_evaluation
-      template_feedback: template_feedback
-      template_issue: template_issue
-      template_job_application: template_job_application
-      template_job_seeker_profile: template_job_seeker_profile
-      template_registration: template_registration
-      template_session_evaluation: template_session_evaluation
-      template_subscribe: template_subscribe
-      template_user_profile: template_user_profile
-    negate: true
-    context_mapping:
-      webform_submission: '@webform.webform_submission_route_context:webform_submission'
