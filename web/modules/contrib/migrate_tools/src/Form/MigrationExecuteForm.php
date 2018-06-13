@@ -191,7 +191,7 @@ class MigrationExecuteForm extends FormBase {
             'update' => $update,
             'force' => $force,
           ];
-          $t = 1;
+
           $executable = new MigrateBatchExecutable($migration, $migrateMessage, $options);
           $executable->rollback();
 

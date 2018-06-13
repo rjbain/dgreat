@@ -33,12 +33,13 @@
 #}
 
 
-<div class="card" style="width: 18rem;">
-	<a class="card-rollover" href="{{ fields.field_news_link.content }}">
-		{% if fields.field_image_url.content %}
-			<img alt="Card image cap" class="card-img-top" src="{{ fields.field_image_url.content }}" style="height: 180px; width: 100%; display: block; background:#919194;border-radius:0;" />
+<div class="card plum">
+	<a class="card-rollover" href="{{ fields.field_news_link.content }}" target="_blank">
+		<div class="category category-icon news-icon">News</div>
+		{% if fields.field_image_url.content %}			
+			<img alt="Card image cap" class="card-img-top" src="{{ fields.field_image_url.content }}" />
 		{% endif %}
-		<div class="card-body blue">
+		<div class="card-body plum">
 			<h5 class="card-title">{{ fields.title.content }}</h5>
 			<p class="card-text">{{ fields.body.content }}</p>
 			<span class="diamond_link_small_white" href="{{ fields.field_news_link.content }}">Go somewhere</span>

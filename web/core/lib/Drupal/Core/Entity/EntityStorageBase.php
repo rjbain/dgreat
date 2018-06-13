@@ -354,10 +354,10 @@ abstract class EntityStorageBase extends EntityHandlerBase implements EntityStor
 
     // Allow code to run before deleting.
     $entity_class = $this->entityClass;
-//    $entity_class::preDelete($this, $keyed_entities);
-//    foreach ($keyed_entities as $entity) {
-//      $this->invokeHook('predelete', $entity);
-//    }
+    $entity_class::preDelete($this, $keyed_entities);
+    foreach ($keyed_entities as $entity) {
+      $this->invokeHook('predelete', $entity);
+    }
 
     // Perform the delete and reset the static cache for the deleted entities.
     $this->doDelete($keyed_entities);

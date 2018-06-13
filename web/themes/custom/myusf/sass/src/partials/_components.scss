@@ -66,105 +66,221 @@
 	}
 }
 
-/* Card -- feeds 
+/* Card -- Homepage feeds 
 ================================================ */
+.card-deck {
+	margin-left: 0;
+	margin-right: 0;
+}
+.view-usf-news-tiles .card,
+.view-twitter-tiles .card,
+.view-instagram-tiles .card {
+    margin: 10px 10px 10px 10px;
+
+    &:first-of-type {
+    	margin-left: 0px;
+    	@include media-breakpoint-down(phone) {
+    		
+    	}
+    }
+    &:last-of-type {
+    	margin-right: 0px;
+    }
+
+    @include media-breakpoint-down(phone) {
+    	margin: 20px 0 0;
+    	
+    }
+}
+.view-usf-news-tiles .card {
+	margin-top:20px;
+}
+.view-twitter-tiles .card {
+	margin-bottom:-10px;
+
+	@include media-breakpoint-down(phone) {
+		margin-bottom: 0;
+	}
+}
+
+
 .card {
+    border: 0;
     border-radius: 0;
     display: inline-block;
-    margin: 25px;
+    height:410px;
+
+    &.green {
+		background: $green;
+	}
+	&.blue {
+		background: $blue;
+	}
+	&.olive {
+		background: $olive;
+	}
+	&.orange {
+		background: $orange;
+	}
+	&.plum {
+		background: $plum;
+	}
+	&.terra_cotta {
+		background: $terra_cotta;
+	}
+	&.turquoise {
+		background: $turquoise;
+	}
+    &.twitter-bg{
+		background: $twitter;		
+	}
 }
 
 a.card-rollover {
 	text-decoration: none;
     color: $white;
 
-    &:hover {
+    .card-body {
+		height: 250px;
+		width: 100%;
+
+		.card-title {
+			font-size: .85rem;
+		    font-weight: 700;
+		    line-height: 1.15rem;
+		    color: $white!important;
+		    @include media-breakpoint-only(landscape_phone) {
+		    	font-size: .8rem;
+		    	line-height: 1rem;
+		    	margin-bottom: .4rem;
+		    }
+		}
+		.card-text {
+		    font-size: .85rem;
+		    line-height: 1.15rem;
+		    color: $white!important;
+			@include media-breakpoint-only(landscape_phone) {
+		    	font-size: .80rem;
+		    	line-height: 1rem;
+		    }
+		}
+		&.orange {
+			.card-text {
+		    	font-size: 1rem;
+		    	line-height: 1.5rem;
+		    	@include media-breakpoint-only(landscape_phone) {
+		    		font-size: .85rem;
+		    		line-height: 1.2rem;
+		    	}
+			}
+		}
+		&.twitter-bg {
+			margin-top: 180px;
+
+			.card-text {
+				font-size: 1rem;
+		    	line-height: 1.5rem;
+		    	@include media-breakpoint-only(landscape_phone) {
+		    		font-size: .85rem;
+		    		line-height: 1.2rem;
+		    	}
+			}
+		}
+		.diamond_link_small_white {
+			position: absolute;
+			bottom: 10px;   
+		}
+	}
+   
+	.category{		
+		position: absolute;
+	    display: block;
+	    font-size: .8rem;
+		color:$white;
+		margin: 0;
+		padding-left:30px;
+		top: 0px;
+		left: 0px;
+		z-index: 2;	
+		text-shadow: 1px 1px 2px rgba(0,0,0,.9);
+	    
+	}
+	.category-icon {
+		&:before { 
+			position: absolute;
+		    display: block;
+			content: "";
+			width: 100px;
+		    height:25px;	
+			top: 0px;
+		    left: 0px;
+			z-index: -1;
+			background-color: rgba(0,0,0,.5);	
+		}
+		&:after {
+			position: absolute;
+		    display: block;
+			content: "";
+		    width: 15px;
+		    height:15px;
+			top: 6px;
+		    left: 10px;   
+			z-index: -1;      
+		}
+		
+		&.news-icon {
+			&:after {
+				background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -20px -60px ;
+				top: 7px;
+			}
+		}
+		&.instagram-icon {
+			&:after {
+		  		background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat  -40px -58px ;
+		  	}
+		} 
+		&.twitter-icon {
+			&:after {
+		  		background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -100px -58px ;
+		  	}
+		} 	
+	}
+	
+    img.card-img-top {
+    	height: 180px; 
+    	width: 100%; 
+    	display: block; 
+    	background:#919194;
+    	border-radius:0;
+    	margin-top: 0;
+
+    	&:after {
+		    background-image: linear-gradient(to bottom,transparent 0,rgba(0,0,0,.3) 100%);
+		}
+    }
+
+    &:hover,
+    &:focus {
 	    color: $white!important;
 	    background: 0 0!important;
-
-	    &:after {
+	    /*&:after {
 		    background-image: linear-gradient(to bottom,transparent 0,rgba(0,0,0,.6) 100%);
+		}*/
+		&:after {
+	    	display: block;
+		    position: absolute;
+		    content: "";
+		    width: 100%;
+		    height: 70%;
+		    top: 0;
+		    left: 0;
+		    opacity: .6;
+		    background-image: linear-gradient(to top,transparent 0,rgba(0,0,0,.6) 100%);
+		    transition: opacity .25s,height .25s;
 		}
 
 		.diamond_link_small_white {
 		    color: $yellow!important;
-
-		    &:before {
-		    	position: absolute;
-			    display: inline-block;
-			    content: "";
-			    width: 6px;
-			    height: 8px;
-			    top: 11px;
-			    right: 15px;
-			    z-index: 1;
-			    background: url(/themes/custom/myusf/images/site/icons.svg) -300px -128px no-repeat;
-		    }
-
-		    &:after {
-			    position: absolute;
-			    display: inline-block;
-			    content: "";
-			    width: 20px;
-			    height: 20px;
-			    top: 5px;
-			    right: 10px;
-			    -ms-transform: rotate(45deg);
-			    transform: rotate(45deg);
-			    border: 1px solid #FDBB30;
-			    background: #FDBB30;
-			    transition: box-shadow .25s,transform .25s;
-			}
-		}
-	}
-
-	&:after {
-    	display: block;
-	    position: absolute;
-	    content: "";
-	    width: 100%;
-	    height: 180px;
-	    top: 0;
-	    left: 0;
-	    opacity: .6;
-	    background-image: linear-gradient(to bottom,transparent 0,rgba(0,0,0,.3) 100%);
-	    transition: opacity .25s,height .25s;
-	}
-
-	.card-body {
-		.card-title {
-		    font-weight: 700;
-		    line-height: 1.3rem;
-		    color: $white!important;
-		}
-		.card-text {
-		    font-size: .8rem;
-		    line-height: 1.3rem;
-		    color: $white!important;
-		}
-
-	
-
-		&.green {
-			background: $green;
-		}
-		&.blue {
-			background: $blue;
-		}
-		&.olive {
-			background: $olive;
-		}
-		&.orange {
-			background: $orange;
-		}
-		&.plum {
-			background: $plum;
-		}
-		&.terra_cotta {
-			background: $terra_cotta;
-		}
-		&.turquoise {
-			background: $turquoise;
 		}
 	}
 
