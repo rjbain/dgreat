@@ -5,14 +5,19 @@ config:
   env: dev
   site: dgreat
   id: 41cad7fe-472d-43a9-a470-d391b9622376
-  xdebug: true
 services:
-  d7db:
-   type: mariadb
-   creds:
-     user: drupal7db
-     password: drupal7db
-     database: drupal7db
+  appserver:
+    overrides:
+      services:
+        environment:
+            BEHAT_PARAMS: >-
+              {
+                  "extensions" : {
+                      "Behat\\MinkExtension" : {
+                          "base_url" : "http://nginx/"
+                      }
+                  }
+              }
   node:
     type: node:6.10
     build:
@@ -24,6 +29,11 @@ tooling:
     service: node
   gulp:
     service: node
-proxy:
-  nginx:
-    - thereal.dgreat.lndo.site
+  robo:
+    service: appserver
+    cmd: /app/vendor/bin/robo
+  test:
+    service: appserver
+    cmd:
+      - /app/vendor/bin/robo
+      - test
