@@ -198,7 +198,19 @@ display:
             group_items: {  }
           reduce_duplicates: false
           plugin_id: search_api_options
-      sorts: {  }
+      sorts:
+        title:
+          id: title
+          table: search_api_index_database_node_index
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: search_api
       header: {  }
       footer: {  }
       empty: {  }

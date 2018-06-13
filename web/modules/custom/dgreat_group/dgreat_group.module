@@ -34,7 +34,6 @@ function dgreat_group_help($route_name, RouteMatchInterface $route_match) {
  * Adds a node to the respective group identified.
  */
 function dgreat_group_node_insert(EntityInterface $entity) {
-
   switch ($entity->bundle()) {
     case 'favorite_link':
       $quick = (new DgreatGroup($entity))->addQuickLinkGroups();
@@ -53,7 +52,6 @@ function dgreat_group_node_insert(EntityInterface $entity) {
  * Adds a node to the respective group identified.
  */
 function dgreat_group_node_update(EntityInterface $entity) {
-
   switch ($entity->bundle()) {
     case 'favorite_link':
       $add = (new DgreatGroup($entity))->addNodeToGroup('field_group_audience');

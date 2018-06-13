@@ -9,7 +9,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\views\ViewExecutable;
 use Drupal\user\Entity\User;
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Database\Query\AlterableInterface;
+use Drupal\views\Form\ViewsForm;
 
 /**
  * Implements hook_help().
@@ -28,63 +28,17 @@ function dgreat_views_help($route_name, RouteMatchInterface $route_match) {
 }
 
 /**
- * Implements hook_entity_insert().
+ * Implements hook_ENTITY_TYPE_insert().
  */
 function dgreat_views_flagging_insert(EntityInterface $entity) {
-  // Adds items from user_weights after flagging.
-  $nid = $entity->get('entity_id')->getValue();
-  $uid = $entity->get('uid')->getValue();
+  _dgreat_views_adjust_flag_entities($entity);
+}
 
-  if (isset($nid[0]["value"]) && isset($uid[0]["target_id"])) {
-
-    // Need to use the $_GET params here since we are within the flagging
-    // mechanisms and can;t get proper routes otherwise.
-    $current_path = isset($_GET["destination"]) ? $_GET["destination"] : NULL;
-    if ($current_path !== NULL) {
-      $url_object = \Drupal::service('path.validator')->getUrlIfValid($current_path);
-      $route_name = $url_object->getRouteName();
-
-      $view = explode('.', $route_name);
-      $name = isset($view[1]) ? $view[1] : '';
-
-      if (!empty($name)) {
-        $db = \Drupal::database();
-        $check = $db
-          ->select('user_weights', 'u')
-          ->fields('u', ['weight'])
-          ->condition('uid', $uid[0]["target_id"])
-          ->condition('entity_id', $nid[0]["value"])
-          ->condition('view_name', $name)
-          ->execute()
-          ->fetchField();
-
-        if ($check === FALSE) {
-          // Insert new item in weights table.
-          $db->insert('user_weights')
-            ->fields([
-              'entity_id' => $nid[0]["value"],
-              'uid' => $uid[0]["target_id"],
-              'view_name' => $name,
-            ])
-            ->execute();
-
-        }
-        else {
-          // Update the weights table.
-          $db->update('user_weights')
-            ->condition('uid', $uid[0]["target_id"])
-            ->condition('entity_id', $nid[0]["value"])
-            ->condition('view_name', $name)
-            ->fields([
-              'entity_id' => $nid[0]["value"],
-              'uid' => $uid[0]["target_id"],
-              'view_name' => $name,
-            ])
-            ->execute();
-        }
-      }
-    }
-  }
+/**
+ * Implements hook_ENTITY_TYPE_delete().
+ */
+function dgreat_views_flagging_delete(EntityInterface $entity) {
+  _dgreat_views_adjust_flag_entities($entity);
 }
 
 
@@ -210,137 +164,106 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
     case 'favorite_links':
     case 'favorite_links_quick_menu':
     case 'quick_links':
-    case 'quick_links_block':
 
       $view->result = _dgreat_views_remove_duplicates($view->result);
 
       // Adds in the default links for my_links displays.
-      if ($display == 'my_links' || $display == 'all_apps') {
-        // Initialize our vars.
-        $gids = $nids = $nodes = $defaults = $view_results = [];
-        $query = NULL;
+      $results = _dgreat_views_apply_defaults($view->result, $name);
+      if ($results !== NULL) {
+        $view->results = $results;
+      }
+      else {
+        return;
+      }
 
-        // Grab the existing results to store later.
-        // So we can put that after the defaults.
-        foreach ($view->result as $index => $result) {
-          $view_results[] = $result;
-        }
-
-        // Grab the current users groups.
-        $uid = \Drupal::currentUser()->id();
-        $user = User::load($uid);
-        $groups = $user->get('field_user_group')->getValue();
-        foreach ($groups as $gid) {
-          $gids[] = $gid['target_id'];
-        }
-
-        if (empty($gids)) {
-          return;
-        }
-
-        // Remove duplicates.
-        $gids = array_unique($gids);
-
-        // Initialize the db.
-        $db = \Drupal::database();
-
-        // Grab all the default entity ids of the group.
-        if ($name == 'favorite_links') {
-          $query = $db
-            ->select('group__field_default_favorite_links', 'g')
-            ->fields('g', ['field_default_favorite_links_target_id'])
-            ->condition('entity_id', $gids, 'IN');
-        }
-
-        if ($name == 'quick_links') {
-          $query = $db
-            ->select('group__field_default_quick_links', 'g')
-            ->fields('g', ['field_default_quick_links_target_id'])
-            ->condition('entity_id', $gids, 'IN');
-        }
-
-        // Loop through and grab our content ids.
-        foreach ($query->execute()->fetchAll() as $result) {
-          if ($name == 'favorite_links') {
-            $nids[] = $result->field_default_favorite_links_target_id;
-          }
-          if ($name == 'quick_links') {
-            $nids[] = $result->field_default_quick_links_target_id;
-          }
-        }
-
-        if (empty($nids)) {
-          return;
-        }
-
-        // Remove duplicates.
-        $nids = array_unique($nids);
-
-        if ($name == 'favorite_links') {
-          // Check against the users flagged items.
-          $query = $db
-            ->select('flagging', 'f')
-            ->fields('f', ['entity_id'])
-            ->condition('entity_id', $nids, 'IN')
-            ->condition('uid', $uid);
-
-          // Flatten on the nids to check against.
-          foreach ($query->execute()->fetchAll() as $nid) {
-            $nids[] = $nid->entity_id;
-          }
-        }
-
-        // Check for the defaults in the loaded array.
-        foreach ($view_results as $key => $result) {
-          $check = $result->node_field_data_group_content_field_data_nid;
-          if (in_array($check, $nids)) {
-            $defaults[] = $result;
-          }
-        }
-
-        // Merge the results setting defaults on top.
-        $merge = array_merge_recursive($defaults, $view_results);
-        $view->result = _dgreat_views_remove_duplicates($merge);
+      // Don't try and load user weights for admins
+      // on the all quick links view for now.
+      $roles = \Drupal::currentUser()->getRoles();
+      if (in_array('administrator', $roles)
+          && $name == 'quick_links' && $display == 'all_apps') {
+        return;
       }
 
       // Sorts our user weights items for proper display.
       // Only place I could get this to work right.
       // Normal sort won't work since we have to do it by user.
-      if ($name == 'favorite_links' || $name == 'quick_links') {
-        // Initialize the db.
-        $db = \Drupal::database();
 
-        // Grab the count first to make sure we have rows to manipulate.
-        $uid = \Drupal::currentUser()->id();
-        $query = $db
-          ->select('user_weights', 'u')
-          ->fields('u', ['entity_id'])
-          ->condition('uid', $uid)
-          ->condition('view_name', $name)
-          ->execute();
-        $query->allowRowCount = TRUE;
-        $count = $query->rowCount();
+      // Initialize the db.
+      $db = \Drupal::database();
 
-        if ($count && isset($view->result)) {
-          $new_results = [];
+      // Grab the count first to make sure we have rows to manipulate.
+      $uid = \Drupal::currentUser()->id();
+      $query = $db
+        ->select('user_weights', 'u')
+        ->fields('u', ['entity_id'])
+        ->condition('uid', $uid)
+        ->condition('view_name', $name)
+        ->execute();
+      $query->allowRowCount = TRUE;
+      $count = $query->rowCount();
 
-          foreach ($view->result as $result) {
-            $nid = $result->node_field_data_group_content_field_data_nid;
+      if ($count && isset($view->result)) {
+        $new_results = [];
 
-            $weight = $db->select('user_weights', 'u')
-              ->fields('u', ['weight'])
+        foreach ($view->result as $result) {
+          $nid = $result->node_field_data_group_content_field_data_nid;
+
+          $weight = $db->select('user_weights', 'u')
+            ->fields('u', ['weight'])
+            ->condition('uid', $uid)
+            ->condition('entity_id', $nid)
+            ->condition('view_name', $name)
+            ->execute()
+            ->fetchField();
+
+          $new_results[$weight] = $result;
+        }
+
+        ksort($new_results);
+        $new_results = array_values(array_filter($new_results));
+        $view->result = $new_results;
+      }
+      else {
+        $weight = 0;
+        // Add the defaults to the user weight on first pass.
+        foreach ($view->result as $result) {
+          $nid = $result->node_field_data_group_content_field_data_nid;
+          $check = $db
+            ->select('user_weights', 'u')
+            ->fields('u', ['weight'])
+            ->condition('uid', $uid)
+            ->condition('entity_id', $nid)
+            ->condition('view_name', $name)
+            ->execute()
+            ->fetchField();
+
+          $weight++;
+          if ($check === FALSE) {
+            // Insert new item in weights table.
+            $db->insert('user_weights')
+              ->fields([
+                'entity_id' => $nid,
+                'uid' => $uid,
+                'view_name' => $name,
+                'weight' => $weight,
+              ])
+              ->execute();
+
+          }
+          else {
+            // Update the weights table.
+            $db->update('user_weights')
               ->condition('uid', $uid)
               ->condition('entity_id', $nid)
               ->condition('view_name', $name)
-              ->execute()
-              ->fetchField();
-
-            $new_results[$weight] = $result;
+              ->fields([
+                'entity_id' => $nid,
+                'uid' => $uid,
+                'view_name' => $name,
+                'weight' => $weight,
+              ])
+              ->execute();
           }
-
-          ksort($new_results);
-          $new_results = array_values(array_filter($new_results));
-          $view->result = $new_results;
         }
       }
 
@@ -373,4 +296,173 @@ function _dgreat_views_remove_duplicates($results) {
   }
 
   return $new_results;
+}
+
+/**
+ * Helper function to apply defaults to the view.
+ *
+ * @param $results
+ *   The views object of ResultRow items.
+ * @param $name
+ *   The view name.
+ *
+ * @return array
+ */
+function _dgreat_views_apply_defaults($results, $name) {
+
+  // Initialize our vars.
+  $gids = $nids = $nodes = $defaults = $view_results = [];
+  $query = NULL;
+
+  // Grab the existing results to store later.
+  // So we can put that after the defaults.
+  foreach ($results as $index => $result) {
+    $view_results[] = $result;
+  }
+
+  // Grab the current users groups.
+  $uid = \Drupal::currentUser()->id();
+  $user = User::load($uid);
+  $groups = $user->get('field_user_group')->getValue();
+  foreach ($groups as $gid) {
+    $gids[] = $gid['target_id'];
+  }
+
+  if (empty($gids)) {
+    return NULL;
+  }
+
+  // Remove duplicates.
+  $gids = array_unique($gids);
+
+  // Initialize the db.
+  $db = \Drupal::database();
+
+  // Grab all the default entity ids of the group.
+  if ($name == 'favorite_links') {
+    $query = $db
+      ->select('group__field_default_favorite_links', 'g')
+      ->fields('g', ['field_default_favorite_links_target_id'])
+      ->condition('entity_id', $gids, 'IN');
+  }
+
+  if ($name == 'quick_links') {
+    $query = $db
+      ->select('group__field_default_quick_links', 'g')
+      ->fields('g', ['field_default_quick_links_target_id'])
+      ->condition('entity_id', $gids, 'IN');
+  }
+
+  // Loop through and grab our content ids.
+  foreach ($query->execute()->fetchAll() as $result) {
+    if ($name == 'favorite_links') {
+      $nids[] = $result->field_default_favorite_links_target_id;
+    }
+    if ($name == 'quick_links') {
+      $nids[] = $result->field_default_quick_links_target_id;
+    }
+  }
+
+  if (empty($nids)) {
+    return NULL;
+  }
+
+  // Remove duplicates.
+  $nids = array_unique($nids);
+
+  // Check against the users flagged items.
+  $query = $db
+    ->select('flagging', 'f')
+    ->fields('f', ['entity_id'])
+    ->condition('entity_id', $nids, 'IN')
+    ->condition('uid', $uid);
+
+  // Flatten on the nids to check against.
+  foreach ($query->execute()->fetchAll() as $nid) {
+    $nids[] = $nid->entity_id;
+  }
+
+  // Check for the defaults in the loaded array.
+  foreach ($view_results as $key => $result) {
+    $check = $result->node_field_data_group_content_field_data_nid;
+    if (in_array($check, $nids)) {
+      $defaults[] = $result;
+    }
+  }
+
+  // Merge the results setting defaults on top.
+  $merge = array_merge_recursive($defaults, $view_results);
+  $results = _dgreat_views_remove_duplicates($merge);
+  return $results;
+}
+
+/**
+ * Helper function update the user weights table for flagged entities.
+ *
+ * @param $entity
+ *   The EntityInterface object.
+
+ */
+function _dgreat_views_adjust_flag_entities($entity) {
+  // Adds items from user_weights after flagging.
+  $nid = $entity->get('entity_id')->getValue();
+  $uid = $entity->get('uid')->getValue();
+
+  if (isset($nid[0]["value"]) && isset($uid[0]["target_id"])) {
+
+    // Need to use the $_GET params here since we are within the flagging
+    // mechanisms and can;t get proper routes otherwise.
+    $current_path = isset($_GET["destination"]) ? $_GET["destination"] : NULL;
+    if ($current_path !== NULL) {
+      $url_object = \Drupal::service('path.validator')->getUrlIfValid($current_path);
+      $route_name = $url_object->getRouteName();
+
+      $view_get = explode('.', $route_name);
+      $name = isset($view_get[1]) ? $view_get[1] : '';
+
+      if (!empty($name)) {
+        $db = \Drupal::database();
+        $check = $db
+          ->select('user_weights', 'u')
+          ->fields('u', ['entity_id'])
+          ->condition('uid', $uid[0]["target_id"])
+          ->condition('entity_id', $nid[0]["value"])
+          ->condition('view_name', $name)
+          ->execute()
+          ->fetchField();
+
+        // Grab the new weight.
+        $sql = "SELECT MAX(weight) FROM {user_weights} WHERE uid = :uid";
+        $weight = $db
+          ->query($sql, [':uid' => $uid[0]["target_id"]])
+          ->fetchField();
+
+        if ($check === FALSE) {
+          // Insert new item in weights table.
+          $db->insert('user_weights')
+            ->fields([
+              'entity_id' => $nid[0]["value"],
+              'uid' => $uid[0]["target_id"],
+              'view_name' => $name,
+              'weight' => $weight + 1,
+            ])
+            ->execute();
+        }
+        else {
+          // Update the weights table.
+          $db->update('user_weights')
+            ->condition('uid', $uid[0]["target_id"])
+            ->condition('entity_id', $nid[0]["value"])
+            ->condition('view_name', $name)
+            ->fields([
+              'entity_id' => $nid[0]["value"],
+              'uid' => $uid[0]["target_id"],
+              'view_name' => $name,
+              'weight' => $weight + 1,
+            ])
+            ->execute();
+        }
+      }
+    }
+  }
 }

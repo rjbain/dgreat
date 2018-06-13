@@ -9,6 +9,7 @@ use Drupal\Core\Database\Connection;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Database\Query\Condition;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\user\Entity\User;
 
 /**
  * Just sorts stuff alpha if there are no user weights.
@@ -80,11 +81,13 @@ class UserWeightsSortFilter extends FilterPluginBase implements ContainerFactory
   public function query() {
     $this->ensureMyTable();
 
+    $uid = $this->currentUser->id();
+    $name = $this->view->id();
 
     $results = $this->db->select('user_weights', 'u')
       ->fields('u', ['entity_id'])
-      ->condition('uid', $this->currentUser->id())
-      ->condition('view_name', $this->view->id())
+      ->condition('uid', $uid)
+      ->condition('view_name', $name)
       ->orderBy('weight', 'ASC')
       ->execute();
 
