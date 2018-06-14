@@ -132,8 +132,34 @@ datasource_settings:
       default: true
       selected: {  }
 processor_settings:
+  ignorecase:
+    all_fields: true
+    fields:
+      - title
+      - field_url
+      - type
+      - field_usfcat_description_short
+      - field_usfcat_synonyms
+      - body
+      - summary
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
   aggregated_field: {  }
   add_url: {  }
+  transliteration:
+    all_fields: true
+    fields:
+      - title
+      - field_url
+      - type
+      - field_usfcat_description_short
+      - field_usfcat_synonyms
+      - body
+      - summary
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
   rendered_item: {  }
 tracker_settings:
   default:
