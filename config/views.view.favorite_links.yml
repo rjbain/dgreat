@@ -2393,14 +2393,34 @@ display:
           plugin_id: standard
       group_by: false
       style:
-        type: html_list
+        type: table
         options:
           grouping: {  }
           row_class: ''
           default_row_class: true
-          type: ul
-          wrapper_class: ''
-          class: dropdown-menu
+          override: true
+          sticky: false
+          caption: ''
+          summary: ''
+          description: ''
+          columns:
+            field_url: field_url
+            title: title
+          info:
+            field_url:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            title:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          default: '-1'
+          empty_table: false
       row:
         type: fields
         options: {  }
