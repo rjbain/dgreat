@@ -1,0 +1,30 @@
+uuid: 80c7609a-b617-43a7-9515-02ba5783c9c3
+langcode: en
+status: false
+dependencies:
+  config:
+    - views.view.quick_links
+  module:
+    - block_visibility_groups
+    - views
+  theme:
+    - myusf
+id: views_block__quick_links_block
+theme: myusf
+region: top_header
+weight: 0
+provider: null
+plugin: 'views_block:quick_links-block'
+settings:
+  id: 'views_block:quick_links-block'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: '10'
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }

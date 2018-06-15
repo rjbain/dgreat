@@ -15,47 +15,34 @@ Available variables (usf_dashboard.module)
 
     <div class="row usf_dash">
 
-        <div class="col-9"> {# Left "main" column #}
+        <div class="col-12"> {# Left "main" column #}
             <div class="row">
             <div class="col-sm">
-{#{{ dump(dashboard_content.announcements) }}#}
-            {% if dashboard_content.announcements %}
-            {{ dashboard_content.announcements }}
-            {% endif %}
-
-
-
-                <p>
-                    {% if dashboard_content.dashboard_user.name.value is not empty %}
-                        <strong>Welcome to myUSF, {{ dashboard_content.dashboard_user.name.value }}!</strong><br>
-                    {% endif %}
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <h2>Favorite Apps</h2>
+                {% if dashboard_content.fav_links %}
+                    {{ dashboard_content.fav_links }}
+                {% endif %}
             </div>
             <div class="col-sm">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                {% if dashboard_content.dashboard_user.name.value is not empty %}
+                    <h2>{{ dashboard_content.dashboard_user.name.value }}'s Links</h2>
+                {% endif %}
+                {% if dashboard_content.quick_links %}
+                    {{ dashboard_content.quick_links }}
+                {% endif %}
             </div>
             </div>
             <div class="row">
                 <div class="col-sm">
-                    {#{% for item in dashboard_content.events_slider %}#}
-                        {#{% for row in item.result %}#}
-                            {#{{ kint(row._entity.field_building.value) }}#}
-                        {#{% endfor %}#}
-                    {#{% endfor %}#}
-                    {#{% include "@myusf/views/views-view-fields--events-featured--block-1.html.twig" %}#}
-                    {#{% include "@myusf/views/views-view-fields--events-featured--block-1.html.twig" %}#}
                     {{ drupal_view('events_featured', 'block_1') }}
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                {% if dashboard_content.announcements %}
+                    {{ dashboard_content.announcements }}
+                {% endif %}
                 </div>
             </div>
         </div>
-        <div class="col-3">
-            {# Print the user's roles#}
-            {% for user_role in user.roles %}
-                User's Role: {{ user_role }}<br>
-            {% endfor %}
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
     </div>
-
-

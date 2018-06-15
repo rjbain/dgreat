@@ -959,7 +959,20 @@ display:
             value: '<a class="btn btn-default" href="/node/add/favorite_link?destination=favorite-links/allapps" role="button" style="float:right"><span class="icon-plus"></span> Add Favorite Link</a>'
             format: full_html
           plugin_id: text
-      footer: {  }
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content:
+            value: '<a href="/favorite-links" class="btn">Preferences</a>'
+            format: basic_html
+          plugin_id: text
       empty: {  }
       relationships:
         gc__node:
@@ -2043,6 +2056,7 @@ display:
         group_by: false
         style: false
         row: false
+        footer: false
       relationships:
         gc__node:
           id: gc__node
@@ -2157,7 +2171,7 @@ display:
           relationship: gc__node
           group_type: group
           admin_label: ''
-          label: ''
+          label: Title
           exclude: false
           alter:
             alter_text: false
@@ -2393,17 +2407,51 @@ display:
           plugin_id: standard
       group_by: false
       style:
-        type: html_list
+        type: table
         options:
           grouping: {  }
           row_class: ''
           default_row_class: true
-          type: ul
-          wrapper_class: ''
-          class: dropdown-menu
+          override: true
+          sticky: false
+          caption: ''
+          summary: ''
+          description: ''
+          columns:
+            field_url: field_url
+            title: title
+          info:
+            field_url:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            title:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          default: '-1'
+          empty_table: false
       row:
         type: fields
         options: {  }
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content:
+            value: '<a href="/favorite-links" class="btn">Preferences</a>'
+            format: full_html
+          plugin_id: text
     cache_metadata:
       max-age: -1
       contexts:
