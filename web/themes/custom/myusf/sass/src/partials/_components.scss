@@ -17,7 +17,7 @@
 		font-size: 1.0rem;
 		font-weight: 700;
 		color: inherit;
-		line-height: 1.1;
+		line-height: 1.1rem;
 		text-transform: uppercase;
 		text-decoration: none;
 		padding-left: 0!important;
@@ -39,12 +39,12 @@
 
 			&:after {
 				 @include media-breakpoint-down(phone) {
-				 	right:-20px;
+				 	right: -20px;
 				 }
 			}
 			&:before {
 				@include media-breakpoint-down(phone) {
-				 	right:-37px;
+				 	right: -37px;
 				 }
 			}
 		}
@@ -54,12 +54,12 @@
 
 			&:after {
 				 @include media-breakpoint-down(phone) {
-				 	right:-20px;
+				 	right: -20px;
 				 }
 			}
 			&:before {
 				@include media-breakpoint-down(phone) {
-				 	right:-37px;
+				 	right: -37px;
 				 }
 			}
 		}
@@ -93,10 +93,10 @@
     }
 }
 .view-usf-news-tiles .card {
-	margin-top:20px;
+	margin-top: 20px;
 }
 .view-twitter-tiles .card {
-	margin-bottom:-10px;
+	margin-bottom: -10px;
 
 	@include media-breakpoint-down(phone) {
 		margin-bottom: 0;
@@ -108,7 +108,7 @@
     border: 0;
     border-radius: 0;
     display: inline-block;
-    height:410px;
+    height: 410px;
 
     &.green {
 		background: $green;
@@ -141,7 +141,7 @@ a.card-rollover {
     color: $white;
 
     .card-body {
-		height: 250px;
+		height: 230px;
 		width: 100%;
 
 		.card-title {
@@ -198,7 +198,7 @@ a.card-rollover {
 	    font-size: .8rem;
 		color:$white;
 		margin: 0;
-		padding-left:30px;
+		padding-left: 30px;
 		top: 0px;
 		left: 0px;
 		z-index: 2;	
@@ -211,7 +211,7 @@ a.card-rollover {
 		    display: block;
 			content: "";
 			width: 100px;
-		    height:25px;	
+		    height: 25px;	
 			top: 0px;
 		    left: 0px;
 			z-index: -1;
@@ -222,7 +222,7 @@ a.card-rollover {
 		    display: block;
 			content: "";
 		    width: 15px;
-		    height:15px;
+		    height: 15px;
 			top: 6px;
 		    left: 10px;   
 			z-index: -1;      
@@ -251,8 +251,9 @@ a.card-rollover {
     	width: 100%; 
     	display: block; 
     	background:#919194;
-    	border-radius:0;
+    	border-radius: 0;
     	margin-top: 0;
+    	object-fit: cover;
 
     	&:after {
 		    background-image: linear-gradient(to bottom,transparent 0,rgba(0,0,0,.3) 100%);
@@ -263,9 +264,7 @@ a.card-rollover {
     &:focus {
 	    color: $white!important;
 	    background: 0 0!important;
-	    /*&:after {
-		    background-image: linear-gradient(to bottom,transparent 0,rgba(0,0,0,.6) 100%);
-		}*/
+	 
 		&:after {
 	    	display: block;
 		    position: absolute;
@@ -281,6 +280,10 @@ a.card-rollover {
 
 		.diamond_link_small_white {
 		    color: $yellow!important;
+
+		    &:after {
+		    	background:$yellow;
+		    }
 		}
 	}
 
@@ -378,10 +381,6 @@ a.card-rollover {
 
         .views-row article {
             padding-left: 0!important;
-
-            /*img {
-                display: none;
-            }*/
         }
     }
 }
@@ -389,10 +388,6 @@ a.card-rollover {
 
 .pagination {
 	margin-top: .8rem;
-
-	@include media-breakpoint-down(phone) {
-	  /* margin-left: -25px;*/
-	}
 
 	.page-item a, .pager__item--next a {
 	    font-size: .85rem;
@@ -486,7 +481,7 @@ h1.js-quickedit-page-title.page-title {
 	font-size: 1.2rem;
 	font-weight: 600;
 	margin-bottom: .5rem;
-	margin-top: .3rem;
+	margin-top: 1rem;
 	line-height: 1.2rem;
 }
 
@@ -507,10 +502,108 @@ h1.js-quickedit-page-title.page-title {
 		font-weight: 600;
 		text-decoration: none;
 	}
+
+	h2 a, h3 a, h4 a, h5 a {
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
+		line-height: inherit !important;
+	}
+}
+
+.event-description {
+	padding-top: 2rem;
 }
 
 
+/* ANNOUNCEMENT -- announce detail page
+================================================ */
+
+.datetime {
+	text-transform: uppercase;
+	font-size: .75rem;
+	color: $gray_medium;
+	font-weight: 600;
+
+	&:before {
+		content: "Created On: ";
+	}
+
+}
+
+.field--name-field-announcement-tags {
+	font-size: .75rem;
+	color: $orange;
+	font-weight: 800;
+	display: inline-block;
+	margin-bottom: 2rem;
+	padding-top: 10px;
+
+	&:before {
+		content: "TAGS: ";
+	}
+}
+
+.field--name-field-announcement-tags a {
+	color: $green;
+	font-size: .9rem;
+
+}
+
+.field--name-field-announcement-audience {
+	display: none;
+}
+
+.field--name-field-featured-image img {
+	max-height: 500px;
+	max-width: 775px;
+	object-fit: cover;
+	float: left;
+}
+
+.field--type-text-with-summary {
+	clear: both;
+	padding-top: 15px;
+	max-width: 775px;
+}
+
+.field--name-field-announcement-teaser {
+	display: none;
+}
+
+.field--name-field-subtitle {
+	font-size: 1.2rem;
+	font-weight: 700 !important;
+	font-style: normal !important;
+	margin-bottom: 1.5rem;
+	padding-top: .6rem;
+	line-height: 1.1;
+	text-transform: uppercase;
+	color: $black !important;
+}
 
 
+/* ANNOUNCEMENT -- announce feeds/lists
+================================================ */
+
+.views-field.views-field-title a {
+	font-size: 1.1rem;
+	color: $green;
+	font-weight: 700;
+	text-decoration: none;
+	margin-left: 20px;
+}
+
+.views-field.views-field-field-featured-image {
+	float: left;
+}
+
+.views-field.views-field-field-announcement-teaser {
+	margin-left: 120px;
+}
+
+.views-row {
+	margin-bottom: 20px;
+	border-bottom: .5px;
+}
 
 

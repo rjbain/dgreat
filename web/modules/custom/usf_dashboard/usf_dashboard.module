@@ -56,9 +56,11 @@ function template_preprocess_usf_dashboard(&$variables) {
   $uid = \Drupal::currentUser()->id();
   $user = \Drupal\user\Entity\User::load($uid);
 
-  // Get a block
+  // Get blocks
+  $fav_links_block = \Drupal\block\Entity\Block::load('views_block__favorite_links_block');
+  $quick_links_block = \Drupal\block\Entity\Block::load('views_block__quick_links_block');
   $block = \Drupal\block\Entity\Block::load('dashboardannouncements');
-  $quick_links_block = \Drupal\block\Entity\Block::load('views_block__quick_links_block_block');
+
   // Get the events_slider view
   $display_id = 'default';
   $view_name = 'events_featured';
@@ -71,13 +73,16 @@ function template_preprocess_usf_dashboard(&$variables) {
   $variables['dashboard_content'] = array(
     "dashboard_user" => $user,
     "system_roles" => $role_objects,
-    "announcements" => \Drupal::entityTypeManager()
-      ->getViewBuilder('block')
-      ->view($block, 'full', NULL),
-    "events_slider" => $events_slider->buildRenderable($display_id),
-    "quick_links" => \Drupal::entityTypeManager()
-      ->getViewBuilder('block')
-      ->view($quick_links_block, 'full', NULL),
+      "fav_links" => \Drupal::entityTypeManager()
+          ->getViewBuilder('block')
+          ->view($fav_links_block, 'full', NULL),
+      "quick_links" => \Drupal::entityTypeManager()
+          ->getViewBuilder('block')
+          ->view($quick_links_block, 'full', NULL),
+      "events_slider" => $events_slider->buildRenderable($display_id),
+      "announcements" => \Drupal::entityTypeManager()
+          ->getViewBuilder('block')
+          ->view($block, 'full', NULL),
   );
 
 }
