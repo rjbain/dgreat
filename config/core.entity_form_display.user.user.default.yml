@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.user.user.field_user_display_name
     - field.field.user.user.field_user_group
     - field.field.user.user.user_picture
     - image.style.thumbnail
@@ -22,6 +23,14 @@ content:
     region: content
   contact:
     weight: 5
+    region: content
+  field_user_display_name:
+    weight: 32
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_user_group:
     weight: 31
