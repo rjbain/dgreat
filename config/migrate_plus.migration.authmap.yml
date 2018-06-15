@@ -8,10 +8,12 @@ field_plugin_method: null
 cck_plugin_method: null
 migration_tags:
   - 'Drupal 7'
-migration_group: default
+migration_group: users
 label: Authmap
 source:
-  plugin: authmap
+  plugin: cas_user
+  defaults:
+    provider: cas
 process:
   uid:
     -
@@ -21,8 +23,8 @@ process:
     -
       plugin: skip_on_empty
       method: row
-  provider: module
-  authname: authname
+  provider: defaults/provider
+  authname: cas_name
 destination:
   plugin: authmap
 migration_dependencies:
