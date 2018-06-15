@@ -1753,7 +1753,7 @@ display:
           exposed: true
           expose:
             operator_id: combine_op
-            label: 'Combine fields filter'
+            label: Search
             description: ''
             use_operator: false
             operator: combine_op
@@ -1805,76 +1805,8 @@ display:
           fields:
             label: label
             body: body
+            field_category: field_category
           plugin_id: combine
-        field_category_target_id:
-          id: field_category_target_id
-          table: node__field_category
-          field: field_category_target_id
-          relationship: gc__node
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_category_target_id_op
-            label: 'Category (field_category)'
-            description: ''
-            use_operator: false
-            operator: field_category_target_id_op
-            identifier: field_category_target_id
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              faculty: '0'
-              all_access: '0'
-              student: '0'
-              online_student: '0'
-              admitted_student: '0'
-              finance: '0'
-              employee: '0'
-              prehire_faculty: '0'
-              prehire_staff: '0'
-              bi_group: '0'
-              vcl_staff: '0'
-              online_intaccept: '0'
-              service_editor: '0'
-              som_ug: '0'
-              som_grad: '0'
-              as_ug: '0'
-              as_grad: '0'
-              sonhp_ug: '0'
-              sonhp_grad: '0'
-              law: '0'
-              soe: '0'
-              box_editor: '0'
-              webform_editor: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: event_category
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
         field_link_type_value:
           id: field_link_type_value
           table: node__field_link_type
@@ -2037,7 +1969,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user
         - user.permissions
       tags:
         - 'config:field.storage.node.body'
