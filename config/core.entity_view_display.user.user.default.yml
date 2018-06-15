@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.user.user.field_user_display_name
     - field.field.user.user.field_user_group
     - field.field.user.user.user_picture
     - image.style.thumbnail
@@ -16,6 +17,14 @@ targetEntityType: user
 bundle: user
 mode: default
 content:
+  field_user_display_name:
+    weight: 7
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   field_user_group:
     weight: 6
     label: above
