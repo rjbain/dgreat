@@ -48,7 +48,7 @@
 {% set body %}{{ content.body }}{% endset %}
 {% set appt %}{{ content.field_schedule_an_appointment }}{% endset %}
 
-<div {{ attributes }}>
+<div {{ attributes.addClass('quick-links-container') }}>
     {{ title_prefix }}
     {{ title_suffix }}
     <div{{ attributes.addClass(classes).setAttribute('id', 'block-myusf-contactbox') }} >
