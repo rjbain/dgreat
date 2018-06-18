@@ -1,0 +1,30 @@
+uuid: 63800d00-69f0-4765-90c0-5736e051694c
+langcode: en
+status: false
+dependencies:
+  config:
+    - views.view.favorite_links
+  module:
+    - block_visibility_groups
+    - views
+  theme:
+    - myusf
+id: views_block__favorite_links_block
+theme: myusf
+region: top_header
+weight: 0
+provider: null
+plugin: 'views_block:favorite_links-block'
+settings:
+  id: 'views_block:favorite_links-block'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: '10'
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
