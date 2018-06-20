@@ -7,7 +7,7 @@ class: Drupal\user\Plugin\migrate\User
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags:
-- 'Drupal 7'
+  - 'Drupal 7'
 migration_group: users
 label: 'User accounts'
 source:
@@ -45,10 +45,10 @@ destination:
   plugin: custom_user
 migration_dependencies:
   required:
-  - upgrade_d7_user_role
+    - upgrade_d7_user_role
   optional:
-  - upgrade_d7_field_instance
-  - upgrade_d7_file
-  - upgrade_user_picture_field_instance
-  - upgrade_user_picture_entity_display
-  - upgrade_user_picture_entity_form_display
+    - upgrade_d7_field_instance
+    - upgrade_d7_file
+    - upgrade_user_picture_field_instance
+    - upgrade_user_picture_entity_display
+    - upgrade_user_picture_entity_form_display
