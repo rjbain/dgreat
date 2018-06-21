@@ -295,148 +295,164 @@
     }
 }
 
-
-/* Paragraphs Carousel - Slideshow
+/* CAROUSELS 
 =============================================== */ 
-.carousel-control.left {
-    
-   /* background-image: -webkit-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
-        background-image: -o-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
-        background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.5)),to(rgba(0,0,0,.0001)));
-        background-image: linear-gradient(to right,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
-        background-repeat: repeat-x;*/
 
-    &:before {
-        position: absolute;
-        display: inline-block;
-        content: "";
-        width: 15px;
-        height: 15px;
-        top: 50%;
-        left: 25px;
-        z-index: 4;
-        background: url(/themes/custom/myusf/images/site/icons.svg) -40px -128px no-repeat;
-    }
-    &:after {
-        display: inline-block;
-        /*-ms-transform: rotate(45deg);
-        transform: rotate(45deg);*/
-        background: $plum;
-        width: 30px;
-        height: 200px;
-        top: 220px;
-        right: 5px;
-        position: absolute;
-        content: "";
-        border: 1px solid transparent;
-        transition: box-shadow .25s,transform .25s;
-    }
-}
+/* Paragraphs Carousel - Slideshow 
+=============================================== */
 
-.carousel-control.right {
-/*right: 0;
-        left: auto;
-        background-image: -webkit-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
-        background-image: -o-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
-        background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.0001)),to(rgba(0,0,0,.5)));
-        background-image: linear-gradient(to right,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
-        background-repeat: repeat-x;
-        */    
+a.left.carousel-control {
+    &:hover,
+    &:focus {
+        &:before {
+            position: absolute;
+            display: inline-block;
+            content: "";
+            width: 15px;
+            height: 15px;
+            top: 49%;
+            left: 17px;
+            z-index: 1;
+            background: url(/themes/custom/myusf/images/site/icons.svg) -80px -128px no-repeat;
 
-    &:before {
-        position: absolute;
-        display: inline-block;
-        content: "";
-        width: 15px;
-        height: 15px;
-        top: 50%;
-        right: 25px;
-        z-index: 4;
-        background: url(/themes/custom/myusf/images/site/icons.svg) -60px -128px no-repeat;
+            @include media-breakpoint-only (tablet) {
+                top: 47%;
+            }
+            @include media-breakpoint-down(phone) {
+                top: 31%;
+                left: 14px;
+            }
+        }
+        &:after {
+            position: absolute;
+            content: "";       
+            width: 50px;
+            height: 50px;
+            top: 45%;
+            background: transparentize($black, .2);
+
+            @include media-breakpoint-only (tablet) {
+                top: 41%;
+            }
+            @include media-breakpoint-down(phone) {
+               top: 26%;
+               width: 40px;
+               height: 40px;
+            }
+        }
     }
-    &:after {
-        display: inline-block;
-        -ms-transform: rotate(45deg);
-        transform: rotate(45deg);
-        background: #FDBB30;
-        width: 45px;
-        height: 45px;
-        top: 220px;
-        right: 23px;
+
+    .glyphicon-chevron-left {
+        &:before {
+            position: absolute;
+            content: "";
+            width: 50px;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
     }
 }
 
-.carousel-control {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 30px;
-    font-size: 20px;
-    color: #fff;
-    text-align: center;
-    text-shadow: 0 1px 2px rgba(0,0,0,.6);
-    background-color: rgba(0,0,0,0);
-    /*filter: alpha(opacity=50);*/
-   
+
+
+a.right.carousel-control {
+    &:hover,
+    &:focus {
+        &:before {
+            position: absolute;
+            display: inline-block;
+            content: "";
+            width: 15px;
+            height: 15px;
+            top: 49%;
+            right: 12px;
+            z-index: 1;
+            background: url(/themes/custom/myusf/images/site/icons.svg) -100px -128px no-repeat;
+
+            @include media-breakpoint-only (tablet) {
+                top: 47%;
+            }
+            @include media-breakpoint-down(phone) {
+                top: 31%;
+                right: 8px;
+            }
+        }
+        &:after {
+           position: absolute;
+            content: "";
+            width: 50px;
+            height: 50px;
+            top: 45%;
+            right: 0;
+            background: transparentize($black, .2);
+
+            @include media-breakpoint-only (tablet) {
+                top: 41%;
+            }
+            @include media-breakpoint-down(phone) {
+                top: 26%;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+    .glyphicon-chevron-right {   
+        &:after {
+            position: absolute;
+            content: "";        
+            width: 50px;
+            height:100%;
+            top: 0;
+            right: 0;
+        }
+    }  
 }
 
-a.carousel-control:hover {
-    background: $plum;
-}
+.paragraph--type--bp-carousel {
+    background: $gray;
 
-.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
-    @include media-breakpoint-up(tablet) {
-        margin-right: -10px;
+    .field--name-field-caption {
+        font-size: .9rem;
+        font-style: italic;        
+        line-height: 1.3rem;
+        color: $white;
+        background:$gray;
+        width: 100%;
+        padding: 15px 5% 15px;        
+        margin-left: auto;
+        margin-right: auto;      
+    }
+    .field--type-image {
+        float: unset!important;
+        margin-right: 0;
+
+        img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            margin: auto;
+        }
+    }
+    .carousel-indicators {
+        width:100%;
+        top: 100%;
+        bottom: unset;
+        padding-bottom: 10px;        
+        margin-left: 0;
+
+        li {
+            width: 12px;
+            height: 12px;
+            border-radius: 7px;
+            background: transparentize($black, .6);
+        }
+
+        .active {
+            background-color: $black!important;
+        }
     }
 }
-
-.carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev {
-    @include media-breakpoint-up(tablet) {
-        margin-left: -10px;
-    }
-}
-
-.carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev {
-    
-        
-    
-} 
-.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
-  
-}
-
-.glyphicon {
-    position: relative;
-    top: 1px;
-    display: inline-block;
-    font-family: 'Glyphicons Halflings';
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-/* Bootstrap
-.carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev {
-    left: 50%;
-    margin-left: -10px;
-}
-.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
-    right: 50%;
-    margin-right: -10px;
-}
-
-.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next, .carousel-control .icon-prev {
-    position: absolute;
-    top: 50%;
-    z-index: 5;
-    display: inline-block;
-    margin-top: -10px;
-}
-*/
 
 .paragraph.paragraph--width--medium.paragraph--type--bp-carousel>.carousel-inner {
     @include media-breakpoint-up(tablet) {
@@ -445,18 +461,17 @@ a.carousel-control:hover {
         margin-left: 16.66666667%;
     }
 }
-.paragraph.paragraph--width--full.paragraph--type--bp-carousel>.carousel-inner, .paragraph.paragraph--width--medium.paragraph--type--bp-carousel>.carousel-inner, .paragraph.paragraph--width--narrow.paragraph--type--bp-carousel>.carousel-inner, .paragraph.paragraph--width--tiny.paragraph--type--bp-carousel>.carousel-inner, .paragraph.paragraph--width--wide.paragraph--type--bp-carousel>.carousel-inner {
+.paragraph.paragraph--width--full.paragraph--type--bp-carousel>.carousel-inner, 
+.paragraph.paragraph--width--medium.paragraph--type--bp-carousel>.carousel-inner, 
+.paragraph.paragraph--width--narrow.paragraph--type--bp-carousel>.carousel-inner, 
+.paragraph.paragraph--width--tiny.paragraph--type--bp-carousel>.carousel-inner, 
+.paragraph.paragraph--width--wide.paragraph--type--bp-carousel>.carousel-inner {
     position: relative;
     min-height: 1px;
     padding-left: 0!important;
     padding-right: 0!important;
 }
 
-.carousel-indicators {
-    @include media-breakpoint-up(tablet) {
-        bottom: 20px;
-    }
-}
 
 /* EVENTS Carousel
 =============================================== */ 
@@ -478,14 +493,16 @@ a.carousel-control:hover {
     &:before {
         width: 10px;
         height: 14px;
-        top: 236px;
+        /*top: 236px;*/
+        top: 52.5%;
         left: 41px;
 
     }
     &:after {
         width: 45px;
         height: 45px;
-        top: 220px;
+        /*top: 220px;*/
+        top: 50%;
         left: 25px;
     }
     &:hover,
@@ -535,7 +552,8 @@ a.carousel-control:hover {
     &:before {
         width: 10px;
         height: 14px;
-        top: 236px;
+        /*top: 236px;*/
+        top: 52.5%;
         right: 38px;
 
     } 
@@ -543,7 +561,8 @@ a.carousel-control:hover {
     &:after {
         width: 45px;
         height: 45px;
-        top: 220px;
+        /*top: 220px;*/
+        top: 50%;
         right: 23px;
     }
     
