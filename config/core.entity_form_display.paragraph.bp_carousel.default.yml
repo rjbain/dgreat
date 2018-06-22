@@ -17,36 +17,22 @@ targetEntityType: paragraph
 bundle: bp_carousel
 mode: default
 content:
-  bp_background:
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
   bp_slide_content:
     type: entity_reference_paragraphs
-    weight: 3
+    weight: 0
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: closed
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: ''
     third_party_settings: {  }
-    region: content
-  bp_slide_interval:
-    weight: 2
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  bp_width:
-    weight: 1
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
     region: content
 hidden:
+  bp_background: true
+  bp_slide_interval: true
+  bp_width: true
   created: true
   status: true
   uid: true
