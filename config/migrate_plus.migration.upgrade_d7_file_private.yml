@@ -1,0 +1,42 @@
+uuid: b1f6cdfd-1a28-4689-b276-496b15eea87f
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_file_private
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: dgreat_files
+label: 'Private files'
+source:
+  plugin: d7_file
+  scheme: private
+  constants:
+    source_base_path: https://live-usfi.pantheonsite.io
+process:
+  fid: fid
+  filename: filename
+  source_full_path:
+    -
+      plugin: concat
+      delimiter: /
+      source:
+        - constants/source_base_path
+        - filepath
+  uri:
+    plugin: file_copy
+    source:
+      - '@source_full_path'
+      - uri
+  filemime: filemime
+  status: status
+  created: timestamp
+  changed: timestamp
+  uid: uid
+destination:
+  plugin: 'entity:file'
+migration_dependencies:
+  required: {  }
+  optional: {  }
