@@ -8,7 +8,6 @@ dependencies:
     - field.field.paragraph.bp_simple.bp_width
     - paragraphs.paragraphs_type.bp_simple
   module:
-    - options
     - text
 _core:
   default_config_hash: bxN1tJcdaoRlv2G7dZgN_nfUy4rsdOmqgPcs04HzIdc
@@ -17,27 +16,15 @@ targetEntityType: paragraph
 bundle: bp_simple
 mode: default
 content:
-  bp_background:
-    weight: 0
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: list_key
-    region: content
   bp_text:
-    weight: 2
+    weight: 0
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
-  bp_width:
-    weight: 1
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: list_key
-    region: content
 hidden:
+  bp_background: true
+  bp_width: true
   created: true
   uid: true

@@ -9,7 +9,6 @@ dependencies:
     - paragraphs.paragraphs_type.bp_columns
   module:
     - entity_reference_revisions
-    - options
 _core:
   default_config_hash: wIDWPSouhITkH6QV8vXzWJ-cbN-dEYeBvMGBS0jV4x0
 id: paragraph.bp_columns.default
@@ -17,29 +16,17 @@ targetEntityType: paragraph
 bundle: bp_columns
 mode: default
 content:
-  bp_background:
-    weight: 0
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: list_key
-    region: content
   bp_column_content:
     type: entity_reference_revisions_entity_view
-    weight: 2
+    weight: 0
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
     region: content
-  bp_width:
-    weight: 1
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: list_key
-    region: content
 hidden:
+  bp_background: true
+  bp_width: true
   created: true
   uid: true
