@@ -7,7 +7,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 
 /**
- * USF Dashboard block form
+ * USF Dashboard block form.
  */
 class USFDashboardBlockForm extends FormBase {
 
@@ -25,27 +25,27 @@ class USFDashboardBlockForm extends FormBase {
     // How many paragraphs?
     // $options = new array();
     $options = array_combine(range(1, 10), range(1, 10));
-    $form['paragraphs'] = array(
+    $form['paragraphs'] = [
       '#type' => 'select',
       '#title' => $this->t('Paragraphs'),
       '#options' => $options,
       '#default_value' => 4,
       '#description' => $this->t('How many?'),
-    );
+    ];
 
     // How many phrases?
-    $form['phrases'] = array(
+    $form['phrases'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Phrases'),
       '#default_value' => '20',
       '#description' => $this->t('Maximum per paragraph'),
-    );
+    ];
 
     // Submit.
-    $form['submit'] = array(
+    $form['submit'] = [
       '#type' => 'submit',
       '#value' => $this->t('Generate'),
-    );
+    ];
 
     return $form;
   }
@@ -74,10 +74,11 @@ class USFDashboardBlockForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $form_state->setRedirect(
       'usf_dashboard.generate',
-      array(
+      [
         'paragraphs' => $form_state->getValue('paragraphs'),
         'phrases' => $form_state->getValue('phrases'),
-      )
+      ]
     );
   }
+
 }

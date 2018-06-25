@@ -159,12 +159,13 @@ class DgreatGroupBatch {
     }
     else {
       $error_operation = reset($operations);
-      drupal_set_message(t('An error occurred while processing @operation with arguments : @args', array('@operation' => $error_operation[0], '@args' => print_r($error_operation[0], TRUE))), 'status', TRUE);
+      drupal_set_message(t('An error occurred while processing @operation with arguments : @args', ['@operation' => $error_operation[0], '@args' => print_r($error_operation[0], TRUE)]), 'status', TRUE);
     }
 
     // Redirect back to group page.
-    //$url = '/group/' . $group->id();
+    // $url = '/group/' . $group->id();
     $response = new RedirectResponse($results['path']);
     $response->send();
   }
+
 }

@@ -74,7 +74,6 @@ class UserWeightsSortFilter extends FilterPluginBase implements ContainerFactory
     unset($form["expose_button"]);
   }
 
-
   /**
    * {@inheritdoc}
    */

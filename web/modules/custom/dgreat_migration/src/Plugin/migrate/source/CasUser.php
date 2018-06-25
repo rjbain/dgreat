@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: dustinleblanc
- * Date: 6/14/18
- * Time: 10:26 AM
- */
 
 namespace Drupal\dgreat_migration\Plugin\migrate\source;
-
 
 use Drupal\externalauth\Plugin\migrate\source\Authmap;
 

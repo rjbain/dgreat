@@ -52,5 +52,4 @@ class USFDashboardBlock extends BlockBase {
     $this->setConfigurationValue('usf_dashboard_block_settings', $form_state->getValue('usf_dashboard_block_settings'));
   }
 
-
 }

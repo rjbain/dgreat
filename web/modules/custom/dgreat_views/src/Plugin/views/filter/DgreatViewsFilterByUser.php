@@ -12,7 +12,6 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\user\Entity\User;
 
-
 /**
  * Filter by User + Default.
  *
@@ -70,7 +69,6 @@ class DgreatViewsFilterByUser extends FilterPluginBase implements ContainerFacto
     );
   }
 
-
   /**
    * {@inheritdoc}
    */
@@ -78,7 +76,6 @@ class DgreatViewsFilterByUser extends FilterPluginBase implements ContainerFacto
     // Remove the expose checkbox.
     unset($form["expose_button"]);
   }
-
 
   /**
    * {@inheritdoc}
@@ -138,4 +135,5 @@ class DgreatViewsFilterByUser extends FilterPluginBase implements ContainerFacto
       $this->query->addWhere(0, 0);
     }
   }
+
 }

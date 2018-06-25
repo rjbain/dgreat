@@ -6,6 +6,9 @@ use Drupal\group\Entity\Group;
 use Drupal\node\Entity\Node;
 use Drupal\user\Entity\User;
 
+/**
+ *
+ */
 class DgreatGroup {
 
   /**
@@ -55,8 +58,7 @@ class DgreatGroup {
       }
     }
 
-
-    // Fail safe return
+    // Fail safe return.
     return FALSE;
   }
 
@@ -83,7 +85,7 @@ class DgreatGroup {
       }
     }
 
-    // Fail safe return
+    // Fail safe return.
     return FALSE;
   }
 
@@ -93,7 +95,7 @@ class DgreatGroup {
    * @return bool
    */
   public function addQuickLinkGroups() {
-    // Grab the quick link field
+    // Grab the quick link field.
     $quick_link = $this->entity->get('field_link_type')->getValue();
 
     if (isset($quick_link[0]['value']) && $quick_link[0]['value'] == 'quick') {
@@ -110,7 +112,7 @@ class DgreatGroup {
         return FALSE;
       }
 
-      // Apply the groups
+      // Apply the groups.
       $this->entity->set('field_group_audience', $gids);
       $this->entity->save();
 
@@ -221,7 +223,8 @@ class DgreatGroup {
       }
     }
 
-    // Fail safe return
+    // Fail safe return.
     return FALSE;
   }
+
 }

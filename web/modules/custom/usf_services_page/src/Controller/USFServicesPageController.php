@@ -1,11 +1,11 @@
 <?php
+
 namespace Drupal\usf_services_page\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\block\Entity\Block;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-
 
 /**
  * Provides route responses for the Example module.
@@ -51,7 +51,7 @@ class USFServicesPageController extends ControllerBase {
       ->getViewBuilder('block')
       ->view($block);
 
-    // Loads the audience facet
+    // Loads the audience facet.
     $block = Block::load('audience');
     $render['audience'] = $this->entityTypeManager
       ->getViewBuilder('block')
@@ -70,7 +70,7 @@ class USFServicesPageController extends ControllerBase {
    *   A simple renderable array.
    */
   public function pageHowDoI() {
-    // Loads the how do i page
+    // Loads the how do i page.
     $block = Block::load('views_block__services_block_2');
     $render['howdoi'] = $this->entityTypeManager
       ->getViewBuilder('block')
@@ -93,4 +93,5 @@ class USFServicesPageController extends ControllerBase {
       '#page' => $render,
     ];
   }
+
 }
