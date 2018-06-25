@@ -1,13 +1,12 @@
 <?php
-/**
- * @file
- * Contains Drupal\myusf_subnav_block\Plugin\Derivative\MyUSFSubnavBlock.
- */
+
 namespace Drupal\demo\Plugin\Derivative;
+
 use Drupal\Component\Plugin\Derivative\DeriverBase;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Plugin\Discovery\ContainerDeriverInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+
 /**
  * Provides block plugin definitions for menu blocks.
  *
@@ -23,6 +22,7 @@ class MyUSFSubnavBlock extends DeriverBase implements ContainerDeriverInterface 
       $container->get('entity.manager')->getStorage('node')
     );
   }
+
   /**
    * {@inheritdoc}
    */
@@ -34,4 +34,5 @@ class MyUSFSubnavBlock extends DeriverBase implements ContainerDeriverInterface 
     }
     return $this->derivatives;
   }
+
 }

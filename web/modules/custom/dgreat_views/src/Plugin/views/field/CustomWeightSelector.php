@@ -70,10 +70,13 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
     );
   }
 
+  /**
+   *
+   */
   protected function defineOptions() {
     $options = parent::defineOptions();
 
-    $options['range'] = array('default' => 20);
+    $options['range'] = ['default' => 20];
 
     return $options;
   }
@@ -84,7 +87,7 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
   public function buildOptionsForm(&$form, FormStateInterface $form_state) {
     parent::buildOptionsForm($form, $form_state);
 
-    $form['range'] = array(
+    $form['range'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Range'),
       '#description' => $this->t('The range of weights available to select. For
@@ -92,7 +95,7 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
         and 20.'),
       '#default_value' => $this->options['range'],
       '#size' => 5,
-    );
+    ];
   }
 
   /**
@@ -102,15 +105,18 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
     return ViewsRenderPipelineMarkup::create('<!--form-item-' . $this->options['id'] . '--' . $this->view->row_index . '-->');
   }
 
-  function viewsForm(array &$form, FormStateInterface $form_state) {
+  /**
+   *
+   */
+  public function viewsForm(array &$form, FormStateInterface $form_state) {
     // The view is empty, abort.
     if (empty($this->view->result)) {
       return;
     }
 
-    $form[$this->options['id']] = array(
+    $form[$this->options['id']] = [
       '#tree' => TRUE,
-    );
+    ];
 
     $options = WeightSelectorWidget::rangeOptions($this->options['range']);
 
@@ -121,13 +127,12 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
       ->execute()
       ->fetchAll();
 
-
     $result = [];
     foreach ($results as $r) {
       $result[$r->entity_id] = $r->weight;
     }
 
-    // At this point, the query has already been run, so we can access the results
+    // At this point, the query has already been run, so we can access the results.
     foreach ($this->view->result as $row_index => $row) {
       $entity = $row->_entity;
 
@@ -136,42 +141,44 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
         $weight = (isset($nid[0]["target_id"]))
           ? $result[$nid[0]["target_id"]] : 0;
 
-        $form[$this->options['id']][$row_index]['weight'] = array(
+        $form[$this->options['id']][$row_index]['weight'] = [
           '#type' => 'select',
-          '#options' =>  $options,
+          '#options' => $options,
           '#default_value' => $weight,
-          '#attributes' => array('class' => array('weight-selector')),
-        );
+          '#attributes' => ['class' => ['weight-selector']],
+        ];
       }
       else {
-        $form[$this->options['id']][$row_index]['weight'] = array(
+        $form[$this->options['id']][$row_index]['weight'] = [
           '#type' => 'select',
-          '#options' =>  $options,
+          '#options' => $options,
           '#default_value' => $this->getValue($row),
-          '#attributes' => array('class' => array('weight-selector')),
-        );
+          '#attributes' => ['class' => ['weight-selector']],
+        ];
       }
 
-      $form[$this->options['id']][$row_index]['entity'] = array(
+      $form[$this->options['id']][$row_index]['entity'] = [
         '#type' => 'value',
         '#value' => $entity,
-      );
+      ];
     }
 
-    $form['views_field'] = array(
+    $form['views_field'] = [
       '#type' => 'value',
       '#value' => $this->field,
-    );
+    ];
 
     $form['#cache'] = ['max-age' => 0];
 
     $form['#action'] = \Drupal::request()->getRequestUri();
   }
 
-  function viewsFormSubmit(array &$form, FormStateInterface $form_state) {
+  /**
+   *
+   */
+  public function viewsFormSubmit(array &$form, FormStateInterface $form_state) {
     $field_name = $form_state->getValue('views_field');
     $rows = $form_state->getValue($field_name);
-
 
     foreach ($rows as $row) {
       $entity = $row['entity'];

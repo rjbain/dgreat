@@ -11,7 +11,7 @@ use Drupal\user\RoleInterface;
  * Implements hook_install().
  */
 function usf_dashboard_install() {
-  user_role_change_permissions(RoleInterface::ANONYMOUS_ID, array(
+  user_role_change_permissions(RoleInterface::ANONYMOUS_ID, [
     'USF Dashboard' => TRUE,
-  ));
+  ]);
 }

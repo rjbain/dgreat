@@ -31,17 +31,17 @@ class GroupUser extends User {
     // I don't like the fact I need to run two sql queries.
     // However it works for now @todo make this happier.
     $query = $this->select('og_membership', 'og')
-                  ->fields('og', ['gid'])
-                  ->condition('etid', $uid)
-                  ->condition('entity_type', 'user')
-                  ->execute()
-                  ->fetchAll();
+      ->fields('og', ['gid'])
+      ->condition('etid', $uid)
+      ->condition('entity_type', 'user')
+      ->execute()
+      ->fetchAll();
 
     $query2 = $this->select('og_users_roles', 'our')
-                   ->fields('our', ['gid'])
-                   ->condition('uid', $uid)
-                   ->execute()
-                   ->fetchAll();
+      ->fields('our', ['gid'])
+      ->condition('uid', $uid)
+      ->execute()
+      ->fetchAll();
 
     // Set our array of values.
     $gids = [];
@@ -59,23 +59,23 @@ class GroupUser extends User {
     // Set the property to use in the custom_user destination.
     $row->setDestinationProperty('gids', $gids);
 
-
     return parent::prepareRow($row);
   }
 
   /**
    * Determine if this row's name matches an existing user.
+   *
    * @param string $name
    *
    * @return bool
    */
   private function userExists($name) {
     $result = \Drupal::database()->select('users_field_data', 'ufd')
-                       ->fields('ufd', ['name'])
-                       ->condition('name', $name, '=')
-                       ->execute()
-                       ->fetch()
-                       ->expression >= 1;
+      ->fields('ufd', ['name'])
+      ->condition('name', $name, '=')
+      ->execute()
+      ->fetch()
+      ->expression >= 1;
 
   }
 

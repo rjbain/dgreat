@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Drupal\dgreat_migration\EventSubscriber;
 
 use Drupal\migrate\Event\MigrateEvents;
@@ -56,4 +55,5 @@ class PostMigrationSubscriber implements EventSubscriberInterface {
       $add = (new DgreatGroup($user))->flagUserDefaultContent('field_user_group');
     }
   }
+
 }

@@ -55,7 +55,8 @@ function dgreat_migration_migrate_prepare_row(Row $row, MigrateSourceInterface $
         'og_membership',
         'oa_wizard',
         'message',
-        'paragraphs_item', // @todo why is this failing?
+      // @todo why is this failing?
+        'paragraphs_item',
         'message_type'
       ];
 
@@ -156,7 +157,7 @@ function dgreat_migration_migrate_prepare_row(Row $row, MigrateSourceInterface $
       ];
 
       // Fields to skip.
-      $field_skip= [
+      $field_skip = [
         'og_group_ref'
       ];
 
@@ -173,7 +174,6 @@ function dgreat_migration_migrate_prepare_row(Row $row, MigrateSourceInterface $
         throw new MigrateSkipRowException('', TRUE);
       }
 
-
       break;
 
     // All cases above this are temporary and you need to change them out
@@ -181,10 +181,10 @@ function dgreat_migration_migrate_prepare_row(Row $row, MigrateSourceInterface $
 
     case 'upgrade_d7_node_oa_group':
     case 'upgrade_d7_node_oa_space':
-      // Slugify the title then set that as the alias for the group
+      // Slugify the title then set that as the alias for the group.
       $title = $row->getSourceProperty('title');
       $alias = Html::cleanCssIdentifier($title);
-      $alias = '/'. strtolower($alias);
+      $alias = '/' . strtolower($alias);
       $row->setSourceProperty('alias', $alias);
 
       break;

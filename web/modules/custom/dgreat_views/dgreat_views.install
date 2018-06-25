@@ -1,9 +1,9 @@
 <?php
+
 /**
  * @file
  * Contains dgreat_views.install.
  */
-
 
 /**
  * Implements hook_schema().
@@ -92,7 +92,7 @@ function dgreat_views_update_8002() {
     'primary key' => ['entity_id', 'uid'],
   ];
 
-  // Check and add our new table;
+  // Check and add our new table;.
   $schema = \Drupal::database()->schema();
   if (!$schema->tableExists('user_weights')) {
     $schema->createTable('user_weights', $user_weights);
@@ -119,7 +119,7 @@ function dgreat_views_update_8003() {
     'default' => '',
   ];
 
-  // Check and add our new fields;
+  // Check and add our new fields;.
   $schema = \Drupal::database()->schema();
   if (!$schema->fieldExists('user_weights', 'view_name')) {
     $schema->addField('user_weights', 'view_name', $view_name);
@@ -178,14 +178,13 @@ function dgreat_views_update_8004() {
     'primary key' => ['id'],
   ];
 
-  // Check and add our new table;
+  // Check and add our new table;.
   $schema = \Drupal::database()->schema();
   if ($schema->tableExists('user_weights')) {
     $schema->dropTable('user_weights');
     $schema->createTable('user_weights', $user_weights);
   }
 }
-
 
 /**
  * Drop the table again and rebuild it.
@@ -229,11 +228,10 @@ function dgreat_views_update_8005() {
     'primary key' => ['id'],
   ];
 
-  // Check and add our new table;
+  // Check and add our new table;.
   $schema = \Drupal::database()->schema();
   if ($schema->tableExists('user_weights')) {
     $schema->dropTable('user_weights');
     $schema->createTable('user_weights', $user_weights);
   }
 }
-

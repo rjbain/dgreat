@@ -2,9 +2,8 @@
 
 namespace Drupal\dgreat_group;
 
-
 /**
- * Class DgreatGroupUtility
+ * Class DgreatGroupUtility.
  *
  * Utility function pass the original group defaults around.
  * Needed this since D8 can seem to pass custom stuff between handlers now.
@@ -35,4 +34,5 @@ class DgreatGroupUtility {
   public static function getOriginal() {
     return self::$nids;
   }
+
 }

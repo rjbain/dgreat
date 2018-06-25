@@ -5,6 +5,9 @@ namespace Drupal\usf_dashboard\Form;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
+/**
+ *
+ */
 class USFDashboardForm extends ConfigFormBase {
 
   /**
@@ -24,19 +27,19 @@ class USFDashboardForm extends ConfigFormBase {
     $config = $this->config('usf_dashboard.settings');
 
     // Page title field.
-    $form['page_title'] = array(
+    $form['page_title'] = [
       '#type' => 'textfield',
       '#title' => $this->t('USF Dashboard page title:'),
       '#default_value' => $config->get('usf_dashboard.page_title'),
       '#description' => $this->t('Give it a title.'),
-    );
+    ];
     // Source text field.
-    $form['block_text'] = array(
+    $form['block_text'] = [
       '#type' => 'textarea',
       '#title' => $this->t('Block text for the dashboard block:'),
       '#default_value' => $config->get('usf_dashboard.block_text'),
       '#description' => $this->t('Enter something.'),
-    );
+    ];
 
     return $form;
   }

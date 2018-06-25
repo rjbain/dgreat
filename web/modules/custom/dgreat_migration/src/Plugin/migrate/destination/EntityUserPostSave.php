@@ -23,7 +23,6 @@ class EntityUserPostSave extends EntityUser {
    */
   private $gids;
 
-
   /**
    * {@inheritdoc}
    */
@@ -75,7 +74,6 @@ class EntityUserPostSave extends EntityUser {
     // Save the entity as in EntityContentBase::save().
     $entity->save();
 
-
     // Let's go through Each Group and add users.
     foreach ($this->gids as $gid) {
       if ($gid !== NULL) {
@@ -86,7 +84,8 @@ class EntityUserPostSave extends EntityUser {
       }
     }
 
-    // return the entity ids as in EntityContentBase::save().
+    // Return the entity ids as in EntityContentBase::save().
     return [$entity->id()];
   }
+
 }
