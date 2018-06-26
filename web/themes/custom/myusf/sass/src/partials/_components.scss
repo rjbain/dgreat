@@ -15,20 +15,20 @@
 	.panel-title a {
 		font-family: $base-font;
 		font-size: 1.0rem;
-		font-weight: 700;
+		/*font-weight: 700;*/
 		color: inherit;
-		line-height: 1.1rem;
-		text-transform: uppercase;
+		line-height: 1.3rem;
+		/*text-transform: uppercase;*/
 		text-decoration: none;
 		padding-left: 0!important;
+		padding-right: 40px!important;
     	margin: 0 0 .5rem 0;
 	}
 }
 
 .paragraph--bp-accordion--container {
-    padding-top: 0;
+	padding-top: 0;
 }
-
 .paragraph.paragraph--type--bp-accordion {
 
 	.panel-heading {
@@ -36,36 +36,54 @@
 		a:focus {
 			background: transparent;
 		}
-
-	 	a[aria-expanded=false]{
-			@include diamond_button(-240px, -150px, 45deg, $yellow, transparent, $yellow);
-
+		
+	 	a[aria-expanded=false]{	
+	 		color:$black; 
+	 		opacity: .6;		
 			&:after {
-				 @include media-breakpoint-down(phone) {
-				 	right: -20px;
-				 }
+				content: "";
+				position: relative;   
+				width: 20px;
+			    height: 20px;
+			    top: 3px;
+			    right: -30px;
+				transform: rotate(90deg);
+			    background: url(/themes/custom/myusf/images/site/icons.svg) -60px -126px no-repeat;
+
+
+			    
+				/*width: 12px;
+				height: 12px;
+				background: url(/themes/custom/myusf/images/site/icons.svg) -239px -142px no-repeat;*/
 			}
-			&:before {
-				@include media-breakpoint-down(phone) {
-				 	right: -37px;
-				 }
+			&:hover,
+			&:focus {
+				opacity: 1;
 			}
 		}
 
-		a[aria-expanded=true]{
-			@include diamond_button(-240px, -170px, 225deg, $yellow, $yellow, $yellow);
-
+		a[aria-expanded=true]{	
+			color:$black; 
+	 		opacity: .6;
 			&:after {
-				 @include media-breakpoint-down(phone) {
-				 	right: -20px;
-				 }
+				content: "";
+				position: relative;    
+				width: 20px;
+			    height: 20px;
+			    top: 4px;
+			    right: -30px;
+				transform: rotate(90deg);
+			    background: url(/themes/custom/myusf/images/site/icons.svg) -40px -126px no-repeat;
+				/*width: 12px;
+				height: 12px;
+				background: url(/themes/custom/myusf/images/site/icons.svg) -259px -142px no-repeat;*/
 			}
-			&:before {
-				@include media-breakpoint-down(phone) {
-				 	right: -37px;
-				 }
+			&:hover,
+				&:focus {
+				opacity: 1;
 			}
 		}
+		
 	}
 }
 
