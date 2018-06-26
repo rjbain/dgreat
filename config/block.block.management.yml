@@ -1,27 +1,27 @@
-uuid: df960daa-fc54-4a22-af2d-fee4f8bfa955
+uuid: 2095b80d-c26b-4256-b851-8c154e1e5d80
 langcode: en
 status: true
 dependencies:
   config:
-    - system.menu.student-life
+    - system.menu.management
   module:
     - block_visibility_groups
     - system
   theme:
     - myusf
-id: studentlife
+id: management
 theme: myusf
 region: sidebar_first
 weight: 0
 provider: null
-plugin: 'system_menu_block:student-life'
+plugin: 'system_menu_block:management'
 settings:
-  id: 'system_menu_block:student-life'
-  label: 'Student Life'
+  id: 'system_menu_block:management'
+  label: Management
   provider: system
   label_display: '0'
   level: 1
-  depth: 1
+  depth: 0
 visibility:
   condition_group:
     id: condition_group
@@ -30,6 +30,6 @@ visibility:
     context_mapping: {  }
   request_path:
     id: request_path
-    pages: "/student-life\r\n"
+    pages: "/management\r\n/management/*"
     negate: false
     context_mapping: {  }

@@ -512,11 +512,12 @@ nav.tabs {
 
 	ul.nav {
 		padding-top:0;
+		margin-left: 0;
 
 		li {
 			width: 230px;
 			list-style-type: none;
-			border-bottom: 1px solid #DDDAD1;
+			border-bottom: 1px solid $light_gray;
 			padding-bottom: 0;
 			
 			@include media-breakpoint-down(tablet) { 
@@ -526,9 +527,9 @@ nav.tabs {
 			@include media-breakpoint-down(landscape_phone) { 
 				width: 100%;
 			}
-			&:first-of-type {
+			/*&:first-of-type {
 				margin-top: -8px;
-			}
+			}*/
 			&:last-of-type {
 				border: 0;
 			}
@@ -765,9 +766,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 
 .quick-links-container{
 	border: 5px solid $green!important;
-	padding-top: 15px;
-	padding-right: 15px;
-	padding-left: 15px;
+	padding: 15px!important;
 
 
 	@include media-breakpoint-down(landscape_phone) {  
@@ -832,10 +831,6 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 
 /* FOOTER
 =================================================*/
-nav#block-myusf-footer {
-    position: relative;
-}
-
 .site-footer {
 	background:$green;
 	padding: 35px 0 30px!important;
@@ -902,13 +897,14 @@ nav#block-myusf-footer {
     padding-top: 25px;
 
 	@include media-breakpoint-up(tablet) {
-		display: flex;
-    	margin: 0 auto!important;
+		display: flex;    	
     	columns: unset;
     	padding-top: 0;
+    	margin: 0 auto 0 15px!important;
 	}
 	@include media-breakpoint-only(tablet) {
 		justify-content: center;
+		margin: 0 auto!important;
 	}
 
 	@include media-breakpoint-up(large_desktop) {
@@ -917,12 +913,12 @@ nav#block-myusf-footer {
 }
 
 a.logo {
-    position: absolute;
+    position: relative;
     display: block;
     overflow: hidden;
     white-space: nowrap;
     width: 325px;
-    margin: 10px auto;
+    /*margin: 10px auto;*/
 
     @include media-breakpoint-down(tablet) {
     	position: relative;
