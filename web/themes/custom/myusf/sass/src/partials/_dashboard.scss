@@ -4,19 +4,10 @@
 /* Favorite Apps and Personal Quick Links
 ===================================================*/ 
 .usf_dash, #views-form-favorite-links-my-links {
-	table, caption, tbody, tfoot, thead, tr, th, td, tr:nth-child(2n+1), tr:nth-child(2n) {
-	    margin: unset;
-	    padding: unset;
-	    border: unset;
-	    outline: unset;
-	    font-size: unset;
-	    vertical-align: unset;
-	    background: unset;
-	    color: $black;
-	}
+	@include clearTableFormat;
 
 	table {
-	    margin-left: 15px;
+	    /*margin-left: 15px;*/
 	    margin-right: 15px;    
 
 	    a{
@@ -226,6 +217,8 @@ aside.section div:first-child {
 #views-form-favorite-links-my-links {
 	table {
 			background: transparentize($light_gray, .7);
+			margin-top: 10px;
+			margin-bottom: 20px;
 
 			thead {
 				display: none;
@@ -272,9 +265,120 @@ aside.section div:first-child {
 	    margin-top: 20px;
 	}
 
+	button.link.tabledrag-toggle-weight {
+		font-size: .85rem;
+		color: $green;
+		font-weight: 600;
+		text-decoration: underline;
+		border: 0;
+
+		&:hover,
+		&:focus {
+			color:$black!important;
+			text-decoration: none;
+			background-color: transparentize( $yellow, 0.8);
+		}
+	}
 }
 
 
+
+/*  Quick Links Manage page
+===================================================*/ 
+div.view-quick-links.view-id-quick_links {
+	
+
+	#views-form-quick-links-all-apps {
+		background: unset;
+		table{
+			
+			border: 5px solid $light_gray;
+			color: $turquoise;
+			margin-top: 10px;
+			margin-bottom: 20px;
+
+			tr:first-child td {
+				padding-top: 21px!important;
+			}
+			tr:last-child td {
+				padding-bottom: 12px!important;
+			}
+			tr:nth-child(2n+1) {
+				background: transparentize($light_gray, .7);
+			}
+		}
+	}
+
+	#views-form-quick-links-my-links {		
+		width: 110%;
+@include clearTableFormat;
+		table{
+			
+			border: 5px solid $light_gray;
+			color: $turquoise;
+			margin-top: 10px;
+			margin-bottom: 20px;
+
+			thead {
+				display: none;
+			}
+			tr:first-child td {
+				padding-top: 21px!important;
+			}
+			tr:last-child td {
+				padding-bottom: 12px!important;
+			}
+			tr:nth-child(2n+1) {
+				background: transparentize($light_gray, .7);
+			}
+
+			td {
+				padding: 10px 20px!important;
+
+				a {
+					font-size: .9rem!important;
+					font-weight: 600;
+					color: $turquoise;
+
+					&.tabledrag-handle {
+						margin-right: 10px;
+						.handle {
+							width:24px;
+							height:24px;
+						}
+					}
+				}
+				&.views-field-link-flag {
+					width: 35%;
+
+					a {
+			    		font-size: .75rem!important;
+			    		font-style: italic;
+	    			}
+				}			
+			}
+		}
+
+		button.link.tabledrag-toggle-weight {
+			font-size: .85rem;
+			color: $green;
+			font-weight: 600;
+			text-decoration: underline;
+			border: 0;
+
+			&:hover,
+			&:focus {
+				color:$black!important;
+				text-decoration: none;
+				background-color: transparentize( $yellow, 0.8);
+			}
+		}
+
+		.form-group {
+	    	padding-left: 15px;
+	    }
+	}
+}
 
 
 /*  Announcements
