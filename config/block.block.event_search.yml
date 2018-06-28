@@ -1,43 +1,37 @@
-uuid: cf33e74e-8762-49b0-9cdc-43479d579696
+uuid: 5d9d142b-a5d6-4788-9f02-31d3575de51e
 langcode: en
 status: true
 dependencies:
-  config:
-    - simple_block.simple_block.event_search
+  content:
+    - 'block_content:custom_block:356db770-a2df-4374-a349-ae7aadf172e6'
   module:
+    - block_content
     - block_visibility_groups
-    - node
-    - simple_block
     - system
   theme:
     - myusf
 id: event_search
 theme: myusf
 region: sidebar_second
-weight: -54
+weight: 0
 provider: null
-plugin: 'simple_block:event_search'
+plugin: 'block_content:356db770-a2df-4374-a349-ae7aadf172e6'
 settings:
-  id: 'simple_block:event_search'
-  label: 'Event Search Block'
-  provider: simple_block
+  id: 'block_content:356db770-a2df-4374-a349-ae7aadf172e6'
+  label: 'Search Events'
+  provider: block_content
   label_display: visible
+  status: true
+  info: ''
+  view_mode: full
 visibility:
   condition_group:
     id: condition_group
     negate: false
     block_visibility_group: ''
     context_mapping: {  }
-  node_type:
-    id: node_type
-    bundles:
-      event: event
-      event_search: event_search
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
   request_path:
     id: request_path
-    pages: "/calendar\r\n/event/*\r\n"
+    pages: "/calendar\r\n/events/*"
     negate: false
     context_mapping: {  }
