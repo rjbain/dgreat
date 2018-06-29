@@ -4,20 +4,15 @@
 /* Favorite Apps and Personal Quick Links
 ===================================================*/ 
 .usf_dash, #views-form-favorite-links-my-links {
-	table, caption, tbody, tfoot, thead, tr, th, td, tr:nth-child(2n+1), tr:nth-child(2n) {
-	    margin: unset;
-	    padding: unset;
-	    border: unset;
-	    outline: unset;
-	    font-size: unset;
-	    vertical-align: unset;
-	    background: unset;
-	    color: $black;
-	}
+	@include clearTableFormat;
 
 	table {
-	    margin-left: 15px;
-	    margin-right: 15px;    
+	    /*margin-left: 15px;*/
+	    margin-right: 15px;  
+
+	     @include media-breakpoint-down(phone) {
+	     	margin-right: 0;
+	     }  
 
 	    a{
 	    	font-size: 1rem!important;
@@ -62,14 +57,14 @@
 					font-weight: 600;
 					color: $plum;
 
-					&:before {
+					/*&:before {
 				    	position: absolute;
 					    content: "";
 					    width: 15px;
 					    height: 20px;
 					    left: 15px;
 					    background: url(/themes/custom/myusf/images/site/icons.svg) -459px -128px no-repeat;
-									    }
+					}*/
 				}
 			}
 		}
@@ -90,6 +85,14 @@
 		    background:$plum;
 		    margin-bottom: 20px;
 		    margin-top: 20px;
+
+		    &:first-child {
+		    	margin-right: 20px;
+		    	
+		    	@include media-breakpoint-down(phone) {
+		    		margin-bottom: 0;
+		    	}
+		    }
 
 		    &:hover,
 		    &:focus {
@@ -185,6 +188,10 @@
 
 		    &:first-child {
 		    	margin-right: 20px;
+
+		    	@include media-breakpoint-down(phone) {
+		    		margin-bottom: 0;
+		    	}
 		    }
 
 		    &:hover,
@@ -208,7 +215,7 @@
 
 .sidebar .block {
 	border: 0;
-	margin-top:  97px;
+	/*margin-top:  97px;*/
 }
 
 #sidebar_second img {
@@ -226,6 +233,8 @@ aside.section div:first-child {
 #views-form-favorite-links-my-links {
 	table {
 			background: transparentize($light_gray, .7);
+			margin-top: 10px;
+			margin-bottom: 20px;
 
 			thead {
 				display: none;
@@ -272,9 +281,120 @@ aside.section div:first-child {
 	    margin-top: 20px;
 	}
 
+	button.link.tabledrag-toggle-weight {
+		font-size: .85rem;
+		color: $green;
+		font-weight: 600;
+		text-decoration: underline;
+		border: 0;
+
+		&:hover,
+		&:focus {
+			color:$black!important;
+			text-decoration: none;
+			background-color: transparentize( $yellow, 0.8);
+		}
+	}
 }
 
 
+
+/*  Quick Links Manage page
+===================================================*/ 
+div.view-quick-links.view-id-quick_links {
+	
+
+	#views-form-quick-links-all-apps {
+		background: unset;
+		table{
+			
+			border: 5px solid $light_gray;
+			color: $turquoise;
+			margin-top: 10px;
+			margin-bottom: 20px;
+
+			tr:first-child td {
+				padding-top: 21px!important;
+			}
+			tr:last-child td {
+				padding-bottom: 12px!important;
+			}
+			tr:nth-child(2n+1) {
+				background: transparentize($light_gray, .7);
+			}
+		}
+	}
+
+	#views-form-quick-links-my-links {		
+		width: 110%;
+@include clearTableFormat;
+		table{
+			
+			border: 5px solid $light_gray;
+			color: $turquoise;
+			margin-top: 10px;
+			margin-bottom: 20px;
+
+			thead {
+				display: none;
+			}
+			tr:first-child td {
+				padding-top: 21px!important;
+			}
+			tr:last-child td {
+				padding-bottom: 12px!important;
+			}
+			tr:nth-child(2n+1) {
+				background: transparentize($light_gray, .7);
+			}
+
+			td {
+				padding: 10px 20px!important;
+
+				a {
+					font-size: .9rem!important;
+					font-weight: 600;
+					color: $turquoise;
+
+					&.tabledrag-handle {
+						margin-right: 10px;
+						.handle {
+							width:24px;
+							height:24px;
+						}
+					}
+				}
+				&.views-field-link-flag {
+					width: 35%;
+
+					a {
+			    		font-size: .75rem!important;
+			    		font-style: italic;
+	    			}
+				}			
+			}
+		}
+
+		button.link.tabledrag-toggle-weight {
+			font-size: .85rem;
+			color: $green;
+			font-weight: 600;
+			text-decoration: underline;
+			border: 0;
+
+			&:hover,
+			&:focus {
+				color:$black!important;
+				text-decoration: none;
+				background-color: transparentize( $yellow, 0.8);
+			}
+		}
+
+		.form-group {
+	    	padding-left: 15px;
+	    }
+	}
+}
 
 
 /*  Announcements
@@ -288,6 +408,9 @@ aside.section div:first-child {
 
 	.views-field-title {
 	    margin-left: 130px;
+	    @include media-breakpoint-down(phone) { 
+	     	margin-left: 120px;
+	     }
 	
 		a {
 		    font-size: 1.2rem;
@@ -310,11 +433,20 @@ aside.section div:first-child {
 		float: left;
 		margin-left: 15px;
 	    margin-right: 15px;
+
+	     @include media-breakpoint-down(phone) { 
+	     	margin-left: 3px;
+	     }
 	}
 
 	.views-field-field-announcement-teaser {
 		margin-left: 130px;
-		margin-bottom: 30px;
+		margin-bottom: 30px;		
+	}
+	.views-field-title, .views-field-field-announcement-teaser , .views-field-field-published-date {
+		@include media-breakpoint-down(phone) { 
+	     	margin-left: 120px;
+	    }
 	}
 }
 

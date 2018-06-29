@@ -21,8 +21,8 @@
 
 
 html, body { //fixes mobile view sliding left and right issue
-	width: auto!important; 
-	overflow-x: hidden!important;
+	/*width: auto!important; 
+	overflow-x: hidden!important;*/
 }
 html {
 	height: 100%
@@ -64,6 +64,10 @@ body {
 		flex-basis: auto;
 	}
 }
+.col-auto {
+	padding-left: 0;
+	padding-right: 0;
+}
 .page-node-139634 .col { //Only for Home page
 	@include media-breakpoint-only(tablet) {
     	max-width: 100%!important;
@@ -79,11 +83,18 @@ body {
 
     	&.order-last {
     		flex: 0 0 100%;
-    		max-width: 100%!important;
+    		/*max-width: 100%!important;*/
+    		width:250px;
     		margin-bottom: 50px!important;
     	}
 	}
-	@include media-breakpoint-up(tablet) {
+	@include media-breakpoint-only(landscape_phone) {
+		&.order-last {
+			width:250px;
+		}
+
+	}
+	@include media-breakpoint-up(desktop) {
 		max-width: unset;
 	}
 	@include media-breakpoint-up(large_desktop) {
@@ -113,6 +124,7 @@ body {
 		}
 	}	
 }
+
 
 .node__content {
 	@include media-breakpoint-up(landscape_phone) {
