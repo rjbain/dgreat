@@ -88,8 +88,8 @@ class ModalStudentSurveyForm extends BlockBase {
    * @return bool
    */
   protected function canAccess(AccountInterface $account) {
-    return in_array('student', $account->getRoles()) &&
-      $this->currentCohort($account) && $this->hasNotAnswered($account);
+    return $this->isStudent($account) && $this->currentCohort($account)
+      && !$this->hasAnswered($account) && !$this->sawRecently($account);
   }
 
   /**
@@ -107,7 +107,7 @@ class ModalStudentSurveyForm extends BlockBase {
    *
    * @return bool
    */
-  private function hasNotAnswered(AccountInterface $account) {
+  private function hasAnswered(AccountInterface $account) {
     $config = $this->getConfiguration();
     $webform = Webform::load($config['survey']);
 
@@ -115,7 +115,24 @@ class ModalStudentSurveyForm extends BlockBase {
                     ->condition('webform_id', $webform->id())
                     ->condition('uid', $account->id())
                     ->count()
-                    ->execute() < 1;
+                    ->execute() >= 1;
+  }
 
+  /**
+   * @param \Drupal\Core\Session\AccountInterface $account
+   *
+   * @return bool
+   */
+  protected function isStudent(AccountInterface $account) {
+    return in_array('student', $account->getRoles());
+}
+
+  /**
+   * @param \Drupal\Core\Session\AccountInterface $account
+   *
+   * @return bool
+   */
+  private function sawRecently(AccountInterface $account) {
+    return FALSE;
   }
 }

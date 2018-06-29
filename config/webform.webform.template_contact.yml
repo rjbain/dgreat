@@ -5,8 +5,6 @@ dependencies:
   enforced:
     module:
       - webform_templates
-_core:
-  default_config_hash: mYTMZ6UnS7UH3uSYX1QXfOp8XaBX-r-wTjhCt-EWh_k
 open: null
 close: null
 uid: null
@@ -20,7 +18,7 @@ elements: "name:\n  '#title': 'Your Name'\n  '#type': textfield\n  '#required': 
 css: ''
 javascript: ''
 settings:
-  ajax: false
+  ajax: true
   ajax_scroll_top: form
   page: true
   page_submit_path: ''
@@ -52,10 +50,13 @@ settings:
   submission_label: ''
   submission_log: false
   submission_user_columns: {  }
+  submission_user_duplicate: false
   submission_login: false
   submission_login_message: ''
   submission_exception_message: ''
   submission_locked_message: ''
+  previous_submission_message: ''
+  previous_submissions_message: ''
   autofill: false
   autofill_message: ''
   autofill_excluded_elements: {  }
@@ -73,14 +74,15 @@ settings:
   preview_attributes: {  }
   preview_excluded_elements: {  }
   preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
   draft: none
   draft_multiple: false
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
-  confirmation_type: url_message
+  confirmation_type: inline
   confirmation_title: ''
-  confirmation_message: 'Your message has been sent.'
+  confirmation_message: 'Thanks for participating in the survey!'
   confirmation_url: '<front>'
   confirmation_attributes: {  }
   confirmation_back: true
@@ -106,8 +108,8 @@ settings:
 access:
   create:
     roles:
-      - anonymous
-      - authenticated
+    - anonymous
+    - authenticated
     users: {  }
     permissions: {  }
   view_any:
@@ -156,7 +158,7 @@ handlers:
     weight: 1
     settings:
       states:
-        - completed
+      - completed
       to_mail: '[webform_submission:values:email:raw]'
       to_options: {  }
       cc_mail: ''
@@ -213,3 +215,6 @@ handlers:
       sender_mail: ''
       sender_name: ''
       exclude_empty_checkbox: false
+uuid: aa4094c0-4e98-4c9a-b5a7-ee2c253b8183
+_core:
+  default_config_hash: mYTMZ6UnS7UH3uSYX1QXfOp8XaBX-r-wTjhCt-EWh_k
