@@ -835,11 +835,13 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	background:$green;
 	padding: 35px 0 30px!important;
 	position: absolute;
-	right: 0;
 	bottom: -140px;
+	right: 0;	
 	left: 0;
 	
-
+	@include media-breakpoint-down(phone) {		
+		bottom: -240px;
+	}
 	@include media-breakpoint-down(landscape_phone) {		
 		padding: 10px 0 0;
 	}
@@ -879,29 +881,35 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 }
 
 .footer-nav {
-	display: -webkit-box;
+	/*display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-ms-flex-direction: column;
 	flex-direction: column;
-	padding-left: 0;
-	list-style: none;
-
 	display: inherit;
+	padding-top: 25px;*/
+	padding-left: 0;
+	list-style: none;	
     margin: -5% 1% 5% -7%!important;
     column-count: 3;
     column-gap: 10px;
     text-align: center;
-    padding-top: 25px;
-
+    
+    li.footer-item {
+    	@include media-breakpoint-down(landscape_phone) {
+    		display: inline-block;
+    		width: 100%;
+    	}
+    }
 	@include media-breakpoint-up(tablet) {
 		display: flex;    	
     	columns: unset;
     	padding-top: 0;
     	margin: 0 auto 0 15px!important;
 	}
+
 	@include media-breakpoint-only(tablet) {
 		justify-content: center;
 		margin: 0 auto!important;
@@ -910,6 +918,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	@include media-breakpoint-up(large_desktop) {
 		justify-content: flex-start;
 	}
+
 }
 
 a.logo {
