@@ -173,14 +173,21 @@ tr {
 		line-height: 1.2rem;
 	}
 }
-.table-responsive {
+/*.table-responsive {
 	display: table;
 	@include media-breakpoint-down(phone) { 
 		display: block;
 	}
+}*/
+@include media-breakpoint-only(tablet) {
+	.view-display-id-all_apps .table-responsive.col {
+	    max-width: unset;
+	    width: 140%;
+	}
 }
+
 @include media-breakpoint-down(phone) {  
-	table.table-responsive:before {
+	table.table-responsive:before, div.table-responsive:before {
 		position: relative;
 		content: "Scroll to see more";
 	    width: 110px;

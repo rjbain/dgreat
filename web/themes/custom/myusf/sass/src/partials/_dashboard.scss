@@ -302,16 +302,36 @@ aside.section div:first-child {
 /*  Quick Links Manage page
 ===================================================*/ 
 div.view-quick-links.view-id-quick_links {
-	
+	.views-form {
+    	width: 100%;
+	}
+
+	button.link.tabledrag-toggle-weight, 
+	a.btn.btn-default {
+		font-size: .85rem;
+		color: $green;
+		font-weight: 600;
+		text-decoration: underline;
+		border: 0;
+
+		&:hover,
+		&:focus {
+			color:$black!important;
+			text-decoration: none;
+			background-color: transparentize( $yellow, 0.8);
+		}
+	}
 
 	#views-form-quick-links-all-apps {
-		background: unset;
+		@include clearTableFormat;
+		
 		table{
 			
 			border: 5px solid $light_gray;
 			color: $turquoise;
 			margin-top: 10px;
-			margin-bottom: 20px;
+			margin-bottom: 4
+			0px;
 
 			tr:first-child td {
 				padding-top: 21px!important;
@@ -322,12 +342,50 @@ div.view-quick-links.view-id-quick_links {
 			tr:nth-child(2n+1) {
 				background: transparentize($light_gray, .7);
 			}
+			th {
+				font-size: .75rem;
+				color: $white;
+				background:$turquoise;
+				border: 1px solid $white;
+				padding-left: 20px;
+				padding-right: 20px;
+			}
+			td {
+				padding: 10px 20px!important;
+				border: 1px solid $gray_medium;
+
+				a {
+					font-size: .9rem!important;
+					font-weight: 600;
+					color: $turquoise;
+
+					&.tabledrag-handle {
+						margin-right: 10px;
+						.handle {
+							width:24px;
+							height:24px;
+						}
+					}
+				}
+				&.views-field-link-flag {
+					width: 20%;
+
+					a {
+			    		font-size: .75rem!important;
+			    		font-style: italic;
+	    			}
+				}			
+			}
+		}
+		#edit-actions {
+			margin-left: 15px;
 		}
 	}
 
 	#views-form-quick-links-my-links {		
-		width: 110%;
-@include clearTableFormat;
+		width: 80%;
+		@include clearTableFormat;
+
 		table{
 			
 			border: 5px solid $light_gray;
@@ -375,7 +433,7 @@ div.view-quick-links.view-id-quick_links {
 			}
 		}
 
-		button.link.tabledrag-toggle-weight {
+		/*button.link.tabledrag-toggle-weight{
 			font-size: .85rem;
 			color: $green;
 			font-weight: 600;
@@ -388,11 +446,25 @@ div.view-quick-links.view-id-quick_links {
 				text-decoration: none;
 				background-color: transparentize( $yellow, 0.8);
 			}
-		}
+		}*/
 
 		.form-group {
 	    	padding-left: 15px;
 	    }
+	}
+
+	#views-exposed-form-quick-links-all-apps {
+		input#edit-combine {
+		    height: 41px;
+		}
+		input#edit-submit-quick-links {
+		    margin-bottom: 10px;
+		}
+		@include media-breakpoint-only(tablet) {
+			.form-row {
+			    width: 150%;
+			}
+		}
 	}
 }
 
