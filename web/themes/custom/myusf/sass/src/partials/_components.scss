@@ -28,8 +28,16 @@
 
 .paragraph--bp-accordion--container {
 	padding-top: 0;
+	margin-bottom: 30px;
+
+	@include media-breakpoint-down(phone) {
+		margin-bottom: 0;
+	}
 }
 .paragraph.paragraph--type--bp-accordion {
+	.card {
+		height: unset;
+	}
 
 	.panel-heading {
 		a:hover,
@@ -92,6 +100,10 @@
 .card-deck {
 	margin-left: 0;
 	margin-right: 0;
+}
+
+.view-instagram-tiles {
+    margin-top: 10px;
 }
 .view-usf-news-tiles .card,
 .view-twitter-tiles .card,
@@ -196,14 +208,18 @@ a.card-rollover {
 			}
 		}
 		&.blue {
-			margin-top: 180px;
 
 			.card-text {
 				font-size: 1rem;
 		    	line-height: 1.5rem;
+
 		    	@include media-breakpoint-only(landscape_phone) {
 		    		font-size: .85rem;
 		    		line-height: 1.2rem;
+		    	}
+
+		    	&.no-twitter-image {
+		    		margin-top: 180px;
 		    	}
 			}
 		}
@@ -611,7 +627,6 @@ h1.js-quickedit-page-title.page-title {
 	color: $green;
 	font-weight: 700;
 	text-decoration: none;
-	margin-left: 20px;
 }
 
 .views-field.views-field-field-featured-image {
@@ -625,6 +640,10 @@ h1.js-quickedit-page-title.page-title {
 .views-row {
 	margin-bottom: 20px;
 	border-bottom: .5px;
+}
+.view-id-dashboard_announements .views-row {
+	padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* ANNOUNCEMENT -- tag list teasers
@@ -660,3 +679,134 @@ h1.js-quickedit-page-title.page-title {
 	}
 
 }
+
+
+
+/* ITS APPLICATIONS SERVICES page
+================================================ */
+/*Filter by Audience Box */
+#block-audience {
+	border: 5px solid $light_gray;
+
+	h2 {
+		text-align: center;
+    	padding-bottom: 15px;
+    	background: $light_gray;
+	}
+	.facets-widget-checkbox {
+		ul {
+		    list-style-type: none;
+		        padding-left: 60px;
+    			padding-top: 20px;
+
+		    .facets-checkbox {
+			    margin-right: 10px;
+			    margin-left: -20px;
+			}
+		}
+	}
+}
+/* Search Box */
+
+input#edit-submit-services {
+    margin-bottom: .625rem;
+}
+input#edit-search-api-fulltext {
+    height: 41px;
+}
+
+/*Body area */
+.node--type-usf-service.node--view-mode-applications-services {
+	margin-bottom: 10px;
+
+	.node__title {
+		a {
+		    font-size: 1.2rem!important;
+		    padding-top: 0;
+
+		    &:hover,
+		    &:focus {
+		    	font-weight: 700;
+		    }
+		}
+	}
+	.node__content {
+		margin-top: 0;
+	}
+}
+
+.node--type-usf-service .field--type-text-with-summary {
+	max-width:unset;
+} 
+
+.field--name-field-usfcat-howdoi, 
+.field--name-field-usfcat-policies, 
+.field--name-field-usfcat-audience-ref {
+    margin-top: 30px;
+
+    .field__label {
+    	font-weight: 700;
+    	text-transform: uppercase;
+    	margin-bottom: 5px;
+    }
+    .field__item {
+    	margin-bottom: 10px;
+
+    	a {
+    		font-size: 1rem;
+    		margin-left: 20px;
+    	}
+	}
+}
+
+
+
+
+#block-topstudentquestions, #block-topstudentquestions-2,
+#block-topfacultystaffquestions, #block-topfacultystaffquestions-2 {
+	width:230px;
+    border: 5px solid #DDDAD1;
+
+    @include media-breakpoint-down(phone) {
+    	width:100%;
+    }
+
+    h2 {
+    	font-size: 1rem;
+    	font-weight: 700;
+	    text-align: center;
+	    padding-bottom: 15px;
+	    background: #DDDAD1;
+	}
+
+	a {
+		font-size: .8rem;
+    	margin: 15px;
+    	display: block;
+	}
+	ul {
+		padding-top: 0;
+
+		li {
+			padding-bottom: 0;
+		}
+	}	
+}
+
+#block-topfacultystaffquestions, #block-topfacultystaffquestions-2{	
+	ul {
+		margin-left: -8px;
+	}
+}
+
+.view-id-services  {
+	padding-left: 15px;
+    padding-right: 15px;
+
+	li.list-group-item {
+    	border: 0;
+    	margin-bottom: 10px;	
+	}
+}
+
+

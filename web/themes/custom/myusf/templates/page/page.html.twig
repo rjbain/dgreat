@@ -101,7 +101,11 @@
         <a class="navbar-brand" href="/"></a>
         <div class="navbar-collapse">
           <div class="navbar-menu-wrapper">
+          {% if page.primary_menu %}
             {{ page.primary_menu }}
+          {% else %}  
+            {{ drupal_menu('main') }}
+          {% endif %}
           </div>
           {% if page.header_form %}
             <div class="form-inline navbar-form float-right">
@@ -110,19 +114,32 @@
           {% endif %}
         </div>
     {% if container_navbar %}
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="header_search" type="submit"></button>
-        </form>
+      <form class="form-inline my-2 my-lg-0" action="/results" method="get">
+        <div class="search-options" id="search-options" style="display:none">
+          <input type="hidden" name="myusf_search" value="true">
+          <input class="mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" value="">
+          <br>
+          <input type="checkbox" name="usfca_search" value="true"> Include USFCA.EDU
+        </div>
+      </form>
+      <button class="header_search" type="submit" onclick="toggle()"></button>
+<style>
+.search-options {
+    background-color: #00543c;
+    color: #ffffff;
+    padding: 10px 10px 10px 10px;
+    margin:30px 10px 0 0;
+}
+</style>
 
       {% if logged_in %}
-        <form class="form-inline">
-          <button class="btn btn-outline-success" type="button">Log Out</button>
-        </form>
+        <!--<form class="form-inline">-->
+          <a href="/user/logout"><button class="btn btn-outline-success" type="button">Log Out</button></a>
+        <!--</form>-->
       {% else %}
-        <form action="/user/login" class="form-inline" method="post">
-          <button class="btn btn-outline-success" type="button">Log In</button>
-        </form>
+        <!--<form action="/user/login" class="form-inline" method="get">-->
+          <a href="/user/login"><button class="btn btn-outline-success" type="button">Log In</button></a>
+        <!--</form>-->
       {% endif %}
     <!--</div>-->
     {% endif %}

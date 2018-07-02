@@ -1,0 +1,35 @@
+uuid: 6bf3cebb-4054-469b-9277-8bb11ce16257
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.training-menu-2
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: trainingmenu2
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:training-menu-2'
+settings:
+  id: 'system_menu_block:training-menu-2'
+  label: 'Training Menu 2'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/training2\r\n/training2/*"
+    negate: false
+    context_mapping: {  }
