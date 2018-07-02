@@ -30,12 +30,18 @@
  */
 #}
 {% block content %}
+{% if (myusf_search == "true") and (usfca_search == "true") or (path('<current>') == "/all-results") %}
+  <!-- For the myUSF AND USFCA results: -->
+  {% set cx_str = "005959802884155210049:t3lgqts_b64" %}
+{% elseif (myusf_search == "true") and (usfca_search is empty) or (path('<current>') == "/results") %}
+  <!-- For the myUSF only results: -->
+  {% set cx_str = "005959802884155210049:zgpaemt7_ow" %}
+{% endif %}
 
-{% if (myusf_search == "true") and (usfca_search == "true") %}
   <script>
-    // For the myUSF AND USFCA results:
+    // For results depending on cx string
     (function() {
-      var cx = '005959802884155210049:t3lgqts_b64';
+      var cx = '{{ cx_str }}';
       var gcse = document.createElement('script');
       gcse.type = 'text/javascript';
       gcse.async = true;
@@ -45,27 +51,10 @@
     })();  
   </script>
 
-{% elseif (myusf_search =="true") and (usfca_search is empty) %}
- <script> 
-    // Google Custom Search Engine scripts...
-    // For the myUSF only results:
-    (function() {
-      var cx = '005959802884155210049:zgpaemt7_ow';
-      var gcse = document.createElement('script');
-      gcse.type = 'text/javascript';
-      gcse.async = true;
-      gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(gcse, s);
-    })();
-    </script>
-{% endif %}
-
-
 <div>
-<style>.gsc-adBlock {display:none !important;}.gsc-above-wrapper-area {border: none !important;}</style>
-<gcse:searchbox-only></gcse:searchbox-only>
-<hr>
-<gcse:searchresults-only></gcse:searchresults-only></div>
+  <style>.gsc-adBlock {display:none !important;}.gsc-above-wrapper-area {border: none !important;}</style>
+  <gcse:searchbox-only></gcse:searchbox-only>
+  <hr>
+  <gcse:searchresults-only></gcse:searchresults-only></div>
 </div>
 {% endblock %}
