@@ -101,7 +101,11 @@
         <a class="navbar-brand" href="/"></a>
         <div class="navbar-collapse">
           <div class="navbar-menu-wrapper">
+          {% if page.primary_menu %}
             {{ page.primary_menu }}
+          {% else %}  
+            {{ drupal_menu('main') }}
+          {% endif %}
           </div>
           {% if page.header_form %}
             <div class="form-inline navbar-form float-right">
