@@ -1,17 +1,18 @@
 uuid: 4fa07658-a8ae-49fb-b065-843ff14e0282
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - facets.facet.audience
   module:
     - block_visibility_groups
     - facets
+    - system
   theme:
     - myusf
 id: audience
 theme: myusf
-region: content
+region: sidebar_third
 weight: 0
 provider: null
 plugin: 'facet_block:audience'
@@ -25,4 +26,9 @@ visibility:
     id: condition_group
     negate: false
     block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /its/applications-services
+    negate: false
     context_mapping: {  }
