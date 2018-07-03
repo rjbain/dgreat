@@ -71,11 +71,11 @@ jobs:
 
             - run:
                 name: lint php code for syntax errors
-                command: robo lint
+                command: ./vendor/bin/robo lint
 
             - run:
                 name: run unit tests
-                command: robo unit
+                command: ./vendor/bin/robo unit
 
     build_theme:
       <<: *defaults
@@ -116,8 +116,8 @@ jobs:
         <<: *defaults
         steps:
             - attach_workspace:
-              at: web/themes/custom/myusf
-              
+                at: web/themes/custom/myusf
+
             - checkout
 
             - restore_cache:

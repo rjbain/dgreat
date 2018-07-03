@@ -5,6 +5,7 @@
  * Contains dgreat_webforms.module.
  */
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
@@ -28,9 +29,9 @@ function dgreat_webforms_help($route_name, RouteMatchInterface $route_match) {
  */
 function dgreat_webforms_webform_element_processed_text_alter(
   array &$element,
-  \Drupal\Core\Form\FormStateInterface $form_state,
+  FormStateInterface $form_state,
   array $context
 ) {
-//  kint($element);
+  // kint($element);
   unset($element['#title']);
 }

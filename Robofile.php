@@ -35,6 +35,7 @@ class RoboFile extends \Robo\Tasks {
   public function lint() {
     $this->taskExec(__DIR__ . '/vendor/bin/phpcbf')
          ->rawArg('--standard=Drupal')
+         ->rawArg('--ignore=web/themes/custom/**/node_modules')
          ->rawArg('-n web/modules/custom/* web/themes/custom/*')
          ->run();
   }
