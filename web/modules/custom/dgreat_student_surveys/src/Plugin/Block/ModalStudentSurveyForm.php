@@ -5,10 +5,8 @@ namespace Drupal\dgreat_student_surveys\Plugin\Block;
 use Drupal;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Config\Entity\Query\Query;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
-Use Drupal\user\Entity\User;
 use Drupal\webform\Entity\Webform;
 
 /**
@@ -22,6 +20,20 @@ use Drupal\webform\Entity\Webform;
 class ModalStudentSurveyForm extends BlockBase {
 
   /**
+   * @var \Symfony\Component\HttpFoundation\Session\Session
+   */
+  private $session;
+
+  public function __construct(
+    array $configuration,
+    $plugin_id,
+    $plugin_definition
+  ) {
+    $this->session = \Drupal::service('session');
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function build() {
@@ -29,6 +41,8 @@ class ModalStudentSurveyForm extends BlockBase {
     $my_form = Webform::load($config['survey']);
     $view_builder = \Drupal::entityTypeManager()->getViewBuilder('webform');
     $pre_render = $view_builder->view($my_form);
+
+    $this->session->set('student_surveys_has_seen_recently', TRUE);
 
     return [
       '#label' => $my_form->label(),
@@ -133,6 +147,6 @@ class ModalStudentSurveyForm extends BlockBase {
    * @return bool
    */
   private function sawRecently(AccountInterface $account) {
-    return FALSE;
+    return $this->session->get('student_surveys_has_seen_recently');
   }
 }
