@@ -125,6 +125,10 @@ class ModalStudentSurveyForm extends BlockBase {
     $config = $this->getConfiguration();
     $webform = Webform::load($config['survey']);
 
+    if (!$webform) {
+      return FALSE;
+    }
+
     return \Drupal::entityQuery('webform_submission')
                     ->condition('webform_id', $webform->id())
                     ->condition('uid', $account->id())
@@ -142,11 +146,11 @@ class ModalStudentSurveyForm extends BlockBase {
 }
 
   /**
-   * @param \Drupal\Core\Session\AccountInterface $account
+   * Check the current session to see if we've already displayed the form.
    *
    * @return bool
    */
-  private function sawRecently(AccountInterface $account) {
+  private function sawRecently() {
     return $this->session->get('student_surveys_has_seen_recently');
   }
 }
