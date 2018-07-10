@@ -1,26 +1,27 @@
-uuid: 4fa07658-a8ae-49fb-b065-843ff14e0282
+uuid: 5751227b-ba00-4ff1-b358-305ab192057c
 langcode: en
 status: true
 dependencies:
   config:
-    - facets.facet.audience
+    - system.menu.webtrack-menu
   module:
     - block_visibility_groups
-    - facets
     - system
   theme:
     - myusf
-id: audience
+id: webtrackmenu
 theme: myusf
-region: content
-weight: -4
+region: sidebar_first
+weight: 0
 provider: null
-plugin: 'facet_block:audience'
+plugin: 'system_menu_block:webtrack-menu'
 settings:
-  id: 'facet_block:audience'
-  label: 'Filter By Audience'
-  provider: facets
+  id: 'system_menu_block:webtrack-menu'
+  label: 'Webtrack Menu'
+  provider: system
   label_display: visible
+  level: 1
+  depth: 0
 visibility:
   condition_group:
     id: condition_group
@@ -29,6 +30,6 @@ visibility:
     context_mapping: {  }
   request_path:
     id: request_path
-    pages: /its/applications-services
+    pages: "/webtrack\r\n/webtrack/*"
     negate: false
     context_mapping: {  }
