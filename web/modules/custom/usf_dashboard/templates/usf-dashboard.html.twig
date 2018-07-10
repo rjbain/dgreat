@@ -89,7 +89,7 @@ Available variables (usf_dashboard.module)
                         {{ drupal_view('event_target_term', 'block_1', target) }}
                     {% endif %}
                     
-                    {% if ('Faculty' in user.getroles) or ('prehire faculty' in user.getroles) %}
+                    {% if ('faculty' in user.getroles) or ('prehire faculty' in user.getroles) %}
                         {% set target = 'Faculty' %}
                         {{ drupal_view('event_target_term', 'block_1', target) }}
                     {% endif %}
