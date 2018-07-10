@@ -30,23 +30,44 @@ Available variables (usf_dashboard.module)
     <div class="row usf_dash">
 
         <div class="col-12"> {# Left "main" column #}
-               <div class="row">
-                    <div class="col-sm">
-                        <h2>Favorite Apps</h2>
+         
+            <div class="row">
+                
+  
+             {% if ('faculty' not in user.getroles) and ('all access' not in user.getroles) and ('student' not in user.getroles) and ('online student' not in user.getroles) and ('admitted student' not in user.getroles) and ('finance' not in user.getroles) and ('employee' not in user.getroles) and ('prehire faculty' not in user.getroles) and ('prehire staff' not in user.getroles)  and ('bi_group' not in user.getroles)  and ('vcl-staff' not in user.getroles)  and ('online_intaccept' not in user.getroles) %}
+
+                <div class="col-sm">
+                    <h2>Quick Links</h2>
+                        {{ drupal_entity('block', "defaultrolestaticlinks") }}
+                </div>
+
+            {% else %}
+
+                <div class="col-sm">
+                    <h2>Favorite Apps</h2>
                         {% if dashboard_content.fav_links %}
                             {{ dashboard_content.fav_links }}
                         {% endif %}
-                    </div>
-                    <div class="col-sm">
-                        {% if dashboard_content.dashboard_user.name.value is not empty %}
-                            <h2>{{ dashboard_content.dashboard_user.name.value }}'s Links</h2>
-                        {% endif %}
+                </div>
+        
+                <div class="col-sm">
+                    {% if dashboard_content.dashboard_user.name.value is not empty %}
+                        <h2>{{ dashboard_content.dashboard_user.name.value }}'s Links</h2>
+                            {% endif %}
                         {% if dashboard_content.quick_links %}
                             {{ dashboard_content.quick_links }}
                         {% endif %}
-                    </div>
                 </div>
+
+            {% endif %}            
+
+  
+
+
+
+            </div>
             <div class="row">
+            
                 <div class="col-sm">
                     {{ drupal_view('events_featured', 'block_1') }}
                 </div>
@@ -57,7 +78,6 @@ Available variables (usf_dashboard.module)
                         {% set target = 'Undergraduate Students' %}
                         {{ drupal_view('event_target_term', 'block_1', target) }}
                     {% endif %}
-
 
                     {% if ('student' in user.getroles) and ('as_grad' not in user.getroles) and ('som_grad' not in user.getroles) and ('sonhp_grad' not in user.getroles)  %}
                         {% set target = 'Undergraduate Students' %}
@@ -102,7 +122,7 @@ Available variables (usf_dashboard.module)
                             {{ drupal_view('dashboard_blocks', 'block_2', 'no_role') }}
                         {% endif %}
 
-                    {#{ drupal_entity('block', 'artssciencesblock') }#}
+                 
 
 
                     </div>
