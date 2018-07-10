@@ -14,12 +14,23 @@ Available variables (usf_dashboard.module)
 #}
 {% set role = user.getroles|join(',') %}
 
+{% if not logged_in %}
     <div class="row usf_dash">
 
         <div class="col-12"> {# Left "main" column #}
- 
-            {% if logged_in %}
                 <div class="row">
+                    <div class="col-sm">
+                        Please log in to view your dashboard
+                    </div>
+                </div>
+        </div>
+    </div>
+
+{% elseif logged_in %}
+    <div class="row usf_dash">
+
+        <div class="col-12"> {# Left "main" column #}
+               <div class="row">
                     <div class="col-sm">
                         <h2>Favorite Apps</h2>
                         {% if dashboard_content.fav_links %}
@@ -35,7 +46,6 @@ Available variables (usf_dashboard.module)
                         {% endif %}
                     </div>
                 </div>
-            {% endif %}                
             <div class="row">
                 <div class="col-sm">
                     {{ drupal_view('events_featured', 'block_1') }}
@@ -44,6 +54,12 @@ Available variables (usf_dashboard.module)
                 <div class="col-sm">
 
                     {% if ('as_ug' in user.getroles) or ('som_ug' in user.getroles) or ('sonhp_ug' in user.getroles)  %}
+                        {% set target = 'Undergraduate Students' %}
+                        {{ drupal_view('event_target_term', 'block_1', target) }}
+                    {% endif %}
+
+
+                    {% if ('student' in user.getroles) and ('as_grad' not in user.getroles) and ('som_grad' not in user.getroles) and ('sonhp_grad' not in user.getroles)  %}
                         {% set target = 'Undergraduate Students' %}
                         {{ drupal_view('event_target_term', 'block_1', target) }}
                     {% endif %}
@@ -63,7 +79,7 @@ Available variables (usf_dashboard.module)
                         {{ drupal_view('event_target_term', 'block_1', target) }}
                     {% endif %}
 
-                    {% if ('as_ug' not in user.getroles) and ('som_ug' not in user.getroles) and ('sonhp_ug' not in user.getroles) and ('as_grad' not in user.getroles) and ('som_grad' not in user.getroles) and ('sonhp_grad' not in user.getroles) and ('law' not in user.getroles) and ('Faculty' not in user.getroles) and ('prehire faculty' not in user.getroles) and ('employee' not in user.getroles) and ('prehire staff' not in user.getroles)  %}
+                    {% if ('student' not in user.getroles) and ('as_ug' not in user.getroles) and ('som_ug' not in user.getroles) and ('sonhp_ug' not in user.getroles) and ('as_grad' not in user.getroles) and ('som_grad' not in user.getroles) and ('sonhp_grad' not in user.getroles) and ('law' not in user.getroles) and ('Faculty' not in user.getroles) and ('prehire faculty' not in user.getroles) and ('employee' not in user.getroles) and ('prehire staff' not in user.getroles)  %}
                         <a href="/calendar">View More Events</a>
 
                     {% endif %}
@@ -71,14 +87,11 @@ Available variables (usf_dashboard.module)
                 </div>
 
             </div>
-            {% if logged_in %}
                 <div class="row">
                     <div class="col-sm">
                         {{ drupal_view('dashboard_announements', 'block_1', role) }}
                     </div>
                 </div>
-            {% endif %}
-            {% if logged_in %}
                 <div class="row">
                     <div class="col-sm">          
                     
@@ -94,6 +107,6 @@ Available variables (usf_dashboard.module)
 
                     </div>
                 </div>
-            {% endif %}
         </div>
     </div>
+   {% endif %} 
