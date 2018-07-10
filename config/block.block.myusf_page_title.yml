@@ -1,9 +1,10 @@
 uuid: dc222dcb-9572-4e21-aaa8-0c6d3ea54a38
 langcode: en
-status: false
+status: true
 dependencies:
   module:
     - block_visibility_groups
+    - node
     - system
   theme:
     - myusf
@@ -31,3 +32,10 @@ visibility:
     pages: /home
     negate: true
     context_mapping: {  }
+  node_type:
+    id: node_type
+    bundles:
+      announcement: announcement
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

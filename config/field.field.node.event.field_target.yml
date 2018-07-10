@@ -1,0 +1,29 @@
+uuid: 9dac1049-8c95-491c-904c-75d725ce9b7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_target
+    - node.type.event
+    - taxonomy.vocabulary.event_target
+id: node.event.field_target
+field_name: field_target
+entity_type: node
+bundle: event
+label: Target
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      event_target: event_target
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

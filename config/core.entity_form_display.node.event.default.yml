@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.event.field_location
     - field.field.node.event.field_search_date
     - field.field.node.event.field_start_date
+    - field.field.node.event.field_target
     - field.field.node.event.field_terms
     - image.style.thumbnail
     - node.type.event
@@ -25,6 +26,7 @@ dependencies:
     - image
     - link
     - path
+    - scheduler
     - text
 id: node.event.default
 targetEntityType: node
@@ -144,6 +146,15 @@ content:
     third_party_settings: {  }
     type: datetime_default
     region: content
+  field_target:
+    weight: 137
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   field_terms:
     weight: 133
     settings:
@@ -165,6 +176,12 @@ content:
       display_label: true
     weight: 15
     region: content
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -197,4 +214,13 @@ content:
       placeholder: ''
     region: content
     third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
 hidden: {  }
