@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.group.groups.field_default_favorite_links
     - field.field.group.groups.field_default_quick_links
+    - field.field.group.groups.field_mapped_roles
     - group.type.groups
   module:
     - path
@@ -24,6 +25,15 @@ content:
     region: content
   field_default_quick_links:
     weight: 32
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_mapped_roles:
+    weight: 33
     settings:
       match_operator: CONTAINS
       size: 60
