@@ -12,10 +12,19 @@ default:
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MinkContext
   extensions:
+    Bex\Behat\ScreenshotExtension:
+      image_drivers:
+        local:
+          screenshot_directory: /app/tmp/screenshots
+          clear_screenshot_directory: true
     Behat\MinkExtension:
-      goutte: ~
-      selenium2: ~
-      files_path: './data-files'
+      files_path: "%paths.base%/features/fixtures/"
+      base_url: https://nginx/
+      browser_name: chrome
+      sessions:
+        default:
+          selenium2:
+            wd_host: http://chromedriver:4444/wd/hub
     Drupal\DrupalExtension:
       blackbox: ~
       api_driver: 'drupal'

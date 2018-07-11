@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * @file
+ * Contains dgreat_student_surveys.module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function dgreat_student_surveys_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the dgreat_student_surveys module.
+    case 'help.page.dgreat_student_surveys':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Handles custom requirements for student survey webforms') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_webform_admin_third_party_settings_form_alter().
+ */
+function dgreat_student_surveys_webform_admin_third_party_settings_form_alter(
+  array &$form,
+  FormStateInterface $form_state
+) {
+  return _student_surveys_settings_form($form);
+}
+
+/**
+ * Implements hook_webform_third_party_settings_form_alter().
+ */
+function dgreat_student_surveys_webform_third_party_settings_form_alter(
+  array &$form,
+  FormStateInterface $form_state
+) {
+  return _student_surveys_settings_form($form, $form_state);
+}
+
+/**
+ * @param array $form
+ *
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *
+ * @return array
+ */
+function _student_surveys_settings_form(array &$form, FormStateInterface $form_state) {
+  /** @var \Drupal\webform\WebformThirdPartySettingsManagerInterface $third_party_settings_manager */
+  $third_party_settings_manager = \Drupal::service('webform.third_party_settings_manager');
+
+  /** @var \Drupal\webform\WebformInterface $webform */
+  $webform = $form_state->getFormObject()->getEntity();
+
+  $student_surveys = $webform->getThirdPartySetting('dgreat_student_surveys',
+    'salesforce_id');
+
+  $form['third_party_settings']['dgreat_student_surveys'] = [
+    '#type' => 'details',
+    '#title' => t('Student Surveys'),
+    '#open' => TRUE,
+    '#description' => t('Configure Student Survey settings')
+  ];
+
+  $form['third_party_settings']['dgreat_student_surveys']['salesforce_id'] = [
+    '#type' => 'textfield',
+    '#title' => t('The campaign id for this survey in Salesforce'),
+    '#default_value' => $student_surveys,
+    '#return_value' => TRUE,
+  ];
+  return $form;
+}

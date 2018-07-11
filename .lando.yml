@@ -24,6 +24,20 @@ services:
       - "cd $LANDO_MOUNT/web/themes/custom/myusf && npm install && gulp"
     globals:
       gulp-cli: "latest"
+  chromedriver:
+    type: compose
+    services:
+      image: robcherry/docker-chromedriver:latest
+      expose:
+      - "4444"
+      environment:
+        CHROMEDRIVER_WHITELISTED_IPS: ""
+        CHROMEDRIVER_URL_BASE: "/wd/hub"
+        SCREEN_GEOMETRY: "1440x2000x24"
+      security_opt:
+      - seccomp:unconfined
+      command: ["/usr/local/bin/supervisord", "-c", "/etc/supervisord.conf"]
+
 tooling:
   npm:
     service: node
