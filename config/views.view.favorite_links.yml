@@ -2201,37 +2201,19 @@ display:
           plugin_id: standard
       group_by: false
       style:
-        type: table
+        type: html_list
         options:
           grouping: {  }
           row_class: ''
           default_row_class: true
-          override: true
-          sticky: false
-          caption: ''
-          summary: ''
-          description: ''
-          columns:
-            field_url: field_url
-            title: title
-          info:
-            field_url:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            title:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-          default: '-1'
-          empty_table: false
+          type: ul
+          wrapper_class: item-list
+          class: MyAppsList
       row:
-        type: fields
-        options: {  }
+        type: 'entity:group_content'
+        options:
+          relationship: none
+          view_mode: default
       footer:
         area:
           id: area
@@ -2243,7 +2225,7 @@ display:
           empty: true
           tokenize: false
           content:
-            value: '<a href="/favorite-links" class="btn">Preferences</a>'
+            value: "<a href=\"/favorite-links\" class=\"appPref\">Preferences</a>\n<a href=\"http://www.usfca.edu\" class=\"seeMyApps diamond_link_small\">View All  Apps</a>"
             format: full_html
           plugin_id: text
     cache_metadata:

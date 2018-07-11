@@ -25,7 +25,7 @@ html, body { //fixes mobile view sliding left and right issue
 	overflow-x: hidden!important;*/
 }
 html {
-	height: 100%
+	height: 100%;
 }
 body {
 	position: relative;
@@ -36,10 +36,10 @@ body {
 	margin-bottom: 80px;
 }
 
-.container {
+.container{
 	width: 96%;
-	padding-left: 30px;
-	padding-right: 30px;
+	/*padding-left: 30px;
+	padding-right: 30px;*/
 	@include margin-L-R-auto;
 
 	@include media-breakpoint-only(tablet)  { 
@@ -48,10 +48,12 @@ body {
 		padding-right: 1.5%;
 	}
 	@include media-breakpoint-only(desktop) {
-		max-width: 1060px;
+		/*max-width: 1060px;*/
+		padding-left: 15px;
+		padding-right: 15px;
 	}
 	@include media-breakpoint-only(large_desktop) {
-		max-width: 90%;
+		/*max-width: 90%;*/
 	}
 	@include media-breakpoint-down(xl_desktop) {
 		max-width: 1500px		
@@ -68,9 +70,14 @@ body {
 	padding-left: 0;
 	padding-right: 0;
 }
-.page-node-139634 .col { //Only for Home page
-	@include media-breakpoint-only(tablet) {
-    	max-width: 100%!important;
+.page-node-139634 {
+	.display-title {
+		font-size:0;
+	}
+	.col { //Only for Home page
+		@include media-breakpoint-only(tablet) {
+	    	max-width: 100%!important;
+		}
 	}
 }
 
@@ -95,10 +102,11 @@ body {
 
 	}
 	@include media-breakpoint-up(desktop) {
-		max-width: unset;
+		/*max-width: unset;*/
+		max-width: 220px;
 	}
 	@include media-breakpoint-up(large_desktop) {
-		max-width: 280px;
+		max-width: 270px;
 	}
 }
 
@@ -136,8 +144,9 @@ body {
     padding-left: 0;
     padding-right: 0;
     padding-bottom: 1rem;
-
+    padding-top:1.5rem;
 }
+
 .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__2col {
 	padding-left: 0 !important;
 }
