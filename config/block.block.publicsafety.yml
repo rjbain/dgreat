@@ -1,0 +1,35 @@
+uuid: ad14ce37-f449-4f3b-8065-d713a2375140
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.public-safety
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: publicsafety
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:public-safety'
+settings:
+  id: 'system_menu_block:public-safety'
+  label: 'Public Safety'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: ''
+    negate: true
+    context_mapping: {  }

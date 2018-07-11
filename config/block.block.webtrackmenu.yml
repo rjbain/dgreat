@@ -1,0 +1,35 @@
+uuid: 5751227b-ba00-4ff1-b358-305ab192057c
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.webtrack-menu
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: webtrackmenu
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:webtrack-menu'
+settings:
+  id: 'system_menu_block:webtrack-menu'
+  label: 'Webtrack Menu'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/webtrack\r\n/webtrack/*"
+    negate: false
+    context_mapping: {  }

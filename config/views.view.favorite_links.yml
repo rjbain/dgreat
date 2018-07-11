@@ -1965,7 +1965,7 @@ display:
           relationship: gc__node
           group_type: group
           admin_label: ''
-          label: Title
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -2201,34 +2201,18 @@ display:
           plugin_id: standard
       group_by: false
       style:
-        type: table
+        type: html_list
         options:
-          grouping: {  }
+          grouping:
+            -
+              field: title
+              rendered: true
+              rendered_strip: false
           row_class: ''
           default_row_class: true
-          override: true
-          sticky: false
-          caption: ''
-          summary: ''
-          description: ''
-          columns:
-            field_url: field_url
-            title: title
-          info:
-            field_url:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            title:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-          default: '-1'
-          empty_table: false
+          type: ul
+          wrapper_class: item-list
+          class: ''
       row:
         type: fields
         options: {  }
