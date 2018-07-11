@@ -56,4 +56,4 @@ if (file_exists($migrate_settings) && isset($_ENV['PANTHEON_ENVIRONMENT'])) {
   include $migrate_settings;
 }
 
-$settings['sendgrid_integration']['apikey'] = getenv('sendgrid-api-key');
+$config['sendgrid_integration.settings']['apikey'] = getenv('sendgrid-api-key');
