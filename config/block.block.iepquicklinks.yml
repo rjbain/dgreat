@@ -1,0 +1,37 @@
+uuid: 3cf9c2da-d7d6-406a-ba56-a75b30d4069a
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:quick_links:b4e4c8b5-2337-49ab-97bf-9ac4d137400a'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: iepquicklinks
+theme: myusf
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'block_content:b4e4c8b5-2337-49ab-97bf-9ac4d137400a'
+settings:
+  id: 'block_content:b4e4c8b5-2337-49ab-97bf-9ac4d137400a'
+  label: 'IEP Quick Links'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "iep/pre-arrival-information\r\niep/pre-arrival-information/*"
+    negate: false
+    context_mapping: {  }
