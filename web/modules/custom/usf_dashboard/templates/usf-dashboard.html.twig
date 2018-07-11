@@ -66,17 +66,17 @@ Available variables (usf_dashboard.module)
                 </div>
                 <div class="col-sm">
 
-                    {% if ('as_ug' in user.getroles) or ('som_ug' in user.getroles) or ('sonhp_ug' in user.getroles)  %}
+                    {#% if ('as_ug' in user.getroles) or ('som_ug' in user.getroles) or ('sonhp_ug' in user.getroles)  %#}
+                        {#% set target = 'Undergraduate Students' #}
+                        {#{ drupal_view('event_target_term', 'block_1', target) }#}
+                    {#% endif %#}
+
+                    {% if ('student' in user.getroles) and ('as_grad' not in user.getroles) and ('som_grad' not in user.getroles) and ('sonhp_grad' not in user.getroles) and ('soe' not in user.getroles)  %}
                         {% set target = 'Undergraduate Students' %}
                         {{ drupal_view('event_target_term', 'block_1', target) }}
                     {% endif %}
 
-                    {% if ('student' in user.getroles) and ('as_grad' not in user.getroles) and ('som_grad' not in user.getroles) and ('sonhp_grad' not in user.getroles)  %}
-                        {% set target = 'Undergraduate Students' %}
-                        {{ drupal_view('event_target_term', 'block_1', target) }}
-                    {% endif %}
-
-                    {% if ('as_grad' in user.getroles) or ('som_grad' in user.getroles) or ('sonhp_grad' in user.getroles) or ('law' in user.getroles) %}
+                    {% if ('as_grad' in user.getroles) or ('som_grad' in user.getroles) or ('sonhp_grad' in user.getroles) or ('soe' in user.getroles) or ('law' in user.getroles) %}
                         {% set target = 'Graduate Students' %}
                         {{ drupal_view('event_target_term', 'block_1', target) }}
                     {% endif %}
@@ -91,7 +91,7 @@ Available variables (usf_dashboard.module)
                         {{ drupal_view('event_target_term', 'block_1', target) }}
                     {% endif %}
 
-                    {% if ('student' not in user.getroles) and ('as_ug' not in user.getroles) and ('som_ug' not in user.getroles) and ('sonhp_ug' not in user.getroles) and ('as_grad' not in user.getroles) and ('som_grad' not in user.getroles) and ('sonhp_grad' not in user.getroles) and ('law' not in user.getroles) and ('Faculty' not in user.getroles) and ('prehire faculty' not in user.getroles) and ('employee' not in user.getroles) and ('prehire staff' not in user.getroles)  %}
+                    {% if ('student' not in user.getroles) and ('as_ug' not in user.getroles) and ('som_ug' not in user.getroles) and ('sonhp_ug' not in user.getroles) and ('as_grad' not in user.getroles) and ('som_grad' not in user.getroles) and ('sonhp_grad' not in user.getroles) and ('law' not in user.getroles) and ('faculty' not in user.getroles) and ('prehire faculty' not in user.getroles) and ('employee' not in user.getroles) and ('prehire staff' not in user.getroles)  %}
                         <a href="/calendar">View More Events</a>
 
                     {% endif %}

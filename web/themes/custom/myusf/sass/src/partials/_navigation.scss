@@ -190,6 +190,12 @@ li.menu-item--expanded:hover ul.dropdown-menu {
     	padding-left: 1rem;
 	}
 }
+
+.navbar a[href^="/user/login"], .navbar a[href^="/user/logout"] {
+	&:hover {
+		background: transparent!important;
+	}
+}
 // ----MAIN NAV DROPDOWN --- //
 
 .navbar-nav .dropdown-menu {
@@ -281,6 +287,7 @@ li.menu-item--expanded:hover ul.dropdown-menu {
 button.header_search {
     background: transparent;
     border: 0;
+    z-index: 2;
 
  	&:before {
  		display: inline-block;
@@ -323,6 +330,31 @@ button.header_search {
     	}
 	}
 	
+}
+#search-options {
+	font-size: .85rem;
+	text-transform: unset;
+	position: absolute;
+    height: 80px;
+    top: -30px;
+    right: 120px;    
+    padding-top: 10px!important;
+    padding-left: 20px!important;
+    padding-right: 35px!important;
+    background: $black;
+    z-index: 1;
+    
+    
+    input[type="search"] {
+    	font-size: 1rem;
+    	height: 29px;
+    	padding-left: 10px;
+    	padding-top: 0;
+    	border: 0;
+    }
+    input[type=checkbox] {
+    	margin-top: 15px;
+    }
 }
 
 .btn-outline-success {
@@ -400,6 +432,19 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
     margin-left:5px;
     margin-right:5px;   
 }
+
+//--- TOOLBAR TRAY for ADMIN Login ---//
+
+#toolbar-item-user-tray {
+	ul.toolbar-menu a {
+		&:hover,
+		&:focus {
+			color: #565656!important;
+		}
+	}
+}
+
+
 
  //--- TOOLBAR MENU for Content Editors ---//
 
@@ -499,7 +544,7 @@ nav.tabs {
 	border-bottom: 4px solid $yellow;
 	width: 230px;
 
-	@include media-breakpoint-down(tablet) { 
+	@include media-breakpoint-down(desktop) { 
 		width: 190px;
 	}
 
@@ -520,7 +565,7 @@ nav.tabs {
 			border-bottom: 1px solid $light_gray;
 			padding-bottom: 0;
 			
-			@include media-breakpoint-down(tablet) { 
+			@include media-breakpoint-down(desktop) { 
 				width: 190px;
 			}
 
@@ -577,7 +622,7 @@ nav.tabs {
 					padding-left: 0;
 					width:220px;
 
-					@include media-breakpoint-down(tablet) { 
+					@include media-breakpoint-down(desktop) { 
 						width: 170px;
 					}
 					@include media-breakpoint-down(landscape_phone) { 
@@ -633,7 +678,7 @@ nav.tabs {
 						margin: 0 0 -10px;
 					    width: 210px;
 
-					    @include media-breakpoint-down(tablet) { 
+					    @include media-breakpoint-down(desktop) { 
 					    	width: 170px;
 					    }
 					    @include media-breakpoint-down(landscape_phone) { 
@@ -775,7 +820,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	@include media-breakpoint-only(tablet) {        
         position: relative;
         width: 250px;
-        left: 30%;
+        left: 100%; /* was 30% */
         float: none;
     }
 
