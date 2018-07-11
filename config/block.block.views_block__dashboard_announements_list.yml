@@ -1,0 +1,38 @@
+uuid: 54d20064-cb7f-4bae-97a3-7ea7e1cb6ffa
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.dashboard_announements
+  module:
+    - block_visibility_groups
+    - node
+    - views
+  theme:
+    - myusf
+id: views_block__dashboard_announements_list
+theme: myusf
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'views_block:dashboard_announements-list'
+settings:
+  id: 'views_block:dashboard_announements-list'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  node_type:
+    id: node_type
+    bundles:
+      announcement: announcement
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
