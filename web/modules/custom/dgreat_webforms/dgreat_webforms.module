@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @file
+ * Contains dgreat_webforms.module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function dgreat_webforms_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the dgreat_webforms module.
+    case 'help.page.dgreat_webforms':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Tweaks for USF Webforms') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_webform_element_ELEMENT_TYPE_alter().
+ */
+function dgreat_webforms_webform_element_processed_text_alter(
+  array &$element,
+  FormStateInterface $form_state,
+  array $context
+) {
+  // kint($element);
+  unset($element['#title']);
+}

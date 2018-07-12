@@ -23,12 +23,11 @@ function myusf_preprocess(&$variables) {
   $variables['myusf_search'] = htmlentities($myusf_search, ENT_QUOTES | ENT_HTML5, 'UTF-8');
 }
 
-
 /**
  * Implements hook_preprocess_HOOK() for block.html.twig.
  */
 function myusf_preprocess_block(&$vars) {
-  if($vars['derivative_plugin_id'] == 'search_results') {
+  if ($vars['derivative_plugin_id'] == 'search_results') {
     $vars['#cache']['max-age'] = 0;
   }
-}  
+}

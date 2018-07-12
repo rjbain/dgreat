@@ -58,6 +58,7 @@
     "drupal/weight": "^3.1",
     "drush/drush": "~8",
     "rvtraveller/qs-composer-installer": "^1.1",
+    "tightenco/collect": "^5.6",
     "webflo/drupal-core-strict": "^8"
   },
   "require-dev": {
@@ -95,6 +96,8 @@
     ],
     "drupal-unit-tests": "cd web/core && ../../vendor/bin/phpunit --testsuite=unit --exclude-group Composer,DependencyInjection,PageCache",
     "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+    "lint": "robo lint",
+    "unit-test": "robo unit",
     "prepare-for-pantheon": "DrupalProject\\composer\\ScriptHandler::prepareForPantheon",
     "post-install-cmd": [
       "@drupal-scaffold",
