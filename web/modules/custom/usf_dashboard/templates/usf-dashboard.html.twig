@@ -41,9 +41,10 @@ Available variables (usf_dashboard.module)
 
                     <div class="col-sm myApps">
                         <h2>Top Apps</h2>
-                            {% if dashboard_content.fav_links %}
-                                {{ dashboard_content.fav_links }}
-                            {% endif %}
+                            {#% if dashboard_content.fav_links %#}
+                                {#{ dashboard_content.fav_links }#}
+                            {#% endif %#}
+                            {{ drupal_view('favorite_links', 'block') }}
                     </div>
         
                     <div class="separator"></div>
