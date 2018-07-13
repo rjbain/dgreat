@@ -2,6 +2,8 @@ uuid: d1baf26a-3bf6-4730-a4f6-65e768a56ea7
 langcode: en
 status: true
 dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.quick_links_group
   content:
     - 'block_content:quick_links:649e17d7-cc2e-4925-bbc8-c54fbaf3a0e7'
   module:
@@ -28,7 +30,7 @@ visibility:
   condition_group:
     id: condition_group
     negate: false
-    block_visibility_group: ''
+    block_visibility_group: quick_links_group
     context_mapping: {  }
   request_path:
     id: request_path

@@ -31,3 +31,10 @@ function myusf_preprocess_block(&$vars) {
     $vars['#cache']['max-age'] = 0;
   }
 }
+
+
+function myusf_preprocess_views_view(&$vars) {
+  if($vars['derivative_plugin_id'] == 'user') {
+    $vars['#cache']['max-age'] = 0;
+  }
+}

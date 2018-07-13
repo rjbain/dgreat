@@ -12,37 +12,104 @@ Available variables (usf_dashboard.module)
 * dashboard_content.dashboard_user.name.value
 
 #}
+{% set role = user.getroles|join(',') %}
 
+{% if not logged_in %}
     <div class="row usf_dash">
 
         <div class="col-12"> {# Left "main" column #}
-            <div class="row">
-            <div class="col-sm">
-                <h2>Favorite Apps</h2>
-                {% if dashboard_content.fav_links %}
-                    {{ dashboard_content.fav_links }}
-                {% endif %}
+                <div class="row">
+                    <div class="col-sm">
+                        Please log in to view your dashboard
+                    </div>
+                </div>
+        </div>
+    </div>
+
+{% elseif logged_in %}
+    <div class="row usf_dash">
+        <div class="col-12"> {# Left "main" column #}
+            <div class="row appsLinks">
+                
+                {% if ('faculty' not in user.getroles) and ('all access' not in user.getroles) and ('student' not in user.getroles) and ('online student' not in user.getroles) and ('admitted student' not in user.getroles) and ('finance' not in user.getroles) and ('employee' not in user.getroles) and ('prehire faculty' not in user.getroles) and ('prehire staff' not in user.getroles)  and ('bi_group' not in user.getroles)  and ('vcl-staff' not in user.getroles)  and ('online_intaccept' not in user.getroles) %}
+
+                    <div class="col-sm myApps">
+                            {{ drupal_entity('block', "defaultrolestaticlinks") }}
+                    </div>
+
+                {% else %}
+
+                    <div class="col-sm myApps">
+                        <h2>Top Apps</h2>
+                            {% if dashboard_content.fav_links %}
+                                {{ dashboard_content.fav_links }}
+                            {% endif %}
+                    </div>
+        
+                    <div class="separator"></div>
+                    <div class="col-sm myLinks">
+                        {% if dashboard_content.dashboard_user.name.value is not empty %}
+                            <h2>{{ dashboard_content.dashboard_user.name.value }}'s Links</h2>
+                                {% endif %}
+                            {% if dashboard_content.quick_links %}
+                                {{ dashboard_content.quick_links }}
+                            {% endif %}
+                    </div>
+
+                {% endif %}            
+
             </div>
-            <div class="col-sm">
-                {% if dashboard_content.dashboard_user.name.value is not empty %}
-                    <h2>{{ dashboard_content.dashboard_user.name.value }}'s Links</h2>
-                {% endif %}
-                {% if dashboard_content.quick_links %}
-                    {{ dashboard_content.quick_links }}
-                {% endif %}
-            </div>
-            </div>
-            <div class="row">
+            <div class="row">           
                 <div class="col-sm">
                     {{ drupal_view('events_featured', 'block_1') }}
                 </div>
-            </div>
-            <div class="row">
                 <div class="col-sm">
-                {% if dashboard_content.announcements %}
-                    {{ dashboard_content.announcements }}
-                {% endif %}
+
+                    {#% if ('as_ug' in user.getroles) or ('som_ug' in user.getroles) or ('sonhp_ug' in user.getroles)  %#}
+                        {#% set target = 'Undergraduate Students' #}
+                        {#{ drupal_view('event_target_term', 'block_1', target) }#}
+                    {#% endif %#}
+
+                    {% if ('student' in user.getroles) and ('as_grad' not in user.getroles) and ('som_grad' not in user.getroles) and ('sonhp_grad' not in user.getroles) and ('soe' not in user.getroles)  %}
+                        {% set target = 'Undergraduate Students' %}
+                        {{ drupal_view('event_target_term', 'block_1', target) }}
+                    {% endif %}
+
+                    {% if ('as_grad' in user.getroles) or ('som_grad' in user.getroles) or ('sonhp_grad' in user.getroles) or ('soe' in user.getroles) or ('law' in user.getroles) %}
+                        {% set target = 'Graduate Students' %}
+                        {{ drupal_view('event_target_term', 'block_1', target) }}
+                    {% endif %}
+                    
+                    {% if ('faculty' in user.getroles) or ('prehire faculty' in user.getroles) %}
+                        {% set target = 'Faculty' %}
+                        {{ drupal_view('event_target_term', 'block_1', target) }}
+                    {% endif %}
+
+                    {% if ('employee' in user.getroles) or ('prehire staff' in user.getroles) %}
+                        {% set target = 'Staff' %}
+                        {{ drupal_view('event_target_term', 'block_1', target) }}
+                    {% endif %}
+
+                    {% if ('student' not in user.getroles) and ('as_ug' not in user.getroles) and ('som_ug' not in user.getroles) and ('sonhp_ug' not in user.getroles) and ('as_grad' not in user.getroles) and ('som_grad' not in user.getroles) and ('sonhp_grad' not in user.getroles) and ('law' not in user.getroles) and ('faculty' not in user.getroles) and ('prehire faculty' not in user.getroles) and ('employee' not in user.getroles) and ('prehire staff' not in user.getroles)  %}
+                        <a href="/calendar">View More Events</a>
+
+                    {% endif %}
                 </div>
             </div>
+                <div class="row">
+                    <div class="col-sm">
+                        {{ drupal_view('dashboard_announements', 'block_1', role) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">          
+                        {{ drupal_view('dashboard_blocks', 'block_1', role) }}
+
+                        {% if ('as_ug' not in user.getroles) and ('as_grad' not in user.getroles) and ('som_ug' not in user.getroles) and ('som_grad' not in user.getroles) and ('sonhp_ug' not in user.getroles)  and ('sonhp_grad' not in user.getroles)  and ('law' not in user.getroles) %}
+                            {{ drupal_view('dashboard_blocks', 'block_2', 'no_role') }}
+                        {% endif %}
+                    </div>
+                </div>
         </div>
     </div>
+   {% endif %} 
