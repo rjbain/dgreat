@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.announcement.field_featured_image
     - field.field.node.announcement.field_featured_image_caption
     - field.field.node.announcement.field_published_date
+    - field.field.node.announcement.field_role
     - field.field.node.announcement.field_subtitle
     - image.style.thumbnail
     - node.type.announcement
@@ -94,6 +95,15 @@ content:
     third_party_settings: {  }
     type: datetime_default
     region: content
+  field_role:
+    weight: 51
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   field_subtitle:
     weight: 1
     settings:
@@ -162,5 +172,8 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: datetime_timestamp_no_default
+    region: content
+  url_redirects:
+    weight: 50
     region: content
 hidden: {  }

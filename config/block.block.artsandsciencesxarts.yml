@@ -1,0 +1,35 @@
+uuid: 0d6c16f1-e155-4b8c-9ffd-5611d909a284
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.xarts
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: artsandsciencesxarts
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:xarts'
+settings:
+  id: 'system_menu_block:xarts'
+  label: 'Arts and Sciences - XARTS'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/arts-sciences/xarts\r\n/arts-sciences/xarts/*"
+    negate: false
+    context_mapping: {  }

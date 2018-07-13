@@ -1,0 +1,35 @@
+uuid: aa5c2da6-6151-4242-ad44-f4d5caa9ea36
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.health-promotion-services
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: healthpromotionservices
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:health-promotion-services'
+settings:
+  id: 'system_menu_block:health-promotion-services'
+  label: 'Health Promotion Services'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/hps\r\n/hps/*"
+    negate: false
+    context_mapping: {  }
