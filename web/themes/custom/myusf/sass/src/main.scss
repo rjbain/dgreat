@@ -37,7 +37,8 @@ body {
 }
 
 .container{
-	width: 96%;
+	/*width: 96%;*/
+	width:calc(100% - 30px);
 	/*padding-left: 30px;
 	padding-right: 30px;*/
 	@include margin-L-R-auto;
@@ -133,6 +134,11 @@ body {
 	}	
 }
 
+.col-sm {
+	@include media-breakpoint-down(phone) {
+		    width: 99.8%;
+	}
+}
 
 .node__content {
 	@include media-breakpoint-up(landscape_phone) {

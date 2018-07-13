@@ -600,7 +600,7 @@ h1.js-quickedit-page-title.page-title {
 .field--type-text-with-summary {
 	clear: both;
 	padding-top: 15px;
-	max-width: 775px;
+	max-width: 90%;
 }
 
 .field--name-field-announcement-teaser {
@@ -686,33 +686,79 @@ h1.js-quickedit-page-title.page-title {
 ================================================ */
 /*Filter by Audience Box */
 #block-audience {
-	border: 5px solid $light_gray;
+    padding-bottom: 20px;
+    padding-left:20px;
+    background: transparentize($light_gray, .7);
+
+    @include media-breakpoint-down(tablet) {
+    	margin-top: 20px;
+    	height: 200px;
+    }
 
 	h2 {
-		text-align: center;
-    	padding-bottom: 15px;
-    	background: $light_gray;
+		font-size: 1rem;
+    	width: 20%;
+    	@include media-breakpoint-down(tablet) {
+    		width: 100%;
+    	}
 	}
-	.facets-widget-checkbox {
-		ul {
-		    list-style-type: none;
-		        padding-left: 60px;
-    			padding-top: 20px;
-
-		    .facets-checkbox {
-			    margin-right: 10px;
-			    margin-left: -20px;
-			}
+	.facets-widget-dropdown {
+	    
+	    select.item-list__dropdown.facets-dropdown {
+	    	height:41px;
+	    	width: 20%;
+	    	@include media-breakpoint-down(tablet) {  
+	    		border: 1px solid $light_blue_gray;
+	    	}
+	    	@include media-breakpoint-down(tablet) {
+	    		width: 94%;
+	    		padding-left: 10px;
+	    	}
 		}
 	}
 }
-/* Search Box */
 
-input#edit-submit-services {
-    margin-bottom: .625rem;
-}
-input#edit-search-api-fulltext {
-    height: 41px;
+
+/* Search Box */
+.view-id-services.view-display-id-block_1 {
+	.view-filters {
+	    margin-left: 27.5%;
+	    margin-top: -100px;
+	    color:$black;
+	    width: 72.5%;
+
+	    @include media-breakpoint-down(tablet) {
+	    	width: 90%;
+    		margin-top: -100px;
+    		margin-left: 20px;
+    	}
+
+	    fieldset.form-item-search-api-fulltext {
+		    width: 60%;
+
+		    @include media-breakpoint-only(tablet) {
+	    		width: 63%;
+	    	}
+
+		    input#edit-search-api-fulltext {
+			    height: 41px;
+			    margin-top: 2px;
+			}
+		}
+		div#edit-actions {
+			width:35%;
+		    input#edit-submit-services {
+			    margin-bottom: .625rem;
+			    margin-left: 10px;
+			    &.button {
+			    	width: 100%;
+			    }
+			}
+		}
+	}
+	.view-content {
+		margin-top: 30px;
+	}	
 }
 
 /*Body area */
@@ -721,6 +767,8 @@ input#edit-search-api-fulltext {
 
 	.node__title {
 		a {
+			color:$green;
+			text-decoration:underline;
 		    font-size: 1.2rem!important;
 		    padding-top: 0;
 
@@ -759,7 +807,13 @@ input#edit-search-api-fulltext {
 	}
 }
 
-
+#block-views-block-services-block-2 {
+	.views-field-title {
+		h2 {
+			font-size: 1.2rem!important;
+		}
+	}
+}
 
 
 #block-topstudentquestions, #block-topstudentquestions-2,

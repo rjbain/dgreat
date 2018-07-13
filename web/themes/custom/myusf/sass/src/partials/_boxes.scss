@@ -9,7 +9,7 @@
     @include media-breakpoint-only(tablet) {        
         position: relative;
         width: 250px;
-        left: 30%;
+        left: 100%; /* was 30% */
         padding: 5px 10px!important;
 
         h2, p {
@@ -47,13 +47,17 @@
     }
     
     p {
-        font-size: .9rem;
+        font-size: .8rem;
         font-family: $base-font;
         font-weight: 400;
         position: relative;
         color: $text-gray;
         display: block;
         line-height: 1.2rem;
+
+        @include media-breakpoint-up(large_desktop) {
+            font-size: .9rem;
+        }
     }
 }
 
@@ -515,7 +519,7 @@ a.right.carousel-control {
     margin-right: 15px;
 
     @include media-breakpoint-down(phone) {
-        width: 92%;
+        width: 88%;
         @include margin-L-R-auto;
     }
 } 
@@ -768,12 +772,21 @@ a.right.carousel-control {
 /* Hero Image Header - Jumbotron with text
 =============================================== */ 
 .region-hero-image {
-     @include media-breakpoint-down(phone) {
+    @include media-breakpoint-down(phone) {
         height: 160px;
+        margin-left: 0;
+        margin-right: 0;
     }
 }
 .view-content-hero-image {
     position: relative;
+
+   &.container-fluid {
+        @include media-breakpoint-down(phone) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
 }
 .hero-image-block {
     margin: -25px 0 -50px 0 !important;
