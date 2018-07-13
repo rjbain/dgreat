@@ -81,6 +81,12 @@
   {% set event_date = event_date %}
 {% endif %}
 
+{% if event_target is empty %}
+  {% set event_target = "all" %}
+{% else %}
+  {% set event_target = event_target %}
+{% endif %}
+
 <div>
     {% if action is empty %}
         {{ drupal_view('events_featured', 'block_1') }}
@@ -90,7 +96,7 @@
 <div class="event_search_anchor"><a href="#event_search_anchor">Search</a></div>
 
 <div>
-  {{ drupal_view('events_search', 'block_1', search_content, event_category, event_date) }}
+  {{ drupal_view('events_search', 'block_1', search_content, event_category, event_date, event_target) }}
 </div>
 
 <a name="event_search_anchor"></a>

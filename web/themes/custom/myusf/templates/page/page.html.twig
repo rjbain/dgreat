@@ -123,22 +123,14 @@
         </div>
       </form>
       <button class="header_search" type="submit" onclick="toggle()"></button>
-<style>
-.search-options {
-    background-color: #00543c;
-    color: #ffffff;
-    padding: 10px 10px 10px 10px;
-    margin:30px 10px 0 0;
-}
-</style>
-
       {% if logged_in %}
         <!--<form class="form-inline">-->
-          <a href="/user/logout"><button class="btn btn-outline-success" type="button">Log Out</button></a>
+          <!--<a href="/user/logout"><button class="btn btn-outline-success" type="button">Log Out</button></a>-->
+          {{ drupal_view('user', 'block_1') }}
         <!--</form>-->
       {% else %}
         <!--<form action="/user/login" class="form-inline" method="get">-->
-          <a href="/user/login"><button class="btn btn-outline-success" type="button">Log In</button></a>
+          <a href="/caslogin"><button class="btn btn-outline-success" type="button">Log In</button></a>
         <!--</form>-->
       {% endif %}
     <!--</div>-->
@@ -153,7 +145,11 @@
   <div id="main" class="{{ container }}">
     <div class="row clearfix">
       {{ page.breadcrumb }}
-        <main{{ content_attributes }}>
+        {% if "/dashboard" in path("<current>") %} 
+          <main class="main-content col dashboard" id="content" role="main">
+        {% else %}
+          <main{{ content_attributes }}>
+        {% endif %}
           <section class="section">
             <a id="main-content" tabindex="-1"></a>
             {{ page.content }}

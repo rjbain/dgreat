@@ -1,0 +1,23 @@
+uuid: cde0892c-d14c-4b79-b6a5-60b48885a20d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_role
+    - node.type.dashboard
+id: node.dashboard.field_role
+field_name: field_role
+entity_type: node
+bundle: dashboard
+label: Role
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user_role'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: entity_reference
