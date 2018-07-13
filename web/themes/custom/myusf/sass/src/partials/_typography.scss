@@ -26,7 +26,7 @@ h1, h1 a {
 	font-weight: 700;
 	font-size: 2.2rem;
 	margin-bottom: .5rem;
-	line-height: 1.1;
+	line-height: 1.1rem;
 	color: inherit;
 	text-transform: none !important;
 }
@@ -36,7 +36,7 @@ h2, h2 a {
 	font-size: 1.5rem;
 	padding-top: 1rem;
 	margin-bottom: .8rem;
-	line-height: 1.1;
+	line-height: 1.1rem;
 	color: inherit;
 	text-transform: none !important;
 }
@@ -47,7 +47,7 @@ h3, h3 a {
 	font-style: normal !important;
 	margin-bottom: .5rem;
 	padding-top: .6rem;
-	line-height: 1.1;
+	line-height: 1.1rem;
 	color: inherit;
 	text-transform: uppercase;
 }
@@ -56,7 +56,7 @@ h4, h4 a {
 	font-size: 1.2rem;
 	font-weight: 600;
 	margin-bottom: .5rem;
-	line-height: 1.1;
+	line-height: 1.1rem;
 	color: inherit;
 }
 
@@ -64,7 +64,7 @@ h5, h5 a {
 	font-size: 1.0rem;
 	font-weight: 600;
 	margin-bottom: .5rem;
-	line-height: 1.1;
+	line-height: 1.1rem;
 	color: inherit;
 	text-transform: uppercase;
 }
@@ -74,8 +74,20 @@ h6, h6 a {
 	font-weight: 700;
 	font-style: italic;
 	margin-bottom: .5rem;
-	line-height: 1.1;
+	line-height: 1.1rem;
 	color: inherit;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+	color:$green;
+	text-decoration: none;
+	padding-top:0;
+	line-height: 2rem;
+	
+	&:hover,
+	&:focus {
+		font-weight: 700;
+	}
 }
 
 h1.js-quickedit-page-title.page-title {
@@ -190,11 +202,12 @@ tr {
 	table.table-responsive:before, div.table-responsive:before {
 		position: relative;
 		content: "Scroll to see more";
+		font-size:.8rem;
 	    width: 110px;
 	    height: 25px;
 	    top: 0;
 	    right: 0px;
-	    float: right;   
+	    float: left;   
 	}
 }
 
@@ -211,4 +224,199 @@ tr {
 		}
 	}
 }
+
+/* GOOGLE SEARCH RESULTS 
+=================================================== */ 
+div#___gcse_0, div#___gcse_1 {
+	table {
+		tr {
+			background: transparent;
+		}
+	}
+}
+/* Search box */
+
+div#___gcse_0 { 
+	margin-top: 30px;
+	margin-bottom: 30px;
+
+	table.gsc-search-box {
+		width: 60%!important;
+
+		@include media-breakpoint-down(phone) {
+			width:100%!important;
+		}
+
+		td {
+	    	vertical-align: top!important;
+	    	&.gsc-input {
+
+	    		.gsc-input-box  {
+					height:51px;
+				}
+				#gs_cb50 {
+					color: $text-gray;
+				}
+		    	.gsib_b {
+				    padding-top: 3px;
+				}
+			}
+
+			&.gsc-search-button {
+				button.gsc-search-button.gsc-search-button-v2 {
+					width: 51px;
+				    height: 51px;
+				    margin-top: 0;
+				    border-radius: 0;
+				    background: #00543c;
+
+				    &:before {
+				 		display: inline-block;
+				 		content: "";
+				 		position: relative;
+				    	width: 24px;
+				    	height: 25px;   	
+				    	top: 0;
+				    	left: -11px;
+				    	bottom: 0;
+				    	margin: auto 10px auto auto;
+				    	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -190px -96px;
+				    }
+
+				    svg {
+				    	display: none;
+				    }
+				}
+			}
+		}		
+	}
+}
+
+/* Search Results */
+
+div#___gcse_1 { 
+	@include media-breakpoint-down(phone) {
+		margin-top: -10px;
+	}
+
+	.gsc-control-cse {
+		padding: 0;
+	}
+
+	.gsc-above-wrapper-area, .gsc-wrapper {
+		margin-top: -20px;
+
+		@include media-breakpoint-down(phone) {
+				margin-top: -10px!important;
+		}
+		.gsc-resultsbox-visible {
+			@include media-breakpoint-down(phone) {
+				margin-top: -10px;
+			}
+		}
+
+		table.gsc-above-wrapper-area-container {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+	}
+	
+
+	.gsc-control-cse .gs-result .gs-title * {
+		font-size: 1.2rem!important;
+	}
+
+	.gsc-results.gsc-webResult {
+		.gsc-webResult.gsc-result {
+			margin-top:20px;
+			border-bottom: 1px solid $light_gray;
+			&:hover,
+			&:focus { 
+				border-bottom: 1px solid $light_gray!important;
+			}
+			@include media-breakpoint-down(phone) {
+				margin-top:10px;
+			}
+		}
+
+		.gsc-result {
+			&:hover,
+			&:focus {
+				border-left: 0;
+			}
+			td.gsc-table-cell-thumbnail {
+			    display: none;
+			}
+			td.gsc-table-cell-snippet-close {
+			    padding-left: 6px;
+			}
+
+			.gs-title {
+				height: 2rem!important;
+				 @include media-breakpoint-down(phone) {
+				 	height: 100%!important;
+				 	margin-bottom: 20px;
+				 }
+			}
+			.gs-bidi-start-align.gs-visibleUrl.gs-visibleUrl-long {
+			    font-size: .8rem;
+			    margin-top:-8px;
+
+			    @include media-breakpoint-down(phone) {
+			    	line-height: 1.2 rem;
+			    }
+			}
+			.gsc-url-top {
+				 @include media-breakpoint-down(phone) {
+			    	line-height: 1rem!important;
+				}
+			}
+			table.gsc-table-result {
+				@include media-breakpoint-down(phone) {
+    				margin-bottom: 0;
+				}
+			}
+			.gs-bidi-start-align.gs-snippet {
+			    font-size: 1rem;
+			    color:$text-gray;
+			    margin-top:-15px;
+
+				@include media-breakpoint-down(phone) {
+					font-size: .9rem;
+				}
+			}
+			.gsc-thumbnail-inside .gs-title, .gsc-thumbnail-inside .gs-title b {
+				font-size: 1.2rem!important;
+			    color:$green;
+			    &:hover,
+				&:focus {
+					text-decoration: none;
+					color:$black;
+				}
+
+				@include media-breakpoint-down(phone) {
+					font-size: 1rem!important;
+				}
+			}
+			.gsc-thumbnail-inside .gs-title {
+				font-weight:600;
+			}
+			.gsc-thumbnail-inside .gs-title b {
+				font-weight:700;
+			}			
+		}
+		.gsc-cursor-box.gs-bidi-start-align {
+			border-top: 0!important;
+
+			.gsc-cursor-page {
+				margin-right: 18px;
+			}
+		}
+	}
+
+}
+
+
+
+
 
