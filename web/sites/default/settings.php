@@ -57,3 +57,13 @@ if (file_exists($migrate_settings) && isset($_ENV['PANTHEON_ENVIRONMENT'])) {
 }
 
 $config['sendgrid_integration.settings']['apikey'] = getenv('sendgrid-api-key');
+
+if(defined('PANTHEON_ENVIRONMENT')) {
+  switch ($_ENV['PANTHEON_ENVIRONMENT']) {
+    case 'live':
+      $config['cas.settings']['server']['host'] = 'cas.usfca.edu';
+      break;
+    default:
+      $config['cas.settings']['server']['host'] = 'cas-test.usfca.edu';
+  }
+}
