@@ -217,7 +217,7 @@ class DgreatGroup {
     if (!empty($nids)) {
       foreach ($nids as $nid) {
         $node = Node::load($nid);
-        if (!$flag->isFlagged($node, $this->entity)) {
+        if (!is_null($node) && !$flag->isFlagged($node, $this->entity)) {
           $flag_service->flag($flag, $node, $this->entity);
         }
       }
