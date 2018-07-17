@@ -53,8 +53,17 @@
 			margin-left: 20px;
 			margin-right: 20px;
 
+			@include media-breakpoint-down(phone) {
+				margin-left: 0px;
+				margin-right: 0px;
+			}
+
 			h2 {
 				margin-top: 10px;
+				@include media-breakpoint-down(phone) {
+					margin-left: 20px;
+					font-size: 1.3rem;
+				}
 			}
 			.table-responsive.col {
 			    max-width: 100%;
@@ -93,15 +102,15 @@
 					}
 
 					@include media-breakpoint-down(phone) {
-				        width:105%;
-				        height: 393px;
+				        width:100%;
+				        height: 370px;
 				        margin-top: 20px;
 				        margin-left: 0px;
 						margin-right: 0px; 
 				    }	
 				}
 			
-			table {
+				table {
 					position:absolute;
 					left: 640px;
 					width:200px;
@@ -121,7 +130,12 @@
     					margin-top: -10px;
 					}
 					@include media-breakpoint-down(phone) {
-					 	left: 0;
+					 	left: 0px;
+					    width: 86%;
+					    margin-top: 0;
+					    margin-left: 20px;
+					    border-spacing: 0 10px;
+					    border-collapse: separate;
 					}
 
 					thead {
@@ -152,7 +166,8 @@
 							@include media-breakpoint-down(phone) {
 							 	position: unset;
 							 	width: 100%;
-						    	height: 50px;
+						    	height: 50px!important;
+						    	line-height: unset;
 						    	margin-top: 20px;
 							}
 
@@ -167,6 +182,9 @@
 
 								@include media-breakpoint-down(desktop) {
 				    				font-size:.85rem!important;
+								}
+								@include media-breakpoint-down(phone) {
+									padding: 5px 10px!important;
 								}
 
 						    	&:hover,
@@ -247,7 +265,9 @@
 						}
 						
 						&:nth-child(5) td {
-							
+							 @include media-breakpoint-down(phone) {
+							    padding-top: 10px!important;
+							}
 						}
 						&:last-child td {
 							padding-bottom: 12px!important;
@@ -304,8 +324,8 @@
 					    	top: -40px;
 					    }
 					    @include media-breakpoint-down(phone) {
-					    	top: 0;
-					    	left: 7px;
+					    	top: 10px;
+					    	left: 27px;
 					    }
 
 						&:hover,
@@ -352,13 +372,14 @@
 		    	top: 400px;
 		    }
 		    @include media-breakpoint-down(phone) {
-		    	top: 505px;
+		    	top: 515px;
 		    }
 
 			h2 {
 				padding-left:14px;
 				@include media-breakpoint-down(phone) {
 		    		padding-left:24px;
+		    		font-size: 1.3rem;
 		    	}
 			}
 
@@ -386,97 +407,20 @@
 					}					
 
 					@include media-breakpoint-down(phone) {
-				        width:90%;
-				        height: 134px;
+				        height: 112px;
 				    }
 
 				    .views-row {
 					    margin-bottom: 10px;
 					}
+				}
 
-				/*	ul.myLinksList {
-						column-count: 3;
-    					column-gap: 20px;
-    					margin-top: 10px;
-    					@include media-breakpoint-down(desktop) {
-
-						}
-
-    					@include media-breakpoint-down(tablet) {
-    						column-count: 2;
-    						width: 600px;
-    					}
-    					@include media-breakpoint-down(phone) {
-    						column-count: 1;
-    						width:unset;
-    					}
-						
-						.field--name-label {
-							display: none;
-						}
-
-						li {
-							padding:unset;
-							margin-bottom: 10px;					
-
-							h2 {
-								padding-top: unset;
-	    						margin-bottom: unset;
-								a {
-									font-size: .85rem!important;
-									font-weight: 600;
-									color: $turquoise;
-									text-decoration:none;
-									line-height: .7rem!important;
-
-									&:hover,
-									&:focus {
-										text-decoration: underline;
-										color: $turquoise!important;
-										background: transparent;
-									}									
-								}
-							}
-						}
-					} */
-
-				   /* .links-col {
-				    	.field--name-label {
-							display: none;
-						}
-
-					    &.col-1, &.col-2, &.col-3 {
-						    max-width: 33%;
-						    flex: 0 0 33%;
-						    padding-left: 0;
-
-						    h2 {
-								padding-top: unset;
-	    						margin-bottom: unset;
-	    						padding-left: 0;
-								a {
-									font-size: .85rem!important;
-									font-weight: 600;
-									color: $turquoise;
-									text-decoration:none;
-									line-height: .7rem!important;
-
-									&:hover,
-									&:focus {
-										text-decoration: underline;
-										color: $turquoise!important;
-										background: transparent;
-									}									
-								}
-							}
-						}
-					}*/
-
-					table {
+				table {
 						position:absolute;
-						left: 635px;
-						width: 32%;
-						top: -500px;
+						left: 50%!important; /*635px;*/
+						width: 50%!important; /*32%*/
+						top: -400px; /*-500*/
+						height:300px;
 
 						@include media-breakpoint-down(desktop) {
 						    left: 520px;
@@ -486,7 +430,10 @@
 					    	
 					    }
 					    @include media-breakpoint-down(phone) {
-							
+							width: 100%;
+							top: 0;
+							left: 5px;
+							margin-top: -5px;
 						}	
 
 						thead {
@@ -496,7 +443,7 @@
 							&:first-child td {
 								padding-top: 16px!important;
 							}
-							&:first-child td, &:nth-child(2) td, &:nth-child(3) td, &:nth-child(4) td, 
+							/*&:first-child td, &:nth-child(2) td, &:nth-child(3) td, &:nth-child(4) td, 
 							&:nth-child(5) td, &:nth-child(6) td, &:nth-child(7) td, &:nth-child(8) td {
 								position:relative;
 								left: -640px;
@@ -509,7 +456,8 @@
 							    	
 							    }
 							    @include media-breakpoint-down(phone) {
-									
+									left: 0;
+									top: 0px;
 								}	
 							}
 							&:nth-child(9) td, &:nth-child(10) td, &:nth-child(11) td, &:nth-child(12) td,
@@ -526,7 +474,26 @@
 							    	
 							    }
 							    @include media-breakpoint-down(phone) {
-									
+									left: 0;
+									top: 0px;
+								}	
+							}*/
+
+							&:first-child td, &:nth-child(2) td, &:nth-child(3) td, &:nth-child(4) td, 
+							&:nth-child(5) td, &:nth-child(6) td, &:nth-child(7) td, &:nth-child(8) td {
+								position:relative;
+								left: -101.5%!important; /*-640px;*/
+								top:390px; /*500*/
+
+								@include media-breakpoint-down(desktop) {
+						    		left: -525px;
+								}
+							    @include media-breakpoint-down(tablet) {
+							    	
+							    }
+							    @include media-breakpoint-down(phone) {
+									left: 0;
+									top: 0px;
 								}	
 							}
 							&:nth-child(4) td {
@@ -558,7 +525,7 @@
 							}
 						}
 					}
-				}
+				
 				.view-footer {
 					a.addLinks {
 						font-size: 0;
@@ -945,6 +912,16 @@ div.view-quick-links.view-id-quick_links {
 		}
 	}
 }
+
+/*  Events
+===================================================*/ 
+
+.usf_dash {
+	.eventsLink {
+		display:block;
+	}
+}
+
 
 
 /*  Announcements
