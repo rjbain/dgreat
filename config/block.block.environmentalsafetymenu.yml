@@ -1,0 +1,35 @@
+uuid: 1f8e9891-e51c-4bf8-a267-0fce3eca0333
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.environmental-safety-menu
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: environmentalsafetymenu
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:environmental-safety-menu'
+settings:
+  id: 'system_menu_block:environmental-safety-menu'
+  label: 'Environmental Safety Menu'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/environmental-safety \r\n/environmental-safety/*"
+    negate: false
+    context_mapping: {  }

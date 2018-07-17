@@ -1990,6 +1990,7 @@ display:
         sorts: false
         query: false
         group_by: false
+        cache: false
       relationships:
         gc__node:
           id: gc__node
@@ -2347,7 +2348,7 @@ display:
           empty: false
           tokenize: false
           content:
-            value: '<a href="/node/add/favorite-link?edit[field_link_type][und]=quick" class="btn">Add new Quick Link</a>'
+            value: '<a href="/node/add/favorite-link?edit[field_link_type][und]=quick" class="addLinks">Add new Quick Link</a>'
             format: full_html
           plugin_id: text
         area_1:
@@ -2360,7 +2361,7 @@ display:
           empty: false
           tokenize: false
           content:
-            value: '<a href="/quick-links" class="btn">Manage Quick Links</a>'
+            value: '<a href="/quick-links" class="manageLinks">Manage Quick Links</a>'
             format: full_html
           plugin_id: text
       empty: {  }
@@ -2412,6 +2413,9 @@ display:
           query_comment: ''
           query_tags: {  }
       group_by: false
+      cache:
+        type: none
+        options: {  }
     cache_metadata:
       max-age: -1
       contexts:
