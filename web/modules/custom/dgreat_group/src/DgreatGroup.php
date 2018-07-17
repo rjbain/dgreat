@@ -2,6 +2,7 @@
 
 namespace Drupal\dgreat_group;
 
+use Drupal\flag\FlagInterface;
 use Drupal\group\Entity\Group;
 use Drupal\node\Entity\Node;
 use Drupal\user\Entity\User;
@@ -217,7 +218,7 @@ class DgreatGroup {
     if (!empty($nids)) {
       foreach ($nids as $nid) {
         $node = Node::load($nid);
-        if (!is_null($node) && !$flag->isFlagged($node, $this->entity)) {
+        if ($this->isflaggable($node, $flag)) {
           $flag_service->flag($flag, $node, $this->entity);
         }
       }
@@ -225,6 +226,19 @@ class DgreatGroup {
 
     // Fail safe return.
     return FALSE;
+  }
+
+  /**
+   * @param $node
+   * @param $flag
+   *
+   * @return bool
+   */
+  protected function isflaggable($node, FlagInterface $flag) {
+    $bundles = $flag->getBundles();
+    return !is_null($node) &&
+      !$flag->isFlagged($node, $this->entity) &&
+      in_array($node->bundle, $bundles);
   }
 
 }
