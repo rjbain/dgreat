@@ -2216,8 +2216,12 @@ display:
             format: full_html
           plugin_id: text
       cache:
-        type: none
-        options: {  }
+        type: time
+        options:
+          results_lifespan: 1800
+          results_lifespan_custom: 0
+          output_lifespan: 1800
+          output_lifespan_custom: 0
     cache_metadata:
       max-age: -1
       contexts:
