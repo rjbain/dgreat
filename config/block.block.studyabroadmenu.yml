@@ -1,0 +1,35 @@
+uuid: 8831c4c5-0078-46c6-b71d-1feb831233e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.study-aboard-menu
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: studyabroadmenu
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:study-aboard-menu'
+settings:
+  id: 'system_menu_block:study-aboard-menu'
+  label: 'Study Abroad Menu'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/study-abroad\r\n/study-abroad/*"
+    negate: false
+    context_mapping: {  }

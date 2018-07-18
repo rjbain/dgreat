@@ -1,0 +1,35 @@
+uuid: 0a9b2d92-48a0-4710-b506-97aec6f41ff9
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.special-events
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: specialeventsmenu
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:special-events'
+settings:
+  id: 'system_menu_block:special-events'
+  label: 'Special Events Menu'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/special-events\r\n/special-events/*"
+    negate: false
+    context_mapping: {  }
