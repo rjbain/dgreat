@@ -1,0 +1,71 @@
+uuid: 96ffc367-b2f8-4386-9f36-53c72317fe20
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 17050
+template: false
+archive: false
+id: webform_135060
+title: 'Immersions Faculty Interest Application'
+description: null
+category: null
+elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#description': \"\"\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': \"\"\n  '#required': true\nintended_country:\n  '#type': textfield\n  '#title': Intended Country \n  '#description': \"\"\n  '#required': true\nproposed_itinerary:\n  '#type': managed_file\n  '#max_filesize': '0.002'\n  '#file_extensions': 'txt,rtf,html,pdf,doc,docx,odt,ppt,pptx,odp,xls,xlsx,ods,xml'\n  '#title': Proposed Itinerary\n  '#description': \"\"\nbudget_outline_for_students:\n  '#type': managed_file\n  '#max_filesize': '0.002'\n  '#file_extensions': 'txt,rtf,html,pdf,doc,docx,odt,ppt,pptx,odp,xls,xlsx,ods,xml'\n  '#title': Budget Outline for Students\n  '#description': \"\"\nexample_outline:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>Example:&nbsp;<a title='Budget Request Form' href='https://myusf.usfca.edu/file/12438'>Budget Request Form</a></p>\"\n  '#title': Example Budget Outline\n  '#description': \"\"\nclass_syllabus__number_of_unit_credits:\n  '#type': managed_file\n  '#max_filesize': '0.002'\n  '#file_extensions': 'gif,jpg,jpeg,png,txt,rtf,html,pdf,doc,docx,odt,ppt,pptx,odp,xls,xlsx,ods,xml'\n  '#title': Class Syllabus & Number of Unit Credits \n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: '<p>Thank you for your submission! Please contact Kique Bazan at lebazan@usfca.edu with any questions.</p>'
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+      - faculty
+      - prehire_faculty
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: lebazan@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: true
+      attachments: true
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

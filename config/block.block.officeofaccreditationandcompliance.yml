@@ -1,0 +1,35 @@
+uuid: a8587564-2290-424b-8c50-df2cfef58e41
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.office-of-accreditation-and
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: officeofaccreditationandcompliance
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:office-of-accreditation-and'
+settings:
+  id: 'system_menu_block:office-of-accreditation-and'
+  label: 'Office of Accreditation and Compliance'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/accreditation-compliance\r\n/accreditation-compliance/*"
+    negate: false
+    context_mapping: {  }

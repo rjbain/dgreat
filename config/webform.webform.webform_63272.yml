@@ -1,0 +1,69 @@
+uuid: 44a5435b-611c-4e66-9b69-a20084bb3993
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 23555
+template: false
+archive: false
+id: webform_63272
+title: 'Domestic Short Term Program Travel Intent Form'
+description: null
+category: null
+elements: "student_name:\n  '#type': textfield\n  '#title': Student Name\n  '#description': \"\"\n  '#required': true\nstudent_id_number:\n  '#type': textfield\n  '#title': Student ID Number\n  '#description': \"\"\n  '#required': true\nprogram_name:\n  '#type': textfield\n  '#title': Program Name\n  '#description': \"\"\n  '#required': true\nmajor:\n  '#type': textfield\n  '#title': Major\n  '#description': \"\"\n  '#required': true\ncity:\n  '#type': textfield\n  '#title': City\n  '#description': \"\"\n  '#required': true\nstate_territory:\n  '#type': textfield\n  '#title': State / Territory\n  '#description': \"\"\n  '#required': true\nstart_date:\n  '#type': date\n  '#title': Start Date\n  '#description': \"\"\n  '#required': true\nend_date:\n  '#type': date\n  '#title': End Date\n  '#description': \"\"\n  '#required': true\nearly_arrival:\n  '#type': radios\n  '#options':\n    1: &nbsp;I choose to arrive *BEFORE* the Start Date of the Program.\n  '#title_display': invisible\n  '#title': Early Arrival\n  '#description': \"(I am choosing to arrive in said City/State/Territory and/or travel to another City/State/Territory of my own accord, and agree that my academic relationship with USF related to my participation in the USF Short Term Domestic Program begins on the official Start Date.)\"\n  '#required': true\nlate_departure:\n  '#type': radios\n  '#options':\n    1: I choose to depart *AFTER* the End Date of the Program.\n  '#title_display': invisible\n  '#title': Late Departure\n  '#description': \"(I am choosing to remain in said City/State/Territory and/or travel to another City/State/Territory of my own accord, and agree that my academic relationship with USF related to my participation in the USF Short Term Domestic Program ends on the official End Date.)\"\n  '#required': true\ntext_blank_space_before_confirmation:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<br>\\n&nbsp;\"\n  '#title':   [TEXT] Blank Space Before Confirmation\n  '#description': \"\"\nconfirmation:\n  '#type': radios\n  '#options':\n    1: I certify that all of the information on this form is true, correct, and complete.\n  '#title_display': invisible\n  '#title': Confirmation\n  '#description': \"\"\n  '#required': true\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: 'stp@usfca.edu,macalderon2@dons.usfca.edu'
+      from_mail: default
+      from_name: default
+      subject: 'Domestic ST Travel Intent'
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

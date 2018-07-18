@@ -1,0 +1,102 @@
+uuid: 643e62a7-a7b2-4b06-b3db-2c698caf3053
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 350
+template: false
+archive: false
+id: webform_136729
+title: 'UM Jesuit High School Graduate Dinner'
+description: null
+category: null
+elements: "callout:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<div>Thursday, 8/24/17</div><div>7:15pm - 8:15pm, Loyola House</div>\"\n  '#title': Callout\n  '#description': \"\"\nfirst_name:\n  '#type': textfield\n  '#title': First Name:\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name:\n  '#description': \"\"\n  '#required': true\nemail_address:\n  '#type': email\n  '#size': 20\n  '#title': Email Address:\n  '#description': \"\"\n  '#required': true\nphone_number:\n  '#type': textfield\n  '#title': Phone Number:\n  '#description': \"\"\n  '#required': true\nyear_at_usf:\n  '#type': select\n  '#options':\n    1: Freshman\n    2: Sophomore\n    3: Junior\n    4: Senior\n    5: Graduate Student\n    6: N/A\n  '#title': Year at USF:\n  '#description': \"\"\n  '#required': true\ncollege_major:\n  '#type': textarea\n  '#title': College Major:\n  '#description': \"\"\n  '#required': true\nwhich_jesuit_high_school_did_you_attend:\n  '#type': textarea\n  '#title': Which Jesuit High School did you attend?\n  '#description': \"\"\n  '#required': true\nwhat_year_did_you_graduate:\n  '#type': textfield\n  '#title': What year did you graduate?\n  '#description': \"\"\n  '#required': true\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_2:
+    id: email
+    label: 'Email 2'
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      to_mail: godfrey@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: false
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_3:
+    id: email
+    label: 'Email 3'
+    handler_id: email_3
+    status: true
+    conditions: {  }
+    weight: 3
+    settings:
+      to_mail: abalfantz@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: false
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
