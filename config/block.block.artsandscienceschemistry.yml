@@ -1,0 +1,35 @@
+uuid: 201dd4a6-260a-46cf-b58d-a0cfd8585768
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.arts-and-sciences---chemist
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: artsandscienceschemistry
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:arts-and-sciences---chemist'
+settings:
+  id: 'system_menu_block:arts-and-sciences---chemist'
+  label: 'Arts and Sciences - Chemistry'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/arts-sciences/chemistry\r\n/arts-sciences/chemistry/*"
+    negate: false
+    context_mapping: {  }

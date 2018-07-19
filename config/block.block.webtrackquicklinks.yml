@@ -1,0 +1,37 @@
+uuid: d9b2d317-c768-4b8f-b8f6-4929075edcf3
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:quick_links:a72cfdfe-1b56-4686-b2b4-799ac90844a9'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: webtrackquicklinks
+theme: myusf
+region: sidebar_second
+weight: 27
+provider: null
+plugin: 'block_content:a72cfdfe-1b56-4686-b2b4-799ac90844a9'
+settings:
+  id: 'block_content:a72cfdfe-1b56-4686-b2b4-799ac90844a9'
+  label: 'Webtrack Quick Links'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/webtrack\r\n/webtrack/*"
+    negate: false
+    context_mapping: {  }

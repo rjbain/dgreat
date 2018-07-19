@@ -1,0 +1,35 @@
+uuid: 1b9b6c9a-a9a1-4bba-a4af-a60441a17b5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.arts-and-sciences---rhetori
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: artsandsciencesrhetoricandlanguage
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:arts-and-sciences---rhetori'
+settings:
+  id: 'system_menu_block:arts-and-sciences---rhetori'
+  label: 'Arts and Sciences - Rhetoric and Language'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/arts-sciences/rhetoric-language\r\n/arts-sciences/rhetoric-language/*"
+    negate: false
+    context_mapping: {  }

@@ -22,19 +22,18 @@
 	.appsLinks {
 		margin-left: 0px;
    		margin-right: 0px;
+   		margin-bottom: 20px;
 		background: transparentize($light_beige, .5);
 		height:560px;
 
 		@include media-breakpoint-down(desktop) {
-			height: 500px;
+			height: 580px;
 		}
 
 		@include media-breakpoint-down(tablet) {
-			height: 620px;
-		}
-		@include media-breakpoint-down(phone) {
 			height: 710px;
 		}
+		
 
 		div.col-sm{
 			&:first-child h2 {
@@ -42,6 +41,9 @@
 			}
 			&:last-child h2 {
 				color: $turquoise!important;
+				@include media-breakpoint-down(tablet) {
+					margin-top: 20px;
+				}
 			}
 		    #block-dashboardannouncements h2 {
 			    color:$black!important;
@@ -64,9 +66,6 @@
 					margin-left: 20px;
 					font-size: 1.3rem;
 				}
-			}
-			.table-responsive.col {
-			    max-width: 100%;
 			}
 
 			#block-views-block-favorite-links-block {
@@ -94,7 +93,7 @@
 
 					@include media-breakpoint-down(desktop) {
 						margin-right: -15px;
-						height: 165px; 
+						height: 200px; 
 					}				
 					
 					@include media-breakpoint-down(tablet) {
@@ -112,7 +111,7 @@
 			
 				table {
 					position:absolute;
-					left: 640px;
+					left: 620px;
 					width:200px;
 					height:200px;
 
@@ -121,8 +120,8 @@
 					}
 
 					@include media-breakpoint-down(desktop) {
-				    	left: 520px;
-				    	width: 130px;
+				    	left: 485px;
+				    	width: 180px;
 					}
 				    @include media-breakpoint-down(tablet) {
 						left: 320px;
@@ -145,8 +144,8 @@
 					tr {
 						&:first-child td, &:nth-child(2) td, &:nth-child(3) td, &:nth-child(4) td {
 							position: absolute;
-						    width: 140px;
-						    height: 140px;
+						    width: 130px;
+						    height: 130px;
 						    margin: 0px;
 						    top: 0;
 						    padding:10px!important;
@@ -155,13 +154,14 @@
 							margin-left: 0;
 
 							@include media-breakpoint-down(desktop) {
-						    	width: 120px;
-						    	height: 120px;
-						    	line-height: 100px;
+						    	width: 110px;
+						    	height: 110px;
+						    	line-height: 90px;
 							}
 						    @include media-breakpoint-down(tablet) {
 								width: 130px;
 						    	height: 130px;
+						    	line-height: 105px;
 							}
 							@include media-breakpoint-down(phone) {
 							 	position: unset;
@@ -178,7 +178,7 @@
 						    	text-transform: uppercase!important;
 						    	display: inline-block;
 								vertical-align: middle;
-								padding: 10px!important;
+								
 
 								@include media-breakpoint-down(desktop) {
 				    				font-size:.85rem!important;
@@ -198,11 +198,11 @@
 
 						&:first-child td {						
 						    background: $olive;
-						    left:-640px;
+						    left:-620px;
 						    margin-top:10px;
 
 						    @include media-breakpoint-down(desktop) {
-						    	left: -520px!important;
+						    	left: -480px!important;
 							}
 						    @include media-breakpoint-down(tablet) {
 						    	left: -320px!important;
@@ -216,10 +216,10 @@
 
 						&:nth-child(2) td {
 						    background: $plum;
-						    left: -480px;
+						    left: -470px;
 						    margin-top:10px;
 						    @include media-breakpoint-down(desktop) {
-						    	left: -390px!important;
+						    	left: -360px!important;
 							}
 						    @include media-breakpoint-down(tablet) {
 						    	left: -170px!important;
@@ -236,7 +236,7 @@
 						    left: -320px;
 						    margin-top:10px;
 						     @include media-breakpoint-down(desktop) {
-						    	left: -260px!important;
+						    	left: -240px!important;
 							}
 						    @include media-breakpoint-down(tablet) {
 						    	left: -320px!important;
@@ -249,10 +249,10 @@
 						}
 						&:nth-child(4) td {
 						    background: $orange;
-						    left: -160px;
+						    left: -170px;
 						    margin-top:10px;
 						     @include media-breakpoint-down(desktop) {
-						    	left: -130px!important;
+						    	left: -120px!important;
 							}
 						    @include media-breakpoint-down(tablet) {
 						    	left: -170px!important;
@@ -314,7 +314,7 @@
 
 					a.seeMyApps {
 						text-decoration:none;
-						top: -20px;
+						top: -40px;
 						margin-left: -10px;
 
 						@include media-breakpoint-down(desktop) {
@@ -383,9 +383,13 @@
 		    	}
 			}
 
+			.table-responsive.col {
+			    max-width: 100%!important;
+			}
+
 			#block-views-block-quick-links-block {
 				.view-content {
-					height: 160px; /*was 593px */
+					height: 210px; /*was 593px */
 					width: 96%;
 					overflow-y: auto;
 					margin-left: 0;
@@ -406,6 +410,10 @@
 					 	background-color: rgba(0, 0, 0, .5);
 					}					
 
+					@include media-breakpoint-down(desktop) {
+				        height: 240px;
+				    }
+					
 					@include media-breakpoint-down(phone) {
 				        height: 112px;
 				    }
@@ -417,20 +425,37 @@
 
 				table {
 						position:absolute;
-						left: 635px; /*50%!important;*/
-						width: 32%!important; /*50%*/
-						top: -380px; /*-500*/
-						
+						left: 620px; /*50%!important;*/
+						width: 31.5%!important; /*50%*/
+						top: -400px; /*-500*/
+						@media screen and (min-width: 792px) {
+							top: -435px!important;    
+						}
+						@media screen and (min-width: 908px) {
+							top: -415px!important;  
+							left: 585px;  
+						}
+						@media screen and (min-width: 1040px) {
+						    
+						}
+						@media screen and (min-width: 1138px) {
+						    top: -415px!important;
+						}
+						@media screen and (min-width: 1333px) {
+						    top: -395px!important;
+						}
 
 						@include media-breakpoint-down(desktop) {
-						    left: 520px;
+						    left: 480px;
+						    top: -455px;
 				
 						}
 					    @include media-breakpoint-down(tablet) {
+					    	left: 475px;
 					    	
 					    }
 					    @include media-breakpoint-down(phone) {
-							width: 100%;
+							width: 100%!important;
 							top: 0;
 							left: 5px;
 							margin-top: -5px;
@@ -446,14 +471,29 @@
 							&:first-child td, &:nth-child(2) td, &:nth-child(3) td, &:nth-child(4) td, 
 							&:nth-child(5) td, &:nth-child(6) td  {
 								position:relative;
-								left: -640px;
-								top:380px;
+								left: -625px;
+								top:400px;
+								
+								@media screen and (min-width: 792px) {
+						    		top: 420px!important;
+								}
+								@media screen and (min-width: 908px) {
+									top: 400px!important;
+									left: -585px
+								}
+								@media screen and (min-width: 1138px) {
+								    top: 400px!important;
+								}
+								@media screen and (min-width: 1333px) {
+									top: 380px!important;
+								}
 
 								@include media-breakpoint-down(desktop) {
-						    		left: -525px;
+						    		left: -485px;
+						    		top: 440px;
 								}
 							    @include media-breakpoint-down(tablet) {
-							    	
+							    	left: -485px;
 							    }
 							    @include media-breakpoint-down(phone) {
 									left: 0;
@@ -466,12 +506,20 @@
 								left: -320px;
 								top: 180px;
 
+								@media screen and (min-width: 792px) {
+						    		top: 180px!important;
+								}
+								@media screen and (min-width: 908px) {
+									left: -270px;
+								}
+
 								@include media-breakpoint-down(desktop) {
-						    		left: -260px;
+						    		left: -240px;
+						    		top: 200px;
 						    		
 								}
 							    @include media-breakpoint-down(tablet) {
-							    	
+
 							    }
 							    @include media-breakpoint-down(phone) {
 									left: 0;
@@ -852,6 +900,13 @@ div.view-quick-links.view-id-quick_links {
 .usf_dash {
 	.eventsLink {
 		display:block;
+
+		a {
+			float: right;
+    		margin-top: 20px;
+    		margin-right: -5px;
+    		text-decoration: none;
+		}
 	}
 }
 

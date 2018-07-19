@@ -1,0 +1,35 @@
+uuid: 41a3ace6-92ae-4506-a78a-167663df082c
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.arts-and-sciences---kinesio
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: artsandscienceskinesiology
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:arts-and-sciences---kinesio'
+settings:
+  id: 'system_menu_block:arts-and-sciences---kinesio'
+  label: 'Arts and Sciences - Kinesiology'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/arts-sciences/kinesiology\r\n/arts-sciences/kinesiology/*"
+    negate: false
+    context_mapping: {  }

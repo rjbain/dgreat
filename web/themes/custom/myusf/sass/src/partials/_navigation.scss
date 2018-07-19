@@ -96,7 +96,7 @@ nav.navbar {
     	margin-top: 2px;
     	top: 0px;
    		bottom: 0;   	
-    	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -350px -315px ; 	
+    	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -360px -315px ; 	
 	}
 	@include media-breakpoint-down(landscape_phone) {
 		&:before {
@@ -318,7 +318,7 @@ button.header_search {
     	width: 24px;
     	height: 25px;   	
     	top: 0;
-    	right: 130px;
+    	right: 120px;
     	bottom: 0;
     	margin: auto 10px auto auto;
     	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -190px -96px;
@@ -338,7 +338,7 @@ button.header_search {
 		width: 23px;
     	height: 25px;
     	top: 0;
-    	right: 138px;
+    	right: 128px;
     	z-index: 3;
     	margin: auto;
     	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -214px -96px;
@@ -355,7 +355,7 @@ button.header_search {
 	
 }
 #search-options {
-	font-size: .85rem;
+	font-size: .75rem;
 	text-transform: unset;
 	position: absolute;
     height: 80px;
@@ -367,13 +367,13 @@ button.header_search {
     background: $black;
     z-index: 1;
     color: $white;
-    margin:30px 10px 0 0;
+    margin:30px 0 0 0;
 
     @include media-breakpoint-only(tablet) {
     	right: 110px;
     }
     @include media-breakpoint-down(phone) {
-    	    right: 105px;
+    	    right: 115px;
     }
     
     input[type="search"] {
@@ -385,6 +385,11 @@ button.header_search {
     }
     input[type=checkbox] {
     	margin-top: 15px;
+    }
+
+    .mr-sm-2 {
+    	margin-right: unset;
+    	font-size: .85rem!important;
     }
 }
 
@@ -466,16 +471,44 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 
 //----- LOGIN BUTTON ----//
 
-li.login {
-	height: 30px;
+.login {
+	top:21px;
+	right: -5px;
 	margin-top: 9px;	
 	border-radius: 0;
 	list-style-type: none;
-	min-width: 100px;
 
-	
-	
+	@include media-breakpoint-down(phone) {
+	   	top: unset;
+	}
+
+	&:after {
+		display: inline-block;
+		position: absolute;
+	    top: 21px;
+	    right: 5px;
+	    color: $white;
+	    width: 0;
+	    height: 0;
+	    margin-left: .255em;
+	    vertical-align: .255em;
+	    content: "";
+	    border-top: .3em solid;
+	    border-right: .3em solid transparent;
+	    border-bottom: 0;
+	    border-left: .3em solid transparent;
+
+	    @include media-breakpoint-only(tablet) {
+			top:17px;
+		}
+	}
+	&:hover,
+	&:focus {
+		color:$yellow!important;
+	}
+
 	@include media-breakpoint-only(tablet) {
+		top:0;
 	 	margin-top: -50px;
 
 	 	&:hover,
@@ -494,17 +527,40 @@ li.login {
 		}
 	}
 
-	&:hover,
-	&:focus {
-		color:$yellow!important;
-		background: transparent;
+	&.dropdown:hover:after {
+		color: $yellow;
 	}
 
+	&.dropdown.show {
+	    background-color: $black;
+	    height: 150px;
+	    top: 71px;
+	    min-width:90px;
+
+	   	 @include media-breakpoint-down(tablet) {
+	   	 	top: unset;
+	   	 }
+
+	    a#navbarDropdownMenuLink,
+	    &:after {
+	    	color:$yellow!important;
+	    }
+	}
+
+	.truncate {
+		white-space: nowrap;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    max-width: 115px;
+	}
+	
 	a#navbarDropdownMenuLink {
 		font-weight: 400;
+		text-align: right;
     	text-transform: lowercase;
-	    margin-top: -10px;
+	    margin-top: -30px;
 	    background: transparent;
+	    padding-right:20px!important;
 
 	    @include media-breakpoint-down(tablet) {
 	    	font-size: .7rem!important;
@@ -516,17 +572,20 @@ li.login {
 	    &:hover,
 		&:focus {
 			color:$yellow!important;
-			margin-top: -10px;
+			margin-top: -30px;
 			background: transparent;
 		}
 	}
-
+	.dropdown-menu {
+		min-width: unset;
+		border: 0;
+	}
 	.dropdown-menu.loggedin {
-		background-color: $black!important;
-	    margin-left: -2px;
-	    min-width: 100px!important;
+		background-color: transparent!important;
+	    margin-top:-110px;
 	    background-clip: unset;
 	    border-radius: 0;
+	    padding-top:0px;
 
 	    a.dropdown-item {
 		    font-size: .75rem;
@@ -545,7 +604,11 @@ li.login {
 	}
 }
 
-
+nav.navbar .row {
+	@include media-breakpoint-down(phone) {
+	    margin-right: 0px;
+	}
+}
 
 
 //--- TOOLBAR TRAY for ADMIN Login ---//

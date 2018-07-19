@@ -1,0 +1,35 @@
+uuid: b5e796ba-c30d-42c2-994e-a716945dca4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.arts-and-sciences---physics
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: artsandsciencesphysicsandastronomy
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:arts-and-sciences---physics'
+settings:
+  id: 'system_menu_block:arts-and-sciences---physics'
+  label: 'Arts and Sciences - Physics and Astronomy'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/arts-sciences/physics-astronomy\r\n/arts-sciences/physics-astronomy/*"
+    negate: false
+    context_mapping: {  }
