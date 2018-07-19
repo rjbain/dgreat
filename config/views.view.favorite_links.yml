@@ -1048,9 +1048,10 @@ display:
         context: '0'
         menu_name: main
       access:
-        type: perm
+        type: role
         options:
-          perm: 'access content'
+          role:
+            administrator: administrator
       defaults:
         access: false
         fields: false
@@ -1820,7 +1821,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_category'
@@ -2218,9 +2219,9 @@ display:
       cache:
         type: time
         options:
-          results_lifespan: 1800
+          results_lifespan: 3600
           results_lifespan_custom: 0
-          output_lifespan: 1800
+          output_lifespan: 3600
           output_lifespan_custom: 0
     cache_metadata:
       max-age: -1
@@ -2658,7 +2659,7 @@ display:
           1: AND
       menu:
         type: 'default tab'
-        title: 'My Favorite Apps'
+        title: 'Top Apps'
         description: 'Manage your Favorite Links.'
         expanded: false
         parent: ''
