@@ -113,7 +113,7 @@
 					position:absolute;
 					left: 620px;
 					width:200px;
-					height:200px;
+					height:140px;
 
 					@media screen and (min-width: 1060px) {
 						width: 200px!important;
@@ -277,6 +277,10 @@
 							line-height: 1rem;
 							padding-bottom: 8px;
 
+							 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+							 	padding-bottom: 0px;
+							 }
+
 							a {
 								font-size: .9rem!important;
 								font-weight: 600;
@@ -303,7 +307,7 @@
 					    	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -545px -102px;
 
 					    	@include media-breakpoint-down(phone) {
-					    		right: -30px;
+					    		right: -10px;
 					    	}
 						}
 						&:hover:before,
@@ -906,6 +910,10 @@ div.view-quick-links.view-id-quick_links {
     		margin-top: 20px;
     		margin-right: -5px;
     		text-decoration: none;
+
+    		@include media-breakpoint-down(phone) { 
+    		 	margin-right: 0;
+    		}
 		}
 	}
 }

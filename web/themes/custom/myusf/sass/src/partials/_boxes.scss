@@ -132,6 +132,7 @@
         font-size: inherit;
         line-height: inherit;
         padding-bottom: .5rem;
+        padding-top: 10px;
     }
     .button-form {
         padding: 10px 0 0 0;
@@ -416,30 +417,7 @@ a.right.carousel-control {
 
 .paragraph--type--bp-carousel {
         margin-bottom: 40px;
-   /* background: $gray;*/
 
-  /*  .field--name-field-caption {  For Add Image option
-        font-size: .9rem;
-        font-style: italic;        
-        line-height: 1.3rem;
-        color: $white;
-        background:$gray;
-        width: 100%;
-        padding: 15px 5% 15px;        
-        margin-left: auto;
-        margin-right: auto;      
-    }
-    .field--type-image {
-        float: unset!important;
-        margin-right: 0;
-
-        img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            margin: auto;
-        }
-    } */
     .field--name-bp-text {
         figure {
             figcaption {
@@ -522,12 +500,17 @@ a.right.carousel-control {
 #carouselControls {
     margin-left: 15px;
     margin-right: 15px;
+    width: 100%;
 
     @include media-breakpoint-down(phone) {
         width: 88%;
         @include margin-L-R-auto;
     }
 } 
+
+.carousel-inner {
+    z-index: -2;
+}
 
 .carousel-control-prev {
     opacity: 1;
@@ -539,6 +522,7 @@ a.right.carousel-control {
         /*top: 236px;*/
         top: 52.5%;
         left: 41px;
+        z-index: 0;
 
     }
     &:after {
@@ -547,7 +531,9 @@ a.right.carousel-control {
         /*top: 220px;*/
         top: 50%;
         left: 25px;
+        z-index: -1;
     }
+
     &:hover,
     &:focus {
         opacity: 1;
@@ -598,7 +584,7 @@ a.right.carousel-control {
         /*top: 236px;*/
         top: 52.5%;
         right: 38px;
-
+        z-index: 0;
     } 
 
     &:after {
@@ -607,6 +593,7 @@ a.right.carousel-control {
         /*top: 220px;*/
         top: 50%;
         right: 23px;
+        z-index: -1;
     }
     
     &:hover,
