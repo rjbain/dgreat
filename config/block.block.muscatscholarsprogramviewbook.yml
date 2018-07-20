@@ -1,0 +1,35 @@
+uuid: fe8509a4-270d-4cce-a712-fed8c164ad1b
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.muscat-scholars-program-vie
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: muscatscholarsprogramviewbook
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:muscat-scholars-program-vie'
+settings:
+  id: 'system_menu_block:muscat-scholars-program-vie'
+  label: 'Muscat Scholars Program Viewbook'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/casa/muscat/viewbook\r\n/casa/muscat/viewbook/*"
+    negate: false
+    context_mapping: {  }
