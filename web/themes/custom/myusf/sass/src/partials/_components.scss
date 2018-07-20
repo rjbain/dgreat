@@ -100,6 +100,21 @@
 .card-deck {
 	margin-left: 0;
 	margin-right: 0;
+
+	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+		/* IE10+ CSS styles go here */
+		display:inline-block;
+		column-count: 3;
+		column-gap:10px;
+	}
+
+	.card {
+		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+		  /* IE10+ CSS styles go here */		  
+	     	display:inline-block;
+		}
+		
+	}
 }
 
 .view-instagram-tiles {
@@ -291,6 +306,7 @@ a.card-rollover {
     	border-radius: 0;
     	margin-top: 0;
     	object-fit: cover;
+    	font-size:0;
 
     	&:after {
 		    background-image: linear-gradient(to bottom,transparent 0,rgba(0,0,0,.3) 100%);

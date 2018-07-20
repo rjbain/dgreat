@@ -1,0 +1,102 @@
+uuid: 85db8e51-fd12-48c0-813a-cba883f2181d
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 1333
+template: false
+archive: false
+id: webform_115832
+title: 'HR Service and Merit Awards RSVP Form'
+description: null
+category: null
+elements: "first_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\nyour_full_name_as_it_will_appear_on_your_certificate:\n  '#type': textfield\n  '#title_display': inline\n  '#title': Please enter your full name as you would like it to appear on your certificate and in the printed program:\n  '#description': \"\"\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#size': 20\n  '#title_display': inline\n  '#title': USF Email Address\n  '#description': \"\"\n  '#required': true\nphone_number:\n  '#type': textfield\n  '#size': 20\n  '#min': \n  '#max': \n  '#step': \n  '#unique': false\n  '#title_display': inline\n  '#title': Phone Number\n  '#description': \"\"\n  '#required': true\nwould_you_like_your_name_to_appear_in_the_program:\n  '#type': select\n  '#options':\n    1: YES, please include my name in the printed program.\n    2: NO, I do not want my name included in the printed program.\n  '#title_display': inline\n  '#title': Would you like your name to appear in the Service and Merit Awards Ceremony printed program?\n  '#description': \"\"\n  '#required': true\nwill_you_be_attending_the_ceremony:\n  '#type': select\n  '#options':\n    1: YES, I will be attending.\n    2: NO, I will not be attending.\n    3: I am unsure if I will be attending.\n  '#title_display': inline\n  '#title': Will you be attending the Service and Merit Awards Ceremony on Thursday, May 3 from 3:30-5 p.m. in the McLaren complex?\n  '#description': \"\"\n  '#required': true\nif_you_do_not_attend_the_ceremony_we_will_send_your_certificate_pin_to_your_inter_office_mail_location:\n  '#type': textfield\n  '#title_display': inline\n  '#title': If you do not attend the Service and Merit Awards Ceremony, your certificate/pin will be sent to your interoffice mail location. If you would like it sent to an alternate location, please specify below.\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: '<p>Thank you for your response! The 2018 USF Service and Merit Awards Ceremony will be held from 3:30-5 p.m. on Thursday, May 3 in the McLaren Complex. If you are attending the ceremony, please arrive at 3:15 p.m. to pick up your name badge. If you have any questions or need to change your RSVP,<span style="font-size: 1em; font-weight: lighter; background-color: transparent;">&nbsp;please email serviceandmerit@usfca.edu.</span></p>'
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: serviceandmerit@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: 'RSVP for the 2017 USF Service and Merit Awards'
+      body: "<p>Submitted on [submission:date:long]</p>\n<p>Submitted by user: [submission:user]</p>\n<p>Submitted values are:</p>\n[submission:values]\n\n"
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_2:
+    id: email
+    label: 'Email 2'
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      to_mail: '[webform-submission:values:usf_email_address:raw]'
+      from_mail: default
+      from_name: default
+      subject: default
+      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]"
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

@@ -1,0 +1,37 @@
+uuid: 72c805db-155f-4bd2-91a3-253424bdb5d0
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 4359
+template: false
+archive: false
+id: webform_132654
+title: 'One Stop Pulse Survey'
+description: null
+category: null
+elements: "student_cwid:\n  '#type': textfield\n  '#title': Student CWID\n  '#description': \"\"\n  '#required': true\nbreak1:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<br>\"\n  '#title': break1\n  '#description': \"\"\ntodays_inquiry:\n  '#description': \"Admission/New Student Inquiry\\n7\"\n  '#type': checkbox\n  '#options':\n    10: Admission/New Student Inquiry\n    7: Billing/Payment/Student Accounts\n    11: Financial Aid\n    8: Graduation/Diploma\n    2: Registrar/Registration\n    5: Scholarship Check Endorsement\n    6: Student Employment\n    3: Transcripts/Verification/Student Records\n    9: Other\n  '#multiple': true\n  '#title': Nature of today's inquiry (check all that apply)\n  '#description': \"\"\n  '#required': true\nother_inquiry:\n  '#description': \"ABS\\n9\"\n  '#type': checkbox\n  '#options':\n    8: ABS\n    9: Alumni\n    1: CASA\n    2: Housing\n    3: HPS\n    4: ITS\n    10: Library\n    5: One Card\n    6: Student Life\n    7: General Information/Misc\n  '#multiple': true\n  '#title': Other (CHECK ALL THAT APPLY)\n  '#description': \"\"\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"todays_inquiry\"]':\n        checked: true\nbreak2:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<br>\"\n  '#title': break2\n  '#description': \"\"\nform_drop_off:\n  '#type': select\n  '#options':\n    6: Admission\n    1: Financial Aid\n    2: Registrar\n    3: Student Accounts\n    4: Student Employment\n    5: Other\n  '#title': Form or Other Drop-Off\n  '#description': \"\"\nbreak3:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<br>\"\n  '#title': break3\n  '#description': \"\"\nform_pick_up:\n  '#type': select\n  '#options':\n    1: Financial Aid\n    4: Graduation Center\n    2: Registrar\n    5: Student Accounts\n    3: Other\n  '#title': Form or Other Pick-Up \n  '#description': \"\"\nbreak4:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<br>\"\n  '#title': break4\n  '#description': \"\"\ncontact:\n  '#type': radios\n  '#options':\n    3: Email\n    1: In-Person\n    2: Telephone\n  '#title': Method of contact\n  '#description': \"\"\n  '#required': true\nbreak5:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<br>\"\n  '#title': break5\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: '<p>Thank you for your form submission.</p>'
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - authenticated
+      - administrator
+      - editor
+    users: {  }
+handlers: {  }

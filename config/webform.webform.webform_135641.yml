@@ -1,0 +1,69 @@
+uuid: 200bb12f-ac53-44df-9fef-a8925132335b
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 1293
+template: false
+archive: false
+id: webform_135641
+title: 'HR New Faculty Orientation Registration Form'
+description: null
+category: null
+elements: "first_name:\n  '#type': textfield\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': \"\"\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': Title\n  '#description': \"\"\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#size': 20\n  '#default_value': \"[current-user:mail]\"\n  '#title': USF Email Address\n  '#description': \"\"\n  '#required': true\nphone_number:\n  '#type': textfield\n  '#title': Phone Number\n  '#description': \"\"\n  '#required': true\nstart_date:\n  '#type': date\n  '#title': Start Date\n  '#description': \"\"\n  '#required': true\norientation_selection:\n  '#type': radios\n  '#options':\n    1: Monday, July 30  *  10-11:30 A.M.  *  Kalmanovitz Hall 163\n    2: Tuesday, August 7  *  1-2:30 P.M.  *  Kalmanovitz Hall 163\n    4: Monday, August 20  *  11 A.M.-12:30 P.M.  *  Kalmanovitz Hall 163\n  '#title': Select your orientation:\n  '#description': \"\"\n  '#required': true\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: '<p>Thank you for registering for your orientation(s). If you have any questions or concerns, please contact Human Resources at (415) 422-6707 or <a href="mailto:benefits@usfca.edu">benefits@usfca.edu</a>.</p>'
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: benefits@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: false
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

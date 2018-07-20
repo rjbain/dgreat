@@ -1,0 +1,35 @@
+uuid: ec8a4e6f-1d36-4835-8298-580366bc0520
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.isss-menu
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: isssmainmenu
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:isss-menu'
+settings:
+  id: 'system_menu_block:isss-menu'
+  label: 'ISSS Main Menu'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/isss\r\n/isss/*"
+    negate: false
+    context_mapping: {  }

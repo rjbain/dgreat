@@ -1,0 +1,35 @@
+uuid: 81303a2f-331f-4655-9487-4a1c4c9d8b92
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.billing-tuition
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: billingtuition
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:billing-tuition'
+settings:
+  id: 'system_menu_block:billing-tuition'
+  label: 'Billing & Tuition'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/billing-tuition\r\n/billing-tuition/*"
+    negate: false
+    context_mapping: {  }

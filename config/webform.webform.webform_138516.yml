@@ -1,0 +1,135 @@
+uuid: 833817e5-f188-40d8-ace6-4f20e91c9c73
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 1293
+template: false
+archive: false
+id: webform_138516
+title: 'HR Benefits Workshop RSVP Form'
+description: null
+category: null
+elements: "benefits_workshop:\n  '#description': \"April 23  *  12–1 p.m.  *  McLaren 251\\n2\"\n  '#type': checkbox\n  '#options':\n    1: April 23  *  12–1 p.m.  *  McLaren 251\n    2: April 23  *  3–4 p.m.  *  McLaren 250\n    3: April 24  *  10–11 a.m.  *  Lone Mountain Main 100\n    4: April 24  *  2–3 p.m.  *  McLaren 252\n  '#multiple': true\n  '#title': Select the long-term care informational session that you would like to attend:\n  '#description': \"\"\n  '#required': true\nemployees_information:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h2>Employee's Information</h2>\"\n  '#title': Employee's Information\n  '#description': \"\"\nfirst_name:\n  '#type': textfield\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': \"\"\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': Title\n  '#description': \"\"\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#size': 20\n  '#title': USF Email Address\n  '#description': \"\"\n  '#required': true\nusf_phone_number:\n  '#type': textfield\n  '#title': USF Phone Number\n  '#description': \"\"\n  '#required': true\nemployee_type:\n  '#type': radios\n  '#options':\n    1: Faculty\n    2: Staff\n    3: Other\n  '#title': Employee Type\n  '#description': \"\"\n  '#required': true\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: '<p>Thank you for submitting your RSVP to the upcoming long-term care informational session(s). Please be sure to copy the appropriate date, time, and location below to your calendar. Should you have any additional questions, please contact the benefits team at <a href="mailto:benefits@usfca.edu" target="_blank">benefits@usfca.edu</a>.&nbsp;<span><br /></span></p><table><tbody><tr><td><strong>Day</strong></td><td><strong>Date</strong></td><td><strong>Time</strong></td><td><strong>Location</strong></td></tr><tr><td><span>Monday</span></td><td><span>April 23</span></td><td><span>12</span><span>–1 p.m.</span></td><td><span>McLaren 251</span></td></tr><tr><td><span>Monday&nbsp;</span></td><td><span>April 23</span></td><td><span>3</span><span>–4 p.m.</span></td><td><span>McLaren 250</span></td></tr><tr><td><span>Tuesday</span></td><td><span><span>April 24</span></span></td><td><span><span>10</span><span>–11 a.m.</span></span></td><td><span>Lone Mountain Main 100</span></td></tr><tr><td><span>Tuesday</span></td><td><span><span>April 24</span></span></td><td><span><span>2</span><span>–3 p.m.</span></span></td><td><span><span>McLaren 252</span></span></td></tr></tbody></table>'
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: amassey3@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: false
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_2:
+    id: email
+    label: 'Email 2'
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      to_mail: jvuong2@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: false
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_3:
+    id: email
+    label: 'Email 3'
+    handler_id: email_3
+    status: true
+    conditions: {  }
+    weight: 3
+    settings:
+      to_mail: benefits@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: false
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

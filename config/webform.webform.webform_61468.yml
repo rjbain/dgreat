@@ -1,0 +1,102 @@
+uuid: b6b493d2-eef1-44de-8f36-f62bb66172fa
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 206
+template: false
+archive: false
+id: webform_61468
+title: 'Peak Performance Session Evaluation'
+description: null
+category: null
+elements: "intro:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p class='intro_text_lg'>Thank you for attending one of the Peak Performance Sessions. We are always interested in your feedback and want to know how we can improve our session series.</p><p class='clear'></p><p>Please use the form below to evaluate the session.</p><p class='clear'></p>\"\n  '#title': Intro\n  '#description': \"\"\nsession_name:\n  '#type': textfield\n  '#title': Please indicate the name of the session you attended:\n  '#description': \"\"\n  '#required': true\ndate_attended:\n  '#type': date\n  '#title': Date Attended:\n  '#description': \"\"\ntime_attended:\n  '#type': time\n  '#title': Time of Session:\n  '#description': \"\"\nrate_the_session:\n  '#type': radios\n  '#options':\n    1: 1\n    2: 2\n    3: 3\n    4: 4\n    5: 5\n    6: 6\n    7: 7\n    8: 8\n    9: 9\n    10: 10\n  '#title_display': inline\n  '#title': Please rate the session (1 lowest, 10 highest)\n  '#description': \"\"\nhow_did_you_hear:\n  '#type': textarea\n  '#title': How did you hear about this session?\n  '#description': \"\"\nknowledge:\n  '#type': radios\n  '#options':\n    1: Stayed the same\n    2: Increased slightly\n    3: Increased significantly\n  '#title': After the presentation, my knowledge in the subject matter:\n  '#description': \"\"\ncomponents:\n  '#description': \"Content/Information\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Content/Information\n    2: Introduction/Icebreakers\n    3: Activities\n    4: Interaction with other attendees\n    5: Handouts/Support Materials\n    6: Others\n  '#multiple': true\n  '#title': Which components of this session engaged you? (Check all that apply)\n  '#description': \"\"\nothers:\n  '#type': textarea\n  '#title_display': inline\n  '#title': If \"Others,\" please explain:\n  '#description': \"\"\nmost_meaningful:\n  '#type': textarea\n  '#title': What information did you find most meaningful in this session?\n  '#description': \"\"\nleast_meaningful:\n  '#type': textarea\n  '#title': What information did you find least meaningful in this session?\n  '#description': \"\"\nactions:\n  '#type': textarea\n  '#title': What actions will you take as a result of this session?\n  '#description': \"\"\ncomments:\n  '#type': textarea\n  '#title': Additional comments / suggestions (including suggestions for future sessions):\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: url
+  confirmation_url: 'http://myusf.usfca.edu/student-life/success-workshops'
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: plorenz@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_2:
+    id: email
+    label: 'Email 2'
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      to_mail: drmyers@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

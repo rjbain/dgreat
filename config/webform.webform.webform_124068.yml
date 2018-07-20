@@ -1,0 +1,69 @@
+uuid: f0e95541-2887-45b0-a63e-a3a37508d1f7
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 648
+template: false
+archive: false
+id: webform_124068
+title: 'DMV Release Form'
+description: null
+category: null
+elements: "personal:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h4>Driver Information Form</h4>\"\n  '#title': Personal\n  '#description': \"\"\nfirst_name:\n  '#type': textfield\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\nmiddle_name:\n  '#type': textfield\n  '#title': Middle Name (Full Middle Name Required)\n  '#description': \"\"\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': \"\"\n  '#required': true\ncwid:\n  '#min': 10000000\n  '#max': 99999999\n  '#field_suffix': (Not required if you're a volunteer)\n  '#title': CWID\n  '#description': \"Volunteer drivers without a CWID must contact usftravel@usfca.edu\"\n  '#required': true\n  '#states':\n    invisible:\n      ':input[name=\"status[5]\"]':\n        checked: true\ndrivers_license_number:\n  '#type': textfield\n  '#title': Driver's License Number\n  '#description': \"\"\n  '#required': true\ndate_of_birth:\n  '#type': date\n  '#title': Date of Birth\n  '#description': \"\"\n  '#required': true\nlicense_expiration_date:\n  '#type': date\n  '#title': License Expiration Date\n  '#description': \"\"\n  '#required': true\ndepartment:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h4>Department Information</h4>\"\n  '#title': Department\n  '#description': \"\"\nstatus:\n  '#type': radios\n  '#options':\n    1: Student\n    2: Faculty\n    3: Student/Staff\n    4: Staff\n    5: Volunteer\n  '#title': Status\n  '#description': \"\"\n  '#required': true\ngraduation_term:\n  '#type': textfield\n  '#title': Graduation Term\n  '#description': \"(Ex. Spring/2016)\"\ntitle:\n  '#type': textfield\n  '#title': Title\n  '#description': \"If Faculty, include your title.\"\ndepartment_class_you_will_be_driving_for:\n  '#type': textfield\n  '#title': Department/class you will be driving for\n  '#description': \"\"\n  '#required': true\ndrivers_supervisor:\n  '#type': textfield\n  '#title': Driver's Supervisor\n  '#description': \"\"\n  '#required': true\nreason_for_driving:\n  '#type': textarea\n  '#title': Reason for Driving\n  '#description': \"\"\n  '#required': true\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: usftravel@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]\n"
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

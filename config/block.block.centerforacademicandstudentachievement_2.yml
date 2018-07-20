@@ -1,0 +1,35 @@
+uuid: 73010400-b6c4-4c13-b175-47e62d616804
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.center-for-academic-and-stu
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: centerforacademicandstudentachievement_2
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:center-for-academic-and-stu'
+settings:
+  id: 'system_menu_block:center-for-academic-and-stu'
+  label: 'CASA Menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/casa\r\n/casa/*"
+    negate: false
+    context_mapping: {  }

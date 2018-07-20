@@ -1,0 +1,35 @@
+uuid: 9e1dccc3-ea65-4d1a-bdc3-4e77dfefb898
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.arts-and-sciences---interna
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: artsandsciencesinternationalstudies
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:arts-and-sciences---interna'
+settings:
+  id: 'system_menu_block:arts-and-sciences---interna'
+  label: 'Arts and Sciences - International Studies'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/arts-sciences/international-studies\r\n/arts-sciences/international-studies/*"
+    negate: false
+    context_mapping: {  }

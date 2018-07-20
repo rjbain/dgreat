@@ -1,0 +1,35 @@
+uuid: 36f70d4b-8d2d-4de1-9012-a3a66d449d58
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.counseling-and-psychologica
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: counselingandpsychologicalservices
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:counseling-and-psychologica'
+settings:
+  id: 'system_menu_block:counseling-and-psychologica'
+  label: 'Counseling and Psychological Services'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/caps\r\n/caps/*"
+    negate: false
+    context_mapping: {  }

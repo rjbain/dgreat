@@ -1,0 +1,102 @@
+uuid: fb931611-b9c1-4561-a459-0193cac99d3b
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 27769
+template: false
+archive: false
+id: webform_139068
+title: 'Registrar Contact Form'
+description: null
+category: null
+elements: "name:\n  '#type': textfield\n  '#title': Name:\n  '#description': \"\"\n  '#required': true\ncontact_email:\n  '#type': email\n  '#size': 20\n  '#title': Contact Email:\n  '#description': \"\"\n  '#required': true\ntopic:\n  '#type': radios\n  '#options':\n    1: Registration & General Information\n    2: Graduation Questions\n    3: Degree Evaluation\n    4: Diplomas\n    5: Transcripts\n    6: Transfer Credit\n    7: Enrollment & Degree Verifications\n    8: Veterans Services\n  '#title': Topic:\n  '#description': \"\"\n  '#required': true\nroute_to:\n  '#type': hidden\n  '#title': Route To:\n  '#description': \"\"\n  '#states':\n    :\n      ':input[name=\"topic[1]\"]':\n        checked: true\n      ':input[name=\"topic[2]\"]':\n        checked: true\n      ':input[name=\"topic[3]\"]':\n        checked: true\n      ':input[name=\"topic[4]\"]':\n        checked: true\n      ':input[name=\"topic[5]\"]':\n        checked: true\n      ':input[name=\"topic[6]\"]':\n        checked: true\n      ':input[name=\"topic[7]\"]':\n        checked: true\n      ':input[name=\"topic[8]\"]':\n        checked: true\ninquiry:\n  '#type': textarea\n  '#title': Inquiry:\n  '#description': \"\"\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: url
+  confirmation_url: 'https://myusf.usfca.edu/registrar/contact-thank-you'
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: '[webform-submission:values:route_to:raw]'
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_2:
+    id: email
+    label: 'Email 2'
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      to_mail: '[webform-submission:values:contact_email:raw]'
+      from_mail: default
+      from_name: default
+      subject: default
+      body: '<p>Thank you for contacting the Office of the University Registrar. Your e-mail is important to us. We aim to respond to all inquiries within one business day. Our normal business hours are Monday–Friday from 8:30am PT to 5pm PT.&nbsp;</p><p>We are closed on official University Holidays.</p><p><span>Additional Resources:</span><br /><a href="https://myusf.usfca.edu/ONESTOP/STUDENT-records/transcripts"><span>Transcript Requests</span></a><br /><a href="https://myusf.usfca.edu/onestop/student-records/verifications"><span>Enrollment Verification Requests</span></a><br /><a href="https://myusf.usfca.edu/onestop/graduation"><span>Graduation, Commencement, and Diplomas</span></a><br /><a href="https://myusf.usfca.edu/onestop/registration/forms"><span>Registrar Forms</span></a></p>'
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

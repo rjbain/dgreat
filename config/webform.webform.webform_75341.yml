@@ -1,0 +1,69 @@
+uuid: 8a0a4647-740c-4005-87f0-4e04a25de5a5
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 6171
+template: false
+archive: false
+id: webform_75341
+title: 'Bookstore Appt Form'
+description: null
+category: null
+elements: "intro:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>Intro text for Service</p>\"\n  '#title': Intro\n  '#description': \"\"\nname:\n  '#type': textfield\n  '#default_value': \"[current-user:field_user_display_name]\"\n  '#title': Name\n  '#description': \"\"\n  '#required': true\ne_mail:\n  '#type': email\n  '#size': 20\n  '#default_value': \"[current-user:mail]\"\n  '#title': E-Mail\n  '#description': \"\"\n  '#required': true\nchoose_appt_time:\n  '#type': select\n  '#options':\n    1: 10am\n    2: 11am\n    3: 1pm\n  '#title': Choose Appt Time\n  '#description': \"\"\n  '#required': true\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: '<p>Confirmation message</p>'
+  limit_total: null
+  limit_user: null
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      to_mail: 0864mgr@follett.com
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
+      states:
+        - completed
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_options: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
