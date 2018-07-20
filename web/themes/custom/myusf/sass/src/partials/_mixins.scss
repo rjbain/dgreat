@@ -185,7 +185,7 @@
         border:0!important;
         border-radius:0;
         background: $beige!important; 
-        margin-top: 3px;
+        /*margin-top: 3px;*/
 
         position:absolute;
         left:$amount; 
@@ -217,13 +217,24 @@
 
 @mixin clearTableFormat {
     table, caption, tbody, tfoot, thead, tr, th, td, tr:nth-child(2n+1), tr:nth-child(2n) {
-        margin: unset;
+       margin: unset;
         padding: unset;
         border: unset;
         outline: unset;
         font-size: unset;
         vertical-align: unset;
         background: unset;
-        color: $black;
+        color: $black; 
+        
+        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+            margin: none;
+            padding: none;
+            border: none;
+            outline: none;
+            font-size: none;
+            vertical-align: none;
+            background: none;
+            color: $black;
+        }
     }
 }
