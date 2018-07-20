@@ -44,6 +44,7 @@
 {% set contact_title %}{{ content.field_contact_title }}{% endset %}
 {% set hours %}{{ content.field_hours_of_operation }}{% endset %}
 {% set fax %}{{ content.field_fax_number|render }}{% endset %}
+{% set tel %}{{ content.field_telephone_number|render }}{% endset %}
 {% set email %}{{ content.field_email_address }}{% endset %}
 {% set body %}{{ content.body }}{% endset %}
 {% set appt %}{{ content.field_schedule_an_appointment }}{% endset %}
@@ -53,23 +54,35 @@
     {{ title_suffix }}
     <div{{ attributes.addClass(classes).setAttribute('id', 'block-myusf-contactbox') }} >
         <h2>{{ contact_title|striptags|trim }}</h2>
-        <p class="address">
-            {{ addy1|striptags|trim }}<br>
-            {{ addy2|striptags|trim }}<br>
-            {{ addy3|striptags|trim }}
-        </p>
-        <p><strong>Hours</strong>: {{ hours|striptags|trim }}</p>
+        {% if body %}
+            <p class="body">
+                {{ body|striptags|trim }}
+            </p>
+        {% endif %}
+        {% if addy1 or addy2 or addy3 %}
+            <p class="address">
+                {{ addy1|striptags|trim }}<br>
+                {{ addy2|striptags|trim }}<br>
+                {{ addy3|striptags|trim }}
+            </p>
+        {% endif %}
+        {% if hours %}
+            <p><strong>Hours</strong>: {{ hours|striptags|trim }}</p>
+        {% endif %}
         <div class="contact-info">
-        {% include "@myUSFLib/fields/field--field-telephone-number.html.twig" %}
-
+        {% if tel %}
+            {% include "@myUSFLib/fields/field--field-telephone-number.html.twig" %}
+        {% endif %} 
         {% if fax %}
             <p class="contact fax"><strong>Fax</strong>: {{ fax|striptags|trim }}</p>
         {% endif %}
-        {% include "@myUSFLib/fields/field--field-email-address.html.twig" %}
+        {% if email %}       
+            {% include "@myUSFLib/fields/field--field-email-address.html.twig" %}
+        {% endif %}
         </div>
         <div class="contact-info-links">
         {% if appt %}
-        <p><a class="button" href="{{ appt|striptags|trim }}">Schedule Appointment</a></p>
+            <p><a class="button" href="{{ appt|striptags|trim }}">Schedule Appointment</a></p>
         {% endif %}
         {% include "@myUSFLib/fields/field--paragraph--field-social-media-link.html.twig" %}
         </div>
