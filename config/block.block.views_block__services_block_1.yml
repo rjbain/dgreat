@@ -1,11 +1,12 @@
 uuid: 19a2b470-e38d-47d2-8465-dd79decbc0eb
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - views.view.services
   module:
     - block_visibility_groups
+    - system
     - views
   theme:
     - myusf
@@ -27,4 +28,9 @@ visibility:
     id: condition_group
     negate: false
     block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /its/applications-services
+    negate: false
     context_mapping: {  }
