@@ -1029,16 +1029,26 @@ div.view-quick-links.view-id-quick_links {
 	.eventsLink {
 		display:block;
 
-		a {
-			float: right;
-    		margin-top: 20px;
-    		margin-right: -5px;
-    		text-decoration: none;
+		.views-row {
+			display: inline;
 
-    		@include media-breakpoint-down(phone) { 
-    		 	margin-right: 0;
-    		}
+			&:first-of-type a {
+				    margin-right: -5px;
+			}
+
+			a {
+				float: right;
+	    		margin-top: 20px;
+	    		margin-left: 30px;
+	    		/*text-decoration: none;*/
+
+	    		@include media-breakpoint-down(phone) { 
+	    		 	margin-right: 0;
+	    		}
+			}
 		}
+
+		
 	}
 }
 
