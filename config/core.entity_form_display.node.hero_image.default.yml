@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.hero_image.body
-    - field.field.node.hero_image.field_display_title
     - field.field.node.hero_image.field_image
     - field.field.node.hero_image.field_news_link
     - field.field.node.hero_image.field_sub_title
@@ -14,7 +13,6 @@ dependencies:
     - image
     - link
     - path
-    - scheduler
     - text
 id: node.hero_image.default
 targetEntityType: node
@@ -23,7 +21,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 9
+    weight: 8
     settings:
       rows: 9
       summary_rows: 3
@@ -36,16 +34,8 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_display_title:
-    weight: 7
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_image:
-    weight: 10
+    weight: 9
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -53,7 +43,7 @@ content:
     type: image_image
     region: content
   field_news_link:
-    weight: 11
+    weight: 26
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -61,7 +51,7 @@ content:
     type: link_default
     region: content
   field_sub_title:
-    weight: 8
+    weight: 7
     settings:
       size: 60
       placeholder: ''
@@ -80,12 +70,6 @@ content:
       display_label: true
     weight: 3
     region: content
-    third_party_settings: {  }
-  publish_on:
-    type: datetime_timestamp_no_default
-    weight: 12
-    region: content
-    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -117,16 +101,5 @@ content:
       size: 60
       placeholder: ''
     region: content
-    third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 13
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  url_redirects:
-    weight: 14
-    region: content
-    settings: {  }
     third_party_settings: {  }
 hidden: {  }

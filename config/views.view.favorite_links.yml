@@ -110,15 +110,25 @@ display:
           summary: ''
           description: ''
           columns:
-            field_url: field_url
+            link_flag: link_flag
             title: title
+            field_default_favorite_links: title
           info:
-            field_url:
+            link_flag:
+              sortable: false
+              default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
             title:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_default_favorite_links:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -946,7 +956,7 @@ display:
           empty: false
           tokenize: false
           content:
-            value: "<a href=\"/dashboard\">Back to Dashboard</a>\n<br>\n<a class=\"btn btn-default\" href=\"/node/add/favorite_link?destination=/dashboard\" role=\"button\" style=\"float:right\"><span class=\"icon-plus\"></span> Add Favorite Link</a>"
+            value: '<a class="btn btn-default" href="/node/add/favorite_link?destination=favorite-links/allapps" role="button" style="float:right"><span class="icon-plus"></span> Add Favorite Link</a>'
             format: full_html
           plugin_id: text
       footer:
@@ -960,8 +970,8 @@ display:
           empty: true
           tokenize: false
           content:
-            value: ''
-            format: restricted_html
+            value: '<a href="/favorite-links" class="btn">Preferences</a>'
+            format: basic_html
           plugin_id: text
       empty: {  }
       relationships:
@@ -1059,7 +1069,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: true
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -2207,8 +2217,12 @@ display:
             format: full_html
           plugin_id: text
       cache:
-        type: none
-        options: {  }
+        type: time
+        options:
+          results_lifespan: 1800
+          results_lifespan_custom: 0
+          output_lifespan: 1800
+          output_lifespan_custom: 0
     cache_metadata:
       max-age: -1
       contexts:
@@ -2287,7 +2301,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: true
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -2657,20 +2671,7 @@ display:
         title: ''
         description: ''
         weight: 0
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: false
-          tokenize: false
-          content:
-            value: '<a href="/dashboard">Back to Dashboard</a>'
-            format: restricted_html
-          plugin_id: text
+      header: {  }
       access:
         type: perm
         options:
