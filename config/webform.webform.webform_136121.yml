@@ -43,10 +43,10 @@ handlers:
     weight: 1
     settings:
       to_mail: webservices@usfca.edu
-      from_mail: default
-      from_name: default
-      subject: default
-      body: default
+      from_mail: _default
+      from_name: _default
+      subject: _default
+      body: _default
       html: true
       attachments: false
       excluded_elements: {  }
@@ -76,11 +76,11 @@ handlers:
     weight: 2
     settings:
       to_mail: nkebbas@usfca.edu
-      from_mail: default
-      from_name: default
-      subject: default
-      body: "Hi [submission:your_name]\n\nSubmitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]"
-      html: false
+      from_mail: _default
+      from_name: _default
+      subject: _default
+      body: "<p>Submitted on [webform_submission:created]</p>\n<p>Submitted by: [webform_submission:user]</p>\n<p>Submitted values are:</p>\n[webform_submission:values]"
+      html: true
       attachments: false
       excluded_elements: {  }
       states:
@@ -109,9 +109,9 @@ handlers:
     weight: 3
     settings:
       to_mail: '[webform-submission:values:contact_email:raw]'
-      from_mail: default
-      from_name: default
-      subject: default
+      from_mail: _default
+      from_name: _default
+      subject: _default
       body: "Hi [submission:values:your_name]\n\nThank you for submitting a USF Announcement.  Web Services will contact you if any additional information is needed.\n \nSubmitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]\n"
       html: true
       attachments: false

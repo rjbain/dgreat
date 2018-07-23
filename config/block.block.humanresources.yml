@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_visibility_groups.block_visibility_group.human_resources_subpages
     - system.menu.human-resources
   module:
     - block_visibility_groups
@@ -26,7 +27,7 @@ visibility:
   condition_group:
     id: condition_group
     negate: false
-    block_visibility_group: ''
+    block_visibility_group: human_resources_subpages
     context_mapping: {  }
   request_path:
     id: request_path
