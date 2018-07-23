@@ -511,7 +511,11 @@ a.right.carousel-control {
 .carousel-inner2 {
     z-index: -2;
 }
-
+.carousel-item {
+    a {
+        text-decoration: none;
+    }
+}
 .carousel-control-prev {
     opacity: 1;
     @include diamond_button(-80px, -128px, 45deg, transparent, $yellow, $green);
@@ -523,7 +527,6 @@ a.right.carousel-control {
         top: 52.5%;
         left: 41px;
         z-index: 1;
-
     }
     &:after {
         width: 45px;
@@ -813,9 +816,6 @@ a.right.carousel-control {
     @include media-breakpoint-down(tablet) {
         bottom: 0px;
         width:96%;
-    }
-    @include media-breakpoint-down(phone) {
-        bottom: -20px;
     }
 
     .hero_image_title, .hero_image_subtitle, .hero_image_body {
