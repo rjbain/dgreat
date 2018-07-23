@@ -46,7 +46,7 @@ handlers:
       from_mail: '[webform-submission:values:email:raw]'
       from_name: '[webform-submission:values:first_name:raw]'
       subject: '[webform-submission:values:first_name:raw]'
-      body: default
+      body: _default
       html: true
       attachments: false
       excluded_elements: {  }
@@ -78,8 +78,8 @@ handlers:
       to_mail: '[webform-submission:values:email:raw]'
       from_mail: lawadmissions@usfca.edu
       from_name: 'USF Law Admissions'
-      subject: default
-      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]\n"
+      subject: _default
+      body: 'Submitted by user: [webform_submission:user] Submitted values are: [webform_submission:values]'
       html: true
       attachments: false
       excluded_elements: {  }

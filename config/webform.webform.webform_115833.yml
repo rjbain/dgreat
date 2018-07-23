@@ -46,8 +46,8 @@ handlers:
       to_mail: lobo@usfca.edu
       from_mail: '[webform-submission:values:email_if_logged_in_to_myusf:raw]'
       from_name: '[webform-submission:values:name:raw]'
-      subject: default
-      body: "<p>Submitted on [submission:date:long]</p>\n<p>Submitted by user: [submission:user]</p>\n<br>\n<p>Submitted values are:</p>\n[submission:values]"
+      subject: _default
+      body: "<p>Submitted by user: [webform_submission:user]</p>\n&nbsp;\n\n<p>Submitted values are:</p>\n[webform_submission:values]"
       html: true
       attachments: false
       excluded_elements: {  }

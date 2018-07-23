@@ -43,10 +43,10 @@ handlers:
     weight: 1
     settings:
       to_mail: embrigham@usfca.edu
-      from_mail: default
-      from_name: default
-      subject: default
-      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]\n"
+      from_mail: _default
+      from_name: _default
+      subject: _default
+      body: 'Submitted by user: [webform_submission:user] Submitted values are: [webform_submission:values]'
       html: true
       attachments: false
       excluded_elements: {  }
@@ -76,10 +76,10 @@ handlers:
     weight: 2
     settings:
       to_mail: '[webform-submission:values:email:raw]'
-      from_mail: default
-      from_name: default
-      subject: default
-      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]"
+      from_mail: _default
+      from_name: _default
+      subject: _default
+      body: 'Submitted by user: [webform_submission:user] Submitted values are: [webform_submission:values]'
       html: true
       attachments: false
       excluded_elements: {  }
