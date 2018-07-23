@@ -55,7 +55,9 @@
 
 <a href="{{ fields.field_news_link.content }}">
 	<div class="hero-image-title-box">
-		<div class="hero_image_title">{{ fields.title.content }}</div><br>
+		{% if fields.field_display_title.content %}
+		<div class="hero_image_title">{{ fields.field_display_title.content }}</div><br>
+		{% endif %}
 		{% if fields.field_sub_title.content %}
 			<div class="hero_image_subtitle">{{ fields.field_sub_title.content }}</div><br>
 		{% endif %}

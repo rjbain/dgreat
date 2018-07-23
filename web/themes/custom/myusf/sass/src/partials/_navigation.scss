@@ -30,8 +30,6 @@ nav.navbar a:hover {
 nav.navbar {
 	margin-bottom: 1.59rem;
 
-	
-
 	a.nav-link {
     	color: $white!important;
     	text-decoration:none;
@@ -70,7 +68,7 @@ nav.navbar {
 	@include media-breakpoint-down(landscape_phone) {
 		padding:0;
 		height:98px;
-		z-index: 1;
+		z-index: 2;
 	}
 	@include media-breakpoint-up(tablet) {
 		padding-right: 2.4rem;
@@ -145,44 +143,63 @@ nav.navbar {
 
 	@include media-breakpoint-down(landscape_phone) {		
 		margin-left: 0;
+		margin-top:15px;
 		width:100vw;
 
 		li {
 			flex-direction: row!important;
-			width: 20%;
-			height: 50px;
 			margin-top: 5px;
 			padding: 0 5px!important;			
 
 			a {
-				font-size: .6rem;
-			    line-height: .8rem;
+				font-size: .75rem;
+			    line-height: .9rem;
 			    text-align: center;
 			    letter-spacing: .025rem;
+			    padding-top: 5px!important;
+    			padding-bottom: 5px!important;
+			    margin-top: 0!important;
+			    margin-bottom: 0!important;
 			}
 		}
 		.menu-item--expanded.dropdown {
     		padding-left: unset!important;
     		padding-right: unset!important;
 
+    		$shiftSecond: calc( -1 * ( 58px + (( 100vw - 299px) / 6) + (( 100vw - 303px) / 12)));
+    		$shiftThird:  calc( -1 * ( 72px + 58px + 2 * ((( 100vw - 299px) / 6)) + (( 100vw - 303px) / 12))); 
+    		$shiftFourth: calc( -1 * ( 72px + 58px + 53px + 3 * ((( 100vw - 299px) / 6)) + (( 100vw - 303px) / 12))); 
+    		$shiftFifth: calc( -1 * ( 72px + 58px + 53px + 66px + 4 * ((( 100vw - 299px) / 6)) + (( 100vw - 303px) / 12))); 
+    			
     		&:first-child {
+    			width: calc( 58px + (( 100vw - 299px) / 6) + (( 100vw - 303px) / 12));
+    			border-right: 1px solid $white;
     			@include mobilenav-dropdown(0);
     		}
-    		&:nth-child(2) {
-    			@include mobilenav-dropdown(-20vw);
+    		&:nth-child(2) {    
+    			width: calc( 72px + (( 100vw - 299px) / 6));
+    			border-right: 1px solid $white;
+    			@include mobilenav-dropdown($shiftSecond);
 			}
-			&:nth-child(3) {
-    			@include mobilenav-dropdown(-40vw);
+			&:nth-child(3) {				
+				width: calc( 53px + (( 100vw - 299px) / 6));
+    			border-right: 1px solid $white;
+    			@include mobilenav-dropdown($shiftThird);    					
 			}
-			&:nth-child(4) {
-    			@include mobilenav-dropdown(-60vw);
+			&:nth-child(4) {				
+				width: calc( 66px + (( 100vw - 299px) / 6));
+    			border-right: 1px solid $white;
+    			@include mobilenav-dropdown($shiftFourth);
 			}
-			&:nth-child(5) {
-    			@include mobilenav-dropdown(-80vw);
+			&:nth-child(5) {				
+				width: calc( 50px + (( 100vw - 299px) / 6) + calc(( 100vw - 300px) / 12));
+    			@include mobilenav-dropdown($shiftFifth);
 			}
 
-		}
-					
+			.dropdown {
+				margin-top: -1px;
+			}
+		}					
 	}
 }
 
@@ -253,9 +270,10 @@ li.menu-item--expanded:hover ul.dropdown-menu {
 						
 		
 			@include media-breakpoint-down(landscape_phone) {
-				font-size: .7rem;
+				font-size: .8rem;
 				padding-left: 5px;
 				text-align: left;
+				width: 93vw!important;
 			}
 
 			&:hover,
@@ -357,7 +375,7 @@ button.header_search {
     	}
 	}
 	&:focus {
-		margin-right: 20px;
+		/*margin-right: 20px;*/
     	height: 20px;
     	width: 20px;
 	}
@@ -707,7 +725,6 @@ nav.tabs {
 
 .breadcrumb {
 	padding: 2px 1rem 0 21px;
-	margin-left: 15px;
     margin-bottom: 1rem;
     list-style: none;
     background-color: transparent;
@@ -717,13 +734,13 @@ nav.tabs {
     	padding-right: 3px;
     	display: inline-block;
     	content: "";
-    	position: absolute;
+    	position: inherit;
     	width: 24px;
     	height: 25px;
     	top: 0;
     	right: 130px;
     	bottom: 6px;
-    	margin: auto 0px auto auto;
+    	margin: 3px 0px auto 0px;
     	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -56px -77px;
 
     }
@@ -846,7 +863,7 @@ nav.tabs {
 					}
 
 					a {
-						text-transform:capitalize;
+						text-transform: initial; /*capitalize;*/
 						font-weight:600;
 						margin-left: 18px;
 						padding: 0.5rem 0;
@@ -860,7 +877,7 @@ nav.tabs {
 
 						&.active {
 
-							padding-top: 0.25rem!important;
+							padding-top: 0!important; /* was 0.25rem!important; */
 							padding-bottom: 0.25rem;
 
 							&:before {

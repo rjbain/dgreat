@@ -508,10 +508,14 @@ a.right.carousel-control {
     }
 } 
 
-.carousel-inner {
+.carousel-inner2 {
     z-index: -2;
 }
-
+.carousel-item {
+    a {
+        text-decoration: none;
+    }
+}
 .carousel-control-prev {
     opacity: 1;
     @include diamond_button(-80px, -128px, 45deg, transparent, $yellow, $green);
@@ -522,8 +526,7 @@ a.right.carousel-control {
         /*top: 236px;*/
         top: 52.5%;
         left: 41px;
-        z-index: 0;
-
+        z-index: 1;
     }
     &:after {
         width: 45px;
@@ -531,7 +534,7 @@ a.right.carousel-control {
         /*top: 220px;*/
         top: 50%;
         left: 25px;
-        z-index: -1;
+        z-index: 0;
     }
 
     &:hover,
@@ -584,7 +587,7 @@ a.right.carousel-control {
         /*top: 236px;*/
         top: 52.5%;
         right: 38px;
-        z-index: 0;
+        z-index: 1;
     } 
 
     &:after {
@@ -593,7 +596,7 @@ a.right.carousel-control {
         /*top: 220px;*/
         top: 50%;
         right: 23px;
-        z-index: -1;
+        z-index: 0;
     }
     
     &:hover,
@@ -813,9 +816,6 @@ a.right.carousel-control {
     @include media-breakpoint-down(tablet) {
         bottom: 0px;
         width:96%;
-    }
-    @include media-breakpoint-down(phone) {
-        bottom: -20px;
     }
 
     .hero_image_title, .hero_image_subtitle, .hero_image_body {
