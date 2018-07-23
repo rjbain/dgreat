@@ -43,10 +43,10 @@ handlers:
     weight: 1
     settings:
       to_mail: sanchez@usfca.edu
-      from_mail: default
+      from_mail: _default
       from_name: 'Honorary Degree Nomination Form Submission'
-      subject: default
-      body: "<p>Submitted on [submission:date:long]</p>\n<p>Submitted by user: [submission:user]</p>\n<p>Submitted values are:</p>\n[submission:values]\n"
+      subject: _default
+      body: "Submitted by user: [webform_submission:user]\n<p>Submitted values are:</p>\n[webform_submission:values]"
       html: true
       attachments: false
       excluded_elements: {  }
@@ -76,10 +76,10 @@ handlers:
     weight: 2
     settings:
       to_mail: '[webform-submission:values:person_submitting_nomination_email:raw]'
-      from_mail: default
+      from_mail: _default
       from_name: 'Honorary Degree Nomination Form Submission'
       subject: 'Confirmation of Honorary Degree Nomination Form'
-      body: "<p>Submitted on [submission:date:long]</p>\n<p>Submitted by user: [submission:user]</p>\n<p>Submitted values are:</p>\n[submission:values]\n\n"
+      body: "<p>Submitted by user: [webform_submission:user]</p>\n\n<p>Submitted values are:</p>\n[webform_submission:values]"
       html: true
       attachments: false
       excluded_elements: {  }

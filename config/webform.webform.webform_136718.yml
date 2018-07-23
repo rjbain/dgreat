@@ -11,7 +11,7 @@ id: webform_136718
 title: 'Convocation Faculty Attendance Form'
 description: null
 category: null
-elements: "fieldset_your_information:\n  '#type': fieldset\n  '#open': true\n  '#title': Your Information:\n  '#description': \"\"\n  first_name_4:\n    '#type': textfield\n    '#title': FIRST NAME:\n    '#description': \"\"\n    '#required': true\n  last_name_4:\n    '#type': textfield\n    '#title': LAST NAME:\n    '#description': \"\"\n    '#required': true\n  email_4:\n    '#type': email\n    '#size': 20\n    '#title': EMAIL:\n    '#description': \"\"\n    '#required': true\n  your_school_college_or_gleason_library_4:\n    '#type': select\n    '#options':\n      1: College of Arts and Sciences\n      2: School of Management\n      3: School of Education\n      4: School of Nursing and Health Professions\n      5: Gleeson Library\n    '#title': YOUR SCHOOL/COLLEGE OR GLEESON LIBRARY\n    '#description': \"\"\n    '#required': true\nfieldset_regalia:\n  '#type': fieldset\n  '#open': true\n  '#title': Regalia:\n  '#description': \"\"\n  do_you_need_rental_regalia_6:\n    '#type': radios\n    '#options':\n      1: YES\n      2: NO\n    '#title': DO YOU NEED RENTAL REGALIA?\n    '#description': \"\"\n    '#required': true\n  if_yes_which_6:\n    '#description': \"CAP\\n2\"\n    '#type': checkbox\n    '#options':\n      1: CAP\n      2: GOWN\n      3: HOOD\n    '#multiple': true\n    '#title': PLEASE SELECT THE COMPONENTS YOU NEED:\n    '#description': \"\"\n    '#states':\n      visible:\n        ':input[name=\"do_you_need_rental_regalia_6[1]\"]':\n          checked: true\n  comments_or_questions_6:\n    '#type': textarea\n    '#title': COMMENTS OR QUESTIONS?\n    '#description': \"\"\n"
+elements: "fieldset_your_information:\n  '#type': fieldset\n  '#open': true\n  '#title': 'Your Information:'\n  '#description': ''\n  first_name_4:\n    '#type': textfield\n    '#title': 'First Name:'\n    '#required': true\n  last_name_4:\n    '#type': textfield\n    '#title': 'Last Name:'\n    '#required': true\n  email_4:\n    '#type': email\n    '#title': 'Email:'\n    '#size': '20'\n    '#required': true\n  your_school_college_or_gleason_library_4:\n    '#type': select\n    '#title': 'Your school/college or Gleeson Library:'\n    '#options':\n      1: 'College of Arts and Sciences'\n      2: 'School of Management'\n      3: 'School of Education'\n      4: 'School of Nursing and Health Professions'\n      5: 'Gleeson Library'\n    '#required': true\nfieldset_regalia:\n  '#type': fieldset\n  '#open': true\n  '#title': 'Regalia:'\n  '#description': ''\n  do_you_need_rental_regalia_6:\n    '#type': radios\n    '#title': 'Do you need a rental regalia?'\n    '#options':\n      1: 'Yes'\n      2: 'No'\n    '#required': true\n  please_select_the_components_you_need_:\n    '#type': checkboxes\n    '#title': 'Please select the components you need:'\n    '#options':\n      1: Cap\n      2: Gown\n      3: Hood\n    '#states':\n      visible:\n        ':input[name=\"do_you_need_rental_regalia_6\"]':\n          value: '1'\n  comments_or_questions_6:\n    '#type': textarea\n    '#title': 'Comments or questions?:'\n"
 css: ''
 javascript: ''
 settings:
@@ -43,10 +43,10 @@ handlers:
     weight: 1
     settings:
       to_mail: wilson@usfca.edu
-      from_mail: default
-      from_name: default
-      subject: default
-      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]\n"
+      from_mail: _default
+      from_name: _default
+      subject: _default
+      body: 'Submitted by user: [webform_submission:user] Submitted values are: [webform_submission:values]'
       html: true
       attachments: false
       excluded_elements: {  }
@@ -76,10 +76,10 @@ handlers:
     weight: 2
     settings:
       to_mail: '[webform-submission:values:email:raw]'
-      from_mail: default
-      from_name: default
-      subject: default
-      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]"
+      from_mail: _default
+      from_name: _default
+      subject: _default
+      body: 'Submitted by user: [webform_submission:user] Submitted values are: [webform_submission:values]'
       html: true
       attachments: false
       excluded_elements: {  }
@@ -109,10 +109,10 @@ handlers:
     weight: 3
     settings:
       to_mail: wbvitagliano@usfca.edu
-      from_mail: default
-      from_name: default
-      subject: default
-      body: default
+      from_mail: _default
+      from_name: _default
+      subject: _default
+      body: _default
       html: true
       attachments: false
       excluded_elements: {  }

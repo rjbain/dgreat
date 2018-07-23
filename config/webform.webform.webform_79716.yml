@@ -43,10 +43,10 @@ handlers:
     weight: 1
     settings:
       to_mail: '[webform-submission:values:service:raw]'
-      from_mail: default
-      from_name: default
-      subject: '[webform-submission:values:service:raw]'
-      body: "<p>Submitted on [submission:date:long]</p>\n<p>Submitted by user: [submission:user]</p>\n<p>Submitted values are:</p>\n[submission:values]"
+      from_mail: _default
+      from_name: _default
+      subject: _default
+      body: "<p>Submitted by user: [webform_submission:user]</p>\n\n<p>Submitted values are:</p>\n[webform_submission:values]"
       html: true
       attachments: false
       excluded_elements: {  }
@@ -76,10 +76,10 @@ handlers:
     weight: 2
     settings:
       to_mail: '[webform-submission:values:type:raw]'
-      from_mail: default
-      from_name: default
-      subject: default
-      body: "<p>Submitted on [submission:date:long]</p>\n<p>Submitted by user: [submission:user]</p>\n<p>Submitted values are:</p>\n[submission:values]"
+      from_mail: _default
+      from_name: _default
+      subject: _default
+      body: "<p>Submitted by user: [webform_submission:user]</p>\n\n<p>Submitted values are:</p>\n[webform_submission:values]"
       html: true
       attachments: false
       excluded_elements: {  }
@@ -109,10 +109,10 @@ handlers:
     weight: 3
     settings:
       to_mail: '[webform-submission:values:email:raw]'
-      from_mail: default
+      from_mail: _default
       from_name: 'USF School of Law'
-      subject: '[webform-submission:values:type:raw]'
-      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]\n"
+      subject: _default
+      body: "Submitted by user: [webform_submission:user]\nSubmitted values are:\n[webform_submission:values]\n"
       html: false
       attachments: false
       excluded_elements: {  }

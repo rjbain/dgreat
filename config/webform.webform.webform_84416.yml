@@ -43,10 +43,10 @@ handlers:
     weight: 1
     settings:
       to_mail: studyabroad@usfca.edu
-      from_mail: default
+      from_mail: _default
       from_name: '[webform-submission:values:last_name:raw]'
-      subject: default
-      body: default
+      subject: _default
+      body: _default
       html: true
       attachments: false
       excluded_elements: {  }
@@ -76,10 +76,10 @@ handlers:
     weight: 3
     settings:
       to_mail: '[webform-submission:values:usf_email_address:raw]'
-      from_mail: default
+      from_mail: _default
       from_name: 'Study Abroad'
-      subject: default
-      body: "Submitted on [submission:date:long]\n\nYour information has been received by the Center for Global Education.\n[submission:values]\n\nIf you have any questions feel free to contact the CGE at (415) 422-6848 or by email at studyabroad@usfca.edu."
+      subject: _default
+      body: 'Your information has been received by the Center for Global Education. [webform_submission:values] If you have any questions feel free to contact the CGE at (415) 422-6848 or by email at studyabroad@usfca.edu.'
       html: true
       attachments: false
       excluded_elements: {  }

@@ -43,10 +43,10 @@ handlers:
     weight: 1
     settings:
       to_mail: demartinez2@usfca.edu
-      from_mail: default
-      from_name: default
+      from_mail: _default
+      from_name: _default
       subject: 'Workshop RSVP'
-      body: "This is a new registration for the Housing Workshop Presentation and Summer Reception. \n\nSubmitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]\n\nThe results of this submission may be viewed at:\n[submission:url]"
+      body: 'This is a new registration for the Housing Workshop Presentation and Summer Reception. Submitted by user: [webform_submission:user] Submitted values are: [webform_submission:values] The results of this submission may be viewed at: [webform_submission:url]'
       html: true
       attachments: false
       excluded_elements: {  }
@@ -76,10 +76,10 @@ handlers:
     weight: 2
     settings:
       to_mail: '[webform-submission:values:email:raw]'
-      from_mail: default
-      from_name: default
-      subject: default
-      body: "Thank you for registering for the Housing Workshop Presentation and Summer Reception. We look forward to seeing you on Friday, June 5th in the Moot Court Room in Kendrick Hall, at 2199 Fulton Street in San Francisco. \n\nPlease contact us at 415.422.2284 or lawadmissions@usfca.edu with any questions. Submitted on Friday, April 22, 2016 - 12:09pm \n\nSubmitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]\n\n"
+      from_mail: _default
+      from_name: _default
+      subject: _default
+      body: 'Thank you for registering for the Housing Workshop Presentation and Summer Reception. We look forward to seeing you on Friday, June 5th in the Moot Court Room in Kendrick Hall, at 2199 Fulton Street in San Francisco. Please contact us at 415.422.2284 or lawadmissions@usfca.edu with any questions. Submitted on Friday, April 22, 2016 - 12:09pm Submitted by user: [webform_submission:user] Submitted values are: [webform_submission:values]'
       html: true
       attachments: false
       excluded_elements: {  }
