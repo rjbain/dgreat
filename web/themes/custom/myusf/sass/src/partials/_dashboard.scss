@@ -44,6 +44,9 @@
 				@include media-breakpoint-down(tablet) {
 					margin-top: 20px;
 				}
+				@include media-breakpoint-down(phone) {
+					margin-top: 0px;
+				}
 			}
 		    #block-dashboardannouncements h2 {
 			    color:$black!important;
@@ -102,48 +105,33 @@
 
 					@include media-breakpoint-down(phone) {
 				        width:100%;
-				        height: 370px;
+				        height: 340px;
 				        margin-top: 20px;
 				        margin-left: 0px;
 						margin-right: 0px; 
 				    }	
 				}
-
-				/*.table-responsive.col {
-					flex-basis:unset;
-					max-width: 100%!important;
-					left: 66%;
-
-					thead, caption {
-						display: none;
-					}
-
-					td {
-						a {
-							font-size: .9rem!important;
-							font-weight: 600;
-							color: $plum;
-						}
-					}
-				}*/
 			
 				table {
 					position:absolute;
-					left: 620px;
-					width:200px;
+					/*left: 620px;
+					width:200px;*/
+					width:33%;
+					left:66.3%;
 					height:140px;
 
 					@media screen and (min-width: 1060px) {
-						width: 200px!important;
+						/*width: 200px!important;*/
 					}
 
 					@include media-breakpoint-down(desktop) {
-				    	left: 485px;
-				    	width: 180px;
+				    	/*left: 485px;
+				    	width: 180px;*/
 					}
 				    @include media-breakpoint-down(tablet) {
-						left: 320px;
-    					width: 300px;
+						/*left: 320px;
+    					width: 300px;*/
+    					
     					margin-top: -10px;
 					}
 					@include media-breakpoint-down(phone) {
@@ -171,7 +159,30 @@
 							line-height: 115px;
 							margin-left: 0;
 
-							@include media-breakpoint-down(desktop) {
+							/*@media screen and (min-width: 1140px) {
+								width: 120px;
+						    	height: 120px;
+						    	line-height: 100px;
+							}*/
+
+							/*@media screen and (max-width: 1170px) {
+								width: 110px;
+						    	height: 110px;
+						    	line-height: 90px;
+							}*/
+							
+							@media screen and (min-width: 1090px) {
+								width: 120px!important;
+						    	height: 120px!important;
+						    	line-height: 100px;
+							}
+							@media screen and (min-width: 1300px) {
+								width: 140px!important;
+    							height: 140px!important;
+    							line-height: 125px!important;
+							}
+							
+							@include media-breakpoint-up(desktop) {
 						    	width: 110px;
 						    	height: 110px;
 						    	line-height: 90px;
@@ -191,7 +202,7 @@
 
 						    a {
 						    	color:$white;
-						    	font-size:.95rem!important;
+						    	font-size:.85rem!important;
 						    	line-height: 1.2rem!important;
 						    	text-transform: uppercase!important;
 						    	display: inline-block;
@@ -216,14 +227,19 @@
 
 						&:first-child td {						
 						    background: $olive;
-						    left:-620px;
+						    /*left:-620px;*/
+						    left: -201%;
 						    margin-top:10px;
 
+						    @include media-breakpoint-up(large_desktop) {
+						    	left: -201%!important;
+							}
 						    @include media-breakpoint-down(desktop) {
-						    	left: -480px!important;
+						    	/*left: -480px!important;*/
 							}
 						    @include media-breakpoint-down(tablet) {
-						    	left: -320px!important;
+						    	/*left: -320px!important;*/
+						    	left: -201%!important;
 						    	margin-top: 20px;
 						    }
 						    @include media-breakpoint-down(phone) {
@@ -234,13 +250,19 @@
 
 						&:nth-child(2) td {
 						    background: $plum;
-						    left: -470px;
+						    /*left: -470px;*/
+						    left: -150%;
 						    margin-top:10px;
+
+						    @include media-breakpoint-down(large_desktop) {
+						    	left: -150%!important;
+							}
 						    @include media-breakpoint-down(desktop) {
-						    	left: -360px!important;
+						    	/*left: -360px!important;*/
 							}
 						    @include media-breakpoint-down(tablet) {
-						    	left: -170px!important;
+						    	/*left: -170px!important;*/
+						    	left: -90%!important;
 						    	margin-top: 20px;
 						    }
 						    @include media-breakpoint-down(phone) {
@@ -251,13 +273,19 @@
 
 						&:nth-child(3) td {
 						    background: $turquoise;
-						    left: -320px;
+						    /*left: -320px;*/
+						    left: -99%;
 						    margin-top:10px;
-						     @include media-breakpoint-down(desktop) {
-						    	left: -240px!important;
+
+						    @include media-breakpoint-down(large_desktop) {
+						    	left: -99%!important;
+							}
+						    @include media-breakpoint-down(desktop) {
+						    	/*left: -240px!important;*/
 							}
 						    @include media-breakpoint-down(tablet) {
-						    	left: -320px!important;
+						    	/*left: -320px!important;*/
+						    	left: -201%!important;
     							top: 160px;
 						    }
 						    @include media-breakpoint-down(phone) {
@@ -267,13 +295,19 @@
 						}
 						&:nth-child(4) td {
 						    background: $orange;
-						    left: -170px;
+						    /*left: -170px;*/
+						    left: -48%;
 						    margin-top:10px;
-						     @include media-breakpoint-down(desktop) {
-						    	left: -120px!important;
+
+						    @include media-breakpoint-down(large_desktop) {
+						    	left: -48%!important;
+							}
+						    @include media-breakpoint-down(desktop) {
+						    	/*left: -120px!important;*/
 							}
 						    @include media-breakpoint-down(tablet) {
-						    	left: -170px!important;
+						    	/*left: -170px!important;*/
+						    	left: -90%!important;
     							top: 160px;
 						    }
 						    @include media-breakpoint-down(phone) {
@@ -283,8 +317,8 @@
 						}
 						
 						&:nth-child(5) td {
-							 @include media-breakpoint-down(phone) {
-							    padding-top: 10px!important;
+							@include media-breakpoint-down(phone) {
+							    padding-top: 10px!important;    
 							}
 						}
 						&:last-child td {
@@ -293,7 +327,11 @@
 
 						td {
 							line-height: 1rem;
-							padding-bottom: 8px;
+							padding: 5px 20px!important;
+
+							@include media-breakpoint-down(phone) {  
+							    padding-left: 0px!important; 
+							}
 
 							 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 							 	padding-bottom: 0px;
@@ -372,10 +410,10 @@
 			}
 
 		    @include media-breakpoint-down(tablet) {
-		    	top: 400px;
+		    	top: 415px;
 		    }
 		    @include media-breakpoint-down(phone) {
-				top:500px;
+				top: 490px;
 			}
 		}
 		.myLinks {
@@ -394,7 +432,7 @@
 		    	top: 400px;
 		    }
 		    @include media-breakpoint-down(phone) {
-		    	top: 515px;
+		    	top: 500px;
 		    }
 
 			h2 {
@@ -447,34 +485,34 @@
 
 				table {
 						position:absolute;
-						left: 620px;
-						width: 31.5%!important; 
-						top: -400px; 
+						/*left: 620px;*/
+						left: 67%;
+						width: 33%!important; 
+						top: -370px; 
+						/*background: $yellow;*/
+
 						@media screen and (min-width: 792px) {
-							top: -435px!important;    
+							
 						}
-						@media screen and (min-width: 908px) {
-							top: -415px!important;  
-							left: 585px;  
+						@media screen and (min-width: 908px) {					
+							/*left: 585px; */ 
 						}
 						@media screen and (min-width: 1040px) {
 						    
 						}
 						@media screen and (min-width: 1138px) {
-						    top: -415px!important;
+						   
 						}
 						@media screen and (min-width: 1333px) {
-						    top: -395px!important;
+						    
 						}
 
 						@include media-breakpoint-down(desktop) {
-						    left: 480px;
-						    top: -455px;
+						    /*left: 460px;*/						   
 				
 						}
 					    @include media-breakpoint-down(tablet) {
-					    	left: 475px;
-					    	
+					    	/*left: 475px;*/					    	
 					    }
 					    @include media-breakpoint-down(phone) {
 							width: 100%!important;
@@ -487,6 +525,13 @@
 							display: none;
 						}
 						tr {
+
+							td {
+								max-width: 95px;
+							    overflow: hidden;
+							    text-overflow: ellipsis;
+							    white-space: nowrap;
+							}
 							&:first-child td {
 								padding-top: 16px!important;
 							}
@@ -494,29 +539,32 @@
 							&:first-child td , &:nth-child(2) td , &:nth-child(3) td , &:nth-child(4) td , 
 							&:nth-child(5) td , &:nth-child(6) td  {
 								position:relative;
-								left: -625px;
-								top:400px;
+								/*left: -625px;*/
+								left: -205%;
+								top:360px;
+								/*background: $orange;*/
 								
 								@media screen and (min-width: 792px) {
-						    		top: 420px!important;
+						    		/*top: 420px!important;*/
 								}
 								@media screen and (min-width: 908px) {
-									top: 400px!important;
-									left: -585px
+									
+									/*left: -585px*/
 								}
 								@media screen and (min-width: 1138px) {
-								    top: 400px!important;
+								   /* top: 360px!important;*/
 								}
 								@media screen and (min-width: 1333px) {
-									top: 380px!important;
+									/*top: 380px!important;*/
 								}
 
 								@include media-breakpoint-down(desktop) {
-						    		left: -485px;
-						    		top: 440px;
+						    		/*left: -485px;*/
+						    	
 								}
 							    @include media-breakpoint-down(tablet) {
-							    	left: -485px;
+							    	/*left: -485px;*/
+							    	
 							    }
 							    @include media-breakpoint-down(phone) {
 									left: 0;
@@ -526,19 +574,21 @@
 							&:nth-child(7) td , &:nth-child(8) td , &:nth-child(9) td , &:nth-child(10) td , 
 							&:nth-child(11) td , &:nth-child(12) td  {
 							 	position:relative;
-								left: -320px;
-								top: 180px;
+								/*left: -320px;*/
+								left: -102.5%;
+								top: 179px;
+								/*background: olive;*/
 
 								@media screen and (min-width: 792px) {
-						    		top: 180px!important;
+						    		/*top: 200px!important;*/
 								}
 								@media screen and (min-width: 908px) {
-									left: -270px;
+									/*left: -270px;*/
 								}
 
 								@include media-breakpoint-down(desktop) {
-						    		left: -240px;
-						    		top: 200px;
+						    		/*left: -240px;
+						    		top: 200px;*/
 						    		
 								}
 							    @include media-breakpoint-down(tablet) {
