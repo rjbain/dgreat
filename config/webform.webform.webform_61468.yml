@@ -11,7 +11,7 @@ id: webform_61468
 title: 'Peak Performance Session Evaluation'
 description: null
 category: null
-elements: "intro:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p class='intro_text_lg'>Thank you for attending one of the Peak Performance Sessions. We are always interested in your feedback and want to know how we can improve our session series.</p><p class='clear'></p><p>Please use the form below to evaluate the session.</p><p class='clear'></p>\"\n  '#title': Intro\n  '#description': \"\"\nsession_name:\n  '#type': textfield\n  '#title': Please indicate the name of the session you attended:\n  '#description': \"\"\n  '#required': true\ndate_attended:\n  '#type': date\n  '#title': Date Attended:\n  '#description': \"\"\ntime_attended:\n  '#type': time\n  '#title': Time of Session:\n  '#description': \"\"\nrate_the_session:\n  '#type': radios\n  '#options':\n    1: 1\n    2: 2\n    3: 3\n    4: 4\n    5: 5\n    6: 6\n    7: 7\n    8: 8\n    9: 9\n    10: 10\n  '#title_display': inline\n  '#title': Please rate the session (1 lowest, 10 highest)\n  '#description': \"\"\nhow_did_you_hear:\n  '#type': textarea\n  '#title': How did you hear about this session?\n  '#description': \"\"\nknowledge:\n  '#type': radios\n  '#options':\n    1: Stayed the same\n    2: Increased slightly\n    3: Increased significantly\n  '#title': After the presentation, my knowledge in the subject matter:\n  '#description': \"\"\ncomponents:\n  '#description': \"Content/Information\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Content/Information\n    2: Introduction/Icebreakers\n    3: Activities\n    4: Interaction with other attendees\n    5: Handouts/Support Materials\n    6: Others\n  '#multiple': true\n  '#title': Which components of this session engaged you? (Check all that apply)\n  '#description': \"\"\nothers:\n  '#type': textarea\n  '#title_display': inline\n  '#title': If \"Others,\" please explain:\n  '#description': \"\"\nmost_meaningful:\n  '#type': textarea\n  '#title': What information did you find most meaningful in this session?\n  '#description': \"\"\nleast_meaningful:\n  '#type': textarea\n  '#title': What information did you find least meaningful in this session?\n  '#description': \"\"\nactions:\n  '#type': textarea\n  '#title': What actions will you take as a result of this session?\n  '#description': \"\"\ncomments:\n  '#type': textarea\n  '#title': Additional comments / suggestions (including suggestions for future sessions):\n  '#description': \"\"\n"
+elements: "intro:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p class=''intro_text_lg''>Thank you for attending one of the Peak Performance Sessions. We are always interested in your feedback and want to know how we can improve our session series.</p><p class=''clear''></p><p>Please use the form below to evaluate the session.</p><p class=''clear''></p>'\n  '#title': Intro\n  '#description': ''\nsession_name:\n  '#type': textfield\n  '#title': 'Please indicate the name of the session you attended:'\n  '#description': ''\n  '#required': true\ndate_attended:\n  '#type': date\n  '#title': 'Date Attended:'\n  '#description': ''\ntime_attended:\n  '#type': time\n  '#title': 'Time of Session:'\n  '#description': ''\nrate_the_session:\n  '#type': radios\n  '#options':\n    1: 1\n    2: 2\n    3: 3\n    4: 4\n    5: 5\n    6: 6\n    7: 7\n    8: 8\n    9: 9\n    10: 10\n  '#title_display': inline\n  '#title': 'Please rate the session (1 lowest, 10 highest)'\n  '#description': ''\nhow_did_you_hear:\n  '#type': textarea\n  '#title': 'How did you hear about this session?'\n  '#description': ''\nknowledge:\n  '#type': radios\n  '#options':\n    1: 'Stayed the same'\n    2: 'Increased slightly'\n    3: 'Increased significantly'\n  '#title': 'After the presentation, my knowledge in the subject matter:'\n  '#description': ''\nwhich_components_of_this_session_engaged_you_check_all_that_appl:\n  '#type': checkboxes\n  '#title': 'Which components of this session engaged you? (Check all that apply)'\n  '#options':\n    Content/Information: Content/Information\n    Introduction/Icebreakers: Introduction/Icebreakers\n    Activities: Activities\n    'Interaction with other attendees': 'Interaction with other attendees'\n    'Handouts/Support Materials': 'Handouts/Support Materials'\n    Others: Others\nothers:\n  '#type': textarea\n  '#title_display': inline\n  '#title': 'If \"Others,\" please explain:'\n  '#description': ''\nmost_meaningful:\n  '#type': textarea\n  '#title': 'What information did you find most meaningful in this session?'\n  '#description': ''\nleast_meaningful:\n  '#type': textarea\n  '#title': 'What information did you find least meaningful in this session?'\n  '#description': ''\nactions:\n  '#type': textarea\n  '#title': 'What actions will you take as a result of this session?'\n  '#description': ''\ncomments:\n  '#type': textarea\n  '#title': 'Additional comments / suggestions (including suggestions for future sessions):'\n  '#description': ''\n"
 css: ''
 javascript: ''
 settings:
@@ -43,10 +43,10 @@ handlers:
     weight: 1
     settings:
       to_mail: plorenz@usfca.edu
-      from_mail: default
-      from_name: default
-      subject: default
-      body: default
+      from_mail: _default
+      from_name: _default
+      subject: _default
+      body: _default
       html: true
       attachments: false
       excluded_elements: {  }
@@ -76,10 +76,10 @@ handlers:
     weight: 2
     settings:
       to_mail: drmyers@usfca.edu
-      from_mail: default
-      from_name: default
-      subject: default
-      body: default
+      from_mail: _default
+      from_name: _default
+      subject: _default
+      body: _default
       html: true
       attachments: false
       excluded_elements: {  }
