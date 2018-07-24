@@ -327,6 +327,30 @@ li.menu-item--expanded:hover ul.dropdown-menu {
 // end main nav dropdown //
 
 //---- SEARCH -----//
+button.header_search:hover:before,
+button.header_search:focus:before {
+		width: 23px;
+    	height: 25px;
+    	top: 0;
+    	right: 128px;
+    	z-index: 3;
+    	margin: auto;
+    	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -214px -96px;
+
+    	@include media-breakpoint-only(tablet) {
+    		right: 128px;
+    	}
+
+    	@include media-breakpoint-down(landscape_phone) {
+    		top: 13px;
+    		right: 123px;
+    	}
+	}
+button.header_search:focus {
+		/*margin-right: 20px;*/
+    	height: 20px;
+    	width: 20px;
+	}
 
 button.header_search {
     background: transparent;
@@ -355,30 +379,7 @@ button.header_search {
     		bottom: unset;
     	}
 	}
-	&:hover:before,
-	&:focus:before {
-		width: 23px;
-    	height: 25px;
-    	top: 0;
-    	right: 128px;
-    	z-index: 3;
-    	margin: auto;
-    	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -214px -96px;
-
-    	@include media-breakpoint-only(tablet) {
-    		right: 128px;
-    	}
-
-    	@include media-breakpoint-down(landscape_phone) {
-    		top: 13px;
-    		right: 123px;
-    	}
-	}
-	&:focus {
-		/*margin-right: 20px;*/
-    	height: 20px;
-    	width: 20px;
-	}
+	
 	
 }
 #search-options {
