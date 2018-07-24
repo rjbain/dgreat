@@ -38,6 +38,9 @@
 		div.col-sm{
 			&:first-child h2 {
 				color: $plum!important;
+				@include media-breakpoint-up(desktop) {
+					margin-left: -10px;
+				}
 			}
 			&:last-child h2 {
 				color: $turquoise!important;
@@ -347,6 +350,8 @@
 				
 				.view-footer {
 					a.appPref {
+						display:none;
+
 						font-size: 0;
 
 						&:before {
@@ -403,6 +408,10 @@
 		    width: calc(100% - 78px);
 		    background: $light_gray;
 		    margin-left: 24px;
+
+		    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
+		    	left:0;
+		    }
 
 		    @include media-breakpoint-down(desktop) {
 
