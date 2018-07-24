@@ -38,12 +38,108 @@ Available variables (usf_dashboard.module)
                     </div>
 
                 {% else %}
-
+                    <!-- Beginning of temp FavApps -->    
                     <div class="col-sm myApps">
                         <h2>Top Apps</h2>
-                            {% if dashboard_content.fav_links %}
-                                {{ dashboard_content.fav_links }}
-                            {% endif %}
+                            <div class="views-element-container settings-tray-editable block block-views block-views-blockfavorite-links-block" id="block-views-block-favorite-links-block">
+                                <div class="content">
+                                    <div class="col-auto">
+                                        <div class="view view-favorite-links view-id-favorite_links view-display-id-block">
+                                            <div class="view-content row">
+                                                <div class="table-responsive col">
+                                                    <table class="table views-table views-view-table cols-0">
+                                                        <tbody>
+                                                            {% if ('employee' in user.getroles) or ('faculty' in user.getroles)  %}        
+                                                                <tr><td class="views-field views-field-title"><a href="https://mail.google.com/a/usfca.edu">Fac/Staff Email</a></td></tr>
+                                                            {% endif %}
+
+                                                           {% if ('student' in user.getroles) or ('admitted student' in user.getroles)  %}        
+                                                                <tr><td class="views-field views-field-title"><a href="https://mail.google.com/a/dons.usfca.edu">Student Email</a></td></tr>
+                                                            {% endif %}
+
+                                                           {% if ('employee' in user.getroles) %}        
+                                                                <tr><td class="views-field views-field-title"><a href="https://aphrodite01.usfca.edu:8010/ssomanager/c/SSB?pkg=https://hebe.usfca.edu/prod/twbkwbis.P_GenMenu?name=pmenu.P_MainMnu">Employee Self-Service</a></td></tr>
+                                                            {% endif %}
+
+                                                           {% if ('student' in user.getroles) %}        
+                                                                <tr><td class="views-field views-field-title"><a href="https://bit.ly/2mxJKbn">Student Self-Service</a></td></tr>
+                                                            {% endif %}
+
+                                                           {% if ('faculty' in user.getroles) %}        
+                                                                <tr><td class="views-field views-field-title"><a href="https://bit.ly/2NyWrOp">Faculty Self-Service</a></td></tr>
+                                                            {% endif %}
+
+                                                           {% if ('faculty' in user.getroles) or ('student' in user.getroles) %}        
+                                                                <tr><td class="views-field views-field-title"><a href="https://usfca.instructure.com/">Canvas</a></td></tr>
+                                                            {% endif %}
+
+                                                           {% if ('employee' in user.getroles) or ('faculty' in user.getroles) %}        
+                                                                <tr><td class="views-field views-field-title"><a href="https://sso.usfca.edu/saml1/concur">Concur</a></td></tr>
+                                                            {% endif %}
+
+                                                           {% if ('employee' in user.getroles) or ('faculty' in user.getroles) %}        
+                                                                <tr><td class="views-field views-field-title"><a href="https://solutions.sciquest.com/apps/Router/SAMLAuth/USF">Hilltop Shop</a></td></tr>
+                                                            {% endif %}
+
+                                                           {% if ('student' in user.getroles) or ('admitted student' in user.getroles) %}        
+                                                                <tr><td class="views-field views-field-title"><a href="https://goo.gl/7cbmyv">View and Pay</a></td></tr>
+                                                            {% endif %}
+
+                                                           {% if ('student' in user.getroles) %}        
+                                                                <tr><td class="views-field views-field-title"><a href="https://csgoldweb.usfca.edu/student/local_login.php">One Card Online Account Balance</a></td></tr>
+                                                            {% endif %}
+
+                                                           {% if ('employee' in user.getroles) or ('faculty' in user.getroles) %}      
+                                                                <tr><td class="views-field views-field-title"><a href="https://calendar.google.com/a/usfca.edu/">Fac/Staff Calendar</a></td></tr>
+                                                            {% endif %}
+
+                                                           {% if ('employee' in user.getroles) or ('faculty' in user.getroles) %}      
+                                                                <tr><td class="views-field views-field-title"><a href="https://drive.google.com/a/usfca.edu">Fac/Staff Drive</a></td></tr>
+                                                            {% endif %}
+
+                                                           {% if ('employee' in user.getroles) or ('faculty' in user.getroles) %}      
+                                                                <tr><td class="views-field views-field-title"><a href="https://insight.usfca.edu:10443/prodax/f?p=250">Directory</a></td></tr>
+                                                            {% endif %}
+
+                                                           {% if ('employee' in user.getroles) or ('faculty' in user.getroles)  or ('student' in user.getroles)  or ('online student' in user.getroles) %}
+                                                                <tr><td class="views-field views-field-title"><a href="http://www.lynda.com/portal/usf">Lynda.com</a></td></tr>
+                                                            {% endif %}
+
+                                                           {% if ('employee' in user.getroles) or ('faculty' in user.getroles)  or ('student' in user.getroles)  or ('online student' in user.getroles) %}
+                                                                <tr><td class="views-field views-field-title"><a href="http://usf.service-now.com/">USF Support</a></td></tr>
+                                                            {% endif %}
+
+                                                           {% if ('employee' in user.getroles) or ('faculty' in user.getroles)  or ('student' in user.getroles)  or ('online student' in user.getroles) %}
+                                                                <tr><td class="views-field views-field-title"><a href="https://usfcas.usfca.edu/custom/estore/onthehub.html">Personal Software Purchases</a></td></tr>
+                                                            {% endif %}
+
+                                                           {% if ('faculty' in user.getroles) %}
+                                                                <tr><td class="views-field views-field-title"><a href="https://myusf.force.com">Early Alert</a></td></tr>
+                                                            {% endif %}
+
+                                                           {% if ('faculty' in user.getroles) %}
+                                                                <tr><td class="views-field views-field-title"><a href="https://usfcas.usfca.edu/vcl">Visual Class List</a></td></tr>
+                                                            {% endif %}
+
+                                                           {% if ('employee' in user.getroles) %}
+                                                                <tr><td class="views-field views-field-title"><a href="https://insight.usfca.edu:11443/ibi_apps/bip/portal/USF_Reports">BI</a></td></tr>
+                                                            {% endif %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+  
+                                    <div class="view-footer">
+                                        <a href="https://login.usfca.edu/ui/main#launch:pad" class="seeMyApps diamond_link_small">View All Apps</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                            
+                    <!-- End of temp FavApps -->    
+                            {#% if dashboard_content.fav_links %#}
+                                {#{ dashboard_content.fav_links }#}
+                            {#% endif %#}
                     </div>
         
                     <div class="separator"></div>

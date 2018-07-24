@@ -39,6 +39,17 @@
 		height: unset;
 	}
 
+	.card-block .paragraph__column {
+		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
+			background: $white;
+	    	z-index: 2;
+	    	margin-left: -15px!important;
+	    	margin-right: -15px!important;
+	    	padding-left: -15px!important;
+	    	padding-right: -15px!important;
+		}
+	}
+
 	.panel-heading {
 		a:hover,
 		a:focus {
@@ -569,6 +580,11 @@ h1.js-quickedit-page-title.page-title {
 
 .event-description {
 	padding-top: 2rem;
+	width: 85%;
+
+	@include media-breakpoint-down(phone) {
+		width: 100%;
+	}
 }
 
 
