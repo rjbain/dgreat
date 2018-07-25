@@ -68,14 +68,16 @@
 
 	li {
 		position: relative;
-	  	counter-increment: li;
-	  	list-style-type: none;	  	
+		display:block;
+		list-style-type:lower-latin;
 	  	/* margin-right: 50px;*/
 
 		&:before {
 			font-weight:800;
-		  	color: $orange;
-		  	content: counter(li) " ";
+		  	color: $olive;
+			backface-visibility:hidden;
+			content:counter(li) ". ";
+			counter-increment:li;
 		  	left: -39px;
 		  	position: absolute;
 		  	text-align: right;
@@ -99,8 +101,16 @@
 		  	left: -32px;
 		  	width: 26px;
 		  	padding-left: 30px;
+	  		display:inline-block;
+			backface-visibility:hidden;
+		    counter-increment: none;
 		}
 	}
+}
+
+.paragraph__column ol,
+.event-description ol {
+	counter-reset:li;
 }
 
 .paragraph__column img {
