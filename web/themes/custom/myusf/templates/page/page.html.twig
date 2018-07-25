@@ -124,26 +124,10 @@
       </form>
       <button class="header_search" type="submit" onclick="toggle()"></button>
       {% if logged_in %}
-        <!--<form class="form-inline">-->
-          <!--<a href="/user/logout"><button class="btn btn-outline-success" type="button">Log Out</button></a>-->
           {{ drupal_view('user', 'block_1') }}
-          <!--<li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ user.displayname }}
-              </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="/dashboard">Dashboard</a>
-              <a class="dropdown-item" href="/home">MyApps</a>
-              <a class="dropdown-item" href="/user/logout">Logout</a>
-            </div>
-          </li>-->
-        <!--</form>-->
       {% else %}
-        <!--<form action="/user/login" class="form-inline" method="get">-->
           <a href="/caslogin"><button class="btn btn-outline-success" type="button">Log In</button></a>
-        <!--</form>-->
       {% endif %}
-    <!--</div>-->
     {% endif %}
       </nav>
       {% if page.hero_image %}
