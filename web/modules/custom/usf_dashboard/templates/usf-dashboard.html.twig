@@ -49,8 +49,14 @@ Available variables (usf_dashboard.module)
                                                     <table class="table views-table views-view-table cols-0">
                                                         <tbody>
 
+
+                                                            {% if ('admitted_student' in user.getroles) %}        
+                                                                <tr><td class="views-field views-field-title"><a href="https://aphrodite01.usfca.edu:8010/ssomanager/c/SSB?pkg=https://hebe.usfca.edu/prod/bwskpayg.P_DispList" target="_blank">Deposit</a></td></tr>
+                                                            {% endif %}
+
+
                                                             {% if ('student' in user.getroles) or ('admitted_student' in user.getroles) %}        
-                                                                <tr><td class="views-field views-field-title"><a href="https://goo.gl/7cbmyv" target="_blank">Deposit</a></td></tr>
+                                                                <tr><td class="views-field views-field-title"><a href="https://goo.gl/7cbmyv" target="_blank">View & Pay</a></td></tr>
                                                             {% endif %}
 
 
