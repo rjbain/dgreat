@@ -34,7 +34,7 @@
 }
 
 @mixin diamond_button ($bgX, $bgY, $degree, $borderColor, $bgColor, $bgColorHover) {
-    &:before {
+    &::before {
         position: absolute;
         display: inline-block;
         content: "";
@@ -47,7 +47,7 @@
         background: url(/themes/custom/myusf/images/site/icons.svg) $bgX $bgY no-repeat;
     }
 
-    &:after {
+    &::after {
         position: absolute;
         display: inline-block;
         content: "";
@@ -62,8 +62,8 @@
         transition: box-shadow .25s,transform .25s;
     }
 
-    &:hover:after,
-    &:focus:after {
+    &:hover::after,
+    &:focus::after {
             background: $bgColorHover;
         }
     
@@ -73,7 +73,7 @@
     }
 }
 @mixin diamond_button_small ($bgX, $bgY, $degree, $borderColor, $bgColor, $bgColorHover) {
-    &:before{
+    &::before{
         position: absolute;
         display: inline-block;
         content: "";
@@ -86,7 +86,7 @@
         background: url(/themes/custom/myusf/images/site/icons.svg) $bgX $bgY no-repeat;
     }
 
-    &:after {
+    &::after {
         position: absolute;
         display: inline-block;
         content: "";
@@ -101,8 +101,8 @@
         transition: box-shadow .25s,transform .25s;
     }
 
-    &:hover:after,
-    &:focus:after {
+    &:hover::after,
+    &:focus::after {
             background: $bgColorHover;
         }
     
@@ -135,7 +135,7 @@
     	transition: background-color .25s linear 0s,border-color .25s linear 0s,box-shadow .25s linear 0s,color .25s linear 0s,opacity .25s linear 0s !important;
     }
 
-    &:after {
+    &::after {
     	vertical-align: middle;
     	display: inline-block;
     	content: "";
@@ -158,7 +158,7 @@
 
 
 @mixin social_gray($social_media, $x, $y) {
-    &:before {
+    &::before {
         position: relative;
         display: inline-block;
         content: "";
@@ -169,8 +169,8 @@
         background: url(/themes/custom/myusf/images/site/myusf-icons.svg) no-repeat $x $y;
     }
 
-    &:hover:before,
-    &:focus:before {
+    &:hover::before,
+    &:focus::before {
         opacity: 0.5;
     }
 

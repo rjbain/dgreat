@@ -71,7 +71,7 @@
 	margin-bottom: 0;
 	padding-left: 30px;
 
-    &:before {
+    &::before {
         display: block;
         content: '';
         position: absolute;
@@ -85,19 +85,19 @@
 }
 
 
-.tel:before {
+.tel::before {
     width: 16px;
     height: 16px;
     background-position: -219px -60px!important;
 }
 
-.fax:before {
+.fax::before {
     width: 16px;
     height: 16px;
     background-position: -239px -60px!important;
 }
 
-.email:before {
+.email::before {
     top: 3px;
     width: 16px;
     height: 16px;
@@ -269,7 +269,7 @@
         .ui-icon {
             background-image: unset;
     
-            &.ui-icon-circle-triangle-w:after {
+            &.ui-icon-circle-triangle-w::after {
                 position: absolute;
                 display: block;
                 content: "";
@@ -281,12 +281,12 @@
                 top: -5px;
                 margin-left: 5px;
             }
-            &.ui-icon-circle-triangle-w:hover:after {
+            &.ui-icon-circle-triangle-w:hover::after {
                 background: url(/themes/custom/myusf/images/site/icons.png) -196px -160px no-repeat;
                 background: url(/themes/custom/myusf/images/site/icons.svg) -196px -160px no-repeat;
             }
  
-            &.ui-icon-circle-triangle-e:after {
+            &.ui-icon-circle-triangle-e::after {
                 position: absolute;
                 display: block;
                 content: "";
@@ -298,7 +298,7 @@
                 top: -5px;
             }
  
-            &.ui-icon-circle-triangle-e:hover:after {
+            &.ui-icon-circle-triangle-e:hover::after {
                 background: url(/themes/custom/myusf/images/site/icons.png) -218px -160px no-repeat;
                 background: url(/themes/custom/myusf/images/site/icons.svg) -218px -160px no-repeat;
             }
@@ -315,7 +315,7 @@
 a.left.carousel-control {
     &:hover,
     &:focus {
-        &:before {
+        &::before {
             position: absolute;
             display: inline-block;
             content: "";
@@ -335,7 +335,7 @@ a.left.carousel-control {
                 left: 14px;
             }
         }
-        &:after {
+        &::after {
             position: absolute;
             content: "";       
             width: 50px;
@@ -355,7 +355,7 @@ a.left.carousel-control {
     }
 
     .glyphicon-chevron-left {
-        &:before {
+        &::before {
             position: absolute;
             content: "";
             width: 50px;
@@ -371,7 +371,7 @@ a.left.carousel-control {
 a.right.carousel-control {
     &:hover,
     &:focus {
-        &:before {
+        &::before {
             position: absolute;
             display: inline-block;
             content: "";
@@ -391,7 +391,7 @@ a.right.carousel-control {
                 right: 8px;
             }
         }
-        &:after {
+        &::after {
            position: absolute;
             content: "";
             width: 50px;
@@ -411,7 +411,7 @@ a.right.carousel-control {
         }
     }
     .glyphicon-chevron-right {   
-        &:after {
+        &::after {
             position: absolute;
             content: "";        
             width: 50px;
@@ -528,7 +528,7 @@ a.right.carousel-control {
     opacity: 1;
     @include diamond_button(-80px, -128px, 45deg, transparent, $yellow, $green);
 
-    &:before {
+    &::before {
         width: 10px;
         height: 14px;
         /*top: 236px;*/
@@ -536,7 +536,7 @@ a.right.carousel-control {
         left: 41px;
         z-index: 1;
     }
-    &:after {
+    &::after {
         width: 45px;
         height: 45px;
         /*top: 220px;*/
@@ -553,11 +553,11 @@ a.right.carousel-control {
     @include media-breakpoint-down(tablet) { 
         margin-top: -50px;
 
-        &:before {
+        &::before {
             top: 192px;
             left: 26px;
         }
-        &:after {
+        &::after {
             width: 35px;
             height: 35px;
             top: 180px;
@@ -572,11 +572,11 @@ a.right.carousel-control {
     @include media-breakpoint-down(phone) { 
         margin-top: -42px;
 
-        &:before {
+        &::before {
             top: 213px;
             left: -6px;
         }
-        &:after {
+        &::after {
             width: 45px;
             height: 45px;
             top: 196px;
@@ -589,7 +589,7 @@ a.right.carousel-control {
     opacity: 1;
     @include diamond_button( -100px, -128px, 45deg, transparent, $yellow, $green);
 
-    &:before {
+    &::before {
         width: 10px;
         height: 14px;
         /*top: 236px;*/
@@ -598,7 +598,7 @@ a.right.carousel-control {
         z-index: 1;
     } 
 
-    &:after {
+    &::after {
         width: 45px;
         height: 45px;
         /*top: 220px;*/
@@ -615,11 +615,11 @@ a.right.carousel-control {
     @include media-breakpoint-down(tablet) { 
         margin-top: -50px;
 
-        &:before {
+        &::before {
             top: 192px;
             left: 39px;
         }
-        &:after {
+        &::after {
             width: 35px;
             height: 35px;
             top: 180px;
@@ -634,11 +634,11 @@ a.right.carousel-control {
     @include media-breakpoint-down(phone) { 
         margin-top: -42px;
 
-        &:before {
+        &::before {
             top: 213px;
             left: 41px;
         }
-        &:after {
+        &::after {
             width: 45px;
             height: 45px;
             top: 196px;
