@@ -49,6 +49,11 @@ Available variables (usf_dashboard.module)
                                                 <div class="table-responsive col">
                                                     <table class="table views-table views-view-table cols-0">
                                                         <tbody>
+
+                                                            {% if ('student' in user.getroles) or ('admitted student' in user.getroles) %}        
+                                                                <tr><td class="views-field views-field-title"><a href="https://goo.gl/7cbmyv">Deposit</a></td></tr>
+                                                            {% endif %}
+
                                                             {% if ('employee' in user.getroles) or ('faculty' in user.getroles)  %}        
                                                                 <tr><td class="views-field views-field-title"><a href="https://mail.google.com/a/usfca.edu">Fac/Staff Email</a></td></tr>
                                                             {% endif %}
@@ -62,7 +67,7 @@ Available variables (usf_dashboard.module)
                                                             {% endif %}
 
                                                            {% if ('student' in user.getroles) %}        
-                                                                <tr><td class="views-field views-field-title"><a href="https://bit.ly/2mxJKbn">Student Self-Service</a></td></tr>
+                                                                <tr><td class="views-field views-field-title"><a href="https://bit.ly/2mxJKbn">Student Records</a></td></tr>
                                                             {% endif %}
 
                                                            {% if ('faculty' in user.getroles) %}        
@@ -81,10 +86,6 @@ Available variables (usf_dashboard.module)
                                                                 <tr><td class="views-field views-field-title"><a href="https://solutions.sciquest.com/apps/Router/SAMLAuth/USF">Hilltop Shop</a></td></tr>
                                                             {% endif %}
 
-                                                           {% if ('student' in user.getroles) or ('admitted student' in user.getroles) %}        
-                                                                <tr><td class="views-field views-field-title"><a href="https://goo.gl/7cbmyv">View and Pay</a></td></tr>
-                                                            {% endif %}
-
                                                            {% if ('student' in user.getroles) %}        
                                                                 <tr><td class="views-field views-field-title"><a href="https://csgoldweb.usfca.edu/student/local_login.php">One Card Online Account Balance</a></td></tr>
                                                             {% endif %}
@@ -98,7 +99,7 @@ Available variables (usf_dashboard.module)
                                                             {% endif %}
 
                                                            {% if ('employee' in user.getroles) or ('faculty' in user.getroles) %}      
-                                                                <tr><td class="views-field views-field-title"><a href="https://insight.usfca.edu:10443/prodax/f?p=250">Directory</a></td></tr>
+                                                                <tr><td class="views-field views-field-title"><a href="http://athena.usfca.edu:9950/pls/prodax/f?p=250:2:257257583571796">Directory</a></td></tr>
                                                             {% endif %}
 
                                                            {% if ('employee' in user.getroles) or ('faculty' in user.getroles)  or ('student' in user.getroles)  or ('online student' in user.getroles) %}
