@@ -14,7 +14,7 @@
 	     	margin-right: 0;
 	     }  
 
-	    a{
+	    a {
 	    	font-size: 1rem!important;
 	    }
 	}
@@ -82,16 +82,16 @@
 					margin-left: -10px;
 					margin-right: -10px; 
 
-					&:-webkit-scrollbar {
+					&::-webkit-scrollbar {
 					 	-webkit-appearance: none;
 					}
-					&:-webkit-scrollbar:vertical {
+					&::-webkit-scrollbar:vertical {
 					 	width: 11px;
 					}
-					&:-webkit-scrollbar:horizontal {
+					&::-webkit-scrollbar:horizontal {
 					 	height: 11px;
 					}
-					&:-webkit-scrollbar-thumb {
+					&::-webkit-scrollbar-thumb {
 					 	border-radius: 8px;
 					 	border: 2px solid transparentize($light_beige, .5); /* should match background, can't be transparent */
 					 	background-color: rgba(0, 0, 0, .5);
@@ -354,7 +354,7 @@
 
 						font-size: 0;
 
-						&:before {
+						&::before {
 							display: inline-block;
 						    content: "";
 						    position: absolute;
@@ -371,8 +371,8 @@
 					    		right: -10px;
 					    	}
 						}
-						&:hover:before,
-					    &:focus:before {
+						&:hover::before,
+					    &:focus::before {
 					    	opacity:.8;
 					    }
 					}
@@ -464,16 +464,16 @@
 					margin-left: 0;
 					margin-right: -10px; /*was 0 */
 
-					&:-webkit-scrollbar {
+					&::-webkit-scrollbar {
 					 	-webkit-appearance: none;
 					}
-					&:-webkit-scrollbar:vertical {
+					&::-webkit-scrollbar:vertical {
 					 	width: 11px;
 					}
-					&:-webkit-scrollbar:horizontal {
+					&::-webkit-scrollbar:horizontal {
 					 	height: 11px;
 					}
-					&:-webkit-scrollbar-thumb {
+					&::-webkit-scrollbar-thumb {
 					 	border-radius: 8px;
 					 	border: 2px solid transparentize($light_beige, .5); /* should match background, can't be transparent */
 					 	background-color: rgba(0, 0, 0, .5);
@@ -650,29 +650,11 @@
 						}
 					}
 				
-				/*.table-responsive.col {
-					flex-basis:unset;
-					height: 25%;
-					width: 32%;
-
-					thead, caption {
-						display: none;
-					}
-
-					td {
-						a {
-							font-size: .9rem!important;
-							font-weight: 600;
-							color: $turquoise;
-						}
-					}
-				}*/
-
 				.view-footer {
 					a.addLinks {
 						font-size: 0;
 
-						&:before {
+						&::before {
 							display: inline-block;
 						    content: "";
 						    position: absolute;
@@ -689,15 +671,15 @@
 					    		right: 15px;
 					    	}
 						}
-						&:hover:before,
-					    &:focus:before {
+						&:hover::before,
+					    &:focus::before {
 					    	opacity:.8;
 					    }
 					}
 					a.manageLinks {
 						font-size: 0;
 
-						&:before {
+						&::before {
 							display: inline-block;
 						    content: "";
 						    position: absolute;
@@ -714,8 +696,8 @@
 					    		right: 55px;
 					    	}
 						}
-						&:hover:before,
-					    &:focus:before {
+						&:hover::before,
+					    &:focus::before {
 					    	opacity:.8;
 					    }
 					}				    

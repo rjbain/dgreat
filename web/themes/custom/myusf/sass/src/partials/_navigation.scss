@@ -85,7 +85,7 @@ nav.navbar {
     	background: transparent;
 	}
 
-	&:before {
+	&::before {
     	display: inline-block;
     	content: "";
     	position: absolute;
@@ -98,12 +98,12 @@ nav.navbar {
     	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -360px -315px ; 	
 	}
 	@include media-breakpoint-down(landscape_phone) {
-		&:before {
+		&::before {
 			margin-top: 3px;
 		}
 	}
 	@include media-breakpoint-down(tablet) {
-		&:before {
+		&::before {
 			left: -5px;
 			margin-top: 3px;
 		}
@@ -328,8 +328,8 @@ li.menu-item--expanded:hover ul.dropdown-menu {
 // end main nav dropdown //
 
 //---- SEARCH -----//
-button.header_search:hover:before,
-button.header_search:focus:before {
+button.header_search:hover::before,
+button.header_search:focus::before {
 		width: 23px;
     	height: 25px;
     	top: 0;
@@ -361,7 +361,7 @@ button.header_search {
     width:20px;
     height:20px;
 
- 	&:before {
+ 	&::before {
  		display: inline-block;
  		content: "";
  		position: absolute;
@@ -516,7 +516,7 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 	   	top: unset;
 	}
 
-	&:after {
+	&::after {
 		display: inline-block;
 		position: absolute;
 	    top: 21px;
@@ -561,7 +561,7 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
 		}
 	}
 
-	&.dropdown:hover:after {
+	&.dropdown:hover::after {
 		color: $yellow;
 	}
 
@@ -737,7 +737,7 @@ nav.tabs {
     background-color: transparent;
     border-radius: .25rem;
 
-    &:before {
+    &::before {
     	padding-right: 3px;
     	display: inline-block;
     	content: "";
@@ -888,7 +888,7 @@ nav.tabs {
 							padding-top: 0!important; /* was 0.25rem!important; */
 							padding-bottom: 0.25rem;
 
-							&:before {
+							&::before {
 								display: block;
 								position: relative;
 								content: "";
@@ -979,7 +979,7 @@ button.navbar-toggler.navbar-toggler-right {
 	    width: 100%;
 	    padding-right: 10px;
 
-	    &:after {
+	    &::after {
 			position: relative;
 		    display: inline-block;
 		    content: "";
@@ -996,7 +996,7 @@ button.navbar-toggler.navbar-toggler-right {
 	
 }
 button.navbar-toggler.navbar-toggler-right.collapsed{
-	&:after {
+	&::after {
 		position: relative;
 	    display: inline-block;
 	    content: "";
@@ -1090,7 +1090,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 				text-decoration:none;
 				font-weight:600;
 
-				&:after {
+				&::after {
 				    position: absolute;
 				    content: "»";
 				    padding-left: 3px;
@@ -1219,7 +1219,7 @@ a.logo {
     	background: transparent;
     }
 
-    &:before {
+    &::before {
     	display: inline-block;
     	content: "";
 		width: 330px;
