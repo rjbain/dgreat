@@ -55,7 +55,7 @@ Available variables (usf_dashboard.module)
                                                             {% endif %}
 
 
-                                                            {% if ('student' in user.getroles) or ('admitted_student' in user.getroles) %}        
+                                                            {% if ('student' in user.getroles) %}        
                                                                 <tr><td class="views-field views-field-title"><a href="https://goo.gl/7cbmyv" target="_blank">View & Pay</a></td></tr>
                                                             {% endif %}
 
@@ -104,6 +104,10 @@ Available variables (usf_dashboard.module)
 
                                                            {% if ('employee' in user.getroles) or ('faculty' in user.getroles) %}      
                                                                 <tr><td class="views-field views-field-title"><a href="https://drive.google.com/a/usfca.edu" target="_blank">Fac/Staff Drive</a></td></tr>
+                                                            {% endif %}
+
+                                                           {% if ('student' in user.getroles) or ('faculty' in user.getroles) %}      
+                                                                <tr><td class="views-field views-field-title"><a href="https://hebe.usfca.edu/prod/bwckschd.p_disp_dyn_sched/" target="_blank">Schedule of Classes</a></td></tr>
                                                             {% endif %}
 
                                                            {% if ('employee' in user.getroles) or ('faculty' in user.getroles) %}      

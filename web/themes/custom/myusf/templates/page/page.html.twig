@@ -124,7 +124,17 @@
       </form>
       <button class="header_search" type="submit" onclick="toggle()"></button>
       {% if logged_in %}
-          {{ drupal_view('user', 'block_1') }}
+          {#{ drupal_view('user', 'block_1') }#}
+        <div class="login dropdown">
+            <a class="nav-link truncate" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ user.getDisplayName }}
+            </a>
+          <div class="dropdown-menu loggedin" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/dashboard">Dashboard</a>
+            <a class="dropdown-item" href="https://login.usfca.edu/ui/main#launch:pad">MyApps</a>
+            <a class="dropdown-item" href="/user/logout">Logout</a>
+          </div>
+        </div>
       {% else %}
           <a href="/caslogin"><button class="btn btn-outline-success" type="button">Log In</button></a>
       {% endif %}
