@@ -29,6 +29,9 @@ class DgreatGroupBatch {
   public static function batchProcess($new_nids, $removed_nids, $group, $member, &$context) {
     $user = $member->getUser();
 
+    if ($user === NULL) {
+      return;
+    }
     // Exit if we picked up user 0.
     if ($user->id() == 0) {
       return;
