@@ -43,10 +43,10 @@ handlers:
     weight: 1
     settings:
       to_mail: 'stp@usfca.edu,macalderon2@dons.usfca.edu'
-      from_mail: _default
+      from_mail: default
       from_name: '[webform-submission:values:first_name_and_last_name:raw]'
       subject: 'ST Behavior Contract'
-      body: _default
+      body: default
       html: true
       attachments: false
       excluded_elements: {  }
@@ -79,7 +79,7 @@ handlers:
       from_mail: studyabroad@usfca.edu
       from_name: 'Study Abroad'
       subject: 'Confirmation of Short Term Program Behavior Contract'
-      body: "Your information has been received by the Center for Global Education.\n[webform_submission:values]\n\nIf you have any questions feel free to contact the CGE at (415) 422-6848."
+      body: "Submitted on [submission:date:long]\n\nYour information has been received by the Center for Global Education.\n[submission:values]\n\nIf you have any questions feel free to contact the CGE at (415) 422-6848."
       html: false
       attachments: false
       excluded_elements: {  }
