@@ -45,8 +45,8 @@ handlers:
       to_mail: nobles@usfca.edu
       from_mail: '[webform-submission:values:email:raw]'
       from_name: '[webform-submission:values:last_name:raw]'
-      subject: _default
-      body: _default
+      subject: default
+      body: default
       html: true
       attachments: false
       excluded_elements: {  }
@@ -79,7 +79,7 @@ handlers:
       from_mail: studyabroad@usfca.edu
       from_name: 'Study Abroad'
       subject: 'Confirmation of JEEP Recommendation Form (student)'
-      body: "Your information has been received by the Center for Global Education.\n[webform_submission:values]\n\nIf you have any questions feel free to contact the CGE at (415) 422-6848."
+      body: "Submitted on [submission:date:long]\n\nYour information has been received by the Center for Global Education.\n[submission:values]\n\nIf you have any questions feel free to contact the CGE at (415) 422-6848."
       html: false
       attachments: false
       excluded_elements: {  }
