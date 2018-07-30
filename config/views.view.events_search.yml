@@ -344,7 +344,7 @@ display:
           click_sort_column: value
           type: datetime_custom
           settings:
-            timezone_override: ''
+            timezone_override: UTC
             date_format: 'l, F j'
           group_column: value
           group_columns: {  }
@@ -416,7 +416,7 @@ display:
           click_sort_column: value
           type: datetime_custom
           settings:
-            timezone_override: ''
+            timezone_override: UTC
             date_format: 'g:i A'
           group_column: value
           group_columns: {  }
@@ -488,7 +488,7 @@ display:
           click_sort_column: value
           type: datetime_custom
           settings:
-            timezone_override: ''
+            timezone_override: UTC
             date_format: 'g:i A'
           group_column: value
           group_columns: {  }
@@ -891,8 +891,8 @@ display:
           not: false
           parse_mode: terms
           fields:
-            body: body
-            title: title
+            - body
+            - title
           conjunction: OR
           plugin_id: search_api_fulltext
         field_category:
