@@ -47,6 +47,7 @@ nav.navbar {
 			font-size: .7rem;
     		padding-left: 7px;
     		padding-right: 7px;
+    		padding-bottom: .65rem;
     		line-height: 1rem;
     		text-align: center;
     	}
@@ -94,10 +95,11 @@ nav.navbar {
     	margin-top: 2px;
     	top: 0px;
    		bottom: 0; 
-   		background: url(/themes/custom/myusf/images/site/icons.png);  	
-    	/*background: url(/themes/custom/myusf/images/site/icons.svg); */
-    	background-repeat: no-repeat;
-    	background-position: -360px -315px; 	
+   		background: url(/themes/custom/myusf/images/site/icons.png) no-repeat -360px -315px;  
+
+   		.svg & {	
+	    	background-image: url(/themes/custom/myusf/images/site/icons.svg); 	
+	    }
 	}
 	@include media-breakpoint-down(landscape_phone) {
 		&::before {
@@ -207,7 +209,7 @@ nav.navbar {
 }
 
 li.menu-item--expanded:hover ul.dropdown-menu {
-	@include media-breakpoint-up(tablet) {
+	@include media-breakpoint-up(desktop) {
 	    display: block;
 	}
 }
@@ -341,7 +343,10 @@ button.header_search:focus::before {
     	z-index: 3;
     	margin: auto;
     	background: url(/themes/custom/myusf/images/site/icons.png) no-repeat -214px -96px;
-    	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -214px -96px;
+    	
+    	.svg & {
+    		background-image: url(/themes/custom/myusf/images/site/icons.svg);
+    	}
 
     	@include media-breakpoint-only(tablet) {
     		right: 128px;
