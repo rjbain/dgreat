@@ -34,4 +34,8 @@ function myusf_preprocess_block(&$vars) {
   if ($vars['derivative_plugin_id'] == 'event_search') {
     $vars['#cache']['max-age'] = 0;
   }
+
+  if ($vars['derivative_plugin_id'] == 'user_block') {
+    $vars['#cache']['max-age'] = 0;
+  }
 }

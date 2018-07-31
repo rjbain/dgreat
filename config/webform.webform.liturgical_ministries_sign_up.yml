@@ -1,34 +1,23 @@
-uuid: af9dfbe9-d93f-4c84-8a8e-17473c181232
+uuid: 60e4bf80-248b-494d-a138-f099cac93c3d
 langcode: en
 status: open
 dependencies: {  }
 open: null
 close: null
-uid: 24225
+uid: 62635
 template: false
 archive: false
-id: webform_137519
-title: 'Learning Outcomes'
-description: null
-category: null
-elements: "usf_affiliation_2:\n  '#type': checkboxes\n  '#title': 'USF Affiliation'\n  '#options':\n    Student: Student\n    Alumni: Alumni\n    'Adjunct Professor': 'Adjunct Professor'\n    Staff: Staff\ngraduation_year:\n  '#type': textfield\n  '#title': 'Graduation Year'\n  '#states':\n    visible:\n      ':input[name=\"usf_affiliation_2[Alumni]\"]':\n        checked: true\nlearning_objective_1:\n  '#type': textarea\n  '#title': 'Do you think any of the learning outcomes are particularly important? If so, which ones?'\n  '#description': ''\nlearning_objective_2:\n  '#type': textarea\n  '#title': 'Do you question the appropriateness of including any of the learning outcomes? If so, which ones?'\n  '#description': ''\nlearning_objective_3:\n  '#type': textarea\n  '#title': 'Would you modify any of the learning outcomes? If so, how?'\n  '#description': ''\nlearning_objective_4:\n  '#type': textarea\n  '#title': 'Would you add any learning outcomes? If so, what would they be?'\n  '#description': ''\nlearning_objective_5:\n  '#type': textarea\n  '#title': 'Do you have any other comments or feedback?'\n  '#description': ''\n"
+id: liturgical_ministries_sign_up
+title: 'Liturgical Ministries Sign Up'
+description: ''
+category: ''
+elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#required': true\nphone_number:\n  '#type': textfield\n  '#title': 'Phone Number'\n  '#required': true\nusf_email:\n  '#type': textfield\n  '#title': 'USF Email'\n  '#required': true\narea_s_of_interest_please_check_all_that_apply:\n  '#type': checkboxes\n  '#title': 'Area(s) of Interest - Please check all that apply'\n  '#options':\n    'Liturgical Choir (volunteer or may be taken for academic credit)': 'Liturgical Choir (volunteer or may be taken for academic credit)'\n    Lector: Lector\n    'Eucharistic Minister': 'Eucharistic Minister'\n    'Acolyte (Altar Server)': 'Acolyte (Altar Server)'\n"
 css: ''
 javascript: ''
 settings:
-  page: true
-  form_submit_label: ''
-  wizard_progress_bar: true
-  wizard_complete: 1
-  preview: 0
-  draft: '0'
-  draft_auto_save: false
-  confirmation_type: inline
-  confirmation_url: ''
-  confirmation_message: 'Thank you for your feedback.'
-  limit_total: null
-  limit_user: null
   ajax: false
   ajax_scroll_top: form
+  page: true
   page_submit_path: ''
   page_confirm_path: ''
   form_submit_once: false
@@ -68,12 +57,14 @@ settings:
   autofill: false
   autofill_message: ''
   autofill_excluded_elements: {  }
+  wizard_progress_bar: true
   wizard_progress_pages: false
   wizard_progress_percentage: false
   wizard_start_label: ''
   wizard_confirmation: true
   wizard_confirmation_label: ''
   wizard_track: ''
+  preview: 0
   preview_label: ''
   preview_title: ''
   preview_message: ''
@@ -81,18 +72,25 @@ settings:
   preview_excluded_elements: {  }
   preview_exclude_empty: true
   preview_exclude_empty_checkbox: false
+  draft: none
   draft_multiple: false
+  draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
+  confirmation_type: page
   confirmation_title: ''
+  confirmation_message: ''
+  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
   confirmation_back_attributes: {  }
   confirmation_exclude_query: false
   confirmation_exclude_token: false
+  limit_total: null
   limit_total_interval: null
   limit_total_message: ''
+  limit_user: null
   limit_user_interval: null
   limit_user_message: ''
   entity_limit_total: null
@@ -110,67 +108,71 @@ access:
       - anonymous
       - authenticated
     users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
 handlers:
-  email_1:
+  liturgical_ministries_sign_up:
     id: email
-    label: 'Email 1'
-    handler_id: email_1
+    label: 'Liturgical Ministries Sign Up'
+    handler_id: liturgical_ministries_sign_up
     status: true
     conditions: {  }
-    weight: 1
+    weight: 0
     settings:
-      to_mail: lawregistrar@usfca.edu
-      from_mail: _default
-      from_name: _default
-      subject: _default
-      body: _default
-      html: false
-      attachments: false
-      excluded_elements: {  }
       states:
         - completed
+      to_mail: bcdusell@usfca.edu
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      from_mail: '[webform_submission:values:usf_email:raw]'
       from_options: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-  email_2:
-    id: email
-    label: 'Email 2'
-    handler_id: email_2
-    status: true
-    conditions: {  }
-    weight: 2
-    settings:
-      to_mail: dlcreasman@usfca.edu
-      from_mail: _default
-      from_name: _default
-      subject: _default
+      from_name: '[webform_submission:values:first_name:raw]'
+      subject: 'Liturgical Ministries Sign Up'
       body: _default
-      html: false
-      attachments: false
       excluded_elements: {  }
-      states:
-        - completed
-      to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      from_options: {  }
       ignore_access: false
       exclude_empty: true
-      exclude_empty_checkbox: false
+      exclude_empty_checkbox: true
+      html: true
+      attachments: false
       twig: false
       debug: false
       reply_to: ''
