@@ -33,7 +33,7 @@
 {% if (myusf_search == "true") and (usfca_search == "true") or (path('<current>') == "/all-results") %}
   <!-- For the myUSF AND USFCA results: -->
   {% set cx_str = "005959802884155210049:t3lgqts_b64" %}
-{% elseif (myusf_search == "true") and (usfca_search is empty) or (path('<current>') == "/results") %}
+{% elseif (myusf_search == "true") and (usfca_search is empty) or (path('<current>') == "/results") or (path('<current>') == "/page-not-found") %}
   <!-- For the myUSF only results: -->
   {% set cx_str = "005959802884155210049:zgpaemt7_ow" %}
 {% endif %}
