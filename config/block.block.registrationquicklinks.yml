@@ -1,0 +1,37 @@
+uuid: 84b72ddd-b504-4876-b054-afea253fd2e0
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:quick_links:fdab57eb-2030-46b5-92dd-21788bc93d89'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: registrationquicklinks
+theme: myusf
+region: sidebar_second
+weight: 6
+provider: null
+plugin: 'block_content:fdab57eb-2030-46b5-92dd-21788bc93d89'
+settings:
+  id: 'block_content:fdab57eb-2030-46b5-92dd-21788bc93d89'
+  label: 'Registration Quick Links'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/registration\r\n/registration/*"
+    negate: false
+    context_mapping: {  }
