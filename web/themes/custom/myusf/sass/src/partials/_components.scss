@@ -714,6 +714,8 @@ figure {
 ================================================ */
 /*Filter by Audience Box */
 #block-audience {
+	height:110px;
+	margin-top: 30px;
     padding-bottom: 20px;
     padding-left:20px;
     background: transparentize($light_gray, .7);
@@ -724,8 +726,10 @@ figure {
     }
 
 	h2 {
-		font-size: 1rem;
+		font-size: .9rem;
+		line-height: 1.2rem;
     	width: 20%;
+    	min-width: 136px;
     	@include media-breakpoint-down(tablet) {
     		width: 100%;
     	}
@@ -733,8 +737,12 @@ figure {
 	.facets-widget-dropdown {
 	    
 	    select.item-list__dropdown.facets-dropdown {
+	    	position:absolute;
 	    	height:41px;
 	    	width: 20%;
+	    	min-width: 136px;
+	    	z-index:20;
+	    	margin-top: 3px;
 	    	@include media-breakpoint-down(tablet) {  
 	    		border: 1px solid $light_blue_gray;
 	    	}
@@ -749,6 +757,7 @@ figure {
 
 /* Search Box */
 .view-id-services.view-display-id-block_1 {
+	padding-left: 0px;
 	.view-filters {
 	    margin-left: 27.5%;
 	    margin-top: -100px;
@@ -762,7 +771,8 @@ figure {
     	}
 
 	    fieldset.form-item-search-api-fulltext {
-		    width: 60%;
+		    width: 55%;
+		    left: 40px;
 
 		    @include media-breakpoint-only(tablet) {
 	    		width: 63%;
@@ -780,8 +790,16 @@ figure {
 			    margin-left: 10px;
 			    &.button {
 			    	width: 100%;
+			    	max-width: 200px;
+				    position: relative;
+				    right: -20px;
 			    }
 			}
+		}
+		label {
+			font-size: .9rem;
+			position:relative;
+			top:-2px;
 		}
 	}
 	.view-content {
