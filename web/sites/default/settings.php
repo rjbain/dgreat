@@ -116,3 +116,19 @@ if (defined('PANTHEON_ENVIRONMENT')) {
     // Set Redis to not get the cache_form (no performance difference).
     $settings['cache']['bins']['form']      = 'cache.backend.database';
 }
+
+// Redirect thridparty css from old path to new.
+if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && php_sapi_name() != 'cli' && $_SERVER['REQUEST_URI'] == '/sites/all/themes/usf_oa_radix/assets/stylesheets/thirdparty/myusf_template.css') {
+        $newurl = '/themes/custom/myusf/thirdparty/myusf_template.css';
+        header('HTTP/1.1 301 Moved Permanently');
+        header("Location: $newurl");
+        exit();
+}
+
+// Redirect thridparty css from old path to new.
+if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && php_sapi_name() != 'cli' && $_SERVER['REQUEST_URI'] == '/sites/all/themes/usf_oa_radix/assets/stylesheets/thirdparty/site.css') {
+    $newurl = '/themes/custom/myusf/thirdparty/site.css';
+    header('HTTP/1.1 301 Moved Permanently');
+    header("Location: $newurl");
+    exit();
+}
