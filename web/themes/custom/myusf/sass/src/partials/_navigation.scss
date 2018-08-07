@@ -86,8 +86,13 @@ nav.navbar {
     	background: transparent;
 	}
 
+	img {
+		margin-left: 20px;
+	}
+
 	&::before {
     	display: inline-block;
+    	border: 1px solid $yellow;
     	content: "";
     	position: absolute;
     	width: 160px;
@@ -95,10 +100,9 @@ nav.navbar {
     	margin-top: 2px;
     	top: 0px;
    		bottom: 0; 
-   		background: url(/themes/custom/myusf/images/site/icons.png);  	
-    	background: url(/themes/custom/myusf/images/site/icons.svg); 
-    	background-repeat: no-repeat;
-    	background-position: -360px -315px; 	
+   		background: url("/themes/custom/myusf/images/src/icons.png") no-repeat -360px -315px;  	
+    	background: url("/themes/custom/myusf/images/src/icons.svg") no-repeat -360px -315px; 
+    	
 	}
 	@include media-breakpoint-down(landscape_phone) {
 		&::before {
@@ -336,13 +340,14 @@ li.menu-item--expanded:hover ul.dropdown-menu {
 button.header_search:hover::before,
 button.header_search:focus::before {
 		width: 23px;
+		border:1px solid $yellow;
     	height: 25px;
     	top: 0;
     	right: 128px;
     	z-index: 3;
     	margin: auto;
-    	background: url(/themes/custom/myusf/images/site/icons.png) no-repeat -214px -96px;
-    	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -214px -96px;
+    	background: url("/themes/custom/myusf/images/src/icons.png") no-repeat -214px -96px;
+    	background: url("/themes/custom/myusf/images/src/icons.svg") no-repeat -214px -96px;
 
     	@include media-breakpoint-only(tablet) {
     		right: 128px;
@@ -369,6 +374,7 @@ button.header_search {
  	&::before {
  		display: inline-block;
  		content: "";
+ 		border:1px solid $yellow;
  		position: absolute;
     	width: 24px;
     	height: 25px;   	
@@ -376,8 +382,8 @@ button.header_search {
     	right: 120px;
     	bottom: 0;
     	margin: auto 10px auto auto;
-    	background: url(/themes/custom/myusf/images/site/icons.png) no-repeat -190px -96px;
-    	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -190px -96px;
+    	background: url("/themes/custom/myusf/images/src/icons.png") no-repeat -190px -96px;
+    	background: url("/themes/custom/myusf/images/src/icons.svg") no-repeat -190px -96px;
 
     	@include media-breakpoint-only(tablet) {
     		right: 120px;
