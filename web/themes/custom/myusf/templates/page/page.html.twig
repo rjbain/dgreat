@@ -98,7 +98,7 @@
     {% if container_navbar %}
     <!--<div class="container">-->
       {% endif %}
-        <a class="navbar-brand" href="/"></a>
+        <a class="navbar-brand" href="/"><img src="/themes/custom/myusf/images/src/myUSF-logo.svg" alt="myUSF home" /></a>
         <div class="navbar-collapse">
           <div class="navbar-menu-wrapper">
           {% if page.primary_menu %}
@@ -122,7 +122,7 @@
           <input type="checkbox" name="usfca_search" value="true"> Include USFCA.EDU
         </div>
       </form>
-      <button class="header_search" type="submit" onclick="toggle()"></button>
+      <button class="header_search" type="submit" onclick="toggle()"><img src="/themes/custom/myusf/images/src/search-white.svg" alt="search"/>  <div class="search-overlay"><img src="/themes/custom/myusf/images/site/search-yellow.svg" alt="search"/></div></button>
       {% if logged_in %}
           {#{ drupal_view('user', 'block_1') }#}
           {{ drupal_entity('block', 'user_block') }}
