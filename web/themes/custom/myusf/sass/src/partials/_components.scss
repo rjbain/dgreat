@@ -218,48 +218,55 @@ a.card-rollover {
 		    }
 		}
 		.card-text {
-		    font-size: .85rem;
-		    line-height: 1.15rem;
+		    font-size: .9rem;
+		    line-height: 1.6rem;
 		    color: $white!important;
 			@include media-breakpoint-only(landscape_phone) {
-		    	font-size: .80rem;
-		    	line-height: 1rem;
+		    	line-height: 1.4rem;
 		    }
+		    @include media-breakpoint-only(tablet) {
+	    		line-height: 1.2rem;
+			}
 		}
-		&.orange {
-			.card-text {
-		    	font-size: 1rem;
-		    	line-height: 1.5rem;
-		    	@include media-breakpoint-only(landscape_phone) {
-		    		font-size: .85rem;
-		    		line-height: 1.2rem;
-		    	}
+		&.orange {	
+			.diamond_link_small_white {
+					background:$orange;			
 			}
 		}
 		&.blue {
 
 			.card-text {
-				font-size: 1rem;
-		    	line-height: 1.5rem;
-
-		    	@include media-breakpoint-only(landscape_phone) {
-		    		font-size: .85rem;
-		    		line-height: 1.2rem;
-		    	}
-
 		    	&.no-twitter-image {
 		    		margin-top: 180px;
 		    	}
 			}
+			
+			.diamond_link_small_white {
+				background:$blue;			
+			}
 		}
 		.diamond_link_small_white {
 			position: absolute;
-			bottom: 10px;  
+			bottom: 10px; 
 
 			&:hover, 
 		    &:focus {
 		        text-decoration: none; 
 		    } 
+		   
+	    	bottom:0;
+		    width: 88%;
+		    padding-top: 15px;
+		    padding-bottom:15px;
+
+		    &::before {
+		    	top: 24px;
+		    	left: 98px; 
+		    }
+		    &::after {
+		    	top: 18px;
+		    	left: 90px;
+		    }
 		}
 	}
    
@@ -707,6 +714,8 @@ figure {
 ================================================ */
 /*Filter by Audience Box */
 #block-audience {
+	height:110px;
+	margin-top: 30px;
     padding-bottom: 20px;
     padding-left:20px;
     background: transparentize($light_gray, .7);
@@ -717,8 +726,10 @@ figure {
     }
 
 	h2 {
-		font-size: 1rem;
+		font-size: .9rem;
+		line-height: 1.2rem;
     	width: 20%;
+    	min-width: 136px;
     	@include media-breakpoint-down(tablet) {
     		width: 100%;
     	}
@@ -726,8 +737,12 @@ figure {
 	.facets-widget-dropdown {
 	    
 	    select.item-list__dropdown.facets-dropdown {
+	    	position:absolute;
 	    	height:41px;
 	    	width: 20%;
+	    	min-width: 136px;
+	    	z-index:20;
+	    	margin-top: 3px;
 	    	@include media-breakpoint-down(tablet) {  
 	    		border: 1px solid $light_blue_gray;
 	    	}
@@ -742,6 +757,7 @@ figure {
 
 /* Search Box */
 .view-id-services.view-display-id-block_1 {
+	padding-left: 0px;
 	.view-filters {
 	    margin-left: 27.5%;
 	    margin-top: -100px;
@@ -755,7 +771,8 @@ figure {
     	}
 
 	    fieldset.form-item-search-api-fulltext {
-		    width: 60%;
+		    width: 55%;
+		    left: 40px;
 
 		    @include media-breakpoint-only(tablet) {
 	    		width: 63%;
@@ -773,8 +790,16 @@ figure {
 			    margin-left: 10px;
 			    &.button {
 			    	width: 100%;
+			    	max-width: 200px;
+				    position: relative;
+				    right: -20px;
 			    }
 			}
+		}
+		label {
+			font-size: .9rem;
+			position:relative;
+			top:-2px;
 		}
 	}
 	.view-content {
