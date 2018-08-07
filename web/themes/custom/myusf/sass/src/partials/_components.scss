@@ -218,48 +218,55 @@ a.card-rollover {
 		    }
 		}
 		.card-text {
-		    font-size: .85rem;
-		    line-height: 1.15rem;
+		    font-size: .9rem;
+		    line-height: 1.6rem;
 		    color: $white!important;
 			@include media-breakpoint-only(landscape_phone) {
-		    	font-size: .80rem;
-		    	line-height: 1rem;
+		    	line-height: 1.4rem;
 		    }
+		    @include media-breakpoint-only(tablet) {
+	    		line-height: 1.2rem;
+			}
 		}
-		&.orange {
-			.card-text {
-		    	font-size: 1rem;
-		    	line-height: 1.5rem;
-		    	@include media-breakpoint-only(landscape_phone) {
-		    		font-size: .85rem;
-		    		line-height: 1.2rem;
-		    	}
+		&.orange {	
+			.diamond_link_small_white {
+					background:$orange;			
 			}
 		}
 		&.blue {
 
 			.card-text {
-				font-size: 1rem;
-		    	line-height: 1.5rem;
-
-		    	@include media-breakpoint-only(landscape_phone) {
-		    		font-size: .85rem;
-		    		line-height: 1.2rem;
-		    	}
-
 		    	&.no-twitter-image {
 		    		margin-top: 180px;
 		    	}
 			}
+			
+			.diamond_link_small_white {
+				background:$blue;			
+			}
 		}
 		.diamond_link_small_white {
 			position: absolute;
-			bottom: 10px;  
+			bottom: 10px; 
 
 			&:hover, 
 		    &:focus {
 		        text-decoration: none; 
 		    } 
+		   
+	    	bottom:0;
+		    width: 88%;
+		    padding-top: 15px;
+		    padding-bottom:15px;
+
+		    &::before {
+		    	top: 24px;
+		    	left: 98px; 
+		    }
+		    &::after {
+		    	top: 18px;
+		    	left: 90px;
+		    }
 		}
 	}
    
