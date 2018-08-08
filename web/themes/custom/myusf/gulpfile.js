@@ -41,7 +41,7 @@ gulp.task('js', function(){
 gulp.task('imagemin', function() {
     gulp.src(imageFiles)
         .pipe(imagemin())
-        .pipe(gulp.dest(imageMinFiles))
+        .pipe(gulp.dest(imageMinFiles));
 });
 
 //gulp.task('smushit', function () {
