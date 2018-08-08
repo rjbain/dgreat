@@ -82,13 +82,21 @@ body {
 		position: absolute;
 	}
 	.col { //Only for Home page
-		@include media-breakpoint-only(tablet) {
+		@include media-breakpoint-down(tablet) {
 	    	max-width: 100%!important;
 		}
 	}
 }
 
 .col-md-3{
+	
+	@include media-breakpoint-up(desktop) {
+		/*max-width: unset;*/
+		max-width: 220px;
+	}
+	@include media-breakpoint-up(large_desktop) {
+		max-width: 270px;
+	}
 	@include media-breakpoint-only(tablet) {
 	    max-width: 256px;
     	float: right!important;
@@ -99,21 +107,23 @@ body {
     		flex: 0 0 100%;
     		/*max-width: 100%!important;*/
     		width:250px;
-    		margin-bottom: 50px!important;
+    			margin-top: 30px!important;
+    			margin-bottom: 0!important;   		
     	}
 	}
 	@include media-breakpoint-only(landscape_phone) {
 		&.order-last {
-			width:250px;
+			margin-top: 30px;
+    		margin-bottom: 30px;
+			img {
+				width:250px;
+			}
 		}
-
 	}
-	@include media-breakpoint-up(desktop) {
-		/*max-width: unset;*/
-		max-width: 220px;
-	}
-	@include media-breakpoint-up(large_desktop) {
-		max-width: 270px;
+	@include media-breakpoint-down(phone) {
+		&.order-last {
+			margin-top: 30px!important;
+		}
 	}
 }
 
