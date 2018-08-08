@@ -1,6 +1,9 @@
 (function ($, Drupal) {
-    Drupal.behaviors.fixHover = {
+    Drupal.behaviors.mainJS = {
         attach: function (context, settings) {
+
+            // Remove focus from buttons after clicking.
+
             $(".nav-item").mouseleave(function(){
                 this.blur();
             });
