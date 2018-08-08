@@ -17,6 +17,9 @@
             $(".header_search").mouseleave(function(){
                 this.blur();
             });
+
+            // Fix for Ensemble
+            $("[id^=contentView_]").attr("align","center");
         }
     };
 })(jQuery, Drupal);
