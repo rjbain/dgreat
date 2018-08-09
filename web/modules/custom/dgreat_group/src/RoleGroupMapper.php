@@ -107,15 +107,15 @@ class RoleGroupMapper {
    *
    * @return bool
    */
-  private static function userIsMemberOfGroup(User $user, $group_id) {
+  #private static function userIsMemberOfGroup(User $user, $group_id) {
 
-    $hasGroupField = collect($user->get('field_user_group')->getValue())
-        ->filter(function ($group) use ($group_id) {
-          return $group['target_id'] == $group_id;
-        })->count() >= 1;
+  #  $hasGroupField = collect($user->get('field_user_group')->getValue())
+  #      ->filter(function ($group) use ($group_id) {
+  #        return $group['target_id'] == $group_id;
+  #      })->count() >= 1;
 
-    $hasGroupMembership = Group::load($group_id)->getMember($user);
+  #  $hasGroupMembership = Group::load($group_id)->getMember($user);
 
-    return $hasGroupField || $hasGroupMembership;
-  }
-}
+  #  return $hasGroupField || $hasGroupMembership;
+  #}
+#}
