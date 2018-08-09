@@ -64,20 +64,20 @@ class RoleGroupMapper {
    * @return User The user.
    * @throws \Drupal\Core\Entity\EntityStorageException
    */
-  public static function revokeGroupAccess(User $user, $group_id) {
+  #public static function revokeGroupAccess(User $user, $group_id) {
     // Build the new list of groups the user has access to.
-    $new_groups = collect($user->get('field_user_group')->getValue())
-      ->filter(function ($group) use ($group_id) {
-        return $group['target_id'] !== $group_id;
-      })->toArray();
+  #  $new_groups = collect($user->get('field_user_group')->getValue())
+ #     ->filter(function ($group) use ($group_id) {
+ #       return $group['target_id'] !== $group_id;
+  #    })->toArray();
 
-    $user->set('field_user_group', $new_groups);
-    $user->save();
+   # $user->set('field_user_group', $new_groups);
+   # $user->save();
 
     //remove the user from the group.
-    Group::load($group_id)->removeMember($user);
-    return $user;
-  }
+   # Group::load($group_id)->removeMember($user);
+   # return $user;
+  #}
 
 
 
@@ -89,14 +89,14 @@ class RoleGroupMapper {
    *
    * @return bool
    */
-  #private static function userHasGroupRole(User $user, $group_id) {
-  #  $group  = Group::load($group_id);
-  #  $mapped_roles = $group->get('field_mapped_roles')->getValue();
+  private static function userHasGroupRole(User $user, $group_id) {
+    $group  = Group::load($group_id);
+    $mapped_roles = $group->get('field_mapped_roles')->getValue();
 
-   # return collect($mapped_roles)->filter(function ($role) use ($user) {
-   #   return in_array($role['target_id'], $user->getRoles());
-   # })->count() >= 1;
-  #}
+    return collect($mapped_roles)->filter(function ($role) use ($user) {
+      return in_array($role['target_id'], $user->getRoles());
+    })->count() >= 1;
+  }
 
   /**
    * Check if the user is a member of a given group ID. This is a bit fuzzy
