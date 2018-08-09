@@ -11,7 +11,7 @@ id: webform_102027
 title: 'HR Additional Campus Locations Gym Membership Reimbursement Form'
 description: null
 category: null
-elements: "employee_name:\n  '#type': textfield\n  '#title': 'Employee Name'\n  '#description': ''\n  '#required': true\njob_title_position:\n  '#type': textfield\n  '#title': 'Job Title/Position'\n  '#description': ''\n  '#required': true\nadditional_campus_location:\n  '#type': textfield\n  '#title': 'Additional Campus Location'\n  '#description': ''\n  '#required': true\ncwid:\n  '#type': textfield\n  '#size': 20\n  '#min': null\n  '#max': 99999999\n  '#step': null\n  '#unique': false\n  '#title': CWID\n  '#description': ''\n  '#required': true\nname_of_gym_health_club_class:\n  '#type': textfield\n  '#title': 'Name of Gym/Health Club/Class'\n  '#description': ''\n  '#required': true\nperiod_of_expense_beginning:\n  '#type': date\n  '#title': 'Period of Expense (Beginning)'\n  '#description': ''\n  '#required': true\nperiod_of_expense_end:\n  '#type': date\n  '#title': 'Period of Expense (End)'\n  '#description': ''\n  '#required': true\ntotal_expense:\n  '#type': textfield\n  '#size': 20\n  '#min': null\n  '#max': null\n  '#step': null\n  '#unique': false\n  '#field_prefix': $\n  '#title': 'Total Expense'\n  '#description': ''\n  '#required': true\nlegalese:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p>By entering my name and date below, I hereby certify that this expense was incurred on my own behalf and was not reimbursed by another source.</p>'\n  '#title': Legalese\n  '#description': ''\nemployee_signature:\n  '#type': textfield\n  '#title': 'Employee Signature'\n  '#description': ''\n  '#required': true\ndate:\n  '#type': date\n  '#title': Date\n  '#description': ''\n  '#required': true\n"
+elements: "introduction:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>Full-time faculty and staff who work at one of USF's additional campus locations are eligible for a gym membership reimbursement of up to $300 per calendar year. <strong>This is a taxable benefit.</strong> To receive reimbursement, you must adhere to the following steps:</p><p>1. Complete this reimbursement form<br />2. Save your receipts, which must identify your name, the period of expense and the total cost<br />3. Submit your reimbursement form and receipts no later than December 1st of each calendar year via email (<a href='mailto:benefits@usfca.edu' target='_blank'>benefits@usfca.edu</a>), via fax (415-386-1074) or in person at the Office of Human Resources in Lone Mountain Main 339.</p>\"\n  '#title': Introduction\n  '#description': \"\"\nemployee_name:\n  '#type': textfield\n  '#title': Employee Name\n  '#description': \"\"\n  '#required': true\njob_title_position:\n  '#type': textfield\n  '#title': Job Title/Position\n  '#description': \"\"\n  '#required': true\nadditional_campus_location:\n  '#type': textfield\n  '#title': Additional Campus Location\n  '#description': \"\"\n  '#required': true\ncwid:\n  '#type': textfield\n  '#size': 20\n  '#min': \n  '#max': 99999999\n  '#step': \n  '#unique': false\n  '#title': CWID\n  '#description': \"\"\n  '#required': true\nname_of_gym_health_club_class:\n  '#type': textfield\n  '#title': Name of Gym/Health Club/Class\n  '#description': \"\"\n  '#required': true\nperiod_of_expense_beginning:\n  '#type': date\n  '#title': Period of Expense (Beginning)\n  '#description': \"\"\n  '#required': true\nperiod_of_expense_end:\n  '#type': date\n  '#title': Period of Expense (End)\n  '#description': \"\"\n  '#required': true\ntotal_expense:\n  '#type': textfield\n  '#size': 20\n  '#min': \n  '#max': \n  '#step': \n  '#unique': false\n  '#field_prefix': $\n  '#title': Total Expense\n  '#description': \"\"\n  '#required': true\nlegalese:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>By entering my name and date below, I hereby certify that this expense was incurred on my own behalf and was not reimbursed by another source.</p>\"\n  '#title': Legalese\n  '#description': \"\"\nemployee_signature:\n  '#type': textfield\n  '#title': Employee Signature\n  '#description': \"\"\n  '#required': true\ndate:\n  '#type': date\n  '#title': Date\n  '#description': \"\"\n  '#required': true\n"
 css: ''
 javascript: ''
 settings:
@@ -43,10 +43,10 @@ handlers:
     weight: 1
     settings:
       to_mail: 'lhumphrey2@usfca.edu,benefits@usfca.edu'
-      from_mail: _default
-      from_name: _default
-      subject: _default
-      body: _default
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
       html: false
       attachments: true
       excluded_elements: {  }

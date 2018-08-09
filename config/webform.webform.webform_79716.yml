@@ -11,7 +11,7 @@ id: webform_79716
 title: 'Law Student Feedback'
 description: null
 category: null
-elements: "type:\n  '#type': select\n  '#options':\n    services: 'Student Services'\n    education: 'Program of Legal Education'\n  '#title': 'Is this feedback on Student Services or the Program of Legal Education'\n  '#description': ''\n  '#required': true\nDisclaimer:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h3>Formal Complaints about the Program of Legal Education</h3><p>A law student may make a formal complaint to the administration of the law school regarding a significant problem that directly implicates the school’s program of legal education and its compliance with the ABA Standards.&nbsp; The process for making and resolving a formal complaint is described below.</p><p style=''padding-left: 30px;''><br>1. &nbsp;A law student may submit a complaint in writing to the Associate Dean for Academic Affairs (the “Associate Dean”) via email, U.S. mail, personal delivery, or by completing the web-based form.</p><p style=''padding-left: 30px;''><br>2. &nbsp;The complaint must describe in detail the behavior, program, process, or other matter that is at issue, and explain how the matter implicates the law school’s program of legal education and its compliance with a specific, identified ABA Standard.</p><p style=''padding-left: 30px;''>3. &nbsp;The complaint must&nbsp;include the complaining student’s full name, official law school e-mail address, and current mailing address.</p><p style=''padding-left: 30px;''>4. &nbsp;When the law school receives a complaint that complies with the foregoing requirements, the Associate Dean shall acknowledge to the complaining student the receipt via email U.S. mail, or personal delivery within three business days.</p><p style=''padding-left: 30px;''><br>5. &nbsp;Within&nbsp;ten business days of acknowledging the complaint, the Associate Dean or the Associate Dean’s designee, shall respond to the substance of the complaint, either in writing or in person, and shall indicate what steps are being taken by the law school to address the complaint.&nbsp; Additionally, if an investigation is necessary, the Associate Dean shall provide the complaining student a substantive response within ten business days after the completion of the investigation.&nbsp;</p><p style=''padding-left: 30px;''><br>6. &nbsp;A complaining student may appeal a decision to the Dean of the law school within ten business days of the Associate Dean’s substantive response.&nbsp; The Dean’s decision on appeal shall be final.</p><p style=''padding-left: 30px;''><br>7. &nbsp;A&nbsp;copy of the complaint and a summary of the process and resolution of the complaint shall be kept in the office of the Associate Dean for a period of eight years from the date of final resolution of the complaint.</p>'\n  '#title': 'Program Disclaimer'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: education\nservice:\n  '#type': select\n  '#title': 'What law school office or specific student service is your comment pertaining to?'\n  '#description': 'NOTE: your comments will be forwarded to the Supervising Dean or Director (noted above) responsible for the department(s) or office(s) that you have selected.'\n  '#options':\n    Aid: 'Financial Aid – Assistant Dean Elizabeth Benhardt'\n    Career: 'Office of Career Planning – Assistant Dean Johanna Hartwig'\n    Registrar: 'Registrar’s Office – Assistant Dean Elizabeth Benhardt'\n    Affairs: 'Student Affairs – Assistant Dean Stephanie Carlos'\n    Library: 'Zief Law Library – Amy Wright, Interim Co-Director of the Law Library'\n    Other: 'Other/Unknown – Assistant Dean Elizabeth Benhardt/Assistant Dean Stephanie Carlos '\n  '#required': true\nname:\n  '#type': textfield\n  '#title': Name\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': ''\n  '#required': true\naddress:\n  '#type': textfield\n  '#title': Address\n  '#description': ''\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: education\nquestion_feedback:\n  '#type': textarea\n  '#title': 'Question/Feedback (Please cite specific facts and details where possible when giving feedback)'\n  '#description': ''\n  '#required': true\n  '#states':\n    invisible:\n      ':input[name=\"type\"]':\n        value: education\nDetail:\n  '#type': textarea\n  '#title': 'Please describe in detail the behavior, program, process, or other matter that is at issue.'\n  '#description': ''\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: education\nStandard:\n  '#type': textarea\n  '#title': 'Explain how the matter implicates the law school’s program of legal education and its compliance with a specific, identified ABA Standard.'\n  '#description': ''\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: education\n"
+elements: "introduction:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p class='intro_text_lg'>The USF School of Law values your feedback and looks forward to receiving your input, so that we can improve our student services and program of legal education.&nbsp; Thank you in advance for taking the time to provide us with your feedback.</p><h3>Feedback about Student Services</h3><p>If you have specific feedback about the Financial Aid Office, the Office of Career Planning, the Law Registrar’s Office, the Office of Student Affairs, or the Zief Law Library, or if you have general feedback about the student services that you are receiving, please select 'Student Services' below.</p><h3>Formal Complaints about the Program of Legal Education</h3><p>The University of San Francisco School of Law is accredited by the American Bar Association (ABA) and thus subject to the ABA Standards for Approval of Law Schools. <a href='http://www.americanbar.org/groups/legal_education/resources/standards.html.%20'>The ABA Standards are published online here</a>.&nbsp;If you would like to file a formal complaint about the University of San Francisco's compliance to the ABA Standards, please select 'Program of Legal Education' below.&nbsp;</p>\"\n  '#title': Introduction\n  '#description': \"\"\ntype:\n  '#type': select\n  '#options':\n    services: Student Services\n    education: Program of Legal Education\n  '#title': Is this feedback on Student Services or the Program of Legal Education \n  '#description': \"\"\n  '#required': true\nDisclaimer:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h3>Formal Complaints about the Program of Legal Education</h3><p>A law student may make a formal complaint to the administration of the law school regarding a significant problem that directly implicates the school’s program of legal education and its compliance with the ABA Standards.&nbsp; The process for making and resolving a formal complaint is described below.</p><p style='padding-left: 30px;'><br>1. &nbsp;A law student may submit a complaint in writing to the Associate Dean for Academic Affairs (the “Associate Dean”) via email, U.S. mail, personal delivery, or by completing the web-based form.</p><p style='padding-left: 30px;'><br>2. &nbsp;The complaint must describe in detail the behavior, program, process, or other matter that is at issue, and explain how the matter implicates the law school’s program of legal education and its compliance with a specific, identified ABA Standard.</p><p style='padding-left: 30px;'>3. &nbsp;The complaint must&nbsp;include the complaining student’s full name, official law school e-mail address, and current mailing address.</p><p style='padding-left: 30px;'>4. &nbsp;When the law school receives a complaint that complies with the foregoing requirements, the Associate Dean shall acknowledge to the complaining student the receipt via email U.S. mail, or personal delivery within three business days.</p><p style='padding-left: 30px;'><br>5. &nbsp;Within&nbsp;ten business days of acknowledging the complaint, the Associate Dean or the Associate Dean’s designee, shall respond to the substance of the complaint, either in writing or in person, and shall indicate what steps are being taken by the law school to address the complaint.&nbsp; Additionally, if an investigation is necessary, the Associate Dean shall provide the complaining student a substantive response within ten business days after the completion of the investigation.&nbsp;</p><p style='padding-left: 30px;'><br>6. &nbsp;A complaining student may appeal a decision to the Dean of the law school within ten business days of the Associate Dean’s substantive response.&nbsp; The Dean’s decision on appeal shall be final.</p><p style='padding-left: 30px;'><br>7. &nbsp;A&nbsp;copy of the complaint and a summary of the process and resolution of the complaint shall be kept in the office of the Associate Dean for a period of eight years from the date of final resolution of the complaint.</p>\"\n  '#title': Program Disclaimer\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: education\nservice:\n  '#type': select\n  '#options':\n    Aid: Financial Aid – Assistant Dean Elizabeth Benhardt\n    Career: Office of Career Planning – Assistant Dean Johanna Hartwig\n    Registrar: Registrar’s Office – Assistant Dean Elizabeth Benhardt\n    Affairs: Student Affairs – Assistant Dean Stephanie Carlos\n    Library: Zief Law Library – Lee Ryan, Interim Co-Director of the Law Library\n    Other: Other/Unknown - Assistant Dean Elizabeth Benhardt/Assistant Dean Grace Hum\n  '#title': What law school office or specific student service is your comment pertaining to?\n  '#description': \"NOTE: your comments will be forwarded to the Supervising Dean or Director (noted above) responsible for the department(s) or office(s) that you have selected.\"\n  '#required': true\n  '#states':\n    invisible:\n      ':input[name=\"type\"]':\n        value: education\nname:\n  '#type': textfield\n  '#title': Name\n  '#description': \"\"\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': \"\"\n  '#required': true\naddress:\n  '#type': textfield\n  '#title': Address\n  '#description': \"\"\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: education\nquestion_feedback:\n  '#type': textarea\n  '#title': Question/Feedback (Please cite specific facts and details where possible when giving feedback)\n  '#description': \"\"\n  '#required': true\n  '#states':\n    invisible:\n      ':input[name=\"type\"]':\n        value: education\nDetail:\n  '#type': textarea\n  '#title': Please describe in detail the behavior, program, process, or other matter that is at issue.\n  '#description': \"\"\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: education\nStandard:\n  '#type': textarea\n  '#title': Explain how the matter implicates the law school’s program of legal education and its compliance with a specific, identified ABA Standard.\n  '#description': \"\"\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: education\n"
 css: ''
 javascript: ''
 settings:
@@ -22,88 +22,11 @@ settings:
   preview: 0
   draft: '0'
   draft_auto_save: false
-  confirmation_type: inline
+  confirmation_type: page
   confirmation_url: ''
   confirmation_message: '<p>Thank you for the feedback.&nbsp;</p>'
   limit_total: null
   limit_user: null
-  ajax: false
-  ajax_scroll_top: form
-  page_submit_path: ''
-  page_confirm_path: ''
-  form_submit_once: false
-  form_exception_message: ''
-  form_open_message: ''
-  form_close_message: ''
-  form_previous_submissions: true
-  form_confidential: false
-  form_confidential_message: ''
-  form_convert_anonymous: false
-  form_prepopulate: false
-  form_prepopulate_source_entity: false
-  form_prepopulate_source_entity_required: false
-  form_prepopulate_source_entity_type: ''
-  form_reset: false
-  form_disable_autocomplete: false
-  form_novalidate: false
-  form_disable_inline_errors: false
-  form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
-  form_autofocus: false
-  form_details_toggle: false
-  form_login: false
-  form_login_message: ''
-  submission_label: ''
-  submission_log: false
-  submission_user_columns: {  }
-  submission_user_duplicate: false
-  submission_login: false
-  submission_login_message: ''
-  submission_exception_message: ''
-  submission_locked_message: ''
-  previous_submission_message: ''
-  previous_submissions_message: ''
-  autofill: false
-  autofill_message: ''
-  autofill_excluded_elements: {  }
-  wizard_progress_pages: false
-  wizard_progress_percentage: false
-  wizard_start_label: ''
-  wizard_confirmation: true
-  wizard_confirmation_label: ''
-  wizard_track: ''
-  preview_label: ''
-  preview_title: ''
-  preview_message: ''
-  preview_attributes: {  }
-  preview_excluded_elements: {  }
-  preview_exclude_empty: true
-  preview_exclude_empty_checkbox: false
-  draft_multiple: false
-  draft_saved_message: ''
-  draft_loaded_message: ''
-  confirmation_title: ''
-  confirmation_attributes: {  }
-  confirmation_back: true
-  confirmation_back_label: ''
-  confirmation_back_attributes: {  }
-  confirmation_exclude_query: false
-  confirmation_exclude_token: false
-  limit_total_interval: null
-  limit_total_message: ''
-  limit_user_interval: null
-  limit_user_message: ''
-  entity_limit_total: null
-  entity_limit_total_interval: null
-  entity_limit_user: null
-  entity_limit_user_interval: null
-  purge: none
-  purge_days: null
-  results_disabled: false
-  results_disabled_ignore: false
-  token_update: false
 access:
   create:
     roles:
@@ -113,27 +36,15 @@ access:
 handlers:
   email_1:
     id: email
-    label: 'Email Aid'
+    label: 'Email 1'
     handler_id: email_1
     status: true
-    conditions:
-      enabled:
-        -
-          ':input[name="service"]':
-            value: Aid
-        - or
-        -
-          ':input[name="service"]':
-            value: Registrar
-        - or
-        -
-          ':input[name="service"]':
-            value: Other
+    conditions: {  }
     weight: 1
     settings:
-      to_mail: benhardt@usfca.edu
-      from_mail: '[webform_submission:values:email:raw]'
-      from_name: '[webform_submission:values:name:raw]'
+      to_mail: '[webform-submission:values:service:raw]'
+      from_mail: _default
+      from_name: _default
       subject: _default
       body: "<p>Submitted by user: [webform_submission:user]</p>\n\n<p>Submitted values are:</p>\n[webform_submission:values]"
       html: true
@@ -156,56 +67,17 @@ handlers:
       return_path: ''
       sender_mail: ''
       sender_name: ''
-  email_ocp:
+  email_2:
     id: email
-    label: 'Email OCP'
-    handler_id: email_ocp
+    label: 'Email 2'
+    handler_id: email_2
     status: true
-    conditions:
-      enabled:
-        ':input[name="service"]':
-          value: Career
-    weight: 1
-    settings:
-      to_mail: jkhartwig@usfca.edu
-      from_mail: '[webform_submission:values:email:raw]'
-      from_name: '[webform_submission:values:name:raw]'
-      subject: _default
-      body: "<p>Submitted by user: [webform_submission:user]</p>\n\n<p>Submitted values are:</p>\n[webform_submission:values]"
-      html: true
-      attachments: false
-      excluded_elements: {  }
-      states:
-        - completed
-      to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      from_options: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-  email_student_affairs:
-    id: email
-    label: 'Email Student Affairs'
-    handler_id: email_student_affairs
-    status: true
-    conditions:
-      enabled:
-        ':input[name="service"]':
-          value: Other
+    conditions: {  }
     weight: 2
     settings:
-      to_mail: shcarlos@usfca.edu
-      from_mail: '[webform_submission:values:email:raw]'
-      from_name: '[webform_submission:values:name:raw]'
+      to_mail: '[webform-submission:values:type:raw]'
+      from_mail: _default
+      from_name: _default
       subject: _default
       body: "<p>Submitted by user: [webform_submission:user]</p>\n\n<p>Submitted values are:</p>\n[webform_submission:values]"
       html: true
@@ -228,23 +100,20 @@ handlers:
       return_path: ''
       sender_mail: ''
       sender_name: ''
-  email_library:
+  email_3:
     id: email
-    label: 'Email LIbrary'
-    handler_id: email_library
+    label: 'Email 3'
+    handler_id: email_3
     status: true
-    conditions:
-      enabled:
-        ':input[name="service"]':
-          value: Library
+    conditions: {  }
     weight: 3
     settings:
-      to_mail: ajwright@usfca.edu
-      from_mail: '[webform_submission:values:email:raw]'
-      from_name: '[webform_submission:values:name:raw]'
+      to_mail: '[webform-submission:values:email:raw]'
+      from_mail: _default
+      from_name: 'USF School of Law'
       subject: _default
-      body: "<p>Submitted by user: [webform_submission:user]</p>\n\n<p>Submitted values are:</p>\n[webform_submission:values]"
-      html: true
+      body: "Submitted by user: [webform_submission:user]\nSubmitted values are:\n[webform_submission:values]\n"
+      html: false
       attachments: false
       excluded_elements: {  }
       states:
