@@ -5,12 +5,13 @@ dependencies:
   config:
     - field.storage.node.body
     - field.storage.node.field_category
+    - field.storage.node.field_end_date
     - field.storage.node.field_search_date
     - field.storage.node.field_start_date
-    - field.storage.node.field_end_date
     - field.storage.node.field_target
     - search_api.server.events
   module:
+    - taxonomy
     - search_api
     - node
 id: events
@@ -26,11 +27,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.body
-  title:
-    label: Title
-    datasource_id: 'entity:node'
-    property_path: title
-    type: text
   field_category:
     label: Category
     datasource_id: 'entity:node'
@@ -39,6 +35,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_category
+  field_end_date:
+    label: 'End Date'
+    datasource_id: 'entity:node'
+    property_path: field_end_date
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_end_date
   field_search_date:
     label: 'Search Date'
     datasource_id: 'entity:node'
@@ -55,22 +59,21 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_start_date
-  field_end_date:
-    label: 'End Date'
+  tid:
+    label: 'Target » Taxonomy term » Term ID'
     datasource_id: 'entity:node'
-    property_path: field_end_date
-    type: date
-    dependencies:
-      config:
-        - field.storage.node.field_end_date
-  field_target:
-    label: Target
-    datasource_id: 'entity:node'
-    property_path: field_target
+    property_path: 'field_target:entity:tid'
     type: integer
     dependencies:
       config:
         - field.storage.node.field_target
+      module:
+        - taxonomy
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
 datasource_settings:
   'entity:node':
     bundles:
@@ -81,9 +84,25 @@ datasource_settings:
       default: true
       selected: {  }
 processor_settings:
-  rendered_item: {  }
   add_url: {  }
   aggregated_field: {  }
+  html_filter:
+    all_fields: false
+    fields:
+      - body
+    title: true
+    alt: true
+    tags:
+      b: 2
+      em: 1
+      h1: 5
+      h2: 3
+      h3: 2
+      strong: 2
+      u: 1
+    weights:
+      preprocess_index: -15
+      preprocess_query: -15
   ignorecase:
     all_fields: false
     fields:
@@ -92,23 +111,7 @@ processor_settings:
     weights:
       preprocess_index: -20
       preprocess_query: -20
-  html_filter:
-    all_fields: false
-    fields:
-      - body
-    title: true
-    alt: true
-    tags:
-      h1: 5
-      h2: 3
-      h3: 2
-      strong: 2
-      b: 2
-      em: 1
-      u: 1
-    weights:
-      preprocess_index: -15
-      preprocess_query: -15
+  rendered_item: {  }
 tracker_settings:
   default:
     indexing_order: fifo

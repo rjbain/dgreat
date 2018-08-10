@@ -11,6 +11,7 @@ function myusf_preprocess(&$variables) {
   isset($_GET["search_content"]) ? $search_content = $_GET["search_content"] : $search_content = "";
   isset($_GET["event_category"]) ? $event_category = $_GET["event_category"] : $event_category = "";
   isset($_GET["event_date"]) ? $event_date = $_GET["event_date"] : $event_date = "";
+  isset($_GET["event_target"]) ? $event_target = $_GET["event_target"] : $event_target = "";
   isset($_GET["action"]) ? $action = $_GET["action"] : $action = "";
   isset($_GET["usfca_search"]) ? $usfca_search = $_GET["usfca_search"] : $usfca_search = "";
   isset($_GET["myusf_search"]) ? $myusf_search = $_GET["myusf_search"] : $myusf_search = "";
@@ -18,6 +19,7 @@ function myusf_preprocess(&$variables) {
   $variables['search_content'] = htmlentities($search_content, ENT_QUOTES | ENT_HTML5, 'UTF-8');
   $variables['event_category'] = htmlentities($event_category, ENT_QUOTES | ENT_HTML5, 'UTF-8');
   $variables['event_date'] = htmlentities($event_date, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+  $variables['event_target'] = htmlentities($event_target, ENT_QUOTES | ENT_HTML5, 'UTF-8');
   $variables['action'] = htmlentities($action, ENT_QUOTES | ENT_HTML5, 'UTF-8');
   $variables['usfca_search'] = htmlentities($usfca_search, ENT_QUOTES | ENT_HTML5, 'UTF-8');
   $variables['myusf_search'] = htmlentities($myusf_search, ENT_QUOTES | ENT_HTML5, 'UTF-8');
