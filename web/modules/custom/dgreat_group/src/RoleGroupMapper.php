@@ -47,9 +47,13 @@ class RoleGroupMapper {
   public static function grantGroupAccess(User $user, $group_id) {
     // Ensure we don't duplicate the membership
     if (!self::userIsMemberOfGroup($user, $group_id)) {
-      $user->field_user_group[] = ['target_id' => $group_id];
       // Add the user to the group.
+
+
       Group::load($group_id)->addMember($user);
+
+
+      $user->field_user_group[] = ['target_id' => $group_id];
       $user->save();
     }
     return $user;
