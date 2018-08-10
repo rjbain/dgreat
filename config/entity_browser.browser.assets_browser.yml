@@ -1,0 +1,42 @@
+uuid: 6427228f-f7f4-42b4-b061-37cbafc441e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.media_browser
+  module:
+    - views
+name: assets_browser
+label: 'Assets Browser'
+display: iframe
+display_configuration:
+  width: '650'
+  height: '500'
+  link_text: 'Select entities'
+  auto_open: true
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  24e6e469-c541-4a0f-90d9-fa9a989673f5:
+    settings:
+      extensions: 'jpg jpeg png gif'
+      media_type: image
+      upload_location: 'public://'
+      multiple: '1'
+      submit_text: 'Upload Images'
+    uuid: 24e6e469-c541-4a0f-90d9-fa9a989673f5
+    weight: 1
+    label: media_image_upload
+    id: media_image_upload
+  42c2db22-799d-4c90-87e4-3b3d01d2909d:
+    settings:
+      view: media_browser
+      view_display: entity_browser_1
+      submit_text: 'Select entities'
+      auto_select: false
+    uuid: 42c2db22-799d-4c90-87e4-3b3d01d2909d
+    weight: 2
+    label: view
+    id: view
