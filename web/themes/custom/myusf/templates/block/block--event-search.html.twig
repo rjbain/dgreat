@@ -50,6 +50,13 @@
   {% set event_date = event_date %}
 {% endif %}
 
+
+{% if event_target is empty %}
+  {% set event_target = "all" %}
+{% else %}
+  {% set event_target = event_target %}
+{% endif %}
+
 {%
   set classes = [
     'block',
@@ -68,6 +75,7 @@
 
 <form action = "/calendar" method="get">
   <input type="hidden" name="action" value="search">
+  <!--<input type="hidden" name="event_target" value="{{ event_target }}">-->
   <div class="form">
     <div class="search-form">
       <input type="text" name="search_content" value="{{ search_content_form }}" class="search-input form-search form-control">
