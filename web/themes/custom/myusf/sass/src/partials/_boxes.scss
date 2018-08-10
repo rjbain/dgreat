@@ -321,18 +321,21 @@ a.left.carousel-control {
             content: "";
             width: 15px;
             height: 15px;
-            top: 49%;
+            top: calc(45% + 17.5px);
             left: 17px;
             z-index: 1;
             background: url(/themes/custom/myusf/images/site/icons.png) -80px -128px no-repeat;
             background: url(/themes/custom/myusf/images/site/icons.svg) -80px -128px no-repeat;
 
-            @include media-breakpoint-only (tablet) {
-                top: 47%;
+           /* @include media-breakpoint-only (tablet) {
+                top: calc(43.5% + 5px);
             }
+            @include media-breakpoint-down(landscape_phone) {
+                top: calc(47% + 5px);
+            }*/
             @include media-breakpoint-down(phone) {
-                top: 31%;
-                left: 14px;
+                top: calc(33% + 12.5px);
+                left:14px
             }
         }
         &::after {
@@ -343,11 +346,14 @@ a.left.carousel-control {
             top: 45%;
             background: transparentize($black, .2);
 
-            @include media-breakpoint-only (tablet) {
+           /* @include media-breakpoint-only (tablet) {
                 top: 41%;
             }
+            @include media-breakpoint-down(landscape_phone) {
+                top: 45%;
+            }*/
             @include media-breakpoint-down(phone) {
-               top: 26%;
+               top: 33%;
                width: 40px;
                height: 40px;
             }
@@ -377,18 +383,21 @@ a.right.carousel-control {
             content: "";
             width: 15px;
             height: 15px;
-            top: 49%;
+            top: calc(45% + 17.5px);
             right: 12px;
             z-index: 1;
             background: url(/themes/custom/myusf/images/site/icons.png) -100px -128px no-repeat;
             background: url(/themes/custom/myusf/images/site/icons.svg) -100px -128px no-repeat;
 
-            @include media-breakpoint-only (tablet) {
-                top: 47%;
+            /*@include media-breakpoint-only (tablet) {
+                top: calc(43.5% + 5px);
             }
+            @include media-breakpoint-down(landscape_phone) {
+                top: calc(47% + 5px);
+            }*/
             @include media-breakpoint-down(phone) {
-                top: 31%;
-                right: 8px;
+                top: calc(33% + 12.5px);
+                right:8px;
             }
         }
         &::after {
@@ -400,11 +409,14 @@ a.right.carousel-control {
             right: 0;
             background: transparentize($black, .2);
 
-            @include media-breakpoint-only (tablet) {
+            /*@include media-breakpoint-only (tablet) {
                 top: 41%;
             }
+            @include media-breakpoint-down(landscape_phone) {
+                top: 45%;
+            }*/
             @include media-breakpoint-down(phone) {
-                top: 26%;
+                top: 33%;
                 width: 40px;
                 height: 40px;
             }
@@ -436,11 +448,23 @@ a.right.carousel-control {
                 width: 100%;
                 padding: 15px 5% 15px;        
                 margin: -1px auto 0 auto;
+
+                a {
+                    color: $white!important;
+                    text-decoration: underline;
+
+                    &:hover,
+                    &:focus {
+                        text-decoration: none;
+                        background: transparent;
+                    }
+                }
             }
             
             &.caption-img, p {
                 float: unset!important;
                 margin-right: 0;
+                max-width: 100%;
 
                 img {
                     width: 100%;
@@ -532,7 +556,7 @@ a.right.carousel-control {
         width: 10px;
         height: 14px;
         /*top: 236px;*/
-        top: 52.5%;
+        top: calc(50% + 16px);
         left: 41px;
         z-index: 1;
     }
@@ -554,13 +578,12 @@ a.right.carousel-control {
         margin-top: -50px;
 
         &::before {
-            top: 192px;
+            top: calc(50% + 12.5px);
             left: 26px;
         }
         &::after {
             width: 35px;
             height: 35px;
-            top: 180px;
             left: 15px;
         }
     }
@@ -593,7 +616,7 @@ a.right.carousel-control {
         width: 10px;
         height: 14px;
         /*top: 236px;*/
-        top: 52.5%;
+        top: calc(50% + 16px);
         right: 38px;
         z-index: 1;
     } 
@@ -616,13 +639,13 @@ a.right.carousel-control {
         margin-top: -50px;
 
         &::before {
-            top: 192px;
+            top: calc(50% + 12.5px);
             left: 39px;
         }
         &::after {
             width: 35px;
             height: 35px;
-            top: 180px;
+
             left: 25px;
         }
     }
