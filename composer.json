@@ -7,11 +7,30 @@
     {
       "type": "composer",
       "url": "https://packages.drupal.org/8"
+    },
+    {
+      "type"    : "package",
+      "package" : {
+        "name"    : "enyo/dropzone",
+        "version" : "dev-master",
+        "type"    : "drupal-library",
+        "dist"    : {
+          "url"  : "https://github.com/enyo/dropzone.git",
+          "type" : "drupal-library"
+        },
+        "source"  : {
+          "url"       : "https://github.com/enyo/dropzone.git",
+          "type"      : "git",
+          "reference" : "origin/master"
+        }
+      }
     }
   ],
     "require": {
     "composer/installers": "^1.0.20",
     "cweagans/composer-patches": "^1.0",
+    "desandro/imagesloaded": "^4.1",
+    "desandro/masonry": "^4.2",
     "drupal-composer/drupal-scaffold": "^2.0.1",
     "drupal/adminimal_theme": "^1.3",
     "drupal/better_exposed_filters": "^3.0@alpha",
@@ -34,6 +53,7 @@
     "drupal/easy_breadcrumb": "^1.8",
     "drupal/easy_install": "^10.0",
     "drupal/facets": "^1.0@beta",
+    "drupal/file_browser": "^1.1",
     "drupal/flag": "^4.0@alpha",
     "drupal/group": "^1.0@RC",
     "drupal/imce": "^1.6",
@@ -62,6 +82,7 @@
     "drupal/webform_migrate": "^1.0@alpha",
     "drupal/weight": "^3.1",
     "drush/drush": "~8",
+    "enyo/dropzone": "^5.1",
     "rvtraveller/qs-composer-installer": "^1.1",
     "tightenco/collect": "^5.6",
     "webflo/drupal-core-strict": "^8"
@@ -84,6 +105,16 @@
     "phpunit/phpunit": "^4.8",
     "symfony/css-selector": "^2.8"
   },
+  "extra"             : {
+    "installer-paths" : {
+      "web/core"                    : [
+        "type:drupal-core"
+      ],
+      "web/sites/libraries/{$name}" : [
+        "type:drupal-library"
+      ]
+    }
+  }
   "conflict": {
       "drupal/drupal": "*",
       "doctrine/common":"2.8"
