@@ -29,16 +29,14 @@ class DgreatGroupBatch {
   public static function batchProcess($new_nids, $removed_nids, $group, $member, &$context) {
     $user = $member->getUser();
 
+   if ($user === NULL) {
+    return;
+  }
+    
     // Exit if we picked up user 0.
     if ($user->id() == 0) {
       return;
     }
-
-
-    if ($user->id() == null) {
-      return;
-    }
-
 
     // Show message.
     $message = t('Now processing %name', ['%name' => $user->label()]);
