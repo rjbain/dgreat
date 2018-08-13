@@ -34,6 +34,12 @@ class DgreatGroupBatch {
       return;
     }
 
+
+    if ($user->id() == null) {
+      return;
+    }
+
+
     // Show message.
     $message = t('Now processing %name', ['%name' => $user->label()]);
     $context['message'] = '<h2>' . $message . '</h2>';
