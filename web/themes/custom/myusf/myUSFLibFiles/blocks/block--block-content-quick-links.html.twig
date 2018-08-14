@@ -43,13 +43,14 @@
     {% endif %}
     {{ title_suffix }}
     {% block content %}
+        {#{{ dd(content.field_quick_link['#object'].field_quick_link.0) }}#}
         {% set links = content.field_quick_link['#object'].field_quick_link %}
         <div{{ content_attributes.addClass('content') }}>
             <nav class="quick-links-nav">
                 <ul>
                     {% for link in links %}
                     <li>
-                        <a href="{{ link.url }}" target="_blank">{{ link.title }}</a>
+                        <a href="{{ link.url }}" target="{{ link.target }}">{{ link.title }}</a>
                     </li>
                     {% endfor %}
                 </ul>
