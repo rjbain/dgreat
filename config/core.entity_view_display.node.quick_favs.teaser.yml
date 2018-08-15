@@ -1,0 +1,28 @@
+uuid: be1cbc79-2ddf-40a6-837a-4f9b8e066bd7
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.quick_favs.body
+    - node.type.quick_favs
+  module:
+    - text
+    - user
+id: node.quick_favs.teaser
+targetEntityType: node
+bundle: quick_favs
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden: {  }
