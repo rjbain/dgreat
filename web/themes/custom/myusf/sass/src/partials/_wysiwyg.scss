@@ -18,7 +18,7 @@
     text-transform: uppercase;
 }
 
-.inline_cite {
+.inline_cite, cite {
 	font-size: .8rem;
 	font-weight:300;
 
@@ -31,6 +31,7 @@
 	text-align:right!important;
 	padding-right: 60px;
 	padding-left:40px;
+	padding-top:10px;
 
 	@include media-breakpoint-down(tablet) { 
 		padding-right: 20px!important;
@@ -128,18 +129,19 @@
 	}
 }
 
+blockquote, blockquote p{
+	font-size: .9rem;
+	font-style: italic;
+	line-height: 1.8;
+	margin: 14px 0;
+}
 blockquote {
 	position: relative;
 	margin: 0;
 	padding-left: 40px;
 	padding-right: 50px;
 
-	p {
-		font-size: .9rem;
-		font-style: italic;
-		line-height: 1.8;
-		margin: 14px 0;
-
+	
 		&::before {
 			font-size: 50px;
 			font-weight: 700;
@@ -162,7 +164,7 @@ blockquote {
 			content: "\201D";
 			line-height: 0.1;
 			font-style: normal;
-		}
+		
 	
 	}
 }
