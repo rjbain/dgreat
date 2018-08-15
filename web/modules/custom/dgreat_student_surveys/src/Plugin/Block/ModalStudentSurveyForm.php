@@ -130,10 +130,10 @@ class ModalStudentSurveyForm extends BlockBase {
     }
 
     return \Drupal::entityQuery('webform_submission')
-                    ->condition('webform_id', $webform->id())
-                    ->condition('uid', $account->id())
-                    ->count()
-                    ->execute() >= 1;
+                  ->condition('webform_id', $webform->id())
+                  ->condition('uid', $account->id())
+                  ->count()
+                  ->execute() >= 1;
   }
 
   /**
@@ -143,7 +143,7 @@ class ModalStudentSurveyForm extends BlockBase {
    */
   protected function isStudent(AccountInterface $account) {
     return in_array('student', $account->getRoles());
-}
+  }
 
   /**
    * Check the current session to see if we've already displayed the form.

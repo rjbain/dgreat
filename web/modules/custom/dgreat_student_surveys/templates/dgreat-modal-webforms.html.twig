@@ -40,17 +40,17 @@
         <div class="modal-content">
             <div class="modal-header">
                 {{ title_prefix }}
-                    <h4{{ title_attributes.addClass('modal-title').setAttribute('id', 'studentSurveyLabel') }}>{{ label }}</h4>
+                <h4{{ title_attributes.addClass('modal-title').setAttribute('id', 'studentSurveyLabel') }}>{{ label }}</h4>
                 {{ title_suffix }}
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-                {% block content %}
+            {% block content %}
                 <div class="modal-body">
                     <div{{ content_attributes.addClass('content') }}>
                         {{ content }}
                     </div>
                 </div>
-                {% endblock %}
+            {% endblock %}
         </div>
     </div>
 </div>

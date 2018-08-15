@@ -24,37 +24,47 @@ class SurveyResponseController extends ControllerBase {
       return new JsonResponse('Not Authorized', 403);
     }
     $surveys = \Drupal::entityQuery('webform')
-           ->condition('category', 'student_survey', '=')
-           ->execute();
+      ->condition('category', 'student_survey', '=')
+      ->execute();
 
     $data = $this->buildResponse($surveys);
 
     return new JsonResponse($data);
   }
 
+  /**
+   *
+   */
   private function buildResponse(array $surveys) {
-      return array_map(function ($id) {
-        $survey = Webform::load($id);
-        return [
-          'name' => $survey->id(),
-          'fields' => $this->prepareFields($survey->getElementsDecoded()),
-          'responses' => $this->loadResponses($survey)
-        ];
-      },$surveys);
+    return array_map(function ($id) {
+      $survey = Webform::load($id);
+      return [
+        'name' => $survey->id(),
+        'fields' => $this->prepareFields($survey->getElementsDecoded()),
+        'responses' => $this->loadResponses($survey)
+      ];
+    }, $surveys);
   }
 
+  /**
+   *
+   */
   private function prepareFields($getElementsDecoded) {
     return $getElementsDecoded;
   }
 
+  /**
+   *
+   */
   private function loadResponses($survey) {
     $ids = \Drupal::entityQuery('webform_submission')
       ->condition('webform_id', $survey->id())
       ->execute();
 
     $webforms = WebformSubmission::loadMultiple(array_keys($ids));
-    return array_map(function($webform) {
+    return array_map(function ($webform) {
       return $webform->getData();
     }, $webforms);
   }
+
 }
