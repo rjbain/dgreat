@@ -141,6 +141,20 @@ li {
 table, table p {
 	font-size: .8rem!important;
 }
+table li {
+	font-size: .8rem;
+    line-height: 1.3rem;
+}
+table {
+	display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.table-non-responsive {
+	overflow-x: unset;
+}
 
 th {
 	line-height:1.2rem;
@@ -222,6 +236,30 @@ tr {
 
 		&[scope=col] {
 			height:unset;
+		}
+	}
+}
+
+/* Sidebar Second Ads 
+=================================================== */ 
+.sidebar-ad {
+	padding:15px!important;
+	h2 {
+		color: $white!important;
+		font-size:1.2rem;
+		line-height:1.3rem;
+		text-shadow: none;
+	    border: 0;
+	}
+	p {
+		color: $white;	
+	}
+	a  {
+		color: $yellow;
+		&:hover,
+		&:focus {
+			color: $yellow!important;
+			background: transparent;
 		}
 	}
 }
