@@ -42,14 +42,21 @@
         <h2{{ title_attributes.addClass('quick-links-heading') }}>Quick Links</h2>
     {% endif %}
     {{ title_suffix }}
+
+
     {% block content %}
         {% set links = content.field_quick_link['#object'].field_quick_link %}
         <div{{ content_attributes.addClass('content') }}>
             <nav class="quick-links-nav">
                 <ul>
                     {% for link in links %}
+                        {% if link.options.attributes.target == '_blank' %}
+                            {% set target = '_blank' %}
+                        {% else %}
+                            {% set target = '_self' %}
+                        {% endif %}
                     <li>
-                        <a href="{{ link.url }}" target="_blank">{{ link.title }}</a>
+                        <a href="{{ link.url }}" target="{{ target }}">{{ link.title }}</a>
                     </li>
                     {% endfor %}
                 </ul>
