@@ -38,14 +38,22 @@ class ModalStudentSurveyForm extends BlockBase {
    */
   public function build() {
     $config = $this->getConfiguration();
-    $my_form = Webform::load($config['survey']);
+    $form = Webform::load($config['survey']);
     $view_builder = \Drupal::entityTypeManager()->getViewBuilder('webform');
-    $pre_render = $view_builder->view($my_form);
+    $pre_render = $view_builder->view($form);
+    $elements = collect($pre_render['elements'])->filter(function($element, $key) {
+      return mb_strpos($key, '#') !== 0;
+    })->all();
+    $keep = array_rand($elements);
+    $filtered_elements = collect($pre_render['elements'])->filter(function($element, $key) use ($keep) {
+      return $key === $keep || mb_strpos($key, '#') === 0;
+    })->all();
+    $pre_render['elements'] = $filtered_elements;
 
     $this->session->set('student_surveys_has_seen_recently', TRUE);
 
     return [
-      '#label' => $my_form->label(),
+      '#label' => $form->label(),
       '#content' => $pre_render,
       '#theme' => 'dgreat_modal_webforms',
       '#attached' => [
@@ -142,6 +150,7 @@ class ModalStudentSurveyForm extends BlockBase {
    * @return bool
    */
   protected function isStudent(AccountInterface $account) {
+    return TRUE;
     return in_array('student', $account->getRoles());
   }
 
@@ -151,6 +160,7 @@ class ModalStudentSurveyForm extends BlockBase {
    * @return bool
    */
   private function sawRecently() {
+    return FALSE;
     return $this->session->get('student_surveys_has_seen_recently');
   }
 }
