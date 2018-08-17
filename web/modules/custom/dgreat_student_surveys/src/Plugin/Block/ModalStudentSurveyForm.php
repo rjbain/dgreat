@@ -5,6 +5,7 @@ namespace Drupal\dgreat_student_surveys\Plugin\Block;
 use Drupal;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Database\Database;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\webform\Entity\Webform;
@@ -69,11 +70,7 @@ class ModalStudentSurveyForm extends BlockBase {
     if ($this->canAccess($account)) {
       return AccessResult::allowedIfHasPermission($account, 'access content');
     }
-    else {
-      return AccessResult::forbidden();
-    }
-
-    return $access;
+    return AccessResult::forbidden();
   }
 
   /**
@@ -121,7 +118,20 @@ class ModalStudentSurveyForm extends BlockBase {
    * @return bool
    */
   private function currentCohort(AccountInterface $account) {
-    return TRUE;
+    $cid = 'dgreat_student_surveys:current_cohort';
+    $data = NULL;
+    if ($cache = \Drupal::cache()->get($cid)) {
+      $data = $cache->data;
+    }
+    else {
+      $conn = Database::getConnection();
+      $result = $conn->select('current_survey_students', 'css')
+        ->fields('css', ['username'])
+        ->execute()->fetchAllAssoc('username');
+      $data = array_keys($result);
+      \Drupal::cache()->set($cid, $data);
+    }
+    return in_array($account->getAccountName(), $data, FALSE);
   }
 
   /**
@@ -150,7 +160,6 @@ class ModalStudentSurveyForm extends BlockBase {
    * @return bool
    */
   protected function isStudent(AccountInterface $account) {
-    return TRUE;
     return in_array('student', $account->getRoles());
   }
 
