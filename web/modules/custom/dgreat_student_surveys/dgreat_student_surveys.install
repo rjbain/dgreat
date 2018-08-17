@@ -1,0 +1,35 @@
+<?php
+/**
+ * @file
+ *
+ * Insert a database table to store student survey data.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function dgreat_student_surveys_schema() {
+  return [
+    'current_survey_students' => [
+      'description' => 'Stores a list of students who should be shown the current round of student surveys.',
+      'fields' => [
+        'css_id' => [
+          'type' => 'serial',
+          'not null' => TRUE,
+          'description' => 'Primary KeyL Unique record ID.'
+        ],
+        'username' => [
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+          'description' => 'The username',
+        ],
+      ],
+      'primary key' => ['css_id'],
+      'indexes' => [
+        'name' => ['username'],
+      ],
+    ],
+  ];
+}
+
