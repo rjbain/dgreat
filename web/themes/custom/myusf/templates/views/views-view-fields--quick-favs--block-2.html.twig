@@ -31,5 +31,6 @@
  * @ingroup themeable
  */
 #}
-
- <tr><td class="views-field views-field-title"><a href="{{ fields.field_url.content }}" target="_blank">{{ fields.field_display_title.content }}</a></td></tr>
+{% set link = fields.field_url.content %}
+{% set link = link|replace({"https%3A//":"https://"}) %}
+ <tr><td class="views-field views-field-title"><a href="{{ link }}" target="_blank">{{ fields.field_display_title.content }}</a></td></tr>
