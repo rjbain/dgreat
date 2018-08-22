@@ -39,7 +39,7 @@
 			&:first-child h2 {
 				color: $plum!important;
 				@include media-breakpoint-up(desktop) {
-					margin-left: -10px;
+					margin-left: 5px;
 				}
 			}
 			&:last-child h2 {
@@ -79,8 +79,8 @@
 				.view-content {
 					height: 195px; 
 					overflow-y: auto;
-					margin-left: -10px;
-					margin-right: -10px; 
+					margin-left: 0px;
+					margin-right: 0px; 
 
 					&::-webkit-scrollbar {
 					 	-webkit-appearance: none;
@@ -114,6 +114,10 @@
 						margin-right: 0px; 
 				    }	
 				}
+				.table-responsive.col {
+					padding-left: 0px;
+					max-width: 100%;
+				}
 			
 				table {
 					display:table;
@@ -135,8 +139,8 @@
 				    @include media-breakpoint-down(tablet) {
 						left: 320px;
     					/*width: 300px;*/
-    					
-    					margin-top: -10px;
+    					width:50%;
+    					margin-top: 10px;
 					}
 					@include media-breakpoint-down(phone) {
 					 	left: 0px;
@@ -233,7 +237,7 @@
 						    background: $olive;
 						    /*left:-620px;*/
 						    left: -201%;
-						    margin-top:10px;
+						    margin-top:0px;
 
 						    @include media-breakpoint-up(large_desktop) {
 						    	left: -201%!important;
@@ -244,7 +248,7 @@
 						    @include media-breakpoint-down(tablet) {
 						    	left: -320px!important;
 						    	/*left: -201%!important;*/
-						    	margin-top: 20px;
+						    	margin-top: 0px;
 						    }
 						    @include media-breakpoint-down(phone) {
 								left:0!important;
@@ -256,7 +260,7 @@
 						    background: $plum;
 						    /*left: -470px;*/
 						    left: -150%;
-						    margin-top:10px;
+						    margin-top:0px;
 
 						    @include media-breakpoint-down(large_desktop) {
 						    	left: -150%!important;
@@ -266,7 +270,7 @@
 							}
 						    @include media-breakpoint-down(tablet) {
 						    	left: -170px!important;
-						    	margin-top: 20px;
+						    	margin-top: 0px;
 						    }
 						    @include media-breakpoint-down(phone) {
 								left:0!important;
@@ -278,7 +282,7 @@
 						    background: $turquoise;
 						    /*left: -320px;*/
 						    left: -99%;
-						    margin-top:10px;
+						    margin-top:0px;
 
 						    @include media-breakpoint-down(large_desktop) {
 						    	left: -99%!important;
@@ -289,7 +293,7 @@
 						    @include media-breakpoint-down(tablet) {
 						    	left: -320px!important;
 						    	/*left: -201%!important;*/
-    							top: 160px;
+    							top: 150px;
 						    }
 						    @include media-breakpoint-down(phone) {
 								left:0!important;
@@ -300,7 +304,7 @@
 						    background: $orange;
 						    /*left: -170px;*/
 						    left: -48%;
-						    margin-top:10px;
+						    margin-top:0px;
 
 						    @include media-breakpoint-down(large_desktop) {
 						    	left: -48%!important;
@@ -311,7 +315,7 @@
 
 						    @include media-breakpoint-down(tablet) {
 						    	left: -170px!important;
-    							top: 160px;
+    							top: 150px;
 						    }
 						    @include media-breakpoint-down(phone) {
 								left:0!important;
@@ -381,7 +385,7 @@
 					a.seeMyApps {
 						text-decoration:none;
 						top: -40px;
-						margin-left: -10px;
+						margin-left: 5px;
 
 						@include media-breakpoint-down(desktop) {
 
@@ -391,7 +395,7 @@
 					    }
 					    @include media-breakpoint-down(phone) {
 					    	top: 10px;
-					    	left: 27px;
+					    	left: 15px;
 					    }
 
 						&:hover,
@@ -446,7 +450,7 @@
 		    }
 
 			h2 {
-				padding-left:14px;
+				padding-left:29px;
 				@include media-breakpoint-down(phone) {
 		    		padding-left:24px;
 		    		font-size: 1.3rem;
@@ -462,7 +466,7 @@
 					height: 210px; /*was 593px */
 					width: 96%;
 					overflow-y: auto;
-					margin-left: 0;
+					margin-left: 10px;
 					margin-right: -10px; /*was 0 */
 
 					&::-webkit-scrollbar {
@@ -491,6 +495,17 @@
 
 				    .views-row {
 					    margin-bottom: 10px;
+					}
+				}
+
+				.table-responsive {
+					padding-left: 0px;
+					@include media-breakpoint-down(tablet) {
+						margin-left: 0px;
+					}
+
+					@include media-breakpoint-down(phone) {
+						margin-left: -10px;
 					}
 				}
 
