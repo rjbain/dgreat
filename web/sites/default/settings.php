@@ -58,6 +58,7 @@ if (file_exists($migrate_settings) && isset($_ENV['PANTHEON_ENVIRONMENT'])) {
 
 $config['sendgrid_integration.settings']['apikey'] = getenv('sendgrid-api-key');
 
+// CAS Hostname settings
 if (isset($_ENV['PANTHEON_ENVIRONMENT']) && php_sapi_name() != 'cli') {
     // If it's the live environment, set the CAS hostname to point to prod
     if ($_ENV['PANTHEON_ENVIRONMENT'] === 'live') {
@@ -65,7 +66,7 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT']) && php_sapi_name() != 'cli') {
     }
     else {
         // Use test server on every other Pantheon environment.
-        $config['cas.settings']['server']['hostname'] = 'amidala.usfca.edu';
+        $config['cas.settings']['server']['hostname'] = 'usfcas.usfca.edu';
     }
 }
 
