@@ -139,6 +139,16 @@ blockquote, blockquote p {
  blockquote p {
     display: contents;
 }
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){  //IE
+	blockquote p {
+	 	display: ruby-text;
+	}
+}
+@supports (-ms-ime-align: auto){   //Edge
+	blockquote p {
+	 	display: ruby-text;
+	}
+}
 blockquote {
 	position: relative;
 	margin: 0;
