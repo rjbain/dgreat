@@ -66,7 +66,7 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT']) && php_sapi_name() != 'cli') {
     }
     else {
         // Use test server on every other Pantheon environment.
-        $config['cas.settings']['server']['hostname'] = 'usfcas.usfca.edu';
+        $config['cas.settings']['server']['hostname'] = 'amidala.usfca.edu';
     }
 }
 
