@@ -1,18 +1,18 @@
-uuid: dcb643c9-e5e3-4635-b609-e4ee9b7ffe5a
+uuid: 90316507-1f75-49ef-b940-9480fe5aaddd
 langcode: en
 status: open
 dependencies: {  }
 open: null
 close: null
 weight: 0
-uid: 35196
+uid: 62508
 template: false
 archive: false
-id: hr_gousf_event_rsvp_form
-title: 'HR GoUSF Event RSVP Form'
+id: law_abes_mentor_form
+title: 'Law ABES Mentor Form'
 description: ''
-category: ''
-elements: "select_the_gousf_event_s_that_you_would_like_to_attend:\n  '#type': checkboxes\n  '#title': 'Select the GoUSF event(s) that you would like to attend'\n  '#options':\n    'Go Read: Library Tour*June 13*12-1 p.m.*Gleeson Library': 'Go Read: Library Tour*June 13*12-1 p.m.*Gleeson Library'\n    'Go Read: Lib-R-Bocce and Potluck*June 15*11 a.m.-2 p.m.*Welch Field': 'Go Read: Lib-R-Bocce and Potluck*June 15*11 a.m.-2 p.m.*Welch Field'\n    'Go Read: Meet the Author*June 27*12-1 p.m.*Thacher Gallery ': 'Go Read: Meet the Author*June 27*12-1 p.m.*Thacher Gallery '\nprocessed_text:\n  '#type': processed_text\n  '#text': \"<h2>Employee's Information</h2>\\n\"\n  '#format': full_html\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name '\ndepartment:\n  '#type': textfield\n  '#title': Department\ntitle:\n  '#type': textfield\n  '#title': Title\nemail:\n  '#type': email\n  '#title': 'USF Email Address'\nusf_phone_number:\n  '#type': tel\n  '#title': 'USF Phone Number'\nemployee_type:\n  '#type': radios\n  '#title': 'Employee Type'\n  '#options':\n    Faculty: Faculty\n    Staff: Staff\n    Other: Other\n"
+category: law
+elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#title': 'USF Email Address'\n  '#required': true\n_i_am_signing_up_as_an_:\n  '#type': checkboxes\n  '#title': ' I am signing up as an:'\n  '#options':\n    mentor: Mentor\n    mentee: Mentee\nschool_year:\n  '#type': select\n  '#title': 'School Year'\n  '#options':\n    1L: 1L\n    2L: 2L\n    3L: 3L\n    4L: 4L\nenrollment_status:\n  '#type': select\n  '#title': 'Enrollment Status'\n  '#options':\n    Part-Time: Part-Time\n    Full-Time: Full-Time\n_why_are_you_interested_in_becoming_in_a_mentor_:\n  '#type': textarea\n  '#title': ' Why are you interested in becoming in a mentor?'\nhoping_to_gain:\n  '#type': textarea\n  '#title': 'What are you hoping to gain by having a mentee?'\nwhat_are_you_hoping_to_gain_by_having_a_mentor_:\n  '#type': textarea\n  '#title': 'What are you hoping to gain by having a mentor?'\n"
 css: ''
 javascript: ''
 settings:
@@ -61,7 +61,9 @@ settings:
   wizard_progress_bar: true
   wizard_progress_pages: false
   wizard_progress_percentage: false
+  wizard_progress_link: false
   wizard_start_label: ''
+  wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
   wizard_track: ''
@@ -78,9 +80,9 @@ settings:
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
-  confirmation_type: page
+  confirmation_type: inline
   confirmation_title: ''
-  confirmation_message: ''
+  confirmation_message: 'Thank you for submitting your application to be a part of the ABES Peer Mentor Program! Your application is being reviewed. You will be contacted by an ABES team member with more information.'
   confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
@@ -157,7 +159,40 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: skisylia@usfca.edu
+      to_mail: aabedian@usfca.edu
+      to_options: {  }
+      cc_mail: mtjohnson2@usfca.edu
+      cc_options: {  }
+      bcc_mail: jtdunbar@usfca.edu
+      bcc_options: {  }
+      from_mail: '[webform_submission:values:email:raw]'
+      from_options: {  }
+      from_name: '[webform_submission:values:last_name:raw]'
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email_1:
+    id: email
+    label: 'Email Student'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:usf_email_address:raw]'
       to_options: {  }
       cc_mail: ''
       cc_options: {  }

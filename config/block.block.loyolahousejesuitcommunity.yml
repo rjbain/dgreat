@@ -1,26 +1,27 @@
-uuid: 7668b4ef-54cd-4aac-a462-76f7fdc85b11
+uuid: a2caa350-c106-4cc3-932c-4f0db811e075
 langcode: en
 status: true
 dependencies:
   config:
-    - simple_block.simple_block.search_results
+    - system.menu.loyola-house-jesuit-communi
   module:
     - block_visibility_groups
-    - simple_block
     - system
   theme:
     - myusf
-id: search_results
+id: loyolahousejesuitcommunity
 theme: myusf
-region: content
-weight: 22
+region: sidebar_first
+weight: 0
 provider: null
-plugin: 'simple_block:search_results'
+plugin: 'system_menu_block:loyola-house-jesuit-communi'
 settings:
-  id: 'simple_block:search_results'
-  label: 'Search Results'
-  provider: simple_block
+  id: 'system_menu_block:loyola-house-jesuit-communi'
+  label: 'Loyola House Jesuit Community'
+  provider: system
   label_display: '0'
+  level: 1
+  depth: 0
 visibility:
   condition_group:
     id: condition_group
@@ -29,6 +30,6 @@ visibility:
     context_mapping: {  }
   request_path:
     id: request_path
-    pages: "/results\r\n/all-results"
+    pages: "/jesuit\r\n/jesuit/*"
     negate: false
     context_mapping: {  }

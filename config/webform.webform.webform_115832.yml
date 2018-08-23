@@ -4,6 +4,7 @@ status: open
 dependencies: {  }
 open: null
 close: null
+weight: 0
 uid: 1333
 template: false
 archive: false
@@ -47,39 +48,6 @@ handlers:
       from_name: _default
       subject: 'RSVP for the 2017 USF Service and Merit Awards'
       body: "<p>Submitted by user: [webform_submission:user]</p>\n\n<p>Submitted values are:[webform_submission:values]</p>"
-      html: true
-      attachments: false
-      excluded_elements: {  }
-      states:
-        - completed
-      to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      from_options: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-  email_2:
-    id: email
-    label: 'Email 2'
-    handler_id: email_2
-    status: true
-    conditions: {  }
-    weight: 2
-    settings:
-      to_mail: '[webform-submission:values:usf_email_address:raw]'
-      from_mail: _default
-      from_name: _default
-      subject: _default
-      body: 'Submitted by user: [webform_submission:user] Submitted values are: [webform_submission:values]'
       html: true
       attachments: false
       excluded_elements: {  }
