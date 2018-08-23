@@ -95,7 +95,12 @@
           <input type="checkbox" name="usfca_search" value="true"> Include USFCA.EDU
         </div>
       </form>
-      <button class="header_search" type="submit" onclick="toggle()"><img src="/themes/custom/myusf/images/src/search-white.svg" alt="search"/></button>
+
+      <button class="header_search" type="submit" onclick="toggle()">
+        <div class="search-icon-main"><img src="/themes/custom/myusf/images/src/search-white.svg" alt="search"/></div> 
+      </button>
+      <div class="search-icon-rollover"><img src="/themes/custom/myusf/images/src/search-yellow.svg" alt="search"/></div>  
+
       {% if logged_in %}
           {#{ drupal_view('user', 'block_1') }#}
           {{ drupal_entity('block', 'user_block') }}

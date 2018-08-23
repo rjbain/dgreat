@@ -410,50 +410,71 @@ button.header_search {
 button.header_search {
     background: transparent;
     border: 0;
-    z-index: 2;
-    width: 20px;
-	height: 20px;
+    z-index: 10;
 	cursor:pointer;
 	right: 135px;
 	position: absolute;
 	top: 15px;
+	width:20px;
+	height:20px;
+
+	&:hover,
+	&:focus {
+		opacity: 0;
+	}
+	
 
 	@include media-breakpoint-only(tablet) {
 		right: 125px;
-	}
 
-
-    img {
-    	position: relative;
-		top: -5px;
-		right: 7px;
-
-		@include media-breakpoint-only(tablet) {
-		    right: 5px;
+		&:hover,
+		&:focus {
+			opacity: 1;
 		}
-
-    	@include media-breakpoint-down(landscape_phone) {
-    		right:-5px;
-    	}
-    }
-    &:hover,
-	&:focus {
-		opacity: .5;
 	}
-    .search-overlay {    	
-	    position: absolute;
-	    top: 0;
-	    right: 0;
-	    opacity: 0;
-	    z-index: 6;
-
-    	&:hover,
-    	&:focus {
-    		opacity: 1;
-    	}
-
-    }
+	@include media-breakpoint-down(landscape_phone) {
+		right: 125px;
+		
+		&:hover,
+		&:focus {
+			opacity: 1;
+		}
+	}	
 }
+div.search-icon-main {
+    width: 20px;
+	height: 20px;
+	z-index: 5;	
+
+	img {
+		margin-top: -2px;
+
+right: -1px;
+
+position: absolute;
+
+top: 3px;
+
+margin-right: 1px;
+	}	
+
+	@include media-breakpoint-only(tablet) {
+	    right: 5px;
+	}
+
+	@include media-breakpoint-down(landscape_phone) {
+		right:-5px;
+	}
+} 
+	
+div.search-icon-rollover {    	
+	position: relative;
+	top: -7px;
+	right: 0px;
+	width: 20px;
+	height: 20px;
+	z-index:4;
+}  
 
 #search-options {
 	font-size: .75rem;
