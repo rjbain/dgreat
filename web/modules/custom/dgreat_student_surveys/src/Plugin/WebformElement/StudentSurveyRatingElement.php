@@ -3,7 +3,7 @@
 namespace Drupal\dgreat_student_surveys\Plugin\WebformElement;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\webform\Plugin\WebformElement\WebformRating;
+use Drupal\webform\Plugin\WebformElement\Radios;
 
 /**
  * Provides a 'rating' element.
@@ -11,11 +11,11 @@ use Drupal\webform\Plugin\WebformElement\WebformRating;
  * @WebformElement(
  *   id = "student_survey_rating_element",
  *   label = @Translation("Student Survey Rating"),
- *   description = @Translation("Provides a form element to rate something using an attractive voting widget."),
+ *   description = @Translation("Provides a form element to use with USF Student Surveys."),
  *   category = @Translation("Advanced elements"),
  * )
  */
-class StudentSurveyRatingElement extends WebformRating {
+class StudentSurveyRatingElement extends Radios {
 
   /**
    * {@inheritdoc}
