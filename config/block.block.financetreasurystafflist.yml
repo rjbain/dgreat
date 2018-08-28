@@ -1,0 +1,45 @@
+uuid: b5c15a0c-4ef7-4cca-91a9-6b5d9468fdce
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:custom_block:45c79eff-46b6-4420-b869-a89363469e73'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+    - user
+  theme:
+    - myusf
+id: financetreasurystafflist
+theme: myusf
+region: content
+weight: 6
+provider: null
+plugin: 'block_content:45c79eff-46b6-4420-b869-a89363469e73'
+settings:
+  id: 'block_content:45c79eff-46b6-4420-b869-a89363469e73'
+  label: 'Finance & Treasury Staff List'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /finance-treasury/staff
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
