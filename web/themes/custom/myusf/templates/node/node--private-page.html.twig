@@ -76,7 +76,9 @@
   <div{{ content_attributes.addClass('content') }}>
     <div class="body">
         {% autoescape false %}
-          {{ node.body.value }}
+          {% for item in node.field_migrate_final %}
+            {{ drupal_entity('paragraph', item.target_id) }}
+          {% endfor %}
         {% endautoescape %}
     </div>
   </div>

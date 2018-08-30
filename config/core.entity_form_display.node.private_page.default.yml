@@ -5,25 +5,17 @@ dependencies:
   config:
     - field.field.node.private_page.body
     - field.field.node.private_page.field_display_title
+    - field.field.node.private_page.field_migrate_final
     - node.type.private_page
   module:
+    - paragraphs
     - path
     - scheduler
-    - text
 id: node.private_page.default
 targetEntityType: node
 bundle: private_page
 mode: default
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 11
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-    third_party_settings: {  }
-    region: content
   created:
     type: datetime_timestamp
     weight: 2
@@ -37,6 +29,18 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  field_migrate_final:
+    weight: 11
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
     region: content
   path:
     type: path
@@ -99,4 +103,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  body: true

@@ -5,22 +5,16 @@ dependencies:
   config:
     - field.field.node.private_page.body
     - field.field.node.private_page.field_display_title
+    - field.field.node.private_page.field_migrate_final
     - node.type.private_page
   module:
-    - text
+    - entity_reference_revisions
     - user
 id: node.private_page.default
 targetEntityType: node
 bundle: private_page
 mode: default
 content:
-  body:
-    label: hidden
-    type: text_default
-    weight: 2
-    settings: {  }
-    third_party_settings: {  }
-    region: content
   field_display_title:
     weight: 1
     label: hidden
@@ -29,9 +23,19 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  field_migrate_final:
+    weight: 2
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
   links:
     weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  body: true
