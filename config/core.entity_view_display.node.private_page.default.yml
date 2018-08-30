@@ -1,0 +1,41 @@
+uuid: 54840319-f3b8-4830-a215-5705a6e9b6d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.private_page.body
+    - field.field.node.private_page.field_display_title
+    - field.field.node.private_page.field_migrate_final
+    - node.type.private_page
+  module:
+    - entity_reference_revisions
+    - user
+id: node.private_page.default
+targetEntityType: node
+bundle: private_page
+mode: default
+content:
+  field_display_title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_migrate_final:
+    weight: 2
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true

@@ -488,7 +488,15 @@ a.card-rollover {
 	}
 
 	.page-item{
+		margin-right: 20px;
+		
+		@include media-breakpoint-down(phone) { 
+			margin-right: 0px;
+		}
+
 		&.active{ 
+			margin-top: 2px;
+
 			a {
 				font-size: .85rem;
 				font-weight: 700;				
@@ -496,6 +504,7 @@ a.card-rollover {
 				line-height: 1rem;
 			}
 			.page-link {
+				font-size: .9rem;
 				z-index: 1;
 				color: inherit;
 				background-color: inherit;

@@ -1,0 +1,59 @@
+uuid: 12cbb208-0c2c-4cf6-b0fa-75d333d9244d
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 8J9aFZdUzbHV6w1y727kflHq31ev3U3wy7U-zSWDkeE
+id: all_access_profile
+label: 'All Access profile'
+description: 'Configuration for All Access Role'
+conf:
+  extensions: 'jpg jpeg png gif pdf doc txt docx xls xlsx csv'
+  maxsize: !!float 5
+  quota: !!float 5000
+  maxwidth: 1800
+  maxheight: 1800
+  replace: 1
+  folders:
+    -
+      path: 'users/[user:name]'
+      permissions:
+        browse_files: true
+        browse_subfolders: true
+        create_subfolders: true
+        upload_files: true
+        delete_files: true
+        delete_subfolders: true
+        resize_images: true
+    -
+      path: images
+      permissions:
+        browse_files: true
+        browse_subfolders: true
+        create_subfolders: true
+        upload_files: true
+        delete_files: true
+        delete_subfolders: true
+        resize_images: true
+    -
+      path: documents
+      permissions:
+        browse_files: true
+        browse_subfolders: true
+        create_subfolders: true
+        upload_files: true
+        delete_files: true
+        delete_subfolders: true
+        resize_images: true
+    -
+      path: .
+      permissions:
+        browse_files: true
+        upload_files: true
+        delete_files: true
+        resize_images: true
+    -
+      path: users
+      permissions:
+        browse_files: true
+        browse_subfolders: true
