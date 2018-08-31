@@ -1,0 +1,46 @@
+uuid: c00791d4-5fbd-43b0-a268-6c966fe680b8
+langcode: en
+status: true
+dependencies: {  }
+id: share_import_usfca
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: null
+label: 'Share Page Import to MyUSF from USFCA'
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  urls: 'https://www.usfca.edu/feeds/feed?source=basic-share'
+  data_parser_plugin: simple_xml
+  item_selector: /basic_pages/item
+  fields:
+    -
+      name: title
+      label: Title
+      selector: title
+    -
+      name: display_title
+      label: 'Display Title'
+      selector: display_title
+    -
+      name: body
+      label: Body
+      selector: body
+  ids:
+    guid:
+      type: string
+process:
+  title: title
+  body: body
+  field_display_title: display_title
+  status:
+    plugin: default_value
+    default_value: 1
+  type:
+    plugin: default_value
+    default_value: share_page
+destination:
+  plugin: 'entity:node'
+migration_dependencies: null
