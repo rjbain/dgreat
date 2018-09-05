@@ -72,13 +72,6 @@
     'clearfix',
   ]
 %}
-<h1 class="display-title">{{ node.field_display_title.value }}</h1>
-  <div{{ content_attributes.addClass('content') }}>
-    <div class="body">
-        {% autoescape false %}
-          {% for item in node.field_migrate_final %}
-            {{ drupal_entity('paragraph', item.target_id) }}
-          {% endfor %}
-        {% endautoescape %}
-    </div>
-  </div>
+
+{% set role = user.getroles|join(',') %}
+{{ drupal_view('private_page', 'block_1', node.id, role) }}

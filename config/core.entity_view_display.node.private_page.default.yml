@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.private_page.body
     - field.field.node.private_page.field_display_title
     - field.field.node.private_page.field_migrate_final
+    - field.field.node.private_page.field_role
     - node.type.private_page
   module:
     - entity_reference_revisions
@@ -31,6 +32,13 @@ content:
       link: ''
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
+    region: content
+  field_role:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: entity_reference_entity_id
     region: content
   links:
     weight: 0

@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.private_page.body
     - field.field.node.private_page.field_display_title
     - field.field.node.private_page.field_migrate_final
+    - field.field.node.private_page.field_role
     - node.type.private_page
   module:
     - paragraphs
@@ -41,6 +42,15 @@ content:
       default_paragraph_type: _none
     third_party_settings: {  }
     type: entity_reference_paragraphs
+    region: content
+  field_role:
+    weight: 26
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   path:
     type: path
