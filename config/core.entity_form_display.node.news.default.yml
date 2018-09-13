@@ -4,15 +4,27 @@ status: true
 dependencies:
   config:
     - field.field.node.news.body
+    - field.field.node.news.field_below_content_title
+    - field.field.node.news.field_display_title
     - field.field.node.news.field_guid
     - field.field.node.news.field_image_url
+    - field.field.node.news.field_in_content_carousel
+    - field.field.node.news.field_in_content_carousel_concat
+    - field.field.node.news.field_news_category
     - field.field.node.news.field_news_link
+    - field.field.node.news.field_news_schools
+    - field.field.node.news.field_news_target
+    - field.field.node.news.field_news_terms
     - field.field.node.news.field_news_type
+    - field.field.node.news.field_source_name
+    - field.field.node.news.field_source_url
+    - field.field.node.news.field_sub_title
     - field.field.node.news.field_type
     - node.type.news
   module:
     - link
     - path
+    - scheduler
     - text
 id: node.news.default
 targetEntityType: node
@@ -34,6 +46,22 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_below_content_title:
+    weight: 129
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_display_title:
+    weight: 127
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_guid:
     weight: 125
     settings:
@@ -49,6 +77,31 @@ content:
     third_party_settings: {  }
     type: link_default
     region: content
+  field_in_content_carousel:
+    weight: 137
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_in_content_carousel_concat:
+    weight: 138
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_news_category:
+    weight: 132
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   field_news_link:
     weight: 124
     settings:
@@ -56,6 +109,33 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
+  field_news_schools:
+    weight: 134
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_news_target:
+    weight: 133
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_news_terms:
+    weight: 131
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   field_news_type:
     weight: 123
@@ -65,6 +145,30 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_source_name:
+    weight: 136
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_source_url:
+    weight: 135
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_sub_title:
+    weight: 128
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_type:
     weight: 126
@@ -86,6 +190,12 @@ content:
       display_label: true
     weight: 15
     region: content
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -118,4 +228,13 @@ content:
       placeholder: ''
     region: content
     third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
 hidden: {  }
