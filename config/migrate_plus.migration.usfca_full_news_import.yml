@@ -1,0 +1,142 @@
+uuid: a4d4e3ef-932c-4207-a2ef-6a0719234392
+langcode: en
+status: true
+dependencies: {  }
+id: usfca_full_news_import
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: null
+label: 'USFCA News Import'
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  urls: 'http://www.usfca.edu/feeds/feed?source=myusf-news'
+  data_parser_plugin: simple_xml
+  item_selector: /news/item
+  fields:
+    -
+      name: title
+      label: Title
+      selector: title
+    -
+      name: display_title
+      label: 'Display Title'
+      selector: display_title
+    -
+      name: sub_title
+      label: 'Sub Title'
+      selector: sub_title
+    -
+      name: below_content_title
+      label: 'Below Content Title'
+      selector: below_content_title
+    -
+      name: description
+      label: Description
+      selector: description
+    -
+      name: image
+      label: 'Image URL'
+      selector: image
+    -
+      name: in_content_carousel
+      label: 'In Content Carousel'
+      selector: in_content_carousel
+    -
+      name: in_content_carousel_concat
+      label: 'In Content Carousel Concat'
+      selector: in_content_carousel_concat
+    -
+      name: news_term
+      label: 'News Term'
+      selector: news_term
+    -
+      name: news_category
+      label: 'News Category'
+      selector: news_category
+    -
+      name: news_target
+      label: 'News Target'
+      selector: news_target
+    -
+      name: school
+      label: School
+      selector: school
+    -
+      name: type
+      label: Type
+      selector: type
+    -
+      name: path
+      label: Path
+      selector: path
+    -
+      name: source_url
+      label: 'Source URL'
+      selector: source_url
+    -
+      name: source_name
+      label: 'Source Name'
+      selector: source_name
+    -
+      name: guid
+      label: GUID
+      selector: guid
+  ids:
+    guid:
+      type: string
+process:
+  title: title
+  field_display_title: display_title
+  field_sub_title: sub_title
+  field_below_content_title: below_content_title
+  body: description
+  field_image_url: image
+  field_in_content_carousel_concat: in_content_carousel_concat
+  field_news_link: path
+  field_source_url: source_url
+  field_source_name: source_name
+  field_guid: guid
+  field_news_terms:
+    plugin: entity_generate
+    source: news_term
+    value_key: name
+    bundle: news_terms
+    entity_type: taxonomy_term
+    ignore_case: true
+  field_news_category:
+    plugin: entity_generate
+    source: news_category
+    value_key: name
+    bundle: news_category
+    entity_type: taxonomy_term
+    ignore_case: true
+  field_news_target:
+    plugin: entity_generate
+    source: news_target
+    value_key: name
+    bundle: news_target
+    entity_type: taxonomy_term
+    ignore_case: true
+  field_news_schools:
+    plugin: entity_generate
+    source: school
+    value_key: name
+    bundle: news_schools
+    entity_type: taxonomy_term
+    ignore_case: true
+  field_news_type:
+    plugin: entity_generate
+    source: type
+    value_key: name
+    bundle: news_type
+    entity_type: taxonomy_term
+    ignore_case: true
+  type:
+    plugin: default_value
+    default_value: news
+destination:
+  plugin: 'entity:node'
+migration_dependencies: null
