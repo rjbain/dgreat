@@ -30,80 +30,32 @@ Available variables (usf_dashboard.module)
     <div class="row usf_dash">
         <div class="col-12"> {# Left "main" column #}
             <div class="row appsLinks">
-                {% if ('faculty' not in user.getroles) and ('all_access' not in user.getroles) and ('student' not in user.getroles) and ('online_student' not in user.getroles) and ('admitted_student' not in user.getroles) and ('finance' not in user.getroles) and ('employee' not in user.getroles) and ('prehire_faculty' not in user.getroles) and ('prehire_staff' not in user.getroles)  and ('bi_group' not in user.getroles)  and ('vcl-staff' not in user.getroles)  and ('online_intaccept' not in user.getroles) %}
-
-                    <div class="col-sm myApps">
-                            {{ drupal_entity('block', "defaultrolestaticlinks") }}
-                    </div>
-
-                {% else %}
-                    <!-- Beginning of temp FavApps -->    
                     <div class="col-sm myApps">
                         <h2>Top Apps</h2>
-                            <div class="views-element-container settings-tray-editable block block-views block-views-blockfavorite-links-block" id="block-views-block-favorite-links-block">
-                                <div class="content">
-                                    <div class="col-auto">
-                                        <div class="view view-favorite-links view-id-favorite_links view-display-id-block">
-                                            <div class="view-content row">
-                                                <div class="table-responsive col">
-                                                    <table class="table views-table views-view-table cols-0">
-                                                        <tbody>
-                                                            {{ drupal_view('quick_favs', 'block_2', role) }}
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-  
-                                    <div class="view-footer">
-                                        <a href="https://login.usfca.edu/ui/main#launch:pad" class="seeMyApps diamond_link_small" target="_blank">View All Apps</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>                            
-                    <!-- End of temp FavApps -->
-                    </div>
-        
+                            
+                            {% if dashboard_content.fav_links %}
+                                {{ dashboard_content.fav_links }}
+                            {% endif %}
+                    </div>        
                     <div class="separator"></div>
                     <div class="col-sm myLinks">
+                        {% if dashboard_content.dashboard_user.name.value is not empty %}
                             <h2>{{ dashboard_content.dashboard_user.name.value }}'s Links</h2>
-                                <div class="views-element-container contextual-region settings-tray-editable block block-views block-views-blockquick-links-block" id="block-views-block-quick-links-block">
-                                    <div class="content">
-                                        <div class="col-auto">
-                                            <div class="view-content row">
-                                                <div class="table-responsive col">
-                                                    <table class="table views-table views-view-table cols-1">
-                                                        <thead class=''>
-                                                            <tr>
-                                                                <th id="view-title-table-column" class="views-field views-field-title" scope="col">Title</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                             {{ drupal_view('quick_favs', 'block_1', role) }}
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                    </div>
-                 
-
-                {% endif %}            
-
+                        {% endif %}
+                        {% if dashboard_content.quick_links %}
+                            {{ dashboard_content.quick_links }}
+                        {% endif %}
+                    </div>           
             </div>
             <div class="row">           
                 <div class="col-12">
                     {{ drupal_view('events_featured', 'block_1') }}
                 </div>
                 <div class="col-12 eventsLink">
-
                     {#% if ('as_ug' in user.getroles) or ('som_ug' in user.getroles) or ('sonhp_ug' in user.getroles)  %#}
                         {#% set target = 'Undergraduate Students' #}
                         {#{ drupal_view('event_target_term', 'block_1', target) }#}
                     {#% endif %#}
-
                     {% if ('student' in user.getroles) and ('as_grad' not in user.getroles) and ('som_grad' not in user.getroles) and ('sonhp_grad' not in user.getroles) and ('soe' not in user.getroles)  %}
                         {% set target = 'Undergraduate Students' %}
                         {{ drupal_view('event_target_term', 'block_1', target) }}
@@ -132,8 +84,9 @@ Available variables (usf_dashboard.module)
             </div>
                 <div class="row">
                     <div class="col-sm">
-                        <h2>Announcements</h2>
-                        {{ drupal_view('dashboard_announements', 'block_1', role) }}
+                        {% if dashboard_content.announcements %}
+                            {{ dashboard_content.announcements }}
+                        {% endif %}
                     </div>
                 </div>
                 <div class="row">
