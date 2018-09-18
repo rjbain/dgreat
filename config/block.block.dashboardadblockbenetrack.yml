@@ -1,0 +1,46 @@
+uuid: 9df526c2-6f6b-4d29-8c6c-f0777b9968a6
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:custom_block:1911aad1-3157-4d1c-bca8-35a98cb16be9'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+    - user
+  theme:
+    - myusf
+id: dashboardadblockbenetrack
+theme: myusf
+region: sidebar_second
+weight: 3
+provider: null
+plugin: 'block_content:1911aad1-3157-4d1c-bca8-35a98cb16be9'
+settings:
+  id: 'block_content:1911aad1-3157-4d1c-bca8-35a98cb16be9'
+  label: 'Dashboard Ad block - Benetrack'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /dashboard
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      faculty: faculty
+      employee: employee
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
