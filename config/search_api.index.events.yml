@@ -9,6 +9,7 @@ dependencies:
     - field.storage.node.field_search_date
     - field.storage.node.field_start_date
     - field.storage.node.field_target
+    - field.storage.node.field_terms
     - search_api.server.events
   module:
     - taxonomy
@@ -59,6 +60,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_start_date
+  field_terms:
+    label: Terms
+    datasource_id: 'entity:node'
+    property_path: field_terms
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_terms
   tid:
     label: 'Target » Taxonomy term » Term ID'
     datasource_id: 'entity:node'

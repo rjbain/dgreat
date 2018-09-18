@@ -5,8 +5,9 @@ dependencies:
   config:
     - system.menu.admin
     - taxonomy.vocabulary.event_category
+    - taxonomy.vocabulary.event_terms
     - user.role.administrator
-    - user.role.editor
+    - user.role.all_access
   module:
     - taxonomy
     - user
@@ -30,7 +31,7 @@ display:
         options:
           role:
             administrator: administrator
-            editor: editor
+            all_access: all_access
       cache:
         type: tag
         options: {  }
@@ -238,7 +239,20 @@ display:
           entity_field: vid
           plugin_id: bundle
       sorts: {  }
-      header: {  }
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content:
+            value: '<h2><a href="/admin/config/taxonomy/categories">Categories</a> | <a href="/admin/config/taxonomy/terms">Terms</a></h2>'
+            format: full_html
+          plugin_id: text
       footer: {  }
       empty: {  }
       relationships: {  }
@@ -258,7 +272,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: admin/config/taxonomy
+      path: admin/config/taxonomy/categories
       menu:
         type: normal
         title: 'Event Taxonomy IDs'
@@ -268,6 +282,69 @@ display:
         weight: 5
         context: '0'
         menu_name: admin
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - user.roles
+      tags: {  }
+  page_2:
+    display_plugin: page
+    id: page_2
+    display_title: 'Page 2'
+    position: 2
+    display_options:
+      display_extenders: {  }
+      path: admin/config/taxonomy/terms
+      filters:
+        vid:
+          id: vid
+          table: taxonomy_term_field_data
+          field: vid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            event_terms: event_terms
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: taxonomy_term
+          entity_field: vid
+          plugin_id: bundle
+      defaults:
+        filters: false
+        filter_groups: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: -1
       contexts:
