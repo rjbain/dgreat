@@ -77,8 +77,7 @@ function dgreat_group_user_login($account) {
  * Implements hook_ENTITY_TYPE_insert().
  */
 function dgreat_group_user_insert(EntityInterface $entity) {
-  (new DgreatGroup($entity))->addUserToGroup('field_user_group')
-    ->flagUserDefaultContent('field_user_group');
+  (new DgreatGroup($entity))->flagUserDefaultContent($entity);
 }
 
 /**
