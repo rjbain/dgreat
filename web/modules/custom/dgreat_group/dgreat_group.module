@@ -71,7 +71,6 @@ function dgreat_group_user_login($account) {
   // If the user has a role that is mapped to a group,
   // Add them to that group.
   RoleGroupMapper::reconcileGroupAccess($account);
-
 }
 
 /**
@@ -80,7 +79,8 @@ function dgreat_group_user_login($account) {
  * Adds a user to the respective group identified.
  */
 function dgreat_group_user_insert(EntityInterface $entity) {
-  return (new DgreatGroup($entity))->addUserToGroup('field_user_group');
+  return (new DgreatGroup($entity))->addUserToGroup('field_user_group')
+    ->flagUserDefaultContent('field_user_group');
 }
 
 /**
@@ -153,7 +153,7 @@ function _dgreat_group_form_submit($form, FormStateInterface $form_state) {
   $removed_nids = array_diff($orig_defaults, $nids);
 
   if ((!empty($new_nids) || !empty($removed_nids))
-      && $group = \Drupal::routeMatch()->getParameter('group')) {
+    && $group = \Drupal::routeMatch()->getParameter('group')) {
 
     // Grab all thy members.
     $members = $group->getMembers();
@@ -163,7 +163,10 @@ function _dgreat_group_form_submit($form, FormStateInterface $form_state) {
 
     // Lets do this.
     foreach ($chunks as $chunk) {
-      $operations[] = ['Drupal\dgreat_group\Batch\DgreatGroupBatch::batchProcess', [$new_nids, $removed_nids, $group, $chunk]];
+      $operations[] = [
+        'Drupal\dgreat_group\Batch\DgreatGroupBatch::batchProcess',
+        [$new_nids, $removed_nids, $group, $chunk],
+      ];
     }
 
     // Fail safe in case the batch fails in building the operations.
@@ -174,7 +177,7 @@ function _dgreat_group_form_submit($form, FormStateInterface $form_state) {
         'operations' => $operations,
         'init_message' => t('Importing users to process.'),
         'finished' => 'Drupal\dgreat_group\Batch\DgreatGroupBatch::batchFinished',
-        'file' => drupal_get_path('module', 'dgreat_group') . '/src/Batch/DgreatGroupBatch.php'
+        'file' => drupal_get_path('module', 'dgreat_group') . '/src/Batch/DgreatGroupBatch.php',
       ];
 
       // Engage.

@@ -68,7 +68,7 @@ class DgreatGroup {
    * @param $field
    *   The field we are using as a reference for the group.
    *
-   * @return bool
+   * @return $this
    */
   public function addUserToGroup($field) {
     $group_ids = $this->entity->get($field)->getValue();
@@ -86,7 +86,7 @@ class DgreatGroup {
     }
 
     // Fail safe return.
-    return FALSE;
+    return $this;
   }
 
   /**
@@ -177,7 +177,7 @@ class DgreatGroup {
    * @param $field
    *   The field we are using as a reference for the group.
    *
-   * @return bool
+   * @return \Drupal\dgreat_group\DgreatGroup
    */
   public function flagUserDefaultContent($field) {
     $ids = $this->entity->get($field)->getValue();
@@ -224,7 +224,7 @@ class DgreatGroup {
     }
 
     // Fail safe return.
-    return FALSE;
+    return $this;
   }
 
 }
