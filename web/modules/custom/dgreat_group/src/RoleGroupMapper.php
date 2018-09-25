@@ -79,7 +79,7 @@ class RoleGroupMapper {
    *
    * @return bool
    */
-  private static function userHasGroupRole(User $user, $group_id) {
+  public static function userHasGroupRole(User $user, $group_id) {
     $group  = Group::load($group_id);
     $mapped_roles = $group->get('field_mapped_roles')->getValue();
 
