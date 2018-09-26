@@ -11,6 +11,7 @@ class RoboFile extends \Robo\Tasks {
    * Run Behat Tests.
    */
   public function behat() {
+    $this->_exec(__DIR__ . '/vendor/bin/drush --root=./web cr -y');
     $this->_exec(__DIR__ . '/vendor/bin/drush --root=./web cim -y');
     $this->_exec(__DIR__ . '/vendor/bin/drush --root=./web updb -y');
     $this->taskBehat(__DIR__ . '/vendor/bin/behat')

@@ -26,8 +26,8 @@ Feature: Quick Links
   Scenario: Quick Links persist after logout/in:
     Given users:
       | name      | status | mail             | roles |
-      | Test user |      1 | test@example.com | student |
-    And I am logged in as "Test user"
+      | QL Test user |      1 | quicklinkstest@example.com | student |
+    And I am logged in as "QL Test user"
     And I am on "/dashboard"
     And I click "Add new Quick Link"
     And I fill in "Title" with "Magic"
@@ -37,7 +37,7 @@ Feature: Quick Links
     Then I should be on "/dashboard"
     And I should see the link "Magic"
     And I click "Logout"
-    And I am logged in as "Test user"
+    And I am logged in as "QL Test user"
     And I am on "/dashboard"
     Then I should see the link "Magic"
 
