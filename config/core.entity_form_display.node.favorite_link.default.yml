@@ -33,18 +33,12 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 8
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_category:
-    weight: 5
-    type: options_select
-    settings: {  }
-    third_party_settings: {  }
-    region: content
   field_group_audience:
-    weight: 13
+    weight: 11
     settings:
       match_operator: CONTAINS
       size: 60
@@ -56,13 +50,6 @@ content:
     weight: 4
     type: options_select
     settings: {  }
-    third_party_settings: {  }
-    region: content
-  field_sso:
-    weight: 7
-    type: boolean_checkbox
-    settings:
-      display_label: true
     third_party_settings: {  }
     region: content
   field_top_quick_link:
@@ -82,7 +69,7 @@ content:
     region: content
   path:
     type: path
-    weight: 11
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -90,12 +77,12 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 9
+    weight: 7
     region: content
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 14
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -103,14 +90,14 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 12
+    weight: 10
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 10
+    weight: 8
     region: content
     third_party_settings: {  }
   title:
@@ -123,7 +110,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 6
+    weight: 5
     settings:
       match_operator: CONTAINS
       size: 60
@@ -132,9 +119,16 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 15
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  url_redirects:
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_category: true
+  field_sso: true
   field_weight: true
