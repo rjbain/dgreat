@@ -31,7 +31,11 @@
 		}
 
 		@include media-breakpoint-down(tablet) {
-			height: 710px;
+			height: 700px;
+		}
+
+		@include media-breakpoint-down(phone) {
+			height: 850px;
 		}
 		
 
@@ -366,7 +370,6 @@
 				
 				.view-footer {
 					a.appPref {
-						display:none;
 
 						font-size: 0;
 
@@ -454,7 +457,7 @@
 			}
 
 			@include media-breakpoint-down(tablet) {
-		    	top: 400px;
+		    	top: 420px;
 		    }
 		    @include media-breakpoint-down(phone) {
 		    	top: 500px;
@@ -476,11 +479,11 @@
 
 			#block-views-block-default-quick-links-block {
 				.view-content {
-					height: 210px; /*was 593px */
-					width: 96%;
+					height: 200px; 
+					width: 30%;
 					overflow-y: auto;
 					margin-left: 10px;
-					margin-right: -10px; /*was 0 */
+					margin-right: -10px; 
 
 					/*&::-webkit-scrollbar {
 					 	-webkit-appearance: none;
@@ -498,12 +501,13 @@
 					}	*/				
 
 					@include media-breakpoint-down(desktop) {
-				        height: 240px;
+				        height: 200px;
 				    }
 					
 					@include media-breakpoint-down(phone) {
 				        height: 112px;
 				        margin-top: -11px;
+				        width: 92%;
 				    }
 
 				    .views-row {
@@ -519,6 +523,7 @@
 				    border-radius: 4px;
 				    background-color: rgba(0,0,0,.5);
 				    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+				    height: 20px;
 				}
 
 
@@ -536,11 +541,8 @@
 				table {
 						display: table;
 						position:absolute;
-						/*left: 620px;*/
-						left: 67%;
-						width: 33%!important; 
+						left: 0%;
 						top: -370px; 
-						/*background: $yellow;*/
 
 						@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
 							left: 0;
@@ -577,8 +579,7 @@
 					    	/*left: 475px;*/					    	
 					    }
 					    @include media-breakpoint-down(phone) {
-							width: 100%!important;
-							top: 0;
+							width: 270px!important;
 							left: 5px;
 							margin-top: -5px;
 						}	
@@ -592,81 +593,20 @@
 								max-width: 95px;
 							    overflow: hidden;
 							    text-overflow: ellipsis;
-							    white-space: nowrap;
 							}
 							&:first-child td {
 								padding-top: 16px!important;
 							}
 
-							&:first-child td , &:nth-child(2) td , &:nth-child(3) td , &:nth-child(4) td , 
-							&:nth-child(5) td , &:nth-child(6) td  {
-								position:relative;
-								/*left: -625px;*/
-								left: -204%;
-								top:360px;
-								/*background: $orange;*/
-								
-								@media screen and (min-width: 792px) {
-						    		/*top: 420px!important;*/
-								}
-								@media screen and (min-width: 908px) {
-									
-									/*left: -585px*/
-								}
-								@media screen and (min-width: 1138px) {
-								   /* top: 360px!important;*/
-								}
-								@media screen and (min-width: 1333px) {
-									/*top: 380px!important;*/
-								}
-
-								@include media-breakpoint-down(desktop) {
-						    		/*left: -485px;*/
-						    	
-								}
-							    @include media-breakpoint-down(tablet) {
-							    	/*left: -485px;*/
-							    	
-							    }
-							    @include media-breakpoint-down(phone) {
-									left: 0;
-									top: 0px;
-								}	
-							}
-							&:nth-child(7) td , &:nth-child(8) td , &:nth-child(9) td , &:nth-child(10) td , 
-							&:nth-child(11) td , &:nth-child(12) td  {
-							 	position:relative;
-								/*left: -320px;*/
-								left: -102.5%;
-								top: 179px;
-								/*background: olive;*/
-
-								@media screen and (min-width: 792px) {
-						    		/*top: 200px!important;*/
-								}
-								@media screen and (min-width: 908px) {
-									/*left: -270px;*/
-								}
-
-								@include media-breakpoint-down(desktop) {
-						    		/*left: -240px;
-						    		top: 200px;*/
-						    		
-								}
-							    @include media-breakpoint-down(tablet) {
-
-							    }
-							    @include media-breakpoint-down(phone) {
-									left: 0;
-									top: 0px;
-								}	
-							}
 							&:last-child td {
 								padding-bottom: 20px!important;
 							}
 						}
 
 						td {
+							position: relative;
+    						top: 359px;
+
 							padding: 5px 20px!important;
 
 							&:first-of-type { 
@@ -680,6 +620,11 @@
 								font-size: .9rem!important;
 								font-weight: 600;
 								color: $turquoise;
+
+								 @include media-breakpoint-down(phone) {
+								 	white-space: normal;
+								 }
+
 							}
 						}
 					}
@@ -694,8 +639,8 @@
 						    position: absolute;
 						    width: 25px;
 						    height: 25px;
-						    top: -27px;
-						    right: 35px;
+						    top: -34px;
+						    right: -30px;
 						    opacity: .6;
 					    	margin: auto 10px auto auto;
 					    	background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -545px -102px;
@@ -719,8 +664,8 @@
 						    position: absolute;
 						    width: 25px;
 						    height: 25px;
-						    top: -27px;
-						    right: 70px;
+						    top: -35px;
+						    right: 0px;
 						    opacity: .6;
 					    	margin: auto 10px auto auto;
 					    	background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -575px -102px;
@@ -741,11 +686,11 @@
 		.myQuickLinks {
 			position:absolute;
 			top:285px;
-			left:62%;
+			left:31%;
 			height:210px;
 			margin-left: 10px;
 			margin-right: 20px;
-			width: 33%;
+			width: 66%;
 			
 			@include media-breakpoint-down(desktop) {
 
@@ -755,7 +700,9 @@
 		    	top: 400px;
 		    }
 		    @include media-breakpoint-down(phone) {
-		    	top: 500px;
+		    	top: 665px;
+		    	left: 0;
+    			width: 300px;
 		    }
 
 			h2 {
@@ -774,18 +721,20 @@
 			#block-views-block-quick-links-block {
 				.view-content {
 					height: 200px;
-				    max-height: 175px;
 				    overflow: auto;	
 				    margin-left: 2px;
-					margin-right: -10px; 	
+					margin-right: -10px; 
+					width:100%;
+
 
 					@include media-breakpoint-down(desktop) {
-				        height: 240px;
+				        height: 200px;
 				    }
 					
 					@include media-breakpoint-down(phone) {
 				        height: 112px;
 				        margin-top: -11px;
+				        width: 283px;
 				    }
 
 				    .views-row {
@@ -818,7 +767,8 @@
 				table {
 						display: table;
 						position:absolute;					
-						/*width: 33%!important; */
+						width: 45%; 
+						left: 35%;
 
 						@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
 							left: 0;
@@ -855,9 +805,9 @@
 					    	/*left: 475px;*/					    	
 					    }
 					    @include media-breakpoint-down(phone) {
-							width: 100%!important;
+							width: 270px!important;
 							top: 0;
-							left: 5px;
+							left: 12px;
 							margin-top: -5px;
 						}	
 
@@ -879,6 +829,64 @@
 							&:last-child td {
 								padding-bottom: 20px!important;
 							}
+							&:first-child td , &:nth-child(2) td , &:nth-child(3) td , &:nth-child(4) td , 
+							&:nth-child(5) td , &:nth-child(6) td  {
+								position:relative;
+								left: -78%;
+								top: 0;
+								
+								@media screen and (min-width: 792px) {
+						    		/*top: 420px!important;*/
+								}
+								@media screen and (min-width: 908px) {
+									
+									/*left: -585px*/
+								}
+								@media screen and (min-width: 1138px) {
+								   /* top: 360px!important;*/
+								}
+								@media screen and (min-width: 1333px) {
+									/*top: 380px!important;*/
+								}
+
+								@include media-breakpoint-down(desktop) {
+						    		/*left: -485px;*/
+						    	
+								}
+							    @include media-breakpoint-down(tablet) {
+							    	/*left: -485px;*/
+							    	
+							    }
+							    @include media-breakpoint-down(phone) {
+									left: 0;
+									top: 0px;
+								}	
+							}
+							td {
+							 	position:relative;
+								left: 34%;
+								top: -179px;
+
+								@media screen and (min-width: 792px) {
+						    		/*top: 200px!important;*/
+								}
+								@media screen and (min-width: 908px) {
+									/*left: -270px;*/
+								}
+
+								@include media-breakpoint-down(desktop) {
+						    		/*left: -240px;
+						    		top: 200px;*/
+						    		
+								}
+							    @include media-breakpoint-down(tablet) {
+
+							    }
+							    @include media-breakpoint-down(phone) {
+									left: 0;
+									top: 0px;
+								}	
+							}
 						}
 
 						td {
@@ -895,6 +903,10 @@
 								font-size: .9rem!important;
 								font-weight: 600;
 								color: $turquoise;
+
+								@include media-breakpoint-down(phone) {
+								 	white-space: normal;
+								 }
 							}
 						}
 					}
@@ -909,15 +921,15 @@
 						    position: absolute;
 						    width: 25px;
 						    height: 25px;
-						    top: -27px;
-						    right: 35px;
+						    top: -34px;
+						    right: -30px;
 						    opacity: .6;
 					    	margin: auto 10px auto auto;
 					    	background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -545px -102px;
 					    	background: url(/themes/custom/myusf/images/src/icons.svg) no-repeat -545px -102px;
 
 					    	@include media-breakpoint-down(phone) {
-					    		right: 15px;
+					    		right: -20px!important;
 					    	}
 						}
 						&:hover::before,
@@ -934,15 +946,15 @@
 						    position: absolute;
 						    width: 25px;
 						    height: 25px;
-						    top: -27px;
-						    right: 70px;
+						    top: -35px;
+						    right: 0px;
 						    opacity: .6;
 					    	margin: auto 10px auto auto;
 					    	background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -575px -102px;
 					    	background: url(/themes/custom/myusf/images/src/icons.svg) no-repeat -575px -102px;
 
 					    	@include media-breakpoint-down(phone) {
-					    		right: 55px;
+					    		right: 25px!important;
 					    	}
 						}
 						&:hover::before,
