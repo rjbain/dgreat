@@ -712,6 +712,58 @@
 		    		font-size: 1.3rem;
 		    	}
 			}
+			.view-footer {
+					a.addLinks {
+						font-size: 0;
+
+						&::before {
+							display: inline-block;
+						    content: "";
+						    position: absolute;
+						    width: 25px;
+						    height: 25px;
+						    top: 26px;
+						    right: 0px;
+						    opacity: .6;
+					    	margin: auto 10px auto auto;
+					    	background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -545px -102px;
+					    	background: url(/themes/custom/myusf/images/src/icons.svg) no-repeat -545px -102px;
+
+					    	@include media-breakpoint-down(phone) {
+					    		right: -20px!important;
+					    	}
+						}
+						&:hover::before,
+					    &:focus::before {
+					    	opacity:.8;
+					    }
+					}
+					a.manageLinks {
+						font-size: 0;
+
+						&::before {
+							display: inline-block;
+						    content: "";
+						    position: absolute;
+						    width: 25px;
+						    height: 25px;
+						    top: 25px;
+						    right: 30px;
+						    opacity: .6;
+					    	margin: auto 10px auto auto;
+					    	background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -575px -102px;
+					    	background: url(/themes/custom/myusf/images/src/icons.svg) no-repeat -575px -102px;
+
+					    	@include media-breakpoint-down(phone) {
+					    		right: 25px!important;
+					    	}
+						}
+						&:hover::before,
+					    &:focus::before {
+					    	opacity:.8;
+					    }
+					}				    
+				}
 
 			.table-responsive.col {
 			    max-width: 100%!important;
@@ -912,58 +964,7 @@
 						}
 					}
 				
-				.view-footer {
-					a.addLinks {
-						font-size: 0;
-
-						&::before {
-							display: inline-block;
-						    content: "";
-						    position: absolute;
-						    width: 25px;
-						    height: 25px;
-						    top: -34px;
-						    right: -30px;
-						    opacity: .6;
-					    	margin: auto 10px auto auto;
-					    	background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -545px -102px;
-					    	background: url(/themes/custom/myusf/images/src/icons.svg) no-repeat -545px -102px;
-
-					    	@include media-breakpoint-down(phone) {
-					    		right: -20px!important;
-					    	}
-						}
-						&:hover::before,
-					    &:focus::before {
-					    	opacity:.8;
-					    }
-					}
-					a.manageLinks {
-						font-size: 0;
-
-						&::before {
-							display: inline-block;
-						    content: "";
-						    position: absolute;
-						    width: 25px;
-						    height: 25px;
-						    top: -35px;
-						    right: 0px;
-						    opacity: .6;
-					    	margin: auto 10px auto auto;
-					    	background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -575px -102px;
-					    	background: url(/themes/custom/myusf/images/src/icons.svg) no-repeat -575px -102px;
-
-					    	@include media-breakpoint-down(phone) {
-					    		right: 25px!important;
-					    	}
-						}
-						&:hover::before,
-					    &:focus::before {
-					    	opacity:.8;
-					    }
-					}				    
-				}
+				
 			}
 		}
 	}
