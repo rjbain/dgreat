@@ -60,7 +60,7 @@ function template_preprocess_usf_dashboard(&$variables) {
   // Get blocks.
   $fav_links_block = Block::load('views_block__favorite_links_block');
   $quick_links_block = Block::load('views_block__quick_links_block');
-  //$block = Block::load('dashboardannouncements');
+  $block = Block::load('dashboardannouncements');
 
   // Get the events_slider view.
   //$display_id = 'default';
@@ -81,9 +81,9 @@ function template_preprocess_usf_dashboard(&$variables) {
       ->getViewBuilder('block')
       ->view($quick_links_block, 'full', NULL),
     //"events_slider" => $events_slider->buildRenderable($display_id),
-    //"announcements" => \Drupal::entityTypeManager()
-    //  ->getViewBuilder('block')
-    //  ->view($block, 'full', NULL),
+    "announcements" => \Drupal::entityTypeManager()
+      ->getViewBuilder('block')
+      ->view($block, 'full', NULL),
   ];
 
 }

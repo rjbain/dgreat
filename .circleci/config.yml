@@ -147,10 +147,9 @@ jobs:
             - run:
                 name: run composer install again to get dev dependencies
                 command: composer install
-# @todo make these run well on Circle
-#            - run:
-#                name: run functional tests with Behat
-#                command: ./tests/scripts/run-behat
+            - run:
+                name: run functional tests with Behat
+                command: ./tests/scripts/run-behat
 
             - run:
                 name: post-test actions

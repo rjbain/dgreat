@@ -82,7 +82,7 @@
 					margin-left: 0px;
 					margin-right: 0px; 
 
-					&::-webkit-scrollbar {
+					/*&::-webkit-scrollbar {
 					 	-webkit-appearance: none;
 					}
 					&::-webkit-scrollbar:vertical {
@@ -93,9 +93,9 @@
 					}
 					&::-webkit-scrollbar-thumb {
 					 	border-radius: 8px;
-					 	border: 2px solid transparentize($light_beige, .5); /* should match background, can't be transparent */
+					 	border: 2px solid transparentize($light_beige, .5); 
 					 	background-color: rgba(0, 0, 0, .5);
-					}
+					}*/
 
 					@include media-breakpoint-down(desktop) {
 						margin-right: -15px;
@@ -114,6 +114,17 @@
 						margin-right: 0px; 
 				    }	
 				}
+				::-webkit-scrollbar {
+				    -webkit-appearance: none;
+				    width: 7px;
+				}
+
+				::-webkit-scrollbar-thumb {
+				    border-radius: 4px;
+				    background-color: rgba(0,0,0,.5);
+				    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+				}
+
 				.table-responsive.col {
 					padding-left: 0px;
 					max-width: 100%;
@@ -385,7 +396,7 @@
 					a.seeMyApps {
 						text-decoration:none;
 						top: -40px;
-						margin-left: 5px;
+						margin-left: 2px;
 
 						@include media-breakpoint-down(desktop) {
 
@@ -430,7 +441,7 @@
 				top: 490px;
 			}
 		}
-		.myLinks {
+		.defaultQuickLinks {
 			position:absolute;
 			top:285px;
 			left:0;
@@ -450,7 +461,9 @@
 		    }
 
 			h2 {
-				padding-left:29px;
+				padding-left:25px;
+				color: $turquoise!important; 
+
 				@include media-breakpoint-down(phone) {
 		    		padding-left:24px;
 		    		font-size: 1.3rem;
@@ -461,7 +474,7 @@
 			    max-width: 100%!important;
 			}
 
-			#block-views-block-quick-links-block {
+			#block-views-block-default-quick-links-block {
 				.view-content {
 					height: 210px; /*was 593px */
 					width: 96%;
@@ -469,7 +482,7 @@
 					margin-left: 10px;
 					margin-right: -10px; /*was 0 */
 
-					&::-webkit-scrollbar {
+					/*&::-webkit-scrollbar {
 					 	-webkit-appearance: none;
 					}
 					&::-webkit-scrollbar:vertical {
@@ -480,9 +493,9 @@
 					}
 					&::-webkit-scrollbar-thumb {
 					 	border-radius: 8px;
-					 	border: 2px solid transparentize($light_beige, .5); /* should match background, can't be transparent */
+					 	border: 2px solid transparentize($light_beige, .5); 
 					 	background-color: rgba(0, 0, 0, .5);
-					}					
+					}	*/				
 
 					@include media-breakpoint-down(desktop) {
 				        height: 240px;
@@ -497,6 +510,17 @@
 					    margin-bottom: 10px;
 					}
 				}
+				::-webkit-scrollbar {
+				    -webkit-appearance: none;
+				    width: 7px;
+				}
+
+				::-webkit-scrollbar-thumb {
+				    border-radius: 4px;
+				    background-color: rgba(0,0,0,.5);
+				    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+				}
+
 
 				.table-responsive {
 					padding-left: 0px;
@@ -578,7 +602,7 @@
 							&:nth-child(5) td , &:nth-child(6) td  {
 								position:relative;
 								/*left: -625px;*/
-								left: -205%;
+								left: -204%;
 								top:360px;
 								/*background: $orange;*/
 								
@@ -637,12 +661,219 @@
 									top: 0px;
 								}	
 							}
-
-							&:nth-child(4) td {
-								
+							&:last-child td {
+								padding-bottom: 20px!important;
 							}
-							&:nth-child(5) td {
-								
+						}
+
+						td {
+							padding: 5px 20px!important;
+
+							&:first-of-type { 
+								padding-top: 20px;
+							}
+							&:last-of-type {
+								padding-bottom: 20px;
+							}
+
+							a {
+								font-size: .9rem!important;
+								font-weight: 600;
+								color: $turquoise;
+							}
+						}
+					}
+				
+				.view-footer {
+					a.addLinks {
+						font-size: 0;
+
+						&::before {
+							display: inline-block;
+						    content: "";
+						    position: absolute;
+						    width: 25px;
+						    height: 25px;
+						    top: -27px;
+						    right: 35px;
+						    opacity: .6;
+					    	margin: auto 10px auto auto;
+					    	background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -545px -102px;
+					    	background: url(/themes/custom/myusf/images/src/icons.svg) no-repeat -545px -102px;
+
+					    	@include media-breakpoint-down(phone) {
+					    		right: 15px;
+					    	}
+						}
+						&:hover::before,
+					    &:focus::before {
+					    	opacity:.8;
+					    }
+					}
+					a.manageLinks {
+						font-size: 0;
+
+						&::before {
+							display: inline-block;
+						    content: "";
+						    position: absolute;
+						    width: 25px;
+						    height: 25px;
+						    top: -27px;
+						    right: 70px;
+						    opacity: .6;
+					    	margin: auto 10px auto auto;
+					    	background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -575px -102px;
+					    	background: url(/themes/custom/myusf/images/src/icons.svg) no-repeat -575px -102px;
+
+					    	@include media-breakpoint-down(phone) {
+					    		right: 55px;
+					    	}
+						}
+						&:hover::before,
+					    &:focus::before {
+					    	opacity:.8;
+					    }
+					}				    
+				}
+			}
+		}
+		.myQuickLinks {
+			position:absolute;
+			top:285px;
+			left:62%;
+			height:210px;
+			margin-left: 10px;
+			margin-right: 20px;
+			width: 33%;
+			
+			@include media-breakpoint-down(desktop) {
+
+			}
+
+			@include media-breakpoint-down(tablet) {
+		    	top: 400px;
+		    }
+		    @include media-breakpoint-down(phone) {
+		    	top: 500px;
+		    }
+
+			h2 {
+				padding-left:21px;
+				@include media-breakpoint-down(phone) {
+		    		padding-left:24px;
+		    		font-size: 1.3rem;
+		    	}
+			}
+
+			.table-responsive.col {
+			    max-width: 100%!important;
+			    overflow-x: initial;
+			}
+
+			#block-views-block-quick-links-block {
+				.view-content {
+					height: 200px;
+				    max-height: 175px;
+				    overflow: auto;	
+				    margin-left: 2px;
+					margin-right: -10px; 	
+
+					@include media-breakpoint-down(desktop) {
+				        height: 240px;
+				    }
+					
+					@include media-breakpoint-down(phone) {
+				        height: 112px;
+				        margin-top: -11px;
+				    }
+
+				    .views-row {
+					    margin-bottom: 10px;
+					}
+				}
+			
+				::-webkit-scrollbar {
+				    -webkit-appearance: none;
+				    width: 7px;
+				}
+
+				::-webkit-scrollbar-thumb {
+				    border-radius: 4px;
+				    background-color: rgba(0,0,0,.5);
+				    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+				}
+
+				.table-responsive {
+					padding-left: 0px;
+					@include media-breakpoint-down(tablet) {
+						margin-left: 0px;
+					}
+
+					@include media-breakpoint-down(phone) {
+						margin-left: -10px;
+					}
+				}
+
+				table {
+						display: table;
+						position:absolute;					
+						/*width: 33%!important; */
+
+						@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
+							left: 0;
+							width: 100%!important; 
+							top: 0; 
+						}
+						@supports (-ms-ime-align: auto){ 
+							left: 0;
+							width: 100%!important; 
+							top: 0;
+						}
+
+						@media screen and (min-width: 792px) {
+							
+						}
+						@media screen and (min-width: 908px) {					
+							/*left: 585px; */ 
+						}
+						@media screen and (min-width: 1040px) {
+						    
+						}
+						@media screen and (min-width: 1138px) {
+						   
+						}
+						@media screen and (min-width: 1333px) {
+						    
+						}
+
+						@include media-breakpoint-down(desktop) {
+						    /*left: 460px;*/						   
+				
+						}
+					    @include media-breakpoint-down(tablet) {
+					    	/*left: 475px;*/					    	
+					    }
+					    @include media-breakpoint-down(phone) {
+							width: 100%!important;
+							top: 0;
+							left: 5px;
+							margin-top: -5px;
+						}	
+
+						thead {
+							display: none;
+						}
+						tr {
+
+							td {
+								max-width: 95px;
+							    overflow: hidden;
+							    text-overflow: ellipsis;
+							    white-space: nowrap;
+							}
+							&:first-child td {
+								padding-top: 5px!important;
 							}
 
 							&:last-child td {
