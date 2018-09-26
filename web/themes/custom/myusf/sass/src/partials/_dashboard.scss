@@ -394,6 +394,24 @@
 					    &:focus::before {
 					    	opacity:.8;
 					    }
+
+					    /* IE10+ CSS styles go here */
+						@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
+							font-size:.8rem; 
+							position:absolute;
+							top: -37px;
+							right: 25px;
+							color: $green;
+							text-decoration: underline;
+
+							&::before {
+								display:none;
+							}
+							&:hover::before,
+						    &:focus::before {
+						    	text-decoration:none;
+						    }
+						}
 					}
 
 					a.seeMyApps {
@@ -539,95 +557,95 @@
 				}
 
 				table {
-						display: table;
-						position:absolute;
-						left: 0%;
-						top: -370px; 
+					display: table;
+					position:absolute;
+					left: 0%;
+					top: -370px; 
 
-						@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
-							left: 0;
-							width: 100%!important; 
-							top: 0; 
-						}
-						@supports (-ms-ime-align: auto){ 
-							left: 0;
-							width: 100%!important; 
-							top: 0;
-						}
+					@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
+						left: 0;
+						width: 100%!important; 
+						top: 0; 
+					}
+					@supports (-ms-ime-align: auto){ 
+						left: 0;
+						width: 100%!important; 
+						top: 0;
+					}
 
-						@media screen and (min-width: 792px) {
-							
-						}
-						@media screen and (min-width: 908px) {					
-							/*left: 585px; */ 
-						}
-						@media screen and (min-width: 1040px) {
-						    
-						}
-						@media screen and (min-width: 1138px) {
-						   
-						}
-						@media screen and (min-width: 1333px) {
-						    
-						}
+					@media screen and (min-width: 792px) {
+						
+					}
+					@media screen and (min-width: 908px) {					
+						/*left: 585px; */ 
+					}
+					@media screen and (min-width: 1040px) {
+					    
+					}
+					@media screen and (min-width: 1138px) {
+					   
+					}
+					@media screen and (min-width: 1333px) {
+					    
+					}
 
-						@include media-breakpoint-down(desktop) {
-						    /*left: 460px;*/						   
-				
-						}
-					    @include media-breakpoint-down(tablet) {
-					    	/*left: 475px;*/					    	
-					    }
-					    @include media-breakpoint-down(phone) {
-							width: 270px!important;
-							left: 5px;
-							margin-top: -5px;
-						}	
+					@include media-breakpoint-down(desktop) {
+					    /*left: 460px;*/						   
+			
+					}
+				    @include media-breakpoint-down(tablet) {
+				    	/*left: 475px;*/					    	
+				    }
+				    @include media-breakpoint-down(phone) {
+						width: 270px!important;
+						left: 5px;
+						margin-top: -5px;
+					}	
 
-						thead {
-							display: none;
-						}
-						tr {
-
-							td {
-								max-width: 95px;
-							    overflow: hidden;
-							    text-overflow: ellipsis;
-							}
-							&:first-child td {
-								padding-top: 16px!important;
-							}
-
-							&:last-child td {
-								padding-bottom: 20px!important;
-							}
-						}
+					thead {
+						display: none;
+					}
+					tr {
 
 						td {
-							position: relative;
-    						top: 359px;
+							max-width: 95px;
+						    overflow: hidden;
+						    text-overflow: ellipsis;
+						}
+						&:first-child td {
+							padding-top: 16px!important;
+						}
 
-							padding: 5px 20px!important;
-
-							&:first-of-type { 
-								padding-top: 20px;
-							}
-							&:last-of-type {
-								padding-bottom: 20px;
-							}
-
-							a {
-								font-size: .9rem!important;
-								font-weight: 600;
-								color: $turquoise;
-
-								 @include media-breakpoint-down(phone) {
-								 	white-space: normal;
-								 }
-
-							}
+						&:last-child td {
+							padding-bottom: 20px!important;
 						}
 					}
+
+					td {
+						position: relative;
+						top: 359px;
+
+						padding: 5px 20px!important;
+
+						&:first-of-type { 
+							padding-top: 20px;
+						}
+						&:last-of-type {
+							padding-bottom: 20px;
+						}
+
+						a {
+							font-size: .9rem!important;
+							font-weight: 600;
+							color: $turquoise;
+
+							 @include media-breakpoint-down(phone) {
+							 	white-space: normal;
+							 }
+
+						}
+					}
+				}
 				
 				.view-footer {
 					a.addLinks {
@@ -712,58 +730,6 @@
 		    		font-size: 1.3rem;
 		    	}
 			}
-			.view-footer {
-					a.addLinks {
-						font-size: 0;
-
-						&::before {
-							display: inline-block;
-						    content: "";
-						    position: absolute;
-						    width: 25px;
-						    height: 25px;
-						    top: 26px;
-						    right: 0px;
-						    opacity: .6;
-					    	margin: auto 10px auto auto;
-					    	background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -545px -102px;
-					    	background: url(/themes/custom/myusf/images/src/icons.svg) no-repeat -545px -102px;
-
-					    	@include media-breakpoint-down(phone) {
-					    		right: -20px!important;
-					    	}
-						}
-						&:hover::before,
-					    &:focus::before {
-					    	opacity:.8;
-					    }
-					}
-					a.manageLinks {
-						font-size: 0;
-
-						&::before {
-							display: inline-block;
-						    content: "";
-						    position: absolute;
-						    width: 25px;
-						    height: 25px;
-						    top: 25px;
-						    right: 30px;
-						    opacity: .6;
-					    	margin: auto 10px auto auto;
-					    	background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -575px -102px;
-					    	background: url(/themes/custom/myusf/images/src/icons.svg) no-repeat -575px -102px;
-
-					    	@include media-breakpoint-down(phone) {
-					    		right: 25px!important;
-					    	}
-						}
-						&:hover::before,
-					    &:focus::before {
-					    	opacity:.8;
-					    }
-					}				    
-				}
 
 			.table-responsive.col {
 			    max-width: 100%!important;
@@ -817,58 +783,137 @@
 				}
 
 				table {
-						display: table;
-						position:absolute;					
-						width: 45%; 
-						left: 35%;
-						top: -360px;
+					display: table;
+					position:absolute;					
+					width: 45%; 
+					left: 35%;
+					top: -360px;
+
+
+					/* IE10+ CSS styles go here */
+					@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
+						left: 0;
+						width: 100%!important; 
+						top: 0; 
+					}
+					/* Microsoft Edge Browser 12+ (All) - @supports method */
+					@supports (-ms-ime-align: auto){ 
+						left: 0;
+						width: 100%!important; 
+						top: 0;
+					}
+
+					@media screen and (min-width: 792px) {
+						
+					}
+					@media screen and (min-width: 908px) {					
+						/*left: 585px; */ 
+					}
+					@media screen and (min-width: 1040px) {
+					    
+					}
+					@media screen and (min-width: 1138px) {
+					   
+					}
+					@media screen and (min-width: 1333px) {
+					    
+					}
+
+					@include media-breakpoint-down(desktop) {
+					    /*left: 460px;*/						   
+			
+					}
+				    @include media-breakpoint-down(tablet) {
+				    	/*left: 475px;*/					    	
+				    }
+				    @include media-breakpoint-down(phone) {
+						width: 270px!important;
+						top: 0;
+						left: 12px;
+						margin-top: -5px;
+					}	
+
+					thead {
+						display: none;
+					}
+					tr {
+
+						td {
+							max-width: 95px;
+						    overflow: hidden;
+						    text-overflow: ellipsis;
+						    white-space: nowrap;
+						}
+						&:first-child td {
+							padding-top: 5px!important;
+						}
+
+						&:last-child td {
+							padding-bottom: 20px!important;
+						}
+						&:first-child td , &:nth-child(2) td , &:nth-child(3) td , &:nth-child(4) td , 
+						&:nth-child(5) td , &:nth-child(6) td  {
+							position:relative;
+							left: -78%;
+							top: 360px;
+							
+							@media screen and (min-width: 792px) {
+					    		/*top: 420px!important;*/
+							}
+							@media screen and (min-width: 908px) {
+								
+								/*left: -585px*/
+							}
+							@media screen and (min-width: 1138px) {
+							   /* top: 360px!important;*/
+							}
+							@media screen and (min-width: 1333px) {
+								/*top: 380px!important;*/
+							}
+
+							@include media-breakpoint-down(desktop) {
+					    		/*left: -485px;*/
+					    	
+							}
+						    @include media-breakpoint-down(tablet) {
+						    	/*left: -485px;*/
+						    	
+						    }
+						    @include media-breakpoint-down(phone) {
+								left: 0;
+								top: 0px;
+							}	
+						}
+
+
+						td {
+						 	position:relative;
+							left: 34%;
+							top: 179px;
+
+							@media screen and (min-width: 792px) {
+					    		/*top: 200px!important;*/
+							}
+							@media screen and (min-width: 908px) {
+								/*left: -270px;*/
+							}
+
+							@include media-breakpoint-down(desktop) {
+					    		/*left: -240px;
+					    		top: 200px;*/
+					    		
+							}
+						    @include media-breakpoint-down(tablet) {
+
+						    }
+						    @include media-breakpoint-down(phone) {
+								left: 0;
+								top: 0px;
+							}	
+						}
+
 
 						@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
-							left: 0;
-							width: 100%!important; 
-							top: 0; 
-						}
-						@supports (-ms-ime-align: auto){ 
-							left: 0;
-							width: 100%!important; 
-							top: 0;
-						}
-
-						@media screen and (min-width: 792px) {
-							
-						}
-						@media screen and (min-width: 908px) {					
-							/*left: 585px; */ 
-						}
-						@media screen and (min-width: 1040px) {
-						    
-						}
-						@media screen and (min-width: 1138px) {
-						   
-						}
-						@media screen and (min-width: 1333px) {
-						    
-						}
-
-						@include media-breakpoint-down(desktop) {
-						    /*left: 460px;*/						   
-				
-						}
-					    @include media-breakpoint-down(tablet) {
-					    	/*left: 475px;*/					    	
-					    }
-					    @include media-breakpoint-down(phone) {
-							width: 270px!important;
-							top: 0;
-							left: 12px;
-							margin-top: -5px;
-						}	
-
-						thead {
-							display: none;
-						}
-						tr {
-
 							td {
 								max-width: 95px;
 							    overflow: hidden;
@@ -882,89 +927,143 @@
 							&:last-child td {
 								padding-bottom: 20px!important;
 							}
-							&:first-child td , &:nth-child(2) td , &:nth-child(3) td , &:nth-child(4) td , 
-							&:nth-child(5) td , &:nth-child(6) td  {
-								position:relative;
-								left: -78%;
-								top: 360px;
-								
-								@media screen and (min-width: 792px) {
-						    		/*top: 420px!important;*/
-								}
-								@media screen and (min-width: 908px) {
-									
-									/*left: -585px*/
-								}
-								@media screen and (min-width: 1138px) {
-								   /* top: 360px!important;*/
-								}
-								@media screen and (min-width: 1333px) {
-									/*top: 380px!important;*/
-								}
 
-								@include media-breakpoint-down(desktop) {
-						    		/*left: -485px;*/
-						    	
-								}
-							    @include media-breakpoint-down(tablet) {
-							    	/*left: -485px;*/
-							    	
-							    }
-							    @include media-breakpoint-down(phone) {
-									left: 0;
-									top: 0px;
-								}	
-							}
 							td {
 							 	position:relative;
 								left: 34%;
 								top: 179px;
 
-								@media screen and (min-width: 792px) {
-						    		/*top: 200px!important;*/
-								}
-								@media screen and (min-width: 908px) {
-									/*left: -270px;*/
-								}
-
-								@include media-breakpoint-down(desktop) {
-						    		/*left: -240px;
-						    		top: 200px;*/
-						    		
-								}
-							    @include media-breakpoint-down(tablet) {
-
-							    }
 							    @include media-breakpoint-down(phone) {
 									left: 0;
 									top: 0px;
 								}	
 							}
 						}
-
-						td {
-							padding: 5px 20px!important;
-
-							&:first-of-type { 
-								padding-top: 20px;
+						@supports (-ms-ime-align: auto){ 
+							td {
+								max-width: 95px;
+							    overflow: hidden;
+							    text-overflow: ellipsis;
+							    white-space: nowrap;
 							}
-							&:last-of-type {
-								padding-bottom: 20px;
+							&:first-child td {
+								padding-top: 5px!important;
 							}
 
-							a {
-								font-size: .9rem!important;
-								font-weight: 600;
-								color: $turquoise;
+							&:last-child td {
+								padding-bottom: 20px!important;
+							}
 
-								@include media-breakpoint-down(phone) {
-								 	white-space: normal;
-								 }
+							td {
+							 	position:relative;
+								left: 34%;
+								top: 179px;
+
+							    @include media-breakpoint-down(phone) {
+									left: 0;
+									top: 0px;
+								}	
 							}
 						}
 					}
-				
-				
+
+					td {
+						padding: 5px 20px!important;
+
+						&:first-of-type { 
+							padding-top: 20px;
+						}
+						&:last-of-type {
+							padding-bottom: 20px;
+						}
+
+						a {
+							font-size: .9rem!important;
+							font-weight: 600;
+							color: $turquoise;
+
+							@include media-breakpoint-down(phone) {
+							 	white-space: normal;
+							 }
+						}
+					}
+				}				
+			}
+			.view-footer {
+				a.addLinks {
+					font-size: 0;
+
+					&::before {
+						display: inline-block;
+					    content: "";
+					    position: absolute;
+					    width: 25px;
+					    height: 25px;
+					    top: 26px;
+					    right: 0px;
+					    opacity: .6;
+				    	margin: auto 10px auto auto;
+				    	background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -545px -102px;
+				    	background: url(/themes/custom/myusf/images/src/icons.svg) no-repeat -545px -102px;
+
+				    	@include media-breakpoint-down(phone) {
+				    		right: -20px!important;
+				    	}
+					}
+					&:hover::before,
+				    &:focus::before {
+				    	opacity:.8;
+				    }
+
+				    /* IE10+ CSS styles go here */
+					@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
+						font-size:.8rem; 
+						position:absolute;
+						top: 22px;
+						right: 25px;
+
+						&::before {
+							display:none;
+						}
+					}
+				}
+				a.manageLinks {
+					font-size: 0;
+
+					&::before {
+						display: inline-block;
+					    content: "";
+					    position: absolute;
+					    width: 25px;
+					    height: 25px;
+					    top: 25px;
+					    right: 30px;
+					    opacity: .6;
+				    	margin: auto 10px auto auto;
+				    	background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -575px -102px;
+				    	background: url(/themes/custom/myusf/images/src/icons.svg) no-repeat -575px -102px;
+
+				    	@include media-breakpoint-down(phone) {
+				    		right: 25px!important;
+				    	}
+					}
+					&:hover::before,
+				    &:focus::before {
+				    	opacity:.8;
+				    }
+
+				    /* IE10+ CSS styles go here */
+					@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
+						font-size:.8rem; 
+						position:absolute;
+						top: 52px;
+						right: 25px;
+
+						&::before {
+							display:none;
+						}
+					}
+				}				    
 			}
 		}
 	}
