@@ -7,8 +7,8 @@ Feature: Quick Links
   Scenario: Student see's Add link
     Given I am logged in as a user with the 'student' role
     And I am on "/dashboard"
-    Then I should see the link "Add new Quick Link"
-    And I should see the link "Manage Quick Links"
+    Then I should see the link "Add Links"
+    And I should see the link "Manage Links"
 
   @api
   Scenario: Student can create new Quicklink
