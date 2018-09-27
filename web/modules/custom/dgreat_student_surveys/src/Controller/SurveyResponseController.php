@@ -42,25 +42,34 @@ class SurveyResponseController extends ControllerBase {
    * Format a survey question response
    *
    * @param array $surveys
-   * @param $salesforce_id
+   *
+   * @param array $responses
    *
    * @return array
    */
-  private function buildResponse(array $surveys, $salesforce_id) {
-    return $this->filterSurveysByQuestion($surveys, $salesforce_id)
-                ->map(function ($survey, $key) use ($salesforce_id) {
-                  $submissions = $this->getSubmissionsBySurvey($key);
-                  $question = $this->getQuestion($survey, $salesforce_id);
-                  return [
-                    'question' => $question,
-                    'submissions' => $submissions,
-                  ];
-                })
-                ->flatMap(function ($row) {
-                  return $this->buildDataForRow($row);
-                })->all();
-
-
+  private function buildResponse(array $surveys = [], array $responses = []) {
+    return collect($surveys)->flatMap(function($survey) use ($responses) {
+      $webform = Webform::load($survey);
+      $questions = collect($webform->getElementsDecoded())->map(function($data, $name) {
+        $obj = new \stdClass();
+        $obj->salesforce_id = $data['#salesforce_id'];
+        $obj->question = $name;
+        return $obj;
+      })->flatten();
+      return collect($responses)->flatMap(function($response) use ($questions) {
+        $submission = WebformSubmission::load($response);
+        return $questions->map(function($question) use ($submission) {
+          $obj = new \stdClass();
+          $obj->user = $submission->getOwner()->getUsername();
+          $obj->answer = $submission->getElementData($question->question);
+          $obj->campaignID = $question->salesforce_id;
+          $obj->dateTaken = date("m-d-Y-H.i.s", $submission->getCreatedTime());
+          return $obj;
+        });
+      });
+    })->filter(function($row) {
+      return !empty($row->answer);
+    })->flatten();
   }
 
   /**
