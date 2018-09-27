@@ -14,7 +14,7 @@ Feature: Quick Links
   Scenario: Student can create new Quicklink
     Given I am logged in as a user with the 'student' role
     And I am on "/dashboard"
-    And I click "Add new Quick Link"
+    And I click "Add Links"
     And I fill in "Title" with "Magic"
     And I fill in "URL" with "https://thinktandem.io"
     And I fill in "Body" with "text"
@@ -29,7 +29,7 @@ Feature: Quick Links
       | QL Test user |      1 | quicklinkstest@example.com | student |
     And I am logged in as "QL Test user"
     And I am on "/dashboard"
-    And I click "Add new Quick Link"
+    And I click "Add Links"
     And I fill in "Title" with "Magic"
     And I fill in "URL" with "https://thinktandem.io"
     And I fill in "Body" with "text"
