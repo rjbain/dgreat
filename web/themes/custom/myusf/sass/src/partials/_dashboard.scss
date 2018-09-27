@@ -466,7 +466,7 @@
 			position:absolute;
 			top:285px;
 			left:0;
-			height:210px;
+			height:180px;
 			margin-left: 10px;
 			margin-right: 20px;
 			
@@ -758,6 +758,14 @@
 				    .views-row {
 					    margin-bottom: 10px;
 					}
+					@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
+						width:50%!important;
+					}
+					/* Microsoft Edge Browser 12+ (All) - @supports method */
+					@supports (-ms-ime-align: auto){ 
+						width:50%!important;
+					}
+
 				}
 			
 				::-webkit-scrollbar {
@@ -792,15 +800,15 @@
 
 					/* IE10+ CSS styles go here */
 					@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
-						left: 0;
-						width: 100%!important; 
+						left: 0;						
 						top: 0; 
+						width:70%!important;
 					}
 					/* Microsoft Edge Browser 12+ (All) - @supports method */
 					@supports (-ms-ime-align: auto){ 
 						left: 0;
-						width: 100%!important; 
 						top: 0;
+						width:70%!important;
 					}
 
 					@media screen and (min-width: 792px) {
