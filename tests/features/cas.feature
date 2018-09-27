@@ -3,7 +3,7 @@ Feature: Cas Authentication
   I am able to authenticate using CAS
   So that I may use my university credentials to login
 
-  @api
+#  @api
 #  Scenario: Faculty
 #    Given I am an anonymous user
 #    And I am on "/caslogin"
@@ -12,4 +12,3 @@ Feature: Cas Authentication
 #    Then I should be on the homepage
 #    And I should see the message "You have logged in"
 #    And I am logged in as a user with the "faculty" role
-
