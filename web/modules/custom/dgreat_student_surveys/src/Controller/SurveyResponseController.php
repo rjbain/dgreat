@@ -19,8 +19,8 @@ class SurveyResponseController extends ControllerBase {
    *
    * @return \Symfony\Component\HttpFoundation\JsonResponse
    */
-  public function show($salesforce_id) {
-    if (\Drupal::request()->query->get('api-key') !== getenv('SURVEY_API_KEY')) {
+  public function index() {
+    if (\Drupal::request()->headers->get('x-api-key') !== getenv('SURVEY_API_KEY')) {
       return new JsonResponse('Not Authorized', 403);
     }
     $surveys = \Drupal::entityQuery('webform')
