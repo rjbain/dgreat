@@ -23,10 +23,19 @@ class SurveyResponseController extends ControllerBase {
     if (\Drupal::request()->headers->get('x-api-key') !== getenv('SURVEY_API_KEY')) {
       return new JsonResponse('Not Authorized', 403);
     }
+    $from_date = strtotime(\Drupal::request()->query->get('FromDate'));
+    if (FALSE === $from_date) {
+      return new JsonResponse('Please provide a valid FromDate', 400);
+    }
+
     $surveys = \Drupal::entityQuery('webform')
                       ->condition('category', 'student_survey', '=')
                       ->execute();
-    return new JsonResponse($this->buildResponse($surveys, $salesforce_id));
+    $responses = \Drupal::entityQuery('webform_submission')
+      ->condition('webform_id', $surveys, 'IN')
+      ->condition('created', $from_date, '>')
+      ->execute();
+    return new JsonResponse($this->buildResponse($surveys, $responses), 200);
   }
 
   /**
