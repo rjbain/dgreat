@@ -78,40 +78,40 @@
 				}
 			}
 
+			.table-responsive.col {
+			    max-width: 100%!important;
+			    overflow-x: initial;
+			}
+
 			#block-views-block-favorite-links-block {
 
 				.view-content {
-					height: 200px;
-				    overflow: auto;	
-				    margin-left: 2px;
-					margin-right: -10px; 
-					width:100%;
-
+					height: 195px; 
+					overflow-y: auto;
+					margin-left: 0px;
+					margin-right: 0px; 
 
 					@include media-breakpoint-down(desktop) {
-				        height: 200px;
-				    }
+						margin-right: -15px;
+						height: 200px; 
+					}				
 					
+					@include media-breakpoint-down(tablet) {
+						height: 340px;
+					}
+
 					@include media-breakpoint-down(phone) {
-				        height: 112px;
-				        margin-top: -11px;
-				        width: 283px;
-				    }
-
-				    .views-row {
-					    margin-bottom: 10px;
-					}
-					@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
-						width:50%!important;
-					}
-					/* Microsoft Edge Browser 12+ (All) - @supports method */
-					@supports (-ms-ime-align: auto){ 
-						width:50%!important;
-					}
-
+				        width:100%;
+				        height: 340px;
+				        margin-top: 20px;
+				        margin-left: 0px;
+						margin-right: 0px; 
+				    }	
 				}
+
 				-webkit-overflow-scrolling: auto;
 				
+
 				::-webkit-scrollbar {
 				    -webkit-appearance: none;
 				    width: 7px;
@@ -124,160 +124,216 @@
 				    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 				}
 
-				.table-responsive {
+				.table-responsive.col {
 					padding-left: 0px;
-					@include media-breakpoint-down(tablet) {
-						margin-left: 0px;
-					}
-
-					@include media-breakpoint-down(phone) {
-						margin-left: -10px;
-					}
+					max-width: 100%;
 				}
-
+			
 				table {
-					display: table;
-					position:absolute;					
-					width: 45%; 
-					left: 35%;
-					top: -360px;
+					display:table;
+					position:absolute;
+					/*left: 620px;
+					width:200px;*/
+					width:33%;
+					left:66.3%;
+					height:140px;
 
-
-					/* IE10+ CSS styles go here */
-					@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
-						left: 0;						
-						top: 0; 
-						width:70%!important;
-					}
-					/* Microsoft Edge Browser 12+ (All) - @supports method */
-					@supports (-ms-ime-align: auto){ 
-						left: 0;
-						top: 0;
-						width:70%!important;
+					@media screen and (min-width: 1060px) {
+						/*width: 200px!important;*/
 					}
 
-				    @include media-breakpoint-down(phone) {
-						width: 270px!important;
-						top: 0;
-						left: 12px;
-						margin-top: -5px;
-					}	
+					@include media-breakpoint-down(desktop) {
+				    	/*left: 485px;
+				    	width: 180px;*/
+					}
+				    @include media-breakpoint-down(tablet) {
+						left: 320px;
+    					/*width: 300px;*/
+    					width:50%;
+    					margin-top: 10px;
+					}
+					@include media-breakpoint-down(phone) {
+					 	left: 0px;
+					    width: 86%;
+					    margin-top: 0;
+					    margin-left: 20px;
+					    border-spacing: 0 10px;
+					    border-collapse: separate;
+					}
 
 					thead {
 						display: none;
 					}
+					
 					tr {
+						&:first-child td, &:nth-child(2) td, &:nth-child(3) td, &:nth-child(4) td {
+							position: absolute;
+						    width: 130px;
+						    height: 130px;
+						    margin: 0px;
+						    top: 0;
+						    padding:10px!important;
+						    text-align:center!important;
+							line-height: 115px;
+							margin-left: 0;
 
-						td {
-							max-width: 95px;
-						    overflow: hidden;
-						    text-overflow: ellipsis;
-						    white-space: nowrap;
-						}
-						&:first-child td {
-							padding-top: 5px!important;
-						}
-
-						&:last-child td {
-							padding-bottom: 20px!important;
-						}
-						&:first-child td , &:nth-child(2) td , &:nth-child(3) td , &:nth-child(4) td , 
-						&:nth-child(5) td , &:nth-child(6) td  {
-							position:relative;
-							left: -78%;
-							top: 360px;
+							@media screen and (min-width: 1090px) {
+								width: 120px!important;
+						    	height: 120px!important;
+						    	line-height: 100px;
+							}
+							@media screen and (min-width: 1300px) {
+								width: 140px!important;
+    							height: 140px!important;
+    							line-height: 125px!important;
+							}
 							
+							@include media-breakpoint-up(desktop) {
+						    	width: 110px;
+						    	height: 110px;
+						    	line-height: 90px;
+							}
+						    @include media-breakpoint-down(tablet) {
+								width: 130px;
+						    	height: 130px;
+						    	line-height: 105px;
+							}
+							@include media-breakpoint-down(phone) {
+							 	position: unset;
+							 	width: 100%;
+						    	height: 50px!important;
+						    	line-height: unset;
+						    	margin-top: 20px;
+							}
+
+						    a {
+						    	color:$white;
+						    	font-size:.85rem!important;
+						    	line-height: 1.2rem!important;
+						    	text-transform: uppercase!important;
+						    	display: inline-block;
+								vertical-align: middle;
+								
+
+								@include media-breakpoint-down(desktop) {
+				    				font-size:.85rem!important;
+								}
+								@include media-breakpoint-down(phone) {
+									padding: 5px 10px!important;
+								}
+
+						    	&:hover,
+								&:focus {
+									text-decoration: underline;
+									color: $white!important;
+									background: transparent;
+								}
+						    }
+						}
+
+						&:first-child td {						
+						    background: $olive;
+						    left: -201%;
+						    margin-top:0px;
+
+						    @include media-breakpoint-up(large_desktop) {
+						    	left: -201%!important;
+							}
+						    @include media-breakpoint-down(tablet) {
+						    	left: -320px!important;
+						    	/*left: -201%!important;*/
+						    	margin-top: 0px;
+						    }
 						    @include media-breakpoint-down(phone) {
-								left: 0;
-								top: 0px;
+								left:0!important;
+								top:0;
+							}					    
+						}
+
+						&:nth-child(2) td {
+						    background: $plum;
+						    /*left: -470px;*/
+						    left: -150%;
+						    margin-top:0px;
+
+						    @include media-breakpoint-down(large_desktop) {
+						    	left: -150%!important;
+							}
+						    @include media-breakpoint-down(tablet) {
+						    	left: -170px!important;
+						    	margin-top: 0px;
+						    }
+						    @include media-breakpoint-down(phone) {
+								left:0!important;
+								top:0;
 							}	
 						}
 
+						&:nth-child(3) td {
+						    background: $turquoise;
+						    /*left: -320px;*/
+						    left: -99%;
+						    margin-top:0px;
+
+						    @include media-breakpoint-down(large_desktop) {
+						    	left: -99%!important;
+							}
+						    @include media-breakpoint-down(tablet) {
+						    	left: -320px!important;
+						    	/*left: -201%!important;*/
+    							top: 150px;
+						    }
+						    @include media-breakpoint-down(phone) {
+								left:0!important;
+								top:0;
+							}	
+						}
+						&:nth-child(4) td {
+						    background: $orange;
+						    /*left: -170px;*/
+						    left: -48%;
+						    margin-top:0px;
+
+						    @include media-breakpoint-down(large_desktop) {
+						    	left: -48%!important;
+							}
+
+						    @include media-breakpoint-down(tablet) {
+						    	left: -170px!important;
+    							top: 150px;
+						    }
+						    @include media-breakpoint-down(phone) {
+								left:0!important;
+								top:0;
+							}	
+						}
+						
+						&:nth-child(5) td {
+							@include media-breakpoint-down(phone) {
+							    padding-top: 10px!important;    
+							}
+						}
+						&:last-child td {
+							padding-bottom: 12px!important;
+						}
 
 						td {
-						 	position:relative;
-							left: 34%;
-							top: 179px;
+							line-height: 1rem;
+							padding: 5px 20px!important;
 
-						    @include media-breakpoint-down(phone) {
-								left: 0;
-								top: 0px;
-							}	
-						}
-
-
-						@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
-							td {
-								max-width: 95px;
-							    overflow: hidden;
-							    text-overflow: ellipsis;
-							    white-space: nowrap;
-							}
-							&:first-child td {
-								padding-top: 5px!important;
+							@include media-breakpoint-down(phone) {  
+							    padding-left: 0px!important; 
 							}
 
-							&:last-child td {
-								padding-bottom: 20px!important;
-							}
-
-							td {
-							 	position:relative;
-								left: 34%;
-								top: 179px;
-
-							    @include media-breakpoint-down(phone) {
-									left: 0;
-									top: 0px;
-								}	
-							}
-						}
-						@supports (-ms-ime-align: auto){ 
-							td {
-								max-width: 95px;
-							    overflow: hidden;
-							    text-overflow: ellipsis;
-							    white-space: nowrap;
-							}
-							&:first-child td {
-								padding-top: 5px!important;
-							}
-
-							&:last-child td {
-								padding-bottom: 20px!important;
-							}
-
-							td {
-							 	position:relative;
-								left: 34%;
-								top: 179px;
-
-							    @include media-breakpoint-down(phone) {
-									left: 0;
-									top: 0px;
-								}	
-							}
-						}
-					}
-
-					td {
-						padding: 5px 20px!important;
-
-						&:first-of-type { 
-							padding-top: 20px;
-						}
-						&:last-of-type {
-							padding-bottom: 20px;
-						}
-
-						a {
-							font-size: .9rem!important;
-							font-weight: 600;
-							color: $turquoise;
-
-							@include media-breakpoint-down(phone) {
-							 	white-space: normal;
+							 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+							 	padding-bottom: 0px;
 							 }
+
+							a {
+								font-size: .9rem!important;
+								font-weight: 600;
+								color: $plum;
+							}
 						}
 					}
 				} 
@@ -396,16 +452,16 @@
 
 			.table-responsive.col {
 			    max-width: 100%!important;
+			    overflow-x: initial;
 			}
 
 			#block-views-block-default-quick-links-block {
 				.view-content {
-					height: 200px;
-				    overflow: auto;	
-				    margin-left: 2px;
-					margin-right: -10px; 
-					width:100%;
-
+					height: 200px; 
+					width: 30%;
+					overflow-y: auto;
+					margin-left: 10px;
+					margin-right: -10px; 		
 
 					@include media-breakpoint-down(desktop) {
 				        height: 200px;
@@ -414,29 +470,21 @@
 					@include media-breakpoint-down(phone) {
 				        height: 112px;
 				        margin-top: -11px;
-				        width: 283px;
+				        width:  92%
 				    }
 
 				    .views-row {
 					    margin-bottom: 10px;
 					}
-					@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
-						width:50%!important;
-					}
-					/* Microsoft Edge Browser 12+ (All) - @supports method */
-					@supports (-ms-ime-align: auto){ 
-						width:50%!important;
-					}
-
 				}
+
 				-webkit-overflow-scrolling: auto;
-				
+
 				::-webkit-scrollbar {
 				    -webkit-appearance: none;
 				    width: 7px;
     				height: 7px;
 				}
-
 				::-webkit-scrollbar-thumb {
 				    border-radius: 4px;
 				    background-color: rgba(0,0,0,.5);
@@ -456,29 +504,24 @@
 
 				table {
 					display: table;
-					position:absolute;					
-					width: 45%; 
-					left: 35%;
-					top: -360px;
+					position:absolute;
+					left: 0%;
+					top: -370px; 
 
-
-					/* IE10+ CSS styles go here */
 					@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
-						left: 0;						
+						left: 0;
+						width: 100%!important; 
 						top: 0; 
-						width:70%!important;
 					}
-					/* Microsoft Edge Browser 12+ (All) - @supports method */
 					@supports (-ms-ime-align: auto){ 
 						left: 0;
+						width: 100%!important; 
 						top: 0;
-						width:70%!important;
 					}
 
 				    @include media-breakpoint-down(phone) {
 						width: 270px!important;
-						top: 0;
-						left: 12px;
+						left: 5px;
 						margin-top: -5px;
 					}	
 
@@ -491,95 +534,20 @@
 							max-width: 95px;
 						    overflow: hidden;
 						    text-overflow: ellipsis;
-						    white-space: nowrap;
 						}
 						&:first-child td {
-							padding-top: 5px!important;
+							padding-top: 16px!important;
 						}
 
 						&:last-child td {
 							padding-bottom: 20px!important;
 						}
-						&:first-child td , &:nth-child(2) td , &:nth-child(3) td , &:nth-child(4) td , 
-						&:nth-child(5) td , &:nth-child(6) td  {
-							position:relative;
-							left: -78%;
-							top: 360px;
-							
-						    @include media-breakpoint-down(phone) {
-								left: 0;
-								top: 0px;
-							}	
-						}
-
-
-						td {
-						 	position:relative;
-							left: 34%;
-							top: 179px;
-
-						    @include media-breakpoint-down(phone) {
-								left: 0;
-								top: 0px;
-							}	
-						}
-
-
-						@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
-							td {
-								max-width: 95px;
-							    overflow: hidden;
-							    text-overflow: ellipsis;
-							    white-space: nowrap;
-							}
-							&:first-child td {
-								padding-top: 5px!important;
-							}
-
-							&:last-child td {
-								padding-bottom: 20px!important;
-							}
-
-							td {
-							 	position:relative;
-								left: 34%;
-								top: 179px;
-
-							    @include media-breakpoint-down(phone) {
-									left: 0;
-									top: 0px;
-								}	
-							}
-						}
-						@supports (-ms-ime-align: auto){ 
-							td {
-								max-width: 95px;
-							    overflow: hidden;
-							    text-overflow: ellipsis;
-							    white-space: nowrap;
-							}
-							&:first-child td {
-								padding-top: 5px!important;
-							}
-
-							&:last-child td {
-								padding-bottom: 20px!important;
-							}
-
-							td {
-							 	position:relative;
-								left: 34%;
-								top: 179px;
-
-							    @include media-breakpoint-down(phone) {
-									left: 0;
-									top: 0px;
-								}	
-							}
-						}
 					}
 
 					td {
+						position: relative;
+						top: 359px;
+
 						padding: 5px 20px!important;
 
 						&:first-of-type { 
@@ -594,9 +562,10 @@
 							font-weight: 600;
 							color: $turquoise;
 
-							@include media-breakpoint-down(phone) {
+							 @include media-breakpoint-down(phone) {
 							 	white-space: normal;
 							 }
+
 						}
 					}
 				}
