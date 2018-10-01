@@ -180,10 +180,17 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
     $field_name = $form_state->getValue('views_field');
     $rows = $form_state->getValue($field_name);
 
+    $uid = $this->currentUser->id();
+
+    // If we don't have any rows
+    if (!isset($rows[0])) {
+      return;
+    }
+
     foreach ($rows as $row) {
       $entity = $row['entity'];
+
       $nid = $entity->get('entity_id')->getValue();
-      $uid = $this->currentUser->id();
 
       if (isset($nid[0]["target_id"])) {
         $check = $this->db->select('user_weights', 'u')
