@@ -180,6 +180,9 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
     $field_name = $form_state->getValue('views_field');
     $rows = $form_state->getValue($field_name);
 
+    // We need to use the post weights because the ajax on the flagging fields causes weird things to happen.
+    $weight = $_POST["field_weight"];
+
     $uid = $this->currentUser->id();
 
     // If we don't have any rows
@@ -187,6 +190,7 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
       return;
     }
 
+    $i = 0;
     foreach ($rows as $row) {
       $entity = $row['entity'];
 
@@ -207,7 +211,7 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
             ->fields([
               'entity_id' => $nid[0]["target_id"],
               'uid' => $uid,
-              'weight' => $row['weight'],
+              'weight' => isset($weight[$i]["weight"]) ? $weight[$i]["weight"] : $row['weight'],
               'view_name' => $this->view->id(),
             ])
             ->execute();
@@ -221,13 +225,15 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
             ->fields([
               'entity_id' => $nid[0]["target_id"],
               'uid' => $uid,
-              'weight' => $row['weight'],
+              'weight' => isset($weight[$i]["weight"]) ? $weight[$i]["weight"] : $row['weight'],
               'view_name' => $this->view->id(),
             ])
             ->execute();
         }
 
       }
+
+      $i++;
     }
   }
 
