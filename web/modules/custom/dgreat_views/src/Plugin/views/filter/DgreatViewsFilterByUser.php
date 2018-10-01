@@ -100,19 +100,6 @@ class DgreatViewsFilterByUser extends FilterPluginBase implements ContainerFacto
     $gids = array_unique($gids);
 
     $query = $this->db
-      ->select('group__field_default_quick_links', 'g')
-      ->fields('g', ['field_default_quick_links_target_id'])
-      ->condition('entity_id', $gids, 'IN');
-
-    // Loop through and grab our content ids.
-    foreach ($query->execute()->fetchAll() as $result) {
-      $nids[] = $result->field_default_quick_links_target_id;
-    }
-
-    // Remove duplicates.
-    $nids = array_unique($nids);
-
-    $query = $this->db
       ->select('node_field_data', 'n')
       ->fields('n', ['nid'])
       ->condition('type', 'favorite_link')
