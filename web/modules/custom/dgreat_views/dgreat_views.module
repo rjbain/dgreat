@@ -407,6 +407,8 @@ function _dgreat_views_adjust_flag_entities($entity) {
   $nid = $entity->get('entity_id')->getValue();
   $uid = $entity->get('uid')->getValue();
 
+  \Drupal::state()->set('flagged_fav', TRUE);
+
   if (isset($nid[0]["value"]) && isset($uid[0]["target_id"])) {
 
     // Need to use the $_GET params here since we are within the flagging
@@ -418,12 +420,13 @@ function _dgreat_views_adjust_flag_entities($entity) {
 
       $view_get = explode('.', $route_name);
       $name = isset($view_get[1]) ? $view_get[1] : '';
+      $display = isset($view_get[2]) ? $view_get[2] : '';
 
       if (!empty($name)) {
         $db = \Drupal::database();
-        $check = $db
+        $weight = $db
           ->select('user_weights', 'u')
-          ->fields('u', ['entity_id'])
+          ->fields('u', ['weight'])
           ->condition('uid', $uid[0]["target_id"])
           ->condition('entity_id', $nid[0]["value"])
           ->condition('view_name', $name)
@@ -432,23 +435,24 @@ function _dgreat_views_adjust_flag_entities($entity) {
 
         // Grab the new weight.
         $sql = "SELECT MAX(weight) FROM {user_weights} WHERE uid = :uid";
-        $weight = $db
+        $new_weight = $db
           ->query($sql, [':uid' => $uid[0]["target_id"]])
           ->fetchField();
 
-        if ($check === FALSE) {
+        if ($weight === FALSE) {
           // Insert new item in weights table.
           $db->insert('user_weights')
             ->fields([
               'entity_id' => $nid[0]["value"],
               'uid' => $uid[0]["target_id"],
               'view_name' => $name,
-              'weight' => $weight + 1,
+              'weight' => $new_weight + 1,
             ])
             ->execute();
         }
         else {
           // Update the weights table.
+          $exist_weight = ($display === 'all_apps') ? $weight : $new_weight + 1;
           $db->update('user_weights')
             ->condition('uid', $uid[0]["target_id"])
             ->condition('entity_id', $nid[0]["value"])
@@ -457,7 +461,7 @@ function _dgreat_views_adjust_flag_entities($entity) {
               'entity_id' => $nid[0]["value"],
               'uid' => $uid[0]["target_id"],
               'view_name' => $name,
-              'weight' => $weight + 1,
+              'weight' => $exist_weight,
             ])
             ->execute();
         }
