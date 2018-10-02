@@ -181,7 +181,7 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
     $rows = $form_state->getValue($field_name);
 
     // We need to use the post weights because the ajax on the flagging fields causes weird things to happen.
-    $weight = $_POST["field_weight"];
+    $flagged = \Drupal::state()->get('flagged_fav', FALSE);
 
     $uid = $this->currentUser->id();
 
@@ -190,7 +190,7 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
       return;
     }
 
-    $i = 0;
+    $i = -1000;
     foreach ($rows as $row) {
       $entity = $row['entity'];
 
@@ -211,7 +211,7 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
             ->fields([
               'entity_id' => $nid[0]["target_id"],
               'uid' => $uid,
-              'weight' => isset($weight[$i]["weight"]) ? $weight[$i]["weight"] : $row['weight'],
+              'weight' => $flagged ? $i : $row['weight'],
               'view_name' => $this->view->id(),
             ])
             ->execute();
@@ -225,7 +225,7 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
             ->fields([
               'entity_id' => $nid[0]["target_id"],
               'uid' => $uid,
-              'weight' => isset($weight[$i]["weight"]) ? $weight[$i]["weight"] : $row['weight'],
+              'weight' => $flagged ? $i : $row['weight'],
               'view_name' => $this->view->id(),
             ])
             ->execute();
@@ -235,6 +235,8 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
 
       $i++;
     }
+
+    \Drupal::state()->set('flagged_fav', FALSE);
   }
 
 }
