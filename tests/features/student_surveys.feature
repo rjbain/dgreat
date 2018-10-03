@@ -12,6 +12,19 @@ Feature: Student Surveys
     Then I should see "How Awesome is Dustin?"
 
   @api @javascript
+  Scenario: Student skips a survey
+    Given users:
+      | name         | status | mail               | roles   | cas_username |
+      | SS Test User |      1 | sstest@example.com | student | sstest       |
+    And I am logged in as "SS Test User"
+    And "SS Test User" is selected for the current survey
+    And there is a "test_student_survey" student survey block
+    And I am on "/"
+    And I click "Skip"
+    And I am on "/dashboard"
+    Then I should not see "Test Student Survey"
+
+  @api @javascript
   Scenario: Student Completes a Survey
     Given users:
       | name         | status | mail               | roles   | cas_username |

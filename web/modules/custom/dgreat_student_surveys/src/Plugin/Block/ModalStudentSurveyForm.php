@@ -40,21 +40,26 @@ class ModalStudentSurveyForm extends BlockBase {
   public function build() {
     $config = $this->getConfiguration();
     $form = Webform::load($config['survey']);
-    $view_builder = \Drupal::entityTypeManager()->getViewBuilder('webform');
-    $pre_render = $view_builder->view($form);
-    $elements = collect($pre_render['elements'])->filter(function($element, $key) {
-      return mb_strpos($key, '#') !== 0;
-    })->all();
-    $keep = array_rand($elements);
-    $filtered_elements = collect($pre_render['elements'])->filter(function($element, $key) use ($keep) {
-      return $key === $keep || mb_strpos($key, '#') === 0;
-    })->all();
-    $pre_render['elements'] = $filtered_elements;
+    $label = '';
+    $pre_render = [];
+    if (NULL !== $form) {
+      $label = $form->label();
+      $view_builder = \Drupal::entityTypeManager()->getViewBuilder('webform');
+      $pre_render = $view_builder->view($form);
+      $elements = collect($pre_render['elements'])->filter(function($element, $key) {
+        return mb_strpos($key, '#') !== 0;
+      })->all();
+      $keep = array_rand($elements);
+      $filtered_elements = collect($pre_render['elements'])->filter(function($element, $key) use ($keep) {
+        return $key === $keep || mb_strpos($key, '#') === 0;
+      })->all();
+      $pre_render['elements'] = $filtered_elements;
+
+    }
 
     $this->session->set('student_surveys_has_seen_recently', TRUE);
-
     return [
-      '#label' => $form->label(),
+      '#label' => $label,
       '#content' => $pre_render,
       '#theme' => 'dgreat_modal_webforms',
       '#attached' => [
@@ -88,6 +93,7 @@ class ModalStudentSurveyForm extends BlockBase {
       '#description' => $this->t('The survey that should be displayed'),
       '#type' => 'select',
       '#options' => $webforms,
+      '#default_value' => $this->getConfiguration()['survey'],
     ];
 
     return $form;
@@ -97,8 +103,8 @@ class ModalStudentSurveyForm extends BlockBase {
    * {@inheritdoc}
    */
   public function blockSubmit($form, FormStateInterface $form_state) {
+    parent::blockSubmit($form, $form_state);
     $this->configuration['survey'] = $form_state->getValue('survey');
-    return parent::blockSubmit($form, $form_state);
   }
 
   /**
@@ -169,7 +175,6 @@ class ModalStudentSurveyForm extends BlockBase {
    * @return bool
    */
   private function sawRecently() {
-    return FALSE;
     return $this->session->get('student_surveys_has_seen_recently');
   }
 }
