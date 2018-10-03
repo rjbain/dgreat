@@ -259,7 +259,7 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
 
     // Reset or Drupal state and cookie.
     \Drupal::state()->set('flagged_fav', FALSE);
-    if (isset($_COOKIE['ids'])) {
+    if (isset($_COOKIE['STYXKEY_ids'])) {
       setcookie('STYXKEY_ids', NULL, -1, '/');
     }
   }
