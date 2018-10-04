@@ -118,7 +118,10 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
       '#tree' => TRUE,
     ];
 
-    $options = WeightSelectorWidget::rangeOptions($this->options['range']);
+    if (isset($_COOKIE['STYXKEY_ids'])) {
+      setcookie('STYXKEY_ids', NULL, -1, '/');
+    }
+
 
     $results = $this->db->select('user_weights', 'u')
       ->fields('u', ['weight', 'entity_id'])
@@ -132,6 +135,16 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
       $result[$r->entity_id] = $r->weight;
     }
 
+    // Adjust options to user_weights ranges if need be.
+    if (!empty($results)) {
+      $min = min($results);
+      $max = max($results);
+      $range = range($min->weight, $max->weight);
+      $options = array_combine($range, $range);
+    }
+    else {
+      $options = WeightSelectorWidget::rangeOptions($this->options['range']);
+    }
 
     // At this point, the query has already been run, so we can access the results.
     foreach ($this->view->result as $row_index => $row) {
@@ -162,8 +175,6 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
         ];
       }
 
-
-
       $form[$this->options['id']][$row_index]['entity'] = [
         '#type' => 'value',
         '#value' => $entity,
@@ -181,7 +192,7 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
 
     // Set our cookie to be used to grab values.
     if (!empty($values)) {
-      setcookie('STYXKEY_ids', json_encode($values), time()+60, '/');
+      setcookie('STYXKEY_ids', json_encode($values), time()+360, '/');
     }
   }
 
@@ -205,7 +216,6 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
       $nid = $entity->get('entity_id')->getValue();
 
       if (isset($nid[0]["target_id"])) {
-
         // If this is flagged, use the cookie's weight.
         // This is due to the flagging JS borking the form_state.
         if (\Drupal::state()->get('flagged_fav', FALSE)) {
