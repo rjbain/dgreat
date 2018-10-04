@@ -49,5 +49,63 @@ function dgreat_nodes_form_alter(&$form, FormStateInterface $form_state, $form_i
       $form['field_top_quick_link']['#access'] = FALSE;
       $form['field_group_audience']['#access'] = FALSE;
     }
+    // custom submit handler
+    $form['actions']['submit']['#submit'][] = 'dgreat_nodes_node_form_submit';
+  }
+
+}
+
+/**
+ * Custom submit handler.
+ */
+function dgreat_nodes_node_form_submit($form, FormStateInterface $form_state) {
+  $node = $form_state->getFormObject()->getEntity();
+
+  $link = $node->get('field_link_type')->getValue();
+
+  // If on quick links add the new node to the db.
+  if (isset($link[0]["value"]) && $link[0]["value"] === 'quick') {
+    $uid = \Drupal::currentUser()->id();
+
+    $db = \Drupal::database();
+    $check = $db
+      ->select('user_weights', 'u')
+      ->fields('u', ['entity_id'])
+      ->condition('uid', $uid)
+      ->condition('entity_id', $node->id())
+      ->condition('view_name', 'quick_links')
+      ->execute()
+      ->fetchField();
+
+    // Grab the new weight.
+    $sql = "SELECT MAX(weight) FROM {user_weights} WHERE uid = :uid";
+    $weight = $db
+      ->query($sql, [':uid' => $uid])->fetchField();
+
+    if ($check === FALSE) {
+      // Insert new item in weights table.
+      $db->insert('user_weights')
+        ->fields([
+          'entity_id' => $node->id(),
+          'uid' => $uid,
+          'view_name' => 'quick_links',
+          'weight' => $weight + 1,
+        ])
+        ->execute();
+    }
+    else {
+      // Update the weights table.
+      $db->update('user_weights')
+        ->condition('uid', $uid)
+        ->condition('entity_id', $node->id())
+        ->condition('view_name', 'quick_links')
+        ->fields([
+          'entity_id' => $node->id(),
+          'uid' => $uid,
+          'view_name' => 'quick_links',
+          'weight' => $weight + 1,
+        ])
+        ->execute();
+    }
   }
 }
