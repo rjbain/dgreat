@@ -93,7 +93,8 @@ class ModalStudentSurveyForm extends BlockBase {
       '#description' => $this->t('The survey that should be displayed'),
       '#type' => 'select',
       '#options' => $webforms,
-      '#default_value' => $this->getConfiguration()['survey'],
+      '#default_value' => isset($this->getConfiguration()['survey']) ?
+        $this->getConfiguration()['survey'] : NULL,
     ];
 
     return $form;
@@ -103,8 +104,8 @@ class ModalStudentSurveyForm extends BlockBase {
    * {@inheritdoc}
    */
   public function blockSubmit($form, FormStateInterface $form_state) {
-    parent::blockSubmit($form, $form_state);
     $this->configuration['survey'] = $form_state->getValue('survey');
+    parent::blockSubmit($form, $form_state);
   }
 
   /**
