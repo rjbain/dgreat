@@ -233,12 +233,13 @@
 
 						&:first-child td {						
 						    background: $olive;
-						    left: -201%;
+						    left: -200%;
 						    margin-top:0px;
 
-						    @include media-breakpoint-up(large_desktop) {
-						    	left: -201%!important;
-							}
+
+						   /* @include media-breakpoint-up(large_desktop) {
+						    	left: -200%!important;
+							}*/
 						    @include media-breakpoint-down(tablet) {
 						    	left: -320px!important;
 						    	/*left: -201%!important;*/
@@ -247,13 +248,28 @@
 						    @include media-breakpoint-down(phone) {
 								left:0!important;
 								top:0;
-							}					    
+							}
+
+							/*Safari only */
+							@media not all and (min-resolution:.001dpcm){ 
+								left: -202%!important;
+
+								@supports (-webkit-appearance:none) {
+							        @include media-breakpoint-up(large_desktop) {
+						    			left: -202%!important;
+									}
+									@include media-breakpoint-down(tablet) {
+								    	left: -320px!important;
+								    }
+								}
+							}			
 						}
+
 
 						&:nth-child(2) td {
 						    background: $plum;
 						    /*left: -470px;*/
-						    left: -150%;
+						    left: -149.5%;
 						    margin-top:0px;
 
 						    @include media-breakpoint-down(large_desktop) {
