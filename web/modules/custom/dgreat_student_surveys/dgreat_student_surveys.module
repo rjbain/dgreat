@@ -7,6 +7,7 @@
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\webform\WebformSubmissionInterface;
 
 /**
  * Implements hook_help().
@@ -59,3 +60,17 @@ function dgreat_student_surveys_webform_third_party_settings_form_alter(
   return $form;
 }
 
+/**
+ * Implements hook_ENTITY_TYPE_prepare_form().
+ */
+function dgreat_student_surveys_webform_submission_prepare_form(WebformSubmissionInterface $entity, $operation, FormStateInterface $form_state) {
+  $webform = $entity->getWebform();
+  $elements = collect($webform->getElementsDecoded())->filter(function($element, $key) {
+    return mb_strpos($key, '#') !== 0;
+  })->all();
+  $keep = array_rand($elements);
+  $filtered_elements = collect($webform->getElementsDecoded())->filter(function($element, $key) use ($keep) {
+    return $key === $keep || mb_strpos($key, '#') === 0;
+  })->all();
+  $webform->setElements($filtered_elements);
+}
