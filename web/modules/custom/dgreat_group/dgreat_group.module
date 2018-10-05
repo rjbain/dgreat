@@ -80,18 +80,7 @@ function dgreat_group_user_login($account) {
  * Adds a user to the respective group identified.
  */
 function dgreat_group_user_insert(EntityInterface $entity) {
-  $add = (new DgreatGroup($entity))->addUserToGroup('field_user_group');
-  // $add = (new DgreatGroup($entity))->flagUserDefaultContent('field_user_group');
-}
-
-/**
- * Implements hook_ENTITY_TYPE_update().
- *
- * Adds a user to the respective group identified.
- */
-function dgreat_group_user_update(EntityInterface $entity) {
-  $add = (new DgreatGroup($entity))->addUserToGroup('field_user_group');
-  $add = (new DgreatGroup($entity))->flagUserDefaultContent('field_user_group');
+  return (new DgreatGroup($entity))->addUserToGroup('field_user_group');
 }
 
 /**

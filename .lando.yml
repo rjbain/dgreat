@@ -14,13 +14,9 @@ services:
       services:
         environment:
             BEHAT_PARAMS: >-
-              {
-                  "extensions" : {
-                      "Behat\\MinkExtension" : {
-                          "base_url" : "http://nginx/"
-                      }
-                  }
-              }
+              {"extensions" : {"Behat\\MinkExtension" : {"base_url" :
+              "http://nginx/"}, "Drupal\\DrupalExtension" : {"drush" :   {
+              "root":  "/app/web" }}}}
   node:
     type: node:6.10
     build:
@@ -42,9 +38,7 @@ tooling:
       - test
   drush:
     service: appserver
-    cmd:
-      - drush
-      - --uri=https://dgreat.lndo.site
+    cmd: drush --uri=https://dgreat.lndo.site
   drupal:
     service: appserver
     cmd: /app/vendor/bin/drupal
