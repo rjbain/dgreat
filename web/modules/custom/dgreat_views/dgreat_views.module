@@ -78,11 +78,11 @@ function dgreat_views_views_data_alter(array &$data) {
     ],
   ];
 
-  $desc = t('Filters Quick Links based off of user and excludes defaults.');
+  $desc = t('Filters Quick Links based off of user.');
   $data['node_field_data']['user_filter'] = [
-    'title' => t('Filter by User + Default'),
+    'title' => t('Filter by User'),
     'filter' => [
-      'title' => t('Filter by User + Default'),
+      'title' => t('Filter by User'),
       'help' => $desc,
       'field' => 'nid',
       'id' => 'dgreat_views_filter_by_user'
@@ -406,6 +406,8 @@ function _dgreat_views_adjust_flag_entities($entity) {
   // Adds items from user_weights after flagging.
   $nid = $entity->get('entity_id')->getValue();
   $uid = $entity->get('uid')->getValue();
+
+  \Drupal::state()->set('flagged_fav', TRUE);
 
   if (isset($nid[0]["value"]) && isset($uid[0]["target_id"])) {
 

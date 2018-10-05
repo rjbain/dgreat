@@ -12,7 +12,7 @@ use Drupal\user\Entity\User;
 class DgreatGroup {
 
   /**
-   * @var object
+   * @var User
    */
   protected $entity;
 
@@ -68,7 +68,7 @@ class DgreatGroup {
    * @param $field
    *   The field we are using as a reference for the group.
    *
-   * @return bool
+   * @return $this
    */
   public function addUserToGroup($field) {
     $group_ids = $this->entity->get($field)->getValue();
@@ -86,7 +86,7 @@ class DgreatGroup {
     }
 
     // Fail safe return.
-    return FALSE;
+    return $this;
   }
 
   /**
@@ -174,57 +174,57 @@ class DgreatGroup {
   /**
    * Flags the Defaults for content per user.
    *
-   * @param $field
-   *   The field we are using as a reference for the group.
+   * @param User $user
    *
-   * @return bool
+   * @return \Drupal\dgreat_group\DgreatGroup
    */
-  public function flagUserDefaultContent($field) {
-    $ids = $this->entity->get($field)->getValue();
-    $flag_service = \Drupal::service('flag');
-    $flag = $flag_service->getFlagById('favorite');
-    $db = \Drupal::database();
+  public function flagUserDefaultContent(User $user) {
 
-    // Grabs each groups' default links ids.
-    foreach ($ids as $gid) {
-      if (isset($gid['target_id'])) {
-
-        $group = Group::load($gid['target_id']);
-
-        if ($group !== NULL) {
-          if ($group->hasField('field_default_favorite_links')) {
-            $gidz = $group->get('field_default_favorite_links')->getValue();
-            foreach ($gidz as $gidd) {
-              $nids[] = $gidd['target_id'];
-            }
-          }
-          if ($group->hasField('field_default_quick_links')) {
-            $gidz = $group->get('field_default_quick_links')->getValue();
-            foreach ($gidz as $gidd) {
-              $nids[] = $gidd['target_id'];
-            }
-          }
-        }
-      }
-    }
-
-    // Purge all their defaults.
-    $query = $db->delete('flagging')
-      ->condition('uid', $this->entity->id())
-      ->execute();
+    $nids = $this->getUserDefaultFlags($user);
 
     // Let's go through Each Node and flag each node.
     if (!empty($nids)) {
-      foreach ($nids as $nid) {
+      collect($nids)->map(function($nid) {
+        $flag_service = \Drupal::service('flag');
+        $flag = $flag_service->getFlagById('favorite');
+
         $node = Node::load($nid);
         if (!is_null($node) && !$flag->isFlagged($node, $this->entity)) {
           $flag_service->flag($flag, $node, $this->entity);
         }
-      }
+      });
     }
+    return $this;
+  }
 
-    // Fail safe return.
-    return FALSE;
+  /**
+   * @param \Drupal\user\Entity\User $user
+   *
+   * @return array
+   */
+  private function getUserDefaultFlags(User $user) {
+    $groups = \Drupal::entityQuery('group')
+      ->exists('field_mapped_roles')
+      ->execute();
+
+    // First filter all the mapped groups to only ones this user has
+    // Then run through those groups, grab default links and pull the node ids
+    return collect($groups)->filter(function ($group) use ($user) {
+      return RoleGroupMapper::userHasGroupRole($user, $group);
+    })->flatMap(function ($gid) {
+      $group = Group::load($gid);
+      if (NULL !== $group &&
+        $group->hasField('field_default_favorite_links')) {
+        // Map over the default fav links and pull their targets.
+        return collect(
+          $group->get('field_default_favorite_links')->getValue()
+        )->map(function ($default_link) {
+          return $default_link['target_id'];
+        })->toArray();
+      }
+      // fallback empty return
+      return [];
+    })->toArray();
   }
 
 }

@@ -118,7 +118,10 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
       '#tree' => TRUE,
     ];
 
-    $options = WeightSelectorWidget::rangeOptions($this->options['range']);
+    if (isset($_COOKIE['STYXKEY_ids'])) {
+      setcookie('STYXKEY_ids', NULL, -1, '/');
+    }
+
 
     $results = $this->db->select('user_weights', 'u')
       ->fields('u', ['weight', 'entity_id'])
@@ -127,9 +130,20 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
       ->execute()
       ->fetchAll();
 
-    $result = [];
+    $result = $values = [];
     foreach ($results as $r) {
       $result[$r->entity_id] = $r->weight;
+    }
+
+    // Adjust options to user_weights ranges if need be.
+    if (!empty($results)) {
+      $min = min($results);
+      $max = max($results);
+      $range = range($min->weight, $max->weight);
+      $options = array_combine($range, $range);
+    }
+    else {
+      $options = WeightSelectorWidget::rangeOptions($this->options['range']);
     }
 
     // At this point, the query has already been run, so we can access the results.
@@ -137,6 +151,7 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
       $entity = $row->_entity;
 
       if (!empty($result)) {
+
         $nid = $entity->get('entity_id')->getValue();
         $weight = (isset($nid[0]["target_id"]))
           ? $result[$nid[0]["target_id"]] : 0;
@@ -147,6 +162,9 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
           '#default_value' => $weight,
           '#attributes' => ['class' => ['weight-selector']],
         ];
+
+        $values[$row_index] = $nid[0]["target_id"];
+
       }
       else {
         $form[$this->options['id']][$row_index]['weight'] = [
@@ -171,6 +189,11 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
     $form['#cache'] = ['max-age' => 0];
 
     $form['#action'] = \Drupal::request()->getRequestUri();
+
+    // Set our cookie to be used to grab values.
+    if (!empty($values)) {
+      setcookie('STYXKEY_ids', json_encode($values), time()+360, '/');
+    }
   }
 
   /**
@@ -180,12 +203,32 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
     $field_name = $form_state->getValue('views_field');
     $rows = $form_state->getValue($field_name);
 
+    $uid = $this->currentUser->id();
+
+    // If we don't have any rows
+    if (!isset($rows[0])) {
+      return;
+    }
+
     foreach ($rows as $row) {
       $entity = $row['entity'];
+
       $nid = $entity->get('entity_id')->getValue();
-      $uid = $this->currentUser->id();
 
       if (isset($nid[0]["target_id"])) {
+        // If this is flagged, use the cookie's weight.
+        // This is due to the flagging JS borking the form_state.
+        if (\Drupal::state()->get('flagged_fav', FALSE)) {
+          $ids = json_decode($_COOKIE['STYXKEY_ids'], TRUE);
+          $key = array_keys($ids, $nid[0]["target_id"]);
+          // Match up our Cookie to the POST array keys (which is the correct order).
+          $weight = isset($_POST["field_weight"][$key[0]]["weight"]) ?
+            $_POST["field_weight"][$key[0]]["weight"] : $row['weight'];
+        }
+        else {
+          $weight = $row['weight'];
+        }
+
         $check = $this->db->select('user_weights', 'u')
           ->fields('u', ['weight'])
           ->condition('entity_id', $nid[0]["target_id"])
@@ -194,13 +237,14 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
           ->execute()
           ->fetchField();
 
+
         if ($check === FALSE) {
           // Insert new item in weights table.
           $this->db->insert('user_weights')
             ->fields([
               'entity_id' => $nid[0]["target_id"],
               'uid' => $uid,
-              'weight' => $row['weight'],
+              'weight' =>  $weight,
               'view_name' => $this->view->id(),
             ])
             ->execute();
@@ -214,13 +258,19 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
             ->fields([
               'entity_id' => $nid[0]["target_id"],
               'uid' => $uid,
-              'weight' => $row['weight'],
+              'weight' => $weight,
               'view_name' => $this->view->id(),
             ])
             ->execute();
         }
 
       }
+    }
+
+    // Reset or Drupal state and cookie.
+    \Drupal::state()->set('flagged_fav', FALSE);
+    if (isset($_COOKIE['STYXKEY_ids'])) {
+      setcookie('STYXKEY_ids', NULL, -1, '/');
     }
   }
 
