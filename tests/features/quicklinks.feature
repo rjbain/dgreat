@@ -7,8 +7,8 @@ Feature: Quick Links
   Scenario: Student see's Add link
     Given I am logged in as a user with the 'student' role
     And I am on "/dashboard"
-    Then I should see the link "Add new Quick Link"
-    And I should see the link "Manage Quick Links"
+    Then I should see the link "Add Link"
+    And I should see the link "Manage Links"
 
   @api
   Scenario: Student can create new Quicklink
@@ -17,7 +17,6 @@ Feature: Quick Links
     And I click "Add Link"
     And I fill in "Title" with "Magic"
     And I fill in "URL" with "https://thinktandem.io"
-    And I fill in "Body" with "text"
     And I press the "Save" button
     Then I should be on "/dashboard"
     And I should see the link "Magic"
@@ -32,7 +31,6 @@ Feature: Quick Links
     And I click "Add Link"
     And I fill in "Title" with "Magic"
     And I fill in "URL" with "https://thinktandem.io"
-    And I fill in "Body" with "text"
     And I press the "Save" button
     Then I should be on "/dashboard"
     And I should see the link "Magic"
@@ -40,4 +38,3 @@ Feature: Quick Links
     And I am logged in as "QL Test user"
     And I am on "/dashboard"
     Then I should see the link "Magic"
-
