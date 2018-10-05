@@ -76,7 +76,7 @@ class ModalStudentSurveyForm extends WebformBlock {
    */
   private function hasAnswered(AccountInterface $account) {
     $config = $this->getConfiguration();
-    $webform = Webform::load($config['survey']);
+    $webform = Webform::load($config['webform_id']);
 
     if (!$webform) {
       return FALSE;
