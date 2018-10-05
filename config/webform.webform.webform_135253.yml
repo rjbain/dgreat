@@ -4,6 +4,7 @@ status: open
 dependencies: {  }
 open: null
 close: null
+weight: 0
 uid: 1293
 template: false
 archive: false
@@ -11,7 +12,7 @@ id: webform_135253
 title: 'HR New Staff Orientation Registration Form'
 description: null
 category: null
-elements: "first_name:\n  '#type': textfield\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': \"\"\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': Title\n  '#description': \"\"\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#size': 20\n  '#default_value': \"[current-user:mail]\"\n  '#title': USF Email Address\n  '#description': \"\"\n  '#required': true\nphone_number:\n  '#type': textfield\n  '#title': Phone Number\n  '#description': \"\"\n  '#required': true\nstart_date:\n  '#type': date\n  '#title': Start Date\n  '#description': \"\"\n  '#required': true\norientation_selection_instructions:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>Please select a date and time below for each applicable orientation session.</p>\"\n  '#title': Orientation Selection Instructions\n  '#description': \"\"\nemployment_orientation_selection:\n  '#type': select\n  '#options':\n    101: May 30, 2018 *9am-11:30 am * UC305\n    102: June 13, 2018 *9am-11:30 am * UC403\n    103: June 27, 2018 *9am-11:30 am * UC403\n    104: July 11, 2018 *9am-11:30 am * UC403\n    105: July 25, 2018 *9am-11:30 am * UC403\n    106: August 8, 2018 *9am-11:30 am * UC403\n    107: August 22, 2018 *9am-11:30 am * UC403\n    108: September 5, 2018 *9am-11:30 am * UC403\n    109: September 19, 2018 *9am-11:30 am * UC403\n  '#title': Employment and Benefits Orientation Selection\n  '#description': \"\"\n  '#required': true\nuniversity_welcome_selection:\n  '#type': select\n  '#options':\n    15: March 8, 2018 * 9-11:30 am* McLaren 252\n    16: June 7, 2018 * 9-11:30 am* Lone Mountain Main, Room 100 (Handlery Room)\n    17: September 6, 2018 * 9-11:30am* Lone Mountain Main, Room 100 (Handlery Room)\n  '#title': University Welcome Selection\n  '#description': \"\"\n"
+elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': ''\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': Title\n  '#description': ''\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#size': 20\n  '#default_value': '[current-user:mail]'\n  '#title': 'USF Email Address'\n  '#description': ''\n  '#required': true\nphone_number:\n  '#type': textfield\n  '#title': 'Phone Number'\n  '#description': ''\n  '#required': true\nstart_date:\n  '#type': date\n  '#title': 'Start Date'\n  '#description': ''\n  '#required': true\norientation_selection_instructions:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p>Please select a date and time below for each applicable orientation session.</p>'\n  '#title': 'Orientation Selection Instructions'\n  '#description': ''\nemployment_orientation_selection:\n  '#type': select\n  '#title': 'Employment and Benefits Orientation Selection'\n  '#options':\n    1: 'October 3, 2018 *9am-11:30 am * UC402/403'\n    2: 'October 17, 2018 *9am-11:30 am * UC403'\n    3: 'October 31, 2018 *9am-11:30 am * UC403'\n    4: 'November 14, 2018 *9am-11:30 am * UC403'\n    5: 'November 28, 2018 *9am-11:30 am * UC403'\n    6: 'December 12, 2018 *9am-11:30 am * UC403'\n    7: 'January 9, 2019 *9am-11:30 am * UC403'\n    8: 'January 23, 2019 * 9am-11:30 am * UC503'\n  '#required': true\nuniversity_welcome_selection:\n  '#type': select\n  '#title': 'University Welcome Selection'\n  '#options':\n    1: 'December 4, 2018 * 9-12pm * McLaren 251'\n"
 css: ''
 javascript: ''
 settings:
@@ -43,10 +44,10 @@ handlers:
     weight: 2
     settings:
       to_mail: mgonzalez5@usfca.edu
-      from_mail: default
-      from_name: default
-      subject: default
-      body: default
+      from_mail: _default
+      from_name: _default
+      subject: _default
+      body: _default
       html: false
       attachments: false
       excluded_elements: {  }
@@ -76,10 +77,10 @@ handlers:
     weight: 3
     settings:
       to_mail: cowanspiege@usfca.edu
-      from_mail: default
-      from_name: default
-      subject: default
-      body: default
+      from_mail: _default
+      from_name: _default
+      subject: _default
+      body: _default
       html: false
       attachments: false
       excluded_elements: {  }
@@ -109,10 +110,10 @@ handlers:
     weight: 4
     settings:
       to_mail: lhumphrey2@usfca.edu
-      from_mail: default
-      from_name: default
-      subject: default
-      body: default
+      from_mail: _default
+      from_name: _default
+      subject: _default
+      body: _default
       html: false
       attachments: false
       excluded_elements: {  }

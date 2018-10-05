@@ -2345,10 +2345,10 @@ display:
           relationship: none
           group_type: group
           admin_label: 'Add new Quick Link'
-          empty: true
+          empty: false
           tokenize: false
           content:
-            value: '<a href="node/add/favorite_link?edit[field_link_type][und]=quick&destination=/dashboard" class="manageLinks">Add new Quick Link</a>'
+            value: '<!--<a href="node/add/favorite_link?edit[field_link_type][und]=quick&destination=/dashboard" class="manageLinks">Add Link</a>-->'
             format: full_html
           plugin_id: text
         area_1:
@@ -2358,10 +2358,10 @@ display:
           relationship: none
           group_type: group
           admin_label: 'Manage Quick Links'
-          empty: true
+          empty: false
           tokenize: false
           content:
-            value: '<a href="/quick-links" class="addLinks">Manage Quick Links</a>'
+            value: '<!--<a href="/quick-links" class="addLinks">Manage Links</a>-->'
             format: full_html
           plugin_id: text
       empty: {  }
@@ -2921,7 +2921,18 @@ display:
         options:
           perm: 'access content'
       footer: {  }
-      empty: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: '<a href="/dashboard">Back to Dashboard</a><br>'
+          plugin_id: text_custom
       sorts:
         field_weight_value:
           id: field_weight_value

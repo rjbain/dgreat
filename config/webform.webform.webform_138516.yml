@@ -12,7 +12,7 @@ id: webform_138516
 title: 'HR Benefits Workshop RSVP Form'
 description: null
 category: null
-elements: "benefits_workshop:\n  '#description': \"April 23  *  12–1 p.m.  *  McLaren 251\\n2\"\n  '#type': checkbox\n  '#options':\n    1: 'April 23  *  12–1 p.m.  *  McLaren 251'\n    2: 'April 23  *  3–4 p.m.  *  McLaren 250'\n    3: 'April 24  *  10–11 a.m.  *  Lone Mountain Main 100'\n    4: 'April 24  *  2–3 p.m.  *  McLaren 252'\n  '#multiple': true\n  '#title': 'Select the long-term care informational session that you would like to attend:'\n  '#required': true\nemployees_information:\n  '#type': processed_text\n  '#title': 'Employee''s Information'\n  '#description': ''\n  '#format': full_html\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': ''\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': Title\n  '#description': ''\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#size': 20\n  '#title': 'USF Email Address'\n  '#description': ''\n  '#required': true\nusf_phone_number:\n  '#type': textfield\n  '#title': 'USF Phone Number'\n  '#description': ''\n  '#required': true\nemployee_type:\n  '#type': radios\n  '#options':\n    1: Faculty\n    2: Staff\n    3: Other\n  '#title': 'Employee Type'\n  '#description': ''\n  '#required': true\n"
+elements: "event_selection:\n  '#type': checkboxes\n  '#title': 'Select the event that you would like to attend'\n  '#options':\n    1: 'Oct. 16 * 10-11:30 A.M. * UC 402/3'\n    2: 'Nov. 15 * 2-3:30 P.M. * UC 503'\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': ''\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': Title\n  '#description': ''\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#size': 20\n  '#title': 'USF Email Address'\n  '#description': ''\n  '#required': true\nusf_phone_number:\n  '#type': textfield\n  '#title': 'USF Phone Number'\n  '#description': ''\n  '#required': true\n"
 css: ''
 javascript: ''
 settings:
@@ -95,6 +95,39 @@ handlers:
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+  email:
+    id: email
+    label: Email
+    handler_id: email
+    status: true
+    conditions: {  }
+    weight: 3
+    settings:
+      states:
+        - completed
+      to_mail: lhumphrey2@usfca.edu
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
       twig: false
       debug: false
       reply_to: ''
