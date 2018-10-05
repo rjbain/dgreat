@@ -4,11 +4,10 @@ namespace Drupal\dgreat_student_surveys\Plugin\Block;
 
 use Drupal;
 use Drupal\Core\Access\AccessResult;
-use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Database\Database;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\webform\Entity\Webform;
+use Drupal\webform\Plugin\Block\WebformBlock;
 
 /**
  * Provides a 'DgreatModalContactForm' block.
@@ -18,54 +17,14 @@ use Drupal\webform\Entity\Webform;
  *  admin_label = @Translation("Student Survey"),
  * )
  */
-class ModalStudentSurveyForm extends BlockBase {
-
-  /**
-   * @var \Symfony\Component\HttpFoundation\Session\Session
-   */
-  private $session;
-
-  public function __construct(
-    array $configuration,
-    $plugin_id,
-    $plugin_definition
-  ) {
-    $this->session = \Drupal::service('session');
-    parent::__construct($configuration, $plugin_id, $plugin_definition);
-  }
+class ModalStudentSurveyForm extends WebformBlock {
 
   /**
    * {@inheritdoc}
    */
   public function build() {
-    $config = $this->getConfiguration();
-    $form = Webform::load($config['survey']);
-    $label = '';
-    $pre_render = [];
-    if (NULL !== $form) {
-      $label = $form->label();
-      $view_builder = \Drupal::entityTypeManager()->getViewBuilder('webform');
-      $pre_render = $view_builder->view($form);
-      $elements = collect($pre_render['elements'])->filter(function($element, $key) {
-        return mb_strpos($key, '#') !== 0;
-      })->all();
-      $keep = array_rand($elements);
-      $filtered_elements = collect($pre_render['elements'])->filter(function($element, $key) use ($keep) {
-        return $key === $keep || mb_strpos($key, '#') === 0;
-      })->all();
-      $pre_render['elements'] = $filtered_elements;
-
-    }
-
-    $this->session->set('student_surveys_has_seen_recently', TRUE);
-    return [
-      '#label' => $label,
-      '#content' => $pre_render,
-      '#theme' => 'dgreat_modal_webforms',
-      '#attached' => [
-        'library' => 'dgreat_student_surveys/modal',
-      ],
-    ];
+    \Drupal::service('session')->set('student_surveys_has_seen_recently', TRUE);
+    return parent::build();
   }
 
   /**
@@ -79,36 +38,6 @@ class ModalStudentSurveyForm extends BlockBase {
   }
 
   /**
-   * {@inheritdoc}
-   */
-  public function blockForm($form, FormStateInterface $form_state) {
-
-    /** @var Drupal\Core\Entity\Query\QueryFactory $query */
-    $query = Drupal::service('entity.query');
-    $webforms = $query->get('webform')
-                      ->condition('category', 'student_survey')
-                      ->execute();
-    $form['survey'] = [
-      '#title' => $this->t('Survey'),
-      '#description' => $this->t('The survey that should be displayed'),
-      '#type' => 'select',
-      '#options' => $webforms,
-      '#default_value' => isset($this->getConfiguration()['survey']) ?
-        $this->getConfiguration()['survey'] : NULL,
-    ];
-
-    return $form;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function blockSubmit($form, FormStateInterface $form_state) {
-    $this->configuration['survey'] = $form_state->getValue('survey');
-    parent::blockSubmit($form, $form_state);
-  }
-
-  /**
    * @param \Drupal\Core\Session\AccountInterface $account
    *
    * @return bool
@@ -119,7 +48,6 @@ class ModalStudentSurveyForm extends BlockBase {
   }
 
   /**
-   * @todo implement this based on CAS data
    * @param \Drupal\Core\Session\AccountInterface $account
    *
    * @return bool
@@ -176,6 +104,7 @@ class ModalStudentSurveyForm extends BlockBase {
    * @return bool
    */
   private function sawRecently() {
-    return $this->session->get('student_surveys_has_seen_recently');
+    return \Drupal::service('session')
+      ->get('student_surveys_has_seen_recently');
   }
 }
