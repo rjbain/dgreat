@@ -13,7 +13,9 @@ Available variables (usf_dashboard.module)
 
 #}
 {% set role = user.getroles|join(',') %}
-
+    <div class="row usf_dash">
+        <h1 aria-label="My Dashboard"></h1>
+    </div>
 {% if not logged_in %}
     <div class="row usf_dash">
 
@@ -107,6 +109,7 @@ Available variables (usf_dashboard.module)
             </div>
             <div class="row">           
                 <div class="col-12">
+                    <h2>Featured Events</h2>
                     {{ drupal_view('events_featured', 'block_1') }}
                 </div>
                 <div class="col-12 eventsLink">
