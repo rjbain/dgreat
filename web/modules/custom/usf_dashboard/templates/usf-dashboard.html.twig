@@ -13,9 +13,7 @@ Available variables (usf_dashboard.module)
 
 #}
 {% set role = user.getroles|join(',') %}
-    <div class="row usf_dash">
-        <h1 aria-label="My Dashboard"></h1>
-    </div>
+<h1 aria-label="My Dashboard" class="acc-visuallyhidden"></h1>
 {% if not logged_in %}
     <div class="row usf_dash">
 
