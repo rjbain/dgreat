@@ -429,6 +429,7 @@
 		    width: calc(100% - 78px);
 		    background: $light_gray;
 		    margin-left: 24px;
+		    left:15px!important;
 
 		    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
 		    	left:0;
@@ -439,7 +440,6 @@
 		    }
 		    @include media-breakpoint-down(phone) {
 				top: 490px;
-				left:15px!important;
 			}
 		}
 		.defaultQuickLinks {
@@ -735,7 +735,7 @@
 					display: table;
 					position:absolute;					
 					width: 45%; 
-					left: 35%;
+					left: 36%; /*35%*/
 					top: -360px;
 
 
@@ -776,12 +776,12 @@
 						}
 
 						&:last-child td {
-							padding-bottom: 20px!important;
+							/*padding-bottom: 20px!important;*/
 						}
 						&:first-child td , &:nth-child(2) td , &:nth-child(3) td , &:nth-child(4) td , 
 						&:nth-child(5) td , &:nth-child(6) td  {
 							position:relative;
-							left: -78%;
+							left: -79%; /*-78%*/
 							top: 360px;
 							
 						    @include media-breakpoint-down(phone) {
@@ -1047,9 +1047,24 @@ aside.section div:first-child {
 
 /*  Quick Links Manage page
 ===================================================*/ 
+.view-display-id-all_apps {
+	.view-header .btn.btn-default {
+		margin-top:30px;
+		margin-left:-10px!important;
+	}
+	div#edit-actions {
+	    width: 100%;
+
+	    @include media-breakpoint-down(landscape_phone) {
+	    	width: 95%;
+	    }
+	}
+}
+
 div.view-quick-links.view-id-quick_links {
 	.views-form {
     	width: 100%;
+
 	}
 
 	button.link.tabledrag-toggle-weight, 
@@ -1068,16 +1083,24 @@ div.view-quick-links.view-id-quick_links {
 		}
 	}
 
+
 	#views-form-quick-links-all-apps {
 		@include clearTableFormat;
+
+		.tabledrag-toggle-weight-wrapper {
+			margin-top: 20px;
+			margin-left: -10px;
+
+			@include media-breakpoint-down(landscape_phone) {
+			 	margin-top: 0px;
+			}
+		}
 		
-		table{
-			
+		table{			
 			border: 5px solid $light_gray;
 			color: $turquoise;
-			margin-top: 10px;
-			margin-bottom: 4
-			0px;
+			margin-top: 20px;
+			margin-bottom: 20px;
 
 			tr:first-child td {
 				padding-top: 21px!important;
@@ -1132,6 +1155,20 @@ div.view-quick-links.view-id-quick_links {
 		#edit-actions {
 			margin-left: 15px;
 		}
+	}
+
+	#views-exposed-form-quick-links-all-apps {
+		position: absolute;
+	    right: 0;
+	    top: -5px;
+
+	    @include media-breakpoint-down(landscape_phone) {
+	    	position:relative;
+
+	    	fieldset.form-type-textfield.form-item-combine {
+			    width: 100%;
+			}
+	    }
 	}
 
 	#views-form-quick-links-my-links {		
@@ -1204,7 +1241,37 @@ div.view-quick-links.view-id-quick_links {
 	}
 }
 
+#views-form-quick-links-my-links .form-group,
+#views-form-quick-links-all-apps .form-group{
+	margin-bottom: 0px;
+}
 
+.views-field.views-field-field-sso,
+.views-field.views-field-edit-node,
+.views-field.views-field-delete-node {
+    text-align: center;
+}
+
+@include media-breakpoint-down(landscape_phone) {
+	#views-form-quick-links-my-links, #views-form-quick-links-all-apps {
+	    width: 100%!important;
+
+	    .draggable a.tabledrag-handle {
+	    	height:unset;
+	    }
+
+	    a.tabledrag-handle .handle {
+	    	margin: 0 0 0 5px;
+	    	background-size: 80%;
+	    	width: 34px!important;
+    		height: 45px!important ;
+	    }
+
+	    input#edit-submit {
+		    width: 95%;
+		}
+	}
+}
 
 
 
