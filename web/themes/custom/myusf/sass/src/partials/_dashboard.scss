@@ -1049,10 +1049,18 @@ aside.section div:first-child {
 ===================================================*/ 
 
 .view-display-id-all_apps {
-	.view-header .btn.btn-default {
-		margin-top:30px;
-		margin-left:-10px!important;
-		position:absolute;
+	.view-header {
+		top: 50px;
+    	position: relative;
+    	@include media-breakpoint-down(landscape_phone) {
+    		top: 0px;
+    	}
+
+		.btn.btn-default {
+			margin-top:30px;
+			margin-left:-10px!important;
+			position:absolute;
+		}
 	}
 	div#edit-actions {
 	    width: 100%;
@@ -1249,6 +1257,11 @@ div.view-quick-links.view-id-quick_links {
 		@include media-breakpoint-only(tablet) {
 			.form-row {
 			    width: 150%;
+			}
+		}
+		@include media-breakpoint-down(landscape_phone) {
+			.form-row {
+			    margin-top: 80px;
 			}
 		}
 	}
