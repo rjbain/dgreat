@@ -6,12 +6,12 @@ dependencies:
     - system
 id: public_safety_subpages
 label: 'Public Safety Subpages'
-logic: or
+logic: and
 conditions:
   2c316e3b-78e7-43fc-9836-969e299d37cd:
     id: request_path
-    pages: "/public-safety-transportation/emrs/\r\n/public-safety-transportation/emrs/*\r\n/public-safety-transportation/disaster-preparedness/\r\n/public-safety-transportation/disaster-preparedness/*"
-    negate: true
+    pages: "/emrs/\r\n/emrs/*"
+    negate: false
     context_mapping: {  }
     uuid: 2c316e3b-78e7-43fc-9836-969e299d37cd
 allow_other_conditions: false
