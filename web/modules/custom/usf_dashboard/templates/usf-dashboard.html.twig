@@ -37,34 +37,16 @@ Available variables (usf_dashboard.module)
                     </div>
 
                 {% else %}
-                    <!-- Beginning of temp FavApps -->    
+                    <!-- Beginning of temp FavApps -->
                     <div class="col-sm myApps">
                         <h2>Top Apps</h2>
-                        <div class="views-element-container settings-tray-editable block block-views block-views-blockfavorite-links-block" id="block-views-block-favorite-links-block">
-                            <div class="content">
-                                <div class="col-auto">
-                                    <div class="view view-favorite-links view-id-favorite_links view-display-id-block">
-                                        <div class="view-content row">
-                                            <div class="table-responsive col">
-                                                <table class="table views-table views-view-table cols-0">
-                                                    <tbody>
-                                                            {{ drupal_view('quick_favs', 'block_2', role) }}
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-  
-                                        <div class="view-footer">
-                                            <a href="https://login.usfca.edu/ui/main#launch:pad" class="seeMyApps diamond_link_small" target="_blank">View All Apps</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>                        
+                        {% if dashboard_content.fav_links %}
+                          {{ dashboard_content.fav_links }}
+                        {% endif %}
                     </div>
                     <!-- End of temp FavApps -->
-                  
-        
+
+
                     <div class="separator"></div>
                     <div class="col-sm defaultQuickLinks">
                             <h2>Popular Links</h2>
@@ -90,7 +72,7 @@ Available variables (usf_dashboard.module)
                                 </div>
                     </div>
                     <div class="col-sm myQuickLinks">
-                    
+
                         {% if dashboard_content.dashboard_user.name.value is not empty %}
                             <h2>{{ dashboard_content.dashboard_user.name.value }}'s Links</h2>
                         {% endif %}
@@ -102,10 +84,10 @@ Available variables (usf_dashboard.module)
                         </div>
                     </div>
 
-                {% endif %}            
+                {% endif %}
 
             </div>
-            <div class="row">           
+            <div class="row">
                 <div class="col-12">
                     {{ drupal_view('events_featured', 'block_1') }}
                 </div>
@@ -125,7 +107,7 @@ Available variables (usf_dashboard.module)
                         {% set target = 'Graduate Students' %}
                         {{ drupal_view('event_target_term', 'block_1', target) }}
                     {% endif %}
-                    
+
                     {% if ('faculty' in user.getroles) or ('prehire faculty' in user.getroles) %}
                         {% set target = 'Faculty' %}
                         {{ drupal_view('event_target_term', 'block_1', target) }}
@@ -149,7 +131,7 @@ Available variables (usf_dashboard.module)
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm">          
+                    <div class="col-sm">
                         {{ drupal_view('dashboard_blocks', 'block_1', role) }}
 
                         {% if ('as_ug' not in user.getroles) and ('as_grad' not in user.getroles) and ('som_ug' not in user.getroles) and ('som_grad' not in user.getroles) and ('sonhp_ug' not in user.getroles)  and ('sonhp_grad' not in user.getroles)  and ('law' not in user.getroles) %}
@@ -159,4 +141,4 @@ Available variables (usf_dashboard.module)
                 </div>
         </div>
     </div>
-   {% endif %} 
+   {% endif %}
