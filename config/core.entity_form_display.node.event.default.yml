@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.event.field_start_date
     - field.field.node.event.field_target
     - field.field.node.event.field_terms
+    - field.field.node.event.field_top_event
     - image.style.thumbnail
     - node.type.event
   module:
@@ -163,6 +164,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_top_event:
+    weight: 138
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
     region: content
   path:
     type: path
