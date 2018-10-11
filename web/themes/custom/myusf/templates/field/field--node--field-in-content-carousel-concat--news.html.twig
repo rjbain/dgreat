@@ -39,12 +39,28 @@
  */
 #}
 {#{ dump(item.content) }#}
+
+{% set count = 0 %}
+
 <div id="carouselControls" class="carousel slide" data-ride="carousel"  data-interval="10000">
+
+  <ol class="carousel-indicators">
+{% for item in items %}
+{% set count = count + 1 %}
+
+{% if loop.index == 1 %}
+  {% set active = "active" %}
+{% else %}
+  {% set active = null %}
+{% endif %}
+      <li data-target="#carouselExampleIndicators" data-slide-to="{{ count }}" class="{{ active }}"></li>
+ {% endfor %}
+  </ol>
   <div class="carousel-inner">
 
 
 
-{% set count = 0 %}
+
 {% for item in items %}
 {% set count = count + 1 %}
 
