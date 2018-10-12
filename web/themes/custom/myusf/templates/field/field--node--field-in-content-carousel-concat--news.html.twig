@@ -42,9 +42,9 @@
 <div id="carouselControls" class="carousel slide" data-ride="carousel"  data-interval="10000">
 
   <ol class="carousel-indicators">
-{% set count0 = 0 %}    
+{% set count = -1 %}    
 {% for item in items %}
-{% set count0 = count0 + 1 %}
+{% set count = count + 1 %}
 
 {% if loop.index == 1 %}
   {% set active = "active" %}
@@ -52,7 +52,7 @@
   {% set active = null %}
 {% endif %}
 {% if items|length > 1 %}
-      <li data-target="#carouselExampleIndicators" data-slide-to="{{ count0 }}" class="{{ active }}"></li>
+    <li data-target="#carouselControls" data-slide-to="{{ count }}" class="{{ active }}"></li>
 {% endif %} 
  {% endfor %}
   </ol>
