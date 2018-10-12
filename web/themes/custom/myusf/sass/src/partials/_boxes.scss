@@ -100,6 +100,26 @@
     background-position: -199px -60px!important;
 }
 
+.content {
+    .contact {
+        padding-left: 0px; 
+        display: inline-block;
+
+        &::before {
+            position:relative;
+            display: inline-block;
+
+        }
+    }
+    .email::before, .tel::before {
+        top: 15px;
+        margin-right: 5px;
+    }
+    .contact.tel {
+        margin-left: 30px;
+    }
+}
+
 
 /* SIDEBAR BOX Calendar Events Search Controls 
 =============================================== */ 
@@ -813,6 +833,13 @@ h2.carousel-overlay:before {
     }
 }
 
+/* News Carousel 
+=============================================== */
+.content .carousel {
+    margin-left: -15px;
+    margin-right: 15px;
+    margin-bottom: 45px;
+}
 
 
 /* HERO IMAGE
@@ -994,6 +1021,48 @@ h2.carousel-overlay:before {
         }
     }
 }
+
+/* FACULTY Info
+=============================================== */ 
+
+.faculty_main_info {
+    display: inline-block;
+    width: 100%;
+
+    @include media-breakpoint-down(phone) {
+        margin-left: 0px;
+    }
+
+    .faculty_image img {
+        float: left;
+        width: 150px;
+        margin-bottom: 20px;
+        margin-right: 20px;
+
+        @include media-breakpoint-down(phone) {
+            width:100%;
+            margin-bottom: 0px;
+            margin-right: 0px;
+        }
+    }
+    h2 {
+        padding-top: .5rem;
+    }
+
+    .faculty_position {
+        font-style: italic;
+    }
+    .faculty_contact {
+        margin-top: -20px;
+    }
+}
+
+.faculty_content {
+    border-bottom: 1px solid $light_gray;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+}
+
 
 
  
