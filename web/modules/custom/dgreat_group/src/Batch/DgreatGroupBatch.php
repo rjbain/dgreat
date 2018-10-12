@@ -43,111 +43,111 @@ class DgreatGroupBatch {
       if ($user->id() == 0) {
         return;
       }
-      
+
       $flag_service = \Drupal::service('flag');
       $flag = $flag_service->getFlagById('favorite');
       $db = \Drupal::database();
 
       // Add new defaults.
-      if (!empty($new_nids)) {
-        foreach ($new_nids as $nid) {
-          $node = Node::load($nid);
-          $check = $flag_service->getFlagging($flag, $node, $user, []);
-          $is_flagged = $flag->isFlagged($node, $user, []);
-
-          // Check to remove flags when resaving users.
-          if ($is_flagged && $check !== NULL) {
-            $flag_service->unflag($flag, $node, $user, []);
-          }
-          if (!$is_flagged) {
-            $flag_service->flag($flag, $node, $user, []);
-          }
-
-          // Add link to user weights table.
-          $link = $node->get('field_link_type')->getValue();
-          if (isset($link[0]['value'])) {
-            $name = $link[0]['value'] . '_links';
-            $uid = $user->id();
-            $nid = $node->id();
-
-            // Grab the new weight.
-            $sql = "SELECT MAX(weight) FROM {user_weights} WHERE uid = :uid";
-            $weight = $db
-              ->query($sql, [':uid' => $uid])
-              ->fetchField();
-
-            // No user weights setup, no need to inject this.
-            if ($weight == NULL) {
-              continue;
-            }
-
-            $check = $db
-              ->select('user_weights', 'u')
-              ->fields('u', ['entity_id'])
-              ->condition('uid', $uid)
-              ->condition('entity_id', $nid)
-              ->condition('view_name', $name)
-              ->execute()
-              ->fetchField();
-
-            if ($check === FALSE) {
-              // Insert new item in weights table.
-              $db->insert('user_weights')
-                ->fields([
-                  'entity_id' => $nid,
-                  'uid' => $uid,
-                  'view_name' => $name,
-                  'weight' => $weight + 1,
-                ])
-                ->execute();
-
-            }
-            else {
-              // Update the weights table.
-              $db->update('user_weights')
-                ->condition('uid', $uid)
-                ->condition('entity_id', $nid)
-                ->condition('view_name', $name)
-                ->fields([
-                  'entity_id' => $nid,
-                  'uid' => $uid,
-                  'view_name' => $name,
-                  'weight' => $weight + 1,
-                ])
-                ->execute();
-            }
-          }
-        }
-      }
+      // if (!empty($new_nids)) {
+      //   foreach ($new_nids as $nid) {
+      //     $node = Node::load($nid);
+      //     $check = $flag_service->getFlagging($flag, $node, $user, []);
+      //     $is_flagged = $flag->isFlagged($node, $user, []);
+      //
+      //     // Check to remove flags when resaving users.
+      //     if ($is_flagged && $check !== NULL) {
+      //       $flag_service->unflag($flag, $node, $user, []);
+      //     }
+      //     if (!$is_flagged) {
+      //       $flag_service->flag($flag, $node, $user, []);
+      //     }
+      //
+      //     // Add link to user weights table.
+      //     $link = $node->get('field_link_type')->getValue();
+      //     if (isset($link[0]['value'])) {
+      //       $name = $link[0]['value'] . '_links';
+      //       $uid = $user->id();
+      //       $nid = $node->id();
+      //
+      //       // Grab the new weight.
+      //       $sql = "SELECT MAX(weight) FROM {user_weights} WHERE uid = :uid";
+      //       $weight = $db
+      //         ->query($sql, [':uid' => $uid])
+      //         ->fetchField();
+      //
+      //       // No user weights setup, no need to inject this.
+      //       if ($weight == NULL) {
+      //         continue;
+      //       }
+      //
+      //       $check = $db
+      //         ->select('user_weights', 'u')
+      //         ->fields('u', ['entity_id'])
+      //         ->condition('uid', $uid)
+      //         ->condition('entity_id', $nid)
+      //         ->condition('view_name', $name)
+      //         ->execute()
+      //         ->fetchField();
+      //
+      //       if ($check === FALSE) {
+      //         // Insert new item in weights table.
+      //         $db->insert('user_weights')
+      //           ->fields([
+      //             'entity_id' => $nid,
+      //             'uid' => $uid,
+      //             'view_name' => $name,
+      //             'weight' => $weight + 1,
+      //           ])
+      //           ->execute();
+      //
+      //       }
+      //       else {
+      //         // Update the weights table.
+      //         $db->update('user_weights')
+      //           ->condition('uid', $uid)
+      //           ->condition('entity_id', $nid)
+      //           ->condition('view_name', $name)
+      //           ->fields([
+      //             'entity_id' => $nid,
+      //             'uid' => $uid,
+      //             'view_name' => $name,
+      //             'weight' => $weight + 1,
+      //           ])
+      //           ->execute();
+      //       }
+      //     }
+      //   }
+      // }
 
       // Remove defaults.
-      if (!empty($removed_nids)) {
-        foreach ($removed_nids as $nid) {
-          $node = Node::load($nid);
-          $check = $flag_service->getFlagging($flag, $node, $user, []);
-          $is_flagged = $flag->isFlagged($node, $user, []);
-
-          // UnFlag the Default.
-          if ($is_flagged && $check !== NULL) {
-            $flag_service->unflag($flag, $node, $user, []);
-          }
-
-          // Remove link from user weights table.
-          $link = $node->get('field_link_type')->getValue();
-          if (isset($link[0]['value'])) {
-            $name = $link[0]['value'] . '_links';
-            $uid = $user->id();
-            $nid = $node->id();
-
-            $check = $db
-              ->delete('user_weights')
-              ->condition('uid', $uid)
-              ->condition('entity_id', $nid)
-              ->condition('view_name', $name)
-              ->execute();
-          }
-        }
-      }
+      // if (!empty($removed_nids)) {
+      //   foreach ($removed_nids as $nid) {
+      //     $node = Node::load($nid);
+      //     $check = $flag_service->getFlagging($flag, $node, $user, []);
+      //     $is_flagged = $flag->isFlagged($node, $user, []);
+      //
+      //     // UnFlag the Default.
+      //     if ($is_flagged && $check !== NULL) {
+      //       $flag_service->unflag($flag, $node, $user, []);
+      //     }
+      //
+      //     // Remove link from user weights table.
+      //     $link = $node->get('field_link_type')->getValue();
+      //     if (isset($link[0]['value'])) {
+      //       $name = $link[0]['value'] . '_links';
+      //       $uid = $user->id();
+      //       $nid = $node->id();
+      //
+      //       $check = $db
+      //         ->delete('user_weights')
+      //         ->condition('uid', $uid)
+      //         ->condition('entity_id', $nid)
+      //         ->condition('view_name', $name)
+      //         ->execute();
+      //     }
+      //   }
+      // }
     }
 
     // Set the result.
