@@ -39,28 +39,26 @@
  */
 #}
 {#{ dump(item.content) }#}
-
-{% set count = 0 %}
-
 <div id="carouselControls" class="carousel slide" data-ride="carousel"  data-interval="10000">
 
   <ol class="carousel-indicators">
+{% set count0 = 0 %}    
 {% for item in items %}
-{% set count = count + 1 %}
+{% set count0 = count0 + 1 %}
 
 {% if loop.index == 1 %}
   {% set active = "active" %}
 {% else %}
   {% set active = null %}
 {% endif %}
-      <li data-target="#carouselExampleIndicators" data-slide-to="{{ count }}" class="{{ active }}"></li>
+{% if items|length > 1 %}
+      <li data-target="#carouselExampleIndicators" data-slide-to="{{ count0 }}" class="{{ active }}"></li>
+{% endif %} 
  {% endfor %}
   </ol>
   <div class="carousel-inner">
 
-
-
-
+{% set count = 0 %}    
 {% for item in items %}
 {% set count = count + 1 %}
 
@@ -96,5 +94,4 @@
     <span class="sr-only">Next</span>
   </a>
 {% endif %}
-
 </div>
