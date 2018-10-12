@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.news.body
+    - field.field.node.news.field_author
     - field.field.node.news.field_below_content_title
     - field.field.node.news.field_display_title
     - field.field.node.news.field_guid
@@ -15,12 +16,14 @@ dependencies:
     - field.field.node.news.field_news_target
     - field.field.node.news.field_news_terms
     - field.field.node.news.field_news_type
+    - field.field.node.news.field_post_date
     - field.field.node.news.field_source_name
     - field.field.node.news.field_source_url
     - field.field.node.news.field_sub_title
     - field.field.node.news.field_type
     - node.type.news
   module:
+    - datetime
     - link
     - path
     - scheduler
@@ -45,6 +48,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_author:
+    weight: 137
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_below_content_title:
     weight: 127
     settings:
@@ -136,6 +147,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_post_date:
+    weight: 138
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
     region: content
   field_source_name:
     weight: 134
