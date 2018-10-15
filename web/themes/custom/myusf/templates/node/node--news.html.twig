@@ -72,17 +72,28 @@
     'clearfix',
   ]
 %}
-<h1 class="display-title">{{ node.field_display_title.value }}</h1>
-<h2 class="sub-title">{{ node.field_sub_title.value }}</h2>
-<div class="author">{{ node.field_author.value }}</div>
-<div class="post-date">{{ node.field_post_date.value|date("D, m/d/Y") }}</div>
+{% set display_title = node.field_display_title.value %}
+{% set sub_title = node.field_sub_title.value %}
+{% set author = node.field_author.value %}
+{% set post_date = node.field_post_date.value|date("D, m/d/Y") %}
+{% set carousel = content.field_in_content_carousel_concat %}
+{% set body = node.body.value %}
 
-<div class="carousel">{{content.field_in_content_carousel_concat }}</div>
+
+
+<h1 class="display-title">{{ display_title }}</h1>
+{% if node.field_sub_title.value %}
+<h2 class="sub-title">{{ sub_title }}</h2>
+{% endif %}
+<div class="author">{{ author }}</div>
+<div class="post-date">{{ post_date }}</div>
+
+<div class="carousel">{{ carousel }}</div>
 
   <div{{ content_attributes.addClass('content') }}>
     <div class="body">
         {% autoescape false %}
-          {{ node.body.value }}
+          {{ body }}
         {% endautoescape %}
     </div>
   </div>
