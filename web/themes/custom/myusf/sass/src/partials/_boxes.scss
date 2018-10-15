@@ -1030,6 +1030,7 @@ h2.carousel-overlay:before {
 =============================================== */ 
 
 .faculty_main_info {
+    font-size:1rem;
     display: inline-block;
     width: 100%;
 
@@ -1037,20 +1038,25 @@ h2.carousel-overlay:before {
         margin-left: 0px;
     }
 
-    .faculty_image img {
+    .faculty_image, .faculty img {
         float: left;
         width: 150px;
+        height: 150px;
         margin-bottom: 20px;
         margin-right: 20px;
 
         @include media-breakpoint-down(phone) {
-            width:100%;
-            margin-bottom: 20px;
-            margin-right: 0px;
+            width: 94px;
+            float: right;
+            margin: 6px 0 10px 10px;
         }
     }
     h2 {
         padding-top: .5rem;
+    }
+    .professional_title {
+        color: $black;
+        text-transform: uppercase;
     }
 
     .faculty_position {
@@ -1062,9 +1068,24 @@ h2.carousel-overlay:before {
 }
 
 .faculty_content {
+    font-size:1rem;
     border-bottom: 1px solid $light_gray;
     padding-bottom: 30px;
     margin-bottom: 20px;
+}
+
+.view-faculty {
+    .pagination {
+        -webkit-padding-start: 0px;
+
+        .page-item {
+            padding-left: 0px;
+        }
+        .pager__item--next {
+            margin-right: 0px; 
+            padding-left: 0px;
+        }
+    }
 }
 
 
