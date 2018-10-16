@@ -33,8 +33,8 @@
 #}
 
 
-{% set description = fields.body.content|replace({("&lt;p&gt;"):(""),("&lt;/p&gt;"):("")}) %}
-{% set summary = fields.field_summary.content|replace({("&lt;p&gt;"):(""),("&lt;/p&gt;"):("")}) %}
+{% set description = fields.body.content|replace({("&amp;amp;"):("&")}) %}
+{% set summary = fields.field_summary.content|replace({("&amp;amp;"):("&")}) %}
 {% set image_url = fields.field_image_url.content %}
 {% set source_url = fields.field_source_url.content %}
 {% set first_name = fields.field_first_name.content %}
