@@ -7,6 +7,9 @@ dependencies:
     - taxonomy.vocabulary.faculty_department
     - taxonomy.vocabulary.faculty_program
     - taxonomy.vocabulary.faculty_school
+    - user.role.administrator
+    - user.role.all_access
+    - user.role.editor
   module:
     - taxonomy
     - user
@@ -26,9 +29,12 @@ display:
     position: 0
     display_options:
       access:
-        type: perm
+        type: role
         options:
-          perm: 'access content'
+          role:
+            administrator: administrator
+            editor: editor
+            all_access: all_access
       cache:
         type: tag
         options: {  }
@@ -301,7 +307,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
-        - user.permissions
+        - user.roles
       tags: {  }
   page_1:
     display_plugin: page
@@ -375,7 +381,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
-        - user.permissions
+        - user.roles
       tags: {  }
   page_2:
     display_plugin: page
@@ -449,7 +455,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
-        - user.permissions
+        - user.roles
       tags: {  }
   page_3:
     display_plugin: page
@@ -466,5 +472,5 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
-        - user.permissions
+        - user.roles
       tags: {  }
