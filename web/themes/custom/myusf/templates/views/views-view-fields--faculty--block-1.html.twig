@@ -1,0 +1,93 @@
+	{#
+/**
+ * @file
+ * Default view template to display all the fields in a row.
+ *
+ * Available variables:
+ * - view: The view in use.
+ * - fields: A list of fields, each one contains:
+ *   - content: The output of the field.
+ *   - raw: The raw data for the field, if it exists. This is NOT output safe.
+ *   - class: The safe class ID to use.
+ *   - handler: The Views field handler controlling this field.
+ *   - inline: Whether or not the field should be inline.
+ *   - wrapper_element: An HTML element for a wrapper.
+ *   - wrapper_attributes: List of attributes for wrapper element.
+ *   - separator: An optional separator that may appear before a field.
+ *   - label: The field's label text.
+ *   - label_element: An HTML element for a label wrapper.
+ *   - label_attributes: List of attributes for label wrapper.
+ *   - label_suffix: Colon after the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ *   - has_label_colon: A boolean indicating whether to display a colon after
+ *     the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ * - row: The raw result from the query, with all data it fetched.
+ *
+ * @see template_preprocess_views_view_fields()
+ *
+ * @ingroup themeable
+ */
+#}
+
+
+{% set description = fields.body.content|replace({("&amp;amp;"):("&")}) %}
+{% set summary = fields.field_summary.content|replace({("&amp;amp;"):("&")}) %}
+{% set image_url = fields.field_image_url.content %}
+{% set source_url = fields.field_source_url.content %}
+{% set first_name = fields.field_first_name.content %}
+{% set middle_initial = fields.field_middle_initial.content %}
+{% set last_name = fields.field_last_name.content %}
+{% set name_suffix = fields.field_name_suffix.content %}
+{% set professional_title = fields.field_professional_title.content %}
+{% set position = fields.field_position.content %}
+{% set email_address = fields.field_email_address.content %}
+{% set phone = fields.field_phone.content %}
+{% set past_education = fields.field_past_education.content %}
+{% set expertise = fields.field_expertise.content %}
+
+
+
+  <div{{ content_attributes.addClass('content') }}>
+    <div class="faculty_main_info">
+      <div class="faculty_image"><img src="{{ image_url }}"></div>
+      <a href="{{ source_url }}" target="_blank">
+        <h2 class="display-title">{{ first_name }} {{ middle_initial }} {{ last_name }} {{ name_suffix }}</h2>
+      </a>
+      <div class="professional_title">{{ professional_title }}</div>
+      <div class="faculty_position">{{ position }}</div><br/>
+      <div class="faculty_contact">
+        {% if email_address %}
+        	<a href="mailto:{{ email_address }}"><div class="contact email">{{ email_address }}</div></a>
+        {% endif %}
+        {% if phone %}
+        	<div class="contact tel">{{ phone }}</div>
+      	{% endif %}
+      </div>
+      <br/>
+    </div>
+    <div class="faculty_content">
+      <div class="body">
+          {% autoescape false %}
+            {% if description is empty %}
+              {{ summary }}
+            {% else %}        
+              {{ description }}
+            {% endif %}
+          {% endautoescape %}
+      </div>
+    {% if past_education %}
+    	<div class="education"><h3>Education</h3> {{ past_education }}</div>
+    {% endif %}
+    {% if expertise %}
+      <div class="expertise"><h3>Expertise</h3> {{ expertise }}</div>
+    {% endif %}
+
+      <!--<div class="department"><h3>Department</h3> {{ faculty_department }}</div>
+      <div class="program"><h3>Program</h3> {{ faculty_program }}</div>
+      <div class="school"><h3>School</h3> {{ faculty_school }}</div>
+      <div class="program_director"><h3>Program Director</h3> {{ faculty_program_director }}</div> -->
+    </div>
+  </div>

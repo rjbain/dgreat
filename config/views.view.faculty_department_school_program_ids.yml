@@ -1,21 +1,22 @@
-uuid: c701dbf1-6886-49f1-9272-080aa34a45bc
+uuid: 6e7ef72f-c01f-4809-a43a-56448073321c
 langcode: en
 status: true
 dependencies:
   config:
     - system.menu.admin
-    - taxonomy.vocabulary.event_category
-    - taxonomy.vocabulary.event_terms
+    - taxonomy.vocabulary.faculty_department
+    - taxonomy.vocabulary.faculty_program
+    - taxonomy.vocabulary.faculty_school
     - user.role.administrator
     - user.role.all_access
     - user.role.editor
   module:
     - taxonomy
     - user
-id: event_category_taxonomy_id
-label: 'Event Category Taxonomy ID'
+id: faculty_department_school_program_ids
+label: 'Faculty Department/School/Program IDs'
 module: views
-description: 'List of IDs for Event Category Taxonomy Terms'
+description: 'IDs for Faculty Departments, Schools, and Programs'
 tag: ''
 base_table: taxonomy_term_field_data
 base_field: tid
@@ -75,14 +76,14 @@ display:
             tid: tid
           info:
             name:
-              sortable: false
+              sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
             tid:
-              sortable: false
+              sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
@@ -105,7 +106,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Term
+          label: Name
           exclude: false
           alter:
             alter_text: false
@@ -171,7 +172,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Taxonomy ID'
+          label: ID
           exclude: false
           alter:
             alter_text: false
@@ -213,10 +214,8 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: number_integer
-          settings:
-            thousand_separator: ''
-            prefix_suffix: false
+          type: number_unformatted
+          settings: {  }
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -235,13 +234,57 @@ display:
           id: vid
           table: taxonomy_term_field_data
           field: vid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
           value:
-            event_category: event_category
+            faculty_program: faculty_program
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
           entity_type: taxonomy_term
           entity_field: vid
           plugin_id: bundle
       sorts: {  }
       header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content: '<h2><a href="/admin/config/taxonomy/school">Schools</a> | <a href="/admin/config/taxonomy/program">Programs</a> | <a href="/admin/config/taxonomy/department">Departments</a></h2>'
+          plugin_id: text_custom
+      footer: {  }
+      empty:
         area:
           id: area
           table: views
@@ -249,14 +292,12 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          empty: false
+          empty: true
           tokenize: false
           content:
-            value: '<h2><a href="/admin/config/taxonomy/categories">Categories</a> | <a href="/admin/config/taxonomy/terms">Terms</a></h2>'
+            value: 'No results have been found'
             format: full_html
           plugin_id: text
-      footer: {  }
-      empty: {  }
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
@@ -265,40 +306,17 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url.query_args
         - user.roles
       tags: {  }
   page_1:
     display_plugin: page
     id: page_1
-    display_title: Page
+    display_title: Department
     position: 1
     display_options:
       display_extenders: {  }
-      path: admin/config/taxonomy/categories
-      menu:
-        type: normal
-        title: 'Event Taxonomy IDs'
-        description: 'IDs for Event Taxonomy Terms'
-        expanded: false
-        parent: system.admin_config_content
-        weight: 5
-        context: '0'
-        menu_name: admin
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - user.roles
-      tags: {  }
-  page_2:
-    display_plugin: page
-    id: page_2
-    display_title: 'Page 2'
-    position: 2
-    display_options:
-      display_extenders: {  }
-      path: admin/config/taxonomy/terms
+      path: admin/config/taxonomy/department
       filters:
         vid:
           id: vid
@@ -309,7 +327,7 @@ display:
           admin_label: ''
           operator: in
           value:
-            event_terms: event_terms
+            faculty_department: faculty_department
           group: 1
           exposed: false
           expose:
@@ -347,10 +365,112 @@ display:
         operator: AND
         groups:
           1: AND
+      menu:
+        type: none
+        title: 'Faculty Department/School/Program IDs'
+        description: 'Taxonomy IDs for Departments, Schools, and Programs'
+        expanded: false
+        parent: system.admin_config_content
+        weight: 6
+        context: '0'
+        menu_name: admin
+      display_description: ''
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url.query_args
+        - user.roles
+      tags: {  }
+  page_2:
+    display_plugin: page
+    id: page_2
+    display_title: School
+    position: 2
+    display_options:
+      display_extenders: {  }
+      filters:
+        vid:
+          id: vid
+          table: taxonomy_term_field_data
+          field: vid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            faculty_school: faculty_school
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: taxonomy_term
+          entity_field: vid
+          plugin_id: bundle
+      defaults:
+        filters: false
+        filter_groups: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      path: admin/config/taxonomy/school
+      menu:
+        type: normal
+        title: 'Faculty Department/School/Program IDs'
+        description: 'Taxonomy IDs for Departments, Schools, and Programs'
+        expanded: false
+        parent: system.admin_config_content
+        weight: 6
+        context: '0'
+        menu_name: admin
+      display_description: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - user.roles
+      tags: {  }
+  page_3:
+    display_plugin: page
+    id: page_3
+    display_title: Programs
+    position: 3
+    display_options:
+      display_extenders: {  }
+      path: admin/config/taxonomy/program
+      display_description: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
         - user.roles
       tags: {  }

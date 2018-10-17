@@ -1,41 +1,43 @@
-uuid: 204ddc96-4106-4bbc-82e2-ce758e387dca
+uuid: 884a8be5-0586-4b7a-adb8-f3a51d6ecc2b
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.news.body
-    - field.field.node.news.field_author
-    - field.field.node.news.field_below_content_title
-    - field.field.node.news.field_display_title
-    - field.field.node.news.field_guid
-    - field.field.node.news.field_image_url
-    - field.field.node.news.field_in_content_carousel_concat
-    - field.field.node.news.field_news_category
-    - field.field.node.news.field_news_link
-    - field.field.node.news.field_news_schools
-    - field.field.node.news.field_news_target
-    - field.field.node.news.field_news_terms
-    - field.field.node.news.field_news_type
-    - field.field.node.news.field_post_date
-    - field.field.node.news.field_source_name
-    - field.field.node.news.field_source_url
-    - field.field.node.news.field_sub_title
-    - field.field.node.news.field_type
-    - node.type.news
+    - field.field.node.faculty.body
+    - field.field.node.faculty.field_banner_id
+    - field.field.node.faculty.field_display_title
+    - field.field.node.faculty.field_email_address
+    - field.field.node.faculty.field_expertise
+    - field.field.node.faculty.field_faculty_department
+    - field.field.node.faculty.field_faculty_program
+    - field.field.node.faculty.field_faculty_program_director
+    - field.field.node.faculty.field_faculty_school
+    - field.field.node.faculty.field_first_name
+    - field.field.node.faculty.field_guid
+    - field.field.node.faculty.field_image_url
+    - field.field.node.faculty.field_last_name
+    - field.field.node.faculty.field_middle_initial
+    - field.field.node.faculty.field_name_suffix
+    - field.field.node.faculty.field_past_education
+    - field.field.node.faculty.field_phone
+    - field.field.node.faculty.field_position
+    - field.field.node.faculty.field_professional_title
+    - field.field.node.faculty.field_source_url
+    - field.field.node.faculty.field_summary
+    - node.type.faculty
   module:
-    - datetime
     - link
     - path
     - scheduler
     - text
-id: node.news.default
+id: node.faculty.default
 targetEntityType: node
-bundle: news
+bundle: faculty
 mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 121
+    weight: 25
     settings:
       rows: 9
       summary_rows: 3
@@ -44,28 +46,79 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_author:
-    weight: 137
+  field_banner_id:
+    weight: 23
     settings:
-      size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_below_content_title:
-    weight: 127
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
+    type: number
     region: content
   field_display_title:
-    weight: 128
+    weight: 10
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_email_address:
+    weight: 22
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_expertise:
+    weight: 30
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_faculty_department:
+    weight: 13
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_faculty_program:
+    weight: 12
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_faculty_program_director:
+    weight: 14
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_faculty_school:
+    weight: 11
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_first_name:
+    weight: 17
     settings:
       size: 60
       placeholder: ''
@@ -73,89 +126,70 @@ content:
     type: string_textfield
     region: content
   field_guid:
-    weight: 125
+    weight: 28
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_image_url:
-    weight: 122
+    weight: 26
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
     region: content
-  field_in_content_carousel_concat:
-    weight: 129
+  field_last_name:
+    weight: 19
     settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textarea
-    region: content
-  field_news_category:
-    weight: 130
-    settings:
-      match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: string_textfield
     region: content
-  field_news_link:
-    weight: 124
+  field_middle_initial:
+    weight: 18
     settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-    type: link_default
-    region: content
-  field_news_schools:
-    weight: 131
-    settings:
-      match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: string_textfield
     region: content
-  field_news_target:
-    weight: 132
+  field_name_suffix:
+    weight: 20
     settings:
-      match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: string_textfield
     region: content
-  field_news_terms:
-    weight: 133
+  field_past_education:
+    weight: 29
     settings:
-      match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: string_textfield
     region: content
-  field_news_type:
-    weight: 123
+  field_phone:
+    weight: 21
     settings:
-      match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: string_textfield
     region: content
-  field_post_date:
-    weight: 138
-    settings: {  }
+  field_position:
+    weight: 15
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: datetime_default
+    type: string_textfield
     region: content
-  field_source_name:
-    weight: 134
+  field_professional_title:
+    weight: 16
     settings:
       size: 60
       placeholder: ''
@@ -163,32 +197,24 @@ content:
     type: string_textfield
     region: content
   field_source_url:
-    weight: 135
+    weight: 27
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
     region: content
-  field_sub_title:
-    weight: 136
+  field_summary:
+    weight: 24
     settings:
-      size: 60
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_type:
-    weight: 126
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
+    type: text_textarea
     region: content
   path:
     type: path
-    weight: 30
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -196,12 +222,12 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 15
+    weight: 3
     region: content
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -209,19 +235,19 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 120
+    weight: 9
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 16
+    weight: 4
     region: content
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: -5
+    weight: 0
     region: content
     settings:
       size: 60
@@ -229,7 +255,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 1
     settings:
       match_operator: CONTAINS
       size: 60
@@ -238,11 +264,13 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 8
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }
