@@ -34,13 +34,16 @@
 <a href="{{ fields.view_node.content }}">
 	<article>
 		<div>
+			{% if fields.field_image_url.content %}
+				<img src="{{ fields.field_image_url.content }}" align="right">
+			{% endif %}
 			<h3 class="event-list-title">
         		{% autoescape false %}
           			{{ fields.title.content }}
         		{% endautoescape %}
 			</h3>
 		</div>
-		<div>{{ fields.field_post_date.content|date("D, m/d/Y") }}</div>
+		<div>{{ fields.field_post_date.content|date("M j") }}</div>
 	</article>
 </a>
 
