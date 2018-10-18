@@ -77,10 +77,12 @@
 
   <div class="carousel-item {{ active }}">
       <img class="d-block img-fluid" src="{{ imageurl }}" alt="">    
-    <div class="carousel-caption d-block">
-        <h3 class="carousel-event-title"></h3>
-        <p>{{ imagecaption }}</p>
+    {% if imagecaption %}
+      <div class="carousel-caption d-block">
+         <p>{{ imagecaption }}</p>
       </div>
+    {% endif %}
+
   </div>
 {% endfor %}
  </div>
