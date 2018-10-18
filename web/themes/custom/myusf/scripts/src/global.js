@@ -25,7 +25,9 @@
     Drupal.behaviors.surveyModal = {
         attach: function (context, settings) {
             // Using once() to apply the myCustomBehaviour effect when you want to run just one function.
-            $('#studentSurveyModal').once('surveyModal').modal('show');
+            if ($('#studentSurveyModal').length && drupalSettings.dgreatStudentSurveys.hasSeen !== true) {
+                $('#studentSurveyModal').once('surveyModal').modal('show');
+            }
         }
     };
 })(jQuery, Drupal);

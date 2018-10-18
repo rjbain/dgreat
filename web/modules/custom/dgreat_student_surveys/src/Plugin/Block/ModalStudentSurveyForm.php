@@ -23,8 +23,17 @@ class ModalStudentSurveyForm extends WebformBlock {
    * {@inheritdoc}
    */
   public function build() {
+    $build = array_merge(parent::build(), [
+      '#attached' => [
+        'drupalSettings' => [
+          'dgreatStudentSurveys' => [
+            'hasSeen' => \Drupal::service('session')->get('student_surveys_has_seen_recently'),
+          ],
+        ],
+      ],
+    ]);
     \Drupal::service('session')->set('student_surveys_has_seen_recently', TRUE);
-    return parent::build();
+    return $build;
   }
 
   /**
@@ -43,8 +52,9 @@ class ModalStudentSurveyForm extends WebformBlock {
    * @return bool
    */
   protected function canAccess(AccountInterface $account) {
-    return $this->isStudent($account) && $this->currentCohort($account)
-      && !$this->hasAnswered($account) && !$this->sawRecently($account);
+    return $this->isStudent($account)
+      && $this->currentCohort($account)
+      && !$this->hasAnswered($account);
   }
 
   /**
@@ -96,15 +106,5 @@ class ModalStudentSurveyForm extends WebformBlock {
    */
   protected function isStudent(AccountInterface $account) {
     return in_array('student', $account->getRoles());
-  }
-
-  /**
-   * Check the current session to see if we've already displayed the form.
-   *
-   * @return bool
-   */
-  private function sawRecently() {
-    return \Drupal::service('session')
-      ->get('student_surveys_has_seen_recently');
   }
 }
