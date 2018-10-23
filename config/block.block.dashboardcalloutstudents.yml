@@ -1,9 +1,9 @@
-uuid: 9df526c2-6f6b-4d29-8c6c-f0777b9968a6
+uuid: 2586f780-dc2e-4227-9570-0a60f1426a49
 langcode: en
 status: true
 dependencies:
   content:
-    - 'block_content:custom_block:1911aad1-3157-4d1c-bca8-35a98cb16be9'
+    - 'block_content:custom_block:978b1ea9-f87e-4d06-9bcd-747a718fafa3'
   module:
     - block_content
     - block_visibility_groups
@@ -11,15 +11,15 @@ dependencies:
     - user
   theme:
     - myusf
-id: dashboardadblockbenetrack
+id: dashboardcalloutstudents
 theme: myusf
 region: sidebar_second
-weight: 8
+weight: 0
 provider: null
-plugin: 'block_content:1911aad1-3157-4d1c-bca8-35a98cb16be9'
+plugin: 'block_content:978b1ea9-f87e-4d06-9bcd-747a718fafa3'
 settings:
-  id: 'block_content:1911aad1-3157-4d1c-bca8-35a98cb16be9'
-  label: 'Dashboard Ad block - Faculty and Employee'
+  id: 'block_content:978b1ea9-f87e-4d06-9bcd-747a718fafa3'
+  label: 'Dashboard Callout - Students'
   provider: block_content
   label_display: '0'
   status: true
@@ -39,8 +39,7 @@ visibility:
   user_role:
     id: user_role
     roles:
-      faculty: faculty
-      employee: employee
+      student: student
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
