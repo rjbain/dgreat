@@ -65,16 +65,16 @@ function dgreat_student_surveys_webform_third_party_settings_form_alter(
  */
 function dgreat_student_surveys_webform_submission_prepare_form(WebformSubmissionInterface $entity, $operation, FormStateInterface $form_state) {
   $webform = $entity->getWebform();
-  // Get all of the survey questions
-  $elements = collect($webform->getElementsDecoded())->filter(function($element, $key) {
+  // Get all of the survey questions.
+  $elements = collect($webform->getElementsDecoded())->filter(function ($element, $key) {
     return mb_strpos($key, '#') !== 0;
   })->all();
-  // Randomly choose one
+  // Randomly choose one.
   $keep = array_rand($elements);
-  // Filter out all questions that aren't the chosen one
-  $filtered_elements = collect($webform->getElementsDecoded())->filter(function($element, $key) use ($keep) {
+  // Filter out all questions that aren't the chosen one.
+  $filtered_elements = collect($webform->getElementsDecoded())->filter(function ($element, $key) use ($keep) {
     return $key === $keep || mb_strpos($key, '#') === 0;
   })->all();
-  // set the form to the above results
+  // Set the form to the above results.
   $webform->setElements($filtered_elements);
 }

@@ -19,7 +19,7 @@ class CasUser extends Authmap {
    */
   public function query() {
     $query = $this->select('cas_user', 'a')->fields('a');
-    $query->addJoin('left','users', 'u', 'u.uid = a.uid AND u.login >= 1500221245');
+    $query->addJoin('left', 'users', 'u', 'u.uid = a.uid AND u.login >= 1500221245');
     $query->condition('u.login', 1500221245, '>=');
     return $query;
   }

@@ -12,7 +12,6 @@ use Drupal\file\Entity\File;
  */
 class StudentSurveySettingsForm extends FormBase {
 
-
   /**
    * {@inheritdoc}
    */
@@ -55,19 +54,20 @@ class StudentSurveySettingsForm extends FormBase {
 
   /**
    * {@inheritdoc}
+   *
    * @throws \Exception
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $fids = $form_state->getValue('current_student_xml_file');
     if (!empty($fids)) {
-      // We only allow a single upload
+      // We only allow a single upload.
       $file = File::load($fids[0]);
       if (NULL !== $file) {
         $data = simplexml_load_string(file_get_contents($file->getFileUri()));
 
         $conn = Database::getConnection();
 
-        // Truncate the table
+        // Truncate the table.
         $conn->truncate('current_survey_students')->execute();
 
         // Loop over XML nodes and add user names to database.
@@ -76,14 +76,15 @@ class StudentSurveySettingsForm extends FormBase {
             $conn->insert('current_survey_students')->fields([
               'username' => $record->USERNAME,
             ])->execute();
-          } catch (\Exception $e) {
+          }
+          catch (\Exception $e) {
             \Drupal::logger('dgreat_student_surveys')
-                   ->error('Error in update of current_survey_students table');
+              ->error('Error in update of current_survey_students table');
           }
         }
       }
     }
     \Drupal::service('messenger')->addMessage('Current Student File Updated');
   }
-}
 
+}

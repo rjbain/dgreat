@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class SurveyResponseController extends ControllerBase {
 
   /**
-   * Fetch all the responses for a given salesforce id
+   * Fetch all the responses for a given salesforce id.
    *
    * @param $salesforce_id
    *
@@ -29,8 +29,8 @@ class SurveyResponseController extends ControllerBase {
     }
 
     $surveys = \Drupal::entityQuery('webform')
-                      ->condition('category', 'student_survey', '=')
-                      ->execute();
+      ->condition('category', 'student_survey', '=')
+      ->execute();
     $responses = \Drupal::entityQuery('webform_submission')
       ->condition('webform_id', $surveys, 'IN')
       ->condition('created', $from_date, '>')
@@ -39,7 +39,7 @@ class SurveyResponseController extends ControllerBase {
   }
 
   /**
-   * Format a survey question response
+   * Format a survey question response.
    *
    * @param array $surveys
    *
@@ -48,17 +48,17 @@ class SurveyResponseController extends ControllerBase {
    * @return array
    */
   private function buildResponse(array $surveys = [], array $responses = []) {
-    return collect($surveys)->flatMap(function($survey) use ($responses) {
+    return collect($surveys)->flatMap(function ($survey) use ($responses) {
       $webform = Webform::load($survey);
-      $questions = collect($webform->getElementsDecoded())->map(function($data, $name) {
+      $questions = collect($webform->getElementsDecoded())->map(function ($data, $name) {
         $obj = new \stdClass();
         $obj->salesforce_id = $data['#salesforce_id'];
         $obj->question = $name;
         return $obj;
       })->flatten();
-      return collect($responses)->flatMap(function($response) use ($questions) {
+      return collect($responses)->flatMap(function ($response) use ($questions) {
         $submission = WebformSubmission::load($response);
-        return $questions->map(function($question) use ($submission) {
+        return $questions->map(function ($question) use ($submission) {
           $obj = new \stdClass();
           $obj->user = $submission->getOwner()->getUsername();
           $obj->answer = $submission->getElementData($question->question);
@@ -67,13 +67,14 @@ class SurveyResponseController extends ControllerBase {
           return $obj;
         });
       });
-    })->filter(function($row) {
+    })->filter(function ($row) {
       return !empty($row->answer);
     })->flatten();
   }
 
   /**
    * Fetch all the surveys that contain a question by it's Salesforce ID.
+   *
    * @param array $surveys
    * @param $salesforce_id
    *
@@ -101,12 +102,12 @@ class SurveyResponseController extends ControllerBase {
    */
   private function getSubmissionsBySurvey($relevant_survey) {
     return \Drupal::entityQuery('webform_submission')
-                  ->condition('webform_id', $relevant_survey)
-                  ->execute();
+      ->condition('webform_id', $relevant_survey)
+      ->execute();
   }
 
   /**
-   * Flatten the question elements and pluck out a question name by id
+   * Flatten the question elements and pluck out a question name by id.
    *
    * @param $relevant_survey
    * @param $salesforce_id
@@ -124,6 +125,7 @@ class SurveyResponseController extends ControllerBase {
 
   /**
    * Do some data formatting to return a nice terse result.
+   *
    * @param $row
    *
    * @return array
@@ -131,7 +133,7 @@ class SurveyResponseController extends ControllerBase {
   private function buildDataForRow($row) {
     $question = $row['question'];
     return collect($row['submissions'])->map(function ($id) use ($question) {
-      /** @var WebformSubmission $submission */
+      /** @var \Drupal\webform\Entity\WebformSubmission $submission */
       $submission = WebformSubmission::load($id);
       return [
         'user' => $submission->getOwner()->getAccountName(),
