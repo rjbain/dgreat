@@ -41,11 +41,11 @@ class SurveyResponseController extends ControllerBase {
   /**
    * Format a survey question response.
    *
-   * @param array $surveys
+   * @param array $surveys A collection of surveys to build results for.
    *
-   * @param array $responses
+   * @param array $responses A collection of responses to build results for.
    *
-   * @return array
+   * @return array The formatted results.
    */
   private function buildResponse(array $surveys = [], array $responses = []) {
     return collect($surveys)->flatMap(function ($survey) use ($responses) {
@@ -69,7 +69,7 @@ class SurveyResponseController extends ControllerBase {
       });
     })->filter(function ($row) {
       return !empty($row->answer);
-    })->flatten();
+    })->unique()->flatten();
   }
 
   /**
