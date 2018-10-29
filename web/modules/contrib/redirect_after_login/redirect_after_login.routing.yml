@@ -1,0 +1,7 @@
+redirect_after_login.admin_settings:
+  path: '/admin/config/system/redirect'
+  defaults:
+    _form: '\Drupal\redirect_after_login\Form\LoginRedirectionForm'
+    _title: 'Set Login Destination'
+  requirements:
+    _permission: 'administer redirect_after_login settings'

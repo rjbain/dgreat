@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @file
+ * Defines weight field types.
+ */
+
+/**
+ * Implementes hook_preprocess_HOOK().
+ */
+function weight_preprocess_views_view_table(&$variables) {
+
+  // Check for a weight selector field.
+  foreach ($variables['view']->field as $field) {
+    if ($field->options['plugin_id'] == 'weight_selector') {
+      // Add the tabledrag attributes.
+      foreach ($variables['rows'] as $key => $row) {
+        $variables['rows'][$key]['attributes']->addClass('draggable');
+      }
+      $table_id = 'weight-table-' . $variables['view']->dom_id;
+      $variables['attributes']['id'] = $table_id;
+
+      $options = array(
+        'table_id' => $table_id,
+        'action' => 'order',
+        'relationship' => 'sibling',
+        'group' => 'weight-selector',
+      );
+      drupal_attach_tabledrag($variables, $options);
+    }
+  }
+}

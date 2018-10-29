@@ -1,0 +1,9 @@
+services:
+  logger.channel.migrate_tools:
+    class: Drupal\Core\Logger\LoggerChannel
+    factory: logger.factory:get
+    arguments: ['migrate_tools']
+  route_processor.migrate_group:
+    class: Drupal\migrate_tools\Routing\RouteProcessor
+    tags:
+    - { name: route_processor_outbound }
