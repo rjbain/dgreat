@@ -39,9 +39,19 @@
  */
 #}
 {#{ dump(item.content) }#}
+
+{% for item in items|slice(0,1) %}
+
+{% if items|length > 1 %}
+ {% set shade = "carousel-indicators-shade" %} 
+ {% endif %} 
+
+
+
 <div id="carouselControls" class="carousel slide" data-ride="carousel"  data-interval="10000">
 
-  <ol class="carousel-indicators">
+  <ol class="carousel-indicators {{ shade }}">
+
 {% set count = -1 %}    
 {% for item in items %}
 {% set count = count + 1 %}
@@ -56,6 +66,7 @@
 {% endif %} 
  {% endfor %}
   </ol>
+
   <div class="carousel-inner">
 
 {% set count = 0 %}    
@@ -77,10 +88,12 @@
 
   <div class="carousel-item {{ active }}">
       <img class="d-block img-fluid" src="{{ imageurl }}" alt="">    
-    <div class="carousel-caption d-block">
-        <h3 class="carousel-event-title"></h3>
-        <p>{{ imagecaption }}</p>
+    {% if imagecaption %}
+      <div class="carousel-caption d-block">
+         <p>{{ imagecaption }}</p>
       </div>
+    {% endif %}
+
   </div>
 {% endfor %}
  </div>
@@ -95,3 +108,4 @@
   </a>
 {% endif %}
 </div>
+{% endfor %}

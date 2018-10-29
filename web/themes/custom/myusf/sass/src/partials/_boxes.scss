@@ -839,10 +839,110 @@ h2.carousel-overlay:before {
 
 /* News Carousel 
 =============================================== */
-.content .carousel {
+.carousel.news-carousel {
     margin-left: -15px;
     margin-right: 15px;
     margin-bottom: 45px;
+
+    @include media-breakpoint-down(tablet) {
+        margin-bottom: 20px;
+    }
+    @include media-breakpoint-down(phone) {
+       /* margin-left: -17px;
+        margin-right: unset;*/
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #carouselControls {       
+         width:100%;
+        @include media-breakpoint-down(phone) {
+            /*width: 82vw;*/
+            width: 310px;
+        }
+    }
+    .carousel-inner {
+        @include media-breakpoint-down(phone) {
+            /*width:101%; */
+            width: 310px;
+        }
+    }
+    .carousel-control-next::before {
+        @include media-breakpoint-down(phone) {
+            /*left: 98%;
+            top: 60%;*/
+            left: 43px;
+            top:132px;
+            
+        }
+    }
+    .carousel-control-prev::before {
+        @include media-breakpoint-down(phone) {
+            left: -6px;
+            /*top: 60%;*/
+            top: 132px;
+        }
+    }
+    .carousel-control-prev::after, .carousel-control-next::after {
+        @include media-breakpoint-down(phone) {
+            width: 35px;
+            height: 35px;  
+            top:122px;          
+        }
+    }
+    .carousel-control-prev::after {
+        @include media-breakpoint-down(phone) {
+            left: -18px;
+        }
+    }
+    .carousel-control-next::after {
+        @include media-breakpoint-down(phone) {
+            left: 29px;
+            /*left: 70%; */
+        }
+     }
+     .carousel-indicators {
+        @include media-breakpoint-up(desktop) {
+            margin-bottom: 2px;
+        }
+    }
+    .carousel-indicators-shade {
+        @include media-breakpoint-down(phone) {
+            /*width: 101%; */
+            width: 310px;
+            margin-left: 0;
+            margin-bottom: -2px;
+            padding-bottom: 5px;
+            background: linear-gradient(to bottom,rgba(42,42,42,0) 0%,$black 100%)!important;
+        }
+     }
+    .carousel-caption {
+        
+        @include media-breakpoint-down(phone) {
+            height:auto;
+        }
+
+        h3.carousel-event-title {
+            display: none;
+        }
+
+        p:last-of-type {
+            position: absolute;
+            padding: 0 25px 10px;
+            bottom: 0!important;
+
+            @include media-breakpoint-only(tablet) {
+                font-size: .8rem!important;
+                bottom: -15px!important;            
+            }
+
+            @include media-breakpoint-down(phone) {
+                position: relative;
+                padding: 10px 0;
+                margin-bottom: -5px;
+
+            }
+        }
+    }
 }
 
 
@@ -1085,6 +1185,65 @@ h2.carousel-overlay:before {
         .pager__item--next {
             margin-right: 0px; 
             padding-left: 0px;
+        }
+    }
+}
+
+/* NEWS List
+=============================================== */ 
+.view-news {
+    .views-row {
+        &:hover, &:focus {
+            background: $light_beige;
+        }
+        a {
+            text-decoration: none;
+            &:hover, &:focus {
+                background: transparent;
+            }
+            article {
+                width: 100%;
+                display:inline-block;
+                padding-top: 10px;
+                padding-bottom: 20px;
+                border-bottom: 1px solid $light_gray;
+
+                 @include media-breakpoint-down(phone) {
+                    padding-bottom: 15px;
+                 }
+
+                img {
+                    width: 107px;
+                    float: left;
+                    margin-left: 15px;
+                    margin-right: 20px;
+                    @include media-breakpoint-down(phone) {                        
+                        width: 80px;
+                        margin-left: 0px;
+                        margin-right: 15px;
+                    }
+                }
+                h3.news-list-title{                   
+                    color: $green!important;
+                    text-transform: capitalize;
+                    margin-top: -3px;
+                    @include media-breakpoint-down(tablet) {
+                        font-size: 1rem;
+                        font-weight:700!important;
+                        margin-top: -5px;
+                    }
+                }
+                .news-list-date {
+                    font-size: 1rem;
+                    color: $black;
+                    @include media-breakpoint-down(tablet) {
+                        margin-top: -5px;
+                    }
+                }
+                .news-list-text {
+                    overflow: hidden;
+                }
+            }
         }
     }
 }
