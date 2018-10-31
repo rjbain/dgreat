@@ -97,15 +97,24 @@
 
   <div{{ content_attributes.addClass('content') }}>
     <div class="faculty_main_info">
-      <div class="faculty_image"><img src="{{ image }}"></div>
+      <div class="faculty_image">
+        {% if image %}
+          <img src="{{ image }}">
+        {% endif %}
+      </div>
       <a href="{{ source_url }}" target="_blank">
         <h2 class="display-title">{{ first_name }} {{ middle_initial }} {{ last_name }} {{ name_suffix }}</h2>
       </a>
       <div class="professional_title">{{ professional_title }}</div>
       <div class="faculty_position">{{ position }}</div><br/>
       <div class="faculty_contact">
-        <div class="contact email">{{ email_address }}</div>
-        <div class="contact tel">{{ phone }}</div>
+
+        {% if email_address %}
+          <div class="contact email">{{ email_address }}</div>
+        {% endif %}
+        {% if phone %}
+          <div class="contact tel">{{ phone }}</div>
+        {% endif %}
       </div>
       <br/>
     </div>
@@ -119,11 +128,12 @@
             {% endif %}
           {% endautoescape %}
       </div>
-      <div class="education"><h3>Education</h3> {{ past_education }}</div>
-      <div class="expertise"><h3>Expertise</h3> {{ expertise }}</div>
-      <!--<div class="department"><h3>Department</h3> {{ faculty_department }}</div>
-      <div class="program"><h3>Program</h3> {{ faculty_program }}</div>
-      <div class="school"><h3>School</h3> {{ faculty_school }}</div>
-      <div class="program_director"><h3>Program Director</h3> {{ faculty_program_director }}</div> -->
+      {% if past_education|render|trim is not empty %}
+        <div class="education"><h3>Education</h3> {{ content.field_past_education }}</div>
+      {% endif %}
+
+      {% if expertise|render|trim is not empty %}
+        <div class="expertise"><h3>Expertise</h3> {{ expertise }}</div>
+      {% endif %}
     </div>
   </div>

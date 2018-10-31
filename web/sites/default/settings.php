@@ -134,3 +134,15 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && php_sapi_name() != 'cli' && $_SER
     header("Location: $newurl");
     exit();
 }
+
+if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && php_sapi_name() != "cli") {
+
+  if ($_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
+
+    if ($_SERVER["HTTP_HOST"] == "ets.usfca.edu") {
+      header("HTTP/1.0 301 Moved Permanently");
+      header("Location: https://myusf.usfca.edu/its/ets" . $_SERVER["REQUEST_URI"]);
+      exit();
+    }   
+  } 
+}

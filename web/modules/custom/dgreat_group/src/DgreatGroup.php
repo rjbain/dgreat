@@ -98,7 +98,7 @@ class DgreatGroup {
     // Grab the quick link field.
     $quick_link = $this->entity->get('field_link_type')->getValue();
 
-    if (isset($quick_link[0]['value']) && $quick_link[0]['value'] === 'quick') {
+    if (isset($quick_link[0]['value']) && $quick_link[0]['value'] == 'quick') {
       // Grab our current user and their group ids.
       $uid = \Drupal::currentUser()->id();
       $user = User::load($uid);
@@ -182,7 +182,6 @@ class DgreatGroup {
 
     $nids = $this->getUserDefaultFlags($user);
 
-
     // Let's go through Each Node and flag each node.
     if (!empty($nids)) {
       collect($nids)->map(function($nid) {
@@ -190,50 +189,8 @@ class DgreatGroup {
         $flag = $flag_service->getFlagById('favorite');
 
         $node = Node::load($nid);
-        if ($node !== NULL && !$flag->isFlagged($node, $this->entity)) {
+        if (!is_null($node) && !$flag->isFlagged($node, $this->entity)) {
           $flag_service->flag($flag, $node, $this->entity);
-        }
-
-        // Add in any default links that are not in user_weights.
-        $link = $node->get('field_link_type')->getValue();
-        if (isset($link[0]['value'])) {
-          $db = \Drupal::database();
-          $name = $link[0]['value'] . '_links';
-          $uid = $this->entity->id();
-          $nid = $node->id();
-
-          $check = $db
-            ->select('user_weights', 'u')
-            ->fields('u', ['entity_id'])
-            ->condition('uid', $uid)
-            ->condition('entity_id', $nid)
-            ->condition('view_name', $name)
-            ->execute()
-            ->fetchField();
-
-          if ($check === FALSE) {
-            // Grab the new weight.
-            $sql = "SELECT MAX(weight) FROM {user_weights} WHERE uid = :uid";
-            $weight = $db
-              ->query($sql, [':uid' => $uid])
-              ->fetchField();
-
-            // No user weights setup, add a default one.
-            if ($weight == NULL) {
-              $weight = 0;
-            }
-
-            // Insert new item in weights table.
-            $db->insert('user_weights')
-              ->fields([
-                'entity_id' => $nid,
-                'uid' => $uid,
-                'view_name' => $name,
-                'weight' => $weight + 1,
-              ])
-              ->execute();
-
-          }
         }
       });
     }

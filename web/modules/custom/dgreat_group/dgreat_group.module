@@ -91,32 +91,32 @@ function dgreat_group_user_update(\Drupal\user\Entity\User $entity) {
  * Implements hook_form_FORM_ID_alter().
  */
 function dgreat_group_form_group_groups_edit_form_alter(&$form, FormStateInterface $form_state) {
-//  $form['actions']['submit']['#submit'][] = '_dgreat_group_form_submit';
-//  $fl_current = $form['field_default_favorite_links']['widget'];
-//  $ql_current = $form['field_default_quick_links']['widget'];
-//  $nids = [];
-//
-//  // Grab the current nids.
-//  foreach ($fl_current as $nid) {
-//    if (isset($nid['target_id'])) {
-//      $node = $nid['target_id']['#default_value'];
-//      if (isset($node) && $node instanceof Node) {
-//        $nids[] = $node->id();
-//      }
-//    }
-//  }
-//
-//  foreach ($ql_current as $nid) {
-//    if (isset($nid['target_id'])) {
-//      $node = $nid['target_id']['#default_value'];
-//      if (isset($node) && $node instanceof Node) {
-//        $nids[] = $node->id();
-//      }
-//    }
-//  }
-//
-//  // Set the defaults to the utility class.
-//  DgreatGroupUtility::setOriginal($nids);
+  $form['actions']['submit']['#submit'][] = '_dgreat_group_form_submit';
+  $fl_current = $form['field_default_favorite_links']['widget'];
+  $ql_current = $form['field_default_quick_links']['widget'];
+  $nids = [];
+
+  // Grab the current nids.
+  foreach ($fl_current as $nid) {
+    if (isset($nid['target_id'])) {
+      $node = $nid['target_id']['#default_value'];
+      if (isset($node) && $node instanceof Node) {
+        $nids[] = $node->id();
+      }
+    }
+  }
+
+  foreach ($ql_current as $nid) {
+    if (isset($nid['target_id'])) {
+      $node = $nid['target_id']['#default_value'];
+      if (isset($node) && $node instanceof Node) {
+        $nids[] = $node->id();
+      }
+    }
+  }
+
+  // Set the defaults to the utility class.
+  DgreatGroupUtility::setOriginal($nids);
 }
 
 /**
