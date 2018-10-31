@@ -245,29 +245,29 @@ class DgreatGroup {
    *
    * @return array
    */
-//   private function getUserDefaultFlags(User $user) {
-//     $groups = \Drupal::entityQuery('group')
-//       ->exists('field_mapped_roles')
-//       ->execute();
+  private function getUserDefaultFlags(User $user) {
+    $groups = \Drupal::entityQuery('group')
+      ->exists('field_mapped_roles')
+      ->execute();
 
-//     // First filter all the mapped groups to only ones this user has
-//     // Then run through those groups, grab default links and pull the node ids
-//     return collect($groups)->filter(function ($group) use ($user) {
-//       return RoleGroupMapper::userHasGroupRole($user, $group);
-//     })->flatMap(function ($gid) {
-//       $group = Group::load($gid);
-//       if (NULL !== $group &&
-//         $group->hasField('field_default_favorite_links')) {
-//         // Map over the default fav links and pull their targets.
-//         return collect(
-//           $group->get('field_default_favorite_links')->getValue()
-//         )->map(function ($default_link) {
-//           return $default_link['target_id'];
-//         })->toArray();
-//       }
-//       // fallback empty return
-//       return [];
-//     })->toArray();
-//   }
+    // First filter all the mapped groups to only ones this user has
+    // Then run through those groups, grab default links and pull the node ids
+    // return collect($groups)->filter(function ($group) use ($user) {
+    //   return RoleGroupMapper::userHasGroupRole($user, $group);
+    // })->flatMap(function ($gid) {
+    //   $group = Group::load($gid);
+    //   if (NULL !== $group &&
+    //     $group->hasField('field_default_favorite_links')) {
+    //     // Map over the default fav links and pull their targets.
+    //     return collect(
+    //       $group->get('field_default_favorite_links')->getValue()
+    //     )->map(function ($default_link) {
+    //       return $default_link['target_id'];
+    //     })->toArray();
+    //   }
+    //   // fallback empty return
+    //   return [];
+    // })->toArray();
+  }
 
 }
