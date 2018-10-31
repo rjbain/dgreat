@@ -195,46 +195,46 @@ class DgreatGroup {
         }
 
         // Add in any default links that are not in user_weights.
-        $link = $node->get('field_link_type')->getValue();
-        if (isset($link[0]['value'])) {
-          $db = \Drupal::database();
-          $name = $link[0]['value'] . '_links';
-          $uid = $this->entity->id();
-          $nid = $node->id();
+        //$link = $node->get('field_link_type')->getValue();
+        //if (isset($link[0]['value'])) {
+        //  $db = \Drupal::database();
+        //  $name = $link[0]['value'] . '_links';
+        //  $uid = $this->entity->id();
+        //  $nid = $node->id();
 
-          $check = $db
-            ->select('user_weights', 'u')
-            ->fields('u', ['entity_id'])
-            ->condition('uid', $uid)
-            ->condition('entity_id', $nid)
-            ->condition('view_name', $name)
-            ->execute()
-            ->fetchField();
+        //  $check = $db
+        //    ->select('user_weights', 'u')
+        //    ->fields('u', ['entity_id'])
+        //    ->condition('uid', $uid)
+        //    ->condition('entity_id', $nid)
+        //    ->condition('view_name', $name)
+        //    ->execute()
+        //    ->fetchField();
 
-          if ($check === FALSE) {
-            // Grab the new weight.
-            $sql = "SELECT MAX(weight) FROM {user_weights} WHERE uid = :uid";
-            $weight = $db
-              ->query($sql, [':uid' => $uid])
-              ->fetchField();
+        //  if ($check === FALSE) {
+        //    // Grab the new weight.
+        //    $sql = "SELECT MAX(weight) FROM {user_weights} WHERE uid = :uid";
+        //    $weight = $db
+        //      ->query($sql, [':uid' => $uid])
+        //      ->fetchField();
 
             // No user weights setup, add a default one.
-            if ($weight == NULL) {
-              $weight = 0;
-            }
+        //    if ($weight == NULL) {
+        //      $weight = 0;
+        //    }
 
             // Insert new item in weights table.
-            $db->insert('user_weights')
-              ->fields([
-                'entity_id' => $nid,
-                'uid' => $uid,
-                'view_name' => $name,
-                'weight' => $weight + 1,
-              ])
-              ->execute();
+        //    $db->insert('user_weights')
+        //      ->fields([
+        //        'entity_id' => $nid,
+        //        'uid' => $uid,
+        //        'view_name' => $name,
+        //        'weight' => $weight + 1,
+        //      ])
+        //      ->execute();
 
-          }
-        }
+        //  }
+        //}
       });
     }
     return $this;
