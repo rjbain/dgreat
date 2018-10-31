@@ -76,9 +76,9 @@ class DgreatGroupBatch {
               ->query($sql, [':uid' => $uid])
               ->fetchField();
 
-            // No user weights setup, add a default one.
+            // No user weights setup, no need to inject this.
             if ($weight == NULL) {
-              $weight = 0;
+              continue;
             }
 
             $check = $db

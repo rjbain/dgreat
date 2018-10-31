@@ -1128,7 +1128,6 @@ h2.carousel-overlay:before {
 
 /* FACULTY Info
 =============================================== */ 
-
 .faculty_main_info {
     font-size:1rem;
     display: inline-block;
@@ -1138,7 +1137,8 @@ h2.carousel-overlay:before {
         margin-left: 0px;
     }
 
-    .faculty_image, .faculty img {
+    .faculty_image /*, .faculty img */{
+        border: 1px solid $light_gray;
         float: left;
         width: 150px;
         height: 150px;
@@ -1146,10 +1146,22 @@ h2.carousel-overlay:before {
         margin-right: 20px;
         overflow: hidden;
 
+        img {
+            width: 150px;
+            height: 150px;
+            margin-top:0px;
+        }
+
         @include media-breakpoint-down(phone) {
             width: 94px;
+            height: 94px;
             float: right;
             margin: 6px 0 10px 10px;
+
+            img {
+                width: 94px;
+                height: 94px;
+            }
         }
     }
     h2 {

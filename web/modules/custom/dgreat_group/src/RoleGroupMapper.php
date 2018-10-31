@@ -52,10 +52,6 @@ class RoleGroupMapper {
       // Add the user to the group.
       Group::load($group_id)->addMember($user);
     }
-    else {
-      // Check and apply default content since we are not saving the user.
-      (new DgreatGroup($user))->flagUserDefaultContent($user);
-    }
     return $user;
   }
 

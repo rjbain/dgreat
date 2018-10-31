@@ -52,7 +52,11 @@
 
   <div{{ content_attributes.addClass('content') }}>
     <div class="faculty_main_info">
-      <div class="faculty_image"><img src="{{ image_url }}"></div>
+      <div class="faculty_image">
+       {% if image_url %}
+        <img src="{{ image_url }}">
+       {% endif %}
+      </div>
       <a href="{{ source_url }}" target="_blank">
         <h2 class="display-title">{{ first_name }} {{ middle_initial }} {{ last_name }} {{ name_suffix }}</h2>
       </a>
@@ -78,16 +82,11 @@
             {% endif %}
           {% endautoescape %}
       </div>
-    {% if past_education %}
+     {% if past_education|render|trim is not empty %}
     	<div class="education"><h3>Education</h3> {{ past_education }}</div>
     {% endif %}
-    {% if expertise %}
+    {% if expertise|render|trim is not empty %}
       <div class="expertise"><h3>Expertise</h3> {{ expertise }}</div>
     {% endif %}
-
-      <!--<div class="department"><h3>Department</h3> {{ faculty_department }}</div>
-      <div class="program"><h3>Program</h3> {{ faculty_program }}</div>
-      <div class="school"><h3>School</h3> {{ faculty_school }}</div>
-      <div class="program_director"><h3>Program Director</h3> {{ faculty_program_director }}</div> -->
     </div>
   </div>
