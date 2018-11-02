@@ -32,29 +32,17 @@ class ModalStudentSurveyForm extends WebformBlock {
         ],
       ],
     ]);
-    // @todo: should be able to set this higher; set low for testing, see #199.
-    $build['#cache']['max-age'] = 0;
-    \Drupal::service('session')->set('student_surveys_has_seen_recently', TRUE);
     $account = \Drupal::currentUser();
     // @todo: Would prefer to run this in blockAccess, but for some reason it
     // does not run on the first page load after log in.
     if ($this->canAccess($account)) {
+      \Drupal::service('session')->set('student_surveys_has_seen_recently', TRUE);
       return $build;
-    } else {
-      // If we don't build the block, make sure the null result isn't cached.
-      return [
-        '#cache' => [
-          'max-age' => 0
-        ]
-      ];
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  protected function blockAccess(AccountInterface $account) {
-    return AccessResult::allowedIfHasPermission($account, 'access content');
+  public function getCacheMaxAge() {
+    return 0;
   }
 
   /**
