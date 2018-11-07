@@ -1,8 +1,0 @@
-<?php
-
-/**
- * Bla.
- */
-class Pum {
-
-}
