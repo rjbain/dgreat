@@ -1,0 +1,37 @@
+uuid: 737d80b4-dde8-4419-be99-20154b347a59
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:contact:02dfab2e-2ec3-4c86-9371-f368e4214005'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: payrollcontactbox
+theme: myusf
+region: sidebar_second
+weight: 9
+provider: null
+plugin: 'block_content:02dfab2e-2ec3-4c86-9371-f368e4214005'
+settings:
+  id: 'block_content:02dfab2e-2ec3-4c86-9371-f368e4214005'
+  label: 'Payroll Contact Box'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/payroll\r\n/payroll/*"
+    negate: false
+    context_mapping: {  }
