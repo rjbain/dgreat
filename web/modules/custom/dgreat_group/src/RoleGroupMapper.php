@@ -69,8 +69,6 @@ class RoleGroupMapper {
    * @throws \Drupal\Core\Entity\EntityStorageException
    */
   public static function revokeGroupAccess(User $user, $group_id) {
-<<<<<<< HEAD
-=======
     // Build the new list of groups the user has access to.
     $new_groups = collect($user->get('field_user_group')->getValue())
       ->filter(function ($group) use ($group_id) {
@@ -80,8 +78,6 @@ class RoleGroupMapper {
     $user->set('field_user_group', $new_groups);
     $user->save();
 
-    // Remove the user from the group.
->>>>>>> #0: Coding standards cleanup
     Group::load($group_id)->removeMember($user);
     return $user;
   }
