@@ -43,7 +43,7 @@ class DgreatGroupBatch {
       if ($user->id() == 0) {
         return;
       }
-
+      
       $flag_service = \Drupal::service('flag');
       $flag = $flag_service->getFlagById('favorite');
       $db = \Drupal::database();
