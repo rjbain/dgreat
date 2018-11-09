@@ -62,14 +62,16 @@ class GroupUser extends User {
     return parent::prepareRow($row);
   }
 
-  public function query()
-  {
-      $query = parent::query();
-      $query->condition('login', '1500221245', '>=');
-      return $query;
+  /**
+   *
+   */
+  public function query() {
+    $query = parent::query();
+    $query->condition('login', '1500221245', '>=');
+    return $query;
   }
 
-    /**
+  /**
    * Determine if this row's name matches an existing user.
    *
    * @param string $name

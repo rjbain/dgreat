@@ -36,10 +36,10 @@ $settings['install_profile'] = 'standard';
  */
 $secrets_file = __DIR__ . "/files/private/secrets.json";
 if (file_exists($secrets_file)) {
-    $secrets = json_decode(file_get_contents($secrets_file), TRUE);
-    foreach ($secrets as $key => $secret) {
-        putenv("{$key}={$secret}");
-    }
+  $secrets = json_decode(file_get_contents($secrets_file), TRUE);
+  foreach ($secrets as $key => $secret) {
+    putenv("{$key}={$secret}");
+  }
 }
 
 /**

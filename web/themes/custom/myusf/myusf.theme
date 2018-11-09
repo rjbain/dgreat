@@ -43,8 +43,8 @@ function myusf_preprocess_block(&$vars) {
 
   // Allow blocks to update after editing.
   if ($vars['base_plugin_id'] == 'block_content') {
-      $renderer = \Drupal::service('renderer');
-      $renderer->addCacheableDependency($vars, $vars['content']['#block_content']);
+    $renderer = \Drupal::service('renderer');
+    $renderer->addCacheableDependency($vars, $vars['content']['#block_content']);
   }
 }
 
@@ -52,18 +52,18 @@ function myusf_preprocess_block(&$vars) {
  * Implements hook_theme_suggestions_HOOK_alter().
  */
 function myusf_theme_suggestions_page_alter(&$suggestions, $variables, $hook) {
-    /**
+  /**
      * 404 template suggestion.
      */
-    if (!is_null(Drupal::requestStack()->getCurrentRequest()->attributes->get('exception'))) {
-        $status_code = Drupal::requestStack()->getCurrentRequest()->attributes->get('exception')->getStatusCode();
-        switch ($status_code) {
-            case 404: {
-                $suggestions[] = 'page__' . (string) $status_code;
-                break;
-            }
-            default:
-                break;
-        }
+  if (!is_null(Drupal::requestStack()->getCurrentRequest()->attributes->get('exception'))) {
+    $status_code = Drupal::requestStack()->getCurrentRequest()->attributes->get('exception')->getStatusCode();
+    switch ($status_code) {
+      case 404:{
+        $suggestions[] = 'page__' . (string) $status_code;
+        break;
+}
+      default:
+        break;
     }
+  }
 }

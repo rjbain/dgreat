@@ -3,6 +3,7 @@
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
+use Behat\Behat\Tester\Exception\PendingException;
 use Drupal\DrupalExtension\Context\MinkContext;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
@@ -14,204 +15,172 @@ use Drupal\DrupalExtension\Context\RawDrupalContext;
  * Define application features from the specific context.
  */
 class FeatureContext extends RawDrupalContext implements Context, SnippetAcceptingContext {
-  /**
-   * Initializes context.
-   * Every scenario gets its own context object.
-   *
-   * @param array $parameters
-   *   Context parameters (set them in behat.yml)
-   */
-  public function __construct(array $parameters = []) {
-    // Initialize your context here
-  }
 
   /** @var \Drupal\DrupalExtension\Context\MinkContext */
   private $minkContext;
+
   /** @BeforeScenario */
-  public function gatherContexts(BeforeScenarioScope $scope)
-  {
-      $environment = $scope->getEnvironment();
-      $this->minkContext = $environment->getContext('Drupal\DrupalExtension\Context\MinkContext');
+  public function gatherContexts(BeforeScenarioScope $scope) {
+    $environment = $scope->getEnvironment();
+    $this->minkContext = $environment->getContext('Drupal\DrupalExtension\Context\MinkContext');
   }
 
-//
-// Place your definition and hook methods here:
-//
-//  /**
-//   * @Given I have done something with :stuff
-//   */
-//  public function iHaveDoneSomethingWith($stuff) {
-//    doSomethingWith($stuff);
-//  }
-//
+  /**@BeforeScenario @survey */
+  public function before($event) {
+    $surveys = \Drupal::entityQuery('webform')
+      ->condition('category', 'student_survey', '=')
+      ->condition('id', 'test_', 'STARTS_WITH')
+      ->execute();
+    collect($surveys)->map(function ($survey) {
+      \Drupal::entityTypeManager()->getStorage('webform')
+        ->load($survey)
+        ->delete();
+    });
+  }
 
-    /**
-     * Fills in form field with specified id|name|label|value
-     * Example: And I enter the value of the env var "TEST_PASSWORD" for "edit-account-pass-pass1"
-     *
-     * @Given I enter the value of the env var :arg1 for :arg2
-     */
-    public function fillFieldWithEnv($value, $field)
-    {
-        $this->minkContext->fillField($field, getenv($value));
+  /**
+   * @Given I create a webform called :arg1 from the :arg2 template
+   */
+  public function iCreateAWebformCalledFromTheTemplate($arg1, $arg2) {
+    $this->visitPath("/admin/structure/webform/manage/template_{$arg2}/duplicate");
+    $this->minkContext->fillField('title', $arg1);
+    $this->minkContext->selectOption('category[select]', 'student_survey');
+    $this->minkContext->assertSelectRadioById('Open', 'edit-status-open');
+    $this->minkContext->pressButton('Save');
+    $this->minkContext->assertAtPath("/admin/structure/webform/manage/$arg1");
+  }
+
+  /**
+   * @Given I set the :arg1 survey salesforce_id to :arg2
+   */
+  public function iSetTheSurveySalesforceIdTo2($arg1, $arg2) {
+    $this->visitPath("/admin/structure/webform/manage/$arg1/settings");
+    $this->minkContext->pressButton('Expand all');
+    $this->minkContext->iWaitForAjaxToFinish(10000);
+
+    $this->minkContext->fillField(
+      'The campaign id for this survey in Salesforce',
+      $arg2
+    );
+    $this->minkContext->pressButton('Save');
+    $this->minkContext->iWaitForAjaxToFinish(10000);
+  }
+
+  /**
+   * @Given I add a student survey rating to the :arg1 survey with question of :arg2 and a salesforce_id of :arg3
+   */
+  public function iAddAStudentSurveyRatingToTheSurveyWithQuestionOfAndASalesforceIdOf($arg1, $arg2, $arg3){
+    $this->visitPath("/admin/structure/webform/manage/$arg1");
+    $this->minkContext->clickLink('Add element');
+    $this->minkContext->iWaitForAjaxToFinish(10000);
+    $this->minkContext->clickLink('Student Survey Rating');
+    $this->minkContext->iWaitForAjaxToFinish(10000);
+    $this->minkContext->fillField('title', $arg2);
+    $this->minkContext->fillField('Salesforce ID', $arg3);
+    $this->minkContext->selectOption('properties[options][options]', 'likert_comparison');
+    $this->minkContext->pressButton('Save');
+    $this->minkContext->iWaitForAjaxToFinish(10000);
+    $this->minkContext->fillField('key', 'how_awesome_dustin');
+    $this->minkContext->pressButton('Save');
+    $this->minkContext->iWaitForAjaxToFinish(10000);
+    $this->minkContext->pressButton('Save elements');
+    $this->minkContext->iWaitForAjaxToFinish(10000);
+  }
+
+  /**
+   * @Given I follow meta refresh
+   *
+   * https://www.drupal.org/node/2011390
+   */
+  public function iFollowMetaRefresh() {
+    while ($refresh = $this->getSession()
+      ->getPage()
+      ->find('css', 'meta[http-equiv="Refresh"]')) {
+      $content = $refresh->getAttribute('content');
+      $url = str_replace('0; URL=', '', $content);
+      $this->getSession()->visit($url);
     }
+  }
 
-    /**
-     * @Given I wait for the progress bar to finish
-     */
-    public function iWaitForTheProgressBarToFinish() {
-      $this->iFollowMetaRefresh();
-    }
-
-    /**
-     * @Given I follow meta refresh
-     *
-     * https://www.drupal.org/node/2011390
-     */
-    public function iFollowMetaRefresh() {
-      while ($refresh = $this->getSession()->getPage()->find('css', 'meta[http-equiv="Refresh"]')) {
-        $content = $refresh->getAttribute('content');
-        $url = str_replace('0; URL=', '', $content);
-        $this->getSession()->visit($url);
+  public function iWaitForAjaxToFinish($time = 5000) {
+    $condition = <<<JS
+    (function() {
+      function isAjaxing(instance) {
+        return instance && instance.ajaxing === true;
       }
+      var d7_not_ajaxing = true;
+      if (typeof Drupal !== 'undefined' && typeof Drupal.ajax !== 'undefined' && typeof Drupal.ajax.instances === 'undefined') {
+        for(var i in Drupal.ajax) { if (isAjaxing(Drupal.ajax[i])) { d7_not_ajaxing = false; } }
+      }
+      var d8_not_ajaxing = (typeof Drupal === 'undefined' || typeof Drupal.ajax === 'undefined' || typeof Drupal.ajax.instances === 'undefined' || !Drupal.ajax.instances.some(isAjaxing))
+      return (
+        // Assert no AJAX request is running (via jQuery or Drupal) and no
+        // animation is running.
+        (typeof jQuery === 'undefined' || (jQuery.active === 0 && jQuery(':animated').length === 0)) &&
+        d7_not_ajaxing && d8_not_ajaxing
+      );
+    }());
+JS;
+    $result = $this->getSession()->wait($time, $condition);
+    if (!$result) {
+      throw new \RuntimeException('Unable to complete AJAX request.');
     }
+  }
+
+  /**
+   * @Given there is a :arg1 student survey block
+   */
+  public function thereIsAStudentSurveyBlock($arg1) {
+    $block_data = [
+      'id' => 'test_student_survey_' . mb_strtolower($this->getRandom()
+          ->name()),
+      'plugin' => 'dgreat_modal_student_survey',
+      'region' => 'content',
+      'settings' => [
+        'survey' => $arg1,
+      ],
+      'theme' => 'myusf',
+      'visibility' => [],
+      'weight' => 100,
+    ];
+    $block = \Drupal\block\Entity\Block::create($block_data);
+    $block->configuration['survey'] = $arg1;
+    $block->save();
+  }
+
+  /**
+   * @Then I should see a modal titled :arg1
+   */
+  public function iShouldSeeAModalTitled($arg1) {
+    $this->getSession()
+      ->wait(200000, '(0 === jQuery.active && 0 === jQuery(\':animated\').length)');
+    $this->minkContext->assertElementContainsText('#studentSurveyLabel', $arg1);
+  }
+
+  /**
+   * @Then I rate :arg1 a :arg2
+   */
+  public function iRateA($arg1, $arg2) {
+    $this->minkContext->assertSelectRadioById($arg1, $arg2);
+  }
+
+  /**
+   * @Given :arg1 is selected for the current survey
+   */
+  public function isSelectedForTheCurrentSurvey($arg1) {
+    \Drupal::cache()->delete('dgreat_student_surveys:current_cohort');
+    return \Drupal::database()->insert('current_survey_students')
+      ->fields([
+        'username' => $arg1
+      ])->execute();
+  }
 
     /**
-     * @Given I have wiped the site
+     * @Then I press the :arg1 submit button
      */
-    public function iHaveWipedTheSite()
-    {
-        $site = getenv('TERMINUS_SITE');
-        $env = getenv('TERMINUS_ENV');
-
-        passthru("terminus env:wipe $site.$env --yes");
-    }
-
-    /**
-     * @Given I have reinstalled
-     */
-    public function iHaveReinstalled()
-    {
-        $site = getenv('TERMINUS_SITE');
-        $env = getenv('TERMINUS_ENV');
-        $site_name = getenv('TEST_SITE_NAME');
-        $site_mail = getenv('ADMIN_EMAIL');
-        $admin_password = getenv('ADMIN_PASSWORD');
-
-        passthru("terminus --yes drush $site.$env -- --yes site-install standard --site-name=\"$site_name\" --site-mail=\"$site_mail\" --account-name=admin --account-pass=\"$admin_password\"'");
-    }
-
-    /**
-     * @Given I have run the drush command :arg1
-     */
-    public function iHaveRunTheDrushCommand($arg1)
-    {
-        $site = getenv('TERMINUS_SITE');
-        $env = getenv('TERMINUS_ENV');
-
-        $return = '';
-        $output = array();
-        exec("terminus drush $site.$env -- " . $arg1, $output, $return);
-        // echo $return;
-        // print_r($output);
-
-    }
-
-    /**
-     * @Given I have committed my changes with comment :arg1
-     */
-    public function iHaveCommittedMyChangesWithComment($arg1)
-    {
-        $site = getenv('TERMINUS_SITE');
-        $env = getenv('TERMINUS_ENV');
-
-        passthru("terminus --yes $site.$env env:commit --message='$arg1'");
-    }
-
-    /**
-     * @Given I have exported configuration
-     */
-    public function iHaveExportedConfiguration()
-    {
-        $site = getenv('TERMINUS_SITE');
-        $env = getenv('TERMINUS_ENV');
-
-        $return = '';
-        $output = array();
-        exec("terminus drush $site.$env -- config-export -y", $output, $return);
-    }
-
-    /**
-     * @Given I wait :seconds seconds
-     */
-    public function iWaitSeconds($seconds)
-    {
-        sleep($seconds);
-    }
-
-    /**
-     * @Given I wait :seconds seconds or until I see :text
-     */
-    public function iWaitSecondsOrUntilISee($seconds, $text)
-    {
-        $errorNode = $this->spin( function($context) use($text) {
-            $node = $context->getSession()->getPage()->find('named', array('content', $text));
-            if (!$node) {
-              return false;
-            }
-            return $node->isVisible();
-        }, $seconds);
-
-        // Throw to signal a problem if we were passed back an error message.
-        if (is_object($errorNode)) {
-          throw new Exception("Error detected when waiting for '$text': " . $errorNode->getText());
-        }
-    }
-
-    // http://docs.behat.org/en/v2.5/cookbook/using_spin_functions.html
-    // http://mink.behat.org/en/latest/guides/traversing-pages.html#selectors
-    public function spin ($lambda, $wait = 60)
-    {
-        for ($i = 0; $i <= $wait; $i++)
-        {
-            if ($i > 0) {
-              sleep(1);
-            }
-
-            $debugContent = $this->getSession()->getPage()->getContent();
-            file_put_contents("/tmp/mink/debug-" . $i, "\n\n\n=================================\n$debugContent\n=================================\n\n\n");
-
-            try {
-                if ($lambda($this)) {
-                    return true;
-                }
-            } catch (Exception $e) {
-                // do nothing
-            }
-
-            // If we do not see the text we are waiting for, fail fast if
-            // we see a Drupal 8 error message pane on the page.
-            $node = $this->getSession()->getPage()->find('named', array('content', 'Error'));
-            if ($node) {
-              $errorNode = $this->getSession()->getPage()->find('css', '.messages--error');
-              if ($errorNode) {
-                return $errorNode;
-              }
-              $errorNode = $this->getSession()->getPage()->find('css', 'main');
-              if ($errorNode) {
-                return $errorNode;
-              }
-              return $node;
-            }
-        }
-
-        $backtrace = debug_backtrace();
-
-        throw new Exception(
-            "Timeout thrown by " . $backtrace[1]['class'] . "::" . $backtrace[1]['function'] . "()\n" .
-            $backtrace[1]['file'] . ", line " . $backtrace[1]['line']
-        );
-
-        return false;
+    public function iPressTheSubmitButton($arg1) {
+      $page = $this->getSession()->getPage();
+      $element = $page->find('css',"input[value=\"{$arg1}\"]");
+      $element->click();
     }
 }
