@@ -1,0 +1,45 @@
+uuid: 2586f780-dc2e-4227-9570-0a60f1426a49
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:custom_block:978b1ea9-f87e-4d06-9bcd-747a718fafa3'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+    - user
+  theme:
+    - myusf
+id: dashboardcalloutstudents
+theme: myusf
+region: sidebar_second
+weight: 6
+provider: null
+plugin: 'block_content:978b1ea9-f87e-4d06-9bcd-747a718fafa3'
+settings:
+  id: 'block_content:978b1ea9-f87e-4d06-9bcd-747a718fafa3'
+  label: 'Dashboard Callout - Students'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /dashboard
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      student: student
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

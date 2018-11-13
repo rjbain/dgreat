@@ -4,6 +4,7 @@ status: open
 dependencies: {  }
 open: null
 close: null
+weight: 0
 uid: 27000
 template: false
 archive: false
@@ -11,25 +12,147 @@ id: webform_94052
 title: 'IEW Photo Contest Poll'
 description: null
 category: null
-elements: "first_page:\n  '#type': wizard_page\n  '#title': Page 1\n  '#open': true\n  please_only_vote_for_one_photo:\n    '#type': processed_text\n    '#format': full_html\n    '#text': \"<p style='text-align: center;' class='intro_text_lg'>Please only vote for one photo</p>\"\n    '#title': Please Only Vote for One Photo\n    '#description': \"\"\n  vote_picture:\n    '#type': radios\n    '#options':\n      name1: <img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/Trolltung-Norway.jpg?itok=el3jloNe\" />\n      name2: <img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/Stockholm-Sweden.jpg?itok=043IJk54\" />\n      name3: <img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/St-Petersburg-Russia.jpg?itok=a8JiFAn8\" />\n      name4: <img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/Iceland2.JPG?itok=Jmjnzhe-\" />\n      name5: <img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/Fiji2.JPG?itok=lD752iUN\" />\n    '#title': Vote for your Favorite Photo\n    '#description': \"\"\nnext_page:\n  '#type': wizard_page\n  '#open': true\n  '#title': Page 2\n  vote_for_your_favorite_picture_2:\n    '#type': radios\n    '#options':\n      1: <img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/Seoul-South-Korea.jpg?itok=zPgZriRe\" /\n      2: <img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/Reine-Lofofen-Islands-Norway.jpg?itok=nzRutpHZ\" /\n      3: <img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/Fiji.JPG?itok=qUXizOEs\" /\n      4: <img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/Vatican-City.jpg?itok=TMkRmOd2\" /\n      5: <img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/Iceland.JPG?itok=38D3M5qh\" /\n    '#title': Vote for Your Favorite Photo\n    '#description': \"\"\nnext_page_2:\n  '#type': wizard_page\n  '#open': true\n  '#title': Page 3\n  picture_3:\n    '#type': radios\n    '#options':\n      1: <img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/Location-Undisclosed.JPG?itok=iCWdAK3B\" /\n      2: <img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/Kuala-Lumpur-Malaysia.jpg?itok=XvXSVt7i\" /\n      3: <img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/Guatemala.jpg?itok=8ef8ai25\" /\n      4: <img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/Dunhuang-Gansu-China.jpeg?itok=CqLHULgC\" /\n      5: <img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/Golden-Gate-Bridge-San-Francisco.JPG?itok=gAbX9dVj\" /\n    '#title': Vote for your Favorite Photo\n    '#description': \"\"\n"
+elements: "please_only_vote_for_one_photo:\n  '#type': processed_text\n  '#title': 'Please Only Vote for One Photo'\n  '#description': ''\n  '#format': full_html\npage_1:\n  '#type': webform_wizard_page\n  '#title': 'Page 1'\n  vote_picture:\n    '#type': radios\n    '#title': 'Vote for your Favorite Photo'\n    '#options':\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image1.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image1.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image2.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image2.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image3.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image3.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image4.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image4.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image5.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image5.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image6.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image6.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image7.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image7.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image8.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image8.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image9.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image9.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image10.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image10.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image11.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image11.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image12.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image12.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image13.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image13.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image14.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image14.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image15.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image15.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image16.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image16.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image17.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image17.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image18.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image18.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image19.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image19.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image20.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image20.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image21.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image21.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image22.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image22.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image23.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image23.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image24.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image24.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image25.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image25.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image26.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image26.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image27.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image27.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image28.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image28.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image29.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image29.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image30.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image30.jpg\">'\npage_2:\n  '#type': webform_wizard_page\n  '#title': 'Page 2'\n  vote_for_your_favorite_picture_2:\n    '#type': radios\n    '#title': 'Vote for Your Favorite Photo'\n    '#options':\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image31.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/Seoul-South-Korea.jpg?itok=zPgZriRe\" /'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image32.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/Reine-Lofofen-Islands-Norway.jpg?itok=nzRutpHZ\" /'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image33.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/Fiji.JPG?itok=qUXizOEs\" /'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image34.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/Vatican-City.jpg?itok=TMkRmOd2\" /'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image35.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/styles/panopoly_image_original/public/Iceland.JPG?itok=38D3M5qh\" /'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image36.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image36.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image37.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image37.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image38.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image38.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image39.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image39.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image40.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image40.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image41.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image41.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image42.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image42.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image43.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image43.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image44.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image44.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image45.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image45.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image46.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image46.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image47.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image47.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image48.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image48.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image49.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image49.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image50.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image50.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image51.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image51.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image52.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image52.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image53.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image53.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image54.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image54.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image55.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image55.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image56.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image56.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image57.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image57.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image58.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image58.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image59.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image59.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image60.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image60.jpg\">'\npage_3:\n  '#type': webform_wizard_page\n  '#title': 'Page 3'\n  picture_3:\n    '#type': radios\n    '#title': 'Vote for your Favorite Photo'\n    '#options':\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image61.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image61.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image62.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image62.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image63.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image63.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image64.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image64.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image65.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image65.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image66.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image66.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image67.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image67.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image68.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image68.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image69.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image69.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image70.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image70.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image71.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image71.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image72.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image72.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image73.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image73.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image74.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image74.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image75.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image75.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image76.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image76.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image77.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image77.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image78.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image78.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image79.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image79.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image80.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image80.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image81.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image81.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image82.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image82.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image83.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image83.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image84.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image84.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image85.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image85.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image86.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image86.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image87.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image87.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image88.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image88.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image89.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image89.jpg\">'\n      '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image90.jpg\">': '<img src=\"https://myusf.usfca.edu/sites/default/files/images/photo-contest/image90.jpg\">'"
 css: ''
 javascript: ''
 settings:
+  ajax: false
+  ajax_scroll_top: form
   page: true
-  form_submit_label: ''
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  submission_label: ''
+  submission_log: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
   wizard_progress_bar: true
-  wizard_complete: 1
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
   preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
   draft: '0'
+  draft_multiple: false
   draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
   confirmation_type: page
-  confirmation_url: ''
+  confirmation_title: ''
   confirmation_message: ''
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
   limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
   limit_user: 1
+  limit_user_interval: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+  form_submit_label: ''
+  wizard_complete: 1
 access:
   create:
     roles:
       - authenticated
     users: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
 handlers: {  }
