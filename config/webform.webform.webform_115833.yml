@@ -1,4 +1,3 @@
-uuid: b362271b-bc61-4a0b-b0d1-dbb5a8865d85
 langcode: en
 status: open
 dependencies: {  }
@@ -16,20 +15,9 @@ elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#description': \"Wh
 css: ''
 javascript: ''
 settings:
-  page: true
-  form_submit_label: ''
-  wizard_progress_bar: true
-  wizard_complete: 1
-  preview: 0
-  draft: '0'
-  draft_auto_save: false
-  confirmation_type: page
-  confirmation_url: ''
-  confirmation_message: "<p><span style=\"background-color:transparent; font-size:1em\">We look forward to connecting with you.&nbsp;<span>Please allow 2 business days for responses.</span></span></p>\r\n\r\n<p><span style=\"background-color:transparent; font-size:1em\">Center for Academic and Student Achievement</span></p>\r\n\r\n<p>UC Third Floor<br />\r\ncasa@usfca.edu<br />\r\n(415) 422-5050</p>"
-  limit_total: null
-  limit_user: null
   ajax: false
   ajax_scroll_top: form
+  page: true
   page_submit_path: ''
   page_confirm_path: ''
   form_submit_once: false
@@ -54,14 +42,21 @@ settings:
   form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
-  form_login: false
-  form_login_message: ''
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
   submission_label: ''
   submission_log: false
+  submission_views: {  }
+  submission_views_replace: {  }
   submission_user_columns: {  }
   submission_user_duplicate: false
-  submission_login: false
-  submission_login_message: ''
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
   submission_exception_message: ''
   submission_locked_message: ''
   previous_submission_message: ''
@@ -69,6 +64,7 @@ settings:
   autofill: false
   autofill_message: ''
   autofill_excluded_elements: {  }
+  wizard_progress_bar: true
   wizard_progress_pages: false
   wizard_progress_percentage: false
   wizard_progress_link: false
@@ -77,6 +73,7 @@ settings:
   wizard_confirmation: true
   wizard_confirmation_label: ''
   wizard_track: ''
+  preview: 0
   preview_label: ''
   preview_title: ''
   preview_message: ''
@@ -84,18 +81,25 @@ settings:
   preview_excluded_elements: {  }
   preview_exclude_empty: true
   preview_exclude_empty_checkbox: false
+  draft: '0'
   draft_multiple: false
+  draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
+  confirmation_type: page
   confirmation_title: 'Thank you for your email.'
+  confirmation_message: "<p><span style=\"background-color:transparent; font-size:1em\">We look forward to connecting with you.&nbsp;<span>Please allow 2 business days for responses.</span></span></p>\r\n\r\n<p><span style=\"background-color:transparent; font-size:1em\">Center for Academic and Student Achievement</span></p>\r\n\r\n<p>UC Third Floor<br />\r\ncasa@usfca.edu<br />\r\n(415) 422-5050</p>"
+  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
   confirmation_back_attributes: {  }
   confirmation_exclude_query: false
   confirmation_exclude_token: false
+  limit_total: null
   limit_total_interval: null
   limit_total_message: ''
+  limit_user: null
   limit_user_interval: null
   limit_user_message: ''
   entity_limit_total: null
@@ -107,6 +111,8 @@ settings:
   results_disabled: false
   results_disabled_ignore: false
   token_update: false
+  form_submit_label: ''
+  wizard_complete: 1
 access:
   create:
     roles:
@@ -114,6 +120,42 @@ access:
       - authenticated
       - all_access
     users: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
 handlers:
   email_1:
     id: email
@@ -123,28 +165,30 @@ handlers:
     conditions: {  }
     weight: 1
     settings:
-      to_mail: casa@usfca.edu
-      from_mail: '[webform-submission:values:email_if_logged_in_to_myusf:raw]'
-      from_name: '[webform-submission:values:name:raw]'
-      subject: _default
-      body: "<p>Submitted by user: [webform_submission:user]</p>\n&nbsp;\n\n<p>Submitted values are:</p>\n[webform_submission:values]"
-      html: true
-      attachments: false
-      excluded_elements: {  }
       states:
         - completed
+      to_mail: casa@usfca.edu
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      from_mail: '[webform-submission:values:email_if_logged_in_to_myusf:raw]'
       from_options: {  }
+      from_name: '[webform-submission:values:name:raw]'
+      subject: _default
+      body: "<p>Submitted by user: [webform_submission:user]</p>\n&nbsp;\n\n<p>Submitted values are:</p>\n[webform_submission:values]"
+      excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
+      html: true
+      attachments: false
       twig: false
       debug: false
       reply_to: ''
       return_path: ''
       sender_mail: ''
       sender_name: ''
+      theme_name: ''
+uuid: b362271b-bc61-4a0b-b0d1-dbb5a8865d85

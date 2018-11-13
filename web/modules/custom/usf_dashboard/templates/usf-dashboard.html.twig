@@ -94,12 +94,12 @@ Available variables (usf_dashboard.module)
                     </div>
                     <div class="col-sm myQuickLinks">
                     
-                        {% if dashboard_content.dashboard_user.name.value is not empty %}
-                            <h2>{{ dashboard_content.dashboard_user.name.value }}'s Links</h2>
-                        {% endif %}
-                        {% if dashboard_content.quick_links %}
-                            {{ dashboard_content.quick_links }}
-                        {% endif %}
+                        {#% if dashboard_content.dashboard_user.name.value is not empty %#}
+                            <!--<h2>{#{ dashboard_content.dashboard_user.name.value }#}'s Links</h2>-->
+                        <h2>{{ drupal_entity('block', 'user_block_dashboard') }}&apos;s Links</h2>
+                            {% if dashboard_content.quick_links %}
+                                {{ dashboard_content.quick_links }}
+                            {% endif %}
                         <div class="view-footer">
                             <a href="node/add/favorite_link?edit[field_link_type][und]=quick&amp;destination=/dashboard" class="manageLinks">Add Links</a><a href="/quick-links" class="addLinks">Manage Links</a>
                         </div>
