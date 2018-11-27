@@ -3,6 +3,12 @@
   "description": "Install drops-8 with Composer on Pantheon.",
   "type": "project",
   "license": "MIT",
+  "extra": {
+    "installer-paths": {
+      "web/libraries/ckeditor/plugins/{$name}": ["vendor:ckeditor-plugin"],
+      "web/libraries/{$name}": ["type:drupal-library"]
+    }
+  },
   "repositories": [
     {
       "type": "composer",
@@ -22,6 +28,7 @@
     }
   ],
     "require": {
+    "ckeditor-plugin/embed": "4.11.1",
     "composer/installers": "^1.0.20",
     "cweagans/composer-patches": "^1.0",
     "dmore/behat-chrome-extension": "^1.2",
