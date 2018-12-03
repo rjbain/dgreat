@@ -254,6 +254,7 @@ class DgreatGroup {
         $elapsed = $endTime - $startTime;
         $msg = "Execution time : $elapsed seconds";
         \Drupal::logger('3 - Weights')->notice($msg);
+        
       });
     }
     return $this;
