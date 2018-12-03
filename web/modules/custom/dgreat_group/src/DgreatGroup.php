@@ -185,29 +185,52 @@ class DgreatGroup {
     // Let's go through Each Node and flag each node.
     if (!empty($nids)) {
       collect($nids)->map(function($nid) {
-        $startTime = microtime(true);
-
-        $flag_service = \Drupal::service('flag');
-        $flag = $flag_service->getFlagById('favorite');
-
-        $endTime = microtime(true);
-        $elapsed = $endTime - $startTime;
-        $msg = "Execution time : $elapsed seconds";
-        \Drupal::logger('1 - Flag Service')->notice($msg);
-
-        $startTime = $endTime = 0;
+//        $startTime = microtime(true);
+//
+//        $flag_service = \Drupal::service('flag');
+//        $flag = $flag_service->getFlagById('favorite');
+//
+//        $endTime = microtime(true);
+//        $elapsed = $endTime - $startTime;
+//        $msg = "Execution time : $elapsed seconds";
+//        \Drupal::logger('1 - Flag Service')->notice($msg);
+//
+//        $startTime = $endTime = 0;
+//
+//        $startTime = microtime(true);
+//
+//        $node = Node::load($nid);
+//        if ($node !== NULL && !$flag->isFlagged($node, $this->entity)) {
+//          $flag_service->flag($flag, $node, $this->entity);
+//        }
+//
+//        $endTime = microtime(true);
+//        $elapsed = $endTime - $startTime;
+//        $msg = "Execution time : $elapsed seconds";
+//        \Drupal::logger('2 - Flagging')->notice($msg);
+//
+//        $startTime = $endTime = 0;
 
         $startTime = microtime(true);
 
         $node = Node::load($nid);
-        if ($node !== NULL && !$flag->isFlagged($node, $this->entity)) {
-          $flag_service->flag($flag, $node, $this->entity);
-        }
+        if ($node !== NULL) {
+          $flagging = \Drupal::entityTypeManager()->getStorage('flagging')->create([
+            'uid' => $this->entity->id(),
+            'session_id' => NULL,
+            'flag_id' => 'favorite',
+            'entity_id' => $node->id(),
+            'entity_type' => $node->getEntityTypeId(),
+            'global' => 0,
+          ]);
 
+          $flagging->save();
+        }
+        
         $endTime = microtime(true);
         $elapsed = $endTime - $startTime;
         $msg = "Execution time : $elapsed seconds";
-        \Drupal::logger('2 - Flagging')->notice($msg);
+        \Drupal::logger('2.5 - Flagging')->notice($msg);
 
         $startTime = $endTime = 0;
 
