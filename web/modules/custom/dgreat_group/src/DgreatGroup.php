@@ -184,7 +184,84 @@ class DgreatGroup {
 
     // Let's go through Each Node and flag each node.
     if (!empty($nids)) {
-      collect($nids)->map(function($nid) {
+
+      $db = \Drupal::database();
+      foreach ($nids as $nid) {
+        $startTime = $endTime = 0;
+
+        $startTime = microtime(true);
+
+        $node = Node::load($nid);
+        if ($node !== NULL) {
+          $flagging = \Drupal::entityTypeManager()->getStorage('flagging')->create([
+            'uid' => $this->entity->id(),
+            'session_id' => NULL,
+            'flag_id' => 'favorite',
+            'entity_id' => $node->id(),
+            'entity_type' => $node->getEntityTypeId(),
+            'global' => 0,
+          ]);
+
+          $flagging->save();
+        }
+
+        $endTime = microtime(true);
+        $elapsed = $endTime - $startTime;
+        $msg = "Execution time : $elapsed seconds";
+        \Drupal::logger('1 - Flagging')->notice($msg);
+
+        $startTime = $endTime = 0;
+
+        $startTime = microtime(true);
+
+        // Add in any default links that are not in user_weights.
+        $link = $node->get('field_link_type')->getValue();
+        if (isset($link[0]['value'])) {
+          $name = $link[0]['value'] . '_links';
+          $uid = $this->entity->id();
+
+          $check = $db
+            ->select('user_weights', 'u')
+            ->fields('u', ['entity_id'])
+            ->condition('uid', $uid)
+            ->condition('entity_id', $nid)
+            ->condition('view_name', $name)
+            ->execute()
+            ->fetchField();
+
+          if ($check === FALSE) {
+            // Grab the new weight.
+            $sql = "SELECT MAX(weight) FROM {user_weights} WHERE uid = :uid";
+            $weight = $db
+              ->query($sql, [':uid' => $uid])
+              ->fetchField();
+
+            // No user weights setup, add a default one.
+            if ($weight == NULL) {
+              $weight = 0;
+            }
+
+            // Insert new item in weights table.
+            $db->insert('user_weights')
+              ->fields([
+                'entity_id' => $nid,
+                'uid' => $uid,
+                'view_name' => $name,
+                'weight' => $weight + 1,
+              ])
+              ->execute();
+
+          }
+        }
+        $endTime = microtime(true);
+        $elapsed = $endTime - $startTime;
+        $msg = "Execution time : $elapsed seconds";
+        \Drupal::logger('2 - Weights')->notice($msg);
+      }
+
+
+
+//      collect($nids)->map(function($nid) {
 //        $startTime = microtime(true);
 //
 //        $flag_service = \Drupal::service('flag');
@@ -210,30 +287,30 @@ class DgreatGroup {
 //        \Drupal::logger('2 - Flagging')->notice($msg);
 //
 //        $startTime = $endTime = 0;
-
-        $startTime = microtime(true);
-
-        $node = Node::load($nid);
-        if ($node !== NULL) {
-          $flagging = \Drupal::entityTypeManager()->getStorage('flagging')->create([
-            'uid' => $this->entity->id(),
-            'session_id' => NULL,
-            'flag_id' => 'favorite',
-            'entity_id' => $node->id(),
-            'entity_type' => $node->getEntityTypeId(),
-            'global' => 0,
-          ]);
-
-          $flagging->save();
-        }
-
-        $endTime = microtime(true);
-        $elapsed = $endTime - $startTime;
-        $msg = "Execution time : $elapsed seconds";
-        \Drupal::logger('2.5 - Flagging')->notice($msg);
-
-        $startTime = $endTime = 0;
-
+//
+//        $startTime = microtime(true);
+//
+//        $node = Node::load($nid);
+//        if ($node !== NULL) {
+//          $flagging = \Drupal::entityTypeManager()->getStorage('flagging')->create([
+//            'uid' => $this->entity->id(),
+//            'session_id' => NULL,
+//            'flag_id' => 'favorite',
+//            'entity_id' => $node->id(),
+//            'entity_type' => $node->getEntityTypeId(),
+//            'global' => 0,
+//          ]);
+//
+//          $flagging->save();
+//        }
+//
+//        $endTime = microtime(true);
+//        $elapsed = $endTime - $startTime;
+//        $msg = "Execution time : $elapsed seconds";
+//        \Drupal::logger('2.5 - Flagging')->notice($msg);
+//
+//        $startTime = $endTime = 0;
+//
 //        $startTime = microtime(true);
 //
 //        // Add in any default links that are not in user_weights.
@@ -281,8 +358,8 @@ class DgreatGroup {
 //        $elapsed = $endTime - $startTime;
 //        $msg = "Execution time : $elapsed seconds";
 //        \Drupal::logger('3 - Weights')->notice($msg);
-
-      });
+//
+//      });
     }
     return $this;
   }
