@@ -245,7 +245,7 @@ class DgreatGroup {
           if ($check === FALSE) {
             $results = TRUE;
             $weight++;
-            $vals = array($nid, $uid, '"' . $name . '"', $weight);
+            $vals = array($nid, $uid, "'" . $name . "'", $weight);
             $insert .= '(' . implode(',', $vals) . '),';
           }
         }
@@ -254,10 +254,9 @@ class DgreatGroup {
         $msg = "Execution time : $elapsed seconds";
         \Drupal::logger('2.3 - Weights')->notice($msg);
       }
-      
+
       // Insert new item in weights table.
       if ($results) {
-        \Drupal::logger('XXX')->notice($insert);
         $insert = rtrim($insert, ',');
         $db->query($insert);
       }
