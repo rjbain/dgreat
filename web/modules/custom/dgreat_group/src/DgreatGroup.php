@@ -239,22 +239,26 @@ class DgreatGroup {
             ->fetchField();
 
           if ($check === FALSE) {
-            $query->values([
+            $results[] = [
               'entity_id' => $nid,
               'uid' => $uid,
               'view_name' => $name,
               'weight' => $weight++,
-            ]);
+            ];
           }
         }
         $endTime = microtime(true);
         $elapsed = $endTime - $startTime;
         $msg = "Execution time : $elapsed seconds";
-        \Drupal::logger('2.2 - Weights')->notice($msg);
+        \Drupal::logger('2.3 - Weights')->notice($msg);
       }
 
       // Insert new item in weights table.
-      $query->execute();
+      if (isset($results)) {
+        $query->values($results);
+        $query->execute();
+      }
+
     }
     return $this;
   }
