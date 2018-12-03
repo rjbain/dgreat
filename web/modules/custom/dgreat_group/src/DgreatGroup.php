@@ -192,6 +192,17 @@ class DgreatGroup {
       $query = $db->insert('user_weights')
         ->fields(['entity_id', 'uid', 'view_name', 'weight']);
 
+      // Grab the new weight.
+      $sql = "SELECT MAX(weight) FROM {user_weights} WHERE uid = :uid";
+      $weight = $db
+        ->query($sql, [':uid' => $uid])
+        ->fetchField();
+
+      // No user weights setup, add a default one.
+      if ($weight == NULL) {
+        $weight = 0;
+      }
+
       foreach ($nids as $nid) {
         // Redo of flagging so we just call the ETM directly.
         /*
@@ -228,22 +239,11 @@ class DgreatGroup {
             ->fetchField();
 
           if ($check === FALSE) {
-            // Grab the new weight.
-            $sql = "SELECT MAX(weight) FROM {user_weights} WHERE uid = :uid";
-            $weight = $db
-              ->query($sql, [':uid' => $uid])
-              ->fetchField();
-
-            // No user weights setup, add a default one.
-            if ($weight == NULL) {
-              $weight = 0;
-            }
-
             $query->values([
               'entity_id' => $nid,
               'uid' => $uid,
               'view_name' => $name,
-              'weight' => $weight + 1,
+              'weight' => $weight++,
             ]);
           }
         }
