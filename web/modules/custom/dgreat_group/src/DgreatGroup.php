@@ -245,13 +245,8 @@ class DgreatGroup {
           if ($check === FALSE) {
             $results = TRUE;
             $weight++;
-            $insert .= '(' . implode(',', array($nid, $uid, $name, $weight)) . '),';
-//            $results[] = [
-//              'entity_id' => $nid,
-//              'uid' => $uid,
-//              'view_name' => $name,
-//              'weight' => $weight++,
-//            ];
+            $vals = array($nid, $uid, '"' . $name . '"', $weight);
+            $insert .= '(' . implode(',', $vals) . '),';
           }
         }
         $endTime = microtime(true);
@@ -259,11 +254,11 @@ class DgreatGroup {
         $msg = "Execution time : $elapsed seconds";
         \Drupal::logger('2.3 - Weights')->notice($msg);
       }
-
-      \Drupal::logger('XXX')->notice($insert);
-
+      
       // Insert new item in weights table.
       if ($results) {
+        \Drupal::logger('XXX')->notice($insert);
+        $insert = rtrim($insert, ',');
         $db->query($insert);
       }
 
