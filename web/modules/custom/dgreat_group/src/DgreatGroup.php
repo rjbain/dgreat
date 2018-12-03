@@ -192,6 +192,8 @@ class DgreatGroup {
       $query = $db->insert('user_weights')
         ->fields(['entity_id', 'uid', 'view_name', 'weight']);
 
+      $insert = "INSERT INTO {user_weights} ('entity_id', 'uid', 'view_name', 'weight') VALUES ";
+
       // Grab the new weight.
       $sql = "SELECT MAX(weight) FROM {user_weights} WHERE uid = :uid";
       $weight = $db
@@ -202,6 +204,8 @@ class DgreatGroup {
       if ($weight == NULL) {
         $weight = 0;
       }
+
+      $results = FALSE;
 
       foreach ($nids as $nid) {
         // Redo of flagging so we just call the ETM directly.
@@ -239,12 +243,15 @@ class DgreatGroup {
             ->fetchField();
 
           if ($check === FALSE) {
-            $results[] = [
-              'entity_id' => $nid,
-              'uid' => $uid,
-              'view_name' => $name,
-              'weight' => $weight++,
-            ];
+            $results = TRUE;
+            $weight++;
+            $insert .= '(' . implode(',', array($nid, $uid, $name, $weight)) . '),';
+//            $results[] = [
+//              'entity_id' => $nid,
+//              'uid' => $uid,
+//              'view_name' => $name,
+//              'weight' => $weight++,
+//            ];
           }
         }
         $endTime = microtime(true);
@@ -253,10 +260,11 @@ class DgreatGroup {
         \Drupal::logger('2.3 - Weights')->notice($msg);
       }
 
+      \Drupal::logger('XXX')->notice($insert);
+
       // Insert new item in weights table.
-      if (isset($results)) {
-        $query->values([$results]);
-        $query->execute();
+      if ($results) {
+        $db->query($insert);
       }
 
     }
