@@ -250,7 +250,7 @@ class DgreatGroup {
         $endTime = microtime(true);
         $elapsed = $endTime - $startTime;
         $msg = "Execution time : $elapsed seconds";
-        \Drupal::logger('2.1 - Weights')->notice($msg);
+        \Drupal::logger('2.2 - Weights')->notice($msg);
       }
 
       // Insert new item in weights table.
