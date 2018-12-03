@@ -192,7 +192,7 @@ class DgreatGroup {
       $query = $db->insert('user_weights')
         ->fields(['entity_id', 'uid', 'view_name', 'weight']);
 
-      $insert = "INSERT INTO {user_weights} ('entity_id', 'uid', 'view_name', 'weight') VALUES ";
+      $insert = "INSERT INTO {user_weights} (entity_id, uid, view_name, weight) VALUES ";
 
       // Grab the new weight.
       $sql = "SELECT MAX(weight) FROM {user_weights} WHERE uid = :uid";
