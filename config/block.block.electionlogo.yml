@@ -1,0 +1,37 @@
+uuid: dc67d243-d84e-4ecf-95c5-e1e6ba1b0a81
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:custom_block:d0e462d8-fc60-45b2-991d-14f8073eb6aa'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: electionlogo
+theme: myusf
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'block_content:d0e462d8-fc60-45b2-991d-14f8073eb6aa'
+settings:
+  id: 'block_content:d0e462d8-fc60-45b2-991d-14f8073eb6aa'
+  label: ElectionLogo
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/sle/elections\r\n/sle/elections/*"
+    negate: false
+    context_mapping: {  }
