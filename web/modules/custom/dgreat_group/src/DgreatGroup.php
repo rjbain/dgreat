@@ -220,15 +220,13 @@ class DgreatGroup {
             'uid' => $this->entity->id(),
             'session_id' => NULL,
             'flag_id' => 'favorite',
-            'entity_id' => $node->id(),
+            'entity_id' => $nid,
             'entity_type' => $node->getEntityTypeId(),
             'global' => 0,
           ]);
 
           $flagging->save();
         }
-
-        $startTime = microtime(true);
 
         // Add in any default links that are not in user_weights.
         $link = $node->get('field_link_type')->getValue();
@@ -251,10 +249,6 @@ class DgreatGroup {
             $insert .= '(' . implode(',', $vals) . '),';
           }
         }
-        $endTime = microtime(true);
-        $elapsed = $endTime - $startTime;
-        $msg = "Execution time : $elapsed seconds";
-        \Drupal::logger('2.3 - Weights')->notice($msg);
       }
 
       // Insert new item in weights table.
