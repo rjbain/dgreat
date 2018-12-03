@@ -195,6 +195,8 @@ class DgreatGroup {
         $msg = "Execution time : $elapsed seconds";
         \Drupal::logger('1 - Flag Service')->notice($msg);
 
+        $startTime = $endTime = 0;
+
         $startTime = microtime(true);
 
         $node = Node::load($nid);
@@ -206,6 +208,8 @@ class DgreatGroup {
         $elapsed = $endTime - $startTime;
         $msg = "Execution time : $elapsed seconds";
         \Drupal::logger('2 - Flagging')->notice($msg);
+
+        $startTime = $endTime = 0;
 
         $startTime = microtime(true);
 
@@ -254,7 +258,7 @@ class DgreatGroup {
         $elapsed = $endTime - $startTime;
         $msg = "Execution time : $elapsed seconds";
         \Drupal::logger('3 - Weights')->notice($msg);
-        
+
       });
     }
     return $this;
