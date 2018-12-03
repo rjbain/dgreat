@@ -255,7 +255,7 @@ class DgreatGroup {
 
       // Insert new item in weights table.
       if (isset($results)) {
-        $query->values($results);
+        $query->values([$results]);
         $query->execute();
       }
 
