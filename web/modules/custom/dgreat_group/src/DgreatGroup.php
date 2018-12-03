@@ -188,10 +188,7 @@ class DgreatGroup {
       $db = \Drupal::database();
       $uid = $this->entity->id();
 
-
-      $query = $db->insert('user_weights')
-        ->fields(['entity_id', 'uid', 'view_name', 'weight']);
-
+      // It is vastly more performant to do the insert clause this way.
       $insert = "INSERT INTO {user_weights} (entity_id, uid, view_name, weight) VALUES ";
 
       // Grab the new weight.
@@ -208,12 +205,17 @@ class DgreatGroup {
       $results = FALSE;
 
       foreach ($nids as $nid) {
-        // Redo of flagging so we just call the ETM directly.
-        /*
-         * @todo check to see if isflagged as well
-         */
+        // Redo of flagging so we just call the ETM directly & query = way more performant.
+        $isFlagged = $db
+          ->select('flagging', 'f')
+          ->fields('f', ['id'])
+          ->condition('entity_type', 'node')
+          ->condition('entity_id', $nid)
+          ->condition('uid', $uid)
+          ->execute()
+          ->fetchField();
         $node = Node::load($nid);
-        if ($node !== NULL) {
+        if ($node !== NULL && $isFlagged === FALSE) {
           $flagging = \Drupal::entityTypeManager()->getStorage('flagging')->create([
             'uid' => $this->entity->id(),
             'session_id' => NULL,
