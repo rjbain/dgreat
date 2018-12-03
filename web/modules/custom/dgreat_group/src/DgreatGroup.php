@@ -186,6 +186,8 @@ class DgreatGroup {
     if (!empty($nids)) {
 
       $db = \Drupal::database();
+      $uid = $this->entity->id();
+
       foreach ($nids as $nid) {
         $startTime = $endTime = 0;
 
@@ -218,15 +220,20 @@ class DgreatGroup {
         $link = $node->get('field_link_type')->getValue();
         if (isset($link[0]['value'])) {
           $name = $link[0]['value'] . '_links';
-          $uid = $this->entity->id();
 
+
+//          $check = $db
+//            ->select('user_weights', 'u')
+//            ->fields('u', ['entity_id'])
+//            ->condition('uid', $uid)
+//            ->condition('entity_id', $nid)
+//            ->condition('view_name', $name)
+//            ->execute()
+//            ->fetchField();
+
+          $sql = "SELECT entity_id FROM {user_weights} WHERE uid = ;uid AND entity_id = :nid AND view_name = :vname";
           $check = $db
-            ->select('user_weights', 'u')
-            ->fields('u', ['entity_id'])
-            ->condition('uid', $uid)
-            ->condition('entity_id', $nid)
-            ->condition('view_name', $name)
-            ->execute()
+            ->query($sql, [':uid' => $uid, ':nid' => $nid, ':vname' => $name])
             ->fetchField();
 
           if ($check === FALSE) {
@@ -256,7 +263,7 @@ class DgreatGroup {
         $endTime = microtime(true);
         $elapsed = $endTime - $startTime;
         $msg = "Execution time : $elapsed seconds";
-        \Drupal::logger('2 - Weights')->notice($msg);
+        \Drupal::logger('2.1 - Weights')->notice($msg);
       }
 
 
