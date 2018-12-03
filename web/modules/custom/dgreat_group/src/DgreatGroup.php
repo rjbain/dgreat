@@ -188,11 +188,15 @@ class DgreatGroup {
       $db = \Drupal::database();
       $uid = $this->entity->id();
 
+
+      $query = $db->insert('user_weights')
+        ->fields(['entity_id', 'uid', 'view_name', 'weight']);
+
       foreach ($nids as $nid) {
-        $startTime = $endTime = 0;
-
-        $startTime = microtime(true);
-
+        // Redo of flagging so we just call the ETM directly.
+        /*
+         * @todo check to see if isflagged as well
+         */
         $node = Node::load($nid);
         if ($node !== NULL) {
           $flagging = \Drupal::entityTypeManager()->getStorage('flagging')->create([
@@ -207,13 +211,6 @@ class DgreatGroup {
           $flagging->save();
         }
 
-        $endTime = microtime(true);
-        $elapsed = $endTime - $startTime;
-        $msg = "Execution time : $elapsed seconds";
-        \Drupal::logger('1 - Flagging')->notice($msg);
-
-        $startTime = $endTime = 0;
-
         $startTime = microtime(true);
 
         // Add in any default links that are not in user_weights.
@@ -221,19 +218,13 @@ class DgreatGroup {
         if (isset($link[0]['value'])) {
           $name = $link[0]['value'] . '_links';
 
-
-//          $check = $db
-//            ->select('user_weights', 'u')
-//            ->fields('u', ['entity_id'])
-//            ->condition('uid', $uid)
-//            ->condition('entity_id', $nid)
-//            ->condition('view_name', $name)
-//            ->execute()
-//            ->fetchField();
-
-          $sql = "SELECT entity_id FROM {user_weights} WHERE uid = :uid AND entity_id = :nid AND view_name = :vname";
           $check = $db
-            ->query($sql, [':uid' => $uid, ':nid' => $nid, ':vname' => $name])
+            ->select('user_weights', 'u')
+            ->fields('u', ['entity_id'])
+            ->condition('uid', $uid)
+            ->condition('entity_id', $nid)
+            ->condition('view_name', $name)
+            ->execute()
             ->fetchField();
 
           if ($check === FALSE) {
@@ -248,16 +239,12 @@ class DgreatGroup {
               $weight = 0;
             }
 
-            // Insert new item in weights table.
-            $db->insert('user_weights')
-              ->fields([
-                'entity_id' => $nid,
-                'uid' => $uid,
-                'view_name' => $name,
-                'weight' => $weight + 1,
-              ])
-              ->execute();
-
+            $query->values([
+              'entity_id' => $nid,
+              'uid' => $uid,
+              'view_name' => $name,
+              'weight' => $weight + 1,
+            ]);
           }
         }
         $endTime = microtime(true);
@@ -266,107 +253,8 @@ class DgreatGroup {
         \Drupal::logger('2.1 - Weights')->notice($msg);
       }
 
-
-
-//      collect($nids)->map(function($nid) {
-//        $startTime = microtime(true);
-//
-//        $flag_service = \Drupal::service('flag');
-//        $flag = $flag_service->getFlagById('favorite');
-//
-//        $endTime = microtime(true);
-//        $elapsed = $endTime - $startTime;
-//        $msg = "Execution time : $elapsed seconds";
-//        \Drupal::logger('1 - Flag Service')->notice($msg);
-//
-//        $startTime = $endTime = 0;
-//
-//        $startTime = microtime(true);
-//
-//        $node = Node::load($nid);
-//        if ($node !== NULL && !$flag->isFlagged($node, $this->entity)) {
-//          $flag_service->flag($flag, $node, $this->entity);
-//        }
-//
-//        $endTime = microtime(true);
-//        $elapsed = $endTime - $startTime;
-//        $msg = "Execution time : $elapsed seconds";
-//        \Drupal::logger('2 - Flagging')->notice($msg);
-//
-//        $startTime = $endTime = 0;
-//
-//        $startTime = microtime(true);
-//
-//        $node = Node::load($nid);
-//        if ($node !== NULL) {
-//          $flagging = \Drupal::entityTypeManager()->getStorage('flagging')->create([
-//            'uid' => $this->entity->id(),
-//            'session_id' => NULL,
-//            'flag_id' => 'favorite',
-//            'entity_id' => $node->id(),
-//            'entity_type' => $node->getEntityTypeId(),
-//            'global' => 0,
-//          ]);
-//
-//          $flagging->save();
-//        }
-//
-//        $endTime = microtime(true);
-//        $elapsed = $endTime - $startTime;
-//        $msg = "Execution time : $elapsed seconds";
-//        \Drupal::logger('2.5 - Flagging')->notice($msg);
-//
-//        $startTime = $endTime = 0;
-//
-//        $startTime = microtime(true);
-//
-//        // Add in any default links that are not in user_weights.
-//        $link = $node->get('field_link_type')->getValue();
-//        if (isset($link[0]['value'])) {
-//          $db = \Drupal::database();
-//          $name = $link[0]['value'] . '_links';
-//          $uid = $this->entity->id();
-//          $nid = $node->id();
-//
-//          $check = $db
-//            ->select('user_weights', 'u')
-//            ->fields('u', ['entity_id'])
-//            ->condition('uid', $uid)
-//            ->condition('entity_id', $nid)
-//            ->condition('view_name', $name)
-//            ->execute()
-//            ->fetchField();
-//
-//          if ($check === FALSE) {
-//            // Grab the new weight.
-//            $sql = "SELECT MAX(weight) FROM {user_weights} WHERE uid = :uid";
-//            $weight = $db
-//              ->query($sql, [':uid' => $uid])
-//              ->fetchField();
-//
-//            // No user weights setup, add a default one.
-//            if ($weight == NULL) {
-//              $weight = 0;
-//            }
-//
-//            // Insert new item in weights table.
-//            $db->insert('user_weights')
-//              ->fields([
-//                'entity_id' => $nid,
-//                'uid' => $uid,
-//                'view_name' => $name,
-//                'weight' => $weight + 1,
-//              ])
-//              ->execute();
-//
-//          }
-//        }
-//        $endTime = microtime(true);
-//        $elapsed = $endTime - $startTime;
-//        $msg = "Execution time : $elapsed seconds";
-//        \Drupal::logger('3 - Weights')->notice($msg);
-//
-//      });
+      // Insert new item in weights table.
+      $query->execute();
     }
     return $this;
   }
