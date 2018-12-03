@@ -185,13 +185,29 @@ class DgreatGroup {
     // Let's go through Each Node and flag each node.
     if (!empty($nids)) {
       collect($nids)->map(function($nid) {
+        $startTime = microtime(true);
+
         $flag_service = \Drupal::service('flag');
         $flag = $flag_service->getFlagById('favorite');
+
+        $endTime = microtime(true);
+        $elapsed = $endTime - $startTime;
+        $msg = "Execution time : $elapsed seconds";
+        \Drupal::logger('1 - Flag Service')->notice($msg);
+
+        $startTime = microtime(true);
 
         $node = Node::load($nid);
         if ($node !== NULL && !$flag->isFlagged($node, $this->entity)) {
           $flag_service->flag($flag, $node, $this->entity);
         }
+
+        $endTime = microtime(true);
+        $elapsed = $endTime - $startTime;
+        $msg = "Execution time : $elapsed seconds";
+        \Drupal::logger('2 - Flagging')->notice($msg);
+
+        $startTime = microtime(true);
 
         // Add in any default links that are not in user_weights.
         $link = $node->get('field_link_type')->getValue();
@@ -234,6 +250,10 @@ class DgreatGroup {
 
           }
         }
+        $endTime = microtime(true);
+        $elapsed = $endTime - $startTime;
+        $msg = "Execution time : $elapsed seconds";
+        \Drupal::logger('3 - Weights')->notice($msg);
       });
     }
     return $this;
