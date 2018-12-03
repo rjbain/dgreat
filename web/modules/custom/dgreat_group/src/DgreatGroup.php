@@ -231,7 +231,7 @@ class DgreatGroup {
 //            ->execute()
 //            ->fetchField();
 
-          $sql = "SELECT entity_id FROM {user_weights} WHERE uid = ;uid AND entity_id = :nid AND view_name = :vname";
+          $sql = "SELECT entity_id FROM {user_weights} WHERE uid = :uid AND entity_id = :nid AND view_name = :vname";
           $check = $db
             ->query($sql, [':uid' => $uid, ':nid' => $nid, ':vname' => $name])
             ->fetchField();
