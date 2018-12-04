@@ -264,7 +264,7 @@ class DgreatGroup {
     $endTime = microtime(true);
     $elapsed = $endTime - $startTime;
     $msg = "Execution time : $elapsed seconds";
-    \Drupal::logger('LOGIN - 3 Indexes')->notice($msg);
+    \Drupal::logger('LOGIN - 2 Indexes (entity_id + uid)')->notice($msg);
 
     return $this;
   }

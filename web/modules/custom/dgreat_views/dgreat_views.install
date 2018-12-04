@@ -278,12 +278,12 @@ function dgreat_views_update_8006() {
       ],
       'primary key' => ['id'],
       'indexes' => [
-        'weight' => ['weight'],
+//        'weight' => ['weight'],
         'entity_id' => ['entity_id'],
         'uid' => ['uid']
       ],
     ];
-    $schema->addIndex('user_weights', 'weight', ['weight'], $spec);
+//    $schema->addIndex('user_weights', 'weight', ['weight'], $spec);
     $schema->addIndex('user_weights', 'entity_id', ['entity_id'], $spec);
     $schema->addIndex('user_weights', 'uid', ['uid'], $spec);
   }
