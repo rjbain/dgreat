@@ -179,9 +179,7 @@ class DgreatGroup {
    * @return \Drupal\dgreat_group\DgreatGroup
    */
   public function flagUserDefaultContent(User $user) {
-
-    $startTime = microtime(true);
-
+    
     $nids = $this->getUserDefaultFlags($user);
 
     // Let's go through Each Node and flag each node.
@@ -258,13 +256,7 @@ class DgreatGroup {
         $insert = rtrim($insert, ',');
         $db->query($insert);
       }
-
     }
-
-    $endTime = microtime(true);
-    $elapsed = $endTime - $startTime;
-    $msg = "Execution time : $elapsed seconds";
-    \Drupal::logger('LOGIN - 2 Indexes (entity_id + uid)')->notice($msg);
 
     return $this;
   }
