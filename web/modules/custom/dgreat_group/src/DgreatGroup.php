@@ -180,6 +180,8 @@ class DgreatGroup {
    */
   public function flagUserDefaultContent(User $user) {
 
+    $startTime = microtime(true);
+
     $nids = $this->getUserDefaultFlags($user);
 
     // Let's go through Each Node and flag each node.
@@ -258,6 +260,12 @@ class DgreatGroup {
       }
 
     }
+
+    $endTime = microtime(true);
+    $elapsed = $endTime - $startTime;
+    $msg = "Execution time : $elapsed seconds";
+    \Drupal::logger('LOGIN - 3 Indexes')->notice($msg);
+
     return $this;
   }
 
