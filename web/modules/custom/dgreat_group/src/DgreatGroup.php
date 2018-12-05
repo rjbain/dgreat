@@ -98,7 +98,7 @@ class DgreatGroup {
     // Grab the quick link field.
     $quick_link = $this->entity->get('field_link_type')->getValue();
 
-    if (isset($quick_link[0]['value']) && $quick_link[0]['value'] == 'quick') {
+    if (isset($quick_link[0]['value']) && $quick_link[0]['value'] === 'quick') {
       // Grab our current user and their group ids.
       $uid = \Drupal::currentUser()->id();
       $user = User::load($uid);
@@ -179,21 +179,85 @@ class DgreatGroup {
    * @return \Drupal\dgreat_group\DgreatGroup
    */
   public function flagUserDefaultContent(User $user) {
-
+    
     $nids = $this->getUserDefaultFlags($user);
 
     // Let's go through Each Node and flag each node.
     if (!empty($nids)) {
-      collect($nids)->map(function($nid) {
-        $flag_service = \Drupal::service('flag');
-        $flag = $flag_service->getFlagById('favorite');
 
+      $db = \Drupal::database();
+      $uid = $this->entity->id();
+
+      // It is vastly more performant to do the insert clause this way.
+      $insert = "INSERT INTO {user_weights} (entity_id, uid, view_name, weight) VALUES ";
+
+      // Grab the new weight.
+      $sql = "SELECT MAX(weight) FROM {user_weights} WHERE uid = :uid";
+      $weight = $db
+        ->query($sql, [':uid' => $uid])
+        ->fetchField();
+
+      // No user weights setup, add a default one.
+      if ($weight == NULL) {
+        $weight = 0;
+      }
+
+      $results = FALSE;
+
+      foreach ($nids as $nid) {
+        // Redo of flagging so we just call the ETM directly & query = way more performant.
+        $isFlagged = $db
+          ->select('flagging', 'f')
+          ->fields('f', ['id'])
+          ->condition('entity_type', 'node')
+          ->condition('entity_id', $nid)
+          ->condition('uid', $uid)
+          ->execute()
+          ->fetchField();
         $node = Node::load($nid);
-        if (!is_null($node) && !$flag->isFlagged($node, $this->entity)) {
-          $flag_service->flag($flag, $node, $this->entity);
+        if ($node !== NULL && $isFlagged === FALSE) {
+          $flagging = \Drupal::entityTypeManager()->getStorage('flagging')->create([
+            'uid' => $this->entity->id(),
+            'session_id' => NULL,
+            'flag_id' => 'favorite',
+            'entity_id' => $nid,
+            'entity_type' => $node->getEntityTypeId(),
+            'global' => 0,
+          ]);
+
+          $flagging->save();
         }
-      });
+
+        // Add in any default links that are not in user_weights.
+        $link = $node->get('field_link_type')->getValue();
+        if (isset($link[0]['value'])) {
+          $name = $link[0]['value'] . '_links';
+
+          $check = $db
+            ->select('user_weights', 'u')
+            ->fields('u', ['entity_id'])
+            ->condition('uid', $uid)
+            ->condition('entity_id', $nid)
+            ->condition('view_name', $name)
+            ->execute()
+            ->fetchField();
+
+          if ($check === FALSE) {
+            $results = TRUE;
+            $weight++;
+            $vals = array($nid, $uid, "'" . $name . "'", $weight);
+            $insert .= '(' . implode(',', $vals) . '),';
+          }
+        }
+      }
+
+      // Insert new item in weights table.
+      if ($results) {
+        $insert = rtrim($insert, ',');
+        $db->query($insert);
+      }
     }
+
     return $this;
   }
 

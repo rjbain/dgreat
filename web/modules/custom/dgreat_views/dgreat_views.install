@@ -235,3 +235,56 @@ function dgreat_views_update_8005() {
     $schema->createTable('user_weights', $user_weights);
   }
 }
+
+/**
+ * Add 3 indexes to user_weights.
+ */
+function dgreat_views_update_8006() {
+  $schema = \Drupal::database()->schema();
+  if ($schema->tableExists('user_weights')) {
+    $spec = [
+      'description' => 'A record of which {users} have read which {node}s.',
+      'fields' => [
+        'id' => [
+          'type' => 'serial',
+          'unsigned' => TRUE,
+          'description' => "The rows id",
+        ],
+        'entity_id' => [
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'description' => 'The id of the entity',
+        ],
+        'uid' => [
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'description' => 'The uid of the user.',
+        ],
+        'weight' => [
+          'type' => 'int',
+          'not null' => TRUE,
+          'default' => 0,
+          'description' => 'The weight of this term for the specific user.',
+        ],
+        'view_name' => [
+          'type' => 'varchar',
+          'length' => '512',
+          'not null' => TRUE,
+          'default' => '',
+          'description' => 'The View Name.',
+        ],
+      ],
+      'primary key' => ['id'],
+      'indexes' => [
+        'weight' => ['weight'],
+        'entity_id' => ['entity_id'],
+        'uid' => ['uid']
+      ],
+    ];
+    $schema->addIndex('user_weights', 'weight', ['weight'], $spec);
+    $schema->addIndex('user_weights', 'entity_id', ['entity_id'], $spec);
+    $schema->addIndex('user_weights', 'uid', ['uid'], $spec);
+  }
+}
