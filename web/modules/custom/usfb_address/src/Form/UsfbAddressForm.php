@@ -180,15 +180,16 @@ class UsfbAddressForm extends FormBase {
     $form['back'] = [
       '#type' => 'submit',
       '#value' => t('Back'),
-      '#submit' => [
-        'usfb_address_address_form_back_submit'
-        ],
+      '#submit' => [[$this, 'backSubmit']],
     ];
 
     return $form;
   }
 
-  public function validateForm(array &$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  /**
+   * {@inheritdoc}
+   */
+  public function validateForm(array &$form, FormStateInterface $form_state) {
     $address = usfb_address_get_address_from_form_state($form_state);
     // USFB-76 See if they're changing their address, and skip matching if it's the same.
     if (!usfb_address_address_form_state_same($form, $form_state)) {
@@ -199,7 +200,10 @@ class UsfbAddressForm extends FormBase {
     }
   }
 
-  public function submitForm(array &$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  /**
+   * {@inheritdoc}
+   */
+  public function submitForm(array &$form, FormStateInterface $form_state) {
 
     // Retrieve the current user's address information.
   // @TODO Check whether anything was changed, and if not, don't push to Banner.
@@ -240,5 +244,12 @@ class UsfbAddressForm extends FormBase {
     $form_state->set(['redirect'], _usfb_address_postlogin_path());
   }
 
+  /**
+   * Form callback; When the user clicks on Back.
+   */
+  public function backSubmit(array $form, FormStateInterface $form_state) {
+    $uid = $form_state['values']['uid'];
+    $form_state['redirect'] = "user/$uid/edit/address/check";
+  }
+
 }
-?>
