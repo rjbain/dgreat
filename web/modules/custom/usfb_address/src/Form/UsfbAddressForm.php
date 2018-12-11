@@ -10,8 +10,36 @@ namespace Drupal\usfb_address\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Session\AccountInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class UsfbAddressAddressForm extends FormBase {
+class UsfbAddressForm extends FormBase {
+
+  /**
+   * The current user.
+   *
+   * @var \Drupal\Core\Session\AccountInterface
+   */
+  protected $currentUser;
+
+  /**
+   * Initializes an instance of the content translation controller.
+   *
+   * @param \Drupal\Core\Session\AccountInterface $current_user
+   *   The current user.
+   */
+  public function __construct(AccountInterface $current_user) {
+    $this->currentUser = $current_user;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function createInstance(ContainerInterface $container) {
+    return new static(
+      $container->get('current_user')
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -20,19 +48,17 @@ class UsfbAddressAddressForm extends FormBase {
     return 'usfb_address_address_form';
   }
 
-  public function buildForm(array $form, \Drupal\Core\Form\FormStateInterface $form_state, $account = NULL) {
-    drupal_set_title('Address');
+  public function buildForm(array $form, FormStateInterface $form_state) {
     $form['#title'] = 'Address';
     $form['help'] = [
       '#markup' => t('Please complete the form below and click <em>Save</em> to update your current contact information.')
-      ];
-    $form['#attached']['css'] = [
-      drupal_get_path('module', 'usfb_address') . '/usfb_address.css'
-      ];
+    ];
+
+    $form['#attached']['library'][] = 'usfb_address/usfb-address';
 
     // Get address data from the Banner API.
     // @TODO Don't ask the API again, get address from form data ("correct" step).
-    if (!($address = usfb_address_get_banner_address($account->name))) {
+    if (!($address = usfb_address_get_banner_address($this->currentUser->getAccountName()))) {
       watchdog('usfb_address', 'usfb_address_address_form no address from banner.');
       _usfb_address_abort();
     }
@@ -46,11 +72,11 @@ class UsfbAddressAddressForm extends FormBase {
     // Add hidden form fields to provide the user info after submission.
     $form['uid'] = [
       '#type' => 'hidden',
-      '#value' => $account->uid,
+      '#value' => $this->currentUser->id(),
     ];
     $form['name'] = [
       '#type' => 'hidden',
-      '#value' => $account->name,
+      '#value' => $this->currentUser->getAccountName(),
     ];
 
     // Provide the Address Field.
