@@ -1,0 +1,753 @@
+<?php
+
+/**
+ * @file
+ * Provides an address form on the User Account page for Banner.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function usfb_address_menu() {
+  $items['user/%user/edit/address'] = array(
+    'title' => 'Address',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usfb_address_address_form', 1),
+    'access callback' => 'user_edit_access',
+    'access arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+  );
+  $items['user/%user/edit/address/check'] = array(
+    'title' => 'Local Residence Address Check',
+    'description' => 'Asks the user if they need to update their address.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usfb_address_ask_address_correct', 1),
+    'access callback' => 'user_edit_access',
+    'access arguments' => array(1),
+  );
+  $items['admin/config/usfb_address'] = array(
+    'title' => 'USFB Address',
+    'description' => 'Configuration settings for USFB Address functionality.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usfb_address_settings_form'),
+    'file' => 'usfb_address.admin.inc',
+    'access arguments' => array('administer usfb_address settings'),
+    'weight' => 0,
+  );
+  $items['admin/config/usfb_address/settings'] = array(
+    'title' => 'Settings',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function usfb_address_permission() {
+  return array(
+    'administer usfb_address settings' => array(
+      'title' => t('Administer USF Banner settings'),
+      'description' => t('When enabled, will allow administration of the USF Banner Form integration.'),
+    ),
+  );
+}
+
+/**
+ * Returns the destination path for users after finishing their address check.
+ *
+ * This destination was gleaned from reaction rule with machine name
+ * "rules_on_login_redirect_to_dashboard".
+ *
+ * @return string
+ *   The destination path.
+ */
+function _usfb_address_postlogin_path() {
+  return "user/{\Drupal::currentUser()->uid}/view";
+}
+
+/**
+ * Form builder; the user's address form.
+ */
+function usfb_address_address_form($form, &$form_state, $account) {
+  // @FIXME
+// drupal_set_title() has been removed. There are now a few ways to set the title
+// dynamically, depending on the situation.
+// 
+// 
+// @see https://www.drupal.org/node/2067859
+// drupal_set_title('Address');
+
+  $form['#title'] = 'Address';
+  $form['help'] = array(
+    '#markup' => t('Please complete the form below and click <em>Save</em> to update your current contact information.'),
+  );
+  $form['#attached']['css'] = array(
+    drupal_get_path('module', 'usfb_address') . '/usfb_address.css',
+  );
+
+  // Get address data from the Banner API.
+  // @TODO Don't ask the API again, get address from form data ("correct" step).
+  if (!($address = usfb_address_get_banner_address($account->name))) {
+    \Drupal::logger('usfb_address')->notice('usfb_address_address_form no address from banner.', []);
+    _usfb_address_abort();
+  }
+
+  // Add a hidden form field to provide the addressType after submission.
+  $form['address_type'] = array(
+    '#type'  => 'hidden',
+    '#value' => $address ? $address->addressType : 'LR',
+  );
+
+  // Add hidden form fields to provide the user info after submission.
+  $form['uid'] = array(
+    '#type'  => 'hidden',
+    '#value' => $account->uid,
+  );
+  $form['name'] = array(
+    '#type'  => 'hidden',
+    '#value' => $account->name,
+  );
+
+  // Provide the Address Field.
+  // @see http://drupal.org/project/addressfield
+  // @see https://www.drupal.org/node/970048
+  $form['address'] = array(
+    '#type'          => 'addressfield',
+    '#title'         => t('Address'),
+    '#required'      => TRUE,
+    '#default_value' => $address ? array(
+      'country'             => $address->countryCode,
+      'thoroughfare'        => $address->addressLine1,
+      'premise'             => $address->addressLine2,
+      'locality'            => $address->city,
+      'administrative_area' => $address->stateOrProvince,
+      'postal_code'         => $address->zipOrPostalCode,
+    ) : array(
+      'country' => 'US',
+    ),
+  );
+
+  // Provide the Phone Number.
+  module_load_include('inc', 'usfb_address');
+  $form['phone_fieldset'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Phone Number'),
+    '#collapsible' => FALSE,
+    '#collapsed' => FALSE,
+  );
+  $form['phone_fieldset']['phone_code'] = array(
+    '#type' => 'select',
+    '#default_value' => 'US',
+    '#required' => TRUE,
+  );
+  foreach (usfb_address_get_telephone_codes() as $code => $info) {
+    $form['phone_fieldset']['phone_code']['#options'][$code] = $info['text'];
+  }
+
+  // Provide the Phone Number.
+  $form['phone_fieldset']['phone'] = array(
+    '#type' => 'telfield',
+    '#placeholder' => '4154225555',
+    '#required' => TRUE,
+    '#description' => 'Do not include the country code. Select the appropriate country from the dropdown to the left.',
+  );
+
+  // Set default values for the phone number and phone country code.
+  if (!empty($address->cellPhone)) {
+    $phone_raw = $address->cellPhone;
+    if (strpos($phone_raw, '+1') === 0) {
+      $country_abbrv = 'US';
+      $phone         = substr($phone_raw, 2);
+    }
+    else {
+      $country_code = strtok($phone_raw, '-');
+      $phone        = strtok('-');
+      foreach (usfb_address_get_telephone_codes() as $country_abbrv => $country_info) {
+        if ($country_code == $country_info['value']) {
+          break;
+        }
+      }
+    }
+    $form['phone_fieldset']['phone']['#default_value']      = $phone;
+    $form['phone_fieldset']['phone_code']['#default_value'] = $country_abbrv;
+  }
+
+  // Save button.
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save'),
+    '#attributes' => array(
+      'style' => 'margin-right: 0.5em;',
+    ),
+  );
+
+  // Back button.
+  $form['back'] = array(
+    '#type' => 'submit',
+    '#value' => t('Back'),
+    '#submit' => array('usfb_address_address_form_back_submit'),
+  );
+
+  return $form;
+}
+
+/**
+ * Form callback; When the user clicks on Back.
+ */
+function usfb_address_address_form_back_submit($form, &$form_state) {
+  $uid = $form_state['values']['uid'];
+  $form_state['redirect'] = "user/$uid/edit/address/check";
+}
+
+/**
+ * List of blacklisted Residence Hall or Campus addresses.
+ *
+ * @return array
+ *   An array of all the residences.
+ */
+function usfb_address_residence_campus_addresses() {
+  $addresses = array();
+  $addresses['Fromm'] = array(
+    'thoroughfare' => '2497 Golden Gate',
+    'locality' => 'San Francisco',
+    'country' => 'US',
+    'postal_code' => '94118',
+  );
+  $addresses['Gillson'] = array(
+    'thoroughfare' => '2325 Golden Gate',
+    'locality' => 'San Francisco',
+    'country' => 'US',
+    'postal_code' => '94118',
+  );
+  $addresses['Hayes-Healy'] = array(
+    'thoroughfare' => '2305 Golden Gate',
+    'locality' => 'San Francisco',
+    'country' => 'US',
+    'postal_code' => '94118',
+  );
+  $addresses['Lone Mountain'] = array(
+    'thoroughfare' => '330 Parker',
+    'locality' => 'San Francisco',
+    'country' => 'US',
+    'postal_code' => '94118',
+  );
+  $addresses['Loyola Village'] = array(
+    'thoroughfare' => '331 Anza Street',
+    'locality' => 'San Francisco',
+    'country' => 'US',
+    'postal_code' => '94118',
+  );
+  $addresses['Pedro Arrupe'] = array(
+    'thoroughfare' => '490 6th',
+    'locality' => 'San Francisco',
+    'country' => 'US',
+    'postal_code' => '94118',
+  );
+  $addresses['Phelan'] = array(
+    'thoroughfare' => '2345 Golden Gate',
+    'locality' => 'San Francisco',
+    'country' => 'US',
+    'postal_code' => '94118',
+  );
+  $addresses['Main Campus'] = array(
+    'thoroughfare' => '2130 Fulton',
+    'locality' => 'San Francisco',
+    'country' => 'US',
+    'postal_code' => '94117',
+  );
+
+  $addresses['Downtown Campus'] = array(
+    'thoroughfare' => '101 Howard',
+    'premise' => '500',
+    'locality' => 'San Francisco',
+    'country' => 'US',
+    'postal_code' => '94105',
+  );
+  $addresses['Branch : Orange County'] = array(
+    'thoroughfare' => '480 South Batavia',
+    'locality' => 'San Francisco',
+    'country' => 'US',
+    'postal_code' => '92868',
+  );
+  $addresses['Branch : Sacramento'] = array(
+    'thoroughfare' => '1 Capitol Mall',
+    'premise' => '100',
+    'locality' => 'San Francisco',
+    'country' => 'US',
+    'postal_code' => '95814',
+  );
+  $addresses['Branch : Santa Rosa'] = array(
+    'thoroughfare' => '416 B',
+    'locality' => 'San Francisco',
+    'country' => 'US',
+    'postal_code' => '95401',
+  );
+  $addresses['Branch : Pleasanton'] = array(
+    'thoroughfare' => '6120 Stoneridge Mall',
+    'premise' => '150',
+    'locality' => 'San Francisco',
+    'country' => 'US',
+    'postal_code' => '94588',
+  );
+  $addresses['Branch : San Jose'] = array(
+    'thoroughfare' => '125 S. Market',
+    'premise' => '200',
+    'locality' => 'San Francisco',
+    'country' => 'US',
+    'postal_code' => '95113',
+  );
+  return $addresses;
+}
+
+/**
+ * Makes sure the given address object is not a residence or campus.
+ *
+ * @return string|null
+ *   The name of the matched campus, NULL otherwise.
+ */
+function usfb_address_residence_campus_addresses_match($address) {
+  $blacklist = usfb_address_residence_campus_addresses();
+  foreach ($blacklist as $name => $res) {
+    // City.
+    if (stristr($res['locality'], $address->city) !== FALSE) {
+      // Postal Code.
+      if ($address->zipOrPostalCode == $res['postal_code']) {
+        // Street Address.
+        if (stripos($address->addressLine1, $res['thoroughfare']) === 0) {
+          return $name;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Retrieves an address from the given form state.
+ */
+function usfb_address_get_address_from_form_state($form_state) {
+  // Get a shortcut to the form values.
+  $values = $form_state['values']['address'];
+
+  // Get the international country code, international format, and phone. For
+  // some reason the API expects US numbers in a different format than
+  // international ones. Also, remove all non-numerical characters from
+  // the phone number.
+  module_load_include('inc', 'usfb_address');
+  $country_abbrv = $form_state['values']['phone_code'];
+  $country_code  = usfb_address_get_telephone_codes()[$country_abbrv]['value'];
+  $dash          = '1' === $country_code ? '' : '-';
+  $phone         = preg_replace('/[^0-9]/', '', $form_state['values']['phone']);
+
+  // Compose the address object as an array.
+  $address_values = array(
+    'addressLine1'    => $values['thoroughfare'],
+    'addressLine2'    => $values['premise'],
+    'city'            => $values['locality'],
+    'stateOrProvince' => $values['administrative_area'],
+    'zipOrPostalCode' => $values['postal_code'],
+    'countryCode'     => $values['country'],
+    'cellPhone'       => "+$country_code{$dash}$phone",
+  );
+
+  // Clean up the values.
+  foreach ($address_values as &$value) {
+    $value = preg_replace('/\s+/', ' ', trim($value));
+  }
+
+  // Cast the address array to an object and return.
+  return (object) $address_values;
+}
+
+/**
+ * Form Callback; Validation.
+ *
+ * Checks the address against the residence and campus address.
+ */
+function usfb_address_address_form_validate($form, &$form_state) {
+  $address = usfb_address_get_address_from_form_state($form_state);
+  // USFB-76 See if they're changing their address, and skip matching if it's the same.
+  if (!usfb_address_address_form_state_same($form, $form_state)) {
+    $match = usfb_address_residence_campus_addresses_match($address);
+    if ($match) {
+      form_set_error('address', t('Your new address cannot match a Residence Hall or Campus address. Please enter a different address or click Cancel to go back to the previous screen.'));
+    }
+  }
+}
+
+/**
+ * Returns TRUE if the new address matches their default one.
+ */
+function usfb_address_address_form_state_same($form, $form_state) {
+  $old = isset($form['address']['#default_value']) ? $form['address']['#default_value'] : array('old' => TRUE);
+  $new = isset($form_state['values']['address']) ? $form_state['values']['address'] : array('new' => TRUE);
+  $diff = array_diff_assoc($old, $new);
+  return empty($diff);
+}
+
+/**
+ * Form API Callback; Submit handler for the address submit.
+ */
+function usfb_address_address_form_submit($form, &$form_state) {
+
+  // Retrieve the current user's address information.
+  // @TODO Check whether anything was changed, and if not, don't push to Banner.
+  $address = usfb_address_get_address_from_form_state($form_state);
+
+  // Remove the USFB Address Check session variable if it's set.
+  unset($_SESSION['usfb_address_check']);
+
+  // Send the updated address to Banner.
+  $name = $form_state['values']['name'];
+  try {
+    $result = usf_banner_update_address($name, $address);
+  }
+  catch (Exception $e) {
+    $result = FALSE;
+    \Drupal::logger('usfb_address')->notice($e->getMessage(), []);
+  }
+  
+  // Find the UID.
+  $uid = $form_state['values']['uid'];
+  
+  // Construct the message.
+  if ($result) {
+    $output = t('<p><strong>Thank you!</strong> You have updated your current local address to the following. <em>If this is not correct, please click "Back"</em>.</p>');
+    $output .= _usfb_address_get_formatted($address);
+    $output .= _usfb_address_get_buttons(t('Back'), $uid);
+    drupal_set_message($output, 'status', FALSE);
+  }
+
+  // Set the user's "Date of last address update," even if the push failed.
+  // @TODO Once Banner figures out the Bad Request situation, change this
+  // logic back to only update the user date field when the operation completed
+  // successfully. And consider restoring the error output message.
+  usfb_address_update_address_date($uid);
+
+  // Forward them to the homepage.
+  $form_state['redirect'] = _usfb_address_postlogin_path();
+}
+
+/**
+ * Updates the USFB Address Date field for the given user.
+ *
+ * @param int $uid
+ *   (optional) The user to update. Defaults to the current logged in user.
+ * @param int $timestamp
+ *   (optional) What date timestamp to save the field to. Defaults to the
+ *   current time.
+ *
+ * @return int|bool
+ *   The output from saving the entity. FALSE on failure.
+ */
+function usfb_address_update_address_date($uid, $timestamp = NULL) {
+
+  // Load the entity wrapper for the user.
+  $wrapper = entity_metadata_wrapper('user', $uid);
+
+  // Find the time to save.
+  $time = isset($timestamp) ? $timestamp : time();
+
+  // Set the field.
+  if (isset($wrapper->field_usfb_address_date)) {
+    $wrapper->field_usfb_address_date->set($time);
+    // Save the entity.
+    return $wrapper->save();
+  }
+  return FALSE;
+}
+
+/**
+ * Retrieve the Banner address for the given user.
+ *
+ * @param string $name
+ *   A user entity.
+ */
+function usfb_address_get_banner_address($name) {
+  try {
+    $address = usf_banner_get_address($name);
+  }
+  catch (Exception $e) {
+    $address = FALSE;
+    \Drupal::logger('usfb_address')->notice($e->getMessage(), []);
+  }
+  return $address;
+}
+
+/**
+ * Implements hook_library().
+ */
+function usfb_address_library() {
+  $moduleDir = drupal_get_path('module', 'usfb_address');
+  $libDir = $moduleDir . '/bower_components/intl-tel-input';
+  $libraries['intl-tel-input'] = array(
+    'title' => 'International Telephone Input',
+    'website' => 'https://github.com/jackocnr/intl-tel-input',
+    'version' => '9.0.5',
+    'js' => array(
+      "$libDir/build/js/intlTelInput.js" => array(),
+      "$moduleDir/usfb_address.js" => array(),
+    ),
+    'css' => array(
+      "$libDir/build/css/intlTelInput.css" => array(),
+    ),
+  );
+
+  return $libraries;
+}
+
+/**
+ * Clears the session flag and rediects the user to the post-login destination.
+ */
+function _usfb_address_abort() {
+  unset($_SESSION['usfb_address_check']);
+  drupal_goto(_usfb_address_postlogin_path());
+}
+
+/**
+ * Ask the user if their address is correct.
+ */
+function usfb_address_ask_address_correct($form, &$form_state, $account) {
+
+  // Get the address data from USF's Banner API.
+  if (!($address = usfb_address_get_banner_address($account->name))) {
+    \Drupal::logger('usfb_address')->notice("Error retrieving user '{$account->name}' ({$account->uid}) address from Banner API", []);
+    // Clear the session flag and redirect to the post-login destination.
+    _usfb_address_abort();
+  }
+
+  // Check whether the student has recently updated their address via SSB.
+  if ($start = \Drupal::config('usfb_address.settings')->get('usfb_address_date_start')) {
+    if (!empty($address->dateLastUpdated) && $address->dateLastUpdated >= $start) {
+      // Update the user's "address last updated" in their Drupal profile.
+      usfb_address_update_address_date($account->uid);
+      // Clear the session flag and redirect to the post-login destination.
+      _usfb_address_abort();
+    }
+  }
+
+  // Add hidden form fields to provide the user info after submission.
+  $form['uid'] = array(
+    '#type'  => 'hidden',
+    '#value' => $account->uid,
+  );
+  $form['name'] = array(
+    '#type'  => 'hidden',
+    '#value' => $account->name,
+  );
+
+  $form['help'] = array(
+    '#markup' => t("Is this your local address? If so, please click <strong>Confirm</strong>. If not, or if no address is displayed below, click <strong>Update</strong>. Or click <strong>Skip</strong> and we'll prompt you again the next time you log in to myUSF."),
+  );
+  $form['address'] = array(
+    '#markup' => _usfb_address_get_formatted($address),
+  );
+  $form['actions']['confim'] = array(
+    '#type' => 'submit',
+    '#value' => t('Confirm'),
+    '#attributes' => array(
+      'class' => array('btn-primary'),
+      'style' => 'margin-right: 0.5em;',
+    ),
+    '#submit' => array('usfb_address_ask_address_confirm'),
+  );
+  $form['actions']['update'] = array(
+    '#type' => 'submit',
+    '#value' => t('Update'),
+    '#attributes' => array(
+      'class' => array('btn-success'),
+      'style' => 'margin-right: 0.5em;',
+    ),
+    '#submit' => array('usfb_address_ask_address_update'),
+  );
+  $form['actions']['skip'] = array(
+    '#type' => 'submit',
+    '#value' => t('Skip'),
+    '#submit' => array('usfb_address_ask_address_skip'),
+  );
+  return $form;
+}
+
+/**
+ * User wants to Skip the address form check.
+ */
+function usfb_address_ask_address_skip($form, &$form_state) {
+
+  // Redirect to the post-login destination.
+  $form_state['redirect'] = _usfb_address_postlogin_path();
+
+  // Remove the USFB Address Check session variable if it's set.
+  unset($_SESSION['usfb_address_check']);
+}
+
+/**
+ * User wants to UPDATE their address.
+ */
+function usfb_address_ask_address_update($form, &$form_state) {
+  $uid = \Drupal::currentUser()->uid;
+  $form_state['redirect'] = "user/$uid/edit/address";
+}
+
+/**
+ * User wants to CONFIRM their address.
+ */
+function usfb_address_ask_address_confirm($form, &$form_state) {
+
+  // Remove the USFB Address Check session variable if it's set.
+  unset($_SESSION['usfb_address_check']);
+
+  // Update the user's Last Update Address Date.
+  $uid = $form_state['values']['uid'];
+  usfb_address_update_address_date($uid);
+
+  // Retrieve the current user's address information.
+  // @TODO Don't call the API again, pull it out of form data.
+  if (!($address = usfb_address_get_banner_address($form_state['values']['name']))) {
+    drupal_goto(_usfb_address_postlogin_path());
+  }
+
+  // Construct the message.
+  $output = t('<p><strong>Thank you!</strong> You have confirmed that the information below is accurate. <em>If this is not correct, please click the Update button.</em></p>');
+  $output .= _usfb_address_get_formatted($address);
+  $output .= _usfb_address_get_buttons(t('Update'), $uid);
+
+  // Display the message and forward them to the homepage.
+  drupal_set_message($output, 'status', FALSE);
+  $form_state['redirect'] = _usfb_address_postlogin_path();
+}
+
+/**
+ * Implements hook_user_login().
+ *
+ * Checks whether the user needs to update their address, and then prompts them.
+ *
+ * @FIXME
+ * The $edit parameter is gone in Drupal 8. It has been left here in order to
+ * prevent 'undefined variable' errors, but it will never actually be passed to
+ * this hook. You'll need to modify this function and remove every reference to it.
+ */
+
+function usfb_address_user_login(\Drupal\user\UserInterface $account, $edit = []) {
+
+  // Is the Banner address update system enabled?
+  if (!\Drupal::config('usfb_address.settings')->get('usfb_address_enabled')) {
+    return _usfb_address_form_redirect(_usfb_address_postlogin_path(), $edit);
+  }
+
+  // Is today within the admin-defined start and end dates for address updates?
+  // @FIXME
+// Could not extract the default value because it is either indeterminate, or
+// not scalar. You'll need to provide a default value in
+// config/install/usfb_address.settings.yml and config/schema/usfb_address.schema.yml.
+$start  = \Drupal::config('usfb_address.settings')->get('usfb_address_date_start');
+  // @FIXME
+// Could not extract the default value because it is either indeterminate, or
+// not scalar. You'll need to provide a default value in
+// config/install/usfb_address.settings.yml and config/schema/usfb_address.schema.yml.
+$end    = \Drupal::config('usfb_address.settings')->get('usfb_address_date_end');
+  $format = 'Y-m-d';
+  $today  = date($format);
+  if ($today < $start || $today > $end) {
+    return _usfb_address_form_redirect(_usfb_address_postlogin_path(), $edit);
+  }
+
+  // Is this user a "Student" (rid 7) or "Online Student" (rid 8)?
+  if (!user_has_role(7) && !user_has_role(8)) {
+    return _usfb_address_form_redirect(_usfb_address_postlogin_path(), $edit);
+  }
+
+  // Has the student confirmed or updated their address since the start date?
+  $wrapper = entity_metadata_wrapper('user', $account);
+  if (!empty($wrapper->field_usfb_address_date)) {
+    $last_update_raw = $wrapper->field_usfb_address_date->value();
+    if (!empty($last_update_raw)) {
+      $last_update = date($format, $last_update_raw);
+      if ($last_update >= $start) {
+        return _usfb_address_form_redirect(_usfb_address_postlogin_path(), $edit);
+      }
+    }
+  }
+
+  // Set that the USFB Address Check still needs to happen.
+  $_SESSION['usfb_address_check'] = TRUE;
+
+  // All validations have passed so far; redirect to the address check form.
+  // For some reason, it only works when we set both $_GET and $GLOBALS. We set
+  // the $edit variable just in case it covers other scenarios.
+  _usfb_address_form_redirect("user/{$account->id()}/edit/address/check", $edit);
+}
+
+/**
+ * Sets form and global variables to redirect the user after logging in.
+ *
+ * @param string $path
+ *   The destination path for redirection.
+ * @param array $edit
+ *   The array of form values submitted by the user (from hook_user_login()).
+ */
+function _usfb_address_form_redirect($path, &$edit = NULL) {
+  $edit['redirect']
+    = $_GET['destination']
+      = $GLOBALS['destination']
+        = $path;
+}
+
+/**
+ * Returns the formatted address.
+ *
+ * @param object $address
+ *   The address data.
+ *
+ * @return string
+ *   A properly-formatted international address.
+ */
+function _usfb_address_get_formatted($address) {
+  $city = array($address->city, $address->stateOrProvince, $address->countryCode);
+  $city = array_filter($city);
+  $line1 = array($address->addressLine1, $address->addressLine2);
+  $line1 = array_filter($line1);
+  $complete = array_filter(array(
+    implode(' ', $line1),
+    implode(', ', $city),
+    $address->zipOrPostalCode,
+    $address->cellPhone,
+  ));
+  // @TODO Replace this markup with a call to addressfield module.
+  return '<pre>' . implode('<br>', $complete) . '</pre>';
+}
+
+/**
+ * Returns markup for the address confirmation buttons.
+ *
+ * @param string $button_text
+ *   The label for the first button.
+ * @param int $uid
+ *   The account's user ID.
+ *
+ * @return string
+ *   Button markup for address confirmation.
+ */
+function _usfb_address_get_buttons($button_text, $uid) {
+  $output  = '<div class="" role="group">';
+  // @FIXME
+// l() expects a Url object, created from a route name or external URI.
+// $output .= l($button_text, "user/{$uid}/edit/address", array(
+//     'attributes' => array(
+//       'class' => array('btn btn-default'),
+//       'style' => 'margin-right: 1em;',
+//     ),
+//   ));
+
+  // @FIXME
+// l() expects a Url object, created from a route name or external URI.
+// $output .= l(t('Done'), \Drupal\Core\Url::fromRoute("<current>")->toString(), array(
+//     'attributes' => array(
+//       'onclick' => 'jQuery("button.close").click(); return false;',
+//       'class' => array('btn btn-primary'),
+//     ),
+//   ));
+
+  $output .= '</div>';
+  return $output;
+}

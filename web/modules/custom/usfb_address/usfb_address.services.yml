@@ -1,0 +1,6 @@
+services:
+  boot_subscriber:
+    class: Drupal\usfb_address\EventSubscriber\BootSubscriber
+    arguments: ['@current_user']
+    tags:
+      - { name: event_subscriber }
