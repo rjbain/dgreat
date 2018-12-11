@@ -105,24 +105,25 @@ class UsfbAddressForm extends FormBase {
     ];
 
     // Provide the Address Field.
-    // @see http://drupal.org/project/addressfield
-    // @see https://www.drupal.org/node/970048
+    // @see http://drupal.org/project/address
+    // @see \Drupal\address\Element\Address
     $form['address'] = [
-      '#type' => 'addressfield',
+      '#type' => 'address',
       '#title' => t('Address'),
       '#required' => TRUE,
-      '#default_value' => $address ? [
-        'country' => $address->countryCode,
-        'thoroughfare' => $address->addressLine1,
-        'premise' => $address->addressLine2,
-        'locality' => $address->city,
-        'administrative_area' => $address->stateOrProvince,
-        'postal_code' => $address->zipOrPostalCode,
-      ] : ['country' => 'US'],
+      '#default_value' => $address ?
+        [
+          'country_code' => $address->countryCode,
+          'address_line1' => $address->addressLine1,
+          'address_line2' => $address->addressLine2,
+          'locality' => $address->city,
+          'administrative_area' => $address->stateOrProvince,
+          'postal_code' => $address->zipOrPostalCode,
+        ]
+        : ['country_code' => 'US'],
     ];
 
     // Provide the Phone Number.
-    module_load_include('inc', 'usfb_address');
     $form['phone_fieldset'] = [
       '#type' => 'fieldset',
       '#title' => t('Phone Number'),
@@ -134,7 +135,7 @@ class UsfbAddressForm extends FormBase {
       '#default_value' => 'US',
       '#required' => TRUE,
     ];
-    foreach (usfb_address_get_telephone_codes() as $code => $info) {
+    foreach ($this->util->getPhoneCodes() as $code => $info) {
       $form['phone_fieldset']['phone_code']['#options'][$code] = $info['text'];
     }
 
@@ -156,7 +157,7 @@ class UsfbAddressForm extends FormBase {
       else {
         $country_code = strtok($phone_raw, '-');
         $phone = strtok('-');
-        foreach (usfb_address_get_telephone_codes() as $country_abbrv => $country_info) {
+        foreach ($this->util->getPhoneCodes() as $country_abbrv => $country_info) {
           if ($country_code == $country_info['value']) {
             break;
           }
