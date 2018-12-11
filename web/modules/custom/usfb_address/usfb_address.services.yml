@@ -4,3 +4,6 @@ services:
     arguments: ['@current_user']
     tags:
       - { name: event_subscriber }
+  usf_banner_api:
+    class: Drupal\usfb_address\UsfbBannerApi
+    arguments: ['@file_system']

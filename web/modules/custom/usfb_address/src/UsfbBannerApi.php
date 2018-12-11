@@ -4,6 +4,7 @@ namespace Drupal\usfb_address;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\TransferException;
+use Drupal\Core\File\FileSystemInterface;
 
 /**
  * Wrapper class for calling the ws.usfca.edu API.
@@ -37,6 +38,23 @@ class UsfbBannerApi {
    * @var mixed
    */
   protected $data;
+
+  /**
+   * File system service.
+   *
+   * @var \Drupal\Core\File\FileSystemInterface
+   */
+  protected $fileSystem;
+
+  /**
+   * Constructs a UsfbBannerApi object.
+   *
+   * @param \Drupal\Core\File\FileSystemInterface $file_system
+   *   File system service.
+   */
+  public function __construct(FileSystemInterface $file_system) {
+    $this->fileSystem = $file_system;
+  }
 
   /**
    * Set the url we are checking.
@@ -121,6 +139,9 @@ class UsfbBannerApi {
   protected function requestResponse($type) {
     $client = new Client();
 
+    // Grab the private file path.
+    $path = $this->fileSystem->realpath("private://certs");
+
     // Set the options for the request.
     // @see http://docs.guzzlephp.org/en/latest/request-options.html
     $options = [
@@ -128,7 +149,15 @@ class UsfbBannerApi {
       'timeout' => 3,
       'connect_timeout' => 3,
       'synchronous' => TRUE,
+      'cert' => "$path/client-cert.pem",
+      'ssl_key' => "$path/client-key.pem",
+      'verify' => "$path/ca-cert.pem",
     ];
+
+    // Set the data body via JSON.
+    if ($type === 'PUT') {
+      $options['json'] = $this->getData();
+    }
 
     try {
       // Try the request.
