@@ -99,8 +99,8 @@ class UsfbBannerApi {
   /**
    * Mechanism to call the API.
    *
-   * @param string $endpoint
-   *   The endpoint url without the const BASE_URL.
+   * @param string $name
+   *   The username we will be using.
    * @param array $data
    *   Data that will be used during a PUT request.
    * @param string $type
@@ -109,7 +109,7 @@ class UsfbBannerApi {
    * @return null|object
    *   The API response or NULL.
    */
-  public function callApi($endpoint, array $data = [], $type = 'GET') {
+  public function callApi($name, array $data = [], $type = 'GET') {
 
     // Assigning our data to use later.
     if ($type === 'PUT' && !empty($data)) {
@@ -117,7 +117,7 @@ class UsfbBannerApi {
     }
 
     // Build the url and call the API.
-    $this->setUrl(self::BASE_URL . $endpoint);
+    $this->setUrl(self::BASE_URL . $name);
     $this->requestResponse($type);
 
     // Exit if Empty Response.

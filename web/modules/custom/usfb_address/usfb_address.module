@@ -459,23 +459,6 @@ function usfb_address_update_address_date($uid, $timestamp = NULL) {
 }
 
 /**
- * Retrieve the Banner address for the given user.
- *
- * @param string $name
- *   A user entity.
- */
-function usfb_address_get_banner_address($name) {
-  try {
-    $address = usf_banner_get_address($name);
-  }
-  catch (Exception $e) {
-    $address = FALSE;
-    \Drupal::logger('usfb_address')->notice($e->getMessage(), []);
-  }
-  return $address;
-}
-
-/**
  * Implements hook_library().
  */
 function usfb_address_library() {

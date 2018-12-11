@@ -9,7 +9,8 @@ namespace Drupal\usfb_address\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Render\Element;
+use Drupal\usfb_address\UsfbBannerApi;
+use Drupal\usfb_address\UsfbUtility;
 use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -23,13 +24,33 @@ class UsfbAddressForm extends FormBase {
   protected $currentUser;
 
   /**
+   * The USF Banner API.
+   *
+   * @var \Drupal\usfb_address\UsfbBannerApi
+   */
+  protected $api;
+
+  /**
+   * The USFB Utility Class.
+   *
+   * @var \Drupal\usfb_address\UsfbUtility
+   */
+  protected $util;
+
+  /**
    * Initializes an instance of the content translation controller.
    *
    * @param \Drupal\Core\Session\AccountInterface $current_user
    *   The current user.
+   * @param \Drupal\usfb_address\UsfbBannerApi $banner_api
+   *   The USF Banner API.
+   * @param \Drupal\usfb_address\UsfbUtility $util
+   *   The USFB Utility Class.
    */
-  public function __construct(AccountInterface $current_user) {
+  public function __construct(AccountInterface $current_user, UsfbBannerApi $banner_api, UsfbUtility $util) {
     $this->currentUser = $current_user;
+    $this->api = $banner_api;
+    $this->util = $util;
   }
 
   /**
@@ -37,7 +58,9 @@ class UsfbAddressForm extends FormBase {
    */
   public static function createInstance(ContainerInterface $container) {
     return new static(
-      $container->get('current_user')
+      $container->get('current_user'),
+      $container->get('usf_banner_api'),
+      $container->get('usf_utility')
     );
   }
 
@@ -48,6 +71,9 @@ class UsfbAddressForm extends FormBase {
     return 'usfb_address_address_form';
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form['#title'] = 'Address';
     $form['help'] = [
@@ -57,10 +83,9 @@ class UsfbAddressForm extends FormBase {
     $form['#attached']['library'][] = 'usfb_address/usfb-address';
 
     // Get address data from the Banner API.
-    // @TODO Don't ask the API again, get address from form data ("correct" step).
-    if (!($address = usfb_address_get_banner_address($this->currentUser->getAccountName()))) {
-      watchdog('usfb_address', 'usfb_address_address_form no address from banner.');
-      _usfb_address_abort();
+    if (($address = $this->api->callApi($this->currentUser->getAccountName())) === NULL) {
+      \Drupal::logger('USFB Address')->notice('usfb_address_address_form no address from banner.');
+      $this->util->abort();
     }
 
     // Add a hidden form field to provide the addressType after submission.
