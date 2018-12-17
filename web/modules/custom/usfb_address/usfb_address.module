@@ -17,9 +17,10 @@ use Drupal\Core\Url;
 
 function usfb_address_user_login(UserInterface $account) {
 
+  $utility = \Drupal::service('usf_utility');
   // Is the Banner address update system enabled?
   if (!\Drupal::state()->get('usfb_address_enabled')) {
-    return new RedirectResponse($this->util->postLoginPath()->toString());
+    return new RedirectResponse($utility->postLoginPath()->toString());
   }
 
   // Is today within the admin-defined start and end dates for address updates?
@@ -28,12 +29,12 @@ function usfb_address_user_login(UserInterface $account) {
   $format = 'Y-m-d';
   $today  = date($format);
   if ($today < $start || $today > $end) {
-    return new RedirectResponse($this->util->postLoginPath()->toString());
+    return new RedirectResponse($utility->postLoginPath()->toString());
   }
 
   // Is this user a "Student" (rid 7) or "Online Student" (rid 8)?
   if (!$account->hasRole(7) && !$account->hasRole(8)) {
-    return new RedirectResponse($this->util->postLoginPath()->toString());
+    return new RedirectResponse($utility->postLoginPath()->toString());
   }
 
   // Has the student confirmed or updated their address since the start date?
@@ -41,7 +42,7 @@ function usfb_address_user_login(UserInterface $account) {
   if (!empty($date)) {
     $last_update = date($format, $date);
     if ($last_update >= $start) {
-      return new RedirectResponse($this->util->postLoginPath()->toString());
+      return new RedirectResponse($utility->postLoginPath()->toString());
     }
   }
 
@@ -49,21 +50,6 @@ function usfb_address_user_login(UserInterface $account) {
   $_SESSION['usfb_address_check'] = TRUE;
 
   // All validations have passed so far; redirect to the address check form.
-  $url = Url::fromUri("user/{$this->currentUser->id()}/edit/address/check");
+  $url = Url::fromUri("internal:/user/{$this->currentUser->id()}/edit/address/check");
   return new RedirectResponse($url->toString());
-}
-
-/**
- * Sets form and global variables to redirect the user after logging in.
- *
- * @param string $path
- *   The destination path for redirection.
- * @param array $edit
- *   The array of form values submitted by the user (from hook_user_login()).
- */
-function _usfb_address_form_redirect($path, &$edit = NULL) {
-  $edit['redirect']
-    = $_GET['destination']
-      = $GLOBALS['destination']
-        = $path;
 }

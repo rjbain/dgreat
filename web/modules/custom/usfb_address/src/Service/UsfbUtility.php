@@ -42,7 +42,7 @@ class UsfbUtility {
    *   The destination path.
    */
   public function postLoginPath() {
-    return Url::fromUri("user/{$this->currentUser->id()}/view");
+    return Url::fromUri("internal:/user/{$this->currentUser->id()}/view");
   }
 
   /**
@@ -94,7 +94,7 @@ class UsfbUtility {
 
     $output .= Link::fromTextAndUrl(
       t($button_text),
-      Url::fromUri("user/{$uid}/edit/address",
+      Url::fromUri("internal:/user/{$uid}/edit/address",
         [
           'attributes' => [
             'class' => ['btn', 'btn-default'],

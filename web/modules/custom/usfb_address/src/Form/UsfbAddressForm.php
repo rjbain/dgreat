@@ -87,7 +87,7 @@ class UsfbAddressForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public static function createInstance(ContainerInterface $container) {
+  public static function create(ContainerInterface $container) {
     return new static(
       $container->get('current_user'),
       $container->get('usf_banner_api'),
@@ -108,7 +108,7 @@ class UsfbAddressForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state) {
+  public function buildForm(array $form, FormStateInterface $form_state, AccountInterface $account = NULL) {
     $form['#title'] = 'Address';
     $form['help'] = [
       '#markup' => t('Please complete the form below and click <em>Save</em> to update your current contact information.')

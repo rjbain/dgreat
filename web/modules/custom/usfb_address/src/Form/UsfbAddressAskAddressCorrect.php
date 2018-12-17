@@ -89,7 +89,7 @@ class UsfbAddressAskAddressCorrect extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public static function createInstance(ContainerInterface $container) {
+  public static function create(ContainerInterface $container) {
     return new static(
       $container->get('current_user'),
       $container->get('usf_banner_api'),
@@ -110,7 +110,7 @@ class UsfbAddressAskAddressCorrect extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state) {
+  public function buildForm(array $form, FormStateInterface $form_state, AccountInterface $account = NULL) {
 
     // Get the address data from USF's Banner API.
     if (($address = $this->api->callApi($this->currentUser->getAccountName())) === NULL) {
@@ -210,7 +210,7 @@ class UsfbAddressAskAddressCorrect extends FormBase {
    *   The current state of the form.
    */
   public function askAddressUpdate($form, FormStateInterface $form_state) {
-    $url = Url::fromUri("user/{$this->currentUser->id()}/edit/address");
+    $url = Url::fromUri("internal:/user/{$this->currentUser->id()}/edit/address");
     $form_state->setRedirectUrl($url);
   }
 
