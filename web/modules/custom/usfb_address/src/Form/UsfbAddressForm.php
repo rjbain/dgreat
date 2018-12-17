@@ -114,6 +114,7 @@ class UsfbAddressForm extends FormBase {
       '#markup' => t('Please complete the form below and click <em>Save</em> to update your current contact information.')
     ];
 
+    $form['#attached']['library'][] = 'usfb_address/intl-tel-input';
     $form['#attached']['library'][] = 'usfb_address/usfb-address';
 
     // Get address data from the Banner API.

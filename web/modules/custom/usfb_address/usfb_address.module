@@ -144,30 +144,6 @@ function usfb_address_residence_campus_addresses() {
 
 
 /**
- * Implements hook_library().
- */
-function usfb_address_library() {
-  $moduleDir = drupal_get_path('module', 'usfb_address');
-  $libDir = $moduleDir . '/bower_components/intl-tel-input';
-  $libraries['intl-tel-input'] = array(
-    'title' => 'International Telephone Input',
-    'website' => 'https://github.com/jackocnr/intl-tel-input',
-    'version' => '9.0.5',
-    'js' => array(
-      "$libDir/build/js/intlTelInput.js" => array(),
-      "$moduleDir/usfb_address.js" => array(),
-    ),
-    'css' => array(
-      "$libDir/build/css/intlTelInput.css" => array(),
-    ),
-  );
-
-  return $libraries;
-}
-
-
-
-/**
  * Implements hook_user_login().
  *
  * Checks whether the user needs to update their address, and then prompts them.
