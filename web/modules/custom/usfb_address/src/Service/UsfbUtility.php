@@ -38,11 +38,11 @@ class UsfbUtility {
    * This destination was gleaned from reaction rule with machine name
    * "rules_on_login_redirect_to_dashboard".
    *
-   * @return string
+   * @return \Drupal\Core\Url
    *   The destination path.
    */
   public function postLoginPath() {
-    return Url::fromUri("user/{$this->currentUser->id()}/view")->toString();
+    return Url::fromUri("user/{$this->currentUser->id()}/view");
   }
 
   /**
@@ -50,7 +50,7 @@ class UsfbUtility {
    */
   public function abort() {
     unset($_SESSION['usfb_address_check']);
-    $url = $this->postLoginPath();
+    $url = $this->postLoginPath()->toString();
     $response = new RedirectResponse($url);
     $response->send();
   }

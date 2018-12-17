@@ -165,13 +165,6 @@ function usfb_address_library() {
   return $libraries;
 }
 
-/**
- * Clears the session flag and rediects the user to the post-login destination.
- */
-function _usfb_address_abort() {
-  unset($_SESSION['usfb_address_check']);
-  drupal_goto(_usfb_address_postlogin_path());
-}
 
 /**
  * Ask the user if their address is correct.
@@ -237,53 +230,9 @@ function usfb_address_ask_address_correct($form, &$form_state, $account) {
   return $form;
 }
 
-/**
- * User wants to Skip the address form check.
- */
-function usfb_address_ask_address_skip($form, &$form_state) {
 
-  // Redirect to the post-login destination.
-  $form_state['redirect'] = _usfb_address_postlogin_path();
 
-  // Remove the USFB Address Check session variable if it's set.
-  unset($_SESSION['usfb_address_check']);
-}
 
-/**
- * User wants to UPDATE their address.
- */
-function usfb_address_ask_address_update($form, &$form_state) {
-  $uid = \Drupal::currentUser()->uid;
-  $form_state['redirect'] = "user/$uid/edit/address";
-}
-
-/**
- * User wants to CONFIRM their address.
- */
-function usfb_address_ask_address_confirm($form, &$form_state) {
-
-  // Remove the USFB Address Check session variable if it's set.
-  unset($_SESSION['usfb_address_check']);
-
-  // Update the user's Last Update Address Date.
-  $uid = $form_state['values']['uid'];
-  usfb_address_update_address_date($uid);
-
-  // Retrieve the current user's address information.
-  // @TODO Don't call the API again, pull it out of form data.
-  if (!($address = usfb_address_get_banner_address($form_state['values']['name']))) {
-    drupal_goto(_usfb_address_postlogin_path());
-  }
-
-  // Construct the message.
-  $output = t('<p><strong>Thank you!</strong> You have confirmed that the information below is accurate. <em>If this is not correct, please click the Update button.</em></p>');
-  $output .= _usfb_address_get_formatted($address);
-  $output .= _usfb_address_get_buttons(t('Update'), $uid);
-
-  // Display the message and forward them to the homepage.
-  drupal_set_message($output, 'status', FALSE);
-  $form_state['redirect'] = _usfb_address_postlogin_path();
-}
 
 /**
  * Implements hook_user_login().

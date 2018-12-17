@@ -93,7 +93,7 @@ class UsfbAddressForm extends FormBase {
       $container->get('usf_banner_api'),
       $container->get('usf_utility'),
       $container->get('usf_form_functions'),
-      $container->get('logger.factory')->get('usfb_address'),
+      $container->get('logger.factory')->get('USFB Address'),
       $container->get('messenger')
     );
   }
@@ -118,7 +118,7 @@ class UsfbAddressForm extends FormBase {
 
     // Get address data from the Banner API.
     if (($address = $this->api->callApi($this->currentUser->getAccountName())) === NULL) {
-      \Drupal::logger('USFB Address')->notice('usfb_address_address_form no address from banner.');
+      $this->logger->notice('usfb_address_address_form no address from banner.');
       $this->util->abort();
     }
 
@@ -126,11 +126,6 @@ class UsfbAddressForm extends FormBase {
     $form['address_type'] = [
       '#type' => 'hidden',
       '#value' => $address ? $address->addressType : 'LR',
-    ];
-
-    $form['name'] = [
-      '#type' => 'hidden',
-      '#value' => $this->currentUser->getAccountName(),
     ];
 
     // Provide the Address Field.
@@ -244,7 +239,7 @@ class UsfbAddressForm extends FormBase {
     unset($_SESSION['usfb_address_check']);
 
     // Send the updated address to Banner.
-    $name = $form_state->getValue(['name']);
+    $name = $this->currentUser->getAccountName();
     try {
       $result = $this->api->callApi($name, $address, 'PUT');
     }
@@ -268,7 +263,7 @@ class UsfbAddressForm extends FormBase {
     $this->util->updateAddressDate();
 
     // Forward them to the homepage.
-    $form_state->set(['redirect'], $this->util->postLoginPath());
+    $form_state->setRedirectUrl($this->util->postLoginPath());
   }
 
   /**
