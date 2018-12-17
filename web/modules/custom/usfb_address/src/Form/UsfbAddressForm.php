@@ -14,6 +14,7 @@ use Drupal\usfb_address\Service\UsfbUtility;
 use Drupal\usfb_address\Service\UsfbFormFunctions;
 use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Psr\Log\LoggerInterface;
 
 class UsfbAddressForm extends FormBase {
 
@@ -46,6 +47,13 @@ class UsfbAddressForm extends FormBase {
   protected $formFunctions;
 
   /**
+   * A logger instance.
+   *
+   * @var \Psr\Log\LoggerInterface
+   */
+  protected $logger;
+
+  /**
    * Initializes an instance of the content translation controller.
    *
    * @param \Drupal\Core\Session\AccountInterface $current_user
@@ -57,11 +65,12 @@ class UsfbAddressForm extends FormBase {
    * @param \Drupal\usfb_address\Service\UsfbFormFunctions $form_functions
    *   The USFB Utility Class.
    */
-  public function __construct(AccountInterface $current_user, UsfbBannerApi $banner_api, UsfbUtility $util, UsfbFormFunctions $form_functions) {
+  public function __construct(AccountInterface $current_user, UsfbBannerApi $banner_api, UsfbUtility $util, UsfbFormFunctions $form_functions, LoggerInterface $logger) {
     $this->currentUser = $current_user;
     $this->api = $banner_api;
     $this->util = $util;
     $this->formFunctions = $form_functions;
+    $this->logger = $logger;
   }
 
   /**
@@ -72,7 +81,8 @@ class UsfbAddressForm extends FormBase {
       $container->get('current_user'),
       $container->get('usf_banner_api'),
       $container->get('usf_utility'),
-      $container->get('usf_form_functions')
+      $container->get('usf_form_functions'),
+      $container->get('logger.factory')->get('usfb_address')
     );
   }
 
@@ -204,8 +214,8 @@ class UsfbAddressForm extends FormBase {
   public function validateForm(array &$form, FormStateInterface $form_state) {
     $address = $this->formFunctions->getAddressFromForm($form_state);
     // USFB-76 See if they're changing their address, and skip matching if it's the same.
-    if (!usfb_address_address_form_state_same($form, $form_state)) {
-      $match = usfb_address_residence_campus_addresses_match($address);
+    if (!$this->formFunctions->addressFormSame($form, $form_state)) {
+      $match = $this->formFunctions->residenceCampusAddressesMatch($address);
       if ($match) {
         $form_state->setErrorByName('address',
           t('Your new address cannot match a Residence Hall or Campus address. Please enter a different address or click Cancel to go back to the previous screen.')
@@ -220,8 +230,8 @@ class UsfbAddressForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
 
     // Retrieve the current user's address information.
-  // @TODO Check whether anything was changed, and if not, don't push to Banner.
-    $address = usfb_address_get_address_from_form_state($form_state);
+    // @TODO Check whether anything was changed, and if not, don't push to Banner.
+    $address = $this->formFunctions->getAddressFromForm($form_state);
 
     // Remove the USFB Address Check session variable if it's set.
     unset($_SESSION['usfb_address_check']);
@@ -229,12 +239,11 @@ class UsfbAddressForm extends FormBase {
     // Send the updated address to Banner.
     $name = $form_state->getValue(['name']);
     try {
-      $result = usf_banner_update_address($name, $address);
+      $result = $this->api->callApi($name, $address, 'PUT');
     }
-    
     catch (\Exception $e) {
       $result = FALSE;
-      watchdog('usfb_address', $e->getMessage(), 'error');
+      $this->logger->error($e->getMessage());
     }
 
     // Find the UID.
@@ -243,8 +252,8 @@ class UsfbAddressForm extends FormBase {
     // Construct the message.
     if ($result) {
       $output = t('<p><strong>Thank you!</strong> You have updated your current local address to the following. <em>If this is not correct, please click "Back"</em>.</p>');
-      $output .= _usfb_address_get_formatted($address);
-      $output .= _usfb_address_get_buttons(t('Back'), $uid);
+      $output .= $this->util->formatAddress($address);
+      $output .= $this->util->formatButtons(t('Back'), $uid);
       drupal_set_message($output, 'status', FALSE);
     }
 

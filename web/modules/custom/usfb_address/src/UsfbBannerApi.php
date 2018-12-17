@@ -101,7 +101,7 @@ class UsfbBannerApi {
    *
    * @param string $name
    *   The username we will be using.
-   * @param array $data
+   * @param mixed $data
    *   Data that will be used during a PUT request.
    * @param string $type
    *   The type of request (ie GET, PUT, etc).

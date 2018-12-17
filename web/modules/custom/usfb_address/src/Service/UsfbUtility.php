@@ -5,7 +5,7 @@ namespace Drupal\usfb_address\Service;
 use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Url;
-use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Link;
 
 /**
  * Utility Service with common functions.
@@ -32,13 +32,77 @@ class UsfbUtility {
   }
 
   /**
-   * Clears the session flag and rediects the user to the post-login destination.
+   * Clears the session flag and redirects the user to the post-login destination.
    */
   public function abort() {
     unset($_SESSION['usfb_address_check']);
     $url = Url::fromUri("user/{$this->currentUser->id()}/view")->toString();
     $response = new RedirectResponse($url);
     $response->send();
+  }
+
+  /**
+   * Returns the formatted address.
+   *
+   * @param object $address
+   *   The address data.
+   *
+   * @return string
+   *   A properly-formatted international address.
+   */
+  function formatAddress($address) {
+    $city = [$address->city, $address->stateOrProvince, $address->countryCode];
+    $city = array_filter($city);
+    $line1 = [$address->addressLine1, $address->addressLine2];
+    $line1 = array_filter($line1);
+    $complete = array_filter([
+        implode(' ', $line1),
+        implode(', ', $city),
+        $address->zipOrPostalCode,
+        $address->cellPhone,
+    ]);
+    return '<pre>' . implode('<br>', $complete) . '</pre>';
+  }
+
+  /**
+   * Returns markup for the address confirmation buttons.
+   *
+   * @param string $button_text
+   *   The label for the first button.
+   * @param int $uid
+   *   The account's user ID.
+   *
+   * @return string
+   *   Button markup for address confirmation.
+   */
+  function formatButtons($button_text, $uid) {
+    $output  = '<div class="" role="group">';
+
+    $output .= Link::fromTextAndUrl(
+      t($button_text),
+      Url::fromUri("user/{$uid}/edit/address",
+        [
+          'attributes' => [
+            'class' => ['btn', 'btn-default'],
+            'style' => 'margin-right: 1em;',
+          ],
+        ]
+      )
+    )->toString();
+
+    $output .= Link::fromTextAndUrl(
+      t('Done'),
+      Url::fromRoute("<current>",
+        [
+          'attributes' => [
+            'class' => ['btn', 'btn-primary'],
+            'onclick' => 'jQuery("button.close").click(); return false;',
+          ],
+        ]
+      )
+    )->toString();
+    $output .= '</div>';
+    return $output;
   }
 
   /**
