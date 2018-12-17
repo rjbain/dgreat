@@ -373,4 +373,104 @@ class UsfbUtility {
       'ZW' => ['value' => '263', 'text' => 'Zimbabwe'],
     ];
   }
+
+  /**
+   * List of blacklisted Residence Hall or Campus addresses.
+   *
+   * @return array
+   *   An array of all the residences.
+   */
+  function residenceCampusAddresses() {
+    $addresses = [];
+    $addresses['Fromm'] = [
+      'thoroughfare' => '2497 Golden Gate',
+      'locality' => 'San Francisco',
+      'country' => 'US',
+      'postal_code' => '94118',
+    ];
+    $addresses['Gillson'] = [
+      'thoroughfare' => '2325 Golden Gate',
+      'locality' => 'San Francisco',
+      'country' => 'US',
+      'postal_code' => '94118',
+    ];
+    $addresses['Hayes-Healy'] = [
+      'thoroughfare' => '2305 Golden Gate',
+      'locality' => 'San Francisco',
+      'country' => 'US',
+      'postal_code' => '94118',
+    ];
+    $addresses['Lone Mountain'] = [
+      'thoroughfare' => '330 Parker',
+      'locality' => 'San Francisco',
+      'country' => 'US',
+      'postal_code' => '94118',
+    ];
+    $addresses['Loyola Village'] = [
+      'thoroughfare' => '331 Anza Street',
+      'locality' => 'San Francisco',
+      'country' => 'US',
+      'postal_code' => '94118',
+    ];
+    $addresses['Pedro Arrupe'] = [
+      'thoroughfare' => '490 6th',
+      'locality' => 'San Francisco',
+      'country' => 'US',
+      'postal_code' => '94118',
+    ];
+    $addresses['Phelan'] = [
+      'thoroughfare' => '2345 Golden Gate',
+      'locality' => 'San Francisco',
+      'country' => 'US',
+      'postal_code' => '94118',
+    ];
+    $addresses['Main Campus'] = [
+      'thoroughfare' => '2130 Fulton',
+      'locality' => 'San Francisco',
+      'country' => 'US',
+      'postal_code' => '94117',
+    ];
+
+    $addresses['Downtown Campus'] = [
+      'thoroughfare' => '101 Howard',
+      'premise' => '500',
+      'locality' => 'San Francisco',
+      'country' => 'US',
+      'postal_code' => '94105',
+    ];
+    $addresses['Branch : Orange County'] = [
+      'thoroughfare' => '480 South Batavia',
+      'locality' => 'San Francisco',
+      'country' => 'US',
+      'postal_code' => '92868',
+    ];
+    $addresses['Branch : Sacramento'] = [
+      'thoroughfare' => '1 Capitol Mall',
+      'premise' => '100',
+      'locality' => 'San Francisco',
+      'country' => 'US',
+      'postal_code' => '95814',
+    ];
+    $addresses['Branch : Santa Rosa'] = [
+      'thoroughfare' => '416 B',
+      'locality' => 'San Francisco',
+      'country' => 'US',
+      'postal_code' => '95401',
+    ];
+    $addresses['Branch : Pleasanton'] = [
+      'thoroughfare' => '6120 Stoneridge Mall',
+      'premise' => '150',
+      'locality' => 'San Francisco',
+      'country' => 'US',
+      'postal_code' => '94588',
+    ];
+    $addresses['Branch : San Jose'] = [
+      'thoroughfare' => '125 S. Market',
+      'premise' => '200',
+      'locality' => 'San Francisco',
+      'country' => 'US',
+      'postal_code' => '95113',
+    ];
+    return $addresses;
+  }
 }

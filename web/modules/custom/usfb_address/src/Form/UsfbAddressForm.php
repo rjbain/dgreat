@@ -71,7 +71,7 @@ class UsfbAddressForm extends FormBase {
    * @param \Drupal\usfb_address\Service\UsfbUtility $util
    *   The USFB Utility Class.
    * @param \Drupal\usfb_address\Service\UsfbFormFunctions $form_functions
-   *   The USFB Utility Class.
+   *   The USFB Form Functions Class.
    * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   The messenger.
    */
@@ -114,6 +114,7 @@ class UsfbAddressForm extends FormBase {
       '#markup' => t('Please complete the form below and click <em>Save</em> to update your current contact information.')
     ];
 
+    // Attach our custom libraries to the form.
     $form['#attached']['library'][] = 'usfb_address/intl-tel-input';
     $form['#attached']['library'][] = 'usfb_address/usfb-address';
 
@@ -166,7 +167,7 @@ class UsfbAddressForm extends FormBase {
 
     // Provide the Phone Number.
     $form['phone_fieldset']['phone'] = [
-      '#type' => 'telfield',
+      '#type' => 'tel',
       '#placeholder' => '4154225555',
       '#required' => TRUE,
       '#description' => 'Do not include the country code. Select the appropriate country from the dropdown to the left.',

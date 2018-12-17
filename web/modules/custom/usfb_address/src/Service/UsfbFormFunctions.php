@@ -99,7 +99,7 @@ class UsfbFormFunctions {
    *   The name of the matched campus, NULL otherwise.
    */
   public function residenceCampusAddressesMatch($address) {
-    $blacklist = usfb_address_residence_campus_addresses();
+    $blacklist = $this->util->residenceCampusAddresses();
     foreach ($blacklist as $name => $res) {
       // City.
       if (stripos($res['locality'], $address->city) !== FALSE) {

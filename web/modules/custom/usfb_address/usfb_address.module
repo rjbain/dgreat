@@ -5,193 +5,43 @@
  * Provides an address form on the User Account page for Banner.
  */
 
-/**
- * Implements hook_menu().
- */
-function usfb_address_menu() {
-  $items['user/%user/edit/address'] = array(
-    'title' => 'Address',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('usfb_address_address_form', 1),
-    'access callback' => 'user_edit_access',
-    'access arguments' => array(1),
-    'type' => MENU_LOCAL_TASK,
-  );
-  $items['user/%user/edit/address/check'] = array(
-    'title' => 'Local Residence Address Check',
-    'description' => 'Asks the user if they need to update their address.',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('usfb_address_ask_address_correct', 1),
-    'access callback' => 'user_edit_access',
-    'access arguments' => array(1),
-  );
-  $items['admin/config/usfb_address'] = array(
-    'title' => 'USFB Address',
-    'description' => 'Configuration settings for USFB Address functionality.',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('usfb_address_settings_form'),
-    'file' => 'usfb_address.admin.inc',
-    'access arguments' => array('administer usfb_address settings'),
-    'weight' => 0,
-  );
-  $items['admin/config/usfb_address/settings'] = array(
-    'title' => 'Settings',
-    'type' => MENU_DEFAULT_LOCAL_TASK,
-  );
-
-  return $items;
-}
-
-/**
- * List of blacklisted Residence Hall or Campus addresses.
- *
- * @return array
- *   An array of all the residences.
- */
-function usfb_address_residence_campus_addresses() {
-  $addresses = array();
-  $addresses['Fromm'] = array(
-    'thoroughfare' => '2497 Golden Gate',
-    'locality' => 'San Francisco',
-    'country' => 'US',
-    'postal_code' => '94118',
-  );
-  $addresses['Gillson'] = array(
-    'thoroughfare' => '2325 Golden Gate',
-    'locality' => 'San Francisco',
-    'country' => 'US',
-    'postal_code' => '94118',
-  );
-  $addresses['Hayes-Healy'] = array(
-    'thoroughfare' => '2305 Golden Gate',
-    'locality' => 'San Francisco',
-    'country' => 'US',
-    'postal_code' => '94118',
-  );
-  $addresses['Lone Mountain'] = array(
-    'thoroughfare' => '330 Parker',
-    'locality' => 'San Francisco',
-    'country' => 'US',
-    'postal_code' => '94118',
-  );
-  $addresses['Loyola Village'] = array(
-    'thoroughfare' => '331 Anza Street',
-    'locality' => 'San Francisco',
-    'country' => 'US',
-    'postal_code' => '94118',
-  );
-  $addresses['Pedro Arrupe'] = array(
-    'thoroughfare' => '490 6th',
-    'locality' => 'San Francisco',
-    'country' => 'US',
-    'postal_code' => '94118',
-  );
-  $addresses['Phelan'] = array(
-    'thoroughfare' => '2345 Golden Gate',
-    'locality' => 'San Francisco',
-    'country' => 'US',
-    'postal_code' => '94118',
-  );
-  $addresses['Main Campus'] = array(
-    'thoroughfare' => '2130 Fulton',
-    'locality' => 'San Francisco',
-    'country' => 'US',
-    'postal_code' => '94117',
-  );
-
-  $addresses['Downtown Campus'] = array(
-    'thoroughfare' => '101 Howard',
-    'premise' => '500',
-    'locality' => 'San Francisco',
-    'country' => 'US',
-    'postal_code' => '94105',
-  );
-  $addresses['Branch : Orange County'] = array(
-    'thoroughfare' => '480 South Batavia',
-    'locality' => 'San Francisco',
-    'country' => 'US',
-    'postal_code' => '92868',
-  );
-  $addresses['Branch : Sacramento'] = array(
-    'thoroughfare' => '1 Capitol Mall',
-    'premise' => '100',
-    'locality' => 'San Francisco',
-    'country' => 'US',
-    'postal_code' => '95814',
-  );
-  $addresses['Branch : Santa Rosa'] = array(
-    'thoroughfare' => '416 B',
-    'locality' => 'San Francisco',
-    'country' => 'US',
-    'postal_code' => '95401',
-  );
-  $addresses['Branch : Pleasanton'] = array(
-    'thoroughfare' => '6120 Stoneridge Mall',
-    'premise' => '150',
-    'locality' => 'San Francisco',
-    'country' => 'US',
-    'postal_code' => '94588',
-  );
-  $addresses['Branch : San Jose'] = array(
-    'thoroughfare' => '125 S. Market',
-    'premise' => '200',
-    'locality' => 'San Francisco',
-    'country' => 'US',
-    'postal_code' => '95113',
-  );
-  return $addresses;
-}
-
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\user\UserInterface;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_user_login().
  *
  * Checks whether the user needs to update their address, and then prompts them.
- *
- * @FIXME
- * The $edit parameter is gone in Drupal 8. It has been left here in order to
- * prevent 'undefined variable' errors, but it will never actually be passed to
- * this hook. You'll need to modify this function and remove every reference to it.
  */
 
-function usfb_address_user_login(\Drupal\user\UserInterface $account, $edit = []) {
+function usfb_address_user_login(UserInterface $account) {
 
   // Is the Banner address update system enabled?
-  if (!\Drupal::config('usfb_address.settings')->get('usfb_address_enabled')) {
-    return _usfb_address_form_redirect(_usfb_address_postlogin_path(), $edit);
+  if (!\Drupal::state()->get('usfb_address_enabled')) {
+    return new RedirectResponse($this->util->postLoginPath()->toString());
   }
 
   // Is today within the admin-defined start and end dates for address updates?
-  // @FIXME
-// Could not extract the default value because it is either indeterminate, or
-// not scalar. You'll need to provide a default value in
-// config/install/usfb_address.settings.yml and config/schema/usfb_address.schema.yml.
-$start  = \Drupal::config('usfb_address.settings')->get('usfb_address_date_start');
-  // @FIXME
-// Could not extract the default value because it is either indeterminate, or
-// not scalar. You'll need to provide a default value in
-// config/install/usfb_address.settings.yml and config/schema/usfb_address.schema.yml.
-$end    = \Drupal::config('usfb_address.settings')->get('usfb_address_date_end');
+  $start  = \Drupal::state()->get('usfb_address_date_start');
+  $end    = \Drupal::state()->get('usfb_address_date_end');
   $format = 'Y-m-d';
   $today  = date($format);
   if ($today < $start || $today > $end) {
-    return _usfb_address_form_redirect(_usfb_address_postlogin_path(), $edit);
+    return new RedirectResponse($this->util->postLoginPath()->toString());
   }
 
   // Is this user a "Student" (rid 7) or "Online Student" (rid 8)?
-  if (!user_has_role(7) && !user_has_role(8)) {
-    return _usfb_address_form_redirect(_usfb_address_postlogin_path(), $edit);
+  if (!$account->hasRole(7) && !$account->hasRole(8)) {
+    return new RedirectResponse($this->util->postLoginPath()->toString());
   }
 
   // Has the student confirmed or updated their address since the start date?
-  $wrapper = entity_metadata_wrapper('user', $account);
-  if (!empty($wrapper->field_usfb_address_date)) {
-    $last_update_raw = $wrapper->field_usfb_address_date->value();
-    if (!empty($last_update_raw)) {
-      $last_update = date($format, $last_update_raw);
-      if ($last_update >= $start) {
-        return _usfb_address_form_redirect(_usfb_address_postlogin_path(), $edit);
-      }
+  $date = $account->get('field_usfb_address_date')->getValue()[0]['value'];
+  if (!empty($date)) {
+    $last_update = date($format, $date);
+    if ($last_update >= $start) {
+      return new RedirectResponse($this->util->postLoginPath()->toString());
     }
   }
 
@@ -199,9 +49,8 @@ $end    = \Drupal::config('usfb_address.settings')->get('usfb_address_date_end')
   $_SESSION['usfb_address_check'] = TRUE;
 
   // All validations have passed so far; redirect to the address check form.
-  // For some reason, it only works when we set both $_GET and $GLOBALS. We set
-  // the $edit variable just in case it covers other scenarios.
-  _usfb_address_form_redirect("user/{$account->id()}/edit/address/check", $edit);
+  $url = Url::fromUri("user/{$this->currentUser->id()}/edit/address/check");
+  return new RedirectResponse($url->toString());
 }
 
 /**

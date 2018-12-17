@@ -11,7 +11,6 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\usfb_address\UsfbBannerApi;
 use Drupal\usfb_address\Service\UsfbUtility;
-use Drupal\usfb_address\Service\UsfbFormFunctions;
 use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Psr\Log\LoggerInterface;
@@ -44,13 +43,6 @@ class UsfbAddressAskAddressCorrect extends FormBase {
   protected $util;
 
   /**
-   * The USFB Form Functions Class.
-   *
-   * @var \Drupal\usfb_address\Service\UsfbFormFunctions
-   */
-  protected $formFunctions;
-
-  /**
    * A logger instance.
    *
    * @var \Psr\Log\LoggerInterface
@@ -80,18 +72,15 @@ class UsfbAddressAskAddressCorrect extends FormBase {
    *   The USF Banner API.
    * @param \Drupal\usfb_address\Service\UsfbUtility $util
    *   The USFB Utility Class.
-   * @param \Drupal\usfb_address\Service\UsfbFormFunctions $form_functions
-   *   The USFB Utility Class.
    * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   The messenger.
    * @param \Drupal\Core\State\StateInterface $state
    *   State service.
    */
-  public function __construct(AccountInterface $current_user, UsfbBannerApi $banner_api, UsfbUtility $util, UsfbFormFunctions $form_functions, LoggerInterface $logger, MessengerInterface $messenger, StateInterface $state) {
+  public function __construct(AccountInterface $current_user, UsfbBannerApi $banner_api, UsfbUtility $util, LoggerInterface $logger, MessengerInterface $messenger, StateInterface $state) {
     $this->currentUser = $current_user;
     $this->api = $banner_api;
     $this->util = $util;
-    $this->formFunctions = $form_functions;
     $this->logger = $logger;
     $this->messenger = $messenger;
     $this->state = $state;
@@ -105,7 +94,6 @@ class UsfbAddressAskAddressCorrect extends FormBase {
       $container->get('current_user'),
       $container->get('usf_banner_api'),
       $container->get('usf_utility'),
-      $container->get('usf_form_functions'),
       $container->get('logger.factory')->get('USFB Address'),
       $container->get('messenger'),
       $container->get('state')
