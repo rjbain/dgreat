@@ -9,10 +9,61 @@ namespace Drupal\usfb_address\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Render\Element;
+use Drupal\Core\Datetime\DateFormatterInterface;
+use Drupal\Core\State\StateInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Component\Datetime\Time;
 
 class UsfbAddressSettingsForm extends ConfigFormBase {
 
+  /**
+   * The Drupal state storage service.
+   *
+   * @var \Drupal\Core\State\StateInterface
+   */
+  protected $state;
+
+  /**
+   * The date formatter service.
+   *
+   * @var \Drupal\Core\Datetime\DateFormatterInterface
+   */
+  protected $dateFormatter;
+
+  /**
+   * The time service.
+   *
+   * @var \Drupal\Component\Datetime\Time
+   */
+  protected $time;
+
+  /**
+   * Constructs a new UpdateManagerUpdate object.
+   *
+   * @param \Drupal\Core\State\StateInterface $state
+   *   The state service.
+   * @param \Drupal\Core\Datetime\DateFormatterInterface $date_formatter
+   *   The date Formatter service.
+   * @param \Drupal\Component\Datetime\Time $time
+   *   The time service.
+   */
+  public function __construct(StateInterface $state, DateFormatterInterface $date_formatter, Time $time) {
+    $this->state = $state;
+    $this->dateFormatter = $date_formatter;
+    $this->time = $time;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('state'),
+      $container->get('date.formatter'),
+      $container->get('datetime.time')
+    );
+  }
+  
   /**
    * {@inheritdoc}
    */
@@ -23,44 +74,29 @@ class UsfbAddressSettingsForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
-    $config = $this->config('usfb_address.settings');
-
-    foreach (Element::children($form) as $variable) {
-      $config->set($variable, $form_state->getValue($form[$variable]['#parents']));
-    }
-    $config->save();
-
-    if (method_exists($this, '_submitForm')) {
-      $this->_submitForm($form, $form_state);
-    }
-
-    parent::submitForm($form, $form_state);
+  protected function getEditableConfigNames() {
+    return ['usfb_address.settings'];
   }
 
   /**
    * {@inheritdoc}
    */
-  protected function getEditableConfigNames() {
-    return ['usfb_address.settings'];
-  }
-
-  public function buildForm(array $form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  public function buildForm(array $form, FormStateInterface $form_state) {
     $format = 'Y-m-d';
-    $default = format_date(REQUEST_TIME, 'custom', $format);
+    $default = $this->dateFormatter->format($this->time->getRequestTime(), 'custom', $format);
 
     // Toggle checkbox to see if the service should be enabled.
     $form['usfb_address_enabled'] = [
       '#type' => 'checkbox',
       '#title' => t('Enabled'),
-      '#default_value' => variable_get('usfb_address_enabled', TRUE),
+      '#default_value' => $this->state->get('usfb_address_enabled', TRUE),
       '#description' => t('Toggle the USFB Address service. When enabled, users will be notified on login to update their addresses.'),
     ];
     // Provide a Date Select widget, from the Date API module.
     $form['usfb_address_date_start'] = [
       '#type' => 'date_select',
       '#title' => t('Start Date'),
-      '#default_value' => variable_get('usfb_address_date_start', $default),
+      '#default_value' => $this->state->get('usfb_address_date_start', $default),
       '#date_format' => $format,
       '#date_year_range' => '-5:+5',
     ];
@@ -68,12 +104,26 @@ class UsfbAddressSettingsForm extends ConfigFormBase {
     $form['usfb_address_date_end'] = [
       '#type' => 'date_select',
       '#title' => t('End Date'),
-      '#default_value' => variable_get('usfb_address_date_end', $default),
+      '#default_value' => $this->state->get('usfb_address_date_end', $default),
       '#date_format' => $format,
       '#date_year_range' => '-5:+5',
     ];
+
     return parent::buildForm($form, $form_state);
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function submitForm(array &$form, FormStateInterface $form_state) {
+    // Save the values to the state.
+    foreach ($form_state->getValues() as $key => $value) {
+      if (strpos($key, 'usfb_address_') !== FALSE) {
+        $this->state->set($key, $value);
+      }
+    }
+
+    parent::submitForm($form, $form_state);
+  }
+
 }
-?>
