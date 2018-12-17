@@ -94,19 +94,20 @@ class UsfbAddressSettingsForm extends ConfigFormBase {
     ];
     // Provide a Date Select widget, from the Date API module.
     $form['usfb_address_date_start'] = [
-      '#type' => 'date_select',
+      '#type' => 'datelist',
       '#title' => t('Start Date'),
       '#default_value' => $this->state->get('usfb_address_date_start', $default),
-      '#date_format' => $format,
-      '#date_year_range' => '-5:+5',
+      '#date_part_order' => ['month', 'day', 'year'],
+      '#date_year_range' => '-1:+2',
     ];
+
     // Provide a Date Select widget, from the Date API module.
     $form['usfb_address_date_end'] = [
-      '#type' => 'date_select',
+      '#type' => 'datelist',
       '#title' => t('End Date'),
       '#default_value' => $this->state->get('usfb_address_date_end', $default),
-      '#date_format' => $format,
-      '#date_year_range' => '-5:+5',
+      '#date_part_order' => ['month', 'day', 'year'],
+      '#date_year_range' => '-1:+2',
     ];
 
     return parent::buildForm($form, $form_state);
