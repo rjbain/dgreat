@@ -10,7 +10,8 @@ namespace Drupal\usfb_address\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\usfb_address\UsfbBannerApi;
-use Drupal\usfb_address\UsfbUtility;
+use Drupal\usfb_address\Service\UsfbUtility;
+use Drupal\usfb_address\Service\UsfbFormFunctions;
 use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -33,9 +34,16 @@ class UsfbAddressForm extends FormBase {
   /**
    * The USFB Utility Class.
    *
-   * @var \Drupal\usfb_address\UsfbUtility
+   * @var \Drupal\usfb_address\Service\UsfbUtility
    */
   protected $util;
+
+  /**
+   * The USFB Form Functions Class.
+   *
+   * @var \Drupal\usfb_address\Service\UsfbFormFunctions
+   */
+  protected $formFunctions;
 
   /**
    * Initializes an instance of the content translation controller.
@@ -44,13 +52,16 @@ class UsfbAddressForm extends FormBase {
    *   The current user.
    * @param \Drupal\usfb_address\UsfbBannerApi $banner_api
    *   The USF Banner API.
-   * @param \Drupal\usfb_address\UsfbUtility $util
+   * @param \Drupal\usfb_address\Service\UsfbUtility $util
+   *   The USFB Utility Class.
+   * @param \Drupal\usfb_address\Service\UsfbFormFunctions $form_functions
    *   The USFB Utility Class.
    */
-  public function __construct(AccountInterface $current_user, UsfbBannerApi $banner_api, UsfbUtility $util) {
+  public function __construct(AccountInterface $current_user, UsfbBannerApi $banner_api, UsfbUtility $util, UsfbFormFunctions $form_functions) {
     $this->currentUser = $current_user;
     $this->api = $banner_api;
     $this->util = $util;
+    $this->formFunctions = $form_functions;
   }
 
   /**
@@ -60,7 +71,8 @@ class UsfbAddressForm extends FormBase {
     return new static(
       $container->get('current_user'),
       $container->get('usf_banner_api'),
-      $container->get('usf_utility')
+      $container->get('usf_utility'),
+      $container->get('usf_form_functions')
     );
   }
 
@@ -190,12 +202,14 @@ class UsfbAddressForm extends FormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
-    $address = usfb_address_get_address_from_form_state($form_state);
+    $address = $this->formFunctions->getAddressFromForm($form_state);
     // USFB-76 See if they're changing their address, and skip matching if it's the same.
     if (!usfb_address_address_form_state_same($form, $form_state)) {
       $match = usfb_address_residence_campus_addresses_match($address);
       if ($match) {
-        $form_state->setErrorByName('address', t('Your new address cannot match a Residence Hall or Campus address. Please enter a different address or click Cancel to go back to the previous screen.'));
+        $form_state->setErrorByName('address',
+          t('Your new address cannot match a Residence Hall or Campus address. Please enter a different address or click Cancel to go back to the previous screen.')
+        );
       }
     }
   }
@@ -218,7 +232,7 @@ class UsfbAddressForm extends FormBase {
       $result = usf_banner_update_address($name, $address);
     }
     
-      catch (Exception $e) {
+    catch (\Exception $e) {
       $result = FALSE;
       watchdog('usfb_address', $e->getMessage(), 'error');
     }

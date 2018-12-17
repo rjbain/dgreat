@@ -165,43 +165,6 @@ function usfb_address_residence_campus_addresses_match($address) {
 }
 
 /**
- * Retrieves an address from the given form state.
- */
-function usfb_address_get_address_from_form_state($form_state) {
-  // Get a shortcut to the form values.
-  $values = $form_state['values']['address'];
-
-  // Get the international country code, international format, and phone. For
-  // some reason the API expects US numbers in a different format than
-  // international ones. Also, remove all non-numerical characters from
-  // the phone number.
-  module_load_include('inc', 'usfb_address');
-  $country_abbrv = $form_state['values']['phone_code'];
-  $country_code  = usfb_address_get_telephone_codes()[$country_abbrv]['value'];
-  $dash          = '1' === $country_code ? '' : '-';
-  $phone         = preg_replace('/[^0-9]/', '', $form_state['values']['phone']);
-
-  // Compose the address object as an array.
-  $address_values = array(
-    'addressLine1'    => $values['thoroughfare'],
-    'addressLine2'    => $values['premise'],
-    'city'            => $values['locality'],
-    'stateOrProvince' => $values['administrative_area'],
-    'zipOrPostalCode' => $values['postal_code'],
-    'countryCode'     => $values['country'],
-    'cellPhone'       => "+$country_code{$dash}$phone",
-  );
-
-  // Clean up the values.
-  foreach ($address_values as &$value) {
-    $value = preg_replace('/\s+/', ' ', trim($value));
-  }
-
-  // Cast the address array to an object and return.
-  return (object) $address_values;
-}
-
-/**
  * Form Callback; Validation.
  *
  * Checks the address against the residence and campus address.
