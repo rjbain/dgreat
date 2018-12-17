@@ -15,6 +15,7 @@ use Drupal\usfb_address\Service\UsfbFormFunctions;
 use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Psr\Log\LoggerInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 
 class UsfbAddressForm extends FormBase {
 
@@ -54,6 +55,13 @@ class UsfbAddressForm extends FormBase {
   protected $logger;
 
   /**
+   * The messenger.
+   *
+   * @var \Drupal\Core\Messenger\MessengerInterface
+   */
+  protected $messenger;
+
+  /**
    * Initializes an instance of the content translation controller.
    *
    * @param \Drupal\Core\Session\AccountInterface $current_user
@@ -64,13 +72,16 @@ class UsfbAddressForm extends FormBase {
    *   The USFB Utility Class.
    * @param \Drupal\usfb_address\Service\UsfbFormFunctions $form_functions
    *   The USFB Utility Class.
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+   *   The messenger.
    */
-  public function __construct(AccountInterface $current_user, UsfbBannerApi $banner_api, UsfbUtility $util, UsfbFormFunctions $form_functions, LoggerInterface $logger) {
+  public function __construct(AccountInterface $current_user, UsfbBannerApi $banner_api, UsfbUtility $util, UsfbFormFunctions $form_functions, LoggerInterface $logger, MessengerInterface $messenger) {
     $this->currentUser = $current_user;
     $this->api = $banner_api;
     $this->util = $util;
     $this->formFunctions = $form_functions;
     $this->logger = $logger;
+    $this->messenger = $messenger;
   }
 
   /**
@@ -82,7 +93,8 @@ class UsfbAddressForm extends FormBase {
       $container->get('usf_banner_api'),
       $container->get('usf_utility'),
       $container->get('usf_form_functions'),
-      $container->get('logger.factory')->get('usfb_address')
+      $container->get('logger.factory')->get('usfb_address'),
+      $container->get('messenger')
     );
   }
 
@@ -116,11 +128,6 @@ class UsfbAddressForm extends FormBase {
       '#value' => $address ? $address->addressType : 'LR',
     ];
 
-    // Add hidden form fields to provide the user info after submission.
-    $form['uid'] = [
-      '#type' => 'hidden',
-      '#value' => $this->currentUser->id(),
-    ];
     $form['name'] = [
       '#type' => 'hidden',
       '#value' => $this->currentUser->getAccountName(),
@@ -246,33 +253,29 @@ class UsfbAddressForm extends FormBase {
       $this->logger->error($e->getMessage());
     }
 
-    // Find the UID.
-    $uid = $form_state->getValue(['uid']);
-
     // Construct the message.
     if ($result) {
       $output = t('<p><strong>Thank you!</strong> You have updated your current local address to the following. <em>If this is not correct, please click "Back"</em>.</p>');
       $output .= $this->util->formatAddress($address);
-      $output .= $this->util->formatButtons(t('Back'), $uid);
-      drupal_set_message($output, 'status', FALSE);
+      $output .= $this->util->formatButtons(t('Back'), $this->currentUser->id());
+      $this->messenger->addStatus($output);
     }
 
     // Set the user's "Date of last address update," even if the push failed.
     // @TODO Once Banner figures out the Bad Request situation, change this
     // logic back to only update the user date field when the operation completed
     // successfully. And consider restoring the error output message.
-    usfb_address_update_address_date($uid);
+    $this->util->updateAddressDate();
 
     // Forward them to the homepage.
-    $form_state->set(['redirect'], _usfb_address_postlogin_path());
+    $form_state->set(['redirect'], $this->util->postLoginPath());
   }
 
   /**
    * Form callback; When the user clicks on Back.
    */
   public function backSubmit(array $form, FormStateInterface $form_state) {
-    $uid = $form_state['values']['uid'];
-    $form_state['redirect'] = "user/$uid/edit/address/check";
+    $form_state['redirect'] = "user/{$this->currentUser->id()}/edit/address/check";
   }
 
 }

@@ -6,6 +6,7 @@ use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
+use Drupal\user\Entity\User;
 
 /**
  * Utility Service with common functions.
@@ -32,11 +33,24 @@ class UsfbUtility {
   }
 
   /**
+   * Returns the destination path for users after finishing their address check.
+   *
+   * This destination was gleaned from reaction rule with machine name
+   * "rules_on_login_redirect_to_dashboard".
+   *
+   * @return string
+   *   The destination path.
+   */
+  public function postLoginPath() {
+    return Url::fromUri("user/{$this->currentUser->id()}/view")->toString();
+  }
+
+  /**
    * Clears the session flag and redirects the user to the post-login destination.
    */
   public function abort() {
     unset($_SESSION['usfb_address_check']);
-    $url = Url::fromUri("user/{$this->currentUser->id()}/view")->toString();
+    $url = $this->postLoginPath();
     $response = new RedirectResponse($url);
     $response->send();
   }
@@ -101,8 +115,38 @@ class UsfbUtility {
         ]
       )
     )->toString();
+
     $output .= '</div>';
     return $output;
+  }
+
+  /**
+   * Updates the USFB Address Date field for the given user.
+   *
+   * @param int $uid
+   *   (optional) The user to update. Defaults to the current logged in user.
+   * @param int $timestamp
+   *   (optional) What date timestamp to save the field to. Defaults to the
+   *   current time.
+   *
+   * @return int|bool
+   *   The output from saving the entity. FALSE on failure.
+   */
+  function updateAddressDate($timestamp = NULL) {
+    // Load the entity wrapper for the user.
+    $account = User::load($this->currentUser->id());
+
+    // Find the time to save.
+    $time = isset($timestamp) ? $timestamp : time();
+
+    $address = $account->get('field_usfb_address_date')->getValue();
+
+    // Set the field.
+    if (isset($address[0])) {
+      $account->set('field_usfb_address_date', $time);
+      return $account->save();
+    }
+    return FALSE;
   }
 
   /**

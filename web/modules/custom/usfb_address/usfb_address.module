@@ -141,34 +141,7 @@ function usfb_address_residence_campus_addresses() {
   );
   return $addresses;
 }
-/**
- * Updates the USFB Address Date field for the given user.
- *
- * @param int $uid
- *   (optional) The user to update. Defaults to the current logged in user.
- * @param int $timestamp
- *   (optional) What date timestamp to save the field to. Defaults to the
- *   current time.
- *
- * @return int|bool
- *   The output from saving the entity. FALSE on failure.
- */
-function usfb_address_update_address_date($uid, $timestamp = NULL) {
 
-  // Load the entity wrapper for the user.
-  $wrapper = entity_metadata_wrapper('user', $uid);
-
-  // Find the time to save.
-  $time = isset($timestamp) ? $timestamp : time();
-
-  // Set the field.
-  if (isset($wrapper->field_usfb_address_date)) {
-    $wrapper->field_usfb_address_date->set($time);
-    // Save the entity.
-    return $wrapper->save();
-  }
-  return FALSE;
-}
 
 /**
  * Implements hook_library().
