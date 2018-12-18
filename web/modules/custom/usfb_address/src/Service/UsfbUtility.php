@@ -113,11 +113,11 @@ class UsfbUtility {
 
     $output .= Link::fromTextAndUrl(
       t('Done'),
-      Url::fromRoute("<current>",
+      Url::fromRoute("<current>", [],
         [
           'attributes' => [
-            'class' => ['btn', 'btn-primary'],
             'onclick' => 'jQuery("button.close").click(); return false;',
+            'class' => ['btn', 'btn-primary'],
           ],
         ]
       )
@@ -143,6 +143,11 @@ class UsfbUtility {
     // Load the entity wrapper for the user.
     $id = $uid !== NULL ? $uid : $this->currentUser->id();
     $account = User::load($id);
+
+    // Fail safe.
+    if ($account === NULL) {
+      return FALSE;
+    }
 
     // Find the time to save.
     $time = isset($timestamp) ? $timestamp : time();
