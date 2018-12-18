@@ -51,10 +51,13 @@ class UsfbUtility {
 
   /**
    * Clears the session flag and redirects the user to the post-login destination.
+   *
+   * @param string $uid
+   *   The uid of the user.
    */
-  public function abort() {
+  public function abort($uid) {
     unset($_SESSION['usfb_address_check']);
-    $url = $this->postLoginPath()->toString();
+    $url = $this->postLoginPath($uid)->toString();
     $response = new RedirectResponse($url);
     $response->send();
   }

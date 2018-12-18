@@ -125,7 +125,7 @@ class UsfbAddressAskAddressCorrect extends FormBase {
     if (($address = $this->api->callApi($this->name)) === NULL) {
       $msg = "Error retrieving user '{$this->name}' ({$this->uid}) address from Banner API";
       $this->logger->notice($msg);
-      $this->util->abort();
+      $this->util->abort($this->uid);
     }
 
     // Check whether the student has recently updated their address via SSB.
@@ -134,7 +134,7 @@ class UsfbAddressAskAddressCorrect extends FormBase {
         // Update the user's "address last updated" in their Drupal profile.
         $this->util->updateAddressDate($this->uid);
         // Clear the session flag and redirect to the post-login destination.
-        $this->util->abort();
+        $this->util->abort($this->uid);
       }
     }
 
