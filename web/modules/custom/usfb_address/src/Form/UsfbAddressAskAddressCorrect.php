@@ -203,7 +203,7 @@ class UsfbAddressAskAddressCorrect extends FormBase {
     // Construct the message.
     $output = t('<p><strong>Thank you!</strong> You have confirmed that the information below is accurate. <em>If this is not correct, please click the Update button.</em></p>');
     $output .= $this->util->formatAddress($address);
-    $output .= $this->util->formatButtons(t('Update'), $this->uid);
+    $output .= $this->util->formatButtons('Update', $this->uid);
 
     // Display the message and forward them to the homepage.
     $this->messenger->addStatus($output);

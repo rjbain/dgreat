@@ -17,6 +17,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Url;
+use CommerceGuys\Addressing\AddressFormat\AddressField;
+use CommerceGuys\Addressing\AddressFormat\FieldOverride;
 
 class UsfbAddressForm extends FormBase {
 
@@ -155,6 +157,11 @@ class UsfbAddressForm extends FormBase {
           'postal_code' => $address->zipOrPostalCode,
         ]
         : ['country_code' => 'US'],
+      '#field_overrides' => [
+        AddressField::ORGANIZATION => FieldOverride::HIDDEN,
+        AddressField::GIVEN_NAME => FieldOverride::HIDDEN,
+        AddressField::FAMILY_NAME => FieldOverride::HIDDEN,
+      ],
     ];
 
     // Provide the Phone Number.
@@ -260,9 +267,9 @@ class UsfbAddressForm extends FormBase {
     // Construct the message.
     $uid = $form_state->getValue('uid');
     if ($result) {
-      $output = t('<p><strong>Thank you!</strong> You have updated your current local address to the following. <em>If this is not correct, please click "Back"</em>.</p>');
+      $output = t('<p><strong>Thank you!</strong> You have updated your current local address to the following. <em>If this is not correct, please click Back"</em>.</p>');
       $output .= $this->util->formatAddress($address);
-      $output .= $this->util->formatButtons(t('Back'), $this->uid);
+      $output .= $this->util->formatButtons('Back', $this->uid);
       $this->messenger->addStatus($output);
     }
 

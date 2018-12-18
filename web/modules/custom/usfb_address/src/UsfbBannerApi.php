@@ -109,10 +109,10 @@ class UsfbBannerApi {
    * @return null|object
    *   The API response or NULL.
    */
-  public function callApi($name, array $data = [], $type = 'GET') {
+  public function callApi($name, $data = NULL, $type = 'GET') {
 
     // Assigning our data to use later.
-    if ($type === 'PUT' && !empty($data)) {
+    if ($type === 'PUT' && $data !== NULL) {
       $this->setData($data);
     }
 
@@ -126,7 +126,7 @@ class UsfbBannerApi {
     }
 
     // Grab the Body and return as needed.
-    $contents = json_decode($this->request->getBody()->getContents(), TRUE);
+    $contents = json_decode($this->request->getBody()->getContents());
     return !empty($contents) ? $contents : NULL;
   }
 
