@@ -42,10 +42,10 @@ display:
         type: views_query
         options:
           disable_sql_rewrite: false
-          distinct: false
+          distinct: true
           replica: false
           query_comment: ''
-          query_tags: {  }
+          query_tags: null
       exposed_form:
         type: basic
         options:
@@ -80,13 +80,13 @@ display:
       style:
         type: default
         options:
+          grouping: {  }
           row_class: ''
-          default_row_class: true
-          uses_fields: false
+          default_row_class: false
       row:
         type: fields
         options:
-          default_field_elements: true
+          default_field_elements: false
           inline: {  }
           separator: ''
           hide_empty: true
@@ -748,6 +748,8 @@ display:
       defaults:
         pager: false
         arguments: false
+        query: false
+        footer: false
       arguments:
         field_role_target_id:
           id: field_role_target_id
@@ -788,6 +790,26 @@ display:
           transform_dash: false
           break_phrase: true
           plugin_id: string
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: false
+          distinct: true
+          replica: false
+          query_comment: ''
+          query_tags: null
+      footer:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content: '<li><div class="views-field views-field-title"><span class="field-content"><a href="/announcements">View all</a></span></div></li>'
+          plugin_id: text_custom
     cache_metadata:
       max-age: -1
       contexts:
@@ -806,6 +828,18 @@ display:
     position: 6
     display_options:
       display_extenders: {  }
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_comment: ''
+          query_tags: {  }
+      defaults:
+        query: false
+        footer: false
+      footer: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -879,6 +913,7 @@ display:
         fields: false
         pager: false
         title: false
+        query: true
       row:
         type: fields
         options:
