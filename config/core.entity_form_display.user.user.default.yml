@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.user.user.field_user_display_name
     - field.field.user.user.field_user_group
+    - field.field.user.user.field_usfb_address_date
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
@@ -19,13 +20,17 @@ bundle: user
 mode: default
 content:
   account:
-    weight: -10
+    weight: 0
     region: content
+    settings: {  }
+    third_party_settings: {  }
   contact:
-    weight: 5
+    weight: 3
     region: content
+    settings: {  }
+    third_party_settings: {  }
   field_user_display_name:
-    weight: 32
+    weight: 6
     settings:
       size: 60
       placeholder: ''
@@ -33,7 +38,7 @@ content:
     type: string_textfield
     region: content
   field_user_group:
-    weight: 31
+    weight: 5
     settings:
       match_operator: CONTAINS
       size: 60
@@ -42,11 +47,13 @@ content:
     type: entity_reference_autocomplete
     region: content
   language:
-    weight: 0
+    weight: 2
     region: content
+    settings: {  }
+    third_party_settings: {  }
   path:
     type: path
-    weight: 30
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -59,6 +66,7 @@ content:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-    weight: -1
+    weight: 1
     region: content
-hidden: {  }
+hidden:
+  field_usfb_address_date: true

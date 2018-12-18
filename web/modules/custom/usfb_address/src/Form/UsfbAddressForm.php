@@ -19,6 +19,8 @@ use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Url;
 use CommerceGuys\Addressing\AddressFormat\AddressField;
 use CommerceGuys\Addressing\AddressFormat\FieldOverride;
+use Drupal\Core\Render\Markup;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 class UsfbAddressForm extends FormBase {
 
@@ -267,9 +269,12 @@ class UsfbAddressForm extends FormBase {
     // Construct the message.
     $uid = $form_state->getValue('uid');
     if ($result) {
-      $output = t('<p><strong>Thank you!</strong> You have updated your current local address to the following. <em>If this is not correct, please click Back"</em>.</p>');
-      $output .= $this->util->formatAddress($address);
-      $output .= $this->util->formatButtons('Back', $this->uid);
+
+      $msg1 = '<p><strong>Thank you!</strong> You have updated your current local address to the following. <em>If this is not correct, please click Back"</em>.</p>';
+      $msg2 = $this->util->formatAddress($address);
+      $msg3 = $this->util->formatButtons('Back', $this->uid);
+      $msg = Markup::create($msg1 . $msg2 . $msg3);
+      $output = new TranslatableMarkup ('@message', array('@message' => $msg));
       $this->messenger->addStatus($output);
     }
 

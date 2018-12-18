@@ -52,12 +52,12 @@ class UsfbFormFunctions {
 
     // Compose the address object as an array.
     $address_values = [
-      'addressLine1'    => $values['thoroughfare'],
-      'addressLine2'    => $values['premise'],
+      'addressLine1'    => $values['address_line1'],
+      'addressLine2'    => $values['address_line2'],
       'city'            => $values['locality'],
       'stateOrProvince' => $values['administrative_area'],
       'zipOrPostalCode' => $values['postal_code'],
-      'countryCode'     => $values['country'],
+      'countryCode'     => $values['country_code'],
       'cellPhone'       => "+$country_code{$dash}$phone",
     ];
 
