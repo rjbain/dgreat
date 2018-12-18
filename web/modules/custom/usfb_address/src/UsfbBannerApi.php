@@ -172,7 +172,9 @@ class UsfbBannerApi {
 
         // Something else is amiss.
         default:
-          $message = 'The request to the USF Banner API resulted in a ' . $response->getStatusCode() . ' Response. ';
+          $issue = json_decode($response->getBody()->getContents(), TRUE);
+          $message  = 'The request to the USF Banner API resulted in a ' . $issue["errorCode"] . ' Response ';
+          $message .= 'with a message of ' . $issue["errorMessage"];
           \Drupal::logger('USF Banner API')->error($message);
           $this->request = NULL;
           break;

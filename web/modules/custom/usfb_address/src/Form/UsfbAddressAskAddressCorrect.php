@@ -22,11 +22,18 @@ use Drupal\Core\Url;
 class UsfbAddressAskAddressCorrect extends FormBase {
 
   /**
-   * The current user.
+   * The current user id.
    *
-   * @var \Drupal\Core\Session\AccountInterface
+   * @var string
    */
-  protected $currentUser;
+  protected $uid;
+
+  /**
+   * The current user name.
+   *
+   * @var string
+   */
+  protected $name;
 
   /**
    * The USF Banner API.
@@ -77,8 +84,7 @@ class UsfbAddressAskAddressCorrect extends FormBase {
    * @param \Drupal\Core\State\StateInterface $state
    *   State service.
    */
-  public function __construct(AccountInterface $current_user, UsfbBannerApi $banner_api, UsfbUtility $util, LoggerInterface $logger, MessengerInterface $messenger, StateInterface $state) {
-    $this->currentUser = $current_user;
+  public function __construct(UsfbBannerApi $banner_api, UsfbUtility $util, LoggerInterface $logger, MessengerInterface $messenger, StateInterface $state) {
     $this->api = $banner_api;
     $this->util = $util;
     $this->logger = $logger;
@@ -91,7 +97,6 @@ class UsfbAddressAskAddressCorrect extends FormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('current_user'),
       $container->get('usf_banner_api'),
       $container->get('usf_utility'),
       $container->get('logger.factory')->get('USFB Address'),
@@ -110,11 +115,15 @@ class UsfbAddressAskAddressCorrect extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, AccountInterface $account = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, AccountInterface $user = NULL) {
+
+    // Set vars.
+    $this->name = $user->getAccountName();
+    $this->uid = $user->id();
 
     // Get the address data from USF's Banner API.
-    if (($address = $this->api->callApi($this->currentUser->getAccountName())) === NULL) {
-      $msg = "Error retrieving user '{$this->currentUser->getAccountName()}' ({$this->currentUser->id()}) address from Banner API";
+    if (($address = $this->api->callApi($this->name)) === NULL) {
+      $msg = "Error retrieving user '{$this->name}' ({$this->uid}) address from Banner API";
       $this->logger->notice($msg);
       $this->util->abort();
     }
@@ -123,7 +132,7 @@ class UsfbAddressAskAddressCorrect extends FormBase {
     if ($start = $this->state->get('usfb_address_date_start', FALSE)) {
       if (!empty($address->dateLastUpdated) && $address->dateLastUpdated >= $start) {
         // Update the user's "address last updated" in their Drupal profile.
-        $this->util->updateAddressDate($this->currentUser->id());
+        $this->util->updateAddressDate($this->uid);
         // Clear the session flag and redirect to the post-login destination.
         $this->util->abort();
       }
@@ -183,22 +192,22 @@ class UsfbAddressAskAddressCorrect extends FormBase {
     unset($_SESSION['usfb_address_check']);
 
     // Update the user's Last Update Address Date.
-    $this->util->updateAddressDate($this->currentUser->id());
+    $this->util->updateAddressDate($this->uid);
 
     // Retrieve the current user's address information.
     // @TODO Don't call the API again, pull it out of form data.
-    if (($address = $this->api->callApi($this->currentUser->getAccountName())) === NULL) {
-      return new RedirectResponse($this->util->postLoginPath()->toString());
+    if (($address = $this->api->callApi($this->name)) === NULL) {
+      return new RedirectResponse($this->util->postLoginPath($this->uid)->toString());
     }
 
     // Construct the message.
     $output = t('<p><strong>Thank you!</strong> You have confirmed that the information below is accurate. <em>If this is not correct, please click the Update button.</em></p>');
     $output .= $this->util->formatAddress($address);
-    $output .= $this->util->formatButtons(t('Update'), $this->currentUser->id());
+    $output .= $this->util->formatButtons(t('Update'), $this->uid);
 
     // Display the message and forward them to the homepage.
     $this->messenger->addStatus($output);
-    $form_state->setRedirectUrl($this->util->postLoginPath());
+    $form_state->setRedirectUrl($this->util->postLoginPath($this->uid));
   }
 
   /**
@@ -210,7 +219,7 @@ class UsfbAddressAskAddressCorrect extends FormBase {
    *   The current state of the form.
    */
   public function askAddressUpdate($form, FormStateInterface $form_state) {
-    $url = Url::fromUri("internal:/user/{$this->currentUser->id()}/edit/address");
+    $url = Url::fromUri("internal:/user/{$this->uid}/edit/address");
     $form_state->setRedirectUrl($url);
   }
 
@@ -226,7 +235,7 @@ class UsfbAddressAskAddressCorrect extends FormBase {
     // Remove the USFB Address Check session variable if it's set.
     unset($_SESSION['usfb_address_check']);
     // Redirect to the post-login destination.
-    $form_state->setRedirectUrl($this->util->postLoginPath());
+    $form_state->setRedirectUrl($this->util->postLoginPath($this->uid));
   }
 
 }

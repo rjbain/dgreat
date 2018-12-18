@@ -16,15 +16,23 @@ use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Drupal\Core\Messenger\MessengerInterface;
+use Drupal\Core\Url;
 
 class UsfbAddressForm extends FormBase {
 
   /**
-   * The current user.
+   * The current user id.
    *
-   * @var \Drupal\Core\Session\AccountInterface
+   * @var string
    */
-  protected $currentUser;
+  protected $uid;
+
+  /**
+   * The current user name.
+   *
+   * @var string
+   */
+  protected $name;
 
   /**
    * The USF Banner API.
@@ -64,8 +72,6 @@ class UsfbAddressForm extends FormBase {
   /**
    * Initializes an instance of the content translation controller.
    *
-   * @param \Drupal\Core\Session\AccountInterface $current_user
-   *   The current user.
    * @param \Drupal\usfb_address\UsfbBannerApi $banner_api
    *   The USF Banner API.
    * @param \Drupal\usfb_address\Service\UsfbUtility $util
@@ -75,8 +81,7 @@ class UsfbAddressForm extends FormBase {
    * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   The messenger.
    */
-  public function __construct(AccountInterface $current_user, UsfbBannerApi $banner_api, UsfbUtility $util, UsfbFormFunctions $form_functions, LoggerInterface $logger, MessengerInterface $messenger) {
-    $this->currentUser = $current_user;
+  public function __construct(UsfbBannerApi $banner_api, UsfbUtility $util, UsfbFormFunctions $form_functions, LoggerInterface $logger, MessengerInterface $messenger) {
     $this->api = $banner_api;
     $this->util = $util;
     $this->formFunctions = $form_functions;
@@ -89,7 +94,6 @@ class UsfbAddressForm extends FormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('current_user'),
       $container->get('usf_banner_api'),
       $container->get('usf_utility'),
       $container->get('usf_form_functions'),
@@ -108,7 +112,7 @@ class UsfbAddressForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, AccountInterface $account = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, AccountInterface $user = NULL) {
     $form['#title'] = 'Address';
     $form['help'] = [
       '#markup' => t('Please complete the form below and click <em>Save</em> to update your current contact information.')
@@ -118,9 +122,13 @@ class UsfbAddressForm extends FormBase {
     $form['#attached']['library'][] = 'usfb_address/intl-tel-input';
     $form['#attached']['library'][] = 'usfb_address/usfb-address';
 
+    // Set vars.
+    $this->name = $user->getAccountName();
+    $this->uid = $user->id();
+
     // Get address data from the Banner API.
-    if (($address = $this->api->callApi($this->currentUser->getAccountName())) === NULL) {
-      $this->logger->notice('usfb_address_address_form no address from banner.');
+    if (($address = $this->api->callApi($this->name)) === NULL) {
+      $this->logger->notice('No Address from Banner API.');
       $this->util->abort();
     }
 
@@ -241,9 +249,8 @@ class UsfbAddressForm extends FormBase {
     unset($_SESSION['usfb_address_check']);
 
     // Send the updated address to Banner.
-    $name = $this->currentUser->getAccountName();
     try {
-      $result = $this->api->callApi($name, $address, 'PUT');
+      $result = $this->api->callApi($this->name, $address, 'PUT');
     }
     catch (\Exception $e) {
       $result = FALSE;
@@ -251,10 +258,11 @@ class UsfbAddressForm extends FormBase {
     }
 
     // Construct the message.
+    $uid = $form_state->getValue('uid');
     if ($result) {
       $output = t('<p><strong>Thank you!</strong> You have updated your current local address to the following. <em>If this is not correct, please click "Back"</em>.</p>');
       $output .= $this->util->formatAddress($address);
-      $output .= $this->util->formatButtons(t('Back'), $this->currentUser->id());
+      $output .= $this->util->formatButtons(t('Back'), $this->uid);
       $this->messenger->addStatus($output);
     }
 
@@ -262,17 +270,18 @@ class UsfbAddressForm extends FormBase {
     // @TODO Once Banner figures out the Bad Request situation, change this
     // logic back to only update the user date field when the operation completed
     // successfully. And consider restoring the error output message.
-    $this->util->updateAddressDate();
+    $this->util->updateAddressDate($this->uid);
 
     // Forward them to the homepage.
-    $form_state->setRedirectUrl($this->util->postLoginPath());
+    $form_state->setRedirectUrl($this->util->postLoginPath($this->uid));
   }
 
   /**
    * Form callback; When the user clicks on Back.
    */
   public function backSubmit(array $form, FormStateInterface $form_state) {
-    $form_state['redirect'] = "user/{$this->currentUser->id()}/edit/address/check";
+    $url = Url::fromUri("internal:user/{$this->uid}/edit/address/check");
+    $form_state->setRedirectUrl($url);
   }
 
 }

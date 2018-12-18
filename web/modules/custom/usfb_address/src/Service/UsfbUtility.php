@@ -38,11 +38,15 @@ class UsfbUtility {
    * This destination was gleaned from reaction rule with machine name
    * "rules_on_login_redirect_to_dashboard".
    *
+   * @param string $uid
+   *   The uid of the user.
+   *
    * @return \Drupal\Core\Url
    *   The destination path.
    */
-  public function postLoginPath() {
-    return Url::fromUri("internal:/user/{$this->currentUser->id()}/view");
+  public function postLoginPath($uid = NULL) {
+    $id = $uid !== NULL ? $uid : $this->currentUser->id();
+    return Url::fromUri("internal:/user/{$id}");
   }
 
   /**
@@ -132,9 +136,10 @@ class UsfbUtility {
    * @return int|bool
    *   The output from saving the entity. FALSE on failure.
    */
-  function updateAddressDate($timestamp = NULL) {
+  function updateAddressDate($uid = NULL, $timestamp = NULL) {
     // Load the entity wrapper for the user.
-    $account = User::load($this->currentUser->id());
+    $id = $uid !== NULL ? $uid : $this->currentUser->id();
+    $account = User::load($id);
 
     // Find the time to save.
     $time = isset($timestamp) ? $timestamp : time();

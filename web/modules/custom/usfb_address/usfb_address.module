@@ -50,6 +50,7 @@ function usfb_address_user_login(UserInterface $account) {
   $_SESSION['usfb_address_check'] = TRUE;
 
   // All validations have passed so far; redirect to the address check form.
-  $url = Url::fromUri("internal:/user/{$this->currentUser->id()}/edit/address/check");
+  $id = \Drupal::currentUser()->id();
+  $url = Url::fromUri("internal:/user/{$id}/edit/address/check");
   return new RedirectResponse($url->toString());
 }
