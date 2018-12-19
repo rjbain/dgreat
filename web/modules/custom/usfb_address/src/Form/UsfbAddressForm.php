@@ -284,9 +284,7 @@ class UsfbAddressForm extends FormBase {
     }
 
     // Construct the message.
-    $uid = $form_state->getValue('uid');
     if ($result) {
-
       $msg1 = '<p><strong>Thank you!</strong> You have updated your current local address to the following. <em>If this is not correct, please click Back"</em>.</p>';
       $msg2 = $this->util->formatAddress($address);
       $msg3 = $this->util->formatButtons('Back', $this->uid);
