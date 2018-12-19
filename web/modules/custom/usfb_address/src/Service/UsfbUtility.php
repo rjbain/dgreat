@@ -8,6 +8,7 @@ use Drupal\Core\Url;
 use Drupal\Core\Link;
 use Drupal\user\Entity\User;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Drupal\Component\Datetime\Time;
 
 /**
  * Utility Service with common functions.
@@ -31,17 +32,27 @@ class UsfbUtility {
   protected $session;
 
   /**
+   * The time service.
+   *
+   * @var \Drupal\Component\Datetime\Time
+   */
+  protected $time;
+
+  /**
    * Constructs a UsfbBannerApi object.
    *
    * @param \Drupal\Core\Session\AccountInterface $current_user
    *   The current user.
    * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
    *   The session from the request stack.
+   * @param \Drupal\Component\Datetime\Time $time
+   *   The time service.
    */
-  public function __construct(AccountInterface $current_user, RequestStack $request_stack) {
+  public function __construct(AccountInterface $current_user, RequestStack $request_stack, Time $time) {
     $this->currentUser = $current_user;
     $this->session = $request_stack->getCurrentRequest() !== NULL ?
       $request_stack->getCurrentRequest()->getSession() : NULL;
+    $this->time = $time;
   }
 
   /**
@@ -164,7 +175,7 @@ class UsfbUtility {
     }
 
     // Find the time to save.
-    $time = isset($timestamp) ? $timestamp : time();
+    $time = isset($timestamp) ? $timestamp : $this->time->getRequestTime();
     $account->set('field_usfb_address_date', $time);
     return $account->save();
   }

@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\usfb_address\Form\UsfbAddressAskAddressCorrect.
+ * Contains \Drupal\usfb_address\Form\UsfbAddressCheck.
  */
 
 namespace Drupal\usfb_address\Form;
@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-class UsfbAddressAskAddressCorrect extends FormBase {
+class UsfbAddressCheck extends FormBase {
 
   /**
    * The current user id.

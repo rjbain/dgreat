@@ -9,7 +9,6 @@ namespace Drupal\usfb_address\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\State\StateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Component\Datetime\Time;
@@ -25,13 +24,6 @@ class UsfbAddressSettingsForm extends ConfigFormBase {
   protected $state;
 
   /**
-   * The date formatter service.
-   *
-   * @var \Drupal\Core\Datetime\DateFormatterInterface
-   */
-  protected $dateFormatter;
-
-  /**
    * The time service.
    *
    * @var \Drupal\Component\Datetime\Time
@@ -43,14 +35,11 @@ class UsfbAddressSettingsForm extends ConfigFormBase {
    *
    * @param \Drupal\Core\State\StateInterface $state
    *   The state service.
-   * @param \Drupal\Core\Datetime\DateFormatterInterface $date_formatter
-   *   The date Formatter service.
    * @param \Drupal\Component\Datetime\Time $time
    *   The time service.
    */
-  public function __construct(StateInterface $state, DateFormatterInterface $date_formatter, Time $time) {
+  public function __construct(StateInterface $state, Time $time) {
     $this->state = $state;
-    $this->dateFormatter = $date_formatter;
     $this->time = $time;
   }
 
@@ -60,7 +49,6 @@ class UsfbAddressSettingsForm extends ConfigFormBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('state'),
-      $container->get('date.formatter'),
       $container->get('datetime.time')
     );
   }
