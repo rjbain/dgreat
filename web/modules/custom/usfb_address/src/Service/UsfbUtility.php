@@ -165,15 +165,8 @@ class UsfbUtility {
 
     // Find the time to save.
     $time = isset($timestamp) ? $timestamp : time();
-
-    $address = $account->get('field_usfb_address_date')->getValue();
-
-    // Set the field.
-    if (isset($address[0])) {
-      $account->set('field_usfb_address_date', $time);
-      return $account->save();
-    }
-    return FALSE;
+    $account->set('field_usfb_address_date', $time);
+    return $account->save();
   }
 
   /**

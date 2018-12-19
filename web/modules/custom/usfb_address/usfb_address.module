@@ -26,24 +26,22 @@ function usfb_address_user_login(UserInterface $account) {
   }
 
   // Is today within the admin-defined start and end dates for address updates?
-  $start  = \Drupal::state()->get('usfb_address_date_start');
-  $end    = \Drupal::state()->get('usfb_address_date_end');
-  $format = 'Y-m-d';
-  $today  = date($format);
+  $start  = \Drupal::state()->get('usfb_address_date_start')->getTimestamp();
+  $end    = \Drupal::state()->get('usfb_address_date_end')->getTimestamp();
+  $today  = \Drupal::time()->getRequestTime();
   if ($today < $start || $today > $end) {
     return new RedirectResponse($utility->postLoginPath($uid)->toString());
   }
 
   // Is this user a "Student" (rid 6) or "Online Student" (rid 7)?
-  if (!$account->hasRole(6) && !$account->hasRole(7)) {
+  if (!$account->hasRole('student') && !$account->hasRole('online_student')) {
     return new RedirectResponse($utility->postLoginPath($uid)->toString());
   }
 
   // Has the student confirmed or updated their address since the start date?
-  $date = $account->get('field_usfb_address_date')->getValue()[0]['value'];
-  if (!empty($date)) {
-    $last_update = date($format, $date);
-    if ($last_update >= $start) {
+  $date = $account->get('field_usfb_address_date')->getValue();
+  if (isset($date[0]['value'])) {
+    if ($date[0]['value'] >= $start) {
       return new RedirectResponse($utility->postLoginPath($uid)->toString());
     }
   }
