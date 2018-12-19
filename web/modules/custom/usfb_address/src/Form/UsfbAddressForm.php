@@ -264,7 +264,6 @@ class UsfbAddressForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-
     // Retrieve the current user's address information.
     // @TODO Check whether anything was changed, and if not, don't push to Banner.
     $address = $this->formFunctions->getAddressFromForm($form_state);
