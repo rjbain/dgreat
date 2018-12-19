@@ -18,6 +18,7 @@ use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\State\StateInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class UsfbAddressAskAddressCorrect extends FormBase {
 
@@ -71,6 +72,13 @@ class UsfbAddressAskAddressCorrect extends FormBase {
   protected $state;
 
   /**
+   * The request stack.
+   *
+   * @var \Symfony\Component\HttpFoundation\Session\SessionInterface
+   */
+  protected $session;
+
+  /**
    * Initializes an instance of the content translation controller.
    *
    * @param \Drupal\Core\Session\AccountInterface $current_user
@@ -83,13 +91,17 @@ class UsfbAddressAskAddressCorrect extends FormBase {
    *   The messenger.
    * @param \Drupal\Core\State\StateInterface $state
    *   State service.
+   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
+   *   The session from the request stack.
    */
-  public function __construct(UsfbBannerApi $banner_api, UsfbUtility $util, LoggerInterface $logger, MessengerInterface $messenger, StateInterface $state) {
+  public function __construct(UsfbBannerApi $banner_api, UsfbUtility $util, LoggerInterface $logger, MessengerInterface $messenger, StateInterface $state, RequestStack $request_stack) {
     $this->api = $banner_api;
     $this->util = $util;
     $this->logger = $logger;
     $this->messenger = $messenger;
     $this->state = $state;
+    $this->session = $request_stack->getCurrentRequest() !== NULL ?
+      $request_stack->getCurrentRequest()->getSession() : NULL;
   }
 
   /**
@@ -101,7 +113,8 @@ class UsfbAddressAskAddressCorrect extends FormBase {
       $container->get('usf_utility'),
       $container->get('logger.factory')->get('USFB Address'),
       $container->get('messenger'),
-      $container->get('state')
+      $container->get('state'),
+      $container->get('request_stack')
     );
   }
 
@@ -189,7 +202,9 @@ class UsfbAddressAskAddressCorrect extends FormBase {
   public function askAddressConfirm($form, FormStateInterface $form_state) {
 
     // Remove the USFB Address Check session variable if it's set.
-    unset($_SESSION['usfb_address_check']);
+    if ($this->session !== NULL) {
+      $this->session->remove('usfb_address_check');
+    }
 
     // Update the user's Last Update Address Date.
     $this->util->updateAddressDate($this->uid);
@@ -233,7 +248,9 @@ class UsfbAddressAskAddressCorrect extends FormBase {
    */
   function askAddressSkip($form, FormStateInterface $form_state)  {
     // Remove the USFB Address Check session variable if it's set.
-    unset($_SESSION['usfb_address_check']);
+    if ($this->session !== NULL) {
+      $this->session->remove('usfb_address_check');
+    }
     // Redirect to the post-login destination.
     $form_state->setRedirectUrl($this->util->postLoginPath($this->uid));
   }

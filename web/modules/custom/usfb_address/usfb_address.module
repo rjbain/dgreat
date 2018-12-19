@@ -17,10 +17,12 @@ use Drupal\Core\Url;
 
 function usfb_address_user_login(UserInterface $account) {
 
+  $uid = $account->id();
   $utility = \Drupal::service('usf_utility');
+
   // Is the Banner address update system enabled?
   if (!\Drupal::state()->get('usfb_address_enabled')) {
-    return new RedirectResponse($utility->postLoginPath()->toString());
+    return new RedirectResponse($utility->postLoginPath($uid)->toString());
   }
 
   // Is today within the admin-defined start and end dates for address updates?
@@ -29,12 +31,12 @@ function usfb_address_user_login(UserInterface $account) {
   $format = 'Y-m-d';
   $today  = date($format);
   if ($today < $start || $today > $end) {
-    return new RedirectResponse($utility->postLoginPath()->toString());
+    return new RedirectResponse($utility->postLoginPath($uid)->toString());
   }
 
-  // Is this user a "Student" (rid 7) or "Online Student" (rid 8)?
-  if (!$account->hasRole(7) && !$account->hasRole(8)) {
-    return new RedirectResponse($utility->postLoginPath()->toString());
+  // Is this user a "Student" (rid 6) or "Online Student" (rid 7)?
+  if (!$account->hasRole(6) && !$account->hasRole(7)) {
+    return new RedirectResponse($utility->postLoginPath($uid)->toString());
   }
 
   // Has the student confirmed or updated their address since the start date?
@@ -42,15 +44,18 @@ function usfb_address_user_login(UserInterface $account) {
   if (!empty($date)) {
     $last_update = date($format, $date);
     if ($last_update >= $start) {
-      return new RedirectResponse($utility->postLoginPath()->toString());
+      return new RedirectResponse($utility->postLoginPath($uid)->toString());
     }
   }
 
   // Set that the USFB Address Check still needs to happen.
-  $_SESSION['usfb_address_check'] = TRUE;
+  $session = \Drupal::request()->getSession();
+  if ($session === NULL) {
+    return new RedirectResponse($utility->postLoginPath($uid)->toString());
+  }
+  $session->set('usfb_address_check', TRUE);
 
   // All validations have passed so far; redirect to the address check form.
-  $id = \Drupal::currentUser()->id();
-  $url = Url::fromUri("internal:/user/{$id}/edit/address/check");
+  $url = Url::fromUri("internal:/user/{$uid}/edit/address/check");
   return new RedirectResponse($url->toString());
 }

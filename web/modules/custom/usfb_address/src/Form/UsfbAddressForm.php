@@ -21,6 +21,7 @@ use CommerceGuys\Addressing\AddressFormat\AddressField;
 use CommerceGuys\Addressing\AddressFormat\FieldOverride;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class UsfbAddressForm extends FormBase {
 
@@ -74,6 +75,13 @@ class UsfbAddressForm extends FormBase {
   protected $messenger;
 
   /**
+   * The request stack.
+   *
+   * @var \Symfony\Component\HttpFoundation\Session\SessionInterface
+   */
+  protected $session;
+
+  /**
    * Initializes an instance of the content translation controller.
    *
    * @param \Drupal\usfb_address\UsfbBannerApi $banner_api
@@ -82,15 +90,21 @@ class UsfbAddressForm extends FormBase {
    *   The USFB Utility Class.
    * @param \Drupal\usfb_address\Service\UsfbFormFunctions $form_functions
    *   The USFB Form Functions Class.
+   * @param \Psr\Log\LoggerInterface $logger
+   *   A logger instance.
    * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   The messenger.
+   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
+   *   The session from the request stack.
    */
-  public function __construct(UsfbBannerApi $banner_api, UsfbUtility $util, UsfbFormFunctions $form_functions, LoggerInterface $logger, MessengerInterface $messenger) {
+  public function __construct(UsfbBannerApi $banner_api, UsfbUtility $util, UsfbFormFunctions $form_functions, LoggerInterface $logger, MessengerInterface $messenger, RequestStack $request_stack) {
     $this->api = $banner_api;
     $this->util = $util;
     $this->formFunctions = $form_functions;
     $this->logger = $logger;
     $this->messenger = $messenger;
+    $this->session = $request_stack->getCurrentRequest() !== NULL ?
+      $request_stack->getCurrentRequest()->getSession() : NULL;
   }
 
   /**
@@ -102,7 +116,8 @@ class UsfbAddressForm extends FormBase {
       $container->get('usf_utility'),
       $container->get('usf_form_functions'),
       $container->get('logger.factory')->get('USFB Address'),
-      $container->get('messenger')
+      $container->get('messenger'),
+      $container->get('request_stack')
     );
   }
 
@@ -255,7 +270,9 @@ class UsfbAddressForm extends FormBase {
     $address = $this->formFunctions->getAddressFromForm($form_state);
 
     // Remove the USFB Address Check session variable if it's set.
-    unset($_SESSION['usfb_address_check']);
+    if ($this->session !== NULL) {
+      $this->session->remove('usfb_address_check');
+    }
 
     // Send the updated address to Banner.
     try {

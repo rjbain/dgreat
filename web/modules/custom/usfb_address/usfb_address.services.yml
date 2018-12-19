@@ -1,7 +1,7 @@
 services:
   boot_subscriber:
     class: Drupal\usfb_address\EventSubscriber\BootSubscriber
-    arguments: ['@current_user']
+    arguments: ['@current_user', '@request_stack']
     tags:
       - { name: event_subscriber }
   usf_banner_api:
@@ -9,7 +9,7 @@ services:
     arguments: ['@file_system']
   usf_utility:
     class: Drupal\usfb_address\Service\UsfbUtility
-    arguments: ['@current_user']
+    arguments: ['@current_user', '@request_stack']
   usf_form_functions:
     class: Drupal\usfb_address\Service\UsfbFormFunctions
     arguments: ['@usf_utility']

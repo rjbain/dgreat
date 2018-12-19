@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
 use Drupal\user\Entity\User;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Utility Service with common functions.
@@ -23,13 +24,24 @@ class UsfbUtility {
   protected $currentUser;
 
   /**
+   * The request stack.
+   *
+   * @var \Symfony\Component\HttpFoundation\Session\SessionInterface
+   */
+  protected $session;
+
+  /**
    * Constructs a UsfbBannerApi object.
    *
-   * @param \Drupal\Core\File\FileSystemInterface $file_system
-   *   File system service.
+   * @param \Drupal\Core\Session\AccountInterface $current_user
+   *   The current user.
+   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
+   *   The session from the request stack.
    */
-  public function __construct(AccountInterface $current_user) {
+  public function __construct(AccountInterface $current_user, RequestStack $request_stack) {
     $this->currentUser = $current_user;
+    $this->session = $request_stack->getCurrentRequest() !== NULL ?
+      $request_stack->getCurrentRequest()->getSession() : NULL;
   }
 
   /**
@@ -56,7 +68,9 @@ class UsfbUtility {
    *   The uid of the user.
    */
   public function abort($uid) {
-    unset($_SESSION['usfb_address_check']);
+    if ($this->session !== NULL) {
+      $this->session->remove('usfb_address_check');
+    }
     $url = $this->postLoginPath($uid)->toString();
     $response = new RedirectResponse($url);
     $response->send();
