@@ -26,8 +26,8 @@ function usfb_address_user_login(UserInterface $account) {
   }
 
   // Is today within the admin-defined start and end dates for address updates?
-  $start  = \Drupal::state()->get('usfb_address_date_start')->getTimestamp();
-  $end    = \Drupal::state()->get('usfb_address_date_end')->getTimestamp();
+  $start  = \Drupal::state()->get('usfb_address_date_start');
+  $end    = \Drupal::state()->get('usfb_address_date_end');
   $today  = \Drupal::time()->getRequestTime();
   if ($today < $start || $today > $end) {
     return new RedirectResponse($utility->postLoginPath($uid)->toString());

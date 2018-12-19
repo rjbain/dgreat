@@ -13,6 +13,7 @@ use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\State\StateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Component\Datetime\Time;
+use Drupal\Core\Datetime\DrupalDateTime;
 
 class UsfbAddressSettingsForm extends ConfigFormBase {
 
@@ -82,8 +83,13 @@ class UsfbAddressSettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $format = 'Y-m-d';
-    $default = $this->dateFormatter->format($this->time->getRequestTime(), 'custom', $format);
+
+    // Setup default vars, etc.
+    $default = $this->time->getRequestTime();
+    $get_start = $this->state->get('usfb_address_date_start');
+    $start = $get_start !== NULL ? $get_start : $default;
+    $end_start = $this->state->get('usfb_address_date_end');
+    $end = $end_start !== NULL ? $end_start : $default;
 
     // Toggle checkbox to see if the service should be enabled.
     $form['usfb_address_enabled'] = [
@@ -96,7 +102,7 @@ class UsfbAddressSettingsForm extends ConfigFormBase {
     $form['usfb_address_date_start'] = [
       '#type' => 'datelist',
       '#title' => t('Start Date'),
-      '#default_value' => $this->state->get('usfb_address_date_start', $default),
+      '#default_value' => DrupalDateTime::createFromTimestamp($start),
       '#date_part_order' => ['month', 'day', 'year'],
       '#date_year_range' => '-1:+2',
     ];
@@ -105,7 +111,7 @@ class UsfbAddressSettingsForm extends ConfigFormBase {
     $form['usfb_address_date_end'] = [
       '#type' => 'datelist',
       '#title' => t('End Date'),
-      '#default_value' => $this->state->get('usfb_address_date_end', $default),
+      '#default_value' => DrupalDateTime::createFromTimestamp($end),
       '#date_part_order' => ['month', 'day', 'year'],
       '#date_year_range' => '-1:+2',
     ];
@@ -120,6 +126,9 @@ class UsfbAddressSettingsForm extends ConfigFormBase {
     // Save the values to the state.
     foreach ($form_state->getValues() as $key => $value) {
       if (strpos($key, 'usfb_address_') !== FALSE) {
+        if (strpos($key, 'usfb_address_date_') !== FALSE) {
+          $value = $value->getTimeStamp();
+        }
         $this->state->set($key, $value);
       }
     }
