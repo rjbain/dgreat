@@ -143,11 +143,15 @@ class UsfbAddressAskAddressCorrect extends FormBase {
 
     // Check whether the student has recently updated their address via SSB.
     if ($start = $this->state->get('usfb_address_date_start', FALSE)) {
-      if (!empty($address->dateLastUpdated) && $address->dateLastUpdated >= $start) {
-        // Update the user's "address last updated" in their Drupal profile.
-        $this->util->updateAddressDate($this->uid);
-        // Clear the session flag and redirect to the post-login destination.
-        $this->util->abort($this->uid);
+      if (!empty($address->dateLastUpdated)) {
+        $start = $start->getTimestamp();
+        $updated = strtotime($address->dateLastUpdated);
+        if ($updated >= $start) {
+          // Update the user's "address last updated" in their Drupal profile.
+          $this->util->updateAddressDate($this->uid);
+          // Clear the session flag and redirect to the post-login destination.
+          $this->util->abort($this->uid);
+        }
       }
     }
 
