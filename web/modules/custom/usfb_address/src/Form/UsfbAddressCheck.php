@@ -143,7 +143,7 @@ class UsfbAddressCheck extends FormBase {
 
     // Check whether the student has recently updated their address via SSB.
     if ($start = $this->state->get('usfb_address_date_start', FALSE)) {
-      if (!empty($address->dateLastUpdated)) {
+      if ($address !== NULL && !empty($address->dateLastUpdated)) {
         $updated = strtotime($address->dateLastUpdated);
         if ($updated >= $start) {
           // Update the user's "address last updated" in their Drupal profile.
