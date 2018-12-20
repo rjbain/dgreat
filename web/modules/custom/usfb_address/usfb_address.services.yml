@@ -1,9 +1,4 @@
 services:
-  boot_subscriber:
-    class: Drupal\usfb_address\EventSubscriber\BootSubscriber
-    arguments: ['@current_user', '@request_stack']
-    tags:
-      - { name: event_subscriber }
   usf_banner_api:
     class: Drupal\usfb_address\UsfbBannerApi
     arguments: ['@file_system']
