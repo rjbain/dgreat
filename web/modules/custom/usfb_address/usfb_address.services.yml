@@ -1,7 +1,7 @@
 services:
   boot_subscriber:
     class: Drupal\usfb_address\EventSubscriber\BootSubscriber
-    arguments: ['@current_user', '@request_stack', '@state', '@usf_utility', '@logger.factory']
+    arguments: ['@current_user', '@request_stack']
     tags:
       - { name: event_subscriber }
   usf_banner_api:
