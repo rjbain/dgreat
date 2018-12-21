@@ -5,6 +5,7 @@ namespace Drupal\usfb_address;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\TransferException;
 use Drupal\Core\File\FileSystemInterface;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 
 /**
  * Wrapper class for calling the ws.usfca.edu API.
@@ -47,13 +48,23 @@ class UsfbBannerApi {
   protected $fileSystem;
 
   /**
+   * A logger instance.
+   *
+   * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
+   */
+  protected $logger;
+  
+  /**
    * Constructs a UsfbBannerApi object.
    *
    * @param \Drupal\Core\File\FileSystemInterface $file_system
    *   File system service.
+   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger
+   *   A logger instance.
    */
-  public function __construct(FileSystemInterface $file_system) {
+  public function __construct(FileSystemInterface $file_system, LoggerChannelFactoryInterface $logger) {
     $this->fileSystem = $file_system;
+    $this->logger = $logger->get('USFB Address');
   }
 
   /**
@@ -175,7 +186,7 @@ class UsfbBannerApi {
           $issue = json_decode($response->getBody()->getContents(), TRUE);
           $message  = 'The request to the USF Banner API resulted in a ' . $issue["errorCode"] . ' Response ';
           $message .= 'with a message of ' . $issue["errorMessage"];
-          \Drupal::logger('USF Banner API')->error($message);
+          $this->logger->error($message);
           $this->request = NULL;
           break;
       }

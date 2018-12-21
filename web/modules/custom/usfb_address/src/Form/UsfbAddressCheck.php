@@ -139,6 +139,7 @@ class UsfbAddressCheck extends FormBase {
       $msg = "Error retrieving user '{$this->name}' ({$this->uid}) address from Banner API";
       $this->logger->notice($msg);
       $this->util->abort($this->uid);
+      return NULL;
     }
 
     // Check whether the student has recently updated their address via SSB.
@@ -150,6 +151,7 @@ class UsfbAddressCheck extends FormBase {
           $this->util->updateAddressDate($this->uid);
           // Clear the session flag and redirect to the post-login destination.
           $this->util->abort($this->uid);
+          return NULL;
         }
       }
     }
