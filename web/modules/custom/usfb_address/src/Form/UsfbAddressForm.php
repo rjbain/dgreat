@@ -149,6 +149,7 @@ class UsfbAddressForm extends FormBase {
     if (($address = $this->api->callApi($this->name)) === NULL) {
       $this->logger->notice('No Address from Banner API.');
       $this->util->abort($this->uid);
+      return NULL;
     }
 
     // Add a hidden form field to provide the addressType after submission.

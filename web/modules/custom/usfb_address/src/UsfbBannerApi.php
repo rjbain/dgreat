@@ -53,7 +53,7 @@ class UsfbBannerApi {
    * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
    */
   protected $logger;
-  
+
   /**
    * Constructs a UsfbBannerApi object.
    *
