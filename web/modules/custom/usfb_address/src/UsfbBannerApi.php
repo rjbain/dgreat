@@ -173,7 +173,7 @@ class UsfbBannerApi {
     try {
       // Try the request.
       $response = $client->request($type, $this->getUrl(), $options);
-
+      $t = 1;
       // Check the Status code and return.
       switch ($response->getStatusCode()) {
         // All good, send back response.
@@ -184,8 +184,13 @@ class UsfbBannerApi {
         // Something else is amiss.
         default:
           $issue = json_decode($response->getBody()->getContents(), TRUE);
-          $message  = 'The request to the USF Banner API resulted in a ' . $issue["errorCode"] . ' Response ';
-          $message .= 'with a message of ' . $issue["errorMessage"];
+          if ($issue === NULL) {
+            $message  = 'The request to the USF Banner API resulted in a ' . $response->getStatusCode() . ' Response ';
+          }
+          else {
+            $message  = 'The request to the USF Banner API resulted in a ' . $issue["errorCode"] . ' Response ';
+            $message .= 'with a message of ' . $issue["errorMessage"];
+          }
           $this->logger->error($message);
           $this->request = NULL;
           break;
