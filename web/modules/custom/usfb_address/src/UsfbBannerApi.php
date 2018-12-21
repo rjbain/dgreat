@@ -173,7 +173,7 @@ class UsfbBannerApi {
     try {
       // Try the request.
       $response = $client->request($type, $this->getUrl(), $options);
-      $t = 1;
+
       // Check the Status code and return.
       switch ($response->getStatusCode()) {
         // All good, send back response.
