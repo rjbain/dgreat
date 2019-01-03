@@ -197,6 +197,9 @@ class UsfbBannerApi {
       }
     }
     catch (TransferException $e) {
+      $message  = 'The request to the USF Banner API resulted in a ' . $e->getCode() . ' Response ';
+      $message .= 'with a message of ' . $e->getMessage();
+      $this->logger->error($message);
       $this->request = NULL;
     }
   }
