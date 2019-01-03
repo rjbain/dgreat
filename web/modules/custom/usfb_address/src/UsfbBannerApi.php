@@ -162,6 +162,7 @@ class UsfbBannerApi {
       'synchronous' => TRUE,
       'cert' => "$path/client-cert.pem",
       'ssl_key' => "$path/client-key.pem",
+      //'verify' => "$path/ca-cert.pem",
       'verify' => FALSE,
     ];
 
