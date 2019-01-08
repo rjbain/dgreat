@@ -143,3 +143,11 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && php_sapi_name() != 'cli' && $_SER
     exit();
 }
 
+// Redirect ITS file, per Nick Reccia.
+if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && php_sapi_name() != 'cli' && $_SERVER['REQUEST_URI'] == '/system/files/its-files/information_security_policy.pdf') {
+    $newurl = '/its/policies/information_security_policy';
+    header('HTTP/1.1 301 Moved Permanently');
+    header("Location: $newurl");
+    exit();
+}
+
