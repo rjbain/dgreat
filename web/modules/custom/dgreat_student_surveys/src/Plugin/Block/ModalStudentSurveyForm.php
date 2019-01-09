@@ -23,6 +23,11 @@ class ModalStudentSurveyForm extends WebformBlock {
    * {@inheritdoc}
    */
   public function build() {
+    // Don;t run will address check is going on.
+    if (\Drupal::request()->getSession()->get('usfb_address_check') !== NULL) {
+      return FALSE;
+    }
+    
     $build = array_merge(parent::build(), [
       '#attached' => [
         'drupalSettings' => [
