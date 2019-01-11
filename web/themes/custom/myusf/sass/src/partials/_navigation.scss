@@ -323,7 +323,7 @@ button.header_search {
     border: 0;
     z-index: 10;
 	cursor:pointer;
-	right: 135px;
+	right: 155px;
 	position: absolute;
 	top: 15px;
 	width:20px;
@@ -365,7 +365,7 @@ div.search-icon-rollover {
 	position: absolute;
     height: 80px;
     top: -29px;
-    right: 123px;    
+    right: 143px;    
     padding-top: 10px!important;
     padding-left: 20px!important;
     padding-right: 35px!important;
@@ -375,11 +375,11 @@ div.search-icon-rollover {
     margin:30px 0 0 0;
 
     @include media-breakpoint-only(tablet) {
-    	right: 120px;
+    	right: 140px;
     	top: -29px;
     }
     @include media-breakpoint-down(phone) {
-    	right: 125px;
+    	right: 145px;
     	top: -29px;
     }
     
@@ -481,21 +481,24 @@ a.dashboard-button{
 	content: "";
     z-index: 1;
 	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat;
-	width: 16px;
-    height: 16px;
-    background-position: -80px -80px!important;
+	width: 31px;
+    height: 22px;
+    background-position: -349px -267px!important;
     display:block;
 	position: absolute;
 	right: 15px; 
-	display: none;
 
 	@include media-breakpoint-down(landscape_phone) {
 		top: 17px;
 	}
+	/* IE */
+	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
+		top: 15px!important;
+	}
 
     &:hover,
 	&:focus {
-		 background-position: -181.5px -104.5px!important;			
+		 background-position: -349px -297.6px!important;			
 	}
 		
 }
@@ -504,7 +507,7 @@ a.dashboard-button{
 
 .login {
 	top:21px;
-	/*right: -25px;*/
+	right: 10px;
 	margin-top: 6px;	
 	margin-left:5px;
 	border-radius: 0;
@@ -520,7 +523,7 @@ a.dashboard-button{
 	@include media-breakpoint-only(tablet) {
 		position: absolute;
     	top: 45px;
-    	right: 40px;
+    	right: 50px;
 
 	 	&:hover,
 		&:focus {
@@ -542,7 +545,7 @@ a.dashboard-button{
 	&::after {
 		display: inline-block;
 		position: absolute;
-	    top: -29px;
+	    top: -26px;
 	    right: 5px;
 	    color: $white;
 	    width: 0;
@@ -556,7 +559,7 @@ a.dashboard-button{
 	    border-left: .3em solid transparent;
 
 	    @include media-breakpoint-only(tablet) {
-			top:-32px;
+			top:-29px;
 		}
 		@include media-breakpoint-down(landscape_phone) {
 			
@@ -578,7 +581,7 @@ a.dashboard-button{
 	    z-index: 10;
 
 	   	 @include media-breakpoint-only(tablet) {
-	   	 	top: 0px!important;
+	   	 	top: 1px!important;
 	   	 }
 	   	 @include media-breakpoint-down(landscape_phone) {
 	   	 	top: 78px!important;
@@ -586,15 +589,15 @@ a.dashboard-button{
 
 	    a#navbarDropdownMenuLink {
 	    	color:$yellow!important;
-	    	margin-top: -5px;
+	    	margin-top: -3px;
 
 	    	@include media-breakpoint-down(landscape_phone) {
-	    		margin-top: -8px;
+	    		margin-top: -5px;
 	    	}
 	    }
 	    &:after {
 	    	color:$yellow!important;
-	    	margin-top: 45px;
+	    	margin-top: 44px;
 
 	    	@include media-breakpoint-down(landscape_phone) {
 	    		margin-top: 42px;
@@ -618,7 +621,7 @@ a.dashboard-button{
 		font-weight: 400;
 		text-align: right;
     	text-transform: lowercase;
-	    margin-top: -50px;
+	    margin-top: -47px;
 	    background: transparent;
 	    padding-right:20px!important;
 
@@ -632,8 +635,8 @@ a.dashboard-button{
 	    &:hover,
 		&:focus {
 			color:$yellow!important;
-			margin-top: -50px;
-			background: transparent;
+			margin-top: -47px;
+			background: transparent; 
 		}
 	}
 	.dropdown-menu {
@@ -1154,7 +1157,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	@include media-breakpoint-only(tablet) {        
         position: relative;
         width: 250px;
-        left: 100%; /* was 30% */
+        /*left: 100%;  was 30% */
         float: none;
     }
 
