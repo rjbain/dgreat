@@ -23,11 +23,6 @@ class ModalStudentSurveyForm extends WebformBlock {
    * {@inheritdoc}
    */
   public function build() {
-    // Don;t run will address check is going on.
-    if (\Drupal::request()->getSession()->get('usfb_address_check') !== NULL) {
-      return FALSE;
-    }
-    
     $build = array_merge(parent::build(), [
       '#attached' => [
         'drupalSettings' => [
@@ -38,9 +33,11 @@ class ModalStudentSurveyForm extends WebformBlock {
       ],
     ]);
     $account = \Drupal::currentUser();
+    // Don't run while address check is going on.
+    $address_check_inactive = \Drupal::request()->getSession()->get('usfb_address_check') !== NULL;
     // @todo: Would prefer to run this in blockAccess, but for some reason it
     // does not run on the first page load after log in.
-    if ($this->canAccess($account)) {
+    if ($this->canAccess($account) && $address_check_inactive) {
       \Drupal::service('session')->set('student_surveys_has_seen_recently', TRUE);
       return $build;
     }
