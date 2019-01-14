@@ -19,6 +19,8 @@ use Drupal\Core\State\StateInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Drupal\Core\Render\Markup;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 class UsfbAddressCheck extends FormBase {
 
@@ -221,9 +223,11 @@ class UsfbAddressCheck extends FormBase {
     }
 
     // Construct the message.
-    $output = t('<p><strong>Thank you!</strong> You have confirmed that the information below is accurate. <em>If this is not correct, please click the Update button.</em></p>');
-    $output .= $this->util->formatAddress($address);
-    $output .= $this->util->formatButtons('Update', $this->uid);
+    $msg1 = t('<p><strong>Thank you!</strong> You have confirmed that the information below is accurate. <em>If this is not correct, please click the Update button.</em></p>');
+    $msg2 = $this->util->formatAddress($address);
+    $msg3 = $this->util->formatButtons('Update', $this->uid);
+    $msg = Markup::create($msg1 . $msg2 . $msg3);
+    $output = new TranslatableMarkup ('@message', array('@message' => $msg));
 
     // Display the message and forward them to the homepage.
     $this->messenger->addStatus($output);
