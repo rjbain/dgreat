@@ -959,9 +959,16 @@ h2.carousel-overlay:before {
     margin-left: 0;
     margin-right: 0;
     @include media-breakpoint-down(phone) {
-        height: 160px;
-        
+        height: 160px;        
     }
+
+    @include media-breakpoint-up(xl_desktop) {
+        margin-left: calc((100% - 1500px) / 2);
+        margin-right: calc((100% - 1500px) / 2);
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
 }
 .view-content-hero-image {
     position: relative;

@@ -85,6 +85,11 @@ nav.navbar {
     	background: transparent;
 	}
 
+	@include media-breakpoint-up(xl_desktop) {
+        margin-left: calc((100% - 1500px) / 2);
+        padding-left: 8px;
+    }
+
 	img {
 		margin-left: 20px;
 		@include media-breakpoint-only(tablet) {
@@ -333,6 +338,10 @@ button.header_search {
 	&:focus .search-icon-main img  {
 		opacity:0;
 	}
+
+	@include media-breakpoint-up(xl_desktop) {
+        margin-right: calc(((100% - 1500px) / 2) + 25px);
+    }
 }
 div.search-icon-main {    	
 	width: 20px;
@@ -381,6 +390,9 @@ div.search-icon-rollover {
     @include media-breakpoint-down(phone) {
     	right: 145px;
     	top: -29px;
+    }
+     @include media-breakpoint-up(xl_desktop) {
+        margin-right: calc(((100% - 1500px) / 2) + 25px);   
     }
     
     input[type="search"] {
@@ -483,7 +495,7 @@ a.dashboard-button{
 	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat;
 	width: 31px;
     height: 22px;
-    background-position: -349px -267px!important;
+    background-position: -349px -266px!important; /*was 267*/
     display:block;
 	position: absolute;
 	right: 15px; 
@@ -496,9 +508,14 @@ a.dashboard-button{
 		top: 15px!important;
 	}
 
+	 @include media-breakpoint-up(xl_desktop) {
+        margin-right: calc((100% - 1500px) / 2);
+        padding-right: 25px;
+    }
+
     &:hover,
 	&:focus {
-		 background-position: -349px -297.6px!important;			
+		 background-position: -349px -297.5px!important;			
 	}
 		
 }
@@ -540,12 +557,15 @@ a.dashboard-button{
 			margin-top: -70px!important;
 		}
 	}
+	@include media-breakpoint-up(xl_desktop) {
+        margin-right: calc(((100% - 1500px) / 2) + 35px);
+    }
 
 
 	&::after {
 		display: inline-block;
 		position: absolute;
-	    top: -26px;
+	    top: -25px;  /*was -26px */
 	    right: 5px;
 	    color: $white;
 	    width: 0;
@@ -560,9 +580,6 @@ a.dashboard-button{
 
 	    @include media-breakpoint-only(tablet) {
 			top:-29px;
-		}
-		@include media-breakpoint-down(landscape_phone) {
-			
 		}
 	}
 	&:hover,
@@ -679,6 +696,12 @@ nav.navbar .row {
 	@include media-breakpoint-down(phone) {
 	    margin-right: 0px;
 	}
+}
+a.login-btn {
+	@include media-breakpoint-up(xl_desktop) {
+        margin-right: calc((100% - 1500px) / 2);
+        padding-right: 5px;
+    }
 }
 
 a.login-btn:hover {
