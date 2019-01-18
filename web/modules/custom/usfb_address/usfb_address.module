@@ -20,7 +20,7 @@ function usfb_address_user_login(UserInterface $account) {
 
   // Is the Banner address update system enabled?
   if (!\Drupal::state()->get('usfb_address_enabled')) {
-    $response = new RedirectResponse($utility->postLoginPath($uid)->toString());
+    $response = new RedirectResponse($utility->postLoginPath()->toString());
     $response->send();
   }
 
@@ -29,13 +29,13 @@ function usfb_address_user_login(UserInterface $account) {
   $end    = \Drupal::state()->get('usfb_address_date_end');
   $today  = \Drupal::time()->getRequestTime();
   if ($today < $start || $today > $end) {
-    $response = new RedirectResponse($utility->postLoginPath($uid)->toString());
+    $response = new RedirectResponse($utility->postLoginPath()->toString());
     $response->send();
   }
 
   // Is this user a "Student" (rid 6) or "Online Student" (rid 7)?
   if (!$account->hasRole('student') && !$account->hasRole('online_student')) {
-    $response = new RedirectResponse($utility->postLoginPath($uid)->toString());
+    $response = new RedirectResponse($utility->postLoginPath()->toString());
     $response->send();
   }
 
@@ -43,7 +43,7 @@ function usfb_address_user_login(UserInterface $account) {
   $date = $account->get('field_usfb_address_date')->getValue();
   if (isset($date[0]['value'])) {
     if ($date[0]['value'] >= $start) {
-      $response = new RedirectResponse($utility->postLoginPath($uid)->toString());
+      $response = new RedirectResponse($utility->postLoginPath()->toString());
       $response->send();
     }
   }
@@ -51,7 +51,7 @@ function usfb_address_user_login(UserInterface $account) {
   // Set that the USFB Address Check still needs to happen.
   $session = \Drupal::request()->getSession();
   if ($session === NULL) {
-    $response = new RedirectResponse($utility->postLoginPath($uid)->toString());
+    $response = new RedirectResponse($utility->postLoginPath()->toString());
     $response->send();
   }
   $session->set('usfb_address_check', TRUE);

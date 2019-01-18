@@ -140,7 +140,7 @@ class UsfbAddressCheck extends FormBase {
     if (($address = $this->api->callApi($this->name)) === NULL) {
       $msg = "Error retrieving user '{$this->name}' ({$this->uid}) address from Banner API";
       $this->logger->notice($msg);
-      $this->util->abort($this->uid);
+      $this->util->abort();
       return NULL;
     }
 
@@ -152,7 +152,7 @@ class UsfbAddressCheck extends FormBase {
           // Update the user's "address last updated" in their Drupal profile.
           $this->util->updateAddressDate($this->uid);
           // Clear the session flag and redirect to the post-login destination.
-          $this->util->abort($this->uid);
+          $this->util->abort();
           return NULL;
         }
       }
@@ -219,7 +219,7 @@ class UsfbAddressCheck extends FormBase {
     // Retrieve the current user's address information.
     // @TODO Don't call the API again, pull it out of form data.
     if (($address = $this->api->callApi($this->name)) === NULL) {
-      return new RedirectResponse($this->util->postLoginPath($this->uid)->toString());
+      return new RedirectResponse($this->util->postLoginPath()->toString());
     }
 
     // Construct the message.
@@ -231,7 +231,7 @@ class UsfbAddressCheck extends FormBase {
 
     // Display the message and forward them to the homepage.
     $this->messenger->addStatus($output);
-    $form_state->setRedirectUrl($this->util->postLoginPath($this->uid));
+    $form_state->setRedirectUrl($this->util->postLoginPath());
   }
 
   /**
@@ -261,7 +261,7 @@ class UsfbAddressCheck extends FormBase {
       $this->session->remove('usfb_address_check');
     }
     // Redirect to the post-login destination.
-    $form_state->setRedirectUrl($this->util->postLoginPath($this->uid));
+    $form_state->setRedirectUrl($this->util->postLoginPath());
   }
 
 }

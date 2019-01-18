@@ -148,7 +148,7 @@ class UsfbAddressForm extends FormBase {
     // Get address data from the Banner API.
     if (($address = $this->api->callApi($this->name)) === NULL) {
       $this->logger->notice('No Address from Banner API.');
-      $this->util->abort($this->uid);
+      $this->util->abort();
       return NULL;
     }
 
@@ -301,7 +301,7 @@ class UsfbAddressForm extends FormBase {
     $this->util->updateAddressDate($this->uid);
 
     // Forward them to the homepage.
-    $form_state->setRedirectUrl($this->util->postLoginPath($this->uid));
+    $form_state->setRedirectUrl($this->util->postLoginPath());
   }
 
   /**

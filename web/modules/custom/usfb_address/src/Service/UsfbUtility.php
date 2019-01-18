@@ -61,28 +61,21 @@ class UsfbUtility {
    * This destination was gleaned from reaction rule with machine name
    * "rules_on_login_redirect_to_dashboard".
    *
-   * @param string $uid
-   *   The uid of the user.
-   *
    * @return \Drupal\Core\Url
    *   The destination path.
    */
-  public function postLoginPath($uid = NULL) {
-    $id = $uid !== NULL ? $uid : $this->currentUser->id();
-    return Url::fromUri("internal:/user/{$id}");
+  public function postLoginPath() {
+    return Url::fromUri("internal:/dashboard");
   }
 
   /**
    * Clears the session flag and redirects the user to the post-login destination.
-   *
-   * @param string $uid
-   *   The uid of the user.
    */
-  public function abort($uid) {
+  public function abort() {
     if ($this->session !== NULL) {
       $this->session->remove('usfb_address_check');
     }
-    $url = $this->postLoginPath($uid)->toString();
+    $url = $this->postLoginPath()->toString();
     $response = new RedirectResponse($url);
     $response->send();
   }
