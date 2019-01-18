@@ -959,9 +959,17 @@ h2.carousel-overlay:before {
     margin-left: 0;
     margin-right: 0;
     @include media-breakpoint-down(phone) {
-        height: 160px;
-        
+        height: 160px;        
     }
+
+    @include media-breakpoint-up(xl_desktop) {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+        width:1500px;
+    }
+
 }
 .view-content-hero-image {
     position: relative;
@@ -975,7 +983,7 @@ h2.carousel-overlay:before {
     }
 }
 .hero-image-block {
-    margin: -25px 0 -50px 0 !important;
+    margin: -25px 0 -85px 0 !important; /*-85 was -50*/
 
     a {
         text-decoration: none;
@@ -1027,7 +1035,7 @@ h2.carousel-overlay:before {
         line-height: 1.1rem;
         padding-top: 15px;
         padding-bottom: 20px;
-
+        margin-left: 11px!important;
 
         @include media-breakpoint-down(tablet) {
             font-size: 1.3rem;

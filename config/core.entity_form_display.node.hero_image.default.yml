@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.hero_image.body
     - field.field.node.hero_image.field_display_title
     - field.field.node.hero_image.field_image
+    - field.field.node.hero_image.field_mobile_image
     - field.field.node.hero_image.field_news_link
     - field.field.node.hero_image.field_sub_title
     - image.style.thumbnail
@@ -52,8 +53,16 @@ content:
     third_party_settings: {  }
     type: image_image
     region: content
-  field_news_link:
+  field_mobile_image:
     weight: 11
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_news_link:
+    weight: 12
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -83,7 +92,7 @@ content:
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 12
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -120,12 +129,12 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 13
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 14
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }

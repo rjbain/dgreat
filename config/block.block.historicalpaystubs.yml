@@ -1,0 +1,47 @@
+uuid: 63e5d0d9-07c2-4972-bf3c-d269a953f5c0
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:custom_block:acf77d45-3a5f-4ec2-ac1f-0db091f110a3'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+    - user
+  theme:
+    - myusf
+id: historicalpaystubs
+theme: myusf
+region: sidebar_second
+weight: 365
+provider: null
+plugin: 'block_content:acf77d45-3a5f-4ec2-ac1f-0db091f110a3'
+settings:
+  id: 'block_content:acf77d45-3a5f-4ec2-ac1f-0db091f110a3'
+  label: 'Historical Pay Stubs'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/payroll\r\n/payroll/*"
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      faculty: faculty
+      student: student
+      employee: employee
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

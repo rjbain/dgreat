@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.hero_image.body
     - field.field.node.hero_image.field_display_title
     - field.field.node.hero_image.field_image
+    - field.field.node.hero_image.field_mobile_image
     - field.field.node.hero_image.field_news_link
     - field.field.node.hero_image.field_sub_title
     - node.type.hero_image
@@ -22,12 +23,12 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 101
+    weight: 1
     settings: {  }
     third_party_settings: {  }
     region: content
   field_display_title:
-    weight: 105
+    weight: 6
     label: above
     settings:
       link_to_entity: false
@@ -35,7 +36,16 @@ content:
     type: string
     region: content
   field_image:
-    weight: 102
+    weight: 2
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_mobile_image:
+    weight: 3
     label: above
     settings:
       image_style: ''
@@ -44,7 +54,7 @@ content:
     type: image
     region: content
   field_news_link:
-    weight: 104
+    weight: 5
     label: above
     settings:
       trim_length: 80
@@ -56,7 +66,7 @@ content:
     type: link
     region: content
   field_sub_title:
-    weight: 103
+    weight: 4
     label: above
     settings:
       link_to_entity: false
@@ -64,6 +74,8 @@ content:
     type: string
     region: content
   links:
-    weight: 100
+    weight: 0
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }

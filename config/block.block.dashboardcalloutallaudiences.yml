@@ -8,12 +8,13 @@ dependencies:
     - block_content
     - block_visibility_groups
     - system
+    - user
   theme:
     - myusf
 id: dashboardcalloutallaudiences
 theme: myusf
 region: sidebar_second
-weight: 0
+weight: 1
 provider: null
 plugin: 'block_content:b1375320-458a-4b8e-a562-3faa02ca3d81'
 settings:
@@ -35,3 +36,10 @@ visibility:
     pages: /dashboard
     negate: false
     context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
