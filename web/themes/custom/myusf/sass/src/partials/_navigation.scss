@@ -88,7 +88,7 @@ nav.navbar {
 
 	@include media-breakpoint-up(midlarge_desktop) {
 		margin-left: calc((100% - 1440px) / 2);
-		}
+	}
 	@include media-breakpoint-up(xl_desktop) {
         margin-left: calc((100% - 1500px) / 2);
         padding-left: 8px;
@@ -349,6 +349,10 @@ button.header_search {
 		opacity:0;
 	}
 
+	@include media-breakpoint-up(midlarge_desktop) {
+		right: calc(((100% - 1440px)/ 2) + 155px);
+	}
+
 	@include media-breakpoint-up(xl_desktop) {
         margin-right: calc(((100% - 1500px) / 2) + 25px);
     }
@@ -518,14 +522,19 @@ a.dashboard-button{
 		top: 15px!important;
 	}
 
+	@include media-breakpoint-up(midlarge_desktop) {
+		right: calc((100% - 1440px) / 2);
+	}
+
 	 @include media-breakpoint-up(xl_desktop) {
         margin-right: calc((100% - 1500px) / 2);
         padding-right: 25px;
+        right: 15px;
     }
 
     &:hover,
 	&:focus {
-		 background-position: -349px -297.5px!important;			
+		 background-position: -349px -296.5px!important;			
 	}
 		
 }
@@ -567,8 +576,13 @@ a.dashboard-button{
 			margin-top: -70px!important;
 		}
 	}
+	@include media-breakpoint-up(midlarge_desktop) {
+		right: calc(((100% - 1440px)/ 2) + 30px);
+	}
+
 	@include media-breakpoint-up(xl_desktop) {
         margin-right: calc(((100% - 1500px) / 2) + 35px);
+        right: 10px;
     }
 
 
