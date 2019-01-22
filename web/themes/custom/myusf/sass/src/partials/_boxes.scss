@@ -994,10 +994,26 @@ h2.carousel-overlay:before {
     max-height: 500px;
     margin-bottom: 100px;
     margin-top: -1px;
+
+    @include media-breakpoint-down(phone) {
+        display: none;
+    }
     
     img {
         position: relative;
         z-index: -1;
+        margin-top: 0;
+    }
+}
+
+.hero_image_mobile {
+    display: none;
+
+    @include media-breakpoint-down(phone) {
+        display: unset;
+    }
+
+    img {
         margin-top: 0;
     }
 }
@@ -1035,7 +1051,7 @@ h2.carousel-overlay:before {
         line-height: 1.1rem;
         padding-top: 15px;
         padding-bottom: 20px;
-        margin-left: 11px!important;
+        /* margin-left: 11px!important; */
 
         @include media-breakpoint-down(tablet) {
             font-size: 1.3rem;

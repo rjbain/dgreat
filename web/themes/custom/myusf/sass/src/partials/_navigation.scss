@@ -86,18 +86,27 @@ nav.navbar {
     	background: transparent;
 	}
 
+	@include media-breakpoint-up(midlarge_desktop) {
+		margin-left: calc((100% - 1440px) / 2);
+		}
 	@include media-breakpoint-up(xl_desktop) {
         margin-left: calc((100% - 1500px) / 2);
         padding-left: 8px;
     }
 
 	img {
-		margin-left: 20px;
+		margin-left: 5px; /*was 20*/
 		@include media-breakpoint-only(tablet) {
 			margin-left: 0px;
 		}
 		@include media-breakpoint-down(landscape_phone) {
 			margin-left: 10px;
+		}
+		@include media-breakpoint-up(midlarge_desktop) {
+			margin-left: 0px;
+		}
+		@include media-breakpoint-up(xl_desktop) {
+			margin-left: 20px;
 		}
 	}
 
