@@ -111,6 +111,11 @@ nav.navbar {
 	}
 
 }
+@include media-breakpoint-up(desktop) {
+	.navbar-collapse {
+	    margin-right: 25px;
+	}
+}
 
 .navbar-nav {
 	border:0;
@@ -338,7 +343,7 @@ button.header_search {
     border: 0;
     z-index: 10;
 	cursor:pointer;
-	right: 155px;
+	right: 165px;
 	position: absolute;
 	top: 15px;
 	width:20px;
@@ -388,7 +393,7 @@ div.search-icon-rollover {
 	position: absolute;
     height: 80px;
     top: -29px;
-    right: 143px;    
+    right: 153px;    
     padding-top: 10px!important;
     padding-left: 20px!important;
     padding-right: 35px!important;
@@ -512,7 +517,11 @@ a.dashboard-button{
     background-position: -349px -266px!important; /*was 267*/
     display:block;
 	position: absolute;
-	right: 15px; 
+	right: 30px; 
+
+	@include media-breakpoint-down(phone) {
+		right: 15px; 
+	}
 
 	@include media-breakpoint-down(landscape_phone) {
 		top: 17px;
@@ -523,7 +532,7 @@ a.dashboard-button{
 	}
 
 	@include media-breakpoint-up(midlarge_desktop) {
-		right: calc((100% - 1440px) / 2);
+		right: calc(((100% - 1440px) / 2) - 16px);
 	}
 
 	 @include media-breakpoint-up(xl_desktop) {
@@ -543,7 +552,7 @@ a.dashboard-button{
 
 .login {
 	top:21px;
-	right: 10px;
+	right: 20px;
 	margin-top: 6px;	
 	margin-left:5px;
 	border-radius: 0;
