@@ -113,7 +113,7 @@ nav.navbar {
 }
 @include media-breakpoint-up(desktop) {
 	.navbar-collapse {
-	    margin-right: 25px;
+	    margin-left: -70px;
 	}
 }
 
@@ -440,6 +440,28 @@ div.search-icon-rollover {
     	margin-right: unset;
     	font-size: .85rem!important;
     }
+}
+
+a.login-btn {
+    /*position: relative;
+    margin-right: calc(((100% - 1440px)/ 2) - 25px);*/
+
+    @include media-breakpoint-up(desktop) {
+    	margin-right: -8px;
+    }
+
+    @include media-breakpoint-only(midlarge_desktop) {
+    	margin-right: calc(((100% - 1440px)/ 2) - 25px);
+    }
+
+	@include media-breakpoint-up(xl_desktop) {
+        margin-right: calc((100% - 1500px) / 2);
+        padding-right: 5px;
+    }
+}
+
+a.login-btn:hover {
+	background:transparent!important;
 }
 
 .btn-outline-success {
