@@ -22,6 +22,7 @@ function usfb_address_user_login(UserInterface $account) {
   if (!\Drupal::state()->get('usfb_address_enabled')) {
     $response = new RedirectResponse($utility->postLoginPath()->toString());
     $response->send();
+    return;
   }
 
   // Is today within the admin-defined start and end dates for address updates?
@@ -31,12 +32,14 @@ function usfb_address_user_login(UserInterface $account) {
   if ($today < $start || $today > $end) {
     $response = new RedirectResponse($utility->postLoginPath()->toString());
     $response->send();
+    return;
   }
 
   // Is this user a "Student" (rid 6) or "Online Student" (rid 7)?
   if (!$account->hasRole('student') && !$account->hasRole('online_student')) {
     $response = new RedirectResponse($utility->postLoginPath()->toString());
     $response->send();
+    return;
   }
 
   // Has the student confirmed or updated their address since the start date?
@@ -45,6 +48,7 @@ function usfb_address_user_login(UserInterface $account) {
     if ($date[0]['value'] >= $start) {
       $response = new RedirectResponse($utility->postLoginPath()->toString());
       $response->send();
+      return;
     }
   }
 
