@@ -57,6 +57,7 @@ function usfb_address_user_login(UserInterface $account) {
   if ($session === NULL) {
     $response = new RedirectResponse($utility->postLoginPath()->toString());
     $response->send();
+    return;
   }
   $session->set('usfb_address_check', TRUE);
 

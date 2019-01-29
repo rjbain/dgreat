@@ -135,7 +135,7 @@ class UsfbAddressCheck extends FormBase {
     // Set vars.
     $this->name = $user->getAccountName();
     $this->uid = $user->id();
-    $t = 1;
+    
     // Get the address data from USF's Banner API.
     if (($address = $this->api->callApi($this->name)) === NULL) {
       $msg = "Error retrieving user '{$this->name}' ({$this->uid}) address from Banner API";
