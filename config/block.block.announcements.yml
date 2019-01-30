@@ -1,4 +1,4 @@
-uuid: 6492d129-e977-45d3-b52b-09c50e231fb8
+uuid: 87c515d9-7bc3-4e20-93c0-e371234fa7ae
 langcode: en
 status: true
 dependencies:
@@ -8,6 +8,7 @@ dependencies:
     - block_visibility_groups
     - simple_block
     - system
+    - user
   theme:
     - myusf
 id: announcements
@@ -20,7 +21,7 @@ settings:
   id: 'simple_block:announcements'
   label: Announcements
   provider: simple_block
-  label_display: visible
+  label_display: '0'
 visibility:
   condition_group:
     id: condition_group
@@ -32,3 +33,10 @@ visibility:
     pages: /dashboard
     negate: false
     context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

@@ -78,6 +78,7 @@ nav.navbar {
 
 .navbar-brand {
     color: $green!important;
+    margin-left: 9px;
 
     &:hover,
     &:focus {
@@ -85,16 +86,60 @@ nav.navbar {
     	background: transparent;
 	}
 
+	/*@include media-breakpoint-up(midlarge_desktop) {
+		margin-left: calc((100% - 1440px) / 2);
+	}
+	@include media-breakpoint-up(xl_desktop) {
+        margin-left: calc(((100% - 1530px)/ 2) + 40px);
+    }
+  */
+    @include media-breakpoint-up(1920xl_desktop) {
+        margin-left: calc(((100% - 1920px)/ 2) + 40px);
+    }
+
 	img {
-		margin-left: 20px;
+		margin-left: 5px; /*was 20*/
 		@include media-breakpoint-only(tablet) {
 			margin-left: 0px;
 		}
 		@include media-breakpoint-down(landscape_phone) {
 			margin-left: 10px;
 		}
+		@include media-breakpoint-up(midlarge_desktop) {
+			margin-left: 5px;
+		}
+		@include media-breakpoint-up(xl_desktop) {
+			margin-left: 20px;
+		}
 	}
 
+}
+.navbar-collapse {
+	@include media-breakpoint-up(desktop) {	
+	    /*margin-left: -70px;*/
+	    margin-left: calc(((100% - 992px)/ 2) - 70px);
+    	margin-right: calc((100% - 992px)/ 2);
+	}
+	@include media-breakpoint-up(midlarge_desktop) {	
+	    /*margin-left: -95px;*/
+	    margin-left: calc(((100% - 1530px)/ 2) - 15px);
+    	margin-right: calc(((100% - 1530px)/ 2) + 200px);
+	}
+	@include media-breakpoint-up(xl_desktop) {	
+	    /*margin-left: -185px;*/
+	    margin-left: calc(((100% - 1700px)/ 2) - 15px);
+    	margin-right: calc(((100% - 1700px)/ 2) + 200px);
+	}
+	@include media-breakpoint-up(1920xl_desktop) {	
+	    /*margin-left: -310px;*/
+	    margin-left: calc(((100% - 1920px)/ 2) - 15px);
+    	margin-right: calc(((100% - 1920px)/ 2) + 200px);
+	}
+	@include media-breakpoint-up(2560xl_desktop) {	
+	    /*margin-left: -410px;*/
+	    margin-left: calc(((100% - 2560px)/ 2) - 15px);
+    	margin-right: calc(((100% - 2560px)/ 2) + 200px);
+	}
 }
 
 .navbar-nav {
@@ -323,7 +368,7 @@ button.header_search {
     border: 0;
     z-index: 10;
 	cursor:pointer;
-	right: 155px;
+	right: 165px;
 	position: absolute;
 	top: 15px;
 	width:20px;
@@ -333,6 +378,36 @@ button.header_search {
 	&:focus .search-icon-main img  {
 		opacity:0;
 	}
+
+	@include media-breakpoint-down(phone) {
+		right: 155px;
+	}
+	@include media-breakpoint-only(tablet) {
+		right: 160px;
+	}
+
+	@include media-breakpoint-up(midlarge_desktop) {
+		/*right: calc(((100% - 1530px)/ 2) + 170px);*/
+		
+	}
+	@include media-breakpoint-up(xl_desktop) {
+		/*right: calc(((100% - 1700px)/ 2) + 170px);*/
+		margin-right: 20px;
+	}
+
+	@include media-breakpoint-up(1920xl_desktop) {
+        /*right: calc(((100% - 1920px)/ 2) + 170px);*/
+        margin-right: calc(((100% - 1920px)/ 2) + 170px);
+        right: 20px;
+    }
+    @include media-breakpoint-up(2560xl_desktop) {
+        margin-right: calc(((100% - 1920px)/ 2) + 230px);
+
+    }
+
+	/*@include media-breakpoint-up(xl_desktop) {
+        margin-right: calc(((100% - 1500px) / 2) + 25px);
+    }*/
 }
 div.search-icon-main {    	
 	width: 20px;
@@ -365,7 +440,7 @@ div.search-icon-rollover {
 	position: absolute;
     height: 80px;
     top: -29px;
-    right: 143px;    
+    right: 153px;    
     padding-top: 10px!important;
     padding-left: 20px!important;
     padding-right: 35px!important;
@@ -375,12 +450,25 @@ div.search-icon-rollover {
     margin:30px 0 0 0;
 
     @include media-breakpoint-only(tablet) {
-    	right: 140px;
+    	right: 150px;
     	top: -29px;
     }
     @include media-breakpoint-down(phone) {
     	right: 145px;
     	top: -29px;
+    }
+    @include media-breakpoint-up(midlarge_desktop) {
+    	/*right: 233px;*/
+    	margin-right: calc(((100% - 1530px)/ 2) - 5px); 
+    }
+     @include media-breakpoint-up(xl_desktop) {
+        margin-right: calc(((100% - 1700px)/ 2) + 15px);   
+    }
+    @include media-breakpoint-up(1920xl_desktop) {
+        margin-right: calc(((100% - 1920px)/ 2) + 23px);
+    }
+    @include media-breakpoint-up(2560xl_desktop) {
+        margin-right: calc(((100% - 1920px)/ 2) + 83px);
     }
     
     input[type="search"] {
@@ -398,6 +486,32 @@ div.search-icon-rollover {
     	margin-right: unset;
     	font-size: .85rem!important;
     }
+}
+
+a.login-btn {
+    /*position: relative;
+    margin-right: calc(((100% - 1440px)/ 2) - 25px);*/
+    @include media-breakpoint-up(desktop) {
+    	margin-right: -8px;
+    }
+
+    @include media-breakpoint-only(midlarge_desktop) {
+    	/*margin-right: calc(((100% - 1440px)/ 2) - 25px);*/
+    	margin-right: calc(((100% - 1530px)/ 2) - 30px);
+    }
+
+	@include media-breakpoint-up(xl_desktop) {
+       /* margin-right: calc((100% - 1500px) / 2);*/
+        padding-right: 5px;
+        margin-right:0px;
+    }
+    @include media-breakpoint-up(2560xl_desktop) {
+    	margin-right: calc(((100% - 1920px)/ 2) + 40px);
+    }
+}
+
+a.login-btn:hover {
+	background:transparent!important;
 }
 
 .btn-outline-success {
@@ -433,7 +547,7 @@ div.search-icon-rollover {
     @include media-breakpoint-down(tablet) {
 	    position: absolute;
 	    top: 15px;
-	    right: 20px;    
+	    right: 26px;   /* was 20 */ 
 	    margin-top: -5px;	
     }
 }
@@ -483,10 +597,14 @@ a.dashboard-button{
 	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat;
 	width: 31px;
     height: 22px;
-    background-position: -349px -267px!important;
+    background-position: -349px -266px!important; /*was 267*/
     display:block;
 	position: absolute;
-	right: 15px; 
+	right: 30px; 
+
+	@include media-breakpoint-down(phone) {
+		right: 15px; 
+	}
 
 	@include media-breakpoint-down(landscape_phone) {
 		top: 17px;
@@ -496,9 +614,37 @@ a.dashboard-button{
 		top: 15px!important;
 	}
 
+	@include media-breakpoint-up(midlarge_desktop) {
+		/*right: calc(((100% - 1440px) / 2) - 16px);*/
+		right: 30px;
+	}
+	@include media-breakpoint-up(xl_desktop) {
+		margin-right: 20px;
+		right:23px;
+	}
+	@include media-breakpoint-up(1920xl_desktop) {
+		right: calc(((100% - 1920px)/ 2) + 25px);
+	}
+
+	 @include media-breakpoint-up(2560xl_desktop) {
+        margin-right: calc(((100% - 1920px) / 2) + 40px); /*margin-right: calc((100% - 1500px) / 2);*/
+        padding-right: 25px;
+        right: 15px;
+    }
+
+  /*  @include media-breakpoint-down(landscape_phone) {
+			margin-left: 10px;
+	}
+	@include media-breakpoint-up(midlarge_desktop) {
+		margin-left: 5px;
+	}
+	@include media-breakpoint-up(xl_desktop) {
+		margin-left: 20px;
+	} */
+
     &:hover,
 	&:focus {
-		 background-position: -349px -297.6px!important;			
+		 background-position: -349px -296.5px!important;			
 	}
 		
 }
@@ -507,7 +653,7 @@ a.dashboard-button{
 
 .login {
 	top:21px;
-	right: 10px;
+	right: 20px;
 	margin-top: 6px;	
 	margin-left:5px;
 	border-radius: 0;
@@ -518,21 +664,7 @@ a.dashboard-button{
 	   	top: 120px;
     	right: -5px;
     	position: absolute;
-	}
-
-	@include media-breakpoint-only(tablet) {
-		position: absolute;
-    	top: 45px;
-    	right: 50px;
-
-	 	&:hover,
-		&:focus {
-			
-		}
-	}
-
-	@include media-breakpoint-down(landscape_phone) {
-		margin-top: -70px;
+    	margin-top: -70px;
 		margin-right: 50px;
 
 	 	&:hover,
@@ -541,11 +673,39 @@ a.dashboard-button{
 		}
 	}
 
+	@include media-breakpoint-only(tablet) {
+		position: absolute;
+    	top: 45px;
+    	right: 60px;
+
+	 	&:hover,
+		&:focus {
+			
+		}
+	}
+
+	@include media-breakpoint-up(midlarge_desktop) {
+		/*right: calc(((100% - 1440px)/ 2) + 15px);*/
+		right: 30px;
+	}
+	@include media-breakpoint-up(xl_desktop) {
+		right: 50px;
+	}
+
+	@include media-breakpoint-up(1920xl_desktop) {
+		right: calc(((100% - 1920px)/ 2) + 75px);
+	}
+
+	@include media-breakpoint-up(2560xl_desktop) {
+        margin-right: calc(((100% - 1920px)/ 2) + 100px); /*margin-right: calc(((100% - 1500px) / 2) + 35px);*/
+        right: 10px;
+    }
+
 
 	&::after {
 		display: inline-block;
 		position: absolute;
-	    top: -26px;
+	    top: -25px;  /*was -26px */
 	    right: 5px;
 	    color: $white;
 	    width: 0;
@@ -560,9 +720,6 @@ a.dashboard-button{
 
 	    @include media-breakpoint-only(tablet) {
 			top:-29px;
-		}
-		@include media-breakpoint-down(landscape_phone) {
-			
 		}
 	}
 	&:hover,
@@ -680,6 +837,7 @@ nav.navbar .row {
 	    margin-right: 0px;
 	}
 }
+
 
 a.login-btn:hover {
 	background:transparent!important;
