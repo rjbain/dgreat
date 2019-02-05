@@ -90,6 +90,12 @@ class UsfbUtility {
    *   A properly-formatted international address.
    */
   function formatAddress($address) {
+    // Add in empty text.
+    foreach ($address as $field => $add) {
+      if (empty($add)) {
+        $address->{$field} = '**EMPTY**';
+      }
+    }
     $city = [$address->city, $address->stateOrProvince, $address->countryCode];
     $city = array_filter($city);
     $line1 = [$address->addressLine1, $address->addressLine2];
