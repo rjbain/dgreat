@@ -68,7 +68,7 @@
  */
 #}
 {% block head %}
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="site navigation">
     {% if container_navbar %}
       {% endif %}
         <a class="navbar-brand" href="/"><img src="/themes/custom/myusf/images/src/myUSF-logo.svg" alt="myUSF home" /></a>
@@ -76,7 +76,7 @@
           <div class="navbar-menu-wrapper">
           {% if page.primary_menu %}
             {{ page.primary_menu }}
-          {% else %}  
+          {% else %}
             {{ drupal_menu('main') }}
           {% endif %}
           </div>
@@ -98,7 +98,7 @@
 
       <button class="header_search" type="submit" onclick="toggle()">
         <div class="search-icon-rollover"><img src="/themes/custom/myusf/images/src/search-yellow.svg" alt="search"/></div>
-         <div class="search-icon-main"><img src="/themes/custom/myusf/images/src/search-white.svg" alt="search"/></div>  
+         <div class="search-icon-main"><img src="/themes/custom/myusf/images/src/search-white.svg" alt="search"/></div>
       </button>
       {% if logged_in %}
         <a href="/dashboard" class="dashboard-button">
@@ -122,19 +122,19 @@
   <div id="main" class="{{ container }}">
     <div class="row clearfix">
       {{ page.breadcrumb }}
-        {% if "/dashboard" in path("<current>") %} 
-          <main class="main-content col dashboard" id="content" role="main">
+        {% if "/dashboard" in path("<current>") %}
+          <main class="main-content col dashboard" id="content">
         {% else %}
           <main{{ content_attributes }}>
         {% endif %}
-          <section class="section">
+          <section class="section" aria-label="body content">
             <a id="main-content" tabindex="-1"></a>
             {{ page.content }}
           </section>
         </main>
       {% if page.sidebar_first %}
         <div{{ sidebar_first_attributes }}>
-         <aside class="section" role="complementary">
+         <aside class="section" aria-label="first sidebar">
           <button id="submenuButton" class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#CollapsingNavbar" aria-controls="CollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon">MENU</span></button>
           <div class="collapse show" id="CollapsingNavbar">
             <div class="submenu">
@@ -146,7 +146,7 @@
       {% endif %}
       {% if page.sidebar_second %}
         <div{{ sidebar_second_attributes }}>
-          <aside class="section" role="complementary">
+          <aside class="section" aria-label="second sidebar">
             {{ page.sidebar_second }}
           </aside>
         </div>
