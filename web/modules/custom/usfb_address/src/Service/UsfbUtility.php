@@ -92,7 +92,7 @@ class UsfbUtility {
   function formatAddress($address) {
     // Add in empty text.
     foreach ($address as $field => $add) {
-      if (empty($add)) {
+      if (empty($add) && $field !== 'addressLine2') {
         $address->{$field} = '**EMPTY**';
       }
     }
