@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - user.role.administrator
   module:
     - node
     - taxonomy
@@ -34,9 +35,10 @@ display:
           replica: false
           query_tags: {  }
       access:
-        type: perm
+        type: role
         options:
-          perm: 'access content'
+          role:
+            administrator: administrator
       cache:
         type: tag
         options: {  }
@@ -251,7 +253,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       max-age: -1
       tags: {  }
   feed_1:
@@ -289,7 +291,7 @@ display:
         - 'languages:language_interface'
         - url
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       max-age: -1
       tags: {  }
   page_1:
@@ -309,6 +311,6 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       max-age: -1
       tags: {  }

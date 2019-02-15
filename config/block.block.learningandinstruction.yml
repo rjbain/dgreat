@@ -1,26 +1,27 @@
-uuid: 2a7b3444-2466-4fce-917a-e2aeb3a8f3dd
+uuid: 1bea061d-ba8d-4f15-8e9c-b8479eae0809
 langcode: en
 status: true
 dependencies:
   config:
-    - simple_block.simple_block.page_announcements
+    - system.menu.learning-and-instruction-
   module:
     - block_visibility_groups
-    - simple_block
     - system
   theme:
     - myusf
-id: page_announcements
+id: learningandinstruction
 theme: myusf
-region: content
-weight: 6
+region: sidebar_first
+weight: 0
 provider: null
-plugin: 'simple_block:page_announcements'
+plugin: 'system_menu_block:learning-and-instruction-'
 settings:
-  id: 'simple_block:page_announcements'
-  label: 'Page Announcements'
-  provider: simple_block
+  id: 'system_menu_block:learning-and-instruction-'
+  label: 'Learning and Instruction Menu'
+  provider: system
   label_display: '0'
+  level: 1
+  depth: 0
 visibility:
   condition_group:
     id: condition_group
@@ -29,6 +30,6 @@ visibility:
     context_mapping: {  }
   request_path:
     id: request_path
-    pages: /announcements
+    pages: "/landi\r\n/landi/*"
     negate: false
     context_mapping: {  }
