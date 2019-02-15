@@ -1,26 +1,27 @@
-uuid: 2a7b3444-2466-4fce-917a-e2aeb3a8f3dd
+uuid: afc3e717-cc2f-4b4f-8c31-48a154e214f5
 langcode: en
 status: true
 dependencies:
   config:
-    - simple_block.simple_block.page_announcements
+    - system.menu.base-menu
   module:
     - block_visibility_groups
-    - simple_block
     - system
   theme:
     - myusf
-id: page_announcements
+id: basemenu
 theme: myusf
-region: content
-weight: 6
+region: sidebar_first
+weight: 0
 provider: null
-plugin: 'simple_block:page_announcements'
+plugin: 'system_menu_block:base-menu'
 settings:
-  id: 'simple_block:page_announcements'
-  label: 'Page Announcements'
-  provider: simple_block
+  id: 'system_menu_block:base-menu'
+  label: 'BASE Menu'
+  provider: system
   label_display: '0'
+  level: 1
+  depth: 0
 visibility:
   condition_group:
     id: condition_group
@@ -29,6 +30,6 @@ visibility:
     context_mapping: {  }
   request_path:
     id: request_path
-    pages: /announcements
+    pages: "/base\r\n/base/*"
     negate: false
     context_mapping: {  }
