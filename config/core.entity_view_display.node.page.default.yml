@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.page.field_display_title
     - field.field.node.page.field_migrate_final
+    - field.field.node.page.field_section
     - node.type.page
   module:
     - entity_reference_revisions
@@ -17,7 +18,7 @@ bundle: page
 mode: default
 content:
   field_display_title:
-    weight: 2
+    weight: 1
     label: hidden
     settings:
       link_to_entity: false
@@ -26,7 +27,7 @@ content:
     region: content
   field_migrate_final:
     type: entity_reference_revisions_entity_view
-    weight: 3
+    weight: 2
     label: hidden
     settings:
       view_mode: default
@@ -38,4 +39,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_section: true

@@ -1,10 +1,14 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "8e3d173e9597d564512f1cfbea1d8458",
+=======
+    "content-hash": "14415552a2970af0dcf66298ae1c58d1",
+>>>>>>> master
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -421,6 +425,7 @@
             "time": "2017-04-04T11:38:05+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "commerceguys/addressing",
             "version": "v1.0.2",
             "source": {
@@ -478,6 +483,17 @@
                 "postal"
             ],
             "time": "2018-10-21T23:38:05+00:00"
+=======
+            "name": "ckeditor-plugin/embed",
+            "version": "4.11.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://download.ckeditor.com/embed/releases/embed_4.11.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "drupal-library"
+>>>>>>> master
         },
         {
             "name": "composer/installers",
@@ -2739,16 +2755,12 @@
                 },
                 "drupal": {
                     "version": "8.x-1.0",
-                    "datestamp": "1476108239",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
+                    "datestamp": "1476108239"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0-or-later"
+                "GPL-2.0+"
             ],
             "authors": [
                 {
@@ -3311,16 +3323,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.6.1",
+            "version": "8.6.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "1c8b96c89288daf4d145c6dbcf1e8f0d0c9d7970"
+                "reference": "59568ac02948cf075ee8543e6c6d4386ad8daec1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/1c8b96c89288daf4d145c6dbcf1e8f0d0c9d7970",
-                "reference": "1c8b96c89288daf4d145c6dbcf1e8f0d0c9d7970",
+                "url": "https://api.github.com/repos/drupal/core/zipball/59568ac02948cf075ee8543e6c6d4386ad8daec1",
+                "reference": "59568ac02948cf075ee8543e6c6d4386ad8daec1",
                 "shasum": ""
             },
             "require": {
@@ -3364,6 +3376,7 @@
                 "symfony/validator": "~3.4.0",
                 "symfony/yaml": "~3.4.5",
                 "twig/twig": "^1.35.0",
+                "typo3/phar-stream-wrapper": "^2.0.1",
                 "zendframework/zend-diactoros": "^1.1",
                 "zendframework/zend-feed": "^2.4"
             },
@@ -3486,7 +3499,7 @@
                 "jcalderonzumba/gastonjs": "^1.0.2",
                 "jcalderonzumba/mink-phantomjs-driver": "^0.3.1",
                 "mikey179/vfsstream": "^1.2",
-                "phpspec/prophecy": "^1.4",
+                "phpspec/prophecy": "^1.7",
                 "phpunit/phpunit": "^4.8.35 || ^6.5",
                 "symfony/css-selector": "^3.4.0",
                 "symfony/debug": "^3.4.0",
@@ -3550,7 +3563,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2018-09-10T11:50:07+00:00"
+            "time": "2019-02-20T18:35:01+00:00"
         },
         {
             "name": "drupal/ctools",
@@ -3614,10 +3627,6 @@
                     "role": "Maintainer"
                 },
                 {
-                    "name": "joelpittet",
-                    "homepage": "https://www.drupal.org/user/160302"
-                },
-                {
                     "name": "merlinofchaos",
                     "homepage": "https://www.drupal.org/user/26979"
                 },
@@ -3643,6 +3652,91 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/ctools",
                 "issues": "https://www.drupal.org/project/issues/ctools"
+            }
+        },
+        {
+            "name": "drupal/devel",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/devel",
+                "reference": "8.x-2.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/devel-8.x-2.0.zip",
+                "reference": "8.x-2.0",
+                "shasum": "cf5fb816f767f3cac4f2e170ab39e982d5e0698b"
+            },
+            "require": {
+                "drupal/core": "~8.0",
+                "symfony/var-dumper": "~2.7|^3"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-2.0",
+                    "datestamp": "1548799380",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Moshe Weitzman",
+                    "homepage": "https://github.com/weitzman",
+                    "email": "weitzman@tejasa.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Hans Salvisberg",
+                    "homepage": "https://www.drupal.org/u/salvis",
+                    "email": "drupal@salvisberg.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Luca Lusso",
+                    "homepage": "https://www.drupal.org/u/lussoluca",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Marco (willzyx)",
+                    "homepage": "https://www.drupal.org/u/willzyx",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "See contributors",
+                    "homepage": "https://www.drupal.org/node/3236/committers"
+                },
+                {
+                    "name": "salvis",
+                    "homepage": "https://www.drupal.org/user/82964"
+                },
+                {
+                    "name": "willzyx",
+                    "homepage": "https://www.drupal.org/user/1043862"
+                }
+            ],
+            "description": "Various blocks, pages, and functions for developers.",
+            "homepage": "http://drupal.org/project/devel",
+            "support": {
+                "source": "http://cgit.drupalcode.org/devel",
+                "issues": "http://drupal.org/project/devel",
+                "irc": "irc://irc.freenode.org/drupal-contribute"
             }
         },
         {
@@ -4527,8 +4621,8 @@
                     "dev-4.x": "4.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-4.0-rc1+2-dev",
-                    "datestamp": "1532015281",
+                    "version": "8.x-4.0-rc1+1-dev",
+                    "datestamp": "1532010781",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -4640,17 +4734,17 @@
         },
         {
             "name": "drupal/paragraphs",
-            "version": "1.3.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/paragraphs",
-                "reference": "8.x-1.3"
+                "reference": "8.x-1.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/paragraphs-8.x-1.3.zip",
-                "reference": "8.x-1.3",
-                "shasum": "24c6d2153127f9d783a03c05baf3b9beb219113f"
+                "url": "https://ftp.drupal.org/files/projects/paragraphs-8.x-1.6.zip",
+                "reference": "8.x-1.6",
+                "shasum": "cd93e244f3a78dabdcf362adc31e59aad25b3fae"
             },
             "require": {
                 "drupal/core": "~8",
@@ -4678,8 +4772,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.3",
-                    "datestamp": "1527502684",
+                    "version": "8.x-1.6",
+                    "datestamp": "1550692525",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5212,7 +5306,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.2",
-                    "datestamp": "1529312013",
+                    "datestamp": "1509546906",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5345,16 +5439,12 @@
                 },
                 "drupal": {
                     "version": "8.x-1.0-beta1",
-                    "datestamp": "1485418683",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
-                    }
+                    "datestamp": "1485418683"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0-or-later"
+                "GPL-2.0+"
             ],
             "authors": [
                 {
@@ -6162,6 +6252,140 @@
             }
         },
         {
+            "name": "drupal/workbench",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/workbench",
+                "reference": "8.x-1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/workbench-8.x-1.1.zip",
+                "reference": "8.x-1.1",
+                "shasum": "c25bbd77a8fcd8cdfc8b53a52fb83870862cfdd1"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.1",
+                    "datestamp": "1536675780",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Dave Reid",
+                    "homepage": "https://www.drupal.org/user/53892"
+                },
+                {
+                    "name": "agentrickard",
+                    "homepage": "https://www.drupal.org/user/20975"
+                },
+                {
+                    "name": "bbinkovitz",
+                    "homepage": "https://www.drupal.org/user/161263"
+                },
+                {
+                    "name": "becw",
+                    "homepage": "https://www.drupal.org/user/81067"
+                },
+                {
+                    "name": "caroltron",
+                    "homepage": "https://www.drupal.org/user/171342"
+                },
+                {
+                    "name": "robeano",
+                    "homepage": "https://www.drupal.org/user/67660"
+                },
+                {
+                    "name": "stevector",
+                    "homepage": "https://www.drupal.org/user/179805"
+                }
+            ],
+            "description": "Provides convenient dashboards and shortcuts for editors.",
+            "homepage": "https://www.drupal.org/project/workbench",
+            "support": {
+                "source": "http://cgit.drupalcode.org/workbench"
+            }
+        },
+        {
+            "name": "drupal/workbench_access",
+            "version": "1.0.0-beta2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/workbench_access",
+                "reference": "8.x-1.0-beta2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/workbench_access-8.x-1.0-beta2.zip",
+                "reference": "8.x-1.0-beta2",
+                "shasum": "976ae351d6984e6e920307dbf92b43f7f6efdecc"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-beta2",
+                    "datestamp": "1525788697",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Dave Reid",
+                    "homepage": "https://www.drupal.org/user/53892"
+                },
+                {
+                    "name": "agentrickard",
+                    "homepage": "https://www.drupal.org/user/20975"
+                },
+                {
+                    "name": "becw",
+                    "homepage": "https://www.drupal.org/user/81067"
+                },
+                {
+                    "name": "robeano",
+                    "homepage": "https://www.drupal.org/user/67660"
+                },
+                {
+                    "name": "stevector",
+                    "homepage": "https://www.drupal.org/user/179805"
+                }
+            ],
+            "description": "Hierarchical access control for content.",
+            "homepage": "https://www.drupal.org/project/workbench_access",
+            "support": {
+                "source": "http://cgit.drupalcode.org/workbench_access"
+            }
+        },
+        {
             "name": "drush/drush",
             "version": "8.1.17",
             "source": {
@@ -6857,6 +7081,48 @@
                 "php"
             ],
             "time": "2018-09-18T07:03:24+00:00"
+        },
+        {
+            "name": "oomphinc/composer-installers-extender",
+            "version": "v1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oomphinc/composer-installers-extender.git",
+                "reference": "ca1c4b16b0905c81d1e77e608f36a2eff1a56f56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oomphinc/composer-installers-extender/zipball/ca1c4b16b0905c81d1e77e608f36a2eff1a56f56",
+                "reference": "ca1c4b16b0905c81d1e77e608f36a2eff1a56f56",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "composer/installers": "^1.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "OomphInc\\ComposerInstallersExtender\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "OomphInc\\ComposerInstallersExtender\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Beemsterboer",
+                    "email": "stephen@oomphinc.com",
+                    "homepage": "https://github.com/balbuf"
+                }
+            ],
+            "description": "Extend the composer/installers plugin to accept any arbitrary package type.",
+            "homepage": "http://www.oomphinc.com/",
+            "time": "2017-03-31T16:57:39+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -9202,6 +9468,46 @@
             "time": "2018-07-13T07:12:17+00:00"
         },
         {
+            "name": "typo3/phar-stream-wrapper",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3/phar-stream-wrapper.git",
+                "reference": "0469d9fefa0146ea4299d3b11cfbb76faa7045bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3/phar-stream-wrapper/zipball/0469d9fefa0146ea4299d3b11cfbb76faa7045bf",
+                "reference": "0469d9fefa0146ea4299d3b11cfbb76faa7045bf",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3|^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.36"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\PharStreamWrapper\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Interceptors for PHP's native phar:// stream handling",
+            "homepage": "https://typo3.org/",
+            "keywords": [
+                "phar",
+                "php",
+                "security",
+                "stream-wrapper"
+            ],
+            "time": "2018-10-18T08:46:28+00:00"
+        },
+        {
             "name": "webflo/drupal-core-strict",
             "version": "8.0.0-beta15",
             "source": {
@@ -9209,6 +9515,15 @@
                 "url": "https://github.com/webflo/drupal-core-strict.git",
                 "reference": "1eb044b722ebe44bc6af86a03888415d7f31c057"
             },
+<<<<<<< HEAD
+=======
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webflo/drupal-core-strict/zipball/1eb044b722ebe44bc6af86a03888415d7f31c057",
+                "reference": "1eb044b722ebe44bc6af86a03888415d7f31c057",
+                "shasum": ""
+            },
+>>>>>>> master
             "type": "metapackage",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -10291,88 +10606,6 @@
                 "standards"
             ],
             "time": "2018-09-21T14:22:49+00:00"
-        },
-        {
-            "name": "drupal/devel",
-            "version": "1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/devel",
-                "reference": "8.x-1.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/devel-8.x-1.2.zip",
-                "reference": "8.x-1.2",
-                "shasum": "01f3349ef75f6e21fceef24be9d3d6506ca29647"
-            },
-            "require": {
-                "drupal/core": "~8.0"
-            },
-            "suggest": {
-                "symfony/var-dumper": "Pretty print complex values better with var-dumper available"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.2",
-                    "datestamp": "1507197844",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Moshe Weitzman",
-                    "homepage": "https://github.com/weitzman",
-                    "email": "weitzman@tejasa.com",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Hans Salvisberg",
-                    "homepage": "https://www.drupal.org/u/salvis",
-                    "email": "drupal@salvisberg.com",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Luca Lusso",
-                    "homepage": "https://www.drupal.org/u/lussoluca",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Marco (willzyx)",
-                    "homepage": "https://www.drupal.org/u/willzyx",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "See contributors",
-                    "homepage": "https://www.drupal.org/node/3236/committers"
-                },
-                {
-                    "name": "salvis",
-                    "homepage": "https://www.drupal.org/user/82964"
-                },
-                {
-                    "name": "willzyx",
-                    "homepage": "https://www.drupal.org/user/1043862"
-                }
-            ],
-            "description": "Various blocks, pages, and functions for developers.",
-            "homepage": "http://drupal.org/project/devel",
-            "support": {
-                "source": "http://cgit.drupalcode.org/devel",
-                "issues": "http://drupal.org/project/devel",
-                "irc": "irc://irc.freenode.org/drupal-contribute"
-            }
         },
         {
             "name": "drupal/drupal-driver",
@@ -11618,6 +11851,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2015-10-02T06:51:40+00:00"
         },
         {

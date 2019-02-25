@@ -84,7 +84,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 	text-decoration: none;
 	padding-top:0;
 	line-height: 2rem;
-	
+
 	&:hover,
 	&:focus {
 		font-weight: 700;
@@ -96,7 +96,7 @@ h1.js-quickedit-page-title.page-title {
     padding-bottom: 25px;
 }
 #block-myusf-page-title h1.title {
-	@include media-breakpoint-up(tablet) { 
+	@include media-breakpoint-up(tablet) {
     	margin-top: -5px;
 	}
 }
@@ -112,6 +112,10 @@ a {
 	text-decoration: underline;
 	background-color: transparent;
 	-webkit-text-decoration-skip: objects;
+
+	h2, h3, h4, h5 {
+		color:$green!important;
+	}
 }
 
 a:hover, a:focus {
@@ -169,14 +173,14 @@ th {
 	&[scope="col"] {
 		text-transform: uppercase;
 		height: 45px;
-	    vertical-align: middle;  
-	    background: $green;  
+	    vertical-align: middle;
+	    background: $green;
 	}
 
 	&[scope="row"] {
 		font-weight:400;
 		color: $black;
-		background: transparentize( $light_gray, 0.5);			
+		background: transparentize( $light_gray, 0.5);
 	}
 
 	a {
@@ -196,7 +200,7 @@ tr {
 	}
 	&:nth-child(2n+1){
 		background: transparentize( $beige, 0.5);
-		/*th[scope=row] {			
+		/*th[scope=row] {
 			background: #e5e2d6;
 		}*/
 	}
@@ -207,7 +211,7 @@ tr {
 }
 /*.table-responsive {
 	display: table;
-	@include media-breakpoint-down(phone) { 
+	@include media-breakpoint-down(phone) {
 		display: block;
 	}
 }*/
@@ -218,7 +222,7 @@ tr {
 	}
 }
 
-/*@include media-breakpoint-down(phone) {  
+/*@include media-breakpoint-down(phone) {
 	table.table-responsive:before, div.table-responsive:before {
 		position: relative;
 		content: "Scroll to see more";
@@ -227,7 +231,7 @@ tr {
 	    height: 25px;
 	    top: 0;
 	    right: 0px;
-	    float: left;   
+	    float: left;
 	}
 }*/
 
@@ -245,8 +249,8 @@ tr {
 	}
 }
 
-/* Sidebar Second Ads 
-=================================================== */ 
+/* Sidebar Second Ads
+=================================================== */
 .sidebar-ad {
 	padding:15px!important;
 	h2 {
@@ -257,7 +261,7 @@ tr {
 	    border: 0;
 	}
 	p {
-		color: $white;	
+		color: $white;
 	}
 	a  {
 		color: $yellow;
@@ -269,8 +273,8 @@ tr {
 	}
 }
 
-/* GOOGLE SEARCH RESULTS 
-=================================================== */ 
+/* GOOGLE SEARCH RESULTS
+=================================================== */
 div#___gcse_0, div#___gcse_1 {
 	table {
 		tr {
@@ -280,7 +284,7 @@ div#___gcse_0, div#___gcse_1 {
 }
 /* Search box */
 
-div#___gcse_0 { 
+div#___gcse_0 {
 	margin-top: 30px;
 	margin-bottom: 30px;
 
@@ -319,7 +323,7 @@ div#___gcse_0 {
 				 		content: "";
 				 		position: relative;
 				    	width: 24px;
-				    	height: 25px;   	
+				    	height: 25px;
 				    	top: 0;
 				    	left: -11px;
 				    	bottom: 0;
@@ -333,13 +337,13 @@ div#___gcse_0 {
 				    }
 				}
 			}
-		}		
+		}
 	}
 }
 
 /* Search Results */
 
-div#___gcse_1 { 
+div#___gcse_1 {
 	@include media-breakpoint-down(phone) {
 		margin-top: -10px;
 	}
@@ -365,7 +369,7 @@ div#___gcse_1 {
 			margin-bottom: 0;
 		}
 	}
-	
+
 
 	.gsc-control-cse .gs-result .gs-title * {
 		font-size: 1.2rem!important;
@@ -381,7 +385,7 @@ div#___gcse_1 {
 			margin-top:20px;
 			border-bottom: 1px solid $light_gray;
 			&:hover,
-			&:focus { 
+			&:focus {
 				border-bottom: 1px solid $light_gray!important;
 			}
 			@include media-breakpoint-down(phone) {
@@ -453,7 +457,7 @@ div#___gcse_1 {
 			}
 			.gsc-thumbnail-inside .gs-title b {
 				font-weight:700;
-			}			
+			}
 		}
 		.gsc-cursor-box.gs-bidi-start-align {
 			border-top: 0!important;
@@ -484,7 +488,7 @@ div#___gcse_1 {
     text-transform: uppercase;
     margin-bottom: 20px;
 }
-h1.display-title {
+h1.display-title, h1.title {
     font-size: 1.8rem;
     line-height: 2rem;
     @include media-breakpoint-down(tablet) {
@@ -497,5 +501,3 @@ h2.sub-title {
     line-height: 1.7rem;
     padding-top: .2rem;
 }
-
-

@@ -1,30 +1,27 @@
-uuid: 558dc38c-f755-4a17-b07a-45ea21b5436d
+uuid: 87c515d9-7bc3-4e20-93c0-e371234fa7ae
 langcode: en
 status: true
 dependencies:
-  content:
-    - 'block_content:custom_block:bf58503e-a666-465d-832d-667b4710427b'
+  config:
+    - simple_block.simple_block.announcements
   module:
-    - block_content
     - block_visibility_groups
+    - simple_block
     - system
     - user
   theme:
     - myusf
-id: itsorgchartprotected
+id: announcements
 theme: myusf
-region: content
-weight: 6
+region: sidebar_second
+weight: 0
 provider: null
-plugin: 'block_content:bf58503e-a666-465d-832d-667b4710427b'
+plugin: 'simple_block:announcements'
 settings:
-  id: 'block_content:bf58503e-a666-465d-832d-667b4710427b'
-  label: 'ITS Org Chart (Protected)'
-  provider: block_content
+  id: 'simple_block:announcements'
+  label: Announcements
+  provider: simple_block
   label_display: '0'
-  status: true
-  info: ''
-  view_mode: full
 visibility:
   condition_group:
     id: condition_group
@@ -33,7 +30,7 @@ visibility:
     context_mapping: {  }
   request_path:
     id: request_path
-    pages: /its/about-its
+    pages: /dashboard
     negate: false
     context_mapping: {  }
   user_role:
