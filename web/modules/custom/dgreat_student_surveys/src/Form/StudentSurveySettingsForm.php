@@ -33,6 +33,7 @@ class StudentSurveySettingsForm extends FormBase {
       ],
       '#upload_location' => 'private://student_surveys/',
       '#weight' => '0',
+      "#default_value" => \Drupal::state()->get('current_student_xml_file'),
     ];
     $form['submit'] = [
       '#type' => 'submit',
@@ -76,6 +77,7 @@ class StudentSurveySettingsForm extends FormBase {
             $conn->insert('current_survey_students')->fields([
               'username' => $record->USERNAME,
             ])->execute();
+            \Drupal::state()->set('current_student_xml_file', $fids[0]);
           }
           catch (\Exception $e) {
             \Drupal::logger('dgreat_student_surveys')
@@ -84,6 +86,7 @@ class StudentSurveySettingsForm extends FormBase {
         }
       }
     }
+
     \Drupal::service('messenger')->addMessage('Current Student File Updated');
   }
 
