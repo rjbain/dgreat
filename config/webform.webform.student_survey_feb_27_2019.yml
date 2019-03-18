@@ -1,18 +1,25 @@
-uuid: dcb643c9-e5e3-4635-b609-e4ee9b7ffe5a
+uuid: 318dd4af-66f0-4b1a-be56-9ed815e81f0b
 langcode: en
 status: open
-dependencies: {  }
+dependencies:
+  module:
+    - dgreat_student_surveys
+third_party_settings:
+  dgreat_student_surveys:
+    salesforce_id: 70150000001Ez1S
+_core:
+  default_config_hash: mYTMZ6UnS7UH3uSYX1QXfOp8XaBX-r-wTjhCt-EWh_k
 open: null
 close: null
 weight: 0
-uid: 35196
+uid: 120
 template: false
 archive: false
-id: hr_gousf_event_rsvp_form
-title: 'HR GoUSF Event RSVP Form'
-description: ''
-category: ''
-elements: "select_the_gousf_event_s_that_you_would_like_to_attend:\n  '#type': checkboxes\n  '#title': 'Select the GoUSF event(s) that you would like to attend'\n  '#options':\n    'Go Save: TIAA Traditional and Annuity Products*Tues, Mar 19*12-1pm*LM100': 'Go Save: TIAA Traditional and Annuity Products*Tues, Mar 19*12-1pm*LM100'\n    'EH: Battling the Blues*Tues, Mar 26*12-1pm*UC 402/403': 'EH: Battling the Blues*Tues, Mar 26*12-1pm*UC 402/403'\n    'Go Save: Prepare for the Reality of Healthcare in Retirement*Thurs, Mar 28*12-1pm*UC 503': 'Go Save: Prepare for the Reality of Healthcare in Retirement*Thurs, Mar 28*12-1pm*UC 503'\n    'EH: QPR Suicide Prevention Cert*Tues, Apr 9*12-1:30pm*MCL 251': 'EH: QPR Suicide Prevention Cert*Tues, Apr 9*12-1:30pm*MCL 251'\n    'EH: Healthy Boundaries*Tues, May 7*12-1pm*UC 402/403': 'EH: Healthy Boundaries*Tues, May 7*12-1pm*UC 402/403'\nprocessed_text:\n  '#type': processed_text\n  '#text': |\n    <h2>Employee's Information</h2>\n    \n  '#format': full_html\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name '\ndepartment:\n  '#type': textfield\n  '#title': Department\ntitle:\n  '#type': textfield\n  '#title': Title\nemail:\n  '#type': email\n  '#title': 'USF Email Address'\nusf_phone_number:\n  '#type': tel\n  '#title': 'USF Phone Number'\nemployee_type:\n  '#type': radios\n  '#title': 'Employee Type'\n  '#options':\n    Faculty: Faculty\n    Staff: Staff\n    Other: Other"
+id: student_survey_feb_27_2019
+title: 'Student Survey Feb 27 2019'
+description: 'First student survey.'
+category: student_survey
+elements: "overall_how_connected_do_you_feel_to_the_university_of_san_franc:\n  '#type': student_survey_rating_element\n  '#title': 'Overall, how connected do you feel to the University of San Francisco?'\n  '#salesforce_id': 70150000001Ez1S\n  '#options':\n    'Strongly disconnected': 'Strongly disconnected'\n    Disconnected: Disconnected\n    'Neither disconnected nor connected': 'Neither disconnected nor connected'\n    Connected: Connected\n    'Strongly connected': 'Strongly connected'\nhow_much_do_you_agree_with_the_following_statement_i_feel_a_part:\n  '#type': student_survey_rating_element\n  '#title': 'How much do you agree with the following statement? \"I feel a part of campus life at the University of San Francisco.\"'\n  '#salesforce_id': 70150000001Ez1X\n  '#options':\n    'Strongly disagree': 'Strongly disagree'\n    Disagree: Disagree\n    'Neither disagree nor agree': 'Neither disagree nor agree'\n    Agree: Agree\n    'Strongly agree': 'Strongly agree'"
 css: ''
 javascript: ''
 settings:
@@ -43,21 +50,14 @@ settings:
   form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
-  form_access_denied: default
-  form_access_denied_title: ''
-  form_access_denied_message: ''
-  form_access_denied_attributes: {  }
-  form_file_limit: ''
+  form_login: false
+  form_login_message: ''
   submission_label: ''
   submission_log: false
-  submission_views: {  }
-  submission_views_replace: {  }
   submission_user_columns: {  }
   submission_user_duplicate: false
-  submission_access_denied: default
-  submission_access_denied_title: ''
-  submission_access_denied_message: ''
-  submission_access_denied_attributes: {  }
+  submission_login: false
+  submission_login_message: ''
   submission_exception_message: ''
   submission_locked_message: ''
   previous_submission_message: ''
@@ -87,10 +87,10 @@ settings:
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
-  confirmation_type: page
+  confirmation_type: url_message
   confirmation_title: ''
-  confirmation_message: ''
-  confirmation_url: ''
+  confirmation_message: 'Thanks for participating in the survey!'
+  confirmation_url: /dashboard
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -112,6 +112,17 @@ settings:
   results_disabled: false
   results_disabled_ignore: false
   token_update: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
 access:
   create:
     roles:
@@ -155,38 +166,4 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers:
-  email:
-    id: email
-    label: Email
-    handler_id: email
-    status: true
-    conditions: {  }
-    weight: 0
-    settings:
-      states:
-        - completed
-      to_mail: skisylia@usfca.edu
-      to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      from_mail: _default
-      from_options: {  }
-      from_name: _default
-      subject: _default
-      body: _default
-      excluded_elements: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      html: true
-      attachments: false
-      twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      theme_name: ''
+handlers: {  }

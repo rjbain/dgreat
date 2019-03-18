@@ -1,0 +1,31 @@
+uuid: 184b4595-62a4-4c61-b411-d44cd1cb5cf0
+langcode: en
+status: true
+dependencies:
+  config:
+    - webform.webform.student_survey_feb_27_2019
+  module:
+    - block_visibility_groups
+    - dgreat_student_surveys
+  theme:
+    - myusf
+id: studentsurvey
+theme: myusf
+region: content
+weight: 0
+provider: null
+plugin: dgreat_modal_student_survey
+settings:
+  id: dgreat_modal_student_survey
+  label: 'Student Survey'
+  provider: dgreat_student_surveys
+  label_display: visible
+  webform_id: student_survey_feb_27_2019
+  default_data: ''
+  redirect: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
