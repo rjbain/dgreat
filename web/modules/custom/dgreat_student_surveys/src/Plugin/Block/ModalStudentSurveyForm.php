@@ -33,9 +33,13 @@ class ModalStudentSurveyForm extends WebformBlock {
       ],
     ]);
     $account = \Drupal::currentUser();
+    // Don't run while address check is going on.
+    $session = \Drupal::request()->getSession()->get('usfb_address_check');
+    $address_check_inactive = $session === NULL || $session === FALSE;
+
     // @todo: Would prefer to run this in blockAccess, but for some reason it
     // does not run on the first page load after log in.
-    if ($this->canAccess($account)) {
+    if ($this->canAccess($account) && $address_check_inactive) {
       \Drupal::service('session')->set('student_surveys_has_seen_recently', TRUE);
       return $build;
     }

@@ -1,0 +1,21 @@
+usfb_address.address_form:
+  path: '/user/{user}/edit/address'
+  defaults:
+    _title: Address
+    _form: \Drupal\usfb_address\Form\UsfbAddressForm
+  requirements:
+    _role: 'authenticated'
+usfb_address.ask_address_correct:
+  path: '/user/{user}/edit/address/check'
+  defaults:
+    _title: 'Local Residence Address Check'
+    _form: \Drupal\usfb_address\Form\UsfbAddressCheck
+  requirements:
+    _role: 'authenticated'
+usfb_address.settings_form:
+  path: /admin/config/development/usfb_address
+  defaults:
+    _title: 'USFB Address'
+    _form: \Drupal\usfb_address\Form\UsfbAddressSettingsForm
+  requirements:
+    _permission: 'administer usfb_address settings'
