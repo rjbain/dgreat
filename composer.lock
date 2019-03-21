@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "14415552a2970af0dcf66298ae1c58d1",
+    "content-hash": "1d48ae60c4a1d606923b0d89932c3f77",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -421,6 +421,17 @@
             "time": "2017-04-04T11:38:05+00:00"
         },
         {
+            "name": "ckeditor-plugin/embed",
+            "version": "4.11.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://download.ckeditor.com/embed/releases/embed_4.11.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "drupal-library"
+        },
+        {
             "name": "commerceguys/addressing",
             "version": "v1.0.2",
             "source": {
@@ -478,17 +489,6 @@
                 "postal"
             ],
             "time": "2018-10-21T23:38:05+00:00"
-        },
-        {
-            "name": "ckeditor-plugin/embed",
-            "version": "4.11.1",
-            "dist": {
-                "type": "zip",
-                "url": "https://download.ckeditor.com/embed/releases/embed_4.11.1.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "drupal-library"
         },
         {
             "name": "composer/installers",
@@ -6066,16 +6066,15 @@
                 },
                 "drupal": {
                     "version": "8.x-1.0-alpha1",
-                    "datestamp": "1502725743",
+                    "datestamp": "1546141084",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
+                        "message": "Alpha releases are not covered by Drupal security advisories."
                     }
                 },
                 "patches_applied": {
                     "https://dgo.to/2971329 Migration plugin must define the source_module property": "https://www.drupal.org/files/issues/2018-05-08/migration_plugin_must_define_the_source_module_property.patch",
-                    "https://github.com/heshanlk/webform_migrate/issues/5": "https://patch-diff.githubusercontent.com/raw/heshanlk/webform_migrate/pull/6.patch",
-                    "https://github.com/heshanlk/webform_migrate/issues/7": "https://patch-diff.githubusercontent.com/raw/heshanlk/webform_migrate/pull/8.patch"
+                    "https://github.com/heshanlk/webform_migrate/issues/5": "https://patch-diff.githubusercontent.com/raw/heshanlk/webform_migrate/pull/6.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -6177,6 +6176,62 @@
             "homepage": "https://www.drupal.org/project/webform",
             "support": {
                 "source": "http://cgit.drupalcode.org/webform"
+            }
+        },
+        {
+            "name": "drupal/webform_views",
+            "version": "5.0.0-alpha6",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/webform_views",
+                "reference": "8.x-5.0-alpha6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/webform_views-8.x-5.0-alpha6.zip",
+                "reference": "8.x-5.0-alpha6",
+                "shasum": "a175d0421c020a7953bacc0c3d93e97efb1b228f"
+            },
+            "require": {
+                "drupal/core": "*",
+                "drupal/webform": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-5.x": "5.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-5.0-alpha6",
+                    "datestamp": "1540871280",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "bucefal91",
+                    "homepage": "https://www.drupal.org/user/504128"
+                },
+                {
+                    "name": "jrockowitz",
+                    "homepage": "https://www.drupal.org/user/371407"
+                },
+                {
+                    "name": "ws.agency",
+                    "homepage": "https://www.drupal.org/user/2851415"
+                }
+            ],
+            "description": "Webform integration with views.",
+            "homepage": "https://www.drupal.org/project/webform_views",
+            "support": {
+                "source": "http://cgit.drupalcode.org/webform_views"
             }
         },
         {
