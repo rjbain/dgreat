@@ -1,18 +1,18 @@
-uuid: dcb643c9-e5e3-4635-b609-e4ee9b7ffe5a
+uuid: d17e0d57-1657-4898-90b7-96bd7b1ea138
 langcode: en
 status: open
 dependencies: {  }
 open: null
 close: null
 weight: 0
-uid: 35196
+uid: 52158
 template: false
 archive: false
-id: hr_gousf_event_rsvp_form
-title: 'HR GoUSF Event RSVP Form'
-description: ''
-category: ''
-elements: "select_the_gousf_event_s_that_you_would_like_to_attend:\n  '#type': checkboxes\n  '#title': 'Select the GoUSF event(s) that you would like to attend'\n  '#options':\n    'Go Save: TIAA Traditional and Annuity Products*Tues, Mar 19*12-1pm*LM100': 'Go Save: TIAA Traditional and Annuity Products*Tues, Mar 19*12-1pm*LM100'\n    'EH: Battling the Blues*Tues, Mar 26*12-1pm*UC 402/403': 'EH: Battling the Blues*Tues, Mar 26*12-1pm*UC 402/403'\n    'Go Save: Prepare for the Reality of Healthcare in Retirement*Thurs, Mar 28*12-1pm*UC 503': 'Go Save: Prepare for the Reality of Healthcare in Retirement*Thurs, Mar 28*12-1pm*UC 503'\n    'EH: QPR Suicide Prevention Cert*Tues, Apr 9*12-1:30pm*MCL 251': 'EH: QPR Suicide Prevention Cert*Tues, Apr 9*12-1:30pm*MCL 251'\n    'EH: Healthy Boundaries*Tues, May 7*12-1pm*UC 402/403': 'EH: Healthy Boundaries*Tues, May 7*12-1pm*UC 402/403'\nprocessed_text:\n  '#type': processed_text\n  '#text': |\n    <h2>Employee's Information</h2>\n    \n  '#format': full_html\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name '\ndepartment:\n  '#type': textfield\n  '#title': Department\ntitle:\n  '#type': textfield\n  '#title': Title\nemail:\n  '#type': email\n  '#title': 'USF Email Address'\nusf_phone_number:\n  '#type': tel\n  '#title': 'USF Phone Number'\nemployee_type:\n  '#type': radios\n  '#title': 'Employee Type'\n  '#options':\n    Faculty: Faculty\n    Staff: Staff\n    Other: Other"
+id: my_financial_aid
+title: 'My Financial Aid'
+description: 'Use this form to calculate your remaining financial aid eligibility.'
+category: 'Financial Aid'
+elements: "flexbox:\n  '#type': webform_flexbox\n  loan_total:\n    '#type': number\n    '#title': 'Total Federal Loans Received (Fall 2018, Spring 2019)'\n    '#description': 'Use this field to enter the total federal loans you have received for the 2018-2019 academic year.&nbsp;'\n  markup:\n    '#type': webform_markup\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit_hide': true"
 css: ''
 javascript: ''
 settings:
@@ -155,38 +155,4 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers:
-  email:
-    id: email
-    label: Email
-    handler_id: email
-    status: true
-    conditions: {  }
-    weight: 0
-    settings:
-      states:
-        - completed
-      to_mail: skisylia@usfca.edu
-      to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      from_mail: _default
-      from_options: {  }
-      from_name: _default
-      subject: _default
-      body: _default
-      excluded_elements: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      html: true
-      attachments: false
-      twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      theme_name: ''
+handlers: {  }
