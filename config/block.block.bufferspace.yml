@@ -1,0 +1,45 @@
+uuid: dd80a4a2-5298-4189-85f8-dda43b018beb
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:custom_block:3e2c8e1e-8ed3-4851-ba81-63f5d286d4cb'
+  module:
+    - block_content
+    - block_visibility_groups
+    - node
+    - system
+  theme:
+    - myusf
+id: bufferspace
+theme: myusf
+region: content
+weight: 4
+provider: null
+plugin: 'block_content:3e2c8e1e-8ed3-4851-ba81-63f5d286d4cb'
+settings:
+  id: 'block_content:3e2c8e1e-8ed3-4851-ba81-63f5d286d4cb'
+  label: 'Buffer Space'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  node_type:
+    id: node_type
+    bundles:
+      usf_service: usf_service
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+  request_path:
+    id: request_path
+    pages: '/services/*'
+    negate: false
+    context_mapping: {  }
