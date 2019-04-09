@@ -1,18 +1,18 @@
-uuid: b2266939-d36c-42fc-83f5-de5f01493278
+uuid: abbb20a1-9271-4610-81c1-3eed6baf31cf
 langcode: en
 status: open
 dependencies: {  }
 open: null
 close: null
 weight: 0
-uid: 1510
+uid: 62932
 template: false
 archive: false
-id: webform_63688
-title: 'RSVP For Preview Day'
-description: null
-category: null
-elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name:'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name:'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': textfield\n  '#title': 'Email:'\n  '#description': ''\n  '#required': true\nwill_you_attend_the_preview_day_for_admitted_students:\n  '#type': radios\n  '#options':\n    1: 'Yes'\n    2: 'No'\n  '#title': 'Will you attend the Preview Day for Admitted Students:'\n  '#description': ''\n  '#required': true\nnumber_of_additional_guests_excluding_admitted_student:\n  '#type': radios\n  '#options':\n    1: 1\n    2: 2\n    3: 3\n    4: 4\n  '#title': 'Number of additional guests (excluding admitted student):'\n  '#description': ''\nare_you_interested_in_a_tour_of_the_law_school_during_the_preview_day:\n  '#type': radios\n  '#options':\n    1: 'Yes'\n    2: 'No'\n  '#title': 'Are you interested in a tour of the Law School during the Preview Day:'\n  '#description': ''\n  '#required': true"
+id: test
+title: Test
+description: ''
+category: ''
+elements: "pick_a_day:\n  '#type': radios\n  '#title': 'Pick a day'\n  '#description': 'sample text'\n  '#options': days\nsubmit_email:\n  '#type': email\n  '#title': 'submit email'"
 css: ''
 javascript: ''
 settings:
@@ -82,14 +82,14 @@ settings:
   preview_excluded_elements: {  }
   preview_exclude_empty: true
   preview_exclude_empty_checkbox: false
-  draft: '0'
+  draft: none
   draft_multiple: false
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
   confirmation_type: page
-  confirmation_title: 'Thank you for registering for the Admitted Student Preview Day at USF School of Law '
-  confirmation_message: "We look forward to seeing you on April 12. If you have any questions before then, please reach out to us at <a href=\"mailto:lawadmissions@usfca.edu\">lawadmissions@usfca.edu</a> or call 415.422.6586.<br />\r\n<br />\r\n<strong><a href=\"https://myusf.usfca.edu/law/admitted-students/preview-day\">Admitted Student Preview Day</a><br />\r\nFriday, April 12, 2019</strong><br />\r\n1:30 p.m. to 6:00 p.m.&nbsp;<br />\r\nKendrick Hall<br />\r\nUniversity of San Francisco School of Law<br />\r\n2199 Fulton Street, San Francisco"
+  confirmation_title: ''
+  confirmation_message: ''
   confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
@@ -112,14 +112,13 @@ settings:
   results_disabled: false
   results_disabled_ignore: false
   token_update: false
-  form_submit_label: ''
-  wizard_complete: 1
 access:
   create:
     roles:
       - anonymous
       - authenticated
     users: {  }
+    permissions: {  }
   view_any:
     roles: {  }
     users: {  }
@@ -157,17 +156,17 @@ access:
     users: {  }
     permissions: {  }
 handlers:
-  email_1:
+  email:
     id: email
-    label: 'Auto-reply for Preview Day '
-    handler_id: email_1
+    label: Email
+    handler_id: email
     status: true
     conditions: {  }
-    weight: 1
+    weight: 0
     settings:
       states:
         - completed
-      to_mail: sgoliva@usfca.edu
+      to_mail: '[webform_submission:values:submit_email:raw]'
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
@@ -176,42 +175,8 @@ handlers:
       from_mail: _default
       from_options: {  }
       from_name: _default
-      subject: 'Thank you for registering for Preview Day on April 12'
-      body: _default
-      excluded_elements: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      html: true
-      attachments: false
-      twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      theme_name: ''
-  confirmation_:
-    id: email
-    label: 'Confirmation '
-    handler_id: confirmation_
-    status: true
-    conditions: {  }
-    weight: 2
-    settings:
-      states:
-        - completed
-      to_mail: '[webform_submission:values:email:raw]'
-      to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      from_mail: sgoliva@usfca.edu
-      from_options: {  }
-      from_name: 'USF School of Law Admissions'
       subject: _default
-      body: "<p>Thank you for registering for the Admitted Student Preview Day at USF School of Law! We look forward to seeing you then. If you have any questions, please reach out to us at&nbsp;<a data-mce-href=\"mailto:lawadmissions@usfca.edu\" href=\"mailto:lawadmissions@usfca.edu\">lawadmissions@usfca.edu</a>&nbsp;or call 415.422.6586.<br />\r\n<br />\r\n<strong><a data-mce-href=\"https://myusf.usfca.edu/law/admitted-students/preview-day\" href=\"https://myusf.usfca.edu/law/admitted-students/preview-day\">Admitted Student Preview Day</a><br />\r\nFriday, April 12, 2019</strong><br />\r\n1:30 p.m. to 6:00 p.m.&nbsp;<br />\r\nKendrick Hall<br />\r\nUniversity of San Francisco School of Law<br />\r\n2199 Fulton Street, San Francisco<br />\r\n<br />\r\nSubmitted on [webform_submission:created]</p>\r\n\r\n<p>Submitted by: [webform_submission:user]</p>\r\n\r\n<p>Submitted values are:</p>\r\n[webform_submission:values]"
+      body: _default
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
