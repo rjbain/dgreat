@@ -37,7 +37,7 @@ $plainTextStudentId = $plainStudentId . "|" . $utcDateTime;
  
 // Only use the first 16 chars (16 bytes) of MASK1 for AES128
 $privateKey16String = substr($MASK1, 0, 16);
-$encryptedHexString = encrypt_openssl($plainTextStudentId, $privateKey16String);
+//$encryptedHexString = encrypt_openssl($plainTextStudentId, $privateKey16String);
  
 $HEXKEY = $CLIENTID . $encryptedHexString . "|P";
  
