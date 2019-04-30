@@ -45,6 +45,10 @@ function myusf_preprocess_block(&$vars) {
     $vars['#cache']['max-age'] = 0;
   }
 
+  if ($vars['derivative_plugin_id'] == 'cediplomalinkblock') {
+    $vars['#cache']['max-age'] = 0;
+  }
+
   // Allow blocks to update after editing.
   if ($vars['base_plugin_id'] == 'block_content') {
     $renderer = \Drupal::service('renderer');
