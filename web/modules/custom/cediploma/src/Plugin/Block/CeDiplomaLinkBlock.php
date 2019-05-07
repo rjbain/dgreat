@@ -5,6 +5,8 @@
 namespace Drupal\cediploma\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\user\Entity\User;
+
 
 /**
  * Creates a 'Cediploma Link' Block
@@ -20,12 +22,24 @@ class CeDiplomaLinkBlock extends BlockBase {
      */
 	public function build() {
 
+		$uid = \Drupal::currentUser()->id();
+      	$user = User::load($uid);
+		$cwid = $user->get('field_user_cwid')->getValue();
+		foreach($cwid as $value) {
+			$plainStudentId = [];
+			foreach($value as $cwids) {
+				$plainStudentId[] = $cwids;
+			}	
+
+		}
+		$plainStudentId = $plainStudentId[0];
+
 		$ENDPOINT = "https://test.secure.cecredentialtrust.com/Account/ERLSSO"; //Test Endpoint
  		// Enter Values from spreadsheet supplied by Paradigm
 		$CLIENTID = "92442390-6FFE-49C5-9E9B-3DCC22D740BB";
 		$CLIENTNUMBER = "1709";
 		$MASK1 = "28=++4>8.$#=2+5-5;)81:1%*><==+9)";
-		$plainStudentId = "20524550"; //used for testing success
+		//$plainStudentId = "20524550"; //used for testing success
 		// Encrypt data and build HEXKEY
 		// StudentId + pipe symbol + UTC DateTime is used to prevent "replay attacks"
 		$utcDateTime = gmdate("Y-m-d H:i:s");
