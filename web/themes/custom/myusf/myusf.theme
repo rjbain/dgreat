@@ -45,6 +45,7 @@ function myusf_preprocess_block(&$vars) {
     $vars['#cache']['max-age'] = 0;
   }
 
+
   if ($vars['derivative_plugin_id'] == 'cediplomalinkblock') {
     $vars['#cache']['max-age'] = 0;
   }
@@ -54,6 +55,15 @@ function myusf_preprocess_block(&$vars) {
     $renderer = \Drupal::service('renderer');
     $renderer->addCacheableDependency($vars, $vars['content']['#block_content']);
   }
+}
+
+
+
+function cediploma_preprocess_block(&$vars) {
+  if($vars['derivative_plugin_id'] == 'cediplomalinkblock') {
+    $vars['#cache']['max-age'] = 0;
+  }
+
 }
 
 /**
