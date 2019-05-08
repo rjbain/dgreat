@@ -77,7 +77,17 @@ class CeDiplomaLinkBlock extends BlockBase {
 
 		//print "<a href='$ENDPOINT/$HEXKEY/$CLIENTNUMBER' target='_blank'>Order/Register my CeDiploma</a>";
 
-
 	}
+
+
+
+	/**
+     * {@inheritdoc}
+     */
+    public function getCacheMaxAge() {
+        return 0;
+    }
+
+
 
 }
