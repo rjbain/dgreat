@@ -5,6 +5,7 @@ dependencies:
   module:
     - block_visibility_groups
     - cediploma
+    - user
   theme:
     - myusf
 id: cediplomalinkblock
@@ -24,3 +25,11 @@ visibility:
     negate: false
     block_visibility_group: ''
     context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      student: student
+      employee: employee
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
