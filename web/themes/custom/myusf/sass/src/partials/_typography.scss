@@ -282,11 +282,30 @@ div#___gcse_0, div#___gcse_1 {
 		}
 	}
 }
+
+table.gsc-completion-container tr, 
+table.gsc-completion-container tr:nth-child(2n+1), 
+table.gsc-completion-container tr:nth-child(2n) {
+	background-color: $white;
+}
+
 /* Search box */
+
+.gsc-completion-container .gssb_a {
+	display: none;
+}
+
 
 div#___gcse_0 {
 	margin-top: 30px;
 	margin-bottom: 30px;
+
+	@include media-breakpoint-only(tablet) {
+		width: 150%;
+	}
+	@include media-breakpoint-down(phone) {
+		margin-left:-9px;
+	}
 
 	table.gsc-search-box {
 		width: 60%!important;
@@ -298,15 +317,27 @@ div#___gcse_0 {
 		td {
 	    	vertical-align: top!important;
 	    	&.gsc-input {
+	    		padding-top: 9px;
+	    		padding-right: 12px!important;
 
 	    		.gsc-input-box  {
 					height:51px;
+					border-radius: 0!important;
 				}
 				#gs_cb50 {
 					color: $text-gray;
 				}
 		    	.gsib_b {
 				    padding-top: 3px;
+
+				    a.gsst_a {
+				    	padding-top:4px;
+				    }
+				}
+
+				.gsc-input {
+					margin-top: 0px!important;
+					height: 30px!important;
 				}
 			}
 
@@ -314,6 +345,7 @@ div#___gcse_0 {
 				button.gsc-search-button.gsc-search-button-v2 {
 					width: 51px;
 				    height: 51px;
+				    padding: 0;
 				    margin-top: 0;
 				    border-radius: 0;
 				    background: #00543c;
@@ -324,12 +356,10 @@ div#___gcse_0 {
 				 		position: relative;
 				    	width: 24px;
 				    	height: 25px;
-				    	top: 0;
-				    	left: -11px;
+				    	top: 3px;				    	
 				    	bottom: 0;
-				    	margin: auto 10px auto auto;
-				    	background: url(/themes/custom/myusf/images/site/icons.png) no-repeat -190px -96px;
-				    	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -190px -96px;
+				    	margin: auto;
+				    	background: url(/themes/custom/myusf/images/site/icons.png) no-repeat -196px -96px;
 				    }
 
 				    svg {
@@ -344,6 +374,11 @@ div#___gcse_0 {
 /* Search Results */
 
 div#___gcse_1 {
+
+	@include media-breakpoint-only(tablet) {
+		width: 145%;
+	}
+
 	@include media-breakpoint-down(phone) {
 		margin-top: -10px;
 	}
@@ -356,7 +391,8 @@ div#___gcse_1 {
 		margin-top: -20px;
 
 		@include media-breakpoint-down(phone) {
-				margin-top: -10px!important;
+			margin-top: -10px!important;    
+			margin-left: -4px;
 		}
 		.gsc-resultsbox-visible {
 			@include media-breakpoint-down(phone) {
@@ -368,6 +404,11 @@ div#___gcse_1 {
 			margin-top: 0;
 			margin-bottom: 0;
 		}
+		.gsc-result-info-container .gsc-result-info {
+			@include media-breakpoint-down(phone) {
+				margin-left: -9px!important;
+			}
+		}
 	}
 
 
@@ -378,6 +419,17 @@ div#___gcse_1 {
 	.gs-fileFormat {
 	    line-height: .1rem;
 	    padding-bottom: 1.7rem;
+	    padding-top: 5px;
+	}
+
+	.gsc-table-cell-thumbnail {
+		display: none;
+	}
+
+	.gcsc-find-more-on-google-root,
+	.gcsc-more-maybe-branding-root,
+	.gcsc-branding {
+		display: none;
 	}
 
 	.gsc-results.gsc-webResult {
@@ -390,6 +442,13 @@ div#___gcse_1 {
 			}
 			@include media-breakpoint-down(phone) {
 				margin-top:10px;
+			}
+		}
+
+		.gsc-cursor-box.gs-bidi-start-align {
+			border: none!important;
+			.gsc-cursor-page {
+				margin-right: 18px;
 			}
 		}
 
@@ -406,11 +465,13 @@ div#___gcse_1 {
 			}
 
 			.gs-title {
-				height: 2rem!important;
-				 @include media-breakpoint-down(phone) {
+				height: 100%!important;
+				margin-bottom: 20px;
+				/*height: 2rem!important;
+				@include media-breakpoint-down(tablet) {
 				 	height: 100%!important;
 				 	margin-bottom: 20px;
-				 }
+				 }*/
 			}
 			.gs-bidi-start-align.gs-visibleUrl.gs-visibleUrl-long {
 			    font-size: .8rem;
@@ -421,8 +482,12 @@ div#___gcse_1 {
 			    }
 			}
 			.gsc-url-top {
+				margin-top: 5px;
+    			margin-bottom: 5px;
+
 				 @include media-breakpoint-down(phone) {
 			    	line-height: 1rem!important;
+			    	margin-bottom:10px;
 				}
 			}
 			table.gsc-table-result {
@@ -457,13 +522,6 @@ div#___gcse_1 {
 			}
 			.gsc-thumbnail-inside .gs-title b {
 				font-weight:700;
-			}
-		}
-		.gsc-cursor-box.gs-bidi-start-align {
-			border-top: 0!important;
-
-			.gsc-cursor-page {
-				margin-right: 18px;
 			}
 		}
 	}
