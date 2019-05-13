@@ -39,16 +39,13 @@ class CeDiplomaLinkBlock extends BlockBase {
 		$CLIENTID = "92442390-6FFE-49C5-9E9B-3DCC22D740BB";
 		$CLIENTNUMBER = "1709";
 		$MASK1 = "28=++4>8.$#=2+5-5;)81:1%*><==+9)";
-		//$plainStudentId = "20524550"; //used for testing success
 		// Encrypt data and build HEXKEY
 		// StudentId + pipe symbol + UTC DateTime is used to prevent "replay attacks"
 		$utcDateTime = gmdate("Y-m-d H:i:s");
 		$plainTextStudentId = $plainStudentId . "|" . $utcDateTime;
  		// Only use the first 16 chars (16 bytes) of MASK1 for AES128
 		$privateKey16String = substr($MASK1, 0, 16);
-		//$encryptedHexString = encrypt_openssl($plainTextStudentId, $privateKey16String);
 		//$key should have been previously generated in a cryptographically safe way, like openssl_random_pseudo_bytes
-		//$cipher = "aes-128-gcm";
 		$cipher = "AES-128-CBC";
 
 		if (in_array($cipher, openssl_get_cipher_methods())) {
@@ -59,23 +56,14 @@ class CeDiplomaLinkBlock extends BlockBase {
 			$ivHexString = bin2hex($iv);
 			$encryptedHexString = $ivHexString . $cipherHexString;
 
-    		//$raw = hex2bin($encryptedHexString);
-    		//$iv = substr($raw, 0, 16);
-    		//$data = substr($raw, 16);
-    		//$original_encryptedMessage = openssl_decrypt($data, $cipher, $privateKey16String, OPENSSL_RAW_DATA, $iv);
-    		//echo $original_encryptedMessage."\n";
 		}
 
 		$HEXKEY = $CLIENTID . $encryptedHexString . "|P";
-		//echo $ENDPOINT . "/" . $HEXKEY . "/" . $CLIENTNUMBER;
 
 		 return array (
             "#type" => "markup",
             "#markup" => "<a href='$ENDPOINT/$HEXKEY/$CLIENTNUMBER' target='_blank'>Order/Register my CeDiploma</a>",
         );
-
-
-		//print "<a href='$ENDPOINT/$HEXKEY/$CLIENTNUMBER' target='_blank'>Order/Register my CeDiploma</a>";
 
 	}
 
