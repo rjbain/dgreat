@@ -27,6 +27,7 @@
                     .attr("target","_blank")
                     .attr("rel","noopener")
                     .attr("aria-label", "Opens in new window");
+            });
         }
     };
     Drupal.behaviors.surveyModal = {
