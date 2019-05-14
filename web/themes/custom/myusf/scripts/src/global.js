@@ -20,6 +20,13 @@
 
             // Fix for Ensemble
             $("[id^=contentView_]").attr("align","center");
+
+            // Make PDF links open in a new window
+            $(document).ready(function() {
+                $("a[href$='.pdf'], a[href$='.txt']")
+                    .attr("target","_blank")
+                    .attr("rel","noopener")
+                    .attr("aria-label", "Opens in new window");
         }
     };
     Drupal.behaviors.surveyModal = {

@@ -1,9 +1,9 @@
-uuid: 2586f780-dc2e-4227-9570-0a60f1426a49
+uuid: 558dc38c-f755-4a17-b07a-45ea21b5436d
 langcode: en
 status: true
 dependencies:
   content:
-    - 'block_content:custom_block:978b1ea9-f87e-4d06-9bcd-747a718fafa3'
+    - 'block_content:custom_block:bf58503e-a666-465d-832d-667b4710427b'
   module:
     - block_content
     - block_visibility_groups
@@ -11,15 +11,15 @@ dependencies:
     - user
   theme:
     - myusf
-id: dashboardcalloutstudents
+id: itsorgchartprotected
 theme: myusf
-region: sidebar_second
-weight: 22
+region: content
+weight: 6
 provider: null
-plugin: 'block_content:978b1ea9-f87e-4d06-9bcd-747a718fafa3'
+plugin: 'block_content:bf58503e-a666-465d-832d-667b4710427b'
 settings:
-  id: 'block_content:978b1ea9-f87e-4d06-9bcd-747a718fafa3'
-  label: 'Dashboard Callout - Students'
+  id: 'block_content:bf58503e-a666-465d-832d-667b4710427b'
+  label: 'ITS Org Chart (Protected)'
   provider: block_content
   label_display: '0'
   status: true
@@ -33,13 +33,13 @@ visibility:
     context_mapping: {  }
   request_path:
     id: request_path
-    pages: /dashboard
+    pages: /its/about-its
     negate: false
     context_mapping: {  }
   user_role:
     id: user_role
     roles:
-      student: student
+      authenticated: authenticated
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
