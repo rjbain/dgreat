@@ -1,10 +1,11 @@
-uuid: d763d5f6-8cc4-4fb2-98e2-9b839e084fef
+uuid: e40f498c-a26f-4021-a1a2-698c1f3d13c2
 langcode: en
 status: true
 dependencies:
   module:
     - block_visibility_groups
     - cediploma
+    - system
     - user
   theme:
     - myusf
@@ -25,9 +26,15 @@ visibility:
     negate: false
     block_visibility_group: ''
     context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /dashboard
+    negate: false
+    context_mapping: {  }
   user_role:
     id: user_role
     roles:
+      administrator: administrator
       student: student
       employee: employee
     negate: false
