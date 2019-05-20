@@ -74,7 +74,7 @@
             {% include "@myUSFLib/fields/field--field-telephone-number.html.twig" %}
         {% endif %} 
         {% if fax %}
-            <p class="contact fax"><strong>Fax</strong>: {{ fax|striptags|trim }}</p>
+            <p class="contact fax"><a href="tel:{{ fax|striptags|trim }}">{{ fax|striptags|trim }}</a></p>
         {% endif %}
         {% if email %}       
             {% include "@myUSFLib/fields/field--field-email-address.html.twig" %}
