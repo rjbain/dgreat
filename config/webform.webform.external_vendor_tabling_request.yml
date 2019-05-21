@@ -1,27 +1,32 @@
-uuid: 2bf8d45d-d255-4602-9d8a-d3fec201634e
+uuid: a1368427-319d-4761-9e65-005ec2af7e30
 langcode: en
 status: open
-dependencies: {  }
+dependencies:
+  module:
+    - dgreat_student_surveys
+third_party_settings:
+  dgreat_student_surveys:
+    salesforce_id: ''
 open: null
 close: null
 weight: 0
-uid: 1293
+uid: 52332
 template: false
 archive: false
-id: webform_102137
-title: 'HR Ergonomics Assessment Request Form'
-description: null
-category: null
-elements: "employee_first_name:\n  '#type': textfield\n  '#title': 'Employee First Name'\n  '#description': ''\n  '#required': true\nemployee_last_name:\n  '#type': textfield\n  '#title': 'Employee Last Name'\n  '#description': ''\n  '#required': true\nusf_id_cwid:\n  '#type': textfield\n  '#title': 'USF ID/CWID'\n  '#description': ''\n  '#required': true\nusf_email_address:\n  '#type': textfield\n  '#title': 'USF Email Address'\n  '#description': ''\n  '#required': true\nextension:\n  '#type': textfield\n  '#title': 'USF Phone Number'\n  '#description': ''\n  '#required': true\noffice_location:\n  '#type': textfield\n  '#title': 'Office Location'\n  '#description': ''\n  '#required': true\nhire_date:\n  '#type': date\n  '#title': 'Hire Date'\n  '#description': ''\n  '#required': true\nsupervisors_name:\n  '#type': textfield\n  '#title': 'Supervisor''s Name'\n  '#description': ''\n  '#required': true\nbudget_manager:\n  '#type': textfield\n  '#title': 'Budget Manager'\n  '#description': ''\n  '#required': true\nassessment:\n  '#type': select\n  '#options':\n    1: 'Yes'\n    2: 'No'\n  '#title': 'Have you had an ergonomics assessment in the past five years?'\n  '#description': ''\n  '#required': true\nconfirm_completion_ergo_tasks:\n  '#type': checkboxes\n  '#title': 'I confirm that I have completed the following:'\n  '#description': 'All tasks can be viewed and completed by visiting the <a href=\"https://myusf.usfca.edu/human-resources/benefits/ergonomics\">Ergonomics web page</a>.'\n  '#options':\n    'Viewed the ergonomics video': 'Viewed the ergonomics video'\n    'Followed all self-assessment guidelines': 'Followed all self-assessment guidelines'\n    'Read the ergonomic assessment process': 'Read the ergonomic assessment process'\n    'Agree to the terms and conditions': 'Agree to the terms and conditions'\n  '#required': true\n"
+id: external_vendor_tabling_request
+title: 'External Vendor Tabling Request'
+description: 'Events Managment External Vendor Tabling Request'
+category: 'Events Management'
+elements: "contact_information:\n  '#type': webform_contact\n  '#title': 'Contact Information'\n  '#required': true\n  '#format_items': ol\n  '#name__title': 'Contact Name'\n  '#name__required': true\n  '#company__required': true\n  '#email__required': true\n  '#phone__required': true\n  '#address__required': true\n  '#address_2__access': false\n  '#city__required': true\n  '#state_province__required': true\n  '#postal_code__required': true\n  '#country__access': false\ntype_of_organization:\n  '#type': select\n  '#title': 'Type of Organization'\n  '#options':\n    Corporation: Corporation\n    Government/Military/Education: Government/Military/Education\n    Volunteer: Volunteer\n    Non-Profit: Non-Profit\n    Other: Other\n  '#required': true\nhow_many_dates_will_you_like_to_table_for_:\n  '#type': select\n  '#title': 'How many dates will you like to table for?'\n  '#options':\n    1: '1'\n    2: '2'\n    3: '3'\n  '#required': true\n1st_choice_date:\n  '#type': date\n  '#title': '1st Choice Date'\n  '#required': true\n  '#format_items': comma\n2nd_choice_date:\n  '#type': date\n  '#title': '2nd Choice Date'\n  '#format_items': comma\n3rd_choice_date:\n  '#type': date\n  '#title': '3rd Choice Date'\n  '#format_items': comma\ndo_you_have_date_flexibiltiy:\n  '#type': select\n  '#title': 'Do you have date flexibility?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\nthroughly_describe_the_topics_that_will_be_presented_if_applicab:\n  '#type': textarea\n  '#title': 'Thoroughly describe the topics that will be presented. If applicable, please provide any links with further information.'\n  '#required': true\n  '#format_items': comma\nwill_goods_and_or_services_be_available_for_purchase_:\n  '#type': select\n  '#title': 'Will goods and/or services be available for purchase?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\ncomments_notes_:\n  '#type': textarea\n  '#title': 'Comments/Notes:'\n  '#format_items': comma\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit__label': Submit"
 css: ''
 javascript: ''
 settings:
   ajax: false
   ajax_scroll_top: form
   page: true
-  page_submit_path: ''
-  page_confirm_path: ''
-  form_submit_once: false
+  page_submit_path: 'https://myusf.usfca.edu/events/vendor-tabling'
+  page_confirm_path: 'https://myusf.usfca.edu/events/vendor-tabling'
+  form_submit_once: true
   form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
@@ -38,7 +43,7 @@ settings:
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
+  form_unsaved: true
   form_disable_back: false
   form_submit_back: false
   form_autofocus: false
@@ -82,14 +87,14 @@ settings:
   preview_excluded_elements: {  }
   preview_exclude_empty: true
   preview_exclude_empty_checkbox: false
-  draft: '0'
+  draft: none
   draft_multiple: false
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
-  confirmation_type: page
-  confirmation_title: ''
-  confirmation_message: '<p>Thank you for submitting an ergonomics assessment request form. If you have any questions, please email <a href="mailto:ergo@usfca.edu">ergo@usfca.edu</a>.</p>'
+  confirmation_type: inline
+  confirmation_title: 'Thank you for requesting tabling space!'
+  confirmation_message: 'Your request is under review and you should receive a response within 5-7 business days. If you do not hear back, please email eventsmanagement@usfca.edu'
   confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
@@ -112,14 +117,13 @@ settings:
   results_disabled: false
   results_disabled_ignore: false
   token_update: false
-  form_submit_label: ''
-  wizard_complete: 1
 access:
   create:
     roles:
       - anonymous
       - authenticated
     users: {  }
+    permissions: {  }
   view_any:
     roles: {  }
     users: {  }
@@ -157,33 +161,33 @@ access:
     users: {  }
     permissions: {  }
 handlers:
-  email_1:
+  email:
     id: email
-    label: 'Email 1'
-    handler_id: email_1
+    label: Email
+    handler_id: email
     status: true
     conditions: {  }
-    weight: 1
+    weight: 0
     settings:
       states:
         - completed
-      to_mail: 'ergo@usfca.edu, benefits@usfca.edu, skisylia@usfca.edu'
+      to_mail: eventsmanagement@usfca.edu
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: _default
+      from_mail: '[site:mail]'
       from_options: {  }
       from_name: _default
-      subject: _default
-      body: 'HR Ergonomics Assessment Request Form Submitted on Submitted by user: [webform_submission:user] Submitted values are: [webform_submission:values] The results of this submission may be viewed at: [webform_submission:url]'
+      subject: 'Vendor Tabling Request'
+      body: _default
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
       html: true
-      attachments: true
+      attachments: false
       twig: false
       debug: false
       reply_to: ''
