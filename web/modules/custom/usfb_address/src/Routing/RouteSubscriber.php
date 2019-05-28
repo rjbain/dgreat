@@ -16,7 +16,9 @@ class RouteSubscriber extends RouteSubscriberBase {
     protected function alterRoutes(RouteCollection $collection) {
         // Define custom access for '/user/{user}'
         if ($route = $collection->get('entity.user.canonical')) {
-            $route .= "/edit/address";
+            $route->setRequirement('_custom_access', '\Drupal\usfb_address\Access\YourCustomAccessCheck::access');
+        }
+        if ($route = $collection->get('usfb_address.address_form')) {
             $route->setRequirement('_custom_access', '\Drupal\usfb_address\Access\YourCustomAccessCheck::access');
         }
     }
