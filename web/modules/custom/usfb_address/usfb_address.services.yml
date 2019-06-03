@@ -8,3 +8,8 @@ services:
   usf_form_functions:
     class: Drupal\usfb_address\Service\UsfbFormFunctions
     arguments: ['@usf_utility']
+  # custom route access check for users to profile page user/{user}
+  usfb_address.custom_route_subscriber:
+    class: Drupal\usfb_address\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
