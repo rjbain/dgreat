@@ -1,12 +1,14 @@
+uuid: 4ef8a25d-b919-42de-951f-7a6d5f8cf6b6
 langcode: en
 status: closed
 dependencies:
   enforced:
     module:
       - webform_templates
+_core:
+  default_config_hash: mYTMZ6UnS7UH3uSYX1QXfOp8XaBX-r-wTjhCt-EWh_k
 open: null
 close: null
-weight: 0
 uid: null
 template: true
 archive: false
@@ -45,34 +47,22 @@ settings:
   form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
-  form_access_denied: default
-  form_access_denied_title: ''
-  form_access_denied_message: ''
-  form_access_denied_attributes: {  }
-  form_file_limit: ''
+  form_login: false
+  form_login_message: ''
   submission_label: ''
   submission_log: false
-  submission_views: {  }
-  submission_views_replace: {  }
   submission_user_columns: {  }
-  submission_user_duplicate: false
-  submission_access_denied: default
-  submission_access_denied_title: ''
-  submission_access_denied_message: ''
-  submission_access_denied_attributes: {  }
+  submission_login: false
+  submission_login_message: ''
   submission_exception_message: ''
   submission_locked_message: ''
-  previous_submission_message: ''
-  previous_submissions_message: ''
   autofill: false
   autofill_message: ''
   autofill_excluded_elements: {  }
   wizard_progress_bar: true
   wizard_progress_pages: false
   wizard_progress_percentage: false
-  wizard_progress_link: false
   wizard_start_label: ''
-  wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
   wizard_track: ''
@@ -83,7 +73,6 @@ settings:
   preview_attributes: {  }
   preview_excluded_elements: {  }
   preview_exclude_empty: true
-  preview_exclude_empty_checkbox: false
   draft: none
   draft_multiple: false
   draft_auto_save: false
@@ -182,7 +171,6 @@ handlers:
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
-      exclude_empty_checkbox: false
       html: true
       attachments: false
       twig: false
@@ -191,7 +179,7 @@ handlers:
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      theme_name: ''
+      exclude_empty_checkbox: false
   email_notification:
     id: email
     label: 'Email notification'
@@ -216,7 +204,6 @@ handlers:
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
-      exclude_empty_checkbox: false
       html: true
       attachments: false
       twig: false
@@ -225,7 +212,4 @@ handlers:
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      theme_name: ''
-uuid: 4ef8a25d-b919-42de-951f-7a6d5f8cf6b6
-_core:
-  default_config_hash: mYTMZ6UnS7UH3uSYX1QXfOp8XaBX-r-wTjhCt-EWh_k
+      exclude_empty_checkbox: false

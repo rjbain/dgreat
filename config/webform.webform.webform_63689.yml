@@ -1,9 +1,9 @@
+uuid: 7d53f575-a066-4da3-b16a-637bfa1f0f1d
 langcode: en
 status: open
 dependencies: {  }
 open: null
 close: null
-weight: 0
 uid: 27769
 template: false
 archive: false
@@ -15,9 +15,20 @@ elements: "student_id_number:\n  '#type': textfield\n  '#title': Student ID Numb
 css: ''
 javascript: ''
 settings:
+  page: true
+  form_submit_label: ''
+  wizard_progress_bar: true
+  wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: inline
+  confirmation_url: ''
+  confirmation_message: '<p><span>Your form has been submitted to the Law Registrar’s Office.&nbsp;<span>As always, if you have any questions please feel free to stop by, contact us at&nbsp;</span><a href="tel:%28415%29%20422-6778" target="_blank">(415) 422-6778</a><span>&nbsp;or&nbsp;</span><a href="mailto:lawregistrar@usfca.edu" target="_blank">lawregistrar@usfca.edu</a><span>.</span></span></p>'
+  limit_total: null
+  limit_user: null
   ajax: false
   ajax_scroll_top: form
-  page: true
   page_submit_path: ''
   page_confirm_path: ''
   form_submit_once: false
@@ -42,21 +53,14 @@ settings:
   form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
-  form_access_denied: default
-  form_access_denied_title: ''
-  form_access_denied_message: ''
-  form_access_denied_attributes: {  }
-  form_file_limit: ''
+  form_login: false
+  form_login_message: ''
   submission_label: ''
   submission_log: false
-  submission_views: {  }
-  submission_views_replace: {  }
   submission_user_columns: {  }
   submission_user_duplicate: false
-  submission_access_denied: default
-  submission_access_denied_title: ''
-  submission_access_denied_message: ''
-  submission_access_denied_attributes: {  }
+  submission_login: false
+  submission_login_message: ''
   submission_exception_message: ''
   submission_locked_message: ''
   previous_submission_message: ''
@@ -64,16 +68,12 @@ settings:
   autofill: false
   autofill_message: ''
   autofill_excluded_elements: {  }
-  wizard_progress_bar: true
   wizard_progress_pages: false
   wizard_progress_percentage: false
-  wizard_progress_link: false
   wizard_start_label: ''
-  wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
   wizard_track: ''
-  preview: 0
   preview_label: ''
   preview_title: ''
   preview_message: ''
@@ -81,25 +81,18 @@ settings:
   preview_excluded_elements: {  }
   preview_exclude_empty: true
   preview_exclude_empty_checkbox: false
-  draft: '0'
   draft_multiple: false
-  draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
-  confirmation_type: inline
   confirmation_title: ''
-  confirmation_message: '<p><span>Your form has been submitted to the Law Registrar’s Office.&nbsp;<span>As always, if you have any questions please feel free to stop by, contact us at&nbsp;</span><a href="tel:%28415%29%20422-6778" target="_blank">(415) 422-6778</a><span>&nbsp;or&nbsp;</span><a href="mailto:lawregistrar@usfca.edu" target="_blank">lawregistrar@usfca.edu</a><span>.</span></span></p>'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
   confirmation_back_attributes: {  }
   confirmation_exclude_query: false
   confirmation_exclude_token: false
-  limit_total: null
   limit_total_interval: null
   limit_total_message: ''
-  limit_user: null
   limit_user_interval: null
   limit_user_message: ''
   entity_limit_total: null
@@ -111,50 +104,12 @@ settings:
   results_disabled: false
   results_disabled_ignore: false
   token_update: false
-  form_submit_label: ''
-  wizard_complete: 1
 access:
   create:
     roles:
       - anonymous
       - authenticated
     users: {  }
-  view_any:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  update_any:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  delete_any:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  purge_any:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  view_own:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  update_own:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  delete_own:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  administer:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  test:
-    roles: {  }
-    users: {  }
-    permissions: {  }
 handlers:
   email_1:
     id: email
@@ -164,32 +119,31 @@ handlers:
     conditions: {  }
     weight: 1
     settings:
+      to_mail: 'lawregistrar@usfca.edu,mtjohnson2@usfca.edu'
+      from_mail: _default
+      from_name: _default
+      subject: _default
+      body: _default
+      html: true
+      attachments: false
+      excluded_elements: {  }
       states:
         - completed
-      to_mail: 'lawregistrar@usfca.edu,mtjohnson2@usfca.edu'
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: _default
       from_options: {  }
-      from_name: _default
-      subject: _default
-      body: _default
-      excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
-      html: true
-      attachments: false
       twig: false
       debug: false
       reply_to: ''
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      theme_name: ''
   email_2:
     id: email
     label: 'Email 2'
@@ -198,30 +152,28 @@ handlers:
     conditions: {  }
     weight: 2
     settings:
+      to_mail: '[webform-submission:values:email:raw]'
+      from_mail: _default
+      from_name: _default
+      subject: 'Form submission from: Graduation Petition'
+      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]\n"
+      html: false
+      attachments: false
+      excluded_elements: {  }
       states:
         - completed
-      to_mail: '[webform-submission:values:email:raw]'
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: _default
       from_options: {  }
-      from_name: _default
-      subject: 'Form submission from: Graduation Petition'
-      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]\n"
-      excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
-      html: false
-      attachments: false
       twig: false
       debug: false
       reply_to: ''
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      theme_name: ''
-uuid: 7d53f575-a066-4da3-b16a-637bfa1f0f1d

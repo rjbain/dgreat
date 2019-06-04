@@ -978,7 +978,7 @@ display:
           empty: false
           tokenize: false
           content:
-            value: "<a href=\"/dashboard\">Back to Dashboard</a><br>\n<a class=\"btn btn-default\" href=\"/node/add/favorite_link?edit[field_link_type][und]=quick&destination=/dashboard\" role=\"button\" style=\"float:right\"><span class=\"icon-plus\"></span> Add Quick Link</a>"
+            value: '<a class="btn btn-default" href="/node/add/favorite_link?edit[field_link_type][und]=quick?destination=favorite-links/allapps" role="button" style="float:right"><span class="icon-plus"></span> Add Quick Link</a>'
             format: full_html
           plugin_id: text
       access:
@@ -2082,7 +2082,7 @@ display:
           click_sort_column: uri
           type: link
           settings:
-            trim_length: null
+            trim_length: 80
             url_only: false
             url_plain: false
             rel: '0'
@@ -2348,7 +2348,7 @@ display:
           empty: false
           tokenize: false
           content:
-            value: '<!--<a href="node/add/favorite_link?edit[field_link_type][und]=quick&destination=/dashboard" class="manageLinks">Add Link</a>-->'
+            value: '<a href="node/add/favorite_link?edit[field_link_type][und]=quick?destination=favorite-links/allapps" class="manageLinks">Add new Quick Link</a>'
             format: full_html
           plugin_id: text
         area_1:
@@ -2361,7 +2361,7 @@ display:
           empty: false
           tokenize: false
           content:
-            value: '<!--<a href="/quick-links" class="addLinks">Manage Links</a>-->'
+            value: '<a href="/quick-links" class="addLinks">Manage Quick Links</a>'
             format: full_html
           plugin_id: text
       empty: {  }
@@ -2414,8 +2414,12 @@ display:
           query_tags: {  }
       group_by: false
       cache:
-        type: none
-        options: {  }
+        type: time
+        options:
+          results_lifespan: 1800
+          results_lifespan_custom: 0
+          output_lifespan: 1800
+          output_lifespan_custom: 0
     cache_metadata:
       max-age: -1
       contexts:
@@ -2538,7 +2542,7 @@ display:
           click_sort_column: uri
           type: link
           settings:
-            trim_length: null
+            trim_length: 80
             url_only: false
             url_plain: false
             rel: '0'
@@ -2902,37 +2906,13 @@ display:
         title: ''
         description: ''
         weight: 0
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: false
-          tokenize: false
-          content:
-            value: '<a href="/dashboard">Back to Dashboard</a><br>'
-            format: restricted_html
-          plugin_id: text
+      header: {  }
       access:
         type: perm
         options:
           perm: 'access content'
       footer: {  }
-      empty:
-        area_text_custom:
-          id: area_text_custom
-          table: views
-          field: area_text_custom
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          tokenize: false
-          content: '<a href="/dashboard">Back to Dashboard</a><br>'
-          plugin_id: text_custom
+      empty: {  }
       sorts:
         field_weight_value:
           id: field_weight_value
