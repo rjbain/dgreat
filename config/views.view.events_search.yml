@@ -924,7 +924,18 @@ display:
             label: ''
           plugin_id: search_api
       title: 'Events Search'
-      header: {  }
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content: '<h2>Upcoming Events</h2>'
+          plugin_id: text_custom
       footer: {  }
       empty:
         area_text_custom:
@@ -936,7 +947,7 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: 'No calendar events have been found. Please try again.'
+          content: 'Please check back for upcoming events.'
           plugin_id: text_custom
       relationships: {  }
       arguments:
