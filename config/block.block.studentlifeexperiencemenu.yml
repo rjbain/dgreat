@@ -1,0 +1,35 @@
+uuid: cbf9737a-96e3-496d-88a3-0a3f032beee5
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.student-life-experience-men
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: studentlifeexperiencemenu
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:student-life-experience-men'
+settings:
+  id: 'system_menu_block:student-life-experience-men'
+  label: 'Student Life Experience Menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/student-life-experience\r\n/student-life-experience/*"
+    negate: false
+    context_mapping: {  }

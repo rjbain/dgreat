@@ -1,0 +1,71 @@
+uuid: 9d47dc4f-832c-4b2b-b116-9a7a5ccc5660
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.jobs_list.body
+    - field.field.node.jobs_list.field_hs_guid
+    - field.field.node.jobs_list.field_job_category
+    - field.field.node.jobs_list.field_published_date
+    - field.field.node.jobs_list.field_url
+    - node.type.jobs_list
+  module:
+    - datetime
+    - link
+    - text
+    - user
+id: node.jobs_list.default
+targetEntityType: node
+bundle: jobs_list
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_hs_guid:
+    weight: 103
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_job_category:
+    weight: 105
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_published_date:
+    weight: 104
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_url:
+    weight: 102
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }
