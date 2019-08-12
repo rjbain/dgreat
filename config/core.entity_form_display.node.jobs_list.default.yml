@@ -6,11 +6,10 @@ dependencies:
     - field.field.node.jobs_list.body
     - field.field.node.jobs_list.field_hs_guid
     - field.field.node.jobs_list.field_job_category
-    - field.field.node.jobs_list.field_published_date
+    - field.field.node.jobs_list.field_job_pub_date
     - field.field.node.jobs_list.field_url
     - node.type.jobs_list
   module:
-    - datetime
     - link
     - path
     - scheduler
@@ -51,11 +50,13 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_published_date:
-    weight: 124
-    settings: {  }
+  field_job_pub_date:
+    weight: 126
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: datetime_default
+    type: string_textfield
     region: content
   field_url:
     weight: 122
