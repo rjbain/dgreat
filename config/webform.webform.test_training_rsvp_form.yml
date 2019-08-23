@@ -168,11 +168,17 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: '[webform_submission:values:email:raw]'
-      to_options: {  }
-      cc_mail: ''
+      to_mail: '[webform_submission:values:dietary_restrictions:raw]'
+      to_options:
+        -
+          value: Vegetarian
+          text: nkebbas@usfca.edu
+        -
+          value: 'Lactose Intolerant'
+          text: 'nkebbas@usfca.edu, nkebbas@usfca.edu'
+      cc_mail: 'test@test.com, webservices@usfca.edu'
       cc_options: {  }
-      bcc_mail: webservices@usfca.edu
+      bcc_mail: ''
       bcc_options: {  }
       from_mail: _default
       from_options: {  }
