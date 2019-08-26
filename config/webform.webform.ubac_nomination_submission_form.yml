@@ -1,0 +1,199 @@
+uuid: 90f5fe88-3f41-410c-894e-2e3cfb2b375b
+langcode: en
+status: open
+dependencies:
+  module:
+    - dgreat_student_surveys
+third_party_settings:
+  dgreat_student_surveys:
+    salesforce_id: ''
+open: null
+close: null
+weight: 0
+uid: 27769
+template: false
+archive: false
+id: ubac_nomination_submission_form
+title: 'UBAC Nomination Submission Form'
+description: ''
+category: UBAC
+elements: "nominee_s_name:\n  '#type': textfield\n  '#title': 'Nominee''s Name'\n  '#required': true\nnominee_s_email_address:\n  '#type': email\n  '#title': 'Nominee''s Email Address'\n  '#required': true\n  '#unique': true\n  '#unique_error': 'The individual associated with this email address has already been nominated to serve on the UBAC.'\nplease_check_this_box_to_confirm_1_nominee_is_not_a_part_or_full:\n  '#type': checkbox\n  '#title': 'Please confirm'\n  '#description': 'Please check this box to confirm: (1) Nominee is not a part- or full-time faculty member. (2) Nominee is not a member of Leadership Team.'\n  '#title_display': invisible\n  '#required': true"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  submission_label: ''
+  submission_log: true
+  submission_views: {  }
+  submission_views_replace:
+    webform_routes: {  }
+    node_routes: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_title: ''
+  confirmation_message: 'Thank you for submitting your nomination. An email notification has been sent to the nominee with information regarding next steps.'
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    label: Email
+    handler_id: email
+    status: false
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:nominee_s_email_address:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: 'University Budget Advisory Council'
+      subject: 'UBAC Nomination Form'
+      body: "<p>Congratulations! One of your peers has nominated you to serve on the recently-formed <a href=\"https://myusf.usfca.edu/planning-budget/university-budget-advisory-council\" target=\"_blank\">University Budget Advisory Council</a>. A <a href=\"https://myusf.usfca.edu/sites/default/files/documents/UBAC/characteristics_of_an_ideal_member_of_UBAC.pdf\" target=\"_blank\">description of someone</a> who is likely to be a successful contributor to UBAC is available. If, after reviewing the four-fold purpose of UBAC, and the job description, you wish to stand for election, <a href=\"https://myusf.usfca.edu/planning-budget/university-budget-advisory-council/candidate-submission-form\">please complete the candidate submission form here</a>.</p>\r\n\r\n<p>Questions about the University Budget Advisory Council, or the work of its members, should be directed to Jeff Hamrick, Vice Provost for Institutional Budget, Planning, and Analytics, by email at jhamrick@usfca.edu.</p>\r\n"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: true
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
