@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.bp_column_content
+    - paragraphs.paragraphs_type.box_styles
     - paragraphs.paragraphs_type.bp_accordion
     - paragraphs.paragraphs_type.bp_blank
     - paragraphs.paragraphs_type.bp_block
@@ -34,6 +35,7 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
+    negate: 0
     target_bundles:
       bp_simple: bp_simple
       bp_image: bp_image
@@ -48,6 +50,7 @@ settings:
       bp_modal: bp_modal
       bp_tabs: bp_tabs
       bp_view: bp_view
+      box_styles: box_styles
     target_bundles_drag_drop:
       bp_simple:
         enabled: true
@@ -93,5 +96,23 @@ settings:
         enabled: false
       bp_tab_section:
         weight: -17
+        enabled: false
+      box_styles:
+        enabled: true
+        weight: 22
+      bp_webform:
+        weight: 38
+        enabled: false
+      migrate:
+        weight: 39
+        enabled: false
+      reference:
+        weight: 40
+        enabled: false
+      social_media_link:
+        weight: 41
+        enabled: false
+      usfcat_updates:
+        weight: 42
         enabled: false
 field_type: entity_reference_revisions

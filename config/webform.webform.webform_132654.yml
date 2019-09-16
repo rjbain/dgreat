@@ -1,3 +1,4 @@
+uuid: 72c805db-155f-4bd2-91a3-253424bdb5d0
 langcode: en
 status: open
 dependencies: {  }
@@ -117,11 +118,11 @@ access:
   create:
     roles:
       - authenticated
-      - administrator
-      - editor
     users: {  }
+    permissions: {  }
   view_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   update_any:
@@ -129,7 +130,8 @@ access:
     users: {  }
     permissions: {  }
   delete_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   purge_any:
@@ -149,7 +151,8 @@ access:
     users: {  }
     permissions: {  }
   administer:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   test:
@@ -157,4 +160,3 @@ access:
     users: {  }
     permissions: {  }
 handlers: {  }
-uuid: 72c805db-155f-4bd2-91a3-253424bdb5d0
