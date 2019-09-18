@@ -5,6 +5,12 @@
 		{% set height = 400 %}
 	{% endif %}
 
+	{% if paragraph.field_colors.value %}
+		{% set color = paragraph.field_colors.value %}
+	{% else %}
+		{% set color = "none" %}
+	{% endif %}
+
 {%
   set classes = [
     'paragraph',
