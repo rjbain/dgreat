@@ -1448,7 +1448,12 @@ h2.carousel-overlay:before {
 }
 
 @media (min-width: 1220px) {
-    
+    .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
+    .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
+        &:nth-child(2){
+            padding-right:15px!important;
+        }
+    }
     .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
     .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
         &:nth-child(3){
@@ -1458,6 +1463,7 @@ h2.carousel-overlay:before {
     .paragraph--type--bp-columns__4col, .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
         &:nth-child(4){
             padding-left:0px!important;
+            padding-right:15px!important;
         }
     }
     .paragraph--type--bp-columns__6col {
