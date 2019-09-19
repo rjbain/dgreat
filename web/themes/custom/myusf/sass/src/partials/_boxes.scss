@@ -1407,10 +1407,35 @@ h2.carousel-overlay:before {
 }
 
 //TEST for aligning the boxes on the left and right with other content
-.paragraph--type--bp-columns__3col:nth-child(1){
-    padding-left:0px!important;
+.paragraph--type--bp-columns__2col,
+.paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
+.paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
+    &:nth-child(1){
+        padding-left:0px!important;
+    }
 }
-.paragraph--type--bp-columns__3col:nth-child(3){
+.paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
+.paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
+    &:nth-child(3){
+        padding-right:0px!important;
+    }
+}
+.paragraph--type--bp-columns__4col, .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
+    &:nth-child(4){
+        padding-left:0px!important;
+    }
+}
+.paragraph--type--bp-columns__6col {
+    &:nth-child(6){
+        padding-right:0px!important;
+    }
+}
+
+.paragraph--type--bp-columns__1col {
+    padding-left:0px!important;
+    padding-right:0px!important;
+}
+.paragraph--type--bp-columns__2col:nth-child(2){
     padding-right:0px!important;
 }
 
@@ -1460,7 +1485,13 @@ h2.carousel-overlay:before {
 @media (min-width: 768px) {
   .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__4col {
     float: left;
-    width: 25%;
+    width: 50%; /*width: 25%;*/
+  }
+}
+@media (min-width: 1220px) {
+  .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__4col {
+    float: left;
+     width: 33.33333333%; /*width: 16.66666667%;*/
   }
 }
 .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__3col {
@@ -1470,6 +1501,12 @@ h2.carousel-overlay:before {
   padding-right: 15px;
 }
 @media (min-width: 768px) {
+  .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__3col {
+    float: left;
+    width: 50%; /*width: 33.33333333%;*/
+  }
+}
+@media (min-width: 1220px) {
   .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__3col {
     float: left;
     width: 33.33333333%;
