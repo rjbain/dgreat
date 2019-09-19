@@ -1407,37 +1407,74 @@ h2.carousel-overlay:before {
 }
 
 //TEST for aligning the boxes on the left and right with other content
-.paragraph--type--bp-columns__2col,
-.paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
-.paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
-    &:nth-child(1){
-        padding-left:0px!important;
+@media (min-width: 768px) {
+    .paragraph--type--bp-columns__1col .paragraph--type--bp-columns__2col,
+    .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
+    .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
+        &:nth-child(1){
+            padding-left:0px!important;
+        }
+    }
+
+    .paragraph--type--bp-columns__2col,
+    .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
+    .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
+        &:nth-child(2){
+            padding-right:0px!important;
+        }
+    }
+
+    .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
+    .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
+        &:nth-child(3){
+            padding-left:0px!important;
+        }
+    }
+    .paragraph--type--bp-columns__4col, .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
+        &:nth-child(4){
+            padding-right:0px!important;
+        }
+    }
+    .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
+        &:nth-child(5){
+            padding-left:0px!important;
+        }
+    }
+    .paragraph--type--bp-columns__6col {
+        &:nth-child(6){
+            padding-right:0px!important;
+        }
     }
 }
-.paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
-.paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
-    &:nth-child(3){
+
+@media (min-width: 1220px) {
+    
+    .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
+    .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
+        &:nth-child(3){
+            padding-right:0px!important;
+        }
+    }
+    .paragraph--type--bp-columns__4col, .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
+        &:nth-child(4){
+            padding-left:0px!important;
+        }
+    }
+    .paragraph--type--bp-columns__6col {
+        &:nth-child(6){
+            padding-right:0px!important;
+        }
+    }
+
+    .paragraph--type--bp-columns__1col {
         padding-right:0px!important;
     }
-}
-.paragraph--type--bp-columns__4col, .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
-    &:nth-child(4){
-        padding-left:0px!important;
-    }
-}
-.paragraph--type--bp-columns__6col {
-    &:nth-child(6){
+    .paragraph--type--bp-columns__2col:nth-child(2){
         padding-right:0px!important;
     }
 }
 
-.paragraph--type--bp-columns__1col {
-    padding-left:0px!important;
-    padding-right:0px!important;
-}
-.paragraph--type--bp-columns__2col:nth-child(2){
-    padding-right:0px!important;
-}
+
 
  /* Columns Modifiers inside of Columns Element  */
 .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__6col {
