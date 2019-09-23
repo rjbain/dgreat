@@ -1326,6 +1326,7 @@ h2.carousel-overlay:before {
 }
 .box-link {
     text-decoration:none;
+    z-index: 1;
 }
 
 .box{
@@ -1355,6 +1356,7 @@ h2.carousel-overlay:before {
     }
     a img {
         margin-top: 0px;
+        cursor: pointer;
     }
     a h2, a h3, p{
         color:$black!important;
@@ -1406,6 +1408,15 @@ h2.carousel-overlay:before {
 }
 
 //TEST for aligning the boxes on the left and right with other content
+@media (max-width: 767px) {
+    .paragraph--type--bp-columns__1col .paragraph--type--bp-columns__2col,
+    .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
+    .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {        
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+}
+
 @media (min-width: 768px) {
     .paragraph--type--bp-columns__1col .paragraph--type--bp-columns__2col,
     .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
@@ -1449,30 +1460,40 @@ h2.carousel-overlay:before {
 @media (min-width: 1220px) {
     .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
     .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
+        &:nth-child(1){
+            padding-left:0px!important;
+            padding-right:20px!important;
+        }
+    }
+    .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
+    .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
         &:nth-child(2){
-            padding-right:15px!important;
+            padding-left:10px!important;
+            padding-right:10px!important;
         }
     }
     .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
     .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
         &:nth-child(3){
-            padding-left:15px!important;
+            padding-left:20px!important;
             padding-right:0px!important;
         }
     }
     .paragraph--type--bp-columns__4col, .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
         &:nth-child(4){
             padding-left:0px!important;
-            padding-right:15px!important;
+            padding-right:20px!important;
         }
     }
     .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
         &:nth-child(5){
-            padding-left:15px!important;
+            padding-left:10px!important;
+            padding-right:10px!important;
         }
     }
     .paragraph--type--bp-columns__6col {
         &:nth-child(6){
+            padding-left:20px!important;
             padding-right:0px!important;
         }
     }
