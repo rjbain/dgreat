@@ -1,12 +1,7 @@
 uuid: 1a186590-5654-4062-af5d-f3f5f337c501
 langcode: en
 status: open
-dependencies:
-  module:
-    - dgreat_student_surveys
-third_party_settings:
-  dgreat_student_surveys:
-    salesforce_id: ''
+dependencies: {  }
 open: null
 close: null
 weight: 0
@@ -14,17 +9,17 @@ uid: 27769
 template: false
 archive: false
 id: test_not_exciting
-title: 'University Budget Advisory Council Ballot'
+title: 'Test Not Exciting'
 description: ''
-category: UBAC
-elements: "votes:\n  '#type': checkboxes\n  '#title': Votes\n  '#multiple': 6\n  '#title_display': invisible\n  '#options':\n    25: 'Sarah Blackburn'\n    1: 'Torry Brouillard-Bruce'\n    2: 'Kerry Burns'\n    3: 'Nicole Cuadro'\n    4: 'Ria DasGupta'\n    10: 'Patrick Dorsey, SJ'\n    5: 'David Ferguson'\n    6: 'Anna S Jaeger'\n    14: 'Erika Johnson'\n    7: 'Michael Juarez'\n    9: 'Jeremiah Maller'\n    29: 'Martha McAfee'\n    30: 'Marisa McCarthy'\n    15: 'Joshua McDermott'\n    17: 'Dan McPherson'\n    11: 'Elisabeth Merkel'\n    13: 'Dennis Miller'\n    23: 'Jeremy Mixell'\n    16: 'Alison Nishiyama-Young'\n    22: 'Carmen Pacheco-Cueba'\n    12: 'Robert Perea'\n    27: 'Gladys Perez '\n    28: 'Spencer Rangitsch'\n    24: 'Theo Retos'\n    8: 'John Soulsby'\n    19: 'Heidi Tate'\n    21: 'Julia Terhaar'\n    20: 'Angeline Vuong'\n    18: 'Joey Zafra'\n  '#options_display': two_columns\n  '#required': true\n  '#required_error': 'Please select at least 1 candidate'"
+category: ''
+elements: "votes:\n  '#type': checkboxes\n  '#title': Votes\n  '#multiple': 6\n  '#options':\n    1: Sam\n    2: Nick\n    3: John\n    4: Tiffany\n    5: Sarah\n    6: Chay\n    7: Michael\n  '#required': true\n  '#required_error': 'Please select at least 1 candidate'"
 css: ''
 javascript: ''
 settings:
   ajax: false
   ajax_scroll_top: form
   page: true
-  page_submit_path: /form/ubac-ballot
+  page_submit_path: ''
   page_confirm_path: ''
   form_submit_once: false
   form_exception_message: ''
@@ -122,8 +117,7 @@ settings:
 access:
   create:
     roles:
-      - faculty
-      - employee
+      - authenticated
     users: {  }
     permissions: {  }
   view_any:
@@ -132,7 +126,6 @@ access:
       - 42945
       - 27769
       - 6049
-      - 62619
     permissions: {  }
   update_any:
     roles: {  }
@@ -160,9 +153,7 @@ access:
     permissions: {  }
   administer:
     roles: {  }
-    users:
-      - 27769
-      - 42945
+    users: {  }
     permissions: {  }
   test:
     roles: {  }
