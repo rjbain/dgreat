@@ -14,7 +14,7 @@ id: tuition_remission_and_tuition_ex
 title: 'Tuition Remission and Tuition Exchange Information Session'
 description: 'Information sessions about Tuition Remission and Tuition Exchang/FACHEX'
 category: ''
-elements: "personal_information:\n  '#type': fieldset\n  '#title': 'Your Information'\n  first_name:\n    '#title': 'First Name'\n    '#type': textfield\n    '#required': true\n  last_name:\n    '#title': 'Last Name'\n    '#type': textfield\n    '#required': true\ncontact_information:\n  '#title': 'Your Contact Information'\n  '#type': fieldset\n  contact:\n    '#type': webform_contact\n    '#title': Contact\n    '#name__access': false\n    '#company__access': false\n    '#phone__access': false\n    '#address__access': false\n    '#address_2__access': false\n    '#city__access': false\n    '#state_province__access': false\n    '#postal_code__access': false\n    '#country__access': false\nsign_up_for_an_upcoming_session:\n  '#type': webform_mapping\n  '#title': 'Sign up for an upcoming session'\n  '#arrow': ':'\n  '#source':\n    'Choose a session': 'Choose a session'\n  '#destination__title': 'Day and Time'\n  '#destination':\n    'Thursday, 8/29 12:00-1:00 pm UC 402/403': 'Thursday, 8/29 12:00-1:00 pm UC 402/403'\n    'Tuesday, 10/01, 12:00-1:00 pm UC 402/403': 'Tuesday, 10/01, 12:00-1:00 pm UC 402/403'\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit__label': Register"
+elements: "personal_information:\n  '#type': fieldset\n  '#title': 'Your Information'\n  first_name:\n    '#title': 'First Name'\n    '#type': textfield\n    '#required': true\n  last_name:\n    '#title': 'Last Name'\n    '#type': textfield\n    '#required': true\ncontact_information:\n  '#title': 'Your Contact Information'\n  '#type': fieldset\n  contact:\n    '#type': webform_contact\n    '#title': Contact\n    '#name__access': false\n    '#company__access': false\n    '#phone__access': false\n    '#address__access': false\n    '#address_2__access': false\n    '#city__access': false\n    '#state_province__access': false\n    '#postal_code__access': false\n    '#country__access': false\nsign_up_for_an_upcoming_session:\n  '#type': webform_mapping\n  '#title': 'Sign up for an upcoming session'\n  '#arrow': ':'\n  '#source':\n    'Choose a session': 'Choose a session'\n  '#destination__title': 'Day and Time'\n  '#destination':\n    'Tuesday, 10/01, 12:00-1:00 pm UC 402/403': 'Tuesday, 10/01, 12:00-1:00 pm UC 402/403'\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit__label': Register"
 css: ''
 javascript: ''
 settings:
@@ -122,7 +122,8 @@ access:
     users: {  }
     permissions: {  }
   view_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   update_any:
@@ -130,7 +131,8 @@ access:
     users: {  }
     permissions: {  }
   delete_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   purge_any:
@@ -150,7 +152,8 @@ access:
     users: {  }
     permissions: {  }
   administer:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   test:

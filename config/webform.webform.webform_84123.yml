@@ -12,7 +12,7 @@ id: webform_84123
 title: 'One Stop - Commencement Faculty Attendance - Dec'
 description: null
 category: null
-elements: "your_information:\n  '#type': processed_text\n  '#title': '<h2>Your Information:</h2>'\n  '#description': ''\n  '#format': full_html\nfirst_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'First Name:'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Last Name:'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title_display': inline\n  '#title': 'Email:'\n  '#description': ''\n  '#required': true\nschool_library:\n  '#type': select\n  '#options':\n    1: 'College of Arts and Sciences'\n    2: 'School of Management'\n    3: 'School of Education'\n    4: 'School of Nursing and Health Professions'\n    5: 'Gleeson Library'\n  '#title_display': inline\n  '#title': 'Your School/College or Gleeson:'\n  '#description': ''\n  '#required': true\nceremony_selection:\n  '#type': processed_text\n  '#title': '<h3>Ceremonies:</h3>'\n  '#description': ''\n  '#format': full_html\nchoose_the_ceremonies_you_would_like_to_attend_:\n  '#type': checkboxes\n  '#title': 'Choose the ceremonies you would like to attend:'\n  '#options':\n    'Commencement Mass, 10:00 a.m.': 'Commencement Mass, 10:00 a.m.'\n    'School of Management Ceremony, 12:30 p.m.': 'School of Management Ceremony, 12:30 p.m.'\n    'College of Arts and Sciences Ceremony, 3:30 p.m.': 'College of Arts and Sciences Ceremony, 3:30 p.m.'\n    'School of Education and School of Nursing and Health Professions Ceremony, 6:30 p.m.': 'School of Education and School of Nursing and Health Professions Ceremony, 6:30 p.m.'\n  '#required': true\nregalia:\n  '#type': processed_text\n  '#title': '<h3>Regalia:</h3>'\n  '#description': ''\n  '#format': full_html\nneed_regalia:\n  '#type': radios\n  '#options':\n    1: 'Yes'\n    2: 'No'\n  '#title': 'Do you need rental regalia?:'\n  '#description': ''\n  '#required': true\nif_yes_which_:\n  '#type': checkboxes\n  '#title': 'If yes, which?'\n  '#options':\n    Cap: Cap\n    Gown: Gown\n    Hood: Hood\ncomments_or_questions:\n  '#type': textarea\n  '#title': 'Comments or questions?:'\n  '#description': ''"
+elements: "your_information:\n  '#type': processed_text\n  '#title': '<h2>Your Information:</h2>'\n  '#description': ''\n  '#format': full_html\nfirst_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'First Name:'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Last Name:'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title_display': inline\n  '#title': 'Email:'\n  '#description': ''\n  '#required': true\nschool_library:\n  '#type': select\n  '#options':\n    1: 'College of Arts and Sciences'\n    2: 'School of Management'\n    3: 'School of Education'\n    4: 'School of Nursing and Health Professions'\n    5: 'Gleeson Library'\n  '#title_display': inline\n  '#title': 'Your School/College or Gleeson:'\n  '#description': ''\n  '#required': true\nceremony_selection:\n  '#type': processed_text\n  '#title': '<h3>Ceremonies:</h3>'\n  '#description': ''\n  '#format': full_html\nchoose_the_ceremonies_you_would_like_to_attend_:\n  '#type': checkboxes\n  '#title': 'Choose the ceremonies you would like to attend on Friday, December 13:'\n  '#options':\n    'Commencement Mass, 9:30am': 'Commencement Mass, 9:30am'\n    'School of Nursing and Health Professions Ceremony, 12pm': 'School of Nursing and Health Professions Ceremony, 12pm'\n    'School of Education Ceremony and School of Management Ceremony, 3pm': 'School of Education Ceremony and School of Management Ceremony, 3pm'\n    'College of Arts and Sciences Ceremony, 6pm': 'College of Arts and Sciences Ceremony, 6pm'\n  '#required': true\nregalia:\n  '#type': processed_text\n  '#title': '<h3>Regalia:</h3>'\n  '#description': ''\n  '#format': full_html\nneed_regalia:\n  '#type': radios\n  '#options':\n    1: 'Yes'\n    2: 'No'\n  '#title': 'Do you need rental regalia?:'\n  '#description': ''\n  '#required': true\nif_yes_which_:\n  '#type': checkboxes\n  '#title': 'If yes, which?'\n  '#options':\n    Cap: Cap\n    Gown: Gown\n    Hood: Hood\ncomments_or_questions:\n  '#type': textarea\n  '#title': 'Comments or questions?:'\n  '#description': ''"
 css: ''
 javascript: ''
 settings:
@@ -120,8 +120,10 @@ access:
       - anonymous
       - authenticated
     users: {  }
+    permissions: {  }
   view_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   update_any:
@@ -129,7 +131,8 @@ access:
     users: {  }
     permissions: {  }
   delete_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   purge_any:
@@ -149,7 +152,8 @@ access:
     users: {  }
     permissions: {  }
   administer:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   test:
@@ -245,7 +249,7 @@ handlers:
       from_options: {  }
       from_name: _default
       subject: 'Commencement Faculty Attendance form submission'
-      body: "<p>Commencement Faculty Attendance Form Submitted by:</p>\n\n<p>Submitted by user: [webform_submission:user]<br />\n<br />\nSubmitted values are: [webform_submission:values]<br />\n<br />\nThe results of this submission may be viewed at: [webform_submission:url]</p>"
+      body: "<p>Commencement Faculty Attendance Form Submitted by:</p>\r\n\r\n<p>Submitted by user: [webform_submission:user]<br />\r\n<br />\r\nSubmitted values are: [webform_submission:values]<br />\r\n<br />\r\nThe results of this submission may be viewed at: [webform_submission:url]</p>"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
