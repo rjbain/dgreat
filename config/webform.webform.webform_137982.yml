@@ -1,6 +1,6 @@
 uuid: cbd88e8d-4624-454e-8019-4c6896bbb999
 langcode: en
-status: open
+status: closed
 dependencies:
   module:
     - dgreat_student_surveys
@@ -29,7 +29,7 @@ settings:
   form_submit_once: false
   form_exception_message: ''
   form_open_message: ''
-  form_close_message: ''
+  form_close_message: 'Applications for Student Leader are now closed, but applications for Arrupe Immersions remain open throughout September.'
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -125,8 +125,10 @@ access:
       - anonymous
       - authenticated
     users: {  }
+    permissions: {  }
   view_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   update_any:
@@ -134,7 +136,8 @@ access:
     users: {  }
     permissions: {  }
   delete_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   purge_any:
@@ -154,7 +157,8 @@ access:
     users: {  }
     permissions: {  }
   administer:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   test:

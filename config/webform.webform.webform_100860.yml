@@ -12,7 +12,7 @@ id: webform_100860
 title: 'Story Idea Pitch Form'
 description: null
 category: null
-elements: "first_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title_display': inline\n  '#title': Email\n  '#description': ''\n  '#required': true\nwhats_the_story_about_in_a_nutshell:\n  '#type': textarea\n  '#title': 'In three sentences or fewer, please tell us the story in a nutshell.'\n  '#required': true\nwhats_the_significance_of_the_story_why_would_a_reader_viewer_care:\n  '#type': textarea\n  '#title': 'In two sentences or fewer, please tell us why a reader/viewer would care.'\nwhats_new_about_the_story_why_do_you_want_to_tell_it_now:\n  '#type': textarea\n  '#title': 'Is this story news (a student just won a cross-country race) or is it a feature that is not time sensitive (a professor surfs big waves for fun)?'\nwhich_usf_messaging_concept_does_this_story_illustrate_and_how_c:\n  '#type': checkboxes\n  '#title': 'Which USF messaging concept does this story illustrate? (check all that apply)'\n  '#options':\n    'San Francisco Advantage': 'San Francisco Advantage'\n    'Engaged Learning': 'Engaged Learning'\n    'Passion for Justice': 'Passion for Justice'\n    'Lead and Succeed': 'Lead and Succeed'\n  '#required': true\nplease_describe_how_the_story_illuminates_the_selected_messaging_concepts:\n  '#type': textarea\n  '#title': 'Please describe how the story illuminates the selected messaging concepts.'\n  '#description': ''\nwho_are_the_sources_for_this_story:\n  '#type': textarea\n  '#title': 'Who are the sources for this story?'\n  '#description': ''\nprovide_any_relevant_links_to_program_information_online_previous_coverage_etc:\n  '#type': textarea\n  '#title': 'Provide any relevant links to program information online. (Previous coverage, etc.).'\nwhos_the_ideal_audience_of_this_story_please_be_as_specific_as_possible:\n  '#type': textarea\n  '#title': 'Who''s the ideal audience of this story? Please be as specific as possible (e.g., prospects, current students, parents, alumni, general public).'\nwhats_the_call_to_action_for_the_audience:\n  '#type': textarea\n  '#title': 'What''s the call to action for the audience? (Share news item, question for readers'' discussion, vote, donate, attend event, visit, read more about program, etc.)'\n  '#description': ''\ndescription:\n  '#type': webform_markup\n  '#markup': 'Please not that we cannot produce or publish every story idea submitted. Also, we reserve the right to &quot;package&quot; the story in the format and in the medium (or media) that we think is most appropriate. After submitting this form, you will hear back from OMC within 1-2 weeks (usually sooner) about next steps.'\n"
+elements: "first_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title_display': inline\n  '#title': Email\n  '#description': ''\n  '#required': true\nwhich_usf_messaging_concept_does_this_story_illustrate_and_how_c:\n  '#type': checkboxes\n  '#title': 'Which USF messaging concept does this story illustrate? (check all that apply)'\n  '#options':\n    'San Francisco Advantage': 'San Francisco Advantage'\n    'Engaged Learning': 'Engaged Learning'\n    'Passion for Justice': 'Passion for Justice'\n    'Lead and Succeed': 'Lead and Succeed'\n  '#required': true\nwhats_the_story_about_in_a_nutshell:\n  '#type': textarea\n  '#title': 'In five sentences or fewer, please tell us the story, and why a reader would care. '\n  '#description': \"Example:<br />\\r\\n<em>Luis Sepulveda &rsquo;21, finance major, founded his own investment advisory firm at the age of 16. Today he has 15 clients. Most of them are working-class people who, if not for his help, would have zero retirement savings. Luis is seeking justice even before he graduates.</em>\"\n  '#required': true\n  '#format_items': comma\ndescription:\n  '#type': webform_markup\n  '#markup': 'Thanks for your pitch! We&#39;ll respond within 2 weeks.'"
 css: ''
 javascript: ''
 settings:
@@ -120,8 +120,10 @@ access:
       - anonymous
       - authenticated
     users: {  }
+    permissions: {  }
   view_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   update_any:
@@ -129,7 +131,8 @@ access:
     users: {  }
     permissions: {  }
   delete_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   purge_any:
@@ -149,7 +152,8 @@ access:
     users: {  }
     permissions: {  }
   administer:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   test:
