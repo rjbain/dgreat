@@ -1,0 +1,40 @@
+uuid: 73483440-fe13-4500-8e14-d34f80ffd811
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - cediploma
+    - system
+    - user
+  theme:
+    - myusf
+id: cediplomalinkblock
+theme: myusf
+region: sidebar_second
+weight: 0
+provider: null
+plugin: block_cediplomalinkblock
+settings:
+  id: block_cediplomalinkblock
+  label: CeDiploma
+  provider: cediploma
+  label_display: visible
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /dashboard
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
