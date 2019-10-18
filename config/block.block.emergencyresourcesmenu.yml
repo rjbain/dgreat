@@ -1,0 +1,35 @@
+uuid: 3e969077-b78c-4c17-8cb9-673ebc76fe3b
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.emergency-resources-menu
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: emergencyresourcesmenu
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:emergency-resources-menu'
+settings:
+  id: 'system_menu_block:emergency-resources-menu'
+  label: 'Emergency Resources Menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/emergency-resources-campus-protocols\r\n/emergency-resources-campus-protocols/*"
+    negate: false
+    context_mapping: {  }

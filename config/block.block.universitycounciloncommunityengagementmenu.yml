@@ -1,0 +1,35 @@
+uuid: ca7516e3-5798-4f20-9b0e-922944b8b9cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.university-council-on-commu
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: universitycounciloncommunityengagementmenu
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:university-council-on-commu'
+settings:
+  id: 'system_menu_block:university-council-on-commu'
+  label: 'University Council on Community Engagement Menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/university-councils/community-engagement\r\n/university-councils/community-engagement/*"
+    negate: false
+    context_mapping: {  }
