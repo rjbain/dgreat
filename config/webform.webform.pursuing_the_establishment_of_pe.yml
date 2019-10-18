@@ -51,7 +51,9 @@ settings:
   submission_label: ''
   submission_log: false
   submission_views: {  }
-  submission_views_replace: {  }
+  submission_views_replace:
+    webform_routes: {  }
+    node_routes: {  }
   submission_user_columns: {  }
   submission_user_duplicate: false
   submission_access_denied: default
@@ -100,7 +102,7 @@ settings:
   limit_total: null
   limit_total_interval: null
   limit_total_message: ''
-  limit_user: null
+  limit_user: 1
   limit_user_interval: null
   limit_user_message: ''
   entity_limit_total: null
@@ -158,4 +160,38 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers: {  }
+handlers:
+  confirmation_email:
+    id: email
+    label: 'Confirmation Email'
+    handler_id: confirmation_email
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:_email:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: centerasiapacific@office.usfca.edu
+      bcc_options: {  }
+      from_mail: centerasiapacific@office.usfca.edu
+      from_options: {  }
+      from_name: 'Center for Asia Pacific Studies'
+      subject: '[USF] Registration Confirmed: Pursuing the Establishment of Permanent Peace on the Korean Peninsula'
+      body: "<p>Submitted on [webform_submission:created]</p>\r\n<p>Submitted by: [webform_submission:user]</p>\r\n<p>Submitted values are:</p>\r\n[webform_submission:values]\r\n<p>Additional event details can be found here: https://myusf.usfca.edu/event/rsvp/korean-peninsula</p>"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''

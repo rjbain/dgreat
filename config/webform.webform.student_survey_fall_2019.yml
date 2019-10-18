@@ -1,18 +1,25 @@
-uuid: 1f570a9a-56ff-44ed-8117-c58131d0eb1d
+uuid: 45438058-0d57-4e9f-ac18-1b50a710a854
 langcode: en
 status: open
-dependencies: {  }
+dependencies:
+  module:
+    - dgreat_student_surveys
+third_party_settings:
+  dgreat_student_surveys:
+    salesforce_id: 7011T000001BbB8QAK
+_core:
+  default_config_hash: mYTMZ6UnS7UH3uSYX1QXfOp8XaBX-r-wTjhCt-EWh_k
 open: null
 close: null
 weight: 0
-uid: 35196
+uid: 120
 template: false
 archive: false
-id: clone_of_cit_training_registrati
-title: 'Clone of CIT Training Registration Form'
+id: student_survey_fall_2019
+title: 'Student Survey Fall 2019'
 description: ''
-category: ''
-elements: "processed_text:\n  '#type': processed_text\n  '#text': \"<h1 class=\\\"title\\\" id=\\\"page-title\\\">Clone of CIT Training Registration Form</h1>\\n\\n<div class=\\\"region region-content\\\">\\n<div class=\\\"block block-system\\\" id=\\\"block-system-main\\\">\\n<div class=\\\"content\\\">\\n<article class=\\\"node node-webform node-promoted node-content-64459 clearfix\\\" id=\\\"node-64459\\\" role=\\\"article\\\">\\n<div class=\\\"content clearfix\\\">\\n<form accept-charset=\\\"UTF-8\\\" action=\\\"/content/clone-cit-training-registration-form\\\" class=\\\"webform-client-form webform-client-form-64459\\\" enctype=\\\"multipart/form-data\\\" id=\\\"webform-client-form-64459\\\" method=\\\"post\\\" role=\\\"form\\\">\\n<div>\\n<div class=\\\"form-item webform-component webform-component-markup webform-component--update\\\">\\n<p class=\\\"intro_text_lg\\\">*More training classes for the next quarter will be posted by mid-December.</p>\\n</div>\\n\\n<div class=\\\"form-item webform-component webform-component-markup webform-component--feedback\\\">\\n<p><a href=\\\"https://live-usfi.pantheonsite.io/content/feedback-form\\\" target=\\\"_blank\\\" title=\\\"Feedback\\\"><img alt=\\\"CIT feedback logo\\\" class=\\\"media-element file-default panopoly-image-original\\\" height=\\\"37\\\" src=\\\"https://live-usfi.pantheonsite.io/system/files/styles/panopoly_image_original/private/feedback_150.jpg?itok=5r_5m7we\\\" style=\\\"float: right;\\\" width=\\\"150\\\" /></a></p>\\n\\n<hr /></div>\\n</div>\\n</form>\\n</div>\\n</article>\\n</div>\\n</div>\\n</div>\\n\"\n  '#format': full_html\nname_:\n  '#type': textfield\n  '#title': 'Name:'\nemail_:\n  '#type': email\n  '#title': 'Email:'\nextensions_:\n  '#type': textfield\n  '#title': 'Extensions:'\n"
+category: student_survey
+elements: "overall_how_connected_do_you_feel_to_the_university_of_san_franc:\n  '#type': student_survey_rating_element\n  '#title': 'Overall, how connected do you feel to the University of San Francisco?'\n  '#salesforce_id': 7011T000001BbB8QAK\n  '#options':\n    'Strongly connected': 'Strongly connected'\n    Connected: Connected\n    'Neither disconnected nor connected': 'Neither disconnected nor connected'\n    Disconnected: Disconnected\n    'Strongly disconnected': 'Strongly disconnected'\ni_feel_a_part_of_campus_life_at_the_university_of_san_francisco:\n  '#type': student_survey_rating_element\n  '#title': 'I feel a part of campus life at the University of San Francisco'\n  '#salesforce_id': 7011T000001BbBDQA0\n  '#options':\n    'Strongly agree': 'Strongly agree'\n    Agree: Agree\n    'Neither disagree nor agree': 'Neither disagree nor agree'\n    Disagree: Disagree\n    'Strongly disagree': 'Strongly disagree'"
 css: ''
 javascript: ''
 settings:
@@ -43,21 +50,14 @@ settings:
   form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
-  form_access_denied: default
-  form_access_denied_title: ''
-  form_access_denied_message: ''
-  form_access_denied_attributes: {  }
-  form_file_limit: ''
+  form_login: false
+  form_login_message: ''
   submission_label: ''
   submission_log: false
-  submission_views: {  }
-  submission_views_replace: {  }
   submission_user_columns: {  }
   submission_user_duplicate: false
-  submission_access_denied: default
-  submission_access_denied_title: ''
-  submission_access_denied_message: ''
-  submission_access_denied_attributes: {  }
+  submission_login: false
+  submission_login_message: ''
   submission_exception_message: ''
   submission_locked_message: ''
   previous_submission_message: ''
@@ -87,10 +87,10 @@ settings:
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
-  confirmation_type: page
+  confirmation_type: url_message
   confirmation_title: ''
-  confirmation_message: ''
-  confirmation_url: ''
+  confirmation_message: 'Thanks for participating in the survey!'
+  confirmation_url: /dashboard
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -112,6 +112,17 @@ settings:
   results_disabled: false
   results_disabled_ignore: false
   token_update: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
 access:
   create:
     roles:
@@ -120,8 +131,7 @@ access:
     users: {  }
     permissions: {  }
   view_any:
-    roles:
-      - editor
+    roles: {  }
     users: {  }
     permissions: {  }
   update_any:
@@ -129,8 +139,7 @@ access:
     users: {  }
     permissions: {  }
   delete_any:
-    roles:
-      - editor
+    roles: {  }
     users: {  }
     permissions: {  }
   purge_any:
@@ -150,8 +159,7 @@ access:
     users: {  }
     permissions: {  }
   administer:
-    roles:
-      - editor
+    roles: {  }
     users: {  }
     permissions: {  }
   test:

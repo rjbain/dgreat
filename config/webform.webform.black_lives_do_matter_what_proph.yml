@@ -1,25 +1,18 @@
-uuid: d1bbb887-f336-42af-9a1f-d3293b4d085a
+uuid: e9917cfa-c6da-4ba0-a86c-86b7d340d2d0
 langcode: en
 status: open
-dependencies:
-  module:
-    - dgreat_student_surveys
-third_party_settings:
-  dgreat_student_surveys:
-    salesforce_id: 70150000001Ez1S
-_core:
-  default_config_hash: mYTMZ6UnS7UH3uSYX1QXfOp8XaBX-r-wTjhCt-EWh_k
+dependencies: {  }
 open: null
 close: null
 weight: 0
-uid: 120
+uid: 42945
 template: false
 archive: false
-id: student_survey_11_12_2018
-title: 'Student Survey 11-12-2018'
+id: black_lives_do_matter_what_proph
+title: 'Black Lives Do Matter: What Prophetic Voice does the Black Catholic Experience in this Country have to Offer Christianity and US Culture at this Time?'
 description: ''
-category: student_survey
-elements: "overall_how_connected_do_you_feel_to_the_university_of_san_franc:\n  '#type': student_survey_rating_element\n  '#title': 'Overall, how connected do you feel to the University of San Francisco?'\n  '#salesforce_id': 70150000001Ez1S\n  '#options':\n    'Strongly disconnected': 'Strongly disconnected'\n    Disconnected: Disconnected\n    'Neither disconnected nor connected': 'Neither disconnected nor connected'\n    Connected: Connected\n    'Strongly connected': 'Strongly connected'\nhow_much_do_you_agree_with_the_following_statement_i_feel_a_part:\n  '#type': student_survey_rating_element\n  '#title': 'How much do you agree with the following statement? \"I feel a part of campus life at the University of San Francisco.\"'\n  '#salesforce_id': 70150000001Ez1X\n  '#options':\n    'Strongly disagree': 'Strongly disagree'\n    Disagree: Disagree\n    'Neither disagree nor agree': 'Neither disagree nor agree'\n    Agree: Agree\n    'Strongly agree': 'Strongly agree'"
+category: 'The Joan and Ralph Lane Center for Catholic Social Thought & the Ignatian Tradition'
+elements: "_first_name:\n  '#type': textfield\n  '#title': '*First Name'\n  '#required': true\n_last_name:\n  '#type': textfield\n  '#title': '*Last Name'\n  '#required': true\n_email:\n  '#type': email\n  '#title': '*Email'\n  '#required': true"
 css: ''
 javascript: ''
 settings:
@@ -50,14 +43,21 @@ settings:
   form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
-  form_login: false
-  form_login_message: ''
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
   submission_label: ''
   submission_log: false
+  submission_views: {  }
+  submission_views_replace: {  }
   submission_user_columns: {  }
   submission_user_duplicate: false
-  submission_login: false
-  submission_login_message: ''
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
   submission_exception_message: ''
   submission_locked_message: ''
   previous_submission_message: ''
@@ -87,10 +87,10 @@ settings:
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
-  confirmation_type: url_message
+  confirmation_type: page
   confirmation_title: ''
-  confirmation_message: 'Thanks for participating in the survey!'
-  confirmation_url: /dashboard
+  confirmation_message: ''
+  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -112,17 +112,6 @@ settings:
   results_disabled: false
   results_disabled_ignore: false
   token_update: false
-  form_access_denied: default
-  form_access_denied_title: ''
-  form_access_denied_message: ''
-  form_access_denied_attributes: {  }
-  form_file_limit: ''
-  submission_views: {  }
-  submission_views_replace: {  }
-  submission_access_denied: default
-  submission_access_denied_title: ''
-  submission_access_denied_message: ''
-  submission_access_denied_attributes: {  }
 access:
   create:
     roles:
@@ -140,8 +129,7 @@ access:
     users: {  }
     permissions: {  }
   delete_any:
-    roles:
-      - editor
+    roles: {  }
     users: {  }
     permissions: {  }
   purge_any:
@@ -161,8 +149,7 @@ access:
     users: {  }
     permissions: {  }
   administer:
-    roles:
-      - editor
+    roles: {  }
     users: {  }
     permissions: {  }
   test:
