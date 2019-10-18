@@ -1,3 +1,4 @@
+uuid: d2d70c6b-8eac-4bf3-a2f2-5009b71862ba
 langcode: en
 status: open
 dependencies: {  }
@@ -119,8 +120,10 @@ access:
       - anonymous
       - authenticated
     users: {  }
+    permissions: {  }
   view_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   update_any:
@@ -128,7 +131,8 @@ access:
     users: {  }
     permissions: {  }
   delete_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   purge_any:
@@ -148,7 +152,8 @@ access:
     users: {  }
     permissions: {  }
   administer:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   test:
@@ -234,7 +239,7 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: transfer@usfca.edu
+      to_mail: transfercredit@usfca.edu
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
@@ -244,7 +249,7 @@ handlers:
       from_options: {  }
       from_name: 'USF Transfer Admissions'
       subject: 'Transfer Credit Requests Form Submitted'
-      body: "Submitted by user: [webform_submission:user]<br />\n<br />\nSubmitted values are: [webform_submission:values]<br />\n<br />\nThe results of this submission may be viewed at: [webform_submission:url]"
+      body: "Submitted by user: [webform_submission:user]<br />\r\n<br />\r\nSubmitted values are: [webform_submission:values]<br />\r\n<br />\r\nThe results of this submission may be viewed at: [webform_submission:url]"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -258,4 +263,3 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
-uuid: d2d70c6b-8eac-4bf3-a2f2-5009b71862ba

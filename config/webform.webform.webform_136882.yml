@@ -1,6 +1,12 @@
+uuid: 50946000-d621-4086-bdff-e24604011113
 langcode: en
 status: open
-dependencies: {  }
+dependencies:
+  module:
+    - dgreat_student_surveys
+third_party_settings:
+  dgreat_student_surveys:
+    salesforce_id: ''
 open: null
 close: null
 weight: 0
@@ -10,7 +16,7 @@ archive: false
 id: webform_136882
 title: 'UM Spiritual Exercises of St. Ignatius (19th Annotation)'
 description: ''
-category: ''
+category: 'University Ministry'
 elements: "first_name:\n  '#type': textfield\n  '#title': First Name:\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name:\n  '#description': \"\"\n  '#required': true\nusf_affiliation:\n  '#type': radios\n  '#options':\n    1: Faculty\n    2: Staff\n    3: Other\n  '#title': USF Affiliation:\n  '#description': \"\"\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department:\n  '#description': \"\"\n  '#required': true\nusf_e_mail_address:\n  '#type': email\n  '#size': 20\n  '#title': USF E-mail Address:\n  '#description': \"\"\n  '#required': true\nphone_number:\n  '#type': textfield\n  '#size': 20\n  '#min': \n  '#max': \n  '#step': \n  '#unique': false\n  '#title': Phone Number:\n  '#description': \"\"\n  '#required': true\nhave_you_met_with_fr_donal_godfrey:\n  '#type': radios\n  '#options':\n    1: Yes\n    2: No\n  '#title': Have you met with Fr. Donal Godfrey?\n  '#description': \"If not, please contact Fr. Donal before registering (godfrey@usfca.edu).\"\n  '#required': true\n"
 css: ''
 javascript: ''
@@ -119,8 +125,10 @@ access:
       - anonymous
       - authenticated
     users: {  }
+    permissions: {  }
   view_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   update_any:
@@ -128,7 +136,8 @@ access:
     users: {  }
     permissions: {  }
   delete_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   purge_any:
@@ -148,7 +157,8 @@ access:
     users: {  }
     permissions: {  }
   administer:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   test:
@@ -166,7 +176,7 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: godfrey@usfca.edu
+      to_mail: 'godfrey@usfca.edu, um@usfca.edu'
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
@@ -190,4 +200,3 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
-uuid: 50946000-d621-4086-bdff-e24604011113
