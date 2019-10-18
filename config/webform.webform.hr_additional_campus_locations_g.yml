@@ -1,18 +1,23 @@
-uuid: fc3014a8-8387-425a-9673-68f0d02ea767
+uuid: e3478c50-a796-439d-a20f-976883cdcc15
 langcode: en
 status: open
-dependencies: {  }
+dependencies:
+  module:
+    - dgreat_student_surveys
+third_party_settings:
+  dgreat_student_surveys:
+    salesforce_id: ''
 open: null
 close: null
 weight: 0
-uid: 35173
+uid: 62845
 template: false
 archive: false
-id: webform_137682
-title: '2017 Lane Center Roundtable Discussion on Faith and Social Justice: Race and Incarceration'
-description: null
-category: null
-elements: "registration_description:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>This roundtable will bring together scholars, community leaders, activists, and ministers to respond to the mass incarceration of people of color in the United States. Drawing upon the resources of critical pedagogy, sociology, theological ethics, law, and prison ministry, facilitators will provide an interdisciplinary overview of the topic and participants will contribute to the discussion from their experience and expertise.</p><p>The intended outcomes of the roundtable are 1. to promote collaborative research and advocacy between the university, activists, and socially engaged faith communities 2. and to publish the content of the roundtable in the next volume of the Lane Center book series.</p><p>Friday, April 21st, 2017, 8:30am-3:30pm at the University of San Francisco's McLaren Conference Center, 252.<br>Breakfast and lunch will be provided.</p><p>Facilitators Hadar Aviram, Alison Benders, John Booth, Reggie Daniels, and Kimberly Richman will provide background papers to be circulated three weeks prior to the event.</p><p>Space is limited to 30 participants. Please register by March 1st. You will receive confirmation of your registration by March 1st. If you are no longer able to attend the event, please let us know so we can register participants from the wait-list. For more information contact Erin Brigham 415-422-2912,&nbsp;<a href='mailto:embrigham@usfca.edu'>embrigham@usfca.edu</a></p>\"\n  '#title': Registration Description\n  '#description': \"\"\nname:\n  '#type': textfield\n  '#title': Name\n  '#description': \"\"\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': \"\"\n  '#required': true\nphone:\n  '#type': textfield\n  '#title': Phone\n  '#description': \"\"\n  '#required': true\nwhy_do_you_want_to_participate_in_this_roundtable:\n  '#type': textarea\n  '#title': Why do you want to participate in this roundtable?\n  '#description': \"\"\n  '#required': true\n"
+id: hr_additional_campus_locations_g
+title: 'HR Additional Campus Locations Gym Membership Reimbursement Form 2019'
+description: ''
+category: ''
+elements: "employee_name:\n  '#type': textfield\n  '#title': 'Employee Name'\n  '#description': ''\n  '#required': true\njob_title_position:\n  '#type': textfield\n  '#title': 'Job Title/Position'\n  '#description': ''\n  '#required': true\nadditional_campus_location:\n  '#type': textfield\n  '#title': 'Additional Campus Location'\n  '#description': ''\n  '#required': true\ncwid:\n  '#type': textfield\n  '#size': 20\n  '#min': null\n  '#max': 99999999\n  '#step': null\n  '#unique': false\n  '#title': CWID\n  '#description': ''\n  '#required': true\nname_of_gym_health_club_class:\n  '#type': textfield\n  '#title': 'Name of Gym/Health Club/Class'\n  '#description': ''\n  '#required': true\nperiod_of_expense_beginning:\n  '#type': date\n  '#title': 'Period of Expense (Beginning)'\n  '#description': ''\n  '#required': true\nperiod_of_expense_end:\n  '#type': date\n  '#title': 'Period of Expense (End)'\n  '#description': ''\n  '#required': true\ntotal_expense:\n  '#type': textfield\n  '#size': 20\n  '#min': null\n  '#max': null\n  '#step': null\n  '#unique': false\n  '#field_prefix': $\n  '#title': 'Total Expense'\n  '#description': ''\n  '#required': true\nlegalese:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p>By entering my name and date below, I hereby certify that this expense was incurred on my own behalf and was not reimbursed by another source.</p>'\n  '#title': Legalese\n  '#description': ''\nemployee_signature:\n  '#type': textfield\n  '#title': 'Employee Signature'\n  '#description': ''\n  '#required': true\ndate:\n  '#type': date\n  '#title': Date\n  '#description': ''\n  '#required': true\n"
 css: ''
 javascript: ''
 settings:
@@ -89,7 +94,7 @@ settings:
   draft_loaded_message: ''
   confirmation_type: page
   confirmation_title: ''
-  confirmation_message: ''
+  confirmation_message: '<p>Thank you for submitting a branch campus gym membership reimbursement form. If you have any questions, please contact <a href="mailto:benefits@usfca.edu">benefits@usfca.edu</a>.</p>'
   confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
@@ -171,7 +176,7 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: embrigham@usfca.edu
+      to_mail: 'lhumphrey2@usfca.edu,benefits@usfca.edu'
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
@@ -181,47 +186,13 @@ handlers:
       from_options: {  }
       from_name: _default
       subject: _default
-      body: 'Submitted by user: [webform_submission:user] Submitted values are: [webform_submission:values]'
+      body: _default
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
-      html: true
-      attachments: false
-      twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      theme_name: ''
-  email_2:
-    id: email
-    label: 'Email 2'
-    handler_id: email_2
-    status: true
-    conditions: {  }
-    weight: 2
-    settings:
-      states:
-        - completed
-      to_mail: '[webform-submission:values:email:raw]'
-      to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      from_mail: _default
-      from_options: {  }
-      from_name: _default
-      subject: _default
-      body: 'Submitted by user: [webform_submission:user] Submitted values are: [webform_submission:values]'
-      excluded_elements: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      html: true
-      attachments: false
+      html: false
+      attachments: true
       twig: false
       debug: false
       reply_to: ''

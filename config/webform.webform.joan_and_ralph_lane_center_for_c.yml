@@ -1,18 +1,23 @@
-uuid: a1c16f37-2e47-48cb-8a3e-34b97526c894
+uuid: 88e9f8d3-040c-4d1e-8e0d-971aa4b01427
 langcode: en
 status: open
-dependencies: {  }
+dependencies:
+  module:
+    - dgreat_student_surveys
+third_party_settings:
+  dgreat_student_surveys:
+    salesforce_id: ''
 open: null
 close: null
 weight: 0
-uid: 27769
+uid: 42945
 template: false
 archive: false
-id: school_of_management_dean_s_sear
-title: 'School of Management Dean''s Search Question Submission Form'
+id: joan_and_ralph_lane_center_for_c
+title: 'The 3rd Annual Women Shaping the Catholic Social Tradition Speaking Series Proudly Presents Kerry A. Robinson'
 description: ''
-category: SOM
-elements: "first_name_optional_:\n  '#type': textfield\n  '#title': 'Name (Optional)'\nemail_optional_:\n  '#type': email\n  '#title': 'Email (Optional)'\nquestion:\n  '#type': textarea\n  '#title': Question\n  '#required': true"
+category: 'The Joan and Ralph Lane Center for Catholic Social Thought & the Ignatian Tradition'
+elements: "_first_name:\n  '#type': textfield\n  '#title': '*First Name'\n  '#required': true\n_last_name:\n  '#type': textfield\n  '#title': '*Last Name'\n  '#required': true\n_email:\n  '#type': textfield\n  '#title': '*Email'\n  '#required': true"
 css: ''
 javascript: ''
 settings:
@@ -27,7 +32,7 @@ settings:
   form_close_message: ''
   form_previous_submissions: true
   form_confidential: false
-  form_confidential_message: 'Please log out to submit this form.'
+  form_confidential_message: ''
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -51,9 +56,7 @@ settings:
   submission_label: ''
   submission_log: false
   submission_views: {  }
-  submission_views_replace:
-    webform_routes: {  }
-    node_routes: {  }
+  submission_views_replace: {  }
   submission_user_columns: {  }
   submission_user_duplicate: false
   submission_access_denied: default
@@ -124,7 +127,6 @@ access:
   view_any:
     roles:
       - editor
-      - webform_editor
     users: {  }
     permissions: {  }
   update_any:
@@ -132,15 +134,11 @@ access:
     users: {  }
     permissions: {  }
   delete_any:
-    roles:
-      - editor
-      - webform_editor
+    roles: {  }
     users: {  }
     permissions: {  }
   purge_any:
-    roles:
-      - editor
-      - webform_editor
+    roles: {  }
     users: {  }
     permissions: {  }
   view_own:
@@ -156,9 +154,7 @@ access:
     users: {  }
     permissions: {  }
   administer:
-    roles:
-      - editor
-      - webform_editor
+    roles: {  }
     users: {  }
     permissions: {  }
   test:

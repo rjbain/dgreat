@@ -1,25 +1,18 @@
-uuid: 318dd4af-66f0-4b1a-be56-9ed815e81f0b
+uuid: 36ccef76-d5e4-4642-9c64-3b031dc331bb
 langcode: en
 status: open
-dependencies:
-  module:
-    - dgreat_student_surveys
-third_party_settings:
-  dgreat_student_surveys:
-    salesforce_id: 70150000001Ez1S
-_core:
-  default_config_hash: mYTMZ6UnS7UH3uSYX1QXfOp8XaBX-r-wTjhCt-EWh_k
+dependencies: {  }
 open: null
 close: null
 weight: 0
-uid: 120
+uid: 42945
 template: false
 archive: false
-id: student_survey_feb_27_2019
-title: 'Student Survey Feb 27 2019'
-description: 'First student survey.'
-category: student_survey
-elements: "overall_how_connected_do_you_feel_to_the_university_of_san_franc:\n  '#type': student_survey_rating_element\n  '#title': 'Overall, how connected do you feel to the University of San Francisco?'\n  '#salesforce_id': 70150000001Ez1S\n  '#options':\n    'Strongly connected': 'Strongly connected'\n    Connected: Connected\n    'Neither disconnected nor connected': 'Neither disconnected nor connected'\n    Disconnected: Disconnected\n    'Strongly disconnected': 'Strongly disconnected'\nhow_much_do_you_agree_with_the_following_statement_i_feel_a_part:\n  '#type': student_survey_rating_element\n  '#title': 'How much do you agree with the following statement? \"I feel a part of campus life at the University of San Francisco.\"'\n  '#salesforce_id': 70150000001Ez1X\n  '#options':\n    'Strongly agree': 'Strongly agree'\n    Agree: Agree\n    'Neither disagree nor agree': 'Neither disagree nor agree'\n    Disagree: Disagree\n    'Strongly disagree': 'Strongly disagree'"
+id: _3rd_annual_mccarthy_center_powe
+title: ' 3rd Annual McCarthy Center Power Breakfast'
+description: ''
+category: 'Leo T. McCarthy Center'
+elements: "_name:\n  '#type': textfield\n  '#title': '*Name'\n  '#required': true\n_email:\n  '#type': email\n  '#title': '*Email'\n  '#required': true\n_will_you_be_able_to_join_us_for_the_3rd_annual_mccarthy_center_:\n  '#type': webform_radios_other\n  '#title': '*Will you be able to join us for the 3rd Annual McCarthy Center Power Breakfast?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n    Maybe: Maybe\n  '#required': true\n_will_you_need_a_usf_parking_permit_:\n  '#type': webform_radios_other\n  '#title': '*Will you need a USF parking permit? '\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n    Maybe: Maybe\n  '#required': true"
 css: ''
 javascript: ''
 settings:
@@ -50,14 +43,21 @@ settings:
   form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
-  form_login: false
-  form_login_message: ''
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
   submission_label: ''
   submission_log: false
+  submission_views: {  }
+  submission_views_replace: {  }
   submission_user_columns: {  }
   submission_user_duplicate: false
-  submission_login: false
-  submission_login_message: ''
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
   submission_exception_message: ''
   submission_locked_message: ''
   previous_submission_message: ''
@@ -87,10 +87,10 @@ settings:
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
-  confirmation_type: url_message
+  confirmation_type: page
   confirmation_title: ''
-  confirmation_message: 'Thanks for participating in the survey!'
-  confirmation_url: /dashboard
+  confirmation_message: ''
+  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -112,17 +112,6 @@ settings:
   results_disabled: false
   results_disabled_ignore: false
   token_update: false
-  form_access_denied: default
-  form_access_denied_title: ''
-  form_access_denied_message: ''
-  form_access_denied_attributes: {  }
-  form_file_limit: ''
-  submission_views: {  }
-  submission_views_replace: {  }
-  submission_access_denied: default
-  submission_access_denied_title: ''
-  submission_access_denied_message: ''
-  submission_access_denied_attributes: {  }
 access:
   create:
     roles:
@@ -131,7 +120,8 @@ access:
     users: {  }
     permissions: {  }
   view_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   update_any:

@@ -1,18 +1,18 @@
-uuid: 90316507-1f75-49ef-b940-9480fe5aaddd
+uuid: 351d2295-4a9c-4f6c-a73a-4cca302f2088
 langcode: en
 status: open
 dependencies: {  }
 open: null
 close: null
 weight: 0
-uid: 62508
+uid: 42945
 template: false
 archive: false
-id: law_abes_mentor_form
-title: 'Law ABES Mentor Form'
+id: prison_trauma_healing_workshop
+title: 'Prison Trauma Healing Workshop'
 description: ''
-category: law
-elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#title': 'USF Email Address'\n  '#required': true\n_i_am_signing_up_as_an_:\n  '#type': checkboxes\n  '#title': ' I am signing up as an:'\n  '#options':\n    mentor: Mentor\n    mentee: Mentee\nschool_year:\n  '#type': select\n  '#title': 'School Year'\n  '#options':\n    1L: 1L\n    2L: 2L\n    3L: 3L\n    4L: 4L\nenrollment_status:\n  '#type': select\n  '#title': 'Enrollment Status'\n  '#options':\n    Part-Time: Part-Time\n    Full-Time: Full-Time\n_why_are_you_interested_in_becoming_in_a_mentor_:\n  '#type': textarea\n  '#title': ' Why are you interested in becoming in a mentor?'\nhoping_to_gain:\n  '#type': textarea\n  '#title': 'What are you hoping to gain by having a mentee?'\nwhat_are_you_hoping_to_gain_by_having_a_mentor_:\n  '#type': textarea\n  '#title': 'What are you hoping to gain by having a mentor?'\n"
+category: ''
+elements: "_first_name:\n  '#type': textfield\n  '#title': '*First Name'\n  '#required': true\n_last_name:\n  '#type': textfield\n  '#title': '*Last Name'\n  '#required': true\n_email_address:\n  '#type': textfield\n  '#title': '*Email Address'\n  '#required': true\n_please_explain_why_you_are_interested_in_this_workshop_200_word:\n  '#type': textarea\n  '#title': '*Please explain why you are interested in this workshop (200 words or less).'\n  '#required': true\n_are_you_currently_involved_or_do_you_plan_to_be_involved_in_a_j:\n  '#type': radios\n  '#title': '*Are you currently involved or do you plan to be involved in a jail or prison ministry? '\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\nif_so_where_:\n  '#type': textfield\n  '#title': 'If so, where?'"
 css: ''
 javascript: ''
 settings:
@@ -87,9 +87,9 @@ settings:
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
-  confirmation_type: inline
+  confirmation_type: page
   confirmation_title: ''
-  confirmation_message: 'Thank you for submitting your application to be a part of the ABES Peer Mentor Program! Your application is being reviewed. You will be contacted by an ABES team member with more information.'
+  confirmation_message: ''
   confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
@@ -129,8 +129,7 @@ access:
     users: {  }
     permissions: {  }
   delete_any:
-    roles:
-      - editor
+    roles: {  }
     users: {  }
     permissions: {  }
   purge_any:
@@ -150,80 +149,11 @@ access:
     users: {  }
     permissions: {  }
   administer:
-    roles:
-      - editor
+    roles: {  }
     users: {  }
     permissions: {  }
   test:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers:
-  email:
-    id: email
-    label: Email
-    handler_id: email
-    status: true
-    conditions: {  }
-    weight: 0
-    settings:
-      states:
-        - completed
-      to_mail: aabedian@usfca.edu
-      to_options: {  }
-      cc_mail: mtjohnson2@usfca.edu
-      cc_options: {  }
-      bcc_mail: jtdunbar@usfca.edu
-      bcc_options: {  }
-      from_mail: '[webform_submission:values:email:raw]'
-      from_options: {  }
-      from_name: '[webform_submission:values:last_name:raw]'
-      subject: _default
-      body: _default
-      excluded_elements: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      html: true
-      attachments: false
-      twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      theme_name: ''
-  email_1:
-    id: email
-    label: 'Email Student'
-    handler_id: email_1
-    status: true
-    conditions: {  }
-    weight: 0
-    settings:
-      states:
-        - completed
-      to_mail: '[webform_submission:values:usf_email_address:raw]'
-      to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      from_mail: _default
-      from_options: {  }
-      from_name: _default
-      subject: _default
-      body: _default
-      excluded_elements: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      html: true
-      attachments: false
-      twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      theme_name: ''
+handlers: {  }

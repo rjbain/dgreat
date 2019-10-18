@@ -12,7 +12,7 @@ id: production_manager_agreement
 title: 'Production Manager Agreement'
 description: ''
 category: 'USF Stages'
-elements: "have_read_and_understand_the_rules_as_presented_and_will_follow_:\n  '#type': checkbox\n  '#title': 'Have read and understand the rules as presented and will follow them to the best of my ability.'\nthis_agreement_is_for_a_pasj_event_in:\n  '#type': webform_select_other\n  '#title': 'This agreement is for a PASJ event in'\n  '#options':\n    Dance: Dance\n    Theater: Theather\n    Music: Music\ntitle:\n  '#type': textfield\n  '#title': Title\nproduction_manger:\n  '#type': textfield\n  '#title': 'Production Manger'\nusf_faculty_or_staff_:\n  '#type': textfield\n  '#title': 'USF Faculty or Staff   '\nfor_the:\n  '#type': date\n  '#title': Date\n  '#title_display': inline\n  '#datepicker': true\n  '#date_date_format': m/d/Y\ncwid_:\n  '#type': number\n  '#title': 'CWID#'\nphone_number:\n  '#type': tel\n  '#title': 'Phone Number'"
+elements: "have_read_and_understand_the_rules_as_presented_and_will_follow_:\n  '#type': checkbox\n  '#title': 'Have read and understand the rules as presented and will follow them to the best of my ability.'\nthis_agreement_is_for_a_pasj_event_in:\n  '#type': webform_select_other\n  '#title': 'This agreement is for a PASJ event in'\n  '#options':\n    Dance: Dance\n    Theater: Theater\n    Music: Music\n    'Tech & Design': 'Tech & Design'\n    PASJ: PASJ\ntitle:\n  '#type': textfield\n  '#title': Title\nproduction_manger:\n  '#type': textfield\n  '#title': 'Production Manger'\nusf_faculty_or_staff_:\n  '#type': textfield\n  '#title': 'USF Faculty or Staff   '\nfor_the:\n  '#type': date\n  '#title': Date\n  '#title_display': inline\n  '#datepicker': true\n  '#date_date_format': m/d/Y\ncwid_:\n  '#type': number\n  '#title': 'CWID#'\nphone_number:\n  '#type': tel\n  '#title': 'Phone Number'"
 css: ''
 javascript: ''
 settings:
@@ -158,4 +158,38 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers: {  }
+handlers:
+  email:
+    id: email
+    label: Email
+    handler_id: email
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: jmcdermott@usfca.edu
+      to_options: {  }
+      cc_mail: ehersh@usfca.edu
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
