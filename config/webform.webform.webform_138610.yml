@@ -1,3 +1,4 @@
+uuid: c7040d92-6591-4ac0-87bf-e9031b37fec6
 langcode: en
 status: open
 dependencies: {  }
@@ -119,8 +120,10 @@ access:
       - anonymous
       - authenticated
     users: {  }
+    permissions: {  }
   view_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   update_any:
@@ -128,7 +131,8 @@ access:
     users: {  }
     permissions: {  }
   delete_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   purge_any:
@@ -148,7 +152,8 @@ access:
     users: {  }
     permissions: {  }
   administer:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   test:
@@ -172,11 +177,11 @@ handlers:
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: default
+      from_mail: _default
       from_options: {  }
       from_name: 'GoUSF Run Wild Registration Form'
-      subject: default
-      body: default
+      subject: _default
+      body: _default
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -190,4 +195,37 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
-uuid: c7040d92-6591-4ac0-87bf-e9031b37fec6
+  email:
+    id: email
+    label: Email
+    handler_id: email
+    status: false
+    conditions: {  }
+    weight: 2
+    settings:
+      states:
+        - completed
+      to_mail: skisylia@usfca.edu
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''

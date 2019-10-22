@@ -1,5 +1,6 @@
+uuid: a4b1f2cb-eabb-4bd8-9e4b-1d477bfbd93f
 langcode: en
-status: open
+status: closed
 dependencies: {  }
 open: null
 close: null
@@ -11,7 +12,7 @@ id: webform_137965
 title: 'UM Spring Open House for Graduating Seniors'
 description: null
 category: null
-elements: "markup:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<div></div><div><strong>Thursday, 5/17/18</strong></div><div><strong>4:30pm - 6:00pm, University Ministry Romero Room</strong></div>\"\n  '#title': Details\n  '#description': \"\"\nfirst_name:\n  '#type': textfield\n  '#title': First Name:\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name:\n  '#description': \"\"\n  '#required': true\nemail_address:\n  '#type': email\n  '#size': 20\n  '#title': Email Address:\n  '#description': \"\"\n  '#required': true\nwill_you_attend_the_open_house_on_may_18th:\n  '#type': radios\n  '#options':\n    1: Yes\n    2: No\n  '#title': Will you attend the Open House on May 17th?\n  '#description': \"\"\n  '#required': true\nhow_many_guests_will_you_bring:\n  '#type': radios\n  '#options':\n    1:  0\n    2:  1\n    3:  2\n    4:  3\n    5:  4\n  '#title': How many guests will you bring?\n  '#description': \"\"\n  '#required': true\nlist_any_dietary_restrictions:\n  '#type': textfield\n  '#title': List any dietary restrictions:\n  '#description': \"\"\n"
+elements: "markup:\n  '#type': processed_text\n  '#title': Details\n  '#description': ''\n  '#text': \"<div><strong>Thursday, 5/16/19</strong></div>\\r\\n\\r\\n<div><strong>4:30pm - 6:00pm, University Ministry Romero Room, Toler 122</strong></div>\\r\\n\"\n  '#format': full_html\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name:'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name:'\n  '#description': ''\n  '#required': true\nemail_address:\n  '#type': email\n  '#size': 20\n  '#title': 'Email Address:'\n  '#description': ''\n  '#required': true\nwill_you_attend_the_open_house_on_thursday_may_16th_:\n  '#type': radios\n  '#title': 'Will you attend the Open House on Thursday, May 16th?'\n  '#options':\n    1: 'Yes'\n    2: 'No'\n  '#required': true\nhow_many_guests_will_you_bring:\n  '#type': radios\n  '#options':\n    1: 0\n    2: 1\n    3: 2\n    4: 3\n    5: 4\n  '#title': 'How many guests will you bring?'\n  '#description': ''\n  '#required': true"
 css: ''
 javascript: ''
 settings:
@@ -119,8 +120,10 @@ access:
       - anonymous
       - authenticated
     users: {  }
+    permissions: {  }
   view_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   update_any:
@@ -128,7 +131,8 @@ access:
     users: {  }
     permissions: {  }
   delete_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   purge_any:
@@ -148,7 +152,8 @@ access:
     users: {  }
     permissions: {  }
   administer:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   test:
@@ -172,11 +177,11 @@ handlers:
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: default
+      from_mail: _default
       from_options: {  }
-      from_name: default
-      subject: default
-      body: default
+      from_name: _default
+      subject: _default
+      body: _default
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -190,4 +195,3 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
-uuid: a4b1f2cb-eabb-4bd8-9e4b-1d477bfbd93f

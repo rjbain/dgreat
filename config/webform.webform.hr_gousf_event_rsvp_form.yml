@@ -12,7 +12,7 @@ id: hr_gousf_event_rsvp_form
 title: 'HR GoUSF Event RSVP Form'
 description: ''
 category: ''
-elements: "select_the_gousf_event_s_that_you_would_like_to_attend:\n  '#type': checkboxes\n  '#title': 'Select the GoUSF event(s) that you would like to attend'\n  '#options':\n    'Go Relax: Zazen*Tuesdays, Thursdays*4:30-6pm*Arrupe Room': 'Go Relax: Zazen*Tuesdays, Thursdays*4:30-6pm*Arrupe Room -- No rsvp required'\n    'Go Relax: Sacred Spaces Walk*Tuesday, Nov 13*12-1 p.m.*Loyola House': 'Go Relax: Sacred Spaces Walk*Tuesday, Nov 13*12-1 p.m.*Loyola House'\n    'Santa hat decorating party*Tuesday, Nov 27*11:30am-1pm*McLaren 251': 'Santa hat decorating party*Tuesday, Nov 27*11:30am-1pm*McLaren 251'\n    'Go Relax: Meditation*Tuesday, Nov 27*12-12:30pm*Meditation Room': 'Go Relax: Meditation*Tuesday, Nov 27*12-12:30pm*Meditation Room'\nprocessed_text:\n  '#type': processed_text\n  '#text': |\n    <h2>Employee's Information</h2>\n    \n  '#format': full_html\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name '\ndepartment:\n  '#type': textfield\n  '#title': Department\ntitle:\n  '#type': textfield\n  '#title': Title\nemail:\n  '#type': email\n  '#title': 'USF Email Address'\nusf_phone_number:\n  '#type': tel\n  '#title': 'USF Phone Number'\nemployee_type:\n  '#type': radios\n  '#title': 'Employee Type'\n  '#options':\n    Faculty: Faculty\n    Staff: Staff\n    Other: Other"
+elements: "select_the_gousf_event_s_that_you_would_like_to_attend:\n  '#type': checkboxes\n  '#title': 'Select the GoUSF event(s) that you would like to attend'\n  '#options':\n    'Provident CU: Home Buying Seminar*Tues, Oct 22*12-1 pm*MC251': 'Provident CU: Home Buying Seminar*Tues, Oct 22*11:30-1*MC251'\n    'Haunted Gleeson Carnival': 'Haunted Gleeson*Thurs,Oct 31*12-1pm*GLeeson Lib'\n    'Santa Hat Decorating*Tues, Nov 19*11:30-1*McL 251': 'Santa Hat Decorating*Tues, Nov 19*11:30-1*McL 251'\nprocessed_text:\n  '#type': processed_text\n  '#text': |\n    <h2>Employee's Information</h2>\n    \n  '#format': full_html\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name '\ndepartment:\n  '#type': textfield\n  '#title': Department\ntitle:\n  '#type': textfield\n  '#title': Title\nemail:\n  '#type': email\n  '#title': 'USF Email Address'\nusf_phone_number:\n  '#type': tel\n  '#title': 'USF Phone Number'\nemployee_type:\n  '#type': radios\n  '#title': 'Employee Type'\n  '#options':\n    Faculty: Faculty\n    Staff: Staff\n    Other: Other"
 css: ''
 javascript: ''
 settings:
@@ -120,7 +120,8 @@ access:
     users: {  }
     permissions: {  }
   view_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   update_any:
@@ -128,7 +129,8 @@ access:
     users: {  }
     permissions: {  }
   delete_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   purge_any:
@@ -148,7 +150,8 @@ access:
     users: {  }
     permissions: {  }
   administer:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   test:

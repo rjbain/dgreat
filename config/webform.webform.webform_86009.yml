@@ -1,3 +1,4 @@
+uuid: 59c86fea-ad93-4f39-9e7d-a397ded2ed16
 langcode: en
 status: open
 dependencies: {  }
@@ -119,8 +120,10 @@ access:
       - anonymous
       - authenticated
     users: {  }
+    permissions: {  }
   view_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   update_any:
@@ -128,7 +131,8 @@ access:
     users: {  }
     permissions: {  }
   delete_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   purge_any:
@@ -148,7 +152,8 @@ access:
     users: {  }
     permissions: {  }
   administer:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   test:
@@ -175,8 +180,8 @@ handlers:
       from_mail: '[webform-submission:values:email:raw]'
       from_options: {  }
       from_name: '[webform-submission:values:last_name:raw]'
-      subject: default
-      body: default
+      subject: _default
+      body: _default
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -209,8 +214,8 @@ handlers:
       from_mail: '[webform-submission:values:email:raw]'
       from_options: {  }
       from_name: '[webform-submission:values:last_name:raw]'
-      subject: default
-      body: default
+      subject: _default
+      body: _default
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -258,4 +263,3 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
-uuid: 59c86fea-ad93-4f39-9e7d-a397ded2ed16

@@ -1,0 +1,37 @@
+uuid: ff066147-4e02-4a14-a4d5-48702882c83c
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:custom_block:92882bd2-70eb-4ecb-89a2-b3453010cbfa'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: usfstagesbookingbutton
+theme: myusf
+region: sidebar_second
+weight: 30
+provider: null
+plugin: 'block_content:92882bd2-70eb-4ecb-89a2-b3453010cbfa'
+settings:
+  id: 'block_content:92882bd2-70eb-4ecb-89a2-b3453010cbfa'
+  label: 'USF STAGES booking button'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: '/usf-stages/*'
+    negate: false
+    context_mapping: {  }

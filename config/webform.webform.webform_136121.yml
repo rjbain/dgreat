@@ -120,8 +120,10 @@ access:
       - anonymous
       - authenticated
     users: {  }
+    permissions: {  }
   view_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   update_any:
@@ -129,7 +131,8 @@ access:
     users: {  }
     permissions: {  }
   delete_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   purge_any:
@@ -149,7 +152,8 @@ access:
     users: {  }
     permissions: {  }
   administer:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   test:
@@ -167,9 +171,9 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: 'webservices@usfca.edu, nkebbas@usfca.edu'
+      to_mail: webservices@usfca.edu
       to_options: {  }
-      cc_mail: ''
+      cc_mail: nkebbas@usfca.edu
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }

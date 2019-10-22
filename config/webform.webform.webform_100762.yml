@@ -89,7 +89,7 @@ settings:
   draft_loaded_message: ''
   confirmation_type: page
   confirmation_title: ''
-  confirmation_message: '<p class="text_intro">Thank you for your interest in the Muscat Scholars Program.<span>&nbsp;We will be notifying students of their application status mid-May.</span></p><p>Thank you for submitting an application for the USF Muscat Scholars Program from&nbsp;<strong>August 5-17, 2018.</strong></p><p>Don''t forget there are more requirements to complete. Without these, your application is incomplete!</p><ul><li>Have a parent/family member respond to a few questions in the&nbsp;<a href="https://web.usfca.edu/WorkArea/linkit.aspx?LinkIdentifier=ekfrm&amp;ItemID=4294969167" target="_blank" title="following form">following form</a>.</li><li>Upon confirmation of your participation, you will be asked to pay a $100 program fee.</li></ul><p>&nbsp;You will receive an acceptance letter confirming your participation in the Program.&nbsp;</p><p>For questions, please contact Charlene Lobo Soriano at (415) 422-6841.</p><p>Thank you for your interest.</p>'
+  confirmation_message: "<p class=\"text_intro\">Thank you for your interest in the Muscat Scholars Program.<span>&nbsp;We will be notifying students of their application status mid-May.</span></p>\r\n\r\n<p>Don&#39;t forget there are more requirements to complete. Without these, your application is incomplete!</p>\r\n\r\n<ul>\r\n\t<li>Have a parent/family member respond to a few questions in the&nbsp;<a href=\"https://myusf.usfca.edu/casa/muscat/apply/family\" target=\"_blank\" title=\"following form\">following form</a>.</li>\r\n\t<li>Upon confirmation of your participation, you will be asked to pay a $100 program fee.</li>\r\n</ul>\r\n\r\n<p>&nbsp;You will receive an acceptance letter confirming your participation in the Program.&nbsp;</p>\r\n\r\n<p>For questions, please contact Charlene Lobo Soriano at lobo@usfca.edu.</p>\r\n\r\n<p>Thank you for your interest.</p>"
   confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
@@ -120,8 +120,10 @@ access:
       - anonymous
       - authenticated
     users: {  }
+    permissions: {  }
   view_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   update_any:
@@ -129,7 +131,8 @@ access:
     users: {  }
     permissions: {  }
   delete_any:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   purge_any:
@@ -149,7 +152,8 @@ access:
     users: {  }
     permissions: {  }
   administer:
-    roles: {  }
+    roles:
+      - editor
     users: {  }
     permissions: {  }
   test:
