@@ -62,7 +62,7 @@ class CeDiplomaLinkBlock extends BlockBase {
 
 		 return array (
             "#type" => "markup",
-            "#markup" => "<a href='$ENDPOINT/$HEXKEY/$CLIENTNUMBER' target='_blank'>Order/Register my CeDiploma</a>",
+            "#markup" => "<a href='$ENDPOINT/$HEXKEY/$CLIENTNUMBER' target='_blank'>Order/Download</a>",
         );
 
 	}
