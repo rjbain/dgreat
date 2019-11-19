@@ -1,0 +1,46 @@
+{% set description = paragraph.field_body_text.value %}
+	{% if paragraph.field_height.value %}
+		{% set height = paragraph.field_height.value %}
+	{% else %}
+		{% set height = 400 %}
+	{% endif %}
+
+	{% if paragraph.field_colors.value %}
+		{% set color = paragraph.field_colors.value %}
+	{% else %}
+		{% set color = "none" %}
+	{% endif %}
+
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished'
+   ]
+%}
+{% set color = paragraph.field_colors['#items'].getString() %}
+{{ color }}
+
+
+{% block paragraph %}
+
+<div{{ attributes.addClass(classes) }}>
+
+<div class="box {{ paragraph.field_colors.value }} overlay" style="min-height:{{ height }}px;">
+	<a class="box-link" href="{{ content.field_link.0['#url'] }}" target="_blank">
+		
+		<img class="box-image" alt="Card image cap"src="{{ file_url(paragraph.field_image.entity.uri.value) }}" />
+		<div class="box-body"> 
+			<div class=""><h2>{{ paragraph.field_heading.value }}</h2></div>
+			<div class=" "><h3>{{ paragraph.field_subheading.value }}</h3></div>
+			<p class="card-text">
+				{% autoescape false %}
+	      			{{ description }}
+        		{% endautoescape %}
+        	</p>
+		</div>
+	</a>
+</div>
+</div>
+{% endblock paragraph %}
