@@ -1543,4 +1543,70 @@ div[data-oembed-url]  > iframe {
   height: 100%;
 }
 
+//HANDSHAKE
+
+.view-jobs-list {
+    h2 {
+        border-top: 3px solid #fdbb30;
+        padding-top: 30px;
+    }
+    ul {
+        padding-left: 0;
+    }
+    ul.pagination {
+        border-bottom: 3px solid #fdbb30;
+        padding-bottom: 30px;
+
+        li {
+            padding-left: 0;  
+        }  
+    }
+    
+    li.jobs-list-li {
+        padding-left: 10px;
+        padding-top: 15px;
+        border-bottom: 1px solid $light_gray;
+        margin-right: 20px;
+
+        &:before {
+            content: "";
+        }
+        &:hover,
+        &:focus {
+            background-color: $light_beige
+        }
+        a.job-list-a {
+            text-decoration: none;
+
+            .job-title{            
+                font-size: 1rem;
+                color: $green;
+                text-transform: capitalize;
+                font-weight: 700;                
+                margin-left: unset!important;
+
+                &:hover,
+                &:focus {
+                    background-color: unset;
+                }
+            }
+            .job-description {
+                color: $text_gray;
+                font-weight: 400;
+                padding-right: 20px;
+                padding-bottom: 15px;
+            }
+            .job-date {
+                text-transform: uppercase;
+                font-size: .75rem;
+                color: $text_gray;
+                font-weight: 600;
+            }
+        }
+        .view-jobs-list ul li:before {
+            content: ""!important;
+        }
+    }
+}
+
  
