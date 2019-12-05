@@ -34,7 +34,7 @@ class CeDiplomaForm extends FormBase {
 
     $form['cedidkey'] = [
        '#type' => 'markup',
-       '#markup' => '<div class="cedidkey"><img src="/themes/custom/myusf/images/site/cedid_key_image.png"></div>',
+       '#markup' => '<div class="cedidkey"><img src="/themes/custom/myusf/images/src/cedid_key_image.png"></div>',
      ];
 
 
