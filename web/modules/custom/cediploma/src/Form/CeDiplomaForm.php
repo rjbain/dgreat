@@ -24,6 +24,12 @@ class CeDiplomaForm extends FormBase {
     */
    public function buildForm(array $form, FormStateInterface $form_state) {
 
+    $form['cedidtitle'] = [
+       '#type' => 'markup',
+       '#markup' => '<h1 class="display-title">Credential Validation</h1>',
+     ];
+
+
      $form['cedid'] = [
        '#type' => 'textfield',
        '#title' => $this->t('Please Enter CeDID (not case sensitive)'),
