@@ -55,7 +55,7 @@ class CeDiplomaForm extends FormBase {
 
      $form['submit'] = [
        '#type' => 'button',
-       '#value' => $this->t('Submit'),
+       '#value' => $this->t('Validate'),
        '#ajax' => [
          'callback' => '::setMessage',
        ]
