@@ -62,6 +62,12 @@ class CeDiplomaForm extends FormBase {
      ];
 
 
+    $form['cedidtrustlogo'] = [
+       '#type' => 'markup',
+       '#markup' => '<div class="cedidtrustlogo"><img src="/themes/custom/myusf/images/src/poweredbyCeCredentialTrustLogo_180x34.png"></div>',
+     ];
+
+
      $form['message'] = [
        '#type' => 'markup',
        '#markup' => '<div class="result_message"></div>'
