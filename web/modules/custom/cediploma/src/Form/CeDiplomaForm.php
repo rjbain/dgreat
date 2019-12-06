@@ -171,7 +171,7 @@ class CeDiplomaForm extends FormBase {
                       $tbody = "<tbody><tr><td colspan='2'><b>Please enter a value</td></tr></tbody>";
                     }
                     elseif (($cename != "0")||($cedid != "0")) {
-                      $tbody = "<tbody><tr><td colspan='2'><b>We cannot validate the Credential at this time.</b><br>The information provided does not match the information on record, or there was a connection error.<br>Please contact registrar@usfca.edu for assistance. When you do, please provide the student name and CeDiD to inquire further.</td></tr></tbody>";
+                      $tbody = "<tbody><tr><td colspan='2'><b>We cannot validate the Credential at this time.</b><br>The information provided does not match the information on record, or there was a connection error.<br>Please contact gradcenter@usfca.edu for assistance. When you do, please provide the student name and CeDiD to inquire further.</td></tr></tbody>";
                     }
                       $tbodyHtml = preg_replace('/\s+/', ' ', $tbody);
                       $output->result_table = $tbodyHtml;
