@@ -94,7 +94,9 @@ class CeDiplomaForm extends FormBase {
      
       $uri = 'https://test.secure.cecredentialtrust.com:8086/api/webapi/clientvalidate';
       // ClientId supplied by Paradigm
-      $clientId = '80DBC6A0-6CCF-4BA3-AAD8-89B2AE22FFA9';
+      //Test Client ID 
+      //Old $clientId = '80DBC6A0-6CCF-4BA3-AAD8-89B2AE22FFA9';
+      $clientId = '92442390-6FFE-49C5-9E9B-3DCC22D740BB';
       // Init TLS 1.2 var
       if (!defined('CURL_SSLVERSION_TLSv1_2')) {
           define('CURL_SSLVERSION_TLSv1_2', 6); // 6 = TLS 1.2
