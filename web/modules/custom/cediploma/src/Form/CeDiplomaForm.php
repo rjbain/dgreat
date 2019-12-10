@@ -92,7 +92,7 @@ class CeDiplomaForm extends FormBase {
     */
    public function setMessage(array &$form, FormStateInterface $form_state) {
      
-      $uri = 'https://test.secure.cecredentialtrust.com:8086/api/webapi/clientvalidate';
+      $uri = 'https://secure.cecredentialtrust.com:8086/api/webapi/clientvalidate';
       // ClientId supplied by Paradigm
       //Test Client ID 
       //Old $clientId = '80DBC6A0-6CCF-4BA3-AAD8-89B2AE22FFA9';
