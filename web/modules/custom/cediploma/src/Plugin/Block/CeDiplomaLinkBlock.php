@@ -34,7 +34,7 @@ class CeDiplomaLinkBlock extends BlockBase {
 		}
 		$plainStudentId = $plainStudentId[0];
 
-		$ENDPOINT = "https://test.secure.cecredentialtrust.com/Account/ERLSSO"; //Test Endpoint
+		$ENDPOINT = "https://secure.cecredentialtrust.com/Account/ERLSSO"; //Test Endpoint
  		// Enter Values from spreadsheet supplied by Paradigm
 		$CLIENTID = "92442390-6FFE-49C5-9E9B-3DCC22D740BB";
 		$CLIENTNUMBER = "1709";
@@ -62,7 +62,7 @@ class CeDiplomaLinkBlock extends BlockBase {
 
 		 return array (
             "#type" => "markup",
-            "#markup" => "<a href='$ENDPOINT/$HEXKEY/$CLIENTNUMBER' target='_blank'>Order/Register my CeDiploma</a>",
+            "#markup" => "<a href='$ENDPOINT/$HEXKEY/$CLIENTNUMBER' target='_blank'>Register/Download</a>",
         );
 
 	}
