@@ -1,7 +1,12 @@
 uuid: c6ef0995-368a-4fe2-8a18-da4f8ceda716
 langcode: en
 status: open
-dependencies: {  }
+dependencies:
+  module:
+    - dgreat_student_surveys
+third_party_settings:
+  dgreat_student_surveys:
+    salesforce_id: ''
 open: null
 close: null
 weight: 0
@@ -10,8 +15,8 @@ template: false
 archive: false
 id: webform_102027
 title: 'HR Additional Campus Locations Gym Membership Reimbursement Form'
-description: null
-category: null
+description: 'Gym membership reimbursement form'
+category: ''
 elements: "employee_name:\n  '#type': textfield\n  '#title': 'Employee Name'\n  '#description': ''\n  '#required': true\njob_title_position:\n  '#type': textfield\n  '#title': 'Job Title/Position'\n  '#description': ''\n  '#required': true\nadditional_campus_location:\n  '#type': textfield\n  '#title': 'Additional Campus Location'\n  '#description': ''\n  '#required': true\ncwid:\n  '#type': textfield\n  '#size': 20\n  '#min': null\n  '#max': 99999999\n  '#step': null\n  '#unique': false\n  '#title': CWID\n  '#description': ''\n  '#required': true\nname_of_gym_health_club_class:\n  '#type': textfield\n  '#title': 'Name of Gym/Health Club/Class'\n  '#description': ''\n  '#required': true\nperiod_of_expense_beginning:\n  '#type': date\n  '#title': 'Period of Expense (Beginning)'\n  '#description': ''\n  '#required': true\nperiod_of_expense_end:\n  '#type': date\n  '#title': 'Period of Expense (End)'\n  '#description': ''\n  '#required': true\ntotal_expense:\n  '#type': textfield\n  '#size': 20\n  '#min': null\n  '#max': null\n  '#step': null\n  '#unique': false\n  '#field_prefix': $\n  '#title': 'Total Expense'\n  '#description': ''\n  '#required': true\nlegalese:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p>By entering my name and date below, I hereby certify that this expense was incurred on my own behalf and was not reimbursed by another source.</p>'\n  '#title': Legalese\n  '#description': ''\nemployee_signature:\n  '#type': textfield\n  '#title': 'Employee Signature'\n  '#description': ''\n  '#required': true\ndate:\n  '#type': date\n  '#title': Date\n  '#description': ''\n  '#required': true\n"
 css: ''
 javascript: ''
@@ -171,7 +176,7 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: 'lhumphrey2@usfca.edu,benefits@usfca.edu'
+      to_mail: skisylia@usfca.edu
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
