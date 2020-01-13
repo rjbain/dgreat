@@ -1,4 +1,4 @@
-uuid: 73483440-fe13-4500-8e14-d34f80ffd811
+uuid: b16d3ab6-bab7-4f3a-b863-7ad75600f6dc
 langcode: en
 status: true
 dependencies:
@@ -12,12 +12,12 @@ dependencies:
 id: cediplomalinkblock
 theme: myusf
 region: sidebar_second
-weight: 0
+weight: 74
 provider: null
 plugin: block_cediplomalinkblock
 settings:
   id: block_cediplomalinkblock
-  label: CeDiploma
+  label: 'CeDiploma - Fall 2019 Grads Forward'
   provider: cediploma
   label_display: visible
 visibility:
@@ -28,13 +28,13 @@ visibility:
     context_mapping: {  }
   request_path:
     id: request_path
-    pages: /dashboard
+    pages: "/dashboard\r\n/dashboard/*"
     negate: false
     context_mapping: {  }
   user_role:
     id: user_role
     roles:
-      authenticated: authenticated
+      student: student
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
