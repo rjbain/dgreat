@@ -87,6 +87,8 @@
   {% set event_target = event_target %}
 {% endif %}
 
+<h1 class="acc-visuallyhidden">Event Calendar</h1>
+
 <div>
     {% if action is empty %}
         {{ drupal_view('events_featured', 'block_1') }}
@@ -99,3 +101,18 @@
 </div>
 
 <a name="event_search_anchor"></a>
+
+
+<style>
+
+.acc-visuallyhidden
+{
+position:absolute;
+left:-10000px;
+top:auto;
+width:1px;
+height:1px;
+overflow:hidden;
+}
+
+</style>
