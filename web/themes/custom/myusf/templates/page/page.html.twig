@@ -93,7 +93,8 @@
           <input class="mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" value="">
           <br>
           <input type="checkbox" name="usfca_search" value="true" aria-label="Include USFCA.edu"> Include USFCA.EDU
-        </div>
+        </div>        
+        <input type="submit" class="acc-visuallyhidden">
       </form>
 
       <button class="header_search" type="submit" onclick="toggle()">
@@ -171,4 +172,17 @@
      </div>
     {% endif %}
   </div>
+<style>
+
+.acc-visuallyhidden
+{
+position:absolute;
+left:-10000px;
+top:auto;
+width:1px;
+height:1px;
+overflow:hidden;
+}
+
+</style>
 {% endblock %}
