@@ -52,6 +52,16 @@ function myusf_preprocess_block(&$vars) {
   }
 }
 
+
+function myusf_theme_suggestions_block_alter(&$suggestions, $variables) {
+  $content = $variables['elements']['content'];
+  if (isset($content['#block_content']) && $content['#block_content'] instanceof \Drupal\block_content\BlockContentInterface) {
+    $suggestions[] = 'block__type__' . $content['#block_content']->bundle();
+  }
+}
+
+
+
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */

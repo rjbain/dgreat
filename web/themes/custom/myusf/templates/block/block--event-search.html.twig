@@ -78,10 +78,12 @@
   <!--<input type="hidden" name="event_target" value="{{ event_target }}">-->
   <div class="form">
     <div class="search-form">
-      <input type="text" name="search_content" value="{{ search_content_form }}" class="search-input form-search form-control">
+      <label for="search_content" class="acc-visuallyhidden">Search Events</label>
+      <input type="text" id="search_content" name="search_content" value="{{ search_content_form }}" class="search-input form-search form-control">
     </div>
     <div class="category-form">
-      <select name="event_category" class="event_category">
+      <label for="event_category" class="acc-visuallyhidden">Select Category</label>
+      <select name="event_category" id="event_category" class="event_category">
         <option value="">Select Category</option>
           {{ drupal_view('event_category_term', 'block_1') }}
       </select>
@@ -103,7 +105,5 @@
 
 <!--<a href="{{ url('<current>') }}">Reset Search</a>-->
 </div>
-
-
   {% endblock %}
 </div>

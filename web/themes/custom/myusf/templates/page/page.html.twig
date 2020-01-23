@@ -93,11 +93,12 @@
           <input class="mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" value="">
           <br>
           <input type="checkbox" name="usfca_search" value="true" aria-label="Include USFCA.edu"> Include USFCA.EDU
-        </div>
+        </div>        
+        <input type="submit" class="acc-visuallyhidden">
       </form>
 
       <button class="header_search" type="submit" onclick="toggle()">
-        <div class="search-icon-rollover"><img src="/themes/custom/myusf/images/src/search-yellow.svg" alt="search"/></div>
+        <div class="search-icon-rollover"><img src="/themes/custom/myusf/images/src/search-yellow.svg" alt=""/></div>
          <div class="search-icon-main"><img src="/themes/custom/myusf/images/src/search-white.svg" alt="search"/></div>
       </button>
       {% if logged_in %}
@@ -114,7 +115,9 @@
     {% endif %}
       </nav>
       {% if page.hero_image %}
-        <div class="hero-image-block">{{ page.hero_image }}</div>
+        <div class="hero-image-block">
+            {{ page.hero_image }}
+        </div>
       {% endif %}
 
 {% endblock %}
@@ -125,7 +128,8 @@
         {% if "/dashboard" in path("<current>") %}
           <main class="main-content col dashboard" id="content">
         {% else %}
-          <main{{ content_attributes }}>
+          <!--<main{{ content_attributes }}>-->
+          <main class="main-content col" id="content">
         {% endif %}
           <section class="section" aria-label="body content">
             <a id="main-content" tabindex="-1"></a>
@@ -166,9 +170,9 @@
       </div>
     {% endif %}
     {% if page.footer_fifth %}
-    <div class="footer-expand-lg">
+    <!--<div class="footer-expand-lg">-->
         {{ page.footer_fifth }}
-     </div>
+     <!--</div>-->
     {% endif %}
   </div>
 {% endblock %}

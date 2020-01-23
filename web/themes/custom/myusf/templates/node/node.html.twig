@@ -61,43 +61,39 @@
 #}
 {{ attach_library('bootstrap_barrio/node') }}
 
-{% if search_content is empty %}
-  {% set search_content = "all" %}
-  {% set search_content_form = null %}
-{% else %}
-  {% set search_content = search_content %}
-  {% set search_content_form = search_content %}
-{% endif %}
-
-{% if event_category is empty %}
-  {% set event_category = "all" %}
-{% else %}
-  {% set event_category = event_category %}
-{% endif %}
-
-{% if event_date is empty %}
-  {% set event_date = null %}
-{% else %}
-  {% set event_date = event_date %}
-{% endif %}
-
-{% if event_target is empty %}
-  {% set event_target = "all" %}
-{% else %}
-  {% set event_target = event_target %}
-{% endif %}
-
-<h1 class="acc-visuallyhidden">Event Calendar</h1>
-
-<div>
-    {% if action is empty %}
-        {{ drupal_view('events_featured', 'block_1') }}
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'clearfix',
+  ]
+%}
+<article{#{ attributes.addClass(classes) }#}>
+  <header>
+    {{ title_prefix }}
+    {% if not page %}
+      <h2{{ title_attributes.addClass('node__title') }}>
+        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+      </h2>
     {% endif %}
-</div>
-
-<div class="event_search_anchor"><a href="#event_search_anchor">Search</a></div>
-<div>
-  {{ drupal_view('events_search', 'block_1', search_content, event_category, event_target, event_date ) }}
-</div>
-
-<a name="event_search_anchor"></a>
+    {{ title_suffix }}
+    {% if display_submitted %}
+      <div class="node__meta">
+        {{ author_picture }}
+        {% block submitted %}
+          <em{{ author_attributes }}>
+            {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+          </em>
+        {% endblock %}
+        {{ metadata }}
+      </div>
+    {% endif %}
+  </header>
+  <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
+    {{ content }}
+  </div>
+</article>
