@@ -1,0 +1,192 @@
+uuid: 42e337d1-c01e-4194-9294-635b3f3bc202
+langcode: en
+status: closed
+dependencies: {  }
+open: null
+close: null
+weight: 0
+uid: 49490
+template: false
+archive: false
+id: financial_aid_revision_request
+title: 'Financial Aid Revision Request'
+description: 'Financial Aid enrollment/ DL revision request form.'
+category: 'Financial Aid'
+elements: "enrollment_update_request:\n  '#type': webform_wizard_page\n  '#title': 'Student Information'\n  usf_student_id_number:\n    '#type': number\n    '#title': 'USF Student ID Number'\n    '#placeholder': 'Student ID #'\n    '#required': true\n    '#min': '10000000'\n    '#max': '99999999'\n  first_and_last_name:\n    '#type': webform_name\n    '#title': 'First and Last Name'\n    '#required': true\n    '#title__access': false\n    '#first__required': true\n    '#last__required': true\n    '#suffix__access': false\n    '#degree__access': false\n  i_have_a_change_in_enrollment_and_request_for_my_cost_of_attenda:\n    '#type': checkbox\n    '#title': 'Enrollment Update Request'\n    '#description': 'I have a change in enrollment and request for my cost of attendance to reflect my enrollment.&nbsp;'\n  federal_direct_loan_adjustments:\n    '#type': checkbox\n    '#title': 'Federal Direct Loan Adjustments'\n    '#description': 'I request to increase, decrease, or cancel my Federal Direct Loans.'\ni_have_a_change_in_enrollment:\n  '#type': webform_wizard_page\n  '#title': 'I Have a Change in Enrollment'\n  '#states':\n    visible:\n      ':input[name=\"i_have_a_change_in_enrollment_and_request_for_my_cost_of_attenda\"]':\n        checked: true\n  fall_2019_units:\n    '#type': number\n    '#title': 'Fall 2019 Units'\n    '#help': 'Please enter the number of units you are enrolled or anticipate to enroll in for fall 2019 semseter. Do not leave blank.'\n    '#required': true\n  winter_intersession_2020_units:\n    '#type': number\n    '#title': 'Winter Intersession 2020 Units'\n    '#help': 'Please enter the number of units you are enrolled or anticipate to enroll in for winter intersession 2020 semseter. Do not leave blank.'\n  spring_2020_units:\n    '#type': number\n    '#title': 'Spring 2020 Units'\n    '#help': 'Please enter the number of units you are enrolled or anticipate to enroll in for spring 2020 semseter. Do not leave blank.'\n    '#required': true\n  summer_2020_units:\n    '#type': number\n    '#title': 'Summer 2020 Units'\n    '#help': 'Please enter the number of units you are enrolled or anticipate to enroll in for Summer 2020 semseter.&nbsp;'\n  per_unit_tuition_rate2:\n    '#type': number\n    '#title': 'Per unit tuition rate'\n    '#help': 'Please refer to <a href=\"https://myusf.usfca.edu/billing-tuition/tuition-fees-2019-2020\">USF Tuition and Fees Schedule</a>&nbsp;if your program is charged a per unit rate.&nbsp;'\n    '#field_prefix': $\n  flat_rate_tuition_rate2:\n    '#type': number\n    '#title': 'Flat rate tuition rate'\n    '#help': 'Please refer to <a href=\"https://myusf.usfca.edu/billing-tuition/tuition-fees-2019-2020\">USF Tuition and Fees Schedule</a>&nbsp;if your program is charged a flat rate tuition rate.'\n    '#field_prefix': $\n    '#autocomplete': 'off'\n  flexbox:\n    '#type': webform_flexbox\n    '#align_items': center\n    semester:\n      '#type': select\n      '#title': 'Expected Graduate Term'\n      '#options':\n        Fall: Fall\n        Spring: Spring\n        Summer: Summer\n      '#empty_option': Semester\n      '#required': true\n      '#flex': '0'\n    year:\n      '#type': datelist\n      '#title': Year\n      '#title_display': invisible\n      '#required': true\n      '#date_part_order':\n        - year\n      '#date_year_range': '2019:+5'\n  reduction_aid_message:\n    '#type': checkbox\n    '#title': 'Reduction Aid Message'\n    '#description': '<h5>I understand that a change in enrollment may result in a reduction to financial aid.&nbsp;</h5>'\n    '#title_display': invisible\n    '#required': true\nfederal_direct_loans_adjustment:\n  '#type': webform_wizard_page\n  '#title': 'Federal Direct Loans Adjustment'\n  '#states':\n    visible:\n      ':input[name=\"federal_direct_loan_adjustments\"]':\n        checked: true\n  increase_federal_direct_loans:\n    '#type': checkbox\n    '#title': 'Increase Federal Direct Loans'\n    '#description': 'I request to increase my Federal Direct Loan amounts'\n    '#description_display': invisible\n  federal_direct_subsidized_loan:\n    '#type': number\n    '#title': 'Increase Federal Direct Subsidized Loan by'\n    '#description': '<h4>Increase Federal Direct Subsidized Loan by $</h4>'\n    '#title_display': invisible\n    '#description_display': before\n    '#size': '1'\n    '#placeholder': 'Enter Dollar Amount'\n    '#autocomplete': 'off'\n    '#states':\n      visible-slide:\n        ':input[name=\"increase_federal_direct_loans\"]':\n          checked: true\n  increase_federal_direct_unsubsidized_loan:\n    '#type': number\n    '#title': 'Increase Federal Direct Unsubsidized Loan by'\n    '#description': '<h4>Increase Federal Direct Unsubsidized Loan by $</h4>'\n    '#title_display': invisible\n    '#description_display': before\n    '#size': '5'\n    '#placeholder': 'Enter Dollar Amount'\n    '#autocomplete': 'off'\n    '#states':\n      visible-slide:\n        ':input[name=\"increase_federal_direct_loans\"]':\n          checked: true\n  decrease_federal_direct_loans:\n    '#type': checkbox\n    '#title': 'Decrease Federal Direct Loans'\n    '#description': 'I request to decrease my Federal Direct Loan amounts'\n    '#description_display': invisible\n  decrease_federal_direct_subsidized_loan_to:\n    '#type': number\n    '#title': 'Decrease Federal Direct Subsidized Loan to'\n    '#description': '<h4>Decrease Federal Direct Subsidized Loan to $</h4>'\n    '#title_display': invisible\n    '#description_display': before\n    '#size': '5'\n    '#placeholder': 'Enter Dollar Amount'\n    '#autocomplete': 'off'\n    '#states':\n      visible-slide:\n        ':input[name=\"decrease_federal_direct_loans\"]':\n          checked: true\n  decrease_federal_direct_unsubsidized_loan_to:\n    '#type': number\n    '#title': 'Decrease Federal Direct Unsubsidized Loan to'\n    '#description': '<h4>Decrease Federal Direct Unsubsidized Loan to $</h4>'\n    '#title_display': invisible\n    '#description_display': before\n    '#placeholder': 'Enter Dollar Amount'\n    '#autocomplete': 'off'\n    '#states':\n      visible-slide:\n        ':input[name=\"decrease_federal_direct_loans\"]':\n          checked: true\n  cancel_federal_direct_loans:\n    '#type': checkbox\n    '#title': 'Cancel Federal Direct Loans'\n    '#description': 'I request to cancel all Federal Direct Loans.'\n    '#description_display': invisible\n  please_cancel_all_undisbursed_federal_direct_loans:\n    '#type': checkbox\n    '#title': 'Please cancel all undisbursed Federal Direct Loans'\n    '#states':\n      visible-slide:\n        ':input[name=\"cancel_federal_direct_loans\"]':\n          checked: true\n    '#required': true\nagreement:\n  '#type': webform_wizard_page\n  '#title': Agreement\n  terms_and_conditions:\n    '#type': checkbox\n    '#title': 'Terms and Conditions'\n    '#description': \"<p>By submitting this form, I authorize the Office of Financial Aid to make the adjustments submitted on this request form. I agree to notify the Office of Financial Aid with any change in enrollment prior to USF&#39;s semseter <a href=\\\"https://myusf.usfca.edu/registration/academic-calendar\\\">census date</a>. The Financial Aid Office will review enrollment prior to disbursement date which may result in a adjustment of financial aid if units do not match.&nbsp;<br />\\r\\n<br />\\r\\n<a href=\\\"https://myusf.usfca.edu/registration/academic-calendar\\\">Semeseter Census Date</a><br />\\r\\n<a href=\\\"https://myusf.usfca.edu/financial-aid/policies\\\">Financial Aid Disbursement Date</a><br />\\r\\n<a href=\\\"https://myusf.usfca.edu/financial-aid\\\">Office of Financial Aid</a><br />\\r\\n<br />\\r\\nEmail: <a href=\\\"mailto:Financialaid@usfca.edu?subject=FA%20Revision%20Request%20Webform\\\">Financialaid@usfca.edu</a><br />\\r\\nPhone: (415) 422-3387</p>\"\n    '#title_display': invisible\n    '#required': true\n  flexbox_01:\n    '#type': webform_flexbox\n    signature2:\n      '#type': webform_signature\n      '#title': Signature\n      '#required': true\n    date_signed:\n      '#type': date\n      '#title': Date\n      '#prepopulate': true\n      '#required': true\n      '#min': today\n      '#max': today"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  submission_label: ''
+  submission_log: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  financial_aid_revision_request_confirmation:
+    id: email
+    label: 'Financial Aid Revision Request Confirmation'
+    handler_id: financial_aid_revision_request_confirmation
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: financialaid@usfca.edu
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: false
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
