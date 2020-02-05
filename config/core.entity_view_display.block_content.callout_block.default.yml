@@ -1,0 +1,25 @@
+uuid: 6cfd553b-47fe-4f0e-bfed-3a643885500d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.callout_block
+    - field.field.block_content.callout_block.field_content
+  module:
+    - entity_reference_revisions
+id: block_content.callout_block.default
+targetEntityType: block_content
+bundle: callout_block
+mode: default
+content:
+  field_content:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  search_api_excerpt: true
