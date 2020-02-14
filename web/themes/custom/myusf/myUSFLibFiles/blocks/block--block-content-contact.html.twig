@@ -35,8 +35,7 @@
     set classes = [
     'block',
     'block-' ~ configuration.provider|clean_class,
-    'block-' ~ plugin_id|clean_class,
-    'block-myusf-contactbox'
+    'block-' ~ plugin_id|clean_class
 ]
 
 %}
@@ -59,6 +58,7 @@
     {{ title_prefix }}
     {{ title_suffix }}
     <div{{ attributes.addClass(classes).setAttribute('id', block_id) }}>
+    <div class="block-myusf-contactbox">
         <h2>{{ contact_title|striptags|trim }}</h2>
         {% if body %}
             <p class="body">
@@ -92,5 +92,6 @@
         {% endif %}
         {% include "@myUSFLib/fields/field--paragraph--field-social-media-link.html.twig" %}
         </div>
+    </div>
     </div>
 </div>
