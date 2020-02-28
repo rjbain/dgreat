@@ -31,9 +31,11 @@
  * @ingroup themeable
  */
 #}
+
 <a href="{{ path('entity.node.canonical', {'node': fields.nid.content|trim }) }}">
-	<article aria-labelledby="{{ fields.nid.content }}">
-		<div id="{{ fields.nid.content }}">
+	<!--<article aria-labelledby="{{ fields.nid.content }}">
+		<div id="{{ fields.nid.content }}">-->
+		<div class="event-calendar-list-item">
 			{% if fields.field_image_url.content %}
 				<img src="{{ fields.field_image_url.content }}" align="right" alt="">
 			{% endif %}
@@ -42,11 +44,13 @@
           			{{ fields.title.content }}
         		{% endautoescape %}
 			</h3>
-		</div>
+	<!--	</div> -->
 		<div>{{ fields.field_start_date.content }}, {{ fields.field_start_date_1.content }} - {{ fields.field_end_date.content }}</div>
 		<div>{{ fields.field_location.content }}</div>		
-	</article>
+<!--	</article> -->
+	</div>
 </a>
+
 <!--<div>
 {#% set terms = fields.field_import_terms.content|split(', ') %}
 {% for term in terms %}

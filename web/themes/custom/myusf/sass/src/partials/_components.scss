@@ -423,7 +423,7 @@ a.card-rollover {
 .view-events-search {
 	margin-top: 1rem;
 
-	 .views-row {
+	.views-row {
 	 	margin-bottom: 0;
 
 		a, a:hover, a:focus {
@@ -431,23 +431,21 @@ a.card-rollover {
 			text-decoration: none;
 			color: $text_gray;
 		}
+		a:hover .event-calendar-list-item,
+		a:focus .event-calendar-list-item {
+			background-color: $light_beige;			
+		}
+		.event-calendar-list-item {
+			padding-left: 10px;
+			padding-bottom: 20px;
+			padding-top: 15px;
+			border-bottom: 1px solid $light_gray;
+		}
 		 h3.event-list-title {  /* was .views-row b */
 			font-weight: 800 !important;
 			color: $green!important;
 			font-size: 1rem;
 			text-transform: capitalize;
-		}
-
-		&:hover,
-		&:focus {
-			background-color: $light_beige;
-		}
-
-		article {
-			padding-left: 10px;
-			padding-bottom: 20px;
-			padding-top: 15px;
-			border-bottom: 1px solid $light_gray;
 		}
 
 		img {
@@ -466,12 +464,15 @@ a.card-rollover {
 			}
 		}
 	}
+	
+		
+
 
 	@include media-breakpoint-down(phone) {
         width: 300px;
         @include margin-L-R-auto;
 
-        .views-row article {
+        .views-row .event-calendar-list-item {
             padding-left: 0!important;
         }
     }
