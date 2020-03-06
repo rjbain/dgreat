@@ -12,38 +12,38 @@ label: 'Instagram Import to MyUSF'
 source:
   plugin: url
   data_fetcher_plugin: http
-  urls: 'https://www.usfca.edu/feeds/myusf/instagram'
-  data_parser_plugin: simple_xml
-  item_selector: /instagram_feed/item
+  urls: 'https://api.instagram.com/v1/users/249226070/media/recent/?access_token=249226070.7aa879c.af049b9b74244291b9c4b3a64750aff2'
+  data_parser_plugin: json
+  item_selector: /data
   fields:
     -
       name: title
       label: Title
-      selector: title
+      selector: /caption/id
     -
       name: description
       label: Description
-      selector: description
+      selector: /caption/text
     -
       name: image_url
       label: 'Image URL'
-      selector: image
+      selector: /images/standard_resolution/url
     -
       name: instagram_link
       label: 'Instagram Link'
-      selector: link
+      selector: /link
     -
       name: external_id
       label: 'External ID'
-      selector: eid
+      selector: /id
     -
       name: guid
       label: GUID
-      selector: nid
+      selector: /caption/created_time
     -
       name: content_type
       label: Type
-      selector: type
+      selector: /user/full_name
   ids:
     guid:
       type: string

@@ -156,4 +156,38 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers: {  }
+handlers:
+  email:
+    id: email
+    label: Email
+    handler_id: email
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:_email:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: mccarthycenter@usfca.edu
+      from_options: {  }
+      from_name: 'Stephen Pearce, D.D.'
+      subject: '[USF] Submission Confirmed — Leo T. McCarthy Award for Public Service'
+      body: "Thank you for submitting a nomination for the next recipient of the Leo T. McCarthy Award for Public Service. We are grateful for your interest and will announce the Selection Committee&#39;s final decision in March 2020. We&#39;ll look forward to celebrating the honoree with you in March 2021!<br />\r\n<br />\r\nStephen Pearce, D.D.<br />\r\nChair, Leo T. McCarthy Award Selection Committee"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''

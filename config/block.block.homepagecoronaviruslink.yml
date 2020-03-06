@@ -1,0 +1,37 @@
+uuid: 10c58125-8df5-4474-a4af-04daaf6b4d29
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:custom_block:7108df76-0138-4e28-b845-a3c22372430a'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: homepagecoronaviruslink
+theme: myusf
+region: sidebar_second
+weight: 1
+provider: null
+plugin: 'block_content:7108df76-0138-4e28-b845-a3c22372430a'
+settings:
+  id: 'block_content:7108df76-0138-4e28-b845-a3c22372430a'
+  label: 'Home page coronavirus link'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "<front>\r\n/dashboard"
+    negate: false
+    context_mapping: {  }
