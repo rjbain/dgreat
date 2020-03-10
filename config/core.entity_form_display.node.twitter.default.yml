@@ -9,11 +9,13 @@ dependencies:
     - field.field.node.twitter.field_guid
     - field.field.node.twitter.field_image_url
     - field.field.node.twitter.field_news_link
+    - field.field.node.twitter.field_twitter_guid
     - field.field.node.twitter.field_type
     - node.type.twitter
   module:
     - link
     - path
+    - scheduler
     - text
 id: node.twitter.default
 targetEntityType: node
@@ -73,6 +75,14 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
+  field_twitter_guid:
+    weight: 129
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_type:
     weight: 126
