@@ -66,7 +66,7 @@ function dgreat_student_surveys_webform_third_party_settings_form_alter(
  * Hide one random question on student survey webforms.
  */
 function dgreat_student_surveys_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  if (in_array('webform_submission_form', array($form['#theme'])) &&
+  if (in_array('webform_submission_form', $form['#theme']) &&
     array_values($form['elements'])[0]['#type'] === 'student_survey_rating_element') {
     // Randomly select one question to keep.
     $keep = array_rand($form['elements']);
