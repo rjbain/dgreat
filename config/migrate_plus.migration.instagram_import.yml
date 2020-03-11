@@ -8,42 +8,42 @@ field_plugin_method: null
 cck_plugin_method: null
 migration_tags: null
 migration_group: null
-label: 'Instagram Import to MyUSF JSON'
+label: 'Instagram Import to MyUSF'
 source:
   plugin: url
   data_fetcher_plugin: http
-  urls: 'https://api.instagram.com/v1/users/249226070/media/recent/?access_token=249226070.7aa879c.af049b9b74244291b9c4b3a64750aff2'
-  data_parser_plugin: json
-  item_selector: /data
+  urls: 'https://www.usfca.edu/feeds/myusf/instagram'
+  data_parser_plugin: simple_xml
+  item_selector: /instagram_feed/item
   fields:
     -
       name: title
       label: Title
-      selector: /caption/id
+      selector: title
     -
       name: description
       label: Description
-      selector: /caption/text
+      selector: description
     -
       name: image_url
       label: 'Image URL'
-      selector: /images/standard_resolution/url
+      selector: image
     -
       name: instagram_link
       label: 'Instagram Link'
-      selector: /link
+      selector: link
     -
       name: external_id
       label: 'External ID'
-      selector: /id
+      selector: eid
     -
       name: guid
       label: GUID
-      selector: /caption/created_time
+      selector: nid
     -
       name: content_type
       label: Type
-      selector: /user/full_name
+      selector: type
   ids:
     guid:
       type: string
