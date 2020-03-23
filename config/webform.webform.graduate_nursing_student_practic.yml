@@ -1,0 +1,231 @@
+uuid: dd5b383e-43cb-44bf-bf38-1c03d44eda79
+langcode: en
+status: open
+dependencies:
+  module:
+    - dgreat_student_surveys
+third_party_settings:
+  dgreat_student_surveys:
+    salesforce_id: ''
+open: null
+close: null
+weight: 0
+uid: 80170
+template: false
+archive: false
+id: graduate_nursing_student_practic
+title: 'KPNSA Sponsored Graduate Nursing Student Health Requirement Form'
+description: ''
+category: 'School of Nursing and Health Professions'
+elements: "student_name:\n  '#type': textfield\n  '#title': 'Student Name'\n  '#required': true\n  '#required_error': 'Please provide your name.'\n  '#format_items': comma\ncwid:\n  '#type': textfield\n  '#title': CWID\n  '#required': true\n  '#required_error': 'Please enter your CWID.'\n  '#format_items': comma\ni_will_be_performing_coursework_text:\n  '#type': processed_text\n  '#display_on': both\n  '#text': \"<p><strong>Please provide the name and site of the employer where you will perform your clinical/practicum/field coursework:</strong></p>\\r\\n\"\n  '#format': full_html\nemployer_name:\n  '#type': textfield\n  '#title': 'Employer Name'\n  '#required': true\n  '#required_error': 'This field is required'\n  '#format_items': comma\nemployer_address:\n  '#type': textfield\n  '#title': 'Employer Address'\n  '#required': true\n  '#required_error': 'This field is required.'\n  '#format_items': comma\nemployment_date:\n  '#type': date\n  '#title': 'Start Date of Your Employment at this Facility'\n  '#required': true\n  '#required_error': 'Please enter your start date.'\n  '#format_items': comma\n  '#datepicker': true\n  '#date_date_format': m/d/Y\nrn_license_number_:\n  '#type': textfield\n  '#title': 'RN License Number'\n  '#required': true\n  '#required_error': 'Please provide your RN License number.'\n  '#format_items': comma\nstate_issued:\n  '#type': textfield\n  '#title': 'State Issuer of RN License'\n  '#required': true\n  '#required_error': 'Please provide the state issuer of your RN License.'\n  '#format_items': comma\nrn_license_date_issued:\n  '#type': date\n  '#title': 'Date Issued'\n  '#required': true\n  '#required_error': 'This field is required.'\n  '#format_items': comma\n  '#datepicker': true\n  '#date_date_format': m/d/Y\nexpiration_date:\n  '#type': date\n  '#title': 'Expiration Date'\n  '#required': true\n  '#required_error': 'This field is required.'\n  '#format_items': comma\n  '#datepicker': true\n  '#date_date_format': m/d/Y\nhealth_immunizations_certs_text:\n  '#type': processed_text\n  '#text': \"<p>Your&nbsp;health immunizations and certifications must be&nbsp;current and all of your&nbsp;health clearance information must be&nbsp;current and on file with your&nbsp;employer identified above.</p>\\r\\n\"\n  '#format': full_html\nsignature_date:\n  '#type': date\n  '#title': 'Today''s Date'\n  '#required': true\n  '#required_error': 'Please enter today''s date.'\n  '#format_items': comma\n  '#datepicker': true\n  '#date_date_format': m/d/Y\nstudent_signature:\n  '#type': webform_signature\n  '#title': 'Student Signature'\n  '#description': 'Using your cursor, sign in the gray area above.'\n  '#required': true\n  '#required_error': 'Please provide your signature in the gray space.'\ni_attest_language:\n  '#type': processed_text\n  '#text': \"<p>By completing this form, you&nbsp;attest that you are&nbsp;currently employed and your&nbsp;health records are on file with you&nbsp;employer. If requested, you&nbsp;will be able to provide proof of valid health records within 48 business hours. You&nbsp;further attest that your&nbsp;employer-held health records are equal to those required by the University of San Francisco, School of Nursing and Health Professions’ program health requirements (as listed above).</p>\\r\\n\"\n  '#format': full_html\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit__label': Submit"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  submission_label: ''
+  submission_log: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'To SONHP Team Email Address'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      states:
+        - completed
+      to_mail: sonhpgradnursingteam@usfca.edu
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: 'MyUSF Webform Submission: Nursing - KPNSA Sponsored Graduate Nursing Student Health Requirement Form '
+      body: "<p>A new&nbsp;submission to the KPNSA Sponsored Graduate Nursing Student Health Requirement&nbsp;Form on MyUSF has been received. See the information submitted below.</p>\r\n\r\n<p>Submitted on [webform_submission:created]</p>\r\n\r\n<p>Submitted by: [webform_submission:user]</p>\r\n\r\n<p>Submitted values are:</p>\r\n[webform_submission:values]"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+  web_services_test:
+    id: email
+    label: 'Web Services Test'
+    handler_id: web_services_test
+    status: false
+    conditions: {  }
+    weight: 1
+    settings:
+      states:
+        - completed
+      to_mail: rayuyang@usfca.edu
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: 'MyUSF Webform Submission: SONHP Graduate Nursing Student Practicum Self-Reporting Form '
+      body: "<p>A new&nbsp;submission to the Graduate Nursing Student Practicum Self-Reporting Form on MyUSF has been received. See the information submitted below.</p>\r\n\r\n<p>Submitted on [webform_submission:created]</p>\r\n\r\n<p>Submitted by: [webform_submission:user]</p>\r\n\r\n<p>Submitted values are:</p>\r\n[webform_submission:values]"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
