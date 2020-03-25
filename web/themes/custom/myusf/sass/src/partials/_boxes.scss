@@ -1609,4 +1609,138 @@ div[data-oembed-url]  > iframe {
     }
 }
 
- 
+
+
+/* CALLOUT BOX from USFCA
+=============================================== */  
+
+ .magazine_callout {
+
+        margin: 20px 0 20px 0; 
+        display: block; 
+        padding: 15px; 
+        border-style: solid;
+        border-width: 1px;
+        overflow: hidden;
+
+
+        &.green {
+            border-color: $green;
+        }
+
+        &.gray {
+            border-color: #ccc;
+
+        }
+
+        &.plum {
+            border-color: $plum;
+        }
+
+        &.turquoise {
+            border-color: $turquoise;
+        }
+
+        &.blue {
+            border-color: $blue;
+        }
+
+        &.terra_cotta {
+            border-color: $terra_cotta;
+        }
+
+        &.orange {
+            border-color: $orange;
+        }
+
+        &.tan {
+            border-color: $tan;
+
+        }
+
+        &.olive {
+            border-color: $olive;
+
+        }
+
+        &.thick {
+            border-width: 10px;
+             @include media-breakpoint-down(tablet) {
+                border-width: 8px;
+            }
+        }
+
+        &.narrow {
+            width:275px;
+        }
+
+
+        &.block_left {
+            margin: 0 20px 20px 0;
+        }
+
+        &.block_right {
+            margin: 0 0 20px 20px;
+        }
+
+        
+        blockquote:before {
+             @include media-breakpoint-down(tablet) {
+                top: 3px;
+            }
+        }
+
+        blockquote img {
+            margin: 10px 20px 15px 15px;
+            width:200px;
+
+             @include media-breakpoint-down(tablet) {
+                margin: 6px 20px 15px 15px;
+            }
+        }
+        blockquote p {
+             @include media-breakpoint-down(tablet) {
+                padding-top:7px;
+            }
+        }
+        cite.inline_cite {
+            margin-bottom: -20px;
+        }
+
+    }
+
+
+/* Download Link
+================================================================== */
+    .download_link {
+        font-size: 14px;
+        border: 1px solid $gray_medium;
+        color: $green;
+        display: inline-block;
+        line-height: 1.2;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        padding: 22px 30px;
+        font-weight:300!important;
+
+        &:before {
+            margin-right: 10px;
+            content: "";
+            display: inline-block;
+
+            background: url(/themes/custom/myusf/images/site/icons.png) no-repeat 0 0;
+            background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat 0 0;
+        }
+
+        &:before,
+        &:after {
+            width: 14px;
+            height: 14px;
+
+            background-position: -450px -60px;
+        }
+
+        .no-touch &:hover {
+            background-color: $light_gray;
+        }
+    }
