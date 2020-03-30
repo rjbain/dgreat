@@ -144,6 +144,55 @@ li {
 	padding-bottom: .6rem;
 }
 
+//Pullquote
+
+.pullquote {
+
+	padding: 10px 44px 10px 24px;
+
+	@include media-breakpoint-up(tablet) {
+		padding: 20px 64px 20px 44px;
+	}
+
+	font-size: 18px;
+
+	position: relative;
+
+	line-height: 1.538;
+	margin: 0;
+	padding-left: 50px;
+
+	/*@include media-breakpoint-up(tablet) {
+		font-size: 26px;
+	}*/
+
+	&:before {
+		font-size: 50px;
+		font-weight: 700;
+
+		position: relative;
+		top: 20px;
+		right: 10px;
+
+		color: $yellow;
+		content: "\201C";
+		line-height: 0.1;
+
+	}
+
+	&:after {
+		font-size: 50px;
+		font-weight: 700;
+
+		position: relative;
+		top: 20px;
+		left: 10px;
+
+		color: $yellow;
+		content: "\201D";
+		line-height: 0.1;
+	}
+}
 
 //Table
 
