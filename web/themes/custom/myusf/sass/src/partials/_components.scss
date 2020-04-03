@@ -459,6 +459,7 @@ a.card-rollover {
 				height: 60px;
 				margin-bottom: 5px;		
 				margin-right: 0;
+				margin-top: 14px;
 			}
 			@include media-breakpoint-down(tablet) {
 				margin-right: 0;
@@ -623,7 +624,7 @@ h1.js-quickedit-page-title.page-title {
 
 .event-description {
 	padding-top: 2rem;
-	width: 85%;
+	/*width: 85%;*/
 
 	@include media-breakpoint-down(phone) {
 		width: 100%;
@@ -632,11 +633,13 @@ h1.js-quickedit-page-title.page-title {
 
 .event-image {
 	img.image {
-		width: 85%;
-    	height: 85%;
-    
-		@include media-breakpoint-down(tablet) {
+		width: 100%;
+    	
+		/*@include media-breakpoint-down(tablet) {
 		    width: 100%;
+		}*/
+		@media (min-width: 1160px) {
+			width: 825px;
 		}
 	}
 }

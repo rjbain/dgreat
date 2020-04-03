@@ -1672,6 +1672,11 @@ div[data-oembed-url]  > iframe {
 
     &.narrow {
         width:275px;
+
+        @include media-breakpoint-down(phone) {
+            width: 100%;
+            margin: 0;
+        }
     }
 
 
@@ -1723,6 +1728,10 @@ div[data-oembed-url]  > iframe {
     padding: 22px 30px;
     font-weight:300!important;
 
+    @include media-breakpoint-down(phone) {
+        width: 100%;
+    }
+
     &:before {
         margin-right: 10px;
         content: "";
@@ -1748,8 +1757,32 @@ div[data-oembed-url]  > iframe {
 
 /* Inline image in Events from USFCA
 ================================================================== */
-.in_line_image_item img {
-    width: 100%;
-    height: 100%;
-    margin-bottom:20px;
+.in_line_image_item {
+    display:block;
+
+    &.left {
+        float:left;
+        margin: 0 20px 20px 0;
+
+        @include media-breakpoint-down(phone) {
+            margin-right: 0;
+        }
+    }
+
+    &.right {
+        float:right;
+        margin: 0 0 20px 20px;
+
+        @include media-breakpoint-down(phone) {
+            margin-left: 0;
+        }
+    }
+    
+    img {
+        width: 100%;
+        height: 100%;
+    }
 }
+
+
+

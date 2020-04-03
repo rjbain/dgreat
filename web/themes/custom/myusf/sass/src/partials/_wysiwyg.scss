@@ -45,12 +45,19 @@
 .node--type-announcement .field--type-text-with-summary ul {
 	-webkit-padding-start: 20px;
 
+	@include media-breakpoint-down(phone) {
+		-webkit-padding-start: 0px;
+	}
+
 	li {
 		position: relative;  
 		list-style-type: none;	  	
 	  	margin-right: 50px;
 	  	padding-left: 20px;
 	  	
+	  	@include media-breakpoint-down(phone) {
+	  		margin-right: 0px;
+	  	}
 
 		&:before {
 			font-size: 1.1rem;
@@ -62,6 +69,10 @@
 		  	width: 26px;
 		  	padding-left: 30px;
 	    }
+	}
+
+	ul li {
+		margin-right: 0px;
 	}
 }
 
@@ -92,7 +103,7 @@
 	ul li {
 		position: relative;  
 		list-style-type: none;	  	
-	  	margin-right: 50px;
+	  	margin-right: 0px;
 	  	padding-left: 20px;
 	  	
 
@@ -157,17 +168,20 @@ blockquote {
 	padding-left: 40px;
 	padding-right: 50px;
 
+	@include media-breakpoint-down(phone) {
+		padding: 10px 10px 10px 20px; 
+	}
 	
 		&::before {
 			font-size: 50px;
 			font-weight: 700;
 			color: $yellow;
-			position: absolute;
-			top: 18px;
-			left: 2px;	
+			position: relative;
+			top: 20px;
+			right: 10px; 	
 			content: "\201C";
 			line-height: .1;
-			font-style: normal;	
+			font-style: normal;	   
 		}
 
 	/*	&::after {
