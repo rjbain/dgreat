@@ -1726,7 +1726,8 @@ div[data-oembed-url]  > iframe {
     margin-top: 25px;
     margin-bottom: 25px;
     padding: 22px 30px;
-    font-weight:300!important;
+    font-weight:400!important;
+    text-decoration: none;
 
     @include media-breakpoint-down(phone) {
         width: 100%;
@@ -1749,8 +1750,25 @@ div[data-oembed-url]  > iframe {
         background-position: -450px -60px;
     }
 
-    .no-touch &:hover {
-        background-color: $light_gray;
+    a { 
+        border-bottom: none;  
+        text-decoration: none;                  
+        font-weight: 400!important;                 
+        
+        &:link:hover {
+            background: transparent;
+            text-decoration: underline;
+        }
+    }
+
+    &:hover,
+    &:focus {
+        background-color: $light_gray_60;
+        text-decoration: underline;
+    }
+
+    img.file-icon {
+        display: none;
     }
 }
 
