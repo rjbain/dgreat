@@ -1,0 +1,37 @@
+uuid: ff291ef9-6973-4bf9-98a4-0af6ce226a54
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:custom_block:1998bfea-13e4-4b38-b5df-44c09026d627'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: covid19resourcessitewide
+theme: myusf
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'block_content:1998bfea-13e4-4b38-b5df-44c09026d627'
+settings:
+  id: 'block_content:1998bfea-13e4-4b38-b5df-44c09026d627'
+  label: 'COVID-19 Resources Site Wide'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "<front>\r\n/emergency-resources-campus-protocols/*\r\n/dashboard\r\n/calendar\r\n/calendar/*\r\n/event\r\n/event/*"
+    negate: true
+    context_mapping: {  }
