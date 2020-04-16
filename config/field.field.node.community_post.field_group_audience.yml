@@ -1,0 +1,29 @@
+uuid: 7756296a-1a43-4722-a867-23c296301739
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_group_audience
+    - group.type.groups
+    - node.type.community_post
+id: node.community_post.field_group_audience
+field_name: field_group_audience
+entity_type: node
+bundle: community_post
+label: 'Group audience'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:group'
+  handler_settings:
+    target_bundles:
+      groups: groups
+    sort:
+      field: label
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
