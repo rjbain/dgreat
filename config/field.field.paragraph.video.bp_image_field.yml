@@ -1,31 +1,31 @@
-uuid: f5c6f2da-2bd4-4bc3-a285-bde977e14d96
+uuid: 8cb1f31d-d25f-4b69-be7f-be2ab76658fa
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_image
-    - node.type.community_post
+    - field.storage.paragraph.bp_image_field
+    - paragraphs.paragraphs_type.video
   module:
     - image
-id: node.community_post.field_image
-field_name: field_image
-entity_type: node
-bundle: community_post
+id: paragraph.video.bp_image_field
+field_name: bp_image_field
+entity_type: paragraph
+bundle: video
 label: Image
 description: ''
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
   file_directory: '[date:custom:Y]-[date:custom:m]'
   file_extensions: 'png gif jpg jpeg'
-  max_filesize: '1 MB'
+  max_filesize: ''
   max_resolution: ''
-  min_resolution: 300x300
+  min_resolution: ''
   alt_field: true
   alt_field_required: true
-  title_field: true
+  title_field: false
   title_field_required: false
   default_image:
     uuid: ''
