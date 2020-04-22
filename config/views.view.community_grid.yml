@@ -334,6 +334,79 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
+        field_group_audience_target_id:
+          id: field_group_audience_target_id
+          table: node__field_group_audience
+          field: field_group_audience_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            3908: '3908'
+            4522: '4522'
+            4523: '4523'
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_group_audience_target_id_op
+            label: Audience
+            description: ''
+            use_operator: false
+            operator: field_group_audience_target_id_op
+            identifier: field_group_audience_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              editor: '0'
+              faculty: '0'
+              all_access: '0'
+              student: '0'
+              online_student: '0'
+              admitted_student: '0'
+              finance: '0'
+              employee: '0'
+              prehire_faculty: '0'
+              prehire_staff: '0'
+              bi_group: '0'
+              vcl_staff: '0'
+              online_intaccept: '0'
+              service_editor: '0'
+              som_ug: '0'
+              som_grad: '0'
+              as_ug: '0'
+              as_grad: '0'
+              sonhp_ug: '0'
+              sonhp_grad: '0'
+              law: '0'
+              soe: '0'
+              box_editor: '0'
+              webform_editor: '0'
+            reduce: true
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          type: select-list
+          sort: {  }
+          value_selection_type: '0'
+          target_bundles:
+            groups: groups
+          handler_view: 'service_reference_filters:entity_reference_1'
+          plugin_id: entity_reference
       sorts:
         field_weight_value:
           id: field_weight_value
@@ -359,6 +432,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -378,6 +452,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - 'user.node_grants:view'
         - user.permissions
       tags:
