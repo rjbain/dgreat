@@ -81,7 +81,7 @@
 {% set cta_title = node.field_call_to_action.title %}
 {% set callout_style = node.field_callout_style.value %}
 
-<a href="https://www.usfca.edu" target="_blank" class="overlay-link {{ callout_style }}">
+<a href="{{ cta_url }}" target="_blank" class="overlay-link {{ callout_style }}">
     <div class="overlay-container">
         {#{{ node.field_image }}#}
         <img src="{{ image_url }}" alt="{{ image_alt }}" class="overlay-image" height="300" width="300" />
