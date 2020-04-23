@@ -881,3 +881,30 @@ display:
         - 'config:field.storage.node.field_image_url'
         - 'config:field.storage.node.field_location'
         - 'config:field.storage.node.field_start_date'
+  block_2:
+    display_plugin: block
+    id: block_2
+    display_title: 'Block 2'
+    position: 2
+    display_options:
+      display_extenders: {  }
+      pager:
+        type: some
+        options:
+          items_per_page: 1
+          offset: 0
+      defaults:
+        pager: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_end_date'
+        - 'config:field.storage.node.field_f_image_url'
+        - 'config:field.storage.node.field_image_url'
+        - 'config:field.storage.node.field_location'
+        - 'config:field.storage.node.field_start_date'
