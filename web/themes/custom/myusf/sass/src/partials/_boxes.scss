@@ -1652,7 +1652,7 @@ div[data-oembed-url]  > iframe {
     .rollover-text {     
         margin: 55px 0 0 0;
         font-size: 15px;
-        position: absolute;
+        position: relative; /*position: absolute;*/
         top: 50%; 
         left: 50%;
         -webkit-transform: translate(-50%, -50%);
@@ -1661,9 +1661,11 @@ div[data-oembed-url]  > iframe {
         text-align: center;
 
         p {
-           color: #FFF; 
-           position: relative;
+            color: #FFF; 
+            position: relative;
             top: 25px;
+            /*margin-left: 25%;
+            width: 100%;*/
         }
 
         .callout_style_watch {
@@ -1671,14 +1673,81 @@ div[data-oembed-url]  > iframe {
                 width: 18px;
                 height: 18px;
                 top: 5px;
-                right: 4px;
-                position: absolute;
+                right: -4px;
+                position: relative;
                 display: inline-block;
                 content: "";
                 z-index: 1;
                 background: url(/themes/custom/myusf/images/site/icons.svg) -527px -268px no-repeat;
             }
         }
+
+        .callout_style_read{
+            &:after {
+                width: 18px;
+                height: 18px;
+                top: 5px;
+                right: -4px;
+                position: relative;
+                display: inline-block;
+                content: "";
+                z-index: 1;
+                background: url(/themes/custom/myusf/images/site/icons.svg) -547px -269px no-repeat;
+            }
+        }
+        .callout_style_calendar{
+            &:after {
+                width: 18px;
+                height: 18px;
+                top: 5px;
+                right: -4px;
+                position: relative;
+                display: inline-block;
+                content: "";
+                z-index: 1;
+                background: url(/themes/custom/myusf/images/site/icons.svg) -503px -268px no-repeat;
+            }
+        }
+        .callout_style_visit{
+            &:after {
+                width: 20px;
+                height: 20px;
+                top: 5px;
+                right: -4px;
+                position: relative;
+                display: inline-block;
+                content: "";
+                z-index: 1;
+                background: url(/themes/custom/myusf/images/site/icons.svg) -590px -268px no-repeat;
+            }
+        }
+        .callout_style_support{
+            &:after {
+                width: 20px;
+                height: 20px;
+                top: 5px;
+                right: -4px;
+                position: relative;
+                display: inline-block;
+                content: "";
+                z-index: 1;
+                background: url(/themes/custom/myusf/images/site/icons.svg) -570px -268px no-repeat;
+            }
+        }
+        .callout_style_find{
+            &:after {
+                width: 20px;
+                height: 20px;
+                top: 5px;
+                right: -4px;
+                position: relative;
+                display: inline-block;
+                content: "";
+                z-index: 1;
+                background: url(/themes/custom/myusf/images/site/icons.svg) -483px -269px no-repeat;
+            }
+        }
+        
     }
     .overlay-heading {
         font-size: 16px;
