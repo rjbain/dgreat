@@ -97,7 +97,7 @@
                     <p class="rollover-subtitle">{{ sub_title }}</p>
                 {% endif %}
                 {% if node.body.value %}
-                    <p class="rollover-body-text">{{ body }}</p>
+                    <p class="rollover-body-text"> {% autoescape false %}{{ body }}{% endautoescape %}</p>
                 {% endif %}
                 {% if node.field_call_to_action.title %}
                     <p class="{{ callout_style }}">{{ cta_title }}</p>
