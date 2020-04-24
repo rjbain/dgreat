@@ -94,7 +94,10 @@
             </h2>
             <div class="rollover-text">
                 {% if node.field_sub_title.value %}
-                    <p>{{ sub_title }}</p>
+                    <p class="rollover-subtitle">{{ sub_title }}</p>
+                {% endif %}
+                {% if node.body.value %}
+                    <p class="rollover-body-text">{{ body }}</p>
                 {% endif %}
                 {% if node.field_call_to_action.title %}
                     <p class="{{ callout_style }}">{{ cta_title }}</p>
