@@ -81,12 +81,12 @@
 {% set cta_title = node.field_call_to_action.title %}
 {% set callout_style = node.field_callout_style.value %}
 
-
+<div class="community-grid-tile">
 <a href="{{ cta_url }}" target="_blank" class="overlay-link {{ callout_style }}">
     <div class="overlay-container">
         {#{{ node.field_image }}#}
         <img src="{{ image_url }}" alt="{{ image_alt }}" class="overlay-image" height="300" width="300" />
-        <div class="overlay">
+        <div class="overlay {{ callout_style }}">
             <h2 class="overlay-heading">
                 {% if node.field_sub_title.value %}
                     {{ display_title }}
@@ -97,7 +97,7 @@
                     <p class="rollover-subtitle">{{ sub_title }}</p>
                 {% endif %}
                 {% if node.body.value %}
-                    <p class="rollover-body-text"> {% autoescape false %}{{ body }}{% endautoescape %}</p>
+                    <div class="rollover-body-text"> {% autoescape false %}{{ body }}{% endautoescape %}</div>
                 {% endif %}
                 {% if node.field_call_to_action.title %}
                     <p class="{{ callout_style }}">{{ cta_title }}</p>
@@ -106,7 +106,7 @@
         </div>
     </div>
 </a>
-
+</div>
 
         {#<img src="{{ image }}" alt="{{ image_alt }}" />#}
         {#{{ node.field_image|view('grid') }}#}

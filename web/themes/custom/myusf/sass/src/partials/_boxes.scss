@@ -1656,11 +1656,11 @@ div[data-oembed-url]  > iframe {
         text-align: center;
         width: 100%;
         position: absolute;
-        -webkit-transform: translate(0, -50%);
-        -ms-transform: translate(0, -50%);
-        -o-transform: translate(0, -50%);
-        transform: translate(0, -50%);
-        top: 50%;
+        -webkit-transform: translate(0, -30%); /*(0%, -50%);*/
+        -ms-transform: translate(0, -30%); /*(0%, -50%);*/
+        -o-transform: translate(0, -30%); /*(0%, -50%);*/
+        transform: translate(0, -30%); /*(0%, -50%);*/
+        top: 30%;   /*50%*/
         margin: 0 !important;
         padding: 10px;
         opacity: 1;
@@ -1679,11 +1679,11 @@ div[data-oembed-url]  > iframe {
         margin: 55px 0 0 0;
         font-size: 15px;
         position: relative; /*position: absolute;*/
-        top: 50%; 
+        top: 13%;  /*50%*/
         left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, 0%);  /*(-50%, -50%);*/
+        -ms-transform: translate(-50%, 0%);   /*(-50%, -50%);*/
+        transform: translate(-50%, 0%);   /*(-50%, -50%);*/
         text-align: center;
 
         p {
@@ -1699,6 +1699,9 @@ div[data-oembed-url]  > iframe {
                 text-transform: uppercase;
             }
         }
+         .rollover-body-text p {
+            top:30px;
+        }
 
         .callout_style_watch,
         .callout_style_read,
@@ -1706,10 +1709,13 @@ div[data-oembed-url]  > iframe {
         .callout_style_visit,
         .callout_style_support,
         .callout_style_find,
-        .callout_style_see,
-        .callout_style_plan,
-        .callout_style_apply {
+        .callout_style_facebook,
+        .callout_style_twitter,
+        .callout_style_instagram,
+        .diamond_link {
             font-style: italic;
+            top:30px;
+            margin-top: -10px;
         }
 
 
@@ -1726,7 +1732,6 @@ div[data-oembed-url]  > iframe {
                 background: url(/themes/custom/myusf/images/site/icons.svg) -527px -268px no-repeat;
             }
         }
-
         .callout_style_read {
             &:before {
                 width: 18px;
@@ -1738,6 +1743,7 @@ div[data-oembed-url]  > iframe {
                 content: "";
                 z-index: 1;
                 background: url(/themes/custom/myusf/images/site/icons.svg) -547px -269px no-repeat;
+                left: -5px;
             }
         }
         .callout_style_calendar {
@@ -1792,10 +1798,82 @@ div[data-oembed-url]  > iframe {
                 background: url(/themes/custom/myusf/images/site/icons.svg) -483px -269px no-repeat;
             }
         }
+        .callout_style_facebook{
+            &:after {
+                width: 20px;
+                height: 20px;
+                top: 5px;
+                right: -4px;
+                position: relative;
+                display: inline-block;
+                content: "";
+                z-index: 1;
+                background: url(/themes/custom/myusf/images/site/icons.svg) -115px -57px no-repeat;
+            }
+        }
+        .callout_style_twitter{
+            &:after {
+                width: 20px;
+                height: 20px;
+                top: 5px;
+                right: -4px;
+                position: relative;
+                display: inline-block;
+                content: "";
+                z-index: 1;
+                background: url(/themes/custom/myusf/images/site/icons.svg) -95px -57px no-repeat;
+            }
+        }
+        .callout_style_instagram{
+            &:after {
+                width: 20px;
+                height: 20px;
+                top: 5px;
+                right: -4px;
+                position: relative;
+                display: inline-block;
+                content: "";
+                z-index: 1;
+                background: url(/themes/custom/myusf/images/site/icons.svg) -35px -57px no-repeat;
+            }
+        }
         
     }
 
     .view-community-grid {
+        .overlay.callout_style_watch {
+            background: $plum;
+        }
+        .overlay.callout_style_read{
+            background: $text_gray;
+        }
+        .overlay.callout_style_calendar{
+            background: $turquoise;
+        }
+        .overlay.callout_style_visit{
+            background: $tan;
+        }
+        .overlay.callout_style_support{
+            background: $olive;
+        }
+        .overlay.callout_style_find{
+            background: $terra_cotta;
+        }
+        .overlay.callout_style_facebook{
+            background: $facebook;
+        }
+        .overlay.callout_style_twitter{
+            background: $twitter;
+        }
+        .overlay.callout_style_instagram{
+            background: $instagram;
+        }
+        .overlay.diamond_link {
+            background: $green;
+        }
+    }
+
+    /*.view-community-grid {
 
         .community-grid-tile:nth-child(1),
         .community-grid-tile:nth-child(10)  {
@@ -1852,7 +1930,9 @@ div[data-oembed-url]  > iframe {
             }
         }    
     }
+*/
 
+    
 
     form#views-exposed-form-community-grid-page-1 {
         margin-bottom: 20px;
