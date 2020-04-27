@@ -81,8 +81,8 @@
 {% set cta_title = node.field_call_to_action.title %}
 {% set callout_style = node.field_callout_style.value %}
 
-<div class="community-grid-tile">
-<a href="{{ cta_url }}" target="_blank" class="overlay-link {{ callout_style }}">
+
+<a href="{{ cta_url }}" target="_blank" class="overlay-link">
     <div class="overlay-container">
         {#{{ node.field_image }}#}
         <img src="{{ image_url }}" alt="{{ image_alt }}" class="overlay-image" height="300" width="300" />
@@ -106,7 +106,7 @@
         </div>
     </div>
 </a>
-</div>
+
 
         {#<img src="{{ image }}" alt="{{ image_alt }}" />#}
         {#{{ node.field_image|view('grid') }}#}
