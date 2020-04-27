@@ -1,4 +1,15 @@
-<h1>YOYO</h1>
+
+{% set color = element['#object'].fields %}
+
+<div class="my-colors">{{ colors }}</div><a class="video-component">
+    {{ content.bp_image_field }}
+    <h2>{{ content.field_heading }}</h2>
+    {{ content.field_body_text }}
+    {{ content.field_video_url }}
+    {{ content.field_colors }}
+    {% include "@myUSFLib/fields/field--paragraph--field-colors--video.html.twig" %}
+</a>
+
 {#<a class="video-component">#}
 {#{% include "@myUSFLib/fields/field--paragraph--field-heading--video.html.twig" %}#}
 {#{% include "@myUSFLib/fields/field--paragraph--bp-image-field--video.html.twig" %}#}
