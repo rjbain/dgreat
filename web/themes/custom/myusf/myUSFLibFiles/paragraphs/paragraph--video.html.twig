@@ -1,30 +1,33 @@
+{{ attach_library('myusf/video-overlays') }}
+{% set vid_url = elements['#paragraph'].field_video_url.value.0.uri %}
+{% set color = elements['#paragraph'].field_colors.value %}
 
-{% set color = element['#object'].fields %}
 
-<div class="my-colors">{{ colors }}</div><a class="video-component">
+<a href="#" class="video-component {{ color }}"
+   data-toggle="modal"
+   data-target="#videoModal"
+   data-theVideo="{{ vid_url }}">
+
     {{ content.bp_image_field }}
     <h2>{{ content.field_heading }}</h2>
     {{ content.field_body_text }}
-    {{ content.field_video_url }}
-    {{ content.field_colors }}
-    {% include "@myUSFLib/fields/field--paragraph--field-colors--video.html.twig" %}
+
 </a>
 
-{#<a class="video-component">#}
-{#{% include "@myUSFLib/fields/field--paragraph--field-heading--video.html.twig" %}#}
-{#{% include "@myUSFLib/fields/field--paragraph--bp-image-field--video.html.twig" %}#}
-{#</a>#}
-{#<article>{{ element }}</article>#}
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div>
+                    <iframe width="100%" height="350" src=""
+                            frameborder="0"
+                            seamless="seamless"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-{#{{ items.0.content }}#}
-
-
-{#{{ label }}#}
-{#{{ items }}#}
-{#<ol>#}
-    {#{% for key, value in _context  %}#}
-        {#<li>{{ key }}</li>#}
-    {#{% endfor %}#}
-{#</ol>#}
-
-{#{{ dump(content.field_social_media_links.0['#paragraph'].field_social_media_network) }}#}
