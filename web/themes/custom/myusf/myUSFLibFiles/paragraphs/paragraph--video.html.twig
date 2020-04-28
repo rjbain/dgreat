@@ -9,8 +9,8 @@
    data-theVideo="{{ vid_url }}">
 
     {{ content.bp_image_field }}
-    <h2>{{ content.field_heading }}</h2>
-    {{ content.field_body_text }}
+    <h2 class="video-component-heading">{{ content.field_heading }}</h2>
+    <div class="video-component-body">{{ content.field_body_text }}</div>
 
 </a>
 
@@ -31,3 +31,38 @@
     </div>
 </div>
 
+<style>
+    .video-component {
+        display:block;
+        width:691px;
+        background-color:#00543C;
+    }
+    .video-component img {
+        width:100%;
+    }
+    .video-component-heading {
+        margin-left:20px;
+        color:#FFF !important;
+        text-decoration: none !important;
+    }
+    .video-component-body {
+        margin-left:20px;
+        color:#FFF !important;
+    }
+    .video-component-body p {
+        color:#FFF !important;
+    }
+    .modal-content {
+        background-color:transparent;
+        border:none;
+    }
+    .close {
+    url(/themes/custom/myusf/images/site/icons.svg) -247px -6px no-repeat;
+        height:0px;
+        width:0px;
+        color: transparent;
+    }
+    .close:hover {
+        color: transparent;
+    }
+</style>
