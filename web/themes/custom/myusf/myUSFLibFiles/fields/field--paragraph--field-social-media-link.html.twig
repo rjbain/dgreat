@@ -1,6 +1,12 @@
 {% for links in content.field_social_media_links %}
     {% for link in links['#paragraph'].field_social_media_network %}
-        <p><a class="{{ link.value|lower }}" href="{{ links['#paragraph'].field_social_media_url.uri }}">{{ link.value }}</a></p>
+    	{% set link_value = link.value %}
+    		{% if link_value == "Tumbler" %}
+    			{% set link_value = "Tumblr" %}
+    		{% else %}
+    			{% set link_value = link.value %}
+    		{% endif %}    			
+        <p><a class="{{ link.value|lower }}" href="{{ links['#paragraph'].field_social_media_url.uri }}">{{ link_value }}</a></p>
     {% endfor %}
 {% endfor %}
 
