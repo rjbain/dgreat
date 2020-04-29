@@ -1,12 +1,11 @@
 {{ attach_library('myusf/video-overlays') }}
-{% set vid_url = elements['#paragraph'].field_video_url.value.0.uri %}
+{#{% set vid_url = elements['#paragraph'].field_video_url.value.0.uri %}#}
 {% set color = elements['#paragraph'].field_colors.value %}
-
 
 <a href="#" class="video-component {{ color }}"
    data-toggle="modal"
    data-target="#videoModal"
-   data-theVideo="{{ vid_url }}">
+   data-theVideo="{{ new_vid_url }}">
 
     {{ content.bp_image_field }}
     <h2 class="video-component-heading">{{ content.field_heading }}</h2>
@@ -19,8 +18,8 @@
         <div class="modal-content">
             <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <div>
-                    <iframe width="100%" height="350" src=""
+                <div class="fluidMedia">
+                    <iframe class="video-component-iframe" src=""
                             frameborder="0"
                             seamless="seamless"
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -52,7 +51,13 @@
     .video-component-body p {
         color:#FFF !important;
     }
-    .modal-content {
+    .video-component-iframe {
+
+    }
+    #videoModal .modal-dialog {
+        max-width:75%;
+    }
+    #videoModal .modal-content {
         background-color:transparent;
         border:none;
     }
@@ -64,5 +69,21 @@
     }
     .close:hover {
         color: transparent;
+    }
+
+    .fluidMedia {
+        position: relative !important;
+        padding-bottom: 56.25% !important; /* proportion value to aspect ratio 16:9 (9 / 16 = 0.5625 or 56.25%) */
+        margin-bottom:0px;
+        padding-top: 30px !important;
+        height: 0 !important;
+        overflow: hidden !important;
+    }
+    .fluidMedia iframe {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
     }
 </style>

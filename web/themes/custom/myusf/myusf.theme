@@ -81,3 +81,36 @@ function myusf_theme_suggestions_page_alter(&$suggestions, $variables, $hook) {
     }
   }
 }
+
+
+
+/**
+ * Implements template_preprocess_paragraph().
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An array of elements to display in view mode.
+ *   - paragraph: The paragraph object.
+ *   - view_mode: View mode; e.g., 'full', 'teaser'...
+ */
+
+function myusf_preprocess_paragraph__video(&$variables) {
+    $original_video_url = $variables['paragraph']->field_video_url[0]->uri;
+
+    // Is it a youtube link?
+    if (strpos($original_video_url, 'youtu') !== false) {
+        // Get the video ID number
+        $youtube_preg = preg_match("/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/", $original_video_url, $matches);
+        if ($youtube_preg > 0) {
+            $youtube_id = $matches[1];
+            $variables['new_vid_url'] = 'https://www.youtube.com/embed/' . $youtube_id;
+        }
+
+    } else if (strpos($original_video_url, 'vimeo') !== false) {
+        $vimeo_preg = preg_match('/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/', $original_video_url, $matches);
+        if ($vimeo_preg > 0) {
+            $vimeo_id = $matches[5];
+            $variables['new_vid_url'] = 'https://player.vimeo.com/video/' . $vimeo_id;
+        }
+    }
+}
