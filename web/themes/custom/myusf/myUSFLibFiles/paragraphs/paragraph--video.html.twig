@@ -2,17 +2,25 @@
 {#{% set vid_url = elements['#paragraph'].field_video_url.value.0.uri %}#}
 {% set color = elements['#paragraph'].field_colors.value %}
 
-<a href="#" class="video-component {{ color }}"
-   data-toggle="modal"
-   data-target="#videoModal"
-   data-theVideo="{{ new_vid_url }}">
+{% if content.bp_image_field.0 is defined %}
 
-    {{ content.bp_image_field }}
-    <span class="video-component_video_icon"><span class="first_word">Watch</span> the Video </span>
-    <h2 class="video-component-heading">{{ content.field_heading }}</h2>
-    <div class="video-component-body">{{ content.field_body_text }}</div>
+<div class="video-component-wrapper">
+    <a href="#" class="video-component {{ color }}"
+       data-toggle="modal"
+       data-target="#videoModal"
+       data-theVideo="{{ new_vid_url }}">
 
-</a>
+        {{ content.bp_image_field }}
+        <span class="video-component_video_icon"><span class="first_word">Watch</span> the Video </span>
+        {#{% if content.field_heading is not empty %}#}
+            <h2 class="video-component-heading">{{ content.field_heading }}</h2>
+        {#{% endif %}#}
+        {#{% if content.field_heading is not empty %}#}
+            <div class="video-component-body">{{ content.field_body_text }}</div>
+        {#{% endif %}#}
+
+    </a>
+</div>
 
 <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
     <div class="modal-dialog">
@@ -30,6 +38,27 @@
         </div>
     </div>
 </div>
+
+{% endif %}
+
+{% if content.bp_image_field.0 is not defined %} {# if the image is empty, just display the embed #}
+
+<div class="video-component {{ color }}">
+    <iframe width="560" height="315"
+            src="{{ new_vid_url }}"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"  allowfullscreen>
+    </iframe>
+    <span class="video-component_video_icon"><span class="first_word">Watch</span> the Video </span>
+    {% if content.field_heading is not empty %}
+        <h2 class="video-component-heading">{{ content.field_heading }}</h2>
+    {% endif %}
+    {% if content.field_heading is not empty %}
+        <div class="video-component-body">{{ content.field_body_text }}</div>
+    {% endif %}
+</div>
+
+{% endif %}
 
 <style>
     .video-component {
