@@ -1,18 +1,18 @@
-uuid: 08350e28-bd2b-4b4d-971e-c7880322a3b6
+uuid: c3ae09fb-fc89-445f-94f4-9edaacf12f7f
 langcode: en
 status: open
 dependencies: {  }
 open: null
 close: null
 weight: 0
-uid: 52546
+uid: 62915
 template: false
 archive: false
-id: prayer_intentions
-title: 'Prayer Intentions'
+id: prayer_wall_form
+title: 'Prayer Wall Form'
 description: ''
-category: 'University Ministry'
-elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#required': true\nemail:\n  '#type': email\n  '#title': Email\n  '#required': true\nprayer_intention:\n  '#type': textarea\n  '#title': 'Prayer Intention'\n  '#required': true"
+category: 'Prayer Wall'
+elements: "name:\n  '#type': textfield\n  '#title': Name\nyour_prayer:\n  '#type': textarea\n  '#title': 'Your Prayer'"
 css: ''
 javascript: ''
 settings:
@@ -155,38 +155,4 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers:
-  email:
-    id: email
-    label: Email
-    handler_id: email
-    status: true
-    conditions: {  }
-    weight: 0
-    settings:
-      states:
-        - completed
-      to_mail: um@usfca.edu
-      to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      from_mail: _default
-      from_options: {  }
-      from_name: _default
-      subject: _default
-      body: _default
-      excluded_elements: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      html: true
-      attachments: false
-      twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      theme_name: ''
+handlers: {  }
