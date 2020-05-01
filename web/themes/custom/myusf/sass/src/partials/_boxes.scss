@@ -1670,7 +1670,6 @@ div[data-oembed-url]  > iframe {
     .overlay-heading {
         font-size: 1.2rem;
         color: #FFF !important;
-        font-weight: 400;
         text-align: center;
         width: 100%;
         position: absolute;
@@ -1697,7 +1696,7 @@ div[data-oembed-url]  > iframe {
         margin: 55px 0 0 0;
         font-size: 15px;
         position: relative; /*position: absolute;*/
-        top: 13%;  /*50%*/
+        top: 11%; /*13%;*/  /*50%*/
         left: 50%;
         -webkit-transform: translate(-50%, 0%);  /*(-50%, -50%);*/
         -ms-transform: translate(-50%, 0%);   /*(-50%, -50%);*/
@@ -1729,130 +1728,73 @@ div[data-oembed-url]  > iframe {
         .callout_style_find,
         .callout_style_facebook,
         .callout_style_twitter,
-        .callout_style_instagram,
-        .diamond_link {
+        .callout_style_instagram {
+            font-size: .8rem;
             font-style: italic;
+            text-transform: uppercase;
             top:30px;
-            margin-top: -10px;
+
+            &:before {
+                width: 20px;
+                height: 20px;
+                top: 5px;
+                left: -3px;
+                position: relative;
+                display: inline-block;
+                content: "";
+                z-index: 1;
+            }
+
+            &:after {
+                content: "»";
+                padding-left: 5px;
+            }
         }
 
 
         .callout_style_watch {
-            &:after {
-                width: 18px;
-                height: 18px;
-                top: 5px;
-                right: -4px;
-                position: relative;
-                display: inline-block;
-                content: "";
-                z-index: 1;
-                background: url(/themes/custom/myusf/images/site/icons.svg) -527px -268px no-repeat;
+            &:before {
+                background: url(/themes/custom/myusf/images/site/icons.svg) -527px -266px no-repeat;
             }
         }
         .callout_style_read {
             &:before {
-                width: 18px;
-                height: 18px;
-                top: 5px;
-                right: -4px;
-                position: relative;
-                display: inline-block;
-                content: "";
-                z-index: 1;
-                background: url(/themes/custom/myusf/images/site/icons.svg) -547px -269px no-repeat;
-                left: -5px;
+                background: url(/themes/custom/myusf/images/site/icons.svg) -548px -267px no-repeat;
             }
         }
         .callout_style_calendar {
-            &:after {
-                width: 18px;
-                height: 18px;
-                top: 5px;
-                right: -4px;
-                position: relative;
-                display: inline-block;
-                content: "";
-                z-index: 1;
-                background: url(/themes/custom/myusf/images/site/icons.svg) -503px -268px no-repeat;
+            &:before {
+                background: url(/themes/custom/myusf/images/site/icons.svg) -505px -266px no-repeat;
             }
         }
         .callout_style_visit {
-            &:after {
-                width: 20px;
-                height: 20px;
-                top: 5px;
-                right: -4px;
-                position: relative;
-                display: inline-block;
-                content: "";
-                z-index: 1;
+            &:before {
                 background: url(/themes/custom/myusf/images/site/icons.svg) -590px -268px no-repeat;
             }
         }
         .callout_style_support {
-            &:after {
-                width: 20px;
-                height: 20px;
-                top: 5px;
-                right: -4px;
-                position: relative;
-                display: inline-block;
-                content: "";
-                z-index: 1;
+            &:before {
                 background: url(/themes/custom/myusf/images/site/icons.svg) -570px -268px no-repeat;
             }
         }
         .callout_style_find{
-            &:after {
-                width: 20px;
-                height: 20px;
-                top: 5px;
-                right: -4px;
-                position: relative;
-                display: inline-block;
-                content: "";
-                z-index: 1;
+            &:before {
                 background: url(/themes/custom/myusf/images/site/icons.svg) -483px -269px no-repeat;
             }
         }
         .callout_style_facebook{
-            &:after {
-                width: 20px;
-                height: 20px;
-                top: 5px;
-                right: -4px;
-                position: relative;
-                display: inline-block;
-                content: "";
-                z-index: 1;
-                background: url(/themes/custom/myusf/images/site/icons.svg) -115px -57px no-repeat;
+            &:before {
+                background: url(/themes/custom/myusf/images/site/icons.svg) -118px -57px no-repeat;
             }
         }
         .callout_style_twitter{
-            &:after {
-                width: 20px;
-                height: 20px;
-                top: 5px;
-                right: -4px;
-                position: relative;
-                display: inline-block;
-                content: "";
-                z-index: 1;
+            &:before {
                 background: url(/themes/custom/myusf/images/site/icons.svg) -95px -57px no-repeat;
             }
         }
         .callout_style_instagram{
-            &:after {
-                width: 20px;
-                height: 20px;
-                top: 5px;
-                right: -4px;
-                position: relative;
-                display: inline-block;
-                content: "";
-                z-index: 1;
-                background: url(/themes/custom/myusf/images/site/icons.svg) -35px -57px no-repeat;
+            &:before {
+                background: url(/themes/custom/myusf/images/site/icons.svg) -37px -57px no-repeat;
             }
         }
         
@@ -1922,9 +1864,56 @@ div[data-oembed-url]  > iframe {
     form#views-exposed-form-community-grid-page-1 {
         margin-bottom: 20px;
         margin-top: 10px;
-    }
-    select#edit-field-group-audience-target-id {
-    width: 220px;
-}
 
- 
+        .form-select {
+            outline: 0px;
+        }
+        select {
+            border-radius: 0!important;
+        }
+    }
+    select#edit-field-group-audience-target-id,
+    select#edit-field-community-topic-target-id {
+        width: 220px;
+        height:40px;
+        font-style: normal;
+        font-weight: 400;
+        background-color: $beige;
+        border-width: 0;
+        color: $black;
+
+       /* &:before {
+            width: 8px;
+            height: 5px;
+            position: absolute;
+            top: 0;
+            right: 20px;
+            bottom: 0;
+            content: "";
+            display: inline-block;
+            margin: auto 0;
+            z-index: 10;
+            background: url(/themes/custom/myusf/images/site/icons.svg) -240px -170px no-repeat;
+        }
+        &:after {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 0;
+            right: 15px;
+            bottom: 0;
+            content: '';
+            display: block;
+            margin: auto 0;
+            z-index: 2;
+            border: 2px solid #FDBB30;
+            border-radius: 100%;
+            background: url(/themes/custom/myusf/images/site/icons.svg) -240px -170px no-repeat;
+        }*/
+    }
+
+    fieldset.form-item-field-community-topic-target-id,
+    fieldset.form-item-field-group-audience-target-id {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
