@@ -186,7 +186,22 @@ body {
 .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__2col {
 	padding-left: 0 !important;
 }
+.paragraph--type--bp-columns__2col {
+	padding-right: 0!important;
 
+	&:nth-child(even) {
+		margin-left: 7px;
+		@include media-breakpoint-down(phone) {
+			margin-left: 0px;
+		}
+	}
+	&:nth-child(odd) {
+		margin-right: 7px;
+		@include media-breakpoint-down(phone) {
+			margin-right: 0px;
+		}
+	}
+}
 
 /* HOME PAGE */
 .view-usf-news-tiles .view-content.row,

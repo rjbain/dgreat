@@ -1408,7 +1408,7 @@ h2.carousel-overlay:before {
 }
 
 //TEST for aligning the boxes on the left and right with other content
-@media (max-width: 767px) {
+@include media-breakpoint-down(tablet) {
     .paragraph--type--bp-columns__1col .paragraph--type--bp-columns__2col,
     .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
     .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {        
@@ -1417,7 +1417,7 @@ h2.carousel-overlay:before {
     }
 }
 
-@media (min-width: 768px) {
+@include media-breakpoint-up(tablet) {
     .paragraph--type--bp-columns__1col .paragraph--type--bp-columns__2col,
     .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
     .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
@@ -1457,7 +1457,7 @@ h2.carousel-overlay:before {
     }
 }
 
-@media (min-width: 1220px) {
+@include media-breakpoint-up(large_desktop) {
     .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
     .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
         &:nth-child(1){
@@ -1508,7 +1508,7 @@ h2.carousel-overlay:before {
 
  /* Columns Modifiers inside of Columns Element  */
 
-@media (min-width: 768px) {
+@include media-breakpoint-up(tablet) {
   .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__3col,
   .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__4col,
   .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__5col, 
@@ -1517,7 +1517,25 @@ h2.carousel-overlay:before {
      width: 50%; /*width: 16.66666667%;*/
   }
 }
-@media (min-width: 1220px) {
+@include media-breakpoint-up(tablet) {
+  .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__2col {
+    float: left;
+     width: 48.5%; /*width: 16.66666667%;*/
+  }
+}
+@include media-breakpoint-up(desktop) {
+  .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__2col {
+    float: left;
+     width: 49%; /*width: 16.66666667%;*/
+  }
+}
+@include media-breakpoint-up(large_desktop) {
+  .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__2col {
+    float: left;
+     width: 49.2%; /*width: 16.66666667%;*/
+  }
+}
+@include media-breakpoint-up(large_desktop) {
   .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__3col,
   .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__4col,
   .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__5col, 
