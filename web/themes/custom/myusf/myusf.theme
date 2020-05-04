@@ -1,5 +1,5 @@
 <?php
-
+use Drupal\paragraphs\Entity\Paragraph;
 /**
  * @file
  */
@@ -113,4 +113,20 @@ function myusf_preprocess_paragraph__video(&$variables) {
             $variables['new_vid_url'] = 'https://player.vimeo.com/video/' . $vimeo_id;
         }
     }
+}
+
+
+function myusf_preprocess_node(&$variables)
+{
+    // Check for a video on the page.
+    // Need this for knowing when to print out the modal overlay markup.
+    $node = $variables['node'];
+    $paragraph_video_exists = FALSE;
+    $entities = $node->referencedEntities();
+    foreach ($entities as $entity) {
+        if (!empty($entity->field_video_url)) {
+            $paragraph_video_exists = TRUE;
+        }
+    }
+    $variables['paragraph_video_exists'] = $paragraph_video_exists;
 }
