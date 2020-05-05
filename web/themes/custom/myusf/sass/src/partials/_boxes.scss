@@ -1408,7 +1408,7 @@ h2.carousel-overlay:before {
 }
 
 //TEST for aligning the boxes on the left and right with other content
-@media (max-width: 767px) {
+@include media-breakpoint-down(tablet) {
     .paragraph--type--bp-columns__1col .paragraph--type--bp-columns__2col,
     .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
     .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {        
@@ -1417,7 +1417,7 @@ h2.carousel-overlay:before {
     }
 }
 
-@media (min-width: 768px) {
+@include media-breakpoint-up(tablet) {
     .paragraph--type--bp-columns__1col .paragraph--type--bp-columns__2col,
     .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
     .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
@@ -1457,7 +1457,7 @@ h2.carousel-overlay:before {
     }
 }
 
-@media (min-width: 1220px) {
+@include media-breakpoint-up(large_desktop) {
     .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
     .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
         &:nth-child(1){
@@ -1508,7 +1508,7 @@ h2.carousel-overlay:before {
 
  /* Columns Modifiers inside of Columns Element  */
 
-@media (min-width: 768px) {
+@include media-breakpoint-up(tablet) {
   .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__3col,
   .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__4col,
   .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__5col, 
@@ -1517,7 +1517,25 @@ h2.carousel-overlay:before {
      width: 50%; /*width: 16.66666667%;*/
   }
 }
-@media (min-width: 1220px) {
+@include media-breakpoint-up(tablet) {
+  .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__2col {
+    float: left;
+     width: 48.5%; /*width: 16.66666667%;*/
+  }
+}
+@include media-breakpoint-up(desktop) {
+  .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__2col {
+    float: left;
+     width: 49%; /*width: 16.66666667%;*/
+  }
+}
+@include media-breakpoint-up(large_desktop) {
+  .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__2col {
+    float: left;
+     width: 49.2%; /*width: 16.66666667%;*/
+  }
+}
+@include media-breakpoint-up(large_desktop) {
   .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__3col,
   .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__4col,
   .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__5col, 
@@ -1609,4 +1627,293 @@ div[data-oembed-url]  > iframe {
     }
 }
 
- 
+
+// SLE ENGAGEMENT TILES
+.overlay-link {
+    display: block;
+    margin: 10px;
+}
+    .overlay-container {
+        position: relative;
+    }
+
+    .overlay-image {
+        display: block;
+        height: auto;
+        width:100%;
+        margin:0;
+    }
+
+    .overlay-container:hover .overlay {
+        height: 100%;
+    }
+
+    .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        /*background: #00543C;
+        background: -moz-linear-gradient(top, #00543C 0, #196F3D 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0, #00543C), color-stop(100%, #196F3D));
+        background: -webkit-linear-gradient(top, #00543C 0, #196F3D 100%);
+        background: -o-linear-gradient(top, #00543C 0, #196F3D 100%);
+        background: -ms-linear-gradient(top, #00543C 0, #196F3D 100%);
+        background: linear-gradient(to bottom, #00543C 0, #196F3D 100%);*/
+        opacity: .9;
+        overflow: hidden;
+        width:100%;
+        height: 50px;
+        transition: .5s ease;
+    }
+
+    .overlay-heading {
+        font-size: 1.2rem;
+        color: #FFF !important;
+        text-align: center;
+        width: 100%;
+        position: absolute;
+        -webkit-transform: translate(0, -30%); /*(0%, -50%);*/
+        -ms-transform: translate(0, -30%); /*(0%, -50%);*/
+        -o-transform: translate(0, -30%); /*(0%, -50%);*/
+        transform: translate(0, -30%); /*(0%, -50%);*/
+        top: 30%;   /*50%*/
+        margin: 0 !important;
+        padding: 10px;
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-transition: opacity .4s ease;
+        -o-transition: opacity .4s ease;
+        transition: opacity .4s ease;
+        display: block;
+        margin-block-start: 1.33em;
+        margin-block-end: 1.33em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+
+    .rollover-text {     
+        margin: 55px 0 0 0;
+        font-size: 15px;
+        position: relative; /*position: absolute;*/
+        top: 11%; /*13%;*/  /*50%*/
+        left: 50%;
+        -webkit-transform: translate(-50%, 0%);  /*(-50%, -50%);*/
+        -ms-transform: translate(-50%, 0%);   /*(-50%, -50%);*/
+        transform: translate(-50%, 0%);   /*(-50%, -50%);*/
+        text-align: center;
+
+        p {
+            color: #FFF; 
+            position: relative;
+            margin-left: 15px;
+            margin-right: 15px;
+            line-height: 1.2;
+
+            &.rollover-subtitle {
+                top:30px;
+                font-size: .9rem;
+                text-transform: uppercase;
+            }
+        }
+         .rollover-body-text p {
+            top:30px;
+        }
+
+        .callout_style_watch,
+        .callout_style_read,
+        .callout_style_calendar,
+        .callout_style_visit,
+        .callout_style_support,
+        .callout_style_find,
+        .callout_style_facebook,
+        .callout_style_twitter,
+        .callout_style_instagram {
+            font-size: .8rem;
+            font-style: italic;
+            text-transform: uppercase;
+            top:30px;
+
+            &:before {
+                width: 20px;
+                height: 20px;
+                top: 5px;
+                left: -3px;
+                position: relative;
+                display: inline-block;
+                content: "";
+                z-index: 1;
+            }
+
+            &:after {
+                content: "»";
+                padding-left: 5px;
+            }
+        }
+
+
+        .callout_style_watch {
+            &:before {
+                background: url(/themes/custom/myusf/images/site/icons.svg) -527px -266px no-repeat;
+            }
+        }
+        .callout_style_read {
+            &:before {
+                background: url(/themes/custom/myusf/images/site/icons.svg) -548px -267px no-repeat;
+            }
+        }
+        .callout_style_calendar {
+            &:before {
+                background: url(/themes/custom/myusf/images/site/icons.svg) -505px -266px no-repeat;
+            }
+        }
+        .callout_style_visit {
+            &:before {
+                background: url(/themes/custom/myusf/images/site/icons.svg) -590px -268px no-repeat;
+            }
+        }
+        .callout_style_support {
+            &:before {
+                background: url(/themes/custom/myusf/images/site/icons.svg) -570px -268px no-repeat;
+            }
+        }
+        .callout_style_find{
+            &:before {
+                background: url(/themes/custom/myusf/images/site/icons.svg) -483px -269px no-repeat;
+            }
+        }
+        .callout_style_facebook{
+            &:before {
+                background: url(/themes/custom/myusf/images/site/icons.svg) -118px -57px no-repeat;
+            }
+        }
+        .callout_style_twitter{
+            &:before {
+                background: url(/themes/custom/myusf/images/site/icons.svg) -95px -57px no-repeat;
+            }
+        }
+        .callout_style_instagram{
+            &:before {
+                background: url(/themes/custom/myusf/images/site/icons.svg) -37px -57px no-repeat;
+            }
+        }
+        
+    }
+
+    .view-community-grid {
+
+        .community-grid-tile:nth-child(1),
+        .community-grid-tile:nth-child(10)  {
+            .overlay {
+                background: $plum;
+            }
+        }
+        .community-grid-tile:nth-child(2),
+        .community-grid-tile:nth-child(11)  {
+            .overlay {
+                background: $turquoise;
+            }
+        }   
+        .community-grid-tile:nth-child(3),
+        .community-grid-tile:nth-child(12)  {
+            .overlay {
+                background: $tan;
+            }
+        }
+        .community-grid-tile:nth-child(4),
+        .community-grid-tile:nth-child(13)  {
+            .overlay {
+                background: $olive;
+            }
+        }
+        .community-grid-tile:nth-child(5),
+        .community-grid-tile:nth-child(14)  {
+            .overlay {
+                background: $orange;
+            }
+        }
+        .community-grid-tile:nth-child(6),
+        .community-grid-tile:nth-child(15)  {
+            .overlay {
+                background: $blue;
+            }
+        }
+        .community-grid-tile:nth-child(7),
+        .community-grid-tile:nth-child(16)  {
+            .overlay {
+                background: $terra_cotta;
+            }
+        }
+        .community-grid-tile:nth-child(8),
+        .community-grid-tile:nth-child(17)  {
+            .overlay {
+                background: $green;
+            }
+        }
+        .community-grid-tile:nth-child(9),
+        .community-grid-tile:nth-child(18)  {
+            .overlay {
+                background: $text_gray;
+            }
+        }    
+    }
+
+
+    
+
+    form#views-exposed-form-community-grid-page-1 {
+        margin-bottom: 20px;
+        margin-top: 10px;
+
+        .form-select {
+            outline: 0px;
+        }
+        select {
+            border-radius: 0!important;
+        }
+    }
+    select#edit-field-group-audience-target-id,
+    select#edit-field-community-topic-target-id {
+        width: 220px;
+        height:40px;
+        font-style: normal;
+        font-weight: 400;
+        background-color: $beige;
+        border-width: 0;
+        color: $black;
+
+       /* &:before {
+            width: 8px;
+            height: 5px;
+            position: absolute;
+            top: 0;
+            right: 20px;
+            bottom: 0;
+            content: "";
+            display: inline-block;
+            margin: auto 0;
+            z-index: 10;
+            background: url(/themes/custom/myusf/images/site/icons.svg) -240px -170px no-repeat;
+        }
+        &:after {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 0;
+            right: 15px;
+            bottom: 0;
+            content: '';
+            display: block;
+            margin: auto 0;
+            z-index: 2;
+            border: 2px solid #FDBB30;
+            border-radius: 100%;
+            background: url(/themes/custom/myusf/images/site/icons.svg) -240px -170px no-repeat;
+        }*/
+    }
+
+    fieldset.form-item-field-community-topic-target-id,
+    fieldset.form-item-field-group-audience-target-id {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
