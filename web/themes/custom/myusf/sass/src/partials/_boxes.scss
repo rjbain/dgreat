@@ -1526,7 +1526,7 @@ h2.carousel-overlay:before {
 @include media-breakpoint-up(desktop) {
   .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__2col {
     float: left;
-     width: 48.5%; /*width: 16.66666667%;*/
+     width: 48.4%; /*width: 16.66666667%;*/
   }
 }
 @include media-breakpoint-up(large_desktop) {
@@ -1693,228 +1693,246 @@ div[data-oembed-url]  > iframe {
         margin-inline-end: 0px;
     }
 }
-    .rollover-text {     
-        margin: 55px 0 0 0;
-        font-size: 15px;
-        position: relative; /*position: absolute;*/
-        top: 11%; /*13%;*/  /*50%*/
-        left: 50%;
-        -webkit-transform: translate(-50%, 0%);  /*(-50%, -50%);*/
-        -ms-transform: translate(-50%, 0%);   /*(-50%, -50%);*/
-        transform: translate(-50%, 0%);   /*(-50%, -50%);*/
-        text-align: center;
+.rollover-text {     
+    margin: 55px 0 0 0;
+    font-size: 15px;
+    position: relative; /*position: absolute;*/
+    top: 11%; /*13%;*/  /*50%*/
+    left: 50%;
+    -webkit-transform: translate(-50%, 0%);  /*(-50%, -50%);*/
+    -ms-transform: translate(-50%, 0%);   /*(-50%, -50%);*/
+    transform: translate(-50%, 0%);   /*(-50%, -50%);*/
+    text-align: center;
 
-        p {
-            color: #FFF; 
-            position: relative;
-            margin-left: 15px;
-            margin-right: 15px;
-            line-height: 1.2;
+    p {
+        color: #FFF; 
+        position: relative;
+        margin-left: 15px;
+        margin-right: 15px;
+        line-height: 1.2;
 
-            &.rollover-subtitle {
-                top:30px;
-                font-size: .9rem;
-                text-transform: uppercase;
-            }
-        }
-         .rollover-body-text p {
+        &.rollover-subtitle {
             top:30px;
-        }
-
-        .callout_style_watch,
-        .callout_style_read,
-        .callout_style_calendar,
-        .callout_style_visit,
-        .callout_style_support,
-        .callout_style_find,
-        .callout_style_facebook,
-        .callout_style_twitter,
-        .callout_style_instagram {
-            font-size: .8rem;
-            font-style: italic;
+            font-size: .9rem;
             text-transform: uppercase;
-            top:30px;
-
-            &:before {
-                width: 20px;
-                height: 20px;
-                top: 5px;
-                left: -3px;
-                position: relative;
-                display: inline-block;
-                content: "";
-                z-index: 1;
-            }
-
-            &:after {
-                content: "»";
-                padding-left: 5px;
-            }
-        }
-
-
-        .callout_style_watch {
-            &:before {
-                background: url(/themes/custom/myusf/images/site/icons.svg) -527px -266px no-repeat;
-            }
-        }
-        .callout_style_read {
-            &:before {
-                background: url(/themes/custom/myusf/images/site/icons.svg) -548px -267px no-repeat;
-            }
-        }
-        .callout_style_calendar {
-            &:before {
-                background: url(/themes/custom/myusf/images/site/icons.svg) -505px -266px no-repeat;
-            }
-        }
-        .callout_style_visit {
-            &:before {
-                background: url(/themes/custom/myusf/images/site/icons.svg) -590px -268px no-repeat;
-            }
-        }
-        .callout_style_support {
-            &:before {
-                background: url(/themes/custom/myusf/images/site/icons.svg) -570px -268px no-repeat;
-            }
-        }
-        .callout_style_find{
-            &:before {
-                background: url(/themes/custom/myusf/images/site/icons.svg) -483px -269px no-repeat;
-            }
-        }
-        .callout_style_facebook{
-            &:before {
-                background: url(/themes/custom/myusf/images/site/icons.svg) -118px -57px no-repeat;
-            }
-        }
-        .callout_style_twitter{
-            &:before {
-                background: url(/themes/custom/myusf/images/site/icons.svg) -95px -57px no-repeat;
-            }
-        }
-        .callout_style_instagram{
-            &:before {
-                background: url(/themes/custom/myusf/images/site/icons.svg) -37px -57px no-repeat;
-            }
-        }
-        
-    }
-
-    .view-community-grid {
-
-        .community-grid-tile:nth-child(1),
-        .community-grid-tile:nth-child(10)  {
-            .overlay {
-                background: $plum;
-            }
-        }
-        .community-grid-tile:nth-child(2),
-        .community-grid-tile:nth-child(11)  {
-            .overlay {
-                background: $turquoise;
-            }
-        }   
-        .community-grid-tile:nth-child(3),
-        .community-grid-tile:nth-child(12)  {
-            .overlay {
-                background: $tan;
-            }
-        }
-        .community-grid-tile:nth-child(4),
-        .community-grid-tile:nth-child(13)  {
-            .overlay {
-                background: $olive;
-            }
-        }
-        .community-grid-tile:nth-child(5),
-        .community-grid-tile:nth-child(14)  {
-            .overlay {
-                background: $orange;
-            }
-        }
-        .community-grid-tile:nth-child(6),
-        .community-grid-tile:nth-child(15)  {
-            .overlay {
-                background: $blue;
-            }
-        }
-        .community-grid-tile:nth-child(7),
-        .community-grid-tile:nth-child(16)  {
-            .overlay {
-                background: $terra_cotta;
-            }
-        }
-        .community-grid-tile:nth-child(8),
-        .community-grid-tile:nth-child(17)  {
-            .overlay {
-                background: $green;
-            }
-        }
-        .community-grid-tile:nth-child(9),
-        .community-grid-tile:nth-child(18)  {
-            .overlay {
-                background: $text_gray;
-            }
-        }    
-    }
-
-
-    
-
-    form#views-exposed-form-community-grid-page-1 {
-        margin-bottom: 20px;
-        margin-top: 10px;
-
-        .form-select {
-            outline: 0px;
-        }
-        select {
-            border-radius: 0!important;
         }
     }
-    select#edit-field-group-audience-target-id,
-    select#edit-field-community-topic-target-id {
-        width: 220px;
-        height:40px;
-        font-style: normal;
-        font-weight: 400;
-        background-color: $beige;
-        border-width: 0;
-        color: $black;
+     .rollover-body-text p {
+        top:30px;
+    }
 
-       /* &:before {
-            width: 8px;
-            height: 5px;
-            position: absolute;
-            top: 0;
-            right: 20px;
-            bottom: 0;
-            content: "";
-            display: inline-block;
-            margin: auto 0;
-            z-index: 10;
-            background: url(/themes/custom/myusf/images/site/icons.svg) -240px -170px no-repeat;
-        }
-        &:after {
+    .callout_style_watch,
+    .callout_style_read,
+    .callout_style_calendar,
+    .callout_style_visit,
+    .callout_style_support,
+    .callout_style_find,
+    .callout_style_facebook,
+    .callout_style_twitter,
+    .callout_style_instagram {
+        font-size: .8rem;
+        font-style: italic;
+        text-transform: uppercase;
+        top:30px;
+
+        &:before {
             width: 20px;
             height: 20px;
-            position: absolute;
-            top: 0;
-            right: 15px;
-            bottom: 0;
-            content: '';
-            display: block;
-            margin: auto 0;
-            z-index: 2;
-            border: 2px solid #FDBB30;
-            border-radius: 100%;
-            background: url(/themes/custom/myusf/images/site/icons.svg) -240px -170px no-repeat;
-        }*/
+            top: 5px;
+            left: -3px;
+            position: relative;
+            display: inline-block;
+            content: "";
+            z-index: 1;
+        }
+
+        &:after {
+            content: "»";
+            padding-left: 5px;
+        }
     }
 
-    fieldset.form-item-field-community-topic-target-id,
-    fieldset.form-item-field-group-audience-target-id {
-        padding-top: 0;
-        padding-bottom: 0;
+
+    .callout_style_watch {
+        &:before {
+            background: url(/themes/custom/myusf/images/site/icons.svg) -527px -266px no-repeat;
+        }
     }
+    .callout_style_read {
+        &:before {
+            background: url(/themes/custom/myusf/images/site/icons.svg) -548px -267px no-repeat;
+        }
+    }
+    .callout_style_calendar {
+        &:before {
+            background: url(/themes/custom/myusf/images/site/icons.svg) -505px -266px no-repeat;
+        }
+    }
+    .callout_style_visit {
+        &:before {
+            background: url(/themes/custom/myusf/images/site/icons.svg) -590px -268px no-repeat;
+        }
+    }
+    .callout_style_support {
+        &:before {
+            background: url(/themes/custom/myusf/images/site/icons.svg) -570px -268px no-repeat;
+        }
+    }
+    .callout_style_find{
+        &:before {
+            background: url(/themes/custom/myusf/images/site/icons.svg) -483px -269px no-repeat;
+        }
+    }
+    .callout_style_facebook{
+        &:before {
+            background: url(/themes/custom/myusf/images/site/icons.svg) -118px -57px no-repeat;
+        }
+    }
+    .callout_style_twitter{
+        &:before {
+            background: url(/themes/custom/myusf/images/site/icons.svg) -95px -57px no-repeat;
+        }
+    }
+    .callout_style_instagram{
+        &:before {
+            background: url(/themes/custom/myusf/images/site/icons.svg) -37px -57px no-repeat;
+        }
+    }
+    
+}
+
+.view-community-grid {
+
+    .community-grid-tile:nth-child(1),
+    .community-grid-tile:nth-child(10)  {
+        .overlay {
+            background: $plum;
+        }
+    }
+    .community-grid-tile:nth-child(2),
+    .community-grid-tile:nth-child(11)  {
+        .overlay {
+            background: $turquoise;
+        }
+    }   
+    .community-grid-tile:nth-child(3),
+    .community-grid-tile:nth-child(12)  {
+        .overlay {
+            background: $tan;
+        }
+    }
+    .community-grid-tile:nth-child(4),
+    .community-grid-tile:nth-child(13)  {
+        .overlay {
+            background: $olive;
+        }
+    }
+    .community-grid-tile:nth-child(5),
+    .community-grid-tile:nth-child(14)  {
+        .overlay {
+            background: $orange;
+        }
+    }
+    .community-grid-tile:nth-child(6),
+    .community-grid-tile:nth-child(15)  {
+        .overlay {
+            background: $blue;
+        }
+    }
+    .community-grid-tile:nth-child(7),
+    .community-grid-tile:nth-child(16)  {
+        .overlay {
+            background: $terra_cotta;
+        }
+    }
+    .community-grid-tile:nth-child(8),
+    .community-grid-tile:nth-child(17)  {
+        .overlay {
+            background: $green;
+        }
+    }
+    .community-grid-tile:nth-child(9),
+    .community-grid-tile:nth-child(18)  {
+        .overlay {
+            background: $text_gray;
+        }
+    }    
+}
+
+
+
+form#views-exposed-form-community-grid-page-1 {
+    margin-bottom: 20px;
+    margin-top: 10px;
+
+    .form-select {
+        outline: 0px;
+    }
+}
+select#edit-field-group-audience-target-id,
+select#edit-field-community-topic-target-id {
+    
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.4;
+    color: $black;
+    width: 215px;
+    height:40px;
+    padding-left: 10px;
+    margin-left: 10px;
+    background-color: $beige;
+   -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    border-radius: 0px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;   
+
+    option {
+        background: #f5f5f5;
+    }
+}
+/* commented out for now
+
+@-moz-document url-prefix() {
+    select, select:-moz-focusring, select::-moz-focus-inner {
+        color: transparent !important;
+        text-shadow: 0 0 0 #000 !important;
+        background-image: none !important;
+        border:0;
+
+        option:hover { 
+            box-shadow: 0 0 10px 10px #e1358f inset; 
+            
+        }
+    }
+} */
+.select-container {
+    position:relative; 
+    display: inline;
+}
+.select-container:after {
+    content:""; 
+    width:10px; 
+    height:10px; 
+    position:absolute; 
+    top: 5px; 
+    right: 15px; 
+    pointer-events: none;   /*important for letting it clickable over the icon*/
+    background: url(/themes/custom/myusf/images/site/icons.svg) -220px -150px no-repeat
+}
+
+input#edit-submit-community-grid {
+    position: relative;
+    left: 24px;
+}
+
+fieldset.form-item-field-community-topic-target-id,
+fieldset.form-item-field-group-audience-target-id {
+    padding: 0!important;
+    margin-right: 20px;
+    border-image-width:0; 
+}
