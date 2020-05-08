@@ -190,15 +190,26 @@ body {
 	padding-right: 0!important;
 
 	&:nth-child(even) {
-		margin-left: 7px;
-		@include media-breakpoint-down(phone) {
+		@include media-breakpoint-down(landscape_phone) {
 			margin-left: 0px;
+		}
+
+		@include media-breakpoint-up(desktop) {
+			margin-left: 10px;
+		}
+		@include media-breakpoint-up(phone) {
+			margin-left: 7px;
 		}
 	}
 	&:nth-child(odd) {
-		margin-right: 7px;
-		@include media-breakpoint-down(phone) {
+		@include media-breakpoint-down(landscape_phone) {
 			margin-right: 0px;
+		}
+		@include media-breakpoint-up(desktop) {
+			margin-right: 10px;
+		}
+		@include media-breakpoint-up(phone) {
+			margin-right: 7px;
 		}
 	}
 }
