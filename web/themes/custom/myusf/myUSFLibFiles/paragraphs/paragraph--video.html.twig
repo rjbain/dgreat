@@ -25,20 +25,21 @@
 {% endif %}
 
 {% if content.bp_image_field.0 is not defined %} {# if the image is empty, just display the embed #}
-
-<div class="video-component {{ color }}">
-    <iframe width="560" height="315"
-            src="{{ new_vid_url }}"
-            frameborder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"  allowfullscreen>
-    </iframe>
-    <span class="video-component_video_icon"><span class="first_word">Watch</span> the Video </span>
-    {% if content.field_heading is not empty %}
-        <h2 class="video-component-heading">{{ content.field_heading }}</h2>
-    {% endif %}
-    {% if content.field_heading is not empty %}
-        <div class="video-component-body">{{ content.field_body_text }}</div>
-    {% endif %}
+<div class="video-component-wrapper">
+    <div class="video-component {{ color }}">
+        <iframe 
+                src="{{ new_vid_url }}"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"  allowfullscreen>
+        </iframe>
+        <span class="video-component_video_icon"><span class="first_word">Watch</span> the Video </span>
+        {% if content.field_heading is not empty %}
+            <h2 class="video-component-heading">{{ content.field_heading }}</h2>
+        {% endif %}
+        {% if content.field_heading is not empty %}
+            <div class="video-component-body">{{ content.field_body_text }}</div>
+        {% endif %}
+    </div>
 </div>
 
 {% endif %}
