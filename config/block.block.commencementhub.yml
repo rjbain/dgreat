@@ -1,26 +1,28 @@
-uuid: 472f65aa-cccb-4335-967d-1a2326d849aa
+uuid: fa18d0c8-edb1-4093-bdba-5a60fe4b70c9
 langcode: en
 status: true
 dependencies:
   config:
-    - simple_block.simple_block.hero_image_block
+    - system.menu.commencement-hub
   module:
     - block_visibility_groups
-    - simple_block
     - system
   theme:
     - myusf
-id: heroimageblock
+id: commencementhub
 theme: myusf
-region: hero_image
+region: sidebar_first
 weight: 0
 provider: null
-plugin: 'simple_block:hero_image_block'
+plugin: 'system_menu_block:commencement-hub'
 settings:
-  id: 'simple_block:hero_image_block'
-  label: 'Hero Image Block'
-  provider: simple_block
+  id: 'system_menu_block:commencement-hub'
+  label: 'Commencement Hub'
+  provider: system
   label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
 visibility:
   condition_group:
     id: condition_group
@@ -29,6 +31,6 @@ visibility:
     context_mapping: {  }
   request_path:
     id: request_path
-    pages: /commencement-hub
+    pages: "/commencement-hub\r\n/commencement-hub/*"
     negate: false
     context_mapping: {  }

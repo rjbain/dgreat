@@ -1249,5 +1249,78 @@ button.close {
 }
 
 
+/* COMMENCEMENT SOCIAL MEDIA FEED (card) 
+================================================ */
+.card-columns {
+    column-count: 1;
+    width: 100%;
 
+    @include media-breakpoint-up(landscape_phone) {
+    	column-count: 2;
+    }
+    @include media-breakpoint-up(large_desktop) {
+    	column-count: 3;
+    }
+    @include media-breakpoint-up(midlarge_desktop) {
+    	column-count: 4;
+    }
+
+    .card {
+	 	border: 1px solid #cccccc;
+	 	height: auto !important;
+
+	 	img.card-img-top {
+		    border-radius: 0;
+		    margin-top: 0;
+		}
+
+		.card-body {
+			padding: 0 1.25rem 1.25rem;
+		}
+
+		.card-title {
+			font-size: .8rem;
+			color: white!important;
+        	text-transform: uppercase;    		
+    		padding-left: 20px;
+    		padding-bottom: 5px;
+    		background-color: $text-gray;
+
+			&.Twitter {
+				&:before {
+					width: 20px;
+		            height: 20px;
+		            top: 5px;
+		            left: -3px;
+		            position: relative;
+		            display: inline-block;
+		            content: "";
+		            z-index: 1;
+		            background: url(/themes/custom/myusf/images/site/icons.svg) -96px -56px no-repeat;
+				}
+
+			}
+			&.Instagram {
+				&:before {
+					width: 20px;
+		            height: 20px;
+		            top: 5px;
+		            left: -3px;
+		            right: 5px;
+		            position: relative;
+		            display: inline-block;
+		            content: "";
+		            z-index: 1;
+		            background: url(/themes/custom/myusf/images/site/icons.svg) -37px -57px no-repeat;
+				}
+			}
+		}
+		.card-text {
+			font-size: .9rem;
+    		line-height: 1.6rem;
+		}
+	 }
+ }
+
+ 
 

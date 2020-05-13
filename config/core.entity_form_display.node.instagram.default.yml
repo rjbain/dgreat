@@ -8,11 +8,13 @@ dependencies:
     - field.field.node.instagram.field_guid
     - field.field.node.instagram.field_image_url
     - field.field.node.instagram.field_news_link
+    - field.field.node.instagram.field_social_tags
     - field.field.node.instagram.field_type
     - node.type.instagram
   module:
     - link
     - path
+    - scheduler
     - text
 id: node.instagram.default
 targetEntityType: node
@@ -64,6 +66,15 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
+  field_social_tags:
+    weight: 127
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   field_type:
     weight: 126

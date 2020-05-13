@@ -8,6 +8,7 @@ dependencies:
     - field.storage.node.field_news_link
     - node.type.instagram
     - node.type.twitter
+    - taxonomy.vocabulary.social_tags
   module:
     - link
     - node
@@ -394,6 +395,7 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+      group_by: false
     cache_metadata:
       max-age: -1
       contexts:
@@ -489,6 +491,9 @@ display:
         pager: false
         fields: false
         sorts: false
+        arguments: false
+        group_by: true
+        query: false
       filter_groups:
         operator: AND
         groups:
@@ -496,7 +501,7 @@ display:
       pager:
         type: some
         options:
-          items_per_page: 16
+          items_per_page: 40
           offset: 0
       fields:
         title:
@@ -572,7 +577,7 @@ display:
             suffix: ''
             target: ''
             nl2br: false
-            max_length: 125
+            max_length: 225
             word_boundary: true
             ellipsis: true
             more_link: false
@@ -823,11 +828,61 @@ display:
           expose:
             label: ''
           granularity: second
+      arguments:
+        field_social_tags_target_id:
+          id: field_social_tags_target_id
+          table: node__field_social_tags
+          field: field_social_tags_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: 'not found'
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: true
+          validate:
+            type: 'entity:taxonomy_term'
+            fail: 'not found'
+          validate_options:
+            bundles:
+              social_tags: social_tags
+            operation: view
+            multiple: 1
+            access: false
+          break_phrase: true
+          not: false
+          plugin_id: numeric
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: false
+          distinct: true
+          replica: false
+          query_comment: ''
+          query_tags: null
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - 'user.node_grants:view'
         - user.permissions
       tags:
