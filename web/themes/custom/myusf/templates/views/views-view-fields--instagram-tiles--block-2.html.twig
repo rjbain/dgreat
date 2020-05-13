@@ -34,7 +34,8 @@
 {% set body = fields.body.content  %}
 {% set body = body|replace({'—————': '—'}) %}
 {% set body = body|replace({'——— ': '— ' }) %}
-	
+{% set body = body|replace({'&#039;': '\'' }) %}
+
 <a href="{{ fields.field_news_link.content }}" target="_blank">
   <div class="card">
     <img src="{{ fields.field_image_url.content }}" class="card-img-top" alt="...">
@@ -44,3 +45,4 @@
     </div>
   </div>
 </a>
+{{ dump(fields) }}
