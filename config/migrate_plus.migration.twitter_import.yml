@@ -29,6 +29,10 @@ source:
       label: 'Image URL'
       selector: /entities/media/0/media_url_https
     -
+      name: retweet_image_url
+      label: 'Retweet Image URL'
+      selector: /retweeted_status/entities/media/0/media_url_https
+    -
       name: account_name
       label: 'Account Name'
       selector: /user/screen_name
@@ -51,6 +55,7 @@ process:
   title: title
   body: description
   field_image_url: image_url
+  field_retweet_image_url: retweet_image_url
   field_account_name: account_name
   field_external_id: external_id
   field_guid_twitter: guid
