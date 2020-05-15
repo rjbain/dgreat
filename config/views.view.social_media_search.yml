@@ -80,6 +80,63 @@ display:
           quantity: 9
       style:
         type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          override: true
+          sticky: false
+          caption: ''
+          summary: ''
+          description: ''
+          columns:
+            title: title
+            type: type
+            field_social_tags: field_social_tags
+            body: body
+            field_image_url: field_image_url
+            edit_node: edit_node
+          info:
+            title:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            type:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_social_tags:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            body:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_image_url:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            edit_node:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          default: '-1'
+          empty_table: false
       row:
         type: fields
       fields:
@@ -331,7 +388,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '<img src="{{  field_image_url__uri  }}" width="200">'
+            text: '<img src="{{ field_image_url }}" width="200">'
             make_link: false
             path: ''
             absolute: false
@@ -371,9 +428,9 @@ display:
           click_sort_column: uri
           type: link
           settings:
-            trim_length: 80
+            trim_length: null
             url_only: true
-            url_plain: false
+            url_plain: true
             rel: '0'
             target: '0'
           group_column: ''
@@ -468,7 +525,7 @@ display:
           expose:
             operator_id: type_op
             label: 'Content type'
-            description: null
+            description: ''
             use_operator: false
             operator: type_op
             identifier: type
@@ -477,6 +534,32 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              editor: '0'
+              faculty: '0'
+              all_access: '0'
+              student: '0'
+              online_student: '0'
+              admitted_student: '0'
+              finance: '0'
+              employee: '0'
+              prehire_faculty: '0'
+              prehire_staff: '0'
+              bi_group: '0'
+              vcl_staff: '0'
+              online_intaccept: '0'
+              service_editor: '0'
+              som_ug: '0'
+              som_grad: '0'
+              as_ug: '0'
+              as_grad: '0'
+              sonhp_ug: '0'
+              sonhp_grad: '0'
+              law: '0'
+              soe: '0'
+              box_editor: '0'
+              webform_editor: '0'
             reduce: false
           is_grouped: false
           group_info:
