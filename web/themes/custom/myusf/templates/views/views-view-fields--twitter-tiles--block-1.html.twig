@@ -33,8 +33,13 @@
 #}
 {% set post_id = fields.field_external_id.content %}
 {% set name_id = fields.field_type.content %}
+{% set link = fields.field_news_link.content %}
 <div class="card blue">
+{% if link is empty %}
 	<a class="card-rollover " href="https://www.twitter.com/{{ name_id }}/status/{{ post_id }}" target="_blank">
+{% else %}
+	<a class="card-rollover " href="{{ link }}" target="_blank">
+{% endif %}
 		<div class="category category-icon twitter-icon">Twitter</div>
 		{% if fields.field_image_url.content %}
 			<img alt="Twitter" class="card-img-top" src="{{ fields.field_image_url.content }}" />

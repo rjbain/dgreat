@@ -35,16 +35,16 @@
 {% set body = body|replace({'—————': '—'}) %}
 {% set body = body|replace({'——— ': '— ' }) %}
 {% set body = body|replace({'&#039;': '\'' }) %}
+{% set link = fields.field_news_link.content %}
 {% set type = fields.type.content %}
 {% set post_id = fields.field_external_id.content %}
 {% set name_id = fields.field_type.content %}
 
-{% if type == "Twitter" %}
+{% if link is empty %}
 <a href="https://www.twitter.com/{{ name_id }}/status/{{ post_id }}" target="_blank">
 {% else %}
-<a href="{{ fields.field_news_link.content }}" target="_blank">
+<a href="{{ link }}" target="_blank">
 {% endif %}
-
   <div class="card">
     <img src="{{ fields.field_image_url.content }}" class="card-img-top" alt="">
     <h5 class="card-title {{ fields.type.content }}">{{ fields.type.content }}</h5>
