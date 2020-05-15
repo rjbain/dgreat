@@ -4,11 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.community_post.body
+    - field.field.node.community_post.field_audience
     - field.field.node.community_post.field_call_to_action
     - field.field.node.community_post.field_callout_style
     - field.field.node.community_post.field_community_topic
     - field.field.node.community_post.field_display_title
-    - field.field.node.community_post.field_group_audience
     - field.field.node.community_post.field_image
     - field.field.node.community_post.field_section
     - field.field.node.community_post.field_sub_title
@@ -32,6 +32,14 @@ content:
     weight: 3
     settings: {  }
     third_party_settings: {  }
+    region: content
+  field_audience:
+    weight: 11
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
     region: content
   field_call_to_action:
     weight: 4
@@ -67,14 +75,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-    region: content
-  field_group_audience:
-    weight: 9
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
     region: content
   field_image:
     weight: 2
