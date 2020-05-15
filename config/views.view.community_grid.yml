@@ -1,6 +1,6 @@
 uuid: 73d6bc33-a812-4fef-a038-f80d7daea50f
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - core.entity_view_mode.node.grid
@@ -497,6 +497,26 @@ display:
       empty: {  }
       relationships: {  }
       arguments: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_call_to_action'
+        - 'config:field.storage.node.field_image'
+        - 'config:field.storage.node.field_sub_title'
+  block_1:
+    display_plugin: block
+    id: block_1
+    display_title: Block
+    position: 2
+    display_options:
       display_extenders: {  }
     cache_metadata:
       max-age: -1
