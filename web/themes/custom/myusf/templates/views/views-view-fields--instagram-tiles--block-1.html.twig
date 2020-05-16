@@ -31,15 +31,16 @@
  * @ingroup themeable
  */
 #}
-
-
+{% set body = fields.body.content  %}
+{% set body = body|replace({'—————': '—'}) %}
+{% set body = body|replace({'——— ': '— ' }) %}
 <div class="card orange">
 	<a class="card-rollover" href="{{ fields.field_news_link.content }}" target="_blank">
 		<div class="category category-icon instagram-icon">Instagram</div>
 		<img alt="Instagram" class="card-img-top" src="{{ fields.field_image_url.content }}" />
 		<div class="card-body orange"> 
 			<!--<h5 class="card-title">Card title</h5>-->
-			<p class="card-text">{{ fields.body.content }}</p>
+			<p class="card-text">{{ body }}</p>
 			<span class="diamond_link_small_white" href="{{ fields.field_news_link.content }}">View Post</span>
 		</div>
 	</a>
