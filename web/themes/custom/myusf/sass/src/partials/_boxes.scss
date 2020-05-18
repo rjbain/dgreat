@@ -1702,10 +1702,59 @@ div[data-oembed-url]  > iframe {
         @include media-breakpoint-up(landscape_phone) {
             height: 30px;
         }
-        @include media-breakpoint-up(desktop) {
+        @include media-breakpoint-up(large_desktop) {
+            height: 45px;
+        }
+        @include media-breakpoint-up(midlarge_desktop) {
             height: 50px;
         }
     }
+
+    
+}
+.rollover-text {     
+    margin: 0px; 
+    position: relative;
+    left: 50%;
+    height: 104%;
+
+    -webkit-transform: translate(-50%, 0%);  
+    -ms-transform: translate(-50%, 0%); 
+    transform: translate(-50%, 0%);  
+    text-align: center;
+    line-height: 2rem;
+
+    &:hover,
+    &:focus {
+        padding-top: 0px;
+
+        @include media-breakpoint-up(landscape_phone) {
+            padding-top: 10px;
+        }
+
+        .overlay-heading { 
+            @include media-breakpoint-up(phone) {
+                line-height: 1.8rem;
+            }          
+            @include media-breakpoint-up(landscape_phone) {
+                line-height: 1.1rem;
+            }
+            @include media-breakpoint-up(large_desktop) {
+                line-height: 1.4rem;
+            }
+        }
+    }
+
+    @include media-breakpoint-up(landscape_phone) {
+        margin-top:-11px /*-6px;*/
+    }
+    @include media-breakpoint-up(large_desktop) {
+        margin-top: -2px;
+    }
+    @include media-breakpoint-up(midlarge_desktop) {
+        margin-top: 0px;     
+    }
+    
 
     .overlay-heading {
         font-size: 1.2rem;
@@ -1726,48 +1775,29 @@ div[data-oembed-url]  > iframe {
         margin-inline-start: 0px;
         margin-inline-end: 0px;
 
+               
         @include media-breakpoint-up(landscape_phone) {
-            font-size: .95rem;
-            line-height: 1.4rem;
+            font-size: .85rem;
+            /*line-height: 1.35rem;*/
         }
-        @include media-breakpoint-up(desktop) {
+        @include media-breakpoint-up(large_desktop) {
+            font-size: .95rem;
+            /*line-height: 1.5rem;*/
+        }
+        @include media-breakpoint-up(midlarge_desktop) {
             font-size: 1.2rem;
             line-height: 2rem;
         }
     }
-}
-.rollover-text {     
-    margin: 0px; 
-    font-size: 15px;
-    position: relative;
-    left: 50%;
-    -webkit-transform: translate(-50%, 0%);  
-    -ms-transform: translate(-50%, 0%); 
-    transform: translate(-50%, 0%);  
-    text-align: center;
-
-    @include media-breakpoint-up(landscape_phone) {
-        top:-6px;
-
-        &:hover,
-        &:focus {
-            top: 0px;
-        }
-    }
-    @include media-breakpoint-up(desktop) {
-        top: 0px;
-    }
-
-
 
     .rollover-body-text {
         position: relative;
 
         @include media-breakpoint-up(landscape_phone) {       
-            top: -5px;
+            top: -8px;
         }
-        @include media-breakpoint-up(desktop) {
-            top: 0px;
+        @include media-breakpoint-up(large_desktop) {
+            top: -6px;
         }
     }
 
@@ -1781,11 +1811,19 @@ div[data-oembed-url]  > iframe {
 
         @include media-breakpoint-up(landscape_phone) {
             font-size: 0.75rem;
-            line-height: .95rem;
+            line-height: 0.95rem;
         }
         @include media-breakpoint-up(desktop) {
-            font-size: 0.9rem;
-            line-height: 1.3rem;
+            font-size: 0.75rem;
+            line-height: .85rem;
+        }
+        @include media-breakpoint-up(large_desktop) {
+            font-size: 0.85rem;
+            line-height: 1.2rem;
+        }
+        @include media-breakpoint-up(midlarge_desktop) {
+            font-size: 1rem;
+            line-height: 1.6rem;
         }
 
         &.rollover-subtitle {
@@ -1795,12 +1833,20 @@ div[data-oembed-url]  > iframe {
             text-transform: uppercase;
 
             @include media-breakpoint-up(landscape_phone) {
-                font-size: 0.8rem;
-                line-height: 1.2rem;
+                font-size: 0.75rem;
+                line-height: 1rem;
             }
             @include media-breakpoint-up(desktop) {
+                font-size: 0.75rem;
+                line-height: .85rem;
+            }
+            @include media-breakpoint-up(large_desktop) {
                 font-size: 0.9rem;
-                line-height: 1.5rem;
+                line-height: 1.3rem;
+            }
+            @include media-breakpoint-up(midlarge_desktop) {
+                font-size: 1rem;
+                line-height: 1.6rem;
             }
         }
     }
@@ -1820,12 +1866,28 @@ div[data-oembed-url]  > iframe {
         font-style: italic;
         text-transform: uppercase;
 
-         @include media-breakpoint-down(large_desktop) {
-            font-size: .75rem;
-            line-height: .9rem;
+        @include media-breakpoint-up(landscape_phone) {
+            font-size: 0.7rem;
+            line-height: .85rem;
+            top: -15px;
+        }
+
+        @include media-breakpoint-up(desktop) {
+            font-size: .7rem;
+            line-height: 0.85rem;
             position: relative;
             top: -20px;
-         }
+        }
+         @include media-breakpoint-up(large_desktop) {
+            font-size: .75rem;
+            line-height: 1rem;
+            top: -10px;
+        }
+        @include media-breakpoint-up(midlarge_desktop) {
+            font-size: .85rem;
+            line-height: 1rem;
+            top: -10px;
+        }
 
         &:before {
             width: 20px;
@@ -1898,7 +1960,7 @@ div[data-oembed-url]  > iframe {
     &.view-id-community_grid.view-display-id-page_1 {
         margin-left: 0;
         @include media-breakpoint-up(landscape_phone) {
-            width: 145%;
+            
         }
         @include media-breakpoint-up(desktop) {
             width: 100%;
@@ -1980,7 +2042,7 @@ form#views-exposed-form-community-grid-page-1 {
         outline: 0px;
     }
 }
-select#edit-field-group-audience-target-id,
+select#edit-field-audience-target-id,
 select#edit-field-community-topic-target-id {
     
     font-style: normal;
@@ -2059,7 +2121,7 @@ input#edit-submit-community-grid {
 
 
 fieldset.form-item-field-community-topic-target-id,
-fieldset.form-item-field-group-audience-target-id {
+fieldset.form-item-field-audience-target-id {
     padding: 0!important;
     margin-right: 20px;
     border-image-width:0; 
