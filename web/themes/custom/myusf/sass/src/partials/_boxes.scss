@@ -1637,9 +1637,9 @@ div[data-oembed-url]  > iframe {
 // SLE ENGAGEMENT TILES
 
 /* DON"T FORGET TO DELETE*/
-#block-myusf-content {
+/*#block-myusf-content {
     background: $light_beige;
-}
+}*/
 .community-grid-tile {
 
     /*max-width: 378px;  /* browser-width:1530px and up */
@@ -2042,14 +2042,29 @@ form#views-exposed-form-community-grid-page-1 {
         outline: 0px;
     }
 }
+fieldset.form-item-field-community-topic-target-id,
+fieldset.form-item-field-audience-target-id {
+    padding: 0!important;
+    margin-right: 20px;
+    border-image-width:0; 
+}
+fieldset.form-item-field-audience-target-id {
+    @include media-breakpoint-only(landscape_phone) {
+        margin-right: 15px;
+    }
+}
+fieldset.form-item-field-community-topic-target-id {
+    @include media-breakpoint-only(landscape_phone) {
+        margin-right: 0;
+    }
+}
 select#edit-field-audience-target-id,
 select#edit-field-community-topic-target-id {
-    
+    font-size: 0.9rem;
     font-style: normal;
     font-weight: 400;
     line-height: 1.4;
-    color: $black;
-    width: 215px;
+    color: $black;    
     height:40px;
     padding-left: 10px;
     margin-left: 10px;
@@ -2059,13 +2074,12 @@ select#edit-field-community-topic-target-id {
     appearance: none;
     border: none;
     border-radius: 0px;
-
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;  
 
     @include media-breakpoint-down(phone) {
-        width: 222px;
+        font-size: 0.8rem;
     } 
 
     option {
@@ -2073,20 +2087,61 @@ select#edit-field-community-topic-target-id {
     }
 }
 
-select#edit-field-community-topic-target-id {
+select#edit-field-audience-target-id {
+    @include media-breakpoint-down(phone) {        
+        width: 222px;
+    }
+    @include media-breakpoint-only(landscape_phone) {
+        width: 75px;
+    }
+    @include media-breakpoint-up(tablet) {
+        width: 95px;
+    }
+    @include media-breakpoint-up(desktop) {
+        width: 85px;
+    }
+}
+
+select#edit-field-community-topic-target-id {    
     @include media-breakpoint-down(phone) {
-            margin-left: 41px;
+            width: 252px;
+    }
+    @include media-breakpoint-only(landscape_phone) {
+        width: 275px;
+    }
+    @include media-breakpoint-up(tablet) {
+        width: 290px;
+    }
+    @include media-breakpoint-up(desktop) {
+        width: 280px;
+    }
+}
+
+form#views-exposed-form-community-grid-page-1 div#edit-actions {
+    @include media-breakpoint-only(landscape_phone) {
+        margin: 0 auto;
     }
 }
 
 input#edit-submit-community-grid {
+    /*position: relative;
+    left: 24px;*/
     position: relative;
-    left: 24px;
-
+    right: 0;
+    
     @include media-breakpoint-down(phone) {
         left: 0px;
         margin-left: 83px;
         width: 222px;
+    }
+    @include media-breakpoint-only(landscape_phone) {
+
+    }
+    @include media-breakpoint-up(tablet) {
+        width: 140px;
+    }
+    @include media-breakpoint-up(desktop) {
+        width: 130px;
     }
 }
 
@@ -2118,11 +2173,3 @@ input#edit-submit-community-grid {
     background: url(/themes/custom/myusf/images/site/icons.svg) -220px -150px no-repeat
 }
 
-
-
-fieldset.form-item-field-community-topic-target-id,
-fieldset.form-item-field-audience-target-id {
-    padding: 0!important;
-    margin-right: 20px;
-    border-image-width:0; 
-}
