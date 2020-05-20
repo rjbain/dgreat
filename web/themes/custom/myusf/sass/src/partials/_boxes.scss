@@ -2131,7 +2131,12 @@ input#edit-submit-community-grid {
     top: 10px; 
     right: 5px; 
     pointer-events: none;   /*important for letting it clickable over the icon*/
-    background: url(/themes/custom/myusf/images/site/icons.svg) -220px -150px no-repeat
+    background: url(/themes/custom/myusf/images/site/icons.svg) -220px -150px no-repeat;
+
+    // IE --- take offbefore and after to use browser toggles 
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
+        content: none;
+    }
 }
 .select-container:after {
     position: absolute;
@@ -2143,6 +2148,11 @@ input#edit-submit-community-grid {
     right: 0px;
     background: $beige;
     pointer-events: none;   /*important for letting it clickable over the icon*/
+
+    // IE --- take offbefore and after to use browser toggles 
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
+        content: none;
+    }
 }
 
 
