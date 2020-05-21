@@ -1636,33 +1636,49 @@ div[data-oembed-url]  > iframe {
 
 // SLE ENGAGEMENT TILES
 .community-grid-tile {
-    width: 33.333333%;
+    
     padding-bottom: 30px;
 
     @include media-breakpoint-down(phone) {
         width:100%;
-    }
-    
-    &:nth-child(3n+1) {
-        padding-left: 0;
-        padding-right: 20px;
-    }
-    &:nth-child(3n+2) {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-    &:nth-child(3n+3) {
-        padding-left: 20px;
-        padding-right: 0;
-    }
-    &:nth-child(3n+1),
-    &:nth-child(3n+2),
-    &:nth-child(3n+3) {
-        @include media-breakpoint-down(phone) {
+        &:nth-child(3n+1),
+        &:nth-child(3n+2),
+        &:nth-child(3n+3) {
             padding-left:0px;
             padding-right:0px;
         }
     }
+    @include media-breakpoint-up(landscape_phone) {
+        width:50%;
+
+        &:nth-child(2n+1) {
+            padding-left: 0;
+            padding-right: 15px;
+        }
+        &:nth-child(2n+2) {
+            padding-left: 15px;
+            padding-right: 0px;
+        }
+    }
+    @include media-breakpoint-up(desktop) {
+        width: 33.333333%;
+
+        &:nth-child(3n+1) {
+            padding-left: 0;
+            padding-right: 20px;
+        }
+        &:nth-child(3n+2) {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        &:nth-child(3n+3) {
+            padding-left: 20px;
+            padding-right: 0;
+        }
+    }
+    
+    
+    
     .overlay-link {
         display: block;
     }
@@ -1691,7 +1707,10 @@ div[data-oembed-url]  > iframe {
         transition: .5s ease;
 
         @include media-breakpoint-up(landscape_phone) {
-            height: 30px;
+            height: 50px;
+        }
+        @include media-breakpoint-up(desktop) {
+            height: 35px;
         }
         @include media-breakpoint-up(large_desktop) {
             height: 45px;
@@ -1734,8 +1753,8 @@ div[data-oembed-url]  > iframe {
         }
     }
 
-    @include media-breakpoint-up(landscape_phone) {
-        margin-top:-11px /*-6px;*/
+    @include media-breakpoint-up(desktop) {
+        margin-top:-10px /*-6px;*/
     }
     @include media-breakpoint-up(large_desktop) {
         margin-top: -2px;
@@ -1761,6 +1780,9 @@ div[data-oembed-url]  > iframe {
 
                
         @include media-breakpoint-up(landscape_phone) {
+            font-size: 1.2rem;
+        }
+        @include media-breakpoint-up(desktop) {
             font-size: .85rem;
         }
         @include media-breakpoint-up(large_desktop) {
@@ -1776,9 +1798,9 @@ div[data-oembed-url]  > iframe {
         position: relative;
 
         @include media-breakpoint-up(landscape_phone) {       
-            top: -8px;
+            top: 0px;
         }
-        @include media-breakpoint-up(large_desktop) {
+        @include media-breakpoint-up(desktop) {
             top: -6px;
         }
     }
@@ -1792,8 +1814,8 @@ div[data-oembed-url]  > iframe {
         margin-right: 15px;
 
         @include media-breakpoint-up(landscape_phone) {
-            font-size: 0.75rem;
-            line-height: 0.95rem;
+            font-size: 1rem;
+            line-height: 1.6rem;
         }
         @include media-breakpoint-up(desktop) {
             font-size: 0.75rem;
@@ -1816,8 +1838,8 @@ div[data-oembed-url]  > iframe {
             margin-top: -10px;
 
             @include media-breakpoint-up(landscape_phone) {
-                font-size: 0.75rem;
-                line-height: 1rem;
+                font-size: 1rem;
+                line-height: 1.6rem;
             }
             @include media-breakpoint-up(desktop) {
                 font-size: 0.75rem;
@@ -1848,9 +1870,8 @@ div[data-oembed-url]  > iframe {
         text-transform: uppercase;
 
         @include media-breakpoint-up(landscape_phone) {
-            font-size: 0.7rem;
-            line-height: .85rem;
-            top: -15px;
+            font-size: 0.85rem;
+            line-height: 1rem;
         }
 
         @include media-breakpoint-up(desktop) {
