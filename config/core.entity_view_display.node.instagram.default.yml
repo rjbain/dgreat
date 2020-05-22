@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.instagram.body
+    - field.field.node.instagram.field_account_name
     - field.field.node.instagram.field_external_id
     - field.field.node.instagram.field_guid
     - field.field.node.instagram.field_image_url
@@ -26,6 +27,14 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
+    region: content
+  field_account_name:
+    weight: 108
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
   field_external_id:
     weight: 104
