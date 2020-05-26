@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.body
     - field.storage.node.field_external_id
     - field.storage.node.field_image_url
+    - field.storage.node.field_media_type
     - field.storage.node.field_news_link
     - field.storage.node.field_type
     - node.type.instagram
@@ -1815,6 +1816,11 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
+        field_media_type:
+          id: field_media_type
+          table: node__field_media_type
+          field: field_media_type
+          plugin_id: field
       sorts:
         created:
           id: created
@@ -1892,5 +1898,6 @@ display:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_external_id'
         - 'config:field.storage.node.field_image_url'
+        - 'config:field.storage.node.field_media_type'
         - 'config:field.storage.node.field_news_link'
         - 'config:field.storage.node.field_type'
