@@ -4,11 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.community_post.body
+    - field.field.node.community_post.field_audience
     - field.field.node.community_post.field_call_to_action
     - field.field.node.community_post.field_callout_style
     - field.field.node.community_post.field_community_topic
     - field.field.node.community_post.field_display_title
-    - field.field.node.community_post.field_group_audience
     - field.field.node.community_post.field_image
     - field.field.node.community_post.field_section
     - field.field.node.community_post.field_sub_title
@@ -38,10 +38,16 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 12
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_audience:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
   field_call_to_action:
     weight: 6
     settings:
@@ -70,12 +76,6 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_group_audience:
-    weight: 9
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
   field_image:
     weight: 5
     settings:
@@ -99,14 +99,14 @@ content:
     type: string_textfield
     region: content
   field_weight:
-    weight: 10
+    weight: 11
     settings: {  }
     third_party_settings: {  }
     type: weight_selector
     region: content
   path:
     type: path
-    weight: 15
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -114,12 +114,12 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 13
+    weight: 14
     region: content
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 16
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -127,14 +127,14 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 19
+    weight: 20
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 14
+    weight: 15
     region: content
     third_party_settings: {  }
   title:
@@ -147,7 +147,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 11
+    weight: 12
     settings:
       match_operator: CONTAINS
       size: 60
@@ -156,12 +156,12 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 17
+    weight: 18
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 18
+    weight: 19
     region: content
     settings: {  }
     third_party_settings: {  }

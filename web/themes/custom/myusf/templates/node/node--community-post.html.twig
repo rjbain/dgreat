@@ -60,6 +60,7 @@
  */
 #}
 {{ attach_library('bootstrap_barrio/node') }}
+{{ attach_library('myusf/community-overlays') }}
 
 {%
     set classes = [
@@ -85,14 +86,16 @@
 <a href="{{ cta_url }}" target="_blank" class="overlay-link">
     <div class="overlay-container">
         {#{{ node.field_image }}#}
-        <img src="{{ image_url }}" alt="{{ image_alt }}" class="overlay-image" height="300" width="300" />
+        <img src="{{ image_url }}" alt="{{ image_alt }}" class="overlay-image" />
         <div class="overlay {{ callout_style }}">
-            <h2 class="overlay-heading">
-                {% if node.field_sub_title.value %}
-                    {{ display_title }}
-                {% endif %}
-            </h2>
+            
             <div class="rollover-text">
+                <div class="overlay-arrow"></div>
+                <h2 class="overlay-heading">
+                    {% if display_title %}
+                        {{ display_title }}
+                    {% endif %}
+                </h2>
                 {% if node.field_sub_title.value %}
                     <p class="rollover-subtitle">{{ sub_title }}</p>
                 {% endif %}
