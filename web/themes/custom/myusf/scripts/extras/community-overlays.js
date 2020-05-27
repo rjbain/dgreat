@@ -17,6 +17,7 @@ function handleTouchScreens() {
         if (IS_TOUCHSCREEN === true) {
             $('.overlay').trigger('touchend');
             $(".overlay-link").click();
+            $(".overlay-heading").css("line-height", "1.5rem");
             if (event.target.tagName.toLowerCase() === "h2") {
                 return;
             } else {
