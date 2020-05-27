@@ -17,7 +17,7 @@ function handleTouchScreens() {
         if (IS_TOUCHSCREEN === true) {
             $('.overlay').trigger('touchend');
             $(".overlay-link").click();
-            if (event.target.tagName.toLowerCase() === "h2") {
+            if (event.target.tagName.toLowerCase() === "h2" || event.target.className === "overlay-arrow") {
                 return;
             } else {
                 // Get the URL for linking
