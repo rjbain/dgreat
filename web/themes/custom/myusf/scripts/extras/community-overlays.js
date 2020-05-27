@@ -8,8 +8,6 @@ function handleTouchScreens() {
         if (IS_TOUCHSCREEN === true) {
             $(".overlay-link").bind("click", function(e) {
                 e.preventDefault();
-                // $(this).mouseenter();
-                // $(this).toggleClass("overlayed-link");
             });
         }
     });
@@ -19,43 +17,17 @@ function handleTouchScreens() {
         if (IS_TOUCHSCREEN === true) {
             $('.overlay').trigger('touchend');
             $(".overlay-link").click();
-            // alert($(this).outerHeight());
-            // setTimeout(function(){
-            //     if ($(this).outerHeight() > "50") {
-                    // Get the URL for linking
-                    var link = $(this).parents('.overlay-link').attr('href');
-                    // alert($(this).outerHeight());
-                    window.open(link);
-                // }
-            // }, 1000);
+            if (event.target.tagName.toLowerCase() === "h2") {
+                return;
+            } else {
+                // Get the URL for linking
+                var link = $(this).parents('.overlay-link').attr('href');
+                window.open(link);
+            }
         }
     });
-    // $(".overlay").bind('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
-    //     alert("fin");
-    // });
-    // Prevent the overlay if you swipe up or down on a link
-
-    // overlayLink.addEventListener('touchmove', function() {
-    //     // the user touched the screen!
-    //     alert("moved");
-    //     if (IS_TOUCHSCREEN === true) {
-    //         $(".overlay-link").mouseleave();
-    //     }
-    // });
-
-    // $(".overlay-link").bind("touchmove", function(e) {
-    //     $(this).mouseleave();
-    // });
-    // $(".overlay-link").bind("touchend", function(e) {
-    //     $(this).mouseleave();
-    // });
-
-    // $(".overlayed-link").bind("click", function(e) {
-    //     alert("overlayed-link clicked");
-    // });
 
 } // End of handleTouchScreens
-
 
 $(document).ready(function(){
     handleTouchScreens();
