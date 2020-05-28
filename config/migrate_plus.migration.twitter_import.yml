@@ -12,42 +12,42 @@ label: 'Twitter Import to MyUSF'
 source:
   plugin: url
   data_fetcher_plugin: http
-  urls: 'https://www.usfca.edu/feeds/myusf/twitter'
-  data_parser_plugin: simple_xml
-  item_selector: /twitter_feed/item
+  urls: 'http://jayna.usfca.edu/feeds/twitter/?screen_name=usfca&count=50'
+  data_parser_plugin: json
+  item_selector: /data
   fields:
     -
       name: title
       label: Title
-      selector: title
+      selector: /id_str
     -
       name: description
       label: Description
-      selector: description
+      selector: /full_text
     -
       name: image_url
       label: 'Image URL'
-      selector: image
+      selector: /entities/media/0/media_url_https
+    -
+      name: retweet_image_url
+      label: 'Retweet Image URL'
+      selector: /retweeted_status/entities/media/0/media_url_https
     -
       name: account_name
       label: 'Account Name'
-      selector: account
-    -
-      name: tweet_link
-      label: 'Tweet Link'
-      selector: link
+      selector: /user/screen_name
     -
       name: external_id
       label: 'External ID'
-      selector: eid
+      selector: /id
     -
       name: guid
       label: GUID
-      selector: nid
+      selector: /id
     -
       name: content_type
       label: Type
-      selector: type
+      selector: /user/screen_name
   ids:
     guid:
       type: string
@@ -55,10 +55,10 @@ process:
   title: title
   body: description
   field_image_url: image_url
+  field_retweet_image_url: retweet_image_url
   field_account_name: account_name
-  field_news_link: tweet_link
   field_external_id: external_id
-  field_guid: guid
+  field_guid_twitter: guid
   field_type: content_type
   status:
     plugin: default_value
