@@ -34,14 +34,28 @@
 {% set body = fields.body.content  %}
 {% set body = body|replace({'—————': '—'}) %}
 {% set body = body|replace({'——— ': '— ' }) %}
-<div class="card orange">
-	<a class="card-rollover" href="{{ fields.field_news_link.content }}" target="_blank">
-		<div class="category category-icon instagram-icon">Instagram</div>
-		<img alt="Instagram" class="card-img-top" src="{{ fields.field_image_url.content }}" />
-		<div class="card-body orange"> 
-			<!--<h5 class="card-title">Card title</h5>-->
-			<p class="card-text">{{ body }}</p>
-			<span class="diamond_link_small_white" href="{{ fields.field_news_link.content }}">View Post</span>
-		</div>
-	</a>
-</div> 
+{% set body = body|replace({'&#039;': '\'' }) %}
+{% set body = body|replace({'&amp;': '&' }) %}
+{% set link = fields.field_news_link.content %}
+{% set type = fields.type.content %}
+{% set post_id = fields.field_external_id.content %}
+{% set name_id = fields.field_type.content %}
+
+{# Twitter link is blank with new feed and needs to be constructed. Instagram link still comes in as a full link and populates the link field #}
+{% if link is empty %}
+<a href="https://www.twitter.com/{{ name_id }}/status/{{ post_id }}" target="_blank">
+{% else %}
+<a href="{{ link }}" target="_blank">
+{% endif %}
+  <div class="card">
+    <img src="{{ fields.field_image_url.content }}" class="card-img-top" alt="">
+    <h5 class="card-title {{ fields.type.content }}">{{ fields.type.content }}</h5>
+    <div class="card-body">      
+    	<p class="card-text">
+      	   {% autoescape false %}
+      	   		{{ body }}
+    		{% endautoescape %}
+   		</p>
+    </div>
+  </div>
+</a>

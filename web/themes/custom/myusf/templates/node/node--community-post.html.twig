@@ -60,9 +60,10 @@
  */
 #}
 {{ attach_library('bootstrap_barrio/node') }}
+{{ attach_library('myusf/community-overlays') }}
 
 {%
-  set classes = [
+    set classes = [
     'node',
     'node--type-' ~ node.bundle|clean_class,
     node.isPromoted() ? 'node--promoted',
@@ -70,49 +71,40 @@
     not node.isPublished() ? 'node--unpublished',
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
     'clearfix',
-  ]
+]
 %}
-<article{#{ attributes.addClass(classes) }#}>
-  <header>
-    {{ title_prefix }}
-    {% if not page %}
-      <h2{{ title_attributes.addClass('node__title') }}>
-        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-      </h2>
-    {% endif %}
-    {{ title_suffix }}
-    {% if display_submitted %}
-      <div class="node__meta">
-        {{ author_picture }}
-        {% block submitted %}
-          <em{{ author_attributes }}>
-            {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
-          </em>
-        {% endblock %}
-        {{ metadata }}
-      </div>
-    {% endif %}
-  </header>
-  <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-    {{ content }}
-  </div>
-</article>
+{% set display_title = node.field_display_title.value %}
+{% set sub_title = node.field_sub_title.value %}
+{% set body = node.body.value %}
+{% set image_url = file_url(node.field_image.entity.uri.value) %}
+{% set image_alt = node.field_image.alt %}
+{% set cta_url = node.field_call_to_action.0.url %}
+{% set cta_title = node.field_call_to_action.title %}
+{% set callout_style = node.field_callout_style.value %}
 
-{% if paragraph_video_exists == true %}
-<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <div class="fluidMedia">
-                    <iframe class="video-component-iframe" src=""
-                            frameborder="0"
-                            seamless="seamless"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                </div>
+<a href="{{ cta_url }}" target="_blank" class="overlay-link">
+    <div class="overlay-container">
+        {#{{ node.field_image }}#}
+        <img src="{{ image_url }}" alt="{{ image_alt }}" class="overlay-image" />
+        <div class="overlay {{ callout_style }}">
+            
+            <div class="rollover-text">
+                <div class="overlay-arrow"></div>
+                <h2 class="overlay-heading">
+                    {% if display_title %}
+                        {{ display_title }}
+                    {% endif %}
+                </h2>
+                {% if node.field_sub_title.value %}
+                    <p class="rollover-subtitle">{{ sub_title }}</p>
+                {% endif %}
+                {% if node.body.value %}
+                    <div class="rollover-body-text"> {% autoescape false %}{{ body }}{% endautoescape %}</div>
+                {% endif %}
+                {% if node.field_call_to_action.title %}
+                    <p class="{{ callout_style }}">{{ cta_title }}</p>
+                {% endif %}
             </div>
         </div>
     </div>
-</div>
-{% endif %}
+</a>
