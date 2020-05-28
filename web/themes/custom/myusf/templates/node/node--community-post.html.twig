@@ -78,7 +78,7 @@
 {% set body = node.body.value %}
 {% set image_url = file_url(node.field_image.entity.uri.value) %}
 {% set image_alt = node.field_image.alt %}
-{% set cta_url = node.field_call_to_action.uri %}
+{% set cta_url = node.field_call_to_action.0.url %}
 {% set cta_title = node.field_call_to_action.title %}
 {% set callout_style = node.field_callout_style.value %}
 
@@ -109,18 +109,3 @@
         </div>
     </div>
 </a>
-
-
-        {#<img src="{{ image }}" alt="{{ image_alt }}" />#}
-        {#{{ node.field_image|view('grid') }}#}
-                {#<p>#}
-                    {#<a class="{{ callout_style }}" href="{{ cta_url }}">{{ cta_title }}</a>#}
-                {#</p>#}
-        {#{% autoescape false %}#}
-            {#{{ body }}#}
-        {#{% endautoescape %}#}
-
-
-
-
-
