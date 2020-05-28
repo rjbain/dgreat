@@ -1144,9 +1144,7 @@ h2.carousel-overlay:before {
     }
 }
 
-.view-events-search.view-display-id-block_1,
-.view-events-search.view-display-id-block_2,
-.view-events-search.view-display-id-block_3  {
+.view-events-search.view-display-id-block_2  {
     margin-top: 7px;
 
     ul.pagination {
@@ -1516,7 +1514,31 @@ h2.carousel-overlay:before {
   .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__5col, 
   .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__6col {
     float: left;
-     width: 50%; /*width: 16.66666667%;*/
+    width: 50%; /*width: 16.66666667%;*/
+  }
+}
+@include media-breakpoint-up(tablet) {
+  .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__2col {
+    float: left;
+    width: 48.4%; /*width: 16.66666667%;*/
+  }
+}
+@include media-breakpoint-up(desktop) {
+  .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__2col {
+    float: left;
+    width: 47.8%; /*width: 16.66666667%;*/
+     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
+        width: 47.6%;
+    }
+  }
+}
+@include media-breakpoint-up(large_desktop) {
+  .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__2col {
+    float: left;
+     width: 48.3%; /*width: 16.66666667%;*/
+     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
+        width: 48.2%;
+     }
   }
 }
 @media (min-width: 1220px) {
@@ -1612,197 +1634,572 @@ div[data-oembed-url]  > iframe {
 }
 
 
-
-/* CALLOUT BOX from USFCA
-=============================================== */  
-
-.magazine_callout {
-
-    margin: 20px 0 20px 0; 
-    display: block; 
-    padding: 15px; 
-    border-style: solid;
-    border-width: 1px;
-    overflow: hidden;
-
-
-    &.green {
-        border-color: $green;
-    }
-
-    &.gray {
-        border-color: #ccc;
-
-    }
-
-    &.plum {
-        border-color: $plum;
-    }
-
-    &.turquoise {
-        border-color: $turquoise;
-    }
-
-    &.blue {
-        border-color: $blue;
-    }
-
-    &.terra_cotta {
-        border-color: $terra_cotta;
-    }
-
-    &.orange {
-        border-color: $orange;
-    }
-
-    &.tan {
-        border-color: $tan;
-
-    }
-
-    &.olive {
-        border-color: $olive;
-
-    }
-
-    &.thick {
-        border-width: 10px;
-         @include media-breakpoint-down(tablet) {
-            border-width: 8px;
-        }
-    }
-
-    &.narrow {
-        width:275px;
-
-        @include media-breakpoint-down(phone) {
-            width: 100%;
-            margin: 0;
-        }
-    }
-
-
-    &.block_left {
-        margin: 0 20px 20px 0;
-    }
-
-    &.block_right {
-        margin: 0 0 20px 20px;
-    }
-
+// SLE ENGAGEMENT TILES
+.community-grid-tile {
     
-    blockquote:before {
-         @include media-breakpoint-down(tablet) {
-            top: 3px;
-        }
-    }
-
-    blockquote img {
-        margin: 10px 20px 15px 15px;
-        width:200px;
-
-         @include media-breakpoint-down(tablet) {
-            margin: 6px 20px 15px 15px;
-        }
-    }
-    blockquote p {
-         @include media-breakpoint-down(tablet) {
-            padding-top:7px;
-        }
-    }
-    cite.inline_cite {
-        margin-bottom: -20px;
-    }
-
-}
-
-
-/* Download Link from USFCA
-================================================================== */
-.download_link {
-    font-size: 14px;
-    border: 1px solid $gray_medium;
-    color: $green;
-    display: inline-block;
-    line-height: 1.2;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    padding: 22px 30px;
-    font-weight:400!important;
-    text-decoration: none;
+    padding-bottom: 30px;
 
     @include media-breakpoint-down(phone) {
-        width: 100%;
-    }
-
-    &:before {
-        margin-right: 10px;
-        content: "";
-        display: inline-block;
-
-        background: url(/themes/custom/myusf/images/site/icons.png) no-repeat 0 0;
-        background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat 0 0;
-    }
-
-    &:before,
-    &:after {
-        width: 14px;
-        height: 14px;
-
-        background-position: -450px -60px;
-    }
-
-    a { 
-        border-bottom: none;  
-        text-decoration: none;                  
-        font-weight: 400!important;                 
-        
-        &:link:hover {
-            background: transparent;
-            text-decoration: underline;
+        width:100%;
+        &:nth-child(3n+1),
+        &:nth-child(3n+2),
+        &:nth-child(3n+3) {
+            padding-left:0px;
+            padding-right:0px;
         }
     }
+    @include media-breakpoint-up(landscape_phone) {
+        width:50%;
+
+        &:nth-child(2n+1) {
+            padding-left: 0;
+            padding-right: 15px;
+        }
+        &:nth-child(2n+2) {
+            padding-left: 15px;
+            padding-right: 0px;
+        }
+    }
+    @include media-breakpoint-up(desktop) {
+        width: 33.333333%;
+
+        &:nth-child(3n+1) {
+            padding-left: 0;
+            padding-right: 20px;
+        }
+        &:nth-child(3n+2) {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        &:nth-child(3n+3) {
+            padding-left: 20px;
+            padding-right: 0;
+        }
+    }
+    
+    
+    
+    .overlay-link {
+        display: block;
+    }
+    .overlay-container {
+        position: relative;
+    }
+
+    .overlay-image {
+        display: block;
+        height: auto;
+        width:100%;
+        margin:0;
+    }
+    .overlay-container:hover .overlay {
+        height: 100%;
+    }
+    .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: .9;
+        overflow: hidden;
+        width:100%;
+        height: 60px; /* 50 */
+        transition: .5s ease;
+
+        @include media-breakpoint-up(landscape_phone) {
+            height: 60px; /* 50 */
+        }
+        @include media-breakpoint-up(desktop) {
+            height: 45px; /* 35 */
+        }
+        @include media-breakpoint-up(large_desktop) {
+            height: 55px; /* 45 */
+        }
+        @include media-breakpoint-up(midlarge_desktop) {
+            height: 60px; /* 50 */
+        }
+    }   
+}
+.rollover-text {     
+    margin: 0px; 
+    position: relative;
+    left: 50%;
+    height: 104%;
+
+    -webkit-transform: translate(-50%, 0%);  
+    -ms-transform: translate(-50%, 0%); 
+    transform: translate(-50%, 0%);  
+    text-align: center;
+    line-height: 2rem;
 
     &:hover,
     &:focus {
-        background-color: $light_gray_60;
-        text-decoration: underline;
-    }
+        padding-top: 0px;
 
-    img.file-icon {
-        display: none;
-    }
-}
+        @include media-breakpoint-up(landscape_phone) {
+            padding-top: 10px;
+        }
 
-
-/* Inline image in Events from USFCA
-================================================================== */
-.in_line_image_item {
-    display:block;
-
-    &.left {
-        float:left;
-        margin: 0 20px 20px 0;
-
-        @include media-breakpoint-down(phone) {
-            margin-right: 0;
+        .overlay-heading { 
+            @include media-breakpoint-up(phone) {
+                line-height: 1.8rem;
+            }          
+            @include media-breakpoint-up(landscape_phone) {
+                line-height: 1.5rem;
+            }
+            @include media-breakpoint-up(desktop) {
+                line-height: 1rem;
+            }
+            @include media-breakpoint-up(large_desktop) {
+                line-height: 1.3rem;
+            }
+            @include media-breakpoint-up(midlarge_desktop) {
+                line-height: 1.8rem;
+            }
         }
     }
 
-    &.right {
-        float:right;
-        margin: 0 0 20px 20px;
+    @include media-breakpoint-up(desktop) {
+        margin-top:-4px /*-10px;*/
+    }
+    @include media-breakpoint-up(large_desktop) {
+        margin-top: -2px;
+    }
+    @include media-breakpoint-up(midlarge_desktop) {
+        margin-top: 0px;     
+    }
+    .overlay-arrow {
+        padding-bottom: 15px;
 
-        @include media-breakpoint-down(phone) {
-            margin-left: 0;
+        &:before {
+            content: "";
+            width: 20px;
+            height: 15px;
+            z-index: 1;
+            position: absolute;
+            display: inline-block;
+            top: 10px;
+            right: calc(50% - 10px);
+            background: url(/themes/custom/myusf/images/site/icons.svg) -357px -329px no-repeat;
         }
+
     }
     
-    img {
+    .overlay-heading {
+        font-size: 1.2rem;
+        color: $white !important;
+        text-align: center;
         width: 100%;
-        height: 100%;
+        position: relative; 
+        margin: 0 !important;
+        padding: 5px 10px 20px 10px; /* 10px 10px 20px 10px; */
+        opacity: 1;
+        display: block;
+        margin-block-start: 1.33em;
+        margin-block-end: 1.33em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+
+               
+        @include media-breakpoint-up(landscape_phone) {
+            font-size: 1.1rem;
+            padding: 4px 10px 20px;
+        }
+        @include media-breakpoint-up(desktop) {
+            font-size: .85rem;
+            padding: 1px 10px 20px;
+        }
+        @include media-breakpoint-up(large_desktop) {
+            font-size: .95rem;
+            padding: 3px 10px 20px;
+        }
+        @include media-breakpoint-up(midlarge_desktop) {
+            font-size: 1.2rem;
+            line-height: 2rem;
+            padding: 5px 10px 20px;
+        }
+    }
+
+    .rollover-body-text {
+        position: relative;
+
+        @include media-breakpoint-up(landscape_phone) {       
+            top: 0px;
+        }
+        @include media-breakpoint-up(desktop) {
+            top: -6px;
+        }
+    }
+
+    p {
+        font-size: 0.9rem;
+        line-height: 1.3rem;
+        color: $white; 
+        position: relative;
+        margin-left: 15px;
+        margin-right: 15px;
+
+        @include media-breakpoint-up(landscape_phone) {
+            font-size: .95rem;
+            line-height: 1.4rem;
+        }
+        @include media-breakpoint-up(desktop) {
+            font-size: 0.75rem;
+            line-height: .85rem;
+        }
+        @include media-breakpoint-up(large_desktop) {
+            font-size: 0.85rem;
+            line-height: 1.2rem;
+        }
+        @include media-breakpoint-up(midlarge_desktop) {
+            font-size: 1rem;
+            line-height: 1.6rem;
+        }
+
+        &.rollover-subtitle {
+            font-size: .9rem;
+            font-weight: 600;
+            line-height: 1.5rem;
+            text-transform: uppercase;
+            margin-top: -10px;
+
+            @include media-breakpoint-up(landscape_phone) {
+                font-size: .95rem;
+                line-height: 1.4rem;
+            }
+            @include media-breakpoint-up(desktop) {
+                font-size: 0.75rem;
+                line-height: .85rem;
+            }
+            @include media-breakpoint-up(large_desktop) {
+                font-size: 0.9rem;
+                line-height: 1.3rem;
+            }
+            @include media-breakpoint-up(midlarge_desktop) {
+                font-size: 1rem;
+                line-height: 1.6rem;
+            }
+        }
+    }
+
+    .callout_style_watch,
+    .callout_style_read,
+    .callout_style_calendar,
+    .callout_style_visit,
+    .callout_style_support,
+    .callout_style_find,
+    .callout_style_facebook,
+    .callout_style_twitter,
+    .callout_style_instagram {
+        font-size: .8rem;
+        font-style: italic;
+        text-transform: uppercase;
+
+        @include media-breakpoint-up(landscape_phone) {
+            font-size: 0.85rem;
+            line-height: 1rem;
+        }
+
+        @include media-breakpoint-up(desktop) {
+            font-size: .7rem;
+            line-height: 0.85rem;
+            position: relative;
+            top: -20px;
+        }
+         @include media-breakpoint-up(large_desktop) {
+            font-size: .75rem;
+            line-height: 1rem;
+            top: -10px;
+        }
+        @include media-breakpoint-up(midlarge_desktop) {
+            font-size: .85rem;
+            line-height: 1rem;
+            top: -10px;
+        }
+
+        &:before {
+            width: 20px;
+            height: 20px;
+            top: 5px;
+            left: -3px;
+            position: relative;
+            display: inline-block;
+            content: "";
+            z-index: 1;
+        }
+
+        &:after {
+            content: "»";
+            padding-left: 5px;
+        }
+    }
+
+    .callout_style_watch {
+        &:before {
+            background: url(/themes/custom/myusf/images/site/icons.svg) -527px -266px no-repeat;
+        }
+    }
+    .callout_style_read {
+        &:before {
+            background: url(/themes/custom/myusf/images/site/icons.svg) -548px -267px no-repeat;
+        }
+    }
+    .callout_style_calendar {
+        &:before {
+            background: url(/themes/custom/myusf/images/site/icons.svg) -505px -266px no-repeat;
+        }
+    }
+    .callout_style_visit {
+        &:before {
+            background: url(/themes/custom/myusf/images/site/icons.svg) -590px -268px no-repeat;
+        }
+    }
+    .callout_style_support {
+        &:before {
+            background: url(/themes/custom/myusf/images/site/icons.svg) -570px -268px no-repeat;
+        }
+    }
+    .callout_style_find{
+        &:before {
+            background: url(/themes/custom/myusf/images/site/icons.svg) -483px -269px no-repeat;
+        }
+    }
+    .callout_style_facebook{
+        &:before {
+            background: url(/themes/custom/myusf/images/site/icons.svg) -118px -57px no-repeat;
+        }
+    }
+    .callout_style_twitter{
+        &:before {
+            background: url(/themes/custom/myusf/images/site/icons.svg) -95px -57px no-repeat;
+        }
+    }
+    .callout_style_instagram{
+        &:before {
+            background: url(/themes/custom/myusf/images/site/icons.svg) -37px -57px no-repeat;
+        }
+    }   
+}
+
+
+.view-community-grid {
+
+    &.view-id-community_grid.view-display-id-page_1 {
+        margin-left: 0;
+        @include media-breakpoint-up(landscape_phone) {
+            
+        }
+        @include media-breakpoint-up(desktop) {
+            width: 100%;
+        }
+    }
+    .form-row{
+        margin-left: 0;
+    }
+
+    .view-content.row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .community-grid-tile:nth-child(1),
+    .community-grid-tile:nth-child(10)  {
+        .overlay {
+            background: $plum;
+        }
+    }
+    .community-grid-tile:nth-child(2),
+    .community-grid-tile:nth-child(11)  {
+        .overlay {
+            background: $turquoise;
+        }
+    }   
+    .community-grid-tile:nth-child(3),
+    .community-grid-tile:nth-child(12)  {
+        .overlay {
+            background: $tan;
+        }
+    }
+    .community-grid-tile:nth-child(4),
+    .community-grid-tile:nth-child(13)  {
+        .overlay {
+            background: $olive;
+        }
+    }
+    .community-grid-tile:nth-child(5),
+    .community-grid-tile:nth-child(14)  {
+        .overlay {
+            background: $orange;
+        }
+    }
+    .community-grid-tile:nth-child(6),
+    .community-grid-tile:nth-child(15)  {
+        .overlay {
+            background: $blue;
+        }
+    }
+    .community-grid-tile:nth-child(7),
+    .community-grid-tile:nth-child(16)  {
+        .overlay {
+            background: $terra_cotta;
+        }
+    }
+    .community-grid-tile:nth-child(8),
+    .community-grid-tile:nth-child(17)  {
+        .overlay {
+            background: $green;
+        }
+    }
+    .community-grid-tile:nth-child(9),
+    .community-grid-tile:nth-child(18)  {
+        .overlay {
+            background: $text_gray;
+        }
+    }    
+}
+
+form#views-exposed-form-community-grid-page-1 {
+    margin-bottom: 20px;
+    margin-top: 10px;
+
+    .form-select {
+        outline: 0px;
+    }
+}
+fieldset.form-item-field-community-topic-target-id,
+fieldset.form-item-field-audience-target-id {
+    padding: 0!important;
+    margin-right: 20px;
+    border-image-width:0; 
+}
+
+select#edit-field-audience-target-id,
+select#edit-field-community-topic-target-id {
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.4;
+    color: $black;    
+    height:40px;
+    padding-left: 10px;
+    margin-left: 10px;
+    background-color: $beige;
+   -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    border-radius: 0px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;  
+
+    &:after {
+
+    }
+
+    @include media-breakpoint-down(phone) {
+        font-size: 0.8rem;
+        width: 222px;
+    } 
+    @include media-breakpoint-only(landscape_phone) {
+        width: 150px;
+    }
+    @include media-breakpoint-up(tablet) {
+        width: 200px;
+    }
+    @include media-breakpoint-up(desktop) {
+        width: 160px;
+    }
+    @include media-breakpoint-up(large_desktop) {
+        width: 220px;
+    }
+
+    option {
+        background: #f5f5f5;
     }
 }
 
+select#edit-field-community-topic-target-id {    
+    @include media-breakpoint-down(phone) {
+            margin-left: 42px;
+    }
+}
+
+
+input#edit-submit-community-grid {
+    /*position: relative;
+    left: 24px;*/
+    position: relative;
+    right: 0;
+    
+    @include media-breakpoint-down(phone) {
+        left: 0px;
+        margin-left: 83px;
+        width: 222px;
+    }
+    @include media-breakpoint-only(landscape_phone) {
+        width: 90px;
+    }
+    @include media-breakpoint-up(tablet) {
+        width: 110px;
+    }
+    @include media-breakpoint-up(desktop) {
+        width: 130px;
+    }
+     @include media-breakpoint-up(large_desktop) {
+        width: 150px;
+    }
+}
+
+@-moz-document url-prefix() {
+    select, select:-moz-focusring, select::-moz-focus-inner {
+        color: transparent !important;
+        text-shadow: 0 0 0 #000 !important;
+        background-image: none !important;
+        border:0;
+
+        option:hover { 
+            box-shadow: 0 0 10px 10px #e1358f inset; 
+            
+        }
+    }
+}
+.select-container {
+    position:relative; 
+    display: inline;
+}
+.select-container:before {
+    content:""; 
+    width:10px; 
+    height:10px; 
+    position:absolute; 
+    display: inline-block;
+    z-index: 1;
+    top: 10px; 
+    right: 5px; 
+    pointer-events: none;   /*important for letting it clickable over the icon*/
+    background: url(/themes/custom/myusf/images/site/icons.svg) -220px -150px no-repeat;
+
+    // IE --- take offbefore and after to use browser toggles 
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
+        content: none;
+    }
+}
+.select-container:after {
+    position: absolute;
+    display: inline-block;
+    content: "";
+    width: 25px;
+    height: 35px; /*25px*/
+    top: -6px; /*0*/
+    right: 0px;
+    background: $beige;
+    pointer-events: none;   /*important for letting it clickable over the icon*/
+
+    // IE --- take offbefore and after to use browser toggles 
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
+        content: none;
+    }
+}
 
 
