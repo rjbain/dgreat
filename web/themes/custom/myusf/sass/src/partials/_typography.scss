@@ -144,6 +144,54 @@ li {
 	padding-bottom: .6rem;
 }
 
+//Pullquote
+
+.pullquote {
+
+	padding: 10px 10px 10px 20px;
+
+	@include media-breakpoint-up(tablet) {
+		padding: 20px 64px 20px 44px;
+	}
+
+	font-size: 18px;
+
+	position: relative;
+
+	line-height: 1.538;
+	margin: 0;
+
+	/*@include media-breakpoint-up(tablet) {
+		font-size: 26px;
+	}*/
+
+	&:before {
+		font-size: 50px;
+		font-weight: 700;
+
+		position: relative;
+		top: 20px;
+		right: 10px;
+
+		color: $yellow;
+		content: "\201C";
+		line-height: 0.1;
+
+	}
+
+	&:after {
+		font-size: 50px;
+		font-weight: 700;
+
+		position: relative;
+		top: 20px;
+		left: 10px;
+
+		color: $yellow;
+		content: "\201D";
+		line-height: 0.1;
+	}
+}
 
 //Table
 
@@ -559,3 +607,102 @@ h2.sub-title {
     line-height: 1.7rem;
     padding-top: .2rem;
 }
+
+
+/* FROM USFCA FOR EVENTS
+=============================== */
+
+.link_list_links {
+	//.font_size(20);
+	//font-size: 20px;
+	//.whitney_light();
+
+	line-height: 1.2;
+
+	& >* {
+			-webkit-column-break-inside: avoid !important; 
+			column-break-inside: avoid !important;
+			margin: 0px!important;
+			}
+		& a {
+			border:none;
+			
+			//.whitney_medium();
+			
+			padding: 0px;	
+			margin-bottom: 15px!important;
+			line-height: 1.5;
+
+			.no-touch &:hover,
+			.no-touch &:focus {
+				color: $black;
+				//background-color: $yellow_20; 
+			}
+		}
+ 
+		& p {
+			padding-bottom: 15px;
+			
+			& a {						 
+				border-bottom: 1px solid;		 
+				margin-bottom: 0px!important;  
+			}
+			& a.diamond_link {   
+				border:none;	 
+				
+				.no-touch &:hover {           
+					background:transparent;   
+				}
+				
+				&:after {					
+					position: relative;		
+					top: 6px;				
+					margin-left: 15px;		
+				}
+				&:before {					
+					top: 15px;				
+				}				
+			}												
+		}
+		
+		& ol,
+		& ul {
+			padding: 0 0 0 5px;
+		}
+
+		
+		& li {
+			//.font_size(20);
+			//font-size: 20px;
+			padding-bottom:15px; 
+			line-height: 1.5;
+			page-break-inside: avoid;
+
+			&:first-child{
+				margin-top:0px;
+			}
+			& a {								
+				margin-bottom: -16px!important;
+				line-height: 1.5;
+				font-weight: 600; 
+			}				
+		}
+
+	@include media-breakpoint-up(tablet) {
+		@include columns(2, 30px);
+		margin-bottom: 25px;
+	}
+}
+
+.no_bullet {
+
+	& li {
+		padding-left: 0px;
+			
+		&:before {
+				display:none!important;
+		}
+	}      
+}
+
+
