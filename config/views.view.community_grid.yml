@@ -1,6 +1,6 @@
 uuid: 73d6bc33-a812-4fef-a038-f80d7daea50f
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - core.entity_view_mode.node.grid
@@ -10,6 +10,7 @@ dependencies:
     - image.style.medium
     - node.type.community_post
     - taxonomy.vocabulary.community
+    - taxonomy.vocabulary.community_audience
   module:
     - image
     - link
@@ -336,27 +337,25 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        field_group_audience_target_id:
-          id: field_group_audience_target_id
-          table: node__field_group_audience
-          field: field_group_audience_target_id
+          group: 1
+        field_audience_target_id:
+          id: field_audience_target_id
+          table: node__field_audience
+          field: field_audience_target_id
           relationship: none
           group_type: group
           admin_label: ''
           operator: or
-          value:
-            3908: '3908'
-            4522: '4522'
-            4523: '4523'
+          value: {  }
           group: 1
           exposed: true
           expose:
-            operator_id: field_group_audience_target_id_op
+            operator_id: field_audience_target_id_op
             label: Audience
             description: ''
             use_operator: false
-            operator: field_group_audience_target_id_op
-            identifier: field_group_audience_target_id
+            operator: field_audience_target_id_op
+            identifier: field_audience_target_id
             required: false
             remember: false
             multiple: false
@@ -388,7 +387,7 @@ display:
               soe: '0'
               box_editor: '0'
               webform_editor: '0'
-            reduce: true
+            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -402,13 +401,12 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: true
-          type: select-list
-          sort: {  }
-          value_selection_type: '0'
-          target_bundles:
-            groups: groups
-          handler_view: 'service_reference_filters:entity_reference_1'
-          plugin_id: entity_reference
+          type: select
+          limit: true
+          vid: community_audience
+          hierarchy: false
+          error_message: false
+          plugin_id: taxonomy_index_tid
         field_community_topic_target_id:
           id: field_community_topic_target_id
           table: node__field_community_topic
@@ -491,13 +489,28 @@ display:
           expose:
             label: ''
           plugin_id: standard
-      title: 'Dons At Home'
-      header: {  }
+      title: 'Dons Connect'
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: "<h1 class=\"display-title\">Dons Connect</h1>\r\n<p class=\"text-intro\">Keep connected and find inspiration in the Dons community.</p>"
+          plugin_id: text_custom
       footer: {  }
       empty: {  }
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: -1
       contexts:
@@ -518,7 +531,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: dons-at-home
+      path: dons-connect
     cache_metadata:
       max-age: -1
       contexts:
