@@ -452,15 +452,16 @@ a.card-rollover {
 			height: 80px;
 			width: 107px;
 			margin-right: 20px;
+			margin-left: 10px;
 
 			@include media-breakpoint-down(phone) {
 				width: 80px;
 				height: 60px;
-				margin-left: 10px;
-				margin-right: 0;
+				margin-bottom: 5px;		
 			}
 			@include media-breakpoint-down(tablet) {
 				margin-right: 0;
+				margin-top: 14px;
 			}
 		}
 	}
@@ -586,6 +587,21 @@ h1.js-quickedit-page-title.page-title {
 	margin-bottom: .5rem;
 	margin-top: 1rem;
 	line-height: 1.2rem;
+	color: $black;
+
+	@include media-breakpoint-down(phone) {
+		margin-bottom: .25rem;
+	}
+}
+
+.event-date-day {
+	text-transform: uppercase;
+	font-weight:700;
+
+	@include media-breakpoint-down(phone) {
+		display: block;
+		line-height: 2rem;
+	}
 }
 
 .event-location {
@@ -594,11 +610,12 @@ h1.js-quickedit-page-title.page-title {
 	margin-bottom: 1.5rem;
 	line-height: 1.5rem;
 	text-transform: uppercase;
+	color: $black;
 }
 
 .event-additional-info {
     padding-left: 18px;
-    border-left: 5px solid #fdbb30;
+    border-left: 5px solid $yellow;
 
     p, a {
 		color: $green;
@@ -615,7 +632,7 @@ h1.js-quickedit-page-title.page-title {
 
 .event-description {
 	padding-top: 2rem;
-	width: 85%;
+	/*width: 85%;*/
 
 	@include media-breakpoint-down(phone) {
 		width: 100%;
@@ -624,8 +641,13 @@ h1.js-quickedit-page-title.page-title {
 
 .event-image {
 	img.image {
-		@include media-breakpoint-down(tablet) {
+		width: 100%;
+    	
+		/*@include media-breakpoint-down(tablet) {
 		    width: 100%;
+		}*/
+		@media (min-width: 1160px) {
+			width: 825px;
 		}
 	}
 }

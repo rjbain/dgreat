@@ -250,3 +250,20 @@
         }
     }
 }
+
+
+// COLUMNS
+
+@mixin columns($count, $gap) {
+    column-count: $count;
+    column-gap: $gap;
+
+    & > * {
+        // autoprefixer does not prefix this one correctly just yet
+        -webkit-column-break-inside: avoid;
+        column-break-inside: avoid;
+    }
+}
+
+
+
