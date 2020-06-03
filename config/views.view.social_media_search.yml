@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.body
     - field.storage.node.field_image_url
+    - field.storage.node.field_media_type
     - field.storage.node.field_social_tags
     - node.type.instagram
     - node.type.twitter
@@ -92,6 +93,7 @@ display:
           columns:
             title: title
             type: type
+            field_media_type: field_media_type
             field_social_tags: field_social_tags
             body: body
             field_image_url: field_image_url
@@ -105,6 +107,13 @@ display:
               empty_column: false
               responsive: ''
             type:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_media_type:
               sortable: true
               default_sort_order: asc
               align: ''
@@ -251,6 +260,69 @@ display:
           field_api_classes: false
           entity_type: node
           entity_field: type
+          plugin_id: field
+        field_media_type:
+          id: field_media_type
+          table: node__field_media_type
+          field: field_media_type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Media Type'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
           plugin_id: field
         field_social_tags:
           id: field_social_tags
@@ -674,6 +746,7 @@ display:
       tags:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_image_url'
+        - 'config:field.storage.node.field_media_type'
         - 'config:field.storage.node.field_social_tags'
   page_1:
     display_plugin: page
@@ -695,4 +768,5 @@ display:
       tags:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_image_url'
+        - 'config:field.storage.node.field_media_type'
         - 'config:field.storage.node.field_social_tags'

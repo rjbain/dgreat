@@ -4,9 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.instagram.body
+    - field.field.node.instagram.field_account_name
     - field.field.node.instagram.field_external_id
     - field.field.node.instagram.field_guid
     - field.field.node.instagram.field_image_url
+    - field.field.node.instagram.field_media_type
     - field.field.node.instagram.field_news_link
     - field.field.node.instagram.field_social_tags
     - field.field.node.instagram.field_type
@@ -26,6 +28,14 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
+    region: content
+  field_account_name:
+    weight: 109
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
   field_external_id:
     weight: 104
@@ -55,6 +65,14 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+    region: content
+  field_media_type:
+    weight: 108
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
   field_news_link:
     weight: 103
