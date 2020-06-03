@@ -1,0 +1,71 @@
+uuid: af41c298-6a10-46eb-92cd-3664eafa22d6
+langcode: en
+status: true
+dependencies: {  }
+id: instagram_goteam_import
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: null
+label: 'Instagram GoTeam Import to MyUSF'
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  urls: 'https://graph.instagram.com/17841401049254528/media?fields=caption,username,media_url,timestamp,permalink,media_type&access_token=IGQVJYZA2lMZAFE0M2Q2OThrMnlKRnJDdkJGajFHSWlPRFZAYck1qcTQwZADQ1STZAGYVJkTkdROWFJbFYtS1VuTHdkNHRsYTVXMUxTOUxCdW1OYlNmMmRpTUlCV01kYzF6MTVuOXVZAeEtB'
+  data_parser_plugin: json
+  item_selector: /data
+  fields:
+    -
+      name: title
+      label: Title
+      selector: /id
+    -
+      name: description
+      label: Description
+      selector: /caption
+    -
+      name: image_url
+      label: 'Image URL'
+      selector: /media_url
+    -
+      name: instagram_link
+      label: 'Instagram Link'
+      selector: /permalink
+    -
+      name: external_id
+      label: 'External ID'
+      selector: /id
+    -
+      name: guid
+      label: GUID
+      selector: /timestamp
+    -
+      name: username
+      label: Username
+      selector: /username
+    -
+      name: media_type
+      label: 'Media Type'
+      selector: /media_type
+  ids:
+    guid:
+      type: string
+process:
+  title: title
+  body: description
+  field_image_url: image_url
+  field_news_link: instagram_link
+  field_external_id: external_id
+  field_guid: guid
+  field_account_name: username
+  field_media_type: media_type
+  status:
+    plugin: default_value
+    default_value: 1
+  type:
+    plugin: default_value
+    default_value: instagram
+destination:
+  plugin: 'entity:node'
+migration_dependencies: null
