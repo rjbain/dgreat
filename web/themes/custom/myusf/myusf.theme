@@ -129,3 +129,15 @@ function myusf_preprocess_node(&$variables)
     }
     $variables['paragraph_video_exists'] = $paragraph_video_exists;
 }
+
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function myusf_theme_suggestions_image_formatter_alter(array &$suggestions, array $variables) {
+  $entity = $variables['item']->getEntity();
+  $field_name = $variables['item']->getParent()->getName();
+  $suggestions[] = 'image_formatter__' . $entity->getEntityTypeId() . '__' . $entity->bundle() . '__' . $field_name;
+}
+
+

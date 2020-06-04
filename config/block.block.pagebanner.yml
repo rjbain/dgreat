@@ -1,26 +1,29 @@
-uuid: 5ee15287-350a-464b-b497-00bcaad220de
+uuid: cdb53b64-4ed6-48f1-a1c0-ad44aece2dbb
 langcode: en
 status: true
 dependencies:
-  config:
-    - simple_block.simple_block.hero_image_block_orientation
+  content:
+    - 'block_content:page_banner:23ec0a38-6188-4aad-90fa-269741f888ac'
   module:
+    - block_content
     - block_visibility_groups
-    - simple_block
     - system
   theme:
     - myusf
-id: welcomeandcongratulations
+id: pagebanner
 theme: myusf
 region: hero_image
 weight: 0
 provider: null
-plugin: 'simple_block:hero_image_block_orientation'
+plugin: 'block_content:23ec0a38-6188-4aad-90fa-269741f888ac'
 settings:
-  id: 'simple_block:hero_image_block_orientation'
-  label: 'Welcome and Congratulations'
-  provider: simple_block
+  id: 'block_content:23ec0a38-6188-4aad-90fa-269741f888ac'
+  label: 'Page Banner Thing Test'
+  provider: block_content
   label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
 visibility:
   condition_group:
     id: condition_group
@@ -29,6 +32,6 @@ visibility:
     context_mapping: {  }
   request_path:
     id: request_path
-    pages: /orientation
+    pages: /page-banner-page
     negate: false
     context_mapping: {  }
