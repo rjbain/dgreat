@@ -978,7 +978,15 @@ h2.carousel-overlay:before {
     }
 }
 .hero-image-block {
-    margin: -25px 0 -85px 0 !important; /*-85 was -50*/
+    /*margin: -25px 0 -85px 0 !important; -85 was -50*/
+    margin-top:-25px;
+
+    @include media-breakpoint-up(landscape_phone) {
+        margin-bottom: -65px;    
+    }
+    @include media-breakpoint-down(phone) {
+        margin-bottom: -55px; 
+    }
 
     a {
         text-decoration: none;
