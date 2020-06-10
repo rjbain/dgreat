@@ -29,14 +29,22 @@
  * @ingroup themeable
  */
 #}
-<div class="login dropdown">
-    <a class="nav-link truncate" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      {{ user.getDisplayName }}
-    </a>
-    <div class="dropdown-menu loggedin" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="/dashboard">Dashboard</a>
-        <a class="dropdown-item" href="https://login.usfca.edu/ui/main#launch:pad" target="_blank">MyApps</a>
-        <!--<a class="dropdown-item" href="https://usf.service-now.com/usf?id=my_apps">New MyApps</a>-->
-        <a class="dropdown-item" href="/caslogout">Logout</a>
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes }}>{{ label }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+  {% block content %}
+    <div{{ content_attributes.addClass('content view-content-hero-image container-fluid') }}>
+      {{ content }}
     </div>
+  {% endblock %}
 </div>
