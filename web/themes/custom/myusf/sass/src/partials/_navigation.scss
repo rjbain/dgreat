@@ -1251,8 +1251,31 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	@include media-breakpoint-only(tablet) {   
 		width: 29.4%;
 	}
+	@include media-breakpoint-down(landscape_phone) {
+		margin-top: 30px;
+	}
+	.custom-block {		 
+   		@include media-breakpoint-only(landscape_phone) {
+        	width:50%;
+    	}
+
+    	.callout {
+		    margin-bottom: 0px;
+		    margin-top: 0;
+		}
+	}
 }
 
+.page-node-140134 #sidebar_second {
+	@include media-breakpoint-only(tablet) { 
+	    width: 32%;
+	    padding-left: 10px;
+	    padding-right: 0;
+	}
+	@include media-breakpoint-down(tablet) { 
+		margin-top: 30px;
+	}
+}
 
 /* QUICK LINKS right column 
 =================================================*/
@@ -1262,7 +1285,10 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	padding: 15px!important;
 
 
-	@include media-breakpoint-down(landscape_phone) {  
+	@include media-breakpoint-only(landscape_phone) {  
+		width:50%;
+	}
+	@include media-breakpoint-down(phone) {  
 		width:100%;
 	}	
 
