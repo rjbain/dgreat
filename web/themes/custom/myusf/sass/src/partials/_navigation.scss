@@ -1414,14 +1414,16 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	bottom: -140px;
 	right: 0;	
 	left: 0;
+
+	@include media-breakpoint-only(tablet) {  	
+			bottom: -170px;
+		}	
 	
 	@include media-breakpoint-down(landscape_phone) {		
 		padding: 10px 0 0;
-		bottom: -230px;
-	}
-	@include media-breakpoint-down(phone) {		
 		bottom: -260px;
 	}
+	
 
 	.block {
     	border: 0;
