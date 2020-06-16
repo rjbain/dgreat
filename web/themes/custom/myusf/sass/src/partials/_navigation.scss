@@ -1276,6 +1276,11 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		margin-top: 30px;
 	}
 }
+.path-dashboard #sidebar_second {
+	@include media-breakpoint-only(tablet) { 
+		width:50%;
+	}
+}
 
 /* QUICK LINKS right column 
 =================================================*/
@@ -1339,22 +1344,16 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 
 /* RECENT ANNOUNCEMENTS right column 
 =================================================*/
-
-
 .block-views-blockannouncements-most-recent-list-block-1 {
 	border: 5px solid $gray!important;
 	padding: 15px!important;
 
-
-	@include media-breakpoint-down(landscape_phone) {  
+	@include media-breakpoint-only(landscape_phone) {  
+		width:50%;
+	}
+	@include media-breakpoint-down(phone) {  
 		width:100%;
 	}	
-	@include media-breakpoint-only(tablet) {        
-        position: relative;
-        width: 250px;
-        /*left: 100%;  was 30% */
-        float: none;
-    }
 
 	h2 {
 		font-size: 1.1rem;
@@ -1362,8 +1361,6 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		color: $text_gray !important;
 		text-transform: uppercase!important;
 		border: 0;
-		/*padding-top: 5px;
-		padding-bottom: 0;*/
 		padding: 20px 15px 0 15px;
 	}
 	.item-list {
