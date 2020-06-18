@@ -152,6 +152,15 @@
         <div{{ sidebar_second_attributes }}>
           <aside class="section" aria-label="second sidebar">
             {{ page.sidebar_second }}
+                {% if 'dashboard' in url('<current>')|render|render %}
+                  {% if ('student' not in user.getroles) and ('faculty' not in user.getroles) and ('all_access' not in user.getroles) and ('online_student' not in user.getroles) and ('admitted_student' not in user.getroles) and ('finance' not in user.getroles) and ('employee' not in user.getroles) and ('prehire_faculty' not in user.getroles) and ('prehire_staff' not in user.getroles)  and ('bi_group' not in user.getroles)  and ('vcl-staff' not in user.getroles)  and ('online_intaccept' not in user.getroles) %}
+                    {{ drupal_entity('block', "cediplomalinkblock") }}
+                  {% endif %}
+                  {% if ('student' in user.getroles)  %}
+                    {{ drupal_entity('block', "cediplomalinkblock") }}
+                  {% endif %}
+                {% endif %}
+
           </aside>
         </div>
       {% endif %}
