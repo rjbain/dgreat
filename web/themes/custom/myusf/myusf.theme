@@ -1,4 +1,7 @@
 <?php
+
+use \Drupal\block_content\BlockContentInterface;
+
 /**
  * @file
  */
@@ -49,6 +52,23 @@ function myusf_preprocess_block(&$vars) {
     $renderer = \Drupal::service('renderer');
     $renderer->addCacheableDependency($vars, $vars['content']['#block_content']);
   }
+
+    // Get email address fields in contact boxes and add markup to them so they will wrap lines when they're too long.
+    $content = $vars['elements']['content'];
+    if (isset($content['#block_content']) && $content['#block_content'] instanceof BlockContentInterface) {
+        $blockType = $content['#block_content']->bundle();
+
+        if ($blockType === 'contact') {
+            $addys = $content['#block_content']->get('field_email_address');
+            if (!empty($addys[0]->value)) {
+                $vars['altered_email_address1'] = html_entity_decode(str_replace("@", "<wbr>@", $addys[0]->value));
+            }
+            if (!empty($addys[1]->value)) {
+                $vars['altered_email_address2'] = html_entity_decode(str_replace("@", "<wbr>@", $addys[1]->value));
+            }
+        }
+
+    }
 }
 
 
@@ -127,4 +147,3 @@ function myusf_preprocess_node(&$variables)
     }
     $variables['paragraph_video_exists'] = $paragraph_video_exists;
 }
-
