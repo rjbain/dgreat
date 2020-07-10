@@ -186,11 +186,11 @@ class UsfbAddressCheck extends FormBase {
       ],
       '#submit' => [[$this, 'askAddressUpdate']],
     ];
-    $form['actions']['skip'] = [
+/*    $form['actions']['skip'] = [
       '#type' => 'submit',
       '#value' => t('Skip'),
       '#submit' => [[$this, 'askAddressSkip']],
-    ];
+    ];*/
     return $form;
   }
 
