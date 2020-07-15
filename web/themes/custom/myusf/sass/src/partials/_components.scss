@@ -1237,7 +1237,7 @@ button.close {
     -webkit-appearance: none;
 
 	float: right;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 900;
     line-height: .9;
     color: $yellow;
@@ -1252,7 +1252,6 @@ button.close {
     	opacity: 1;
     }
 }
-
 .fluidMedia {
     position: relative !important;
     padding-bottom: 56.25% !important; /* proportion value to aspect ratio 16:9 (9 / 16 = 0.5625 or 56.25%) */
@@ -1344,5 +1343,90 @@ button.close {
 	 }
  }
 
- 
 
+/* SITEWIDE-ALERT
+================================================ */
+ 
+ .sitewide-alert {
+    background-color: #F8F7F0;
+    padding: 1rem 1.8rem 0px 2rem;
+    margin: 0px;
+
+    button.close {
+	    position: absolute;
+	    top: 0;
+	    right: 0px;
+	    padding: 5px 25px 33px 12px;
+	}
+}
+
+.sitewide-alert__message, .sitewide-alert .field--name-message {
+    display: block;
+}
+
+.alert-primary {
+    color: #616161;
+}
+
+.alert {
+    position: relative;
+    border: none;
+    border-radius: 0px;
+    padding-bottom: 15px;
+}
+span.alert-text {
+    width: 75%!important;
+    display: inline-block;
+}
+span.alert-button {
+    margin-right: 30px;
+}
+
+.alert-success,
+.alert-success p {
+    color: $white;
+}
+.alert.alert-dismissible.fade.show.alert-success {
+    background-color: rgba(0,0,0,1);
+}
+.alert-dismissible .close {
+	padding: .75rem 2rem;
+	color: $yellow;
+}
+.alert-wrapper button.close {
+	height: auto;
+}
+
+.alert.alert-dismissible.alert-success a {
+    color: $yellow;
+
+    &:hover,
+    &:focus {
+    	color: $white!important;
+    	text-decoration: underline;
+    	background: transparent;
+    }
+}
+
+.alert.alert-dismissible.alert-success a.button.yellow {
+    width: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background: #fdbb30;
+    color: black!important;
+
+    &:hover,
+    &:focus {
+    	box-shadow: inset 0 0 0 4px #fdbb30;
+    	font-weight: 700;
+    	background: white!important;
+    	text-decoration: underline;
+    }
+
+}
+
+.alert-wrapper pre {
+    color: white;
+}

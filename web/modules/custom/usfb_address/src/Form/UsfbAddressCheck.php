@@ -159,7 +159,7 @@ class UsfbAddressCheck extends FormBase {
     }
 
     $form['help'] = [
-      '#markup' => t("Is this your local address? If so, please click <strong>Confirm</strong>. If not, or if no address is displayed below, click <strong>Update</strong>. Or click <strong>Skip</strong> and we'll prompt you again the next time you log in to myUSF.")
+      '#markup' => t("Is this the physical address where you will be located while engaged in your program this semester? If so, please click <strong>Confirm</strong>. If not, or if no address is displayed below, click <strong>Update</strong>.")
     ];
 
     $form['address'] = ['#markup' => $this->util->formatAddress($address)];
@@ -186,11 +186,11 @@ class UsfbAddressCheck extends FormBase {
       ],
       '#submit' => [[$this, 'askAddressUpdate']],
     ];
-    $form['actions']['skip'] = [
+/*    $form['actions']['skip'] = [
       '#type' => 'submit',
       '#value' => t('Skip'),
       '#submit' => [[$this, 'askAddressSkip']],
-    ];
+    ];*/
     return $form;
   }
 
