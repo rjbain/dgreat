@@ -74,8 +74,8 @@
 %}
 <article{#{ attributes.addClass(classes) }#}>
   <header>
-    {{ title_prefix }}
-    {% if not page %}
+  {{ title_prefix }}
+   {% if not page %}
       <h2{{ title_attributes.addClass('node__title') }}>
         <a href="{{ url }}" rel="bookmark">{{ label }}</a>
       </h2>
@@ -94,6 +94,9 @@
     {% endif %}
   </header>
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
+  {% if 'subbanner' in hero_image|render|render %}
+     <h1 class="display-title">{{ node.field_display_title.value  }}</h1>
+  {% endif %}
     {{ content }}
   </div>
 </article>

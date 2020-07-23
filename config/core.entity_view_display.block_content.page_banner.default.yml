@@ -5,16 +5,25 @@ dependencies:
   config:
     - block_content.type.page_banner
     - field.field.block_content.page_banner.body
+    - field.field.block_content.page_banner.field_banner_type
     - field.field.block_content.page_banner.field_hero_image_full
     - field.field.block_content.page_banner.field_hero_image_mobile
     - field.field.block_content.page_banner.field_page_banner_title
   module:
     - image
+    - options
 id: block_content.page_banner.default
 targetEntityType: block_content
 bundle: page_banner
 mode: default
 content:
+  field_banner_type:
+    type: list_key
+    weight: 3
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_hero_image_full:
     weight: 1
     label: above

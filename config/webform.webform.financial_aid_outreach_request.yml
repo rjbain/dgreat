@@ -12,7 +12,7 @@ id: financial_aid_outreach_request
 title: 'Financial Aid Outreach Request'
 description: 'Use this form to request a USF financial aid presentation or event.&nbsp;'
 category: 'Financial Aid'
-elements: "organization_name:\n  '#type': textfield\n  '#title': 'Organization Name'\n  '#required': true\ncontactinfo:\n  '#type': webform_contact\n  '#title': 'Contact Info'\n  '#required': true\n  '#name__title': 'Name '\n  '#name__required': true\n  '#company__title': 'Your Title'\n  '#company__required': true\n  '#email__access': false\n  '#email__title': Organization\n  '#phone__title': 'Phone (415) 222-2222'\n  '#phone__required': true\n  '#address__required': true\n  '#city__placeholder': 'California (Bay Area Only)'\n  '#city__required': true\n  '#state_province__access': false\n  '#state_province__placeholder': 'California (Bay Area Only)'\n  '#postal_code__access': false\n  '#country__access': false\nevent_location:\n  '#type': textfield\n  '#title': 'Event Location'\nplease_provide_your_email:\n  '#type': email\n  '#title': 'Please Provide Your Email'\n  '#required': true\nevent_title:\n  '#type': textfield\n  '#title': 'Event Title'\n  '#required': true\nabout_the_event:\n  '#type': textarea\n  '#title': 'Tell us More About the Event'\n  '#required': true\naudience_information:\n  '#type': checkboxes\n  '#title': 'Audience Information'\n  '#options':\n    'High School Night': 'High School Night'\n    'USF On Campus Event': 'USF On Campus Event'\n    'USF Admissions Event': 'USF Admissions Event'\n    'College Prep': 'College Prep'\n    Webinar: Webinar\n  '#options_display': two_columns\n  '#required': true\nnumber_of_expected_attendees_:\n  '#type': textfield\n  '#title': 'Number of Expected Attendees '\n  '#required': true\ndateofevent:\n  '#type': date\n  '#title': 'What is the Date of the Event'\n  '#date_date_format': 'l, F j, Y'\n  '#required': true\nwhat_is_the_start_time_of_the_event_:\n  '#type': webform_time\n  '#title': 'What is the Start Time of the Event?'\n  '#timepicker': true\n  '#time_format': 'g:i A'\n  '#step': '1800'\n  '#required': true\nwhat_is_the_end_time_of_the_event_:\n  '#type': webform_time\n  '#title': 'What is the End Time of the Event?'\n  '#timepicker': true\n  '#time_format': 'g:i A'\n  '#step': '1800'\n  '#required': true\nwhat_is_the_begin_and_end_time_for_the_financial_aid_portion_of_:\n  '#type': textfield\n  '#title': 'What is the begin and end time for the financial aid portion of the event?'\n  '#required': true\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#states':\n    disabled:\n      ':input[name=\"contactinfo[state_province]\"]':\n        '!value': California\n  '#reset_hide': true"
+elements: "organization_name:\n  '#type': textfield\n  '#title': 'Organization Name'\n  '#required': true\ncontactinfo:\n  '#type': webform_contact\n  '#title': 'Contact Info'\n  '#required': true\n  '#name__title': 'Your Name'\n  '#name__required': true\n  '#company__title': Title\n  '#company__required': true\n  '#email__access': false\n  '#email__placeholder': 'here is a placeholder'\n  '#email__help': 'here is a help text'\n  '#email__description': 'here is description'\n  '#phone__title': 'Phone Number'\n  '#phone__required': true\n  '#address__access': false\n  '#address_2__access': false\n  '#city__access': false\n  '#city__placeholder': 'California (Bay Area Only)'\n  '#state_province__access': false\n  '#state_province__placeholder': 'California (Bay Area Only)'\n  '#postal_code__access': false\n  '#country__access': false\nemail:\n  '#type': email\n  '#title': Email\n  '#required': true\nevent_title:\n  '#type': textfield\n  '#title': 'Event Title'\n  '#required': true\nevent_date:\n  '#type': date\n  '#title': 'Event Date'\n  '#required': true\n  '#datepicker': true\nevent_start_time:\n  '#type': webform_time\n  '#title': 'Financial Aid Event Start Time'\n  '#description': 'If this is part of a larger event, please pick the start time of the&nbsp;<strong>financial aid portion only</strong>.'\n  '#required': true\nfinancial_aid_event_end_time:\n  '#type': webform_time\n  '#title': 'Financial Aid Event End Time'\n  '#description': 'If this is part of a larger event, please pick the end time of the <strong>financial aid portion only.</strong>'\nevent_location:\n  '#type': textfield\n  '#title': 'Event Location'\n  '#description': 'At the moment, we are offering virtual webinars via Zoom. We&#39;ll reach out to you to provide a virtual meeting room link, or we can use your link, if preferred.'\n  '#disabled': true\nevent_details:\n  '#type': textarea\n  '#title': 'Event Details'\n  '#description': 'Please tell us more about the event (e.g. if it is part of a larger event), any specific topics you&#39;d like us to cover, or anything else we should know about your audience.'\n  '#required': true\naudience:\n  '#type': select\n  '#title': Audience\n  '#options':\n    'High School Students': 'High School Students'\n    '[USF only] On-campus event': '[USF only] On-campus event'\n    '[USF only] Admission event': '[USF only] Admission event'\n  '#required': true\nestimated_number_of_attendees:\n  '#type': textfield\n  '#title': 'Estimated number of attendees'\n  '#required': true\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#states':\n    disabled:\n      ':input[name=\"contactinfo[state_province]\"]':\n        '!value': California\n  '#reset_hide': true"
 css: ''
 javascript: ''
 settings:
@@ -89,7 +89,7 @@ settings:
   draft_loaded_message: ''
   confirmation_type: inline
   confirmation_title: 'Event Request Received'
-  confirmation_message: 'Thank you for submitting an event request to the Office of Financial Aid and Student Employment. Please allow time for our team to review your request and respond.&nbsp;'
+  confirmation_message: 'Thank you for submitting an event request to the Office of Financial Aid and Student Employment. We will review your request and respond as soon as possible. If you have any questions, feel free to reach out to financialdaid@usfca.edu.'
   confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
@@ -204,7 +204,7 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: '[webform_submission:values:please_provide_your_email:raw]'
+      to_mail: '[webform_submission:values:email:raw]'
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
@@ -214,10 +214,8 @@ handlers:
       from_options: {  }
       from_name: 'USF Financial Aid Event Request'
       subject: 'USF Financial Aid Event Request'
-      body: "Thank you for contacting the Office of Financial Aid and Student Employment. This is your automatic email acknowledgement of your request.<br />\n<br />\nThis will be followed by an email within 5 to 7 business days regarding the status of your request.<br />\n<br />\n[webform_submission:values]"
-      excluded_elements:
-        please_provide_your_email: please_provide_your_email
-        about_the_event: about_the_event
+      body: "Thank you for contacting the Office of Financial Aid and Student Employment. This is your automatic email acknowledgement of your request.<br />\r\n<br />\r\nThis will be followed by an email within 5 to 7 business days regarding the status of your request.<br />\r\n<br />\r\n[webform_submission:values]"
+      excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: true
