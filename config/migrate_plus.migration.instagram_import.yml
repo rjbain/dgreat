@@ -12,26 +12,26 @@ label: 'Instagram Import to MyUSF'
 source:
   plugin: url
   data_fetcher_plugin: http
-  urls: 'https://api.instagram.com/v1/users/249226070/media/recent/?access_token=249226070.7aa879c.af049b9b74244291b9c4b3a64750aff2'
+  urls: 'https://graph.instagram.com/17841400302103894/media?fields=caption,username,media_url,timestamp,permalink,media_type&access_token=IGQVJXOTFPSTNmMU0zb1FPMjR3c1JtNDlWbjc1Vy1acGN4ZAGxwS0NrTTdoOFg4ako4TlA3aXBHeExPd1RPZAEU3bl9tMTBEb2tfd3o2a0dEMEF5UEpPVXRnNDY2LUFDTDJMRWZAfLTV3'
   data_parser_plugin: json
   item_selector: /data
   fields:
     -
       name: title
       label: Title
-      selector: /caption/id
+      selector: /id
     -
       name: description
       label: Description
-      selector: /caption/text
+      selector: /caption
     -
       name: image_url
       label: 'Image URL'
-      selector: /images/standard_resolution/url
+      selector: /media_url
     -
       name: instagram_link
       label: 'Instagram Link'
-      selector: /link
+      selector: /permalink
     -
       name: external_id
       label: 'External ID'
@@ -39,11 +39,15 @@ source:
     -
       name: guid
       label: GUID
-      selector: /caption/created_time
+      selector: /timestamp
     -
-      name: content_type
-      label: Type
-      selector: /user/full_name
+      name: username
+      label: Username
+      selector: /username
+    -
+      name: media_type
+      label: 'Media Type'
+      selector: /media_type
   ids:
     guid:
       type: string
@@ -54,7 +58,8 @@ process:
   field_news_link: instagram_link
   field_external_id: external_id
   field_guid: guid
-  field_type: content_type
+  field_account_name: username
+  field_media_type: media_type
   status:
     plugin: default_value
     default_value: 1
