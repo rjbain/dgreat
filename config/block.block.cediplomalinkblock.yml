@@ -6,12 +6,11 @@ dependencies:
     - block_visibility_groups
     - cediploma
     - system
-    - user
   theme:
     - myusf
 id: cediplomalinkblock
 theme: myusf
-region: sidebar_second
+region: top_header
 weight: 99
 provider: null
 plugin: block_cediplomalinkblock
@@ -31,10 +30,3 @@ visibility:
     pages: "/dashboard\r\n/dashboard/*"
     negate: false
     context_mapping: {  }
-  user_role:
-    id: user_role
-    roles:
-      student: student
-    negate: false
-    context_mapping:
-      user: '@user.current_user_context:current_user'

@@ -1,8 +1,8 @@
 {% set email_one %}{{ content.field_email_address[0]|render }}{% endset %}
 {% set email_two %}{{ content.field_email_address[1]|render }}{% endset %}
 
-<p class="contact email"><a href="mailto:{{ email_one|striptags|trim }}">{{ email_one|striptags|trim }}</a></p>
+<p class="contact email"><a href="mailto:{{ email_one|striptags|trim }}">{% autoescape false %}{{ altered_email_address1|raw|trim }}{% endautoescape %}</a></p>
 
 {% if email_two %}
-    <p class="contact email"><a href="mailto:{{ email_two|striptags|trim }}">{{ email_two|striptags|trim }}</a></p>
+    <p class="contact email"><a href="mailto:{{ email_two|striptags|trim }}">{% autoescape false %}{{ altered_email_address2|raw|trim }}{% endautoescape %}</a></p>
 {% endif %}

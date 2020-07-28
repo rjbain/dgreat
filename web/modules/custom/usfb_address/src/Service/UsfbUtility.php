@@ -128,7 +128,7 @@ class UsfbUtility {
       Url::fromUri("internal:/user/{$uid}/edit/address",
         [
           'attributes' => [
-            'class' => ['btn', 'btn-default'],
+            //'class' => ['btn', 'btn-default'],
             'style' => 'margin-right: 1em;',
           ],
         ]
@@ -141,7 +141,7 @@ class UsfbUtility {
         [
           'attributes' => [
             'onclick' => 'jQuery("button.close").click(); return false;',
-            'class' => ['btn', 'btn-primary'],
+            'class' => ['button', 'yellow'],
           ],
         ]
       )
