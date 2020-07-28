@@ -957,12 +957,18 @@ nav.tabs {
 
 /* SUB NAVIGATION left column 
 =================================================*/
-#sidebar_first.sidebar .block {
-    padding: 0!important;
+#sidebar_first.sidebar {
+	.block {
+	    padding: 0!important;
 
-    @include media-breakpoint-up(tablet) { 
-        margin-bottom: 40px;
-    }
+	    @include media-breakpoint-up(tablet) { 
+	        margin-bottom: 40px;
+	    }
+	}
+
+	@include media-breakpoint-only(tablet) { 
+	    margin-bottom: 30px;
+	}
 }
 #sidebar_first nav {
 	margin-left: 0px;
@@ -975,12 +981,9 @@ nav.tabs {
 		width: 190px;
 	}
 
-	@include media-breakpoint-down(landscape_phone) { 
+	@include media-breakpoint-down(tablet) { 
 		width: 100%;
 	}
-}
-
-#sidebar_first nav {
 
 	ul.nav {
 		padding-top:0;
@@ -996,12 +999,10 @@ nav.tabs {
 				width: 190px;
 			}
 
-			@include media-breakpoint-down(landscape_phone) { 
+			@include media-breakpoint-down(tablet) { 
 				width: 100%;
 			}
-			/*&:first-of-type {
-				margin-top: -8px;
-			}*/
+
 			&:last-of-type {
 				border: 0;
 			}
@@ -1042,8 +1043,7 @@ nav.tabs {
 			ul.menu  { 
 				padding-top: 0;
 				padding-left: 10px;
-
-				
+			
 				li {
 					border-bottom: 0;
 					padding-left: 0;
@@ -1052,9 +1052,8 @@ nav.tabs {
 					@include media-breakpoint-down(desktop) { 
 						width: 170px;
 					}
-					@include media-breakpoint-down(landscape_phone) { 
+					@include media-breakpoint-down(tablet) { 
 						width: 100%;
-						/*padding-right: 10px;*/
 					}
 
 					&:first-of-type {
@@ -1160,33 +1159,42 @@ nav.tabs {
 	}
 }
 
+.sidebar nav ul.nav {
+	@include media-breakpoint-down(tablet) {  
+    	margin: 0;
+    }
+}
+
 .navbar-toggler-icon:focus, button.navbar-toggler.navbar-toggler-right:focus {
     outline-color: $white;
 }
 
 button.navbar-toggler.navbar-toggler-right {
+    border: 1px solid $light_gray;
+    border-radius: 0;
+    width: 100%;
+    padding-right: 10px;
 
+    @include media-breakpoint-only(tablet) {  
+		width: 50%;
+		left: 25%;
+		position: relative;
+	}
 
-	    border: 1px solid $light_gray;
-	    border-radius: 0;
-	    width: 100%;
-	    padding-right: 10px;
-
-	    &::after {
-			position: relative;
-		    display: inline-block;
-		    content: "";
-		    width: 10px;
-		    height: 8px;
-		    top: 2px;
-	    	right: -20px;
-		    margin-left: 5px;
-		    z-index: 0;
-		    background: url(/themes/custom/myusf/images/site/icons.png) -260px -148px no-repeat;
-		    background: url(/themes/custom/myusf/images/site/icons.svg) -260px -148px no-repeat;
-		    opacity: .7;
-		}
-	
+    &::after {
+		position: relative;
+	    display: inline-block;
+	    content: "";
+	    width: 10px;
+	    height: 8px;
+	    top: 2px;
+    	right: -20px;
+	    margin-left: 5px;
+	    z-index: 0;
+	    background: url(/themes/custom/myusf/images/site/icons.png) -260px -148px no-repeat;
+	    background: url(/themes/custom/myusf/images/site/icons.svg) -260px -148px no-repeat;
+	    opacity: .7;
+	}	
 }
 button.navbar-toggler.navbar-toggler-right.collapsed{
 	&::after {
@@ -1228,29 +1236,70 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		}
 	}
 
-	@include media-breakpoint-down(landscape_phone) { 
-    	/*margin-top: 30px;*/
+	@include media-breakpoint-only(tablet) {  
+		width: 50%;
+		left: 25%;
+		position: relative;
+		border: 1px solid $light_gray;
+		border-top: 0;	
+	}
+}
+
+/* SIDEBAR SECOND right column 
+=================================================*/
+#sidebar_second {
+	@include media-breakpoint-only(tablet) {   
+		width: 29.4%;
+	}
+	@include media-breakpoint-down(landscape_phone) {
+		margin-top: 30px;
+	}
+	
+	.block {
+		margin-bottom: 40px;
+	}
+	.custom-block2 {		 
+   		@include media-breakpoint-only(landscape_phone) {
+        	width:50%;
+    	}
+    	.callout {
+		    margin-bottom: 0px;
+		    margin-top: 0;
+		    width: 100%;
+		}
+	}
+}
+
+.page-node-140134 #sidebar_second {
+	@include media-breakpoint-only(tablet) { 
+	    width: 32%;
+	    padding-left: 10px;
+	    padding-right: 0;
+	}
+	@include media-breakpoint-down(tablet) { 
+		margin-top: 30px;
+	}
+}
+.path-dashboard #sidebar_second {
+	@include media-breakpoint-only(tablet) { 
+		width:50%;
 	}
 }
 
 /* QUICK LINKS right column 
 =================================================*/
 
-
 .quick-links-container{
 	border: 5px solid $green!important;
 	padding: 15px!important;
 
 
-	@include media-breakpoint-down(landscape_phone) {  
+	@include media-breakpoint-only(landscape_phone) {  
+		width:50%;
+	}
+	@include media-breakpoint-down(phone) {  
 		width:100%;
 	}	
-	@include media-breakpoint-only(tablet) {        
-        position: relative;
-        width: 250px;
-        left: 100%; /* was 30% */
-        float: none;
-    }
 
 	h2 {
 		font-size: 1.1rem;
@@ -1276,10 +1325,6 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 			color: $green !important;
 			line-height: 1.1rem;
     		margin-bottom: 8px;
-
-    		/*&:last-of-type {
-    			padding-bottom: 0;
-    		}*/
 		
 			a {
 				text-decoration:none;
@@ -1303,22 +1348,17 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 
 /* RECENT ANNOUNCEMENTS right column 
 =================================================*/
-
-
 .block-views-blockannouncements-most-recent-list-block-1 {
 	border: 5px solid $gray!important;
 	padding: 15px!important;
+	margin-bottom: 0!important;
 
-
-	@include media-breakpoint-down(landscape_phone) {  
+	@include media-breakpoint-only(landscape_phone) {  
+		width:50%;
+	}
+	@include media-breakpoint-down(phone) {  
 		width:100%;
 	}	
-	@include media-breakpoint-only(tablet) {        
-        position: relative;
-        width: 250px;
-        /*left: 100%;  was 30% */
-        float: none;
-    }
 
 	h2 {
 		font-size: 1.1rem;
@@ -1326,8 +1366,6 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		color: $text_gray !important;
 		text-transform: uppercase!important;
 		border: 0;
-		/*padding-top: 5px;
-		padding-bottom: 0;*/
 		padding: 20px 15px 0 15px;
 	}
 	.item-list {
@@ -1381,14 +1419,16 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	bottom: -140px;
 	right: 0;	
 	left: 0;
+
+	@include media-breakpoint-only(tablet) {  	
+			bottom: -170px;
+		}	
 	
 	@include media-breakpoint-down(landscape_phone) {		
 		padding: 10px 0 0;
-		bottom: -230px;
-	}
-	@include media-breakpoint-down(phone) {		
 		bottom: -260px;
 	}
+	
 
 	.block {
     	border: 0;

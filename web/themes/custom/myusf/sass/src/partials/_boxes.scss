@@ -1,6 +1,5 @@
 /* SIDEBAR BOX contact box 
 ========================================== */
-
 .block-myusf-contactbox {
 	border-style: none!important;
 	background-color: $light_beige;
@@ -8,14 +7,15 @@
 
     @include media-breakpoint-only(tablet) {        
         position: relative;
-        width: 250px;
-        left: 100%; /* was 30% */
         padding: 5px 10px!important;
 
         h2, p {
             margin-left: 8px;
             margin-right: 8px;
         }
+    }
+    @include media-breakpoint-only(landscape_phone) {
+        width:50%;
     }
 
     h2 {
@@ -979,7 +979,15 @@ h2.carousel-overlay:before {
     }
 }
 .hero-image-block {
-    margin: -25px 0 -85px 0 !important; /*-85 was -50*/
+    /*margin: -25px 0 -85px 0 !important; -85 was -50*/
+    margin-top:-25px;
+
+    @include media-breakpoint-up(landscape_phone) {
+        margin-bottom: -65px;    
+    }
+    @include media-breakpoint-down(phone) {
+        margin-bottom: -45px; 
+    }
 
     a {
         text-decoration: none;
