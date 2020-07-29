@@ -48,7 +48,7 @@ class CeDiplomaLinkBlock extends BlockBase {
 		//$key should have been previously generated in a cryptographically safe way, like openssl_random_pseudo_bytes
 		$cipher = "AES-128-CBC";
 
-		if (in_array($cipher, openssl_get_cipher_methods())) {
+		//if (in_array($cipher, openssl_get_cipher_methods())) {
     		$ivlen = openssl_cipher_iv_length($cipher);
     		$iv = openssl_random_pseudo_bytes($ivlen);
     		$encryptedMessage = openssl_encrypt($plainTextStudentId, $cipher, $privateKey16String, OPENSSL_RAW_DATA, $iv);
@@ -56,7 +56,7 @@ class CeDiplomaLinkBlock extends BlockBase {
 			$ivHexString = bin2hex($iv);
 			$encryptedHexString = $ivHexString . $cipherHexString;
 
-		}
+		//}
 
 		$HEXKEY = $CLIENTID . $encryptedHexString . "|P";
 
