@@ -1,9 +1,9 @@
-uuid: 63e5d0d9-07c2-4972-bf3c-d269a953f5c0
+uuid: 6169cbaf-6838-4f50-8f89-5a51138a2ce6
 langcode: en
 status: true
 dependencies:
   content:
-    - 'block_content:custom_block:acf77d45-3a5f-4ec2-ac1f-0db091f110a3'
+    - 'block_content:custom_block:e3e13c4d-314a-4657-8595-6052dd6789a3'
   module:
     - block_content
     - block_visibility_groups
@@ -11,15 +11,15 @@ dependencies:
     - user
   theme:
     - myusf
-id: historicalpaystubs
+id: dashboardusfmobileappcalloutblock
 theme: myusf
 region: sidebar_second
-weight: 469
+weight: 476
 provider: null
-plugin: 'block_content:acf77d45-3a5f-4ec2-ac1f-0db091f110a3'
+plugin: 'block_content:e3e13c4d-314a-4657-8595-6052dd6789a3'
 settings:
-  id: 'block_content:acf77d45-3a5f-4ec2-ac1f-0db091f110a3'
-  label: 'Historical Pay Stubs'
+  id: 'block_content:e3e13c4d-314a-4657-8595-6052dd6789a3'
+  label: 'Dashboard: USF Mobile App Callout Block'
   provider: block_content
   label_display: '0'
   status: true
@@ -33,15 +33,19 @@ visibility:
     context_mapping: {  }
   request_path:
     id: request_path
-    pages: "/payroll\r\n/payroll/*"
+    pages: /dashboard
     negate: false
     context_mapping: {  }
   user_role:
     id: user_role
     roles:
-      faculty: faculty
       student: student
+      online_student: online_student
+      admitted_student: admitted_student
       employee: employee
+      prehire_faculty: prehire_faculty
+      prehire_staff: prehire_staff
+      online_intaccept: online_intaccept
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
