@@ -12,11 +12,11 @@
 
         {{ content.bp_image_field }}
         <span class="video-component_video_icon"><span class="first_word">Watch</span> the Video </span>
-        {% if content.field_heading is not empty %}
-            <h2 class="video-component-heading">{{ content.field_heading }}</h2>
+        {% if paragraph.field_heading.value %}
+            <h2 class="video-component-heading">{{ paragraph.field_heading.value }}</h2>
         {% endif %}
-        {% if content.field_heading is not empty %}
-            <div class="video-component-body">{{ content.field_body_text }}</div>
+        {% if paragraph.field_body_text.value %}
+            <div class="video-component-body">{{ paragraph.field_body_text.value }}</div>
         {% endif %}
 
     </a>
