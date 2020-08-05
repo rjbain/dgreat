@@ -15,9 +15,13 @@
         {% if paragraph.field_heading.value %}
             <h2 class="video-component-heading">{{ paragraph.field_heading.value }}</h2>
         {% endif %}
+        {% autoescape false %}
         {% if paragraph.field_body_text.value %}
-            <div class="video-component-body">{{ paragraph.field_body_text.value }}</div>
+            <div class="video-component-body">
+                {% autoescape false %}{{ paragraph.field_body_text.value }}{% endautoescape %}
+            </div>
         {% endif %}
+        {% endautoescape %}
 
     </a>
 </div>
