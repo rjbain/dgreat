@@ -11,17 +11,15 @@
        data-theVideo="{{ new_vid_url }}">
 
         {{ content.bp_image_field }}
-        <span class="video-component_video_icon"><span class="first_word">Watch</span> the Video </span>
+        <span class="video-component_video_icon"><span class="first_word">Watch</span> <span class="second_word">the Video</span> </span>
         {% if paragraph.field_heading.value %}
             <h2 class="video-component-heading">{{ paragraph.field_heading.value }}</h2>
         {% endif %}
-        {% autoescape false %}
         {% if paragraph.field_body_text.value %}
             <div class="video-component-body">
                 {% autoescape false %}{{ paragraph.field_body_text.value }}{% endautoescape %}
             </div>
         {% endif %}
-        {% endautoescape %}
 
     </a>
 </div>
