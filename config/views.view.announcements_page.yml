@@ -6,9 +6,11 @@ dependencies:
     - field.storage.node.field_announcement_teaser
     - field.storage.node.field_published_date
     - node.type.announcement
+    - taxonomy.vocabulary.tags
   module:
     - datetime
     - node
+    - taxonomy
     - user
 id: announcements_page
 label: 'Announcements Page'
@@ -280,10 +282,10 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        field_announcement_audience_target_id:
-          id: field_announcement_audience_target_id
-          table: node__field_announcement_audience
-          field: field_announcement_audience_target_id
+        field_announcement_tags_target_id:
+          id: field_announcement_tags_target_id
+          table: node__field_announcement_tags
+          field: field_announcement_tags_target_id
           relationship: none
           group_type: group
           admin_label: ''
@@ -292,11 +294,11 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: field_announcement_audience_target_id_op
-            label: Audience
+            operator_id: field_announcement_tags_target_id_op
+            label: Topic
             description: ''
             use_operator: false
-            operator: field_announcement_audience_target_id_op
+            operator: field_announcement_tags_target_id_op
             identifier: field_audience_target_id
             required: false
             remember: false
@@ -343,12 +345,12 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          type: select-list
-          sort: {  }
-          value_selection_type: '1'
-          target_bundles: {  }
-          handler_view: 'service_reference_filters:entity_reference_1'
-          plugin_id: entity_reference
+          type: select
+          limit: true
+          vid: tags
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
       sorts:
         created:
           id: created
@@ -401,6 +403,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -413,7 +416,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: announcements-page
+      path: announcements
       display_description: ''
       exposed_block: false
     cache_metadata:
@@ -423,6 +426,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
