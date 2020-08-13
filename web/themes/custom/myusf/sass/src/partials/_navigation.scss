@@ -1473,6 +1473,18 @@ a.logo {
     width: 325px;
     /*margin: 10px auto;*/
 
+    @include media-breakpoint-up(large_desktop) {
+    	width: 330px;
+    	height: 38px;
+    	margin-top: 0px;/*was -38px*/ 
+    	float: right;
+    	right: 23px;
+    }
+
+    @include media-breakpoint-only(desktop) {
+    	width: 280px;
+    }
+
     @include media-breakpoint-down(tablet) {
     	position: relative;
     	margin: 5px auto;
@@ -1494,20 +1506,18 @@ a.logo {
     	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat;    	    
     	background-size: 120%;	
 
+    	@include media-breakpoint-only(desktop) {
+	    	width: 280px;
+	    	height: 30px;
+	    }
+
     	@include media-breakpoint-up(large_desktop) {
     		position: absolute;
     		margin-left: -15px;   		
     		right: -2.5%;
 		}
     }
-
-    @include media-breakpoint-up(desktop) {
-    	width: 330px;
-    	height: 38px;
-    	margin-top: 0px;/*was -38px*/ 
-    	float: right;
-    	right: 23px;
-    }
+   
 }
 
 
