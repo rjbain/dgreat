@@ -1,0 +1,46 @@
+uuid: ef916f93-0b18-4e12-8c9f-54a515a0ac24
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.paragraph_view_block
+    - field.field.block_content.paragraph_view_block.body
+    - field.field.block_content.paragraph_view_block.field_contact_title
+    - field.field.block_content.paragraph_view_block.field_view_name
+  module:
+    - paragraphs
+id: block_content.paragraph_view_block.default
+targetEntityType: block_content
+bundle: paragraph_view_block
+mode: default
+content:
+  field_contact_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_view_name:
+    type: entity_reference_paragraphs
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  body: true
