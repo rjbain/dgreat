@@ -12,7 +12,7 @@ label: 'USFCA News Import'
 source:
   plugin: url
   data_fetcher_plugin: http
-  urls: 'http://www.usfca.edu/feeds/feed?source=myusf-news'
+  urls: 'http://2063news-usfca-public.pantheonsite.io/feeds/feed?source=myusf-news'
   data_parser_plugin: simple_xml
   item_selector: /news/item
   fields:
@@ -40,6 +40,10 @@ source:
       name: image
       label: 'Image URL'
       selector: image
+    -
+      name: thumbnail
+      label: 'Thumbnail URL'
+      selector: thumbnail
     -
       name: in_content_carousel
       label: 'In Content Carousel'
@@ -102,6 +106,7 @@ process:
   field_below_content_title: below_content_title
   body: description
   field_image_url: image
+  field_thumbnail_url: thumbnail
   field_in_content_carousel_concat: in_content_carousel_concat
   field_news_link: path
   field_source_url: source_url
