@@ -1465,15 +1465,6 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 }
 
 .footer-nav {
-	/*display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-ms-flex-direction: column;
-	flex-direction: column;
-	display: inherit;
-	padding-top: 25px;*/
 	padding-left: 0;
 	list-style: none;	
     margin: -5% 1% 5% -7%!important;
@@ -1490,7 +1481,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	@include media-breakpoint-up(tablet) {
 		display: flex;    	
     	columns: unset;
-    	padding-top: 0;
+    	padding-top: 7px;
     	margin: 0 auto 0 15px!important;
 	}
 
@@ -1498,11 +1489,13 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		justify-content: center;
 		margin: 0 auto!important;
 	}
+	@include media-breakpoint-up(desktop) {
+		padding-top: 0;
+	}
 
 	@include media-breakpoint-up(large_desktop) {
 		justify-content: flex-start;
 	}
-
 }
 
 a.logo {
@@ -1510,24 +1503,23 @@ a.logo {
     display: block;
     overflow: hidden;
     white-space: nowrap;
-    width: 325px;
+    /*width: 325px;*/
     /*margin: 10px auto;*/
 
+    @include media-breakpoint-down(tablet) {
+    	position: relative;
+    	margin: 5px auto;
+    	width: 325px;
+    }
+    @include media-breakpoint-up(tablet) { 
+    	width: 289px; 
+    }
     @include media-breakpoint-up(large_desktop) {
     	width: 330px;
     	height: 38px;
     	margin-top: 0px;/*was -38px*/ 
     	float: right;
     	right: 23px;
-    }
-
-    @include media-breakpoint-only(desktop) {
-    	width: 280px;
-    }
-
-    @include media-breakpoint-down(tablet) {
-    	position: relative;
-    	margin: 5px auto;
     }
 
     &:hover, 
@@ -1546,9 +1538,9 @@ a.logo {
     	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat;    	    
     	background-size: 120%;	
 
-    	@include media-breakpoint-only(desktop) {
-	    	width: 280px;
-	    	height: 30px;
+    	@include media-breakpoint-up(tablet) {
+	    	width: 289px;
+	    	height: 31px;
 	    }
 
     	@include media-breakpoint-up(large_desktop) {
