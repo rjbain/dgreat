@@ -67,6 +67,21 @@
  * @see html.html.twig
  */
 #}
+
+{%
+  set sidebarFirstClasses = [
+    'sidebar',
+    'col-lg-3',
+    'order-first',
+  ]
+%}
+{%
+  set sidebarSecondClasses = [
+    'sidebar',
+    'col-lg-3',
+    'order-last',
+  ]
+ %}
 {% block head %}
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="site navigation">
     {% if container_navbar %}
@@ -137,7 +152,9 @@
           </section>
         </main>
       {% if page.sidebar_first %}
-        <div{{ sidebar_first_attributes }}>
+        <!--<div{{ sidebar_first_attributes }}>-->
+        <div {{ attributes.addClass(sidebarFirstClasses).setAttribute('id', 'sidebar_first') }}>
+
          <aside class="section" aria-label="first sidebar">
           <button id="submenuButton" class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#CollapsingNavbar" aria-controls="CollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon">MENU</span></button>
           <div class="collapse show" id="CollapsingNavbar">
@@ -149,7 +166,8 @@
       </div>
       {% endif %}
       {% if page.sidebar_second %}
-        <div{{ sidebar_second_attributes }}>
+        <!--<div{{ sidebar_second_attributes }}>-->
+        <div {{ attributes.addClass(sidebarSecondClasses).setAttribute('id', 'sidebar_second') }}>
           <aside class="section" aria-label="second sidebar">
             {{ page.sidebar_second }}
               {% if 'dashboard' in url('<current>')|render|render %}
