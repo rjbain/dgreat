@@ -1,8 +1,21 @@
 {{ attach_library('myusf/video-overlays') }}
 {#{% set vid_url = elements['#paragraph'].field_video_url.value.0.uri %}#}
 {% set color = elements['#paragraph'].field_colors.value %}
+ 
 
-{% if content.bp_image_field.0 is defined %}
+{% if paragraph.field_heading.value and paragraph.field_body_text.value %} 
+    {% set heading = "video-component-heading" %}  
+{% else %}   
+    {% set heading = "video-component-heading-only" %}
+{% endif %}   
+
+{% if paragraph.field_heading.value and paragraph.field_body_text.value %} 
+    {% set body = "video-component-body" %} 
+{% else %}  
+    {% set body = "video-component-body-only" %}
+{% endif %}  
+
+{#{% if content.bp_image_field.0 is defined %}#}
 
 <div class="video-component-wrapper">
     <a href="#" class="video-component {{ color }}"
@@ -11,35 +24,37 @@
        data-theVideo="{{ new_vid_url }}">
 
         {{ content.bp_image_field }}
-        <span class="video-component_video_icon"><span class="first_word">Watch</span> the Video </span>
-        {#{% if content.field_heading is not empty %}#}
-            <h2 class="video-component-heading">{{ content.field_heading }}</h2>
-        {#{% endif %}#}
-        {#{% if content.field_heading is not empty %}#}
-            <div class="video-component-body">{{ content.field_body_text }}</div>
-        {#{% endif %}#}
+        <span class="video-component_video_icon"><span class="first_word">Watch</span> <span class="second_word">the Video</span> </span>
+        {% if paragraph.field_heading.value %}
+            <h2 class="{{ heading }}">{{ paragraph.field_heading.value }}</h2>
+        {% endif %}
+        {% if paragraph.field_body_text.value %}
+            <div class="{{ body }}">
+                {% autoescape false %}{{ paragraph.field_body_text.value }}{% endautoescape %}
+            </div>
+        {% endif %}
 
     </a>
 </div>
 
-{% endif %}
+{#{% endif %}#}
 
-{% if content.bp_image_field.0 is not defined %} {# if the image is empty, just display the embed #}
+{#{% if content.bp_image_field.0 is not defined %} #}{# if the image is empty, just display the embed #}
 
-<div class="video-component {{ color }}">
-    <iframe width="560" height="315"
-            src="{{ new_vid_url }}"
-            frameborder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"  allowfullscreen>
-    </iframe>
-    <span class="video-component_video_icon"><span class="first_word">Watch</span> the Video </span>
-    {% if content.field_heading is not empty %}
-        <h2 class="video-component-heading">{{ content.field_heading }}</h2>
-    {% endif %}
-    {% if content.field_heading is not empty %}
-        <div class="video-component-body">{{ content.field_body_text }}</div>
-    {% endif %}
-</div>
+{#<div class="video-component {{ color }}">#}
+    {#<iframe width="560" height="315"#}
+            {#src="{{ new_vid_url }}"#}
+            {#frameborder="0"#}
+            {#allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"  allowfullscreen>#}
+    {#</iframe>#}
+    {#<span class="video-component_video_icon"><span class="first_word">Watch</span> the Video </span>#}
+    {#{% if content.field_heading is not empty %}#}
+        {#<h2 class="video-component-heading">{{ content.field_heading }}</h2>#}
+    {#{% endif %}#}
+    {#{% if content.field_heading is not empty %}#}
+        {#<div class="video-component-body">{{ content.field_body_text }}</div>#}
+    {#{% endif %}#}
+{#</div>#}
 
-{% endif %}
+{#{% endif %}#}
 
