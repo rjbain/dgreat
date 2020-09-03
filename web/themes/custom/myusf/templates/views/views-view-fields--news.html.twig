@@ -36,13 +36,13 @@
 {% endif %}
 <a href="{{ fields.view_node.content }}">
 	<article>
-		<div class="news-list-image {{ no_image_class }}">
+		<div class="news-list-image">
 			{% if fields.field_thumbnail_url.content %}
 				<img src="{{ fields.field_thumbnail_url.content }}" align="right">
 			{% endif %}
 			
 		</div>
-		<div class="news-list-text">
+		<div class="news-list-text {{ no_image_class }}">
 			<h3 class="news-list-title">
         		{% autoescape false %}
           			{{ fields.title.content }}
