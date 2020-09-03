@@ -31,9 +31,12 @@
  * @ingroup themeable
  */
 #}
+{% if fields.field_thumbnail_url.content is empty %}
+	{% set no_image_class = ".no-news-image" %}
+{% endif %}
 <a href="{{ fields.view_node.content }}">
 	<article>
-		<div class="news-list-image">
+		<div class="news-list-image {{ no_image_class }}">
 			{% if fields.field_thumbnail_url.content %}
 				<img src="{{ fields.field_thumbnail_url.content }}" align="right">
 			{% endif %}
