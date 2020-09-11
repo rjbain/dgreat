@@ -501,7 +501,7 @@ a.card-rollover {
 	    display: inline-block;	    
 	    padding: 10px;
 	    border: 0;
-	    vertical-align: top;
+		vertical-align: top;
 	}
 
 	.page-item{
@@ -557,10 +557,15 @@ a.card-rollover {
 	}
 }
 
+.view-news ul li {
+	@include media-breakpoint-down(phone) { 
+		position:static;
+	}
+}
+
 .paragraph__column ul li.pager__item--next {
 	margin-right: 20px;
 }
-
 
 a.search_clear{	 
 		position: relative;
