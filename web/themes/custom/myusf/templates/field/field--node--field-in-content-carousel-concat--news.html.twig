@@ -46,7 +46,9 @@
  {% set shade = "carousel-indicators-shade" %} 
  {% endif %} 
 
-
+{% set imageurl = item.content["#context"].value|split('|')[0] %}
+{% set imagecaption = item.content["#context"].value|split('|')[1] %}
+{% if imageurl %}
 
 <div id="carouselControls" class="carousel slide" data-ride="carousel"  data-interval="10000">
 
@@ -73,8 +75,8 @@
 {% for item in items %}
 {% set count = count + 1 %}
 
-{% set imageurl = item.content["#context"].value|split('|')[0] %}
-{% set imagecaption = item.content["#context"].value|split('|')[1] %}
+{#% set imageurl = item.content["#context"].value|split('|')[0] %#}
+{#% set imagecaption = item.content["#context"].value|split('|')[1] %#}
 
 {% if loop.index == 1 %}
   {% set active = "active" %}
@@ -108,4 +110,5 @@
   </a>
 {% endif %}
 </div>
+{% endif %}
 {% endfor %}

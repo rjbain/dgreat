@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.news.field_source_name
     - field.field.node.news.field_source_url
     - field.field.node.news.field_sub_title
+    - field.field.node.news.field_thumbnail_url
     - field.field.node.news.field_type
     - node.type.news
   module:
@@ -180,6 +181,18 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  field_thumbnail_url:
+    weight: 119
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
   field_type:
     weight: 106
     label: above
@@ -191,4 +204,5 @@ content:
   links:
     weight: 100
     region: content
-hidden: {  }
+hidden:
+  search_api_excerpt: true

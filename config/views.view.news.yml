@@ -3,12 +3,15 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_display_title
     - field.storage.node.field_image_url
     - field.storage.node.field_news_category
     - field.storage.node.field_news_schools
     - field.storage.node.field_news_target
     - field.storage.node.field_news_terms
     - field.storage.node.field_post_date
+    - field.storage.node.field_sub_title
+    - field.storage.node.field_thumbnail_url
     - node.type.news
     - taxonomy.vocabulary.news_category
     - taxonomy.vocabulary.news_schools
@@ -60,23 +63,26 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       pager:
-        type: mini
+        type: full
         options:
-          items_per_page: 10
+          items_per_page: 5
           offset: 0
           id: 0
           total_pages: null
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« First'
+            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options: '5, 10'
             items_per_page_options_all: false
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          tags:
-            previous: ‹‹
-            next: ››
+          quantity: 9
       style:
         type: default
         options:
@@ -317,6 +323,73 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: null
+            url_only: true
+            url_plain: true
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_thumbnail_url:
+          id: field_thumbnail_url
+          table: node__field_thumbnail_url
+          field: field_thumbnail_url
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: false
           empty: ''
           hide_empty: false
           empty_zero: false
@@ -588,6 +661,132 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
+        field_sub_title:
+          id: field_sub_title
+          table: node__field_sub_title
+          field: field_sub_title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: false
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_display_title:
+          id: field_display_title
+          table: node__field_display_title
+          field: field_display_title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: false
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
       filters:
         status:
           value: '1'
@@ -789,6 +988,7 @@ display:
           not: false
           plugin_id: numeric
       display_extenders: {  }
+      title: News
     cache_metadata:
       max-age: -1
       contexts:
@@ -799,19 +999,46 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:field.storage.node.field_display_title'
         - 'config:field.storage.node.field_image_url'
         - 'config:field.storage.node.field_news_category'
         - 'config:field.storage.node.field_news_schools'
         - 'config:field.storage.node.field_news_target'
         - 'config:field.storage.node.field_news_terms'
         - 'config:field.storage.node.field_post_date'
+        - 'config:field.storage.node.field_sub_title'
+        - 'config:field.storage.node.field_thumbnail_url'
   block_1:
     display_plugin: block
     id: block_1
-    display_title: Block
-    position: 1
+    display_title: 'List 10 Items'
+    position: 2
     display_options:
       display_extenders: {  }
+      display_description: ''
+      pager:
+        type: full
+        options:
+          items_per_page: 10
+          offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 7
+      defaults:
+        pager: false
     cache_metadata:
       max-age: -1
       contexts:
@@ -822,9 +1049,62 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:field.storage.node.field_display_title'
         - 'config:field.storage.node.field_image_url'
         - 'config:field.storage.node.field_news_category'
         - 'config:field.storage.node.field_news_schools'
         - 'config:field.storage.node.field_news_target'
         - 'config:field.storage.node.field_news_terms'
         - 'config:field.storage.node.field_post_date'
+        - 'config:field.storage.node.field_sub_title'
+        - 'config:field.storage.node.field_thumbnail_url'
+  block_2:
+    display_plugin: block
+    id: block_2
+    display_title: 'List 5 Items'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      pager:
+        type: full
+        options:
+          items_per_page: 5
+          offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 7
+      defaults:
+        pager: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_display_title'
+        - 'config:field.storage.node.field_image_url'
+        - 'config:field.storage.node.field_news_category'
+        - 'config:field.storage.node.field_news_schools'
+        - 'config:field.storage.node.field_news_target'
+        - 'config:field.storage.node.field_news_terms'
+        - 'config:field.storage.node.field_post_date'
+        - 'config:field.storage.node.field_sub_title'
+        - 'config:field.storage.node.field_thumbnail_url'
