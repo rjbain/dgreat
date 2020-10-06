@@ -2247,6 +2247,10 @@ input#edit-submit-community-grid {
 .select-container {
     position:relative; 
     display: inline;
+
+    @include media-breakpoint-only(tablet) {
+        display:block;
+    }
 }
 .select-container:before {
     content:""; 
@@ -2264,11 +2268,13 @@ input#edit-submit-community-grid {
     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
         content: none;
     }
+    @include media-breakpoint-only(tablet) {
+        top:16px;
+    }
     @include media-breakpoint-down(phone) {
         position: relative;
         top: 40px;
-        /*right: -354px;*/
-        left: calc(84vw - 68px);
+        left: calc(84vw - 78px);
     }
 }
 .select-container:after {
@@ -2286,10 +2292,12 @@ input#edit-submit-community-grid {
     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
         content: none;
     }
+    @include media-breakpoint-only(tablet) {
+        top:1px;
+    }
     @include media-breakpoint-down(phone) {
         position: relative;
         top: -35px;
-        /*right: -397px;*/
         left: calc(84vw - 25px);        
     }
 }
