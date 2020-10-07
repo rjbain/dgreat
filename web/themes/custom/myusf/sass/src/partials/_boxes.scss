@@ -2253,53 +2253,55 @@ input#edit-submit-community-grid {
     }
 }
 .select-container:before {
-    content:""; 
-    width:10px; 
-    height:10px; 
-    position:absolute; 
-    display: inline-block;
-    z-index: 1;
-    top: 10px; 
-    right: 5px; 
-    pointer-events: none;   /*important for letting it clickable over the icon*/
-    background: url(/themes/custom/myusf/images/site/icons.svg) -220px -150px no-repeat;
-
+    @include media-breakpoint-up(desktop) {
+        content:""; 
+        width:10px; 
+        height:10px; 
+        position:absolute; 
+        display: inline-block;
+        z-index: 1;
+        top: 10px; 
+        right: 5px; 
+        pointer-events: none;   /*important for letting it clickable over the icon*/
+        background: url(/themes/custom/myusf/images/site/icons.svg) -220px -150px no-repeat;
+    }
     // IE --- take offbefore and after to use browser toggles 
     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
         content: none;
     }
-    @include media-breakpoint-only(tablet) {
+ /*@include media-breakpoint-only(tablet) {
         top:16px;
     }
     @include media-breakpoint-down(phone) {
         position: relative;
         top: 40px;
         left: calc(84vw - 78px);
-    }
+    }*/
 }
 .select-container:after {
-    position: absolute;
-    display: inline-block;
-    content: "";
-    width: 25px;
-    height: 35px; /*25px*/
-    top: -6px; /*0*/
-    right: 0px;
-    background: $beige;
-    pointer-events: none;   /*important for letting it clickable over the icon*/
-
+    @include media-breakpoint-up(desktop) {
+        position: absolute;
+        display: inline-block;
+        content: "";
+        width: 25px;
+        height: 35px; /*25px*/
+        top: -6px; /*0*/
+        right: 0px;
+        background: $beige;
+        pointer-events: none;   /*important for letting it clickable over the icon*/
+    }
     // IE --- take offbefore and after to use browser toggles 
     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
         content: none;
     }
-    @include media-breakpoint-only(tablet) {
+ /* @include media-breakpoint-only(tablet) {
         top:1px;
     }
     @include media-breakpoint-down(phone) {
         position: relative;
         top: -35px;
         left: calc(84vw - 25px);        
-    }
+    }*/
 }
 
 /* CALLOUT BOX from USFCA
