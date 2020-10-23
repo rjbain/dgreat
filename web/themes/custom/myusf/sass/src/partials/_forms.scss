@@ -6,6 +6,7 @@ form {
 
 	label {
     	font-weight: 700;
+    	padding-right:10px;
 	}
 
 	legend {
@@ -22,10 +23,23 @@ form {
 	    padding-right: 0;
 	}
 	.form-select {
-	    border: 0;
 	    border-radius: 0;
-	    outline: $light_blue_gray solid 1px;
-	    outline-offset: -1px;
+	    border: $light_blue_gray solid 1px;
+	    height: 36px;
+    	top: 1px;
+    	position: relative;
+
+    	@include media-breakpoint-down(desktop) {
+    		display: block;
+    	}
+    	@include media-breakpoint-only(tablet) {
+    		width:100%;
+    		
+    	}
+
+    	@include media-breakpoint-down(phone) {
+    		width: 84vw;
+    	}
 	}
 	.checkbox {
     	padding-left: 20px;
@@ -202,3 +216,4 @@ li.entitywebformsettings {
 .webform-type-hidden {
   display: none;
 }
+

@@ -1512,6 +1512,10 @@ button.close {
     border: none;
     border-radius: 0px;
     padding-bottom: 15px;
+
+     @include media-breakpoint-down(phone) {
+     	padding: 2.85rem 1.875rem 2.25rem 1.875rem;
+     }
 }
 .alert-text {
     width: 75%!important;
@@ -1552,7 +1556,8 @@ button.close {
 	}
 }
 
-.alert-success, .alert-success p {
+.alert-success, .alert-success p,
+.alert-info, .alert-info p {
     color: $white;
 }
 
@@ -1569,12 +1574,19 @@ button.close {
 	.close {
 		padding: .75rem 2rem;
 		color: $yellow;
+
+		 @include media-breakpoint-down(phone) {
+		 	right: 25px;
+		 }
 	}
-	&.fade.show.alert-success {
+	&.fade.show.alert-success,
+	&.fade.show.alert-info {
 	    background-color: rgba(0,0,0,1);
 	}
-	&.alert-success a {
+	&.alert-success a,
+	&.alert-info a {
 	    color: $yellow;
+	    font-style: italic;
 
 	    &:hover,
 	    &:focus {
@@ -1596,7 +1608,7 @@ button.close {
 		    	box-shadow: inset 0 0 0 4px #fdbb30;
 		    	font-weight: 700;
 		    	background: white!important;
-		    	text-decoration: underline;
+		    	/*text-decoration: underline;*/
 		    }
 		}
 	}	
