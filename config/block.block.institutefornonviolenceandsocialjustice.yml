@@ -1,0 +1,36 @@
+uuid: 9259a52b-5450-4b27-8f2e-1d78408e27f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.institute-for-nonviolence-a
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: institutefornonviolenceandsocialjustice
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:institute-for-nonviolence-a'
+settings:
+  id: 'system_menu_block:institute-for-nonviolence-a'
+  label: 'Institute for Nonviolence and Social Justice'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/centers/institute-for-nonviolence-and-social-justice\r\n/centers/institute-for-nonviolence-and-social-justice/*"
+    negate: false
+    context_mapping: {  }

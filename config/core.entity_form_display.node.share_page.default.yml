@@ -4,9 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.share_page.body
+    - field.field.node.share_page.field_add_a_paragraph
     - field.field.node.share_page.field_display_title
     - node.type.share_page
   module:
+    - paragraphs
     - path
     - scheduler
     - text
@@ -30,6 +32,18 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_add_a_paragraph:
+    type: entity_reference_paragraphs
+    weight: 123
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
   field_display_title:
     weight: 122
     settings:
