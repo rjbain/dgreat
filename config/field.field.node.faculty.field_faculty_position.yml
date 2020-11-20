@@ -1,0 +1,29 @@
+uuid: 1ddcaa51-dbfe-41d2-a1da-e513614cbbcf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_faculty_position
+    - node.type.faculty
+    - taxonomy.vocabulary.faculty_position
+id: node.faculty.field_faculty_position
+field_name: field_faculty_position
+entity_type: node
+bundle: faculty
+label: 'Faculty Position'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      faculty_position: faculty_position
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
