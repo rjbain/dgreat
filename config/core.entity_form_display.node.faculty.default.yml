@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.faculty.field_email_address
     - field.field.node.faculty.field_expertise
     - field.field.node.faculty.field_faculty_department
+    - field.field.node.faculty.field_faculty_position
     - field.field.node.faculty.field_faculty_program
     - field.field.node.faculty.field_faculty_program_director
     - field.field.node.faculty.field_faculty_school
@@ -83,6 +84,15 @@ content:
     region: content
   field_faculty_department:
     weight: 13
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_faculty_position:
+    weight: 31
     settings:
       match_operator: CONTAINS
       size: 60
