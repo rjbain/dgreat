@@ -154,6 +154,13 @@ process:
     bundle: faculty_program_director
     entity_type: taxonomy_term
     ignore_case: true
+  field_faculty_position:
+    plugin: entity_generate
+    source: position
+    value_key: name
+    bundle: faculty_position
+    entity_type: taxonomy_term
+    ignore_case: true
   type:
     plugin: default_value
     default_value: faculty
