@@ -5,7 +5,6 @@ dependencies:
   config:
     - system.menu.admin
     - taxonomy.vocabulary.faculty_department
-    - taxonomy.vocabulary.faculty_position
     - taxonomy.vocabulary.faculty_program
     - taxonomy.vocabulary.faculty_school
     - user.role.administrator
@@ -282,7 +281,7 @@ display:
           admin_label: ''
           empty: false
           tokenize: false
-          content: "<h2><a href=\"/admin/config/taxonomy/school\">Schools</a> | <a href=\"/admin/config/taxonomy/program\">Programs</a> | <a href=\"/admin/config/taxonomy/department\">Departments</a> | <a href=\"/admin/config/taxonomy/positions\">Positions</a></h2>\r\n\r\n\r\n\r\n"
+          content: '<h2><a href="/admin/config/taxonomy/school">Schools</a> | <a href="/admin/config/taxonomy/program">Programs</a> | <a href="/admin/config/taxonomy/department">Departments</a></h2>'
           plugin_id: text_custom
       footer: {  }
       empty:
@@ -466,71 +465,6 @@ display:
     display_options:
       display_extenders: {  }
       path: admin/config/taxonomy/program
-      display_description: ''
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url.query_args
-        - user.roles
-      tags: {  }
-  page_4:
-    display_plugin: page
-    id: page_4
-    display_title: Positions
-    position: 4
-    display_options:
-      display_extenders: {  }
-      path: admin/config/taxonomy/positions
-      filters:
-        vid:
-          id: vid
-          table: taxonomy_term_field_data
-          field: vid
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: in
-          value:
-            faculty_position: faculty_position
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: taxonomy_term
-          entity_field: vid
-          plugin_id: bundle
-      defaults:
-        filters: false
-        filter_groups: false
-      filter_groups:
-        operator: AND
-        groups:
-          1: AND
       display_description: ''
     cache_metadata:
       max-age: -1
