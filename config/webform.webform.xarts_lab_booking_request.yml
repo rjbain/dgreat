@@ -12,15 +12,20 @@ id: xarts_lab_booking_request
 title: 'XARTS Lab Booking Request'
 description: ''
 category: ''
-elements: "flexbox4:\n  '#type': webform_flexbox\n  first_name:\n    '#type': textfield\n    '#title': 'First Name'\n    '#required': true\n  last_name:\n    '#type': textfield\n    '#title': 'Last Name'\n    '#required': true\nflexbox5:\n  '#type': webform_flexbox\n  e_mail_address:\n    '#type': email\n    '#title': 'E-Mail Address'\n    '#required': true\n  phone_number:\n    '#type': textfield\n    '#title': 'Phone Number'\n    '#required': true\nflexbox2:\n  '#type': webform_flexbox\n  purpose_of_booking:\n    '#type': textfield\n    '#title': 'Purpose of Booking'\n    '#required': true\n  lab_monitor_needed_:\n    '#type': select\n    '#title': 'Lab Assistant Needed?'\n    '#description': 'Students in a lab must be supervised by you, an instructor, a staffer, or a Lab Assistant at all times.'\n    '#title_display': before\n    '#description_display': after\n    '#options':\n      1: 'Yes'\n      2: 'No'\n    '#required': true\nflexbox1:\n  '#type': webform_flexbox\n  which_lab_:\n    '#type': select\n    '#title': 'Which lab?'\n    '#title_display': before\n    '#options':\n      1: 'Blue Lab (XARTS 005)'\n      2: 'Orange Lab (XARTS 006)'\n      3: 'Green Lab (Cowell G25)'\n    '#required': true\n    '#flex': '2'\n  number_of_people:\n    '#type': textfield\n    '#title': 'Number of People'\n    '#description': 'See each lab&#39;s maximum occupancy and chair count in the table.'\n    '#maxlength': '2'\n    '#required': true\n    '#format_items': comma\n  number_of_people_notes4:\n    '#type': processed_text\n    '#flex': '2'\n    '#text': \"<table border=\\\"1\\\" cellpadding=\\\"1\\\" cellspacing=\\\"1\\\" style=\\\"float: right;\\\">\\r\\n\\t<thead>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<th scope=\\\"col\\\" style=\\\"width: 92px;\\\">Lab</th>\\r\\n\\t\\t\\t<th scope=\\\"col\\\" style=\\\"width: 76px;\\\">Maximum Occupancy</th>\\r\\n\\t\\t\\t<th scope=\\\"col\\\" style=\\\"width: 72px;\\\">Chair Count</th>\\r\\n\\t\\t</tr>\\r\\n\\t</thead>\\r\\n\\t<tbody>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<td style=\\\"width: 92px;\\\">Blue Lab</td>\\r\\n\\t\\t\\t<td style=\\\"width: 76px;\\\">28 people</td>\\r\\n\\t\\t\\t<td style=\\\"width: 72px;\\\">23 chairs</td>\\r\\n\\t\\t</tr>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<td style=\\\"width: 92px;\\\">Orange Lab</td>\\r\\n\\t\\t\\t<td style=\\\"width: 76px;\\\">33 people</td>\\r\\n\\t\\t\\t<td style=\\\"width: 72px;\\\">23 chairs</td>\\r\\n\\t\\t</tr>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<td style=\\\"width: 92px;\\\">Green Lab</td>\\r\\n\\t\\t\\t<td style=\\\"width: 76px;\\\">27 people</td>\\r\\n\\t\\t\\t<td style=\\\"width: 72px;\\\">25 chairs</td>\\r\\n\\t\\t</tr>\\r\\n\\t</tbody>\\r\\n</table>\\r\\n\"\n    '#format': full_html\nrequested_date_s_time_s_:\n  '#type': textarea\n  '#title': 'Requested Date(s) & Time(s)'\n  '#description': \"<span style=\\\"line-height:4em\\\">You may find it useful to view the lab schedules before submitting your request:<br />\\r\\n<a class=\\\"button blue\\\" href=\\\"/arts-sciences/xarts/tech/schedules/blue-lab\\\" target=\\\"_blank\\\">Blue Lab Schedule</a>&nbsp;&nbsp;<a class=\\\"button orange\\\" href=\\\"/arts-sciences/xarts/tech/schedules/orange-lab\\\" target=\\\"_blank\\\">Orange Lab Schedule</a>&nbsp;&nbsp;<a class=\\\"button olive\\\" href=\\\"/arts-sciences/xarts/tech/schedules/green-lab\\\" target=\\\"_blank\\\">Green Lab Schedule</a></span>\"\n  '#required': true\n  '#flex': '3'\n  '#format_items': comma\nhorizontal_rule:\n  '#type': webform_horizontal_rule"
+elements: "flexbox4:\n  '#type': webform_flexbox\n  first_name:\n    '#type': textfield\n    '#title': 'First Name'\n    '#required': true\n  last_name:\n    '#type': textfield\n    '#title': 'Last Name'\n    '#required': true\nflexbox5:\n  '#type': webform_flexbox\n  e_mail_address:\n    '#type': email\n    '#title': 'E-Mail Address'\n    '#required': true\n  phone_number:\n    '#type': textfield\n    '#title': 'Phone Number'\n    '#required': true\nflexbox2:\n  '#type': webform_flexbox\n  purpose_of_booking:\n    '#type': textfield\n    '#title': 'Purpose of Booking'\n    '#required': true\n  lab_monitor_needed_:\n    '#type': select\n    '#title': 'Lab Assistant Needed?'\n    '#description': 'Students in a lab must be supervised by you, an instructor, a staffer, or a Lab Assistant at all times.'\n    '#title_display': before\n    '#description_display': after\n    '#options':\n      1: 'Yes'\n      2: 'No'\n    '#required': true\nflexbox1:\n  '#type': webform_flexbox\n  which_lab_:\n    '#type': select\n    '#title': 'Which lab?'\n    '#title_display': before\n    '#options':\n      1: 'Blue Lab (XARTS 005)'\n      2: 'Orange Lab (XARTS 006)'\n      3: 'Green Lab (Cowell G25)'\n    '#required': true\n    '#flex': 2\n  number_of_people:\n    '#type': textfield\n    '#title': 'Number of People'\n    '#description': 'See each lab&#39;s maximum occupancy and chair count in the table.'\n    '#maxlength': 2\n    '#required': true\n    '#format_items': comma\n  number_of_people_notes4:\n    '#type': processed_text\n    '#flex': 2\n    '#text': \"<table border=\\\"1\\\" cellpadding=\\\"1\\\" cellspacing=\\\"1\\\" style=\\\"float: right;\\\">\\r\\n\\t<thead>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<th scope=\\\"col\\\" style=\\\"width: 92px;\\\">Lab</th>\\r\\n\\t\\t\\t<th scope=\\\"col\\\" style=\\\"width: 76px;\\\">Maximum Occupancy</th>\\r\\n\\t\\t\\t<th scope=\\\"col\\\" style=\\\"width: 72px;\\\">Chair Count</th>\\r\\n\\t\\t</tr>\\r\\n\\t</thead>\\r\\n\\t<tbody>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<td style=\\\"width: 92px;\\\">Blue Lab</td>\\r\\n\\t\\t\\t<td style=\\\"width: 76px;\\\">28 people</td>\\r\\n\\t\\t\\t<td style=\\\"width: 72px;\\\">23 chairs</td>\\r\\n\\t\\t</tr>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<td style=\\\"width: 92px;\\\">Orange Lab</td>\\r\\n\\t\\t\\t<td style=\\\"width: 76px;\\\">33 people</td>\\r\\n\\t\\t\\t<td style=\\\"width: 72px;\\\">23 chairs</td>\\r\\n\\t\\t</tr>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<td style=\\\"width: 92px;\\\">Green Lab</td>\\r\\n\\t\\t\\t<td style=\\\"width: 76px;\\\">27 people</td>\\r\\n\\t\\t\\t<td style=\\\"width: 72px;\\\">25 chairs</td>\\r\\n\\t\\t</tr>\\r\\n\\t</tbody>\\r\\n</table>\\r\\n\"\n    '#format': full_html\nrequested_date_s_time_s_:\n  '#type': textarea\n  '#title': 'Requested Date(s) & Time(s)'\n  '#description': \"<span style=\\\"line-height:4em\\\">You may find it useful to view the lab schedules before submitting your request:<br />\\r\\n<a class=\\\"button blue\\\" href=\\\"/arts-sciences/xarts/tech/schedules/blue-lab\\\" target=\\\"_blank\\\">Blue Lab Schedule</a>&nbsp;&nbsp;<a class=\\\"button orange\\\" href=\\\"/arts-sciences/xarts/tech/schedules/orange-lab\\\" target=\\\"_blank\\\">Orange Lab Schedule</a>&nbsp;&nbsp;<a class=\\\"button olive\\\" href=\\\"/arts-sciences/xarts/tech/schedules/green-lab\\\" target=\\\"_blank\\\">Green Lab Schedule</a></span>\"\n  '#required': true\n  '#flex': 3\n  '#format_items': comma\nhorizontal_rule:\n  '#type': webform_horizontal_rule\n"
 css: ''
 javascript: ''
 settings:
   ajax: false
   ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
   page: true
   page_submit_path: ''
   page_confirm_path: ''
+  page_theme_name: ''
+  form_title: both
   form_submit_once: false
   form_exception_message: ''
   form_open_message: ''
@@ -28,6 +33,7 @@ settings:
   form_previous_submissions: false
   form_confidential: false
   form_confidential_message: ''
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -48,6 +54,11 @@ settings:
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
   submission_label: 'XARTS Tech - Lab Booking Request'
   submission_log: false
   submission_views: {  }
@@ -62,6 +73,9 @@ settings:
   submission_access_denied_attributes: {  }
   submission_exception_message: ''
   submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -71,11 +85,20 @@ settings:
   wizard_progress_pages: false
   wizard_progress_percentage: false
   wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
   wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -89,6 +112,8 @@ settings:
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
   confirmation_type: modal
   confirmation_title: 'Request Submitted'
   confirmation_message: 'Your requested has been submitted. Steve will respond at his next possible opportunity.'
@@ -99,12 +124,15 @@ settings:
   confirmation_back_attributes: {  }
   confirmation_exclude_query: false
   confirmation_exclude_token: false
+  confirmation_update: false
   limit_total: null
   limit_total_interval: null
   limit_total_message: ''
+  limit_total_unique: false
   limit_user: null
   limit_user_interval: null
   limit_user_message: ''
+  limit_user_unique: false
   entity_limit_total: null
   entity_limit_total_interval: null
   entity_limit_user: null
@@ -113,7 +141,10 @@ settings:
   purge_days: null
   results_disabled: false
   results_disabled_ignore: false
+  results_customize: false
+  token_view: false
   token_update: false
+  serial_disabled: false
 access:
   create:
     roles:
@@ -160,10 +191,15 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
 handlers:
   steve_rhyne:
     id: email
     label: 'Steve Rhyne'
+    notes: ''
     handler_id: steve_rhyne
     status: true
     conditions: {  }
@@ -186,6 +222,7 @@ handlers:
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
+      exclude_attachments: false
       html: true
       attachments: false
       twig: false
@@ -195,3 +232,5 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
+      parameters: {  }
+variants: {  }
