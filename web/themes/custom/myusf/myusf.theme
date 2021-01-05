@@ -141,12 +141,12 @@ function myusf_preprocess_node(&$variables)
     $paragraph_video_exists = FALSE;
     $entities = $node->referencedEntities();
     foreach ($entities as $entity) {
-        if (!empty($entity->field_video_url)) {
+        if (!empty($entity->field_video_url[0]->uri)) {
             $paragraph_video_exists = TRUE;
         }
     }
     $variables['paragraph_video_exists'] = $paragraph_video_exists;
-    $variables['my_entities_variable'] = $entities;
+    $variables['my_entities_variable'] = $entities[3]->field_video_url[0]->uri;
 
  
   // Allowed view modes
