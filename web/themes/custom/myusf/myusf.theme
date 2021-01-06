@@ -137,17 +137,17 @@ function myusf_preprocess_node(&$variables)
 {
     // Check for a video on the page.
     // Need this for knowing when to print out the modal overlay markup.
-    $node_id = \Drupal::routeMatch()->getRawParameter('node');
-    $node = Drupal\node\Entity\Node::load($node_id);
-//    $node = $variables['node'];
-    $paragraph_video_exists = FALSE;
-    $entities = $node->referencedEntities();
-    foreach ($entities as $entity) {
-        if (isset($entity->field_video_url[0]->uri)) {
-            $paragraph_video_exists = TRUE;
-        }
-    }
-    $variables['paragraph_video_exists'] = $paragraph_video_exists;
+//    $node_id = \Drupal::routeMatch()->getRawParameter('node');
+//    $node = Drupal\node\Entity\Node::load($node_id);
+//    $node = $variables['node']; // old
+//    $paragraph_video_exists = FALSE;
+//    $entities = $node->referencedEntities();
+//    foreach ($entities as $entity) {
+//        if (isset($entity->field_video_url[0]->uri)) {
+//            $paragraph_video_exists = TRUE;
+//        }
+//    }
+//    $variables['paragraph_video_exists'] = $paragraph_video_exists;
 
  
   // Allowed view modes
