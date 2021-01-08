@@ -1,0 +1,54 @@
+uuid: 5a939232-4da0-4ed5-ab38-6fcbffebcb7b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.student_orgs.body
+    - field.field.node.student_orgs.field_image
+    - field.field.node.student_orgs.field_url
+    - node.type.student_orgs
+  module:
+    - image
+    - link
+    - text
+    - user
+id: node.student_orgs.default
+targetEntityType: node
+bundle: student_orgs
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_image:
+    weight: 102
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_url:
+    weight: 103
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  search_api_excerpt: true

@@ -1,0 +1,31 @@
+uuid: 4354e599-30f9-4df3-8ab1-ee6c394fb0bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.student_orgs.body
+    - node.type.student_orgs
+  module:
+    - text
+    - user
+id: node.student_orgs.teaser
+targetEntityType: node
+bundle: student_orgs
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  search_api_excerpt: true
