@@ -1,8 +1,9 @@
-uuid: 3614adfb-c232-40ae-90bd-f12c84d380b1
+uuid: 7c874e7a-2803-4b25-ae9d-9a3cd2db245c
 langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.page.field_section
     - taxonomy.vocabulary.sections
 id: section
 label: Section
@@ -11,4 +12,8 @@ scheme: taxonomy
 scheme_settings:
   vocabularies:
     - sections
-  fields: {  }
+  fields:
+    -
+      entity_type: node
+      bundle: page
+      field: field_section
