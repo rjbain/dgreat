@@ -88,6 +88,13 @@
           {{ drupal_view('event_category_term', 'block_1') }}
       </select>
     </div>
+    <div class="category-form">
+      <label for="event_category" class="acc-visuallyhidden">Select Category</label>
+      <select name="event_target" id="event_category" class="event_category">
+        <option value="">Select Audience</option>
+          {{ drupal_view('event_category_term', 'block_2') }}
+      </select>
+    </div>
     <div class="date-widget">
       <div id="datepicker" class="datepicker"></div>
         <input type="hidden" id="event_date" name="event_date" value="{{ event_date }}"/>
