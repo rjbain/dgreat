@@ -1,0 +1,66 @@
+uuid: 2b0bb60a-af88-4101-805b-5d6a0b72b7ee
+langcode: en
+status: true
+dependencies: {  }
+id: student_orgs_import
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: null
+label: 'Student Orgs Import to MyUSF'
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  urls: 'http://jayna.usfca.edu/feeds/student_orgs/student_orgs_feed_import.php'
+  data_parser_plugin: simple_xml
+  item_selector: /records/item
+  fields:
+    -
+      name: title
+      label: Title
+      selector: title
+    -
+      name: link
+      label: Link
+      selector: link
+    -
+      name: guid
+      label: GUID
+      selector: guid
+    -
+      name: image
+      label: Image
+      selector: image
+    -
+      name: description
+      label: Description
+      selector: description
+  ids:
+    guid:
+      type: string
+  constants:
+    destination_uri: 'public://images/student-orgs/logo.jpg'
+process:
+  title: title
+  body: description
+  field_image_url: image
+  field_image:
+    -
+      plugin: download
+      source:
+        - image
+        - constants/destination_uri
+      rename: true
+    -
+      plugin: entity_generate
+  field_url: link
+  status:
+    plugin: default_value
+    default_value: 1
+  type:
+    plugin: default_value
+    default_value: student_orgs
+destination:
+  plugin: 'entity:node'
+migration_dependencies: null
