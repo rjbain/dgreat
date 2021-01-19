@@ -32,8 +32,14 @@
  */
 #}
 {% if event_target == fields.tid.content %}
-	{% set selected = "selected" %}
+	{% set checked = "checked" %}
 {% else %}
-	{% set selected = "" %}
+	{% set checked = "" %}
 {% endif %}
-<option value="{{ fields.tid.content }}" {{ selected }}>{{ fields.name.content }}</option>
+
+
+<input class="form-check-input" type="checkbox" value="{{ fields.tid.content }}" name="event_target[]" id="flexCheckDefault" {{ checked }}>
+  <label class="form-check-label" for="flexCheckDefault">
+   {{ fields.name.content }}
+  </label>
+</input>
