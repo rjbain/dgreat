@@ -140,7 +140,7 @@ function myusf_preprocess_node(&$variables)
     // Need this for knowing when to print out the modal overlay markup.
     $node = $variables['node'];
     $paragraph_video_exists = FALSE;
-    if (!empty($node)) {
+    if ($node->hasField('field_migrate_final')) {
         // Get the referenced entities for the "body" field, aka field_migrate_final.
         $paragraphs = $node->field_migrate_final->referencedEntities();
         // Search through entities and nested entities for the video url field.
