@@ -140,32 +140,32 @@ function myusf_preprocess_node(&$variables)
     // Need this for knowing when to print out the modal overlay markup.
     $node = $variables['node'];
     $paragraph_video_exists = FALSE;
-    // Get the referenced entities for the "body" field, aka field_migrate_final.
-    $paragraphs = $node->field_migrate_final->referencedEntities();
-    // Search through entities and nested entities for the video url field.
+    if ($node->hasField('field_migrate_final')) {
+        // Get the referenced entities for the "body" field, aka field_migrate_final.
+        $paragraphs = $node->field_migrate_final->referencedEntities();
+        // Search through entities and nested entities for the video url field.
         foreach ($paragraphs as $paragraph) {
             if (isset($paragraph->field_video_url[0]->uri)) {
                 $paragraph_video_exists = true;
             }
             foreach ($paragraph->referencedEntities() as $nested) {
                 if (isset($nested->field_video_url[0]->uri)) {
+                    $paragraph_video_exists = true;
+                }
+                foreach ($nested->referencedEntities() as $buried) {
+                    if (isset($buried->field_video_url[0]->uri)) {
                         $paragraph_video_exists = true;
                     }
-                    foreach ($nested->referencedEntities() as $buried) {
-                        if (isset($buried->field_video_url[0]->uri)) {
-                                $paragraph_video_exists = true;
-                            }
-                        foreach ($buried->referencedEntities() as $carbonite) {
-                            if (isset($carbonite->field_video_url[0]->uri)) {
-                                $paragraph_video_exists = true;
-                            }
+                    foreach ($buried->referencedEntities() as $carbonite) {
+                        if (isset($carbonite->field_video_url[0]->uri)) {
+                            $paragraph_video_exists = true;
                         }
+                    }
                 }
             }
         }
-
+    }
     $variables['paragraph_video_exists'] = $paragraph_video_exists;
-
 
 
   // Allowed view modes
