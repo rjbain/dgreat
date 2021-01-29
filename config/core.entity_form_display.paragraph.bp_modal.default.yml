@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.bp_modal.bp_background
-    - field.field.paragraph.bp_modal.bp_header
     - field.field.paragraph.bp_modal.bp_modal_body
     - field.field.paragraph.bp_modal.bp_modal_button_text
     - field.field.paragraph.bp_modal.bp_modal_footer
@@ -20,23 +19,9 @@ targetEntityType: paragraph
 bundle: bp_modal
 mode: default
 content:
-  bp_background:
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  bp_header:
-    type: string_textfield
-    weight: 2
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   bp_modal_body:
     type: entity_reference_paragraphs
-    weight: 5
+    weight: 2
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -47,7 +32,7 @@ content:
     third_party_settings: {  }
     region: content
   bp_modal_button_text:
-    weight: 3
+    weight: 0
     settings:
       size: 60
       placeholder: ''
@@ -56,7 +41,7 @@ content:
     region: content
   bp_modal_footer:
     type: entity_reference_paragraphs
-    weight: 6
+    weight: 3
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -67,20 +52,16 @@ content:
     third_party_settings: {  }
     region: content
   bp_modal_title:
-    weight: 4
+    weight: 1
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
     region: content
-  bp_width:
-    weight: 1
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
 hidden:
+  bp_background: true
+  bp_width: true
   created: true
   status: true
   uid: true

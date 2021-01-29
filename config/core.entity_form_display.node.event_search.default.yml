@@ -7,7 +7,6 @@ dependencies:
     - node.type.event_search
   module:
     - path
-    - scheduler
     - text
 id: node.event_search.default
 targetEntityType: node
@@ -21,7 +20,6 @@ content:
       rows: 9
       summary_rows: 3
       placeholder: ''
-      show_summary: false
     third_party_settings: {  }
     region: content
   created:
@@ -29,12 +27,6 @@ content:
     weight: 10
     region: content
     settings: {  }
-    third_party_settings: {  }
-  moderation_state:
-    type: moderation_state_default
-    weight: 100
-    settings: {  }
-    region: content
     third_party_settings: {  }
   path:
     type: path
@@ -84,7 +76,6 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
-      match_limit: 10
     region: content
     third_party_settings: {  }
   unpublish_on:

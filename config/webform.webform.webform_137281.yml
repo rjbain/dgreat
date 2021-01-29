@@ -12,20 +12,15 @@ id: webform_137281
 title: 'USF OPT Online Tutorial Quiz'
 description: null
 category: null
-elements: "name_two:\n  '#type': textfield\n  '#default_value': '[current-user:name]'\n  '#title': Name\n  '#description': ''\n  '#required': true\nusf_id:\n  '#type': number\n  '#title': 'USF ID'\n  '#required': true\nmarkup:\n  '#type': webform_markup\n  '#markup': 'You will be able to submit the form once all questions are answered correctly.'\ne_mail:\n  '#type': email\n  '#size': 20\n  '#default_value': '[current-user:mail]'\n  '#title': E-mail\n  '#description': ''\n  '#required': true\nwhat_is_the_latest_date_you_can_request_for_your_post_completion_opt:\n  '#type': radios\n  '#title': 'What is the latest date you can request for your post-completion OPT?'\n  '#options':\n    1: '30 days after program completion date'\n    2: '45 days after program completion date'\n    3: '60 days after program completion date'\n    4: '90 days after program completion date'\n  '#required': true\n  '#required_error': lalala\nwhat_is_the_average_time_for_uscis_approves_your_opt_application:\n  '#type': radios\n  '#options':\n    1: '15 days to one month'\n    2: 'One to two months'\n    3: 'Two to three months'\n    4: 'Three to four months'\n  '#title': 'What is the average time for USCIS approves your OPT application?'\n  '#description': ''\n  '#required': true\nwhat_type_of_jobs_you_can_work_while_you_are_on_opt:\n  '#type': radios\n  '#options':\n    1: 'A full-time job'\n    2: 'A part-time job'\n    3: 'An internship'\n    4: 'An unpaid job'\n    5: 'All the above'\n  '#title': 'What type of jobs you can work while you are on OPT?'\n  '#description': ''\n  '#required': true\nwhat_is_the_deadline_to_report_to_isss_website_when_you_start_a_new_employment_on_opt:\n  '#type': radios\n  '#title': 'What is the deadline to report to SEVP Portal when you start a new employment on OPT?'\n  '#options':\n    1: 'Three days'\n    2: 'Five days'\n    3: 'Ten days'\n    4: 'One month'\n  '#required': true\nwhen_is_the_deadline_to_mail_your_opt_application_to_uscis_when_you_pick_up_your_opt_i_20_from_isss_office:\n  '#type': radios\n  '#options':\n    1: 'The next day'\n    2: 'Within a week'\n    3: 'Within two weeks'\n    4: 'Within 30 days of your OPT I-20 issue date'\n  '#title': 'When is the deadline to mail your OPT application to USCIS when you pick up your OPT I-20 from ISSS office?'\n  '#description': ''\n  '#required': true\nwhat_is_not_a_necessary_document_to_prepare_for_isss_office_when_you_apply_for_opt_i_20:\n  '#type': radios\n  '#options':\n    1: 'Your I-94 / arrival record'\n    2: 'Copy of all your current and previous I-20s'\n    3: 'Copy of your passport biographic page'\n    4: 'Copy of your visa page'\n  '#title': 'What is NOT a necessary document to prepare for ISSS office when you apply for OPT I-20?'\n  '#description': ''\n  '#required': true\nhow_many_unemployment_days_uscis_allows_student_to_have_during_their_12_month_opt_period:\n  '#type': radios\n  '#options':\n    1: '30 days'\n    2: '60 days'\n    3: '90 days'\n    4: 'There is no limit'\n  '#title': 'How many unemployment days USCIS allows student to have during their 12 month OPT period?'\n  '#description': ''\n  '#required': true\nhow_many_hours_do_you_need_to_work_per_week_in_order_to_avoid_accruing_your_unemployment_days:\n  '#type': radios\n  '#options':\n    1: '20 hours'\n    2: '30 hours'\n    3: '40 hours'\n    4: 'There is no minimum hour requirement'\n  '#title': 'How many hours do you need to work per week in order to avoid accruing your unemployment days?'\n  '#description': ''\n  '#required': true\nhow_long_your_opt_i_20_travel_endorsement_is_valid_for:\n  '#type': radios\n  '#options':\n    1: 'One month'\n    2: 'Three months'\n    3: 'Six months'\n    4: 'Twelve months'\n  '#title': 'How long your OPT I-20 travel endorsement is valid for?'\n  '#description': ''\n  '#required': true\nwhat_do_you_need_to_bring_to_travel_outside_of_the_us_after_you_are_approved_for_opt:\n  '#type': radios\n  '#options':\n    1: 'EAD card'\n    2: 'Valid F1 visa'\n    3: 'OPT I-20 with valid travel endorsement'\n    4: 'Valid passport'\n    5: 'Employer letter'\n    6: 'All the above'\n  '#title': 'What do you need to bring to travel outside of the U.S after you are approved for OPT?'\n  '#description': ''\n  '#required': true\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#states':\n    visible:\n      ':input[name=\"what_is_the_latest_date_you_can_request_for_your_post_completion_opt\"]':\n        value: '3'\n      ':input[name=\"what_is_the_average_time_for_uscis_approves_your_opt_application\"]':\n        value: '4'\n      ':input[name=\"what_type_of_jobs_you_can_work_while_you_are_on_opt\"]':\n        value: '5'\n      ':input[name=\"what_is_the_deadline_to_report_to_isss_website_when_you_start_a_new_employment_on_opt\"]':\n        value: '3'\n      ':input[name=\"when_is_the_deadline_to_mail_your_opt_application_to_uscis_when_you_pick_up_your_opt_i_20_from_isss_office\"]':\n        value: '4'\n      ':input[name=\"what_is_not_a_necessary_document_to_prepare_for_isss_office_when_you_apply_for_opt_i_20\"]':\n        value: '4'\n      ':input[name=\"how_many_hours_do_you_need_to_work_per_week_in_order_to_avoid_accruing_your_unemployment_days\"]':\n        value: '1'\n      ':input[name=\"how_long_your_opt_i_20_travel_endorsement_is_valid_for\"]':\n        value: '3'\n"
+elements: "name_two:\n  '#type': textfield\n  '#default_value': '[current-user:name]'\n  '#title': Name\n  '#description': ''\n  '#required': true\nusf_id:\n  '#type': number\n  '#title': 'USF ID'\n  '#required': true\nmarkup:\n  '#type': webform_markup\n  '#markup': 'You will be able to submit the form once all questions are answered correctly.'\ne_mail:\n  '#type': email\n  '#size': 20\n  '#default_value': '[current-user:mail]'\n  '#title': E-mail\n  '#description': ''\n  '#required': true\nwhat_is_the_latest_date_you_can_request_for_your_post_completion_opt:\n  '#type': radios\n  '#title': 'What is the latest date you can request for your post-completion OPT?'\n  '#options':\n    1: '30 days after program completion date'\n    2: '45 days after program completion date'\n    3: '60 days after program completion date'\n    4: '90 days after program completion date'\n  '#required': true\n  '#required_error': lalala\nwhat_is_the_average_time_for_uscis_approves_your_opt_application:\n  '#type': radios\n  '#options':\n    1: '15 days to one month'\n    2: 'One to two months'\n    3: 'Two to three months'\n    4: 'Three to four months'\n  '#title': 'What is the average time for USCIS approves your OPT application?'\n  '#description': ''\n  '#required': true\nwhat_type_of_jobs_you_can_work_while_you_are_on_opt:\n  '#type': radios\n  '#options':\n    1: 'A full-time job'\n    2: 'A part-time job'\n    3: 'An internship'\n    4: 'An unpaid job'\n    5: 'All the above'\n  '#title': 'What type of jobs you can work while you are on OPT?'\n  '#description': ''\n  '#required': true\nwhat_is_the_deadline_to_report_to_isss_website_when_you_start_a_new_employment_on_opt:\n  '#type': radios\n  '#title': 'What is the deadline to report to SEVP Portal when you start a new employment on OPT?'\n  '#options':\n    1: 'Three days'\n    2: 'Five days'\n    3: 'Ten days'\n    4: 'One month'\n  '#required': true\nwhen_is_the_deadline_to_mail_your_opt_application_to_uscis_when_you_pick_up_your_opt_i_20_from_isss_office:\n  '#type': radios\n  '#options':\n    1: 'The next day'\n    2: 'Within a week'\n    3: 'Within two weeks'\n    4: 'Within 30 days of your OPT I-20 issue date'\n  '#title': 'When is the deadline to mail your OPT application to USCIS when you pick up your OPT I-20 from ISSS office?'\n  '#description': ''\n  '#required': true\nwhat_is_not_a_necessary_document_to_prepare_for_isss_office_when_you_apply_for_opt_i_20:\n  '#type': radios\n  '#options':\n    1: 'Your I-94 / arrival record'\n    2: 'Copy of all your current and previous I-20s'\n    3: 'Copy of your passport biographic page'\n    4: 'Copy of your visa page'\n  '#title': 'What is NOT a necessary document to prepare for ISSS office when you apply for OPT I-20?'\n  '#description': ''\n  '#required': true\nhow_many_unemployment_days_uscis_allows_student_to_have_during_their_12_month_opt_period:\n  '#type': radios\n  '#options':\n    1: '30 days'\n    2: '60 days'\n    3: '90 days'\n    4: 'There is no limit'\n  '#title': 'How many unemployment days USCIS allows student to have during their 12 month OPT period?'\n  '#description': ''\n  '#required': true\nhow_many_hours_do_you_need_to_work_per_week_in_order_to_avoid_accruing_your_unemployment_days:\n  '#type': radios\n  '#options':\n    1: '20 hours'\n    2: '30 hours'\n    3: '40 hours'\n    4: 'There is no minimum hour requirement'\n  '#title': 'How many hours do you need to work per week in order to avoid accruing your unemployment days?'\n  '#description': ''\n  '#required': true\nhow_long_your_opt_i_20_travel_endorsement_is_valid_for:\n  '#type': radios\n  '#options':\n    1: 'One month'\n    2: 'Three months'\n    3: 'Six months'\n    4: 'Twelve months'\n  '#title': 'How long your OPT I-20 travel endorsement is valid for?'\n  '#description': ''\n  '#required': true\nwhat_do_you_need_to_bring_to_travel_outside_of_the_us_after_you_are_approved_for_opt:\n  '#type': radios\n  '#options':\n    1: 'EAD card'\n    2: 'Valid F1 visa'\n    3: 'OPT I-20 with valid travel endorsement'\n    4: 'Valid passport'\n    5: 'Employer letter'\n    6: 'All the above'\n  '#title': 'What do you need to bring to travel outside of the U.S after you are approved for OPT?'\n  '#description': ''\n  '#required': true\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#states':\n    visible:\n      ':input[name=\"what_is_the_latest_date_you_can_request_for_your_post_completion_opt\"]':\n        value: '3'\n      ':input[name=\"what_is_the_average_time_for_uscis_approves_your_opt_application\"]':\n        value: '4'\n      ':input[name=\"what_type_of_jobs_you_can_work_while_you_are_on_opt\"]':\n        value: '5'\n      ':input[name=\"what_is_the_deadline_to_report_to_isss_website_when_you_start_a_new_employment_on_opt\"]':\n        value: '3'\n      ':input[name=\"when_is_the_deadline_to_mail_your_opt_application_to_uscis_when_you_pick_up_your_opt_i_20_from_isss_office\"]':\n        value: '4'\n      ':input[name=\"what_is_not_a_necessary_document_to_prepare_for_isss_office_when_you_apply_for_opt_i_20\"]':\n        value: '4'\n      ':input[name=\"how_many_hours_do_you_need_to_work_per_week_in_order_to_avoid_accruing_your_unemployment_days\"]':\n        value: '1'\n      ':input[name=\"how_long_your_opt_i_20_travel_endorsement_is_valid_for\"]':\n        value: '3'"
 css: ''
 javascript: ''
 settings:
   ajax: false
   ajax_scroll_top: form
-  ajax_progress_type: ''
-  ajax_effect: ''
-  ajax_speed: null
   page: true
   page_submit_path: ''
   page_confirm_path: ''
-  page_theme_name: ''
-  form_title: both
   form_submit_once: false
   form_exception_message: ''
   form_open_message: ''
@@ -33,7 +28,6 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -54,11 +48,6 @@ settings:
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
-  share: false
-  share_node: false
-  share_theme_name: ''
-  share_title: true
-  share_page_body_attributes: {  }
   submission_label: ''
   submission_log: false
   submission_views: {  }
@@ -71,9 +60,6 @@ settings:
   submission_access_denied_attributes: {  }
   submission_exception_message: ''
   submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -83,20 +69,11 @@ settings:
   wizard_progress_pages: false
   wizard_progress_percentage: false
   wizard_progress_link: false
-  wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
   wizard_track: ''
-  wizard_prev_button_label: ''
-  wizard_next_button_label: ''
-  wizard_toggle: false
-  wizard_toggle_show_label: ''
-  wizard_toggle_hide_label: ''
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -110,8 +87,6 @@ settings:
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
-  draft_pending_single_message: ''
-  draft_pending_multiple_message: ''
   confirmation_type: page
   confirmation_title: ''
   confirmation_message: '<h1>Thank You</h1><p><span>Thank you for complete the OPT quiz. Please check your USF email for confirmation. If you have any questions, feel free to contact us.</span></p><p>International Student and Scholar Services (ISSS)&nbsp;<br>Center for Global Education&nbsp;<br>University of San Francisco&nbsp;<br>2130 Fulton Street, UC 5th Floor&nbsp;<br>San Francisco, CA 94117-1080 USA&nbsp;<br><br>Phone: 415.422.2654&nbsp;<br>Fax: 415.422.2412&nbsp;<br>Email:&nbsp;<a href="mailto:isss@usfca.edu">isss@usfca.edu</a></p><p><span>Click here to go to the&nbsp;</span><a href="http://www.usfca.edu/isss/">ISSS Homepage</a><span>.</span></p>'
@@ -122,15 +97,12 @@ settings:
   confirmation_back_attributes: {  }
   confirmation_exclude_query: false
   confirmation_exclude_token: false
-  confirmation_update: false
   limit_total: null
   limit_total_interval: null
   limit_total_message: ''
-  limit_total_unique: false
   limit_user: null
   limit_user_interval: null
   limit_user_message: ''
-  limit_user_unique: false
   entity_limit_total: null
   entity_limit_total_interval: null
   entity_limit_user: null
@@ -139,11 +111,7 @@ settings:
   purge_days: null
   results_disabled: false
   results_disabled_ignore: false
-  results_customize: false
-  token_view: false
   token_update: false
-  token_delete: false
-  serial_disabled: false
   form_submit_label: ''
   wizard_complete: 1
 access:
@@ -191,15 +159,10 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-  configuration:
-    roles: {  }
-    users: {  }
-    permissions: {  }
 handlers:
   email_1:
     id: email
     label: 'Email 1'
-    notes: ''
     handler_id: email_1
     status: true
     conditions: {  }
@@ -222,7 +185,6 @@ handlers:
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
-      exclude_attachments: false
       html: true
       attachments: false
       twig: false
@@ -232,11 +194,9 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
-      parameters: {  }
   email_3:
     id: email
     label: 'Email 3'
-    notes: ''
     handler_id: email_3
     status: true
     conditions: {  }
@@ -259,7 +219,6 @@ handlers:
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
-      exclude_attachments: false
       html: true
       attachments: false
       twig: false
@@ -269,5 +228,3 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
-      parameters: {  }
-variants: {  }

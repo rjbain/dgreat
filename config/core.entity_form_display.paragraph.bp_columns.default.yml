@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.field.paragraph.bp_columns.bp_background
     - field.field.paragraph.bp_columns.bp_column_content
-    - field.field.paragraph.bp_columns.bp_header
     - field.field.paragraph.bp_columns.bp_width
     - paragraphs.paragraphs_type.bp_columns
   module:
@@ -17,12 +16,6 @@ targetEntityType: paragraph
 bundle: bp_columns
 mode: default
 content:
-  bp_background:
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
   bp_column_content:
     type: entity_reference_paragraphs
     weight: 0
@@ -35,33 +28,9 @@ content:
       default_paragraph_type: ''
     third_party_settings: {  }
     region: content
-  bp_column_content_2:
-    type: entity_reference_paragraphs
-    weight: 3
-    settings:
-      title: 'Column Content'
-      title_plural: 'Column Contents'
-      edit_mode: closed
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: _none
-    third_party_settings: {  }
-    region: content
-  bp_header:
-    type: string_textfield
-    weight: 2
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  bp_width:
-    weight: 1
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
 hidden:
+  bp_background: true
+  bp_width: true
   created: true
   status: true
   uid: true

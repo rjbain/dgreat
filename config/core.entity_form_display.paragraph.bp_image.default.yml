@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.bp_image.bp_background
-    - field.field.paragraph.bp_image.bp_header
     - field.field.paragraph.bp_image.bp_image_field
     - field.field.paragraph.bp_image.bp_link
     - field.field.paragraph.bp_image.bp_text
@@ -22,22 +21,8 @@ targetEntityType: paragraph
 bundle: bp_image
 mode: default
 content:
-  bp_background:
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  bp_header:
-    type: string_textfield
-    weight: 2
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   bp_image_field:
-    weight: 3
+    weight: 0
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -45,7 +30,7 @@ content:
     type: image_image
     region: content
   bp_link:
-    weight: 4
+    weight: 1
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -60,13 +45,9 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
-  bp_width:
-    weight: 1
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
 hidden:
+  bp_background: true
+  bp_width: true
   created: true
   status: true
   uid: true

@@ -8,7 +8,6 @@ dependencies:
     - node.type.webform
   module:
     - path
-    - scheduler
     - text
     - webform
 _core:
@@ -25,7 +24,6 @@ content:
       rows: 9
       summary_rows: 3
       placeholder: ''
-      show_summary: false
     third_party_settings: {  }
     region: content
   created:
@@ -34,12 +32,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
-  moderation_state:
-    type: moderation_state_default
-    weight: 100
-    settings: {  }
-    region: content
-    third_party_settings: {  }
   path:
     type: path
     weight: 30
@@ -88,7 +80,6 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
-      match_limit: 10
     third_party_settings: {  }
     region: content
   unpublish_on:
@@ -104,8 +95,7 @@ content:
     region: content
   webform:
     weight: 0
-    settings:
-      default_data: true
+    settings: {  }
     third_party_settings: {  }
     type: webform_entity_reference_select
     region: content

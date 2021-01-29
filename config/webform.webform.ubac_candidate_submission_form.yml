@@ -17,20 +17,15 @@ id: ubac_candidate_submission_form
 title: 'UBAC Candidate Submission Form'
 description: ''
 category: UBAC
-elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': Title\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#required': true\nemail:\n  '#type': email\n  '#title': Email\n  '#required': true\ndescription_of_your_interest_in_the_role:\n  '#type': textarea\n  '#title': 'Description of your Interest in the Role'\n  '#maxlength': 1250\n  '#required': true\nplease_provide_a_link_to_a_photograph_to_list_on_the_ubac_candid:\n  '#type': textfield\n  '#title': 'Please provide a link to a photograph to list on the UBAC candidates page'\n  '#description': 'If you do not provide a link, we will use your <a href=\"https://myusf.usfca.edu/sites/default/files/users/mkrasts/FINAL%2011.11.18%20ModPersInfo-JA-31.pdf\" target=\"_blank\">current workday photo</a>.'\n"
+elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': Title\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#required': true\nemail:\n  '#type': email\n  '#title': Email\n  '#required': true\ndescription_of_your_interest_in_the_role:\n  '#type': textarea\n  '#title': 'Description of your Interest in the Role'\n  '#maxlength': '1250'\n  '#required': true\nplease_provide_a_link_to_a_photograph_to_list_on_the_ubac_candid:\n  '#type': textfield\n  '#title': 'Please provide a link to a photograph to list on the UBAC candidates page'\n  '#description': 'If you do not provide a link, we will use your <a href=\"https://myusf.usfca.edu/sites/default/files/users/mkrasts/FINAL%2011.11.18%20ModPersInfo-JA-31.pdf\" target=\"_blank\">current workday photo</a>.'"
 css: ''
 javascript: ''
 settings:
   ajax: false
   ajax_scroll_top: form
-  ajax_progress_type: ''
-  ajax_effect: ''
-  ajax_speed: null
   page: true
   page_submit_path: ''
   page_confirm_path: ''
-  page_theme_name: ''
-  form_title: both
   form_submit_once: false
   form_exception_message: ''
   form_open_message: ''
@@ -38,7 +33,6 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -59,11 +53,6 @@ settings:
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
-  share: false
-  share_node: false
-  share_theme_name: ''
-  share_title: true
-  share_page_body_attributes: {  }
   submission_label: ''
   submission_log: false
   submission_views: {  }
@@ -76,9 +65,6 @@ settings:
   submission_access_denied_attributes: {  }
   submission_exception_message: ''
   submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -88,20 +74,11 @@ settings:
   wizard_progress_pages: false
   wizard_progress_percentage: false
   wizard_progress_link: false
-  wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
   wizard_track: ''
-  wizard_prev_button_label: ''
-  wizard_next_button_label: ''
-  wizard_toggle: false
-  wizard_toggle_show_label: ''
-  wizard_toggle_hide_label: ''
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -115,8 +92,6 @@ settings:
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
-  draft_pending_single_message: ''
-  draft_pending_multiple_message: ''
   confirmation_type: page
   confirmation_title: ''
   confirmation_message: "<p>Thank you for submitting the materials associated with your candidacy for the University Budget Advisory Council. Reminders concerning the timeline for nominations and elections:</p>\r\n\r\n<p>August 30, 2019: nominations are due.<br />\r\nSeptember 4, 2019: deadline for nominees to confirm their candidacy and submit related materials.<br />\r\nSeptember 6, 2019: balloting starts.<br />\r\nSeptember 12, 2019: reminder to University employees to submit their votes.<br />\r\nSeptember 18, 2019: election closes.<br />\r\nSeptember 19, 2019: results of elections announced, with Vice Provost Hamrick emailing winners to discuss next steps.</p>\r\n\r\n<p>Votes in UBAC elections are confidential. Only full-time University employees can vote. Only one ballot may be submitted by each full-time employee. In the unlikely event of a tie, the Provost and President will resolve the tie. Voters can select between one and six candidates (but no more than six), and no candidate can receive more than one vote from a voter. A final review of ballot totals will be overseen by the Office of the Provost and Office of Marketing Communications as part of determining the outcomes of the elections</p>"
@@ -127,15 +102,12 @@ settings:
   confirmation_back_attributes: {  }
   confirmation_exclude_query: false
   confirmation_exclude_token: false
-  confirmation_update: false
   limit_total: null
   limit_total_interval: null
   limit_total_message: ''
-  limit_total_unique: false
   limit_user: null
   limit_user_interval: null
   limit_user_message: ''
-  limit_user_unique: false
   entity_limit_total: null
   entity_limit_total_interval: null
   entity_limit_user: null
@@ -144,11 +116,7 @@ settings:
   purge_days: null
   results_disabled: false
   results_disabled_ignore: false
-  results_customize: false
-  token_view: false
   token_update: false
-  token_delete: false
-  serial_disabled: false
 access:
   create:
     roles:
@@ -195,15 +163,10 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-  configuration:
-    roles: {  }
-    users: {  }
-    permissions: {  }
 handlers:
   email:
     id: email
     label: Email
-    notes: ''
     handler_id: email
     status: true
     conditions: {  }
@@ -226,7 +189,6 @@ handlers:
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
-      exclude_attachments: false
       html: true
       attachments: false
       twig: true
@@ -236,5 +198,3 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
-      parameters: {  }
-variants: {  }

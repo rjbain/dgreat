@@ -8,13 +8,13 @@ dependencies:
     - field.storage.node.field_end_date
     - field.storage.node.field_search_date
     - field.storage.node.field_start_date
-    - field.storage.node.field_terms
     - field.storage.node.field_target
+    - field.storage.node.field_terms
     - search_api.server.events
   module:
     - taxonomy
-    - node
     - search_api
+    - node
 id: events
 name: Events
 description: ''
@@ -83,9 +83,6 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: title
     type: text
-    dependencies:
-      module:
-        - node
 datasource_settings:
   'entity:node':
     bundles:
@@ -96,18 +93,8 @@ datasource_settings:
       default: true
       selected: {  }
 processor_settings:
-  aggregated_field: {  }
-  language_with_fallback: {  }
-  rendered_item: {  }
-  ignorecase:
-    all_fields: false
-    fields:
-      - body
-      - title
-    weights:
-      preprocess_index: -20
-      preprocess_query: -20
   add_url: {  }
+  aggregated_field: {  }
   html_filter:
     all_fields: false
     fields:
@@ -125,6 +112,15 @@ processor_settings:
     weights:
       preprocess_index: -15
       preprocess_query: -15
+  ignorecase:
+    all_fields: false
+    fields:
+      - body
+      - title
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
+  rendered_item: {  }
 tracker_settings:
   default:
     indexing_order: fifo
