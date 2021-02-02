@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.bp_tabs.bp_background
+    - field.field.paragraph.bp_tabs.bp_header
     - field.field.paragraph.bp_tabs.bp_tab_section
     - field.field.paragraph.bp_tabs.bp_width
     - paragraphs.paragraphs_type.bp_tabs
@@ -16,9 +17,23 @@ targetEntityType: paragraph
 bundle: bp_tabs
 mode: default
 content:
+  bp_background:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  bp_header:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   bp_tab_section:
     type: entity_reference_paragraphs
-    weight: 0
+    weight: 3
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -28,9 +43,13 @@ content:
       default_paragraph_type: ''
     third_party_settings: {  }
     region: content
+  bp_width:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
 hidden:
-  bp_background: true
-  bp_width: true
   created: true
   status: true
   uid: true

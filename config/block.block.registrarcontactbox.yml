@@ -1,0 +1,37 @@
+uuid: 66decccd-df3a-4da0-8347-50ca738232ef
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:contact:d9179cfe-1e93-40f1-8088-b51e05d3013c'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: registrarcontactbox
+theme: myusf
+region: sidebar_second
+weight: 22
+provider: null
+plugin: 'block_content:d9179cfe-1e93-40f1-8088-b51e05d3013c'
+settings:
+  id: 'block_content:d9179cfe-1e93-40f1-8088-b51e05d3013c'
+  label: 'Registrar Contact Box'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/registration\r\n/registration/*\r\n/sem/registrar\r\n/sem/registrar/*"
+    negate: false
+    context_mapping: {  }
