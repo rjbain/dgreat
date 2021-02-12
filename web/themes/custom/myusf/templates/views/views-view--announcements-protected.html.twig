@@ -31,7 +31,11 @@
  */
 #}
 {% if empty %}
-  Log into the site to see this content
+  {% if logged_in %}
+    You do not have permission to view this announcement.
+  {% else %}
+    Please login to access this announcement.
+  {% endif %}
 {% endif %}
 {{ rows }}
  
