@@ -30,20 +30,4 @@
  */
 #}
 {% set role = user.getroles|join(',') %}
-<div class="block-views-blockannouncements-most-recent-list-block-1 block">
-	<h2>Announcements</h2>
-      	<div class="content">
-      		<div class="col-auto">
-      			<div class="contextual-region">
-     				  <div class="view-content row">
-      					<div class="item-list">
-      						 <ul>
-								    {{ drupal_view('dashboard_announements', 'block_2', role) }}
-							     </ul>
-							</div>
-					 </div>
-  			</div>
-  		</div>
-  	</div>
-</div>
-<br clear="all">
+{{ drupal_view('announcements_page', 'page_1', role) }}

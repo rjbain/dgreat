@@ -1,0 +1,34 @@
+uuid: fc4412d3-6602-44d3-b4de-116cc86f23f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - simple_block.simple_block.announcements_list_page
+  module:
+    - block_visibility_groups
+    - simple_block
+    - system
+  theme:
+    - myusf
+id: announcementslistpage
+theme: myusf
+region: content
+weight: 0
+provider: null
+plugin: 'simple_block:announcements_list_page'
+settings:
+  id: 'simple_block:announcements_list_page'
+  label: 'Announcements List Page'
+  provider: simple_block
+  label_display: '0'
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /announcement-page-block-thingy
+    negate: false
+    context_mapping: {  }
