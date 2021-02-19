@@ -36,13 +36,7 @@ nav.navbar {
     	padding-top: .75rem;
     	font-weight: 700;
 
-    	@include media-breakpoint-up(desktop) {
-    		font-size: .75rem!important;
-    		padding-left: .9rem!important;
-    		padding-right: .9rem!important;
-    	}
-
-		@include media-breakpoint-only(tablet) {
+		@include media-breakpoint-up(tablet) {
 			font-size: .7rem;
     		padding-left: 7px;
     		padding-right: 7px;
@@ -53,6 +47,11 @@ nav.navbar {
     	@include media-breakpoint-down(landscape_phone) {
     		padding-bottom: 1.2rem;
     		margin-top: .6rem;
+    	}
+    	@include media-breakpoint-up(large_desktop) {
+    		font-size: .75rem!important;
+    		padding-left: .9rem!important;
+    		padding-right: .9rem!important;
     	}
 	}
 	li {
