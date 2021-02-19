@@ -1357,7 +1357,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		}
 	}
 	.form-row:after {
-		right: 40px;
+		right: 30px;
 	    background: url(/themes/custom/myusf/images/src/search-gray.svg) 0 0 no-repeat;
 	    width: 20px;
 	    height: 29px;
@@ -1365,6 +1365,11 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	    display: inline-block;
 	    content: "";
 	    top: 58px;
+
+	    @include media-breakpoint-only(landscape_phone) {
+	    	left: 220px;
+	    }
+
 	}
 	input#edit-search-api-fulltext::placeholder {
 		text-transform: uppercase;
