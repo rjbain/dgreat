@@ -1159,6 +1159,15 @@ nav.tabs {
 	}
 }
 
+#sidebar_first .sidebar {
+	h2 {
+		font-size: 1.025rem;
+	    font-weight: 700;
+	    color: #6B6B6B!important;
+	    text-transform: uppercase!important;
+	    border: 0;
+	}
+}
 .sidebar nav ul.nav {
 	@include media-breakpoint-down(tablet) {  
     	margin: 0;
@@ -1267,6 +1276,79 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		    margin-top: 0;
 		    width: 100%;
 		}
+		h2 {
+    		border: 0;
+		}
+
+		form legend {
+		    font-size: 1rem;
+		    font-weight: 700;
+		}
+
+		form .checkbox {
+		    padding-left: 9px;
+		}
+
+		.form-check-input {
+		    position: absolute;
+		    margin-top: .3rem;
+		    margin-left: -1rem;
+		}
+
+		form label {
+		    font-weight: inherit;
+		    padding-right: 10px;
+		    line-height: 1.3rem;
+		    font-size: .85rem;
+		}
+		.form-row {
+			display:block!important;
+		}
+
+		.form-row>fieldset, .form-row>div {
+		    padding-right: 5px;
+		    padding-left: 5px;
+		    flex: 0 0 auto;
+		    width: auto;
+		    max-width: 245px;
+
+		    @include media-breakpoint-down(tablet) {  
+		    	max-width: 100%;
+			}
+		}
+		label {
+		    display: inline-block;
+		    /* margin-bottom: .5rem; */
+		}
+
+		.form-group {
+		    margin-bottom: .5rem;
+		}
+		input {
+    		margin-top: -5px;
+    		margin-bottom: -10px;
+		}
+		input#edit-field-end-date {
+    		margin-bottom: 0px;
+		}
+		input#edit-submit-events-search {
+		    margin-bottom: 30px!important;
+		}
+	}
+
+	#block-exposedformevents-searchpage-1 fieldset#edit-field-category--wrapper {
+		margin-bottom: 15px;
+		
+		legend {
+			margin-bottom: 5px;
+		}
+	}
+	#block-exposedformevents-searchpage-1 fieldset#edit-field-target--wrapper {
+		margin-bottom: 25px;
+		
+		legend {
+			margin-bottom: 5px;
+		}
 	}
 
 	.block-views-blockannouncements-most-recent-list-block-1 .custom-block2 {
@@ -1274,7 +1356,25 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 			width: 100%!important;
 		}
 	}
-	
+	.form-row:after {
+		right: 30px;
+	    background: url(/themes/custom/myusf/images/src/search-gray.svg) 0 0 no-repeat;
+	    width: 20px;
+	    height: 29px;
+	    position: absolute;
+	    display: inline-block;
+	    content: "";
+	    top: 58px;
+
+	    @include media-breakpoint-only(landscape_phone) {
+	    	left: 45%;
+	    }
+
+	}
+	input#edit-search-api-fulltext::placeholder {
+		text-transform: uppercase;
+		font-size: .8em;
+	}		
 }
 
 .page-node-140134 #sidebar_second {

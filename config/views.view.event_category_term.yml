@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - taxonomy.vocabulary.event_category
+    - taxonomy.vocabulary.event_target
   module:
     - taxonomy
     - user
@@ -244,6 +245,68 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - user.permissions
+      tags: {  }
+  block_2:
+    display_plugin: block
+    id: block_2
+    display_title: 'Block 2'
+    position: 2
+    display_options:
+      display_extenders: {  }
+      filters:
+        vid:
+          id: vid
+          table: taxonomy_term_field_data
+          field: vid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            event_target: event_target
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: taxonomy_term
+          entity_field: vid
+          plugin_id: bundle
+      defaults:
+        filters: false
+        filter_groups: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: -1
       contexts:
