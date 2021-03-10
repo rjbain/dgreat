@@ -29,34 +29,34 @@
 
 	display:block;
 	text-align:right!important;
-	padding-right: 60px;
-	padding-left:40px;
-	padding-top:10px;
-	padding-bottom: 20px;
+	padding-right: 3.75rem;
+	padding-left: 2.5rem;
+	padding-top: 0.625rem;
+	padding-bottom: 1.25rem;
 
 	@include media-breakpoint-down(tablet) { 
-		padding-right: 20px!important;
-		padding-left:40px;
+		padding-right: 1.25rem!important;
+		padding-left: 2.5rem;
 	}
 }
 
 .paragraph__column ul,
 .event-description ul,
 .node--type-announcement .field--type-text-with-summary ul {
-	-webkit-padding-start: 20px;
+	-webkit-padding-start: 1.25rem;
 
 	@include media-breakpoint-down(phone) {
-		-webkit-padding-start: 0px;
+		-webkit-padding-start: 0;
 	}
 
 	li {
 		position: relative;  
 		list-style-type: none;	  	
-	  	margin-right: 50px;
-	  	padding-left: 20px;
+	  	margin-right: 3.125rem;
+	  	padding-left: 1.25rem;
 	  	
 	  	@include media-breakpoint-down(phone) {
-	  		margin-right: 0px;
+	  		margin-right: 0;
 	  	}
 
 		&:before {
@@ -67,12 +67,12 @@
 		  	position: absolute;
 		  	left: -32px;
 		  	width: 26px;
-		  	padding-left: 30px;
+		  	padding-left: 1.875rem;
 	    }
 	}
 
 	ul li {
-		margin-right: 0px;
+		margin-right: 0;
 	}
 }
 
@@ -104,7 +104,7 @@
 		position: relative;  
 		list-style-type: none;	  	
 	  	margin-right: 0px;
-	  	padding-left: 20px;
+	  	padding-left: 1.25rem;		
 	  	
 
 		&:before {
@@ -115,7 +115,7 @@
 		  	position: absolute;
 		  	left: -32px;
 		  	width: 26px;
-		  	padding-left: 30px;
+		  	padding-left: 1.875rem;
 	  		display:inline-block;
 			backface-visibility:hidden;
 		    counter-increment: none;
@@ -146,8 +146,7 @@ blockquote, blockquote p {
 	font-size: .9rem;
 	font-style: italic;
 	line-height: 1.8;
-	margin: 14px 0;
-
+	margin: 0.875rem 0;
 }
  blockquote p {
     display: contents;
@@ -165,15 +164,15 @@ blockquote, blockquote p {
 blockquote {
 	position: relative;
 	margin: 0;
-	padding-left: 40px;
-	padding-right: 50px;
+	padding-left: 2.5rem;
+	padding-right: 3.125rem;	
 
 	@include media-breakpoint-down(phone) {
-		padding: 10px 10px 10px 20px; 
+		padding: 0.625rem 0.625rem	0.625rem 1.25rem; 
 	}
 	
 		&::before {
-			font-size: 50px;
+			font-size: 3.125rem;	
 			font-weight: 700;
 			color: $yellow;
 			position: relative;
@@ -198,17 +197,17 @@ blockquote {
 }
 
 .indent, .in_content_indent {
-	padding: 0 44px 0 24px;
+	padding: 0 2.75rem  0 1.5rem;
 
 	@include media-breakpoint-up(tablet)  {
-		padding: 0 64px 0 44px;
+		padding: 0 4rem 0 2.75rem;
 	}
 }
 
 .callout {
 	margin: 0 0 2rem 0; 
 	display: inline-block; 
-	padding: 15px 15px 0 15px; 
+	padding: 0.9375rem 0.9375rem 0 0.9375rem; 
 	border-style: solid;
 	border-width: 8px;
 	border-color: $orange;
@@ -257,11 +256,11 @@ blockquote {
 		}
 
 		&.block-left {
-			margin: 0 20px 2rem 0;
+			margin: 0 1.25rem 2rem 0;
 		}
 
 		&.block-right {
-			margin: 0 0 2rem 20px;
+			margin: 0 0 2rem 1.25rem;
 		}
 	}
 
@@ -281,25 +280,29 @@ blockquote {
 			width:100%;
 		}
 		&.block-left {
-			margin: 0 20px 2rem 0;
+			margin: 0 1.25rem 2rem 0;
 		}
 
 		&.block-right {
-			margin: 0 0 2rem 20px;
+			margin: 0 0 2rem 1.25rem;
 		}
 	}
 }
 
+p.callout {
+    padding-bottom: 0.9375rem;
+}
+
 img {
-    margin-top: 7px;
+    margin-top: 0.4375rem;
 
 	&.align-right {
-    	margin-left: 25px;
+    	margin-left: 1.5625rem;	
     	margin-bottom: 1rem;
     	width: unset;
 	}
 	&.align-left  {
-    	margin-right: 25px;
+    	margin-right: 1.5625rem;	
     	margin-bottom: 1rem;
     	width: unset;
 	}
@@ -311,10 +314,10 @@ img {
 
 .caption-img {
 	&.align-right {
-	    margin-left: 25px;
+	    margin-left: 1.5625rem;	
 	}
 	&.align-left {
-	    margin-right: 25px;
+	    margin-right: 1.5625rem;	
 	}
 }
 
@@ -322,7 +325,7 @@ figcaption {
     font-size: .8rem;
     font-style: italic;
     line-height: 1.25;
-    margin: 5px 5px 0;
+    margin: 0.3125rem 0.3125rem 0;
 }
 
 /* ==================================================================
@@ -349,11 +352,11 @@ figcaption {
 	float: left;
 }
 .left {
-	margin-right: 20px;
+	margin-right: 1.25rem;	
 }
 
 .block_left {
-	margin: 0 20px 20px 0;
+	margin: 0 1.25rem 1.25rem 0;
 }
 
 .right,
@@ -362,11 +365,11 @@ figcaption {
 }
 
 .right {
-	margin-left: 20px;
+	margin-left: 1.25rem;	
 }
 
 .block_right {
-	margin: 0 0 20px 20px;
+	margin: 0 0 1.25rem 1.25rem;
 }
 
 .block_float_none {
@@ -374,13 +377,13 @@ figcaption {
 }
 
 .block_float_none {
-	margin: 0 0 20px 20px;
+	margin: 0 0 1.25rem 1.25rem;
 }
 
 .no_bullet {
 
 	& li {
-		padding-left: 0px;
+		padding-left: 0;
 			
 		&::before {
 				display:none!important;
@@ -390,8 +393,8 @@ figcaption {
 
 img.file-icon {
 	position: relative;
-    margin-right: 5px;
-    bottom: 5px;    
+    margin-right: 0.3125rem;
+    bottom: 0.3125rem;   
 }
 
 
@@ -415,12 +418,12 @@ img.media-element {
 	max-width: 100%;
     height: auto;
 	float: right; 
-	margin: 0 0 20px 20px;
+	margin: 0 0 1.25rem 1.25rem;
 }
 
 img.media-element.block_left { 
 	float: left; 
-	margin: 0 20px 20px 0;
+	margin: 0 1.25rem 1.25rem 0;
 }
 
 img.media-element.block_right { 
