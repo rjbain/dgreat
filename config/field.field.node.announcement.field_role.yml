@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_role
     - node.type.announcement
+    - user.role.administrator
 id: node.announcement.field_role
 field_name: field_role
 entity_type: node
@@ -13,7 +14,9 @@ label: Role
 description: ''
 required: false
 translatable: true
-default_value: {  }
+default_value:
+  -
+    target_uuid: 2f94b28a-5e6a-424d-88f5-ce454c8729f4
 default_value_callback: ''
 settings:
   handler: 'default:user_role'

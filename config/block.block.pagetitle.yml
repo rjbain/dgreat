@@ -11,7 +11,7 @@ dependencies:
 id: pagetitle
 theme: myusf
 region: content
-weight: 1
+weight: 0
 provider: null
 plugin: page_title_block
 settings:
@@ -28,13 +28,12 @@ visibility:
   node_type:
     id: node_type
     bundles:
-      announcement: announcement
       usf_service: usf_service
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
   request_path:
     id: request_path
-    pages: /home
+    pages: "/home\r\n/announcements"
     negate: true
     context_mapping: {  }
