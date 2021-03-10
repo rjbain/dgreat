@@ -12,8 +12,9 @@ dependencies:
     - field.storage.node.field_terms
     - search_api.server.events
   module:
-    - node
+    - taxonomy
     - search_api
+    - node
 id: events
 name: Events
 description: ''
@@ -59,14 +60,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_start_date
-  field_target:
-    label: Target
-    datasource_id: 'entity:node'
-    property_path: field_target
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_target
   field_terms:
     label: Terms
     datasource_id: 'entity:node'
@@ -75,18 +68,21 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_terms
+  tid:
+    label: 'Target » Taxonomy term » Term ID'
+    datasource_id: 'entity:node'
+    property_path: 'field_target:entity:tid'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_target
+      module:
+        - taxonomy
   title:
     label: Title
     datasource_id: 'entity:node'
     property_path: title
     type: text
-    dependencies:
-      module:
-        - node
-  url:
-    label: URI
-    property_path: search_api_url
-    type: string
 datasource_settings:
   'entity:node':
     bundles:

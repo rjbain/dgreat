@@ -387,12 +387,7 @@ display:
       title: Announcements
       header: {  }
       footer: {  }
-      empty:
-        area_text_custom:
-          id: area_text_custom
-          table: views
-          field: area_text_custom
-          plugin_id: text_custom
+      empty: {  }
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
@@ -755,8 +750,6 @@ display:
         arguments: false
         query: false
         footer: false
-        empty: false
-        relationships: true
       arguments:
         field_role_target_id:
           id: field_role_target_id
@@ -787,13 +780,9 @@ display:
             format: default_summary
           specify_validation: true
           validate:
-            type: 'entity:user_role'
+            type: none
             fail: 'not found'
-          validate_options:
-            operation: view
-            multiple: 1
-            access: false
-            bundles: null
+          validate_options: {  }
           glossary: false
           limit: 0
           case: none
@@ -820,18 +809,6 @@ display:
           empty: false
           tokenize: false
           content: '<li><div class="views-field views-field-title"><span class="field-content"><a href="/announcements">View all</a></span></div></li>'
-          plugin_id: text_custom
-      empty:
-        area_text_custom:
-          id: area_text_custom
-          table: views
-          field: area_text_custom
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          tokenize: false
-          content: 'There are no announcements currently.'
           plugin_id: text_custom
     cache_metadata:
       max-age: -1
