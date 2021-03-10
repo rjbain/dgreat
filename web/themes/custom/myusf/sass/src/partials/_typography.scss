@@ -5,7 +5,7 @@ h1, h2, h3, h4, h5, h6 {
 
 body, p {
 	font-size: 1rem;
-	line-height: 1.5rem;
+	line-height: 1.5;
 	margin-bottom: 1.5rem;
 	font-weight: 400;
 }
@@ -26,7 +26,7 @@ h1, h1 a {
 	font-weight: 700;
 	font-size: 2.2rem;
 	margin-top: 0!important;
-	line-height: 2.5rem;
+	line-height: 1.136;
 	color: inherit;
 	text-transform: none !important;
 }
@@ -36,7 +36,7 @@ h2, h2 a {
 	font-size: 1.5rem;
 	margin-top: 0!important;
 	margin-bottom: .8rem;
-	line-height: 2rem;
+	line-height: 1.33;
 	color: inherit;
 	text-transform: none !important;
 }
@@ -47,7 +47,7 @@ h3, h3 a {
 	font-style: normal !important;
 	margin-bottom: .5rem;
 	padding-top: .6rem;
-	line-height: 1.3rem;
+	line-height: 1.083;
 	color: inherit;
 	text-transform: uppercase;
 }
@@ -57,7 +57,7 @@ h4, h4 a {
 	font-weight: 600;
 	padding-top: .4rem;
 	margin-bottom: .5rem;
-	line-height: 1.3rem;
+	line-height: 1.3;
 	color: inherit;
 }
 
@@ -65,7 +65,7 @@ h5, h5 a {
 	font-size: .9rem;
 	font-weight: 600;
 	margin-bottom: .5rem;
-	line-height: 1.1rem;
+	line-height: 1.22;
 	color: inherit;
 	text-transform: uppercase;
 }
@@ -75,7 +75,7 @@ h6, h6 a {
 	font-weight: 700;
 	font-style: italic;
 	margin-bottom: .5rem;
-	line-height: 1.1rem;
+	line-height: 1.1;
 	color: inherit;
 }
 
@@ -154,17 +154,14 @@ li {
 //Pullquote
 
 .pullquote {
-
-	padding: 10px 10px 10px 20px;
+	padding: 0.625rem 0.625rem 0.625rem 1.25rem;
 
 	@include media-breakpoint-up(tablet) {
-		padding: 20px 64px 20px 44px;
+		padding: 1.25rem 4rem 1.25rem 2.75rem;
 	}
 
-	font-size: 18px;
-
+	font-size: 1.125rem;
 	position: relative;
-
 	line-height: 1.538;
 	margin: 0;
 
@@ -207,10 +204,11 @@ table, table p {
 }
 table li {
 	font-size: .8rem;
-    line-height: 1.3rem;
+    line-height: 1.625;
 }
 table {
 	/*display: block;*/
+	margin: 0 0 1.9rem 0;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -221,9 +219,9 @@ table {
 }
 
 th {
-	line-height:1.2rem;
-	padding-top: 10px!important;
-	padding-bottom: 10px!important;
+	line-height:1.5;
+	padding-top: 0.625rem!important;
+	padding-bottom: 0.625rem!important;
 
 	&[scope="col"] {
 		text-transform: uppercase;
@@ -260,8 +258,8 @@ tr {
 		}*/
 	}
 	td, th {
-		padding: 9px;
-		line-height: 1.2rem;
+		padding: 0.5625rem;
+		line-height: 2.133;
 	}
 }
 /*.table-responsive {
@@ -307,11 +305,11 @@ tr {
 /* Sidebar Second Ads
 =================================================== */
 .sidebar-ad {
-	padding:15px!important;
+	padding:0.9375rem!important;
 	h2 {
 		color: $white!important;
 		font-size:1.2rem;
-		line-height:1.3rem;
+		line-height:1.083;
 		text-shadow: none;
 	    border: 0;
 	}
@@ -327,10 +325,10 @@ tr {
 		}
 	}
 	.sidebar-ad-text {
-		padding: 15px 15px 10px!important;
+		padding: 0.9375rem 0.9375rem 0.625rem!important; 
 	}
 	.sidebar-ad-image {
-		margin-bottom: -15px!important;
+		margin-bottom: -0.9375rem!important;
 	}
 }
 
@@ -358,14 +356,14 @@ table.gsc-completion-container tr:nth-child(2n) {
 
 
 div#___gcse_0 {
-	margin-top: 30px;
-	margin-bottom: 30px;
+	margin-top: 1.875rem;
+	margin-bottom: 1.875rem;
 
 	@include media-breakpoint-only(tablet) {
 		width: 150%;
 	}
 	@include media-breakpoint-down(phone) {
-		margin-left:-9px;
+		margin-left:-0.5625rem;
 	}
 
 	table.gsc-search-box {
@@ -378,8 +376,8 @@ div#___gcse_0 {
 		td {
 	    	vertical-align: top!important;
 	    	&.gsc-input {
-	    		padding-top: 9px;
-	    		padding-right: 12px!important;
+	    		padding-top: 0.5625rem;
+	    		padding-right: 0.75rem!important;
 
 	    		.gsc-input-box  {
 					height:51px;
@@ -389,10 +387,10 @@ div#___gcse_0 {
 					color: $text-gray;
 				}
 		    	.gsib_b {
-				    padding-top: 3px;
+				    padding-top: 0.1875rem;
 
 				    a.gsst_a {
-				    	padding-top:4px;
+				    	padding-top:0.25rem;
 				    }
 				}
 
@@ -609,15 +607,15 @@ div#___gcse_1 {
 }
 h1.display-title, h1.title {
     font-size: 1.8rem;
-    line-height: 2rem;
+    line-height: 1.12;
     @include media-breakpoint-down(tablet) {
     	font-size: 1.6rem;
-    	line-height: 1.8rem;
+    	line-height: 1.125;
     }
 }
 h2.sub-title {
     font-size: 1.5rem;
-    line-height: 1.7rem;
+    line-height: 1.133;
     padding-top: .2rem;
 }
 
