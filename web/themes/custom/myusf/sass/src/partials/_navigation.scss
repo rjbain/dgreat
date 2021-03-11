@@ -6,12 +6,12 @@
   	margin: 0 auto;
 
   	@include media-breakpoint-only(tablet) {
-  		margin-top: -9px;
+  		margin-top: -0.5625rem;
   	}
 
   	@include media-breakpoint-down(landscape_phone) {
   		width:100%;
-  		margin-top: 30px;
+  		margin-top: 1.875rem;
   	}
 }
 
@@ -44,10 +44,10 @@ nav.navbar {
 
 		@include media-breakpoint-only(tablet) {
 			font-size: .7rem;
-    		padding-left: 7px;
-    		padding-right: 7px;
+    		padding-left: 0.4375rem;
+    		padding-right: 0.4375rem;
     		padding-bottom: .55rem;
-    		line-height: 1rem;
+    		line-height: 1.4285;
     		text-align: center;
     	}
     	@include media-breakpoint-down(landscape_phone) {
@@ -78,7 +78,7 @@ nav.navbar {
 
 .navbar-brand {
     color: $green!important;
-    margin-left: 9px;
+    margin-left: 0.5625rem;
 
     &:hover,
     &:focus {
@@ -98,18 +98,18 @@ nav.navbar {
     }
 
 	img {
-		margin-left: 5px; /*was 20*/
+		margin-left: 0.3125rem; 
 		@include media-breakpoint-only(tablet) {
-			margin-left: 0px;
+			margin-left: 0;
 		}
 		@include media-breakpoint-down(landscape_phone) {
-			margin-left: 10px;
+			margin-left: 0.625rem;
 		}
 		@include media-breakpoint-up(midlarge_desktop) {
-			margin-left: 5px;
+			margin-left: 0.3125rem;
 		}
 		@include media-breakpoint-up(xl_desktop) {
-			margin-left: 20px;
+			margin-left: 1.25rem;
 		}
 	}
 
@@ -145,7 +145,7 @@ nav.navbar {
 .navbar-nav {
 	border:0;
 	/*margin-left: 120px;*/
-	padding-top: 0px;
+	padding-top: 0;
 
 	.menu-item--expanded.dropdown  {
 		a {
@@ -162,8 +162,8 @@ nav.navbar {
 
 		@include media-breakpoint-only(tablet) {
 			width:80px;
-			margin-left: 5px;
-    		margin-right: 5px;
+			margin-left: 0.3125rem;
+    		margin-right: 0.3125rem;
 		}	
 	}
 
@@ -183,16 +183,16 @@ nav.navbar {
 
 		li {
 			flex-direction: row!important;
-			margin-top: 5px;
-			padding: 0 5px!important;			
+			margin-top: 0.3125rem;
+			padding: 0 0.3125rem!important;				
 
 			a {
 				font-size: .75rem;
-			    line-height: .9rem;
+			    line-height: 1.2;
 			    text-align: center;
 			    letter-spacing: .025rem;
-			    padding-top: 5px!important;
-    			padding-bottom: 5px!important;
+			    padding-top: 0.3125rem!important;	
+    			padding-bottom: 0.3125rem!important;	
 			    margin-top: 0!important;
 			    margin-bottom: 0!important;
 			}
@@ -232,7 +232,7 @@ nav.navbar {
 			}
 
 			.dropdown {
-				margin-top: -1px;
+				margin-top: -0.0625rem;	
 			}
 		}					
 	}
@@ -272,7 +272,7 @@ li.menu-item--expanded:hover ul.dropdown-menu {
 
 	@include media-breakpoint-only(tablet) {
 		position: absolute;
-		margin-top: 0px;
+		margin-top: 0;
 	}
 
 	.dropdown-item {
@@ -283,7 +283,7 @@ li.menu-item--expanded:hover ul.dropdown-menu {
 
 		@include media-breakpoint-down(tablet) {
 			padding: .5rem 1rem!important;
-			line-height: 1.2rem!important;
+			line-height: 1.33!important;  /* font-size .9rem inherited from 'nav.navbar li' */
 		}
 		@include media-breakpoint-down(phone) {
 		    white-space: nowrap;
@@ -297,9 +297,9 @@ li.menu-item--expanded:hover ul.dropdown-menu {
 			color: $black!important;
 			display: block;
 			width: 200px!important;
-    		padding-top: 3px;
-    		padding-bottom: 3px;
-    		line-height: 1.1rem;
+    		padding-top: 0.1875rem;	
+    		padding-bottom: 0.1875rem;	
+    		line-height: 1.294;
 
     		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     			font-size: .75rem;
@@ -308,7 +308,7 @@ li.menu-item--expanded:hover ul.dropdown-menu {
 		
 			@include media-breakpoint-down(landscape_phone) {
 				font-size: .8rem;
-				padding-left: 5px;
+				padding-left: 0.3125rem;
 				text-align: left;
 				width: 93vw!important;
 			}
@@ -386,17 +386,11 @@ button.header_search {
 		right: 160px;
 	}
 
-	@include media-breakpoint-up(midlarge_desktop) {
-		/*right: calc(((100% - 1530px)/ 2) + 170px);*/
-		
-	}
 	@include media-breakpoint-up(xl_desktop) {
-		/*right: calc(((100% - 1700px)/ 2) + 170px);*/
-		margin-right: 20px;
+		margin-right: 1.25rem;	
 	}
 
 	@include media-breakpoint-up(1920xl_desktop) {
-        /*right: calc(((100% - 1920px)/ 2) + 170px);*/
         margin-right: calc(((100% - 1920px)/ 2) + 170px);
         right: 20px;
     }
@@ -404,10 +398,6 @@ button.header_search {
         margin-right: calc(((100% - 1920px)/ 2) + 230px);
 
     }
-
-	/*@include media-breakpoint-up(xl_desktop) {
-        margin-right: calc(((100% - 1500px) / 2) + 25px);
-    }*/
 }
 div.search-icon-main {    	
 	width: 20px;
@@ -429,8 +419,8 @@ div.search-icon-rollover {
 		position: absolute;
 		top: 3px;
 		right: -1px;
-		margin-top: -2px;
-		margin-right: 1px;
+		margin-top: -0.125rem;
+		margin-right: 0.0625rem;
 	}	
 } 
 	 
@@ -441,13 +431,13 @@ div.search-icon-rollover {
     height: 80px;
     top: -29px;
     right: 153px;    
-    padding-top: 10px!important;
-    padding-left: 20px!important;
-    padding-right: 35px!important;
+    padding-top: 0.625rem!important;
+    padding-left: 1.25rem!important;
+    padding-right: 2.1875rem!important;
     background: $black;
     z-index: 1;
     color: $white;
-    margin:30px 0 0 0;
+    margin: 1.875rem 0 0 0;
 
     @include media-breakpoint-only(tablet) {
     	right: 150px;
@@ -474,12 +464,12 @@ div.search-icon-rollover {
     input[type="search"] {
     	font-size: 1rem;
     	height: 29px;
-    	padding-left: 10px;
+    	padding-left: 0.625rem;	
     	padding-top: 0;
     	border: 0;
     }
     input[type=checkbox] {
-    	margin-top: 15px;
+    	margin-top: 0.9375rem;
     }
 
     .mr-sm-2 {
@@ -489,20 +479,16 @@ div.search-icon-rollover {
 }
 
 a.login-btn {
-    /*position: relative;
-    margin-right: calc(((100% - 1440px)/ 2) - 25px);*/
     @include media-breakpoint-up(desktop) {
-    	margin-right: -8px;
+    	margin-right:  -0.5rem;
     }
 
     @include media-breakpoint-only(midlarge_desktop) {
-    	/*margin-right: calc(((100% - 1440px)/ 2) - 25px);*/
     	margin-right: calc(((100% - 1530px)/ 2) - 30px);
     }
 
 	@include media-breakpoint-up(xl_desktop) {
-       /* margin-right: calc((100% - 1500px) / 2);*/
-        padding-right: 5px;
+        padding-right: 0.3125rem;
         margin-right:0px;
     }
     @include media-breakpoint-up(2560xl_desktop) {
@@ -522,8 +508,8 @@ a.login-btn:hover {
     background-image: none;
     border-radius: 0px;
     border: 2px solid $white;   
-    padding: 3px 15px;
-    margin-top: -2px;
+    padding: 0.1875rem 0.9375rem;
+    margin-top: -0.125rem;
 	
 	&:hover, 
 	&:focus,
@@ -548,7 +534,7 @@ a.login-btn:hover {
 	    position: absolute;
 	    top: 15px;
 	    right: 26px;   /* was 20 */ 
-	    margin-top: -5px;	
+	    margin-top: -0.3125rem;	
     }
 }
 
@@ -585,8 +571,8 @@ nav#block-bootstrap-barrio-subtheme-account-menu a {
     font-weight: 400;
     color: $green!important;
     text-transform: initial;
-    margin-left:5px;
-    margin-right:5px;   
+    margin-left: 0.3125rem;	
+    margin-right: 0.3125rem;	   
 }
 
 //----- DASHBOARD BUTTON ----//
@@ -629,7 +615,7 @@ a.dashboard-button{
 
 	 @include media-breakpoint-up(2560xl_desktop) {
         margin-right: calc(((100% - 1920px) / 2) + 40px); /*margin-right: calc((100% - 1500px) / 2);*/
-        padding-right: 25px;
+        padding-right: 1.5625rem;
         right: 15px;
     }
 
@@ -655,22 +641,22 @@ a.dashboard-button{
 .login {
 	top:21px;
 	right: 20px;
-	margin-top: 6px;	
-	margin-left:5px;
+	margin-top: 0.375rem;		
+	margin-left: 0.3125rem;
 	border-radius: 0;
 	list-style-type: none;
-	min-width:90px;
+	min-width: 90px;
 
 	@include media-breakpoint-down(landscape_phone) {
 	   	top: 120px;
     	right: -5px;
     	position: absolute;
-    	margin-top: -70px;
-		margin-right: 50px;
+    	margin-top: -4.375rem;	
+		margin-right: 3.125rem;	
 
 	 	&:hover,
 		&:focus {
-			margin-top: -70px!important;
+			margin-top: -4.375rem!important;
 		}
 	}
 
@@ -747,18 +733,18 @@ a.dashboard-button{
 
 	    a#navbarDropdownMenuLink {
 	    	color:$yellow!important;
-	    	margin-top: -3px;
+	    	margin-top: -0.1875rem;
 
 	    	@include media-breakpoint-down(landscape_phone) {
-	    		margin-top: -5px;
+	    		margin-top: -0.3125rem;
 	    	}
 	    }
 	    &:after {
 	    	color:$yellow!important;
-	    	margin-top: 44px;
+	    	margin-top: 2.75rem;
 
 	    	@include media-breakpoint-down(landscape_phone) {
-	    		margin-top: 42px;
+	    		margin-top: 2.625rem;	
 	    	}
 	    }
 	}
@@ -779,9 +765,9 @@ a.dashboard-button{
 		font-weight: 400;
 		text-align: right;
     	text-transform: lowercase;
-	    margin-top: -47px;
+	    margin-top: -2.9375rem;
 	    background: transparent;
-	    padding-right:20px!important;
+	    padding-right: 1.25rem!important;
 
 	    @include media-breakpoint-down(tablet) {
 	    	font-size: .7rem!important;
@@ -793,7 +779,7 @@ a.dashboard-button{
 	    &:hover,
 		&:focus {
 			color:$yellow!important;
-			margin-top: -47px;
+			margin-top: -2.9375rem;
 			background: transparent; 
 		}
 	}
@@ -803,10 +789,10 @@ a.dashboard-button{
 	}
 	.dropdown-menu.loggedin {
 		background-color: transparent!important;
-	    margin-top:-110px;
+	    margin-top: -6.875rem;	
 	    background-clip: unset;
 	    border-radius: 0;
-	    padding-top:0px;
+	    padding-top:0;
 	    width: 100%;
 
 	    a.dropdown-item {
@@ -815,13 +801,13 @@ a.dashboard-button{
 		    font-weight: 400;
 		    text-decoration: none;
 		    text-transform: capitalize;
-		    padding-left: 15px;
-		    padding-right: 15px;
+		    padding-left: 0.9375rem;
+		    padding-right: 0.9375rem;
 		    text-align: right;
 
 		    /* IE10+ CSS styles go here */
 			@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
-				margin-left:-70px;
+				margin-left: -4.375rem;
 			}
 
 		    &:hover,
@@ -835,7 +821,7 @@ a.dashboard-button{
 
 nav.navbar .row {
 	@include media-breakpoint-down(phone) {
-	    margin-right: 0px;
+	    margin-right: 0;
 	}
 }
 
@@ -862,8 +848,8 @@ a.login-btn:hover {
 
 .toolbar-tab {
 	@include media-breakpoint-down(landscape_phone) { 
-		margin-left: -2px;
-    	margin-right: -3px;
+		margin-left: -0.125rem;;
+    	margin-right: -0.1875rem;
 	}
 
 	a:hover {
@@ -925,14 +911,14 @@ nav.tabs {
 }
 
 .breadcrumb {
-	padding: 2px 1rem 0 21px;
+	padding: 0.125rem 1rem 0 1.3125rem;
     margin-bottom: 1rem;
     list-style: none;
     background-color: transparent;
     border-radius: .25rem;
 
     &::before {
-    	padding-right: 3px;
+    	padding-right: 0.1875rem;
     	display: inline-block;
     	content: "";
     	position: inherit;
@@ -941,7 +927,7 @@ nav.tabs {
     	top: 0;
     	right: 130px;
     	bottom: 6px;
-    	margin: 3px 0px auto 0px;
+    	margin: 0.1875rem 0 auto 0;
     	background: url("/themes/custom/myusf/images/site/icons.png") no-repeat -56px -77px;
     	background: url("/themes/custom/myusf/images/site/icons.svg") no-repeat -56px -77px;
 
@@ -962,16 +948,16 @@ nav.tabs {
 	    padding: 0!important;
 
 	    @include media-breakpoint-up(tablet) { 
-	        margin-bottom: 40px;
+	        margin-bottom: 2.5rem;
 	    }
 	}
 
 	@include media-breakpoint-only(tablet) { 
-	    margin-bottom: 30px;
+	    margin-bottom: 1.875rem;
 	}
 }
 #sidebar_first nav {
-	margin-left: 0px;
+	margin-left: 0;
 	border: 0;
 	border-top: 4px solid $yellow;
 	border-bottom: 4px solid $yellow;
@@ -1018,10 +1004,10 @@ nav.tabs {
 		    	font-size: 0.9rem;
 		    	font-weight: 700;
 		    	color: $black;
-		    	line-height: 1.2rem;
+		    	line-height: 1.33;
 		    	text-decoration: none;
 		    	text-transform: uppercase; 
-		    	padding: 1rem 10px;
+		    	padding: 1rem 0.625rem;
 
 		    	&:hover,
 		    	&:focus {
@@ -1031,18 +1017,18 @@ nav.tabs {
 
 		    	@include media-breakpoint-down(desktop) { 
 					font-size: 0.8rem;
-					line-height: 1.1rem;
+					line-height: 1.375;
 				}
 
 				@include media-breakpoint-down(landscape_phone) { 
-					padding: 1rem 10px;
+					padding: 1rem 0.625rem;
 				}
 			}
 
 			//Second-level menu
 			ul.menu  { 
 				padding-top: 0;
-				padding-left: 10px;
+				padding-left: 0.625rem;
 			
 				li {
 					border-bottom: 0;
@@ -1057,7 +1043,7 @@ nav.tabs {
 					}
 
 					&:first-of-type {
-						margin-top:-10px;
+						margin-top: -0.625rem;
 					}
 					&:last-of-type {
 						padding-bottom: 0.75rem;
@@ -1066,8 +1052,8 @@ nav.tabs {
 					a {
 						text-transform: initial; /*capitalize;*/
 						font-weight:600;
-						margin-left: 18px;
-						padding: .5rem 10px .5rem 0;
+						margin-left: 1.125rem;
+						padding: .5rem 0.625rem .5rem 0;
 
 						&:hover,
 						&:focus {
@@ -1101,7 +1087,7 @@ nav.tabs {
 				ul.menu {	
 
 					li {
-						margin: 0 0 -10px;
+						margin: 0 0 -0.625rem;
 					    width: 210px;
 
 					    @include media-breakpoint-down(desktop) { 
@@ -1119,10 +1105,10 @@ nav.tabs {
 					a {
 						font-weight:400;
 						color:$black;
-						padding: 5px 10px 5px 13px;
+						padding: 0.3125rem 0.625rem 0.3125rem 0.8125rem;
     					margin-top: 0.5rem!important;
     					margin-bottom: 1rem;
-    					margin-left: 9px;
+    					margin-left: 0.5625rem;
     					
 					
 						&.active:before {
@@ -1152,8 +1138,8 @@ nav.tabs {
 	    	color: #6b6b6b!important;
 	    	text-align: center;
 	    	text-shadow: unset;
-	    	margin-top: -45px;
-			padding-bottom: 0px;
+	    	margin-top: -2.8125rem;
+			padding-bottom: 0;
 			border: 0;	
 		}
 	}
@@ -1182,7 +1168,7 @@ button.navbar-toggler.navbar-toggler-right {
     border: 1px solid $light_gray;
     border-radius: 0;
     width: 100%;
-    padding-right: 10px;
+    padding-right: 0.625rem;
 
     @include media-breakpoint-only(tablet) {  
 		width: 50%;
@@ -1198,7 +1184,7 @@ button.navbar-toggler.navbar-toggler-right {
 	    height: 8px;
 	    top: 2px;
     	right: -20px;
-	    margin-left: 5px;
+	    margin-left: 0.3125rem;
 	    z-index: 0;
 	    background: url(/themes/custom/myusf/images/site/icons.png) -260px -148px no-repeat;
 	    background: url(/themes/custom/myusf/images/site/icons.svg) -260px -148px no-repeat;
@@ -1214,14 +1200,14 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	    height: 8px;
 	    top: 2px;
     	right: -20px;
-	    margin-left: 5px;
+	    margin-left: 0.3125rem;
 	    z-index: 0;
 	    background: url(/themes/custom/myusf/images/site/icons.png) -239px -148px no-repeat;
 		background: url(/themes/custom/myusf/images/site/icons.svg) -239px -148px no-repeat;
 	}
 }
 .navbar-toggler-icon {
-    padding-top: 10px;
+    padding-top: 0.625rem;	
     font-size: .9rem;
     height: 30px;
 }
@@ -1235,13 +1221,13 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	h2 {
 		font-size: 0.8rem;
 		font-weight: 300;
-		line-height: 1.1rem;
-		padding:10px;
+		line-height: 1.375;
+		padding: 0.625rem;	
 
 
 	    @include media-breakpoint-down(desktop) { 
 			font-size: 0.8rem;
-			line-height: 1.1rem;
+			line-height: 1.375;
 		}
 	}
 
@@ -1261,7 +1247,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		width: 29.4%;
 	}
 	@include media-breakpoint-down(landscape_phone) {
-		margin-top: 30px;
+		margin-top: 1.875rem
 	}
 	
 	.block {
@@ -1272,10 +1258,10 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
         	width:50%;
     	}
     	.callout {
-		    margin-bottom: 0px;
+		    margin-bottom: 0;
 		    margin-top: 0;
 		    width: 100%;
-		    padding-bottom: 10px;
+		    padding-bottom: 0.625rem;	
 		}
 		h2 {
     		border: 0;
@@ -1287,7 +1273,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		}
 
 		form .checkbox {
-		    padding-left: 9px;
+		    padding-left: 0.5625rem;
 		}
 
 		.form-check-input {
@@ -1298,7 +1284,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 
 		form label {
 		    font-weight: inherit;
-		    padding-right: 10px;
+		    padding-right: 0.625rem;	
 		    line-height: 1.3rem;
 		    font-size: .85rem;
 		}
@@ -1307,8 +1293,8 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		}
 
 		.form-row>fieldset, .form-row>div {
-		    padding-right: 5px;
-		    padding-left: 5px;
+		    padding-right: 0.3125rem;
+		    padding-left: 0.3125rem;
 		    flex: 0 0 auto;
 		    width: auto;
 		    max-width: 245px;
@@ -1326,29 +1312,29 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		    margin-bottom: .5rem;
 		}
 		input {
-    		margin-top: -5px;
-    		margin-bottom: -10px;
+    		margin-top: -0.3125rem;
+    		margin-bottom: -0.625rem;	
 		}
 		input#edit-field-end-date {
-    		margin-bottom: 0px;
+    		margin-bottom: 0;
 		}
 		input#edit-submit-events-search {
-		    margin-bottom: 30px!important;
+		    margin-bottom: 1.875rem!important;
 		}
 	}
 
 	#block-exposedformevents-searchpage-1 fieldset#edit-field-category--wrapper {
-		margin-bottom: 15px;
+		margin-bottom: 0.9375rem;
 		
 		legend {
-			margin-bottom: 5px;
+			margin-bottom: 0.3125rem;
 		}
 	}
 	#block-exposedformevents-searchpage-1 fieldset#edit-field-target--wrapper {
-		margin-bottom: 25px;
+		margin-bottom: 1.5625rem;
 		
 		legend {
-			margin-bottom: 5px;
+			margin-bottom: 0.3125rem;
 		}
 	}
 
@@ -1381,11 +1367,11 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 .page-node-140134 #sidebar_second {
 	@include media-breakpoint-only(tablet) { 
 	    width: 32%;
-	    padding-left: 10px;
+	    padding-left: 0.625rem;	
 	    padding-right: 0;
 	}
 	@include media-breakpoint-down(tablet) { 
-		margin-top: 30px;
+		margin-top: 1.875rem;	
 	}
 }
 .path-dashboard #sidebar_second {
@@ -1399,7 +1385,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 
 .quick-links-container{
 	border: 5px solid $green!important;
-	padding: 15px!important;
+	padding: 0.9375rem!important;
 
 
 	@include media-breakpoint-only(landscape_phone) {  
@@ -1415,11 +1401,11 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		color: $green !important;
 		text-transform: uppercase!important;
 		border: 0;
-		padding: 20px 15px 0 15px;
+		padding: 1.25rem 0.9375rem 0 0.9375rem;
 	}
 	nav.quick-links-nav {
-		padding-left: 15px;
-    	padding-right: 25px;
+		padding-left: 0.9375rem;
+    	padding-right: 1.5625rem;
 
 		ul {
 			margin: 0;
@@ -1431,8 +1417,8 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 			font-size: .85rem;
 			font-weight: 600;
 			color: $green !important;
-			line-height: 1.1rem;
-    		margin-bottom: 8px;
+			line-height: 1.2867;
+    		margin-bottom: 0.5rem;
 		
 			a {
 				text-decoration:none;
@@ -1441,7 +1427,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 				&::after {
 				    position: absolute;
 				    content: "»";
-				    padding-left: 3px;
+				    padding-left: 0.1875rem;
 				}
 
 				&:hover, 
@@ -1461,7 +1447,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 =================================================*/
 .block-views-blockannouncements-most-recent-list-block-1 {
 	border: 5px solid $gray!important;
-	padding: 15px!important;
+	padding: 0.9375rem!important;
 	margin-bottom: 0!important;
 
 	@include media-breakpoint-only(landscape_phone) {  
@@ -1477,11 +1463,11 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		color: $text_gray !important;
 		text-transform: uppercase!important;
 		border: 0;
-		padding: 20px 15px 0 15px;
+		padding: 1.25rem 0.9375rem 0 0.9375rem;
 	}
 	.item-list {
-		padding-left: 15px!important;
-		padding-right: 25px!important;
+		padding-left: 0.9375rem!important;
+		padding-right: 1.5625rem!important;
 		ul {
 			margin: 0;
 			padding-left: 0;
@@ -1493,10 +1479,10 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 			font-weight: 600;
 			color: $text_gray !important;
 			line-height: 1.1rem;
-    		margin: 0 5px 8px 15px;
+    		margin: 0 0.3125rem 0.5rem 0.9375rem;
 
     		&:last-of-type {
-    			padding-bottom: 10px;
+    			padding-bottom: 0.625rem;
     		}
 		
 			a {
@@ -1507,7 +1493,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 				&:after {
 				    /*position: absolute;*/
 				    content: "»";
-				    padding-left: 3px;
+				    padding-left: 0.1875rem;
 				}
 
 				&:hover, 
@@ -1530,7 +1516,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 =================================================*/
 .site-footer {
 	background:$green;
-	padding: 35px 0 30px!important;
+	padding: 2.1875rem 0 1.875rem!important;
 	position: absolute;
 	bottom: -140px;
 	right: 0;	
@@ -1541,14 +1527,14 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		}	
 	
 	@include media-breakpoint-down(landscape_phone) {		
-		padding: 10px 0 0;
+		padding: 0.625rem 0 0;
 		bottom: -260px;
 	}
 	
 
 	.block {
     	border: 0;
-    	padding: 5px;
+    	padding: 0.3125rem;
     	width:100vw;
 
     	@include media-breakpoint-up(large_desktop) {
@@ -1557,7 +1543,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
     	}
 
     	@include media-breakpoint-down(tablet) {   		
-    		margin: 10px auto;
+    		margin: 0.625rem auto;
     	}
 	}
 }
@@ -1597,8 +1583,8 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	@include media-breakpoint-up(tablet) {
 		display: flex;    	
     	columns: unset;
-    	padding-top: 7px;
-    	margin: 0 auto 0 15px!important;
+    	padding-top: 0.4375rem;
+    	margin: 0 auto 0 0.9375rem!important;
 	}
 
 	@include media-breakpoint-only(tablet) {
@@ -1624,7 +1610,7 @@ a.logo {
 
     @include media-breakpoint-down(tablet) {
     	position: relative;
-    	margin: 5px auto;
+    	margin: 0.3125rem auto;
     	width: 325px;
     }
     @include media-breakpoint-up(tablet) { 
@@ -1633,7 +1619,7 @@ a.logo {
     @include media-breakpoint-up(large_desktop) {
     	width: 330px;
     	height: 38px;
-    	margin-top: 0px;/*was -38px*/ 
+    	margin-top: 0;/*was -38px*/ 
     	float: right;
     	right: 23px;
     }
@@ -1661,7 +1647,7 @@ a.logo {
 
     	@include media-breakpoint-up(large_desktop) {
     		position: absolute;
-    		margin-left: -15px;   		
+    		margin-left: -0.9375rem;   		
     		right: -2.5%;
 		}
     }
