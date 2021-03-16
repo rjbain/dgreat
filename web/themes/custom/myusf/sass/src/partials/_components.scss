@@ -146,7 +146,7 @@
 .view-usf-news-tiles .card,
 .view-twitter-tiles .card,
 .view-instagram-tiles .card {
-    margin: 0 .625rem 1.25rem 0.625rem;
+    margin: 0 .625rem 2.5rem 0.625rem;
 
     &:first-of-type {
     	margin-left: 0;
@@ -167,7 +167,9 @@
 	margin-top: 1.25rem;
 }
 .view-twitter-tiles .card {
-	margin-bottom: -0.625rem;
+	@include media-breakpoint-up(desktop) {
+		margin-bottom: 0.1875rem;
+	}
 
 	@include media-breakpoint-down(phone) {
 		margin-bottom: 2.5rem;
