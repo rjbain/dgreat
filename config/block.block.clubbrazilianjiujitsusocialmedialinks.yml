@@ -1,0 +1,46 @@
+uuid: 6c8aa77b-0a2b-41da-8270-19bca9d34462
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:contact:23b09154-286c-4862-bcc8-74519ea41c0a'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+    - user
+  theme:
+    - myusf
+id: clubbrazilianjiujitsusocialmedialinks
+theme: myusf
+region: sidebar_second
+weight: 359
+provider: null
+plugin: 'block_content:23b09154-286c-4862-bcc8-74519ea41c0a'
+settings:
+  id: 'block_content:23b09154-286c-4862-bcc8-74519ea41c0a'
+  label: 'Club Brazilian Jiu Jitsu Social Media Links'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /koret/club-sports/brazilian-jiu-jitsu
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

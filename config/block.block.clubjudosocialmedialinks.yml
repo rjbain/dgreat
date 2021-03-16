@@ -1,0 +1,46 @@
+uuid: e114f329-93df-4761-bb3c-4668b397e306
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:contact:82abf34a-b414-4ef7-9eea-00f8891917db'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+    - user
+  theme:
+    - myusf
+id: clubjudosocialmedialinks
+theme: myusf
+region: sidebar_second
+weight: 361
+provider: null
+plugin: 'block_content:82abf34a-b414-4ef7-9eea-00f8891917db'
+settings:
+  id: 'block_content:82abf34a-b414-4ef7-9eea-00f8891917db'
+  label: 'Club Judo Social Media Links'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /koret/club-sports/judo
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

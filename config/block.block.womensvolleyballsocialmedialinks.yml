@@ -1,0 +1,46 @@
+uuid: d92ae712-3d60-469d-b3e7-a01cf4d20a02
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:contact:81719529-e47a-41e7-8741-683e979460fe'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+    - user
+  theme:
+    - myusf
+id: womensvolleyballsocialmedialinks
+theme: myusf
+region: sidebar_second
+weight: 373
+provider: null
+plugin: 'block_content:81719529-e47a-41e7-8741-683e979460fe'
+settings:
+  id: 'block_content:81719529-e47a-41e7-8741-683e979460fe'
+  label: 'Women''s Volleyball Social Media Links'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /koret/club-sports/womens-volleyball
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
