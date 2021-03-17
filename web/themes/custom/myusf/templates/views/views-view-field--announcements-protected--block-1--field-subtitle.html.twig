@@ -20,6 +20,11 @@
  * @ingroup themeable
  */
 #}
+
+{% set subtitle = output - %}
+
+{% if subtitle|trim is not empty }
 <div class="field--name-field-subtitle">
-    {{ output -}}
+    {{ subtitle }}
 </div>
+{% endif %}
