@@ -60,7 +60,7 @@
  */
 #}
 {{ attach_library('bootstrap_barrio/node') }}
-
+{% set type = node.field_announcement_type.value %}
 {%
   set classes = [
     'node',
@@ -74,4 +74,8 @@
 %}
 
 {% set role = user.getroles|join(',') %}
-{{ drupal_view('announcements_page', 'page_1', role) }}
+{% if type == "covid" %}
+  {{ drupal_view('announcements_page', 'page_2', role) }}
+{% elseif type == "standard" %}
+  {{ drupal_view('announcements_page', 'page_1', role) }}
+{% endif %}
