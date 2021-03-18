@@ -304,11 +304,16 @@ tr {
 
 /* Sidebar Ads in Main ex: Covid resources on home or dashboard 
 =================================================== */
-	.main-content .sidebar-ad {
-		margin-bottom: 2.5rem;
-		padding: 1.875rem 1.25rem 0.0625rem 1.25rem!important;
-	}
+.main-content .sidebar-ad {
+	margin-bottom: 2.5rem;
+	padding: 1.875rem 1.25rem 0.0625rem 1.25rem!important;
+}
 
+.dashboard.main-content .sidebar-ad {
+	@include media-breakpoint-down(phone) {
+		margin-right: .0625rem;
+	}
+}
 
 /* Sidebar Second Ads
 =================================================== */
