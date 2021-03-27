@@ -1,34 +1,30 @@
-uuid: ca4bcbf1-7e6c-40e9-91a2-d4f91d3629e6
+uuid: cf07e020-31d7-4696-aceb-b3a33db24993
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.announcements_list_page.body
+    - field.field.node.announcements_list_page.field_announcement_type
     - node.type.announcements_list_page
   module:
     - path
     - scheduler
-    - text
 id: node.announcements_list_page.default
 targetEntityType: node
 bundle: announcements_list_page
 mode: default
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 121
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-    third_party_settings: {  }
-    region: content
   created:
     type: datetime_timestamp
     weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_announcement_type:
+    weight: 121
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   path:
     type: path
     weight: 30

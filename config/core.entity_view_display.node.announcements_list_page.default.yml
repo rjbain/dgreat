@@ -1,29 +1,29 @@
-uuid: 9fb12bb4-813e-43d5-bf32-771a866eb34e
+uuid: e917d48c-6ae7-4e49-a662-259ec4c80916
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.announcements_list_page.body
+    - field.field.node.announcements_list_page.field_announcement_type
     - node.type.announcements_list_page
   module:
-    - text
+    - options
     - user
 id: node.announcements_list_page.default
 targetEntityType: node
 bundle: announcements_list_page
 mode: default
 content:
-  body:
-    label: hidden
-    type: text_default
+  field_announcement_type:
     weight: 101
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    type: list_key
     region: content
   links:
     weight: 100
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   search_api_excerpt: true
