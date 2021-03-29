@@ -1,0 +1,60 @@
+langcode: en
+status: true
+dependencies: {  }
+id: slate_event_import
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: null
+label: 'Slate Event Import'
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  urls: 'https://apply.usfca.edu/manage/query/run?id=c1e32516-2cfb-489a-a818-9a6dac0e3a60&h=7af4d0f2-17f0-03bc-2d65-5a615cab3d75&cmd=service&output=json'
+  data_parser_plugin: json
+  item_selector: /row
+  fields:
+    -
+      name: title
+      label: Title
+      selector: /FormTitle
+    -
+      name: description
+      label: Description
+      selector: /FormDescription
+    -
+      name: link
+      label: 'Link'
+      selector: /FormURL
+    -
+      name: start_date
+      label: 'Start Date'
+      selector: /FormStartDateTime
+    -
+      name: end_date
+      label: 'End Date'
+      selector: /FormEndDateTime
+    -
+      name: guid
+      label: GUID
+      selector: /FormID
+  ids:
+    guid:
+      type: string
+process:
+  title: title
+  body: description
+  field_url: link
+  field_start_date: start_date
+  field_end_date: end_date
+  field_slate_guid: guid
+  status:
+    plugin: default_value
+    default_value: 1
+  type:
+    plugin: default_value
+    default_value: slate
+destination:
+  plugin: 'entity:node'
+migration_dependencies: null

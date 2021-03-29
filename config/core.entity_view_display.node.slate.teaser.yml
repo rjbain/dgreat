@@ -1,0 +1,31 @@
+uuid: 88fc865d-5a7b-43a0-8397-0eb0edcb28bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.slate.body
+    - node.type.slate
+  module:
+    - text
+    - user
+id: node.slate.teaser
+targetEntityType: node
+bundle: slate
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  search_api_excerpt: true
