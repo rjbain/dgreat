@@ -1743,16 +1743,16 @@ div[data-oembed-url]  > iframe {
         transition: .5s ease;
 
         @include media-breakpoint-up(landscape_phone) {
-            height: 60px; /* 50 */
+            height: 55px; /* 50 */
         }
         @include media-breakpoint-up(desktop) {
-            height: 45px; /* 35 */
+            height: 40px; /* 35 */
         }
         @include media-breakpoint-up(large_desktop) {
-            height: 55px; /* 45 */
+            height: 50px; /* 45 */
         }
         @include media-breakpoint-up(midlarge_desktop) {
-            height: 60px; /* 50 */
+            height: 65px; /* 50 */
         }
     }   
 }
@@ -2186,6 +2186,7 @@ select#edit-field-community-topic-target-id {
     @include media-breakpoint-down(phone) {
         font-size: 0.8rem;
         width: 222px;
+        margin-left: 0;
     } 
     @include media-breakpoint-only(landscape_phone) {
         width: 150px;
@@ -2205,22 +2206,14 @@ select#edit-field-community-topic-target-id {
     }
 }
 
-select#edit-field-community-topic-target-id {    
-    @include media-breakpoint-down(phone) {
-            margin-left: 2.625rem;
-    }
-}
 
 
 input#edit-submit-community-grid {
-    /*position: relative;
-    left: 24px;*/
     position: relative;
     right: 0;
     
     @include media-breakpoint-down(phone) {
         left: 0px;
-        margin-left: 5.1875rem;
         width: 222px;
     }
     @include media-breakpoint-only(landscape_phone) {
@@ -2235,6 +2228,11 @@ input#edit-submit-community-grid {
      @include media-breakpoint-up(large_desktop) {
         width: 150px;
     }
+}
+
+#views-exposed-form-community-grid-page-1 #edit-actions {
+    padding-left: 0;
+    padding-top: 1.5625rem;
 }
 
 @-moz-document url-prefix() {
