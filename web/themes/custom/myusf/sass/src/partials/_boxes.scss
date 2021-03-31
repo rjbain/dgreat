@@ -1777,7 +1777,7 @@ div[data-oembed-url]  > iframe {
         }
 
        .overlay-heading { 
-            @include media-breakpoint-up(phone) {
+           /* @include media-breakpoint-up(phone) {
                 line-height: 1.8rem;
             }          
             @include media-breakpoint-up(landscape_phone) {
@@ -1791,7 +1791,8 @@ div[data-oembed-url]  > iframe {
             }
             @include media-breakpoint-up(midlarge_desktop) {
                 line-height: 1.8rem;
-            }
+            }*/
+            line-height: 1.8;
         }
     }
 
@@ -1835,7 +1836,11 @@ div[data-oembed-url]  > iframe {
         margin-block-end: 1.596rem;
         margin-inline-start: 0;
         margin-inline-end: 0;
-   
+        line-height: 1.8;
+
+        @include media-breakpoint-up(phone) {       
+            line-height: 1.5;                   
+        } 
         @include media-breakpoint-up(landscape_phone) {
             font-size: 1.1rem;
             padding: 0.25rem 0.625rem 1.25rem;
