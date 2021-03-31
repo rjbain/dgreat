@@ -1,0 +1,54 @@
+uuid: 8a1a1534-5222-4abe-8665-fcad79c0df4c
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:contact:ee4dcb78-7734-43a4-8a11-8374b3bc0955'
+  module:
+    - block_content
+    - block_visibility_groups
+    - node
+    - system
+    - user
+  theme:
+    - myusf
+id: clubsportssocialmedialinks
+theme: myusf
+region: sidebar_second
+weight: 356
+provider: null
+plugin: 'block_content:ee4dcb78-7734-43a4-8a11-8374b3bc0955'
+settings:
+  id: 'block_content:ee4dcb78-7734-43a4-8a11-8374b3bc0955'
+  label: 'Club Sports Social Media Links'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  node_type:
+    id: node_type
+    bundles:
+      page: page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+  request_path:
+    id: request_path
+    pages: /koret/club-sports
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

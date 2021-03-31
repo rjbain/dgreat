@@ -62,7 +62,7 @@
 {{ attach_library('bootstrap_barrio/node') }}
 
 {%
-    set classes = [
+  set classes = [
     'node',
     'node--type-' ~ node.bundle|clean_class,
     node.isPromoted() ? 'node--promoted',
@@ -70,30 +70,8 @@
     not node.isPublished() ? 'node--unpublished',
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
     'clearfix',
-]
+  ]
 %}
-<article{{ attributes.addClass(classes) }}>
-    <header>
-        {{ title_prefix }}
-        {% if not page %}
-            <h2{{ title_attributes.addClass('node__title') }}>
-                <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-            </h2>
-        {% endif %}
-        {{ title_suffix }}
-        {% if display_submitted %}
-            <div class="node__meta">
-                {{ author_picture }}
-                {% block submitted %}
-                    <span{{ author_attributes }}>
-            {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
-          </span>
-                {% endblock %}
-                {{ metadata }}
-            </div>
-        {% endif %}
-    </header>
-    <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-        {{ content }}
-    </div>
-</article>
+
+{% set role = user.getroles|join(',') %}
+{{ drupal_view('announcements_protected', 'block_1', node.id, role) }}

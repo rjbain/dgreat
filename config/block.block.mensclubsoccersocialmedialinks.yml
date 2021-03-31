@@ -1,0 +1,46 @@
+uuid: 17f54195-e8a9-4a1b-b724-e97275538eeb
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:contact:28ae85dc-3cd9-4933-9ca0-015f2d5ea431'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+    - user
+  theme:
+    - myusf
+id: mensclubsoccersocialmedialinks
+theme: myusf
+region: sidebar_second
+weight: 365
+provider: null
+plugin: 'block_content:28ae85dc-3cd9-4933-9ca0-015f2d5ea431'
+settings:
+  id: 'block_content:28ae85dc-3cd9-4933-9ca0-015f2d5ea431'
+  label: 'Men''s Club Soccer Social Media Links'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /koret/club-sports/mens-soccer
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
