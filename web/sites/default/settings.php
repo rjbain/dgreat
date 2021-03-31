@@ -32,17 +32,6 @@ $config_directories = array(
 $settings['install_profile'] = 'standard';
 
 /**
- * Load and export secrets.
- */
-$secrets_file = __DIR__ . "/files/private/secrets.json";
-if (file_exists($secrets_file)) {
-  $secrets = json_decode(file_get_contents($secrets_file), TRUE);
-  foreach ($secrets as $key => $secret) {
-    putenv("{$key}={$secret}");
-  }
-}
-
-/**
  * If there is a local settings file, then include it
  */
 $local_settings = __DIR__ . "/settings.local.php";
@@ -55,8 +44,6 @@ $migrate_settings = __DIR__ . "/settings.migrate-on-pantheon.php";
 if (file_exists($migrate_settings) && isset($_ENV['PANTHEON_ENVIRONMENT'])) {
   include $migrate_settings;
 }
-
-$config['sendgrid_integration.settings']['apikey'] = getenv('sendgrid-api-key');
 
 // CAS Hostname settings
 if (isset($_ENV['PANTHEON_ENVIRONMENT']) && php_sapi_name() != 'cli') {

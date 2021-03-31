@@ -1,26 +1,26 @@
-uuid: 1b1fdcd6-f56b-4c5e-8a75-7363c2f9ec4a
+uuid: 73f0aad5-96c2-48be-b1eb-11e9ee5de9a4
 langcode: en
 status: true
 dependencies:
   config:
-    - views.view.announcements_most_recent_list
+    - views.view.events_featured
   module:
     - block_visibility_groups
     - system
     - views
   theme:
     - myusf
-id: views_block__announcements_most_recent_list_block_1
+id: views_block__events_featured_block_1
 theme: myusf
-region: sidebar_second
-weight: 209
+region: content
+weight: 3
 provider: null
-plugin: 'views_block:announcements_most_recent_list-block_1'
+plugin: 'views_block:events_featured-block_1'
 settings:
-  id: 'views_block:announcements_most_recent_list-block_1'
+  id: 'views_block:events_featured-block_1'
   label: ''
   provider: views
-  label_display: visible
+  label_display: '0'
   views_label: ''
   items_per_page: none
 visibility:
@@ -31,6 +31,6 @@ visibility:
     context_mapping: {  }
   request_path:
     id: request_path
-    pages: "/announcement\r\n/announcement/*\r\n/news-releases\r\n/news-releases/*"
+    pages: /calendar
     negate: false
     context_mapping: {  }

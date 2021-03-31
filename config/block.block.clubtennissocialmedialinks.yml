@@ -1,0 +1,46 @@
+uuid: 689d66a2-fc1c-4a6a-bad2-cc514a66add7
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:contact:d2ae3d33-4544-440e-b6bf-5d90332c1685'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+    - user
+  theme:
+    - myusf
+id: clubtennissocialmedialinks
+theme: myusf
+region: sidebar_second
+weight: 369
+provider: null
+plugin: 'block_content:d2ae3d33-4544-440e-b6bf-5d90332c1685'
+settings:
+  id: 'block_content:d2ae3d33-4544-440e-b6bf-5d90332c1685'
+  label: 'Club Tennis Social Media Links'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /koret/club-sports/tennis
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

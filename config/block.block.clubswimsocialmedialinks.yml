@@ -1,0 +1,46 @@
+uuid: 7d9ad163-da5b-47a7-aa9d-b672cb5288f3
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:contact:d2d9c707-e32a-4a3d-926f-6e8f72c81ee1'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+    - user
+  theme:
+    - myusf
+id: clubswimsocialmedialinks
+theme: myusf
+region: sidebar_second
+weight: 367
+provider: null
+plugin: 'block_content:d2d9c707-e32a-4a3d-926f-6e8f72c81ee1'
+settings:
+  id: 'block_content:d2d9c707-e32a-4a3d-926f-6e8f72c81ee1'
+  label: 'Club Swim Social Media Links'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /koret/club-sports/swim
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
