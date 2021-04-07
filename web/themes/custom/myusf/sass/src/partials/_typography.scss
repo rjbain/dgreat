@@ -180,15 +180,45 @@ ul ul, ul ol, ol ol, ol ul {
     padding-left: 0.125rem;
 }
 
-.paragraph--bp-accordion-container .paragraph__column ol li:before {
-    left: -31px;
+.paragraph--bp-accordion-container{
+	.paragraph__column {
+
+		ol {
+			li:before {
+    			left: -31px;
+			}
+			@include media-breakpoint-down(phone) {
+				padding-left: 0rem;
+    			margin-left: 0.1875rem;
+
+    			ul {
+    				padding-left: .75rem;
+    			}
+    			ol {
+    				padding-left: .9375rem;
+    			}
+			}
+		}
+		ul {
+			li:before {
+				padding-left: 0.5rem;
+    			margin-left: 0.725rem;
+			}
+			@include media-breakpoint-down(phone) {
+				padding-left: 0rem;
+    			margin-left: -0.625rem;
+
+    			ul {
+    				padding-left: .75rem;
+    			}
+    			ol {
+    				padding-left: .375rem;
+    			}
+			}
+		}
+	}	
 }  
     
-.paragraph--bp-accordion-container  .paragraph__column ul li:before {
-    padding-left: 0.5rem;
-    margin-left: 0.725rem;
-    
-}
 //Pullquote
 
 .pullquote {
