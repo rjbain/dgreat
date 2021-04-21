@@ -36,13 +36,7 @@ nav.navbar {
     	padding-top: .75rem;
     	font-weight: 700;
 
-    	@include media-breakpoint-up(desktop) {
-    		font-size: .75rem!important;
-    		padding-left: .9rem!important;
-    		padding-right: .9rem!important;
-    	}
-
-		@include media-breakpoint-only(tablet) {
+		@include media-breakpoint-up(tablet) {
 			font-size: .7rem;
     		padding-left: 7px;
     		padding-right: 7px;
@@ -53,6 +47,11 @@ nav.navbar {
     	@include media-breakpoint-down(landscape_phone) {
     		padding-bottom: 1.2rem;
     		margin-top: .6rem;
+    	}
+    	@include media-breakpoint-up(large_desktop) {
+    		font-size: .75rem!important;
+    		padding-left: .9rem!important;
+    		padding-right: .9rem!important;
     	}
 	}
 	li {
@@ -187,7 +186,7 @@ nav.navbar {
 			padding: 0 5px!important;			
 
 			a {
-				font-size: .75rem;
+				font-size: .5rem;
 			    line-height: .9rem;
 			    text-align: center;
 			    letter-spacing: .025rem;
@@ -201,36 +200,50 @@ nav.navbar {
     		padding-left: unset!important;
     		padding-right: unset!important;
 
-    		$shiftSecond: calc( -1 * ( 58px + (( 100vw - 299px) / 6) + (( 100vw - 303px) / 12)));
-    		$shiftThird:  calc( -1 * ( 72px + 58px + 2 * ((( 100vw - 299px) / 6)) + (( 100vw - 303px) / 12))); 
-    		$shiftFourth: calc( -1 * ( 72px + 58px + 53px + 3 * ((( 100vw - 299px) / 6)) + (( 100vw - 303px) / 12))); 
-    		$shiftFifth: calc( -1 * ( 72px + 58px + 53px + 66px + 4 * ((( 100vw - 299px) / 6)) + (( 100vw - 303px) / 12))); 
-    			
-    		&:first-child {
-    			width: calc( 58px + (( 100vw - 299px) / 6) + (( 100vw - 303px) / 12));
-    			border-right: 1px solid $white;
-    			@include mobilenav-dropdown(0);
-    		}
-    		&:nth-child(2) {    
-    			width: calc( 72px + (( 100vw - 299px) / 6));
-    			border-right: 1px solid $white;
-    			@include mobilenav-dropdown($shiftSecond);
+    		/*
+    		Col1: 45px;
+			Col2: 57px;
+			Col3: 41px;
+			Col4: 55px;
+			Col5: 41px;
+			Col6: 54px;*/
+			
+			$shiftSecond: calc( -1 * ( 45px + (( 100vw - 293px) / 7) + (( 100vw - 298px) / 14)));
+			$shiftThird:  calc( -1 * ( 45px + 57px + 2 * ((( 100vw - 293px) / 7)) + (( 100vw - 298px) / 14))); 
+			$shiftFourth: calc( -1 * ( 45px + 57px + 41px + 3 * ((( 100vw - 293px) / 7)) + (( 100vw - 298px) / 14))); 
+			$shiftFifth: calc( -1 * ( 45px + 57px + 41px + 55px  + 4 * ((( 100vw - 293px) / 7)) + (( 100vw - 298px) / 14)));
+			$shiftSixth: calc( -1 * ( 45px + 57px + 41px + 55px + 41px  + 5 * ((( 100vw - 293px) / 7)) + (( 100vw - 298px) / 14)));
+
+			
+			&:first-child {
+				width: calc( 45px + (( 100vw - 293px) / 7) + (( 100vw - 298px) / 14));
+				border-right: 1px solid $white;
+				@include mobilenav-dropdown(0);
+			}
+			&:nth-child(2) {    
+				width: calc( 57px + (( 100vw - 293px) / 7));
+				border-right: 1px solid $white;
+				@include mobilenav-dropdown($shiftSecond);
 			}
 			&:nth-child(3) {				
-				width: calc( 53px + (( 100vw - 299px) / 6));
-    			border-right: 1px solid $white;
-    			@include mobilenav-dropdown($shiftThird);    					
+				width: calc( 41px + (( 100vw - 293px) / 7));
+				border-right: 1px solid $white;
+				@include mobilenav-dropdown($shiftThird);    					
 			}
 			&:nth-child(4) {				
-				width: calc( 66px + (( 100vw - 299px) / 6));
-    			border-right: 1px solid $white;
-    			@include mobilenav-dropdown($shiftFourth);
+				width: calc( 55px + (( 100vw - 293px) / 7));
+				border-right: 1px solid $white;
+				@include mobilenav-dropdown($shiftFourth);
 			}
 			&:nth-child(5) {				
-				width: calc( 50px + (( 100vw - 299px) / 6) + calc(( 100vw - 300px) / 12));
-    			@include mobilenav-dropdown($shiftFifth);
+				width: calc( 41px + (( 100vw - 293px) / 7));
+				border-right: 1px solid $white;
+				@include mobilenav-dropdown($shiftFifth);
 			}
-
+			&:nth-child(6) {				
+				width: calc( 54px + (( 100vw - 293px) / 7) + (( 100vw - 294px) / 14));
+				@include mobilenav-dropdown($shiftSixth);
+			}
 			.dropdown {
 				margin-top: -1px;
 			}
