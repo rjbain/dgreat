@@ -205,7 +205,19 @@
 		background: $twitter;		
 	}
 }
-
+.view-instagram-tiles {	
+	.card-text {
+		@include media-breakpoint-only(landscape_phone) {
+			display:none;
+		}
+		@include media-breakpoint-only(desktop) {
+			display:none;
+		}
+	}
+	.card-text-short {
+		
+	}
+}
 a.card-rollover {
 	text-decoration: none;
     color: $white;
@@ -240,17 +252,7 @@ a.card-rollover {
 				line-height: 1.6;
 			}
 		}
-		.card-text {
-			@include media-breakpoint-only(landscape_phone) {
-				display:none;
-			}
-			@include media-breakpoint-only(desktop) {
-				display:none;
-			}
-		}
-		.card-text-short {
-			
-		}
+		
 		&.orange {	
 			.diamond_link_small_white {
 				background:$orange;	
