@@ -225,7 +225,8 @@ a.card-rollover {
 		    	margin-bottom: .4rem;
 		    }
 		}
-		.card-text {
+		.card-text,
+		.card-text-short {
 		    font-size: .9rem;
 		    line-height: 1.77;
 		    color: $white!important;
@@ -235,6 +236,14 @@ a.card-rollover {
 		    @include media-breakpoint-only(tablet) {
 	    		line-height: 1.33;
 			}
+		}
+		.card-text {
+			@include media-breakpoint-down(tablet) {
+			
+			}
+		}
+		.card-text-short {
+			
 		}
 		&.orange {	
 			.diamond_link_small_white {
