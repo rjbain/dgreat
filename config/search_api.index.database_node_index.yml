@@ -2,6 +2,9 @@ uuid: 702d4484-76e0-410c-8bf5-2325ac1ffeba
 langcode: en
 status: true
 dependencies:
+  module:
+    - node
+    - search_api
   config:
     - field.storage.node.field_url
     - field.storage.node.field_usfcat_audience_ref
@@ -12,9 +15,6 @@ dependencies:
     - field.storage.node.field_usfcat_updates
     - field.storage.node.body
     - search_api.server.database_server
-  module:
-    - search_api
-    - node
 id: database_node_index
 name: 'Database Node Index'
 description: ''
@@ -25,12 +25,18 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: nid
     type: integer
+    dependencies:
+      module:
+        - node
   title:
     label: Title
     datasource_id: 'entity:node'
     property_path: title
     type: text
     boost: !!float 8
+    dependencies:
+      module:
+        - node
   field_url:
     label: URL
     datasource_id: 'entity:node'
@@ -44,16 +50,25 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: status
     type: boolean
+    dependencies:
+      module:
+        - node
   created:
     label: 'Authored on'
     datasource_id: 'entity:node'
     property_path: created
     type: date
+    dependencies:
+      module:
+        - node
   uid:
     label: 'Authored by'
     datasource_id: 'entity:node'
     property_path: uid
     type: integer
+    dependencies:
+      module:
+        - node
   field_usfcat_audience_ref:
     label: Audience
     datasource_id: 'entity:node'
@@ -67,6 +82,9 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: type
     type: string
+    dependencies:
+      module:
+        - node
   field_usfcat_category_ref:
     label: Category
     datasource_id: 'entity:node'
@@ -132,6 +150,9 @@ datasource_settings:
       default: true
       selected: {  }
 processor_settings:
+  rendered_item: {  }
+  add_url: {  }
+  aggregated_field: {  }
   ignorecase:
     all_fields: true
     fields:
@@ -145,8 +166,6 @@ processor_settings:
     weights:
       preprocess_index: -20
       preprocess_query: -20
-  aggregated_field: {  }
-  add_url: {  }
   transliteration:
     all_fields: true
     fields:
@@ -160,7 +179,7 @@ processor_settings:
     weights:
       preprocess_index: -20
       preprocess_query: -20
-  rendered_item: {  }
+  language_with_fallback: {  }
 tracker_settings:
   default:
     indexing_order: fifo

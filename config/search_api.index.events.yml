@@ -97,8 +97,18 @@ datasource_settings:
       default: true
       selected: {  }
 processor_settings:
+  rendered_item: {  }
   add_url: {  }
   aggregated_field: {  }
+  ignorecase:
+    all_fields: false
+    fields:
+      - body
+      - title
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
+  language_with_fallback: {  }
   html_filter:
     all_fields: false
     fields:
@@ -116,15 +126,6 @@ processor_settings:
     weights:
       preprocess_index: -15
       preprocess_query: -15
-  ignorecase:
-    all_fields: false
-    fields:
-      - body
-      - title
-    weights:
-      preprocess_index: -20
-      preprocess_query: -20
-  rendered_item: {  }
 tracker_settings:
   default:
     indexing_order: fifo
