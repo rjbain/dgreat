@@ -708,7 +708,14 @@ h2.carousel-overlay:before {
     }
     @include media-breakpoint-only(landscape_phone) {  
         margin-top: 0;
-         right: -5px;
+        right: -5px;
+        
+        &::before {
+            right: 40px;
+        }
+        &::after {
+            right: 30px;
+        }
     }
 
     @include media-breakpoint-down(phone) { 
