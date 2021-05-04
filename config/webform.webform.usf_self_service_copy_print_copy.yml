@@ -12,15 +12,20 @@ id: usf_self_service_copy_print_copy
 title: 'USF Self Service Copy/Print Program - Copier Move Request Form - Copy Center Use'
 description: ''
 category: ''
-elements: "processed_text:\n  '#type': processed_text\n  '#text': \"<p>All&nbsp;boxes&nbsp;need&nbsp;to&nbsp;be&nbsp;filled&nbsp;out&nbsp;prior&nbsp;to&nbsp;Copy&nbsp;Center&nbsp;technician&nbsp;moving&nbsp;any&nbsp;Equipment.&nbsp;</p>\\r\\n\\r\\n<p>*Requesting&nbsp;Department&nbsp;is&nbsp;responsible&nbsp;for&nbsp;all&nbsp;costs&nbsp;(i.e.&nbsp;network&nbsp;installation/activation,&nbsp;electrical&nbsp;requirements,&nbsp;transportation&nbsp;fees,&nbsp;etc.) associated&nbsp;to&nbsp;this&nbsp;move&nbsp;request.</p>\\r\\n\\r\\n<p><strong>For&nbsp;Copy&nbsp;Center&nbsp;Use</strong>:&nbsp;Complete&nbsp;the&nbsp;section&nbsp;below.&nbsp;Send&nbsp;the&nbsp;completed&nbsp;form&nbsp;to&nbsp;Purchasing&nbsp;and&nbsp;Ancillary&nbsp;Services&nbsp;at&nbsp;<a href=\\\"mailto:purchasing@usfca.edu\\\">purchasing@usfca.edu</a>.</p>\\r\\n\"\n  '#format': full_html\ndate_of_site_check:\n  '#type': date\n  '#title': 'Date of Site Check'\n  '#required': true\ndoes_the_area_meet_the_necessary_space_requirements_:\n  '#type': webform_buttons\n  '#title': 'Does the area meet the necessary Space Requirements?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\ndo_stairs_or_elevators_need_to_be_used_for_the_move_:\n  '#type': webform_buttons\n  '#title': 'Do stairs or elevators need to be used for the move?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\nare_electrical_outlets_accessible_:\n  '#type': webform_buttons\n  '#title': 'Are electrical outlets accessible?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\ndata_port_number:\n  '#type': textfield\n  '#title': 'Data Port Number'\n  '#required': true\nsubnet_mask_number:\n  '#type': textfield\n  '#title': 'Subnet Mask Number'\n  '#required': true\nvlan_number:\n  '#type': textfield\n  '#title': 'vLan Number'\n  '#required': true\nmac_address:\n  '#type': textfield\n  '#title': 'MAC Address'\n  '#required': true\ndoes_facilities_need_to_be_notified_for_any_obstacles_:\n  '#type': webform_buttons\n  '#title': 'Does Facilities need to be notified for any obstacles?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\nstart_end_meter_read_before_after_copier_moves:\n  '#type': textfield\n  '#title': 'Start & End Meter Read: Before & After Copier Moves'\n  '#required': true\ncomments:\n  '#type': textarea\n  '#title': Comments"
+elements: "processed_text:\n  '#type': processed_text\n  '#text': \"<p>All&nbsp;boxes&nbsp;need&nbsp;to&nbsp;be&nbsp;filled&nbsp;out&nbsp;prior&nbsp;to&nbsp;Copy&nbsp;Center&nbsp;technician&nbsp;moving&nbsp;any&nbsp;Equipment.&nbsp;</p>\\r\\n\\r\\n<p>*Requesting&nbsp;Department&nbsp;is&nbsp;responsible&nbsp;for&nbsp;all&nbsp;costs&nbsp;(i.e.&nbsp;network&nbsp;installation/activation,&nbsp;electrical&nbsp;requirements,&nbsp;transportation&nbsp;fees,&nbsp;etc.) associated&nbsp;to&nbsp;this&nbsp;move&nbsp;request.</p>\\r\\n\\r\\n<p><strong>For&nbsp;Copy&nbsp;Center&nbsp;Use</strong>:&nbsp;Complete&nbsp;the&nbsp;section&nbsp;below.&nbsp;Send&nbsp;the&nbsp;completed&nbsp;form&nbsp;to&nbsp;Purchasing&nbsp;and&nbsp;Ancillary&nbsp;Services&nbsp;at&nbsp;<a href=\\\"mailto:purchasing@usfca.edu\\\">purchasing@usfca.edu</a>.</p>\\r\\n\"\n  '#format': full_html\ndate_of_site_check:\n  '#type': date\n  '#title': 'Date of Site Check'\n  '#required': true\ndoes_the_area_meet_the_necessary_space_requirements_:\n  '#type': webform_buttons\n  '#title': 'Does the area meet the necessary Space Requirements?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\ndo_stairs_or_elevators_need_to_be_used_for_the_move_:\n  '#type': webform_buttons\n  '#title': 'Do stairs or elevators need to be used for the move?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\nare_electrical_outlets_accessible_:\n  '#type': webform_buttons\n  '#title': 'Are electrical outlets accessible?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\ndata_port_number:\n  '#type': textfield\n  '#title': 'Data Port Number'\n  '#required': true\nsubnet_mask_number:\n  '#type': textfield\n  '#title': 'Subnet Mask Number'\n  '#required': true\nvlan_number:\n  '#type': textfield\n  '#title': 'vLan Number'\n  '#required': true\nmac_address:\n  '#type': textfield\n  '#title': 'MAC Address'\n  '#required': true\ndoes_facilities_need_to_be_notified_for_any_obstacles_:\n  '#type': webform_buttons\n  '#title': 'Does Facilities need to be notified for any obstacles?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\nstart_end_meter_read_before_after_copier_moves:\n  '#type': textfield\n  '#title': 'Start & End Meter Read: Before & After Copier Moves'\n  '#required': true\ncomments:\n  '#type': textarea\n  '#title': Comments\n"
 css: ''
 javascript: ''
 settings:
   ajax: false
   ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
   page: true
   page_submit_path: ''
   page_confirm_path: ''
+  page_theme_name: ''
+  form_title: both
   form_submit_once: false
   form_exception_message: ''
   form_open_message: ''
@@ -28,6 +33,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -48,6 +54,11 @@ settings:
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
   submission_label: ''
   submission_log: false
   submission_views: {  }
@@ -60,6 +71,9 @@ settings:
   submission_access_denied_attributes: {  }
   submission_exception_message: ''
   submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -69,11 +83,20 @@ settings:
   wizard_progress_pages: false
   wizard_progress_percentage: false
   wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
   wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -87,6 +110,8 @@ settings:
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
   confirmation_type: page
   confirmation_title: ''
   confirmation_message: ''
@@ -97,12 +122,15 @@ settings:
   confirmation_back_attributes: {  }
   confirmation_exclude_query: false
   confirmation_exclude_token: false
+  confirmation_update: false
   limit_total: null
   limit_total_interval: null
   limit_total_message: ''
+  limit_total_unique: false
   limit_user: null
   limit_user_interval: null
   limit_user_message: ''
+  limit_user_unique: false
   entity_limit_total: null
   entity_limit_total_interval: null
   entity_limit_user: null
@@ -111,7 +139,11 @@ settings:
   purge_days: null
   results_disabled: false
   results_disabled_ignore: false
+  results_customize: false
+  token_view: false
   token_update: false
+  token_delete: false
+  serial_disabled: false
 access:
   create:
     roles:
@@ -158,4 +190,9 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
 handlers: {  }
+variants: {  }
