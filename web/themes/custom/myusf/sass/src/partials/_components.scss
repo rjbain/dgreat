@@ -33,7 +33,7 @@
 
 .paragraph.paragraph--type--bp-accordion {
 	.card {
-		height: unset;
+		height: auto;
 	}
 	.card-block .paragraph__column {
 		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
@@ -210,12 +210,20 @@
 		@include media-breakpoint-only(landscape_phone) {
 			display:none;
 		}
+		@include media-breakpoint-only(tablet) {
+			display:none;
+		}
 		@include media-breakpoint-only(desktop) {
 			display:none;
 		}
 	}
 	.card-text-short {
-		
+		@include media-breakpoint-down(phone) {
+			display: none;
+		}
+		@include media-breakpoint-up(large_desktop) {
+			display: none;
+		}
 	}
 }
 a.card-rollover {
