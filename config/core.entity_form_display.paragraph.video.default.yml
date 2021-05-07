@@ -12,6 +12,7 @@ dependencies:
     - paragraphs.paragraphs_type.video
   module:
     - image
+    - imce
     - link
     - text
 id: paragraph.video.default
@@ -22,9 +23,11 @@ content:
   bp_image_field:
     weight: 2
     settings:
-      progress_indicator: throbber
       preview_image_style: thumbnail
-    third_party_settings: {  }
+      progress_indicator: throbber
+    third_party_settings:
+      imce:
+        enabled: true
     type: image_image
     region: content
   field_body_text:

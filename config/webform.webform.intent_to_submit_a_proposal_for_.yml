@@ -93,7 +93,7 @@ settings:
   draft_saved_message: ''
   draft_loaded_message: ''
   confirmation_type: page
-  confirmation_title: 'Your Intent to Apply Form is submitted successfully!'
+  confirmation_title: ''
   confirmation_message: ''
   confirmation_url: ''
   confirmation_attributes: {  }
@@ -177,8 +177,32 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: '[webform_submission:values:email_address:raw]'
-      to_options: {  }
+      to_mail: '[webform_submission:values:please_check_all_the_appropriate_dean_vp_representatives:raw]'
+      to_options:
+        -
+          value: 'Academic Affairs'
+          text: mcguire@usfca.edu
+        -
+          value: 'Arts & Sciences'
+          text: 'gamson@usfca.edu, fung@usfca.edu, pinelli@usfca.edu, organistap@usfca.edu, cbrooks@usfca.edu, ctzagarakis@usfca.edu'
+        -
+          value: 'Gleeson Library'
+          text: cannont@usfca.edu
+        -
+          value: 'School of Management'
+          text: 'ebdavis@usfca.edu, jzafra@usfca.edu, cmoses1@usfca.edu'
+        -
+          value: 'School of Education'
+          text: skoirala@usfca.edu
+        -
+          value: 'School of Law'
+          text: 'freiwald@usfca.edu, esprague@usfca.edu'
+        -
+          value: 'School of Nursing and Health Professions'
+          text: 'mwbaker@usfca.edu, hsyamaguchi@usfca.edu, kquan2@usfca.edu, msmosqueda@usfca.edu, kllevey@usfca.edu'
+        -
+          value: 'Student Life'
+          text: orioj@usfca.edu
       cc_mail: ''
       cc_options: {  }
       bcc_mail: ''
@@ -247,9 +271,9 @@ handlers:
         - completed
       to_mail: grants@usfca.edu
       to_options: {  }
-      cc_mail: 'dmarbello@usfca.edu, mshukla3@dons.usfca.edu, mcguire@usfca.edu, cfr@usfca.edu, tszeto@usfca.edu, mrodriguezmorales@dons.usfca.edu, ajgomez7@dons.usfca.edu, tlatif@dons.usfca.edu'
+      cc_mail: 'grants@usfca.edu, dmarbello@usfca.edu, mcguire@usfca.edu, cfr@usfca.edu, tszeto@usfca.edu, mghayes@usfca.edu, mrodriguezmorales@dons.usfca.edu, ajgomez7@dons.usfca.edu, tlatif@dons.usfca.edu'
       cc_options: {  }
-      bcc_mail: '[webform_submission:user:mail]'
+      bcc_mail: ''
       bcc_options: {  }
       from_mail: _default
       from_options: {  }
