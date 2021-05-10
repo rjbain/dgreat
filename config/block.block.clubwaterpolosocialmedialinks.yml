@@ -1,0 +1,46 @@
+uuid: ac8fc71a-8611-45a2-bf7f-51c6c953afba
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:contact:cc743337-343a-423d-b95f-9f18b4b26183'
+  module:
+    - block_content
+    - block_visibility_groups
+    - system
+    - user
+  theme:
+    - myusf
+id: clubwaterpolosocialmedialinks
+theme: myusf
+region: sidebar_second
+weight: 374
+provider: null
+plugin: 'block_content:cc743337-343a-423d-b95f-9f18b4b26183'
+settings:
+  id: 'block_content:cc743337-343a-423d-b95f-9f18b4b26183'
+  label: 'Club Water Polo Social Media Links'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /koret/club-sports/water-polo
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
