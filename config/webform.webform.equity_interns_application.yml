@@ -1,6 +1,6 @@
 uuid: dafde91b-56cc-4a17-9e09-8f1253083948
 langcode: en
-status: closed
+status: open
 dependencies: {  }
 open: null
 close: null
@@ -155,4 +155,38 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers: {  }
+handlers:
+  equity_interns_application:
+    id: email
+    label: 'Equity Interns Application'
+    handler_id: equity_interns_application
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: bbgonzales@usfca.edu
+      to_options: {  }
+      cc_mail: llombre@usfca.edu
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
