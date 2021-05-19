@@ -1,17 +1,18 @@
 /* SIDEBAR BOX contact box 
 ========================================== */
+
 .block-myusf-contactbox {
 	border-style: none!important;
 	background-color: $light_beige;
-	padding: 5px 18px!important;
+	padding: 0.3125rem 1.125rem!important;
 
     @include media-breakpoint-only(tablet) {        
         position: relative;
-        padding: 5px 10px!important;
+        padding: 0.3125rem 1.125rem!important;
 
         h2, p {
-            margin-left: 8px;
-            margin-right: 8px;
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
         }
     }
     @include media-breakpoint-only(landscape_phone) {
@@ -23,14 +24,14 @@
 	   text-transform: uppercase!important;
 	   font-weight: 700;
 	   text-shadow: none;
-       margin-top: .85rem;
+       margin-top: .85rem!important;
 	   color: $text-gray!important;
 	   border-bottom: none;
     }
 
     h3, h3 a {
 	   font-size: 1.2rem;
-	   line-height: 1.3rem;
+	   line-height: 1.083;
 	   font-weight: 700;
 	   padding-bottom: 10px;
     }
@@ -54,18 +55,22 @@
         position: relative;
         color: $text-gray;
         display: block;
-        line-height: 1.2rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+    }
+    .contact-info p {
+        margin-bottom: 0;
     }
 }
 
 .contact-info {
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 .contact {
 	line-height: 1.3rem!important;
 	margin-bottom: 0;
-	padding-left: 30px;
+	padding-left: 1.875rem;    
 
     &::before {
         display: block;
@@ -73,8 +78,8 @@
         position: absolute;
         top: 2px;
         left: 0;
-        margin: 0 0 10px;
-        padding: 0 0 0 20px;
+        margin: 0 0 0.625rem;   
+        padding: 0 0 0 1.25rem;
         background: url(/themes/custom/myusf/images/site/icons.png) no-repeat;
         background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat;
     }    
@@ -102,7 +107,7 @@
 
 .content {
     .contact {
-        padding-left: 0px; 
+        padding-left: 0; 
         display: inline-block;
 
         &::before {
@@ -113,13 +118,13 @@
     }
     .email::before, .tel::before {
         top: 15px;
-        margin-right: 5px;
+        margin-right: 0.3125rem;
     }
     .contact.tel {
-        margin-left: 30px;
+        margin-left: 1.875rem;
 
         @include media-breakpoint-down(phone) {
-             margin-left: 0px;
+             margin-left: 0;
         }
     }
 }
@@ -130,7 +135,7 @@
 #block-event-search {
     background-color: $light_beige;
     border: none;
-    padding: 0 15px 45px 15px!important;
+    padding: 0 0.9375rem 2.8125rem 0.9375rem!important;
     margin-top: .5rem;
     width: inherit;
 
@@ -139,7 +144,7 @@
         width: 25%;
         right: 30px;
         top: 190px;
-        margin-top: -22px;
+        margin-top: -1.375rem;
     }
 
     @include media-breakpoint-down(phone) {
@@ -153,10 +158,10 @@
         font-size: inherit;
         line-height: inherit;
         padding-bottom: .5rem;
-        padding-top: 10px;
+        padding-top: 0.625rem;  
     }
     .button-form {
-        padding: 10px 0 0 0;
+        padding: 0.625rem 0 0 0;
 
         .button {
             width: 100%;
@@ -169,7 +174,7 @@
         }
     }
     .search-form {
-        padding: 0 0 10px 0;
+        padding: 0 0 0.625rem 0;
         border-radius: 0!important;
     }   
     .search-input {
@@ -192,7 +197,7 @@
 
     }
     .date-widget {
-      padding:10px 0 0 0;
+      padding: 0.625rem 0 0 0;
 
         .ui-datepicker, .ui-widget, .ui-widget-content {
             width: inherit;
@@ -223,7 +228,7 @@
             }
             table tr th {
                 background: rgba(0, 0, 0, .3);
-                padding: 3px 3px 3px 5px;
+                padding: 0.1875rem 0.1875rem 0.1875rem 0.3125rem;
                 font-size: .6rem;
                 text-transform: uppercase;
             }
@@ -232,8 +237,8 @@
 
                 td {
                     font-size:0.75rem;
-                    padding-top: 5px;
-                    padding-bottom: 5px;
+                    padding-top: 0.3125rem;
+                    padding-bottom: 0.3125rem;
 
                     a {
                         background: inherit!important;
@@ -255,19 +260,19 @@
 
                 &:first-of-type {
                     td {
-                        padding-top: 15px;
+                        padding-top: 0.9375rem;
                     }
                 }
                 &:last-of-type {
                     td {
-                        padding-bottom: 15px;
+                        padding-bottom: 0.9375rem;
                     }
                 }
             }
         }
 
         .ui-datepicker-calendar {
-            padding-bottom: 5px;
+            padding-bottom: 0.3125rem;
         
              tbody a {
                 text-align: center !important;
@@ -303,7 +308,7 @@
                 width: 30px;
                 height: 30px;
                 top: -5px;
-                margin-left: 5px;
+                margin-left: 0.3125rem;
             }
             &.ui-icon-circle-triangle-w:hover::after {
                 background: url(/themes/custom/myusf/images/site/icons.png) -196px -160px no-repeat;
@@ -459,18 +464,18 @@ a.right.carousel-control {
 }
 
 .paragraph--type--bp-carousel {
-        margin-bottom: 40px;
+        margin-bottom: 2.5rem;
 
     .field--name-bp-text {
         figure {
             figcaption {
                 font-size: .9rem;
                 font-style: italic;        
-                line-height: 1.3rem;
+                line-height: 1.44;
                 color: $white;
                 background:$gray;
                 width: 100%;
-                padding: 15px 5% 15px;        
+                padding: 0.9375rem 3%;        
                 margin: -1px auto 0 auto;
 
                 a {
@@ -510,7 +515,7 @@ a.right.carousel-control {
         width:100%;
         top: 100%;
         bottom: unset;
-        padding-bottom: 10px;        
+        padding-bottom: 0.625rem;        
         margin-left: 0;
 
         li {
@@ -518,6 +523,7 @@ a.right.carousel-control {
             height: 12px;
             border-radius: 7px;
             background: transparentize($black, .6);
+            padding-bottom: 0.6rem!important;
         }
 
         .active {
@@ -573,16 +579,21 @@ h2.carousel-overlay:before {
 }*/
 
 #carouselControls {
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 0.9375rem;
+    margin-right: 0.9375rem;
+    margin-bottom: 2.5rem;
     width: 100%;
 
-    @include media-breakpoint-down(phone) {
-        width: 88%;
-        @include margin-L-R-auto;
+    @include media-breakpoint-down(phone) { 
+        margin-left: 0.625rem;
     }
 } 
-
+.usf_dash #carouselControls {
+    @include media-breakpoint-down(phone) {
+        margin-left: .3125rem;
+        margin-right: 1rem;
+    }
+}
 .carousel-inner2 {
     z-index: -2;
 }
@@ -593,6 +604,10 @@ h2.carousel-overlay:before {
     .img-fluid {
         width: 100%;
     }
+    img {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
 }
 .carousel-control-prev {
     opacity: 1;
@@ -601,15 +616,13 @@ h2.carousel-overlay:before {
     &::before {
         width: 10px;
         height: 16px;
-        /*top: 236px;*/
-        top: calc(50% + 16px);
+        top: calc(50% + 14px);
         left: 41px;
         z-index: 1;
     }
     &::after {
         width: 45px;
         height: 45px;
-        /*top: 220px;*/
         top: 50%;
         left: 25px;
         z-index: 0;
@@ -621,10 +634,10 @@ h2.carousel-overlay:before {
     } 
 
     @include media-breakpoint-down(tablet) { 
-        margin-top: -50px;
+        margin-top: -3.125rem;
 
         &::before {
-            top: calc(50% + 12.5px);
+            top: calc(50% + 9px);
             left: 26px;
         }
         &::after {
@@ -639,11 +652,11 @@ h2.carousel-overlay:before {
     }
 
     @include media-breakpoint-down(phone) { 
-        margin-top: -42px;
+        margin-top: -2.625rem;  
 
         &::before {
-            top: 213px;
-            left: -6px;
+            top: 210px;
+            left: -8px;
         }
         &::after {
             width: 45px;
@@ -662,17 +675,16 @@ h2.carousel-overlay:before {
         width: 10px;
         height: 16px;
         /*top: 236px;*/
-        top: calc(50% + 16px);
-        right: 38px;
+        top: calc(50% + 14px);
+        right: 40px;
         z-index: 1;
     } 
 
     &::after {
         width: 45px;
         height: 45px;
-        /*top: 220px;*/
         top: 50%;
-        right: 23px;
+        right: 25px;
         z-index: 0;
     }
     
@@ -682,43 +694,49 @@ h2.carousel-overlay:before {
     } 
 
     @include media-breakpoint-down(tablet) { 
-        margin-top: -50px;
+        margin-top: -3.125rem;  
 
         &::before {
-            top: calc(50% + 12.5px);
-            left: 39px;
+            top: calc(50% + 9px);
+            right: 55px;
         }
         &::after {
             width: 35px;
             height: 35px;
-
-            left: 25px;
+            right: 45px;
         }
     }
     @include media-breakpoint-only(landscape_phone) {  
-        margin-top: 0px;
-         right: -5px;
+        margin-top: 0;
+        right: -5px;
+        
+        &::before {
+            right: 40px;
+        }
+        &::after {
+            right: 30px;
+        }
     }
 
     @include media-breakpoint-down(phone) { 
-        margin-top: -42px;
+        margin-top: -2.625rem;
 
         &::before {
-            top: 213px;
-            left: 41px;
+            top: 210px;
+            right: -7px;
         }
         &::after {
             width: 45px;
             height: 45px;
             top: 196px;
-            left: 23px;
+            right: -22px;
         }
     } 
 }
 //Home page Carousel
 .page-node-140134 .carousel-control-prev {
     @include media-breakpoint-down(tablet) { 
-        margin-top: 50px;
+        margin-top: 3.125rem;   
         left: 5px;
     }
     @include media-breakpoint-only(landscape_phone) {  
@@ -726,13 +744,13 @@ h2.carousel-overlay:before {
         left: 8px;
     }
     @include media-breakpoint-down(phone) {  
-        margin-top: -42px;
+        margin-top: -2.625rem;
         left: 0px;
     }
 }
 .page-node-140134 .carousel-control-next {
     @include media-breakpoint-down(tablet) { 
-        margin-top: 50px;
+        margin-top: 3.125rem;   
         right: -25px;
     }
     @include media-breakpoint-only(landscape_phone) {  
@@ -740,13 +758,9 @@ h2.carousel-overlay:before {
          right: -5px;
     }
     @include media-breakpoint-down(phone) {  
-        margin-top: -42px;
+        margin-top: -2.625rem;
         right: 0px;
     }
-}
-
-.page-node-140134 .view-events-featured {
-    margin-top: -.8rem;
 }
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
@@ -765,38 +779,38 @@ h2.carousel-overlay:before {
     h3.carousel-event-title, h2.carousel-event-title {
         font-size: 1.4rem;
         font-weight:700;
-        padding-top: 140px;
-        padding-left: 55px;
-        padding-right: 55px;
+        padding-top: 8.75rem;
+        padding-left: 3.4375rem;
+        padding-right: 3.4375rem;
         color: $white!important;
         line-height: 1.6rem;
 
          @include media-breakpoint-down(tablet) { 
             font-size: 1.1rem;
             text-transform: capitalize;
-            padding-left: 70px;
-            padding-right: 70px;
-            padding-bottom: 5px;
+            padding-left: 4.375rem;
+            padding-right: 4.375rem;
+            padding-bottom: 0.3125rem;
          }
 
          @include media-breakpoint-down(phone) {  
-            padding-left: 15px;
-            padding-right: 15px;
+            padding-left: 0.9375rem;
+            padding-right: 0.9375rem;
             padding-top: 0px;
          }
     }
 
     p {
         color: $white;
-        margin-top: -10px;
+        margin-top: -0.625rem;
 
          @include media-breakpoint-down(tablet) { 
             font-size: 0.9rem;
-            line-height: 1.2rem;
+            line-height: 1.33;
         }
     }
     p:last-of-type {
-        margin-top: -15px;
+        margin-top: -0.9375rem;
     }
 
     @include media-breakpoint-down(phone) { 
@@ -804,19 +818,19 @@ h2.carousel-overlay:before {
         /*margin-top: -150px;*/
         background:$text_gray!important;
         height:200px;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
 
         .carousel-event-title { 
             font-size: 1rem;
-            line-height: 1.3rem!important;
-            padding-top: 15px;
+            line-height: 1.3!important;
+            padding-top: 0.9375rem;
             
         }
 
         p {
             font-size: 0.8rem;
-            line-height: 1.1rem;
+            line-height: 1.375;
         }
     }
 
@@ -833,20 +847,23 @@ h2.carousel-overlay:before {
     li {
         width: 9px;
         border-radius: 5px;
-        margin-right: 5px;
-        margin-left: 5px;
+        margin-right: 0.3125rem;
+        margin-left: 0.3125rem;
+    }
+    li:last-of-type {
+        padding-bottom: 0.6rem; 
     }
 }
 
 /* News Carousel 
 =============================================== */
 .carousel.news-carousel {
-    margin-left: -15px;
-    margin-right: 15px;
-    margin-bottom: 45px;
+    margin-left: -0.9375rem;
+    margin-right: 0.9375rem;
+    margin-bottom: 2.8125rem;
 
     @include media-breakpoint-down(tablet) {
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
     }
     @include media-breakpoint-down(phone) {
        /* margin-left: -17px;
@@ -903,7 +920,7 @@ h2.carousel-overlay:before {
      }
      .carousel-indicators {
         @include media-breakpoint-up(desktop) {
-            margin-bottom: 2px;
+            margin-bottom: 0.125rem;
         }
     }
     .carousel-indicators-shade {
@@ -911,8 +928,8 @@ h2.carousel-overlay:before {
             /*width: 101%; */
             width: 310px;
             margin-left: 0;
-            margin-bottom: -2px;
-            padding-bottom: 5px;
+            margin-bottom: -0.125rem;
+            padding-bottom: 0.3125rem;
             background: linear-gradient(to bottom,rgba(42,42,42,0) 0%,$black 100%)!important;
         }
      }
@@ -928,7 +945,7 @@ h2.carousel-overlay:before {
 
         p:last-of-type {
             position: absolute;
-            padding: 0 25px 10px;
+            padding: 0 1.5625rem 0.625rem;
             bottom: 0!important;
 
             @include media-breakpoint-only(tablet) {
@@ -938,8 +955,8 @@ h2.carousel-overlay:before {
 
             @include media-breakpoint-down(phone) {
                 position: relative;
-                padding: 10px 0;
-                margin-bottom: -5px;
+                padding: 0.625rem 0;
+                margin-bottom: -0.3125rem;
 
             }
         }
@@ -954,14 +971,14 @@ h2.carousel-overlay:before {
     margin-left: 0;
     margin-right: 0;
     @include media-breakpoint-down(phone) {
-        height: 160px;        
+        margin-bottom: 5rem;     
     }
 
     @include media-breakpoint-up(2560xl_desktop) {
         margin-left: auto;
         margin-right: auto;
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 0.9375rem;
+        padding-right: 0.9375rem;
         width:1920px; /*1500*/
     }
 
@@ -979,14 +996,13 @@ h2.carousel-overlay:before {
     }
 }
 .hero-image-block {
-    /*margin: -25px 0 -85px 0 !important; -85 was -50*/
-    margin-top:-25px;
+    margin-top:-2.5625rem;
 
     @include media-breakpoint-up(landscape_phone) {
-        margin-bottom: -65px;    
+        margin-bottom: -3.4375rem;    
     }
     @include media-breakpoint-down(phone) {
-        margin-bottom: -45px; 
+        margin-bottom: -2.1875rem; 
     }
 
     a {
@@ -996,8 +1012,8 @@ h2.carousel-overlay:before {
 .hero_image {
     position: relative;
     max-height: 500px;
-    margin-bottom: 100px;
-    margin-top: -1px;
+    margin-bottom: 6.25rem;
+    margin-top: -0.0625rem;
 
     @include media-breakpoint-down(phone) {
         display: none;
@@ -1043,25 +1059,25 @@ h2.carousel-overlay:before {
     .hero_image_title, .hero_image_subtitle, .hero_image_body {
         display: inline-block;         
         padding-left: 2rem;
-        padding-right: 15px;   
-        padding-bottom: 1px; 
+        padding-right: 0.9375rem;   
+        padding-bottom: 0.0625rem; 
         /*text-shadow: 2px 2px 10px rgba(0,0,0,.9); */
         background: transparentize($black, .2);  
 
         @include media-breakpoint-down(tablet) { 
             margin-left: 0;
-            padding-left: 25px;
+            padding-left: 1.5625rem;
         }    
         @include media-breakpoint-down(phone) { 
-            padding-left: 10px;
+            padding-left: 0.625rem;
         }      
     }
     .hero_image_title {    
         font-size: 2rem;
         font-weight: 700;       
-        line-height: 1.1rem;
-        padding-top: 15px;
-        padding-bottom: 20px;
+        line-height: 0.55;
+        padding-top: 0.9375rem;
+        padding-bottom: 1.25rem;
         /* margin-left: 11px!important; */
         
         @include media-breakpoint-up(midlarge_desktop) {
@@ -1074,9 +1090,9 @@ h2.carousel-overlay:before {
 
         @include media-breakpoint-down(tablet) {
             font-size: 1.3rem;
-            line-height: .9rem;           
-            padding-top: 5px;
-            padding-bottom: 7px;
+            line-height: 0.6923;           
+            padding-top: 0.3125rem;
+            padding-bottom: 0.4375rem;
         }
         @include media-breakpoint-down(phone) {
             font-size: 1rem;
@@ -1089,19 +1105,19 @@ h2.carousel-overlay:before {
 
         @include media-breakpoint-down(tablet) {
             font-size: .8rem;
-            line-height: 1rem;
+            line-height: 1.25;
         }
         @include media-breakpoint-down(phone) {
             display:none;
         }
     }
     .hero_image_body {
-        margin-bottom: 10px;
-        padding-bottom: 10px;
+        margin-bottom: 0.625rem;    
+        padding-bottom: 0.625rem;   
         width: 35%;
         @include media-breakpoint-down(tablet) {
             font-size: .8rem;
-            line-height: 1rem;
+            line-height: 1.25;
         }
         @include media-breakpoint-down(phone) {
             display:none;
@@ -1126,8 +1142,8 @@ h2.carousel-overlay:before {
 
     .view-events-search .views-row { 
         article {
-            padding-bottom: 12px;
-            padding-top: 3px;
+            padding-bottom: 0.75rem;
+            padding-top: 0.1875rem;
         }
 
         &:first-child article {
@@ -1139,20 +1155,20 @@ h2.carousel-overlay:before {
         img {
             width: 67px!important;
             height: 50px!important;
-            margin-left: 10px;
-            margin-right: 10px;
+            margin-left: 0.625rem;  
+            margin-right: 0.625rem; 
         }
     }
     .events-widget-time {
         font-size: .9rem;
-        margin-top: -7px;
+        margin-top: -0.4375rem;
     }
     .events-widget-location {
         display: none;
     }
     .view-events-search.view-display-id-block_2  {
          ul.pagination li {
-            margin-right: 0px;
+            margin-right: 0;
          }
     }
 }
@@ -1182,7 +1198,7 @@ h2.carousel-overlay:before {
     width: 100%;
 
     @include media-breakpoint-down(phone) {
-        margin-left: 0px;
+        margin-left: 0;
     }
 
     .faculty_image /*, .faculty img */{
@@ -1190,21 +1206,21 @@ h2.carousel-overlay:before {
         float: left;
         width: 150px;
         height: 150px;
-        margin-bottom: 20px;
-        margin-right: 20px;
+        margin-bottom: 1.25rem; 
+        margin-right: 1.25rem;  
         overflow: hidden;
 
         img {
             width: 150px;
             height: 150px;
-            margin-top:0px;
+            margin-top:0;
         }
 
         @include media-breakpoint-down(phone) {
             width: 94px;
             height: 94px;
             float: right;
-            margin: 6px 0 10px 10px;
+            margin: 0.375rem 0 0.625rem 0.625rem;
 
             img {
                 width: 94px;
@@ -1224,27 +1240,27 @@ h2.carousel-overlay:before {
         font-style: italic;
     }
     .faculty_contact {
-        margin-top: -20px;
+        margin-top: -1.25rem;
     }
 }
 
 .faculty_content {
     font-size:1rem;
     border-bottom: 1px solid $light_gray;
-    padding-bottom: 30px;
-    margin-bottom: 20px;
+    padding-bottom: 1.875rem;
+    margin-bottom: 1.25rem;
 }
 
 .view-faculty {
     .pagination {
-        -webkit-padding-start: 0px;
+        -webkit-padding-start: 0;
 
         .page-item {
-            padding-left: 0px;
+            padding-left: 0;
         }
         .pager__item--next {
-            margin-right: 0px; 
-            padding-left: 0px;
+            margin-right: 0; 
+            padding-left: 0;
         }
     }
 }
@@ -1264,40 +1280,40 @@ h2.carousel-overlay:before {
             article {
                 width: 100%;
                 display:inline-block;
-                padding-top: 10px;
-                padding-bottom: 20px;
+                padding-top: 0.625rem;
+                padding-bottom: 1.25rem;
                 border-bottom: 1px solid $light_gray;
 
                  @include media-breakpoint-down(phone) {
-                    padding-bottom: 15px;
+                    padding-bottom: 0.9375rem;
                  }
 
                 img {
                     width: 107px;
                     float: left;
-                    margin-left: 15px;
-                    margin-right: 20px;
+                    margin-left: 0.9375rem;
+                    margin-right: 1.25rem;
                     @include media-breakpoint-down(phone) {                        
                         width: 80px;
-                        margin-left: 0px;
-                        margin-right: 15px;
+                        margin-left: 0;
+                        margin-right: 0.9375rem;
                     }
                 }
                 h3.news-list-title{                   
                     color: $green!important;
                     text-transform: capitalize;
-                    margin-top: -3px;
+                    margin-top: -0.1875rem;
                     @include media-breakpoint-down(tablet) {
                         font-size: 1rem;
                         font-weight:800!important;
-                        margin-top: -5px;
+                        margin-top: -0.3125rem;
                     }
                 }
                 .news-list-subtitle{                   
                     color: $black!important;
-                    margin-bottom: 5px;
+                    margin-bottom: 0.3125rem;
                     @include media-breakpoint-down(tablet) {
-                        margin-bottom: 8px;
+                        margin-bottom: 0.5rem;
                     }
                 }
                 .news-list-date {
@@ -1305,15 +1321,15 @@ h2.carousel-overlay:before {
                     color: $text_gray;
                     text-transform: capitalize;
                     @include media-breakpoint-down(tablet) {
-                        margin-top: -5px;
+                        margin-top: -0.3125rem;
                     }
                 }
                 .news-list-text {
                     overflow: hidden;
                     &.no-news-image {
-                        margin-left: 142px;
+                        margin-left: 8.875rem;
                         @include media-breakpoint-down(phone) {
-                            margin-left: 95px
+                            margin-left: 5.9375rem;
                         }
                     }
                 }
@@ -1326,7 +1342,7 @@ h2.carousel-overlay:before {
 /* PARAGRAPH BOX
 =============================================== */  
 .paragraph--type--box-styles {
-    padding-bottom: 30px;
+    margin-bottom: 2.5rem;   
 }
 .overlay {
   position: relative;
@@ -1361,33 +1377,35 @@ h2.carousel-overlay:before {
     z-index: 1;
 }
 
-.box{
+.box {
     display: flex;
     border:1px solid $gray;
     border-top: 7px solid $text_gray;
+    margin-top: .625rem;
+
     h2 {
         font-size: 1.2rem;
         font-weight:600;
-        line-height:120%;
+        line-height:1.2;
     }
     h3 {
         font-size: 1rem;
         font-weight:400;
         font-style: italic;
-        line-height:150%;
-        margin-top: -10px;
+        line-height:1.5;
+        margin-top: -0.625rem;  
     }
     p {
         font-size: .8rem;
         font-weight:400;
-        line-height:150%;
+        line-height:1.5;
     }
 
     a.box-link:hover, a.box-link:focus {
         background-color: rgba(253,187,48,0)!important;
     }
     a img {
-        margin-top: 0px;
+        margin-top: 0;
         cursor: pointer;
     }
     a h2, a h3, p{
@@ -1444,8 +1462,8 @@ h2.carousel-overlay:before {
     .paragraph--type--bp-columns__1col .paragraph--type--bp-columns__2col,
     .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
     .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {        
-        padding-left:0px!important;
-        padding-right:0px!important;
+        padding-left:0!important;
+        padding-right:0!important;
     }
 }
 
@@ -1454,7 +1472,7 @@ h2.carousel-overlay:before {
     .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
     .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
         &:nth-child(1){
-            padding-left:0px!important;
+            padding-left:0!important;
         }
     }
 
@@ -1462,29 +1480,29 @@ h2.carousel-overlay:before {
     .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
     .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
         &:nth-child(2){
-            padding-right:0px!important;
+            padding-right:0!important;
         }
     }
 
     .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
     .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
         &:nth-child(3){
-            padding-left:0px!important;
+            padding-left:0!important;
         }
     }
     .paragraph--type--bp-columns__4col, .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
         &:nth-child(4){
-            padding-right:0px!important;
+            padding-right:0!important;
         }
     }
     .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
         &:nth-child(5){
-            padding-left:0px!important;
+            padding-left:0!important;
         }
     }
     .paragraph--type--bp-columns__6col {
         &:nth-child(6){
-            padding-right:0px!important;
+            padding-right:0!important;
         }
     }
 }
@@ -1493,48 +1511,48 @@ h2.carousel-overlay:before {
     .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
     .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
         &:nth-child(1){
-            padding-left:0px!important;
-            padding-right:20px!important;
+            padding-left:0!important;
+            padding-right: 1.25rem!important;
         }
     }
     .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
     .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
         &:nth-child(2){
-            padding-left:10px!important;
-            padding-right:10px!important;
+            padding-left: 0.625rem!important;
+            padding-right: 0.625rem!important;
         }
     }
     .paragraph--type--bp-columns__3col, .paragraph--type--bp-columns__4col,
     .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
         &:nth-child(3){
-            padding-left:20px!important;
-            padding-right:0px!important;
+            padding-left: 1.25rem!important;
+            padding-right:0!important;
         }
     }
     .paragraph--type--bp-columns__4col, .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
         &:nth-child(4){
-            padding-left:0px!important;
-            padding-right:20px!important;
+            padding-left:0!important;
+            padding-right: 1.25rem!important;
         }
     }
     .paragraph--type--bp-columns__5col, .paragraph--type--bp-columns__6col {
         &:nth-child(5){
-            padding-left:10px!important;
-            padding-right:10px!important;
+            padding-left: 0.625rem!important;
+            padding-right: 0.625rem!important;
         }
     }
     .paragraph--type--bp-columns__6col {
         &:nth-child(6){
-            padding-left:20px!important;
-            padding-right:0px!important;
+            padding-left: 1.25rem!important;
+            padding-right:0!important;
         }
     }
 
     .paragraph--type--bp-columns__1col {
-        padding-right:0px!important;
+        padding-right:0!important;
     }
     .paragraph--type--bp-columns__2col:nth-child(2){
-        padding-right:0px!important;
+        padding-right:0!important;
     }
 }
 
@@ -1586,17 +1604,17 @@ h2.carousel-overlay:before {
 
 // VIDEO EMBED //
 div[data-oembed-url] { 
-     position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 60%;
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 60%;
 }
 div[data-oembed-url]  > iframe {
- position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 //HANDSHAKE
@@ -1604,14 +1622,14 @@ div[data-oembed-url]  > iframe {
 .view-jobs-list {
     h2 {
         border-top: 3px solid #fdbb30;
-        padding-top: 30px;
+        padding-top: 1.875rem;
     }
     ul {
         padding-left: 0;
     }
     ul.pagination {
         border-bottom: 3px solid #fdbb30;
-        padding-bottom: 30px;
+        padding-bottom: 1.875rem;
 
         li {
             padding-left: 0;  
@@ -1619,10 +1637,10 @@ div[data-oembed-url]  > iframe {
     }
     
     li.jobs-list-li {
-        padding-left: 10px;
-        padding-top: 15px;
+        padding-left: 0.625rem;
+        padding-top: 0.9375rem;
         border-bottom: 1px solid $light_gray;
-        margin-right: 20px;
+        margin-right: 1.25rem;
 
         &:before {
             content: "";
@@ -1649,8 +1667,8 @@ div[data-oembed-url]  > iframe {
             .job-description {
                 color: $text_gray;
                 font-weight: 400;
-                padding-right: 20px;
-                padding-bottom: 15px;
+                padding-right: 1.25rem;
+                padding-bottom: 0.9375rem;
             }
             .job-date {
                 text-transform: uppercase;
@@ -1666,17 +1684,16 @@ div[data-oembed-url]  > iframe {
 }
 
 // SLE ENGAGEMENT TILES
-.community-grid-tile {
-    
-    padding-bottom: 30px;
+.community-grid-tile {   
+    padding-bottom: 1.875rem;
 
     @include media-breakpoint-down(phone) {
         width:100%;
         &:nth-child(3n+1),
         &:nth-child(3n+2),
         &:nth-child(3n+3) {
-            padding-left:0px;
-            padding-right:0px;
+            padding-left: 0;
+            padding-right: 0;
         }
     }
     @include media-breakpoint-up(landscape_phone) {
@@ -1684,11 +1701,11 @@ div[data-oembed-url]  > iframe {
 
         &:nth-child(2n+1) {
             padding-left: 0;
-            padding-right: 15px;
+            padding-right: 0.9375rem;
         }
         &:nth-child(2n+2) {
-            padding-left: 15px;
-            padding-right: 0px;
+            padding-left: 0.9375rem;
+            padding-right: 0;
         }
     }
     @include media-breakpoint-up(desktop) {
@@ -1696,20 +1713,18 @@ div[data-oembed-url]  > iframe {
 
         &:nth-child(3n+1) {
             padding-left: 0;
-            padding-right: 20px;
+            padding-right: 1.25rem;
         }
         &:nth-child(3n+2) {
-            padding-left: 10px;
-            padding-right: 10px;
+            padding-left: 0.625rem; 
+            padding-right: 0.625rem;    
         }
         &:nth-child(3n+3) {
-            padding-left: 20px;
+            padding-left: 1.25rem;
             padding-right: 0;
         }
     }
-    
-    
-    
+      
     .overlay-link {
         display: block;
     }
@@ -1737,21 +1752,21 @@ div[data-oembed-url]  > iframe {
         transition: .5s ease;
 
         @include media-breakpoint-up(landscape_phone) {
-            height: 60px; /* 50 */
+            height: 55px; /* 50 */
         }
         @include media-breakpoint-up(desktop) {
-            height: 45px; /* 35 */
+            height: 40px; /* 35 */
         }
         @include media-breakpoint-up(large_desktop) {
-            height: 55px; /* 45 */
+            height: 50px; /* 45 */
         }
         @include media-breakpoint-up(midlarge_desktop) {
-            height: 60px; /* 50 */
+            height: 63px; /* 50 */
         }
     }   
 }
 .rollover-text {     
-    margin: 0px; 
+    margin: 0; 
     position: relative;
     left: 50%;
     height: 104%;
@@ -1764,42 +1779,27 @@ div[data-oembed-url]  > iframe {
 
     &:hover,
     &:focus {
-        padding-top: 0px;
+        padding-top: 0;
 
         @include media-breakpoint-up(landscape_phone) {
-            padding-top: 10px;
+            padding-top: 0.625rem;  
         }
-
-        .overlay-heading { 
-            @include media-breakpoint-up(phone) {
-                line-height: 1.8rem;
-            }          
-            @include media-breakpoint-up(landscape_phone) {
-                line-height: 1.5rem;
-            }
-            @include media-breakpoint-up(desktop) {
-                line-height: 1rem;
-            }
-            @include media-breakpoint-up(large_desktop) {
-                line-height: 1.3rem;
-            }
-            @include media-breakpoint-up(midlarge_desktop) {
-                line-height: 1.8rem;
-            }
+       .overlay-heading { 
+            line-height: 1.8;
         }
     }
 
     @include media-breakpoint-up(desktop) {
-        margin-top:-4px /*-10px;*/
+        margin-top: -0.25rem; /*-10px;*/
     }
     @include media-breakpoint-up(large_desktop) {
-        margin-top: -2px;
+        margin-top: -0.125rem;
     }
     @include media-breakpoint-up(midlarge_desktop) {
-        margin-top: 0px;     
+        margin-top: 0;     
     }
     .overlay-arrow {
-        padding-bottom: 15px;
+        padding-bottom: 0.9375rem;
 
         &:before {
             content: "";
@@ -1822,31 +1822,30 @@ div[data-oembed-url]  > iframe {
         width: 100%;
         position: relative; 
         margin: 0 !important;
-        padding: 5px 10px 20px 10px; /* 10px 10px 20px 10px; */
+        padding: 0.3125rem 0.625rem 20px 0.625rem; /* 10px 10px 20px 10px; */
         opacity: 1;
         display: block;
-        margin-block-start: 1.33em;
-        margin-block-end: 1.33em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
+        margin-block-start: 1.596rem;
+        margin-block-end: 1.596rem;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+        line-height: 1.8;
 
-               
         @include media-breakpoint-up(landscape_phone) {
             font-size: 1.1rem;
-            padding: 4px 10px 20px;
+            padding: 0.125rem 0.625rem 1.25rem;
         }
         @include media-breakpoint-up(desktop) {
             font-size: .85rem;
-            padding: 1px 10px 20px;
+            padding: 0rem 0.625rem 1.25rem;
         }
         @include media-breakpoint-up(large_desktop) {
             font-size: .95rem;
-            padding: 3px 10px 20px;
+            padding: 0.1875rem 0.625rem 1.25rem;
         }
         @include media-breakpoint-up(midlarge_desktop) {
             font-size: 1.2rem;
-            line-height: 2rem;
-            padding: 5px 10px 20px;
+            padding: 0.3125rem 0.625rem 1.25rem;
         }
     }
 
@@ -1857,57 +1856,57 @@ div[data-oembed-url]  > iframe {
             top: 0px;
         }
         @include media-breakpoint-up(desktop) {
-            top: -6px;
+            top: -0.375rem;
         }
     }
 
     p {
         font-size: 0.9rem;
-        line-height: 1.3rem;
+        line-height: 1.44;
         color: $white; 
         position: relative;
-        margin-left: 15px;
-        margin-right: 15px;
+        margin-left: 0.9375rem;
+        margin-right: 0.9375rem;
 
         @include media-breakpoint-up(landscape_phone) {
             font-size: .95rem;
-            line-height: 1.4rem;
+            line-height: 1.4736;
         }
         @include media-breakpoint-up(desktop) {
             font-size: 0.75rem;
-            line-height: .85rem;
+            line-height: 1.133;
         }
         @include media-breakpoint-up(large_desktop) {
             font-size: 0.85rem;
-            line-height: 1.2rem;
+            line-height: 1.41;
         }
         @include media-breakpoint-up(midlarge_desktop) {
             font-size: 1rem;
-            line-height: 1.6rem;
+            line-height: 1.6;
         }
 
         &.rollover-subtitle {
             font-size: .9rem;
             font-weight: 600;
-            line-height: 1.5rem;
+            line-height: 1.66;
             text-transform: uppercase;
-            margin-top: -10px;
+            margin-top: -0.625rem;
 
             @include media-breakpoint-up(landscape_phone) {
                 font-size: .95rem;
-                line-height: 1.4rem;
+                line-height: 1.4736;
             }
             @include media-breakpoint-up(desktop) {
                 font-size: 0.75rem;
-                line-height: .85rem;
+                line-height: 1.133;
             }
             @include media-breakpoint-up(large_desktop) {
                 font-size: 0.9rem;
-                line-height: 1.3rem;
+                line-height: 1.44;
             }
             @include media-breakpoint-up(midlarge_desktop) {
                 font-size: 1rem;
-                line-height: 1.6rem;
+                line-height: 1.6;
             }
         }
     }
@@ -1927,23 +1926,23 @@ div[data-oembed-url]  > iframe {
 
         @include media-breakpoint-up(landscape_phone) {
             font-size: 0.85rem;
-            line-height: 1rem;
+            line-height: 1.1764;
         }
 
         @include media-breakpoint-up(desktop) {
             font-size: .7rem;
-            line-height: 0.85rem;
+            line-height: 1.214;
             position: relative;
             top: -20px;
         }
          @include media-breakpoint-up(large_desktop) {
             font-size: .75rem;
-            line-height: 1rem;
+            line-height: 1.33;
             top: -10px;
         }
         @include media-breakpoint-up(midlarge_desktop) {
             font-size: .85rem;
-            line-height: 1rem;
+            line-height: 1.1764;
             top: -10px;
         }
 
@@ -1960,7 +1959,7 @@ div[data-oembed-url]  > iframe {
 
         &:after {
             content: "»";
-            padding-left: 5px;
+            padding-left: 0.3125rem;
         }
     }
 
@@ -2139,8 +2138,8 @@ div[data-oembed-url]  > iframe {
 }
 
 form#views-exposed-form-community-grid-page-1 {
-    margin-bottom: 20px;
-    margin-top: 10px;
+    margin-bottom: 1.25rem;
+    margin-top: 0.625rem;   
 
     .form-select {
         outline: 0px;
@@ -2149,8 +2148,24 @@ form#views-exposed-form-community-grid-page-1 {
 fieldset.form-item-field-community-topic-target-id,
 fieldset.form-item-field-audience-target-id {
     padding: 0!important;
-    margin-right: 20px;
+    margin-right: 1.25rem;
     border-image-width:0; 
+}
+
+
+#views-exposed-form-community-grid-page-1 fieldset.form-item-field-community-topic-target-id {
+    @include media-breakpoint-down(phone) {
+        width: 47%;
+        display: inline-block;
+        margin-right: 0;
+    }
+}
+#views-exposed-form-community-grid-page-1 fieldset.form-item-field-audience-target-id {
+    @include media-breakpoint-down(phone) {
+        width: 47%;
+        display: inline-block;
+        margin-right: 6%;
+    }
 }
 
 select#edit-field-audience-target-id,
@@ -2161,8 +2176,8 @@ select#edit-field-community-topic-target-id {
     line-height: 1.4;
     color: $black;    
     height:40px;
-    padding-left: 10px;
-    margin-left: 10px;
+    padding-left: 0.625rem; 
+    margin-left: 0.625rem;  
     background-color: $beige;
    -webkit-appearance: none;
     -moz-appearance: none;
@@ -2179,8 +2194,11 @@ select#edit-field-community-topic-target-id {
 
     @include media-breakpoint-down(phone) {
         font-size: 0.8rem;
-        width: 222px;
+        width: 98%;
     } 
+    @include media-breakpoint-down(large_desktop) {
+        margin-left: 0;
+    }
     @include media-breakpoint-only(landscape_phone) {
         width: 150px;
     }
@@ -2199,23 +2217,13 @@ select#edit-field-community-topic-target-id {
     }
 }
 
-select#edit-field-community-topic-target-id {    
-    @include media-breakpoint-down(phone) {
-            margin-left: 42px;
-    }
-}
-
-
 input#edit-submit-community-grid {
-    /*position: relative;
-    left: 24px;*/
     position: relative;
     right: 0;
     
     @include media-breakpoint-down(phone) {
         left: 0px;
-        margin-left: 83px;
-        width: 222px;
+        width: 100%;
     }
     @include media-breakpoint-only(landscape_phone) {
         width: 90px;
@@ -2228,6 +2236,15 @@ input#edit-submit-community-grid {
     }
      @include media-breakpoint-up(large_desktop) {
         width: 150px;
+    }
+}
+
+#views-exposed-form-community-grid-page-1 #edit-actions {
+    padding-left: 0;
+       
+    @include media-breakpoint-down(phone) {
+        padding-top: 1.5625rem;
+        width: 100%;
     }
 }
 
@@ -2259,9 +2276,9 @@ input#edit-submit-community-grid {
 
 .magazine_callout {
 
-    margin: 20px 0 20px 0; 
+    margin: 1.25rem 0 1.25rem 0; 
     display: block; 
-    padding: 15px; 
+    padding: 0.9375rem; 
     border-style: solid;
     border-width: 1px;
     overflow: hidden;
@@ -2303,7 +2320,6 @@ input#edit-submit-community-grid {
 
     &.olive {
         border-color: $olive;
-
     }
 
     &.thick {
@@ -2324,11 +2340,11 @@ input#edit-submit-community-grid {
 
 
     &.block_left {
-        margin: 0 20px 20px 0;
+        margin: 0 1.25rem 1.25rem 0;
     }
 
     &.block_right {
-        margin: 0 0 20px 20px;
+        margin: 0 0 1.25rem 1.25rem;
     }
 
     
@@ -2339,20 +2355,20 @@ input#edit-submit-community-grid {
     }
 
     blockquote img {
-        margin: 10px 20px 15px 15px;
-        width:200px;
+        margin: 0.625rem 1.25rem 0.9375rem 0.9375rem;
+        width: 200px;
 
          @include media-breakpoint-down(tablet) {
-            margin: 6px 20px 15px 15px;
+            margin: 6px 1.25rem 0.9375rem 0.9375rem;
         }
     }
     blockquote p {
          @include media-breakpoint-down(tablet) {
-            padding-top:7px;
+            padding-top: 0.4375rem
         }
     }
     cite.inline_cite {
-        margin-bottom: -20px;
+        margin-bottom: -1.25rem;
     }
 
 }
@@ -2366,9 +2382,9 @@ input#edit-submit-community-grid {
     color: $green;
     display: inline-block;
     line-height: 1.2;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    padding: 22px 30px;
+    margin-top: 1.5625rem;
+    margin-bottom: 1.5625rem;
+    padding: 1.375rem 1.875rem;
     font-weight:400!important;
     text-decoration: none;
 
@@ -2377,7 +2393,7 @@ input#edit-submit-community-grid {
     }
 
     &:before {
-        margin-right: 10px;
+        margin-right: 0.625rem;
         content: "";
         display: inline-block;
 
@@ -2423,7 +2439,7 @@ input#edit-submit-community-grid {
 
     &.left {
         float:left;
-        margin: 0 20px 20px 0;
+        margin: 0 1.25rem 1.25rem 0;
 
         @include media-breakpoint-down(phone) {
             margin-right: 0;
@@ -2432,7 +2448,7 @@ input#edit-submit-community-grid {
 
     &.right {
         float:right;
-        margin: 0 0 20px 20px;
+        margin: 0 0 1.25rem 1.25rem;
 
         @include media-breakpoint-down(phone) {
             margin-left: 0;

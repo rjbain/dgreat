@@ -5,8 +5,8 @@ h1, h2, h3, h4, h5, h6 {
 
 body, p {
 	font-size: 1rem;
-	line-height: 1.5rem;
-	margin-bottom: 1rem;
+	line-height: 1.6;
+	margin-bottom: 1.5rem;
 	font-weight: 400;
 }
 
@@ -25,8 +25,8 @@ body, p, li {
 h1, h1 a {
 	font-weight: 700;
 	font-size: 2.2rem;
-	margin-bottom: .5rem;
-	line-height: 2.5rem;
+	margin-top: 0.625rem!important;
+	line-height: 1.136;
 	color: inherit;
 	text-transform: none !important;
 }
@@ -34,9 +34,9 @@ h1, h1 a {
 h2, h2 a {
 	font-weight: 700;
 	font-size: 1.5rem;
+	margin-top: 0!important;
 	margin-bottom: .8rem;
-	padding-top: 1rem;
-	line-height: 2rem;
+	line-height: 1.33;
 	color: inherit;
 	text-transform: none !important;
 }
@@ -45,9 +45,8 @@ h3, h3 a {
 	font-size: 1.2rem;
 	font-weight: 700 !important;
 	font-style: normal !important;
-	margin-bottom: .5rem;
-	padding-top: .6rem;
-	line-height: 1.3rem;
+	margin-bottom: .8rem;
+	line-height: 1.3;
 	color: inherit;
 	text-transform: uppercase;
 }
@@ -57,7 +56,7 @@ h4, h4 a {
 	font-weight: 600;
 	padding-top: .4rem;
 	margin-bottom: .5rem;
-	line-height: 1.3rem;
+	line-height: 1.3;
 	color: inherit;
 }
 
@@ -65,7 +64,7 @@ h5, h5 a {
 	font-size: .9rem;
 	font-weight: 600;
 	margin-bottom: .5rem;
-	line-height: 1.1rem;
+	line-height: 1.22;
 	color: inherit;
 	text-transform: uppercase;
 }
@@ -75,7 +74,7 @@ h6, h6 a {
 	font-weight: 700;
 	font-style: italic;
 	margin-bottom: .5rem;
-	line-height: 1.1rem;
+	line-height: 1.1;
 	color: inherit;
 }
 
@@ -97,8 +96,12 @@ h1.js-quickedit-page-title.page-title {
 }
 #block-myusf-page-title h1.title {
 	@include media-breakpoint-up(tablet) {
-    	margin-top: -5px;
+    	margin-top: -0.3125rem;
 	}
+}
+
+.sidebar h2 {
+    margin: 0 0 1rem;
 }
 
 strong {
@@ -144,7 +147,6 @@ a.view-all-link {
 
 ul, ol {
 	margin-bottom: 1.5rem;
-	padding-top: .5rem;
 }
 ul {
 	list-style-type: square;
@@ -152,24 +154,111 @@ ul {
 
 li {
 	font-size: 1rem;
-	line-height: 1.5rem;
+	line-height: 1.8;
 	padding-bottom: .6rem;
+
+	&:last-of-type {			
+		padding-bottom: 0;		
+	}
 }
 
+ul ul, ul ol, ol ol, ol ul {
+	margin-top: 1rem;
+    margin-bottom: 0.5em;
+}
+.paragraph__column ul ul {
+    padding-left: 0;
+}
+.paragraph__column ol ol {
+    padding-left: 1.6875rem;
+}
+.paragraph__column ul ol {
+    padding-left: 0.625rem;	
+}
+.paragraph__column ol ul {
+    padding-left: 0.125rem;
+}
+.paragraph--bp-accordion-container{
+	.paragraph__column {
+
+		ol {
+			-webkit-padding-start: 1.25rem;
+			padding-left: 1.25rem;
+
+			li:before {
+    			left: -31px;
+			}
+			@include media-breakpoint-down(phone) {
+				padding-left: 0;
+    			margin-left: 1.25rem;
+
+    			li {
+    				padding-left: .25rem;
+    			}
+
+    			ul li {
+    				padding-left: 1rem;
+    			}
+			}
+			@include media-breakpoint-up(tablet) {
+				li {
+					padding-left: .25rem;
+				}
+
+				ul li {
+					padding-left: 1.25rem;
+				}
+			}
+		}
+		ul {
+			-webkit-padding-start: 0;
+			padding-left: 0rem;
+
+			li:before {
+				padding-left: 0.5rem;
+    			margin-left: 0.725rem;
+			}
+			@include media-breakpoint-down(phone) {
+				padding-left: 0rem;
+    			margin-left: 0.25rem;
+
+    			ol {
+    				padding-left: .5625rem;
+    				margin-left: 0;
+
+    				li {
+    					padding-left: 1rem;
+    				}
+    			}
+			}
+			@include media-breakpoint-up(tablet) {
+				-webkit-padding-start: 0.25rem;
+				padding-left: 0.25rem;
+
+				ol {
+					-webkit-padding-start: 0.5rem;
+					padding-left: 0.5rem;
+
+					li {
+						padding-left: 1rem;
+					}
+				}
+			}
+		}
+	}	
+}  
+    
 //Pullquote
 
 .pullquote {
-
-	padding: 10px 10px 10px 20px;
+	padding: 0.625rem 0.625rem 0.625rem 1.25rem;
 
 	@include media-breakpoint-up(tablet) {
-		padding: 20px 64px 20px 44px;
+		padding: 1.25rem 4rem 1.25rem 2.75rem;
 	}
 
-	font-size: 18px;
-
+	font-size: 1.125rem;
 	position: relative;
-
 	line-height: 1.538;
 	margin: 0;
 
@@ -212,23 +301,25 @@ table, table p {
 }
 table li {
 	font-size: .8rem;
-    line-height: 1.3rem;
+    line-height: 1.625;
 }
 table {
 	/*display: block;*/
+	margin: 0 0 2.5rem 0;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
+
 .table-non-responsive {
 	overflow-x: unset;
 }
 
 th {
-	line-height:1.2rem;
-	padding-top: 10px!important;
-	padding-bottom: 10px!important;
+	line-height:1.5;
+	padding-top: 0.625rem!important;
+	padding-bottom: 0.625rem!important;
 
 	&[scope="col"] {
 		text-transform: uppercase;
@@ -265,8 +356,8 @@ tr {
 		}*/
 	}
 	td, th {
-		padding: 9px;
-		line-height: 1.2rem;
+		padding: 0.5625rem;
+		line-height: 2.133;
 	}
 }
 /*.table-responsive {
@@ -300,8 +391,8 @@ tr {
 		background: rgba(0, 0, 0, 0.063);
 	}
 	th{
-		padding-top: 3px!important;
-		padding-bottom: 3px!important;
+		padding-top: 0.1875rem!important;
+		padding-bottom: 0.1875rem!important;
 
 		&[scope=col] {
 			height:unset;
@@ -309,14 +400,28 @@ tr {
 	}
 }
 
+/* Sidebar Ads in Main ex: Covid resources on home or dashboard 
+=================================================== */
+.main-content .sidebar-ad {
+	margin-bottom: 2.5rem;
+	padding: 1.875rem 1.25rem 0.0625rem 1.25rem!important;
+}
+
+.dashboard.main-content .sidebar-ad {
+	margin-top: 0;
+	@include media-breakpoint-down(phone) {
+		margin-right: .0625rem;
+	}
+}
+
 /* Sidebar Second Ads
 =================================================== */
 .sidebar-ad {
-	padding:15px!important;
+	padding:0.9375rem!important;
 	h2 {
 		color: $white!important;
 		font-size:1.2rem;
-		line-height:1.3rem;
+		line-height:1.083;
 		text-shadow: none;
 	    border: 0;
 	}
@@ -332,10 +437,10 @@ tr {
 		}
 	}
 	.sidebar-ad-text {
-		padding: 15px 15px 10px!important;
+		padding: 0.9375rem 0.9375rem 0.625rem!important; 
 	}
 	.sidebar-ad-image {
-		margin-bottom: -15px!important;
+		margin-bottom: -0.9375rem!important;
 	}
 }
 
@@ -363,18 +468,19 @@ table.gsc-completion-container tr:nth-child(2n) {
 
 
 div#___gcse_0 {
-	margin-top: 30px;
-	margin-bottom: 30px;
+	margin-top: 1.875rem;
+	margin-bottom: 1.875rem;
 
 	@include media-breakpoint-only(tablet) {
 		width: 150%;
 	}
 	@include media-breakpoint-down(phone) {
-		margin-left:-9px;
+		margin-left:-0.5625rem;
 	}
 
 	table.gsc-search-box {
 		width: 60%!important;
+		margin-left: 0;
 
 		@include media-breakpoint-down(phone) {
 			width:100%!important;
@@ -383,27 +489,37 @@ div#___gcse_0 {
 		td {
 	    	vertical-align: top!important;
 	    	&.gsc-input {
-	    		padding-top: 9px;
-	    		padding-right: 12px!important;
+	    		padding-top: 0.5625rem;
+	    		padding-right: 0.75rem!important;
+	    		padding-left: 0;
+
+	    		@include media-breakpoint-down(phone) {
+					padding-left: 0.625rem;
+				}
 
 	    		.gsc-input-box  {
 					height:51px;
 					border-radius: 0!important;
+
+					td {
+						border:0;
+					}
 				}
 				#gs_cb50 {
 					color: $text-gray;
 				}
 		    	.gsib_b {
-				    padding-top: 3px;
+				    padding-top: 0.1875rem;
 
 				    a.gsst_a {
-				    	padding-top:4px;
+				    	padding-top:0.25rem;
 				    }
 				}
 
 				.gsc-input {
-					margin-top: 0px!important;
+					margin-top: 0!important;
 					height: 30px!important;
+					margin-left: 0;
 				}
 			}
 
@@ -446,7 +562,7 @@ div#___gcse_1 {
 	}
 
 	@include media-breakpoint-down(phone) {
-		margin-top: -10px;
+		margin-top:	-0.625rem;
 	}
 
 	.gsc-control-cse {
@@ -454,25 +570,30 @@ div#___gcse_1 {
 	}
 
 	.gsc-above-wrapper-area, .gsc-wrapper {
-		margin-top: -20px;
+		margin-top: -1.25rem;
 
 		@include media-breakpoint-down(phone) {
-			margin-top: -10px!important;    
-			margin-left: -4px;
+			margin-top:	-0.625rem!important;    
+			margin-left: -0.25rem;	
 		}
 		.gsc-resultsbox-visible {
 			@include media-breakpoint-down(phone) {
-				margin-top: -10px;
+				margin-top: -0.625rem;
 			}
 		}
 
 		table.gsc-above-wrapper-area-container {
-			margin-top: 0;
-			margin-bottom: 0;
+			margin: 0;
+			.gsc-result-info-container {
+				padding-left: 0;
+				@include media-breakpoint-down(phone) {
+					padding-left: 0.625rem;
+				}
+			}
 		}
 		.gsc-result-info-container .gsc-result-info {
 			@include media-breakpoint-down(phone) {
-				margin-left: -9px!important;
+				margin-left: -0.5625rem!important;
 			}
 		}
 	}
@@ -485,7 +606,7 @@ div#___gcse_1 {
 	.gs-fileFormat {
 	    line-height: .1rem;
 	    padding-bottom: 1.7rem;
-	    padding-top: 5px;
+	    padding-top: 0.3125rem;;
 	}
 
 	.gsc-table-cell-thumbnail {
@@ -500,21 +621,25 @@ div#___gcse_1 {
 
 	.gsc-results.gsc-webResult {
 		.gsc-webResult.gsc-result {
-			margin-top:20px;
+			margin-top: 1.25rem;
+			border: 0;
 			border-bottom: 1px solid $light_gray;
+			padding-bottom: 1.25rem;
+			padding-top: 0;
+
 			&:hover,
 			&:focus {
 				border-bottom: 1px solid $light_gray!important;
 			}
 			@include media-breakpoint-down(phone) {
-				margin-top:10px;
+				margin-top: 0.625rem;	
 			}
 		}
 
 		.gsc-cursor-box.gs-bidi-start-align {
 			border: none!important;
 			.gsc-cursor-page {
-				margin-right: 18px;
+				margin-right: 1.125rem;
 			}
 		}
 
@@ -527,33 +652,28 @@ div#___gcse_1 {
 			    display: none;
 			}
 			td.gsc-table-cell-snippet-close {
-			    padding-left: 6px;
+			    padding-left: 0.375rem;
 			}
 
 			.gs-title {
 				height: 100%!important;
-				margin-bottom: 20px;
-				/*height: 2rem!important;
-				@include media-breakpoint-down(tablet) {
-				 	height: 100%!important;
-				 	margin-bottom: 20px;
-				 }*/
+				margin-bottom: 0.5rem;
 			}
 			.gs-bidi-start-align.gs-visibleUrl.gs-visibleUrl-long {
 			    font-size: .8rem;
-			    margin-top:-8px;
+			    margin-top: -0.5rem;
 
 			    @include media-breakpoint-down(phone) {
 			    	line-height: 1.2 rem;
 			    }
 			}
 			.gsc-url-top {
-				margin-top: 5px;
-    			margin-bottom: 5px;
+				margin-top: 0.3125rem;	
+    			margin-bottom: 0.3125rem;	
 
 				 @include media-breakpoint-down(phone) {
 			    	line-height: 1rem!important;
-			    	margin-bottom:10px;
+			    	margin-bottom: 0.625rem;
 				}
 			}
 			table.gsc-table-result {
@@ -564,7 +684,7 @@ div#___gcse_1 {
 			.gs-bidi-start-align.gs-snippet {
 			    font-size: 1rem;
 			    color:$text-gray;
-			    margin-top:-5px;
+			    margin-top: -0.3125rem;	
 
 				@include media-breakpoint-down(phone) {
 					font-size: .9rem;
@@ -601,70 +721,61 @@ div#___gcse_1 {
 .author {
     display: inline-block;
     text-transform: uppercase;
-    margin-right: 30px;
+    margin-right: 1.875rem;	
 
     @include media-breakpoint-down(tablet) {
-    	margin-right: 0px;
+    	margin-right: 0;
     }
 }
 .post-date {
     display: inline-block;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 h1.display-title, h1.title {
     font-size: 1.8rem;
-    line-height: 2rem;
-	margin-bottom: 1.5625rem;
+    line-height: 1.3;
+    margin-bottom: 1.25rem;
+    margin-top: -.815rem!important;
     @include media-breakpoint-down(tablet) {
     	font-size: 1.6rem;
-    	line-height: 1.8rem;
     }
 }
 h2.sub-title {
     font-size: 1.5rem;
-    line-height: 1.7rem;
+    line-height: 1.133;
     padding-top: .2rem;
 }
-
 
 /* FROM USFCA FOR EVENTS
 =============================== */
 
 .link_list_links {
-	//.font_size(20);
-	//font-size: 20px;
-	//.whitney_light();
-
 	line-height: 1.2;
 
 	& >* {
 			-webkit-column-break-inside: avoid !important; 
 			column-break-inside: avoid !important;
-			margin: 0px!important;
+			margin: 0!important;
 			}
 		& a {
-			border:none;
-			
-			//.whitney_medium();
-			
-			padding: 0px;	
-			margin-bottom: 15px!important;
+			border:none;			
+			padding: 0;	
+			margin-bottom: 0.9375rem!important;
 			line-height: 1.5;
 
 			.no-touch &:hover,
 			.no-touch &:focus {
 				color: $black;
-				//background-color: $yellow_20; 
 			}
 		}
  
 		& p {
-			padding-bottom: 15px;
+			padding-bottom: 0.9375rem;
 			
 			& a {						 
 				border-bottom: 1px solid;		 
-				margin-bottom: 0px!important;  
+				margin-bottom: 0!important;  
 			}
 			& a.diamond_link {   
 				border:none;	 
@@ -676,7 +787,7 @@ h2.sub-title {
 				&:after {					
 					position: relative;		
 					top: 6px;				
-					margin-left: 15px;		
+					margin-left: 0.9375rem;		
 				}
 				&:before {					
 					top: 15px;				
@@ -686,19 +797,17 @@ h2.sub-title {
 		
 		& ol,
 		& ul {
-			padding: 0 0 0 5px;
+			padding: 0 0 0 0.3125rem;
 		}
 
 		
 		& li {
-			//.font_size(20);
-			//font-size: 20px;
-			padding-bottom:15px; 
+			padding-bottom:0.9375rem; 
 			line-height: 1.5;
 			page-break-inside: avoid;
 
 			&:first-child{
-				margin-top:0px;
+				margin-top:0;
 			}
 			& a {								
 				margin-bottom: -16px!important;

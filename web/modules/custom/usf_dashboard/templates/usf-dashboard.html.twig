@@ -13,7 +13,7 @@ Available variables (usf_dashboard.module)
 
 #}
 {% set role = user.getroles|join(',') %}
-<h1 class="acc-visuallyhidden">My Dashboard</h1>
+<h1 class="acc-visuallyhiddenDashboardH1">My Dashboard</h1>
 {% if not logged_in %}
     <div class="row usf_dash">
 
@@ -171,14 +171,4 @@ Available variables (usf_dashboard.module)
     </div>
    {% endif %} 
 
-   <style>
 
-   .acc-visuallyhidden {
-        position: absolute; 
-        overflow: hidden; 
-        clip: rect(0 0 0 0); 
-        height: 1px; width: 1px; 
-        margin: -1px; padding: 0; border: 0; 
-    }
-
-    </style>

@@ -35,12 +35,19 @@ body {
 :focus {
     outline: none!important;
 }
-#main-wrapper {
-	margin-bottom: 80px;
+#main {
+	margin-bottom: 1.875rem;
 }
-
+#block-myusf-content {
+    margin-top: .3125rem;
+}
+.row {
+	@include media-breakpoint-down(phone) {
+		margin-right: -0.9375rem;
+    	margin-left: -0.625rem;
+	}
+}
 .container{
-	/*width: 96%;*/
 	width:calc(100% - 30px);
 	/*padding-left: 30px;
 	padding-right: 30px;*/
@@ -49,8 +56,15 @@ body {
 	margin-left: auto;
     margin-right: auto;
     max-width: 1500px;
-
-
+    
+   /*	@include media-breakpoint-down(phone) {
+    	width: 342px;
+	}
+	&.dons-connect {
+		@include media-breakpoint-down(phone) {
+			width:calc(100% - 30px);
+		}
+	}*/
 	@include media-breakpoint-only(tablet)  { 
 		width: 97%;
 		padding-left: 1.5%;
@@ -58,15 +72,15 @@ body {
 	}
 	@include media-breakpoint-only(desktop) {
 		/*max-width: 1060px;*/
-		padding-left: 15px;
-		padding-right: 15px;
+		padding-left: 0.9375rem;
+		padding-right: 0.9375rem;
 	}
 	@include media-breakpoint-only(large_desktop) {
 		/*max-width: 90%;*/
 	}
 	@include media-breakpoint-down(xl_desktop) {
-		padding-left: 15px;
-		padding-right: 15px;
+		padding-left: 0.9375rem;
+		padding-right: 0.9375rem;
 	}
 }
 
@@ -115,7 +129,7 @@ body {
 	}
 	@include media-breakpoint-down(tablet) {
 		&#sidebar_first {
-		    margin-bottom: 30px;
+		    margin-bottom: 1.875rem;	
 		}
 	}
 }
@@ -141,14 +155,14 @@ body {
     		flex: 0 0 100%;
     		/*max-width: 100%!important;*/
     		width:250px;
-    			margin-top: 30px!important;
+    			margin-top: 1.875rem!important;
     			margin-bottom: 0!important;   		
     	}
 	}
 	@include media-breakpoint-only(landscape_phone) {
 		&.order-last {
-			margin-top: 30px;
-    		margin-bottom: 30px;
+			margin-top: 1.875rem;
+    		margin-bottom: 1.875rem;
 			img {
 				width:250px;
 			}
@@ -156,7 +170,7 @@ body {
 	}
 	@include media-breakpoint-down(phone) {
 		&.order-last {
-			margin-top: 30px!important;
+			margin-top: 1.875rem!important;
 		}
 	}
 }
@@ -164,7 +178,7 @@ body {
 .col-md-9 {
 	@include media-breakpoint-only(tablet) {
 		position: relative;
-    	margin-left: -25px;
+    	margin-left: -1.5625rem;
     	flex: 0 0 70%;
     	max-width: 70%;
     	
@@ -174,12 +188,12 @@ body {
 	}
 	@include media-breakpoint-down(landscape_phone) {
 		#main-wrapper {
-			margin-bottom: 215px;
+			margin-bottom: 13.4375rem;
 		}
 	}	
 	@include media-breakpoint-down(phone) {
 		#main-wrapper {
-			margin-bottom: 205px;
+			margin-bottom: 12.8125rem;
 		}
 	}	
 }
@@ -192,17 +206,18 @@ body {
 
 .node__content {
 	@include media-breakpoint-up(landscape_phone) {
-		margin-top: -10px;
+		margin-top: -0.3125rem;
+	}
+	@include media-breakpoint-down(phone) {
+		margin-top:0;
 	}
 }
 
 .paragraph>.paragraph__column {
     padding: 0;
-   /*padding-bottom: 1rem;
-    padding-top:.1.5rem */
-    &:first-of-type {
-    	padding-top: 1rem;
-    }
+}
+.paragraph>.paragraph__column:first-of-type {
+	padding-top: 0;
 }
 
 .paragraph.paragraph--type--bp-columns .paragraph--type--bp-columns__2col {
@@ -217,10 +232,10 @@ body {
 		}
 
 		@include media-breakpoint-up(desktop) {
-			margin-left: 10px;
+			margin-left: 0.625rem;
 		}
 		@include media-breakpoint-up(phone) {
-			margin-left: 7px;
+			margin-left: 0.4375rem;
 		}
 	}
 	&:nth-child(odd) {
@@ -228,10 +243,10 @@ body {
 			margin-right: 0px;
 		}
 		@include media-breakpoint-up(desktop) {
-			margin-right: 10px;
+			margin-right: 10.625rem;
 		}
 		@include media-breakpoint-up(phone) {
-			margin-right: 7px;
+			margin-right: 0.4375rem;
 		}
 	}
 }
@@ -271,4 +286,14 @@ iframe {
 	width:1px;
 	height:1px;
 	overflow:hidden;
+}
+.acc-visuallyhiddenDashboardH1 {
+    position: absolute; 
+    overflow: hidden; 
+    clip: rect(0 0 0 0); 
+    height: 1px; 
+    width: 1px; 
+    margin: -1px; 
+    padding: 0; 
+    border: 0; 
 }
