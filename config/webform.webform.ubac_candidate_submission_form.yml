@@ -17,7 +17,7 @@ id: ubac_candidate_submission_form
 title: 'UBAC Candidate Submission Form'
 description: ''
 category: UBAC
-elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': Title\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#required': true\nemail:\n  '#type': email\n  '#title': Email\n  '#required': true\ndescription_of_your_interest_in_the_role:\n  '#type': textarea\n  '#title': 'Description of your Interest in the Role'\n  '#maxlength': '1250'\n  '#required': true\nplease_provide_a_link_to_a_photograph_to_list_on_the_ubac_candid:\n  '#type': textfield\n  '#title': 'Please provide a link to a photograph to list on the UBAC candidates page'\n  '#description': 'If you do not provide a link, we will use your <a href=\"https://myusf.usfca.edu/sites/default/files/users/mkrasts/FINAL%2011.11.18%20ModPersInfo-JA-31.pdf\" target=\"_blank\">current workday photo</a>.'"
+elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': Title\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#required': true\nemail:\n  '#type': email\n  '#title': Email\n  '#required': true\ndescription_of_your_interest_in_the_role:\n  '#type': textarea\n  '#title': 'Description of your Interest in the Role'\n  '#maxlength': 1250\n  '#required': true\nplease_provide_a_link_to_a_photograph_to_list_on_the_ubac_candid:\n  '#type': textfield\n  '#title': 'Please provide a link to a photograph to list on the UBAC candidates page'\n  '#description': 'If you do not provide a link, we will use your <a href=\"https://myusf.usfca.edu/sites/default/files/users/mkrasts/FINAL%2011.11.18%20ModPersInfo-JA-31.pdf\" target=\"_blank\">current workday photo</a>.'\n"
 css: ''
 javascript: ''
 settings:
@@ -38,7 +38,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -203,6 +203,7 @@ handlers:
   email:
     id: email
     label: Email
+    notes: ''
     handler_id: email
     status: true
     conditions: {  }

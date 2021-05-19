@@ -12,7 +12,7 @@ id: webform_115832
 title: 'HR Service and Merit Awards RSVP Form'
 description: null
 category: null
-elements: "first_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\nyour_full_name_as_it_will_appear_on_your_certificate:\n  '#type': textfield\n  '#title_display': inline\n  '#title': Please enter your full name as you would like it to appear on your certificate and in the printed program:\n  '#description': \"\"\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#size': 20\n  '#title_display': inline\n  '#title': USF Email Address\n  '#description': \"\"\n  '#required': true\nphone_number:\n  '#type': textfield\n  '#size': 20\n  '#min': \n  '#max': \n  '#step': \n  '#unique': false\n  '#title_display': inline\n  '#title': Phone Number\n  '#description': \"\"\n  '#required': true\nwould_you_like_your_name_to_appear_in_the_program:\n  '#type': select\n  '#options':\n    1: YES, please include my name in the printed program.\n    2: NO, I do not want my name included in the printed program.\n  '#title_display': inline\n  '#title': Would you like your name to appear in the Service and Merit Awards Ceremony printed program?\n  '#description': \"\"\n  '#required': true\nwill_you_be_attending_the_ceremony:\n  '#type': select\n  '#options':\n    1: YES, I will be attending.\n    2: NO, I will not be attending.\n    3: I am unsure if I will be attending.\n  '#title_display': inline\n  '#title': Will you be attending the Service and Merit Awards Ceremony on Thursday, May 3 from 3:30-5 p.m. in the McLaren complex?\n  '#description': \"\"\n  '#required': true\nif_you_do_not_attend_the_ceremony_we_will_send_your_certificate_pin_to_your_inter_office_mail_location:\n  '#type': textfield\n  '#title_display': inline\n  '#title': If you do not attend the Service and Merit Awards Ceremony, your certificate/pin will be sent to your interoffice mail location. If you would like it sent to an alternate location, please specify below.\n  '#description': \"\"\n"
+elements: "first_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\nyour_full_name_as_it_will_appear_on_your_certificate:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Please enter your full name as you would like it to appear on your certificate and in the printed program:'\n  '#description': ''\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#size': 20\n  '#title_display': inline\n  '#title': 'USF Email Address'\n  '#description': ''\n  '#required': true\nphone_number:\n  '#type': textfield\n  '#size': 20\n  '#min': null\n  '#max': null\n  '#step': null\n  '#unique': false\n  '#title_display': inline\n  '#title': 'Phone Number'\n  '#description': ''\n  '#required': true\nwould_you_like_your_name_to_appear_in_the_program:\n  '#type': select\n  '#options':\n    1: 'YES, please include my name in the printed program.'\n    2: 'NO, I do not want my name included in the printed program.'\n  '#title_display': inline\n  '#title': 'Would you like your name to appear in the Service and Merit Awards Ceremony printed program?'\n  '#description': ''\n  '#required': true\nwill_you_be_attending_the_ceremony:\n  '#type': select\n  '#options':\n    1: 'YES, I will be attending.'\n    2: 'NO, I will not be attending.'\n    3: 'I am unsure if I will be attending.'\n  '#title_display': inline\n  '#title': 'Will you be attending the Service and Merit Awards Ceremony on Thursday, May 3 from 3:30-5 p.m. in the McLaren complex?'\n  '#description': ''\n  '#required': true\nif_you_do_not_attend_the_ceremony_we_will_send_your_certificate_pin_to_your_inter_office_mail_location:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'If you do not attend the Service and Merit Awards Ceremony, your certificate/pin will be sent to your interoffice mail location. If you would like it sent to an alternate location, please specify below.'\n  '#description': ''\n"
 css: ''
 javascript: ''
 settings:
@@ -33,7 +33,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -200,6 +200,7 @@ handlers:
   email_1:
     id: email
     label: 'Email 1'
+    notes: ''
     handler_id: email_1
     status: true
     conditions: {  }

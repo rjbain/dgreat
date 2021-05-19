@@ -12,7 +12,7 @@ id: webform_138277
 title: 'Part-Time Student Welcome Reception'
 description: null
 category: null
-elements: "first_name:\n  '#type': textfield\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\nwho_are_you:\n  '#type': select\n  '#options':\n    1: 1L Part time\n    2: 2L Part time\n    3: 3L Part time\n    4: 4L Part time\n    5: Alumni\n    6: Faculty/Staff\n  '#title': Who are you?\n  '#description': \"\"\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': \"\"\n  '#required': true\nphone:\n  '#type': textfield\n  '#title': Phone\n  '#description': \"\"\n"
+elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\nwho_are_you:\n  '#type': select\n  '#options':\n    1: '1L Part time'\n    2: '2L Part time'\n    3: '3L Part time'\n    4: '4L Part time'\n    5: Alumni\n    6: Faculty/Staff\n  '#title': 'Who are you?'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': ''\n  '#required': true\nphone:\n  '#type': textfield\n  '#title': Phone\n  '#description': ''\n"
 css: ''
 javascript: ''
 settings:
@@ -33,7 +33,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -200,6 +200,7 @@ handlers:
   email_1:
     id: email
     label: 'Email 1'
+    notes: ''
     handler_id: email_1
     status: true
     conditions: {  }
@@ -236,6 +237,7 @@ handlers:
   email_2:
     id: email
     label: 'Email 2'
+    notes: ''
     handler_id: email_2
     status: true
     conditions: {  }

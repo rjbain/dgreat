@@ -12,7 +12,7 @@ id: webform_134999
 title: 'HR A Conversation with Colleagues'
 description: null
 category: null
-elements: "introduction:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>Rev. Paul Fitzgerald, S.J., invites you to join him and a small group of colleagues in an intimate conversation about what unifies us in our day-to-day work at the university. The reception with colleagues will begin at 3:30 p.m. with drinks and light snacks. The President will join the group from 4–5 p.m.</p>\"\n  '#title': Introduction\n  '#description': \"\"\nfirst_name:\n  '#type': textfield\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#size': 20\n  '#title': USF Email Address\n  '#description': \"\"\n  '#required': true\njob_title:\n  '#type': textfield\n  '#title': Job Title\n  '#description': \"\"\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': \"\"\n  '#required': true\nemployee_type:\n  '#type': radios\n  '#options':\n    1: Staff\n    2: Faculty\n    3: Adjunct Faculty\n  '#title': Employee Type\n  '#description': \"\"\n  '#required': true\ndate_attending:\n  '#type': radios\n  '#options':\n    3: Wednesday, October 19, 2016 * 3:30pm-5pm * UC 222\n  '#title': Date Attending\n  '#description': \"\"\n  '#required': true\n"
+elements: "introduction:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p>Rev. Paul Fitzgerald, S.J., invites you to join him and a small group of colleagues in an intimate conversation about what unifies us in our day-to-day work at the university. The reception with colleagues will begin at 3:30 p.m. with drinks and light snacks. The President will join the group from 4–5 p.m.</p>'\n  '#title': Introduction\n  '#description': ''\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#size': 20\n  '#title': 'USF Email Address'\n  '#description': ''\n  '#required': true\njob_title:\n  '#type': textfield\n  '#title': 'Job Title'\n  '#description': ''\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': ''\n  '#required': true\nemployee_type:\n  '#type': radios\n  '#options':\n    1: Staff\n    2: Faculty\n    3: 'Adjunct Faculty'\n  '#title': 'Employee Type'\n  '#description': ''\n  '#required': true\ndate_attending:\n  '#type': radios\n  '#options':\n    3: 'Wednesday, October 19, 2016 * 3:30pm-5pm * UC 222'\n  '#title': 'Date Attending'\n  '#description': ''\n  '#required': true\n"
 css: ''
 javascript: ''
 settings:
@@ -33,7 +33,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -200,6 +200,7 @@ handlers:
   email_1:
     id: email
     label: 'Email 1'
+    notes: ''
     handler_id: email_1
     status: true
     conditions: {  }

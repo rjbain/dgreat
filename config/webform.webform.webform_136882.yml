@@ -17,7 +17,7 @@ id: webform_136882
 title: 'UM Spiritual Exercises of St. Ignatius (19th Annotation)'
 description: ''
 category: 'University Ministry'
-elements: "first_name:\n  '#type': textfield\n  '#title': First Name:\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name:\n  '#description': \"\"\n  '#required': true\nusf_affiliation:\n  '#type': radios\n  '#options':\n    1: Faculty\n    2: Staff\n    3: Other\n  '#title': USF Affiliation:\n  '#description': \"\"\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department:\n  '#description': \"\"\n  '#required': true\nusf_e_mail_address:\n  '#type': email\n  '#size': 20\n  '#title': USF E-mail Address:\n  '#description': \"\"\n  '#required': true\nphone_number:\n  '#type': textfield\n  '#size': 20\n  '#min': \n  '#max': \n  '#step': \n  '#unique': false\n  '#title': Phone Number:\n  '#description': \"\"\n  '#required': true\nhave_you_met_with_fr_donal_godfrey:\n  '#type': radios\n  '#options':\n    1: Yes\n    2: No\n  '#title': Have you met with Fr. Donal Godfrey?\n  '#description': \"If not, please contact Fr. Donal before registering (godfrey@usfca.edu).\"\n  '#required': true\n"
+elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name:'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name:'\n  '#description': ''\n  '#required': true\nusf_affiliation:\n  '#type': radios\n  '#options':\n    1: Faculty\n    2: Staff\n    3: Other\n  '#title': 'USF Affiliation:'\n  '#description': ''\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': 'Department:'\n  '#description': ''\n  '#required': true\nusf_e_mail_address:\n  '#type': email\n  '#size': 20\n  '#title': 'USF E-mail Address:'\n  '#description': ''\n  '#required': true\nphone_number:\n  '#type': textfield\n  '#size': 20\n  '#min': null\n  '#max': null\n  '#step': null\n  '#unique': false\n  '#title': 'Phone Number:'\n  '#description': ''\n  '#required': true\nhave_you_met_with_fr_donal_godfrey:\n  '#type': radios\n  '#options':\n    1: 'Yes'\n    2: 'No'\n  '#title': 'Have you met with Fr. Donal Godfrey?'\n  '#description': 'If not, please contact Fr. Donal before registering (godfrey@usfca.edu).'\n  '#required': true\n"
 css: ''
 javascript: ''
 settings:
@@ -38,7 +38,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -205,6 +205,7 @@ handlers:
   19th_annotation:
     id: email
     label: '19th Annotation'
+    notes: ''
     handler_id: 19th_annotation
     status: true
     conditions: {  }

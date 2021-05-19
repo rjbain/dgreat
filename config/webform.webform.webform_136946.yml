@@ -12,7 +12,7 @@ id: webform_136946
 title: 'UM Liturgy Sign Ups'
 description: null
 category: null
-elements: "header:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>Come sing with the St. Ignatius Liturgical Choir!</p>\\n\\n<p>The St. Ignatius Liturgical Choir sings weekly for the Sunday 7 p.m. student mass in St. Ignatius Parish. For more information, please contact our director, Brian DuSell at bcdusell@usfca.edu or Telephone: 415.422.5779.</p>\\n<p>Participate in the Sunday 7 p.m. Student mass.</p>\\n<p>Please complete the form below if you are interested in participating in a student Liturgy at USF.</p>\\n<p>Masses are held on Sundays at 7 p.m. in St. Ignatius Church.</p>\"\n  '#title': Header\n  '#description': \"\"\nfirst_name:\n  '#type': textfield\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\nphone_number:\n  '#title': Phone Number\n  '#description': \"\"\n  '#required': true\nusf_email:\n  '#type': email\n  '#size': 20\n  '#title': USF Email\n  '#description': \"\"\n  '#required': true\nareas_of_interest:\n  '#description': \"Acolyte\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Acolyte\n    2: Lector\n    3: Eucharistic Minister\n    4: Choir\n  '#multiple': true\n  '#title': Area(s) of Interest\n  '#description': \"Please check all that apply\"\n  '#required': true\n"
+elements: "header:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>Come sing with the St. Ignatius Liturgical Choir!</p>\\n\\n<p>The St. Ignatius Liturgical Choir sings weekly for the Sunday 7 p.m. student mass in St. Ignatius Parish. For more information, please contact our director, Brian DuSell at bcdusell@usfca.edu or Telephone: 415.422.5779.</p>\\n<p>Participate in the Sunday 7 p.m. Student mass.</p>\\n<p>Please complete the form below if you are interested in participating in a student Liturgy at USF.</p>\\n<p>Masses are held on Sundays at 7 p.m. in St. Ignatius Church.</p>\"\n  '#title': Header\n  '#description': ''\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\nphone_number:\n  '#title': 'Phone Number'\n  '#description': ''\n  '#required': true\nusf_email:\n  '#type': email\n  '#size': 20\n  '#title': 'USF Email'\n  '#description': ''\n  '#required': true\nareas_of_interest:\n  '#description': \"Acolyte\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Acolyte\n    2: Lector\n    3: 'Eucharistic Minister'\n    4: Choir\n  '#multiple': true\n  '#title': 'Area(s) of Interest'\n  '#required': true\n"
 css: ''
 javascript: ''
 settings:
@@ -33,7 +33,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -200,6 +200,7 @@ handlers:
   email_3:
     id: email
     label: 'Email 3'
+    notes: ''
     handler_id: email_3
     status: true
     conditions: {  }

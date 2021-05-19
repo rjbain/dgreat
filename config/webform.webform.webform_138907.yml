@@ -12,7 +12,7 @@ id: webform_138907
 title: 'HR GoUSF Go Move Challenge Story and Photo Submissions Form'
 description: null
 category: null
-elements: "first_name:\n  '#type': textfield\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\nwhat_jesuit_institution_are_you_affiliated_with:\n  '#type': textfield\n  '#title': What Jesuit Institution are you affiliated with?\n  '#description': \"\"\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': \"\"\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': Title\n  '#description': \"\"\n  '#required': true\nhow_many_years_have_you_participated_in_the_go_move_challenge:\n  '#type': textfield\n  '#size': 20\n  '#min': 0\n  '#max': 10\n  '#step': \n  '#unique': false\n  '#title': How many years have you participated in the Go Move Challenge?\n  '#description': \"\"\n  '#required': true\nwhat_inspired_you_to_join_the_go_move_challenge:\n  '#type': textarea\n  '#title': What inspired you to join the Go Move Challenge?\n  '#description': \"\"\n  '#required': true\nwhat_are_the_positive_outcomes_if_any_of_your_participation_in_the_go_move_challenge:\n  '#type': textarea\n  '#title': What are the positive outcomes, if any, of your participation in the Go Move Challenge?\n  '#description': \"\"\n  '#required': true\nis_there_anything_else_you_would_like_to_share:\n  '#type': textarea\n  '#title': Is there anything else you would like to share?\n  '#description': \"\"\n"
+elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\nwhat_jesuit_institution_are_you_affiliated_with:\n  '#type': textfield\n  '#title': 'What Jesuit Institution are you affiliated with?'\n  '#description': ''\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': ''\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': Title\n  '#description': ''\n  '#required': true\nhow_many_years_have_you_participated_in_the_go_move_challenge:\n  '#type': textfield\n  '#size': 20\n  '#min': 0\n  '#max': 10\n  '#step': null\n  '#unique': false\n  '#title': 'How many years have you participated in the Go Move Challenge?'\n  '#description': ''\n  '#required': true\nwhat_inspired_you_to_join_the_go_move_challenge:\n  '#type': textarea\n  '#title': 'What inspired you to join the Go Move Challenge?'\n  '#description': ''\n  '#required': true\nwhat_are_the_positive_outcomes_if_any_of_your_participation_in_the_go_move_challenge:\n  '#type': textarea\n  '#title': 'What are the positive outcomes, if any, of your participation in the Go Move Challenge?'\n  '#description': ''\n  '#required': true\nis_there_anything_else_you_would_like_to_share:\n  '#type': textarea\n  '#title': 'Is there anything else you would like to share?'\n  '#description': ''\n"
 css: ''
 javascript: ''
 settings:
@@ -33,7 +33,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -200,6 +200,7 @@ handlers:
   email_1:
     id: email
     label: 'Email 1'
+    notes: ''
     handler_id: email_1
     status: true
     conditions: {  }

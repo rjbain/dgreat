@@ -12,7 +12,7 @@ id: webform_138610
 title: 'HR GoUSF Run Wild Registration Form'
 description: null
 category: null
-elements: "employees_information:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h2>Employee's Information</h2>\"\n  '#title': Employee's Information\n  '#description': \"\"\nfirst_name:\n  '#type': textfield\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': \"\"\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#size': 20\n  '#title': USF Email Address\n  '#description': \"\"\n  '#required': true\nyour_guests_first_and_last_name:\n  '#type': textfield\n  '#title': Your Guest's First and Last Name (optional)\n  '#description': \"\"\n"
+elements: "employees_information:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h2>Employee''s Information</h2>'\n  '#title': 'Employee''s Information'\n  '#description': ''\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': ''\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#size': 20\n  '#title': 'USF Email Address'\n  '#description': ''\n  '#required': true\nyour_guests_first_and_last_name:\n  '#type': textfield\n  '#title': 'Your Guest''s First and Last Name (optional)'\n  '#description': ''\n"
 css: ''
 javascript: ''
 settings:
@@ -33,7 +33,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -200,6 +200,7 @@ handlers:
   email_1:
     id: email
     label: 'Email 1'
+    notes: ''
     handler_id: email_1
     status: true
     conditions: {  }
@@ -236,6 +237,7 @@ handlers:
   email:
     id: email
     label: Email
+    notes: ''
     handler_id: email
     status: false
     conditions: {  }

@@ -12,7 +12,7 @@ id: webform_135060
 title: 'Immersions Faculty Interest Application'
 description: null
 category: null
-elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#description': \"\"\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': \"\"\n  '#required': true\nintended_country:\n  '#type': textfield\n  '#title': Intended Country \n  '#description': \"\"\n  '#required': true\nproposed_itinerary:\n  '#type': managed_file\n  '#max_filesize': '0.002'\n  '#file_extensions': 'txt,rtf,html,pdf,doc,docx,odt,ppt,pptx,odp,xls,xlsx,ods,xml'\n  '#title': Proposed Itinerary\n  '#description': \"\"\nbudget_outline_for_students:\n  '#type': managed_file\n  '#max_filesize': '0.002'\n  '#file_extensions': 'txt,rtf,html,pdf,doc,docx,odt,ppt,pptx,odp,xls,xlsx,ods,xml'\n  '#title': Budget Outline for Students\n  '#description': \"\"\nexample_outline:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>Example:&nbsp;<a title='Budget Request Form' href='https://myusf.usfca.edu/file/12438'>Budget Request Form</a></p>\"\n  '#title': Example Budget Outline\n  '#description': \"\"\nclass_syllabus__number_of_unit_credits:\n  '#type': managed_file\n  '#max_filesize': '0.002'\n  '#file_extensions': 'gif,jpg,jpeg,png,txt,rtf,html,pdf,doc,docx,odt,ppt,pptx,odp,xls,xlsx,ods,xml'\n  '#title': Class Syllabus & Number of Unit Credits \n  '#description': \"\"\n"
+elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': ''\n  '#required': true\nintended_country:\n  '#type': textfield\n  '#title': 'Intended Country'\n  '#description': ''\n  '#required': true\nproposed_itinerary:\n  '#type': managed_file\n  '#max_filesize': '0.002'\n  '#file_extensions': 'txt,rtf,html,pdf,doc,docx,odt,ppt,pptx,odp,xls,xlsx,ods,xml'\n  '#title': 'Proposed Itinerary'\n  '#description': ''\nbudget_outline_for_students:\n  '#type': managed_file\n  '#max_filesize': '0.002'\n  '#file_extensions': 'txt,rtf,html,pdf,doc,docx,odt,ppt,pptx,odp,xls,xlsx,ods,xml'\n  '#title': 'Budget Outline for Students'\n  '#description': ''\nexample_outline:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p>Example:&nbsp;<a title=''Budget Request Form'' href=''https://myusf.usfca.edu/file/12438''>Budget Request Form</a></p>'\n  '#title': 'Example Budget Outline'\n  '#description': ''\nclass_syllabus__number_of_unit_credits:\n  '#type': managed_file\n  '#max_filesize': '0.002'\n  '#file_extensions': 'gif,jpg,jpeg,png,txt,rtf,html,pdf,doc,docx,odt,ppt,pptx,odp,xls,xlsx,ods,xml'\n  '#title': 'Class Syllabus & Number of Unit Credits'\n  '#description': ''\n"
 css: ''
 javascript: ''
 settings:
@@ -33,7 +33,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -200,6 +200,7 @@ handlers:
   email_1:
     id: email
     label: 'Email 1'
+    notes: ''
     handler_id: email_1
     status: true
     conditions: {  }

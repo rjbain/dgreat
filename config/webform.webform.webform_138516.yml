@@ -17,7 +17,7 @@ id: webform_138516
 title: 'HR Tuition Remission/FACHEX  Workshop RSVP Form'
 description: ''
 category: ''
-elements: "event_selection:\n  '#type': checkboxes\n  '#title': 'Select the event that you would like to attend'\n  '#options':\n    2: 'Nov. 15 * 2-3:30 P.M. * UC 503'\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': ''\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': Title\n  '#description': ''\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#size': 20\n  '#title': 'USF Email Address'\n  '#description': ''\n  '#required': true\nusf_phone_number:\n  '#type': textfield\n  '#title': 'USF Phone Number'\n  '#description': ''\n  '#required': true"
+elements: "event_selection:\n  '#type': checkboxes\n  '#title': 'Select the event that you would like to attend'\n  '#options':\n    2: 'Nov. 15 * 2-3:30 P.M. * UC 503'\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': ''\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': Title\n  '#description': ''\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#size': 20\n  '#title': 'USF Email Address'\n  '#description': ''\n  '#required': true\nusf_phone_number:\n  '#type': textfield\n  '#title': 'USF Phone Number'\n  '#description': ''\n  '#required': true\n"
 css: ''
 javascript: ''
 settings:
@@ -38,7 +38,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -205,6 +205,7 @@ handlers:
   email_3:
     id: email
     label: 'Email 3'
+    notes: ''
     handler_id: email_3
     status: true
     conditions: {  }
@@ -241,6 +242,7 @@ handlers:
   email:
     id: email
     label: Email
+    notes: ''
     handler_id: email
     status: true
     conditions: {  }

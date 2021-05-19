@@ -12,7 +12,7 @@ id: webform_136346
 title: 'USF Study Abroad Fair - Webform'
 description: null
 category: null
-elements: "details:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p><span>When:&nbsp;<span>Thursday, September 14, 2017&nbsp;11am to 1:30pm</span></span><br><span>Where: University of San Francisco's Gleeson Plaza</span></p>\"\n  '#title': Details\n  '#description': \"\"\nfirst_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\nname_of_program_organization_institution:\n  '#type': textfield\n  '#title_display': inline\n  '#title': Name of Program/Organization/Institution\n  '#description': \"\"\n  '#required': true\ncontact_number:\n  '#type': textfield\n  '#title_display': inline\n  '#title': Contact Number\n  '#description': \"\"\n  '#required': true\nemail_address:\n  '#type': email\n  '#size': 20\n  '#title_display': inline\n  '#title': Email Address\n  '#description': \"\"\n  '#required': true\nparking_permit:\n  '#type': select\n  '#options':\n    1: Yes\n    2: No\n  '#title_display': inline\n  '#title': Parking Permit\n  '#description': \"\"\n  '#required': true\nadditional_guest_information:\n  '#type': textarea\n  '#title': Additional Guest Information\n  '#description': \"\"\n  '#required': true\nform_submission_information:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p><span>Please submit this form by Thursday, August 31, 2017.</span></p>\"\n  '#title': Form Submission Information\n  '#description': \"\"\n"
+elements: "details:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p><span>When:&nbsp;<span>Thursday, September 14, 2017&nbsp;11am to 1:30pm</span></span><br><span>Where: University of San Francisco''s Gleeson Plaza</span></p>'\n  '#title': Details\n  '#description': ''\nfirst_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\nname_of_program_organization_institution:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Name of Program/Organization/Institution'\n  '#description': ''\n  '#required': true\ncontact_number:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Contact Number'\n  '#description': ''\n  '#required': true\nemail_address:\n  '#type': email\n  '#size': 20\n  '#title_display': inline\n  '#title': 'Email Address'\n  '#description': ''\n  '#required': true\nparking_permit:\n  '#type': select\n  '#options':\n    1: 'Yes'\n    2: 'No'\n  '#title_display': inline\n  '#title': 'Parking Permit'\n  '#description': ''\n  '#required': true\nadditional_guest_information:\n  '#type': textarea\n  '#title': 'Additional Guest Information'\n  '#description': ''\n  '#required': true\nform_submission_information:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p><span>Please submit this form by Thursday, August 31, 2017.</span></p>'\n  '#title': 'Form Submission Information'\n  '#description': ''\n"
 css: ''
 javascript: ''
 settings:
@@ -33,7 +33,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -200,6 +200,7 @@ handlers:
   email_1:
     id: email
     label: 'Email 1'
+    notes: ''
     handler_id: email_1
     status: true
     conditions: {  }

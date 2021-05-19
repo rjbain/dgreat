@@ -12,7 +12,7 @@ id: hps_3_day_food_record_form
 title: 'HPS 3 Day Food Record Form'
 description: ''
 category: ''
-elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#required': true\ngender:\n  '#type': textfield\n  '#title': Gender\n  '#required': true\nage:\n  '#type': textfield\n  '#title': Age\n  '#required': true\nheight:\n  '#type': textfield\n  '#title': Height\n  '#required': true\nweight:\n  '#type': textfield\n  '#title': Weight\n  '#required': true\nphysical_activity_level:\n  '#type': select\n  '#title': 'Physical Activity Level'\n  '#options':\n    Sedentary: Sedentary\n    'Low Active': 'Low Active'\n    Active: Active\n    'Very Active': 'Very Active'\n  '#required': true\nfood_record_day_1:\n  '#type': textarea\n  '#title': 'Food Record Day 1'\n  '#description': 'Include: day, time of meals, and all food eaten.'\n  '#required': true\nfood_record_day_2:\n  '#type': textarea\n  '#title': 'Food Record Day 2'\n  '#description': 'Include: day, time of meals, and all food eaten.'\n  '#required': true\nfood_record_day_3:\n  '#type': textarea\n  '#title': 'Food Record Day 3'\n  '#description': 'Include: day, time of meals, and all food eaten.'\n  '#required': true"
+elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#required': true\ngender:\n  '#type': textfield\n  '#title': Gender\n  '#required': true\nage:\n  '#type': textfield\n  '#title': Age\n  '#required': true\nheight:\n  '#type': textfield\n  '#title': Height\n  '#required': true\nweight:\n  '#type': textfield\n  '#title': Weight\n  '#required': true\nphysical_activity_level:\n  '#type': select\n  '#title': 'Physical Activity Level'\n  '#options':\n    Sedentary: Sedentary\n    'Low Active': 'Low Active'\n    Active: Active\n    'Very Active': 'Very Active'\n  '#required': true\nfood_record_day_1:\n  '#type': textarea\n  '#title': '24 Hour Food Record '\n  '#description': 'Include: day, time of meals, and all food eaten.'\n  '#required': true\nfood_record_day_3:\n  '#type': textarea\n  '#title': 'Other information'\n  '#description': 'Include: day, time of meals, and all food eaten.'"
 css: ''
 javascript: ''
 settings:
@@ -33,7 +33,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -198,6 +198,7 @@ handlers:
   email:
     id: email
     label: Email
+    notes: ''
     handler_id: email
     status: true
     conditions: {  }

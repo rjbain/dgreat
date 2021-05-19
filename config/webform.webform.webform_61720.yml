@@ -17,7 +17,7 @@ id: webform_61720
 title: 'Housing Workshop and Summer Reception'
 description: ''
 category: ''
-elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#default_value': '[current-user:mail]'\n  '#title': Email\n  '#description': ''\n  '#required': true\nphone:\n  '#type': textfield\n  '#title': Phone\n  '#description': ''\n  '#required': true"
+elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#default_value': '[current-user:mail]'\n  '#title': Email\n  '#description': ''\n  '#required': true\nphone:\n  '#type': textfield\n  '#title': Phone\n  '#description': ''\n  '#required': true\n"
 css: ''
 javascript: ''
 settings:
@@ -38,7 +38,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -205,6 +205,7 @@ handlers:
   email_1:
     id: email
     label: 'Email 1'
+    notes: ''
     handler_id: email_1
     status: true
     conditions: {  }
@@ -241,6 +242,7 @@ handlers:
   email_2:
     id: email
     label: 'Email 2'
+    notes: ''
     handler_id: email_2
     status: true
     conditions: {  }

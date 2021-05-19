@@ -12,7 +12,7 @@ id: webform_72368
 title: 'One Stop - Marshal Survey'
 description: null
 category: null
-elements: "comments_title:\n  '#type': processed_text\n  '#title': 'Comments and/or Suggestions'\n  '#description': ''\n  '#text': \"<p><span>Thank you for your thoughts and suggestions.</span></p>\\r\\n\\r\\n<h2>Comments and/or Suggestions:</h2>\\r\\n\"\n  '#format': full_html\ncomments_suggestions:\n  '#type': textarea\n  '#title_display': invisible\n  '#title': 'Comments and/or Suggestions'\n  '#description': ''\nbr1:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<br>'\n  '#title': br1\n  '#description': ''\nyour_information:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h3><br>Your Information:</h3>'\n  '#title': 'Your Information:'\n  '#description': ''\nname:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Name:'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title_display': inline\n  '#title': 'Email:'\n  '#description': ''\n  '#required': true\nbr2:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<br>'\n  '#title': br2\n  '#description': ''\nwould_you_like_us_to_contact_you_about_this:\n  '#type': radios\n  '#options':\n    1: 'Yes'\n    2: 'No'\n  '#title': 'Would you like us to contact you about this?'\n  '#description': ''"
+elements: "comments_title:\n  '#type': processed_text\n  '#title': 'Comments and/or Suggestions'\n  '#description': ''\n  '#text': \"<p><span>Thank you for your thoughts and suggestions.</span></p>\\r\\n\\r\\n<h2>Comments and/or Suggestions:</h2>\\r\\n\"\n  '#format': full_html\ncomments_suggestions:\n  '#type': textarea\n  '#title_display': invisible\n  '#title': 'Comments and/or Suggestions'\n  '#description': ''\nbr1:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<br>'\n  '#title': br1\n  '#description': ''\nyour_information:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h3><br>Your Information:</h3>'\n  '#title': 'Your Information:'\n  '#description': ''\nname:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Name:'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title_display': inline\n  '#title': 'Email:'\n  '#description': ''\n  '#required': true\nbr2:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<br>'\n  '#title': br2\n  '#description': ''\nwould_you_like_us_to_contact_you_about_this:\n  '#type': radios\n  '#options':\n    1: 'Yes'\n    2: 'No'\n  '#title': 'Would you like us to contact you about this?'\n  '#description': ''\n"
 css: ''
 javascript: ''
 settings:
@@ -33,7 +33,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -200,6 +200,7 @@ handlers:
   email_1:
     id: email
     label: 'Email 1'
+    notes: ''
     handler_id: email_1
     status: true
     conditions: {  }
@@ -236,6 +237,7 @@ handlers:
   email_2:
     id: email
     label: 'Email 2'
+    notes: ''
     handler_id: email_2
     status: true
     conditions: {  }
@@ -272,6 +274,7 @@ handlers:
   email_3:
     id: email
     label: 'Email 3'
+    notes: ''
     handler_id: email_3
     status: true
     conditions: {  }

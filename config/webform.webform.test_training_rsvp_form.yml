@@ -12,7 +12,7 @@ id: test_training_rsvp_form
 title: 'Test Training RSVP Form'
 description: 'Description of event rsvp form'
 category: 'Training Form'
-elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#required': true\nemail:\n  '#type': email\n  '#title': Email\n  '#required': true\ndietary_restrictions:\n  '#type': webform_radios_other\n  '#title': 'Dietary Restrictions'\n  '#options':\n    Vegetarian: Vegetarian\n    'Gluten Free': 'Gluten Free'\n    'Lactose Intolerant': 'Lactose Intolerant'\nadditional_time_slots:\n  '#type': datetime\n  '#title': 'Additional Time Slots'\n  '#multiple': true\n  '#multiple__add_more_input_label': 'Additional Needed Time Slots'\n  '#multiple__empty_items': '2'\n  '#multiple__add_more': '2'\n  '#attributes':\n    class:\n      - 'form--inline clearfix'\n"
+elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#required': true\nemail:\n  '#type': email\n  '#title': Email\n  '#required': true\ndietary_restrictions:\n  '#type': webform_radios_other\n  '#title': 'Dietary Restrictions'\n  '#options':\n    Vegetarian: Vegetarian\n    'Gluten Free': 'Gluten Free'\n    'Lactose Intolerant': 'Lactose Intolerant'\nadditional_time_slots:\n  '#type': datetime\n  '#title': 'Additional Time Slots'\n  '#multiple': true\n  '#multiple__add_more_input_label': 'Additional Needed Time Slots'\n  '#multiple__empty_items': 2\n  '#multiple__add_more': '2'\n  '#attributes':\n    class:\n      - 'form--inline clearfix'\n"
 css: ''
 javascript: ''
 settings:
@@ -33,7 +33,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -200,6 +200,7 @@ handlers:
   email:
     id: email
     label: Email
+    notes: ''
     handler_id: email
     status: true
     conditions: {  }

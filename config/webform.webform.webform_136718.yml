@@ -12,7 +12,7 @@ id: webform_136718
 title: 'Convocation Faculty Attendance Form'
 description: null
 category: null
-elements: "fieldset_your_information:\n  '#type': fieldset\n  '#open': true\n  '#title': 'Your Information:'\n  '#description': ''\n  first_name_4:\n    '#type': textfield\n    '#title': 'First Name:'\n    '#required': true\n  last_name_4:\n    '#type': textfield\n    '#title': 'Last Name:'\n    '#required': true\n  email_4:\n    '#type': email\n    '#title': 'Email:'\n    '#size': '20'\n    '#required': true\n  your_school_college_or_gleason_library_4:\n    '#type': select\n    '#title': 'Your school/college or Gleeson Library:'\n    '#options':\n      1: 'College of Arts and Sciences'\n      2: 'School of Management'\n      3: 'School of Education'\n      4: 'School of Nursing and Health Professions'\n      5: 'Gleeson Library'\n    '#required': true\nfieldset_regalia:\n  '#type': fieldset\n  '#open': true\n  '#title': 'Regalia:'\n  '#description': ''\n  do_you_need_rental_regalia_6:\n    '#type': radios\n    '#title': 'Do you need a rental regalia?'\n    '#options':\n      1: 'Yes'\n      2: 'No'\n    '#required': true\n  please_select_the_components_you_need_:\n    '#type': checkboxes\n    '#title': 'Please select the components you need:'\n    '#options':\n      1: Cap\n      2: Gown\n      3: Hood\n    '#states':\n      visible:\n        ':input[name=\"do_you_need_rental_regalia_6\"]':\n          value: '1'\n  comments_or_questions_6:\n    '#type': textarea\n    '#title': 'Comments or questions?:'\n"
+elements: "fieldset_your_information:\n  '#type': fieldset\n  '#open': true\n  '#title': 'Your Information:'\n  '#description': ''\n  first_name_4:\n    '#type': textfield\n    '#title': 'First Name:'\n    '#required': true\n  last_name_4:\n    '#type': textfield\n    '#title': 'Last Name:'\n    '#required': true\n  email_4:\n    '#type': email\n    '#title': 'Email:'\n    '#size': 20\n    '#required': true\n  your_school_college_or_gleason_library_4:\n    '#type': select\n    '#title': 'Your school/college or Gleeson Library:'\n    '#options':\n      1: 'College of Arts and Sciences'\n      2: 'School of Management'\n      3: 'School of Education'\n      4: 'School of Nursing and Health Professions'\n      5: 'Gleeson Library'\n    '#required': true\nfieldset_regalia:\n  '#type': fieldset\n  '#open': true\n  '#title': 'Regalia:'\n  '#description': ''\n  do_you_need_rental_regalia_6:\n    '#type': radios\n    '#title': 'Do you need a rental regalia?'\n    '#options':\n      1: 'Yes'\n      2: 'No'\n    '#required': true\n  please_select_the_components_you_need_:\n    '#type': checkboxes\n    '#title': 'Please select the components you need:'\n    '#options':\n      1: Cap\n      2: Gown\n      3: Hood\n    '#states':\n      visible:\n        ':input[name=\"do_you_need_rental_regalia_6\"]':\n          value: '1'\n  comments_or_questions_6:\n    '#type': textarea\n    '#title': 'Comments or questions?:'\n"
 css: ''
 javascript: ''
 settings:
@@ -33,7 +33,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -200,6 +200,7 @@ handlers:
   email_1:
     id: email
     label: 'Email 1'
+    notes: ''
     handler_id: email_1
     status: true
     conditions: {  }
@@ -236,6 +237,7 @@ handlers:
   email_2:
     id: email
     label: 'Email 2'
+    notes: ''
     handler_id: email_2
     status: true
     conditions: {  }
@@ -272,6 +274,7 @@ handlers:
   email_3:
     id: email
     label: 'Email 3'
+    notes: ''
     handler_id: email_3
     status: true
     conditions: {  }

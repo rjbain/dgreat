@@ -12,7 +12,7 @@ id: webform_129876
 title: 'University of San Francisco - LGBTQ Caucus Membership'
 description: null
 category: null
-elements: "joining_the_caucus:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p class='intro_text_lg'><span style='color: black; font-family: arial, helvetica, sans-serif;'><span>All are welcome to fill out this form to receive our monthly email newsletter which includes special announcements and highlighted events / resources.&nbsp;</span></span><span style='color: black; font-family: arial, helvetica, sans-serif;'><span>When you submit this form, we consider you a member of the LGBTQ caucus, but your level of participation is up to you!</span></span></p>\"\n  '#title': Joining the Caucus\n  '#description': \"\"\nname:\n  '#type': textfield\n  '#title': Name:\n  '#description': \"\"\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email:\n  '#description': \"\"\n  '#required': true\nphone:\n  '#type': textfield\n  '#size': 20\n  '#min': \n  '#max': \n  '#step': \n  '#unique': false\n  '#title': Phone:\n  '#description': \"\"\nusf_dept_school:\n  '#type': textfield\n  '#title': USF Dept/School:\n  '#description': \"\"\n"
+elements: "joining_the_caucus:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p class=''intro_text_lg''><span style=''color: black; font-family: arial, helvetica, sans-serif;''><span>All are welcome to fill out this form to receive our monthly email newsletter which includes special announcements and highlighted events / resources.&nbsp;</span></span><span style=''color: black; font-family: arial, helvetica, sans-serif;''><span>When you submit this form, we consider you a member of the LGBTQ caucus, but your level of participation is up to you!</span></span></p>'\n  '#title': 'Joining the Caucus'\n  '#description': ''\nname:\n  '#type': textfield\n  '#title': 'Name:'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': 'Email:'\n  '#description': ''\n  '#required': true\nphone:\n  '#type': textfield\n  '#size': 20\n  '#min': null\n  '#max': null\n  '#step': null\n  '#unique': false\n  '#title': 'Phone:'\n  '#description': ''\nusf_dept_school:\n  '#type': textfield\n  '#title': 'USF Dept/School:'\n  '#description': ''\n"
 css: ''
 javascript: ''
 settings:
@@ -33,7 +33,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -200,6 +200,7 @@ handlers:
   email_1:
     id: email
     label: 'Email 1'
+    notes: ''
     handler_id: email_1
     status: true
     conditions: {  }

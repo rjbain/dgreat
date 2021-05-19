@@ -17,7 +17,7 @@ id: isss_airport_shuttle_pick_up_for
 title: 'ISSS Airport Pick-up Form'
 description: ''
 category: ''
-elements: "last_family_name:\n  '#type': textfield\n  '#title': 'Last (Family) Name'\n  '#required': true\nfirst_given_name:\n  '#type': textfield\n  '#title': 'First (Given) Name'\n  '#required': true\nemail:\n  '#type': email\n  '#title': 'USF Email'\n  '#required': true\ncell_phone_number_in_us_if_applicable_:\n  '#type': tel\n  '#title': 'Cell Phone Number in US (if applicable)'\nusf_student_id_number_example_12345678_:\n  '#type': textfield\n  '#title': 'USF Student ID Number (Example: 12345678)'\n  '#required': true\nsfo_airport_arrival_time_date:\n  '#type': radios\n  '#title': 'SFO Airport Arrival Date'\n  '#options':\n    'July 31': 'July 31'\n    'August 17': 'August 17'\n  '#required': true\nsfo_airport_arrival_time:\n  '#type': webform_time\n  '#title': 'SFO Airport Arrival Time'\n  '#required': true\nairline:\n  '#type': textfield\n  '#title': Airline\n  '#required': true\nflight_number:\n  '#type': textfield\n  '#title': 'Flight Number'\n  '#required': true\nwill_you_arrive_in_the_domestic_or_the_international_terminal_at:\n  '#type': radios\n  '#title': 'Will you arrive in the Domestic or the International terminal at San Francisco International Airport?'\n  '#options':\n    1: 'Domestic Terminal'\n    2: 'International Terminal'\n  '#required': true\ndo_you_have_confirmed_on_campus_housing_:\n  '#type': radios\n  '#title': 'Do you have confirmed on-campus housing?'\n  '#options':\n    1: 'Yes'\n    2: 'No'\nif_you_have_been_assigned_a_room_on_campus_which_residence_hall_:\n  '#type': radios\n  '#title': 'If you have been assigned a room on campus, which Residence Hall are you in?'\n  '#options':\n    1: 'Toler Hall'\n    2: 'Gillson Hall'\n    3: 'Fromm Hall'\n    4: 'Hayes-Healy Hall'\n    5: 'Lone Mountain'\n    6: 'Loyola Village'\n    7: 'Pedro Arrupe Hall'"
+elements: "last_family_name:\n  '#type': textfield\n  '#title': 'Last (Family) Name'\n  '#required': true\nfirst_given_name:\n  '#type': textfield\n  '#title': 'First (Given) Name'\n  '#required': true\nemail:\n  '#type': email\n  '#title': 'USF Email'\n  '#required': true\ncell_phone_number_in_us_if_applicable_:\n  '#type': tel\n  '#title': 'Cell Phone Number in US (if applicable)'\nusf_student_id_number_example_12345678_:\n  '#type': textfield\n  '#title': 'USF Student ID Number (Example: 12345678)'\n  '#required': true\nsfo_airport_arrival_time_date:\n  '#type': radios\n  '#title': 'SFO Airport Arrival Date'\n  '#options':\n    'July 30': 'July 30'\n    'July 31': 'July 31'\n  '#required': true\nsfo_airport_arrival_time:\n  '#type': webform_time\n  '#title': 'SFO Airport Arrival Time'\n  '#required': true\nairline:\n  '#type': textfield\n  '#title': Airline\n  '#required': true\nflight_number:\n  '#type': textfield\n  '#title': 'Flight Number'\n  '#required': true\nwill_you_arrive_in_the_domestic_or_the_international_terminal_at:\n  '#type': radios\n  '#title': 'Will you arrive in the Domestic or the International terminal at San Francisco International Airport?'\n  '#options':\n    1: 'Domestic Terminal'\n    2: 'International Terminal'\n  '#required': true\ndo_you_have_confirmed_on_campus_housing_:\n  '#type': radios\n  '#title': 'Do you have confirmed on-campus housing?'\n  '#options':\n    1: 'Yes'\n    2: 'No'\nif_you_have_been_assigned_a_room_on_campus_which_residence_hall_:\n  '#type': radios\n  '#title': 'If you have been assigned a room on campus, which Residence Hall are you in?'\n  '#options':\n    1: 'Toler Hall'\n    2: 'Gillson Hall'\n    3: 'Fromm Hall'\n    4: 'Hayes-Healy Hall'\n    5: 'Lone Mountain'\n    6: 'Lone Mountain East'\n    7: 'Loyola Village'\n    8: 'Pedro Arrupe Hall'"
 css: ''
 javascript: ''
 settings:
@@ -38,7 +38,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -203,6 +203,7 @@ handlers:
   email:
     id: email
     label: Email
+    notes: ''
     handler_id: email
     status: true
     conditions: {  }
@@ -239,6 +240,7 @@ handlers:
   email_1:
     id: email
     label: Email
+    notes: ''
     handler_id: email_1
     status: true
     conditions: {  }
