@@ -1,0 +1,26 @@
+uuid: cef62422-90eb-4a32-b2a6-5995ff1815ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.events_search.field_event_search
+    - paragraphs.paragraphs_type.events_search
+  module:
+    - viewsreference
+id: paragraph.events_search.default
+targetEntityType: paragraph
+bundle: events_search
+mode: default
+content:
+  field_event_search:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: viewsreference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true
