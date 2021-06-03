@@ -13,6 +13,7 @@ dependencies:
     - image.style.thumbnail
   module:
     - image
+    - imce
 id: block_content.page_banner.default
 targetEntityType: block_content
 bundle: page_banner
@@ -35,17 +36,21 @@ content:
   field_hero_image_full:
     weight: 2
     settings:
-      progress_indicator: throbber
       preview_image_style: thumbnail
-    third_party_settings: {  }
+      progress_indicator: throbber
+    third_party_settings:
+      imce:
+        enabled: true
     type: image_image
     region: content
   field_hero_image_mobile:
     weight: 3
     settings:
-      progress_indicator: throbber
       preview_image_style: thumbnail
-    third_party_settings: {  }
+      progress_indicator: throbber
+    third_party_settings:
+      imce:
+        enabled: true
     type: image_image
     region: content
   field_page_banner_title:
