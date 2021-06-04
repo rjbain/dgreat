@@ -93,7 +93,7 @@ settings:
   draft_saved_message: ''
   draft_loaded_message: ''
   confirmation_type: page
-  confirmation_title: ''
+  confirmation_title: 'Your Intent to Apply Form is submitted successfully!'
   confirmation_message: ''
   confirmation_url: ''
   confirmation_attributes: {  }
@@ -184,16 +184,16 @@ handlers:
           text: mcguire@usfca.edu
         -
           value: 'Arts & Sciences'
-          text: 'gamson@usfca.edu, fung@usfca.edu, pinelli@usfca.edu, organistap@usfca.edu, cbrooks@usfca.edu, ctzagarakis@usfca.edu'
+          text: 'fung@usfca.edu, pinelli@usfca.edu, organistap@usfca.edu, cbrooks@usfca.edu, ctzagarakis@usfca.edu'
         -
           value: 'Gleeson Library'
           text: cannont@usfca.edu
         -
           value: 'School of Management'
-          text: 'ebdavis@usfca.edu, jzafra@usfca.edu, cmoses1@usfca.edu'
+          text: 'ebdavis@usfca.edu, jzafra@usfca.edu'
         -
           value: 'School of Education'
-          text: skoirala@usfca.edu
+          text: 'skoirala@usfca.edu, delunar@usfca.edu'
         -
           value: 'School of Law'
           text: 'freiwald@usfca.edu, esprague@usfca.edu'
@@ -271,9 +271,9 @@ handlers:
         - completed
       to_mail: grants@usfca.edu
       to_options: {  }
-      cc_mail: 'grants@usfca.edu, dmarbello@usfca.edu, mcguire@usfca.edu, cfr@usfca.edu, tszeto@usfca.edu, mghayes@usfca.edu, mrodriguezmorales@dons.usfca.edu, ajgomez7@dons.usfca.edu, tlatif@dons.usfca.edu'
+      cc_mail: 'dmarbello@usfca.edu, mshukla3@dons.usfca.edu, mcguire@usfca.edu, cfr@usfca.edu, tszeto@usfca.edu, mrodriguezmorales@dons.usfca.edu, ajgomez7@dons.usfca.edu, tlatif@dons.usfca.edu'
       cc_options: {  }
-      bcc_mail: ''
+      bcc_mail: '[webform_submission:user:mail]'
       bcc_options: {  }
       from_mail: _default
       from_options: {  }
@@ -287,6 +287,74 @@ handlers:
       html: true
       attachments: false
       twig: true
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+  email_3:
+    id: email
+    label: 'Test Email'
+    handler_id: email_3
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: mccole2@usfca.edu
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+  email_4:
+    id: email
+    label: 'Recipient Email'
+    handler_id: email_4
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:email_address:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: 'ITA is successfully submitted'
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
       debug: false
       reply_to: ''
       return_path: ''

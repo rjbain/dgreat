@@ -1,24 +1,23 @@
-uuid: 41683c61-7f88-443f-908e-4258d6299437
+uuid: d5b0c9fe-5cc7-4d0a-82bc-3a427d176a9a
 langcode: en
 status: true
 dependencies:
   config:
-    - block_visibility_groups.block_visibility_group.its_subpages
-    - system.menu.its
+    - system.menu.pasj-20th-menu
   module:
     - block_visibility_groups
     - system
   theme:
     - myusf
-id: its
+id: pasj20thmenu
 theme: myusf
 region: sidebar_first
-weight: 87
+weight: 0
 provider: null
-plugin: 'system_menu_block:its'
+plugin: 'system_menu_block:pasj-20th-menu'
 settings:
-  id: 'system_menu_block:its'
-  label: ITS
+  id: 'system_menu_block:pasj-20th-menu'
+  label: 'PASJ 20th Menu'
   provider: system
   label_display: '0'
   level: 1
@@ -28,10 +27,10 @@ visibility:
   condition_group:
     id: condition_group
     negate: false
-    block_visibility_group: its_subpages
+    block_visibility_group: ''
     context_mapping: {  }
   request_path:
     id: request_path
-    pages: "/its\r\n/its/*\r\n/services/*"
+    pages: '/PASJ-20th*'
     negate: false
     context_mapping: {  }
