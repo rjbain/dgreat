@@ -1,0 +1,25 @@
+uuid: d81bf11d-3ec7-4b79-9eab-98ae5f4f0647
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.events_search.field_event_search
+    - paragraphs.paragraphs_type.events_search
+  module:
+    - viewsreference
+id: paragraph.events_search.default
+targetEntityType: paragraph
+bundle: events_search
+mode: default
+content:
+  field_event_search:
+    weight: 0
+    label: hidden
+    settings:
+      plugin_types:
+        - block
+    third_party_settings: {  }
+    type: viewsreference_formatter
+    region: content
+hidden:
+  search_api_excerpt: true
