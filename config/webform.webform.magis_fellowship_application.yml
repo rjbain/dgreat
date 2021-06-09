@@ -12,7 +12,7 @@ id: magis_fellowship_application
 title: 'Magis Fellowship Application'
 description: ''
 category: 'Diversity Engagement'
-elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#required': true\nusf_email_address:\n  '#type': textfield\n  '#title': 'USF Email Address'\n  '#required': true\nphone_number:\n  '#type': tel\n  '#title': 'Phone Number'\n  '#required': true\nusf_cwid_number:\n  '#type': textfield\n  '#title': 'USF CWID Number'\n  '#required': true\nyear:\n  '#type': textfield\n  '#title': Year\n  '#required': true\nmailing_address:\n  '#type': textarea\n  '#title': 'Mailing Address'\n  '#required': true\ndo_you_currently_have_direct_deposit_with_usf_:\n  '#type': radios\n  '#title': 'Do you currently have direct deposit with USF?'\n  '#options': yes_no\n  '#required': true\nhave_you_received_a_usf_scholarship_or_grant_for_the_2019_20_aca:\n  '#type': radios\n  '#title': 'Have you received a USF scholarship or grant for the 2019-20 academic year?'\n  '#options': yes_no\n  '#required': true\nhave_you_received_or_do_you_anticipate_receiving_a_scholarship_o:\n  '#type': radios\n  '#title': 'Have you received or do you anticipate receiving a scholarship or grant from a source outside of USF for the 2019-20 academic year?'\n  '#options': yes_no\n  '#required': true\nhave_you_received_or_do_you_anticipate_receiving_financial_suppo:\n  '#type': radios\n  '#title': 'Have you received or do you anticipate receiving financial support from any other source for the 2019-20 academic year?'\n  '#options': yes_no\n  '#required': true\nhave_you_received_a_usf_scholarship_or_grant_during_your_time_as:\n  '#type': radios\n  '#title': 'Have you received a USF scholarship or grant during your time as a student at USF?'\n  '#options': yes_no\n  '#required': true\nhave_you_received_a_scholarship_or_grant_from_a_source_outside_o:\n  '#type': radios\n  '#title': 'Have you received a scholarship or grant from a source outside of USF during your time as a student at USF?'\n  '#options': yes_no\n  '#required': true\nin_250_words_or_less_describe_your_personal_connection_to_the_is:\n  '#type': textarea\n  '#title': 'In 250 words or less, describe your personal connection to the issue.'\n  '#required': true\nin_250_words_or_less_describe_your_proposed_project_:\n  '#type': textarea\n  '#title': 'In 250 words or less, describe your proposed project.'\n  '#required': true"
+elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#required': true\nusf_email_address:\n  '#type': textfield\n  '#title': 'USF Email Address'\n  '#required': true\nphone_number:\n  '#type': tel\n  '#title': 'Phone Number'\n  '#required': true\nusf_cwid_number:\n  '#type': textfield\n  '#title': 'USF CWID Number'\n  '#required': true\nyear:\n  '#type': textfield\n  '#title': 'Anticipated Graduation Year'\n  '#required': true\nmailing_address:\n  '#type': textarea\n  '#title': 'Mailing Address'\n  '#required': true\ndo_you_currently_have_direct_deposit_with_usf_:\n  '#type': radios\n  '#title': 'Do you currently have direct deposit with USF?'\n  '#options': yes_no\n  '#required': true\nhave_you_received_a_usf_scholarship_or_grant_for_the_2019_20_aca:\n  '#type': radios\n  '#title': 'Have you received a USF scholarship or grant for the 2021-22 academic year?'\n  '#options': yes_no\n  '#required': true\nhave_you_received_or_do_you_anticipate_receiving_a_scholarship_o:\n  '#type': radios\n  '#title': 'Have you received or do you anticipate receiving a scholarship or grant from a source outside of USF for the 2021-22 academic year?'\n  '#options': yes_no\n  '#required': true\nhave_you_received_or_do_you_anticipate_receiving_financial_suppo:\n  '#type': radios\n  '#title': 'Have you received or do you anticipate receiving financial support from any other source for the 2021-22 academic year?'\n  '#options': yes_no\n  '#required': true\nhave_you_received_a_usf_scholarship_or_grant_during_your_time_as:\n  '#type': radios\n  '#title': 'Have you received a USF scholarship or grant during your time as a student at USF?'\n  '#options': yes_no\n  '#required': true\nhave_you_received_a_scholarship_or_grant_from_a_source_outside_o:\n  '#type': radios\n  '#title': 'Have you received a scholarship or grant from a source outside of USF during your time as a student at USF?'\n  '#options': yes_no\n  '#required': true\nin_250_words_or_less_describe_your_personal_connection_to_the_is:\n  '#type': textarea\n  '#title': 'In 250 words or less, describe your personal connection to the issue.'\n  '#required': true\nin_250_words_or_less_describe_your_proposed_project_:\n  '#type': textarea\n  '#title': 'In 250 words or less, describe your proposed project.'\n  '#required': true"
 css: ''
 javascript: ''
 settings:
@@ -200,7 +200,41 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: aadasgupta@usfca.edu
+      to_mail: diversity@usfca.edu
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+  email_2:
+    id: email
+    label: Email
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:usf_email_address:raw]'
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
