@@ -307,7 +307,8 @@ blockquote {
 			width:100%;
 		}
 		@include media-breakpoint-only(tablet)  {	
-			width: 47.9%;				
+			/*width: 47.9%;*/
+			width: calc((100% - 30px) / 2);				
 		}
 		&.block-left,
 		&.block_left {
@@ -321,6 +322,12 @@ blockquote {
 			@include media-breakpoint-down(tablet)  {
 				margin: .375rem 0 1.75rem 0;
 			}
+		}
+		&.block-centered {
+			display: block;
+		    margin-left: auto;
+		    margin-right: auto;
+		    width: 50%;
 		}
 	}
 }
