@@ -265,10 +265,16 @@ blockquote {
 		@include media-breakpoint-down(landscape_phone)  {
 			width:100%;
 		}
-
+		@include media-breakpoint-only(tablet)  {
+			/*width: 47.9%;*/
+			width: calc((100% - 30px) / 2);
+		}
 		&.block-left,
 		&.block_left {
 			margin: 0.375rem 1.25rem 1.75rem 0;
+			@include media-breakpoint-only(tablet)  {
+				margin: 0.375rem 1.5625rem 1.75rem 0;
+			}
 		}
 
 		&.block-right,
@@ -293,6 +299,9 @@ blockquote {
 		
 		@include media-breakpoint-down(landscape_phone)  {
 			width:100%;
+		}
+		@include media-breakpoint-only(tablet)  {	
+			width: 47.9%;				
 		}
 		&.block-left,
 		&.block_left {
