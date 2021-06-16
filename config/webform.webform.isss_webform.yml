@@ -1,23 +1,18 @@
-uuid: a6309145-12ab-4fed-9890-f1bb3b27a747
+uuid: cb489c54-3cf1-416b-9046-e9edcd4278f3
 langcode: en
 status: open
-dependencies:
-  module:
-    - dgreat_student_surveys
-third_party_settings:
-  dgreat_student_surveys:
-    salesforce_id: ''
+dependencies: {  }
 open: null
 close: null
 weight: 0
-uid: 42674
+uid: 78916
 template: false
 archive: false
-id: delinquent_student_accounts
-title: 'Delinquent Student Accounts'
-description: ''
-category: 'Student Accounts'
-elements: "delinquent_student_accounts:\n  '#type': item\n  '#title': 'Delinquent Student Account Contact Form'\n  '#title_display': invisible\n  '#markup': '<h2><strong>Delinquent Student Accounts Contact Form</strong></h2>'\nname:\n  '#type': webform_name\n  '#title': Name\n  '#title__access': false\n  '#middle__access': false\n  '#suffix__access': false\n  '#degree__access': false\nstudent_id_8_digits_:\n  '#type': textfield\n  '#title': 'Student ID# (8 digits)'\nemail:\n  '#type': email\n  '#title': Email\nis_the_account_you_are_inquiring_about_more_than_one_term_past_d:\n  '#type': radios\n  '#title': 'Is the account you are inquiring about more than one term past due?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\nhas_a_da_delinquent_hold_been_placed_on_the_account_:\n  '#type': radios\n  '#title': 'Has a DA (delinquent) hold been placed on the account?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\nnot_delinquent_:\n  '#type': item\n  '#title': 'Please review your holds to ensure your account is delinquent.'\n  '#states':\n    visible:\n      - ':input[name=\"is_the_account_you_are_inquiring_about_more_than_one_term_past_d\"]':\n          value: 'No'\n      - or\n      - ':input[name=\"has_a_da_delinquent_hold_been_placed_on_the_account_\"]':\n          value: 'No'\n  '#markup': '<p>If you answered no to one of the above questions, your account may not be considered deliquent. Please log into the Student Self-Service to view your holds. If you do not have a DA hold, you may make payment on <a href=\"https://myusf.usfca.edu/billing-tuition/pay\">View and Pay</a> or contact the Student Accounts Office for all payment inquiries. You may contact the Student Accounts Office by phone at 415-422-2571 or by email at studentaccounts@usfca.edu.</p>'\nhas_the_account_been_referred_to_a_third_party_collections_agenc:\n  '#type': radios\n  '#title': 'Has the account been referred to a third-party collections agency?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\nare_you_inquiring_about_how_to_make_payment_because_you_no_longe:\n  '#type': radios\n  '#title': 'Are you inquiring about how to make payment because you no longer have access to View and Pay?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\npayment_portal:\n  '#type': item\n  '#title': 'Payment portal'\n  '#states':\n    visible:\n      ':input[name=\"are_you_inquiring_about_how_to_make_payment_because_you_no_longe\"]':\n        value: 'Yes'\n  '#markup': \"If you do not have access to View and Pay, please use the following link to make payment on a deliquent account:&nbsp;<a href=\\\"https://myusf.usfca.edu/usfbalance\\\">https://myusf.usfca.edu/usfbalance</a>.<br />\\r\\n<br />\\r\\nYou do not have to submit this form if the payment link satisfies your inquiry.\"\npayment_plan:\n  '#type': checkbox\n  '#title': 'Payment Plan'\n  '#description': '<h4>Check this box if you would like to receive information about a scheduled payment plan for the delinquent account.</h4>'\n  '#title_display': invisible\nattach_proof_of_payment_:\n  '#type': webform_document_file\n  '#title': 'Attach proof of payment.'\n  '#file_extensions': 'gif jpeg txt rtf pdf doc docx odt ppt pptx odp xls xlsx ods'"
+id: isss_webform
+title: 'ISSS Webform'
+description: 'Tracking information for students'
+category: ISSS
+elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#required': true\nstudent_id:\n  '#type': number\n  '#title': 'Student ID'\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#title': 'USF email address'\n  '#required': true\nforeign_address:\n  '#type': textarea\n  '#title': 'Foreign Address'\n  '#required': true\nusf_dorms:\n  '#type': radios\n  '#title': 'USF Dorm'\n  '#options':\n    From: From\n    Gillson: Gillson\n    Hayes-Healy: Hayes-Healy\n    'Lone Mountain East': 'Lone Mountain East'\n    'Loyola Village': 'Loyola Village'\n    'Pedro Arrupe': 'Pedro Arrupe'\n    Toler: Toler\n    'Saint Anne''s': 'Saint Anne''s'\n    'Fulton House': 'Fulton House'\n  '#required': true"
 css: ''
 javascript: ''
 settings:
