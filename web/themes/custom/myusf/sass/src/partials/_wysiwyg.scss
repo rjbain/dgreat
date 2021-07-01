@@ -273,20 +273,12 @@ blockquote {
 		&.block_left {
 			margin-right: 1.5rem;
 			float:left;
-
-			@include media-breakpoint-only(tablet)  {
-				
-			}
 		}
 
 		&.block-right,
 		&.block_right {
 			margin-left: 1.5rem;
 			float:right;
-
-			@include media-breakpoint-down(tablet)  {
-				
-			}
 		}
 		&.block-centered {
 			display: block;
@@ -294,8 +286,8 @@ blockquote {
 		    margin-right: auto;
 		    width: 70%;
 		    margin-top: 1.1875rem;
-		    @include media-breakpoint-down(tablet)  {
-				
+		    
+		    @include media-breakpoint-down(tablet)  {				
 				width: 100%;
 			}
 		}
@@ -303,7 +295,7 @@ blockquote {
 }
 
 .callout-tinted {
-	margin: 0 0 2rem 0; 
+	margin: .375rem 0 1.1875rem 0; 
 	display: inline-block; 
 	padding: 0.9375rem; 
 	background-color: transparentize($light_gray, .5);	
@@ -320,27 +312,23 @@ blockquote {
 		}
 		&.block-left,
 		&.block_left {
-			margin: 0.75rem 1.25rem 1.56rem 0;
+			margin-right: 1.5rem;
 			float:left;
 		}
 
 		&.block-right,
 		&.block_right {
-			margin: 0.75rem 0 1.56rem 1.25rem;
+			margin-left: 1.5rem;
 			float:right;
-
-			@include media-breakpoint-down(tablet)  {
-				margin: .75rem 0 1.75rem 0;
-			}
 		}
 		&.block-centered {
 			display: block;
 		    margin-left: auto;
 		    margin-right: auto;
 		    width: 70%;
-		    margin-top: 1.75rem;
+		    margin-top: 1.125rem;
+
 		    @include media-breakpoint-down(tablet)  {
-				margin: .75rem 0 1.75rem 0;
 				width: 100%;
 			}
 		}
