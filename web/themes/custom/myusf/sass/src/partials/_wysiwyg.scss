@@ -216,7 +216,7 @@ blockquote {
 }
 
 .callout {
-	margin: 0.375rem 0 2rem 0; 
+	margin: 1rem 0 2rem 0; 
 	display: inline-block; 
 	padding: 0.9375rem 0.9375rem 0 0.9375rem; 
 	border-style: solid;
@@ -273,7 +273,7 @@ blockquote {
 		&.block_left {
 			margin: 0.375rem 1.25rem 1.75rem 0;
 			float:left;
-			
+
 			@include media-breakpoint-only(tablet)  {
 				margin: 0.375rem 1.5625rem 1.75rem 0;
 			}
@@ -293,6 +293,11 @@ blockquote {
 		    margin-left: auto;
 		    margin-right: auto;
 		    width: 70%;
+		    margin-top: 1.75rem;
+		    @include media-breakpoint-down(tablet)  {
+				margin: .375rem 0 1.75rem 0;
+				width: 100%;
+			}
 		}
 	}
 }
@@ -333,6 +338,11 @@ blockquote {
 		    margin-left: auto;
 		    margin-right: auto;
 		    width: 70%;
+		    margin-top: 1.75rem;
+		    @include media-breakpoint-down(tablet)  {
+				margin: .375rem 0 1.75rem 0;
+				width: 100%;
+			}
 		}
 	}
 }
