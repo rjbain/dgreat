@@ -35,12 +35,12 @@
 {% set body = body|replace({'—————': '—'}) %}
 {% set body = body|replace({'——— ': '— ' }) %}
 {% set body = body|replace({'&quot;': '"' }) %}
+{% set body = body|replace({'&#039;': '\'' }) %}
 {% set body_1 = fields.body_1.content  %}
 {% set body_1 = body_1|replace({'—————': '—'}) %}
 {% set body_1 = body_1|replace({'——— ': '— ' }) %}
 {% set body_1 = body_1|replace({'&quot;': '"' }) %}
-
-
+{% set body_1 = body_1|replace({'&#039;': '\'' }) %}
 
 <div class="card orange">
 	<a class="card-rollover" href="{{ fields.field_news_link.content }}" target="_blank">
