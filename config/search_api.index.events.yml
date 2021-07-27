@@ -8,7 +8,6 @@ dependencies:
     - field.storage.node.field_end_date
     - field.storage.node.field_search_date
     - field.storage.node.field_start_date
-    - field.storage.node.field_target
     - field.storage.node.field_terms
     - search_api.server.events
   module:
@@ -59,14 +58,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_start_date
-  field_target:
-    label: Target
-    datasource_id: 'entity:node'
-    property_path: field_target
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_target
   field_terms:
     label: Terms
     datasource_id: 'entity:node'
