@@ -12,7 +12,7 @@ id: isss_webform
 title: 'ISSS Webform'
 description: 'Tracking information for students'
 category: ISSS
-elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#required': true\nstudent_id:\n  '#type': number\n  '#title': 'Student ID'\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#title': 'USF email address'\n  '#required': true\nforeign_address:\n  '#type': textarea\n  '#title': 'Foreign Address'\n  '#required': true\nusf_dorms:\n  '#type': radios\n  '#title': 'USF Dorm'\n  '#options':\n    From: From\n    Gillson: Gillson\n    Hayes-Healy: Hayes-Healy\n    'Lone Mountain East': 'Lone Mountain East'\n    'Loyola Village': 'Loyola Village'\n    'Pedro Arrupe': 'Pedro Arrupe'\n    Toler: Toler\n    'Saint Anne''s': 'Saint Anne''s'\n    'Fulton House': 'Fulton House'\n  '#required': true"
+elements: "name:\n  '#type': textfield\n  '#title': 'Full Name (Family Name, Given Name)'\n  '#required': true\nstudent_id:\n  '#type': number\n  '#title': 'USF Student ID'\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#title': 'USF email address'\n  '#required': true\nwhich_country_are_you_currently_located_in_:\n  '#type': textfield\n  '#title': 'Which country are you currently located in?'\n  '#required': true\nwhat_is_your_planned_arrival_date_:\n  '#type': radios\n  '#title': 'What is your planned arrival date to San Francisco?'\n  '#options':\n    8/3: 8/3\n    8/4: 8/4\n    8/17: 8/17\n    Other: Other\n  '#required': true\nif_not_arriving_on_one_of_these_days_when_are_you_arriving_:\n  '#type': textfield\n  '#title': 'If you will not arrive to San Francisco on one of the above dates, when do you plan to arrive?'\ndo_you_have_a_flight_booked_:\n  '#type': radios\n  '#title': 'Have you booked a flight to San Francisco?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\nbooked_flight:\n  '#type': webform_markup\n  '#markup': '<p data-renderer-start-pos=\"492\">If yes, please send your flight itinerary to <a href=\"mailto:isss@usfca.edu\">isss@usfca.edu</a></p>'\nhave_you_received_a_who_approved_vaccine_multiple_choice_yes_no_:\n  '#type': radios\n  '#title': 'Have you received a WHO approved vaccine? '\n  '#options':\n    'Yes': 'Yes'\n    'No, but I plan to get the vaccine before I arrive to USF': 'No, but I plan to get the vaccine before I arrive to USF'\n    'No, but I plan to get the vaccine after I arrive to USF': 'No, but I plan to get the vaccine after I arrive to USF'\n  '#required': true\nvaccine:\n  '#type': webform_markup\n  '#markup': \"Note that USF will require all students, faculty and staff, to be fully vaccinated for COVID-19. Each community member will be required to be vaccinated with one of the vaccines approved by the US Food and Drug Administration (FDA) or the World Health Organization (WHO). The list of currently approved vaccines include:\\r\\n<ul data-indent-level=\\\"2\\\">\\r\\n\\t<li>\\r\\n\\t<p data-renderer-start-pos=\\\"1125\\\">Oxford&ndash;AstraZeneca (Vaxzevria, Covishield)</p>\\r\\n\\t</li>\\r\\n\\t<li>\\r\\n\\t<p data-renderer-start-pos=\\\"1171\\\">Pfizer-BioNTech</p>\\r\\n\\t</li>\\r\\n\\t<li>\\r\\n\\t<p data-renderer-start-pos=\\\"1190\\\">Sinopharm-BIBP</p>\\r\\n\\t</li>\\r\\n\\t<li>\\r\\n\\t<p data-renderer-start-pos=\\\"1208\\\">Moderna</p>\\r\\n\\t</li>\\r\\n\\t<li>\\r\\n\\t<p data-renderer-start-pos=\\\"1219\\\">Johnson &amp; Johnson Jansenn</p>\\r\\n\\t</li>\\r\\n\\t<li data-renderer-start-pos=\\\"1248\\\">Sinovac/Coronavac</li>\\r\\n</ul>\\r\\nStudents who have received one of the approved vaccines will be asked to submit proof of vaccination through&nbsp;<a data-renderer-mark=\\\"true\\\" href=\\\"http://www.medproctor.com/\\\" title=\\\"http://www.medproctor.com/\\\"><u data-renderer-mark=\\\"true\\\">Med+Proctor</u></a>&nbsp;before arriving on campus by following the instructions for submitting proof of immunizations on the&nbsp;<a data-renderer-mark=\\\"true\\\" href=\\\"https://myusf.usfca.edu/hps/immunization\\\" title=\\\"https://myusf.usfca.edu/hps/immunization\\\"><u data-renderer-mark=\\\"true\\\">Health Promotion Services (HPS) website</u></a>.\"\nwill_you_need_to_quarantine_upon_arrival_:\n  '#type': radios\n  '#title': 'Will you need to quarantine upon arrival? '\n  '#options': yes_no\n  '#required': true\nquarantine:\n  '#type': webform_markup\n  '#markup': \"<ul data-indent-level=\\\"2\\\">\\r\\n\\t<li>\\r\\n\\t<p data-renderer-start-pos=\\\"1610\\\">Students who are arriving from outside of California, and are not fully vaccinated with one of the WHO approved vaccines, will need to quarantine upon arrival. Students living in on-campus housing will need to <a data-renderer-mark=\\\"true\\\" href=\\\"https://myusf.usfca.edu/housing/covid-19-housing-health-guidelines#facecoverings\\\" title=\\\"https://myusf.usfca.edu/housing/covid-19-housing-health-guidelines#facecoverings\\\">quarantine for 10&nbsp;days</a>. Students living off-campus will be required to <a data-renderer-mark=\\\"true\\\" href=\\\"https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Guidance-on-Isolation-and-Quarantine-for-COVID-19-Contact-Tracing.aspx\\\" title=\\\"https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Guidance-on-Isolation-and-Quarantine-for-COVID-19-Contact-Tracing.aspx\\\">self-quarantine for 10 days</a>. Quarantine requirements may be reduced in the coming months, we will share more details of any changes.</p>\\r\\n\\t</li>\\r\\n</ul>\"\nwhere_do_you_plan_to_quarantine_:\n  '#type': radios\n  '#title': 'Where do you plan to quarantine?'\n  '#options':\n    'Residence Hall on-campus': 'Residence Hall on-campus'\n    'Off-campus hotel or with family': 'Off-campus hotel or with family'\n    Other: Other\n  '#required': true"
 css: ''
 javascript: ''
 settings:
@@ -155,4 +155,38 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers: {  }
+handlers:
+  email:
+    id: email
+    label: Email
+    handler_id: email
+    status: false
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: isss@usfca.edu
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
