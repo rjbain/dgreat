@@ -271,9 +271,9 @@ handlers:
         - completed
       to_mail: grants@usfca.edu
       to_options: {  }
-      cc_mail: 'grants@usfca.edu, dmarbello@usfca.edu, mcguire@usfca.edu, cfr@usfca.edu, tszeto@usfca.edu, mghayes@usfca.edu, mrodriguezmorales@dons.usfca.edu, ajgomez7@dons.usfca.edu, tlatif@dons.usfca.edu'
+      cc_mail: 'dmarbello@usfca.edu, mshukla3@dons.usfca.edu, mebussi@usfca.edu,mcguire@usfca.edu, cfr@usfca.edu, tszeto@usfca.edu, mrodriguezmorales@dons.usfca.edu, ajgomez7@dons.usfca.edu, tlatif@dons.usfca.edu'
       cc_options: {  }
-      bcc_mail: ''
+      bcc_mail: '[webform_submission:user:mail]'
       bcc_options: {  }
       from_mail: _default
       from_options: {  }
@@ -313,6 +313,40 @@ handlers:
       from_options: {  }
       from_name: _default
       subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+  email_4:
+    id: email
+    label: 'Recipient Email'
+    handler_id: email_4
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:email_address:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: 'ITA is successfully submitted'
       body: _default
       excluded_elements: {  }
       ignore_access: false
