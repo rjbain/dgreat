@@ -1,5 +1,5 @@
 /* WYSIWYG styles
-===================================================*/
+===================================================*/ 
 
 .text-intro, .text_intro {
 	font-weight: 400;
@@ -15,7 +15,7 @@
 }
 
 .caps {
-	text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 .inline_cite, cite, .cite {
@@ -34,7 +34,7 @@
 	padding-top: 0.625rem;
 	padding-bottom: 1.25rem;
 
-	@include media-breakpoint-down(tablet) {
+	@include media-breakpoint-down(tablet) { 
 		padding-right: 1.25rem!important;
 		padding-left: 2.5rem;
 	}
@@ -52,26 +52,26 @@
 	}
 
 	li {
-		position: relative;
-		list-style-type: none;
-		margin-right: 3.125rem;
-		padding-left: 1.25rem;
-
-		@include media-breakpoint-down(phone) {
-			margin-right: 0;
-		}
+		position: relative;  
+		list-style-type: none;	  	
+	  	margin-right: 3.125rem;
+	  	padding-left: 1.25rem;
+	  	
+	  	@include media-breakpoint-down(phone) {
+	  		margin-right: 0;
+	  	}
 
 		&:before {
 			font-size: 1rem;
-			color: $yellow;
-			content: "\25A0";
-			text-align: right;
-			position: absolute;
-			left: -32px;
-			top: 0;
-			width: 26px;
-			padding-left: 1.875rem;
-		}
+			color: $yellow; 	
+			content: "\25A0"; 			 
+			text-align: right;			
+		  	position: absolute;
+		  	left: -32px;
+		  	top: 0; 
+		  	width: 26px;
+		  	padding-left: 1.875rem;
+	    }
 	}
 
 	ul li {
@@ -81,47 +81,47 @@
 
 
 .paragraph__column ol,
-.event-description ol,
+.event-description ol, 
 .node--type-announcement .field--type-text-with-summary ol {
 
 	li {
 		position: relative;
 		display:block;
 		list-style-type:lower-latin;
-		/* margin-right: 50px;*/
+	  	/* margin-right: 50px;*/
 
 		&:before {
 			font-weight:800;
-			color: $olive;
+		  	color: $olive;
 			backface-visibility:hidden;
 			//content:counter(li) ". ";
 			counter-increment:li;
-			left: -39px;
-			position: absolute;
-			text-align: right;
-			width: 26px;
-		}
+		  	left: -39px;
+		  	position: absolute;
+		  	text-align: right;
+		  	width: 26px;
+	    }
 	}
 
 	ul li {
-		position: relative;
-		list-style-type: none;
-		margin-right: 0px;
-		padding-left: 1.25rem;
-
+		position: relative;  
+		list-style-type: none;	  	
+	  	margin-right: 0px;
+	  	padding-left: 1.25rem;		
+	  	
 
 		&:before {
 			font-size: 1.1rem;
-			color: $yellow;
-			content: "\25A0";
-			text-align: right;
-			position: absolute;
-			left: -32px;
-			width: 26px;
-			padding-left: 1.875rem;
-			display:inline-block;
+			color: $yellow; 	
+			content: "\25A0"; 			 
+			text-align: right;			
+		  	position: absolute;
+		  	left: -32px;
+		  	width: 26px;
+		  	padding-left: 1.875rem;
+	  		display:inline-block;
 			backface-visibility:hidden;
-			counter-increment: none;
+		    counter-increment: none;
 		}
 	}
 }
@@ -150,7 +150,7 @@
 	li {
 		&:before {
 			color: transparent!important;
-
+			
 		}
 	}
 }
@@ -161,40 +161,40 @@ blockquote, blockquote p {
 	line-height: 1.8;
 	margin: 0.875rem 0;
 }
-blockquote p {
-	display: contents;
+ blockquote p {
+    display: contents;
 }
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){  //IE
 	blockquote p {
-		display: ruby-text;
+	 	display: ruby-text;
 	}
 }
 @supports (-ms-ime-align: auto){   //Edge
 	blockquote p {
-		display: ruby-text;
+	 	display: ruby-text;
 	}
 }
 blockquote {
 	position: relative;
 	margin: 0;
 	padding-left: 2.5rem;
-	padding-right: 3.125rem;
+	padding-right: 3.125rem;	
 
 	@include media-breakpoint-down(phone) {
-		padding: 0.625rem 0.625rem	0.625rem 1.25rem;
+		padding: 0.625rem 0.625rem	0.625rem 1.25rem; 
 	}
-
-	&::before {
-		font-size: 3.125rem;
-		font-weight: 700;
-		color: $yellow;
-		position: relative;
-		top: 20px;
-		right: 10px;
-		content: "\201C";
-		line-height: .1;
-		font-style: normal;
-	}
+	
+		&::before {
+			font-size: 3.125rem;	
+			font-weight: 700;
+			color: $yellow;
+			position: relative;
+			top: 20px;
+			right: 10px; 	
+			content: "\201C";
+			line-height: .1;
+			font-style: normal;	   
+		}
 
 	/*	&::after {
 			font-size: 50px;
@@ -218,9 +218,9 @@ blockquote {
 }
 
 .callout {
-	margin: 0.375rem 0 2rem 0;
-	display: inline-block;
-	padding: 0.9375rem 0.9375rem 0 0.9375rem;
+	margin: 0.375rem 0 2rem 0; 
+	display: inline-block; 
+	padding: 0.9375rem 0.9375rem 0 0.9375rem; 
 	border-style: solid;
 	border-width: 8px;
 	border-color: $orange;
@@ -263,7 +263,7 @@ blockquote {
 
 	&.narrow {
 		width:275px;
-
+		
 		@include media-breakpoint-down(landscape_phone)  {
 			width:100%;
 		}
@@ -279,18 +279,18 @@ blockquote {
 		}
 	}
 
-
+	
 
 }
 .callout-tinted {
-	margin: 0 0 2rem 0;
-	display: inline-block;
-	padding: 0.9375rem;
-	background-color: transparentize($light_gray, .5);
+	margin: 0 0 2rem 0; 
+	display: inline-block; 
+	padding: 0.9375rem; 
+	background-color: transparentize($light_gray, .5);	
 
 	&.narrow {
 		width:275px;
-
+		
 		@include media-breakpoint-down(landscape_phone)  {
 			width:100%;
 		}
@@ -308,21 +308,21 @@ blockquote {
 
 p.callout,
 h2.callout {
-	padding-bottom: 0.9375rem;
+    padding-bottom: 0.9375rem;
 }
 
 img {
-	margin-top: 0.4375rem;
+    margin-top: 0.4375rem;
 
 	&.align-right {
-		margin-left: 1.5625rem;
-		margin-bottom: 1rem;
-		width: unset;
+    	margin-left: 1.5625rem;	
+    	margin-bottom: 1rem;
+    	width: unset;
 	}
 	&.align-left  {
-		margin-right: 1.5625rem;
-		margin-bottom: 1rem;
-		width: unset;
+    	margin-right: 1.5625rem;	
+    	margin-bottom: 1rem;
+    	width: unset;
 	}
 	&.align-center {
 		margin-bottom: 1rem;
@@ -337,22 +337,22 @@ p img {
 }
 .caption-img {
 	&.align-right {
-		margin-left: 1.5625rem;
+	    margin-left: 1.5625rem;	
 	}
 	&.align-left {
-		margin-right: 1.5625rem;
+	    margin-right: 1.5625rem;	
 	}
 }
 
 figcaption {
-	font-size: .8rem;
-	font-style: italic;
-	line-height: 1.25;
-	margin: 0.3125rem 0.3125rem 0;
+    font-size: .8rem;
+    font-style: italic;
+    line-height: 1.25;
+    margin: 0.3125rem 0.3125rem 0;
 }
 
 p.buttonMarginFix {
-	margin-bottom: 0rem;
+    margin-bottom: 0rem;
 }
 
 /* ==================================================================
@@ -386,10 +386,10 @@ img.block_left {
 }
 
 .left {
-	margin-right: 1.25rem;
+	margin-right: 1.25rem;	
 }
 .right {
-	margin-left: 1.25rem;
+	margin-left: 1.25rem;	
 }
 
 .right,
@@ -417,58 +417,58 @@ img.block_float_none {
 
 	& li {
 		padding-left: 0;
-
+			
 		&::before {
-			display:none!important;
+				display:none!important;
 		}
-	}
+	}      
 }
 
 img.file-icon {
 	position: relative;
-	margin-right: 0.3125rem;
-	bottom: 0.3125rem;
+    margin-right: 0.3125rem;
+    bottom: 0.3125rem;   
 }
 
 
 
 // VIDEO EMBED //
-div[data-oembed-url] {
-	position: relative;
-	width: 100%;
-	height: 0;
-	padding-bottom: 60%;
+div[data-oembed-url] { 
+     position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 60%;
 }
 div[data-oembed-url]  > iframe {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+ position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-img.media-element {
+img.media-element { 
 	max-width: 100%;
-	height: auto;
-	float: right;
+    height: auto;
+	float: right; 
 	margin: 0 0 1.25rem 1.25rem;
 }
 
-img.media-element.block_left {
-	float: left;
+img.media-element.block_left { 
+	float: left; 
 	margin: 0 1.25rem 1.25rem 0;
 }
 
-img.media-element.block_right {
-	float: right;
+img.media-element.block_right { 
+	float: right; 
 }
 
 img.media-element.file-inline-medium {
-	@include media-breakpoint-down(phone) {
+	 @include media-breakpoint-down(phone) {
 		float: none;
 		width: 100%;
 		margin-left: 0;
-	}
+    }
 }
 
 
