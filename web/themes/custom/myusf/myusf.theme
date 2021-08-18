@@ -215,3 +215,30 @@ function myusf_add_regions_to_node($allowed_regions, &$variables) {
     $variables[$region] = $build;
   }
 }
+
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function myusf_page_attachments_alter(array &$attachments, $variables) {
+
+    $node = \Drupal::request()->get('node');
+    $type = "";
+
+    if (isset($node) && $node instanceof \Drupal\node\NodeInterface) {
+        $type = $node->getType();
+    }
+
+    // We want to prevent the search engines from indexing favorite_link content.
+    if ($type == 'favorite_link') {
+        // add the metatag
+        $newtag = [
+            '#tag' => 'meta',
+            '#attributes' => [
+                'name' => 'robots',
+                'content' => 'noindex, nofollow',
+            ],
+        ];
+        $attachments['#attached']['html_head'][] = [$newtag, 'robots'];
+    }
+}
