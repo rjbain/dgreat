@@ -12,15 +12,20 @@ id: webform_84123
 title: 'One Stop - Commencement Faculty Attendance - Dec'
 description: null
 category: null
-elements: "your_information:\n  '#type': processed_text\n  '#title': '<h2>Your Information:</h2>'\n  '#description': ''\n  '#format': full_html\nfirst_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'First Name:'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Last Name:'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title_display': inline\n  '#title': 'Email:'\n  '#description': ''\n  '#required': true\nschool_library:\n  '#type': select\n  '#options':\n    1: 'College of Arts and Sciences'\n    2: 'School of Management'\n    3: 'School of Education'\n    4: 'School of Nursing and Health Professions'\n    5: 'Gleeson Library'\n  '#title_display': inline\n  '#title': 'Your School/College or Gleeson:'\n  '#description': ''\n  '#required': true\nceremony_selection:\n  '#type': processed_text\n  '#title': '<h3>Ceremonies:</h3>'\n  '#description': ''\n  '#format': full_html\nchoose_the_ceremonies_you_would_like_to_attend_:\n  '#type': checkboxes\n  '#title': 'Choose the ceremonies you would like to attend on Friday, December 13:'\n  '#options':\n    'Commencement Mass, 9:30am': 'Commencement Mass, 9:30am'\n    'School of Nursing and Health Professions Ceremony, 12pm': 'School of Nursing and Health Professions Ceremony, 12pm'\n    'School of Education Ceremony and School of Management Ceremony, 3pm': 'School of Education Ceremony and School of Management Ceremony, 3pm'\n    'College of Arts and Sciences Ceremony, 6pm': 'College of Arts and Sciences Ceremony, 6pm'\n  '#required': true\nregalia:\n  '#type': processed_text\n  '#title': '<h3>Regalia:</h3>'\n  '#description': ''\n  '#format': full_html\nneed_regalia:\n  '#type': radios\n  '#options':\n    1: 'Yes'\n    2: 'No'\n  '#title': 'Do you need rental regalia?:'\n  '#description': ''\n  '#required': true\nif_yes_which_:\n  '#type': checkboxes\n  '#title': 'If yes, which?'\n  '#options':\n    Cap: Cap\n    Gown: Gown\n    Hood: Hood\ncomments_or_questions:\n  '#type': textarea\n  '#title': 'Comments or questions?:'\n  '#description': ''"
+elements: "your_information:\n  '#type': processed_text\n  '#title': '<h2>Your Information:</h2>'\n  '#description': ''\n  '#format': full_html\nfirst_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'First Name:'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Last Name:'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title_display': inline\n  '#title': 'Email:'\n  '#description': ''\n  '#required': true\nschool_library:\n  '#type': select\n  '#options':\n    1: 'College of Arts and Sciences'\n    2: 'School of Management'\n    3: 'School of Education'\n    4: 'School of Nursing and Health Professions'\n    5: 'Gleeson Library'\n  '#title_display': inline\n  '#title': 'Your School/College or Gleeson:'\n  '#description': ''\n  '#required': true\nceremony_selection:\n  '#type': processed_text\n  '#title': '<h3>Ceremonies:</h3>'\n  '#description': ''\n  '#format': full_html\nchoose_the_ceremonies_you_would_like_to_attend_:\n  '#type': checkboxes\n  '#title': 'Choose the ceremonies you would like to attend on Friday, December 13:'\n  '#options':\n    'Commencement Mass, 9:30am': 'Commencement Mass, 9:30am'\n    'School of Nursing and Health Professions Ceremony, 12pm': 'School of Nursing and Health Professions Ceremony, 12pm'\n    'School of Education Ceremony and School of Management Ceremony, 3pm': 'School of Education Ceremony and School of Management Ceremony, 3pm'\n    'College of Arts and Sciences Ceremony, 6pm': 'College of Arts and Sciences Ceremony, 6pm'\n  '#required': true\nregalia:\n  '#type': processed_text\n  '#title': '<h3>Regalia:</h3>'\n  '#description': ''\n  '#format': full_html\nneed_regalia:\n  '#type': radios\n  '#options':\n    1: 'Yes'\n    2: 'No'\n  '#title': 'Do you need rental regalia?:'\n  '#description': ''\n  '#required': true\nif_yes_which_:\n  '#type': checkboxes\n  '#title': 'If yes, which?'\n  '#options':\n    Cap: Cap\n    Gown: Gown\n    Hood: Hood\ncomments_or_questions:\n  '#type': textarea\n  '#title': 'Comments or questions?:'\n  '#description': ''\n"
 css: ''
 javascript: ''
 settings:
   ajax: false
   ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
   page: true
   page_submit_path: ''
   page_confirm_path: ''
+  page_theme_name: ''
+  form_title: both
   form_submit_once: false
   form_exception_message: ''
   form_open_message: ''
@@ -28,6 +33,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -48,6 +54,11 @@ settings:
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
   submission_label: ''
   submission_log: false
   submission_views: {  }
@@ -60,6 +71,9 @@ settings:
   submission_access_denied_attributes: {  }
   submission_exception_message: ''
   submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -69,11 +83,20 @@ settings:
   wizard_progress_pages: false
   wizard_progress_percentage: false
   wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
   wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -87,6 +110,8 @@ settings:
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
   confirmation_type: url
   confirmation_title: ''
   confirmation_message: ''
@@ -97,12 +122,15 @@ settings:
   confirmation_back_attributes: {  }
   confirmation_exclude_query: false
   confirmation_exclude_token: false
+  confirmation_update: false
   limit_total: null
   limit_total_interval: null
   limit_total_message: ''
+  limit_total_unique: false
   limit_user: null
   limit_user_interval: null
   limit_user_message: ''
+  limit_user_unique: false
   entity_limit_total: null
   entity_limit_total_interval: null
   entity_limit_user: null
@@ -111,7 +139,11 @@ settings:
   purge_days: null
   results_disabled: false
   results_disabled_ignore: false
+  results_customize: false
+  token_view: false
   token_update: false
+  token_delete: false
+  serial_disabled: false
   form_submit_label: ''
   wizard_complete: 1
 access:
@@ -160,10 +192,15 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
 handlers:
   email_1:
     id: email
     label: 'Email 1'
+    notes: ''
     handler_id: email_1
     status: true
     conditions: {  }
@@ -186,6 +223,7 @@ handlers:
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
+      exclude_attachments: false
       html: true
       attachments: false
       twig: false
@@ -195,9 +233,11 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
+      parameters: {  }
   email_2:
     id: email
     label: 'Email 2'
+    notes: ''
     handler_id: email_2
     status: true
     conditions: {  }
@@ -220,6 +260,7 @@ handlers:
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
+      exclude_attachments: false
       html: true
       attachments: false
       twig: false
@@ -229,9 +270,11 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
+      parameters: {  }
   email_3:
     id: email
     label: 'Email 3'
+    notes: ''
     handler_id: email_3
     status: true
     conditions: {  }
@@ -254,6 +297,7 @@ handlers:
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
+      exclude_attachments: false
       html: true
       attachments: false
       twig: false
@@ -263,3 +307,5 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
+      parameters: {  }
+variants: {  }
