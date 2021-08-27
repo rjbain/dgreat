@@ -1,0 +1,163 @@
+uuid: 292137c8-00dd-4253-a02c-299bac5a0332
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+weight: 0
+uid: 2168
+template: false
+archive: false
+id: webform_135592
+title: 'Concur Quiz'
+description: null
+category: null
+elements: "instructions:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p><span>Please answer the following questions and hit '</span><strong>Submit</strong><span>'. Upon successful completion of this Concur Quiz, please allow up to 3 business days for Business and Finance to contact you with your account information.</span></p>\"\n  '#title': Instructions\n  '#description': \"\"\nquestion_1_correct:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p class='intro_text_lg'>Correct!</p>\"\n  '#title': Question-1-Correct!\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"1_i_must_acknowledge_compliance_with_usfs_travel_and_entertainment_policy_for_each_expense_report_that_is_created[1]\"]':\n        checked: true\n      ':input[name=\"question_1_correct[1]\"]':\n        value: '1'\nquestion_2_correct:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>Incorrect.</p>\"\n  '#title': Question-2-Correct!\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"1_i_must_acknowledge_compliance_with_usfs_travel_and_entertainment_policy_for_each_expense_report_that_is_created[2]\"]':\n        checked: true\n      ':input[name=\"question_2_correct[2]\"]':\n        value: '2'\n1_i_must_acknowledge_compliance_with_usfs_travel_and_entertainment_policy_for_each_expense_report_that_is_created:\n  '#type': radios\n  '#options':\n    1: A. Yes\n    2: B. No\n  '#title': 1. I must acknowledge compliance with USF's Travel and Entertainment Policy for each expense report that is created?\n  '#description': \"\"\n  '#required': true\n2_if_i_dont_provide_original_itemized_receipts_in_digital_form_usf_may_add_the_expense_amount_to_my_taxable_wages:\n  '#type': radios\n  '#options':\n    1: A. Yes\n    2: B. No\n  '#title': 2. If I don't provide original, itemized receipts in digital form, USF may add the expense amount to my taxable wages?\n  '#description': \"\"\n  '#required': true\n"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  submission_label: ''
+  submission_log: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: '0'
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+  form_submit_label: ''
+  wizard_complete: 1
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles:
+      - editor
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles:
+      - editor
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles:
+      - editor
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers: {  }

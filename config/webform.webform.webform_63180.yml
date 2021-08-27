@@ -1,0 +1,231 @@
+uuid: 61084bfe-91aa-4e8c-8576-7d690de67712
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+weight: 0
+uid: 206
+template: false
+archive: false
+id: webform_63180
+title: 'Study Abroad SEMESTER Participant Information Form'
+description: null
+category: null
+elements: "personal_information_header:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h2>Personal Information</h2>\"\n  '#title': [HEADER] Personal Information\n  '#description': \"\"\nparticipant_full_name:\n  '#type': textfield\n  '#default_value': \"[current-user:field_user_display_name]\"\n  '#title': Full Name\n  '#description': \"\"\n  '#required': true\nparticipant_student_id:\n  '#title': Student ID\n  '#description': \"\"\n  '#required': true\nparticipant_email_address:\n  '#type': email\n  '#size': 20\n  '#default_value': \"[current-user:mail]\"\n  '#title': Email Address\n  '#description': \"\"\n  '#required': true\nparticipant_date_of_birth:\n  '#type': textfield\n  '#title': Date of Birth\n  '#description': \"\"\n  '#required': true\nparticipant_gender:\n  '#type': select\n  '#options':\n    1: Male\n    2: Female\n  '#title': Gender\n  '#description': \"\"\n  '#required': true\nparticipant_permanent_address:\n  '#type': textfield\n  '#title': Permanent Address\n  '#description': \"\"\n  '#required': true\nparticipant_home_phone_landline:\n  '#type': textfield\n  '#title_display': invisible\n  '#title': Phone Number(s)\n  '#description': \"\"\n  '#required': true\nparticipant_mobile_phone:\n  '#type': textfield\n  '#title_display': invisible\n  '#title': Mobile Phone\n  '#description': \"\"\nparticipant_passport_number:\n  '#type': textfield\n  '#title': Passport Information\n  '#description': \"\"\n  '#required': true\nparticipant_passport_date_of_issue:\n  '#type': textfield\n  '#title_display': invisible\n  '#title': Date of Issue\n  '#description': \"\"\n  '#required': true\nparticipant_passport_expiration_date:\n  '#type': textfield\n  '#title_display': invisible\n  '#title': Expiration Date\n  '#description': \"\"\n  '#required': true\nhost_program_information_header:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h2>Host Program Information</h2>\"\n  '#title': [HEADER] Host Program Information\n  '#description': \"\"\nhost_program_name:\n  '#type': textfield\n  '#title': Host Program\n  '#description': \"\"\n  '#required': true\nhost_program_start_date:\n  '#type': textfield\n  '#title_display': invisible\n  '#title': Start Date\n  '#description': \"\"\n  '#required': true\nhost_program_end_date:\n  '#type': textfield\n  '#title_display': invisible\n  '#title': End Date\n  '#description': \"\"\n  '#required': true\nprogram_coordinator_name:\n  '#type': textfield\n  '#title': Program Coordinator\n  '#description': \"\"\n  '#required': true\nprogram_coordinator_phone_number:\n  '#type': textfield\n  '#title_display': invisible\n  '#title': Phone Number\n  '#description': \"\"\nprogram_coordinator_email_address:\n  '#type': email\n  '#size': 20\n  '#title_display': invisible\n  '#title': Email Address\n  '#description': \"\"\n  '#required': true\nemergency_contact_information_header:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h2>Emergency Contact Information</h2>\"\n  '#title': [HEADER] Emergency Contact Information\n  '#description': \"\"\nemergency_contact_1_name:\n  '#type': textfield\n  '#title': Emergency Contact #1\n  '#description': \"\"\n  '#required': true\nemergency_contact_1_email_address:\n  '#type': email\n  '#size': 20\n  '#title_display': invisible\n  '#title': Email Address\n  '#description': \"\"\n  '#required': true\nemergency_contact_1_relationship:\n  '#type': textfield\n  '#title_display': invisible\n  '#title': Relationship to you\n  '#description': \"\"\n  '#required': true\nemergency_contact_1_home_address:\n  '#type': textfield\n  '#title_display': invisible\n  '#title': Home Address\n  '#description': \"\"\n  '#required': true\nemergency_contact_1_home_phone_landline:\n  '#type': textfield\n  '#title': Phone Number(s)\n  '#description': \"\"\n  '#required': true\nemergency_contact_1_mobile_phone:\n  '#type': textfield\n  '#title_display': invisible\n  '#title': Mobile Phone\n  '#description': \"\"\n  '#required': true\nemergency_contact_1_work_phone:\n  '#type': textfield\n  '#title_display': invisible\n  '#title': Work Phone\n  '#description': \"\"\nemergency_contact_2_name:\n  '#type': textfield\n  '#title': Emergency Contact #2\n  '#description': \"\"\nemergency_contact_2_email_address:\n  '#type': email\n  '#size': 20\n  '#title_display': invisible\n  '#title': Email Address\n  '#description': \"\"\nemergency_contact_2_relationship:\n  '#type': textfield\n  '#title_display': invisible\n  '#title': Relationship to you\n  '#description': \"\"\nemergency_contact_2_home_address:\n  '#type': textfield\n  '#title_display': invisible\n  '#title': Home Address\n  '#description': \"\"\nemergency_contact_2_home_phone_landline:\n  '#type': textfield\n  '#title': Phone Number(s)\n  '#description': \"\"\nemergency_contact_2_mobile_phone_mobile:\n  '#type': textfield\n  '#title_display': invisible\n  '#title': Mobile Phone\n  '#description': \"\"\nemergency_contact_2_work_phone:\n  '#type': textfield\n  '#title_display': invisible\n  '#title': Work Phone\n  '#description': \"\"\nwill_contact_info:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>In the event of a health or safety emergency, or the need to locate you, we will reach out to the people you list as emergency contacts.</p>\"\n  '#title': Will Contact Info\n  '#description': \"\"\nhealth_insurance_information_header:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h2>Health Insurance Information</h2>\"\n  '#title': [HEADER] Health Insurance Information\n  '#description': \"\"\nprimary_health_insurance_coverage:\n  '#type': textfield\n  '#title': Primary Health Insurance Coverage\n  '#description': \"\"\n  '#required': true\nhealth_insurance_phone_number:\n  '#type': textfield\n  '#title_display': invisible\n  '#title': Phone Number\n  '#description': \"\"\n  '#required': true\nhealth_insurance_website_url:\n  '#type': textfield\n  '#title_display': invisible\n  '#title': Website URL\n  '#description': \"\"\n  '#required': true\nhealth_insurance_policy_number:\n  '#type': textfield\n  '#title_display': invisible\n  '#title': Policy Number\n  '#description': \"\"\n  '#required': true\nmandatory_overseas_coverage_header:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h2>Mandatory Overseas Medical &amp; Travel Insurance Coverage</h2>\"\n  '#title': [HEADER] Mandatory Overseas Coverage\n  '#description': \"\"\nmandatory_overseas_coverage_text:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>All participants MUST provide proof of overseas medical and travel coverage for the term spent abroad by attaching a statement or letter of enrollment and/or card.</p><ul><li><strong>• <em>Sponsored Program participants:</em></strong> You are automatically covered through ACE/Europassist while abroad.<br>&nbsp;</li><li><strong>• <em>External Program participants:</em></strong> You must purchase Wells Fargo's plan if your host program or primary insurance does not include overseas medical coverage and 24 hour emergency assist services abroad.</li></ul>\"\n  '#title': [TEXT] Mandatory Overseas Coverage\n  '#description': \"\"\ninformation_release_header:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h2>Additional Information</h2>\"\n  '#title': [HEADER] Information Release\n  '#description': \"\"\ninformation_release_text:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p>University of San Francisco's Center for Global Education would like permission to release your name, e-mail, and phone number while you are abroad or upon your return to students inquiring about your host study abroad program or country.</p>\"\n  '#title': [TEXT] Information Release\n  '#description': \"\"\ninformation_release:\n  '#type': radios\n  '#options':\n    2: &nbsp;Yes\n    3: &nbsp;No\n  '#title_display': inline\n  '#title': Allow USF to release my information?\n  '#description': \"\"\n  '#required': true\nconfirmation_header:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h2>Confirmation</h2>\"\n  '#title': [HEADER] Confirmation\n  '#description': \"\"\nconfirmation:\n  '#type': radios\n  '#options':\n    1: &nbsp;By checking this option, I hereby certify that all information provided on this Participant Information Sheet is true and correct.\n  '#title_display': invisible\n  '#title': Confirmation\n  '#description': \"\"\n  '#required': true\n"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  submission_label: ''
+  submission_log: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: '0'
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+  form_submit_label: ''
+  wizard_complete: 1
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles:
+      - editor
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles:
+      - editor
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles:
+      - editor
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email_1:
+    id: email
+    label: 'Email 1'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      states:
+        - completed
+      to_mail: '[webform-submission:values:participant_email_address:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: 'Participant Information Sheet'
+      body: "<p>Submitted on [submission:date:long]</p>\n<p>Submitted by user: [submission:user]</p>\n<p>Submitted values are:</p>\n[submission:values]\n"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+  email_2:
+    id: email
+    label: 'Email 2'
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      states:
+        - completed
+      to_mail: studyabroad@usfca.edu
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: 'Participant Information Sheet'
+      body: "Submitted on [submission:date:long]\nSubmitted by user: [submission:user]\nSubmitted values are:\n[submission:values]\n"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
