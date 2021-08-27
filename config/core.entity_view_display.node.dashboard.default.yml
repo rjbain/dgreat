@@ -1,0 +1,35 @@
+uuid: f3aa4e87-b1a5-40d3-8c9c-8a1ece954fcd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.dashboard.body
+    - field.field.node.dashboard.field_role
+    - node.type.dashboard
+  module:
+    - text
+    - user
+id: node.dashboard.default
+targetEntityType: node
+bundle: dashboard
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_role:
+    weight: 102
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden: {  }

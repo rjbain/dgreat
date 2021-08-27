@@ -1,0 +1,29 @@
+uuid: 9cc5a5ed-c479-4352-906a-69228f98bc12
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_faculty_department
+    - node.type.faculty
+    - taxonomy.vocabulary.faculty_department
+id: node.faculty.field_faculty_department
+field_name: field_faculty_department
+entity_type: node
+bundle: faculty
+label: 'Faculty Department'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      faculty_department: faculty_department
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,63 @@
+uuid: f19397dd-1924-43cd-9786-cccc885d1284
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bp_modal.bp_background
+    - field.field.paragraph.bp_modal.bp_header
+    - field.field.paragraph.bp_modal.bp_modal_body
+    - field.field.paragraph.bp_modal.bp_modal_button_text
+    - field.field.paragraph.bp_modal.bp_modal_footer
+    - field.field.paragraph.bp_modal.bp_modal_title
+    - field.field.paragraph.bp_modal.bp_width
+    - paragraphs.paragraphs_type.bp_modal
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: 0PmBiXZLN2ZxqXMPlJWXpjOMtxB8o0Ivt44Gl3E4HpE
+id: paragraph.bp_modal.default
+targetEntityType: paragraph
+bundle: bp_modal
+mode: default
+content:
+  bp_modal_body:
+    type: entity_reference_revisions_entity_view
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  bp_modal_button_text:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  bp_modal_footer:
+    type: entity_reference_revisions_entity_view
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  bp_modal_title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  bp_background: true
+  bp_header: true
+  bp_width: true
+  created: true
+  search_api_excerpt: true
+  uid: true

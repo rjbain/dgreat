@@ -12,15 +12,20 @@ id: webform_138053
 title: 'New Student Orientation Volunteers'
 description: null
 category: null
-elements: "intro:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p><span>Thank you for volunteering your time during New Student Orientation weekend! Your presence will make a tremendous impact on our incoming students and their families. Please mark any/all events for which you are available. For the Family Orientation check-in, please mark which shifts you'd be available for. More information regarding support of these events will be emailed to you directly in August.</span></p>\"\n  '#title': Introduction\n  '#description': \"\"\nfirst_name:\n  '#type': textfield\n  '#title': First Name\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name\n  '#description': \"\"\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': \"\"\n  '#required': true\nposition_title:\n  '#type': radios\n  '#options':\n    1: Staff\n    2: Faculty\n  '#title': Role\n  '#description': \"\"\n  '#required': true\nposition_title_textfield:\n  '#type': textfield\n  '#title': Position Title\n  '#description': \"\"\n  '#required': true\ndepartment_name:\n  '#type': textfield\n  '#title': Department Name\n  '#description': \"\"\n  '#required': true\nname_of_supervisor:\n  '#type': textfield\n  '#title': Name of Supervisor\n  '#description': \"\"\n  '#required': true\nfieldset_volunteer_options:\n  '#type': fieldset\n  '#open': true\n  '#title': Volunteer Options\n  '#description': \"\"\nfamily_orientation_check_in_saturday_1030am___230pm___2_hour_shifts:\n  '#description': \"10a.m.-12p.m.\\n2\"\n  '#type': checkbox\n  '#options':\n    1: 10a.m.-12p.m.\n    2: 12p.m.-2p.m.\n    3: 12:30p.m.-2:30p.m.\n  '#multiple': true\n  '#title': Family Orientation Check-In (Saturday) 10:30am - 2:30pm - 2 hour shifts\n  '#description': \"\"\nmove_in_day_welcoming_team_saturday_730am___330pm___3_hour_shifts:\n  '#description': \"7:30a.m.-10:30a.m.\\n2\"\n  '#type': checkbox\n  '#options':\n    1: 7:30a.m.-10:30a.m.\n    2: 10:30a.m.-1:30p.m.\n    3: 12:30p.m.-3:30p.m.\n  '#multiple': true\n  '#title': Move-In Day Welcoming Team (Saturday) 7:30am - 3:30pm - 3 hour shifts\n  '#description': \"\"\nbrunch_with_new_students_and_families_sunday:\n  '#description': \"11:00a.m. - 12:45p.m.\\n\"\n  '#type': checkbox\n  '#options':\n    1: 11:00a.m. - 12:45p.m.\n  '#multiple': true\n  '#title': Brunch with New Students and Families (Sunday) \n  '#description': \"\"\n"
+elements: "intro:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p><span>Thank you for volunteering your time during New Student Orientation weekend! Your presence will make a tremendous impact on our incoming students and their families. Please mark any/all events for which you are available. For the Family Orientation check-in, please mark which shifts you''d be available for. More information regarding support of these events will be emailed to you directly in August.</span></p>'\n  '#title': Introduction\n  '#description': ''\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': ''\n  '#required': true\nposition_title:\n  '#type': radios\n  '#options':\n    1: Staff\n    2: Faculty\n  '#title': Role\n  '#description': ''\n  '#required': true\nposition_title_textfield:\n  '#type': textfield\n  '#title': 'Position Title'\n  '#description': ''\n  '#required': true\ndepartment_name:\n  '#type': textfield\n  '#title': 'Department Name'\n  '#description': ''\n  '#required': true\nname_of_supervisor:\n  '#type': textfield\n  '#title': 'Name of Supervisor'\n  '#description': ''\n  '#required': true\nfieldset_volunteer_options:\n  '#type': fieldset\n  '#open': true\n  '#title': 'Volunteer Options'\n  '#description': ''\nfamily_orientation_check_in_saturday_1030am___230pm___2_hour_shifts:\n  '#description': \"10a.m.-12p.m.\\n2\"\n  '#type': checkbox\n  '#options':\n    1: 10a.m.-12p.m.\n    2: 12p.m.-2p.m.\n    3: '12:30p.m.-2:30p.m.'\n  '#multiple': true\n  '#title': 'Family Orientation Check-In (Saturday) 10:30am - 2:30pm - 2 hour shifts'\nmove_in_day_welcoming_team_saturday_730am___330pm___3_hour_shifts:\n  '#description': \"7:30a.m.-10:30a.m.\\n2\"\n  '#type': checkbox\n  '#options':\n    1: '7:30a.m.-10:30a.m.'\n    2: '10:30a.m.-1:30p.m.'\n    3: '12:30p.m.-3:30p.m.'\n  '#multiple': true\n  '#title': 'Move-In Day Welcoming Team (Saturday) 7:30am - 3:30pm - 3 hour shifts'\nbrunch_with_new_students_and_families_sunday:\n  '#description': \"11:00a.m. - 12:45p.m.\\n\"\n  '#type': checkbox\n  '#options':\n    1: '11:00a.m. - 12:45p.m.'\n  '#multiple': true\n  '#title': 'Brunch with New Students and Families (Sunday)'\n"
 css: ''
 javascript: ''
 settings:
   ajax: false
   ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
   page: true
   page_submit_path: ''
   page_confirm_path: ''
+  page_theme_name: ''
+  form_title: both
   form_submit_once: false
   form_exception_message: ''
   form_open_message: ''
@@ -28,6 +33,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -48,6 +54,11 @@ settings:
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
   submission_label: ''
   submission_log: false
   submission_views: {  }
@@ -60,6 +71,9 @@ settings:
   submission_access_denied_attributes: {  }
   submission_exception_message: ''
   submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -69,11 +83,20 @@ settings:
   wizard_progress_pages: false
   wizard_progress_percentage: false
   wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
   wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -87,6 +110,8 @@ settings:
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
   confirmation_type: page
   confirmation_title: ''
   confirmation_message: '<p>Thank you for your interest. See you in August!&nbsp;</p>'
@@ -97,12 +122,15 @@ settings:
   confirmation_back_attributes: {  }
   confirmation_exclude_query: false
   confirmation_exclude_token: false
+  confirmation_update: false
   limit_total: null
   limit_total_interval: null
   limit_total_message: ''
+  limit_total_unique: false
   limit_user: null
   limit_user_interval: null
   limit_user_message: ''
+  limit_user_unique: false
   entity_limit_total: null
   entity_limit_total_interval: null
   entity_limit_user: null
@@ -111,7 +139,11 @@ settings:
   purge_days: null
   results_disabled: false
   results_disabled_ignore: false
+  results_customize: false
+  token_view: false
   token_update: false
+  token_delete: false
+  serial_disabled: false
   form_submit_label: ''
   wizard_complete: 1
 access:
@@ -160,10 +192,15 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
 handlers:
   email_1:
     id: email
     label: 'Email 1'
+    notes: ''
     handler_id: email_1
     status: true
     conditions: {  }
@@ -186,6 +223,7 @@ handlers:
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
+      exclude_attachments: false
       html: true
       attachments: false
       twig: false
@@ -195,3 +233,5 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
+      parameters: {  }
+variants: {  }
