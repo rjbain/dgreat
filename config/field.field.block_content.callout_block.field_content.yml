@@ -1,0 +1,93 @@
+uuid: 733f81f3-1a48-4d21-99a0-6ddccdff6aed
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.callout_block
+    - field.storage.block_content.field_content
+    - paragraphs.paragraphs_type.box_styles
+    - paragraphs.paragraphs_type.bp_simple
+  module:
+    - entity_reference_revisions
+id: block_content.callout_block.field_content
+field_name: field_content
+entity_type: block_content
+bundle: callout_block
+label: Content
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      box_styles: box_styles
+      bp_simple: bp_simple
+    target_bundles_drag_drop:
+      box_styles:
+        enabled: true
+        weight: 22
+      bp_accordion:
+        weight: 23
+        enabled: false
+      bp_accordion_section:
+        weight: 24
+        enabled: false
+      bp_blank:
+        weight: 25
+        enabled: false
+      bp_block:
+        weight: 26
+        enabled: false
+      bp_carousel:
+        weight: 27
+        enabled: false
+      bp_columns:
+        weight: 28
+        enabled: false
+      bp_columns_three_uneven:
+        weight: 29
+        enabled: false
+      bp_columns_two_uneven:
+        weight: 30
+        enabled: false
+      bp_column_wrapper:
+        weight: 31
+        enabled: false
+      bp_image:
+        weight: 32
+        enabled: false
+      bp_modal:
+        weight: 33
+        enabled: false
+      bp_simple:
+        enabled: true
+        weight: 34
+      bp_tabs:
+        weight: 35
+        enabled: false
+      bp_tab_section:
+        weight: 36
+        enabled: false
+      bp_view:
+        weight: 37
+        enabled: false
+      bp_webform:
+        weight: 38
+        enabled: false
+      migrate:
+        weight: 39
+        enabled: false
+      reference:
+        weight: 40
+        enabled: false
+      social_media_link:
+        weight: 41
+        enabled: false
+      usfcat_updates:
+        weight: 42
+        enabled: false
+field_type: entity_reference_revisions

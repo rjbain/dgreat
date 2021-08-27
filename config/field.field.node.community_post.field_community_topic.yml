@@ -1,0 +1,29 @@
+uuid: 7b6a8b60-8bc3-43f2-8b6d-bccfe5404f0c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_community_topic
+    - node.type.community_post
+    - taxonomy.vocabulary.community
+id: node.community_post.field_community_topic
+field_name: field_community_topic
+entity_type: node
+bundle: community_post
+label: 'Community Topic'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      community: community
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
