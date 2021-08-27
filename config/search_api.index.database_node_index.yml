@@ -1,0 +1,189 @@
+uuid: 702d4484-76e0-410c-8bf5-2325ac1ffeba
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - search_api
+  config:
+    - field.storage.node.field_url
+    - field.storage.node.field_usfcat_audience_ref
+    - field.storage.node.field_usfcat_category_ref
+    - field.storage.node.field_usfcat_description_short
+    - field.storage.node.field_usfcat_provider_ref
+    - field.storage.node.field_usfcat_synonyms
+    - field.storage.node.field_usfcat_updates
+    - field.storage.node.body
+    - search_api.server.database_server
+id: database_node_index
+name: 'Database Node Index'
+description: ''
+read_only: false
+field_settings:
+  nid:
+    label: ID
+    datasource_id: 'entity:node'
+    property_path: nid
+    type: integer
+    dependencies:
+      module:
+        - node
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    boost: !!float 8
+    dependencies:
+      module:
+        - node
+  field_url:
+    label: URL
+    datasource_id: 'entity:node'
+    property_path: field_url
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_url
+  status:
+    label: Published
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    dependencies:
+      module:
+        - node
+  created:
+    label: 'Authored on'
+    datasource_id: 'entity:node'
+    property_path: created
+    type: date
+    dependencies:
+      module:
+        - node
+  uid:
+    label: 'Authored by'
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    dependencies:
+      module:
+        - node
+  field_usfcat_audience_ref:
+    label: Audience
+    datasource_id: 'entity:node'
+    property_path: field_usfcat_audience_ref
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_usfcat_audience_ref
+  type:
+    label: 'Content type'
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+    dependencies:
+      module:
+        - node
+  field_usfcat_category_ref:
+    label: Category
+    datasource_id: 'entity:node'
+    property_path: field_usfcat_category_ref
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_usfcat_category_ref
+  field_usfcat_description_short:
+    label: 'Short description'
+    datasource_id: 'entity:node'
+    property_path: field_usfcat_description_short
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_usfcat_description_short
+  field_usfcat_provider_ref:
+    label: Provider
+    datasource_id: 'entity:node'
+    property_path: field_usfcat_provider_ref
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_usfcat_provider_ref
+  field_usfcat_synonyms:
+    label: Synonyms
+    datasource_id: 'entity:node'
+    property_path: field_usfcat_synonyms
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_usfcat_synonyms
+  field_usfcat_updates:
+    label: Updates
+    datasource_id: 'entity:node'
+    property_path: field_usfcat_updates
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_usfcat_updates
+  body:
+    label: Body
+    datasource_id: 'entity:node'
+    property_path: body
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.body
+  summary:
+    label: 'Body » Summary'
+    datasource_id: 'entity:node'
+    property_path: 'body:summary'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.body
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: true
+      selected: {  }
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  rendered_item: {  }
+  add_url: {  }
+  aggregated_field: {  }
+  ignorecase:
+    all_fields: true
+    fields:
+      - title
+      - field_url
+      - type
+      - field_usfcat_description_short
+      - field_usfcat_synonyms
+      - body
+      - summary
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
+  transliteration:
+    all_fields: true
+    fields:
+      - title
+      - field_url
+      - type
+      - field_usfcat_description_short
+      - field_usfcat_synonyms
+      - body
+      - summary
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
+  language_with_fallback: {  }
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  index_directly: true
+  cron_limit: 50
+server: database_server

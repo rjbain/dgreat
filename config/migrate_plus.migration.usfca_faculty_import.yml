@@ -1,0 +1,169 @@
+uuid: b4569a2c-f22d-4476-9feb-c0b72caf44ef
+langcode: en
+status: true
+dependencies: {  }
+id: usfca_faculty_import
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: null
+label: 'Faculty Details Import'
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  urls: 'http://www.usfca.edu/feeds/feed?source=myusf-faculty'
+  data_parser_plugin: simple_xml
+  item_selector: /faculty/item
+  fields:
+    -
+      name: title
+      label: Title
+      selector: title
+    -
+      name: display_title
+      label: 'Display Title'
+      selector: display_title
+    -
+      name: banner_id
+      label: 'Banner ID'
+      selector: banner_id
+    -
+      name: school
+      label: School
+      selector: school
+    -
+      name: program
+      label: Program
+      selector: program
+    -
+      name: faculty_department
+      label: 'Faculty Department'
+      selector: faculty_department
+    -
+      name: program_director
+      label: 'Program Director'
+      selector: program_director
+    -
+      name: position
+      label: Position
+      selector: position
+    -
+      name: past_education
+      label: 'Past Education'
+      selector: past_education
+    -
+      name: expertise
+      label: Expertise
+      selector: expertise
+    -
+      name: first_name
+      label: 'First Name'
+      selector: first_name
+    -
+      name: middle_initial
+      label: 'Middle Initial'
+      selector: middle_initial
+    -
+      name: last_name
+      label: 'Last Name'
+      selector: last_name
+    -
+      name: name_suffix
+      label: 'Name Suffix'
+      selector: name_suffix
+    -
+      name: professional_title
+      label: 'Professional Title'
+      selector: professional_title
+    -
+      name: description
+      label: Description
+      selector: description
+    -
+      name: summary
+      label: Summary
+      selector: summary
+    -
+      name: phone
+      label: Phone
+      selector: phone
+    -
+      name: email_address
+      label: 'Email Address'
+      selector: email_address
+    -
+      name: image
+      label: Image
+      selector: image
+    -
+      name: path
+      label: Path
+      selector: path
+    -
+      name: guid
+      label: GUID
+      selector: guid
+  ids:
+    guid:
+      type: string
+process:
+  title: title
+  field_display_title: display_title
+  field_banner_id: banner_id
+  field_position: position
+  field_past_education: past_education
+  field_expertise: expertise
+  field_first_name: first_name
+  field_middle_initial: middle_initial
+  field_last_name: last_name
+  field_name_suffix: name_suffix
+  field_professional_title: professional_title
+  body: description
+  field_summary: summary
+  field_phone: phone
+  field_email_address: email_address
+  field_image_url: image
+  field_source_url: path
+  field_guid: guid
+  field_faculty_school:
+    plugin: entity_generate
+    source: school
+    value_key: name
+    bundle: faculty_school
+    entity_type: taxonomy_term
+    ignore_case: true
+  field_faculty_program:
+    plugin: entity_generate
+    source: program
+    value_key: name
+    bundle: faculty_program
+    entity_type: taxonomy_term
+    ignore_case: true
+  field_faculty_department:
+    plugin: entity_generate
+    source: faculty_department
+    value_key: name
+    bundle: faculty_department
+    entity_type: taxonomy_term
+    ignore_case: true
+  field_faculty_program_director:
+    plugin: entity_generate
+    source: program_director
+    value_key: name
+    bundle: faculty_program_director
+    entity_type: taxonomy_term
+    ignore_case: true
+  field_faculty_position:
+    plugin: entity_generate
+    source: position
+    value_key: name
+    bundle: faculty_position
+    entity_type: taxonomy_term
+    ignore_case: true
+  type:
+    plugin: default_value
+    default_value: faculty
+destination:
+  plugin: 'entity:node'
+migration_dependencies: null
