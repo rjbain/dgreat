@@ -1,0 +1,34 @@
+uuid: f7cf34c4-5c66-4806-9a20-0dc1d26a5130
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bp_view.bp_background
+    - field.field.paragraph.bp_view.bp_view
+    - field.field.paragraph.bp_view.bp_width
+    - paragraphs.paragraphs_type.bp_view
+  module:
+    - viewsreference
+_core:
+  default_config_hash: W2kdovIcfQyP_l5f4G2NKrJZaACTJhEaBu1gD0RAGMs
+id: paragraph.bp_view.default
+targetEntityType: paragraph
+bundle: bp_view
+mode: default
+content:
+  bp_view:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: '60'
+      placeholder: ''
+      match_limit: 10
+    third_party_settings: {  }
+    type: viewsreference_autocomplete
+    region: content
+hidden:
+  bp_background: true
+  bp_width: true
+  created: true
+  status: true
+  uid: true
