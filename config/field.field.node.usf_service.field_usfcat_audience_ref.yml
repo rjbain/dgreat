@@ -1,0 +1,25 @@
+uuid: 46d77fa4-34b1-43a7-b781-33445838ed05
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_usfcat_audience_ref
+    - node.type.usf_service
+id: node.usf_service.field_usfcat_audience_ref
+field_name: field_usfcat_audience_ref
+entity_type: node
+bundle: usf_service
+label: Audience
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: service_reference_filters
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference

@@ -1,0 +1,55 @@
+uuid: 25a48037-439e-4a8d-bb11-cf50541f8a1d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bp_image.bp_background
+    - field.field.paragraph.bp_image.bp_image_field
+    - field.field.paragraph.bp_image.bp_link
+    - field.field.paragraph.bp_image.bp_text
+    - field.field.paragraph.bp_image.bp_width
+    - paragraphs.paragraphs_type.bp_image
+  module:
+    - image
+    - link
+    - text
+_core:
+  default_config_hash: f1qcyZTh1nWCN2Sk7I1xwTOhucQDBgnWOUBoF3T94Xk
+id: paragraph.bp_image.default
+targetEntityType: paragraph
+bundle: bp_image
+mode: default
+content:
+  bp_image_field:
+    type: image
+    weight: 0
+    region: content
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+  bp_link:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  bp_text:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  bp_background: true
+  bp_width: true
+  created: true
+  uid: true

@@ -1,0 +1,30 @@
+uuid: 70dd7f05-c977-4c3f-9b09-7a4fcd57d027
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: favorite
+label: Favorite
+bundles:
+  - favorite_link
+entity_type: node
+global: false
+weight: 0
+flag_short: 'Add Link'
+flag_long: 'Add <em>[node:title]</em> to your Favorite Links'
+flag_message: ''
+unflag_short: 'Remove Link'
+unflag_long: 'Remove <em>[node:title]</em> from your Favorite Links'
+unflag_message: ''
+unflag_denied_text: ''
+flag_type: 'entity:node'
+link_type: ajax_link
+flagTypeConfig:
+  show_in_links: {  }
+  show_as_field: true
+  show_on_form: false
+  show_contextual_link: false
+  extra_permissions:
+    owner: '0'
+linkTypeConfig: {  }

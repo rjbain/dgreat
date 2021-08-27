@@ -1,10 +1,11 @@
 server:
   version: '2.0'
-  hostname: cas.usfca.edu
+  hostname: usfcas.usfca.edu
   port: 443
   path: /cas
   verify: 0
   cert: ''
+  protocol: https
 gateway:
   check_frequency: -2
   paths:
@@ -42,3 +43,11 @@ login_link_enabled: true
 login_link_label: 'Login using CAS'
 _core:
   default_config_hash: 8DaBBGvjnTAKJrdg2aY2FHId9Qt4D2Yek7gozPUx6v8
+login_success_message: 'You have been logged in.'
+error_handling:
+  message_validation_failure: 'There was a problem logging in, please contact a site administrator.'
+  message_no_local_account: 'There was a problem logging in, please contact a site administrator.'
+  message_subscriber_denied_reg: 'There was a problem logging in, please contact a site administrator.'
+  message_account_blocked: 'There was a problem logging in, please contact a site administrator.'
+  message_subscriber_denied_login: 'There was a problem logging in, please contact a site administrator.'
+  message_username_already_exists: 'There was a problem logging in, please contact a site administrator.'

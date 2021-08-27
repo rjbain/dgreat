@@ -1,0 +1,72 @@
+uuid: d7010aa0-ebc6-4914-904b-1dee6198759a
+langcode: en
+status: true
+dependencies: {  }
+id: usfnews_import
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: null
+label: 'USF News Import to MyUSF'
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  urls: 'https://www.usfca.edu/feeds/myusf/usfnews'
+  data_parser_plugin: simple_xml
+  item_selector: /usf_news/item
+  fields:
+    -
+      name: title
+      label: Title
+      selector: title
+    -
+      name: description
+      label: Description
+      selector: description
+    -
+      name: image_url
+      label: 'Image URL'
+      selector: image
+    -
+      name: guid
+      label: GUID
+      selector: nid
+    -
+      name: content_type
+      label: Type
+      selector: type
+    -
+      name: news_link
+      label: 'News Link'
+      selector: link
+    -
+      name: news_type
+      label: 'News Type'
+      selector: news_type
+  ids:
+    guid:
+      type: string
+process:
+  title: title
+  body: description
+  field_image_url: image_url
+  field_guid: guid
+  field_type: content_type
+  field_news_link: news_link
+  field_news_type:
+    plugin: entity_generate
+    source: news_type
+    value_key: name
+    bundle: news_type
+    entity_type: taxonomy_term
+    ignore_case: true
+  status:
+    plugin: default_value
+    default_value: 1
+  type:
+    plugin: default_value
+    default_value: news
+destination:
+  plugin: 'entity:node'
+migration_dependencies: null

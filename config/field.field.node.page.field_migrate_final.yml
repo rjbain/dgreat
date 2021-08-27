@@ -1,0 +1,76 @@
+uuid: 6a37634a-8ec6-4d8c-9548-636d8007aafe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_migrate_final
+    - node.type.page
+    - paragraphs.paragraphs_type.migrate
+  module:
+    - entity_reference_revisions
+id: node.page.field_migrate_final
+field_name: field_migrate_final
+entity_type: node
+bundle: page
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 1
+    target_bundles:
+      migrate: migrate
+    target_bundles_drag_drop:
+      bp_accordion:
+        weight: 17
+        enabled: false
+      bp_accordion_section:
+        weight: 18
+        enabled: false
+      bp_blank:
+        weight: 19
+        enabled: false
+      bp_block:
+        weight: 20
+        enabled: false
+      bp_carousel:
+        weight: 21
+        enabled: false
+      bp_columns:
+        weight: 22
+        enabled: false
+      bp_columns_three_uneven:
+        weight: 23
+        enabled: false
+      bp_columns_two_uneven:
+        weight: 24
+        enabled: false
+      bp_column_wrapper:
+        weight: 25
+        enabled: false
+      bp_image:
+        weight: 26
+        enabled: false
+      bp_modal:
+        weight: 27
+        enabled: false
+      bp_simple:
+        weight: 28
+        enabled: false
+      bp_tabs:
+        weight: 29
+        enabled: false
+      bp_tab_section:
+        weight: 30
+        enabled: false
+      bp_view:
+        weight: 31
+        enabled: false
+      migrate:
+        enabled: true
+        weight: 32
+field_type: entity_reference_revisions
