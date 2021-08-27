@@ -1,0 +1,58 @@
+{#
+/**
+ * @file
+ * Default view template to display all the fields in a row.
+ *
+ * Available variables:
+ * - view: The view in use.
+ * - fields: A list of fields, each one contains:
+ *   - content: The output of the field.
+ *   - raw: The raw data for the field, if it exists. This is NOT output safe.
+ *   - class: The safe class ID to use.
+ *   - handler: The Views field handler controlling this field.
+ *   - inline: Whether or not the field should be inline.
+ *   - wrapper_element: An HTML element for a wrapper.
+ *   - wrapper_attributes: List of attributes for wrapper element.
+ *   - separator: An optional separator that may appear before a field.
+ *   - label: The field's label text.
+ *   - label_element: An HTML element for a label wrapper.
+ *   - label_attributes: List of attributes for label wrapper.
+ *   - label_suffix: Colon after the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ *   - has_label_colon: A boolean indicating whether to display a colon after
+ *     the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ * - row: The raw result from the query, with all data it fetched.
+ *
+ * @see template_preprocess_views_view_fields()
+ *
+ * @ingroup themeable
+ */
+#}
+<a href="{{ path('entity.node.canonical', {'node': fields.nid.content|trim }) }}">
+	<article class="event-calendar-list-item">
+		<div class="events-widget-title">
+			{% if fields.field_image_url.content %}
+				<img src="{{ fields.field_image_url.content }}" align="right" alt="">
+			{% endif %}
+			<h3 class="event-list-title">
+        		{% autoescape false %}
+          			{{ fields.title.content }}
+        		{% endautoescape %}
+			</h3>
+		</div>
+		<div class="events-widget-time">{{ fields.field_start_date.content }}, {{ fields.field_start_date_1.content }} - {{ fields.field_end_date.content }}</div>
+		<div class="events-widget-location">{{ fields.field_location.content }}</div>		
+	</article>
+</a>
+<!--<div>
+{#% set terms = fields.field_import_terms.content|split(', ') %}
+{% for term in terms %}
+    {{ term }}
+    <br>
+{% endfor %#}
+</div>-->
+
+

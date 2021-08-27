@@ -1,0 +1,36 @@
+uuid: d5b0c9fe-5cc7-4d0a-82bc-3a427d176a9a
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.pasj-20th-menu
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - myusf
+id: pasj20thmenu
+theme: myusf
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:pasj-20th-menu'
+settings:
+  id: 'system_menu_block:pasj-20th-menu'
+  label: 'PASJ 20th Menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: '/PASJ-20th*'
+    negate: false
+    context_mapping: {  }
