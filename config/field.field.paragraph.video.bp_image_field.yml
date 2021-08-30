@@ -1,0 +1,38 @@
+uuid: 8cb1f31d-d25f-4b69-be7f-be2ab76658fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.bp_image_field
+    - paragraphs.paragraphs_type.video
+  module:
+    - image
+id: paragraph.video.bp_image_field
+field_name: bp_image_field
+entity_type: paragraph
+bundle: video
+label: Image
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: video
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: true
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

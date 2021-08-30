@@ -1,0 +1,29 @@
+uuid: 43c93a0c-8c2a-456e-bf0e-0b3f8c053b47
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.dashboard.body
+    - node.type.dashboard
+  module:
+    - text
+    - user
+id: node.dashboard.teaser
+targetEntityType: node
+bundle: dashboard
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_role: true
