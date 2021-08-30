@@ -1,0 +1,28 @@
+uuid: 920c62f2-0207-4f85-ab3b-231c9b330735
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_group_audience
+    - group.type.groups
+    - node.type.favorite_link
+id: node.favorite_link.field_group_audience
+field_name: field_group_audience
+entity_type: node
+bundle: favorite_link
+label: 'Group audience'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:group'
+  handler_settings:
+    target_bundles:
+      groups: groups
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
