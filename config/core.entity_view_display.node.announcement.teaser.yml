@@ -1,0 +1,37 @@
+uuid: df054610-11f7-4430-bd15-d7ca84463abb
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.announcement.body
+    - node.type.announcement
+  module:
+    - text
+    - user
+id: node.announcement.teaser
+targetEntityType: node
+bundle: announcement
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_announcement_audience: true
+  field_announcement_tags: true
+  field_announcement_teaser: true
+  field_expiration_date: true
+  field_featured_image: true
+  field_featured_image_caption: true
+  field_published_date: true
+  field_role: true
+  field_subtitle: true

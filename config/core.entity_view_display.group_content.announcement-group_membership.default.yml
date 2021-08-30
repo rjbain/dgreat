@@ -1,0 +1,23 @@
+uuid: 4211152a-8627-441d-a968-339b8e1379e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group_content.announcement-group_membership.group_roles
+    - group.content_type.announcement-group_membership
+id: group_content.announcement-group_membership.default
+targetEntityType: group_content
+bundle: announcement-group_membership
+mode: default
+content:
+  group_roles:
+    label: above
+    type: entity_reference_label
+    settings:
+      link: false
+    weight: -4
+    third_party_settings: {  }
+    region: content
+hidden:
+  entity_id: true
+  uid: true

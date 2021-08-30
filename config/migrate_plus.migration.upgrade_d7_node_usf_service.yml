@@ -1,0 +1,75 @@
+uuid: c4a2f6d1-91fc-461b-9504-3a2998b354b3
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_usf_service
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: nodes
+label: 'Nodes (Service)'
+source:
+  plugin: d7_node
+  node_type: usf_service
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_usf_service/0/status: comment
+  body/format:
+    plugin: static_map
+    bypass: true
+    source: body_format
+    map:
+      panopoly_wysiwyg_text: basic_html
+  body/value: body_value
+  field_usfcat_audience_ref:
+    plugin: get
+    source: field_usfcat_audience_ref
+  field_usfcat_category_ref:
+    plugin: get
+    source: field_usfcat_category_ref
+  field_usfcat_description_short:
+    plugin: get
+    source: field_usfcat_description_short
+  field_usfcat_howdoi:
+    plugin: field_link
+    source: field_usfcat_howdoi
+  field_usfcat_policies:
+    plugin: field_link
+    source: field_usfcat_policies
+  field_usfcat_provider_ref:
+    plugin: get
+    source: field_usfcat_provider_ref
+  field_usfcat_synonyms:
+    plugin: get
+    source: field_usfcat_synonyms
+  field_usfcat_training:
+    plugin: field_link
+    source: field_usfcat_training
+  field_usfcat_updates: field_usfcat_updates
+destination:
+  plugin: 'entity:node'
+  default_bundle: usf_service
+migration_dependencies:
+  required: {  }
+  optional:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance

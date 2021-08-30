@@ -1,0 +1,29 @@
+uuid: 7ac1b730-0cce-4949-913f-71d780d6166e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_audience
+    - node.type.community_post
+    - taxonomy.vocabulary.community_audience
+id: node.community_post.field_audience
+field_name: field_audience
+entity_type: node
+bundle: community_post
+label: Audience
+description: 'Select the audience(s) for your post.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      community_audience: community_audience
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
