@@ -1,0 +1,28 @@
+uuid: 83e77b80-9811-494f-97a6-a0ae065fb235
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_default_favorite_links
+    - group.type.groups
+    - node.type.favorite_link
+id: group.groups.field_default_favorite_links
+field_name: field_default_favorite_links
+entity_type: group
+bundle: groups
+label: 'Default Favorite Links'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      favorite_link: favorite_link
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

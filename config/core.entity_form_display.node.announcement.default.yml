@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.announcement.body
-    - field.field.node.announcement.field_announcement_audience
     - field.field.node.announcement.field_announcement_tags
     - field.field.node.announcement.field_announcement_teaser
     - field.field.node.announcement.field_expiration_date
@@ -42,16 +41,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_announcement_audience:
-    weight: 10
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-      match_limit: 10
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   field_announcement_tags:
     weight: 13
     settings:

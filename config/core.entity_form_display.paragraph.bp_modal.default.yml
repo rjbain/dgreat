@@ -1,0 +1,67 @@
+uuid: 30065269-1353-4f4b-836d-60a367e264c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bp_modal.bp_background
+    - field.field.paragraph.bp_modal.bp_modal_body
+    - field.field.paragraph.bp_modal.bp_modal_button_text
+    - field.field.paragraph.bp_modal.bp_modal_footer
+    - field.field.paragraph.bp_modal.bp_modal_title
+    - field.field.paragraph.bp_modal.bp_width
+    - paragraphs.paragraphs_type.bp_modal
+  module:
+    - paragraphs
+_core:
+  default_config_hash: SraL8fGETGo7xi0UBg9nW1reoceCdCZdFp7-2TxenwU
+id: paragraph.bp_modal.default
+targetEntityType: paragraph
+bundle: bp_modal
+mode: default
+content:
+  bp_modal_body:
+    type: entity_reference_paragraphs
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  bp_modal_button_text:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  bp_modal_footer:
+    type: entity_reference_paragraphs
+    weight: 3
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  bp_modal_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  bp_background: true
+  bp_width: true
+  created: true
+  status: true
+  uid: true

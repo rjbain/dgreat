@@ -1,0 +1,79 @@
+uuid: 342ee4f4-d76a-4b51-84c9-daf7d88b9df3
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.contact
+    - field.storage.block_content.field_social_media_links
+    - paragraphs.paragraphs_type.social_media_link
+  module:
+    - entity_reference_revisions
+id: block_content.contact.field_social_media_links
+field_name: field_social_media_links
+entity_type: block_content
+bundle: contact
+label: 'Social Media Links'
+description: 'Create a social media link.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      social_media_link: social_media_link
+    target_bundles_drag_drop:
+      social_media_link:
+        enabled: true
+        weight: 18
+      bp_accordion:
+        weight: 19
+        enabled: false
+      bp_accordion_section:
+        weight: 20
+        enabled: false
+      bp_blank:
+        weight: 21
+        enabled: false
+      bp_block:
+        weight: 22
+        enabled: false
+      bp_carousel:
+        weight: 23
+        enabled: false
+      bp_column_wrapper:
+        weight: 24
+        enabled: false
+      bp_columns:
+        weight: 25
+        enabled: false
+      bp_columns_three_uneven:
+        weight: 26
+        enabled: false
+      bp_columns_two_uneven:
+        weight: 27
+        enabled: false
+      bp_image:
+        weight: 28
+        enabled: false
+      bp_modal:
+        weight: 29
+        enabled: false
+      bp_simple:
+        weight: 30
+        enabled: false
+      bp_tab_section:
+        weight: 31
+        enabled: false
+      bp_tabs:
+        weight: 32
+        enabled: false
+      bp_view:
+        weight: 33
+        enabled: false
+      migrate:
+        weight: 34
+        enabled: false
+field_type: entity_reference_revisions
