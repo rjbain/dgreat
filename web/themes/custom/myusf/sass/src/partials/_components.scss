@@ -130,7 +130,7 @@
 		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 		  /* IE10+ CSS styles go here */		  
 	     	display:inline-block;
-	     	width: 100%;
+	     	width: 97%;
 		}
 		
 	}
@@ -152,6 +152,10 @@
 .view-instagram-tiles .card {
     margin: 0 .625rem 2.5rem 0.625rem;
 
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	  /* IE10+ CSS styles go here */		
+		margin: 0 .625rem 1.5rem 0.625rem;		  
+	}
     &:first-of-type {
     	margin-left: 0;
     	@include media-breakpoint-down(phone) {
@@ -160,6 +164,11 @@
     }
     &:last-of-type {
     	margin-right: 0;
+
+    	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+		  /* IE10+ CSS styles go here */	
+		 	margin-left:20px;
+		}
     }
 
     @include media-breakpoint-down(phone) {
@@ -203,6 +212,13 @@
 	}
     &.twitter-bg{
 		background: $twitter;		
+	}
+	&.gray {	
+		background: #757575;
+	}
+	&.white {	
+		background: $white;
+		border: 1px solid #ccc;
 	}
 }
 .view-instagram-tiles {	
@@ -272,7 +288,7 @@ a.card-rollover {
 		}
 		&.blue {
 
-			.card-text {
+			.card-text, .card-text-short {
 		    	&.no-twitter-image {
 		    		margin-top: 11.25rem;
 		    	}
@@ -286,6 +302,38 @@ a.card-rollover {
 				}	
 			}
 		}
+		&.gray {	
+			.diamond_link_small_white {
+				background:#757575;	
+
+				&:hover {						
+					color: black!important;
+				}		
+			}
+		}
+		&.white {
+			.card-text, .card-text-short {
+				color: $text_gray!important;
+			}	
+			.diamond_link_small_white {
+				background:$white;	
+				color: black;
+
+				&:hover {						
+					color: #757575!important;
+				}		
+			}
+		}
+		&.green {	
+			.diamond_link_small_white {
+				background:$green;	
+
+				&:hover {						
+					color: $yellow!important;
+				}		
+			}
+		}
+
 		.diamond_link_small_white {
 			position: absolute;
 			bottom: 10px; 
@@ -403,11 +451,23 @@ a.card-rollover {
 		}
 
 		.diamond_link_small_white {
-		    color: $black!important;
+		    color: $true_black!important;
 
 		    &::after {
 		    	background:$yellow;
 		    }
+		}
+		.card-body{
+			&.green {
+				.diamond_link_small_white {
+			    	color: $yellow!important;
+			    }
+			}
+			&.white {
+				.diamond_link_small_white {
+			    	color: #757575!important;
+			    }
+			}
 		}
 	}
 }
@@ -1473,6 +1533,7 @@ button.close {
 		}
 	 }
  }
+
 
 
 /* SITEWIDE-ALERT
