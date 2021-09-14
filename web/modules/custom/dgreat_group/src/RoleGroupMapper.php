@@ -17,6 +17,7 @@ class RoleGroupMapper {
    * @return User The user.
    */
   public static function reconcileGroupAccess(AccountInterface $account) {
+      \Drupal::logger('dgreat_group')->error('Logging is working');
     // Transmogrify the Account to a full on user.
     $user = User::load($account->id());
     // Get Groups that have a mapping.
@@ -29,7 +30,6 @@ class RoleGroupMapper {
     return collect($groups)->map(function ($group) use ($user) {
       if (self::userHasGroupRole($user, $group)) {
         return self::grantGroupAccess($user, $group);
-          \Drupal::logger('dgreat_group')->error('userHasGroupRole was called');
       }
       return self::revokeGroupAccess($user, $group);
     });
