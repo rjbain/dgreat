@@ -17,7 +17,7 @@ class RoleGroupMapper {
    * @return User The user.
    */
   public static function reconcileGroupAccess(AccountInterface $account) {
-      \Drupal::logger('dgreat_group')->error('Logging is working');
+      \Drupal::logger('dgreat_group')->error('reconcileGroupAccess is called.');
     // Transmogrify the Account to a full on user.
     $user = User::load($account->id());
     // Get Groups that have a mapping.
@@ -46,6 +46,7 @@ class RoleGroupMapper {
    * @throws \Drupal\Core\Entity\EntityStorageException
    */
   public static function grantGroupAccess(User $user, $group_id) {
+      \Drupal::logger('dgreat_group')->error('grantGroupAccess is called.');
     // Ensure we don't duplicate the membership
     if (!self::userIsMemberOfGroup($user, $group_id)) {
       $user->field_user_group[] = ['target_id' => $group_id];
@@ -85,6 +86,7 @@ class RoleGroupMapper {
    * @return bool
    */
   public static function userHasGroupRole(User $user, $group_id) {
+      \Drupal::logger('dgreat_group')->error('userHasGroupRole is called.');
     $group  = Group::load($group_id);
     $mapped_roles = $group->get('field_mapped_roles')->getValue();
 
