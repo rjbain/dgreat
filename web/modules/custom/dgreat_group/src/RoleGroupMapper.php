@@ -29,6 +29,7 @@ class RoleGroupMapper {
     return collect($groups)->map(function ($group) use ($user) {
       if (self::userHasGroupRole($user, $group)) {
         return self::grantGroupAccess($user, $group);
+          \Drupal::logger('dgreat_group')->error('userHasGroupRole was called');
       }
       return self::revokeGroupAccess($user, $group);
     });
