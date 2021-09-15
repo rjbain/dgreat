@@ -1,7 +1,12 @@
 uuid: 0f723d3e-b04b-4f44-a326-74493d4600ff
 langcode: en
 status: open
-dependencies: {  }
+dependencies:
+  module:
+    - dgreat_student_surveys
+third_party_settings:
+  dgreat_student_surveys:
+    salesforce_id: ''
 open: null
 close: null
 weight: 0
@@ -12,15 +17,15 @@ id: ignatian_year_turning_point_webf
 title: 'Ignatian Year Turning Point Webform'
 description: ''
 category: ''
-elements: "name_:\n  '#type': textfield\n  '#title': 'Name:'\n  '#required': true\nemail_:\n  '#type': textfield\n  '#title': 'Email:'\n  '#required': true\ntell_us_about_a_turning_point_in_your_life_for_the_opportunity_t:\n  '#type': textfield\n  '#title': 'Tell us about a turning point in your life for the opportunity to be featured in an upcoming  Ignatian Year newsletter.'\n  '#multiple': 500\n  '#required': true"
+elements: "name_:\n  '#type': textfield\n  '#title': 'Name:'\n  '#required': true\nemail_:\n  '#type': textfield\n  '#title': 'Email:'\n  '#required': true\ntell_us_about_a_turning_point_in_your_life_for_the_opportunity_t:\n  '#type': textarea\n  '#title': 'Tell us about a turning point in your life for the opportunity to be featured in an upcoming  Ignatian Year newsletter. '\n  '#required': true\n  '#counter_type': word\n  '#counter_maximum': '500'"
 css: ''
 javascript: ''
 settings:
   ajax: false
   ajax_scroll_top: form
   page: true
-  page_submit_path: ''
-  page_confirm_path: ''
+  page_submit_path: /mission-council/ignatian-year/turning-point
+  page_confirm_path: /mission-council/ignatian-year/turning-point
   form_submit_once: false
   form_exception_message: ''
   form_open_message: ''
@@ -155,4 +160,72 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers: {  }
+handlers:
+  email:
+    id: email
+    label: Email
+    handler_id: email
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: dmerwin@usfca.edu
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+  email_1:
+    id: email
+    label: Email
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: lanecenter@usfca.edu
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
