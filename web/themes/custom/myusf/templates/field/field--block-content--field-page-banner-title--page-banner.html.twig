@@ -42,8 +42,8 @@
 {% if bannertype == "subbanner" %}
 {% set title_tag = "div" %}
 {% elseif bannertype == "homebanner" %}
-{% set title_tag = "h1" %}
-{% else %}
+{#% set title_tag = “h1” %#}
+{#% else %#}
 {% set title_tag = "div" %}
 {% endif %}
 
@@ -52,3 +52,5 @@
     <{{ title_tag }} class="hero_image_title">{{ item.content }}</{{ title_tag }}>
   </div>
 {% endfor %}
+
+
