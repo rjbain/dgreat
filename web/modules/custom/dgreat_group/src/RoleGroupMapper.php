@@ -84,9 +84,10 @@ class RoleGroupMapper {
    * @return bool
    */
   public static function userHasGroupRole(User $user, $group_id) {
-      \Drupal::logger('dgreat_group')->error('userHasGroupRole is called.');
+//      \Drupal::logger('dgreat_group')->error('userHasGroupRole is called.');
     $group  = Group::load($group_id);
     $mapped_roles = $group->get('field_mapped_roles')->getValue();
+      \Drupal::logger('dgreat_group')->notice('Mapped Roles: @details.', ['@details' => print_r($mapped_roles, TRUE)]);
 
     return collect($mapped_roles)->filter(function ($role) use ($user) {
       return in_array($role['target_id'], $user->getRoles());
