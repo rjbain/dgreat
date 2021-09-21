@@ -112,7 +112,7 @@ class RoleGroupMapper {
 
     $hasGroupMembership = Group::load($group_id)->getMember($user);
 
-      \Drupal::logger('dgreat_group')->notice('hasGroupField: @details.', ['@details' => print_r($hasGroupField, TRUE)]);
+//      \Drupal::logger('dgreat_group')->notice('hasGroupField: @details.', ['@details' => print_r($hasGroupField, TRUE)]);
       \Drupal::logger('dgreat_group')->notice('hasGroupMembership: @details.', ['@details' => print_r($hasGroupMembership, TRUE)]);
 
     return $hasGroupField || $hasGroupMembership;
