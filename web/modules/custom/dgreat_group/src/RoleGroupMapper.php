@@ -57,8 +57,6 @@ class RoleGroupMapper {
       // Check and apply default content since we are not saving the user.
       (new DgreatGroup($user))->flagUserDefaultContent($user);
         \Drupal::logger('dgreat_group')->error('userIsMemberOfGroup is TRUE.');
-      $my_groups = \Drupal::service('group.membership_loader')->loadByUser();
-      \Drupal::logger('dgreat_group')->notice('my_groups is: @details.', ['@details' => print_r($my_groups, TRUE)]);
     }
     return $user;
   }
