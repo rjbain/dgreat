@@ -51,10 +51,12 @@ class RoleGroupMapper {
       $user->save();
       // Add the user to the group.
       Group::load($group_id)->addMember($user);
+        \Drupal::logger('dgreat_group')->error('userIsMemberOfGroup is FALSE.');
     }
     else {
       // Check and apply default content since we are not saving the user.
       (new DgreatGroup($user))->flagUserDefaultContent($user);
+        \Drupal::logger('dgreat_group')->error('userIsMemberOfGroup is TRUE.');
     }
     return $user;
   }
