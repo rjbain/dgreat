@@ -23,7 +23,7 @@ class RoleGroupMapper {
     $groups = \Drupal::entityQuery('group')
                      ->exists('field_mapped_roles')
                      ->execute();
-
+      \Drupal::logger('dgreat_group')->notice('hasGroupField: @details.', ['@details' => print_r($groups, TRUE)]);
     // Map over the groups, if the user doesn't have the right role,
     // Remove them, if they do have the right role, open up the gates.
     return collect($groups)->map(function ($group) use ($user) {
