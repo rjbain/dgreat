@@ -46,16 +46,16 @@ class RoleGroupMapper {
    */
   public static function grantGroupAccess(User $user, $group_id) {
     // Ensure we don't duplicate the membership
-    if (!self::userIsMemberOfGroup($user, $group_id)) {
+//    if (!self::userIsMemberOfGroup($user, $group_id)) {
       $user->field_user_group[] = ['target_id' => $group_id];
       $user->save();
       // Add the user to the group.
       Group::load($group_id)->addMember($user);
-    }
-    else {
-      // Check and apply default content since we are not saving the user.
-      (new DgreatGroup($user))->flagUserDefaultContent($user);
-    }
+//    }
+//    else {
+//      // Check and apply default content since we are not saving the user.
+//      (new DgreatGroup($user))->flagUserDefaultContent($user);
+//    }
     return $user;
   }
 
@@ -113,7 +113,7 @@ class RoleGroupMapper {
     $hasGroupMembership = Group::load($group_id)->getMember($user);
 
 //      \Drupal::logger('dgreat_group')->notice('hasGroupField: @details.', ['@details' => print_r($hasGroupField, TRUE)]);
-      \Drupal::logger('dgreat_group')->notice('hasGroupMembership: @details.', ['@details' => print_r($hasGroupMembership, TRUE)]);
+//      \Drupal::logger('dgreat_group')->notice('hasGroupMembership: @details.', ['@details' => print_r($hasGroupMembership, TRUE)]);
 
     return $hasGroupField || $hasGroupMembership;
 
