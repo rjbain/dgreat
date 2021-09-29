@@ -38,11 +38,13 @@
 			{% if paragraph.field_subheading.value is not empty %}
 			<div class=" "><h3>{{ paragraph.field_subheading.value }}</h3></div>
 			{% endif %}
+			{% if paragraph.field_body_text.value is not empty %}
 			<p class="card-text">
 				{% autoescape false %}
 	      			{{ description }}
         		{% endautoescape %}
         	</p>
+			{% endif %}
 		</div>
 	</a>
 </div>
