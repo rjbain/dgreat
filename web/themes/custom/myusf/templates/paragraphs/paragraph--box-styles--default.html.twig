@@ -32,13 +32,19 @@
 		
 		<img class="box-image" alt="Card image cap"src="{{ file_url(paragraph.field_image.entity.uri.value) }}" />
 		<div class="box-body"> 
+			{% if paragraph.field_heading.value is not empty %}
 			<div class=""><h2>{{ paragraph.field_heading.value }}</h2></div>
+			{% endif %}
+			{% if paragraph.field_subheading.value is not empty %}
 			<div class=" "><h3>{{ paragraph.field_subheading.value }}</h3></div>
+			{% endif %}
+			{% if paragraph.field_body_text.value is not empty %}
 			<p class="card-text">
 				{% autoescape false %}
 	      			{{ description }}
         		{% endautoescape %}
         	</p>
+			{% endif %}
 		</div>
 	</a>
 </div>
