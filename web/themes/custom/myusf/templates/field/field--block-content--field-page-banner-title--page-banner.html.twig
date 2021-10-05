@@ -38,17 +38,19 @@
  */
 #}
 
-{% set bannertype = element['#object'].field_banner_type.value %}
+{# {% set bannertype = element['#object'].field_banner_type.value %}
 {% if bannertype == "subbanner" %}
 {% set title_tag = "div" %}
 {% elseif bannertype == "homebanner" %}
-{% set title_tag = "h1" %}
+{% set title_tag = “h1” %}
 {% else %}
 {% set title_tag = "div" %}
-{% endif %}
+{% endif %} #}
 
 {% for item in items %}
   <div class="hero-image-title-box">
-    <{{ title_tag }} class="hero_image_title">{{ item.content }}</{{ title_tag }}>
+    <div class="hero_image_title">{{ item.content }}</div>
   </div>
 {% endfor %}
+
+
