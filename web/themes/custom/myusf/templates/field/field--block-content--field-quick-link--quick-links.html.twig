@@ -41,10 +41,15 @@
 <div class="content">
 	<nav class="quick-links-nav" aria-label="Quick Links Navigation">
 		<ul>
+
 			{% for item in items %}
+
+			
 				{% set title = item.content["#title"] %}
 				{% set url = item.content["#url"] %}
-				<li><a href="{{ url }}" target="_self">{{ title }}</a></li>
+				{% set options = item.content["#options"] %}
+				
+				<li><a href="{{ url }}" target="{{ options.attributes.target }}">{{ title }}</a></li>
 			{% endfor %}
 		</ul>
 	</nav>
