@@ -1,0 +1,44 @@
+uuid: 44816e55-0882-48d4-a6a8-f78ec16260ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.announcement_category_date
+    - field.field.block_content.announcement_category_date.body
+    - field.field.block_content.announcement_category_date.field_announcement_list
+    - field.field.block_content.announcement_category_date.field_announcement_list_title
+  module:
+    - viewsreference
+id: block_content.announcement_category_date.default
+targetEntityType: block_content
+bundle: announcement_category_date
+mode: default
+content:
+  field_announcement_list:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: viewsreference_autocomplete
+    region: content
+  field_announcement_list_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  body: true
