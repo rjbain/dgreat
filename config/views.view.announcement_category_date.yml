@@ -492,10 +492,11 @@ display:
   block_1:
     display_plugin: block
     id: block_1
-    display_title: Block
+    display_title: 'Main Content'
     position: 1
     display_options:
       display_extenders: {  }
+      display_description: 'Use this to apply to the main content section'
     cache_metadata:
       max-age: -1
       contexts:
@@ -503,6 +504,33 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_announcement_teaser'
+        - 'config:field.storage.node.field_published_date'
+        - 'config:field.storage.node.field_role'
+  block_2:
+    display_plugin: block
+    id: block_2
+    display_title: Sidebar
+    position: 1
+    display_options:
+      display_extenders: {  }
+      pager:
+        type: some
+        options:
+          items_per_page: 10
+          offset: 0
+      defaults:
+        pager: false
+      display_description: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
         - 'user.node_grants:view'
         - user.permissions
       tags:
