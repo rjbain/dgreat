@@ -37,5 +37,14 @@
 {% set role = fields.field_role.content %}
 {% set userRole = user.getroles %}
 {% set userRole = userRole|join(', ') %}
-		<h3><a href="{{ fields.view_node.content }}">{{ fields.title.content }}</a></h3>
+{% set published_date = fields.field_published_date.content|date("m/d/Y") %}
+{% set past_date = now|date_modify("-14 days")|date("m/d/Y") %}
+
+{% if published_date >= past_date %}
+	{% set type = "New " %}
+{% else %}
+	{% set type = "" %}
+{% endif %}
+		
+		<h3>{{ type }}<a href="{{ fields.view_node.content }}">{{ fields.title.content }}</a></h3>
 		<div>{{ fields.field_announcement_teaser.content }}</div>
