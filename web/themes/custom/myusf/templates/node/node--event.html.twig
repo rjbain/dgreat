@@ -79,13 +79,14 @@
 {% set start_time = node.field_start_date.value|date('g:i A')  %}
 {% set end_time = node.field_end_date.value|date('g:i A')  %}
 {% set location = node.field_location.value %}
+{% set building = node.field_building.value %}
 {% set image = file_url(node.field_image.entity.uri.value) %}
 {% set image_url = node.field_image_url.uri %}
 {% set f_image_url = node.field_f_image_url.uri %}
   <h1 class="title">{{ title }}</h1>
 <article{{ attributes.addClass(classes) }}>
   <p class="event-date"><span class="event-date-day">{{ start_date }}</span> {{ start_time }} - {{ end_time }}</p>
-  <p class="event-location">{{ location }}</p>
+  <p class="event-location">{{ location }} - {{ building }}	</p>
   <div class="event-additional-info">
     {% autoescape false %}
       {{ additional_info }}
