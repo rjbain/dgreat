@@ -4,13 +4,17 @@ status: true
 dependencies:
   config:
     - field.field.node.announcement.body
+    - field.field.node.announcement.field_announcement_audience
     - field.field.node.announcement.field_announcement_tags
     - field.field.node.announcement.field_announcement_teaser
+    - field.field.node.announcement.field_expiration_date
     - field.field.node.announcement.field_featured_image
     - field.field.node.announcement.field_featured_image_caption
+    - field.field.node.announcement.field_priority
     - field.field.node.announcement.field_published_date
     - field.field.node.announcement.field_role
     - field.field.node.announcement.field_subtitle
+    - field.field.node.announcement.field_weight
     - node.type.announcement
   module:
     - datetime
@@ -60,6 +64,16 @@ content:
     third_party_settings: {  }
     type: text_default
     region: content
+  field_priority:
+    weight: 9
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
   field_published_date:
     weight: 7
     label: hidden
@@ -77,11 +91,22 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  field_weight:
+    weight: 8
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
   links:
     weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_announcement_audience: true
+  field_expiration_date: true
   field_role: true
   search_api_excerpt: true
