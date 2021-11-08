@@ -33,14 +33,14 @@ class CeDiplomaForm extends FormBase {
      $form['cedid'] = [
        '#type' => 'textfield',
        '#title' => $this->t('Please Enter CeDID (not case sensitive)'),
-       '#attributes' => array('data-masked-input' => 'wwww-wwww-wwww', 'data-val' => 'true', 'data-val-regex' => '____-____-____ format required.', 'data-val-regex-pattern' => '(([a-zA-Z0-9]{4})[-]([a-zA-Z0-9]{4})[-]([a-zA-Z0-9]{4}))', 'placeholder' => '____-____-____', 'data-val-required'=> 'The CeDiD field is required.', 'id' => 'CeDiD', 'maxlength' => '14'),
+       '#attributes' => array('data-masked-input' => 'wwww-wwww-wwww', 'data-val' => 'true', 'data-val-regex' => '____-____-____ format required.', 'data-val-regex-pattern' => '(([a-zA-Z0-9]{4})[-]([a-zA-Z0-9]{4})[-]([a-zA-Z0-9]{4}))', 'placeholder' => '____-____-____', 'data-val-required'=> 'The CeDiD field is required.', 'id' => 'edit-cedid', 'maxlength' => '14'),
        //'#required' => TRUE,
      ];
 
 
     $form['cedidkey'] = [
        '#type' => 'markup',
-       '#markup' => '<div class="cedidkey"><img src="/themes/custom/myusf/images/src/cedid_key_image.png"></div>',
+       '#markup' => '<div class="cedidkey"><img src="/themes/custom/myusf/images/src/cedid_key_image.png" alt="CeDiD Key: 0123456789 ABCDEFGHIJKLMONPQRSTUVWXYZ"></div>',
      ];
 
 
@@ -64,7 +64,7 @@ class CeDiplomaForm extends FormBase {
 
     $form['cedidtrustlogo'] = [
        '#type' => 'markup',
-       '#markup' => '<div class="cedidtrustlogo"><img src="/themes/custom/myusf/images/src/poweredbyCeCredentialTrustLogo_180x34.png"></div>',
+       '#markup' => '<div class="cedidtrustlogo"><img src="/themes/custom/myusf/images/src/poweredbyCeCredentialTrustLogo_180x34.png" alt="CeCredential Trust Logo"></div>',
      ];
 
 
