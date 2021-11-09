@@ -71,9 +71,17 @@ function template_preprocess_usf_dashboard(&$variables) {
   // $events_slider->preExecute();
   // $events_slider->execute();
 
+    // Get groups
+    $groups = array();
+    $grp_membership_service = \Drupal::service('group.membership_loader');
+    $grps = $grp_membership_service->loadByUser($user);
+    foreach ($grps as $grp) {
+        $groups[] = $grp->getGroup();
+    }
+
   $variables['dashboard_content'] = [
     "dashboard_user" => $user,
-      "user_groups" => \Drupal::service('group.membership_loader')->loadByUser($user),
+      "user_groups" => $groups,
     "system_roles" => $role_objects,
     "fav_links" => \Drupal::entityTypeManager()
       ->getViewBuilder('block')
