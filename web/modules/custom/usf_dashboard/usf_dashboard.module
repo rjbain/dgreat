@@ -73,7 +73,7 @@ function template_preprocess_usf_dashboard(&$variables) {
 
   $variables['dashboard_content'] = [
     "dashboard_user" => $user,
-      "user_groups" => \Drupal::service('group.membership_loader')->loadByUser(),
+      "user_groups" => \Drupal::service('group.membership_loader')->loadByUser($user),
     "system_roles" => $role_objects,
     "fav_links" => \Drupal::entityTypeManager()
       ->getViewBuilder('block')
