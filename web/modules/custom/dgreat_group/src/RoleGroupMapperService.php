@@ -71,6 +71,7 @@ class RoleGroupMapperService {
     try {
       $this->ensureUserHasGroupField($user, $group_id);
       // Add the user to the group.
+      /** @var \Drupal\group\Entity\Group $group */
       $group = $this->entityTypeManager
         ->getStorage('group')
         ->load($group_id);

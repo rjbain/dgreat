@@ -43,9 +43,10 @@ Available variables (usf_dashboard.module)
                     <!-- Beginning  of temp FavApps -->
                     <div class="col-sm myApps">
                         <div class="findme">{{ dump(dashboard_content.user_groups) }}
+                            <h3>User's Groups</h3>
                             <ul>
                                 {% for group in dashboard_content.user_groups %}
-                                    <li>{{ group }}</li>
+                                    <li>{{ group->label() }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
