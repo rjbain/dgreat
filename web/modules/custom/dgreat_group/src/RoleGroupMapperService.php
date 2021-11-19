@@ -32,19 +32,17 @@ class RoleGroupMapperService {
       $user = $this->entityTypeManager->getStorage('user')
                                       ->load($account->id());
       // Get Groups that have a mapping.
-      $groups = $this->entityTypeManager->getStorage('group')
-                                        ->getQuery()
-                                        ->exists('field_mapped_roles')
-        // @see https://www.drupal.org/project/group/issues/3063776#comment-13737442
-                                        ->accessCheck(FALSE)
-                                        ->execute();
+      $groups = $this->getMappedGroups();
       // Map over the groups, if the user doesn't have the right role,
       // Remove them, if they do have the right role, open up the gates.
       $results = collect($groups)->map(function ($group) use ($user) {
         if ($this->userHasGroupRole($user, $group)) {
-          $result = $this->grantGroupAccess($user, $group);
+          $this->grantGroupAccess($user, $group);
+          $result = 'added';
+        } else {
+          $this->revokeGroupAccess($user, $group);
+          $result = 'removed';
         }
-        $result = $this->revokeGroupAccess($user, $group);
         return ['group' => $group, 'result' => $result];
       });
       return $results->toArray();
@@ -185,6 +183,21 @@ class RoleGroupMapperService {
       $user->field_user_group[] = ['target_id' => $group_id];
       $user->save();
     }
+  }
+
+  /**
+   * @return array|int
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  public function getMappedGroups() {
+    $groups = $this->entityTypeManager->getStorage('group')
+                                      ->getQuery()
+                                      ->exists('field_mapped_roles')
+      // @see https://www.drupal.org/project/group/issues/3063776#comment-13737442
+                                      ->accessCheck(FALSE)
+                                      ->execute();
+    return $groups;
   }
 
 }
