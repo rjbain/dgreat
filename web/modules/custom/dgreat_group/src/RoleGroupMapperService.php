@@ -71,17 +71,15 @@ class RoleGroupMapperService {
   public function grantGroupAccess(User $user, string $group_id = ""): bool {
     // Ensure we don't duplicate the membership
     try {
+      $this->ensureUserHasGroupField($user, $group_id);
+      // Add the user to the group.
+      $group = $this->entityTypeManager
+        ->getStorage('group')
+        ->load($group_id);
+      $group
+        ->addMember($user);
+      $group->save();
       if (!$this->userIsMemberOfGroup($user, $group_id)) {
-        $this->ensureUserHasGroupField($user, $group_id);
-        // Add the user to the group.
-        $group = $this->entityTypeManager
-          ->getStorage('group')
-          ->load($group_id);
-        $group
-          ->addMember($user);
-        $group->save();
-      }
-      else {
         // Check and apply default content since we are not saving the user.
         (new DgreatGroup($user))->flagUserDefaultContent($user);
       }
@@ -155,14 +153,12 @@ class RoleGroupMapperService {
    *
    * @return bool
    */
-  private
-  function userIsMemberOfGroup(User $user, $group_id): bool {
+  private function userIsMemberOfGroup(User $user, $group_id): bool {
     $hasGroupField = $this->userHasGroupField($user, $group_id);
     $hasGroupMembership = $this->entityTypeManager->getStorage('group')
                                                   ->load($group_id)
                                                   ->getMember($user) !== FALSE;
     return $hasGroupField || $hasGroupMembership;
-
   }
 
   /**
