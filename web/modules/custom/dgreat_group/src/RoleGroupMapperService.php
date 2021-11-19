@@ -36,7 +36,7 @@ class RoleGroupMapperService {
       // Map over the groups, if the user doesn't have the right role,
       // Remove them, if they do have the right role, open up the gates.
       $results = collect($groups)->map(function ($group) use ($user) {
-        if ($this->userHasGroupRole($user, $group)) {
+        if ($this->userHasGroupRole($user, $group) || $this->userHasGroupField($user, $group)) {
           $this->grantGroupAccess($user, $group);
           $result = 'added';
         } else {
