@@ -71,16 +71,15 @@ class RoleGroupMapperService {
   public function grantGroupAccess(User $user, string $group_id = ""): bool {
     // Ensure we don't duplicate the membership
     try {
-      if ($this->userIsMemberOfGroup($user, $group_id)) {
-        if (!$this->userHasGroupField($user, $group_id)) {
-          $user->field_user_group[] = ['target_id' => $group_id];
-          $user->save();
-        }
+      if (!$this->userIsMemberOfGroup($user, $group_id)) {
+        $this->ensureUserHasGroupField($user, $group_id);
         // Add the user to the group.
-        $this->entityTypeManager
+        $group = $this->entityTypeManager
           ->getStorage('group')
-          ->load($group_id)
+          ->load($group_id);
+        $group
           ->addMember($user);
+        $group->save();
       }
       else {
         // Check and apply default content since we are not saving the user.
@@ -112,10 +111,12 @@ class RoleGroupMapperService {
   public
   function revokeGroupAccess(User $user, $group_id): bool {
     try {
-      $this->entityTypeManager
+      $group = $this->entityTypeManager
         ->getStorage('group')
-        ->load($group_id)
+        ->load($group_id);
+      $group
         ->removeMember($user);
+      $group->save();
       return TRUE;
     } catch (\Exception $exception) {
       \Drupal::logger('dgreat_group')->error(
@@ -175,6 +176,19 @@ class RoleGroupMapperService {
         ->filter(function ($group) use ($group_id) {
           return $group['target_id'] == $group_id;
         })->count() >= 1;
+  }
+
+  /**
+   * @param \Drupal\user\Entity\User $user
+   * @param string $group_id
+   *
+   * @throws \Drupal\Core\Entity\EntityStorageException
+   */
+  public function ensureUserHasGroupField(User $user, string $group_id): void {
+    if (!$this->userHasGroupField($user, $group_id)) {
+      $user->field_user_group[] = ['target_id' => $group_id];
+      $user->save();
+    }
   }
 
 }
