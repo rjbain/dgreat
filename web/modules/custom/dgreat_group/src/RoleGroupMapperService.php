@@ -36,7 +36,7 @@ class RoleGroupMapperService {
       // Map over the groups, if the user doesn't have the right role,
       // Remove them, if they do have the right role, open up the gates.
       $results = collect($groups)->map(function ($group) use ($user) {
-        if ($this->userHasGroupRole($user, $group) || $this->userHasGroupField($user, $group)) {
+        if ($this->userHasGroupRole($user, $group)) {
           $this->grantGroupAccess($user, $group);
           $result = 'added';
         } else {
@@ -105,15 +105,14 @@ class RoleGroupMapperService {
    * @return bool whether we successfully removed the user from the
    *   group.
    */
-  public
-  function revokeGroupAccess(User $user, $group_id): bool {
+  public function revokeGroupAccess(User $user, $group_id): bool {
     try {
       $group = $this->entityTypeManager
         ->getStorage('group')
         ->load($group_id);
-      $group
-        ->removeMember($user);
+      $group->removeMember($user);
       $group->save();
+      $this->removeGroupFieldFromUser($user, $group_id);
       return TRUE;
     } catch (\Exception $exception) {
       \Drupal::logger('dgreat_group')->error(
@@ -133,8 +132,7 @@ class RoleGroupMapperService {
    *
    * @return bool
    */
-  public
-  function userHasGroupRole(User $user, $group_id): bool {
+  public function userHasGroupRole(User $user, $group_id): bool {
     $group = Group::load($group_id);
     $mapped_roles = $group->get('field_mapped_roles')->getValue();
 
@@ -153,11 +151,10 @@ class RoleGroupMapperService {
    * @return bool
    */
   private function userIsMemberOfGroup(User $user, $group_id): bool {
-    $hasGroupField = $this->userHasGroupField($user, $group_id);
-    $hasGroupMembership = $this->entityTypeManager->getStorage('group')
-                                                  ->load($group_id)
-                                                  ->getMember($user) !== FALSE;
-    return $hasGroupField || $hasGroupMembership;
+    return $this->entityTypeManager
+                ->getStorage('group')
+                ->load($group_id)
+                ->getMember($user) !== FALSE;
   }
 
   /**
@@ -187,17 +184,37 @@ class RoleGroupMapperService {
   }
 
   /**
+   * Remove the group field from the user.
+   * 
+   * @param \Drupal\user\Entity\User $user
+   * @param string $group_id
+   * 
+   * @return bool
+   */
+  public function removeGroupFieldFromUser(User $user, string $group_id) {
+    $field = $user->get('field_user_group');
+    $values = $field->getValue();
+    $index_to_remove = array_search($group_id, array_column($values, 'target_id'));
+    drupal_set_message("Group: {$group_id}");
+    drupal_set_message("Index: {$index_to_remove}");
+    $field->removeItem($index_to_remove);
+    $user->save();
+    return TRUE;
+  }
+
+  /**
    * @return array|int
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function getMappedGroups() {
-    $groups = $this->entityTypeManager->getStorage('group')
-                                      ->getQuery()
-                                      ->exists('field_mapped_roles')
-      // @see https://www.drupal.org/project/group/issues/3063776#comment-13737442
-                                      ->accessCheck(FALSE)
-                                      ->execute();
+    $groups = $this->entityTypeManager
+                   ->getStorage('group')
+                   ->getQuery()
+                   ->exists('field_mapped_roles')
+                   // @see https://www.drupal.org/project/group/issues/3063776#comment-13737442
+                   ->accessCheck(FALSE)
+                   ->execute();
     return $groups;
   }
 
