@@ -46,5 +46,14 @@
 	{% set type = "" %}
 {% endif %}
 		
-		<h3>{{ type }}<a href="{{ fields.view_node.content }}">{{ fields.title.content }}</a></h3>
-		<div>{{ fields.field_announcement_teaser.content }}</div>
+	<div class="announcement-page-margin views-field-title">
+		<div class="views-field views-field-title announcement-page-margin">
+			<span class="field-content">{{ type }}<a href="{{ fields.view_node.content }}">{{ fields.title.content }}</a></span>
+		</div>
+		<div class="views-field views-field-field-published-date announcement-page-margin">
+			<span class="field-content">{{ fields.field_published_date.content }}</span>
+		</div>
+		<div class="views-field views-field-field-announcement-teaser announcement-page-margin">
+			<span class="field-content">{{ fields.field_announcement_teaser.content }}</span>
+		</div>
+	</div>
