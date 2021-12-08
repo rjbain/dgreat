@@ -3,10 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.bp_columns_two_uneven.bp_background
     - field.field.paragraph.bp_columns_two_uneven.bp_column_content_2
     - field.field.paragraph.bp_columns_two_uneven.bp_column_style_2
-    - field.field.paragraph.bp_columns_two_uneven.bp_width
     - paragraphs.paragraphs_type.bp_columns_two_uneven
   module:
     - paragraphs
@@ -19,7 +17,7 @@ mode: default
 content:
   bp_column_content_2:
     type: entity_reference_paragraphs
-    weight: 1
+    weight: 3
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -30,14 +28,12 @@ content:
     third_party_settings: {  }
     region: content
   bp_column_style_2:
-    weight: 0
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
 hidden:
-  bp_background: true
-  bp_width: true
   created: true
   status: true
   uid: true

@@ -69,6 +69,8 @@ function dgreat_student_surveys_form_alter(&$form, FormStateInterface $form_stat
     if (is_array($form['#theme'])) {
         if (in_array('webform_submission_form', $form['#theme']) &&
             array_values($form['elements'])[0]['#type'] === 'student_survey_rating_element') {
+            // Get rid of the extra element we don't want, i.e. '#_webform_states'.
+            array_pop($form['elements']);
             // Randomly select one question to keep.
             $keep = array_rand($form['elements']);
             foreach ($form['elements'] as $key => $element) {
