@@ -41,7 +41,7 @@
 {% set past_date = now|date_modify("-14 days")|date("m/d/Y") %}
 
 {% if published_date >= past_date %}
-	{% set type = "New " %}
+	{% set type = "<span class='new-announcement'>New </span>" %}
 {% else %}
 	{% set type = "" %}
 {% endif %}
