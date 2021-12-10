@@ -41,12 +41,9 @@
 {% set past_date = now|date_modify("-14 days")|date("m/d/Y") %}
 
 {% if published_date >= past_date %}
-	<span class="new-announcement">
-		{% set type = "New " %}
-	</span>
-{% else %}
-	{% set type = "" %}
+	<span class="new-announcement">New </span>
 {% endif %}
+
 		<li>
 		<div class="views-field views-field-title">
 		<span class="field-content">
