@@ -40,14 +40,12 @@
 {% set published_date = fields.field_published_date.content|date("m/d/Y") %}
 {% set past_date = now|date_modify("-14 days")|date("m/d/Y") %}
 
-{% if published_date >= past_date %}
-	<span class="new-announcement">New </span>
-{% endif %}
 
 		<li>
 		<div class="views-field views-field-title">
 		<span class="field-content">
-			{{ type }}<a href="{{ fields.view_node.content }}">{{ fields.title.content }}</a>
+			{% if published_date >= past_date %}<span class="new-announcement">New </span>{% endif %}
+			<a href="{{ fields.view_node.content }}">{{ fields.title.content }}</a>
 		</span>
 		</div>
 		</li>
