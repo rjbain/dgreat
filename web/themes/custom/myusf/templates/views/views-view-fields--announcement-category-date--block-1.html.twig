@@ -42,7 +42,11 @@
 
 
 {% if published_date >= past_date %}
-	<span class="new-announcement">New </span>
+	<span class="new-announcement">
+		{% set type = "New " %}
+	</span>
+{% else %}
+	{% set type = "" %}
 {% endif %}
 		
 	<div class="announcement-page-margin views-field-title">
