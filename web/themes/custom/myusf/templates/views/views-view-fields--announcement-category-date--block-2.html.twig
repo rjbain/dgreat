@@ -39,11 +39,11 @@
 {% set userRole = userRole|join(', ') %}
 {% set published_date = fields.field_published_date.content|date("m/d/Y") %}
 {% set past_date = now|date_modify("-14 days")|date("m/d/Y") %}
-{% if published_date >= past_date %}
+{% if published_date >= past_date 
     set newclass = "new-announcement"
-{% else %}
+	else
     set newclass = ""
-{% endif %}
+endif %}
  
 
 		<li>
