@@ -49,7 +49,9 @@
 		<li>
 		<div class="views-field views-field-title">
 		<span class="field-content">
-			{% if newclass %}<span class="new-announcement-sidebar">New </span>{% endif %}
+			{% if newclass == "new-announcement" %}
+    			<span class="new-announcement-sidebar">New </span>
+			{% endif %}
 			<a class = {{ newclass }} href="{{ fields.view_node.content }}">{{ fields.title.content }}</a>
 		</span>
 		</div>
