@@ -1651,15 +1651,19 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	width: 280px;
 	margin: 0 auto!important;
 
-	/*@include media-breakpoint-only(tablet) {
-		display: block;
-		right: 15px;
-		top: -9px;
-	}*/
 	@include media-breakpoint-up(desktop) {
 		margin-top: 0;
 		float: right;
 		right: 15px;
+	}
+
+	img:focus {
+		background: transparent;
+	    border: solid 2px #fdbb30;
+	    right: 15px;
+	    margin-right: -2px!important;
+	    margin-top: -2px!important;
+	    width: 284px;
 	}
 }
 .footer-logo-link {
@@ -1669,6 +1673,9 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	}
 	@include media-breakpoint-down(tablet) {
 		margin: 0.3125rem auto;
+	}
+	&:hover {
+		background: transparent;	
 	}
 }
 
@@ -1685,14 +1692,6 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		@include media-breakpoint-up(tablet) {
 			padding-right: .5rem!important;
 			padding-left: .5rem!important;
-		}
-		img:focus {
-			background: transparent;
-		    border: solid 2px #fdbb30;
-		    right: 15px;
-		    margin-right: -2px!important;
-		    margin-top: -2px!important;
-		    width: 284px;
 		}
 	}
 }
