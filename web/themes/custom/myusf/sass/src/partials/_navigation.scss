@@ -81,10 +81,16 @@ nav.navbar {
 	color: $green!important;
 	margin-left: 0.5625rem;
 
-	&:hover,
-	&:focus {
+	&:hover {
 		color: $green!important;
 		background: transparent;
+	}
+	&:focus {
+		/*background-color: rgba(253,187,48,.2);*/
+		background: transparent;
+		border: solid 2px #fdbb30;
+	    margin-left: 7px;
+	    margin-right: 14px;
 	}
 
 	/*@include media-breakpoint-up(midlarge_desktop) {
@@ -1619,75 +1625,58 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	@include media-breakpoint-up(tablet) {
 		display: flex;
 		columns: unset;
+		padding-top: 0;
 		padding-bottom: 0.5rem;
-		margin: 0 auto 0 0.9375rem!important;
+		margin: 0 auto 0 0.4375rem!important;
 	}
 
 	@include media-breakpoint-only(tablet) {
 		justify-content: center;
 		margin: 0 auto!important;
 	}
-	@include media-breakpoint-up(desktop) {
+	/*@include media-breakpoint-up(desktop) {
 		padding-top: 0;
-	}
+	}*/
 
 	@include media-breakpoint-up(large_desktop) {
 		justify-content: flex-start;
 	}
 }
 
-a.logo {
+.footer-logo {
 	position: relative;
 	display: block;
 	overflow: hidden;
 	white-space: nowrap;
-	/*width: 325px;*/
-	/*margin: 10px auto;*/
+	width: 280px;
+	margin: 0 auto!important;
 
-	@include media-breakpoint-down(tablet) {
-		position: relative;
-		margin: 0.3125rem auto;
-		width: 325px;
-	}
-	@include media-breakpoint-up(tablet) {
-		width: 289px;
-	}
-	@include media-breakpoint-up(large_desktop) {
-		width: 330px;
-		height: 38px;
-		margin-top: 0;/*was -38px*/
+	@include media-breakpoint-up(desktop) {
+		margin-top: 0;
 		float: right;
-		right: 23px;
+		right: 15px;
 	}
+}
 
-	&:hover,
-	&:focus  {
+a.footer-logo-link {
+	@include media-breakpoint-only(tablet) {
+		display: block;
+    	width: 100vw;
+	}
+	@include media-breakpoint-down(tablet) {
+		margin: 0.3125rem auto;
+	}
+	&:hover {
+		background: transparent;	
+	}
+	&:focus {
 		background: transparent;
-		color: transparent!important;
+	    border: solid 2px #fdbb30;
+	    right: 15px;
+	    margin-right: -2px!important;
+	    margin-top: -2px!important;
+	    width: 304px;
 	}
-
-	&::before {
-		display: inline-block;
-		content: "";
-		width: 330px;
-		height: 34px;
-		position: relative;
-		background: url(/themes/custom/myusf/images/site/icons.png) no-repeat;
-		background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat;
-		background-size: 120%;
-
-		@include media-breakpoint-up(tablet) {
-			width: 289px;
-			height: 31px;
-		}
-
-		@include media-breakpoint-up(large_desktop) {
-			position: absolute;
-			margin-left: -0.9375rem;
-			right: -2.5%;
-		}
-	}
-
 }
 
 
