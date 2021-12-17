@@ -86,7 +86,11 @@ nav.navbar {
 		background: transparent;
 	}
 	&:focus {
-		background-color: rgba(253,187,48,.2);
+		/*background-color: rgba(253,187,48,.2);*/
+		background: transparent;
+		border: solid 2px #fdbb30;
+	    margin-left: 7px;
+	    margin-right: 14px;
 	}
 
 	/*@include media-breakpoint-up(midlarge_desktop) {
@@ -1668,60 +1672,6 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	}
 }
 
-a.logo {
-	position: relative;
-	display: block;
-	overflow: hidden;
-	white-space: nowrap;
-	/*width: 325px;*/
-	/*margin: 10px auto;*/
-
-	@include media-breakpoint-down(tablet) {
-		position: relative;
-		margin: 0.3125rem auto;
-		width: 325px;
-	}
-	@include media-breakpoint-up(tablet) {
-		width: 289px;
-	}
-	@include media-breakpoint-up(large_desktop) {
-		width: 330px;
-		height: 38px;
-		margin-top: 0;/*was -38px*/
-		float: right;
-		right: 23px;
-	}
-
-	&:hover,
-	&:focus  {
-		background: transparent;
-		color: transparent!important;
-	}
-
-	&::before {
-		display: inline-block;
-		content: "";
-		width: 330px;
-		height: 34px;
-		position: relative;
-		background: url(/themes/custom/myusf/images/site/icons.png) no-repeat;
-		background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat;
-		background-size: 120%;
-
-		@include media-breakpoint-up(tablet) {
-			width: 289px;
-			height: 31px;
-		}
-
-		@include media-breakpoint-up(large_desktop) {
-			position: absolute;
-			margin-left: -0.9375rem;
-			right: -2.5%;
-		}
-	}
-
-}
-
 
 .footer-expand-lg .footer-nav {
 	@include media-breakpoint-up(tablet) {
@@ -1735,6 +1685,14 @@ a.logo {
 		@include media-breakpoint-up(tablet) {
 			padding-right: .5rem!important;
 			padding-left: .5rem!important;
+		}
+		img:focus {
+			background: transparent;
+		    border: solid 2px #fdbb30;
+		    right: 15px;
+		    margin-right: -2px!important;
+		    margin-top: -2px!important;
+		    width: 284px;
 		}
 	}
 }
