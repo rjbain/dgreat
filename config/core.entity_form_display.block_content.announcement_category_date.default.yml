@@ -7,6 +7,7 @@ dependencies:
     - field.field.block_content.announcement_category_date.body
     - field.field.block_content.announcement_category_date.field_announcement_list
     - field.field.block_content.announcement_category_date.field_announcement_list_title
+    - field.field.block_content.announcement_category_date.field_view_all_url
   module:
     - viewsreference
 id: block_content.announcement_category_date.default
@@ -15,7 +16,7 @@ bundle: announcement_category_date
 mode: default
 content:
   field_announcement_list:
-    weight: 2
+    weight: 3
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -26,6 +27,14 @@ content:
     region: content
   field_announcement_list_title:
     weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_view_all_url:
+    weight: 2
     settings:
       size: 60
       placeholder: ''
