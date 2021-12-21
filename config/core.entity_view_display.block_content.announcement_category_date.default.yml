@@ -7,6 +7,7 @@ dependencies:
     - field.field.block_content.announcement_category_date.body
     - field.field.block_content.announcement_category_date.field_announcement_list
     - field.field.block_content.announcement_category_date.field_announcement_list_title
+    - field.field.block_content.announcement_category_date.field_view_all_url
   module:
     - viewsreference
 id: block_content.announcement_category_date.default
@@ -26,6 +27,14 @@ content:
   field_announcement_list_title:
     weight: 0
     label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_view_all_url:
+    weight: 2
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
