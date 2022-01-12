@@ -1,0 +1,40 @@
+uuid: 60197d49-7680-4266-890a-e180b24f1885
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.announcement_category_date.field_announcement_list
+    - field.field.paragraph.announcement_category_date.field_announcement_list_title
+    - paragraphs.paragraphs_type.announcement_category_date
+  module:
+    - viewsreference
+id: paragraph.announcement_category_date.default
+targetEntityType: paragraph
+bundle: announcement_category_date
+mode: default
+content:
+  field_announcement_list:
+    weight: 1
+    label: hidden
+    settings:
+      plugin_types:
+        block: block
+        default: 0
+        page: 0
+        rest_export: 0
+        feed: 0
+        entity_reference: 0
+        embed: 0
+    third_party_settings: {  }
+    type: viewsreference_formatter
+    region: content
+  field_announcement_list_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  search_api_excerpt: true
