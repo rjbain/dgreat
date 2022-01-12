@@ -1480,13 +1480,21 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 /* RECENT ANNOUNCEMENTS right column 
 =================================================*/
 .block-views-blockannouncements-most-recent-list-block-1 {
-	border: 5px solid $plum!important;
+	border: 5px solid $gray!important;
 	padding: 0.9375rem!important;
+	margin-bottom: 0!important;
+
+	@include media-breakpoint-only(landscape_phone) {
+		width:50%;
+	}
+	@include media-breakpoint-down(phone) {
+		width:100%;
+	}
 
 	h2 {
 		font-size: 1.025rem;
 		font-weight: 700;
-		color: $plum !important;
+		color: $text_gray !important;
 		text-transform: uppercase!important;
 		border: 0;
 		padding: 1.25rem 0.9375rem 0 0.9375rem;
@@ -1509,14 +1517,14 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 			font-weight: 600;
 			color: $text_gray !important;
 			line-height: 1.1rem;
-    		margin: 0 0.3125rem 0.5rem 0;
+			margin: 0 0.3125rem 0.5rem 0.9375rem;
 
 			&:last-of-type {
 				padding-bottom: 0.625rem;
 			}
 
 			a {
-				color: $text_gray;
+				color: $text_gray !important;
 				text-decoration:none;
 				font-weight:600;
 
@@ -1540,32 +1548,6 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 }
 .block-views-blockannouncements-most-recent-list-block-1 .paragraph>.paragraph__column {
 	padding-top: 0!important;
-}
-.new-announcement-sidebar {
-	font-size: .5rem;
-    font-weight: 900;
-    color: #ffffff;
-    background: #b30000;
-    padding: 0px 1px 1px 4px;
-    margin-right: 3px;
-    text-transform: uppercase;
-    position: relative;
-    top: -1px;  
-}
-.new-announcement-main {
-	font-size: .65rem;
-    font-weight: 900;
-    color: #ffffff;
-    background: #b30000;
-    padding: 1px 1px 1px 4px;
-    margin-right: 5px;
-    text-transform: uppercase;
-    position: relative;
-    top: -2px;
-}
-
-.new-announcement {
-	color:#000000!important;
 }
 
 /* FOOTER
