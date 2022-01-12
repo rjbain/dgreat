@@ -10,7 +10,7 @@ use Drupal\dgreat_group\DgreatGroup;
 use Drupal\dgreat_group\DgreatGroupUtility;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\dgreat_group\RoleGroupMapper;
+use Drupal\dgreat_group\RoleGroupMapperService;
 use Drupal\node\Entity\Node;
 
 /**
@@ -70,7 +70,9 @@ function dgreat_group_node_update(EntityInterface $entity) {
 function dgreat_group_user_login($account) {
   // If the user has a role that is mapped to a group,
   // Add them to that group.
-  RoleGroupMapper::reconcileGroupAccess($account);
+  /** @var RoleGroupMapperService $mapper */
+  $mapper = \Drupal::service('dgreat_group.role_mapper');
+  $mapper->reconcileGroupAccess($account);
 }
 
 /**

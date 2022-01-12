@@ -1671,7 +1671,13 @@ button.close {
     color: $white;
 }
 
-.alert-wrapper{ 
+.alert-success:before {
+	display: none;
+}
+
+.alert-wrapper{
+	max-width: 100%;
+	width: auto !important;
 	button.close {
 		height: auto;
 	}
@@ -1688,6 +1694,10 @@ button.close {
 		 @include media-breakpoint-down(phone) {
 		 	right: 25px;
 		 }
+	}
+	&.fade.show {
+		background: black!important;
+	   	color: #fdbb30;
 	}
 	&.fade.show.alert-success,
 	&.fade.show.alert-info {

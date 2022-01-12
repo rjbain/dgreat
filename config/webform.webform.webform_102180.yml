@@ -12,15 +12,20 @@ id: webform_102180
 title: 'HR Commuter Plan and Subsidy Form'
 description: null
 category: null
-elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\ncwid_:\n  '#type': textfield\n  '#title': CWID\n  '#description': ''\n  '#required': true\nphone:\n  '#type': textfield\n  '#title': Phone\n  '#description': ''\n  '#required': true\nusf_email:\n  '#type': email\n  '#size': 20\n  '#title': 'USF Email'\n  '#description': ''\n  '#required': true\nzip_code:\n  '#type': textfield\n  '#title': 'Zip Code'\n  '#description': ''\n  '#required': true\ndo_you_have_a_usf_parking_permit:\n  '#type': radios\n  '#title': 'Do you have a USF parking permit or will you be purchasing one for Fall 2020?'\n  '#options':\n    1: 'Yes, I have a current parking permit'\n    2: 'No'\n    3: 'I will be purchasing a permit for Fall 2020'\n  '#required': true\nconfirmation_message:\n  '#type': processed_text\n  '#title': 'Confirmation Message'\n  '#description': ''\n  '#text': \"<p><em>By entering my name below I agree that I have read and understand the <a href=\\\"/node/101813\\\" target=\\\"_blank\\\">pre-tax commuter program and USF subsidy eligibility and terms</a> and that I will read and comply with the terms and conditions of Commuter Check Direct (CCD). I agree and certify that orders/products will be used by me only for the purposes of commuting to and from work. I authorize USF to deduct the amount of my order (minus any applicable subsidy) up to the applicable IRS pre-tax limit and any additional post-tax amounts from my paycheck.</em></p>\\r\\n\"\n  '#format': full_html\nname:\n  '#type': textfield\n  '#title': Name\n  '#description': ''\n  '#required': true\ndate:\n  '#type': date\n  '#title': Date\n  '#description': ''\n  '#required': true\nprocessing:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p>Allow 10 Business Days for Processing.</p>'\n  '#title': Processing\n  '#description': ''"
+elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\ncwid_:\n  '#type': textfield\n  '#title': CWID\n  '#description': ''\n  '#required': true\nphone:\n  '#type': textfield\n  '#title': Phone\n  '#description': ''\n  '#required': true\nusf_email:\n  '#type': email\n  '#size': 20\n  '#title': 'USF Email'\n  '#description': ''\n  '#required': true\nzip_code:\n  '#type': textfield\n  '#title': 'Zip Code'\n  '#description': ''\n  '#required': true\ndo_you_have_a_usf_parking_permit:\n  '#type': radios\n  '#title': 'Do you have a USF parking permit or will you be purchasing one for Fall 2020?'\n  '#options':\n    1: 'Yes, I have a current parking permit'\n    2: 'No'\n    3: 'I will be purchasing a permit for Fall 2020'\n  '#required': true\nconfirmation_message:\n  '#type': processed_text\n  '#title': 'Confirmation Message'\n  '#description': ''\n  '#text': \"<p><em>By entering my name below I agree that I have read and understand the <a href=\\\"/node/101813\\\" target=\\\"_blank\\\">pre-tax commuter program and USF subsidy eligibility and terms</a> and that I will read and comply with the terms and conditions of Commuter Check Direct (CCD). I agree and certify that orders/products will be used by me only for the purposes of commuting to and from work. I authorize USF to deduct the amount of my order (minus any applicable subsidy) up to the applicable IRS pre-tax limit and any additional post-tax amounts from my paycheck.</em></p>\\r\\n\"\n  '#format': full_html\nname:\n  '#type': textfield\n  '#title': Name\n  '#description': ''\n  '#required': true\ndate:\n  '#type': date\n  '#title': Date\n  '#description': ''\n  '#required': true\nprocessing:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p>Allow 10 Business Days for Processing.</p>'\n  '#title': Processing\n  '#description': ''\n"
 css: ''
 javascript: ''
 settings:
   ajax: false
   ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
   page: true
   page_submit_path: ''
   page_confirm_path: ''
+  page_theme_name: ''
+  form_title: both
   form_submit_once: false
   form_exception_message: ''
   form_open_message: ''
@@ -28,6 +33,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -48,6 +54,11 @@ settings:
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
   submission_label: ''
   submission_log: false
   submission_views: {  }
@@ -60,6 +71,9 @@ settings:
   submission_access_denied_attributes: {  }
   submission_exception_message: ''
   submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -69,11 +83,20 @@ settings:
   wizard_progress_pages: false
   wizard_progress_percentage: false
   wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
   wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -87,6 +110,8 @@ settings:
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
   confirmation_type: page
   confirmation_title: ''
   confirmation_message: '<p>Thank you for submitting a commuter plan/subsidy form. If you have any questions, please email <a href="mailto:benefits@usfca.edu">benefits@usfca.edu</a>.</p>'
@@ -97,12 +122,15 @@ settings:
   confirmation_back_attributes: {  }
   confirmation_exclude_query: false
   confirmation_exclude_token: false
+  confirmation_update: false
   limit_total: null
   limit_total_interval: null
   limit_total_message: ''
+  limit_total_unique: false
   limit_user: null
   limit_user_interval: null
   limit_user_message: ''
+  limit_user_unique: false
   entity_limit_total: null
   entity_limit_total_interval: null
   entity_limit_user: null
@@ -111,7 +139,11 @@ settings:
   purge_days: null
   results_disabled: false
   results_disabled_ignore: false
+  results_customize: false
+  token_view: false
   token_update: false
+  token_delete: false
+  serial_disabled: false
   form_submit_label: ''
   wizard_complete: 1
 access:
@@ -160,10 +192,15 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
 handlers:
   email_1:
     id: email
     label: 'Email 1'
+    notes: ''
     handler_id: email_1
     status: true
     conditions: {  }
@@ -171,7 +208,7 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: 'benefits@usfca.edu,cacruise@usfca.edu,jvuong2@usfca.edu'
+      to_mail: 'benefits@usfca.edu,cacruise@usfca.edu,jvuong2@usfca.edu,jbinn@usfca.edu'
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
@@ -186,6 +223,7 @@ handlers:
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
+      exclude_attachments: false
       html: false
       attachments: true
       twig: false
@@ -195,3 +233,5 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
+      parameters: {  }
+variants: {  }

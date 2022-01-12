@@ -2,6 +2,9 @@ uuid: 702d4484-76e0-410c-8bf5-2325ac1ffeba
 langcode: en
 status: true
 dependencies:
+  module:
+    - node
+    - search_api
   config:
     - field.storage.node.field_url
     - field.storage.node.field_usfcat_audience_ref
@@ -12,25 +15,27 @@ dependencies:
     - field.storage.node.field_usfcat_updates
     - field.storage.node.body
     - search_api.server.database_server
-  module:
-    - search_api
-    - node
 id: database_node_index
 name: 'Database Node Index'
 description: ''
 read_only: false
 field_settings:
-  nid:
-    label: ID
+  body:
+    label: Body
     datasource_id: 'entity:node'
-    property_path: nid
-    type: integer
-  title:
-    label: Title
-    datasource_id: 'entity:node'
-    property_path: title
+    property_path: body
     type: text
-    boost: !!float 8
+    dependencies:
+      config:
+        - field.storage.node.body
+  created:
+    label: 'Authored on'
+    datasource_id: 'entity:node'
+    property_path: created
+    type: date
+    dependencies:
+      module:
+        - node
   field_url:
     label: URL
     datasource_id: 'entity:node'
@@ -39,21 +44,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_url
-  status:
-    label: Published
-    datasource_id: 'entity:node'
-    property_path: status
-    type: boolean
-  created:
-    label: 'Authored on'
-    datasource_id: 'entity:node'
-    property_path: created
-    type: date
-  uid:
-    label: 'Authored by'
-    datasource_id: 'entity:node'
-    property_path: uid
-    type: integer
   field_usfcat_audience_ref:
     label: Audience
     datasource_id: 'entity:node'
@@ -62,11 +52,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_usfcat_audience_ref
-  type:
-    label: 'Content type'
-    datasource_id: 'entity:node'
-    property_path: type
-    type: string
   field_usfcat_category_ref:
     label: Category
     datasource_id: 'entity:node'
@@ -107,14 +92,22 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_usfcat_updates
-  body:
-    label: Body
+  nid:
+    label: ID
     datasource_id: 'entity:node'
-    property_path: body
-    type: text
+    property_path: nid
+    type: integer
     dependencies:
-      config:
-        - field.storage.node.body
+      module:
+        - node
+  status:
+    label: Published
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    dependencies:
+      module:
+        - node
   summary:
     label: 'Body » Summary'
     datasource_id: 'entity:node'
@@ -123,6 +116,31 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.body
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    boost: !!float 8
+    dependencies:
+      module:
+        - node
+  type:
+    label: 'Content type'
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+    dependencies:
+      module:
+        - node
+  uid:
+    label: 'Authored by'
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    dependencies:
+      module:
+        - node
 datasource_settings:
   'entity:node':
     bundles:
@@ -132,35 +150,36 @@ datasource_settings:
       default: true
       selected: {  }
 processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
   ignorecase:
     all_fields: true
     fields:
-      - title
+      - body
       - field_url
-      - type
       - field_usfcat_description_short
       - field_usfcat_synonyms
-      - body
       - summary
+      - title
+      - type
     weights:
       preprocess_index: -20
       preprocess_query: -20
-  aggregated_field: {  }
-  add_url: {  }
+  language_with_fallback: {  }
+  rendered_item: {  }
   transliteration:
     all_fields: true
     fields:
-      - title
+      - body
       - field_url
-      - type
       - field_usfcat_description_short
       - field_usfcat_synonyms
-      - body
       - summary
+      - title
+      - type
     weights:
       preprocess_index: -20
       preprocess_query: -20
-  rendered_item: {  }
 tracker_settings:
   default:
     indexing_order: fifo

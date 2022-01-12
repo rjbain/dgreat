@@ -3,9 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.bp_columns.bp_background
     - field.field.paragraph.bp_columns.bp_column_content
-    - field.field.paragraph.bp_columns.bp_width
     - paragraphs.paragraphs_type.bp_columns
   module:
     - paragraphs
@@ -28,9 +26,19 @@ content:
       default_paragraph_type: ''
     third_party_settings: {  }
     region: content
+  bp_column_content_2:
+    type: entity_reference_paragraphs
+    weight: 3
+    settings:
+      title: 'Column Content'
+      title_plural: 'Column Contents'
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
 hidden:
-  bp_background: true
-  bp_width: true
   created: true
   status: true
   uid: true

@@ -12,15 +12,20 @@ id: webform_79716
 title: 'Law Student Feedback'
 description: null
 category: null
-elements: "type:\n  '#type': select\n  '#options':\n    services: 'Student Services'\n    education: 'Program of Legal Education'\n  '#title': 'Is this feedback on Student Services or the Program of Legal Education'\n  '#description': ''\n  '#required': true\nDisclaimer:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h3>Formal Complaints about the Program of Legal Education</h3><p>A law student may make a formal complaint to the administration of the law school regarding a significant problem that directly implicates the school’s program of legal education and its compliance with the ABA Standards.&nbsp; The process for making and resolving a formal complaint is described below.</p><p style=''padding-left: 30px;''><br>1. &nbsp;A law student may submit a complaint in writing to the Associate Dean for Academic Affairs (the “Associate Dean”) via email, U.S. mail, personal delivery, or by completing the web-based form.</p><p style=''padding-left: 30px;''><br>2. &nbsp;The complaint must describe in detail the behavior, program, process, or other matter that is at issue, and explain how the matter implicates the law school’s program of legal education and its compliance with a specific, identified ABA Standard.</p><p style=''padding-left: 30px;''>3. &nbsp;The complaint must&nbsp;include the complaining student’s full name, official law school e-mail address, and current mailing address.</p><p style=''padding-left: 30px;''>4. &nbsp;When the law school receives a complaint that complies with the foregoing requirements, the Associate Dean shall acknowledge to the complaining student the receipt via email U.S. mail, or personal delivery within three business days.</p><p style=''padding-left: 30px;''><br>5. &nbsp;Within&nbsp;ten business days of acknowledging the complaint, the Associate Dean or the Associate Dean’s designee, shall respond to the substance of the complaint, either in writing or in person, and shall indicate what steps are being taken by the law school to address the complaint.&nbsp; Additionally, if an investigation is necessary, the Associate Dean shall provide the complaining student a substantive response within ten business days after the completion of the investigation.&nbsp;</p><p style=''padding-left: 30px;''><br>6. &nbsp;A complaining student may appeal a decision to the Dean of the law school within ten business days of the Associate Dean’s substantive response.&nbsp; The Dean’s decision on appeal shall be final.</p><p style=''padding-left: 30px;''><br>7. &nbsp;A&nbsp;copy of the complaint and a summary of the process and resolution of the complaint shall be kept in the office of the Associate Dean for a period of eight years from the date of final resolution of the complaint.</p>'\n  '#title': 'Program Disclaimer'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: education\nservice:\n  '#type': select\n  '#title': 'What law school office or specific student service is your comment pertaining to?'\n  '#description': 'NOTE: your comments will be forwarded to the Supervising Dean or Director (noted above) responsible for the department(s) or office(s) that you have selected.'\n  '#options':\n    Aid: 'Financial Aid – Director Alan Guerrero'\n    Career: 'Office of Career Services –  Director Tajira McCoy'\n    Registrar: 'Registrar’s Office – Director Stephanie Darcy'\n    Affairs: 'Student Affairs – Assistant Dean Stephanie Carlos'\n    Library: 'Zief Law Library – Amy Wright, Interim Co-Director of the Law Library'\n    Other: 'Other/Unknown – Assistant Dean Stephanie Carlos '\n  '#required': true\nname:\n  '#type': textfield\n  '#title': Name\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': ''\n  '#required': true\naddress:\n  '#type': textfield\n  '#title': Address\n  '#description': ''\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: education\nquestion_feedback:\n  '#type': textarea\n  '#title': 'Question/Feedback (Please cite specific facts and details where possible when giving feedback)'\n  '#description': ''\n  '#required': true\n  '#states':\n    invisible:\n      ':input[name=\"type\"]':\n        value: education\nDetail:\n  '#type': textarea\n  '#title': 'Please describe in detail the behavior, program, process, or other matter that is at issue.'\n  '#description': ''\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: education\nStandard:\n  '#type': textarea\n  '#title': 'Explain how the matter implicates the law school’s program of legal education and its compliance with a specific, identified ABA Standard.'\n  '#description': ''\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: education"
+elements: "type:\n  '#type': select\n  '#options':\n    services: 'Student Services'\n    education: 'Program of Legal Education'\n  '#title': 'Is this feedback on Student Services or the Program of Legal Education'\n  '#description': ''\n  '#required': true\nDisclaimer:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h3>Formal Complaints about the Program of Legal Education</h3><p>A law student may make a formal complaint to the administration of the law school regarding a significant problem that directly implicates the school’s program of legal education and its compliance with the ABA Standards.&nbsp; The process for making and resolving a formal complaint is described below.</p><p style=''padding-left: 30px;''><br>1. &nbsp;A law student may submit a complaint in writing to the Associate Dean for Academic Affairs (the “Associate Dean”) via email, U.S. mail, personal delivery, or by completing the web-based form.</p><p style=''padding-left: 30px;''><br>2. &nbsp;The complaint must describe in detail the behavior, program, process, or other matter that is at issue, and explain how the matter implicates the law school’s program of legal education and its compliance with a specific, identified ABA Standard.</p><p style=''padding-left: 30px;''>3. &nbsp;The complaint must&nbsp;include the complaining student’s full name, official law school e-mail address, and current mailing address.</p><p style=''padding-left: 30px;''>4. &nbsp;When the law school receives a complaint that complies with the foregoing requirements, the Associate Dean shall acknowledge to the complaining student the receipt via email U.S. mail, or personal delivery within three business days.</p><p style=''padding-left: 30px;''><br>5. &nbsp;Within&nbsp;ten business days of acknowledging the complaint, the Associate Dean or the Associate Dean’s designee, shall respond to the substance of the complaint, either in writing or in person, and shall indicate what steps are being taken by the law school to address the complaint.&nbsp; Additionally, if an investigation is necessary, the Associate Dean shall provide the complaining student a substantive response within ten business days after the completion of the investigation.&nbsp;</p><p style=''padding-left: 30px;''><br>6. &nbsp;A complaining student may appeal a decision to the Dean of the law school within ten business days of the Associate Dean’s substantive response.&nbsp; The Dean’s decision on appeal shall be final.</p><p style=''padding-left: 30px;''><br>7. &nbsp;A&nbsp;copy of the complaint and a summary of the process and resolution of the complaint shall be kept in the office of the Associate Dean for a period of eight years from the date of final resolution of the complaint.</p>'\n  '#title': 'Program Disclaimer'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: education\nservice:\n  '#type': select\n  '#title': 'What law school office or specific student service is your comment pertaining to?'\n  '#description': 'NOTE: your comments will be forwarded to the Supervising Dean or Director (noted above) responsible for the department(s) or office(s) that you have selected.'\n  '#options':\n    Aid: 'Financial Aid – Director Alan Guerrero'\n    Career: 'Office of Career Services –  Director Tajira McCoy'\n    Registrar: 'Registrar’s Office – Director Stephanie Darcy'\n    Affairs: 'Student Affairs – Assistant Dean Stephanie Carlos'\n    Library: 'Zief Law Library – Amy Wright, Interim Co-Director of the Law Library'\n    Other: 'Other/Unknown – Assistant Dean Stephanie Carlos '\n  '#required': true\nname:\n  '#type': textfield\n  '#title': Name\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': ''\n  '#required': true\naddress:\n  '#type': textfield\n  '#title': Address\n  '#description': ''\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: education\nquestion_feedback:\n  '#type': textarea\n  '#title': 'Question/Feedback (Please cite specific facts and details where possible when giving feedback)'\n  '#description': ''\n  '#required': true\n  '#states':\n    invisible:\n      ':input[name=\"type\"]':\n        value: education\nDetail:\n  '#type': textarea\n  '#title': 'Please describe in detail the behavior, program, process, or other matter that is at issue.'\n  '#description': ''\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: education\nStandard:\n  '#type': textarea\n  '#title': 'Explain how the matter implicates the law school’s program of legal education and its compliance with a specific, identified ABA Standard.'\n  '#description': ''\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: education\n"
 css: ''
 javascript: ''
 settings:
   ajax: false
   ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
   page: true
   page_submit_path: ''
   page_confirm_path: ''
+  page_theme_name: ''
+  form_title: both
   form_submit_once: false
   form_exception_message: ''
   form_open_message: ''
@@ -28,6 +33,7 @@ settings:
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -48,6 +54,11 @@ settings:
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
   submission_label: ''
   submission_log: false
   submission_views: {  }
@@ -60,6 +71,9 @@ settings:
   submission_access_denied_attributes: {  }
   submission_exception_message: ''
   submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -69,11 +83,20 @@ settings:
   wizard_progress_pages: false
   wizard_progress_percentage: false
   wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
   wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -87,6 +110,8 @@ settings:
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
   confirmation_type: inline
   confirmation_title: ''
   confirmation_message: '<p>Thank you for the feedback.&nbsp;</p>'
@@ -97,12 +122,15 @@ settings:
   confirmation_back_attributes: {  }
   confirmation_exclude_query: false
   confirmation_exclude_token: false
+  confirmation_update: false
   limit_total: null
   limit_total_interval: null
   limit_total_message: ''
+  limit_total_unique: false
   limit_user: null
   limit_user_interval: null
   limit_user_message: ''
+  limit_user_unique: false
   entity_limit_total: null
   entity_limit_total_interval: null
   entity_limit_user: null
@@ -111,7 +139,11 @@ settings:
   purge_days: null
   results_disabled: false
   results_disabled_ignore: false
+  results_customize: false
+  token_view: false
   token_update: false
+  token_delete: false
+  serial_disabled: false
   form_submit_label: ''
   wizard_complete: 1
 access:
@@ -160,10 +192,15 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
 handlers:
   email_1:
     id: email
     label: 'Email Aid'
+    notes: ''
     handler_id: email_1
     status: true
     conditions:
@@ -198,6 +235,7 @@ handlers:
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
+      exclude_attachments: false
       html: true
       attachments: false
       twig: false
@@ -207,9 +245,11 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
+      parameters: {  }
   email_ocp:
     id: email
     label: 'Email OCP'
+    notes: ''
     handler_id: email_ocp
     status: true
     conditions:
@@ -235,6 +275,7 @@ handlers:
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
+      exclude_attachments: false
       html: true
       attachments: false
       twig: false
@@ -244,9 +285,11 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
+      parameters: {  }
   email_student_affairs:
     id: email
     label: 'Email Student Affairs'
+    notes: ''
     handler_id: email_student_affairs
     status: true
     conditions:
@@ -272,6 +315,7 @@ handlers:
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
+      exclude_attachments: false
       html: true
       attachments: false
       twig: false
@@ -281,9 +325,11 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
+      parameters: {  }
   email_library:
     id: email
     label: 'Email LIbrary'
+    notes: ''
     handler_id: email_library
     status: true
     conditions:
@@ -309,6 +355,7 @@ handlers:
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
+      exclude_attachments: false
       html: true
       attachments: false
       twig: false
@@ -318,3 +365,5 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
+      parameters: {  }
+variants: {  }
