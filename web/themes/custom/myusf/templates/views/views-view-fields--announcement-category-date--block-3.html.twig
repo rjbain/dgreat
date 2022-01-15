@@ -34,25 +34,22 @@
 
 {#% set role = fields.field_role.content|split(',') %#}
 
-{#% set role = fields.field_role.content %#}
-{#% set userRole = user.getroles %#}
-{#% set userRole = userRole|join(', ') %#}
 {% set published_date = fields.field_published_date.content|date("m/d/Y") %}
 {% set past_date = now|date_modify("-14 days")|date("m/d/Y") %}
 
-	<div class="announcement-page-margin views-field-title">
-		<div class="views-field views-field-title announcement-page-margin">
-			<span class="field-content">
-				{#% if date(published_date) >= date(past_date) %#}
-					<span class="new-announcement-main">New </span>
-				{#% endif %#}
-				<a href="{{ fields.view_node.content }}">{{ fields.title.content }}</a>
-			</span>
+{% if date(published_date) > date(past_date) %}
+	{% set newclass = "new-announcement" %}
+	{% else %}
+    {% set newclass = "nope" %}
+{% endif %}
+
+		<li>
+		<div class="views-field views-field-title">
+		<span class="field-content">
+			{% if newclass == "new-announcement" %}
+    			<span class="new-announcement-sidebar">New </span>
+			{% endif %}
+			<a class = "{{ newclass }}" href="{{ fields.view_node.content }}">{{ fields.title.content }}</a> 
+		</span>
 		</div>
-		<div class="views-field views-field-field-published-date announcement-page-margin">
-			<span class="field-content">{{ fields.field_published_date.content }}</span>
-		</div>
-		<div class="views-field views-field-field-announcement-teaser announcement-page-margin">
-			<span class="field-content">{{ fields.field_announcement_teaser.content }}</span>
-		</div>
-	</div>
+		</li>
