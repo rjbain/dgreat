@@ -75,7 +75,7 @@
 
 {% set role = user.getroles|join(',') %}
 {% if type == "covid" %}
-  {#{ drupal_view('announcements_page', 'page_2', role) }#}
+  {{ drupal_view('announcements_page', 'page_2', role) }}
 {% elseif type == "standard" %}
-  {#{ drupal_view('announcements_page', 'page_1', role) }#}
+  {{ drupal_view('announcements_page', 'page_1', role) }}
 {% endif %}
