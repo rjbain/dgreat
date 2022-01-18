@@ -4,13 +4,16 @@ status: true
 dependencies:
   config:
     - field.field.node.announcement.body
+    - field.field.node.announcement.field_announcement_audience
     - field.field.node.announcement.field_announcement_tags
     - field.field.node.announcement.field_announcement_teaser
+    - field.field.node.announcement.field_expiration_date
     - field.field.node.announcement.field_featured_image
     - field.field.node.announcement.field_featured_image_caption
     - field.field.node.announcement.field_published_date
     - field.field.node.announcement.field_role
     - field.field.node.announcement.field_subtitle
+    - field.field.node.announcement.field_weight
     - image.style.thumbnail
     - node.type.announcement
   module:
@@ -19,6 +22,7 @@ dependencies:
     - path
     - scheduler
     - text
+    - weight
 id: node.announcement.default
 targetEntityType: node
 bundle: announcement
@@ -98,6 +102,12 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_weight:
+    weight: 52
+    settings: {  }
+    third_party_settings: {  }
+    type: weight_selector
+    region: content
   path:
     type: path
     weight: 3
@@ -165,4 +175,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_announcement_audience: true
+  field_expiration_date: true

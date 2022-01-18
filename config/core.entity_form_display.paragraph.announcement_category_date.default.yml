@@ -1,0 +1,36 @@
+uuid: 2fe238d8-de2f-40ee-b350-3a0d4ee628ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.announcement_category_date.field_announcement_list
+    - field.field.paragraph.announcement_category_date.field_announcement_list_title
+    - paragraphs.paragraphs_type.announcement_category_date
+  module:
+    - viewsreference
+id: paragraph.announcement_category_date.default
+targetEntityType: paragraph
+bundle: announcement_category_date
+mode: default
+content:
+  field_announcement_list:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: viewsreference_autocomplete
+    region: content
+  field_announcement_list_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

@@ -268,13 +268,14 @@ class DgreatGroup {
    */
   private function getUserDefaultFlags(User $user) {
     $groups = \Drupal::entityQuery('group')
+      ->accessCheck(FALSE)
       ->exists('field_mapped_roles')
       ->execute();
 
     // First filter all the mapped groups to only ones this user has
     // Then run through those groups, grab default links and pull the node ids
     return collect($groups)->filter(function ($group) use ($user) {
-      return RoleGroupMapper::userHasGroupRole($user, $group);
+      return \Drupal::service('dgreat_group.role_mapper')->userHasGroupRole($user, $group);
     })->flatMap(function ($gid) {
       $group = Group::load($gid);
       if (NULL !== $group &&

@@ -1,4 +1,4 @@
-	{#
+{#
 /**
  * @file
  * Default view template to display all the fields in a row.
@@ -31,18 +31,28 @@
  * @ingroup themeable
  */
 #}
-{% set published_date = fields.field_published_date.content|date("m/d/Y") %}
-{% set past_date = now|date_modify("-14 days")|date("m/d/Y") %}
+<a href="{{ path('entity.node.canonical', {'node': fields.nid.content|trim }) }}">
+	<article class="event-calendar-list-item">
+		<div class="events-widget-title">
+			{% if fields.field_image_url.content %}
+				<img src="{{ fields.field_image_url.content }}" align="right" alt="">
+			{% endif %}
+			<h3 class="event-list-title">
+        		{% autoescape false %}
+          			{{ fields.title.content }}
+        		{% endautoescape %}
+			</h3>
+		</div>
+		<div class="events-widget-time">{{ fields.field_start_date.content }}, {{ fields.field_start_date_1.content }} - {{ fields.field_end_date.content }}</div>
+		<div class="events-widget-location">{{ fields.field_building.content }} &ndash; {{ fields.field_location.content }}</div>		
+	</article>
+</a>
+<!--<div>
+{#% set terms = fields.field_import_terms.content|split(', ') %}
+{% for term in terms %}
+    {{ term }}
+    <br>
+{% endfor %#}
+</div>-->
 
-<div class="views-field views-field-title announcement-page-margin">
-	{% if date(published_date) >= date(past_date) %}
-		<span class="new-announcement-main">New </span>
-	{% endif %}
-	<span class="field-content">{{ fields.title.content }}</span>
-</div>
-<div class="views-field views-field-field-published-date announcement-page-margin">
-	<span class="field-content">{{ fields.field_published_date.content|date("l, M d") }}</span>
-</div>
-<div class="views-field views-field-field-announcement-teaser announcement-page-margin">
-	<span class="field-content">{{ fields.field_announcement_teaser.content }}</span>
-</div>
+
