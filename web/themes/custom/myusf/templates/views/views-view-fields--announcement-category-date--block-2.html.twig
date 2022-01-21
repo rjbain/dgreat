@@ -34,20 +34,17 @@
 
 {#% set role = fields.field_role.content|split(',') %#}
 
-{% set role = fields.field_role.content %}
-{% set userRole = user.getroles %}
-{% set userRole = userRole|join(', ') %}
+{#% set roles = fields.field_role.content %#}
+{#% set userRole = user.getroles %#}
+{#% set userRole = userRole|join(', ') %#}
 {% set published_date = fields.field_published_date.content|date("m/d/Y") %}
-{% set past_date = now|date_modify("-14 days")|date("m/d/Y") %}
+{% set past_date = now|date_modify("-7 days")|date("m/d/Y") %}
 
 {% if date(published_date) > date(past_date) %}
 	{% set newclass = "new-announcement" %}
 	{% else %}
     {% set newclass = "nope" %}
 {% endif %}
- 
-
-
 
 		<li>
 		<div class="views-field views-field-title">

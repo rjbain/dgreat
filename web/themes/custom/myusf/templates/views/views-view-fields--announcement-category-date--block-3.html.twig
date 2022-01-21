@@ -31,18 +31,25 @@
  * @ingroup themeable
  */
 #}
+
+{#% set role = fields.field_role.content|split(',') %#}
+
 {% set published_date = fields.field_published_date.content|date("m/d/Y") %}
 {% set past_date = now|date_modify("-7 days")|date("m/d/Y") %}
 
-<div class="views-field views-field-title announcement-page-margin">
-	{% if date(published_date) >= date(past_date) %}
-		<span class="new-announcement-main">New </span>
-	{% endif %}
-	<span class="field-content">{{ fields.title.content }}</span>
-</div>
-<div class="views-field views-field-field-published-date announcement-page-margin">
-	<span class="field-content">{{ fields.field_published_date.content|date("l, M d") }}</span>
-</div>
-<div class="views-field views-field-field-announcement-teaser announcement-page-margin">
-	<span class="field-content">{{ fields.field_announcement_teaser.content }}</span>
-</div>
+{% if date(published_date) > date(past_date) %}
+	{% set newclass = "new-announcement" %}
+	{% else %}
+    {% set newclass = "nope" %}
+{% endif %}
+
+		<li>
+		<div class="views-field views-field-title">
+		<span class="field-content">
+			{% if newclass == "new-announcement" %}
+    			<span class="new-announcement-sidebar">New </span>
+			{% endif %}
+			<a class = "{{ newclass }}" href="{{ fields.view_node.content }}">{{ fields.title.content }}</a> 
+		</span>
+		</div>
+		</li>

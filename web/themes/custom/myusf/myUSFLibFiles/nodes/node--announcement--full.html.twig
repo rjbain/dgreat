@@ -74,4 +74,10 @@
 %}
 
 {% set role = user.getroles|join(',') %}
+{% if "administrator" in role %}
+  {% set role = "all" %}
+{% else %}
+  {% set role = role %}
+{% endif %}
+  
 {{ drupal_view('announcements_protected', 'block_1', node.id, role) }}
