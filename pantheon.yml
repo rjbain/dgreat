@@ -1,6 +1,16 @@
 api_version: 1
 web_docroot: true
+
+# Drupal 9 requires PHP 7.3 or higher. If your code isn't ready for PHP 7.4 you may need to use 7.3 here:
 php_version: 7.4
+
+# Drupal 9 requires a higher version of the DB. It will take a few minutes to complete the upgrade to 10.4 once you push this file:
+database:
+  version: 10.4
+
+# Drupal 9 prefers Drush 10. If you have written a lot of custom Drush commands you may need to go back to Drush 9 or 8:
+drush_version: 10
+
 workflows:
   deploy_product:
     after:
