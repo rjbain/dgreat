@@ -1,7 +1,7 @@
 # https://circleci.com/docs/configuration#machine
 machine:
   pre:
-    - apt-get update; USE_PRECOMPILE=true -E circleci-install php ^7.4
+    - sudo apt-get update; USE_PRECOMPILE=true sudo -E circleci-install php ^7.4
   timezone:
     America/Chicago
   node:
