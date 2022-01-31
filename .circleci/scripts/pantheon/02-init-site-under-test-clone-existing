@@ -14,7 +14,7 @@ terminus -n env:wake "$TERMINUS_SITE.dev"
 terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
 
 # Run updatedb to ensure that the cloned database is updated for the new code.
-terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
+terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y -vvv
 
 # If any modules, or theme files have been moved around or reorganized, in order to avoid
 # "The website encountered an unexpected error. Please try again later." error on First Visit
