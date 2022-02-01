@@ -2,9 +2,9 @@ uuid: 9c18ca02-ab28-4a38-acc2-e0eee8594a0b
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 72783
 template: false
 archive: false
@@ -12,7 +12,40 @@ id: som_interim_dean_candidate_feedb
 title: 'SOM Interim Dean Candidate Feedback Form'
 description: ''
 category: ''
-elements: "evaluation_for_interim_dean_candidate_:\n  '#type': select\n  '#title': 'Evaluation for interim dean candidate:'\n  '#options':\n    'Richard Highfield': 'Richard Highfield'\n    'Charles Moses': 'Charles Moses'\n    'Linda Nowak': 'Linda Nowak'\ni_am_a_:\n  '#type': select\n  '#title': 'I am a...'\n  '#options':\n    Faculty: Faculty\n    Staff: Staff\n    Student: Student\n    Administrator: Administrator\nbased_on_your_contact_with_this_candidate_how_well_would_you_fee:\n  '#type': textarea\n  '#title': 'Based on your contact with this candidate, how well would you feel this person would support the mission of SOM & USF?'\nbased_on_your_contact_with_this_candidate_how_well_would_this_pe:\n  '#type': textarea\n  '#title': 'Based on your contact with this candidate, how well would this person promote inter-professional communication and collaboration in the SOM?'\nbased_on_your_contact_with_this_candidate_how_well_would_you:\n  '#type': textarea\n  '#title': 'Based on your contact with this candidate, how well would you feel this person would support new and established programs in the SOM?'\nwhat_are_this_person_s_strengths_:\n  '#type': textarea\n  '#title': 'What are this person''s strengths?'\nwhat_are_this_person_s_weaknesses_:\n  '#type': textarea\n  '#title': 'What are this person''s weaknesses?'\nwhat_is_your_overall_ranking_other_comments_:\n  '#type': textarea\n  '#title': 'What is your overall ranking/other comments?'"
+elements: |-
+  evaluation_for_interim_dean_candidate_:
+    '#type': select
+    '#title': 'Evaluation for interim dean candidate:'
+    '#options':
+      'Richard Highfield': 'Richard Highfield'
+      'Charles Moses': 'Charles Moses'
+      'Linda Nowak': 'Linda Nowak'
+  i_am_a_:
+    '#type': select
+    '#title': 'I am a...'
+    '#options':
+      Faculty: Faculty
+      Staff: Staff
+      Student: Student
+      Administrator: Administrator
+  based_on_your_contact_with_this_candidate_how_well_would_you_fee:
+    '#type': textarea
+    '#title': 'Based on your contact with this candidate, how well would you feel this person would support the mission of SOM & USF?'
+  based_on_your_contact_with_this_candidate_how_well_would_this_pe:
+    '#type': textarea
+    '#title': 'Based on your contact with this candidate, how well would this person promote inter-professional communication and collaboration in the SOM?'
+  based_on_your_contact_with_this_candidate_how_well_would_you:
+    '#type': textarea
+    '#title': 'Based on your contact with this candidate, how well would you feel this person would support new and established programs in the SOM?'
+  what_are_this_person_s_strengths_:
+    '#type': textarea
+    '#title': 'What are this person''s strengths?'
+  what_are_this_person_s_weaknesses_:
+    '#type': textarea
+    '#title': 'What are this person''s weaknesses?'
+  what_is_your_overall_ranking_other_comments_:
+    '#type': textarea
+    '#title': 'What is your overall ranking/other comments?'
 css: ''
 javascript: ''
 settings:
@@ -27,40 +60,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +110,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +120,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +149,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''

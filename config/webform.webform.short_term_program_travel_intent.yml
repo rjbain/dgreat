@@ -2,9 +2,9 @@ uuid: e076f898-cb9c-4961-9d37-bf39a87c8b04
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 35196
 template: false
 archive: false
@@ -12,7 +12,42 @@ id: short_term_program_travel_intent
 title: 'Short Term Program Travel Intent Form'
 description: ''
 category: ''
-elements: "student_name:\n  '#type': textfield\n  '#title': 'Student Name'\nstudent_id_number:\n  '#type': textfield\n  '#title': 'Student ID Number'\nprogram_name:\n  '#type': textfield\n  '#title': 'Program Name'\nmajor:\n  '#type': textfield\n  '#title': Major\ncity:\n  '#type': textfield\n  '#title': City\ncountry:\n  '#type': textfield\n  '#title': Country\nstart_date:\n  '#type': date\n  '#title': 'Start Date'\nend_date:\n  '#type': date\n  '#title': 'End Date'\ni_choose_to_arrive_before_the_start_date_of_the_program_:\n  '#type': checkbox\n  '#title': 'I choose to arrive *BEFORE* the Start Date of the Program.'\n  '#description': '(I am choosing to arrive in said Country and/or travel to another Country of my own accord, and agree that my academic relationship with USF related to my participation in the USF Short Term Study Abroad Program begins on the official Start Date.)'\ni_choose_to_depart_after_the_end_date_of_the_program_:\n  '#type': checkbox\n  '#title': 'I choose to depart *AFTER* the End Date of the Program. '\n  '#description': '(I am choosing to remain in said Country and/or travel to another Country of my own accord, and agree that my academic relationship with USF related to my participation in the USF Short Term Study Abroad Program ends on the official End Date.)'\ni_certify_that_all_of_the_information_on_this_form_is_true_corre:\n  '#type': checkbox\n  '#title': 'I certify that all of the information on this form is true, correct, and complete. '\n"
+elements: |
+  student_name:
+    '#type': textfield
+    '#title': 'Student Name'
+  student_id_number:
+    '#type': textfield
+    '#title': 'Student ID Number'
+  program_name:
+    '#type': textfield
+    '#title': 'Program Name'
+  major:
+    '#type': textfield
+    '#title': Major
+  city:
+    '#type': textfield
+    '#title': City
+  country:
+    '#type': textfield
+    '#title': Country
+  start_date:
+    '#type': date
+    '#title': 'Start Date'
+  end_date:
+    '#type': date
+    '#title': 'End Date'
+  i_choose_to_arrive_before_the_start_date_of_the_program_:
+    '#type': checkbox
+    '#title': 'I choose to arrive *BEFORE* the Start Date of the Program.'
+    '#description': '(I am choosing to arrive in said Country and/or travel to another Country of my own accord, and agree that my academic relationship with USF related to my participation in the USF Short Term Study Abroad Program begins on the official Start Date.)'
+  i_choose_to_depart_after_the_end_date_of_the_program_:
+    '#type': checkbox
+    '#title': 'I choose to depart *AFTER* the End Date of the Program. '
+    '#description': '(I am choosing to remain in said Country and/or travel to another Country of my own accord, and agree that my academic relationship with USF related to my participation in the USF Short Term Study Abroad Program ends on the official End Date.)'
+  i_certify_that_all_of_the_information_on_this_form_is_true_corre:
+    '#type': checkbox
+    '#title': 'I certify that all of the information on this form is true, correct, and complete. '
 css: ''
 javascript: ''
 settings:
@@ -27,40 +62,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +112,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +122,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +151,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''

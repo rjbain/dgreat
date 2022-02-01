@@ -2,9 +2,9 @@ uuid: 2eb54c68-c4d1-40dd-b541-8043dffcc52f
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 14116
 template: false
 archive: false
@@ -12,7 +12,28 @@ id: book_equipment
 title: 'Book Equipment'
 description: 'Form for borrowing equipment from USF STAGES'
 category: 'USF Stages'
-elements: "i_have_read_and_understood_the_booking_rules_as_presented_and_ag:\n  '#type': checkbox\n  '#title': 'I have read and understood the booking rules as presented and agree to follow them to the best of my ability'\nlist_of_equipment:\n  '#type': textarea\n  '#title': 'List of Equipment'\n  '#multiple': true\n  '#description': 'List of Equipment including quantity of each item and replacement cost'\ncheck_out_date:\n  '#type': textfield\n  '#title': 'Check Out Date'\nreturn_date:\n  '#type': textfield\n  '#title': 'Return Date'\naccounting_foap:\n  '#type': textfield\n  '#title': 'Accounting FOAP'\nsignature_of_producer:\n  '#type': webform_signature\n  '#title': 'Signature of Producer'\n  '#description': 'By Signing above the Signee takes on full responsibility for the equipment listed above and authorizes the charging of repairs, replacement or cleaning for any damages.&nbsp; Late returns are subject to 1% of the full price of each borrowed item per day late.&nbsp;'"
+elements: |-
+  i_have_read_and_understood_the_booking_rules_as_presented_and_ag:
+    '#type': checkbox
+    '#title': 'I have read and understood the booking rules as presented and agree to follow them to the best of my ability'
+  list_of_equipment:
+    '#type': textarea
+    '#title': 'List of Equipment'
+    '#multiple': true
+    '#description': 'List of Equipment including quantity of each item and replacement cost'
+  check_out_date:
+    '#type': textfield
+    '#title': 'Check Out Date'
+  return_date:
+    '#type': textfield
+    '#title': 'Return Date'
+  accounting_foap:
+    '#type': textfield
+    '#title': 'Accounting FOAP'
+  signature_of_producer:
+    '#type': webform_signature
+    '#title': 'Signature of Producer'
+    '#description': 'By Signing above the Signee takes on full responsibility for the equipment listed above and authorizes the charging of repairs, replacement or cleaning for any damages.&nbsp; Late returns are subject to 1% of the full price of each borrowed item per day late.&nbsp;'
 css: ''
 javascript: ''
 settings:
@@ -27,40 +48,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +98,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +108,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +137,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -194,9 +218,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -205,13 +229,17 @@ handlers:
         - completed
       to_mail: ehersh@usfca.edu
       to_options: {  }
-      cc_mail: jmcdermott@usfca.edu
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: jmcdermott@usfca.edu
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -222,11 +250,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

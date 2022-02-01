@@ -26,21 +26,33 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       bp_simple: bp_simple
       bp_columns_two_uneven: bp_columns_two_uneven
       bp_accordion: bp_accordion
       video: video
+    negate: 0
     target_bundles_drag_drop:
-      bp_simple:
+      box_styles:
+        weight: 23
+        enabled: false
+      bp_accordion:
+        weight: -22
         enabled: true
-        weight: -31
-      bp_image:
-        weight: -30
+      bp_accordion_section:
+        weight: -21
         enabled: false
       bp_blank:
         weight: -29
+        enabled: false
+      bp_block:
+        weight: -25
+        enabled: false
+      bp_carousel:
+        weight: -20
+        enabled: false
+      bp_column_wrapper:
+        weight: 28
         enabled: false
       bp_columns:
         weight: -28
@@ -49,37 +61,25 @@ settings:
         weight: -27
         enabled: false
       bp_columns_two_uneven:
-        enabled: true
         weight: -26
-      bp_block:
-        weight: -25
+        enabled: true
+      bp_image:
+        weight: -30
         enabled: false
       bp_modal:
         weight: -24
         enabled: false
-      bp_view:
-        weight: -23
-        enabled: false
-      bp_accordion:
+      bp_simple:
+        weight: -31
         enabled: true
-        weight: -22
-      bp_accordion_section:
-        weight: -21
-        enabled: false
-      bp_carousel:
-        weight: -20
+      bp_tab_section:
+        weight: -18
         enabled: false
       bp_tabs:
         weight: -19
         enabled: false
-      bp_tab_section:
-        weight: -18
-        enabled: false
-      box_styles:
-        weight: 23
-        enabled: false
-      bp_column_wrapper:
-        weight: 28
+      bp_view:
+        weight: -23
         enabled: false
       bp_webform:
         weight: 35
@@ -87,16 +87,16 @@ settings:
       migrate:
         weight: 36
         enabled: false
-      social_media_link:
-        weight: 37
-        enabled: false
       reference:
         weight: 38
+        enabled: false
+      social_media_link:
+        weight: 37
         enabled: false
       usfcat_updates:
         weight: 38
         enabled: false
       video:
-        enabled: true
         weight: 44
+        enabled: true
 field_type: entity_reference_revisions

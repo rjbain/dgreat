@@ -2,9 +2,9 @@ uuid: ecb0074a-bbad-4f2a-aacc-f0137e647233
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 62504
 template: false
 archive: false
@@ -12,7 +12,49 @@ id: usfmobile_app_support_form
 title: 'USFMobile App Support Form'
 description: ''
 category: 'Office of Marketing Communication'
-elements: "user:\n  '#type': webform_select_other\n  '#title': 'User:'\n  '#options':\n    Student: Student\n    Faculty: Faculty\n    Staff: Staff\n    Alumni: Alumni\n    'Prospective Student': 'Prospective Student'\n    'Parent of Student': 'Parent of Student'\n  '#required': true\nfull_name:\n  '#type': textfield\n  '#title': 'Full Name:'\nemail_address:\n  '#type': email\n  '#title': 'Email Address:'\n  '#required': true\n  '#required_error': '(In the event that more information is required)'\ndevice_model:\n  '#type': textfield\n  '#title': 'Device Model:'\noperating_system_os_:\n  '#type': select\n  '#title': 'Operating System (OS):'\n  '#options':\n    Android: Android\n    iOS: iOS\noperating_system_os_version:\n  '#type': textfield\n  '#title': 'Operating System (OS) Version:'\nsubject:\n  '#type': textfield\n  '#title': 'Subject:'\n  '#required': true\nplease_describe_the_issue_you_are_experiencing:\n  '#type': textarea\n  '#title': 'Message (e.g. issue or comment details):'\n  '#required': true\nmarkup:\n  '#type': webform_markup\n  '#markup': 'If you would like to attach screenshots to your submitted message, please send via email to <a data-renderer-mark=\"true\" href=\"mailto:mobile@usfca.edu?subject=USFMobile%20App%20Support\" title=\"mailto:mobile@usfca.edu?subject=USFMobile%20App%20Support\">mobile@usfca.edu</a>.'"
+elements: |-
+  user:
+    '#type': webform_select_other
+    '#title': 'User:'
+    '#options':
+      Student: Student
+      Faculty: Faculty
+      Staff: Staff
+      Alumni: Alumni
+      'Prospective Student': 'Prospective Student'
+      'Parent of Student': 'Parent of Student'
+    '#required': true
+  full_name:
+    '#type': textfield
+    '#title': 'Full Name:'
+  email_address:
+    '#type': email
+    '#title': 'Email Address:'
+    '#required': true
+    '#required_error': '(In the event that more information is required)'
+  device_model:
+    '#type': textfield
+    '#title': 'Device Model:'
+  operating_system_os_:
+    '#type': select
+    '#title': 'Operating System (OS):'
+    '#options':
+      Android: Android
+      iOS: iOS
+  operating_system_os_version:
+    '#type': textfield
+    '#title': 'Operating System (OS) Version:'
+  subject:
+    '#type': textfield
+    '#title': 'Subject:'
+    '#required': true
+  please_describe_the_issue_you_are_experiencing:
+    '#type': textarea
+    '#title': 'Message (e.g. issue or comment details):'
+    '#required': true
+  markup:
+    '#type': webform_markup
+    '#markup': 'If you would like to attach screenshots to your submitted message, please send via email to <a data-renderer-mark="true" href="mailto:mobile@usfca.edu?subject=USFMobile%20App%20Support" title="mailto:mobile@usfca.edu?subject=USFMobile%20App%20Support">mobile@usfca.edu</a>.'
 css: ''
 javascript: ''
 settings:
@@ -27,40 +69,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +119,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +129,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +158,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: "Your support request was successfully submitted.<br />\r\nIf you would like to attach screenshots to your submitted message, please send via email to <a data-renderer-mark=\"true\" href=\"mailto:mobile@usfca.edu?subject=USFMobile%20App%20Support\" title=\"mailto:mobile@usfca.edu?subject=USFMobile%20App%20Support\">mobile@usfca.edu</a>."
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -194,9 +239,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -205,13 +250,17 @@ handlers:
         - completed
       to_mail: mobile@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -222,18 +271,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 0
@@ -242,13 +287,17 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:email_address:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'Your USFMobile App Support Form was successfully submitted.'
       body: _default
       excluded_elements: {  }
@@ -259,11 +308,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

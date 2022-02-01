@@ -21,9 +21,9 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 1
     target_bundles:
       migrate: migrate
+    negate: 1
     target_bundles_drag_drop:
       bp_accordion:
         weight: 17
@@ -40,6 +40,9 @@ settings:
       bp_carousel:
         weight: 21
         enabled: false
+      bp_column_wrapper:
+        weight: 25
+        enabled: false
       bp_columns:
         weight: 22
         enabled: false
@@ -48,9 +51,6 @@ settings:
         enabled: false
       bp_columns_two_uneven:
         weight: 24
-        enabled: false
-      bp_column_wrapper:
-        weight: 25
         enabled: false
       bp_image:
         weight: 26
@@ -61,16 +61,16 @@ settings:
       bp_simple:
         weight: 28
         enabled: false
-      bp_tabs:
-        weight: 29
-        enabled: false
       bp_tab_section:
         weight: 30
+        enabled: false
+      bp_tabs:
+        weight: 29
         enabled: false
       bp_view:
         weight: 31
         enabled: false
       migrate:
-        enabled: true
         weight: 32
+        enabled: true
 field_type: entity_reference_revisions

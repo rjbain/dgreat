@@ -2,9 +2,9 @@ uuid: 4f649524-de93-457d-9172-ac3cc853e4b8
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 42945
 template: false
 archive: false
@@ -12,7 +12,45 @@ id: leo_t_mccarthy_award_for_public_
 title: 'Leo T. McCarthy Award for Public Service: Nomination Form'
 description: ''
 category: 'Leo T. McCarthy Center'
-elements: "_name_of_nominee:\n  '#type': textfield\n  '#title': '*Name of Nominee'\n  '#required': true\n_profession:\n  '#type': textfield\n  '#title': '*Profession'\n  '#required': true\n_describe_why_you_are_nominating_this_person_for_the_mccarthy_aw:\n  '#type': textarea\n  '#title': '*Describe why you are nominating this person for the McCarthy Award'\n  '#required': true\nplease_describe_how_the_nominee_exemplifies_leo_mccarthy_s_value:\n  '#type': textarea\n  '#title': 'Please describe how the nominee exemplifies Leo McCarthy’s values such as: 1) Leadership for the common good; 2) Compassion for those less privileged and marginalized; 3) Service to make people’s lives better; and 4) High ethical standards.'\nplease_provide_a_link_to_a_photograph_of_nominee:\n  '#type': textfield\n  '#title': 'Please provide a link to a photograph of nominee'\n_name_of_person_submitting_nomination:\n  '#type': textfield\n  '#title': '*Name of person submitting nomination'\n  '#required': true\n_phone:\n  '#type': tel\n  '#title': '*Phone'\n  '#required': true\n_email:\n  '#type': email\n  '#title': '*Email'\n  '#required': true\n_how_well_do_you_know_the_nominee_and_in_what_context_:\n  '#type': textarea\n  '#title': '*How do you know the nominee and in what context?'\n  '#required': true\n_how_if_at_all_are_you_affiliated_with_usf_:\n  '#type': textarea\n  '#title': '*How, if at all, are you affiliated with USF?'\n  '#required': true"
+elements: |-
+  _name_of_nominee:
+    '#type': textfield
+    '#title': '*Name of Nominee'
+    '#required': true
+  _profession:
+    '#type': textfield
+    '#title': '*Profession'
+    '#required': true
+  _describe_why_you_are_nominating_this_person_for_the_mccarthy_aw:
+    '#type': textarea
+    '#title': '*Describe why you are nominating this person for the McCarthy Award'
+    '#required': true
+  please_describe_how_the_nominee_exemplifies_leo_mccarthy_s_value:
+    '#type': textarea
+    '#title': 'Please describe how the nominee exemplifies Leo McCarthy’s values such as: 1) Leadership for the common good; 2) Compassion for those less privileged and marginalized; 3) Service to make people’s lives better; and 4) High ethical standards.'
+  please_provide_a_link_to_a_photograph_of_nominee:
+    '#type': textfield
+    '#title': 'Please provide a link to a photograph of nominee'
+  _name_of_person_submitting_nomination:
+    '#type': textfield
+    '#title': '*Name of person submitting nomination'
+    '#required': true
+  _phone:
+    '#type': tel
+    '#title': '*Phone'
+    '#required': true
+  _email:
+    '#type': email
+    '#title': '*Email'
+    '#required': true
+  _how_well_do_you_know_the_nominee_and_in_what_context_:
+    '#type': textarea
+    '#title': '*How do you know the nominee and in what context?'
+    '#required': true
+  _how_if_at_all_are_you_affiliated_with_usf_:
+    '#type': textarea
+    '#title': '*How, if at all, are you affiliated with USF?'
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,40 +65,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +115,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +125,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +154,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -195,9 +236,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -206,13 +247,17 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:_email:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: mccarthycenter@usfca.edu
       from_options: {  }
       from_name: 'Stephen Pearce, D.D.'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: '[USF] Submission Confirmed — Leo T. McCarthy Award for Public Service'
       body: "Thank you for submitting a nomination for the next recipient of the Leo T. McCarthy Award for Public Service. We are grateful for your interest and will announce the Selection Committee&#39;s final decision in March 2020. We&#39;ll look forward to celebrating the honoree with you in March 2021!<br />\r\n<br />\r\nStephen Pearce, D.D.<br />\r\nChair, Leo T. McCarthy Award Selection Committee"
       excluded_elements: {  }
@@ -223,11 +268,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

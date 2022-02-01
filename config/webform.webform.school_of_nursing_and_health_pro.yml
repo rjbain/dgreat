@@ -2,9 +2,9 @@ uuid: a922ff85-df5d-44b5-90d3-a3a78b74827a
 langcode: en
 status: closed
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 35512
 template: false
 archive: false
@@ -12,7 +12,47 @@ id: school_of_nursing_and_health_pro
 title: 'School of Nursing and Health Professions Interim Dean Search'
 description: ''
 category: 'School of Nursing and Health Professions'
-elements: "interim_dean_candidate:\n  '#type': radios\n  '#title': 'Evaluation for interim dean candidate:'\n  '#options':\n    'Gregory Paveza': 'Gregory Paveza'\n    'Patricia Pearce': 'Patricia Pearce'\n    'Carolyn Yucha': 'Carolyn Yucha'\n  '#required': true\ni_am_a:\n  '#type': checkboxes\n  '#title': 'I am a'\n  '#options':\n    Faculty: Faculty\n    Staff: Staff\n    Student: Student\n  '#required': true\nbased_on_your_contact_with_this_candidate_how_well_would_you_fee:\n  '#type': textarea\n  '#title': 'Based on your contact with this candidate, how well would you feel this person would support the mission of the School of Nursing and Health Professions?'\n  '#required': true\nbased_on_your_contact_with_this_candidate_how_well_would_this_pe:\n  '#type': textarea\n  '#title': 'Based on your contact with this candidate, how well would this person promote inter-professional communication and collaboration in the School of Nursing and Health Professions?'\n  '#required': true\nbased_on_your_contact_with_this_candidate_how_well_new_program:\n  '#type': textarea\n  '#title': 'Based on your contact with this candidate, how well would you feel this person would support new and established programs in the School of Nursing and Health Professions?'\n  '#required': true\nwhat_are_this_person_s_strengths_:\n  '#type': textarea\n  '#title': 'What are this person''s strengths?'\n  '#required': true\nwhat_are_this_person_s_weaknesses_:\n  '#type': textarea\n  '#title': 'What are this person''s weaknesses?'\n  '#required': true\nwhat_is_your_overall_ranking_other_comments_:\n  '#type': textarea\n  '#title': 'What is your overall ranking/other comments?'\n  '#required': true"
+elements: |-
+  interim_dean_candidate:
+    '#type': radios
+    '#title': 'Evaluation for interim dean candidate:'
+    '#options':
+      'Gregory Paveza': 'Gregory Paveza'
+      'Patricia Pearce': 'Patricia Pearce'
+      'Carolyn Yucha': 'Carolyn Yucha'
+    '#required': true
+  i_am_a:
+    '#type': checkboxes
+    '#title': 'I am a'
+    '#options':
+      Faculty: Faculty
+      Staff: Staff
+      Student: Student
+    '#required': true
+  based_on_your_contact_with_this_candidate_how_well_would_you_fee:
+    '#type': textarea
+    '#title': 'Based on your contact with this candidate, how well would you feel this person would support the mission of the School of Nursing and Health Professions?'
+    '#required': true
+  based_on_your_contact_with_this_candidate_how_well_would_this_pe:
+    '#type': textarea
+    '#title': 'Based on your contact with this candidate, how well would this person promote inter-professional communication and collaboration in the School of Nursing and Health Professions?'
+    '#required': true
+  based_on_your_contact_with_this_candidate_how_well_new_program:
+    '#type': textarea
+    '#title': 'Based on your contact with this candidate, how well would you feel this person would support new and established programs in the School of Nursing and Health Professions?'
+    '#required': true
+  what_are_this_person_s_strengths_:
+    '#type': textarea
+    '#title': 'What are this person''s strengths?'
+    '#required': true
+  what_are_this_person_s_weaknesses_:
+    '#type': textarea
+    '#title': 'What are this person''s weaknesses?'
+    '#required': true
+  what_is_your_overall_ranking_other_comments_:
+    '#type': textarea
+    '#title': 'What is your overall ranking/other comments?'
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,40 +67,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +117,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +127,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +156,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -194,9 +237,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -205,13 +248,17 @@ handlers:
         - completed
       to_mail: ttsan2@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -222,11 +269,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

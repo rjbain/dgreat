@@ -2,9 +2,9 @@ uuid: 003340c9-3156-40c5-bad1-a0292357e21d
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 62504
 template: false
 archive: false
@@ -12,7 +12,31 @@ id: bla_ils_careers_in_international
 title: 'BLA & ILS: Careers in International Business Law Panel'
 description: ''
 category: ''
-elements: "processed_text:\n  '#type': processed_text\n  '#text': \"<p>This panel of practicing international business law attorneys will discuss their legal careers, give practical answers to questions about the practice of law, and inform you about opportunities in the international business law field. Students, faculty, and visitors are encouraged to attend. Lunch will be provided!</p>\\r\\n\\r\\n<p>Date: Monday, April 15th 2019<br />\\r\\nTime: 12:30 - 1:30 p.m.<br />\\r\\nLocation: USF School of Law KN 103</p>\\r\\n\"\n  '#format': full_html\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#required': true\nemail_address:\n  '#type': email\n  '#title': 'Email Address'\n  '#required': true\nclass_year:\n  '#type': textfield\n  '#title': 'Class Year'\n  '#required': true\nemployer:\n  '#type': textfield\n  '#title': Employer\n  '#required': true"
+elements: |-
+  processed_text:
+    '#type': processed_text
+    '#text': "<p>This panel of practicing international business law attorneys will discuss their legal careers, give practical answers to questions about the practice of law, and inform you about opportunities in the international business law field. Students, faculty, and visitors are encouraged to attend. Lunch will be provided!</p>\r\n\r\n<p>Date: Monday, April 15th 2019<br />\r\nTime: 12:30 - 1:30 p.m.<br />\r\nLocation: USF School of Law KN 103</p>\r\n"
+    '#format': full_html
+  first_name:
+    '#type': textfield
+    '#title': 'First Name'
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title': 'Last Name'
+    '#required': true
+  email_address:
+    '#type': email
+    '#title': 'Email Address'
+    '#required': true
+  class_year:
+    '#type': textfield
+    '#title': 'Class Year'
+    '#required': true
+  employer:
+    '#type': textfield
+    '#title': Employer
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,40 +51,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +101,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +111,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +140,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''

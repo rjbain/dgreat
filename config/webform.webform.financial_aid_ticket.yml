@@ -2,9 +2,9 @@ uuid: c8a6e9cb-5604-40f4-a80d-db7386abe207
 langcode: en
 status: closed
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 52158
 template: false
 archive: false
@@ -12,7 +12,33 @@ id: financial_aid_ticket
 title: 'Financial Aid Ticket'
 description: 'For internal use only!'
 category: 'Financial Aid'
-elements: "usf_id:\n  '#type': textfield\n  '#title': 'USF ID'\ndescription_of_issue:\n  '#type': textarea\n  '#title': 'Description of issue'\nassign_to:\n  '#type': select\n  '#title': 'Assign to'\n  '#options':\n    Anyone: Anyone\n    Jason: Jason\n    Christopher: Christopher\n    Esme: Esme\n    Jay: Jay\n    Norma: Norma\n    Lauren: Lauren\nstudent_follow_up_details_leave_blank_if_none_requested_:\n  '#type': label\n  '#title': 'Student Follow Up Details (leave blank if none requested)'\nstudent_email_:\n  '#type': textfield\n  '#title': 'Student Email '\nphone_number:\n  '#type': textfield\n  '#title': 'Phone number'"
+elements: |-
+  usf_id:
+    '#type': textfield
+    '#title': 'USF ID'
+  description_of_issue:
+    '#type': textarea
+    '#title': 'Description of issue'
+  assign_to:
+    '#type': select
+    '#title': 'Assign to'
+    '#options':
+      Anyone: Anyone
+      Jason: Jason
+      Christopher: Christopher
+      Esme: Esme
+      Jay: Jay
+      Norma: Norma
+      Lauren: Lauren
+  student_follow_up_details_leave_blank_if_none_requested_:
+    '#type': label
+    '#title': 'Student Follow Up Details (leave blank if none requested)'
+  student_email_:
+    '#type': textfield
+    '#title': 'Student Email '
+  phone_number:
+    '#type': textfield
+    '#title': 'Phone number'
 css: ''
 javascript: ''
 settings:
@@ -27,40 +53,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +103,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +113,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +142,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: message
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -196,9 +225,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -207,13 +236,17 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:student_email_:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: financialaid@usfca.edu
       from_options: {  }
       from_name: 'USF Financial Aid'
+      reply_to: financialaid@usfca.edu
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'Financial Aid Follow Up'
       body: "<span style=\"font-size:11pt\"><span style=\"line-height:107%\"><span style=\"font-family:Calibri,sans-serif\">Greetings!&nbsp;<br />\r\n<br />\r\nWe have submitted a request to have your financial aid file reviewed in more detail. Should we run into any issues, need clarification, or have questions we will reach out to you. We appreciate your patience while we are reviewing your file. Please monitor your <a href=\"https://youtu.be/UZhT5MsH364\" onclick=\"window.open(this.href, '', 'resizable=yes,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;\">myusf self-service</a> for any updates.&nbsp;<br />\r\n<br />\r\n<strong><span style=\"font-family:&quot;Calibri&quot;,sans-serif\">-Your Financial Aid Team</span></strong></span></span></span><br />\r\n<img alt=\"Office_of_Financial_Aid_m_h2_2c_cmyk_0_0.jpg\" height=\"63\" src=\"/sites/default/files/users/csimpson6/Office_of_Financial_Aid_m_h2_2c_cmyk_0_0.jpg\" width=\"225\" />"
       excluded_elements: {  }
@@ -224,18 +257,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: financialaid@usfca.edu
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_1:
     id: email
+    handler_id: email_1
     label: Email
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 0
@@ -244,13 +273,17 @@ handlers:
         - completed
       to_mail: '[current-user:mail]'
       to_options: {  }
-      cc_mail: csimpson6@usfca.edu
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: csimpson6@usfca.edu
+      cc_options: {  }
       from_mail: financialaid@usfca.edu
       from_options: {  }
       from_name: 'Financial Aid '
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'FA Service Ticket'
       body: _default
       excluded_elements: {  }
@@ -261,11 +294,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

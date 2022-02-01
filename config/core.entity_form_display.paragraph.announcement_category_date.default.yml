@@ -14,23 +14,23 @@ bundle: announcement_category_date
 mode: default
 content:
   field_announcement_list:
+    type: viewsreference_autocomplete
     weight: 1
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: viewsreference_autocomplete
-    region: content
   field_announcement_list_title:
+    type: string_textfield
     weight: 0
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
 hidden:
   created: true
   status: true

@@ -2,9 +2,9 @@ uuid: 96ffc367-b2f8-4386-9f36-53c72317fe20
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 17050
 template: false
 archive: false
@@ -12,7 +12,47 @@ id: webform_135060
 title: 'Immersions Faculty Interest Application'
 description: null
 category: null
-elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': ''\n  '#required': true\nintended_country:\n  '#type': textfield\n  '#title': 'Intended Country'\n  '#description': ''\n  '#required': true\nproposed_itinerary:\n  '#type': managed_file\n  '#max_filesize': '0.002'\n  '#file_extensions': 'txt,rtf,html,pdf,doc,docx,odt,ppt,pptx,odp,xls,xlsx,ods,xml'\n  '#title': 'Proposed Itinerary'\n  '#description': ''\nbudget_outline_for_students:\n  '#type': managed_file\n  '#max_filesize': '0.002'\n  '#file_extensions': 'txt,rtf,html,pdf,doc,docx,odt,ppt,pptx,odp,xls,xlsx,ods,xml'\n  '#title': 'Budget Outline for Students'\n  '#description': ''\nexample_outline:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p>Example:&nbsp;<a title=''Budget Request Form'' href=''https://myusf.usfca.edu/file/12438''>Budget Request Form</a></p>'\n  '#title': 'Example Budget Outline'\n  '#description': ''\nclass_syllabus__number_of_unit_credits:\n  '#type': managed_file\n  '#max_filesize': '0.002'\n  '#file_extensions': 'gif,jpg,jpeg,png,txt,rtf,html,pdf,doc,docx,odt,ppt,pptx,odp,xls,xlsx,ods,xml'\n  '#title': 'Class Syllabus & Number of Unit Credits'\n  '#description': ''\n"
+elements: |
+  name:
+    '#type': textfield
+    '#title': Name
+    '#description': ''
+    '#required': true
+  email:
+    '#type': email
+    '#size': 20
+    '#title': Email
+    '#description': ''
+    '#required': true
+  intended_country:
+    '#type': textfield
+    '#title': 'Intended Country'
+    '#description': ''
+    '#required': true
+  proposed_itinerary:
+    '#type': managed_file
+    '#max_filesize': '0.002'
+    '#file_extensions': 'txt,rtf,html,pdf,doc,docx,odt,ppt,pptx,odp,xls,xlsx,ods,xml'
+    '#title': 'Proposed Itinerary'
+    '#description': ''
+  budget_outline_for_students:
+    '#type': managed_file
+    '#max_filesize': '0.002'
+    '#file_extensions': 'txt,rtf,html,pdf,doc,docx,odt,ppt,pptx,odp,xls,xlsx,ods,xml'
+    '#title': 'Budget Outline for Students'
+    '#description': ''
+  example_outline:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<p>Example:&nbsp;<a title=''Budget Request Form'' href=''https://myusf.usfca.edu/file/12438''>Budget Request Form</a></p>'
+    '#title': 'Example Budget Outline'
+    '#description': ''
+  class_syllabus__number_of_unit_credits:
+    '#type': managed_file
+    '#max_filesize': '0.002'
+    '#file_extensions': 'gif,jpg,jpeg,png,txt,rtf,html,pdf,doc,docx,odt,ppt,pptx,odp,xls,xlsx,ods,xml'
+    '#title': 'Class Syllabus & Number of Unit Credits'
+    '#description': ''
 css: ''
 javascript: ''
 settings:
@@ -27,40 +67,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +117,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +127,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +156,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: '<p>Thank you for your submission! Please contact Kique Bazan at lebazan@usfca.edu with any questions.</p>'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -199,9 +242,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -210,13 +253,17 @@ handlers:
         - completed
       to_mail: lebazan@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -227,11 +274,7 @@ handlers:
       html: true
       attachments: true
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

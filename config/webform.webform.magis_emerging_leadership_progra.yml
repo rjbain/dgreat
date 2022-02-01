@@ -2,9 +2,9 @@ uuid: 47d77df9-fd32-4a30-ae26-070dd69b56fe
 langcode: en
 status: closed
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 42945
 template: false
 archive: false
@@ -12,7 +12,54 @@ id: magis_emerging_leadership_progra
 title: 'Magis Emerging Leadership Program Information Session'
 description: 'Want to become a leader at USF? Join the 2020 Magis Leadership Team and alumni of the program to learn more about how you can apply for a fellowship with the Magis Emerging Leadership Program! This intensive leadership program recruits 20 first-year students at USF who are looking to challenge themselves to embody our Jesuit value of Magis, meaning &quot;More&quot;. Whether you are new to leadership or a seasoned leader, this program takes you to the next level in your understanding of self, others, and how to apply your talents toward making the world a better place. We look forward to seeing you there!'
 category: 'Student Life'
-elements: "first_name:\n  '#type': textfield\n  '#title': 'First name*'\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last name*'\n  '#required': true\nemail:\n  '#type': email\n  '#title': 'Email*'\n  '#required': true\nmajor_s_:\n  '#type': textfield\n  '#title': Major(s)\nminor_s_:\n  '#type': textfield\n  '#title': Minor(s)\ngender_2:\n  '#type': radios\n  '#title': 'Gender*'\n  '#options':\n    Female: Female\n    Male: Male\n    'Non-binary/third gender': 'Non-binary/third gender'\n    'Prefer not to say': 'Prefer not to say'\n  '#required': true\ncurrent_housing_situation:\n  '#type': radios\n  '#title': 'Current housing situation*'\n  '#options':\n    'On campus': 'On campus'\n    'Off campus': 'Off campus'\n  '#required': true\nif_you_selected_on_campus_in_which_residence_hall_do_you_current:\n  '#type': radios\n  '#title': 'If you live on campus, in which Residence Hall do you currently reside?'\n  '#options':\n    Hayes-Healy: Hayes-Healy\n    Gillson: Gillson\n    'Lone Mountain': 'Lone Mountain'\n    Toler: Toler\n    'Pedro Arrupe': 'Pedro Arrupe'\n    'Loyola Village': 'Loyola Village'\nwhat_would_you_like_to_know_more_about_:\n  '#type': textarea\n  '#title': 'What would you like to know more about?'"
+elements: |-
+  first_name:
+    '#type': textfield
+    '#title': 'First name*'
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title': 'Last name*'
+    '#required': true
+  email:
+    '#type': email
+    '#title': 'Email*'
+    '#required': true
+  major_s_:
+    '#type': textfield
+    '#title': Major(s)
+  minor_s_:
+    '#type': textfield
+    '#title': Minor(s)
+  gender_2:
+    '#type': radios
+    '#title': 'Gender*'
+    '#options':
+      Female: Female
+      Male: Male
+      'Non-binary/third gender': 'Non-binary/third gender'
+      'Prefer not to say': 'Prefer not to say'
+    '#required': true
+  current_housing_situation:
+    '#type': radios
+    '#title': 'Current housing situation*'
+    '#options':
+      'On campus': 'On campus'
+      'Off campus': 'Off campus'
+    '#required': true
+  if_you_selected_on_campus_in_which_residence_hall_do_you_current:
+    '#type': radios
+    '#title': 'If you live on campus, in which Residence Hall do you currently reside?'
+    '#options':
+      Hayes-Healy: Hayes-Healy
+      Gillson: Gillson
+      'Lone Mountain': 'Lone Mountain'
+      Toler: Toler
+      'Pedro Arrupe': 'Pedro Arrupe'
+      'Loyola Village': 'Loyola Village'
+  what_would_you_like_to_know_more_about_:
+    '#type': textarea
+    '#title': 'What would you like to know more about?'
 css: ''
 javascript: ''
 settings:
@@ -27,40 +74,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace:
     webform_routes: {  }
@@ -71,11 +126,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -86,13 +136,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -115,9 +165,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''

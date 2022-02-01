@@ -2,9 +2,9 @@ uuid: 7efabbc2-ce1a-4aa8-9b00-02aa87b42013
 langcode: en
 status: closed
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 1746
 template: false
 archive: false
@@ -12,7 +12,62 @@ id: webform_138942
 title: 'USF Arrival Information'
 description: null
 category: null
-elements: "last_family_name:\n  '#type': textfield\n  '#title': Last (family) name:\n  '#description': \"\"\nfirst_given_name:\n  '#type': textfield\n  '#title': First (given) name:\n  '#description': \"\"\nemail:\n  '#type': textfield\n  '#title': Email:\n  '#description': \"\"\ncell_phone_number_in_us_if_applicable:\n  '#type': textfield\n  '#title': Cell Phone Number in US (if applicable):\n  '#description': \"\"\nusf_student_id_number_example_12345678:\n  '#type': textfield\n  '#title': USF Student ID Number (Example: 12345678): \n  '#description': \"\"\ndo_you_plan_to_arrive_on_move_in_day_tues_jan_16:\n  '#type': radios\n  '#options':\n    1: Yes\n    2: No\n  '#title': Do you plan to arrive on move-in day (Tues., Jan. 16)?\n  '#description': \"\"\nif_yes_what_time_do_you_plan_to_arrive_at_sfo:\n  '#type': time\n  '#default_value': \"12:00am\"\n  '#title': If yes, what time do you plan to arrive at SFO?\n  '#description': \"\"\nit_not_when_do_you_plan_to_arrive_on_campus:\n  '#type': date\n  '#title': It not, when do you plan to arrive on campus?\n  '#description': \"\"\ndo_you_have_confirmed_on_campus_housing:\n  '#type': radios\n  '#options':\n    2: Yes\n    3: No\n  '#title': Do you have confirmed on campus housing?\n  '#description': \"\"\nif_you_have_been_assigned_a_room_on_campus_which_residence_hall_are_you_in:\n  '#type': radios\n  '#options':\n    1: Toller Hall\n    2: Gillson Hall\n    3: Fromm Hall\n    4: Hayes-Healy Hall\n    5: Lone Mountain\n    6: Loyola Village\n    7: Pedro Arrupe Hall\n  '#title': If you have been assigned a room on campus, which Residence Hall are you in?\n  '#description': \"\"\n"
+elements: |
+  last_family_name:
+    '#type': textfield
+    '#title': Last (family) name:
+    '#description': ""
+  first_given_name:
+    '#type': textfield
+    '#title': First (given) name:
+    '#description': ""
+  email:
+    '#type': textfield
+    '#title': Email:
+    '#description': ""
+  cell_phone_number_in_us_if_applicable:
+    '#type': textfield
+    '#title': Cell Phone Number in US (if applicable):
+    '#description': ""
+  usf_student_id_number_example_12345678:
+    '#type': textfield
+    '#title': USF Student ID Number (Example: 12345678): 
+    '#description': ""
+  do_you_plan_to_arrive_on_move_in_day_tues_jan_16:
+    '#type': radios
+    '#options':
+      1: Yes
+      2: No
+    '#title': Do you plan to arrive on move-in day (Tues., Jan. 16)?
+    '#description': ""
+  if_yes_what_time_do_you_plan_to_arrive_at_sfo:
+    '#type': time
+    '#default_value': "12:00am"
+    '#title': If yes, what time do you plan to arrive at SFO?
+    '#description': ""
+  it_not_when_do_you_plan_to_arrive_on_campus:
+    '#type': date
+    '#title': It not, when do you plan to arrive on campus?
+    '#description': ""
+  do_you_have_confirmed_on_campus_housing:
+    '#type': radios
+    '#options':
+      2: Yes
+      3: No
+    '#title': Do you have confirmed on campus housing?
+    '#description': ""
+  if_you_have_been_assigned_a_room_on_campus_which_residence_hall_are_you_in:
+    '#type': radios
+    '#options':
+      1: Toller Hall
+      2: Gillson Hall
+      3: Fromm Hall
+      4: Hayes-Healy Hall
+      5: Lone Mountain
+      6: Loyola Village
+      7: Pedro Arrupe Hall
+    '#title': If you have been assigned a room on campus, which Residence Hall are you in?
+    '#description': ""
 css: ''
 javascript: ''
 settings:
@@ -27,40 +82,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +132,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +142,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +171,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: '<p>Thank you for submitting information regarding arriving at San Francisco and on campus. We will follow up with you with more arrival and transportation details.</p><p></p><p>Best regards,</p><p>International Student and Scholar Services</p>'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''

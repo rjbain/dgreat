@@ -2,9 +2,9 @@ uuid: 5157f041-3923-4682-b382-d8bfe88e9a28
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 42945
 template: false
 archive: false
@@ -12,7 +12,39 @@ id: _changemakers_book_launch_mural_
 title: '"Changemakers" Book Launch & Mural Celebration'
 description: ''
 category: 'Leo T. McCarthy Center'
-elements: "first_name:\n  '#type': textfield\n  '#title': '*First Name'\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': '*Last Name'\n  '#required': true\nemail:\n  '#type': email\n  '#title': '*Email'\n  '#required': true\naddress:\n  '#type': webform_address\n  '#title': '*Address'\n  '#required': true\n  '#address__title': '*Address'\n  '#address__required': true\n  '#address_2__access': false\n  '#city__title': '*City'\n  '#city__required': true\n  '#state_province__title': '*State'\n  '#state_province__required': true\n  '#postal_code__title': '*ZIP/Postal Code'\n  '#postal_code__required': true\n  '#country__access': false\nphone_number_for_reminder_notification_:\n  '#type': tel\n  '#title': 'Phone Number (for reminder notification)'\nplease_enter_the_names_of_the_guests_in_addition_to_your_registr:\n  '#type': textarea\n  '#title': 'Please enter the names of the guests in addition to your registration (if any)'"
+elements: |-
+  first_name:
+    '#type': textfield
+    '#title': '*First Name'
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title': '*Last Name'
+    '#required': true
+  email:
+    '#type': email
+    '#title': '*Email'
+    '#required': true
+  address:
+    '#type': webform_address
+    '#title': '*Address'
+    '#required': true
+    '#address__title': '*Address'
+    '#address__required': true
+    '#address_2__access': false
+    '#city__title': '*City'
+    '#city__required': true
+    '#state_province__title': '*State'
+    '#state_province__required': true
+    '#postal_code__title': '*ZIP/Postal Code'
+    '#postal_code__required': true
+    '#country__access': false
+  phone_number_for_reminder_notification_:
+    '#type': tel
+    '#title': 'Phone Number (for reminder notification)'
+  please_enter_the_names_of_the_guests_in_addition_to_your_registr:
+    '#type': textarea
+    '#title': 'Please enter the names of the guests in addition to your registration (if any)'
 css: ''
 javascript: ''
 settings:
@@ -27,40 +59,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +109,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +119,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +148,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''

@@ -2,9 +2,9 @@ uuid: c9950518-520f-4c32-994a-d90013993509
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 42674
 template: false
 archive: false
@@ -12,7 +12,48 @@ id: special_billing_short_term_reque
 title: 'Special Billing Short Term Request Form'
 description: ''
 category: 'Student Accounts'
-elements: "short_term_benefit_request:\n  '#type': item\n  '#title': 'Special Billing Short Term Benefit Request'\n  '#markup': \"<br />\\r\\n<br />\\r\\nPlease fill out the form below to request that USF bill your sponsor for Winter Intersession 2020 or Summer 2020.<br />\\r\\n<br />\\r\\nFall and Spring third party billing will be processed based off the benefit eligibility in your authorization.&nbsp;\"\nname:\n  '#type': webform_name\n  '#title': Name\n  '#title__access': false\n  '#first__required': true\n  '#middle__access': false\n  '#last__required': true\n  '#suffix__access': false\n  '#degree__access': false\n  '#required': true\nstudent_id:\n  '#type': textfield\n  '#title': 'Student ID'\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#title': 'USF Email Address'\n  '#required': true\nsponsoring_organization:\n  '#type': textfield\n  '#title': 'Sponsoring Organization'\n  '#required': true\nselect_the_term_s_you_would_like_to_use_your_benefit_:\n  '#type': checkboxes\n  '#title': 'Select the term(s) you would like to use your benefit.'\n  '#options':\n    'Intersession 2020': 'Intersession 2020'\n    'Summer 2020': 'Summer 2020'\n  '#required': true\ni_understand_that_usf_will_bill_my_sponsoring_organization_for_t:\n  '#type': checkbox\n  '#title': 'I understand that USF will bill my sponsoring organization for the term(s) selected above only if the sponsor has provided its written consent. '\n  '#required': true\ni_acknowledge_that_any_balance_not_covered_by_my_sponsoring_orga:\n  '#type': checkbox\n  '#title': 'I acknowledge that any balance not covered by my sponsoring organization will be my responsibility to pay. I agree to adhere to all of USF''s payment deadlines.'\n  '#required': true"
+elements: |-
+  short_term_benefit_request:
+    '#type': item
+    '#title': 'Special Billing Short Term Benefit Request'
+    '#markup': "<br />\r\n<br />\r\nPlease fill out the form below to request that USF bill your sponsor for Winter Intersession 2020 or Summer 2020.<br />\r\n<br />\r\nFall and Spring third party billing will be processed based off the benefit eligibility in your authorization.&nbsp;"
+  name:
+    '#type': webform_name
+    '#title': Name
+    '#title__access': false
+    '#first__required': true
+    '#middle__access': false
+    '#last__required': true
+    '#suffix__access': false
+    '#degree__access': false
+    '#required': true
+  student_id:
+    '#type': textfield
+    '#title': 'Student ID'
+    '#required': true
+  usf_email_address:
+    '#type': email
+    '#title': 'USF Email Address'
+    '#required': true
+  sponsoring_organization:
+    '#type': textfield
+    '#title': 'Sponsoring Organization'
+    '#required': true
+  select_the_term_s_you_would_like_to_use_your_benefit_:
+    '#type': checkboxes
+    '#title': 'Select the term(s) you would like to use your benefit.'
+    '#options':
+      'Intersession 2020': 'Intersession 2020'
+      'Summer 2020': 'Summer 2020'
+    '#required': true
+  i_understand_that_usf_will_bill_my_sponsoring_organization_for_t:
+    '#type': checkbox
+    '#title': 'I understand that USF will bill my sponsoring organization for the term(s) selected above only if the sponsor has provided its written consent. '
+    '#required': true
+  i_acknowledge_that_any_balance_not_covered_by_my_sponsoring_orga:
+    '#type': checkbox
+    '#title': 'I acknowledge that any balance not covered by my sponsoring organization will be my responsibility to pay. I agree to adhere to all of USF''s payment deadlines.'
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,40 +68,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +118,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +128,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +157,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -194,9 +238,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -205,13 +249,17 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:usf_email_address:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: specialbilling@usfca.edu
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'Webform submission from: Special Billing '
       body: _default
       excluded_elements: {  }
@@ -222,11 +270,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

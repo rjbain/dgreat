@@ -2,9 +2,9 @@ uuid: 88b203ca-7ee9-424b-82ea-9dbdce8ef5eb
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 25499
 template: false
 archive: false
@@ -12,7 +12,35 @@ id: global_immersion_arrupe_fellowsh
 title: 'Global Immersion - Arrupe Fellowship Fund'
 description: ''
 category: ''
-elements: "1_name:\n  '#type': webform_name\n  '#title': '1. Name'\n2_contact_information:\n  '#type': webform_contact\n  '#title': '2. Contact Information'\n  '#name__access': false\n3_title_of_your_project:\n  '#type': textarea\n  '#title': '3. Title of your project'\n4_project_description:\n  '#type': textarea\n  '#title': '4. Project Description'\n5_project_location:\n  '#type': textarea\n  '#title': '5. Project Location'\n6_project_timeline_and_dates:\n  '#type': textarea\n  '#title': '6. Project Dates'\n7_project_timeline:\n  '#type': textarea\n  '#title': '7. Project Timeline'\n8_proposed_or_estimated_budget:\n  '#type': textarea\n  '#title': '8. Proposed or Estimated Budget'\n9_upload_a_one_page_document_explaining_if_and_how_your_research:\n  '#type': managed_file\n  '#title': '9. Upload a one page document explaining if and how your research is connected to your USF degree'\n"
+elements: |
+  1_name:
+    '#type': webform_name
+    '#title': '1. Name'
+  2_contact_information:
+    '#type': webform_contact
+    '#title': '2. Contact Information'
+    '#name__access': false
+  3_title_of_your_project:
+    '#type': textarea
+    '#title': '3. Title of your project'
+  4_project_description:
+    '#type': textarea
+    '#title': '4. Project Description'
+  5_project_location:
+    '#type': textarea
+    '#title': '5. Project Location'
+  6_project_timeline_and_dates:
+    '#type': textarea
+    '#title': '6. Project Dates'
+  7_project_timeline:
+    '#type': textarea
+    '#title': '7. Project Timeline'
+  8_proposed_or_estimated_budget:
+    '#type': textarea
+    '#title': '8. Proposed or Estimated Budget'
+  9_upload_a_one_page_document_explaining_if_and_how_your_research:
+    '#type': managed_file
+    '#title': '9. Upload a one page document explaining if and how your research is connected to your USF degree'
 css: ''
 javascript: ''
 settings:
@@ -27,40 +55,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +105,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +115,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +144,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''

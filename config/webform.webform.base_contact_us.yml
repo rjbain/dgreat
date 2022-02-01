@@ -2,9 +2,9 @@ uuid: eb507796-85e0-422b-b7ff-b3b94e1d54f2
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 52546
 template: false
 archive: false
@@ -12,7 +12,47 @@ id: base_contact_us
 title: 'BASE Contact Us'
 description: ''
 category: ''
-elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#description': 'What is your name?'\n  '#required': true\ncwid:\n  '#type': textfield\n  '#title': CWID\n  '#description': 'What is the CWID of the student? This would help us identify the student in our system.'\n  '#required': true\nphone_number:\n  '#type': textfield\n  '#title': 'Phone Number'\n  '#description': 'Please provide area code and phone number.'\n  '#required': true\nemail_if_logged_in_to_myusf_:\n  '#type': email\n  '#title': 'Email (if logged in to MyUSF)'\n  '#description': 'If you are logged in, your email will automatically generate here. If you are not, you may leave your email in the comments below.'\n  '#required': true\nreason_for_your_contact:\n  '#type': radios\n  '#title': 'Reason for your contact'\n  '#description': 'What is your reason for contacting BASE? If you would like to meet with a BASE representative, stop by Gleeson Library 234 (Monday - Friday from 10-5pm) or email <a href=\"mailto:base@usfca.edu\">base@usfca.edu</a>.'\n  '#options':\n    'I have a question about getting involved on campus': 'I have a question about getting involved on campus'\n    'I want to explore African Studies, African American Studies or Critical Diversity Studies as one of my academic programs': 'I want to explore African Studies, African American Studies or Critical Diversity Studies as one of my academic programs'\n    'I want to be connected to faculty or staff mentor': 'I want to be connected to faculty or staff mentor'\n    'I have a question about graduation': 'I have a question about graduation'\n    'I am having difficulty in one of my classes': 'I am having difficulty in one of my classes'\n    'I have an idea for a workshop': 'I have an idea for a workshop'\n    'I am concerned about a student': 'I am concerned about a student'\n    'I want to be added to the BRC listserv': 'I want to be added to the BRC listserv'\n    'Other (please list reasons below)': 'Other (please list reasons below)'\n  '#required': true\ndescription:\n  '#type': textarea\n  '#title': Description\n  '#description': 'Please list your concern/question here. The more details we have, the more helpful the form will be for us to help you find an answer to your question.'\n  '#required': true"
+elements: |-
+  name:
+    '#type': textfield
+    '#title': Name
+    '#description': 'What is your name?'
+    '#required': true
+  cwid:
+    '#type': textfield
+    '#title': CWID
+    '#description': 'What is the CWID of the student? This would help us identify the student in our system.'
+    '#required': true
+  phone_number:
+    '#type': textfield
+    '#title': 'Phone Number'
+    '#description': 'Please provide area code and phone number.'
+    '#required': true
+  email_if_logged_in_to_myusf_:
+    '#type': email
+    '#title': 'Email (if logged in to MyUSF)'
+    '#description': 'If you are logged in, your email will automatically generate here. If you are not, you may leave your email in the comments below.'
+    '#required': true
+  reason_for_your_contact:
+    '#type': radios
+    '#title': 'Reason for your contact'
+    '#description': 'What is your reason for contacting BASE? If you would like to meet with a BASE representative, stop by Gleeson Library 234 (Monday - Friday from 10-5pm) or email <a href="mailto:base@usfca.edu">base@usfca.edu</a>.'
+    '#options':
+      'I have a question about getting involved on campus': 'I have a question about getting involved on campus'
+      'I want to explore African Studies, African American Studies or Critical Diversity Studies as one of my academic programs': 'I want to explore African Studies, African American Studies or Critical Diversity Studies as one of my academic programs'
+      'I want to be connected to faculty or staff mentor': 'I want to be connected to faculty or staff mentor'
+      'I have a question about graduation': 'I have a question about graduation'
+      'I am having difficulty in one of my classes': 'I am having difficulty in one of my classes'
+      'I have an idea for a workshop': 'I have an idea for a workshop'
+      'I am concerned about a student': 'I am concerned about a student'
+      'I want to be added to the BRC listserv': 'I want to be added to the BRC listserv'
+      'Other (please list reasons below)': 'Other (please list reasons below)'
+    '#required': true
+  description:
+    '#type': textarea
+    '#title': Description
+    '#description': 'Please list your concern/question here. The more details we have, the more helpful the form will be for us to help you find an answer to your question.'
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,40 +67,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +117,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +127,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +156,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''

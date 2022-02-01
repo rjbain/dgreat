@@ -2,9 +2,9 @@ uuid: b6b493d2-eef1-44de-8f36-f62bb66172fa
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 206
 template: false
 archive: false
@@ -12,7 +12,85 @@ id: webform_61468
 title: 'Peak Performance Session Evaluation'
 description: null
 category: null
-elements: "intro:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p class=''intro_text_lg''>Thank you for attending one of the Peak Performance Sessions. We are always interested in your feedback and want to know how we can improve our session series.</p><p class=''clear''></p><p>Please use the form below to evaluate the session.</p><p class=''clear''></p>'\n  '#title': Intro\n  '#description': ''\nsession_name:\n  '#type': textfield\n  '#title': 'Please indicate the name of the session you attended:'\n  '#description': ''\n  '#required': true\ndate_attended:\n  '#type': date\n  '#title': 'Date Attended:'\n  '#description': ''\ntime_attended:\n  '#type': time\n  '#title': 'Time of Session:'\n  '#description': ''\nrate_the_session:\n  '#type': radios\n  '#options':\n    1: 1\n    2: 2\n    3: 3\n    4: 4\n    5: 5\n    6: 6\n    7: 7\n    8: 8\n    9: 9\n    10: 10\n  '#title_display': inline\n  '#title': 'Please rate the session (1 lowest, 10 highest)'\n  '#description': ''\nhow_did_you_hear:\n  '#type': textarea\n  '#title': 'How did you hear about this session?'\n  '#description': ''\nknowledge:\n  '#type': radios\n  '#options':\n    1: 'Stayed the same'\n    2: 'Increased slightly'\n    3: 'Increased significantly'\n  '#title': 'After the presentation, my knowledge in the subject matter:'\n  '#description': ''\nwhich_components_of_this_session_engaged_you_check_all_that_appl:\n  '#type': checkboxes\n  '#title': 'Which components of this session engaged you? (Check all that apply)'\n  '#options':\n    Content/Information: Content/Information\n    Introduction/Icebreakers: Introduction/Icebreakers\n    Activities: Activities\n    'Interaction with other attendees': 'Interaction with other attendees'\n    'Handouts/Support Materials': 'Handouts/Support Materials'\n    Others: Others\nothers:\n  '#type': textarea\n  '#title_display': inline\n  '#title': 'If \"Others,\" please explain:'\n  '#description': ''\nmost_meaningful:\n  '#type': textarea\n  '#title': 'What information did you find most meaningful in this session?'\n  '#description': ''\nleast_meaningful:\n  '#type': textarea\n  '#title': 'What information did you find least meaningful in this session?'\n  '#description': ''\nactions:\n  '#type': textarea\n  '#title': 'What actions will you take as a result of this session?'\n  '#description': ''\ncomments:\n  '#type': textarea\n  '#title': 'Additional comments / suggestions (including suggestions for future sessions):'\n  '#description': ''\n"
+elements: |
+  intro:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<p class=''intro_text_lg''>Thank you for attending one of the Peak Performance Sessions. We are always interested in your feedback and want to know how we can improve our session series.</p><p class=''clear''></p><p>Please use the form below to evaluate the session.</p><p class=''clear''></p>'
+    '#title': Intro
+    '#description': ''
+  session_name:
+    '#type': textfield
+    '#title': 'Please indicate the name of the session you attended:'
+    '#description': ''
+    '#required': true
+  date_attended:
+    '#type': date
+    '#title': 'Date Attended:'
+    '#description': ''
+  time_attended:
+    '#type': time
+    '#title': 'Time of Session:'
+    '#description': ''
+  rate_the_session:
+    '#type': radios
+    '#options':
+      1: 1
+      2: 2
+      3: 3
+      4: 4
+      5: 5
+      6: 6
+      7: 7
+      8: 8
+      9: 9
+      10: 10
+    '#title_display': inline
+    '#title': 'Please rate the session (1 lowest, 10 highest)'
+    '#description': ''
+  how_did_you_hear:
+    '#type': textarea
+    '#title': 'How did you hear about this session?'
+    '#description': ''
+  knowledge:
+    '#type': radios
+    '#options':
+      1: 'Stayed the same'
+      2: 'Increased slightly'
+      3: 'Increased significantly'
+    '#title': 'After the presentation, my knowledge in the subject matter:'
+    '#description': ''
+  which_components_of_this_session_engaged_you_check_all_that_appl:
+    '#type': checkboxes
+    '#title': 'Which components of this session engaged you? (Check all that apply)'
+    '#options':
+      Content/Information: Content/Information
+      Introduction/Icebreakers: Introduction/Icebreakers
+      Activities: Activities
+      'Interaction with other attendees': 'Interaction with other attendees'
+      'Handouts/Support Materials': 'Handouts/Support Materials'
+      Others: Others
+  others:
+    '#type': textarea
+    '#title_display': inline
+    '#title': 'If "Others," please explain:'
+    '#description': ''
+  most_meaningful:
+    '#type': textarea
+    '#title': 'What information did you find most meaningful in this session?'
+    '#description': ''
+  least_meaningful:
+    '#type': textarea
+    '#title': 'What information did you find least meaningful in this session?'
+    '#description': ''
+  actions:
+    '#type': textarea
+    '#title': 'What actions will you take as a result of this session?'
+    '#description': ''
+  comments:
+    '#type': textarea
+    '#title': 'Additional comments / suggestions (including suggestions for future sessions):'
+    '#description': ''
 css: ''
 javascript: ''
 settings:
@@ -27,40 +105,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +155,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +165,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +194,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: url
+  confirmation_url: 'http://myusf.usfca.edu/student-life/success-workshops'
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: 'http://myusf.usfca.edu/student-life/success-workshops'
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -199,9 +280,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -210,13 +291,17 @@ handlers:
         - completed
       to_mail: plorenz@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -227,18 +312,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_2:
     id: email
+    handler_id: email_2
     label: 'Email 2'
     notes: ''
-    handler_id: email_2
     status: true
     conditions: {  }
     weight: 2
@@ -247,13 +328,17 @@ handlers:
         - completed
       to_mail: drmyers@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -264,11 +349,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

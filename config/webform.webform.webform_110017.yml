@@ -2,9 +2,9 @@ uuid: 057a22c5-12d9-4ec1-9c53-b05e3223b605
 langcode: en
 status: closed
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 1293
 template: false
 archive: false
@@ -12,7 +12,64 @@ id: webform_110017
 title: 'HR Weight Watchers Reimbursement Form'
 description: null
 category: null
-elements: "introduction:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p>USF reimburses 50% of membership costs for benefits-eligible employees who sign up for Weight Watchers online or who participate at in-person meetings. To apply for the reimbursement, complete and submit this form to Human Resources with receipts no later than <strong>December 1st</strong> of that calendar year. Reimbursed funds will be deposited with your pay check in the pay cycle following receipt of your form. This is a taxable benefit.</p>'\n  '#title': Introduction\n  '#description': ''\nname:\n  '#type': textfield\n  '#title': 'Employee Name'\n  '#description': ''\n  '#required': true\ncwid:\n  '#type': textfield\n  '#title': CWID\n  '#description': ''\n  '#required': true\njob_title_position:\n  '#type': textfield\n  '#title': 'Job Title/Position'\n  '#description': ''\n  '#required': true\ncampus_location:\n  '#type': textfield\n  '#title': 'Campus Location'\n  '#description': ''\n  '#required': true\nlocation_on_program:\n  '#type': textfield\n  '#title': 'Location on Program'\n  '#description': ''\n  '#required': true\nperiod_fo_expense:\n  '#type': textfield\n  '#title': 'Period of Expense'\n  '#description': ''\n  '#required': true\ntotal_expense:\n  '#type': textfield\n  '#title': 'Total Expense'\n  '#description': ''\n  '#required': true\nplease_attach_receipts:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<div style=''left: 430.195px; top: 950.062px; font-size: 18.4px; font-family: sans-serif; transform: scaleX(0.910192);'' data-canvas-width=''164.60823999999997''>Please email your receipt(s) from your Weight Watchers program to <a href=''mailto:benefits@usfca.edu''>benefits@usfca.edu</a> identifying your name, period of expense and total cost. Amount of reimbursement will not exceed 50% of the fee. The reimbursement is a taxable benefit.</div>'\n  '#title': Instructions\n  '#description': ''\nsigniture:\n  '#type': textfield\n  '#title': 'Employee Signature'\n  '#description': 'By entering my name and date below, I hereby certify that this expense was incurred on my own behalf and was not reimbursed by another source. The amount reimbursed will not exceed 50% of the fee. All receipts for reimbursement should be turned in no later than December 10th of each calendar year.'\n  '#required': true\ndate:\n  '#type': date\n  '#title': Date\n  '#description': ''\n  '#required': true\n"
+elements: |
+  introduction:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<p>USF reimburses 50% of membership costs for benefits-eligible employees who sign up for Weight Watchers online or who participate at in-person meetings. To apply for the reimbursement, complete and submit this form to Human Resources with receipts no later than <strong>December 1st</strong> of that calendar year. Reimbursed funds will be deposited with your pay check in the pay cycle following receipt of your form. This is a taxable benefit.</p>'
+    '#title': Introduction
+    '#description': ''
+  name:
+    '#type': textfield
+    '#title': 'Employee Name'
+    '#description': ''
+    '#required': true
+  cwid:
+    '#type': textfield
+    '#title': CWID
+    '#description': ''
+    '#required': true
+  job_title_position:
+    '#type': textfield
+    '#title': 'Job Title/Position'
+    '#description': ''
+    '#required': true
+  campus_location:
+    '#type': textfield
+    '#title': 'Campus Location'
+    '#description': ''
+    '#required': true
+  location_on_program:
+    '#type': textfield
+    '#title': 'Location on Program'
+    '#description': ''
+    '#required': true
+  period_fo_expense:
+    '#type': textfield
+    '#title': 'Period of Expense'
+    '#description': ''
+    '#required': true
+  total_expense:
+    '#type': textfield
+    '#title': 'Total Expense'
+    '#description': ''
+    '#required': true
+  please_attach_receipts:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<div style=''left: 430.195px; top: 950.062px; font-size: 18.4px; font-family: sans-serif; transform: scaleX(0.910192);'' data-canvas-width=''164.60823999999997''>Please email your receipt(s) from your Weight Watchers program to <a href=''mailto:benefits@usfca.edu''>benefits@usfca.edu</a> identifying your name, period of expense and total cost. Amount of reimbursement will not exceed 50% of the fee. The reimbursement is a taxable benefit.</div>'
+    '#title': Instructions
+    '#description': ''
+  signiture:
+    '#type': textfield
+    '#title': 'Employee Signature'
+    '#description': 'By entering my name and date below, I hereby certify that this expense was incurred on my own behalf and was not reimbursed by another source. The amount reimbursed will not exceed 50% of the fee. All receipts for reimbursement should be turned in no later than December 10th of each calendar year.'
+    '#required': true
+  date:
+    '#type': date
+    '#title': Date
+    '#description': ''
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,40 +84,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +134,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +144,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +173,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: '<p>Thank you for submitting a weight watchers reimbursement form. If you have any questions, please email <a href="mailto:benefits@usfca.edu">benefits@usfca.edu</a>.</p>'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -199,9 +259,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -210,13 +270,17 @@ handlers:
         - completed
       to_mail: 'twalker@usfca.edu,benefits@usfca.edu'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: 'HR Weight Watchers Reimbursement Form Submitted on ubmitted values are: [webform_submission:values] The results of this submission may be viewed at: [webform_submission:url]'
       excluded_elements: {  }
@@ -227,11 +291,7 @@ handlers:
       html: true
       attachments: true
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

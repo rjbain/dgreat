@@ -2,9 +2,9 @@ uuid: 13dfe118-7241-4535-a939-870428f939b7
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 52158
 template: false
 archive: false
@@ -12,7 +12,78 @@ id: financial_aid_outreach_request
 title: 'Financial Aid Outreach Request'
 description: 'Use this form to request a USF financial aid presentation or event.&nbsp;'
 category: 'Financial Aid'
-elements: "organization_name:\n  '#type': textfield\n  '#title': 'Organization Name'\n  '#required': true\ncontactinfo:\n  '#type': webform_contact\n  '#title': 'Contact Info'\n  '#required': true\n  '#name__title': 'Your Full Name'\n  '#name__required': true\n  '#company__title': Title\n  '#company__required': true\n  '#email__access': false\n  '#email__placeholder': 'here is a placeholder'\n  '#email__help': 'here is a help text'\n  '#email__description': 'here is description'\n  '#phone__title': 'Phone Number'\n  '#phone__required': true\n  '#address__required': true\n  '#address_2__access': false\n  '#city__required': true\n  '#state_province__required': true\n  '#postal_code__required': true\n  '#country__required': true\nemail:\n  '#type': email\n  '#title': Email\n  '#required': true\nevent_title:\n  '#type': textfield\n  '#title': 'Event Title'\n  '#required': true\nevent_date:\n  '#type': date\n  '#title': 'Event Date'\n  '#required': true\n  '#datepicker': true\n  '#date_date_format': 'l, F j, Y'\nevent_start_time:\n  '#type': webform_time\n  '#title': 'Financial Aid Event Start Time'\n  '#description': 'If this is part of a larger event, please pick the start time of the&nbsp;<strong>financial aid portion only</strong>.'\n  '#required': true\n  '#time_format': 'g:i A'\nfinancial_aid_event_end_time:\n  '#type': webform_time\n  '#title': 'Financial Aid Event End Time'\n  '#description': 'If this is part of a larger event, please pick the end time of the <strong>financial aid portion only.</strong>'\n  '#required': true\n  '#time_format': 'g:i A'\nevent_details:\n  '#type': textarea\n  '#title': 'Event Details'\n  '#description': 'Please tell us more about the event (e.g. if it is part of a larger event), any specific topics you&#39;d like us to cover, or anything else we should know about your audience.'\n  '#required': true\naudience:\n  '#type': select\n  '#title': 'This event is for:'\n  '#options':\n    'High School Students': 'High School Students'\n    '[USF only] On-campus event': '[USF only] On-campus event'\n    '[USF only] Admission event': '[USF only] Admission event'\n  '#required': true\nestimated_number_of_attendees:\n  '#type': textfield\n  '#title': 'Estimated number of attendees'\n  '#required': true\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#reset_hide': true\n"
+elements: |
+  organization_name:
+    '#type': textfield
+    '#title': 'Organization Name'
+    '#required': true
+  contactinfo:
+    '#type': webform_contact
+    '#title': 'Contact Info'
+    '#required': true
+    '#name__title': 'Your Full Name'
+    '#name__required': true
+    '#company__title': Title
+    '#company__required': true
+    '#email__access': false
+    '#email__placeholder': 'here is a placeholder'
+    '#email__help': 'here is a help text'
+    '#email__description': 'here is description'
+    '#phone__title': 'Phone Number'
+    '#phone__required': true
+    '#address__required': true
+    '#address_2__access': false
+    '#city__required': true
+    '#state_province__required': true
+    '#postal_code__required': true
+    '#country__required': true
+  email:
+    '#type': email
+    '#title': Email
+    '#required': true
+  event_title:
+    '#type': textfield
+    '#title': 'Event Title'
+    '#required': true
+  event_date:
+    '#type': date
+    '#title': 'Event Date'
+    '#required': true
+    '#datepicker': true
+    '#date_date_format': 'l, F j, Y'
+  event_start_time:
+    '#type': webform_time
+    '#title': 'Financial Aid Event Start Time'
+    '#description': 'If this is part of a larger event, please pick the start time of the&nbsp;<strong>financial aid portion only</strong>.'
+    '#required': true
+    '#time_format': 'g:i A'
+  financial_aid_event_end_time:
+    '#type': webform_time
+    '#title': 'Financial Aid Event End Time'
+    '#description': 'If this is part of a larger event, please pick the end time of the <strong>financial aid portion only.</strong>'
+    '#required': true
+    '#time_format': 'g:i A'
+  event_details:
+    '#type': textarea
+    '#title': 'Event Details'
+    '#description': 'Please tell us more about the event (e.g. if it is part of a larger event), any specific topics you&#39;d like us to cover, or anything else we should know about your audience.'
+    '#required': true
+  audience:
+    '#type': select
+    '#title': 'This event is for:'
+    '#options':
+      'High School Students': 'High School Students'
+      '[USF only] On-campus event': '[USF only] On-campus event'
+      '[USF only] Admission event': '[USF only] Admission event'
+    '#required': true
+  estimated_number_of_attendees:
+    '#type': textfield
+    '#title': 'Estimated number of attendees'
+    '#required': true
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#reset_hide': true
 css: ''
 javascript: ''
 settings:
@@ -27,40 +98,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: true
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: true
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: true
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +148,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +158,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +187,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: message
+  confirmation_url: ''
   confirmation_title: 'Event Request Received'
   confirmation_message: 'Thank you for submitting an event request to the Office of Financial Aid and Student Employment. We will review your request and respond as soon as possible. If you have any questions, feel free to reach out to financialaid@usfca.edu.'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -198,9 +272,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -209,13 +283,17 @@ handlers:
         - completed
       to_mail: jlau17@usfca.edu
       to_options: {  }
-      cc_mail: financialaid@usfca.edu
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: financialaid@usfca.edu
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'EVENT REQUEST'
       body: "JUST A COPY- Events are managed by Jason and Lori<br />\r\n<br />\r\n[webform_submission:values]"
       excluded_elements: {  }
@@ -226,18 +304,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_1:
     id: email
+    handler_id: email_1
     label: Email
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 0
@@ -246,13 +320,17 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:email:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: Financialaid@usfca.edu
       from_options: {  }
       from_name: 'USF Financial Aid Event Request'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'USF Financial Aid Event Request'
       body: "Thank you for contacting the Office of Financial Aid and Student Employment. This is your automatic email acknowledgement of your request.<br />\r\n<br />\r\nThis will be followed by an email within 5 to 7 business days regarding the status of your request.<br />\r\n<br />\r\n[webform_submission:values]"
       excluded_elements: {  }
@@ -263,11 +341,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

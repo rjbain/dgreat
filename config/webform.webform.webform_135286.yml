@@ -2,9 +2,9 @@ uuid: aa3cf6ef-9429-4b08-b7b5-36d6043fa139
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 1293
 template: false
 archive: false
@@ -12,7 +12,125 @@ id: webform_135286
 title: 'HR GoUSF Young Minds At Work RSVP Form'
 description: null
 category: null
-elements: "introduction:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h2>Parent''s Information</h2>'\n  '#title': Introduction\n  '#description': ''\nparent_first_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nparent_last_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': ''\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': 'Job Title'\n  '#description': ''\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#size': 20\n  '#default_value': '[current-user:mail]'\n  '#title': 'USF Email Address'\n  '#description': ''\n  '#required': true\nphone_number:\n  '#type': textfield\n  '#title': 'Phone Number'\n  '#description': ''\n  '#required': true\nchildrens_information:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h2>Child(ren)''s Information:</h2>'\n  '#title': 'Child(ren)''s Information:'\n  '#description': ''\nplease_indicate_which_group_you_would_like_your_children_to_join:\n  '#type': radios\n  '#options':\n    4: 'I have one child attending. They will participate in the age appropriate group.'\n    2: 'I have multiple children attending. They will participate in the 0-9 year old group.'\n    3: 'I have multiple children attending. They will participate in the 10+ years old group.'\n  '#title': 'Please indicate which group you would like your child(ren) to join:'\n  '#description': 'NOTE: An adult, USF employee must accompany their child(ren) at all activities. If you have multiple children attending, please select one group: 0-9 or 10+, regardless of their varying ages. If you have any questions about the groups, please email GoUSF@usfca.edu.'\n  '#required': true\nchild_1:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h3>Child #1</h3>'\n  '#title': Child\n  '#description': ''\nchild_one_first_and_last_name:\n  '#type': textfield\n  '#title': 'First and Last Name'\n  '#description': ''\n  '#required': true\nchild1age:\n  '#type': number\n  '#title': Age\n  '#required': true\nchild_2:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h3>Child #2</h3>'\n  '#title': Child\n  '#description': ''\nchild_two_first_and_last_name:\n  '#type': textfield\n  '#title': 'First and Last Name'\n  '#description': ''\nchild2age:\n  '#type': number\n  '#title': Age\nchild_3:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h3>Child #3</h3>'\n  '#title': Child\n  '#description': ''\nchild_three_first_and_last_name:\n  '#type': textfield\n  '#title': 'First and Last Name'\n  '#description': ''\nchild3age:\n  '#type': number\n  '#title': Age\ndietary_restrictions_intro:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h3>Dietary Restrictions</h3>'\n  '#title': 'Dietary Restrictions'\n  '#description': ''\ndietary_restrictions:\n  '#type': textfield\n  '#title': 'Please describe any dietary restrictions that affect your child(ren).'\n  '#description': ''\nphotographs:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h3>Photographs</h3>'\n  '#title': Photographs\n  '#description': ''\nphotograph_disclaimer:\n  '#type': radios\n  '#options':\n    1: 'I hereby consent to and authorize the use and reproduction, in print or electronic format, by GoUSF and event volunteers, of any and all photographs of me, or my child(ren), which have been taken during this activity for any publicity purpose, without compensation.'\n    2: 'I do not want photographs taken of me or my child(ren).'\n  '#title': 'Please select one of the following:'\n  '#description': ''\n  '#required': true\n"
+elements: |
+  introduction:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<h2>Parent''s Information</h2>'
+    '#title': Introduction
+    '#description': ''
+  parent_first_name:
+    '#type': textfield
+    '#title': 'First Name'
+    '#description': ''
+    '#required': true
+  parent_last_name:
+    '#type': textfield
+    '#title': 'Last Name'
+    '#description': ''
+    '#required': true
+  department:
+    '#type': textfield
+    '#title': Department
+    '#description': ''
+    '#required': true
+  title:
+    '#type': textfield
+    '#title': 'Job Title'
+    '#description': ''
+    '#required': true
+  usf_email_address:
+    '#type': email
+    '#size': 20
+    '#default_value': '[current-user:mail]'
+    '#title': 'USF Email Address'
+    '#description': ''
+    '#required': true
+  phone_number:
+    '#type': textfield
+    '#title': 'Phone Number'
+    '#description': ''
+    '#required': true
+  childrens_information:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<h2>Child(ren)''s Information:</h2>'
+    '#title': 'Child(ren)''s Information:'
+    '#description': ''
+  please_indicate_which_group_you_would_like_your_children_to_join:
+    '#type': radios
+    '#options':
+      4: 'I have one child attending. They will participate in the age appropriate group.'
+      2: 'I have multiple children attending. They will participate in the 0-9 year old group.'
+      3: 'I have multiple children attending. They will participate in the 10+ years old group.'
+    '#title': 'Please indicate which group you would like your child(ren) to join:'
+    '#description': 'NOTE: An adult, USF employee must accompany their child(ren) at all activities. If you have multiple children attending, please select one group: 0-9 or 10+, regardless of their varying ages. If you have any questions about the groups, please email GoUSF@usfca.edu.'
+    '#required': true
+  child_1:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<h3>Child #1</h3>'
+    '#title': Child
+    '#description': ''
+  child_one_first_and_last_name:
+    '#type': textfield
+    '#title': 'First and Last Name'
+    '#description': ''
+    '#required': true
+  child1age:
+    '#type': number
+    '#title': Age
+    '#required': true
+  child_2:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<h3>Child #2</h3>'
+    '#title': Child
+    '#description': ''
+  child_two_first_and_last_name:
+    '#type': textfield
+    '#title': 'First and Last Name'
+    '#description': ''
+  child2age:
+    '#type': number
+    '#title': Age
+  child_3:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<h3>Child #3</h3>'
+    '#title': Child
+    '#description': ''
+  child_three_first_and_last_name:
+    '#type': textfield
+    '#title': 'First and Last Name'
+    '#description': ''
+  child3age:
+    '#type': number
+    '#title': Age
+  dietary_restrictions_intro:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<h3>Dietary Restrictions</h3>'
+    '#title': 'Dietary Restrictions'
+    '#description': ''
+  dietary_restrictions:
+    '#type': textfield
+    '#title': 'Please describe any dietary restrictions that affect your child(ren).'
+    '#description': ''
+  photographs:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<h3>Photographs</h3>'
+    '#title': Photographs
+    '#description': ''
+  photograph_disclaimer:
+    '#type': radios
+    '#options':
+      1: 'I hereby consent to and authorize the use and reproduction, in print or electronic format, by GoUSF and event volunteers, of any and all photographs of me, or my child(ren), which have been taken during this activity for any publicity purpose, without compensation.'
+      2: 'I do not want photographs taken of me or my child(ren).'
+    '#title': 'Please select one of the following:'
+    '#description': ''
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,40 +145,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +195,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +205,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +234,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: '<p>Thank you for RSVPing to Young Minds at Work. Please meet promptly at 8:30 a.m. in Gleeson Library Plaza on June 18. For the most up-to-date event information, including free childcare options for children age 5 and up following the event, please visit the <a href="/node/135287" target="_blank">Young Minds at Work web page</a>. If you have any questions, please email <a href="mailto:GoUSF@usfca.edu" target="_blank">GoUSF@usfca.edu</a>.</p>'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -199,9 +320,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -210,13 +331,17 @@ handlers:
         - completed
       to_mail: gousf@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -227,11 +352,7 @@ handlers:
       html: false
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

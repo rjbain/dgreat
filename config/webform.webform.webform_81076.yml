@@ -2,9 +2,9 @@ uuid: 62b3c15b-48cc-4c2c-af9d-70323635f93d
 langcode: en
 status: closed
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 6254
 template: false
 archive: false
@@ -12,7 +12,113 @@ id: webform_81076
 title: 'One Stop - Marshal Registration - Dec'
 description: null
 category: null
-elements: "your_information:\n  '#type': processed_text\n  '#title': '<h2>Your Information:</h2>'\n  '#description': ''\n  '#format': full_html\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#title_display': inline\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#title_display': inline\n  '#required': true\nemail:\n  '#type': email\n  '#title': Email\n  '#title_display': inline\n  '#size': 20\n  '#required': true\ndepartment:\n  '#type': select\n  '#title': Department\n  '#options':\n    'College of Arts and Sciences': 'College of Arts and Sciences'\n    'Enrollment Communications': 'Enrollment Communications'\n    'Enrollment Data Systems': 'Enrollment Data Systems'\n    'Enrollment Operations': 'Enrollment Operations'\n    'Financial Aid': 'Financial Aid'\n    'Graduate Enrollment': 'Graduate Enrollment'\n    'International Admission': 'International Admission'\n    Registrar: Registrar\n    'School of Education': 'School of Education'\n    'School of Law': 'School of Law'\n    'School of Management': 'School of Management'\n    'School of Nursing and Health Professions': 'School of Nursing and Health Professions'\n    'Student Accounts': 'Student Accounts'\n    'Student Employment': 'Student Employment'\n    'Undergraduate Admission': 'Undergraduate Admission'\n    Other: Other\n  '#required': true\nother_department:\n  '#type': textfield\n  '#title': 'Other Department'\n  '#states':\n    visible:\n      ':input[name=\"department\"]':\n        value: Other\npast_participation:\n  '#type': radios\n  '#title': 'Have you participated as a Marshal in the past?'\n  '#title_display': inline\n  '#options':\n    1: 'Yes'\n    2: 'No'\n  '#required': true\nsupervisors_name:\n  '#type': textfield\n  '#title': 'Supervisors Name'\n  '#required': true\nsupervisors_email:\n  '#type': email\n  '#title': 'Supervisors Email'\n  '#required': true\nceremonies:\n  '#type': processed_text\n  '#title': '<h3>Ceremonies:</h3>'\n  '#description': ''\n  '#text': \"<p>Please sign up for as many ceremonies as possible by checking each box for a ceremony you intend to volunteer.  Check-in is generally 1 hr before each ceremony start (see times listed below). The total time commitment is 2.5-3 hrs per ceremony.</p>\\r\\n\"\n  '#format': full_html\none_stop_marshal_registration_dec:\n  '#type': checkboxes\n  '#title': 'Friday, December 13, 2019'\n  '#options':\n    '6:00 pm - College of Arts and Sciences Ceremony': '6:00 pm - College of Arts and Sciences Ceremony'\n  '#required': true\nposition_preferences:\n  '#type': processed_text\n  '#title': '<h3>Position Preferences:</h3>'\n  '#description': ''\n  '#text': \"<p>Volunteers who sign up for more than 1 ceremony will receive priority with their position placement.  Please note that not all preferences can be fulfilled depending on the needs of an individual ceremony. For example, Student Preparation positions are most popular but we only need a very limited amount of Marshals, thus you could be assigned as a General Seating Marshal where there is the greatest need. For detailed position descriptions, please see the <a href=\\\"http://myusf.usfca.edu/graduation/marshal-position-descriptions\\\" target=\\\"_blank\\\">Marshal Position Descriptions</a>.</p>\\r\\n\"\n  '#format': full_html\npreferred_position1:\n  '#type': select\n  '#title': 'Preferred Position'\n  '#title_display': inline\n  '#options':\n    1: 'No Preference'\n    2: 'General Seating Marshal'\n    3: 'Student Preparation Marshal'\n  '#required': true\n  '#default_value': '1'\npreferred_position2:\n  '#type': select\n  '#title': 'Secondary Position'\n  '#title_display': inline\n  '#options':\n    1: 'No Preference'\n    2: 'General Seating Marshal'\n    3: 'Student Preparation Marshal'\n  '#default_value': '1'\nnormal_volunteer_area:\n  '#type': textarea\n  '#title': 'If you have a specific area where you normally volunteer or are a coordinator for a specific area, please indicate below:'\n  '#description': ''\n"
+elements: |
+  your_information:
+    '#type': processed_text
+    '#title': '<h2>Your Information:</h2>'
+    '#description': ''
+    '#format': full_html
+  first_name:
+    '#type': textfield
+    '#title': 'First Name'
+    '#title_display': inline
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title': 'Last Name'
+    '#title_display': inline
+    '#required': true
+  email:
+    '#type': email
+    '#title': Email
+    '#title_display': inline
+    '#size': 20
+    '#required': true
+  department:
+    '#type': select
+    '#title': Department
+    '#options':
+      'College of Arts and Sciences': 'College of Arts and Sciences'
+      'Enrollment Communications': 'Enrollment Communications'
+      'Enrollment Data Systems': 'Enrollment Data Systems'
+      'Enrollment Operations': 'Enrollment Operations'
+      'Financial Aid': 'Financial Aid'
+      'Graduate Enrollment': 'Graduate Enrollment'
+      'International Admission': 'International Admission'
+      Registrar: Registrar
+      'School of Education': 'School of Education'
+      'School of Law': 'School of Law'
+      'School of Management': 'School of Management'
+      'School of Nursing and Health Professions': 'School of Nursing and Health Professions'
+      'Student Accounts': 'Student Accounts'
+      'Student Employment': 'Student Employment'
+      'Undergraduate Admission': 'Undergraduate Admission'
+      Other: Other
+    '#required': true
+  other_department:
+    '#type': textfield
+    '#title': 'Other Department'
+    '#states':
+      visible:
+        ':input[name="department"]':
+          value: Other
+  past_participation:
+    '#type': radios
+    '#title': 'Have you participated as a Marshal in the past?'
+    '#title_display': inline
+    '#options':
+      1: 'Yes'
+      2: 'No'
+    '#required': true
+  supervisors_name:
+    '#type': textfield
+    '#title': 'Supervisors Name'
+    '#required': true
+  supervisors_email:
+    '#type': email
+    '#title': 'Supervisors Email'
+    '#required': true
+  ceremonies:
+    '#type': processed_text
+    '#title': '<h3>Ceremonies:</h3>'
+    '#description': ''
+    '#text': "<p>Please sign up for as many ceremonies as possible by checking each box for a ceremony you intend to volunteer.  Check-in is generally 1 hr before each ceremony start (see times listed below). The total time commitment is 2.5-3 hrs per ceremony.</p>\r\n"
+    '#format': full_html
+  one_stop_marshal_registration_dec:
+    '#type': checkboxes
+    '#title': 'Friday, December 13, 2019'
+    '#options':
+      '6:00 pm - College of Arts and Sciences Ceremony': '6:00 pm - College of Arts and Sciences Ceremony'
+    '#required': true
+  position_preferences:
+    '#type': processed_text
+    '#title': '<h3>Position Preferences:</h3>'
+    '#description': ''
+    '#text': "<p>Volunteers who sign up for more than 1 ceremony will receive priority with their position placement.  Please note that not all preferences can be fulfilled depending on the needs of an individual ceremony. For example, Student Preparation positions are most popular but we only need a very limited amount of Marshals, thus you could be assigned as a General Seating Marshal where there is the greatest need. For detailed position descriptions, please see the <a href=\"http://myusf.usfca.edu/graduation/marshal-position-descriptions\" target=\"_blank\">Marshal Position Descriptions</a>.</p>\r\n"
+    '#format': full_html
+  preferred_position1:
+    '#type': select
+    '#title': 'Preferred Position'
+    '#title_display': inline
+    '#options':
+      1: 'No Preference'
+      2: 'General Seating Marshal'
+      3: 'Student Preparation Marshal'
+    '#required': true
+    '#default_value': '1'
+  preferred_position2:
+    '#type': select
+    '#title': 'Secondary Position'
+    '#title_display': inline
+    '#options':
+      1: 'No Preference'
+      2: 'General Seating Marshal'
+      3: 'Student Preparation Marshal'
+    '#default_value': '1'
+  normal_volunteer_area:
+    '#type': textarea
+    '#title': 'If you have a specific area where you normally volunteer or are a coordinator for a specific area, please indicate below:'
+    '#description': ''
 css: ''
 javascript: ''
 settings:
@@ -27,40 +133,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +183,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +193,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +222,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: url
+  confirmation_url: 'https://myusf.usfca.edu/onestop/graduation/marshal-volunteers/thank-you'
   confirmation_title: ''
   confirmation_message: '<p><span>&nbsp;</span></p>'
-  confirmation_url: 'https://myusf.usfca.edu/onestop/graduation/marshal-volunteers/thank-you'
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -199,9 +308,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -210,13 +319,17 @@ handlers:
         - completed
       to_mail: '[webform-submission:values:email:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: gradcenter@usfca.edu
       from_options: {  }
       from_name: 'Graduation Center'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'Commencement Marshal Registration Confirmation'
       body: "Thank you for volunteering!\r\n\r\nIf you have any questions about volunteering, please contact William Vitagliano at wbvitagliano@usfca.edu or x4532.\r\n\r\nThis is confirmation of your commencement marshal registration:\r\n\r\nSubmitted values are: \r\n\r\n[webform_submission:values]\r\n"
       excluded_elements: {  }
@@ -227,18 +340,14 @@ handlers:
       html: false
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_5:
     id: email
+    handler_id: email_5
     label: 'Email 5'
     notes: ''
-    handler_id: email_5
     status: true
     conditions: {  }
     weight: 5
@@ -247,13 +356,17 @@ handlers:
         - completed
       to_mail: aarmstrong3@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'Commencement Marshal Registration Submission'
       body: "<span style=\"font-size:11.0pt\"><span style=\"line-height:107%\"><span style=\"font-family:&quot;Calibri&quot;,sans-serif\">Commencement Marshal Registration Form Submitted by:<br />\r\n<br />\r\nSubmitted by user: [webform_submission:user]<br />\r\n<br />\r\nSubmitted values are:<br />\r\n<br />\r\n[webform_submission:values]<br />\r\n<br />\r\nThe results of this submission may be viewed at: [webform_submission:url]</span></span></span><br />\r\n<br />\r\n<br />\r\n&nbsp;"
       excluded_elements: {  }
@@ -264,18 +377,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_6:
     id: email
+    handler_id: email_6
     label: 'Email 6'
     notes: ''
-    handler_id: email_6
     status: true
     conditions: {  }
     weight: 6
@@ -284,13 +393,17 @@ handlers:
         - completed
       to_mail: wbvitagliano@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'Commencement Marshal Registration Submission'
       body: "<span style=\"font-size:11.0pt\"><span style=\"line-height:107%\"><span style=\"font-family:&quot;Calibri&quot;,sans-serif\">Commencement Marshal Registration Form Submitted by:<br />\r\n<br />\r\nSubmitted by user: [webform_submission:user]<br />\r\n<br />\r\nSubmitted values are:<br />\r\n<br />\r\n[webform_submission:values]<br />\r\n<br />\r\nThe results of this submission may be viewed at: [webform_submission:url]</span></span></span>"
       excluded_elements: {  }
@@ -301,11 +414,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

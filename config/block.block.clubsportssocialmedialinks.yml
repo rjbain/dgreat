@@ -21,8 +21,8 @@ plugin: 'block_content:ee4dcb78-7734-43a4-8a11-8374b3bc0955'
 settings:
   id: 'block_content:ee4dcb78-7734-43a4-8a11-8374b3bc0955'
   label: 'Club Sports Social Media Links'
-  provider: block_content
   label_display: visible
+  provider: block_content
   status: true
   info: ''
   view_mode: full
@@ -30,25 +30,25 @@ visibility:
   condition_group:
     id: condition_group
     negate: false
-    block_visibility_group: ''
     context_mapping: {  }
-  node_type:
-    id: node_type
-    bundles:
-      page: page
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
+    block_visibility_group: ''
   request_path:
     id: request_path
-    pages: /koret/club-sports
     negate: false
     context_mapping: {  }
+    pages: /koret/club-sports
   user_role:
     id: user_role
-    roles:
-      anonymous: anonymous
-      authenticated: authenticated
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
+    roles:
+      anonymous: anonymous
+      authenticated: authenticated
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      page: page

@@ -7,9 +7,9 @@ dependencies:
 third_party_settings:
   dgreat_student_surveys:
     salesforce_id: ''
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 45024
 template: false
 archive: false
@@ -17,7 +17,169 @@ id: exit_interview
 title: 'ISSS - Exit Interview'
 description: ''
 category: ISSS
-elements: "markup:\n  '#type': webform_markup\n  '#markup': \"<h2>1. Demographic Information</h2>\\r\\n<strong>1. Information:</strong>\"\nstudent_s_passport_legal_name_:\n  '#type': textfield\n  '#title': 'Student''s Passport Legal Name: '\n  '#required': true\nstudent_s_id_:\n  '#type': textfield\n  '#title': 'Student''s ID#: '\n  '#required': true\nmarkup_01:\n  '#type': webform_markup\n  '#markup': '<strong><label>2. Academic Term you started:</label></strong>'\nsemester_year:\n  '#type': select\n  '#title': 'Select Semester'\n  '#options':\n    Fall: Fall\n    Spring: Spring\n    Summer: Summer\n  '#required': true\nenter_year:\n  '#type': number\n  '#title': 'Enter Year'\n  '#required': true\n  '#min': 1000\n  '#max': 9999\n3_student_s_academic_year_:\n  '#type': radios\n  '#title': '3. Student’s Academic Year:'\n  '#options':\n    First-Year: First-Year\n    Sophomore: Sophomore\n    Junior: Junior\n    Senior: Senior\n    Graduate: Graduate\n  '#required': true\n4_did_you_transfer_to_usf_from_another_u_s_school_:\n  '#type': radios\n  '#title': '4. Did you transfer to USF from another U.S. school?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\n5_do_you_need_to_take_aem_class_when_you_started_at_usf_:\n  '#type': radios\n  '#title': '5. Do you need to take AEM class when you started at USF? '\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\n6_gender_:\n  '#type': radios\n  '#title': '6. Gender:'\n  '#options':\n    Male: Male\n    Female: Female\n  '#required': true\n7_gpa_:\n  '#type': webform_radios_other\n  '#title': '7. GPA:'\n  '#options':\n    3.51-4.0: 3.51-4.0\n    3.01-3.5: 3.01-3.5\n    2.51-3.0: 2.51-3.0\n    2.01-2.5: 2.01-2.5\n    'Below 2.0': 'Below 2.0'\n  '#required': true\n9_year_graduated_high_school_:\n  '#type': textfield\n  '#title': '9. Year Graduated High School:'\n  '#required': true\n10_major_:\n  '#type': textfield\n  '#title': '10. Major or Graduate Program:'\n  '#multiple': 2\n  '#required': true\n13_country_of_citizenship_:\n  '#type': textfield\n  '#title': '13. Country of Citizenship:'\n  '#required': true\n14_visa_type_:\n  '#type': textfield\n  '#title': '14. Visa Type:'\n  '#required': true\n15_exit_situation_:\n  '#type': webform_checkboxes_other\n  '#title': '15. Exit Situation: '\n  '#options':\n    Transfer: 'Transfer out to a new school (show Transfer school info after clicking)'\n    Leave: 'Leave of Absence'\n    Withdrawal: Withdrawal\n  '#other__option_label': 'Other (please specify):'\n  '#required': true\nmarkup_02:\n  '#type': webform_markup\n  '#markup': '<h2>2. Transfer School Information</h2>'\n1_transfer_school_location_:\n  '#type': radios\n  '#title': '1. Transfer School Location:'\n  '#options':\n    'In state': 'In state'\n    'Out state': 'Out state'\n  '#required': true\n2_transfer_school_program_type_:\n  '#type': radios\n  '#title': '2. Transfer School/Program Type: '\n  '#options':\n    'ESL/language training program': 'ESL/language training program'\n    'Community/junior college': 'Community/junior college'\n    'Public 4-year university': 'Public 4-year university'\n    'Private 4-year university': 'Private 4-year university'\n    'Public graduate school program': 'Public graduate school program'\n    'Private graduate school program': 'Private graduate school program'\n    'For-profit educational institution': 'For-profit educational institution'\n  '#required': true\nmarkup_03:\n  '#type': webform_markup\n  '#markup': '<h2>3. ISSS Exit Interview (continued)</h2>'\n1_reason_for_leaving_usf_check_all_that_apply_:\n  '#type': webform_checkboxes_other\n  '#title': '1. Reason for leaving USF (check all that apply): '\n  '#options':\n    'Financial Aid Difficulty ': 'Financial Aid Difficulty '\n    'Student/Institution Fit': 'Student/Institution Fit'\n    Curriculum/Major/Advising: Curriculum/Major/Advising\n    'Student Involvement/Social Connection': 'Student Involvement/Social Connection'\n    Health: Health\n    'Emergency/Unforeseen Circumstance': 'Emergency/Unforeseen Circumstance'\n    'Judicial Sanction': 'Judicial Sanction'\n    'Academic Disqualification': 'Academic Disqualification'\n  '#other__option_label': 'Other (please specify): '\n  '#required': true\n2_all_questions_are_required_:\n  '#type': textarea\n  '#title': '2. Why are you leaving USF? (Prompt: family, financial, major/advising)'\n  '#required': true\n  '#counter_type': word\n  '#counter_minimum': 1\n  '#counter_maximum': 10000\n3_are_you_considering_returning_to_usf_if_so_can_usf_do_anything:\n  '#type': textarea\n  '#title': '3. Are you considering returning to USF? If so, can USF do anything to help your transition back to school? '\n  '#required': true\n  '#counter_type': word\n  '#counter_minimum': 1\n  '#counter_maximum': 10000\n4_what_can_you_tell_me_about_your_time_at_usf_was_it_positive_ne:\n  '#type': textarea\n  '#title': '4. What can you tell me about your time at USF? Was it positive? Negative? If so, how? If not why? '\n  '#required': true\n  '#counter_type': word\n  '#counter_minimum': 1\n  '#counter_maximum': 10000\n5_is_there_anything_you_want_to_make_sure_that_usf_knows_or_unde:\n  '#type': textarea\n  '#title': '5. Is there anything you want to make sure that USF knows or understands about the student experience that might be helpful for our incoming students? '\n  '#required': true\n  '#counter_type': word\n  '#counter_minimum': 1\n  '#counter_maximum': 10000\n"
+elements: |
+  markup:
+    '#type': webform_markup
+    '#markup': "<h2>1. Demographic Information</h2>\r\n<strong>1. Information:</strong>"
+  student_s_passport_legal_name_:
+    '#type': textfield
+    '#title': 'Student''s Passport Legal Name: '
+    '#required': true
+  student_s_id_:
+    '#type': textfield
+    '#title': 'Student''s ID#: '
+    '#required': true
+  markup_01:
+    '#type': webform_markup
+    '#markup': '<strong><label>2. Academic Term you started:</label></strong>'
+  semester_year:
+    '#type': select
+    '#title': 'Select Semester'
+    '#options':
+      Fall: Fall
+      Spring: Spring
+      Summer: Summer
+    '#required': true
+  enter_year:
+    '#type': number
+    '#title': 'Enter Year'
+    '#required': true
+    '#min': 1000
+    '#max': 9999
+  3_student_s_academic_year_:
+    '#type': radios
+    '#title': '3. Student’s Academic Year:'
+    '#options':
+      First-Year: First-Year
+      Sophomore: Sophomore
+      Junior: Junior
+      Senior: Senior
+      Graduate: Graduate
+    '#required': true
+  4_did_you_transfer_to_usf_from_another_u_s_school_:
+    '#type': radios
+    '#title': '4. Did you transfer to USF from another U.S. school?'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+    '#required': true
+  5_do_you_need_to_take_aem_class_when_you_started_at_usf_:
+    '#type': radios
+    '#title': '5. Do you need to take AEM class when you started at USF? '
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+    '#required': true
+  6_gender_:
+    '#type': radios
+    '#title': '6. Gender:'
+    '#options':
+      Male: Male
+      Female: Female
+    '#required': true
+  7_gpa_:
+    '#type': webform_radios_other
+    '#title': '7. GPA:'
+    '#options':
+      3.51-4.0: 3.51-4.0
+      3.01-3.5: 3.01-3.5
+      2.51-3.0: 2.51-3.0
+      2.01-2.5: 2.01-2.5
+      'Below 2.0': 'Below 2.0'
+    '#required': true
+  9_year_graduated_high_school_:
+    '#type': textfield
+    '#title': '9. Year Graduated High School:'
+    '#required': true
+  10_major_:
+    '#type': textfield
+    '#title': '10. Major or Graduate Program:'
+    '#multiple': 2
+    '#required': true
+  13_country_of_citizenship_:
+    '#type': textfield
+    '#title': '13. Country of Citizenship:'
+    '#required': true
+  14_visa_type_:
+    '#type': textfield
+    '#title': '14. Visa Type:'
+    '#required': true
+  15_exit_situation_:
+    '#type': webform_checkboxes_other
+    '#title': '15. Exit Situation: '
+    '#options':
+      Transfer: 'Transfer out to a new school (show Transfer school info after clicking)'
+      Leave: 'Leave of Absence'
+      Withdrawal: Withdrawal
+    '#other__option_label': 'Other (please specify):'
+    '#required': true
+  markup_02:
+    '#type': webform_markup
+    '#markup': '<h2>2. Transfer School Information</h2>'
+  1_transfer_school_location_:
+    '#type': radios
+    '#title': '1. Transfer School Location:'
+    '#options':
+      'In state': 'In state'
+      'Out state': 'Out state'
+    '#required': true
+  2_transfer_school_program_type_:
+    '#type': radios
+    '#title': '2. Transfer School/Program Type: '
+    '#options':
+      'ESL/language training program': 'ESL/language training program'
+      'Community/junior college': 'Community/junior college'
+      'Public 4-year university': 'Public 4-year university'
+      'Private 4-year university': 'Private 4-year university'
+      'Public graduate school program': 'Public graduate school program'
+      'Private graduate school program': 'Private graduate school program'
+      'For-profit educational institution': 'For-profit educational institution'
+    '#required': true
+  markup_03:
+    '#type': webform_markup
+    '#markup': '<h2>3. ISSS Exit Interview (continued)</h2>'
+  1_reason_for_leaving_usf_check_all_that_apply_:
+    '#type': webform_checkboxes_other
+    '#title': '1. Reason for leaving USF (check all that apply): '
+    '#options':
+      'Financial Aid Difficulty ': 'Financial Aid Difficulty '
+      'Student/Institution Fit': 'Student/Institution Fit'
+      Curriculum/Major/Advising: Curriculum/Major/Advising
+      'Student Involvement/Social Connection': 'Student Involvement/Social Connection'
+      Health: Health
+      'Emergency/Unforeseen Circumstance': 'Emergency/Unforeseen Circumstance'
+      'Judicial Sanction': 'Judicial Sanction'
+      'Academic Disqualification': 'Academic Disqualification'
+    '#other__option_label': 'Other (please specify): '
+    '#required': true
+  2_all_questions_are_required_:
+    '#type': textarea
+    '#title': '2. Why are you leaving USF? (Prompt: family, financial, major/advising)'
+    '#required': true
+    '#counter_type': word
+    '#counter_minimum': 1
+    '#counter_maximum': 10000
+  3_are_you_considering_returning_to_usf_if_so_can_usf_do_anything:
+    '#type': textarea
+    '#title': '3. Are you considering returning to USF? If so, can USF do anything to help your transition back to school? '
+    '#required': true
+    '#counter_type': word
+    '#counter_minimum': 1
+    '#counter_maximum': 10000
+  4_what_can_you_tell_me_about_your_time_at_usf_was_it_positive_ne:
+    '#type': textarea
+    '#title': '4. What can you tell me about your time at USF? Was it positive? Negative? If so, how? If not why? '
+    '#required': true
+    '#counter_type': word
+    '#counter_minimum': 1
+    '#counter_maximum': 10000
+  5_is_there_anything_you_want_to_make_sure_that_usf_knows_or_unde:
+    '#type': textarea
+    '#title': '5. Is there anything you want to make sure that USF knows or understands about the student experience that might be helpful for our incoming students? '
+    '#required': true
+    '#counter_type': word
+    '#counter_minimum': 1
+    '#counter_maximum': 10000
 css: ''
 javascript: ''
 settings:
@@ -32,40 +194,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -74,11 +244,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -89,13 +254,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -118,9 +283,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -199,9 +364,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -210,13 +375,17 @@ handlers:
         - completed
       to_mail: isss@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -227,11 +396,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

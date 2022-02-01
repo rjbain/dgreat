@@ -2,9 +2,9 @@ uuid: d1cb615c-394c-476e-b99b-5f8e977c1e76
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 9811
 template: false
 archive: false
@@ -12,7 +12,100 @@ id: webform_135560
 title: 'USFEMRS Medical Stand-By Services Request'
 description: null
 category: null
-elements: "type_of_event:\n  '#type': radios\n  '#options':\n    1: Athletics\n    2: 'University Event'\n    3: Concert\n    4: Other\n  '#title': 'Type of Event'\n  '#description': ''\n  '#required': true\nspecify:\n  '#type': radios\n  '#options':\n    1: 'Alcohol may be a factor'\n    2: 'Alcohol will be served'\n    3: 'Non-alcoholic event'\n  '#title': Specify\n  '#description': ''\n  '#required': true\nrequesting_department:\n  '#type': textfield\n  '#title': 'Requesting Department'\n  '#description': ''\ndepartment_foap_number:\n  '#type': textfield\n  '#title': 'Department FOAP Number'\n  '#description': ''\nname_of_contact_person:\n  '#type': textfield\n  '#title': 'Name of Contact Person'\n  '#description': ''\n  '#required': true\ncontact_persons_email:\n  '#type': email\n  '#size': 20\n  '#title': 'Contact Person''s Email'\n  '#description': ''\n  '#required': true\ncontact_persons_phone_number:\n  '#type': textfield\n  '#title': 'Contact Person''s Phone Number'\n  '#description': ''\n  '#required': true\ncontact_person_during_event:\n  '#type': textfield\n  '#title': 'Contact Person During Event'\n  '#description': '(Please provide the name of someone who can be reached during the event)'\nevent_contact_persons_phone_number:\n  '#type': textfield\n  '#title': 'Event Contact Person''s Phone Number'\n  '#description': '(Please provide a mobile number at which someone can be contacted during the event)'\nname_of_event:\n  '#type': textfield\n  '#title': 'Name of Event'\n  '#description': ''\n  '#required': true\ndates_of_event_mm_dd_yy_and_start_and_end_times_ex_1000_am_445_pm:\n  '#type': textarea\n  '#title': 'Date(s) of Event (mm/dd/yy) and Start and End times (ex. 10:00 AM-4:45 PM)'\n  '#description': ''\nlocation_of_event:\n  '#type': textfield\n  '#title': 'Location of Event'\n  '#description': ''\n  '#required': true\nrain_location:\n  '#type': textfield\n  '#title': 'Rain Location'\n  '#description': ''\n  '#required': true\nanticipated_attendence:\n  '#type': radios\n  '#options':\n    1: 'Fewer than 100'\n    2: 100-300\n    3: 300-500\n    4: 'More that 500'\n  '#title': 'Anticipated Attendence'\n  '#description': ''\n  '#required': true\nrequested_services:\n  '#description': \"EMT Foot Patrol\\n2\"\n  '#type': checkbox\n  '#options':\n    1: 'EMT Foot Patrol'\n    2: 'First Aid Station'\n  '#multiple': true\n  '#title': 'Requested Services'\n  '#required': true\nspecial_instructions:\n  '#type': textarea\n  '#title': 'Special Instructions'\n  '#description': ''\n"
+elements: |
+  type_of_event:
+    '#type': radios
+    '#options':
+      1: Athletics
+      2: 'University Event'
+      3: Concert
+      4: Other
+    '#title': 'Type of Event'
+    '#description': ''
+    '#required': true
+  specify:
+    '#type': radios
+    '#options':
+      1: 'Alcohol may be a factor'
+      2: 'Alcohol will be served'
+      3: 'Non-alcoholic event'
+    '#title': Specify
+    '#description': ''
+    '#required': true
+  requesting_department:
+    '#type': textfield
+    '#title': 'Requesting Department'
+    '#description': ''
+  department_foap_number:
+    '#type': textfield
+    '#title': 'Department FOAP Number'
+    '#description': ''
+  name_of_contact_person:
+    '#type': textfield
+    '#title': 'Name of Contact Person'
+    '#description': ''
+    '#required': true
+  contact_persons_email:
+    '#type': email
+    '#size': 20
+    '#title': 'Contact Person''s Email'
+    '#description': ''
+    '#required': true
+  contact_persons_phone_number:
+    '#type': textfield
+    '#title': 'Contact Person''s Phone Number'
+    '#description': ''
+    '#required': true
+  contact_person_during_event:
+    '#type': textfield
+    '#title': 'Contact Person During Event'
+    '#description': '(Please provide the name of someone who can be reached during the event)'
+  event_contact_persons_phone_number:
+    '#type': textfield
+    '#title': 'Event Contact Person''s Phone Number'
+    '#description': '(Please provide a mobile number at which someone can be contacted during the event)'
+  name_of_event:
+    '#type': textfield
+    '#title': 'Name of Event'
+    '#description': ''
+    '#required': true
+  dates_of_event_mm_dd_yy_and_start_and_end_times_ex_1000_am_445_pm:
+    '#type': textarea
+    '#title': 'Date(s) of Event (mm/dd/yy) and Start and End times (ex. 10:00 AM-4:45 PM)'
+    '#description': ''
+  location_of_event:
+    '#type': textfield
+    '#title': 'Location of Event'
+    '#description': ''
+    '#required': true
+  rain_location:
+    '#type': textfield
+    '#title': 'Rain Location'
+    '#description': ''
+    '#required': true
+  anticipated_attendence:
+    '#type': radios
+    '#options':
+      1: 'Fewer than 100'
+      2: 100-300
+      3: 300-500
+      4: 'More that 500'
+    '#title': 'Anticipated Attendence'
+    '#description': ''
+    '#required': true
+  requested_services:
+    '#description': "EMT Foot Patrol\n2"
+    '#type': checkbox
+    '#options':
+      1: 'EMT Foot Patrol'
+      2: 'First Aid Station'
+    '#multiple': true
+    '#title': 'Requested Services'
+    '#required': true
+  special_instructions:
+    '#type': textarea
+    '#title': 'Special Instructions'
+    '#description': ''
 css: ''
 javascript: ''
 settings:
@@ -27,40 +120,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +170,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +180,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +209,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''

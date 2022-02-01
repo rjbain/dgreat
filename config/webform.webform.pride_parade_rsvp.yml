@@ -2,9 +2,9 @@ uuid: ce2c80a4-0c93-45c4-ae9e-afc4b466618f
 langcode: en
 status: scheduled
 dependencies: {  }
+weight: 0
 open: null
 close: '2019-06-24T16:00:00'
-weight: 0
 uid: 62504
 template: false
 archive: false
@@ -12,7 +12,43 @@ id: pride_parade_rsvp
 title: 'Pride Parade RSVP'
 description: ''
 category: ''
-elements: "processed_text:\n  '#type': processed_text\n  '#text': \"<p><img alt=\\\"USF at Pride\\\" data-entity-type=\\\"\\\" data-entity-uuid=\\\"\\\" src=\\\"/sites/default/files/users/tnguyen56/1d6ea1d686cf4565935c6799e807d592.jpg\\\" /></p>\\r\\n\\r\\n<p>Join University of San Francisco's LGBTQ Faculty/Staff Caucus to March in the San Francisco LGBT Pride Parade, on Sunday, June 30! The event will be held on Market Street in downtown San Francisco, 10 a.m.–2:30 p.m.&nbsp;<br />\\r\\n<br />\\r\\nIf you plan to bring a guest to the event, please submit this form on their behalf.&nbsp;<br />\\r\\n<br />\\r\\n* We will provide more schedule information, to the email address you submit here, once our group is given an official line up time and location in mid-June.&nbsp;&nbsp;&nbsp;<br />\\r\\n<br />\\r\\n<strong>Please RSVP by Monday, June 17</strong>. If you have any questions, please feel free to email us at&nbsp;<a href=\\\"mailto:lgbtq.caucus@usfca.edu\\\">lgbtq.caucus@usfca.edu</a>&nbsp;</p>\\r\\n\\r\\n<h2>Event Details</h2>\\r\\n\\r\\n<p>Sunday, June 30, 2019<br />\\r\\n10:00 a.m.–2:30 p.m.</p>\\r\\n\\r\\n<p>USF Downtown Campus<br />\\r\\n101 Howard<br />\\r\\nSan Francisco, CA 94105<br />\\r\\nUSA</p>\\r\\n\"\n  '#format': full_html\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#required': true\nemail_address:\n  '#type': email\n  '#title': 'Email Address'\n  '#required': true\nwhat_is_your_usf_affiliation_:\n  '#type': radios\n  '#title': 'What is your USF affiliation?'\n  '#options':\n    Faculty: Faculty\n    Staff: Staff\n    Student: Student\n    Alumni: Alumni\n    Other: Other\n  '#required': true\npreferred_t_shirt_size_t_shirt_pick_up_will_occur_on_campus_the_:\n  '#type': radios\n  '#title': 'Preferred T-shirt Size (T-shirt pick-up will occur on campus the week before the event. Student and alumni marchers will be provided same-day pick up at USF''s 101 Howard Campus. Details to follow via registrant emails.)'\n  '#options':\n    'Small (S)': 'Small (S)'\n    'Medium (M)': 'Medium (M)'\n    'Large (L)': 'Large (L)'\n    'Extra Large (XL)': 'Extra Large (XL)'\n    'Extra Extra Large (XXL)': 'Extra Extra Large (XXL)'\n  '#required': true"
+elements: |-
+  processed_text:
+    '#type': processed_text
+    '#text': "<p><img alt=\"USF at Pride\" data-entity-type=\"\" data-entity-uuid=\"\" src=\"/sites/default/files/users/tnguyen56/1d6ea1d686cf4565935c6799e807d592.jpg\" /></p>\r\n\r\n<p>Join University of San Francisco's LGBTQ Faculty/Staff Caucus to March in the San Francisco LGBT Pride Parade, on Sunday, June 30! The event will be held on Market Street in downtown San Francisco, 10 a.m.–2:30 p.m.&nbsp;<br />\r\n<br />\r\nIf you plan to bring a guest to the event, please submit this form on their behalf.&nbsp;<br />\r\n<br />\r\n* We will provide more schedule information, to the email address you submit here, once our group is given an official line up time and location in mid-June.&nbsp;&nbsp;&nbsp;<br />\r\n<br />\r\n<strong>Please RSVP by Monday, June 17</strong>. If you have any questions, please feel free to email us at&nbsp;<a href=\"mailto:lgbtq.caucus@usfca.edu\">lgbtq.caucus@usfca.edu</a>&nbsp;</p>\r\n\r\n<h2>Event Details</h2>\r\n\r\n<p>Sunday, June 30, 2019<br />\r\n10:00 a.m.–2:30 p.m.</p>\r\n\r\n<p>USF Downtown Campus<br />\r\n101 Howard<br />\r\nSan Francisco, CA 94105<br />\r\nUSA</p>\r\n"
+    '#format': full_html
+  first_name:
+    '#type': textfield
+    '#title': 'First Name'
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title': 'Last Name'
+    '#required': true
+  email_address:
+    '#type': email
+    '#title': 'Email Address'
+    '#required': true
+  what_is_your_usf_affiliation_:
+    '#type': radios
+    '#title': 'What is your USF affiliation?'
+    '#options':
+      Faculty: Faculty
+      Staff: Staff
+      Student: Student
+      Alumni: Alumni
+      Other: Other
+    '#required': true
+  preferred_t_shirt_size_t_shirt_pick_up_will_occur_on_campus_the_:
+    '#type': radios
+    '#title': 'Preferred T-shirt Size (T-shirt pick-up will occur on campus the week before the event. Student and alumni marchers will be provided same-day pick up at USF''s 101 Howard Campus. Details to follow via registrant emails.)'
+    '#options':
+      'Small (S)': 'Small (S)'
+      'Medium (M)': 'Medium (M)'
+      'Large (L)': 'Large (L)'
+      'Extra Large (XL)': 'Extra Large (XL)'
+      'Extra Extra Large (XXL)': 'Extra Extra Large (XXL)'
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,40 +63,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace:
     webform_routes: {  }
@@ -71,11 +115,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -86,13 +125,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -115,9 +154,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''

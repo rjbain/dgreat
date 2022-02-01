@@ -20,8 +20,8 @@ plugin: 'block_content:fea03a02-3bc9-4f2c-af31-cd426d4b30de'
 settings:
   id: 'block_content:fea03a02-3bc9-4f2c-af31-cd426d4b30de'
   label: 'Pay Your Deposit Block'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
@@ -29,18 +29,18 @@ visibility:
   condition_group:
     id: condition_group
     negate: false
-    block_visibility_group: ''
     context_mapping: {  }
+    block_visibility_group: ''
   request_path:
     id: request_path
-    pages: /dashboard
     negate: false
     context_mapping: {  }
+    pages: /dashboard
   user_role:
     id: user_role
-    roles:
-      student: student
-      admitted_student: admitted_student
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
+    roles:
+      student: student
+      admitted_student: admitted_student
