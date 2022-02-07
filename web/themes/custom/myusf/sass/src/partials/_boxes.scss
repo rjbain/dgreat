@@ -2460,3 +2460,91 @@ input#edit-submit-community-grid {
         height: 100%;
     }
 }
+
+
+/* SERVICE-NOW Chat
+================================================================== */
+
+.chatBtn {
+    font-size: 16px;
+    color: black;
+    min-width: 179px;
+    height: 66px;
+    border: 0;
+    cursor: pointer;
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+    filter: drop-shadow(-4px 4px 12px rgba(0,0,0, .2));
+    position: fixed;
+    bottom: 70px;
+    right: 30px;
+    z-index: 100;
+    background-size: 199px, 66px;
+    background-repeat: no-repeat;
+    padding-right: 30px;
+    padding-left: 60px;
+    padding-top: 15px;
+    border-color: black;
+    background: #fff;
+    border-radius: 33px;
+    text-align: right;
+}
+
+.chatBtn:before {
+    background-image: url(https://usftest.service-now.com/green-mini-bubble.png);
+    z-index: 1000;
+    content: "";
+    width: 32px;
+    height: 30px;
+    position: absolute;
+    top: 22px;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    margin-left: -40px;
+}
+#sn-va-web-client{
+    border: 0;
+    height: 600px;
+    width: 375px;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0, .5));
+}
+#chat {
+    position: fixed;
+    bottom: 170px;
+    right: 60px;
+    z-index: 101;
+    display: none;
+}
+#button2 {
+    display: none;
+
+}
+.closeText {
+    position: relative;
+    top: -4px;
+}
+
+.closeX {
+    font-size: 24px;
+    color: black;
+    position: relative;
+    top: -1px;
+}
+@media (max-width: 575px) {
+    div#chat {
+         position: fixed;
+         bottom: 110px;
+         right: 30px;
+         margin-left: 30px;
+    }
+    .chatBtn {
+        position: fixed;
+        bottom: 10px;
+        right: 20px;
+    }
+     #sn-va-web-client {
+        height:400px;
+        height: 75vh;
+     }
+}
+
