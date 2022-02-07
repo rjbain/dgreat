@@ -17,16 +17,18 @@ id: hps_workshop_request_form
 title: 'HPS Workshop Request Form'
 description: ''
 category: ''
-elements: |-
+elements: |
   please_select_a_workshop:
     '#type': select
     '#title': 'Please Select a Topic'
     '#options':
       'Alcohol & Upstander Strategies': 'Alcohol & Upstander Strategies'
-      'Boost Your Health Series: Nutrition and Exercise': 'Boost Your Health Series: Nutrition and Exercise'
-      'Health Care 101': 'Health Care 101'
+      'Healthcare 101': 'Healthcare 101'
+      'Healthy Communication': 'Healthy Communication'
+      Nutrition: Nutrition
+      R.E.M.O.T.E: R.E.M.O.T.E
       'Road to Resilience': 'Road to Resilience'
-      'USF''s Survival Guide to Stress Management': 'USF''s Survival Guide to Stress Management'
+      'Stress Management': 'Stress Management'
       'Tobacco & E-Cigarettes 101': 'Tobacco & E-Cigarettes 101'
     '#required': true
   alcoholworkshop_description:
@@ -38,37 +40,37 @@ elements: |-
       invisible:
         ':input[name="please_select_a_workshop"]':
           '!value': 'Alcohol & Upstander Strategies'
-    '#markup': 'Students and community members will learn about standard alcohol servings, how to drink responsibly (and what that even means), and reflect on their own drinking habits. For those who don&#39;t drink (or not drinking yet), discover how to be an active bystander and how to assist your peers who may have had a bit too much to drink. Open to ALL students.'
+    '#markup': 'In this workshop, students will learn about responsible drinking tips and upstander strategies.&nbsp;'
   healthcareworkshop_description:
     '#type': webform_markup
     '#states':
       visible:
         ':input[name="please_select_a_workshop"]':
-          value: 'Health Care 101'
+          value: 'Healthcare 101'
       invisible:
         ':input[name="please_select_a_workshop"]':
-          '!value': 'Health Care 101'
-    '#markup': 'This workshop is tailored to USF students who need support navigating health care resources. Participants will learn about resources both on the USF campus that are available to them, as well as terms and definitions they might need to know for their own health insurance.&nbsp;'
+          '!value': 'Healthcare 101'
+    '#markup': 'In this workshop, students will gain a clear understanding of how to access healthcare at USF while away from home.'
   nutrition_description:
     '#type': webform_markup
     '#states':
       visible:
         ':input[name="please_select_a_workshop"]':
-          value: 'Boost Your Health Series: Nutrition and Exercise'
+          value: Nutrition
       invisible:
         ':input[name="please_select_a_workshop"]':
-          '!value': 'Boost Your Health Series: Nutrition and Exercise'
-    '#markup': 'This workshop series explores finding motivation and goal setting for nutrition and exercise, the benefits of exercise (beyond just physical!), tips for eating healthy with limited time and budget, and exploring campus services and resources at and around USF that can help boost your nutrition and exercise habits!'
+          '!value': Nutrition
+    '#markup': 'We offer nutrition workshops on a variety of topics, such as nutrition basics, eating healthy on a budget, and proper nutrition fueling. These workshops build on the essential&nbsp;steps for developing a healthy eating pattern that matches students goals, lifestyle, and preferences.&nbsp;'
   stressmanagement_description:
     '#type': webform_markup
     '#states':
       visible:
         ':input[name="please_select_a_workshop"]':
-          value: 'USF''s Survival Guide to Stress Management'
+          value: 'Stress Management'
       invisible:
         ':input[name="please_select_a_workshop"]':
-          '!value': 'USF''s Survival Guide to Stress Management'
-    '#markup': 'This workshop teaches students how to utilize techniques to manage COVID-19-related stress and anxiety as well as ways to navigate social life on- and off-campus. Participants will engage in different stress and anxiety relief strategies and obtain resources to managing stress.'
+          '!value': 'Stress Management'
+    '#markup': 'In this workshop, students will learn strategies on how to manage their stress.&nbsp;'
   tobaccoworkshop_description:
     '#type': webform_markup
     '#states':
@@ -79,16 +81,6 @@ elements: |-
         ':input[name="please_select_a_workshop"]':
           '!value': 'Tobacco & E-Cigarettes 101'
     '#markup': 'In this workshop, students will learn about the USF tobacco-free and e-cigarettes policy in an effort to promote a safe and healthy learning and work environment for the USF community.'
-  markup:
-    '#type': webform_markup
-    '#states':
-      visible:
-        ':input[name="please_select_a_workshop"]':
-          value: 'Road to Resilience'
-      invisible:
-        ':input[name="please_select_a_workshop"]':
-          '!value': 'Road to Resilience'
-    '#markup': '<p>A person who is resilient has the ability to succeed in the day-to-day demands of school, work, and relationships. Physical, mental, emotional, and social resiliencies are the four different types discussed during this workshop for students. Learn ways to implement at least one type of resiliency for daily living.</p>'
   name:
     '#type': textfield
     '#title': Name
