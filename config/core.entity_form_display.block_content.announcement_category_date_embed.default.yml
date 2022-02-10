@@ -1,0 +1,55 @@
+uuid: 62027fd1-8046-4f44-a0e9-7405a6f0d0cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.announcement_category_date_embed
+    - field.field.block_content.announcement_category_date_embed.body
+    - field.field.block_content.announcement_category_date_embed.field_announcement_category_date
+    - field.field.block_content.announcement_category_date_embed.field_announcement_list_title
+    - field.field.block_content.announcement_category_date_embed.field_view_all_url
+  module:
+    - paragraphs
+id: block_content.announcement_category_date_embed.default
+targetEntityType: block_content
+bundle: announcement_category_date_embed
+mode: default
+content:
+  field_announcement_category_date:
+    type: entity_reference_paragraphs
+    weight: 2
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+  field_announcement_list_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_view_all_url:
+    type: string_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  body: true

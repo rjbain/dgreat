@@ -1,0 +1,52 @@
+uuid: 2d01e20c-1396-4099-a451-e53f37632809
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.announcement_category_date_embed
+    - field.field.block_content.announcement_category_date_embed.body
+    - field.field.block_content.announcement_category_date_embed.field_announcement_category_date
+    - field.field.block_content.announcement_category_date_embed.field_announcement_list_title
+    - field.field.block_content.announcement_category_date_embed.field_view_all_url
+  module:
+    - entity_reference_revisions
+    - text
+id: block_content.announcement_category_date_embed.default
+targetEntityType: block_content
+bundle: announcement_category_date_embed
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_announcement_category_date:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_announcement_list_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_view_all_url:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  search_api_excerpt: true

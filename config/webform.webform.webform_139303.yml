@@ -12,10 +12,14 @@ id: webform_139303
 title: 'Community Empowerment Activists Application Form'
 description: null
 category: null
-elements: |
+elements: |-
   markup:
     '#type': webform_markup
-    '#markup': "<strong><em>Please Note:</em></strong> The application window is closed, but will open in March 2022.&nbsp;<br />\r\n<br />\r\nFor more information, please contact the CEA instructor, Jacqueline Ramos at&nbsp;<a data-auth=\"NotApplicable\" href=\"mailto:jsramos@usfca.edu\" rel=\"noopener noreferrer\" target=\"_blank\">jsramos@usfca.edu</a>"
+    '#markup': |
+      We are now accepting applications for 2022-2023. The deadline to apply is March 15, 2022 (early applications are encouraged).&nbsp;<br />
+      <br />
+      For more information, please contact the CEA instructor, Jacqueline Ramos at&nbsp;<a data-auth="NotApplicable" href="mailto:jsramos@usfca.edu" rel="noopener noreferrer" target="_blank">jsramos@usfca.edu</a>
+      
   name_first_middle_last:
     '#type': textfield
     '#title': 'Name (First, Middle, Last)'
@@ -112,6 +116,9 @@ elements: |
     '#type': textarea
     '#title': 'What experiences have you had in volunteering, activism, or community engagement? Please share your engagement experiences at USF or in other communities, and how these have shaped your interest in this program.'
     '#description': ''
+  what_does_liberation_mean_to_you_what_are_your_interests_passion:
+    '#type': textarea
+    '#title': 'What does liberation mean to you? What are your interests/passions for social justice?'
   what_local_san_francisco_issues_or_advocacy_areas_are_you_most_interested_in:
     '#type': textarea
     '#title': 'What local San Francisco issues or advocacy areas are you most interested in and how do you hope to contribute to local communities through this program?'
@@ -123,21 +130,32 @@ elements: |
   resume:
     '#type': checkbox
     '#title': Resume
-    '#description': "<p data-renderer-start-pos=\"1486\">Please email your most recent resume to the CEA instructor, Jacqueline Ramos at <a href=\"mailto:jsramos@usfca.edu\">jsramos@usfca.edu</a>.<br />\r\n<em>Please Note:</em> Your application will not be complete until we receive your resume by date TBD.<br />\r\n<br />\r\nPlease select your interview date and time here (link to be provided). All interviews will be 30 minutes virtually or in-person (PST).&nbsp;<br />\r\n<br />\r\nPlease confirm you have read this message by clicking this box.</p>"
+    '#description': |
+      <p data-renderer-start-pos="1486">Please email your most recent resume to the CEA instructor, Jacqueline Ramos at <a href="mailto:jsramos@usfca.edu">jsramos@usfca.edu</a>.<br />
+      <br />
+      Please Note: Your application will not be complete until we receive your resume.<br />
+      <br />
+      Please select your interview date and time here. Interviews will be 45 minutes virtually or in-person (PST). You will receive an email confirmation and calendar invite of your interview date and time.<br />
+      <br />
+      Please confirm you have read this message by clicking this box.</p>
+      
     '#required': true
     '#required_error': 'Please confirm you have read this message'
   fieldset_reference_0:
     '#type': fieldset
+    '#title': References
+    '#description': 'Please include 2-3 professional or academic references whom we may contact if needed (professor, former/current work supervisor, or other professional contact). Please include their name, title, and email/phone number.'
     '#open': true
-    '#title': Reference
-    '#description': 'Please list two professional references whom we may contact if needed (professor, former/current work supervisor, or other professional contact).'
   reference:
     '#type': textarea
-    '#title': Reference
-    '#description': ''
+    '#title': References
   interview_schedule:
-    '#type': webform_markup
-    '#markup': 'Please remember to select your interview date and time by accessing the link here (to be provided).'
+    '#type': processed_text
+    '#admin_title': 'Interview Schedule'
+    '#text': |
+      <p>Please remember to select your interview date and time by accessing the link <a href="https://docs.google.com/spreadsheets/d/1CtWVwBY6ZPLF2rnIRJ_kVrL4qlWxcRdt8HF20AheZdM/edit?usp=sharing" target="_blank">here</a>.</p>
+      
+    '#format': full_html
 css: ''
 javascript: ''
 settings:

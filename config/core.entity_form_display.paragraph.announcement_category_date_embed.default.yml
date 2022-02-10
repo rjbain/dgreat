@@ -1,0 +1,25 @@
+uuid: bc1aba9f-a60c-4ff1-bc05-1239d7b2b90c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.announcement_category_date_embed.field_tags
+    - paragraphs.paragraphs_type.announcement_category_date_embed
+id: paragraph.announcement_category_date_embed.default
+targetEntityType: paragraph
+bundle: announcement_category_date_embed
+mode: default
+content:
+  field_tags:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
