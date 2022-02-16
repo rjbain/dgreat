@@ -56,7 +56,7 @@ jobs:
                 command: /build-tools-ci/scripts/set-environment
 
             - run:
-                name: run composer install to get the vendor directory, run composer update
+                name: run composer install to get the vendor directory
                 command: composer install
 
             - save_cache:
@@ -143,10 +143,6 @@ jobs:
                 name: prepare database for site-under test
                 command: ./.circleci/scripts/pantheon/02-init-site-under-test-clone-existing
                 # command: ./.circleci/scripts/pantheon/02-init-site-under-test-reinstall-new
-
-            - run:
-                name: run composer update
-                command: composer update
 
             - run:
                 name: run composer install again to get dev dependencies
