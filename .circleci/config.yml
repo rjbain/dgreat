@@ -145,8 +145,12 @@ jobs:
                 # command: ./.circleci/scripts/pantheon/02-init-site-under-test-reinstall-new
 
             - run:
+                name: run composer update
+                command: composer update
+
+            - run:
                 name: run composer install again to get dev dependencies
-                command: composer update && composer install
+                command: composer install
 
             - run:
                 name: check composer version
