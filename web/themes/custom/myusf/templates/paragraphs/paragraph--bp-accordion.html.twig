@@ -184,7 +184,7 @@ accordion_active ? 'paragraph--accordion_active--',
             {% elseif h_value is not empty %} 
             {% set h_value = h_value %}
             {% endif %}
-            <{{ h_value }}>
+            <{{ h_value }} class="accordion-title-h">
               <a class="{{ (indicator_class) }}" role="button" data-toggle="collapse" data-parent="#{{ paragraph_id }}" href="#collapse-{{ paragraph_id }}-{{ key + 1 }}" aria-expanded="{{ aria }}" aria-controls="collapse-{{ paragraph_id }}-{{ key + 1 }}">
                 {# Print the accordion section title. #}
                     {{ item['#paragraph'].bp_accordion_section_title.value }}
