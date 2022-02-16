@@ -184,12 +184,12 @@ accordion_active ? 'paragraph--accordion_active--',
             {% elseif h_value is not empty %} 
             {% set h_value = h_value %}
             {% endif %}
-            <{{ h_value }}>
               <a class="{{ (indicator_class) }}" role="button" data-toggle="collapse" data-parent="#{{ paragraph_id }}" href="#collapse-{{ paragraph_id }}-{{ key + 1 }}" aria-expanded="{{ aria }}" aria-controls="collapse-{{ paragraph_id }}-{{ key + 1 }}">
-                {# Print the accordion section title. #}
-                    {{ item['#paragraph'].bp_accordion_section_title.value }}
+                <{{ h_value }} class="accordion-title-h">
+                  {# Print the accordion section title. #}
+                  {{ item['#paragraph'].bp_accordion_section_title.value }}
+                </{{ h_value }}>
               </a>
-            </{{ h_value }}>
             </div>
           </div>
           <div id="collapse-{{ paragraph_id }}-{{ key + 1 }}" class="card-block panel-collapse collapse{{ show_accordion }}" role="tabpanel" aria-labelledby="heading-{{ paragraph_id }}-{{ key + 1 }}">
