@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "49e0605afc8cbeaab2e1f7c8569489b7",
+    "content-hash": "a2b388f9bdbaa991a6afdfc05d5ba27b",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -7249,6 +7249,51 @@
             }
         },
         {
+            "name": "drupal/upgrade_rector",
+            "version": "1.0.0-alpha8",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/upgrade_rector.git",
+                "reference": "8.x-1.0-alpha8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/upgrade_rector-8.x-1.0-alpha8.zip",
+                "reference": "8.x-1.0-alpha8",
+                "shasum": "211fce086bf8b59f49d01b2b58ee6233c21a9bb4"
+            },
+            "require": {
+                "drupal/core": "^8.7.7 || ^9",
+                "palantirnet/drupal-rector": "~0.11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.0-alpha8",
+                    "datestamp": "1628760136",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Gábor Hojtsy",
+                    "homepage": "https://www.drupal.org/user/4166"
+                }
+            ],
+            "description": "Get automated code fix suggestions for deprecations.",
+            "homepage": "http://drupal.org/project/upgrade_rector",
+            "support": {
+                "source": "https://git.drupalcode.org/project/upgrade_rector"
+            }
+        },
+        {
             "name": "drupal/upgrade_status",
             "version": "3.13.0",
             "source": {
@@ -9610,6 +9655,75 @@
             "time": "2021-11-30T19:35:32+00:00"
         },
         {
+            "name": "palantirnet/drupal-rector",
+            "version": "0.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/palantirnet/drupal-rector.git",
+                "reference": "8a7ea55b466dc7bb71ad26e34c0baf661faa38c7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/palantirnet/drupal-rector/zipball/8a7ea55b466dc7bb71ad26e34c0baf661faa38c7",
+                "reference": "8a7ea55b466dc7bb71ad26e34c0baf661faa38c7",
+                "shasum": ""
+            },
+            "require": {
+                "rector/rector": "~0.12",
+                "webflo/drupal-finder": "^1.2"
+            },
+            "replace": {
+                "drupal8-rector/drupal8-rector": "*",
+                "palantirnet/drupal8-rector": "*"
+            },
+            "require-dev": {
+                "php": "^8.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan": "^1.0",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpunit/phpunit": "^9.5",
+                "rector/rector-src": "~0.12",
+                "symfony/yaml": "^5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DrupalRector\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dezső Biczó",
+                    "email": "mxr576@gmail.com"
+                },
+                {
+                    "name": "Ofer Shaal",
+                    "email": "shaal@palantir.net"
+                },
+                {
+                    "name": "Daniel Montgomery",
+                    "email": "montgomery@palantir.net"
+                },
+                {
+                    "name": "Matt Glaman",
+                    "email": "nmd.matt@gmail.com"
+                }
+            ],
+            "description": "Instant fixes for your Drupal code by using Rector.",
+            "keywords": [
+                "Code style",
+                "Drupal 8",
+                "ast",
+                "drupal 9",
+                "rector"
+            ],
+            "time": "2021-11-19T15:17:16+00:00"
+        },
+        {
             "name": "pantheon-systems/quicksilver-pushback",
             "version": "2.0.2",
             "source": {
@@ -10259,6 +10373,62 @@
             ],
             "description": "A polyfill for getallheaders.",
             "time": "2019-03-08T08:55:37+00:00"
+        },
+        {
+            "name": "rector/rector",
+            "version": "0.12.16",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rectorphp/rector.git",
+                "reference": "13412efd0dfda2e2c310dd24397281804441cf7a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/13412efd0dfda2e2c310dd24397281804441cf7a",
+                "reference": "13412efd0dfda2e2c310dd24397281804441cf7a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1|^8.0",
+                "phpstan/phpstan": "^1.4.2"
+            },
+            "conflict": {
+                "phpstan/phpdoc-parser": "<1.2",
+                "rector/rector-cakephp": "*",
+                "rector/rector-doctrine": "*",
+                "rector/rector-laravel": "*",
+                "rector/rector-nette": "*",
+                "rector/rector-phpoffice": "*",
+                "rector/rector-phpunit": "*",
+                "rector/rector-prefixed": "*",
+                "rector/rector-symfony": "*"
+            },
+            "bin": [
+                "bin/rector"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "0.12-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Instant Upgrade and Automated Refactoring of any PHP code",
+            "funding": [
+                {
+                    "url": "https://github.com/tomasvotruba",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-02-09T14:50:55+00:00"
         },
         {
             "name": "rvtraveller/qs-composer-installer",
@@ -14260,6 +14430,7 @@
         "drupal/migrate_upgrade": 5,
         "drupal/simple_block": 10,
         "drupal/stage_file_proxy": 15,
+        "drupal/upgrade_rector": 15,
         "drupal/views_field_view": 10,
         "drupal/webform_migrate": 15
     },
