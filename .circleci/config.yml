@@ -58,7 +58,6 @@ jobs:
             - run:
                 name: run composer install to get the vendor directory, run composer update
                 command: composer install
-                command: composer update
 
             - save_cache:
                 key: composer-cache
@@ -147,7 +146,7 @@ jobs:
 
             - run:
                 name: run composer install again to get dev dependencies
-                command: composer install
+                command: composer update && composer install
 
             - run:
                 name: check composer version
