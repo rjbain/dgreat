@@ -5,26 +5,16 @@ dependencies:
   module:
     - imce
     - node
-third_party_settings:
-  imce:
-    use: true
-    scheme: public
+third_party_settings: {  }
 id: default_profile
 label: 'Default Profile'
 description: ''
-attributes:
-  target:
-    id: target
-    weight: 0
-    settings:
-      widget_type: simple_checkbox
 matchers:
   eaed4e2a-df21-48cc-806e-3dbf2e2e6452:
     uuid: eaed4e2a-df21-48cc-806e-3dbf2e2e6452
     id: 'entity:node'
     weight: 0
     settings:
-      result_description: ''
       bundles:
         announcement: announcement
         news: news
@@ -32,3 +22,5 @@ matchers:
         webform: webform
       group_by_bundle: true
       include_unpublished: false
+      substitution_type: canonical
+      metadata: ''
