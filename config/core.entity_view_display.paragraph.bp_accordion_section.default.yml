@@ -5,9 +5,11 @@ dependencies:
   config:
     - field.field.paragraph.bp_accordion_section.bp_accordion_section_body
     - field.field.paragraph.bp_accordion_section.bp_accordion_section_title
+    - field.field.paragraph.bp_accordion_section.field_accordion_section_header
     - paragraphs.paragraphs_type.bp_accordion_section
   module:
     - entity_reference_revisions
+    - options
 _core:
   default_config_hash: Tcvoq8JoLk1ugiV-ek8wWHtJqn051u_S68Kfz2ogClI
 id: paragraph.bp_accordion_section.default
@@ -32,6 +34,14 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  field_accordion_section_header:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
 hidden:
   created: true
+  search_api_excerpt: true
   uid: true
