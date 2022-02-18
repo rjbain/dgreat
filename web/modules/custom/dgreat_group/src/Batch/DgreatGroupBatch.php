@@ -161,11 +161,11 @@ class DgreatGroupBatch {
   public static function batchFinished($success, $results, $operations) {
     if ($success) {
       $message = \Drupal::translation()->formatPlural(count($results['total']), 'One user updated.', '@count users updated.');
-      drupal_set_message($message, 'status', TRUE);
+        \Drupal::messenger()->addMessage($message);
     }
     else {
       $error_operation = reset($operations);
-      drupal_set_message(t('An error occurred while processing @operation with arguments : @args', ['@operation' => $error_operation[0], '@args' => print_r($error_operation[0], TRUE)]), 'status', TRUE);
+        \Drupal::messenger()->addMessage('An error occurred while processing @operation with arguments : @args', ['@operation' => $error_operation[0], '@args' => print_r($error_operation[0], TRUE)], 'status', TRUE);
     }
 
     // Redirect back to group page.
