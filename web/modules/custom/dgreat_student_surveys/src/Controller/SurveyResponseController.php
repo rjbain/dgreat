@@ -60,7 +60,7 @@ class SurveyResponseController extends ControllerBase {
         $submission = WebformSubmission::load($response);
         return $questions->map(function ($question) use ($submission) {
           $obj = new \stdClass();
-          $obj->user = $submission->getOwner()->getUsername();
+          $obj->user = $submission->getOwner()->getAccountName();
           $obj->answer = $submission->getElementData($question->question);
           $obj->campaignID = $question->salesforce_id;
           $obj->dateTaken = date("m-d-Y-H.i.s", $submission->getCreatedTime());
