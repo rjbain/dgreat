@@ -94,6 +94,7 @@
     "drupal/workbench_access": "^1.0",
     "drupal/xmlsitemap": "^1.0",
     "drush/drush": "^10",
+    "pantheon-systems/drupal-integrations": "^9",
     "pantheon-systems/quicksilver-pushback": "^2",
     "rvtraveller/qs-composer-installer": "^1.1",
     "tightenco/collect": "^5.6",
@@ -188,6 +189,9 @@
         "web.config": false,
         "robots.txt": false
       },
+      "allowed-packages": [
+        "pantheon-systems/drupal-integrations"
+      ],
       "source": "https://raw.githubusercontent.com/pantheon-systems/drops-8/{version}/{path}",
       "includes": [
         "sites/default/default.services.pantheon.preproduction.yml",
@@ -203,7 +207,8 @@
         "robots.txt"
       ]
     },
-    "patches-file": "composer.patches.json"
+    "patches-file": "composer.patches.json",
+    "enable-patching": "true"
   },
   "config": {
     "optimize-autoloader": true,
