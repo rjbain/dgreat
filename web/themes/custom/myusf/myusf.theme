@@ -199,16 +199,17 @@ function myusf_add_regions_to_node($allowed_regions, &$variables) {
   foreach ($regions as $key => $region) {
  
     // Load region blocks
-    $blocks = entity_load_multiple_by_properties('block', array('theme' => $theme, 'region' => $region));
+    $blocks = \Drupal::entityTypeManager()->getStorage('block')->loadByProperties(array('theme' => $theme, 'region' => $region));
  
     // Sort ‘em
     uasort($blocks, 'Drupal\block\Entity\Block::sort');
  
     // Capture viewable blocks and their settings to $build
     $build = array();
+    $builder = \Drupal::entityTypeManager()->getViewBuilder('block');
     foreach ($blocks as $key => $block) {
       if ($block->access('view')) {
-        $build[$key] = entity_view($block, 'block');
+        $build[$key] = $builder->view($block, 'block');
       }
     }
     // Add build to region
