@@ -94,13 +94,15 @@
     {% endif %}
   </header>
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-  {% if 'subbanner' in hero_image|render|render %}
-     <h1 class="display-title">{{ node.field_display_title.value  }}</h1>
-  {% elseif 'homebanner' in hero_image|render|render %}
-  {% else %}
-   <h1 class="display-title">{{ node.field_display_title.value  }}</h1>
+  {% if node.field_display_title.value is not empty %}
+    {% if 'subbanner' in hero_image|render|render %}
+      <h1 class="display-title">{{ node.field_display_title.value  }}</h1>
+    {% elseif 'homebanner' in hero_image|render|render %}
+    {% else %}
+    <h1 class="display-title">{{ node.field_display_title.value  }}</h1>
+    {% endif %}
   {% endif %}
-    {{ content }}
+      {{ content }}
   </div>
 </article>
 
