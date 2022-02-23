@@ -2,9 +2,9 @@ uuid: e2906731-944f-46a5-83fb-9f78b77b20b8
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 27769
 template: false
 archive: false
@@ -12,7 +12,52 @@ id: va_health_insurance_fee_authoriz
 title: 'VA Health Insurance Fee Authorization'
 description: ''
 category: 'Veteran''s Office'
-elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#required': true\nemail:\n  '#type': email\n  '#title': Email\n  '#required': true\nstudent_id:\n  '#type': textfield\n  '#title': 'Student ID'\nare_you_using_university_health_insurance_:\n  '#type': radios\n  '#title': 'Would you like to use your Chapter 33 VA benefits to purchase the USF Student Health Plan?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\nselect_which_terms_you_are_using_:\n  '#type': checkboxes\n  '#title': 'Select the term(s) you plan on using the health insurance.'\n  '#options':\n    Fall: Fall\n    Spring: Spring\n  '#states':\n    visible:\n      ':input[name=\"are_you_using_university_health_insurance_\"]':\n        value: 'Yes'\ni_understand_that_i_am_requesting_to_use_my_va_funds:\n  '#type': checkbox\n  '#title': 'I acknowledge that the health insurance fee will be paid for the term(s) selected above with a portion of my VA education benefits cap, if funds are available.'\n  '#states':\n    visible:\n      ':input[name=\"are_you_using_university_health_insurance_\"]':\n        value: 'Yes'\ni_acknowledge_that_i_have_requested_not_to_use_my_chapter_33_edu:\n  '#type': checkbox\n  '#title': 'I acknowledge that I have requested not to use my Chapter 33 education benefits to pay for the health insurance fee. I understand that I will be responsible for the fee if I do not waive it by the deadline.'\n  '#states':\n    visible:\n      ':input[name=\"are_you_using_university_health_insurance_\"]':\n        value: 'No'\nmarkup:\n  '#type': webform_markup\n  '#markup': '<span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\">Students who request to opt out of the USF-endorsed plan must <a href=\"https://myusf.usfca.edu/hps/insurance\">submit a waiver with HPS</a> by the deadline.</span></span>'"
+elements: |-
+  name:
+    '#type': textfield
+    '#title': Name
+    '#required': true
+  email:
+    '#type': email
+    '#title': Email
+    '#required': true
+  student_id:
+    '#type': textfield
+    '#title': 'Student ID'
+  are_you_using_university_health_insurance_:
+    '#type': radios
+    '#title': 'Would you like to use your Chapter 33 VA benefits to purchase the USF Student Health Plan?'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+    '#required': true
+  select_which_terms_you_are_using_:
+    '#type': checkboxes
+    '#title': 'Select the term(s) you plan on using the health insurance.'
+    '#options':
+      Fall: Fall
+      Spring: Spring
+    '#states':
+      visible:
+        ':input[name="are_you_using_university_health_insurance_"]':
+          value: 'Yes'
+  i_understand_that_i_am_requesting_to_use_my_va_funds:
+    '#type': checkbox
+    '#title': 'I acknowledge that the health insurance fee will be paid for the term(s) selected above with a portion of my VA education benefits cap, if funds are available.'
+    '#states':
+      visible:
+        ':input[name="are_you_using_university_health_insurance_"]':
+          value: 'Yes'
+  i_acknowledge_that_i_have_requested_not_to_use_my_chapter_33_edu:
+    '#type': checkbox
+    '#title': 'I acknowledge that I have requested not to use my Chapter 33 education benefits to pay for the health insurance fee. I understand that I will be responsible for the fee if I do not waive it by the deadline.'
+    '#states':
+      visible:
+        ':input[name="are_you_using_university_health_insurance_"]':
+          value: 'No'
+  markup:
+    '#type': webform_markup
+    '#markup': '<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">Students who request to opt out of the USF-endorsed plan must <a href="https://myusf.usfca.edu/hps/insurance">submit a waiver with HPS</a> by the deadline.</span></span>'
 css: ''
 javascript: ''
 settings:
@@ -27,9 +72,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -39,31 +84,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -72,11 +122,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -87,13 +132,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -116,9 +161,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -199,9 +244,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -210,13 +255,17 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:email:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -227,11 +276,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

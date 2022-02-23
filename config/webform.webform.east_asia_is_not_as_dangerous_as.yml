@@ -2,9 +2,9 @@ uuid: 8cc75b6c-7718-440a-adb8-5acec5ac442d
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 42945
 template: false
 archive: false
@@ -12,7 +12,19 @@ id: east_asia_is_not_as_dangerous_as
 title: 'East Asia is Not as Dangerous as We Think'
 description: ''
 category: 'Center for Asia Pacific Studies'
-elements: "_first_name:\n  '#type': textfield\n  '#title': '*First Name'\n  '#required': true\n_last_name:\n  '#type': textfield\n  '#title': '*Last Name'\n  '#required': true\n_email_address:\n  '#type': email\n  '#title': '*Email Address'\n  '#required': true"
+elements: |-
+  _first_name:
+    '#type': textfield
+    '#title': '*First Name'
+    '#required': true
+  _last_name:
+    '#type': textfield
+    '#title': '*Last Name'
+    '#required': true
+  _email_address:
+    '#type': email
+    '#title': '*Email Address'
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,9 +39,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -39,31 +51,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace:
     webform_routes: {  }
@@ -74,11 +91,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -89,13 +101,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -118,9 +130,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -199,9 +211,9 @@ access:
 handlers:
   confirmation_email:
     id: email
+    handler_id: confirmation_email
     label: 'Confirmation Email'
     notes: ''
-    handler_id: confirmation_email
     status: true
     conditions: {  }
     weight: 0
@@ -210,13 +222,17 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:_email_address:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: centerasiapacific@usfca.edu
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: centerasiapacific@usfca.edu
       from_options: {  }
       from_name: 'Center for Asia Pacific Studies'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: '[USF] Registration Confirmed - East Asia is Not as Dangerous as We Think'
       body: "<p>Submitted on [webform_submission:created]</p>\r\n\r\n<p>Submitted by: [webform_submission:user]</p>\r\n\r\n<p>Submitted values are:</p>\r\n[webform_submission:values]\r\n\r\n<p><strong>Event Details:</strong></p>\r\n\r\n<p>5:30&ndash;6:45 p.m.<br />\r\nWednesday, Oct. 23<br />\r\nMcLaren 250</p>"
       excluded_elements: {  }
@@ -227,11 +243,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

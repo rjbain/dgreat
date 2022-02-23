@@ -7,9 +7,9 @@ dependencies:
 third_party_settings:
   dgreat_student_surveys:
     salesforce_id: ''
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 61444
 template: false
 archive: false
@@ -17,7 +17,42 @@ id: cap_decoration_photoshoot
 title: 'Cap Decoration Photoshoot'
 description: ''
 category: 'Marketing Communications'
-elements: "markup:\n  '#type': webform_markup\n  '#markup': \"<p>If you decorate your mortarboard and make it your own, the USF Office of Marketing Communications will take your photo for free. We may use your photo on social media, the USF website, and other marketing communications channels, and you will receive an online gallery of high-resolution images to download and use as you wish.</p>\\r\\n\\r\\n<p>Photos will take place on Monday, Dec. 2 and Wednesday, Dec. 4 on campus.</p>\\r\\n\\r\\n<p>Please fill out the form below if you are interested. You will then be contacted by the Office of Marketing Communications with detailed information.</p>\\r\\n\\r\\n<p>Thank you and congratulations on your graduation!</p>\"\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#required': true\nemail:\n  '#type': email\n  '#title': Email\n  '#required': true\nphone_number:\n  '#type': textfield\n  '#title': 'Phone Number'\n  '#required': true\nstudent_id_:\n  '#type': textfield\n  '#title': 'Student ID#'\n  '#required': true\nschool_college:\n  '#type': textfield\n  '#title': School/College\n  '#required': true\nmajor:\n  '#type': textfield\n  '#title': Major\n  '#required': true\ndescribe_the_design_of_your_mortarboard_and_the_inspiration_behi:\n  '#type': textarea\n  '#title': 'Describe the design of your mortarboard and the inspiration behind it.'\n  '#required': true"
+elements: |-
+  markup:
+    '#type': webform_markup
+    '#markup': "<p>If you decorate your mortarboard and make it your own, the USF Office of Marketing Communications will take your photo for free. We may use your photo on social media, the USF website, and other marketing communications channels, and you will receive an online gallery of high-resolution images to download and use as you wish.</p>\r\n\r\n<p>Photos will take place on Monday, Dec. 2 and Wednesday, Dec. 4 on campus.</p>\r\n\r\n<p>Please fill out the form below if you are interested. You will then be contacted by the Office of Marketing Communications with detailed information.</p>\r\n\r\n<p>Thank you and congratulations on your graduation!</p>"
+  first_name:
+    '#type': textfield
+    '#title': 'First Name'
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title': 'Last Name'
+    '#required': true
+  email:
+    '#type': email
+    '#title': Email
+    '#required': true
+  phone_number:
+    '#type': textfield
+    '#title': 'Phone Number'
+    '#required': true
+  student_id_:
+    '#type': textfield
+    '#title': 'Student ID#'
+    '#required': true
+  school_college:
+    '#type': textfield
+    '#title': School/College
+    '#required': true
+  major:
+    '#type': textfield
+    '#title': Major
+    '#required': true
+  describe_the_design_of_your_mortarboard_and_the_inspiration_behi:
+    '#type': textarea
+    '#title': 'Describe the design of your mortarboard and the inspiration behind it.'
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -32,9 +67,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -44,31 +79,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -77,11 +117,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -92,13 +127,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -121,9 +156,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -202,9 +237,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -213,13 +248,17 @@ handlers:
         - completed
       to_mail: hmeng9@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -230,18 +269,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_1:
     id: email
+    handler_id: email_1
     label: Email
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 0
@@ -250,13 +285,17 @@ handlers:
         - completed
       to_mail: davisa@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -267,18 +306,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_2:
     id: email
+    handler_id: email_2
     label: Email
     notes: ''
-    handler_id: email_2
     status: true
     conditions: {  }
     weight: 0
@@ -287,13 +322,17 @@ handlers:
         - completed
       to_mail: jhalse@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -304,11 +343,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

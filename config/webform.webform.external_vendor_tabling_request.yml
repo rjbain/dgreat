@@ -7,9 +7,9 @@ dependencies:
 third_party_settings:
   dgreat_student_surveys:
     salesforce_id: ''
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 52332
 template: false
 archive: false
@@ -17,7 +17,81 @@ id: external_vendor_tabling_request
 title: 'External Vendor Tabling Request'
 description: 'Events Managment External Vendor Tabling Request'
 category: 'Events Management'
-elements: "contact_information:\n  '#type': webform_contact\n  '#title': 'Contact Information'\n  '#required': true\n  '#format_items': ol\n  '#name__title': 'Contact Name'\n  '#name__required': true\n  '#company__required': true\n  '#email__required': true\n  '#phone__required': true\n  '#address__required': true\n  '#address_2__access': false\n  '#city__required': true\n  '#state_province__required': true\n  '#postal_code__required': true\n  '#country__access': false\ntype_of_organization:\n  '#type': select\n  '#title': 'Type of Organization'\n  '#options':\n    Corporation: Corporation\n    Government/Military/Education: Government/Military/Education\n    Volunteer: Volunteer\n    Non-Profit: Non-Profit\n    Other: Other\n  '#required': true\nhow_many_dates_will_you_like_to_table_for_:\n  '#type': select\n  '#title': 'How many dates will you like to table for?'\n  '#options':\n    1: '1'\n    2: '2'\n    3: '3'\n  '#required': true\n1st_choice_date:\n  '#type': date\n  '#title': '1st Choice Date'\n  '#required': true\n  '#format_items': comma\n2nd_choice_date:\n  '#type': date\n  '#title': '2nd Choice Date'\n  '#format_items': comma\n3rd_choice_date:\n  '#type': date\n  '#title': '3rd Choice Date'\n  '#format_items': comma\ndo_you_have_date_flexibiltiy:\n  '#type': select\n  '#title': 'Do you have date flexibility?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\nthroughly_describe_the_topics_that_will_be_presented_if_applicab:\n  '#type': textarea\n  '#title': 'Thoroughly describe the topics that will be presented. If applicable, please provide any links with further information.'\n  '#required': true\n  '#format_items': comma\nwill_goods_and_or_services_be_available_for_purchase_:\n  '#type': select\n  '#title': 'Will goods and/or services be available for purchase?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\ncomments_notes_:\n  '#type': textarea\n  '#title': 'Comments/Notes:'\n  '#format_items': comma\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit__label': Submit\n"
+elements: |
+  contact_information:
+    '#type': webform_contact
+    '#title': 'Contact Information'
+    '#required': true
+    '#format_items': ol
+    '#name__title': 'Contact Name'
+    '#name__required': true
+    '#company__required': true
+    '#email__required': true
+    '#phone__required': true
+    '#address__required': true
+    '#address_2__access': false
+    '#city__required': true
+    '#state_province__required': true
+    '#postal_code__required': true
+    '#country__access': false
+  type_of_organization:
+    '#type': select
+    '#title': 'Type of Organization'
+    '#options':
+      Corporation: Corporation
+      Government/Military/Education: Government/Military/Education
+      Volunteer: Volunteer
+      Non-Profit: Non-Profit
+      Other: Other
+    '#required': true
+  how_many_dates_will_you_like_to_table_for_:
+    '#type': select
+    '#title': 'How many dates will you like to table for?'
+    '#options':
+      1: '1'
+      2: '2'
+      3: '3'
+    '#required': true
+  1st_choice_date:
+    '#type': date
+    '#title': '1st Choice Date'
+    '#required': true
+    '#format_items': comma
+  2nd_choice_date:
+    '#type': date
+    '#title': '2nd Choice Date'
+    '#format_items': comma
+  3rd_choice_date:
+    '#type': date
+    '#title': '3rd Choice Date'
+    '#format_items': comma
+  do_you_have_date_flexibiltiy:
+    '#type': select
+    '#title': 'Do you have date flexibility?'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+    '#required': true
+  throughly_describe_the_topics_that_will_be_presented_if_applicab:
+    '#type': textarea
+    '#title': 'Thoroughly describe the topics that will be presented. If applicable, please provide any links with further information.'
+    '#required': true
+    '#format_items': comma
+  will_goods_and_or_services_be_available_for_purchase_:
+    '#type': select
+    '#title': 'Will goods and/or services be available for purchase?'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+    '#required': true
+  comments_notes_:
+    '#type': textarea
+    '#title': 'Comments/Notes:'
+    '#format_items': comma
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#submit__label': Submit
 css: ''
 javascript: ''
 settings:
@@ -32,9 +106,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: true
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -44,31 +118,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: true
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: true
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -77,11 +156,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -92,13 +166,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -121,9 +195,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: inline
+  confirmation_url: ''
   confirmation_title: 'Thank you for requesting tabling space!'
   confirmation_message: 'Your request is under review and you should receive a response within 5-7 business days. If you do not hear back, please email eventsmanagement@usfca.edu'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -205,9 +279,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -216,13 +290,17 @@ handlers:
         - completed
       to_mail: eventsmanagement@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: '[site:mail]'
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'Vendor Tabling Request'
       body: _default
       excluded_elements: {  }
@@ -233,11 +311,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

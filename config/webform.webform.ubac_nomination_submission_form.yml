@@ -7,9 +7,9 @@ dependencies:
 third_party_settings:
   dgreat_student_surveys:
     salesforce_id: ''
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 27769
 template: false
 archive: false
@@ -17,7 +17,23 @@ id: ubac_nomination_submission_form
 title: 'UBAC Nomination Submission Form'
 description: ''
 category: UBAC
-elements: "nominee_s_name:\n  '#type': textfield\n  '#title': 'Nominee''s Name'\n  '#required': true\nnominee_s_email_address:\n  '#type': email\n  '#title': 'Nominee''s Email Address'\n  '#required': true\n  '#unique': true\n  '#unique_error': 'The individual associated with this email address has already been nominated to serve on the UBAC.'\nplease_check_this_box_to_confirm_1_nominee_is_not_a_part_or_full:\n  '#type': checkbox\n  '#title': 'Please confirm'\n  '#description': 'Please check this box to confirm: (1) Nominee is not a part- or full-time faculty member. (2) Nominee is not a member of Leadership Team.'\n  '#title_display': invisible\n  '#required': true"
+elements: |-
+  nominee_s_name:
+    '#type': textfield
+    '#title': 'Nominee''s Name'
+    '#required': true
+  nominee_s_email_address:
+    '#type': email
+    '#title': 'Nominee''s Email Address'
+    '#required': true
+    '#unique': true
+    '#unique_error': 'The individual associated with this email address has already been nominated to serve on the UBAC.'
+  please_check_this_box_to_confirm_1_nominee_is_not_a_part_or_full:
+    '#type': checkbox
+    '#title': 'Please confirm'
+    '#description': 'Please check this box to confirm: (1) Nominee is not a part- or full-time faculty member. (2) Nominee is not a member of Leadership Team.'
+    '#title_display': invisible
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -32,9 +48,9 @@ settings:
   page_theme_name: ''
   form_title: source_entity_webform
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -44,31 +60,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: true
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace:
     webform_routes: {  }
@@ -79,11 +100,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -94,13 +110,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -123,9 +139,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: 'Thank you for submitting your nomination. An email notification has been sent to the nominee with information regarding next steps.'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -206,9 +222,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: false
     conditions: {  }
     weight: 0
@@ -217,13 +233,17 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:nominee_s_email_address:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: 'University Budget Advisory Council'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'UBAC Nomination Form'
       body: "<p>Congratulations! One of your peers has nominated you to serve on the recently-formed <a href=\"https://myusf.usfca.edu/planning-budget/university-budget-advisory-council\" target=\"_blank\">University Budget Advisory Council</a>. A <a href=\"https://myusf.usfca.edu/sites/default/files/documents/UBAC/characteristics_of_an_ideal_member_of_UBAC.pdf\" target=\"_blank\">description of someone</a> who is likely to be a successful contributor to UBAC is available. If, after reviewing the four-fold purpose of UBAC, and the job description, you wish to stand for election, <a href=\"https://myusf.usfca.edu/planning-budget/university-budget-advisory-council/candidate-submission-form\">please complete the candidate submission form here</a>.</p>\r\n\r\n<p>Questions about the University Budget Advisory Council, or the work of its members, should be directed to Jeff Hamrick, Vice Provost for Institutional Budget, Planning, and Analytics, by email at jhamrick@usfca.edu.</p>\r\n"
       excluded_elements: {  }
@@ -234,11 +254,7 @@ handlers:
       html: true
       attachments: false
       twig: true
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

@@ -2,9 +2,9 @@ uuid: a0967512-8925-4c79-8644-d4e7240b3be8
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 27769
 template: false
 archive: false
@@ -12,7 +12,33 @@ id: iew_cityscapes
 title: 'IEW - Cityscapes'
 description: ''
 category: IEW
-elements: "vote_for_your_favorite_photo:\n  '#type': radios\n  '#title': 'Vote for your Favorite Photo'\n  '#options':\n    1: 'Australia, Melbourne CBD'\n    2: 'Colombia Cali Honors College Global JumpStart'\n    3: 'Finland, Porvoo'\n    4: 'Greece, Oia'\n    5: 'Hong Kong Bay'\n    6: 'Hungary, Budapest'\n    7: 'Italy, Camogli'\n    8: 'Italy, Rome (Cats)'\n    9: 'Mexico City (Zocalo)'\n    10: ' Mexico, Mexico City - Museo Nacional del Arte'\n    11: 'Netherlands, Amsterdam Bikes'\n    12: 'Netherlands, Amsterdam Canal'\n    13: 'New Zealand, Waitomo Central'\n    14: 'Tunisia, Sidi Bou Sai'\n    15: 'USA, SF Civic Center'\n    16: 'USA, SF Four Embarcadero Center'\n    17: 'USA, SF Golden Gate Bridge'\n    18: 'USA, SF Palace of Fine Arts'\n    '19 ': 'Hong Kong Cable'\n    20: 'Italy, Rome (Street)'\n  '#options_display': two_columns\n  '#required': true"
+elements: |-
+  vote_for_your_favorite_photo:
+    '#type': radios
+    '#title': 'Vote for your Favorite Photo'
+    '#options':
+      1: 'Australia, Melbourne CBD'
+      2: 'Colombia Cali Honors College Global JumpStart'
+      3: 'Finland, Porvoo'
+      4: 'Greece, Oia'
+      5: 'Hong Kong Bay'
+      6: 'Hungary, Budapest'
+      7: 'Italy, Camogli'
+      8: 'Italy, Rome (Cats)'
+      9: 'Mexico City (Zocalo)'
+      10: ' Mexico, Mexico City - Museo Nacional del Arte'
+      11: 'Netherlands, Amsterdam Bikes'
+      12: 'Netherlands, Amsterdam Canal'
+      13: 'New Zealand, Waitomo Central'
+      14: 'Tunisia, Sidi Bou Sai'
+      15: 'USA, SF Civic Center'
+      16: 'USA, SF Four Embarcadero Center'
+      17: 'USA, SF Golden Gate Bridge'
+      18: 'USA, SF Palace of Fine Arts'
+      '19 ': 'Hong Kong Cable'
+      20: 'Italy, Rome (Street)'
+    '#options_display': two_columns
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,9 +53,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -39,31 +65,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -72,11 +103,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -87,13 +113,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -116,9 +142,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: '<a href="https://myusf.usfca.edu/study-abroad/iew-photo-contest-poll">Vote for other categories &raquo;</a>'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''

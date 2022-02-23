@@ -2,9 +2,9 @@ uuid: 8e7c8c70-b474-4674-a5cc-eab8d270cf8c
 langcode: en
 status: closed
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 1293
 template: false
 archive: false
@@ -12,7 +12,202 @@ id: webform_102101
 title: 'HR Salary Reduction Agreement'
 description: null
 category: null
-elements: "i_enrollment_type:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h2>I. Enrollment Type</h2>\\n<span>Select One:</span>\"\n  '#title': 'I. Enrollment Type'\n  '#description': ''\nenrollment_type:\n  '#type': select\n  '#options':\n    1: 'Change Enrollment'\n    2: 'Cancel Enrollment'\n  '#title_display': invisible\n  '#title': 'Enrollment Type'\n  '#description': ''\n  '#required': true\nhorizontal_line:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<hr>'\n  '#title': 'Horizontal Line'\n  '#description': ''\nii_election_amounts:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h2>II. Election Amounts</h2>\\n<p>Elect the total fixed dollar or percentage amount that you want to contribute to your Voluntary Retirement Plan per paycheck (i.e. if you’re already contributing 3% and want to contribute 10%, enter 10%, not the difference of 7%). You can designate your contributions as Pre-Tax Contributions, Roth Contributions, or a combination of both. Please note that all mandatory deductions will be taken prior to your contributions.</p>\"\n  '#title': 'II. Election Amounts'\n  '#description': ''\npre_tax_contributions_election:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h4>Pre-Tax Contributions Election</h4>'\n  '#title': 'Pre-Tax Contributions Election'\n  '#description': ''\ndollar_reduction_per_paycheck_after_tax:\n  '#type': textfield\n  '#field_prefix': 'Reduce my earnings by $'\n  '#field_suffix': 'PER PAYCHECK.'\n  '#title_display': invisible\n  '#title': 'Dollar Reduction Per Paycheck'\n  '#description': ''\npercent_reduction_per_paycheck_after_tax:\n  '#type': textfield\n  '#field_prefix': 'Reduce my earnings by %'\n  '#field_suffix': 'PER PAYCHECK.'\n  '#title_display': invisible\n  '#title': 'Percent Reduction Per Paycheck'\n  '#description': ''\nreduce_by_maximum_per_year_after_tax:\n  '#type': radios\n  '#options':\n    1: 'Reduce my earnings so that I contribute the maximum allowable per calendar year.'\n  '#title_display': invisible\n  '#title': 'Reduce By Maximum Per Year'\n  '#description': ''\nallocate_my_pre_tax_contributions_as_follows:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<span>Allocate* my Pre-Tax Contributions as follows:</span>'\n  '#title': 'Allocate* my Pre-Tax Contributions as follows:'\n  '#description': ''\nto_fidelity:\n  '#type': textfield\n  '#field_prefix': '%'\n  '#field_suffix': 'to Fidelity'\n  '#title_display': invisible\n  '#title': 'To Fidelity'\n  '#description': ''\nto_tiaa_cref:\n  '#type': textfield\n  '#field_prefix': '%'\n  '#field_suffix': 'to TIAA-CREF'\n  '#title_display': invisible\n  '#title': 'To TIAA-CREF'\n  '#description': ''\nline_break:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<br>'\n  '#title': 'Line Break'\n  '#description': ''\nafter_tax_roth_contributions_election:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h4>After-Tax Roth Contributions Election</h4>'\n  '#title': 'After-Tax Roth Contributions Election'\n  '#description': ''\ndollar_reduction_per_paycheck:\n  '#type': textfield\n  '#field_prefix': 'Reduce my earnings by $'\n  '#field_suffix': 'PER PAYCHECK.'\n  '#title_display': invisible\n  '#title': 'Dollar Reduction Per Paycheck'\n  '#description': ''\npercent_reduction_per_paycheck:\n  '#type': textfield\n  '#field_prefix': 'Reduce my earnings by %'\n  '#field_suffix': 'PER PAYCHECK.'\n  '#title_display': invisible\n  '#title': 'Percent Reduction Per Paycheck'\n  '#description': ''\nreduce_by_maximum_per_year:\n  '#type': radios\n  '#options':\n    1: 'Reduce my earnings so that I contribute the maximum allowable per calendar year.'\n  '#title_display': invisible\n  '#title': 'Reduce By Maximum Per Year'\n  '#description': ''\nallocate_my_after_tax_roth_contributions_as_follows:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<span>Allocate* my After-Tax Roth Contributions as follows</span>'\n  '#title': 'Allocate* my After-Tax Roth Contributions as follows:'\n  '#description': ''\nto_fidelity_after_tax:\n  '#type': textfield\n  '#field_prefix': '%'\n  '#field_suffix': 'to Fidelity'\n  '#title_display': invisible\n  '#title': 'To Fidelity'\n  '#description': ''\nto_tiaa_cref_after_tax:\n  '#type': textfield\n  '#field_prefix': '%'\n  '#field_suffix': 'to TIAA-CREF'\n  '#title_display': invisible\n  '#title': 'To TIAA-CREF'\n  '#description': ''\nhorizontal_line_3:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<hr>'\n  '#title': 'Horizontal Line'\n  '#description': ''\niii_effective_date:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h2>III. Effective Date</h2>'\n  '#title': 'III. Effective Date'\n  '#description': ''\nmake_this_election_effective_as_of_this_date_or_the_first_available_payroll_after_this_date:\n  '#type': date\n  '#title': 'Make this election effective as of this date OR the first available Payroll after this date:'\n  '#description': ''\nhorizontal_line_2:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<hr>'\n  '#title': 'Horizontal Line'\n  '#description': ''\niv_employee_information:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h2>IV. Employee Information</h2>\\n<p>Please complete the section below to certify that the information you have entered is accurate and that you understand the terms and conditions of this Agreement.</p>\"\n  '#title': 'IV. Employee Information'\n  '#description': ''\nemployee_name:\n  '#type': textfield\n  '#title': 'Employee Name:'\n  '#description': ''\n  '#required': true\nemployee_email_address:\n  '#type': textfield\n  '#title': 'Employee Email Address:'\n  '#description': ''\n  '#required': true\nemployee_cwid_:\n  '#type': textfield\n  '#title': 'Employee CWID'\n  '#description': ''\n  '#required': true\nemployee_phone_:\n  '#type': textfield\n  '#title': 'Employee Phone'\n  '#description': ''\n  '#required': true\nsubmit_agreement:\n  '#type': radios\n  '#options':\n    1: 'By checking this box, I understand that this Agreement is legally binding and irrevocable with respect to amounts earned while the agreement is in effect. I understand that this Agreement will apply to the next paycheck that is processed after I submit this Agreement to the Human Resources Office if administratively practicable or applied to my next following paycheck. I understand that this Agreement will continue in effect for future years until I execute and submit another agreement to terminate this Agreement or to elect a different contribution amount. I understand that the University may reduce or suspend my contributions to the extent my contributions to my Voluntary Retirement Plan will exceed my contribution limit as established by the Internal Revenue Code.'\n  '#title_display': invisible\n  '#title': 'Submit Agreement'\n  '#description': ''\n  '#required': true\nby_submitting_this_agreement:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p>BY SUBMITTING THIS AGREEMENT made between the indicated employee and the University of San Francisco, the parties hereto agree as follows the employee’s gross salary will be reduced per pay period by the amount on the effective date indicated above.</p>'\n  '#title': 'By Submitting this agreement'\n  '#description': ''\nhorizontal_line_4:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<hr>'\n  '#title': 'Horizontal Line'\n  '#description': ''\n"
+elements: |
+  i_enrollment_type:
+    '#type': processed_text
+    '#format': full_html
+    '#text': "<h2>I. Enrollment Type</h2>\n<span>Select One:</span>"
+    '#title': 'I. Enrollment Type'
+    '#description': ''
+  enrollment_type:
+    '#type': select
+    '#options':
+      1: 'Change Enrollment'
+      2: 'Cancel Enrollment'
+    '#title_display': invisible
+    '#title': 'Enrollment Type'
+    '#description': ''
+    '#required': true
+  horizontal_line:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<hr>'
+    '#title': 'Horizontal Line'
+    '#description': ''
+  ii_election_amounts:
+    '#type': processed_text
+    '#format': full_html
+    '#text': "<h2>II. Election Amounts</h2>\n<p>Elect the total fixed dollar or percentage amount that you want to contribute to your Voluntary Retirement Plan per paycheck (i.e. if you’re already contributing 3% and want to contribute 10%, enter 10%, not the difference of 7%). You can designate your contributions as Pre-Tax Contributions, Roth Contributions, or a combination of both. Please note that all mandatory deductions will be taken prior to your contributions.</p>"
+    '#title': 'II. Election Amounts'
+    '#description': ''
+  pre_tax_contributions_election:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<h4>Pre-Tax Contributions Election</h4>'
+    '#title': 'Pre-Tax Contributions Election'
+    '#description': ''
+  dollar_reduction_per_paycheck_after_tax:
+    '#type': textfield
+    '#field_prefix': 'Reduce my earnings by $'
+    '#field_suffix': 'PER PAYCHECK.'
+    '#title_display': invisible
+    '#title': 'Dollar Reduction Per Paycheck'
+    '#description': ''
+  percent_reduction_per_paycheck_after_tax:
+    '#type': textfield
+    '#field_prefix': 'Reduce my earnings by %'
+    '#field_suffix': 'PER PAYCHECK.'
+    '#title_display': invisible
+    '#title': 'Percent Reduction Per Paycheck'
+    '#description': ''
+  reduce_by_maximum_per_year_after_tax:
+    '#type': radios
+    '#options':
+      1: 'Reduce my earnings so that I contribute the maximum allowable per calendar year.'
+    '#title_display': invisible
+    '#title': 'Reduce By Maximum Per Year'
+    '#description': ''
+  allocate_my_pre_tax_contributions_as_follows:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<span>Allocate* my Pre-Tax Contributions as follows:</span>'
+    '#title': 'Allocate* my Pre-Tax Contributions as follows:'
+    '#description': ''
+  to_fidelity:
+    '#type': textfield
+    '#field_prefix': '%'
+    '#field_suffix': 'to Fidelity'
+    '#title_display': invisible
+    '#title': 'To Fidelity'
+    '#description': ''
+  to_tiaa_cref:
+    '#type': textfield
+    '#field_prefix': '%'
+    '#field_suffix': 'to TIAA-CREF'
+    '#title_display': invisible
+    '#title': 'To TIAA-CREF'
+    '#description': ''
+  line_break:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<br>'
+    '#title': 'Line Break'
+    '#description': ''
+  after_tax_roth_contributions_election:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<h4>After-Tax Roth Contributions Election</h4>'
+    '#title': 'After-Tax Roth Contributions Election'
+    '#description': ''
+  dollar_reduction_per_paycheck:
+    '#type': textfield
+    '#field_prefix': 'Reduce my earnings by $'
+    '#field_suffix': 'PER PAYCHECK.'
+    '#title_display': invisible
+    '#title': 'Dollar Reduction Per Paycheck'
+    '#description': ''
+  percent_reduction_per_paycheck:
+    '#type': textfield
+    '#field_prefix': 'Reduce my earnings by %'
+    '#field_suffix': 'PER PAYCHECK.'
+    '#title_display': invisible
+    '#title': 'Percent Reduction Per Paycheck'
+    '#description': ''
+  reduce_by_maximum_per_year:
+    '#type': radios
+    '#options':
+      1: 'Reduce my earnings so that I contribute the maximum allowable per calendar year.'
+    '#title_display': invisible
+    '#title': 'Reduce By Maximum Per Year'
+    '#description': ''
+  allocate_my_after_tax_roth_contributions_as_follows:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<span>Allocate* my After-Tax Roth Contributions as follows</span>'
+    '#title': 'Allocate* my After-Tax Roth Contributions as follows:'
+    '#description': ''
+  to_fidelity_after_tax:
+    '#type': textfield
+    '#field_prefix': '%'
+    '#field_suffix': 'to Fidelity'
+    '#title_display': invisible
+    '#title': 'To Fidelity'
+    '#description': ''
+  to_tiaa_cref_after_tax:
+    '#type': textfield
+    '#field_prefix': '%'
+    '#field_suffix': 'to TIAA-CREF'
+    '#title_display': invisible
+    '#title': 'To TIAA-CREF'
+    '#description': ''
+  horizontal_line_3:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<hr>'
+    '#title': 'Horizontal Line'
+    '#description': ''
+  iii_effective_date:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<h2>III. Effective Date</h2>'
+    '#title': 'III. Effective Date'
+    '#description': ''
+  make_this_election_effective_as_of_this_date_or_the_first_available_payroll_after_this_date:
+    '#type': date
+    '#title': 'Make this election effective as of this date OR the first available Payroll after this date:'
+    '#description': ''
+  horizontal_line_2:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<hr>'
+    '#title': 'Horizontal Line'
+    '#description': ''
+  iv_employee_information:
+    '#type': processed_text
+    '#format': full_html
+    '#text': "<h2>IV. Employee Information</h2>\n<p>Please complete the section below to certify that the information you have entered is accurate and that you understand the terms and conditions of this Agreement.</p>"
+    '#title': 'IV. Employee Information'
+    '#description': ''
+  employee_name:
+    '#type': textfield
+    '#title': 'Employee Name:'
+    '#description': ''
+    '#required': true
+  employee_email_address:
+    '#type': textfield
+    '#title': 'Employee Email Address:'
+    '#description': ''
+    '#required': true
+  employee_cwid_:
+    '#type': textfield
+    '#title': 'Employee CWID'
+    '#description': ''
+    '#required': true
+  employee_phone_:
+    '#type': textfield
+    '#title': 'Employee Phone'
+    '#description': ''
+    '#required': true
+  submit_agreement:
+    '#type': radios
+    '#options':
+      1: 'By checking this box, I understand that this Agreement is legally binding and irrevocable with respect to amounts earned while the agreement is in effect. I understand that this Agreement will apply to the next paycheck that is processed after I submit this Agreement to the Human Resources Office if administratively practicable or applied to my next following paycheck. I understand that this Agreement will continue in effect for future years until I execute and submit another agreement to terminate this Agreement or to elect a different contribution amount. I understand that the University may reduce or suspend my contributions to the extent my contributions to my Voluntary Retirement Plan will exceed my contribution limit as established by the Internal Revenue Code.'
+    '#title_display': invisible
+    '#title': 'Submit Agreement'
+    '#description': ''
+    '#required': true
+  by_submitting_this_agreement:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<p>BY SUBMITTING THIS AGREEMENT made between the indicated employee and the University of San Francisco, the parties hereto agree as follows the employee’s gross salary will be reduced per pay period by the amount on the effective date indicated above.</p>'
+    '#title': 'By Submitting this agreement'
+    '#description': ''
+  horizontal_line_4:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<hr>'
+    '#title': 'Horizontal Line'
+    '#description': ''
 css: ''
 javascript: ''
 settings:
@@ -27,9 +222,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -39,31 +234,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -72,11 +272,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -87,13 +282,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -116,9 +311,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: '<p>Thank you for submitting a salary reduction agreement. If you have any questions, please email <a href="mailto:retirementplan@usfca.edu">retirementplan@usfca.edu</a>.</p>'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -202,9 +397,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -213,13 +408,17 @@ handlers:
         - completed
       to_mail: 'retirementplan@usfca.edu,rchin2@usfca.edu'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -230,11 +429,7 @@ handlers:
       html: false
       attachments: true
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

@@ -2,9 +2,9 @@ uuid: 72a33b2f-f322-45bd-b8aa-c3c3faaa701b
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 492
 template: false
 archive: false
@@ -12,7 +12,133 @@ id: webform_86006
 title: 'Study Abroad - Domestic Short Term Program Travel Intent'
 description: null
 category: null
-elements: "student_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Student Name'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title_display': inline\n  '#title': Email\n  '#description': ''\n  '#required': true\nstudent_id_number:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Student ID Number'\n  '#description': ''\n  '#required': true\nprogram_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Program Name'\n  '#description': ''\n  '#required': true\nmajor:\n  '#type': textfield\n  '#title_display': inline\n  '#title': Major\n  '#description': ''\n  '#required': true\nplease_check_all_that_apply:\n  '#type': checkboxes\n  '#title': 'Please check all that apply'\n  '#options':\n    'I do not plan to arrive early before the program begins or stay after the program ends. ': 'I do not plan to arrive early before the program begins or stay after the program ends. '\n    'Early Arrival Before Program Begins ': 'Early Arrival Before Program Begins '\n    'Intention to Stay After Program Ends ': 'Intention to Stay After Program Ends '\n    'I certify that all of the information on this form is true, correct, and complete. ': 'I certify that all of the information on this form is true, correct, and complete. '\nearly_city_state:\n  '#type': textfield\n  '#field_prefix': 'This is to inform you that I am choosing to arrive in'\n  '#field_suffix': 'before the start of the'\n  '#title_display': invisible\n  '#title': City/State\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"early_arrival\"]':\n        checked: true\nearly_usf_program_name:\n  '#type': textfield\n  '#field_prefix': 'USF in ''#field_suffix'': Program.'\n  '#title_display': invisible\n  '#title': 'USF Program Name'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"early_arrival\"]':\n        checked: true\nofficial_start_date_text:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<div><span>I am choosing to arrive in said city/state&nbsp;</span><span>and/or&nbsp;travel to another city/state out of my own accord and agree that my academic relationship&nbsp;with USF related to my participation in the USF short term DOMESTIC program&nbsp;begins on the official start date of</span></div>'\n  '#title': 'Official Start Date Text'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"early_arrival\"]':\n        checked: true\nofficial_start_date:\n  '#type': date\n  '#title': 'Official Start Date'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"early_arrival\"]':\n        checked: true\nintention_to_stay:\n  '#description': \"Intention to Stay After Program Ends\\n\"\n  '#type': checkbox\n  '#options':\n    1: 'Intention to Stay After Program Ends'\n  '#multiple': true\n  '#title_display': invisible\n  '#title': 'Intention to Stay'\nstay_city_state:\n  '#type': textfield\n  '#field_prefix': 'This is to inform you that I am choosing to remain in'\n  '#field_suffix': 'at the end of the'\n  '#title_display': invisible\n  '#title': City/State\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"intention_to_stay\"]':\n        checked: true\nstay_usf_program_name:\n  '#type': textfield\n  '#field_prefix': 'USF in ''#field_suffix'': Program.'\n  '#title_display': invisible\n  '#title': 'USF Program Name'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"intention_to_stay\"]':\n        checked: true\nofficial_end_date_text:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p><span>I am choosing to remain in said city/state and/or travel to another city/state out of my own accord and agree that my academic relationship with USF related to my participation in the USF short term DOMESTIC program ends on the official end date of</span></p>'\n  '#title': 'Official End Date Text'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"intention_to_stay\"]':\n        checked: true\nofficial_end_date:\n  '#type': date\n  '#title_display': invisible\n  '#title': 'Official End Date'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"intention_to_stay\"]':\n        checked: true\n"
+elements: |
+  student_name:
+    '#type': textfield
+    '#title_display': inline
+    '#title': 'Student Name'
+    '#description': ''
+    '#required': true
+  email:
+    '#type': email
+    '#size': 20
+    '#title_display': inline
+    '#title': Email
+    '#description': ''
+    '#required': true
+  student_id_number:
+    '#type': textfield
+    '#title_display': inline
+    '#title': 'Student ID Number'
+    '#description': ''
+    '#required': true
+  program_name:
+    '#type': textfield
+    '#title_display': inline
+    '#title': 'Program Name'
+    '#description': ''
+    '#required': true
+  major:
+    '#type': textfield
+    '#title_display': inline
+    '#title': Major
+    '#description': ''
+    '#required': true
+  please_check_all_that_apply:
+    '#type': checkboxes
+    '#title': 'Please check all that apply'
+    '#options':
+      'I do not plan to arrive early before the program begins or stay after the program ends. ': 'I do not plan to arrive early before the program begins or stay after the program ends. '
+      'Early Arrival Before Program Begins ': 'Early Arrival Before Program Begins '
+      'Intention to Stay After Program Ends ': 'Intention to Stay After Program Ends '
+      'I certify that all of the information on this form is true, correct, and complete. ': 'I certify that all of the information on this form is true, correct, and complete. '
+  early_city_state:
+    '#type': textfield
+    '#field_prefix': 'This is to inform you that I am choosing to arrive in'
+    '#field_suffix': 'before the start of the'
+    '#title_display': invisible
+    '#title': City/State
+    '#description': ''
+    '#states':
+      visible:
+        ':input[name="early_arrival"]':
+          checked: true
+  early_usf_program_name:
+    '#type': textfield
+    '#field_prefix': 'USF in ''#field_suffix'': Program.'
+    '#title_display': invisible
+    '#title': 'USF Program Name'
+    '#description': ''
+    '#states':
+      visible:
+        ':input[name="early_arrival"]':
+          checked: true
+  official_start_date_text:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<div><span>I am choosing to arrive in said city/state&nbsp;</span><span>and/or&nbsp;travel to another city/state out of my own accord and agree that my academic relationship&nbsp;with USF related to my participation in the USF short term DOMESTIC program&nbsp;begins on the official start date of</span></div>'
+    '#title': 'Official Start Date Text'
+    '#description': ''
+    '#states':
+      visible:
+        ':input[name="early_arrival"]':
+          checked: true
+  official_start_date:
+    '#type': date
+    '#title': 'Official Start Date'
+    '#description': ''
+    '#states':
+      visible:
+        ':input[name="early_arrival"]':
+          checked: true
+  intention_to_stay:
+    '#description': "Intention to Stay After Program Ends\n"
+    '#type': checkbox
+    '#options':
+      1: 'Intention to Stay After Program Ends'
+    '#multiple': true
+    '#title_display': invisible
+    '#title': 'Intention to Stay'
+  stay_city_state:
+    '#type': textfield
+    '#field_prefix': 'This is to inform you that I am choosing to remain in'
+    '#field_suffix': 'at the end of the'
+    '#title_display': invisible
+    '#title': City/State
+    '#description': ''
+    '#states':
+      visible:
+        ':input[name="intention_to_stay"]':
+          checked: true
+  stay_usf_program_name:
+    '#type': textfield
+    '#field_prefix': 'USF in ''#field_suffix'': Program.'
+    '#title_display': invisible
+    '#title': 'USF Program Name'
+    '#description': ''
+    '#states':
+      visible:
+        ':input[name="intention_to_stay"]':
+          checked: true
+  official_end_date_text:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<p><span>I am choosing to remain in said city/state and/or travel to another city/state out of my own accord and agree that my academic relationship with USF related to my participation in the USF short term DOMESTIC program ends on the official end date of</span></p>'
+    '#title': 'Official End Date Text'
+    '#description': ''
+    '#states':
+      visible:
+        ':input[name="intention_to_stay"]':
+          checked: true
+  official_end_date:
+    '#type': date
+    '#title_display': invisible
+    '#title': 'Official End Date'
+    '#description': ''
+    '#states':
+      visible:
+        ':input[name="intention_to_stay"]':
+          checked: true
 css: ''
 javascript: ''
 settings:
@@ -27,9 +153,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -39,31 +165,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -72,11 +203,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -87,13 +213,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -116,9 +242,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -202,9 +328,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -213,13 +339,17 @@ handlers:
         - completed
       to_mail: 'stp@usfca.edu,macalderon2@dons.usfca.edu'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: '[webform-submission:values:email:raw]'
       from_options: {  }
       from_name: '[webform-submission:values:student_name:raw]'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'Domestic ST Travel Intent'
       body: _default
       excluded_elements: {  }
@@ -230,18 +360,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_3:
     id: email
+    handler_id: email_3
     label: 'Email 3'
     notes: ''
-    handler_id: email_3
     status: true
     conditions: {  }
     weight: 3
@@ -250,15 +376,23 @@ handlers:
         - completed
       to_mail: '[webform-submission:values:email:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: studyabroad@usfca.edu
       from_options: {  }
       from_name: 'Study Abroad'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'Confirmation of Domestic Short Term Travel Intent'
-      body: "Your information has been received by the Center for Global Education.\n[webform_submission:values]\n\nIf you have any questions feel free to contact the CGE at (415) 422-6848."
+      body: |-
+        Your information has been received by the Center for Global Education.
+        [webform_submission:values]
+
+        If you have any questions feel free to contact the CGE at (415) 422-6848.
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -267,11 +401,7 @@ handlers:
       html: false
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

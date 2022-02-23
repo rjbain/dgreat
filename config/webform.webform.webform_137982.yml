@@ -7,9 +7,9 @@ dependencies:
 third_party_settings:
   dgreat_student_surveys:
     salesforce_id: ''
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 27769
 template: false
 archive: false
@@ -17,7 +17,84 @@ id: webform_137982
 title: '2019 Arrupe Immersion Student Leader Application'
 description: ''
 category: ''
-elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#description': ''\n  '#required': true\nstudent_id:\n  '#type': textfield\n  '#title': 'Student ID'\n  '#description': ''\n  '#required': true\nbirthday:\n  '#type': date\n  '#title': Birthday\n  '#description': ''\n  '#required': true\nmajor:\n  '#type': textfield\n  '#title': Major\n  '#description': ''\n  '#required': true\nyear:\n  '#type': radios\n  '#options':\n    1: Freshmen\n    2: Junior\n    3: Sophmore\n    4: Senior\n  '#title': Year\n  '#description': ''\n  '#required': true\npast__immersion:\n  '#type': textfield\n  '#title': 'Past  Immersion'\n  '#description': ''\n  '#required': true\nnationality:\n  '#type': textfield\n  '#title': Nationality\n  '#description': ''\n  '#required': true\nlanguages_you_speak:\n  '#type': textfield\n  '#title': 'Languages You Speak'\n  '#description': ''\n  '#required': true\ndescribe_your_leadership_experience:\n  '#type': textarea\n  '#title': 'Why do you want to be a Student Leader?'\n  '#description': 'If you have relevant leadership experience feel free to mention it in this question.'\n  '#required': true\nin_your_words_why_do_immersions_matter_:\n  '#type': textfield\n  '#title': 'In your words, why do immersions matter?'\nhow_many_hours_are_you_willing_to_commit_per_month:\n  '#type': textfield\n  '#title': 'Are You Willing to Fully Commit to the Immersion Coordination? '\n  '#description': 'Please, add many hours are you willing to commit and if you are involved in other extra-curricular activities.&nbsp;'\n  '#size': 20\n  '#required': true\nhave_you_participated_in_university_ministry_activities:\n  '#type': radios\n  '#title': 'Have you participated in University Ministry Activities besides the Immersions?'\n  '#options':\n    1: 'Yes'\n    2: 'No'\n  '#required': true\nlist_the_um_activities_you_have_participated_on:\n  '#type': textarea\n  '#title': 'List the UM activities you have participated.'\n  '#required': true\nin_which_immersion_s_did_you_participate_and_when_:\n  '#type': textarea\n  '#title': 'Please provide a reference from the University Ministry (either a Student Leader, and RM or a Staff Leader)'\nemail:\n  '#type': textfield\n  '#title': 'USF email'\n  '#required': true\n"
+elements: |
+  name:
+    '#type': textfield
+    '#title': Name
+    '#description': ''
+    '#required': true
+  student_id:
+    '#type': textfield
+    '#title': 'Student ID'
+    '#description': ''
+    '#required': true
+  birthday:
+    '#type': date
+    '#title': Birthday
+    '#description': ''
+    '#required': true
+  major:
+    '#type': textfield
+    '#title': Major
+    '#description': ''
+    '#required': true
+  year:
+    '#type': radios
+    '#options':
+      1: Freshmen
+      2: Junior
+      3: Sophmore
+      4: Senior
+    '#title': Year
+    '#description': ''
+    '#required': true
+  past__immersion:
+    '#type': textfield
+    '#title': 'Past  Immersion'
+    '#description': ''
+    '#required': true
+  nationality:
+    '#type': textfield
+    '#title': Nationality
+    '#description': ''
+    '#required': true
+  languages_you_speak:
+    '#type': textfield
+    '#title': 'Languages You Speak'
+    '#description': ''
+    '#required': true
+  describe_your_leadership_experience:
+    '#type': textarea
+    '#title': 'Why do you want to be a Student Leader?'
+    '#description': 'If you have relevant leadership experience feel free to mention it in this question.'
+    '#required': true
+  in_your_words_why_do_immersions_matter_:
+    '#type': textfield
+    '#title': 'In your words, why do immersions matter?'
+  how_many_hours_are_you_willing_to_commit_per_month:
+    '#type': textfield
+    '#title': 'Are You Willing to Fully Commit to the Immersion Coordination? '
+    '#description': 'Please, add many hours are you willing to commit and if you are involved in other extra-curricular activities.&nbsp;'
+    '#size': 20
+    '#required': true
+  have_you_participated_in_university_ministry_activities:
+    '#type': radios
+    '#title': 'Have you participated in University Ministry Activities besides the Immersions?'
+    '#options':
+      1: 'Yes'
+      2: 'No'
+    '#required': true
+  list_the_um_activities_you_have_participated_on:
+    '#type': textarea
+    '#title': 'List the UM activities you have participated.'
+    '#required': true
+  in_which_immersion_s_did_you_participate_and_when_:
+    '#type': textarea
+    '#title': 'Please provide a reference from the University Ministry (either a Student Leader, and RM or a Staff Leader)'
+  email:
+    '#type': textfield
+    '#title': 'USF email'
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -32,9 +109,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: 'Applications for Student Leader are now closed, but applications for Arrupe Immersions remain open throughout September.'
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -44,31 +121,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -77,11 +159,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -92,13 +169,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -121,9 +198,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: 'Thank you for your Application!'
   confirmation_message: 'Thank you for your interest in the Arrupe Immersion&#39;s Student Leadership Program! A member of the Immersion Team will be in contact with you in the next couple of days to schedule an interview. If you have any questions please email Maria at mnautrey@usfca.edu'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -207,9 +284,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -218,13 +295,17 @@ handlers:
         - completed
       to_mail: ncrump@dons.usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -235,11 +316,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

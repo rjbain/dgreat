@@ -2,9 +2,9 @@ uuid: c3271c7d-b040-4939-bf3c-0163258d0573
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 61444
 template: false
 archive: false
@@ -12,7 +12,69 @@ id: magis_fellowship_application
 title: 'Magis Fellowship Application'
 description: ''
 category: 'Diversity Engagement'
-elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#required': true\nusf_email_address:\n  '#type': textfield\n  '#title': 'USF Email Address'\n  '#required': true\nphone_number:\n  '#type': tel\n  '#title': 'Phone Number'\n  '#required': true\nusf_cwid_number:\n  '#type': textfield\n  '#title': 'USF CWID Number'\n  '#required': true\nyear:\n  '#type': textfield\n  '#title': 'Anticipated Graduation Year'\n  '#required': true\nmailing_address:\n  '#type': textarea\n  '#title': 'Mailing Address'\n  '#required': true\ndo_you_currently_have_direct_deposit_with_usf_:\n  '#type': radios\n  '#title': 'Do you currently have direct deposit with USF?'\n  '#options': yes_no\n  '#required': true\nhave_you_received_a_usf_scholarship_or_grant_for_the_2019_20_aca:\n  '#type': radios\n  '#title': 'Have you received a USF scholarship or grant for the 2021-22 academic year?'\n  '#options': yes_no\n  '#required': true\nhave_you_received_or_do_you_anticipate_receiving_a_scholarship_o:\n  '#type': radios\n  '#title': 'Have you received or do you anticipate receiving a scholarship or grant from a source outside of USF for the 2021-22 academic year?'\n  '#options': yes_no\n  '#required': true\nhave_you_received_or_do_you_anticipate_receiving_financial_suppo:\n  '#type': radios\n  '#title': 'Have you received or do you anticipate receiving financial support from any other source for the 2021-22 academic year?'\n  '#options': yes_no\n  '#required': true\nhave_you_received_a_usf_scholarship_or_grant_during_your_time_as:\n  '#type': radios\n  '#title': 'Have you received a USF scholarship or grant during your time as a student at USF?'\n  '#options': yes_no\n  '#required': true\nhave_you_received_a_scholarship_or_grant_from_a_source_outside_o:\n  '#type': radios\n  '#title': 'Have you received a scholarship or grant from a source outside of USF during your time as a student at USF?'\n  '#options': yes_no\n  '#required': true\nin_250_words_or_less_describe_your_personal_connection_to_the_is:\n  '#type': textarea\n  '#title': 'In 250 words or less, describe your personal connection to the issue.'\n  '#required': true\nin_250_words_or_less_describe_your_proposed_project_:\n  '#type': textarea\n  '#title': 'In 250 words or less, describe your proposed project.'\n  '#required': true"
+elements: |-
+  name:
+    '#type': textfield
+    '#title': Name
+    '#required': true
+  usf_email_address:
+    '#type': textfield
+    '#title': 'USF Email Address'
+    '#required': true
+  phone_number:
+    '#type': tel
+    '#title': 'Phone Number'
+    '#required': true
+  usf_cwid_number:
+    '#type': textfield
+    '#title': 'USF CWID Number'
+    '#required': true
+  year:
+    '#type': textfield
+    '#title': 'Anticipated Graduation Year'
+    '#required': true
+  mailing_address:
+    '#type': textarea
+    '#title': 'Mailing Address'
+    '#required': true
+  do_you_currently_have_direct_deposit_with_usf_:
+    '#type': radios
+    '#title': 'Do you currently have direct deposit with USF?'
+    '#options': yes_no
+    '#required': true
+  have_you_received_a_usf_scholarship_or_grant_for_the_2019_20_aca:
+    '#type': radios
+    '#title': 'Have you received a USF scholarship or grant for the 2021-22 academic year?'
+    '#options': yes_no
+    '#required': true
+  have_you_received_or_do_you_anticipate_receiving_a_scholarship_o:
+    '#type': radios
+    '#title': 'Have you received or do you anticipate receiving a scholarship or grant from a source outside of USF for the 2021-22 academic year?'
+    '#options': yes_no
+    '#required': true
+  have_you_received_or_do_you_anticipate_receiving_financial_suppo:
+    '#type': radios
+    '#title': 'Have you received or do you anticipate receiving financial support from any other source for the 2021-22 academic year?'
+    '#options': yes_no
+    '#required': true
+  have_you_received_a_usf_scholarship_or_grant_during_your_time_as:
+    '#type': radios
+    '#title': 'Have you received a USF scholarship or grant during your time as a student at USF?'
+    '#options': yes_no
+    '#required': true
+  have_you_received_a_scholarship_or_grant_from_a_source_outside_o:
+    '#type': radios
+    '#title': 'Have you received a scholarship or grant from a source outside of USF during your time as a student at USF?'
+    '#options': yes_no
+    '#required': true
+  in_250_words_or_less_describe_your_personal_connection_to_the_is:
+    '#type': textarea
+    '#title': 'In 250 words or less, describe your personal connection to the issue.'
+    '#required': true
+  in_250_words_or_less_describe_your_proposed_project_:
+    '#type': textarea
+    '#title': 'In 250 words or less, describe your proposed project.'
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,9 +89,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -39,31 +101,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -72,11 +139,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -87,13 +149,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -116,9 +178,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -197,9 +259,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -208,13 +270,17 @@ handlers:
         - completed
       to_mail: gaperez5@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -225,18 +291,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_1:
     id: email
+    handler_id: email_1
     label: Email
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 0
@@ -245,13 +307,17 @@ handlers:
         - completed
       to_mail: diversity@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -262,18 +328,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_2:
     id: email
+    handler_id: email_2
     label: Email
     notes: ''
-    handler_id: email_2
     status: true
     conditions: {  }
     weight: 0
@@ -282,13 +344,17 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:usf_email_address:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -299,11 +365,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

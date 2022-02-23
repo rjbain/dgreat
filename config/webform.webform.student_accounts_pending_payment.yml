@@ -2,9 +2,9 @@ uuid: 3d99b953-b3d3-4f6d-9dcd-2a0a90b63cc3
 langcode: en
 status: closed
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 42674
 template: false
 archive: false
@@ -12,7 +12,98 @@ id: student_accounts_pending_payment
 title: 'Student Accounts Pending Payment Documentation'
 description: ''
 category: 'Student Accounts'
-elements: "submit_documentation_for_pending_529_funds:\n  '#type': item\n  '#title': 'Submit Documentation for Pending 529 Funds'\n  '#description': '<h2><strong>Fill in the information below to submit documentation of pending 529 or other tuition benefits.</strong></h2>'\n  '#title_display': invisible\n  '#description_display': before\nname:\n  '#type': webform_name\n  '#title': Name\n  '#required': true\n  '#title__access': false\n  '#first__title': 'First Name'\n  '#first__required': true\n  '#middle__access': false\n  '#last__title': 'Last Name'\n  '#last__required': true\n  '#suffix__access': false\n  '#degree__access': false\nstudent_id_8_digits_:\n  '#type': textfield\n  '#title': 'Student ID# (8 digits)'\n  '#multiple': 0\n  '#required': true\n  '#counter_type': character\n  '#counter_maximum': 8\nusf_email:\n  '#type': email\n  '#title': 'USF Email'\n  '#required': true\nname_of_savings_plan_or_funding_organization:\n  '#type': textfield\n  '#title': 'Name of Savings Plan or Funding Organization'\n  '#description': '<p>Please enter the name of the organization that will issue funds on your behalf.</p>'\n  '#description_display': before\n  '#required': true\nenter_the_dollar_amount_of_the_expected_funds_:\n  '#type': textfield\n  '#title': 'Enter the dollar amount of the expected funds.'\nselect_the_term_that_will_be_covered_the_savings_plan_funding_or:\n  '#type': select\n  '#title': 'Select the term that will be covered by the savings plan/ funding organization.'\n  '#help_title': 'Can''t select multiple terms?'\n  '#help': 'If you are expecting to receive late funding for additional terms, please resubmit the form when you receive your first billing statement for the term.'\n  '#title_display': before\n  '#description_display': tooltip\n  '#options':\n    'Fall 2021': 'Fall 2021'\n    'Winter Intersession 2022': 'Winter Intersession 2022'\n    'Spring 2022': 'Spring 2022'\n    'Summer 2022': 'Summer 2022'\n  '#required': true\nadditional_information:\n  '#type': textarea\n  '#title': 'Additional Information (Required)'\n  '#description': 'Please provide additional details on the pending funds and when USF can expect to receive payment.'\n  '#description_display': before\n  '#required': true\nwill_the_pending_funds_cover_your_entire_semester_balance_:\n  '#type': select\n  '#title': 'Will the pending funds cover your entire semester balance?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\npayment_required:\n  '#type': item\n  '#title': 'Payment required'\n  '#description': '<p>If the funds you are expecting are not enough to cover your entire balance, you must pay the remaining amount by the semester due date. You may use financial aid or the semester payment plan to pay balances not covered by the expected funds. However, the payment plan will not account for the expected funds until they are received.</p>'\n  '#title_display': invisible\n  '#description_display': before\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"will_the_pending_funds_cover_your_entire_semester_balance_\"]':\n        value: 'No'\ndocument_upload:\n  '#type': managed_file\n  '#title': 'Document Upload'\n  '#description': 'Upload proof of the pending payment. Withdrawal receipts, eligibility notices, program verifications, or any documententation originating from the financial institution or funding organization stating intent to pay is acceptable.'\n  '#description_display': before\n  '#required': true\n  '#file_extensions': 'gif jpg png tif pict psd txt rtf pdf doc docx'\ncheck_mailing_address:\n  '#type': item\n  '#title': 'Check Mailing Address'\n  '#description': \"<p>University of San Francisco<br />\\r\\nAttn: Office of Student Accounts - LM 203<br />\\r\\n2130 Fulton Street<br />\\r\\nSan Francisco, CA 94117-1080</p>\"\nthank_you:\n  '#type': item\n  '#title': 'Thank you'\n  '#title_display': invisible\n  '#markup': '<h4>Please click the submit button when you are done. The Student Accounts Office will review the information and make note of the pending funds on your student account.</h4>'\n"
+elements: |
+  submit_documentation_for_pending_529_funds:
+    '#type': item
+    '#title': 'Submit Documentation for Pending 529 Funds'
+    '#description': '<h2><strong>Fill in the information below to submit documentation of pending 529 or other tuition benefits.</strong></h2>'
+    '#title_display': invisible
+    '#description_display': before
+  name:
+    '#type': webform_name
+    '#title': Name
+    '#required': true
+    '#title__access': false
+    '#first__title': 'First Name'
+    '#first__required': true
+    '#middle__access': false
+    '#last__title': 'Last Name'
+    '#last__required': true
+    '#suffix__access': false
+    '#degree__access': false
+  student_id_8_digits_:
+    '#type': textfield
+    '#title': 'Student ID# (8 digits)'
+    '#multiple': 0
+    '#required': true
+    '#counter_type': character
+    '#counter_maximum': 8
+  usf_email:
+    '#type': email
+    '#title': 'USF Email'
+    '#required': true
+  name_of_savings_plan_or_funding_organization:
+    '#type': textfield
+    '#title': 'Name of Savings Plan or Funding Organization'
+    '#description': '<p>Please enter the name of the organization that will issue funds on your behalf.</p>'
+    '#description_display': before
+    '#required': true
+  enter_the_dollar_amount_of_the_expected_funds_:
+    '#type': textfield
+    '#title': 'Enter the dollar amount of the expected funds.'
+  select_the_term_that_will_be_covered_the_savings_plan_funding_or:
+    '#type': select
+    '#title': 'Select the term that will be covered by the savings plan/ funding organization.'
+    '#help_title': 'Can''t select multiple terms?'
+    '#help': 'If you are expecting to receive late funding for additional terms, please resubmit the form when you receive your first billing statement for the term.'
+    '#title_display': before
+    '#description_display': tooltip
+    '#options':
+      'Fall 2021': 'Fall 2021'
+      'Winter Intersession 2022': 'Winter Intersession 2022'
+      'Spring 2022': 'Spring 2022'
+      'Summer 2022': 'Summer 2022'
+    '#required': true
+  additional_information:
+    '#type': textarea
+    '#title': 'Additional Information (Required)'
+    '#description': 'Please provide additional details on the pending funds and when USF can expect to receive payment.'
+    '#description_display': before
+    '#required': true
+  will_the_pending_funds_cover_your_entire_semester_balance_:
+    '#type': select
+    '#title': 'Will the pending funds cover your entire semester balance?'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+    '#required': true
+  payment_required:
+    '#type': item
+    '#title': 'Payment required'
+    '#description': '<p>If the funds you are expecting are not enough to cover your entire balance, you must pay the remaining amount by the semester due date. You may use financial aid or the semester payment plan to pay balances not covered by the expected funds. However, the payment plan will not account for the expected funds until they are received.</p>'
+    '#title_display': invisible
+    '#description_display': before
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="will_the_pending_funds_cover_your_entire_semester_balance_"]':
+          value: 'No'
+  document_upload:
+    '#type': managed_file
+    '#title': 'Document Upload'
+    '#description': 'Upload proof of the pending payment. Withdrawal receipts, eligibility notices, program verifications, or any documententation originating from the financial institution or funding organization stating intent to pay is acceptable.'
+    '#description_display': before
+    '#required': true
+    '#file_extensions': 'gif jpg png tif pict psd txt rtf pdf doc docx'
+  check_mailing_address:
+    '#type': item
+    '#title': 'Check Mailing Address'
+    '#description': "<p>University of San Francisco<br />\r\nAttn: Office of Student Accounts - LM 203<br />\r\n2130 Fulton Street<br />\r\nSan Francisco, CA 94117-1080</p>"
+  thank_you:
+    '#type': item
+    '#title': 'Thank you'
+    '#title_display': invisible
+    '#markup': '<h4>Please click the submit button when you are done. The Student Accounts Office will review the information and make note of the pending funds on your student account.</h4>'
 css: ''
 javascript: ''
 settings:
@@ -27,9 +118,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -39,31 +130,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -72,11 +168,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -87,13 +178,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -116,9 +207,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: 'Thank you for submitting your request.'
   confirmation_message: 'Thank you for uploading proof of a pending payment. The Student Accounts Office will review the information and notate your student account of the pending funds. If there is an issue with the uploaded document, you will be notified.'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -196,9 +287,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: Email
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 0
@@ -207,13 +298,17 @@ handlers:
         - completed
       to_mail: studentaccounts@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: '[webform_submission:values:usf_email:raw]'
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -224,11 +319,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

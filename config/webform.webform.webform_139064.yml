@@ -2,9 +2,9 @@ uuid: 40cc2caf-8b17-4882-ab9a-cdaa24c3c01e
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 1510
 template: false
 archive: false
@@ -12,7 +12,68 @@ id: webform_139064
 title: 'Request for Travel Stipend Program for Admitted Students'
 description: null
 category: null
-elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name:'\n  '#description': ''\n  '#required': true\nmi:\n  '#type': textfield\n  '#title': 'MI:'\n  '#description': ''\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name:'\n  '#description': ''\n  '#required': true\nmailing_address:\n  '#type': textfield\n  '#title': 'Mailing Address:'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': 'Email:'\n  '#description': ''\n  '#required': true\nlsac_number:\n  '#type': textfield\n  '#title': 'LSAC Number:'\n  '#description': ''\n  '#required': true\nphone:\n  '#type': textfield\n  '#title': 'Phone:'\n  '#description': ''\n  '#required': true\nfrom_where_did_you_travel_to_campus:\n  '#type': textfield\n  '#title': 'From where did you travel to campus:'\n  '#description': ''\nevent_name_date:\n  '#type': textfield\n  '#title': 'Please indicate the name and date of the admissions event you attended:'\n  '#description': ''\nhow_did_you_travel_to_campus:\n  '#type': radios\n  '#options':\n    1: 'Car (Please email a map showing starting and ending points)'\n    2: 'Plane (Please attach your receipt and travel itinerary)'\n    3: 'Train (Please attach your receipt and travel itinerary)'\n    4: 'Bus (Please attach your receipt and travel itinerary)'\n    5: 'Other (Please attach your receipt and travel itinerary)'\n  '#title': 'How did you travel to campus?'\n  '#description': ''\nif_requesting_reimbursement_for_hotel_stay_please_attach_receipt_and_list_name_of_hotel_accommodation:\n  '#type': textfield\n  '#title': 'If requesting reimbursement for hotel stay please attach receipt and list name of hotel/accommodation:'\n  '#description': ''\nplease_share_a_brief_explanation_of_your_financial_need_and_other_reasons_for_requesting_a_travel_stipend:\n  '#type': textarea\n  '#title': 'Please share a brief explanation of your financial need and other reasons for requesting a travel stipend:'\n  '#description': ''\n"
+elements: |
+  first_name:
+    '#type': textfield
+    '#title': 'First Name:'
+    '#description': ''
+    '#required': true
+  mi:
+    '#type': textfield
+    '#title': 'MI:'
+    '#description': ''
+  last_name:
+    '#type': textfield
+    '#title': 'Last Name:'
+    '#description': ''
+    '#required': true
+  mailing_address:
+    '#type': textfield
+    '#title': 'Mailing Address:'
+    '#description': ''
+    '#required': true
+  email:
+    '#type': email
+    '#size': 20
+    '#title': 'Email:'
+    '#description': ''
+    '#required': true
+  lsac_number:
+    '#type': textfield
+    '#title': 'LSAC Number:'
+    '#description': ''
+    '#required': true
+  phone:
+    '#type': textfield
+    '#title': 'Phone:'
+    '#description': ''
+    '#required': true
+  from_where_did_you_travel_to_campus:
+    '#type': textfield
+    '#title': 'From where did you travel to campus:'
+    '#description': ''
+  event_name_date:
+    '#type': textfield
+    '#title': 'Please indicate the name and date of the admissions event you attended:'
+    '#description': ''
+  how_did_you_travel_to_campus:
+    '#type': radios
+    '#options':
+      1: 'Car (Please email a map showing starting and ending points)'
+      2: 'Plane (Please attach your receipt and travel itinerary)'
+      3: 'Train (Please attach your receipt and travel itinerary)'
+      4: 'Bus (Please attach your receipt and travel itinerary)'
+      5: 'Other (Please attach your receipt and travel itinerary)'
+    '#title': 'How did you travel to campus?'
+    '#description': ''
+  if_requesting_reimbursement_for_hotel_stay_please_attach_receipt_and_list_name_of_hotel_accommodation:
+    '#type': textfield
+    '#title': 'If requesting reimbursement for hotel stay please attach receipt and list name of hotel/accommodation:'
+    '#description': ''
+  please_share_a_brief_explanation_of_your_financial_need_and_other_reasons_for_requesting_a_travel_stipend:
+    '#type': textarea
+    '#title': 'Please share a brief explanation of your financial need and other reasons for requesting a travel stipend:'
+    '#description': ''
 css: ''
 javascript: ''
 settings:
@@ -27,9 +88,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -39,31 +100,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -72,11 +138,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -87,13 +148,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -116,9 +177,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: '<p>Thank you for completing the travel stipend request form. Please submit all required supporting documents and receipts to: <a href="mailto:lawadmissions@usfca.edu">lawadmissions@usfca.edu</a>.</p>'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -202,9 +263,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -213,13 +274,17 @@ handlers:
         - completed
       to_mail: lawadmissions@usfca.edu
       to_options: {  }
-      cc_mail: mlmata@usfca.edu
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: mlmata@usfca.edu
+      cc_options: {  }
       from_mail: '[webform-submission:values:email:raw]'
       from_options: {  }
       from_name: '[webform-submission:values:first_name:raw]'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -230,18 +295,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_2:
     id: email
+    handler_id: email_2
     label: 'Email 2'
     notes: ''
-    handler_id: email_2
     status: true
     conditions: {  }
     weight: 2
@@ -250,13 +311,17 @@ handlers:
         - completed
       to_mail: '[webform-submission:values:email:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: lawadmissions@usfca.edu
       from_options: {  }
       from_name: 'USF Law Admissions'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: 'Submitted by user: [webform_submission:user] Submitted values are: [webform_submission:values]'
       excluded_elements: {  }
@@ -267,11 +332,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

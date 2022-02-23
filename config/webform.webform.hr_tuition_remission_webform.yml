@@ -7,9 +7,9 @@ dependencies:
 third_party_settings:
   dgreat_student_surveys:
     salesforce_id: ''
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 27769
 template: false
 archive: false
@@ -17,7 +17,90 @@ id: hr_tuition_remission_webform
 title: 'HR Tuition Remission Webform'
 description: ''
 category: ''
-elements: "markup:\n  '#type': webform_markup\n  '#markup': \"<p><strong>Form&nbsp;is not complete until you complete all required fields and click &quot;SUBMIT&quot; at the bottom of the page.</strong></p>\\n\\n<h2>STUDENT&#39;S INFORMATION</h2>\\n\"\nname:\n  '#type': textfield\n  '#title': Name\nemail:\n  '#type': email\n  '#title': Email\ncwid:\n  '#type': textfield\n  '#title': CWID\nstudent_s_relationship_to_employee:\n  '#type': webform_radios_other\n  '#title': 'Student''s Relationship to Employee'\n  '#options':\n    Self: Self\n    Spouse: Spouse\n    'Dependent Child': 'Dependent Child'\n    'Registered Domestic Partner': 'Registered Domestic Partner'\nlevel:\n  '#type': radios\n  '#title': Level\n  '#options':\n    Undergraduate: Undergraduate\n    Graduate: Graduate\nschool_college:\n  '#type': webform_radios_other\n  '#title': School/College\n  '#options':\n    'Arts & Sciences': 'Arts & Sciences'\n    Management: Management\n    Education: Education\n    Law: Law\n    Nursing: Nursing\nsemester:\n  '#type': webform_radios_other\n  '#title': Semester\n  '#options':\n    Summer: Summer\n    Fall: Fall\n    Intersession: Intersession\n    Spring: Spring\nyear_yyyy_:\n  '#type': number\n  '#title': 'Year (YYYY)'\nprogram:\n  '#type': textfield\n  '#title': Program\ndate_program_started:\n  '#type': date\n  '#title': 'Date Program Started'\nterms_and_conditions:\n  '#type': webform_markup\n  '#markup': \"<h3>Terms and Conditions</h3>\\r\\n\\r\\n<p>You must read and accept the entire&nbsp;<a data-mce-href=\\\"/node/138085\\\" href=\\\"/node/138085\\\" target=\\\"_blank\\\">terms and conditions</a>&nbsp;before submitting this form at the bottom of this page.</p>\\r\\n\\r\\n<h3>EMPLOYEE&#39;S INFORMATION</h3>\\r\\n\\r\\n<p>Please complete the section below to certify that the information you have written is accurate and that you understand the&nbsp;<a data-mce-href=\\\"/node/138085\\\" href=\\\"/node/138085\\\" target=\\\"_blank\\\">terms and conditions</a>&nbsp;of this form and the&nbsp;<a data-mce-href=\\\"/node/137066\\\" href=\\\"/node/137066\\\" target=\\\"_blank\\\">Tuition Remission Plan</a>.</p>\"\nemployee_name_:\n  '#type': textfield\n  '#title': \"Employee Name\\t\"\nemployee_cwid:\n  '#type': number\n  '#title': 'Employee CWID'\nemployee_email:\n  '#type': email\n  '#title': 'Employee Email'\nemployee_classification:\n  '#type': webform_radios_other\n  '#title': 'Employee Classification'\n  '#options':\n    'OPE - Office and Professional Employees, Local 29 (CODE: 10)': 'OPE - Office and Professional Employees, Local 29 (CODE: 10)'\n    'USFFA - USF Faculty Association, Full-Time Faculty and Librarians (CODE: 15)': 'USFFA - USF Faculty Association, Full-Time Faculty and Librarians (CODE: 15)'\n    'ALP - Association of Law Professors (CODE: 20)': 'ALP - Association of Law Professors (CODE: 20)'\n    'Administrators - Staff (CODE: 25)': 'Administrators - Staff (CODE: 25)'\n    'Laborer/Gardener (CODE: 30)': 'Laborer/Gardener (CODE: 30)'\n    'PSOA - Public Safety Officers Association (CODE: 35)': 'PSOA - Public Safety Officers Association (CODE: 35)'\n    'IUOE - International Union of Operating Engineers, Stationary Local 39 (CODE: 40)': 'IUOE - International Union of Operating Engineers, Stationary Local 39 (CODE: 40)'\n    'PHP - Preferred Hiring Pool, Faculty (CODE: 45)': 'PHP - Preferred Hiring Pool, Faculty (CODE: 45)'\nread_terms:\n  '#type': checkbox\n  '#title': 'Read Terms'\n  '#description': 'I have read the Terms and Conditions and I accept.'\nmarkup_01:\n  '#type': webform_markup\n  '#markup': '<p>If you have any questions about this form or eligibility for the tuition remission benefit, please contact the Benefits Team at (415) 422-2442 or <a href=\"mailto:tuitionremission@usfca.edu\" target=\"_blank\">tuitionremission@usfca.edu</a>.</p>'\n"
+elements: |
+  markup:
+    '#type': webform_markup
+    '#markup': "<p><strong>Form&nbsp;is not complete until you complete all required fields and click &quot;SUBMIT&quot; at the bottom of the page.</strong></p>\n\n<h2>STUDENT&#39;S INFORMATION</h2>\n"
+  name:
+    '#type': textfield
+    '#title': Name
+  email:
+    '#type': email
+    '#title': Email
+  cwid:
+    '#type': textfield
+    '#title': CWID
+  student_s_relationship_to_employee:
+    '#type': webform_radios_other
+    '#title': 'Student''s Relationship to Employee'
+    '#options':
+      Self: Self
+      Spouse: Spouse
+      'Dependent Child': 'Dependent Child'
+      'Registered Domestic Partner': 'Registered Domestic Partner'
+  level:
+    '#type': radios
+    '#title': Level
+    '#options':
+      Undergraduate: Undergraduate
+      Graduate: Graduate
+  school_college:
+    '#type': webform_radios_other
+    '#title': School/College
+    '#options':
+      'Arts & Sciences': 'Arts & Sciences'
+      Management: Management
+      Education: Education
+      Law: Law
+      Nursing: Nursing
+  semester:
+    '#type': webform_radios_other
+    '#title': Semester
+    '#options':
+      Summer: Summer
+      Fall: Fall
+      Intersession: Intersession
+      Spring: Spring
+  year_yyyy_:
+    '#type': number
+    '#title': 'Year (YYYY)'
+  program:
+    '#type': textfield
+    '#title': Program
+  date_program_started:
+    '#type': date
+    '#title': 'Date Program Started'
+  terms_and_conditions:
+    '#type': webform_markup
+    '#markup': "<h3>Terms and Conditions</h3>\r\n\r\n<p>You must read and accept the entire&nbsp;<a data-mce-href=\"/node/138085\" href=\"/node/138085\" target=\"_blank\">terms and conditions</a>&nbsp;before submitting this form at the bottom of this page.</p>\r\n\r\n<h3>EMPLOYEE&#39;S INFORMATION</h3>\r\n\r\n<p>Please complete the section below to certify that the information you have written is accurate and that you understand the&nbsp;<a data-mce-href=\"/node/138085\" href=\"/node/138085\" target=\"_blank\">terms and conditions</a>&nbsp;of this form and the&nbsp;<a data-mce-href=\"/node/137066\" href=\"/node/137066\" target=\"_blank\">Tuition Remission Plan</a>.</p>"
+  employee_name_:
+    '#type': textfield
+    '#title': "Employee Name\t"
+  employee_cwid:
+    '#type': number
+    '#title': 'Employee CWID'
+  employee_email:
+    '#type': email
+    '#title': 'Employee Email'
+  employee_classification:
+    '#type': webform_radios_other
+    '#title': 'Employee Classification'
+    '#options':
+      'OPE - Office and Professional Employees, Local 29 (CODE: 10)': 'OPE - Office and Professional Employees, Local 29 (CODE: 10)'
+      'USFFA - USF Faculty Association, Full-Time Faculty and Librarians (CODE: 15)': 'USFFA - USF Faculty Association, Full-Time Faculty and Librarians (CODE: 15)'
+      'ALP - Association of Law Professors (CODE: 20)': 'ALP - Association of Law Professors (CODE: 20)'
+      'Administrators - Staff (CODE: 25)': 'Administrators - Staff (CODE: 25)'
+      'Laborer/Gardener (CODE: 30)': 'Laborer/Gardener (CODE: 30)'
+      'PSOA - Public Safety Officers Association (CODE: 35)': 'PSOA - Public Safety Officers Association (CODE: 35)'
+      'IUOE - International Union of Operating Engineers, Stationary Local 39 (CODE: 40)': 'IUOE - International Union of Operating Engineers, Stationary Local 39 (CODE: 40)'
+      'PHP - Preferred Hiring Pool, Faculty (CODE: 45)': 'PHP - Preferred Hiring Pool, Faculty (CODE: 45)'
+  read_terms:
+    '#type': checkbox
+    '#title': 'Read Terms'
+    '#description': 'I have read the Terms and Conditions and I accept.'
+  markup_01:
+    '#type': webform_markup
+    '#markup': '<p>If you have any questions about this form or eligibility for the tuition remission benefit, please contact the Benefits Team at (415) 422-2442 or <a href="mailto:tuitionremission@usfca.edu" target="_blank">tuitionremission@usfca.edu</a>.</p>'
 css: ''
 javascript: ''
 settings:
@@ -32,9 +115,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: '<span class="im">The 2021 Summer filing period is now open. </span>'
   form_close_message: '<span class="im">The filing period is now closed. </span>'
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -44,31 +127,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -77,11 +165,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -92,13 +175,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -121,9 +204,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: 'Thank you for your submission. You will receive an email confirmation for the information you have submitted.'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -205,9 +288,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -216,13 +299,17 @@ handlers:
         - completed
       to_mail: tuitionremission@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -233,18 +320,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_1:
     id: email
+    handler_id: email_1
     label: Email
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 0
@@ -253,13 +336,17 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:email:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -270,18 +357,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_2:
     id: email
+    handler_id: email_2
     label: Email
     notes: ''
-    handler_id: email_2
     status: true
     conditions: {  }
     weight: 0
@@ -290,13 +373,17 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:employee_email:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -307,11 +394,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

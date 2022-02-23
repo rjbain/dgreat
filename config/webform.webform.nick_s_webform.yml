@@ -7,9 +7,9 @@ dependencies:
 third_party_settings:
   dgreat_student_surveys:
     salesforce_id: ''
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 45024
 template: false
 archive: false
@@ -17,7 +17,119 @@ id: nick_s_webform
 title: 'Events Management Overnight Accommodations Form'
 description: ''
 category: ''
-elements: "event_name_:\n  '#type': textfield\n  '#title': 'Event Name:'\n  '#required': true\nschool_or_department_:\n  '#type': textfield\n  '#title': 'School or Department:'\n  '#required': true\ncontact_name_:\n  '#type': textfield\n  '#title': 'Contact Name:'\n  '#required': true\ncontact_email_:\n  '#type': email\n  '#title': 'Contact Email:'\n  '#required': true\ncontact_number_:\n  '#type': tel\n  '#title': 'Contact Number:'\n  '#required': true\npreferred_hotel_:\n  '#type': webform_checkboxes_other\n  '#title': 'Preferred Hotel:'\n  '#options':\n    Kabuki: Kabuki\n    'Holiday Inn': 'Holiday Inn'\n    'Best Rate': 'Best Rate'\n    'Comfort Inn': 'Comfort Inn'\n    Downtown: Downtown\n  '#required': true\nnumber_of_guest_:\n  '#type': number\n  '#title': 'Number of Guest:'\n  '#required': true\npay_on_own_:\n  '#type': select\n  '#title': 'Pay on Own:'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\nusf_department_pay_:\n  '#type': select\n  '#title': 'USF Department Pay:'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\ncheck_in_date_:\n  '#type': date\n  '#title': 'Check In Date:'\n  '#required': true\ncheck_out_date_:\n  '#type': date\n  '#title': 'Check out Date:'\n  '#required': true\nnumber_of_nights_:\n  '#type': select\n  '#title': 'Number of Nights:'\n  '#options':\n    - '0'\n    - '1'\n    - '2'\n    - '3'\n    - '4'\n    - '5'\n    - '6'\n    - '7'\n    - '8'\n    - '9'\n    - '10'\n    - '11'\n    - '12'\n    - '13'\n    - '14'\n    - '15'\n    - '16'\n    - '17'\n    - '18'\n    - '19'\n    - '20'\n    - '21'\n    - '22'\n    - '23'\n    - '24'\n    - '25'\n    - '26'\n    - '27'\n    - '28'\n    - '29'\n    - '30'\n  '#required': true\nmeeting_space_in_hotel_:\n  '#type': select\n  '#title': 'Meeting Space in Hotel:'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\nhow_many_guest_if_yes_for_meeting_space_:\n  '#type': number\n  '#title': 'How many guests for the meeting? ( If Yes for Meeting Space ) '\nfood_and_beverage_in_hotel_:\n  '#type': select\n  '#title': 'Food and Beverage in Hotel:'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\ncomments_notes_:\n  '#type': textarea\n  '#title': 'Comments/notes:'\n"
+elements: |
+  event_name_:
+    '#type': textfield
+    '#title': 'Event Name:'
+    '#required': true
+  school_or_department_:
+    '#type': textfield
+    '#title': 'School or Department:'
+    '#required': true
+  contact_name_:
+    '#type': textfield
+    '#title': 'Contact Name:'
+    '#required': true
+  contact_email_:
+    '#type': email
+    '#title': 'Contact Email:'
+    '#required': true
+  contact_number_:
+    '#type': tel
+    '#title': 'Contact Number:'
+    '#required': true
+  preferred_hotel_:
+    '#type': webform_checkboxes_other
+    '#title': 'Preferred Hotel:'
+    '#options':
+      Kabuki: Kabuki
+      'Holiday Inn': 'Holiday Inn'
+      'Best Rate': 'Best Rate'
+      'Comfort Inn': 'Comfort Inn'
+      Downtown: Downtown
+    '#required': true
+  number_of_guest_:
+    '#type': number
+    '#title': 'Number of Guest:'
+    '#required': true
+  pay_on_own_:
+    '#type': select
+    '#title': 'Pay on Own:'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+    '#required': true
+  usf_department_pay_:
+    '#type': select
+    '#title': 'USF Department Pay:'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+    '#required': true
+  check_in_date_:
+    '#type': date
+    '#title': 'Check In Date:'
+    '#required': true
+  check_out_date_:
+    '#type': date
+    '#title': 'Check out Date:'
+    '#required': true
+  number_of_nights_:
+    '#type': select
+    '#title': 'Number of Nights:'
+    '#options':
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+      - '6'
+      - '7'
+      - '8'
+      - '9'
+      - '10'
+      - '11'
+      - '12'
+      - '13'
+      - '14'
+      - '15'
+      - '16'
+      - '17'
+      - '18'
+      - '19'
+      - '20'
+      - '21'
+      - '22'
+      - '23'
+      - '24'
+      - '25'
+      - '26'
+      - '27'
+      - '28'
+      - '29'
+      - '30'
+    '#required': true
+  meeting_space_in_hotel_:
+    '#type': select
+    '#title': 'Meeting Space in Hotel:'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+    '#required': true
+  how_many_guest_if_yes_for_meeting_space_:
+    '#type': number
+    '#title': 'How many guests for the meeting? ( If Yes for Meeting Space ) '
+  food_and_beverage_in_hotel_:
+    '#type': select
+    '#title': 'Food and Beverage in Hotel:'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+    '#required': true
+  comments_notes_:
+    '#type': textarea
+    '#title': 'Comments/notes:'
 css: ''
 javascript: ''
 settings:
@@ -32,9 +144,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: false
   form_confidential: false
   form_confidential_message: ''
@@ -44,31 +156,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace:
     webform_routes: {  }
@@ -79,11 +196,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -94,13 +206,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -123,9 +235,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: 'Thank you for your submission. We will review your request and reach out within 2 weeks. If you do not hear back, please contact eventsmanagement@usfca.edu.'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -206,9 +318,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: 'Hotel Room Blocks'
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -217,13 +329,17 @@ handlers:
         - completed
       to_mail: godoherty@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'Webform Submission for Hotel Booking'
       body: _default
       excluded_elements: {  }
@@ -234,18 +350,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_1:
     id: email
+    handler_id: email_1
     label: Email
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 0
@@ -254,13 +366,17 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:contact_email_:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -271,11 +387,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

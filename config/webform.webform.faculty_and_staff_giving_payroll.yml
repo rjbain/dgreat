@@ -7,9 +7,9 @@ dependencies:
 third_party_settings:
   dgreat_student_surveys:
     salesforce_id: ''
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 62932
 template: false
 archive: false
@@ -17,7 +17,103 @@ id: faculty_and_staff_giving_payroll
 title: 'Faculty and Staff Giving Payroll Deduction'
 description: "<br />\r\n&nbsp;"
 category: Development
-elements: "header:\n  '#type': processed_text\n  '#text': \"<h1><img alt=\\\"Screen%20Shot%202019-06-17%20at%207.36.01%20PM.png\\\" data-entity-type=\\\"\\\" data-entity-uuid=\\\"\\\" src=\\\"/sites/default/files/users/mnjoku/Screen%20Shot%202019-06-17%20at%207.36.01%20PM.png\\\" /></h1>\\r\\n\\r\\n<h1>USF Payroll Deduction Giving</h1>\\r\\n\"\n  '#format': full_html\nintro_2:\n  '#type': processed_text\n  '#text': \"<p>Payroll deduction giving is the most efficient way for faculty and staff to support USF. It keeps precious resources directed toward students and affirms our commitment to sustainability. Your gift will help inspire and prepare students to create a better world.&nbsp;<br />\\r\\n<br />\\r\\nIf you would prefer to make a one-time gift,&nbsp;<a href=\\\"https://www.givecampus.com/campaigns/7449/donations/new\\\" target=\\\"_blank\\\">please follow this link</a>.&nbsp;<br />\\r\\n<br />\\r\\nPlease use the form below to sign up for or change your payroll deduction giving to the University of San Francisco.&nbsp;Your tax receipt can be found on the bottom of your paystub, available on myUSF.&nbsp;<br />\\r\\n<br />\\r\\nIf you have any questions about payroll deduction, please contact the <a href=\\\"mailto:developmentservices@usfca.edu\\\" target=\\\"_blank\\\">Office of Development Services </a>( 415) 422-6638.</p>\\r\\n\\r\\n<p>Your gift supports&nbsp;<b><i><a href=\\\"usfca.edu/campaign\\\" target=\\\"_blank\\\">Changing the World from Here: Campaign for the University of San Francisco</a>.&nbsp;</i></b>Thank you for your generosity.</p>\\r\\n\"\n  '#format': full_html\nintro:\n  '#type': processed_text\n  '#text': \"<h2>About You</h2>\\r\\n\"\n  '#format': full_html\nname:\n  '#type': webform_name\n  '#title': 'Please enter your name'\n  '#title__access': false\n  '#first__title': 'First Name'\n  '#first__required': true\n  '#middle__access': false\n  '#last__title': 'Last Name'\n  '#last__required': true\n  '#suffix__access': false\n  '#degree__access': false\n  '#required': true\ndepartment_school:\n  '#type': select\n  '#title': Department/School\n  '#options':\n    'College of Arts and Sciences': 'College of Arts and Sciences'\n    'School of Education': 'School of Education'\n    'School of Law': 'School of Law'\n    'School of Management': 'School of Management'\n    'School of Nursing and Health Professions': 'School of Nursing and Health Professions'\n    'Accounting & Business Services': 'Accounting & Business Services'\n    Athletics: Athletics\n    'Communications & Marketing': 'Communications & Marketing'\n    Development: Development\n    'Dorraine Zief Law Library': 'Dorraine Zief Law Library'\n    'Facilities Management': 'Facilities Management'\n    'Gleeson Library': 'Gleeson Library'\n    'Human Resources': 'Human Resources'\n    'Information Technology Services': 'Information Technology Services'\n    'Office of the President': 'Office of the President'\n    'Office of the Provost': 'Office of the Provost'\n    'Public Safety': 'Public Safety'\n    'Regional Campus': 'Regional Campus'\n    'Strategic Enrollment Management': 'Strategic Enrollment Management'\n    'Student Life': 'Student Life'\n    'University Ministry': 'University Ministry'\n    Other: Other\n  '#required': true\nemail:\n  '#type': email\n  '#title': 'USF Email'\ncurrent_job_title:\n  '#type': textfield\n  '#title': 'Current Job Title'\nbusiness_phone:\n  '#type': tel\n  '#title': 'Business Phone'\nintro_3:\n  '#type': processed_text\n  '#text': \"<h2>About Your Payroll Deduction Gift</h2>\\r\\n\"\n  '#format': full_html\nnew_or_existing_deduction:\n  '#type': select\n  '#title': 'Is this a New or Existing Deduction'\n  '#options':\n    New: New\n    'Update Existing (please enter new total deduction per paycheck)': 'Update Existing (please enter new total deduction per paycheck)'\n  '#required': true\nhow_much_would_you_like_to_give_per_pay_period_:\n  '#type': textfield\n  '#title': 'How much would you like to give per pay period?'\n  '#required': true\nare_you_paid_monthly_or_semi_monthly_:\n  '#type': select\n  '#title': 'Are you paid monthly or semi-monthly?'\n  '#options':\n    Monthly: Monthly\n    Semi-Monthly: Semi-Monthly\n  '#required': true\ndo_you_have_any_questions_comments_special_instructions_or_chang:\n  '#type': textarea\n  '#title': 'Do you have any questions, comments,  special instructions or changes to your payroll deduction?'\nyou_may_choose_an_end_date_now_or_make_your_deduction_ongoing_if:\n  '#type': date\n  '#title': 'You may choose an end date now or make your deduction ongoing. If left blank, your payroll deduction will stay in effect until you change it via notification to Development. Please contact the Office of Development Services (information above) to change or terminate.'\nclosing:\n  '#type': processed_text\n  '#text': \"<p><strong>Authorization:</strong>&nbsp;By checking the box below, I authorize the action above in the amount and frequency indicated. I understand that if I selected a recurring donation, the gift will continue at the amount and frequency indicated until I request a change in writing to the Office of Annual Giving.</p>\\r\\n\"\n  '#format': full_html\ni_authorize_this_payroll_deduction_:\n  '#type': checkbox\n  '#title': \"I authorize this payroll deduction: \\t\"\n  '#required': true\n"
+elements: |
+  header:
+    '#type': processed_text
+    '#text': "<h1><img alt=\"Screen%20Shot%202019-06-17%20at%207.36.01%20PM.png\" data-entity-type=\"\" data-entity-uuid=\"\" src=\"/sites/default/files/users/mnjoku/Screen%20Shot%202019-06-17%20at%207.36.01%20PM.png\" /></h1>\r\n\r\n<h1>USF Payroll Deduction Giving</h1>\r\n"
+    '#format': full_html
+  intro_2:
+    '#type': processed_text
+    '#text': "<p>Payroll deduction giving is the most efficient way for faculty and staff to support USF. It keeps precious resources directed toward students and affirms our commitment to sustainability. Your gift will help inspire and prepare students to create a better world.&nbsp;<br />\r\n<br />\r\nIf you would prefer to make a one-time gift,&nbsp;<a href=\"https://www.givecampus.com/campaigns/7449/donations/new\" target=\"_blank\">please follow this link</a>.&nbsp;<br />\r\n<br />\r\nPlease use the form below to sign up for or change your payroll deduction giving to the University of San Francisco.&nbsp;Your tax receipt can be found on the bottom of your paystub, available on myUSF.&nbsp;<br />\r\n<br />\r\nIf you have any questions about payroll deduction, please contact the <a href=\"mailto:developmentservices@usfca.edu\" target=\"_blank\">Office of Development Services </a>( 415) 422-6638.</p>\r\n\r\n<p>Your gift supports&nbsp;<b><i><a href=\"usfca.edu/campaign\" target=\"_blank\">Changing the World from Here: Campaign for the University of San Francisco</a>.&nbsp;</i></b>Thank you for your generosity.</p>\r\n"
+    '#format': full_html
+  intro:
+    '#type': processed_text
+    '#text': "<h2>About You</h2>\r\n"
+    '#format': full_html
+  name:
+    '#type': webform_name
+    '#title': 'Please enter your name'
+    '#title__access': false
+    '#first__title': 'First Name'
+    '#first__required': true
+    '#middle__access': false
+    '#last__title': 'Last Name'
+    '#last__required': true
+    '#suffix__access': false
+    '#degree__access': false
+    '#required': true
+  department_school:
+    '#type': select
+    '#title': Department/School
+    '#options':
+      'College of Arts and Sciences': 'College of Arts and Sciences'
+      'School of Education': 'School of Education'
+      'School of Law': 'School of Law'
+      'School of Management': 'School of Management'
+      'School of Nursing and Health Professions': 'School of Nursing and Health Professions'
+      'Accounting & Business Services': 'Accounting & Business Services'
+      Athletics: Athletics
+      'Communications & Marketing': 'Communications & Marketing'
+      Development: Development
+      'Dorraine Zief Law Library': 'Dorraine Zief Law Library'
+      'Facilities Management': 'Facilities Management'
+      'Gleeson Library': 'Gleeson Library'
+      'Human Resources': 'Human Resources'
+      'Information Technology Services': 'Information Technology Services'
+      'Office of the President': 'Office of the President'
+      'Office of the Provost': 'Office of the Provost'
+      'Public Safety': 'Public Safety'
+      'Regional Campus': 'Regional Campus'
+      'Strategic Enrollment Management': 'Strategic Enrollment Management'
+      'Student Life': 'Student Life'
+      'University Ministry': 'University Ministry'
+      Other: Other
+    '#required': true
+  email:
+    '#type': email
+    '#title': 'USF Email'
+  current_job_title:
+    '#type': textfield
+    '#title': 'Current Job Title'
+  business_phone:
+    '#type': tel
+    '#title': 'Business Phone'
+  intro_3:
+    '#type': processed_text
+    '#text': "<h2>About Your Payroll Deduction Gift</h2>\r\n"
+    '#format': full_html
+  new_or_existing_deduction:
+    '#type': select
+    '#title': 'Is this a New or Existing Deduction'
+    '#options':
+      New: New
+      'Update Existing (please enter new total deduction per paycheck)': 'Update Existing (please enter new total deduction per paycheck)'
+    '#required': true
+  how_much_would_you_like_to_give_per_pay_period_:
+    '#type': textfield
+    '#title': 'How much would you like to give per pay period?'
+    '#required': true
+  are_you_paid_monthly_or_semi_monthly_:
+    '#type': select
+    '#title': 'Are you paid monthly or semi-monthly?'
+    '#options':
+      Monthly: Monthly
+      Semi-Monthly: Semi-Monthly
+    '#required': true
+  do_you_have_any_questions_comments_special_instructions_or_chang:
+    '#type': textarea
+    '#title': 'Do you have any questions, comments,  special instructions or changes to your payroll deduction?'
+  you_may_choose_an_end_date_now_or_make_your_deduction_ongoing_if:
+    '#type': date
+    '#title': 'You may choose an end date now or make your deduction ongoing. If left blank, your payroll deduction will stay in effect until you change it via notification to Development. Please contact the Office of Development Services (information above) to change or terminate.'
+  closing:
+    '#type': processed_text
+    '#text': "<p><strong>Authorization:</strong>&nbsp;By checking the box below, I authorize the action above in the amount and frequency indicated. I understand that if I selected a recurring donation, the gift will continue at the amount and frequency indicated until I request a change in writing to the Office of Annual Giving.</p>\r\n"
+    '#format': full_html
+  i_authorize_this_payroll_deduction_:
+    '#type': checkbox
+    '#title': "I authorize this payroll deduction: \t"
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -32,9 +128,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -44,31 +140,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -77,11 +178,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -92,13 +188,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -121,9 +217,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: 'Thank you for your generosity and for supporting USF students and programs.&nbsp;If you have any questions or changes, please contact the Office of Annual Giving at&nbsp;<a href="mailto:annualgiving@usfca.edu" target="_blank">annualgiving@usfca.edu</a>'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -205,9 +301,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Gift Posters'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 0
@@ -216,13 +312,17 @@ handlers:
         - completed
       to_mail: giftposters@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -233,18 +333,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_2:
     id: email
+    handler_id: email_2
     label: 'Web GP'
     notes: ''
-    handler_id: email_2
     status: true
     conditions: {  }
     weight: 0
@@ -253,13 +349,17 @@ handlers:
         - completed
       to_mail: webgp@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -270,18 +370,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   nmbyrne_usfca_edu:
     id: email
+    handler_id: nmbyrne_usfca_edu
     label: 'Noonay Byrne'
     notes: ''
-    handler_id: nmbyrne_usfca_edu
     status: true
     conditions: {  }
     weight: 0
@@ -290,13 +386,17 @@ handlers:
         - completed
       to_mail: nmbyrne@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -307,18 +407,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   matilda_tavares:
     id: email
+    handler_id: matilda_tavares
     label: 'Matilda Tavares'
     notes: ''
-    handler_id: matilda_tavares
     status: true
     conditions: {  }
     weight: 0
@@ -327,13 +423,17 @@ handlers:
         - completed
       to_mail: mtavares@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -344,11 +444,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

@@ -2,9 +2,9 @@ uuid: aa48d3e3-ca78-421a-9f5a-43ae707f78a3
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 206
 template: false
 archive: false
@@ -12,7 +12,119 @@ id: webform_65292
 title: 'Career Services Student Success Stories'
 description: null
 category: null
-elements: "intro:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p><strong>Step 1</strong></p><p>Complete the following information. An asterisk (*) denotes required fields.</p>\"\n  '#title': Intro\n  '#description': \"\"\nfirst_name:\n  '#type': textfield\n  '#title': First Name:\n  '#description': \"\"\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Last Name: (We will only use your last initial on our website)\n  '#description': \"\"\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#default_value': \"[current-user:mail]\"\n  '#title': Email: (Your email will only be used to ask follow-up questions)\n  '#description': \"\"\n  '#required': true\nspacer_1:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p class='clear'></p>\"\n  '#title': Spacer 1\n  '#description': \"\"\nclass_year:\n  '#type': radios\n  '#options':\n    1: Freshman\n    2: Sophomore\n    3: Junior\n    4: Senior\n    5: Masters\n    6: PhD\n    7: Alumni\n  '#title': Class Year:\n  '#description': \"\"\n  '#required': true\nspacer_2:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p class='clear'></p>\"\n  '#title': Spacer 2\n  '#description': \"\"\nusf_major:\n  '#type': textfield\n  '#title': USF Major:\n  '#description': \"\"\n  '#required': true\nusf_major_2_if_applicable:\n  '#type': textfield\n  '#title': USF Major 2: (if applicable)\n  '#description': \"\"\nspacer_3:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p class='clear'></p>\"\n  '#title': Spacer 3\n  '#description': \"\"\nmy_success_story_is_about:\n  '#type': radios\n  '#options':\n    1: My job (full or part time)\n    2: My internship\n    3: Graduate school admission\n    4: Other (Ex: Fellowship, Externship)\n  '#title': My Success Story is about:\n  '#description': \"\"\n  '#required': true\nspacer_4:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p class='clear'></p>\"\n  '#title': Spacer 4\n  '#description': \"\"\nposition_title:\n  '#type': textfield\n  '#title': Position/Title: (ex: Intern, Social Media Coordinator, Law School Student)\n  '#description': \"\"\n  '#required': true\norganization:\n  '#type': textfield\n  '#title': Organization/Graduate School Program:\n  '#description': \"\"\n  '#required': true\nplease_tell_us:\n  '#type': textarea\n  '#title': Please tell us about your opportunity and how you got it. You can use the following questions to help form your response: What is the best part of your job/internship/graduate program? What did you learn from your job/internship/graduate program? What are you looking forward to most about your job/internship/graduate program? (200 word limit)\n  '#description': \"\"\n  '#required': true\nif_applicable:\n  '#type': textarea\n  '#title': If applicable, how did the Career Services Center help you with your job/internship search or graduate school application process? (200 word limit)\n  '#description': \"\"\nnext_steps:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p><strong>Step 2</strong></p><p>If we decide to feature your story on our website, we will ask you to email us your photo.</p><p><strong>Step 3</strong></p><p>Give us your permission to publish your information on our website and publications, review your information, and click 'Send.'</p>\"\n  '#title': Next steps\n  '#description': \"\"\npermission:\n  '#type': radios\n  '#options':\n    1: *The USF Career Services Center has my permission to publish my success story and success story photo on USF websites and in print publications.\n  '#title_display': invisible\n  '#title': Permission\n  '#description': \"\"\n  '#required': true\n"
+elements: |
+  intro:
+    '#type': processed_text
+    '#format': full_html
+    '#text': "<p><strong>Step 1</strong></p><p>Complete the following information. An asterisk (*) denotes required fields.</p>"
+    '#title': Intro
+    '#description': ""
+  first_name:
+    '#type': textfield
+    '#title': First Name:
+    '#description': ""
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title': Last Name: (We will only use your last initial on our website)
+    '#description': ""
+    '#required': true
+  email:
+    '#type': email
+    '#size': 20
+    '#default_value': "[current-user:mail]"
+    '#title': Email: (Your email will only be used to ask follow-up questions)
+    '#description': ""
+    '#required': true
+  spacer_1:
+    '#type': processed_text
+    '#format': full_html
+    '#text': "<p class='clear'></p>"
+    '#title': Spacer 1
+    '#description': ""
+  class_year:
+    '#type': radios
+    '#options':
+      1: Freshman
+      2: Sophomore
+      3: Junior
+      4: Senior
+      5: Masters
+      6: PhD
+      7: Alumni
+    '#title': Class Year:
+    '#description': ""
+    '#required': true
+  spacer_2:
+    '#type': processed_text
+    '#format': full_html
+    '#text': "<p class='clear'></p>"
+    '#title': Spacer 2
+    '#description': ""
+  usf_major:
+    '#type': textfield
+    '#title': USF Major:
+    '#description': ""
+    '#required': true
+  usf_major_2_if_applicable:
+    '#type': textfield
+    '#title': USF Major 2: (if applicable)
+    '#description': ""
+  spacer_3:
+    '#type': processed_text
+    '#format': full_html
+    '#text': "<p class='clear'></p>"
+    '#title': Spacer 3
+    '#description': ""
+  my_success_story_is_about:
+    '#type': radios
+    '#options':
+      1: My job (full or part time)
+      2: My internship
+      3: Graduate school admission
+      4: Other (Ex: Fellowship, Externship)
+    '#title': My Success Story is about:
+    '#description': ""
+    '#required': true
+  spacer_4:
+    '#type': processed_text
+    '#format': full_html
+    '#text': "<p class='clear'></p>"
+    '#title': Spacer 4
+    '#description': ""
+  position_title:
+    '#type': textfield
+    '#title': Position/Title: (ex: Intern, Social Media Coordinator, Law School Student)
+    '#description': ""
+    '#required': true
+  organization:
+    '#type': textfield
+    '#title': Organization/Graduate School Program:
+    '#description': ""
+    '#required': true
+  please_tell_us:
+    '#type': textarea
+    '#title': Please tell us about your opportunity and how you got it. You can use the following questions to help form your response: What is the best part of your job/internship/graduate program? What did you learn from your job/internship/graduate program? What are you looking forward to most about your job/internship/graduate program? (200 word limit)
+    '#description': ""
+    '#required': true
+  if_applicable:
+    '#type': textarea
+    '#title': If applicable, how did the Career Services Center help you with your job/internship search or graduate school application process? (200 word limit)
+    '#description': ""
+  next_steps:
+    '#type': processed_text
+    '#format': full_html
+    '#text': "<p><strong>Step 2</strong></p><p>If we decide to feature your story on our website, we will ask you to email us your photo.</p><p><strong>Step 3</strong></p><p>Give us your permission to publish your information on our website and publications, review your information, and click 'Send.'</p>"
+    '#title': Next steps
+    '#description': ""
+  permission:
+    '#type': radios
+    '#options':
+      1: *The USF Career Services Center has my permission to publish my success story and success story photo on USF websites and in print publications.
+    '#title_display': invisible
+    '#title': Permission
+    '#description': ""
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,9 +139,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -39,31 +151,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -72,11 +189,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -87,13 +199,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -116,9 +228,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''

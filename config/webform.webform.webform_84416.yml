@@ -2,9 +2,9 @@ uuid: 5d0cb257-fdb7-4fcb-a82c-c65dedc18f7e
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 26792
 template: false
 archive: false
@@ -12,7 +12,148 @@ id: webform_84416
 title: 'Study Abroad - Study Abroad Interest Form'
 description: null
 category: null
-elements: "fieldset_participation_information:\n  '#type': fieldset\n  '#open': true\n  '#title': 'Participation Information'\n  '#description': ''\n  first_name_1:\n    '#type': textfield\n    '#title_display': inline\n    '#title': 'First Name'\n    '#description': ''\n    '#required': true\n  last_name_1:\n    '#type': textfield\n    '#title_display': inline\n    '#title': 'Last Name'\n    '#description': ''\n    '#required': true\n  usf_student_id_number_1:\n    '#type': textfield\n    '#title_display': inline\n    '#title': 'USF Student ID Number'\n    '#description': ''\n    '#required': true\n  usf_email_address_1:\n    '#type': email\n    '#size': 20\n    '#title_display': inline\n    '#title': 'USF Email Address'\n    '#description': ''\n    '#required': true\n  phone_1:\n    '#title_display': inline\n    '#title': Phone\n    '#description': ''\n    '#required': true\n  major_minor_1:\n    '#type': textfield\n    '#title_display': inline\n    '#title': Major/Minor\n    '#description': ''\n    '#required': true\n  cumulative_gpa_1:\n    '#title_display': inline\n    '#title': 'Cumulative GPA'\n    '#description': ''\n    '#required': true\n  academic_standing_1:\n    '#type': select\n    '#options':\n      1: Freshman\n      2: Sophomore\n      3: Junior\n      4: Senior\n    '#title_display': inline\n    '#title': 'Academic Standing'\n    '#description': ''\n    '#required': true\n  are_you_an_international_student_1:\n    '#type': select\n    '#options':\n      1: 'Yes'\n      2: 'No'\n    '#title_display': inline\n    '#title': 'Are you an International Student?'\n    '#description': ''\n    '#required': true\n  are_you_a_transfer_student_1:\n    '#type': select\n    '#options':\n      1: 'Yes'\n      2: 'No'\n    '#title_display': inline\n    '#title': 'Are you a Transfer Student?'\n    '#description': ''\n    '#required': true\n  expected_graduation_date_1:\n    '#type': select\n    '#options':\n      1: 'Fall 2014'\n      2: 'Spring 2015'\n      3: 'Fall 2015'\n      4: 'Spring 2016'\n      5: 'Fall 2016'\n      6: 'Spring 2017'\n      7: 'Fall 2017'\n      8: 'Spring 2018'\n      9: 'Fall 2018'\n      10: 'Spring 2019'\n      11: 'Fall 2019'\n      12: 'Spring 2020'\n      13: 'Fall 2020'\n    '#default_value': '3'\n    '#title_display': inline\n    '#title': 'Expected Graduation Date'\n    '#description': ''\n    '#required': true\n  do_you_have_a_us_passport_that_will_be_valid_6_months_after_your_study_abroad_1:\n    '#type': select\n    '#options':\n      1: 'Yes'\n      2: 'No'\n    '#title': 'Do you have a U.S. Passport that will be valid 6 months after your study abroad?'\n    '#description': ''\n    '#required': true\n  do_you_receive_usf_financial_aid_1:\n    '#type': select\n    '#options':\n      1: 'Yes'\n      2: 'No'\n    '#title_display': inline\n    '#title': 'Do you receive USF Financial Aid'\n    '#description': ''\n    '#required': true\nfieldset_study_abroad_preference:\n  '#type': fieldset\n  '#open': true\n  '#title': 'Study Abroad Preference'\n  '#description': ''\n  countries_interested_15:\n    '#type': textfield\n    '#title': 'Country(ies) Interested'\n    '#description': ''\n    '#required': true\n  semesters_interested_15:\n    '#type': textfield\n    '#title': 'Semester(s) Interested (e.g. Fall ''13)'\n    '#description': ''\n    '#required': true\n  languages_and__years_studied_15:\n    '#type': textfield\n    '#title': 'List of languages and number of years studied (if applicable)'\n    '#description': ''\n  courses_intended_to_take_abroad_:\n    '#type': checkboxes\n    '#title': 'Courses intended to take abroad '\n    '#options':\n      Core: Core\n      Major: Major\n      Minor: Minor\n      'Language ': 'Language '\n      Elective: Elective\n"
+elements: |
+  fieldset_participation_information:
+    '#type': fieldset
+    '#open': true
+    '#title': 'Participation Information'
+    '#description': ''
+    first_name_1:
+      '#type': textfield
+      '#title_display': inline
+      '#title': 'First Name'
+      '#description': ''
+      '#required': true
+    last_name_1:
+      '#type': textfield
+      '#title_display': inline
+      '#title': 'Last Name'
+      '#description': ''
+      '#required': true
+    usf_student_id_number_1:
+      '#type': textfield
+      '#title_display': inline
+      '#title': 'USF Student ID Number'
+      '#description': ''
+      '#required': true
+    usf_email_address_1:
+      '#type': email
+      '#size': 20
+      '#title_display': inline
+      '#title': 'USF Email Address'
+      '#description': ''
+      '#required': true
+    phone_1:
+      '#title_display': inline
+      '#title': Phone
+      '#description': ''
+      '#required': true
+    major_minor_1:
+      '#type': textfield
+      '#title_display': inline
+      '#title': Major/Minor
+      '#description': ''
+      '#required': true
+    cumulative_gpa_1:
+      '#title_display': inline
+      '#title': 'Cumulative GPA'
+      '#description': ''
+      '#required': true
+    academic_standing_1:
+      '#type': select
+      '#options':
+        1: Freshman
+        2: Sophomore
+        3: Junior
+        4: Senior
+      '#title_display': inline
+      '#title': 'Academic Standing'
+      '#description': ''
+      '#required': true
+    are_you_an_international_student_1:
+      '#type': select
+      '#options':
+        1: 'Yes'
+        2: 'No'
+      '#title_display': inline
+      '#title': 'Are you an International Student?'
+      '#description': ''
+      '#required': true
+    are_you_a_transfer_student_1:
+      '#type': select
+      '#options':
+        1: 'Yes'
+        2: 'No'
+      '#title_display': inline
+      '#title': 'Are you a Transfer Student?'
+      '#description': ''
+      '#required': true
+    expected_graduation_date_1:
+      '#type': select
+      '#options':
+        1: 'Fall 2014'
+        2: 'Spring 2015'
+        3: 'Fall 2015'
+        4: 'Spring 2016'
+        5: 'Fall 2016'
+        6: 'Spring 2017'
+        7: 'Fall 2017'
+        8: 'Spring 2018'
+        9: 'Fall 2018'
+        10: 'Spring 2019'
+        11: 'Fall 2019'
+        12: 'Spring 2020'
+        13: 'Fall 2020'
+      '#default_value': '3'
+      '#title_display': inline
+      '#title': 'Expected Graduation Date'
+      '#description': ''
+      '#required': true
+    do_you_have_a_us_passport_that_will_be_valid_6_months_after_your_study_abroad_1:
+      '#type': select
+      '#options':
+        1: 'Yes'
+        2: 'No'
+      '#title': 'Do you have a U.S. Passport that will be valid 6 months after your study abroad?'
+      '#description': ''
+      '#required': true
+    do_you_receive_usf_financial_aid_1:
+      '#type': select
+      '#options':
+        1: 'Yes'
+        2: 'No'
+      '#title_display': inline
+      '#title': 'Do you receive USF Financial Aid'
+      '#description': ''
+      '#required': true
+  fieldset_study_abroad_preference:
+    '#type': fieldset
+    '#open': true
+    '#title': 'Study Abroad Preference'
+    '#description': ''
+    countries_interested_15:
+      '#type': textfield
+      '#title': 'Country(ies) Interested'
+      '#description': ''
+      '#required': true
+    semesters_interested_15:
+      '#type': textfield
+      '#title': 'Semester(s) Interested (e.g. Fall ''13)'
+      '#description': ''
+      '#required': true
+    languages_and__years_studied_15:
+      '#type': textfield
+      '#title': 'List of languages and number of years studied (if applicable)'
+      '#description': ''
+    courses_intended_to_take_abroad_:
+      '#type': checkboxes
+      '#title': 'Courses intended to take abroad '
+      '#options':
+        Core: Core
+        Major: Major
+        Minor: Minor
+        'Language ': 'Language '
+        Elective: Elective
 css: ''
 javascript: ''
 settings:
@@ -27,9 +168,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -39,31 +180,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -72,11 +218,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -87,13 +228,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -116,9 +257,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -202,9 +343,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -213,13 +354,17 @@ handlers:
         - completed
       to_mail: studyabroad@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: '[webform-submission:values:last_name:raw]'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -230,18 +375,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_3:
     id: email
+    handler_id: email_3
     label: 'Email 3'
     notes: ''
-    handler_id: email_3
     status: true
     conditions: {  }
     weight: 3
@@ -250,13 +391,17 @@ handlers:
         - completed
       to_mail: '[webform-submission:values:usf_email_address:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: 'Study Abroad'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: 'Your information has been received by the Center for Global Education. [webform_submission:values] If you have any questions feel free to contact the CGE at (415) 422-6848 or by email at studyabroad@usfca.edu.'
       excluded_elements: {  }
@@ -267,11 +412,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

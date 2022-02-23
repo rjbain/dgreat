@@ -31,23 +31,23 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_user_display_name:
+    type: string_textfield
     weight: 6
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_user_group:
+    type: entity_reference_autocomplete
     weight: 5
+    region: content
     settings:
       match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
-      match_limit: 10
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   language:
     weight: 2
     region: content
@@ -64,12 +64,12 @@ content:
     region: content
   user_picture:
     type: image_image
+    weight: 1
+    region: content
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-    weight: 1
-    region: content
 hidden:
   field_user_cwid: true
   field_usfb_address_date: true

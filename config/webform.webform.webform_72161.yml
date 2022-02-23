@@ -2,9 +2,9 @@ uuid: d148ac93-7d2c-4705-a2e3-87c1962feaf5
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: null
 template: false
 archive: false
@@ -12,7 +12,111 @@ id: webform_72161
 title: 'Student Employment - Work Clearance Request'
 description: ''
 category: ''
-elements: "first_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'First Name:'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Last Name:'\n  '#description': ''\n  '#required': true\nusf_id_:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'USF ID'\n  '#description': ''\n  '#required': true\nusf_email:\n  '#type': email\n  '#size': 20\n  '#title_display': inline\n  '#title': 'USF Email:'\n  '#description': ''\n  '#required': true\nanticipated_graduation_semester:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Anticipated Graduation Semester:'\n  '#description': ''\n  '#required': true\ninternational_student:\n  '#type': radios\n  '#options':\n    1: 'Yes'\n    2: 'No'\n  '#default_value': '2'\n  '#title_display': inline\n  '#title': 'International Student:'\n  '#description': ''\n  '#required': true\nacademic_level:\n  '#type': select\n  '#options':\n    1: Undergraduate\n    2: 'Graduate (Non-Law)'\n    3: 'Law / JD'\n    4: Doctoral\n  '#title_display': inline\n  '#title': 'Academic Level:'\n  '#description': Select\n  '#required': true\ni_received_a_new_on_campus_job_offer:\n  '#type': radios\n  '#title': 'Please choose one of the following:'\n  '#options':\n    1: 'I received a new on-campus job offer'\n    2: 'I received a new off-campus job offer'\n    3: 'I am currently seeking a job'\n  '#required': true\nhiring_manager_name:\n  '#type': textfield\n  '#title': 'Hiring Manager Name:'\n  '#required': true\n  '#states':\n    invisible:\n      ':input[name=\"i_received_a_new_on_campus_job_offer\"]':\n        '!value': '1'\nhiring_manager_email:\n  '#type': email\n  '#title': 'Hiring Manager Email:'\n  '#size': 20\n  '#required': true\n  '#states':\n    invisible:\n      ':input[name=\"i_received_a_new_on_campus_job_offer\"]':\n        '!value': '1'\ndepartment:\n  '#type': textfield\n  '#title': 'Department:'\n  '#required': true\n  '#states':\n    invisible:\n      ':input[name=\"i_received_a_new_on_campus_job_offer\"]':\n        value: '3'\nfirst_day_of_training_work:\n  '#type': date\n  '#title': 'First day of training/work:'\n  '#required': true\n  '#states':\n    invisible:\n      ':input[name=\"i_received_a_new_on_campus_job_offer\"]':\n        value: '3'\nagency_name:\n  '#type': textfield\n  '#title': 'Agency Name:'\n  '#states':\n    invisible:\n      ':input[name=\"i_received_a_new_on_campus_job_offer\"]':\n        value: '3'\nadditional_comments:\n  '#type': textarea\n  '#title': 'Additional Comments:'\n  '#description': ''\n"
+elements: |
+  first_name:
+    '#type': textfield
+    '#title_display': inline
+    '#title': 'First Name:'
+    '#description': ''
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title_display': inline
+    '#title': 'Last Name:'
+    '#description': ''
+    '#required': true
+  usf_id_:
+    '#type': textfield
+    '#title_display': inline
+    '#title': 'USF ID'
+    '#description': ''
+    '#required': true
+  usf_email:
+    '#type': email
+    '#size': 20
+    '#title_display': inline
+    '#title': 'USF Email:'
+    '#description': ''
+    '#required': true
+  anticipated_graduation_semester:
+    '#type': textfield
+    '#title_display': inline
+    '#title': 'Anticipated Graduation Semester:'
+    '#description': ''
+    '#required': true
+  international_student:
+    '#type': radios
+    '#options':
+      1: 'Yes'
+      2: 'No'
+    '#default_value': '2'
+    '#title_display': inline
+    '#title': 'International Student:'
+    '#description': ''
+    '#required': true
+  academic_level:
+    '#type': select
+    '#options':
+      1: Undergraduate
+      2: 'Graduate (Non-Law)'
+      3: 'Law / JD'
+      4: Doctoral
+    '#title_display': inline
+    '#title': 'Academic Level:'
+    '#description': Select
+    '#required': true
+  i_received_a_new_on_campus_job_offer:
+    '#type': radios
+    '#title': 'Please choose one of the following:'
+    '#options':
+      1: 'I received a new on-campus job offer'
+      2: 'I received a new off-campus job offer'
+      3: 'I am currently seeking a job'
+    '#required': true
+  hiring_manager_name:
+    '#type': textfield
+    '#title': 'Hiring Manager Name:'
+    '#required': true
+    '#states':
+      invisible:
+        ':input[name="i_received_a_new_on_campus_job_offer"]':
+          '!value': '1'
+  hiring_manager_email:
+    '#type': email
+    '#title': 'Hiring Manager Email:'
+    '#size': 20
+    '#required': true
+    '#states':
+      invisible:
+        ':input[name="i_received_a_new_on_campus_job_offer"]':
+          '!value': '1'
+  department:
+    '#type': textfield
+    '#title': 'Department:'
+    '#required': true
+    '#states':
+      invisible:
+        ':input[name="i_received_a_new_on_campus_job_offer"]':
+          value: '3'
+  first_day_of_training_work:
+    '#type': date
+    '#title': 'First day of training/work:'
+    '#required': true
+    '#states':
+      invisible:
+        ':input[name="i_received_a_new_on_campus_job_offer"]':
+          value: '3'
+  agency_name:
+    '#type': textfield
+    '#title': 'Agency Name:'
+    '#states':
+      invisible:
+        ':input[name="i_received_a_new_on_campus_job_offer"]':
+          value: '3'
+  additional_comments:
+    '#type': textarea
+    '#title': 'Additional Comments:'
+    '#description': ''
 css: ''
 javascript: ''
 settings:
@@ -27,9 +131,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -39,31 +143,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -72,11 +181,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -87,13 +191,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -116,9 +220,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -202,9 +306,9 @@ access:
 handlers:
   email_3:
     id: email
+    handler_id: email_3
     label: 'Email 3'
     notes: ''
-    handler_id: email_3
     status: true
     conditions: {  }
     weight: 3
@@ -213,13 +317,17 @@ handlers:
         - completed
       to_mail: stuemp@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: '[webform-submission:values:usf_email:raw]'
       from_options: {  }
       from_name: 'myUSF: Student Employment'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'New Work Clearance Request form has been submitted'
       body: _default
       excluded_elements: {  }
@@ -230,11 +338,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

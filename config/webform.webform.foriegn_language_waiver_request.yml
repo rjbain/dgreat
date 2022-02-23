@@ -2,9 +2,9 @@ uuid: 525d60f7-ffe9-453b-a8d0-91c98f5d4216
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 35513
 template: false
 archive: false
@@ -12,7 +12,109 @@ id: foriegn_language_waiver_request
 title: 'Foreign Language Waiver Request'
 description: 'replaces the former Google - https://docs.google.com/forms/d/e/1FAIpQLScTzg6IIt3APB92TXHyIB1I8s3Ox0Lu6uCASY280HMp3gOaKA/viewform'
 category: ''
-elements: "name:\n  '#type': webform_name\n  '#title': Name\n  '#title_display': ''\n  '#required': true\n  '#title__access': false\n  '#first__title_display': inline\n  '#first__required': true\n  '#middle__access': false\n  '#last__title_display': inline\n  '#last__required': true\n  '#suffix__access': false\n  '#degree__access': false\nemail:\n  '#type': email\n  '#title': Email\n  '#required': true\n  '#required_error': 'Email is a required field'\ncwid:\n  '#type': textfield\n  '#title': CWID\n  '#required': true\n  '#required_error': 'the CWID field is required'\nmajors:\n  '#type': select\n  '#title': Majors\n  '#multiple': true\n  '#options':\n    advertising: Advertising\n    architecture_community_design: 'Architecture and Community Design'\n    art_history_management: 'Art History/Arts Management'\n    asian_studies: 'Asian Studies'\n    biology: Biology\n  '#required': true\n  '#required_error': 'Please choose a major.'\nacademic_standing:\n  '#type': select\n  '#title': 'Academic Standing'\n  '#options':\n    freshman: Freshman\n    sophmore: Sophmore\n    junior: Junior\n    senior: Senior\n  '#required': true\n  '#required_error': 'Please enter your academic standing.'\nlanguage:\n  '#type': select\n  '#title': Language\n  '#options':\n    american_sign_language: 'American Sign Language (ASL)'\n    ancient_greek: 'Ancient Greek'\n    arabic: Arabic\n    chinese: 'Chinese (Putonghua)'\n    filipino: Filipino\n    french: French\n    german: German\n    hebrew: Hebrew\n    italian: Italian\n    japanese: Japanese\n    latin: latin\n    portuguese: Portuguese\n    russian: Russian\n    spanish: Spanish\n    other: 'other (chose and use the field below)'\n  '#required': true\n  '#required_error': 'Please enter a language, if it isn''t listed chose \"other\" and enter it in the field below.'\nother_language:\n  '#type': textfield\n  '#title': 'Other Language'\n  '#description': 'If the language is not listed in the lauguage drop-down, enter it here.'\n  '#maxlength': 20\n  '#size': 1\nwaiver_justification:\n  '#type': textarea\n  '#title': 'Waiver Justification'\n  '#description': 'Explain why you are requesting a waiver. Describe in detail your linguistic experience, how you acquired the language and where you attended middle school and high school. If you took a placement exam online at USF, please enter your score and the date you took the test.'\n  '#required': true\n  '#required_error': 'Please enter a justification for the waiver.'\nsupporting_documents:\n  '#type': processed_text\n  '#text': \"<label for=\\\"edit-name-first\\\" class=\\\"js-form-required form-required\\\">Supporting Documents</label>\\n<p>If requested, you may be asked to submit supporting documentation (middle school or high school transcripts), if any, to the Modern and Classical Languages offices at KA 328 and KA 333, or by email to <a href=\\\"mailto:mcl@usfca.edu\\\">mcl@usfca.edu</a></p>\\n\\n<p>&nbsp;</p>\\n\"\n  '#format': full_html\nhorizontal_rule:\n  '#type': webform_horizontal_rule\ndo_not_use:\n  '#type': processed_text\n  '#text': \"<h2>DO NOT ENTER - Office Use Only</h2>\\n<p>Students, do not enter beyond this line. Thank you.</p>\"\n  '#format': full_html\nfl2_or_fl3:\n  '#type': textfield\n  '#title': 'Examiner''s Comments'\n  '#description': 'Specify FL2 or FL3 statement'\nlanguage_requirement:\n  '#type': radios\n  '#title': 'Language Requirement '\n  '#description': 'Examiner&#39;s response to language requirement.'\n  '#options':\n    core_language_requirement: 'Core Language Requirement'\n    program_specific: 'Program Specific'\nchair_review:\n  '#type': textarea\n  '#title': 'Chair Review'\n"
+elements: |
+  name:
+    '#type': webform_name
+    '#title': Name
+    '#title_display': ''
+    '#required': true
+    '#title__access': false
+    '#first__title_display': inline
+    '#first__required': true
+    '#middle__access': false
+    '#last__title_display': inline
+    '#last__required': true
+    '#suffix__access': false
+    '#degree__access': false
+  email:
+    '#type': email
+    '#title': Email
+    '#required': true
+    '#required_error': 'Email is a required field'
+  cwid:
+    '#type': textfield
+    '#title': CWID
+    '#required': true
+    '#required_error': 'the CWID field is required'
+  majors:
+    '#type': select
+    '#title': Majors
+    '#multiple': true
+    '#options':
+      advertising: Advertising
+      architecture_community_design: 'Architecture and Community Design'
+      art_history_management: 'Art History/Arts Management'
+      asian_studies: 'Asian Studies'
+      biology: Biology
+    '#required': true
+    '#required_error': 'Please choose a major.'
+  academic_standing:
+    '#type': select
+    '#title': 'Academic Standing'
+    '#options':
+      freshman: Freshman
+      sophmore: Sophmore
+      junior: Junior
+      senior: Senior
+    '#required': true
+    '#required_error': 'Please enter your academic standing.'
+  language:
+    '#type': select
+    '#title': Language
+    '#options':
+      american_sign_language: 'American Sign Language (ASL)'
+      ancient_greek: 'Ancient Greek'
+      arabic: Arabic
+      chinese: 'Chinese (Putonghua)'
+      filipino: Filipino
+      french: French
+      german: German
+      hebrew: Hebrew
+      italian: Italian
+      japanese: Japanese
+      latin: latin
+      portuguese: Portuguese
+      russian: Russian
+      spanish: Spanish
+      other: 'other (chose and use the field below)'
+    '#required': true
+    '#required_error': 'Please enter a language, if it isn''t listed chose "other" and enter it in the field below.'
+  other_language:
+    '#type': textfield
+    '#title': 'Other Language'
+    '#description': 'If the language is not listed in the lauguage drop-down, enter it here.'
+    '#maxlength': 20
+    '#size': 1
+  waiver_justification:
+    '#type': textarea
+    '#title': 'Waiver Justification'
+    '#description': 'Explain why you are requesting a waiver. Describe in detail your linguistic experience, how you acquired the language and where you attended middle school and high school. If you took a placement exam online at USF, please enter your score and the date you took the test.'
+    '#required': true
+    '#required_error': 'Please enter a justification for the waiver.'
+  supporting_documents:
+    '#type': processed_text
+    '#text': "<label for=\"edit-name-first\" class=\"js-form-required form-required\">Supporting Documents</label>\n<p>If requested, you may be asked to submit supporting documentation (middle school or high school transcripts), if any, to the Modern and Classical Languages offices at KA 328 and KA 333, or by email to <a href=\"mailto:mcl@usfca.edu\">mcl@usfca.edu</a></p>\n\n<p>&nbsp;</p>\n"
+    '#format': full_html
+  horizontal_rule:
+    '#type': webform_horizontal_rule
+  do_not_use:
+    '#type': processed_text
+    '#text': "<h2>DO NOT ENTER - Office Use Only</h2>\n<p>Students, do not enter beyond this line. Thank you.</p>"
+    '#format': full_html
+  fl2_or_fl3:
+    '#type': textfield
+    '#title': 'Examiner''s Comments'
+    '#description': 'Specify FL2 or FL3 statement'
+  language_requirement:
+    '#type': radios
+    '#title': 'Language Requirement '
+    '#description': 'Examiner&#39;s response to language requirement.'
+    '#options':
+      core_language_requirement: 'Core Language Requirement'
+      program_specific: 'Program Specific'
+  chair_review:
+    '#type': textarea
+    '#title': 'Chair Review'
 css: ''
 javascript: ''
 settings:
@@ -27,9 +129,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -39,31 +141,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: true
   form_details_toggle: false
+  form_reset: false
   form_access_denied: login
   form_access_denied_title: ''
   form_access_denied_message: 'Please login to use this form'
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -72,11 +179,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -87,13 +189,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -116,9 +218,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: inline
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: 'Thank you. Your request will be reviewed by the <a href="/arts-sciences/modern-classical-languages">Department of Modern and Classical Languages</a>.'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -210,9 +312,9 @@ access:
 handlers:
   mike_routhier_confimation_email:
     id: email
+    handler_id: mike_routhier_confimation_email
     label: 'mike routhier confimation email'
     notes: ''
-    handler_id: mike_routhier_confimation_email
     status: true
     conditions: {  }
     weight: 0
@@ -221,13 +323,17 @@ handlers:
         - completed
       to_mail: mrouthier@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: 'Foriegn Language Waiver Request'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -238,18 +344,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   zhiqiang_li_confimation_email:
     id: email
+    handler_id: zhiqiang_li_confimation_email
     label: 'Zhiqiang Li confimation email'
     notes: ''
-    handler_id: zhiqiang_li_confimation_email
     status: true
     conditions: {  }
     weight: 0
@@ -258,13 +360,17 @@ handlers:
         - completed
       to_mail: zqli@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -275,11 +381,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

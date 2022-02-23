@@ -2,9 +2,9 @@ uuid: dcb643c9-e5e3-4635-b609-e4ee9b7ffe5a
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 35196
 template: false
 archive: false
@@ -12,7 +12,46 @@ id: hr_gousf_event_rsvp_form
 title: 'HR GoUSF Event RSVP Form'
 description: ''
 category: ''
-elements: "select_the_gousf_event_s_that_you_would_like_to_attend:\n  '#type': checkboxes\n  '#title': 'Select the GoUSF event(s) that you would like to attend'\n  '#options':\n    'Basics of Personal Finance* Wed, Sep 30*11-12*Zoom': 'Basics of Personal Finance* Wed, Sep 30*11-12*Zoom'\n    'Home Buying*Tues, Oct 20*11-12*Zoom': 'Home Buying*Tues, Oct 20*11-12*Zoom'\n    'Know your Credit Score*Tues, Feb 16*11-12*Zoom': 'Know your Credit Score*Tues, Feb 16*11-12*Zoom'\n    '10 Steps to Financial Success*Tues, Mar 30*11-12*Zoom': '10 Steps to Financial Success*Tues, Mar 30*11-12*Zoom'\nprocessed_text:\n  '#type': processed_text\n  '#text': |\n    <h2>Employee's Information</h2>\n    \n  '#format': full_html\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name '\ndepartment:\n  '#type': textfield\n  '#title': Department\ntitle:\n  '#type': textfield\n  '#title': Title\nemail:\n  '#type': email\n  '#title': 'USF Email Address'\nusf_phone_number:\n  '#type': tel\n  '#title': 'USF Phone Number'\nemployee_type:\n  '#type': radios\n  '#title': 'Employee Type'\n  '#options':\n    Faculty: Faculty\n    Staff: Staff\n    Other: Other"
+elements: |-
+  select_the_gousf_event_s_that_you_would_like_to_attend:
+    '#type': checkboxes
+    '#title': 'Select the GoUSF event(s) that you would like to attend'
+    '#options':
+      'Basics of Personal Finance* Wed, Sep 30*11-12*Zoom': 'Basics of Personal Finance* Wed, Sep 30*11-12*Zoom'
+      'Home Buying*Tues, Oct 20*11-12*Zoom': 'Home Buying*Tues, Oct 20*11-12*Zoom'
+      'Know your Credit Score*Tues, Feb 16*11-12*Zoom': 'Know your Credit Score*Tues, Feb 16*11-12*Zoom'
+      '10 Steps to Financial Success*Tues, Mar 30*11-12*Zoom': '10 Steps to Financial Success*Tues, Mar 30*11-12*Zoom'
+  processed_text:
+    '#type': processed_text
+    '#text': |
+      <h2>Employee's Information</h2>
+      
+    '#format': full_html
+  first_name:
+    '#type': textfield
+    '#title': 'First Name'
+  last_name:
+    '#type': textfield
+    '#title': 'Last Name '
+  department:
+    '#type': textfield
+    '#title': Department
+  title:
+    '#type': textfield
+    '#title': Title
+  email:
+    '#type': email
+    '#title': 'USF Email Address'
+  usf_phone_number:
+    '#type': tel
+    '#title': 'USF Phone Number'
+  employee_type:
+    '#type': radios
+    '#title': 'Employee Type'
+    '#options':
+      Faculty: Faculty
+      Staff: Staff
+      Other: Other
 css: ''
 javascript: ''
 settings:
@@ -27,9 +66,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -39,31 +78,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -72,11 +116,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -87,13 +126,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -116,9 +155,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -200,9 +239,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -211,13 +250,17 @@ handlers:
         - completed
       to_mail: skisylia@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -228,11 +271,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

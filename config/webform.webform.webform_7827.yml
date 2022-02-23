@@ -2,9 +2,9 @@ uuid: aa2fb73a-2954-4f3b-985b-1a17c4081f58
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 327
 template: false
 archive: false
@@ -12,7 +12,53 @@ id: webform_7827
 title: 'CIT Awards for Innovation Registration Form'
 description: null
 category: null
-elements: "intro:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h2>To nominate a faculty member, please complete and submit the nomination form below.</h2><p>Click <a href='/its/cit/awards-innovation'>here</a> for more information about the Innovation in Teaching with Technology award.</p>\"\n  '#title': intro\n  '#description': \"\"\nname_of_nominee:\n  '#type': textfield\n  '#title': Name of Nominee:\n  '#description': \"\"\n  '#required': true\nnominees_college_department:\n  '#type': textfield\n  '#title': Nominee's College/Department:\n  '#description': \"\"\n  '#required': true\nyour_name:\n  '#type': textfield\n  '#default_value': \"[current-user:field_user_display_name]\"\n  '#title': Your name (person making nomination):\n  '#description': \"\"\n  '#required': true\nyour_email_address:\n  '#type': textfield\n  '#default_value': \"[current-user:mail]\"\n  '#title': Your email address (person making nomination):\n  '#description': \"\"\n  '#required': true\nwhat_is_your_role_on_campus:\n  '#type': select\n  '#options':\n    1: Faculty\n    2: Staff\n    3: Student\n  '#title': What is your role on-campus? (Please select one)\n  '#description': \"\"\n  '#required': true\nbriefly_describe_how_the_nominee_uses_technology_to_support_education_and__or_instruction:\n  '#type': textarea\n  '#title': Briefly describe how the nominee uses technology to support education and /or instruction?\n  '#description': \"\"\nwhy_this_person_should_receive_this_award:\n  '#type': textarea\n  '#title': Why do you think this person should receive this award? (300 words or less)\n  '#description': \"\"\n  '#required': true\n"
+elements: |
+  intro:
+    '#type': processed_text
+    '#format': full_html
+    '#text': "<h2>To nominate a faculty member, please complete and submit the nomination form below.</h2><p>Click <a href='/its/cit/awards-innovation'>here</a> for more information about the Innovation in Teaching with Technology award.</p>"
+    '#title': intro
+    '#description': ""
+  name_of_nominee:
+    '#type': textfield
+    '#title': Name of Nominee:
+    '#description': ""
+    '#required': true
+  nominees_college_department:
+    '#type': textfield
+    '#title': Nominee's College/Department:
+    '#description': ""
+    '#required': true
+  your_name:
+    '#type': textfield
+    '#default_value': "[current-user:field_user_display_name]"
+    '#title': Your name (person making nomination):
+    '#description': ""
+    '#required': true
+  your_email_address:
+    '#type': textfield
+    '#default_value': "[current-user:mail]"
+    '#title': Your email address (person making nomination):
+    '#description': ""
+    '#required': true
+  what_is_your_role_on_campus:
+    '#type': select
+    '#options':
+      1: Faculty
+      2: Staff
+      3: Student
+    '#title': What is your role on-campus? (Please select one)
+    '#description': ""
+    '#required': true
+  briefly_describe_how_the_nominee_uses_technology_to_support_education_and__or_instruction:
+    '#type': textarea
+    '#title': Briefly describe how the nominee uses technology to support education and /or instruction?
+    '#description': ""
+  why_this_person_should_receive_this_award:
+    '#type': textarea
+    '#title': Why do you think this person should receive this award? (300 words or less)
+    '#description': ""
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,9 +73,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -39,31 +85,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -72,11 +123,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -87,13 +133,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -116,9 +162,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: '<p>Thank you for your nomination.</p><p>One of our staff will contact you shortly for supporting documents pertaining to your nomination, if needed.</p>'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -202,9 +248,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -213,13 +259,17 @@ handlers:
         - completed
       to_mail: cit@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: '[current-user:mail]'
       from_options: {  }
       from_name: '[webform-submission:values:your_name:raw]'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -230,11 +280,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

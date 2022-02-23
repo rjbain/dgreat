@@ -2,9 +2,9 @@ uuid: d3487eee-8eeb-4085-abce-06d657a25832
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 21756
 template: false
 archive: false
@@ -12,7 +12,63 @@ id: webform_138459
 title: 'Give Us Your Feedback'
 description: null
 category: null
-elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\nplease_identify_yourself:\n  '#type': select\n  '#options':\n    1: Student\n    2: Faculty\n    3: Staff\n    4: Alumni\n    5: 'Prospective Student'\n    6: 'Parent of Prospective Student'\n    7: 'Parent of Student'\n    8: Other\n  '#title': 'Please Identify Yourself:'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': 'Email:'\n  '#description': ''\nwhat_do_you_like_or_find_useful:\n  '#type': textarea\n  '#title': 'What do you like or find useful?'\n  '#description': ''\n  '#required': true\ndid_you_find_the_information_you_were_looking_for:\n  '#type': radios\n  '#options':\n    1: 'Yes'\n    2: 'No'\n  '#title': 'Did you find the information you were looking for?'\n  '#description': ''\n  '#required': true\nhow_might_we_improve_the_usability:\n  '#type': textarea\n  '#title': 'How might we improve the usability?'\n  '#description': ''\n  '#required': true\nwhat_additional_content_would_you_add_to_usf_mobile:\n  '#type': textarea\n  '#title': 'What additional content would you add to USF Mobile?'\n  '#description': ''\n  '#required': true\nadditional_comments:\n  '#type': textarea\n  '#title': 'Additional Comments'\n  '#description': ''\n"
+elements: |
+  first_name:
+    '#type': textfield
+    '#title': 'First Name'
+    '#description': ''
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title': 'Last Name'
+    '#description': ''
+    '#required': true
+  please_identify_yourself:
+    '#type': select
+    '#options':
+      1: Student
+      2: Faculty
+      3: Staff
+      4: Alumni
+      5: 'Prospective Student'
+      6: 'Parent of Prospective Student'
+      7: 'Parent of Student'
+      8: Other
+    '#title': 'Please Identify Yourself:'
+    '#description': ''
+    '#required': true
+  email:
+    '#type': email
+    '#size': 20
+    '#title': 'Email:'
+    '#description': ''
+  what_do_you_like_or_find_useful:
+    '#type': textarea
+    '#title': 'What do you like or find useful?'
+    '#description': ''
+    '#required': true
+  did_you_find_the_information_you_were_looking_for:
+    '#type': radios
+    '#options':
+      1: 'Yes'
+      2: 'No'
+    '#title': 'Did you find the information you were looking for?'
+    '#description': ''
+    '#required': true
+  how_might_we_improve_the_usability:
+    '#type': textarea
+    '#title': 'How might we improve the usability?'
+    '#description': ''
+    '#required': true
+  what_additional_content_would_you_add_to_usf_mobile:
+    '#type': textarea
+    '#title': 'What additional content would you add to USF Mobile?'
+    '#description': ''
+    '#required': true
+  additional_comments:
+    '#type': textarea
+    '#title': 'Additional Comments'
+    '#description': ''
 css: ''
 javascript: ''
 settings:
@@ -27,9 +83,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -39,31 +95,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -72,11 +133,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -87,13 +143,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -116,9 +172,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: '<p>Thank you taking the time in completing this form. USF Mobile greatly appreciates it.&nbsp;</p>'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -202,9 +258,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -213,15 +269,21 @@ handlers:
         - completed
       to_mail: itshelp@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
-      body: "Submitted by user: [webform_submission:user]\nSubmitted values are: [webform_submission:values]\n"
+      body: |
+        Submitted by user: [webform_submission:user]
+        Submitted values are: [webform_submission:values]
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -230,11 +292,7 @@ handlers:
       html: false
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

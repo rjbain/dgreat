@@ -2,9 +2,9 @@ uuid: 2ab463fd-c056-453c-b064-1bb2743782df
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 27000
 template: false
 archive: false
@@ -12,7 +12,29 @@ id: webform_93894
 title: 'Enter the IEW Photo Contest!'
 description: null
 category: null
-elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': 'You will receive an email with instructions on how to submit your photos.'\n  '#required': true\nnotice:\n  '#type': processed_text\n  '#title': Notice\n  '#description': ''\n  '#text': \"<p>Submissions will be accepted from Friday, October 25, until Sunday, November 10, 2019</p>\\r\\n\"\n  '#format': full_html\n"
+elements: |
+  first_name:
+    '#type': textfield
+    '#title': 'First Name'
+    '#description': ''
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title': 'Last Name'
+    '#description': ''
+    '#required': true
+  email:
+    '#type': email
+    '#size': 20
+    '#title': Email
+    '#description': 'You will receive an email with instructions on how to submit your photos.'
+    '#required': true
+  notice:
+    '#type': processed_text
+    '#title': Notice
+    '#description': ''
+    '#text': "<p>Submissions will be accepted from Friday, October 25, until Sunday, November 10, 2019</p>\r\n"
+    '#format': full_html
 css: ''
 javascript: ''
 settings:
@@ -27,9 +49,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -39,31 +61,36 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
   form_method: ''
   form_action: ''
-  form_attributes: {  }
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -72,11 +99,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -87,13 +109,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -116,9 +138,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -202,9 +224,9 @@ access:
 handlers:
   email_2:
     id: email
+    handler_id: email_2
     label: 'Email 2'
     notes: ''
-    handler_id: email_2
     status: true
     conditions: {  }
     weight: 2
@@ -213,13 +235,17 @@ handlers:
         - completed
       to_mail: '[webform-submission:values:email:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: usf.iew@gmail.com
       from_options: {  }
       from_name: 'University of San Francisco'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'IEW Photo Contest | USF'
       body: 'Thank you for your interest in University of San Francisco&#39;s International Education Week Photo Contest! Submitted by user: [webform_submission:user] [webform_submission:values] To enter the contest: 1. Please reply directly back to this message, attaching up to two (2) photographs per category you wish to enter. The categories are: Action Shots, Cityscapes, Food &amp; Community, #Better Together, and Faculty &amp; Staff 2. For each photograph, please provide the location, a description of the photo, and the date it was taken (if you know it). Good luck! Notice: By submitting your photographs, you hereby irrevocably authorize the University of San Francisco (USF) to copy, exhibit, publish or distribute, any and all such images of you or wherein you appear, including composite or artistic forms and media including electronic posting on the Web, for purposes of publicizing USF programs and for any other lawful purpose. In addition, you waive any right to inspect or approve the finished product, including written copy, wherein your likeness appears. You hereby hold harmless and release and forever discharge University of San Francisco from all claims, demands and causes of action which you, your heirs, representatives, executors, administrators or any other persons acting on your behalf of your estate.'
       excluded_elements: {  }
@@ -230,18 +256,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_3:
     id: email
+    handler_id: email_3
     label: 'Email 3'
     notes: ''
-    handler_id: email_3
     status: true
     conditions: {  }
     weight: 3
@@ -250,13 +272,17 @@ handlers:
         - completed
       to_mail: usf.iew@gmail.com
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -267,11 +293,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

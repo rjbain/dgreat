@@ -20,8 +20,8 @@ plugin: 'block_content:3e2c8e1e-8ed3-4851-ba81-63f5d286d4cb'
 settings:
   id: 'block_content:3e2c8e1e-8ed3-4851-ba81-63f5d286d4cb'
   label: 'Buffer Space'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
@@ -29,17 +29,17 @@ visibility:
   condition_group:
     id: condition_group
     negate: false
-    block_visibility_group: ''
     context_mapping: {  }
-  node_type:
-    id: node_type
-    bundles:
-      usf_service: usf_service
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    context_mapping: {  }
+    pages: '/services/*'
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
-  request_path:
-    id: request_path
-    pages: '/services/*'
-    negate: false
-    context_mapping: {  }
+    bundles:
+      usf_service: usf_service

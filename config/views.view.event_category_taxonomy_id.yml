@@ -21,81 +21,11 @@ base_table: taxonomy_term_field_data
 base_field: tid
 display:
   default:
-    display_plugin: default
     id: default
     display_title: Master
+    display_plugin: default
     position: 0
     display_options:
-      access:
-        type: role
-        options:
-          role:
-            administrator: administrator
-            editor: editor
-            all_access: all_access
-      cache:
-        type: tag
-        options: {  }
-      query:
-        type: views_query
-        options:
-          disable_sql_rewrite: false
-          distinct: false
-          replica: false
-          query_comment: ''
-          query_tags: {  }
-      exposed_form:
-        type: basic
-        options:
-          submit_button: Apply
-          reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-      pager:
-        type: none
-        options:
-          offset: 0
-      style:
-        type: table
-        options:
-          grouping: {  }
-          row_class: ''
-          default_row_class: true
-          override: true
-          sticky: false
-          caption: ''
-          summary: ''
-          description: ''
-          columns:
-            name: name
-            tid: tid
-          info:
-            name:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            tid:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-          default: '-1'
-          empty_table: false
-      row:
-        type: fields
-        options:
-          inline: {  }
-          separator: ''
-          hide_empty: false
-          default_field_elements: true
       fields:
         name:
           id: name
@@ -104,6 +34,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: term_name
           label: Term
           exclude: false
           alter:
@@ -160,9 +93,6 @@ display:
           separator: ', '
           field_api_classes: false
           convert_spaces: false
-          entity_type: taxonomy_term
-          entity_field: name
-          plugin_id: term_name
         tid:
           id: tid
           table: taxonomy_term_field_data
@@ -170,6 +100,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: tid
+          plugin_id: field
           label: 'Taxonomy ID'
           exclude: false
           alter:
@@ -226,23 +159,93 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: taxonomy_term
-          entity_field: tid
-          plugin_id: field
+      pager:
+        type: none
+        options:
+          offset: 0
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: role
+        options:
+          role:
+            administrator: administrator
+            editor: editor
+            all_access: all_access
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts: {  }
+      arguments: {  }
       filters:
         vid:
           id: vid
           table: taxonomy_term_field_data
           field: vid
-          value:
-            event_category: event_category
           entity_type: taxonomy_term
           entity_field: vid
           plugin_id: bundle
+          value:
+            event_category: event_category
           expose:
             operator_limit_selection: false
             operator_list: {  }
-      sorts: {  }
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          columns:
+            name: name
+            tid: tid
+          default: '-1'
+          info:
+            name:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            tid:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          override: true
+          sticky: false
+          summary: ''
+          empty_table: false
+          caption: ''
+          description: ''
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
+      relationships: {  }
       header:
         area:
           id: area
@@ -251,16 +254,13 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: text
           empty: false
-          tokenize: false
           content:
             value: '<h2><a href="/admin/config/taxonomy/categories">Categories</a> | <a href="/admin/config/taxonomy/terms">Terms</a></h2>'
             format: full_html
-          plugin_id: text
+          tokenize: false
       footer: {  }
-      empty: {  }
-      relationships: {  }
-      arguments: {  }
       display_extenders: {  }
     cache_metadata:
       max-age: -1
@@ -270,9 +270,9 @@ display:
         - user.roles
       tags: {  }
   page_1:
-    display_plugin: page
     id: page_1
     display_title: Page
+    display_plugin: page
     position: 1
     display_options:
       display_extenders: {  }
@@ -281,11 +281,11 @@ display:
         type: normal
         title: 'Event Taxonomy IDs'
         description: 'IDs for Event Taxonomy Terms'
-        expanded: false
-        parent: system.admin_config_content
         weight: 5
-        context: '0'
+        expanded: false
         menu_name: admin
+        parent: system.admin_config_content
+        context: '0'
     cache_metadata:
       max-age: -1
       contexts:
@@ -294,13 +294,11 @@ display:
         - user.roles
       tags: {  }
   page_2:
-    display_plugin: page
     id: page_2
     display_title: 'Page 2'
+    display_plugin: page
     position: 2
     display_options:
-      display_extenders: {  }
-      path: admin/config/taxonomy/terms
       filters:
         vid:
           id: vid
@@ -309,6 +307,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: vid
+          plugin_id: bundle
           operator: in
           value:
             event_terms: event_terms
@@ -320,6 +321,8 @@ display:
             description: ''
             use_operator: false
             operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: ''
             required: false
             remember: false
@@ -327,8 +330,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -341,16 +342,15 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          entity_type: taxonomy_term
-          entity_field: vid
-          plugin_id: bundle
-      defaults:
-        filters: false
-        filter_groups: false
       filter_groups:
         operator: AND
         groups:
           1: AND
+      defaults:
+        filters: false
+        filter_groups: false
+      display_extenders: {  }
+      path: admin/config/taxonomy/terms
     cache_metadata:
       max-age: -1
       contexts:
