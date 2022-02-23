@@ -12,7 +12,7 @@ label: 'Events Import to MyUSF'
 source:
   plugin: url
   data_fetcher_plugin: http
-  urls: 'https://dev-1619-usfca-public.pantheonsite.io/feeds/feed?source=myusf-events'
+  urls: 'http://www.usfca.edu/feeds/feed?source=myusf-events'
   data_parser_plugin: simple_xml
   item_selector: /events/item
   fields:
@@ -65,10 +65,6 @@ source:
       label: 'Image URL'
       selector: image
     -
-      name: imageAlt
-      label: 'Image Alt'
-      selector: imageAlt
-    -
       name: f_image_url
       label: 'Featured Image URL'
       selector: featured_image
@@ -94,7 +90,6 @@ process:
   field_building: building
   field_location: location
   field_image_url: image_url
-  field_image_alt: imageAlt
   field_f_image_url: f_image_url
   field_featured: featured
   field_guid: guid
