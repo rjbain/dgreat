@@ -154,7 +154,7 @@ jobs:
 
             - run:
                 name: Install Chosen Plugin
-                command: drush chosenplugin --debug
+                command: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- chosenplugin
 
             #- run:
                 #name: run functional tests with Behat
