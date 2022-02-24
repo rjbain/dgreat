@@ -96,10 +96,6 @@ jobs:
             name: Install Deps
             command: cd web/themes/custom/myusf && npm install
 
-        - run:
-            name: Install Chosen Plugin
-            command: drush chosenplugin
-
         - save_cache:
             key: dependency-cache-{{ checksum "web/themes/custom/myusf/package.json" }}
             paths:
@@ -155,6 +151,10 @@ jobs:
             - run:
                 name: check composer version
                 command: composer --version
+
+            - run:
+                name: Install Chosen Plugin
+                command: drush chosenplugin
 
             #- run:
                 #name: run functional tests with Behat
