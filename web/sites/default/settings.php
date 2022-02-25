@@ -23,14 +23,6 @@ include __DIR__ . "/settings.pantheon.php";
 $settings['config_sync_directory'] = dirname(DRUPAL_ROOT) . '/config';
 
 /**
- * Always install the 'standard' profile to stop the installer from
- * modifying settings.php.
- *
- * See: tests/installer-features/installer.feature
- */
-$settings['install_profile'] = 'standard';
-
-/**
  * If there is a local settings file, then include it
  */
 $local_settings = __DIR__ . "/settings.local.php";
