@@ -82,6 +82,7 @@
 {% set building = node.field_building.value %}
 {% set image = file_url(node.field_image.entity.uri.value) %}
 {% set image_url = node.field_image_url.uri %}
+{% set imageAlt = node.field_image_alt.value %}
 {% set f_image_url = node.field_f_image_url.uri %}
   <h1 class="title">{{ title }}</h1>
 <article{{ attributes.addClass(classes) }}>
@@ -95,7 +96,7 @@
   <div{{ content_attributes.addClass('content') }}>
     <div class="event-image">
       {% if node.field_f_image_url.value %}
-        <img src="{{ f_image_url }}" class="image">
+        <img src="{{ f_image_url }}" class="image" alt="{{ imageAlt }}">
       {% endif %}
     </div>
     <div class="body">
