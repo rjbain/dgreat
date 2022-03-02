@@ -2,19 +2,13 @@ uuid: 702d4484-76e0-410c-8bf5-2325ac1ffeba
 langcode: en
 status: true
 dependencies:
+  config:
+    - field.storage.node.body
+    - field.storage.node.field_url
+    - search_api.server.database_server
   module:
     - node
     - search_api
-  config:
-    - field.storage.node.field_url
-    - field.storage.node.field_usfcat_audience_ref
-    - field.storage.node.field_usfcat_category_ref
-    - field.storage.node.field_usfcat_description_short
-    - field.storage.node.field_usfcat_provider_ref
-    - field.storage.node.field_usfcat_synonyms
-    - field.storage.node.field_usfcat_updates
-    - field.storage.node.body
-    - search_api.server.database_server
 id: database_node_index
 name: 'Database Node Index'
 description: ''
@@ -44,54 +38,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_url
-  field_usfcat_audience_ref:
-    label: Audience
-    datasource_id: 'entity:node'
-    property_path: field_usfcat_audience_ref
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_usfcat_audience_ref
-  field_usfcat_category_ref:
-    label: Category
-    datasource_id: 'entity:node'
-    property_path: field_usfcat_category_ref
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_usfcat_category_ref
-  field_usfcat_description_short:
-    label: 'Short description'
-    datasource_id: 'entity:node'
-    property_path: field_usfcat_description_short
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_usfcat_description_short
-  field_usfcat_provider_ref:
-    label: Provider
-    datasource_id: 'entity:node'
-    property_path: field_usfcat_provider_ref
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_usfcat_provider_ref
-  field_usfcat_synonyms:
-    label: Synonyms
-    datasource_id: 'entity:node'
-    property_path: field_usfcat_synonyms
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_usfcat_synonyms
-  field_usfcat_updates:
-    label: Updates
-    datasource_id: 'entity:node'
-    property_path: field_usfcat_updates
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_usfcat_updates
   nid:
     label: ID
     datasource_id: 'entity:node'
@@ -157,8 +103,6 @@ processor_settings:
     fields:
       - body
       - field_url
-      - field_usfcat_description_short
-      - field_usfcat_synonyms
       - summary
       - title
       - type
@@ -172,8 +116,6 @@ processor_settings:
     fields:
       - body
       - field_url
-      - field_usfcat_description_short
-      - field_usfcat_synonyms
       - summary
       - title
       - type
