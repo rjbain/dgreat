@@ -262,7 +262,7 @@ class DgreatGroup {
   }
 
   /**
-   * @param \Drupal\user\Entity\User $user
+   * @param User $user
    *
    * @return array
    */
