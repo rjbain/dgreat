@@ -197,7 +197,7 @@ class RoleGroupMapperService {
     $field = $user->get('field_user_group');
     $values = $field->getValue();
     $index_to_remove = array_search($group_id, array_column($values, 'target_id'));
-    // $field->removeItem($index_to_remove);
+    // $field->removeItem($index_to_remove); This was causing the site to timeout.
       $field->set($index_to_remove, []);
     $user->save();
     return TRUE;
