@@ -2153,20 +2153,13 @@ fieldset.form-item-field-audience-target-id {
 }
 
 
-#views-exposed-form-community-grid-page-1 fieldset.form-item-field-community-topic-target-id {
+#views-exposed-form-community-grid-page-1 fieldset.form-item-field-community-topic-target-id,
+#views-exposed-form-community-grid-page-1 fieldset.form-item-field-audience-target-id  {
     @include media-breakpoint-down(phone) {
-        width: 47%;
-        display: inline-block;
-        margin-right: 0;
+        width: 100%;
     }
 }
-#views-exposed-form-community-grid-page-1 fieldset.form-item-field-audience-target-id {
-    @include media-breakpoint-down(phone) {
-        width: 47%;
-        display: inline-block;
-        margin-right: 6%;
-    }
-}
+
 
 select#edit-field-audience-target-id,
 select#edit-field-community-topic-target-id {
@@ -2184,21 +2177,26 @@ select#edit-field-community-topic-target-id {
     appearance: none;
     border: none;
     border-radius: 0px;
-    text-overflow: ellipsis;
+    /*text-overflow: ellipsis;*/
     white-space: nowrap;
-    overflow: hidden; 
+    /*overflow: hidden;*/ 
+    width: auto;
+    min-height: auto;
+    padding-right: 0.625rem;
+    margin-bottom: 0.0625rem;
 
     &:after {
 
     }
-
-    @include media-breakpoint-down(phone) {
+ @include media-breakpoint-down(phone) {
         font-size: 0.8rem;
         width: 98%;
     } 
+
     @include media-breakpoint-down(large_desktop) {
         margin-left: 0;
     }
+/*
     @include media-breakpoint-only(landscape_phone) {
         width: 150px;
     }
@@ -2211,7 +2209,7 @@ select#edit-field-community-topic-target-id {
     @include media-breakpoint-up(large_desktop) {
         width: 220px;
     }
-
+*/
     option {
         background: #f5f5f5;
     }
@@ -2220,6 +2218,7 @@ select#edit-field-community-topic-target-id {
 input#edit-submit-community-grid {
     position: relative;
     right: 0;
+    line-height: 1.1rem;
     
     @include media-breakpoint-down(phone) {
         left: 0px;
