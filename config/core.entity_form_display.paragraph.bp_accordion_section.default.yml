@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.bp_accordion_section.bp_accordion_section_body
     - field.field.paragraph.bp_accordion_section.bp_accordion_section_title
+    - field.field.paragraph.bp_accordion_section.field_accordion_section_header
     - paragraphs.paragraphs_type.bp_accordion_section
   module:
     - paragraphs
@@ -17,23 +18,30 @@ mode: default
 content:
   bp_accordion_section_body:
     type: entity_reference_paragraphs
-    weight: 1
-    region: content
+    weight: 2
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: closed
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: ''
     third_party_settings: {  }
-  bp_accordion_section_title:
-    type: string_textfield
-    weight: 0
     region: content
+  bp_accordion_section_title:
+    weight: 0
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_accordion_section_header:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
 hidden:
   created: true
   status: true
