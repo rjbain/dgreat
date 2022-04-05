@@ -12,7 +12,7 @@ id: equity_interns_application
 title: 'Equity Interns Application'
 description: ''
 category: ''
-elements: |
+elements: |-
   last_name:
     '#type': textfield
     '#title': 'Last Name'
@@ -59,6 +59,15 @@ elements: |
     '#type': tel
     '#title': 'Permanent Phone'
     '#required': true
+  headshot:
+    '#type': textfield
+    '#title': Headshot
+    '#description': 'Please upload your photo to Google Drive and share the link to it here.'
+  social_media_links:
+    '#type': textfield
+    '#title': 'Social Media Links'
+    '#multiple': 4
+    '#description': 'Please enter links to your social media accounts (Twitter, Facebook, Instagram, LinkedIn).'
   major:
     '#type': textfield
     '#title': Major
@@ -74,6 +83,13 @@ elements: |
   home_institution:
     '#type': textfield
     '#title': 'Home Institution'
+    '#required': true
+  would_you_be_willing_to_write_a_blog_post_if_appointed_:
+    '#type': radios
+    '#title': 'Would you be willing to write a blog post if appointed?'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
     '#required': true
   graduation_date:
     '#type': select
@@ -102,17 +118,9 @@ elements: |
     '#type': textarea
     '#title': 'How did you hear about this program?'
     '#required': true
-  resume_please_submit_a_recent_resume_:
-    '#type': webform_document_file
-    '#title': 'Resume (Please submit a recent resume)'
-    '#required': true
   why_would_you_like_to_participate_in_the_equity_interns_program_:
     '#type': textarea
     '#title': 'Why would you like to participate in the Equity Interns Program?'
-    '#required': true
-  please_submit_a_brief_writing_sample_250_400_word_1_2pg_how_do_y:
-    '#type': webform_document_file
-    '#title': 'Please submit a brief writing sample (250-400 word, 1-2pg). How do you plan on addressing the issue of learning loss in within under-resourced communities in San Francisco?'
     '#required': true
   please_provide_the_contact_information_for_one_faculty_member_or:
     '#type': label
@@ -340,7 +348,7 @@ handlers:
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      cc_mail: llombre@usfca.edu
+      cc_mail: 'llombre@usfca.edu, bavent@usfca.edu'
       cc_options: {  }
       from_mail: _default
       from_options: {  }

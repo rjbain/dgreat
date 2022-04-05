@@ -2,9 +2,9 @@ uuid: 49b851f8-7570-4524-ab4e-942e899444f4
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 2168
 template: false
 archive: false
@@ -12,7 +12,63 @@ id: webform_100764
 title: 'Muscat Scholars Program - Family Application'
 description: null
 category: null
-elements: "fieldset_application:\n  '#type': fieldset\n  '#open': true\n  '#title': Application\n  '#description': ''\n  student_first_and_last_name_2:\n    '#type': textfield\n    '#title': 'Student First and Last Name'\n    '#description': ''\n    '#required': true\n  student_birth_date_mm_dd_yy_2:\n    '#type': textfield\n    '#title': 'Student Birth Date (mm/dd/yy)'\n    '#description': ''\n    '#required': true\n  parent_family_member_name_2:\n    '#type': textfield\n    '#title': 'Parent/Family Member Name'\n    '#description': ''\n    '#required': true\n  relationship_to_applicant_2:\n    '#type': textfield\n    '#title': 'Relationship to Applicant'\n    '#description': 'What is your relationship to the applicant? (ex.: Father, Brother, Mentor, etc.)'\n    '#required': true\n  parent_family_member_emaail_a_confirmation_will_be_sent_here_2:\n    '#type': textfield\n    '#title': 'Parent/Family Member Email'\n    '#description': ''\n    '#required': true\n  parent_family_contact_phone_number_2:\n    '#type': textfield\n    '#title': 'Parent/Family Contact Phone Number'\n    '#description': ''\n    '#required': true\n  three_words_to_describe_2:\n    '#type': textarea\n    '#title': 'Please list three words that best describe your student who is applying to the Muscat Scholars Program. Why did you choose each word?'\n    '#description': ''\n    '#required': true\n  USF_challenges_2:\n    '#type': textarea\n    '#title': 'What challenges does your student face at the University of San Francisco?'\n    '#description': ''\n    '#required': true\n  student_letter_2:\n    '#type': textarea\n    '#title': 'Letter to Student'\n    '#description': 'If you were to write a letter to your student as they begin their college career that would be given to them during the program, what would you say? Please address the letter to your student directly. In event of your student being selected to the program, this letter may be shared with them.'\n    '#required': true\nreminder:\n  '#type': processed_text\n  '#title': Reminder\n  '#description': ''\n  '#text': \"<p>Please remember that your application and the student application must be all received in order for the application to be complete and considered for acceptance into the program.&nbsp;</p>\\r\\n\\r\\n<p>Student applicants: If for whatever reason, you do not have a family member who can fill out this application, please email CASA at <a href=\\\"mailto:casa@usfca.edu\\\">casa@usfca.edu</a>.</p>\\r\\n\"\n  '#format': full_html"
+elements: |-
+  fieldset_application:
+    '#type': fieldset
+    '#open': true
+    '#title': Application
+    '#description': ''
+    student_first_and_last_name_2:
+      '#type': textfield
+      '#title': 'Student First and Last Name'
+      '#description': ''
+      '#required': true
+    student_birth_date_mm_dd_yy_2:
+      '#type': textfield
+      '#title': 'Student Birth Date (mm/dd/yy)'
+      '#description': ''
+      '#required': true
+    parent_family_member_name_2:
+      '#type': textfield
+      '#title': 'Parent/Family Member Name'
+      '#description': ''
+      '#required': true
+    relationship_to_applicant_2:
+      '#type': textfield
+      '#title': 'Relationship to Applicant'
+      '#description': 'What is your relationship to the applicant? (ex.: Father, Brother, Mentor, etc.)'
+      '#required': true
+    parent_family_member_emaail_a_confirmation_will_be_sent_here_2:
+      '#type': textfield
+      '#title': 'Parent/Family Member Email'
+      '#description': ''
+      '#required': true
+    parent_family_contact_phone_number_2:
+      '#type': textfield
+      '#title': 'Parent/Family Contact Phone Number'
+      '#description': ''
+      '#required': true
+    three_words_to_describe_2:
+      '#type': textarea
+      '#title': 'Please list three words that best describe your student who is applying to the Muscat Scholars Program. Why did you choose each word?'
+      '#description': ''
+      '#required': true
+    USF_challenges_2:
+      '#type': textarea
+      '#title': 'What challenges does your student face at the University of San Francisco?'
+      '#description': ''
+      '#required': true
+    student_letter_2:
+      '#type': textarea
+      '#title': 'Letter to Student'
+      '#description': 'If you were to write a letter to your student as they begin their college career that would be given to them during the program, what would you say? Please address the letter to your student directly. In event of your student being selected to the program, this letter may be shared with them.'
+      '#required': true
+  reminder:
+    '#type': processed_text
+    '#title': Reminder
+    '#description': ''
+    '#text': "<p>Please remember that your application and the student application must be all received in order for the application to be complete and considered for acceptance into the program.&nbsp;</p>\r\n\r\n<p>Student applicants: If for whatever reason, you do not have a family member who can fill out this application, please email CASA at <a href=\"mailto:casa@usfca.edu\">casa@usfca.edu</a>.</p>\r\n"
+    '#format': full_html
 css: ''
 javascript: ''
 settings:
@@ -27,40 +83,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +133,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,13 +143,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -113,9 +172,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: "<p><span>The application deadline is May 1st. Applications received after this date will be considered on a space-available basis.<br />\r\n<br />\r\nThank you!<br />\r\nMuscat Scholars Program<br />\r\n  <a href=\"mailto:firstyear@usfca.edu\">firstyear@usfca.edu</a></span></p>"
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -199,9 +258,9 @@ access:
 handlers:
   email_2:
     id: email
+    handler_id: email_2
     label: 'Email 2'
     notes: ''
-    handler_id: email_2
     status: true
     conditions: {  }
     weight: 2
@@ -210,13 +269,17 @@ handlers:
         - completed
       to_mail: firstyear@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: 'Muscat Scholars program'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'Muscat Scholars Program - Family Application'
       body: _default
       excluded_elements: {  }
@@ -227,11 +290,7 @@ handlers:
       html: false
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }
