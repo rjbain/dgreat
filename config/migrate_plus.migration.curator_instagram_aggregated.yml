@@ -1,20 +1,20 @@
-uuid: 46c6f803-46b5-47a1-a42a-916703af9a13
+uuid: 11fffc18-6b46-4a5c-8161-b8c40c99393d
 langcode: en
 status: true
 dependencies: {  }
-id: instagram_donshelpingdons_import
+id: curator_instagram_aggregated
 class: null
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags: null
 migration_group: null
-label: 'Instagram Dons Helping Dons Import to MyUSF'
+label: 'Instagram Import to MyUSF from Curator Aggregated Feed'
 source:
   plugin: url
   data_fetcher_plugin: http
-  urls: 'https://graph.instagram.com/4046033352118616/media?fields=caption,username,media_url,timestamp,permalink,media_type&access_token=IGQVJXczR2ZA1IwQm1yNFZAxREtyR1dzck5ZAZAklobnVHeGFfdnpMbWdFUU9wekk4NGpObi1yOTFOOVVHVDJ3cjVXUlQ2NVZADMHczWnY3VU4yLTA1QVZAIc04xX05pZAG9BNTl2X2ZANRkZAQX2tBVF9JLXNyTgZDZD'
+  urls: 'https://jayna.usfca.edu/feeds/curator/?id=4471bc88-297b-46d7-97b5-9593704040ee'
   data_parser_plugin: json
-  item_selector: /data
+  item_selector: /posts
   fields:
     -
       name: title
@@ -23,31 +23,31 @@ source:
     -
       name: description
       label: Description
-      selector: /caption
+      selector: /text
     -
       name: image_url
       label: 'Image URL'
-      selector: /media_url
+      selector: /image
     -
       name: instagram_link
       label: 'Instagram Link'
-      selector: /permalink
+      selector: /url
     -
       name: external_id
       label: 'External ID'
-      selector: /id
+      selector: /source_identifier
     -
       name: guid
       label: GUID
-      selector: /timestamp
+      selector: /id
     -
       name: username
       label: Username
-      selector: /username
+      selector: /user_screen_name
     -
       name: media_type
       label: 'Media Type'
-      selector: /media_type
+      selector: /has_image
   ids:
     guid:
       type: string
