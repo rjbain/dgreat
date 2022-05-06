@@ -208,8 +208,12 @@
   </div>
     <script>
         function showHealthCheck() {
-            var classes = $("footer.site-footer div.container").getAttribute('class');
-            alert(classes);
+            var classes = querySelectorAll("footer.site-footer div.container").getAttribute('class');
+            if (classes.includes('staff') || classes.includes('faculty')) {
+                document.getElementById('nonstudent-health-btn').style.zIndex = '1'
+            } else {
+                document.getElementById('nonstudent-health-btn').style.zIndex = '-1'
+            }
         }
     </script>
 {% endblock %}
