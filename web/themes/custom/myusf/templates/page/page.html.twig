@@ -209,7 +209,7 @@
     <script>
         function showHealthCheck() {
             var classes = document.querySelector("footer.site-footer div.container").getAttribute('class');
-            if (classes.includes('staff') || classes.includes('faculty')) {
+            if (classes.includes('employee') || classes.includes('faculty')) {
                 document.getElementById('nonstudent-health-btn').style.zIndex = '1'
             } else {
                 document.getElementById('nonstudent-health-btn').style.zIndex = '-1'
@@ -217,7 +217,7 @@
         }
     </script>
     <style>
-        @media screen (max-width: 576px) {
+        @media (max-width: 576px) {
             #health-check-wrapper {border: 2px solid blue !important;}
         }
     </style>
