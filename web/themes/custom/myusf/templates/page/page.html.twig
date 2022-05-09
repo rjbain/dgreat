@@ -210,15 +210,10 @@
         function showHealthCheck() {
             var classes = document.querySelector("footer.site-footer div.container").getAttribute('class');
             if (classes.includes('employee') || classes.includes('faculty')) {
-                document.getElementById('nonstudent-health-btn').style.zIndex = '1'
+                document.getElementById('health-btn').href = 'http://www.brewskeeball.com/san-francisco';
             } else {
-                document.getElementById('student-health-btn').style.zIndex = '-1'
+                document.getElementById('health-btn').href = 'https://myusf.force.com/studenthub/s/health-survey';
             }
         }
     </script>
-    <style>
-        @media (max-width: 1140px) {
-            #health-check-wrapper {border: 2px solid blue !important;padding-right:6em;}
-        }
-    </style>
 {% endblock %}
