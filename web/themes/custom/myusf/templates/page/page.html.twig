@@ -209,10 +209,12 @@
     <script>
         function showHealthCheck() {
             var classes = document.querySelector("footer.site-footer div.container").getAttribute('class');
-            if (classes.includes('employee') || classes.includes('faculty')) {
-                document.getElementById('health-btn').href = 'http://www.brewskeeball.com/san-francisco';
-            } else {
-                document.getElementById('health-btn').href = 'https://myusf.force.com/studenthub/s/health-survey';
+            if (typeof(classes) != 'undefined' && classes != null) {
+                if (classes.includes('employee') || classes.includes('faculty')) {
+                    document.getElementById('health-btn').href = 'http://www.brewskeeball.com/san-francisco';
+                } else {
+                    document.getElementById('health-btn').href = 'https://myusf.force.com/studenthub/s/health-survey';
+                }
             }
         }
     </script>
