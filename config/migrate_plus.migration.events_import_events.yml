@@ -1,0 +1,125 @@
+langcode: en
+status: true
+dependencies: {  }
+id: events_import_events
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: null
+label: 'Import events from events server to MyUSF'
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  urls: 'https://events.usfca.edu/events/all/94/feed.json'
+  data_parser_plugin: json
+  item_selector: /
+  fields:
+    -
+      name: displayTitle
+      label: displayTitle
+      selector: displayTitle
+    -
+      name: myUsfDescription
+      label: myUsfDescription
+      selector: myUsfDescription
+    -
+      name: rsvpLink
+      label: rsvpLink
+      selector: rsvpLink
+    -
+      name: startDate
+      label: startDate
+      selector: startDate
+    -
+      name: endDate
+      label: endDate
+      selector: endDate
+    -
+      name: searchDate
+      label: searchDate
+      selector: searchDate
+    -
+      name: location
+      label: location
+      selector: location
+    -
+      name: category
+      label: category
+      selector: category
+    -
+      name: group
+      label: group
+      selector: group
+    -
+      name: building
+      label: building
+      selector: building
+    -
+      name: terms
+      label: terms
+      selector: terms
+    -
+      name: eventMedia
+      label: eventMedia
+      selector: eventMedia
+    -
+      name: guid
+      label: guid
+      selector: guid
+    -
+      name: myUsfFeatured
+      label: myUsfFeatured
+      selector: myUsfFeatured
+    -
+      name: eventMediaAlt
+      label: eventMediaAlt
+      selector: eventMediaAlt
+  ids:
+    guid:
+      type: string
+process:
+  title: displayTitle
+  body: myUsfDescription
+  field_event_description: description
+  field_additional_info: rsvpLink
+  field_start_date: startDate
+  field_end_date: endDate
+  field_search_date: searchDate
+  field_building: building
+  field_location: location
+  field_image_url: eventMedia
+  field_f_image_url: eventMedia
+  field_featured: myUsfFeatured
+  field_guid: guid
+  field_image_alt: eventMediaAlt
+  field_category:
+    plugin: entity_generate
+    source: category
+    value_key: name
+    bundle: event_category
+    entity_type: taxonomy_term
+    ignore_case: true
+  field_group:
+    plugin: entity_generate
+    source: group
+    value_key: name
+    bundle: event_group
+    entity_type: taxonomy_term
+    ignore_case: true
+  field_terms:
+    plugin: entity_generate
+    source: terms
+    value_key: name
+    bundle: event_terms
+    entity_type: taxonomy_term
+    ignore_case: true
+  status:
+    plugin: default_value
+    default_value: 1
+  type:
+    plugin: default_value
+    default_value: event
+destination:
+  plugin: 'entity:node'
+migration_dependencies: null
