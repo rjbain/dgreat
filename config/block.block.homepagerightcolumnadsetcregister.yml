@@ -8,12 +8,13 @@ dependencies:
     - block_content
     - block_visibility_groups
     - system
+    - user
   theme:
     - myusf
 id: homepagerightcolumnadsetcregister
 theme: myusf
 region: sidebar_second
-weight: 538
+weight: 537
 provider: null
 plugin: 'block_content:b960120b-779b-447c-abbf-5b53d7012d55'
 settings:
@@ -35,3 +36,14 @@ visibility:
     pages: "/\r\n/home\r\n/dashboard"
     negate: false
     context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+      administrator: administrator
+      student: student
+      online_student: online_student
+      admitted_student: admitted_student
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

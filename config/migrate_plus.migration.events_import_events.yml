@@ -1,3 +1,4 @@
+uuid: 40fe727b-7474-4624-8a0b-7b9490a17a45
 langcode: en
 status: true
 dependencies: {  }
@@ -11,18 +12,18 @@ label: 'Import events from events server to MyUSF'
 source:
   plugin: url
   data_fetcher_plugin: http
-  urls: 'https://events.usfca.edu/events/all/94/feed.json'
-  data_parser_plugin: json
-  item_selector: /
+  urls: 'https://usfcadev.herokuapp.com/feeds/getEventsMyUSF.php'
+  data_parser_plugin: simple_xml
+  item_selector: /events/item
   fields:
     -
       name: displayTitle
       label: displayTitle
       selector: displayTitle
     -
-      name: myUsfDescription
-      label: myUsfDescription
-      selector: myUsfDescription
+      name: description
+      label: description
+      selector: description
     -
       name: rsvpLink
       label: rsvpLink
@@ -46,11 +47,11 @@ source:
     -
       name: category
       label: category
-      selector: category
+      selector: categories/category
     -
       name: group
       label: group
-      selector: group
+      selector: groups/group
     -
       name: building
       label: building
@@ -58,29 +59,29 @@ source:
     -
       name: terms
       label: terms
-      selector: terms
+      selector: terms/term
     -
-      name: eventMedia
-      label: eventMedia
-      selector: eventMedia
+      name: image
+      label: image
+      selector: image
     -
       name: guid
       label: guid
       selector: guid
     -
-      name: myUsfFeatured
-      label: myUsfFeatured
-      selector: myUsfFeatured
+      name: featured
+      label: featured
+      selector: featured
     -
-      name: eventMediaAlt
-      label: eventMediaAlt
-      selector: eventMediaAlt
+      name: imageAlt
+      label: imageAlt
+      selector: imageAlt
   ids:
     guid:
       type: string
 process:
   title: displayTitle
-  body: myUsfDescription
+  body: description
   field_event_description: description
   field_additional_info: rsvpLink
   field_start_date: startDate
@@ -88,11 +89,11 @@ process:
   field_search_date: searchDate
   field_building: building
   field_location: location
-  field_image_url: eventMedia
-  field_f_image_url: eventMedia
-  field_featured: myUsfFeatured
+  field_image_url: image
+  field_f_image_url: image
+  field_featured: featured
   field_guid: guid
-  field_image_alt: eventMediaAlt
+  field_image_alt: imageAlt
   field_category:
     plugin: entity_generate
     source: category
