@@ -13,11 +13,13 @@ dependencies:
     - field.field.node.event.field_group
     - field.field.node.event.field_guid
     - field.field.node.event.field_image
+    - field.field.node.event.field_image_alt
     - field.field.node.event.field_image_url
     - field.field.node.event.field_location
     - field.field.node.event.field_search_date
     - field.field.node.event.field_start_date
     - field.field.node.event.field_terms
+    - field.field.node.event.field_thumbnail_image_url
     - node.type.event
   module:
     - datetime
@@ -162,8 +164,21 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
+  field_thumbnail_image_url:
+    weight: 117
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
   links:
     weight: 100
     region: content
 hidden:
+  field_image_alt: true
   search_api_excerpt: true
