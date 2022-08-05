@@ -41,6 +41,10 @@ source:
       label: Position
       selector: role/position
     -
+      name: department
+      label: department
+      selector: departments/department
+    -
       name: education
       label: education
       selector: education
@@ -139,6 +143,13 @@ process:
     source: position
     value_key: name
     bundle: faculty_position
+    entity_type: taxonomy_term
+    ignore_case: true
+  field_faculty_department:
+    plugin: entity_generate
+    source: department
+    value_key: name
+    bundle: faculty_department
     entity_type: taxonomy_term
     ignore_case: true
   type:
