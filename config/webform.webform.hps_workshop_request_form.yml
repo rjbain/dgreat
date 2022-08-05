@@ -22,11 +22,11 @@ elements: |-
     '#type': select
     '#title': 'Please Select a Topic'
     '#options':
-      'Alcohol & Upstander Strategies': 'Alcohol & Upstander Strategies'
-      'Boost Your Health Series: Nutrition and Exercise': 'Boost Your Health Series: Nutrition and Exercise'
+      'Alcohol & Other Drugs': 'Alcohol & Other Drugs'
+      'Nutrition Workshop': 'Nutrition Workshop'
       'Health Care 101': 'Health Care 101'
       'Road to Resilience': 'Road to Resilience'
-      'USF''s Survival Guide to Stress Management': 'USF''s Survival Guide to Stress Management'
+      'Stress Management Workshop': 'Stress Management Workshop'
       'Tobacco & E-Cigarettes 101': 'Tobacco & E-Cigarettes 101'
     '#required': true
   alcoholworkshop_description:
@@ -34,10 +34,10 @@ elements: |-
     '#states':
       visible:
         ':input[name="please_select_a_workshop"]':
-          value: 'Alcohol & Upstander Strategies'
+          value: 'Alcohol & Other Drugs'
       invisible:
         ':input[name="please_select_a_workshop"]':
-          '!value': 'Alcohol & Upstander Strategies'
+          '!value': 'Alcohol & Other Drugs'
     '#markup': 'Students and community members will learn about standard alcohol servings, how to drink responsibly (and what that even means), and reflect on their own drinking habits. For those who don&#39;t drink (or not drinking yet), discover how to be an active bystander and how to assist your peers who may have had a bit too much to drink. Open to ALL students.'
   healthcareworkshop_description:
     '#type': webform_markup
@@ -54,20 +54,20 @@ elements: |-
     '#states':
       visible:
         ':input[name="please_select_a_workshop"]':
-          value: 'Boost Your Health Series: Nutrition and Exercise'
+          value: 'Nutrition Workshop'
       invisible:
         ':input[name="please_select_a_workshop"]':
-          '!value': 'Boost Your Health Series: Nutrition and Exercise'
+          '!value': 'Nutrition Workshop'
     '#markup': 'This workshop series explores finding motivation and goal setting for nutrition and exercise, the benefits of exercise (beyond just physical!), tips for eating healthy with limited time and budget, and exploring campus services and resources at and around USF that can help boost your nutrition and exercise habits!'
   stressmanagement_description:
     '#type': webform_markup
     '#states':
       visible:
         ':input[name="please_select_a_workshop"]':
-          value: 'USF''s Survival Guide to Stress Management'
+          value: 'Stress Management Workshop'
       invisible:
         ':input[name="please_select_a_workshop"]':
-          '!value': 'USF''s Survival Guide to Stress Management'
+          '!value': 'Stress Management Workshop'
     '#markup': 'This workshop teaches students how to utilize techniques to manage COVID-19-related stress and anxiety as well as ways to navigate social life on- and off-campus. Participants will engage in different stress and anxiety relief strategies and obtain resources to managing stress.'
   tobaccoworkshop_description:
     '#type': webform_markup

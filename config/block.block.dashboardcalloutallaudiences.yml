@@ -14,12 +14,12 @@ dependencies:
 id: dashboardcalloutallaudiences
 theme: myusf
 region: sidebar_second
-weight: 142
+weight: 141
 provider: null
 plugin: 'block_content:b1375320-458a-4b8e-a562-3faa02ca3d81'
 settings:
   id: 'block_content:b1375320-458a-4b8e-a562-3faa02ca3d81'
-  label: 'Dashboard Callout - Faculty and Staff 2 - Not in use'
+  label: 'Dashboard Callout - All Audiences'
   label_display: '0'
   provider: block_content
   status: true
@@ -35,12 +35,12 @@ visibility:
     id: request_path
     negate: false
     context_mapping: {  }
-    pages: /test
+    pages: "/dashboard\r\n/home\r\n/usf-together"
   user_role:
     id: user_role
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
     roles:
-      faculty: faculty
-      employee: employee
+      authenticated: authenticated
+      administrator: administrator

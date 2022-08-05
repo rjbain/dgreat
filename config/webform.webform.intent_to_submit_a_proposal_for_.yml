@@ -36,22 +36,9 @@ elements: |-
     last_name:
       '#type': textfield
       '#title': 'Last Name'
-    university_appointment:
-      '#type': select
-      '#title': 'University Appointment'
-      '#options':
-        PT-Faculty: PT-Faculty
-        FT-Faculty: FT-Faculty
-        Staff: Staff
-      '#required': true
-    email_address:
-      '#type': email
-      '#title': 'Email Address'
-      '#required': true
-    contact_phone_number:
-      '#type': tel
-      '#title': 'Contact Phone Number'
-      '#required': true
+    title:
+      '#type': textfield
+      '#title': Title
     college_division:
       '#type': select
       '#title': College/Division
@@ -69,80 +56,89 @@ elements: |-
       '#type': textfield
       '#title': Department(s)
       '#required': true
-    contact_information_for_usf_co_project_director_pi_:
-      '#type': radios
-      '#title': 'Contact Information for USF Co-Project Director/PI:'
+    email_address:
+      '#type': email
+      '#title': 'Email Address'
+      '#required': true
+    contact_phone_number:
+      '#type': tel
+      '#title': 'Contact Phone Number'
+      '#required': true
+    are_you_currently_working_with_a_usf_development_or_contracts_an:
+      '#type': select
+      '#title': 'Are you currently working with a USF Development or Contracts and Grants Administrator on this project? '
       '#options':
-        'No': 'No'
         'Yes': 'Yes'
+        'No': 'No'
+      '#required': true
   project_information:
     '#type': fieldset
     '#title': 'Project Information'
     project_information_:
       '#type': textfield
-      '#title': 'Name of Sponsor'
+      '#title': 'Name of Funding Agency/Sponsor'
       '#required': true
     type_of_sponsor_funder:
       '#type': select
       '#title': 'Type of Sponsor/Funder'
       '#options':
-        Federal: Federal
+        City: City
         State: State
+        Federal: Federal
         Foundation: Foundation
         'Corporation ': 'Corporation '
         Other: Other
       '#required': true
     if_usf_is_sub_award_provide_contact_for_sponsor:
       '#type': textfield
-      '#title': 'If USF is sub award, provide contact for sponsor'
+      '#title': 'Will USF be the prime award institution? If no, list the prime award institution and a contact person'
     program_url_or_describe_rfp:
       '#type': textarea
-      '#title': 'Program URL or Describe RFP'
+      '#title': 'URL for Request for Proposal (RFP), Request for Application (RFA), Funding Announcement, Broad Area Announcement (BAA).  If none, then describe the request from the funder/sponsor.'
       '#required': true
     deadline_date:
       '#type': textfield
-      '#title': 'Deadline Date'
-      '#required': true
-    deadline_type:
-      '#type': radios
-      '#title': 'Deadline Type'
-      '#options':
-        Postmark: Postmark
-        Receipt: Receipt
-      '#required': true
-    electronic_submission_:
-      '#type': radios
-      '#title': 'Electronic Submission?'
-      '#options':
-        'No': 'No'
-        'Yes': 'Yes'
+      '#title': 'Submission Deadline'
+      '#description': '<p><strong>Submission deadline = the published date by which an application must be postmarked or hand-delivered to the funder/ sponsor to be considered for a grant. </strong></p>'
       '#required': true
     working_project_title:
       '#type': textfield
-      '#title': 'Working Project Title'
+      '#title': 'Working Title of the Proposal '
       '#required': true
     estimated_amount_requested:
       '#type': textfield
-      '#title': 'Estimated Amount Requested'
+      '#title': 'Amount Requested By USF:'
       '#required': true
-    is_this_an_intent_to_conduct_sponsored_research:
-      '#type': radios
-      '#title': 'Is this an intent to conduct sponsored research'
-      '#options':
-        'No': 'No'
-        'Yes': 'Yes'
+    attach_an_abstract_or_scope_of_work:
+      '#type': text_format
+      '#title': 'Attach an Abstract or Scope of Work'
+    start_date_end_date:
+      '#type': textfield
+      '#title': 'Start Date - End Date'
       '#required': true
     subcontractors:
-      '#type': radios
-      '#title': Subcontractors
+      '#type': webform_radios_other
+      '#title': 'Are there subcontracts on the proposal?'
       '#description': '(Will you will partnering with colleagues at another university or organization? If you indicate &quot;yes&quot;, please give the contact information for them in the project description.)'
       '#options':
         'No': 'No'
-        'Yes': 'Yes'
+      '#other__option_label': 'Yes'
+      '#other__description': 'If yes, list the sub-awardees with contact information.'
       '#required': true
+      '#options__properties': ''
+    are_there_consultants_on_the_project:
+      '#type': webform_radios_other
+      '#title': 'Are there consultants on the project?'
+      '#description': '(Will you will partnering with colleagues at another university or organization? If you indicate &quot;yes&quot;, please give the contact information for them in the project description.)'
+      '#options':
+        'No': 'No'
+      '#other__option_label': 'Yes'
+      '#other__description': 'If yes, list the consultants with contact information.'
+      '#required': true
+      '#options__properties': ''
     cost_sharing_:
       '#type': webform_radios_other
-      '#title': 'Cost Sharing?'
+      '#title': 'Is cost-sharing required?'
       '#description': 'Will USF be required by the funder to contribute funds to support the project? &nbsp;'
       '#options':
         'No': 'No'
@@ -150,9 +146,10 @@ elements: |-
       '#other__placeholder': 'Enter amount…'
       '#other__description': 'If "yes" enter amount'
       '#required': true
+      '#options__properties': ''
     release_time_:
       '#type': webform_radios_other
-      '#title': 'Release Time?'
+      '#title': 'Are you or key project personnel seeking release time?'
       '#description': 'Are you requesting a release from teaching to conduct research or participate in grant activities? &nbsp;'
       '#options':
         'No': 'No'
@@ -160,6 +157,17 @@ elements: |-
       '#other__placeholder': 'Enter # of courses…'
       '#other__description': 'If "yes" enter # of courses'
       '#required': true
+      '#options__properties': ''
+    have_you_received_approval_for_this_proposal_from_your_dean_s_:
+      '#type': webform_radios_other
+      '#title': 'Have you discussed and received approval for this proposal from your dean(s)?'
+      '#options':
+        'No': 'No'
+      '#other__type': textarea
+      '#other__option_label': 'Yes'
+      '#other__placeholder': 'Copy and Paste the email thread approval here'
+      '#required': true
+      '#options__properties': ''
     does_the_sponsor_have_a_specific_indirect_cost_rate_:
       '#type': webform_radios_other
       '#title': 'Does the sponsor have a specific indirect cost rate?'
@@ -170,31 +178,43 @@ elements: |-
       '#other__placeholder': 'Enter rate/amount…'
       '#other__description': 'If "yes" what is the rate/amount?'
       '#required': true
-    have_you_received_approval_for_this_proposal_from_your_dean_s_:
-      '#type': radios
-      '#title': 'Have you received approval for this proposal from your dean(s)?'
-      '#options':
-        'No': 'No'
-        'Yes': 'Yes'
-      '#required': true
     will_the_project_involve_the_need_for_new_space_or_renovation_to:
       '#type': radios
-      '#title': 'Will the project involve the need for new space or renovation to existing spaces?'
+      '#title': 'Will the project involve the need for new space, renovation to existing space(s), and/or accommodations for new equipment that will be purchased with awarded grant funds?'
       '#options':
         'No': 'No'
         'Yes': 'Yes'
       '#required': true
-    are_you_currently_working_with_someone_at_usf_on_the_proposal_e_:
-      '#type': webform_radios_other
-      '#title': 'Are you currently working with someone at USF on the proposal (e.g., CFR/Development)?'
-      '#options':
-        'No': 'No'
-      '#other__option_label': 'Yes'
-      '#other__placeholder': 'List the person(s) at USF whom you are currently working with on the proposal '
-      '#required': true
+      '#options__properties': ''
   completion_of_the_following_questions_is_required_section:
     '#type': fieldset
     '#title': 'Completion of the following questions is required:'
+    description_of_the_project_required_for_review_approval_:
+      '#type': textarea
+      '#title': 'Description of the Project (Required for Review/Approval)'
+      '#required': true
+    in_the_space_below_briefly_describe_any_special_project_needs_th:
+      '#type': textarea
+      '#title': 'In the space below, briefly describe any special project needs that may be required from your college/division or the University (e.g., space, staff, student worker(s), equipment library resources).'
+      '#description': '<strong>NOTE:</strong>&nbsp;Applicants are required to meet with their college/division representative to discuss proposed projects and possible college/division commitments (e.g., cost-sharing, release time, etc.). Consent must be granted prior to the development of proposal. Division (Dean/VP) approval to submit a proposal will be required before the official University commitment can be authorized by the Provost.'
+    does_your_proposal_involve_human_subjects_have_you_sought_irb_ap:
+      '#type': radios
+      '#title': 'Does your proposal involve Human Subjects?'
+      '#options':
+        'No': 'No'
+        'Yes': 'Yes'
+      '#other__option_label': other...
+      '#required': true
+      '#options__properties': ''
+    _have_you_sought_irb_approval_:
+      '#type': radios
+      '#title': ' Have you sought IRB approval?'
+      '#options':
+        'No': 'No'
+        'Yes': 'Yes'
+      '#other__option_label': other...
+      '#required': true
+      '#options__properties': ''
     completion_of_the_following_questions_is_required_:
       '#type': radios
       '#title': 'Does your research project involve the use of any of the following categories of hazardous materials or equipment?'
@@ -223,17 +243,9 @@ elements: |-
     _i_have_reviewed_the_above_list_and_certify_that_my_research_pro:
       '#type': checkbox
       '#title': ' I have reviewed the above list and certify that my research proposal does not involve the use of any of these hazard categories. If this should change in the future I will re-submit this form.'
-    description_of_the_project_required_for_review_approval_:
-      '#type': textarea
-      '#title': 'Description of the Project (Required for Review/Approval)'
-      '#required': true
-    in_the_space_below_briefly_describe_any_special_project_needs_th:
-      '#type': textarea
-      '#title': 'In the space below, briefly describe any special project needs that may be required from your college/division or the University (e.g., space, staff, student worker(s), equipment library resources).'
-      '#description': '<strong>NOTE:</strong>&nbsp;Applicants are required to meet with their college/division representative to discuss proposed projects and possible college/division commitments (e.g., cost-sharing, release time, etc.). Consent must be granted prior to the development of proposal. Division (Dean/VP) approval to submit a proposal will be required before the official University commitment can be authorized by the Provost.'
     person_submitting_this_form:
       '#type': textfield
-      '#title': 'Person submitting this form'
+      '#title': 'Signed (name, contact information)'
       '#required': true
     please_check_all_the_appropriate_dean_vp_representatives:
       '#type': checkboxes
@@ -249,6 +261,7 @@ elements: |-
         'School of Nursing and Health Professions': 'School of Nursing and Health Professions'
         'Student Life': 'Student Life'
       '#required': true
+      '#options__properties': ''
   actions:
     '#type': webform_actions
     '#title': 'Submit button(s)'
