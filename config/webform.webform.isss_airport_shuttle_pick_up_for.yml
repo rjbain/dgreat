@@ -7,9 +7,9 @@ dependencies:
 third_party_settings:
   dgreat_student_surveys:
     salesforce_id: ''
-weight: 0
 open: null
 close: null
+weight: 0
 uid: 62703
 template: false
 archive: false
@@ -17,78 +17,7 @@ id: isss_airport_shuttle_pick_up_for
 title: 'ISSS Airport Pick-up Form'
 description: ''
 category: ''
-elements: |-
-  last_family_name:
-    '#type': textfield
-    '#title': 'Last (Family) Name'
-    '#required': true
-  first_given_name:
-    '#type': textfield
-    '#title': 'First (Given) Name'
-    '#required': true
-  email:
-    '#type': email
-    '#title': 'USF Email'
-    '#required': true
-  cell_phone_number_in_us_if_applicable_:
-    '#type': tel
-    '#title': 'Cell Phone Number in US (if applicable)'
-  usf_student_id_number_example_12345678_:
-    '#type': textfield
-    '#title': 'USF Student ID Number (Example: 12345678)'
-    '#required': true
-  sfo_airport_arrival_time_date:
-    '#type': radios
-    '#title': 'SFO Airport Arrival Date (Please send your corresponding flight itinerary to isss@usfca.edu)'
-    '#options':
-      'August 13th': 'August 13th -- International Student Move In Day'
-    '#required': true
-    '#options__properties': ''
-  sfo_airport_arrival_time:
-    '#type': webform_time
-    '#title': 'SFO Airport Arrival Time'
-    '#required': true
-  airline:
-    '#type': textfield
-    '#title': Airline
-    '#required': true
-  flight_number:
-    '#type': textfield
-    '#title': 'Flight Number'
-    '#required': true
-  will_you_arrive_in_the_domestic_or_the_international_terminal_at:
-    '#type': radios
-    '#title': 'Will you arrive in the Domestic or the International terminal at San Francisco International Airport?'
-    '#options':
-      1: 'Domestic Terminal'
-      2: 'International Terminal'
-    '#required': true
-  do_you_have_confirmed_on_campus_housing_:
-    '#type': radios
-    '#title': 'Do you have confirmed on-campus housing?'
-    '#options':
-      1: 'Yes'
-      2: 'No'
-  if_you_have_been_assigned_a_room_on_campus_which_residence_hall_:
-    '#type': radios
-    '#title': 'If you have been assigned a room on campus, which Residence Hall are you in?'
-    '#options':
-      1: 'Toler Hall'
-      2: 'Gillson Hall'
-      3: 'Fromm Hall'
-      4: 'Hayes-Healy Hall'
-      5: 'Lone Mountain'
-      6: 'Lone Mountain East'
-      7: 'Loyola Village'
-      8: 'Pedro Arrupe Hall'
-      9: 'Fulton House'
-      10: 'St. Anne''s'
-  have_you_been_fully_vaccinated_by_a_who_approved_vaccine_:
-    '#type': textfield
-    '#title': 'Have you been fully vaccinated by a WHO approved COVID vaccine?'
-  please_send_your_corresponding_flight_itinerary_to_isss_usfca_ed:
-    '#type': label
-    '#title': 'Please send your corresponding flight itinerary to isss@usfca.edu'
+elements: "last_family_name:\n  '#type': textfield\n  '#title': 'Last (Family) Name'\n  '#required': true\nfirst_given_name:\n  '#type': textfield\n  '#title': 'First (Given) Name'\n  '#required': true\nemail:\n  '#type': email\n  '#title': 'USF Email'\n  '#required': true\ncell_phone_number_in_us_if_applicable_:\n  '#type': tel\n  '#title': 'Cell Phone Number in US (if applicable)'\nusf_student_id_number_example_12345678_:\n  '#type': textfield\n  '#title': 'USF Student ID Number (Example: 12345678)'\n  '#required': true\nsfo_airport_arrival_time_date:\n  '#type': radios\n  '#title': 'SFO Airport Arrival Date (Please send your corresponding flight itinerary to isss@usfca.edu)'\n  '#options':\n    'August 13th': 'August 13th -- International Student Move In Day'\n  '#required': true\n  '#options__properties': ''\nsfo_airport_arrival_time:\n  '#type': webform_time\n  '#title': 'SFO Airport Arrival Time'\n  '#required': true\nairline:\n  '#type': textfield\n  '#title': Airline\n  '#required': true\nflight_number:\n  '#type': textfield\n  '#title': 'Flight Number'\n  '#required': true\nwill_you_arrive_in_the_domestic_or_the_international_terminal_at:\n  '#type': radios\n  '#title': 'Will you arrive in the Domestic or the International terminal at San Francisco International Airport?'\n  '#options':\n    1: 'Domestic Terminal'\n    2: 'International Terminal'\n  '#required': true\ndo_you_have_confirmed_on_campus_housing_:\n  '#type': radios\n  '#title': 'Do you have confirmed on-campus housing?'\n  '#options':\n    1: 'Yes'\n    2: 'No'\nif_you_have_been_assigned_a_room_on_campus_which_residence_hall_:\n  '#type': radios\n  '#title': 'If you have been assigned a room on campus, which Residence Hall are you in?'\n  '#options':\n    1: 'Toler Hall'\n    2: 'Gillson Hall'\n    3: 'Fromm Hall'\n    4: 'Hayes-Healy Hall'\n    5: 'Lone Mountain'\n    6: 'Lone Mountain East'\n    7: 'Loyola Village'\n    8: 'Pedro Arrupe Hall'\n    9: 'Fulton House'\n    10: 'St. Anne''s'\nhave_you_been_fully_vaccinated_by_a_who_approved_vaccine_:\n  '#type': textfield\n  '#title': 'Have you been fully vaccinated by a WHO approved COVID vaccine?'\nplease_send_your_corresponding_flight_itinerary_to_isss_usfca_ed:\n  '#type': label\n  '#title': 'Please send your corresponding flight itinerary to isss@usfca.edu'"
 css: ''
 javascript: ''
 settings:
@@ -103,48 +32,40 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
+  form_exception_message: ''
   form_open_message: ''
   form_close_message: 'The airport reservation form is now closed.'
-  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
+  form_reset: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
-  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
-  form_attributes: {  }
-  form_method: ''
-  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
-  submission_exception_message: ''
-  submission_locked_message: ''
   submission_log: false
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -153,6 +74,11 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -163,13 +89,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -192,9 +118,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
-  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
+  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -276,9 +202,9 @@ access:
 handlers:
   email:
     id: email
-    handler_id: email
     label: Email
     notes: ''
+    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -287,17 +213,13 @@ handlers:
         - completed
       to_mail: isss@usfca.edu
       to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
       cc_mail: ''
       cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       subject: _default
       body: "<p>This is a confirmation that you have registered for transportation from the San Francisco International Airport to the USF main campus. If your plans change and you no longer need this service, or need to update your flight information, please contact us immediately at isss@usfca.edu.</p>\r\n\r\n<p>Submitted on {{ webform_token('[webform_submission:created]', webform_submission) }}</p>\r\n<p>Submitted by: {{ webform_token('[webform_submission:user]', webform_submission) }}</p>\r\n<p>Submitted values are:</p>\r\n{{ webform_token('[webform_submission:values]', webform_submission) }}\r\n"
       excluded_elements: {  }
@@ -308,14 +230,18 @@ handlers:
       html: true
       attachments: false
       twig: true
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       theme_name: ''
       parameters: {  }
-      debug: false
   email_1:
     id: email
-    handler_id: email_1
     label: Email
     notes: ''
+    handler_id: email_1
     status: true
     conditions: {  }
     weight: 0
@@ -324,17 +250,13 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:email:raw]'
       to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
       cc_mail: ''
       cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       subject: _default
       body: "<p>\r\nThis is a confirmation that you have registered for transportation from the San Francisco International Airport to the USF main campus. If your plans change and you no longer need this service, or need to update your flight information, please contact us immediately at isss@usfca.edu.\r\n</p>\r\n\r\n<p>Submitted on {{ webform_token('[webform_submission:created]', webform_submission) }}</p>\r\n<p>Submitted by: {{ webform_token('[webform_submission:user]', webform_submission) }}</p>\r\n<p>Submitted values are:</p>\r\n{{ webform_token('[webform_submission:values]', webform_submission) }}\r\n"
       excluded_elements: {  }
@@ -345,7 +267,11 @@ handlers:
       html: true
       attachments: false
       twig: true
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       theme_name: ''
       parameters: {  }
-      debug: false
 variants: {  }

@@ -2,9 +2,9 @@ uuid: 11b0f9bf-203b-4c53-b454-5ddddce1170c
 langcode: en
 status: open
 dependencies: {  }
-weight: 0
 open: null
 close: null
+weight: 0
 uid: 24225
 template: false
 archive: false
@@ -12,172 +12,7 @@ id: webform_135898
 title: 'Law Student Organization Registration Form'
 description: null
 category: null
-elements: |-
-  organization_name:
-    '#type': textfield
-    '#title': 'Organization Name'
-    '#description': ''
-    '#required': true
-  new_group:
-    '#type': radios
-    '#title': 'Is this a new student organization for the 2022-2023 academic year?'
-    '#options':
-      2: 'Yes'
-      3: 'No'
-    '#required': true
-    '#format_items': comma
-    '#format_items_html': ''
-    '#format_items_text': ''
-    '#options__properties': ''
-  permission:
-    '#type': radios
-    '#title': 'If you are a new student org in 2022-2023, have you received permission from the Assistant Dean of Student Affairs to register your group?'
-    '#options':
-      2: 'Yes'
-      3: 'No'
-    '#states':
-      visible:
-        ':input[name="new_group[2]"]':
-          checked: true
-    '#options__properties': ''
-  president:
-    '#type': textfield
-    '#title': 'President Name'
-    '#description': ''
-    '#required': true
-  president_email:
-    '#type': textfield
-    '#title': 'President Email'
-    '#description': ''
-    '#required': true
-  vice_president:
-    '#type': textfield
-    '#title': 'Vice President'
-    '#description': ''
-  vice_president_email:
-    '#type': textfield
-    '#title': 'Vice President Email'
-    '#description': ''
-  treasurer:
-    '#type': textfield
-    '#title': 'Treasurer Name'
-    '#description': ''
-  treasurer_email:
-    '#type': textfield
-    '#title': 'Treasurer Email'
-    '#description': ''
-  secretary:
-    '#type': textfield
-    '#title': Secretary
-    '#description': ''
-  secretary_email:
-    '#type': textfield
-    '#title': 'Secretary Email'
-    '#description': ''
-  additiona_board_positions:
-    '#type': textarea
-    '#title': 'Please indicate any additional or alternate board positions below'
-    '#description': ''
-  primary_contact:
-    '#type': email
-    '#title': 'Please provide a primary contact for the student organization'
-    '#description': 'All communications from the Office of Student Affairs will be sent to this one email address. Note that you may use a group email address (e.g. studentorg@gmail.com) that all board members have access to. This email address will be publicly released to USF students, faculty, and staff, as well as individuals, organizations, and employers outside of USF.'
-    '#size': 20
-    '#required': true
-  faculty_staff_or_alumni_advisor:
-    '#type': radios
-    '#title': 'Do you have a faculty, staff, or alumni advisor for the 2022-2023 academic year?'
-    '#options':
-      1: 'Yes'
-      2: 'No'
-      3: 'In Progress -- I will contact lawstudentaffairs@usfca.edu once we have obtained an advisor.'
-    '#required': true
-    '#options__properties': ''
-  advisor_name:
-    '#type': textfield
-    '#title': 'Please provide your advisor''s name and email below.'
-    '#required': true
-    '#states':
-      visible:
-        ':input[name="faculty_staff_or_alumni_advisor"]':
-          value: '1'
-  advisor_guidelines:
-    '#type': processed_text
-    '#title': 'Advisor Guidelines'
-    '#description': ''
-    '#states':
-      visible:
-        ':input[name="faculty_staff_or_alumni_advisor[2]"]':
-          checked: true
-    '#text': |
-      <p>Please review and share with your advisor the&nbsp;<a href="https://myusf.usfca.edu/sites/default/files/Guidelines_for_Student_Organization_Advisors.pdf" title="">Guidelines for Student Organization Advisors</a>. Contact the Assistant Dean for Student Affairs at <a href="mailto:shcarlos@usfca.edu">shcarlos@usfca.edu</a>&nbsp;if you have questions about choosing an advisor.&nbsp;</p>
-      
-    '#format': full_html
-  sba_representative:
-    '#type': textfield
-    '#title': 'SBA Representative'
-    '#description': 'The SBA requests each organization identify one or more representatives to the SBA. Student organization representatives are required to attend Senate meetings with the SBA on a regular basis. Failure to attend these events may result in a denial of SBA funding for group events.'
-    '#required': true
-  sba_representative_email_address:
-    '#type': textfield
-    '#title': 'SBA Representative Email Address'
-    '#description': ''
-    '#required': true
-  by_selecting_yes_i_agree_to_ensure_the_sba_representative_will_b:
-    '#type': radios
-    '#title': 'We agree and confirm the SBA Representative will be present for ALL SBA Student Senate Meetings and report back to the student organization.'
-    '#options':
-      1: 'Yes -- If SBA Representative is unavailable, it is the student organization''s responsibility to find a different board member able to attend and report back to the student organization'
-    '#required': true
-  bulletin_board_2017:
-    '#type': radios
-    '#title': 'Does your organization want a bulletin board for the 2022-2023 academic year?'
-    '#options':
-      1: 'Yes'
-      2: 'No'
-    '#states':
-      visible:
-        ':input[name="bulletin_board_2016[2]"]':
-          checked: true
-    '#options__properties': ''
-  if_any_please_share_your_student_organization_s_website_social_m:
-    '#type': textfield
-    '#title': 'If any, please share your student organization''s website, social media handles or links (Instagram, Facebook, etc.)'
-    '#description': 'The Office of Student Affairs intends to provide training and guidance for this outlet, but would like to know the existing student organization media that was already created/used anytime before Spring 2020.&nbsp;We hope to have all social media accounts verified with trained student leaders per USF policy.&nbsp;It is not necessary to have a social media account or website for your student organization.&nbsp;'
-    '#required': true
-  website:
-    '#type': processed_text
-    '#title': Website
-    '#description': ''
-    '#text': |
-      <p>Please review the description of your student group on <a href="https://myusf.usfca.edu/law/student-life/student-organizations">the USF website</a>. If you would like to make any changes, please submit the new text description below. Unless stated otherwise, we will use the Primary Contact Information provided above for this page.&nbsp;</p>
-      
-    '#format': full_html
-  description:
-    '#type': textarea
-    '#title': 'Website Information'
-    '#required': true
-  policy_freedom_of_expression:
-    '#type': processed_text
-    '#title': 'Policy Freedom of Expression'
-    '#description': ''
-    '#text': |
-      <p><span><a class="acalog" data-acalog-catalog-type="Catalog" data-acalog-data="pages" data-acalog-link-text="Policy on Freedom of Expression" data-acalog-page-name="Institutional Policy on Freedom of Expression" href="" target="_blank">Loading...</a></span></p>
-      
-      <p><span><span><span>I have read and agree to comply with the above policy on Freedom of Expression.<br />
-      I understand that the law school has specific policies and procedures that must be followed as a condition of registration.</span></span></span></p>
-      
-      <p>I agree to email <a href="mailto:lawstudentaffairs@usfca.edu">lawstudentaffairs@usfca.edu</a> anytime there is an update and or addition to our student organization board after registration.&nbsp;<br />
-      <span><span><span>Finally, I understand that there will be a mandatory Student Leadership Retreat training before Fall 2022 semester and that each student group is required to send two representatives.</span></span></span></p>
-      
-      <p><span><span><span>By signing below, I agree to all of the above.&nbsp;</span></span></span></p>
-      
-    '#format': full_html
-  signature:
-    '#type': textfield
-    '#title': Signature
-    '#description': ''
-    '#required': true
+elements: "organization_name:\n  '#type': textfield\n  '#title': 'Organization Name'\n  '#description': ''\n  '#required': true\nnew_group:\n  '#type': radios\n  '#title': 'Is this a new student organization for the 2022-2023 academic year?'\n  '#options':\n    2: 'Yes'\n    3: 'No'\n  '#required': true\n  '#format_items': comma\n  '#format_items_html': ''\n  '#format_items_text': ''\n  '#options__properties': ''\npermission:\n  '#type': radios\n  '#title': 'If you are a new student org in 2022-2023, have you received permission from the Assistant Dean of Student Affairs to register your group?'\n  '#options':\n    2: 'Yes'\n    3: 'No'\n  '#states':\n    visible:\n      ':input[name=\"new_group[2]\"]':\n        checked: true\n  '#options__properties': ''\npresident:\n  '#type': textfield\n  '#title': 'President Name'\n  '#description': ''\n  '#required': true\npresident_email:\n  '#type': textfield\n  '#title': 'President Email'\n  '#description': ''\n  '#required': true\nvice_president:\n  '#type': textfield\n  '#title': 'Vice President'\n  '#description': ''\nvice_president_email:\n  '#type': textfield\n  '#title': 'Vice President Email'\n  '#description': ''\ntreasurer:\n  '#type': textfield\n  '#title': 'Treasurer Name'\n  '#description': ''\ntreasurer_email:\n  '#type': textfield\n  '#title': 'Treasurer Email'\n  '#description': ''\nsecretary:\n  '#type': textfield\n  '#title': Secretary\n  '#description': ''\nsecretary_email:\n  '#type': textfield\n  '#title': 'Secretary Email'\n  '#description': ''\nadditiona_board_positions:\n  '#type': textarea\n  '#title': 'Please indicate any additional or alternate board positions below'\n  '#description': ''\nprimary_contact:\n  '#type': email\n  '#title': 'Please provide a primary contact for the student organization'\n  '#description': 'All communications from the Office of Student Affairs will be sent to this one email address. Note that you may use a group email address (e.g. studentorg@gmail.com) that all board members have access to. This email address will be publicly released to USF students, faculty, and staff, as well as individuals, organizations, and employers outside of USF.'\n  '#size': 20\n  '#required': true\nfaculty_staff_or_alumni_advisor:\n  '#type': radios\n  '#title': 'Do you have a faculty, staff, or alumni advisor for the 2022-2023 academic year?'\n  '#options':\n    1: 'Yes'\n    2: 'No'\n    3: 'In Progress -- I will contact lawstudentaffairs@usfca.edu once we have obtained an advisor.'\n  '#required': true\n  '#options__properties': ''\nadvisor_name:\n  '#type': textfield\n  '#title': 'Please provide your advisor''s name and email below.'\n  '#description': ''\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"faculty_staff_or_alumni_advisor[1]\"]':\n        checked: true\nadvisor_guidelines:\n  '#type': processed_text\n  '#title': 'Advisor Guidelines'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"faculty_staff_or_alumni_advisor[2]\"]':\n        checked: true\n  '#text': |\n    <p>Please review and share with your advisor the&nbsp;<a href=\"https://myusf.usfca.edu/sites/default/files/Guidelines_for_Student_Organization_Advisors.pdf\" title=\"\">Guidelines for Student Organization Advisors</a>. Contact the Assistant Dean for Student Affairs at <a href=\"mailto:shcarlos@usfca.edu\">shcarlos@usfca.edu</a>&nbsp;if you have questions about choosing an advisor.&nbsp;</p>\n    \n  '#format': full_html\nsba_representative:\n  '#type': textfield\n  '#title': 'SBA Representative'\n  '#description': 'The SBA requests each organization identify one or more representatives to the SBA. Student organization representatives are required to attend Senate meetings with the SBA on a regular basis. Failure to attend these events may result in a denial of SBA funding for group events.'\n  '#required': true\nsba_representative_email_address:\n  '#type': textfield\n  '#title': 'SBA Representative Email Address'\n  '#description': ''\n  '#required': true\nby_selecting_yes_i_agree_to_ensure_the_sba_representative_will_b:\n  '#type': radios\n  '#title': 'We agree and confirm the SBA Representative will be present for ALL SBA Student Senate Meetings and report back to the student organization.'\n  '#options':\n    1: 'Yes -- If SBA Representative is unavailable, it is the student organization''s responsibility to find a different board member able to attend and report back to the student organization'\n  '#required': true\nbulletin_board_2017:\n  '#type': radios\n  '#title': 'Does your organization want a bulletin board for the 2022-2023 academic year?'\n  '#options':\n    1: 'Yes'\n    2: 'No'\n  '#states':\n    visible:\n      ':input[name=\"bulletin_board_2016[2]\"]':\n        checked: true\n  '#options__properties': ''\nif_any_please_share_your_student_organization_s_website_social_m:\n  '#type': textfield\n  '#title': 'If any, please share your student organization''s website, social media handles or links (Instagram, Facebook, etc.)'\n  '#description': 'The Office of Student Affairs intends to provide training and guidance for this outlet, but would like to know the existing student organization media that was already created/used anytime before Spring 2020.&nbsp;We hope to have all social media accounts verified with trained student leaders per USF policy.&nbsp;It is not necessary to have a social media account or website for your student organization.&nbsp;'\n  '#required': true\nwebsite:\n  '#type': processed_text\n  '#title': Website\n  '#description': ''\n  '#text': |\n    <p>Please review the description of your student group on <a href=\"https://myusf.usfca.edu/law/student-life/student-organizations\">the USF website</a>. If you would like to make any changes, please submit the new text description below. Unless stated otherwise, we will use the Primary Contact Information provided above for this page.&nbsp;</p>\n    \n  '#format': full_html\ndescription:\n  '#type': textarea\n  '#title': 'Website Information'\n  '#required': true\npolicy_freedom_of_expression:\n  '#type': processed_text\n  '#title': 'Policy Freedom of Expression'\n  '#description': ''\n  '#text': |\n    <p><span><a class=\"acalog\" data-acalog-catalog-type=\"Catalog\" data-acalog-data=\"pages\" data-acalog-link-text=\"Policy on Freedom of Expression\" data-acalog-page-name=\"Institutional Policy on Freedom of Expression\" href=\"\" target=\"_blank\">Loading...</a></span></p>\n    \n    <p><span><span><span>I have read and agree to comply with the above policy on Freedom of Expression.<br />\n    I understand that the law school has specific policies and procedures that must be followed as a condition of registration.</span></span></span></p>\n    \n    <p>I agree to email <a href=\"mailto:lawstudentaffairs@usfca.edu\">lawstudentaffairs@usfca.edu</a> anytime there is an update and or addition to our student organization board after registration.&nbsp;<br />\n    <span><span><span>Finally, I understand that there will be a mandatory Student Leadership Retreat training before Fall 2022 semester and that each student group is required to send two representatives.</span></span></span></p>\n    \n    <p><span><span><span>By signing below, I agree to all of the above.&nbsp;</span></span></span></p>\n    \n  '#format': full_html\nsignature:\n  '#type': textfield\n  '#title': Signature\n  '#description': ''\n  '#required': true"
 css: ''
 javascript: ''
 settings:
@@ -192,48 +27,40 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
+  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
-  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
+  form_reset: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
-  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
-  form_attributes: {  }
-  form_method: ''
-  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
-  submission_exception_message: ''
-  submission_locked_message: ''
   submission_log: false
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -242,6 +69,11 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -252,13 +84,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -281,9 +113,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
-  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
+  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -367,9 +199,9 @@ access:
 handlers:
   email_1:
     id: email
-    handler_id: email_1
     label: 'Email 1'
     notes: ''
+    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -378,17 +210,13 @@ handlers:
         - completed
       to_mail: lawstudentaffairs@usfca.edu
       to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
       cc_mail: ''
       cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -399,7 +227,11 @@ handlers:
       html: false
       attachments: false
       twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       theme_name: ''
       parameters: {  }
-      debug: false
 variants: {  }

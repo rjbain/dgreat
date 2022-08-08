@@ -34,7 +34,7 @@
 
 {#{ fields.counter.content }#}
 {% set counter = fields.counter.content|striptags %}
-
+{% set building = fields.field_building.content ~ " - " %}
 {% if counter == 1 %}
 	{% set active = "active" %}
 {% else %}
@@ -48,7 +48,7 @@
 		<div class="carousel-caption d-block">
     		<h2 class="carousel-event-title">{{ fields.title.content }}</h2>
     		<p>{{ fields.field_start_date.content }}, {{ fields.field_start_date_1.content }} - {{ fields.field_end_date.content }}</p>
-    		<p>{{ fields.field_location.content }}</p>
+    		<p>{{ building }}{{ fields.field_location.content }}</p>
   		</div>
   		</a>
 	</div>

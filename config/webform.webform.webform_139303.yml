@@ -2,9 +2,9 @@ uuid: 5fc97134-8ba5-4df1-9ded-063b30f2fe8f
 langcode: en
 status: open
 dependencies: {  }
-weight: 0
 open: null
 close: null
+weight: 0
 uid: 33543
 template: false
 archive: false
@@ -12,150 +12,7 @@ id: webform_139303
 title: 'Community Empowerment Activists Application Form'
 description: null
 category: null
-elements: |-
-  markup:
-    '#type': webform_markup
-    '#markup': |
-      We are accepting applications for 2022-2023 on a rolling basis. <em data-renderer-mark="true">Please Note:</em> Priority will be given to applicants who submit early.<br />
-      <br />
-      For any questions, please contact the instructor, Jacqueline Ramos at <a data-renderer-mark="true" href="mailto:jsramos@usfca.edu" title="mailto:jsramos@usfca.edu">jsramos@usfca.edu</a>
-      
-  name_first_middle_last:
-    '#type': textfield
-    '#title': 'Name (First, Middle, Last)'
-    '#description': ''
-    '#required': true
-  student_id_:
-    '#type': textfield
-    '#title': 'Student ID'
-    '#description': ''
-    '#required': true
-  e_mail_address:
-    '#type': textfield
-    '#title': 'E-mail Address'
-    '#description': ''
-    '#required': true
-  alternate_e_mail_address:
-    '#type': textfield
-    '#title': 'Alternate E-mail Address'
-    '#description': ''
-  local_address:
-    '#type': textfield
-    '#title': 'Local Address'
-    '#description': ''
-    '#required': true
-  phone_number:
-    '#type': textfield
-    '#title': 'Phone Number'
-    '#description': ''
-    '#required': true
-  usf_school_college:
-    '#type': radios
-    '#options':
-      1: 'College of Arts and Sciences'
-      2: 'School of Education'
-      3: 'School of Law'
-      4: 'School of Management'
-      5: 'Nursing and Health Professions'
-      6: Other/Undeclared
-    '#title': 'USF School/College'
-    '#description': ''
-    '#required': true
-  major:
-    '#type': textfield
-    '#title': Major
-    '#description': ''
-    '#required': true
-  cumulative_gpa:
-    '#type': number
-    '#title': 'Cumulative GPA'
-    '#required': true
-  current_standing:
-    '#type': radios
-    '#options':
-      1: Freshman
-      2: Sophomore
-      3: Junior
-      4: Senior
-    '#title': 'Current Standing'
-    '#description': ''
-  current_semester:
-    '#type': radios
-    '#options':
-      1: 'First Semester'
-      2: 'Second Semester'
-    '#title': 'Current Semester'
-    '#description': ''
-  expected_graduation_date:
-    '#type': date
-    '#title': 'Expected Graduation Date'
-    '#description': ''
-    '#required': true
-  please_list_any_courses_completed_or_in_progress_that_you_find_relevant_to_this_program:
-    '#type': textarea
-    '#title': 'Please list any courses completed or in progress that you find relevant to this program:'
-    '#description': ''
-  are_you_bilingual_:
-    '#type': radios
-    '#title': 'Are You Bilingual?'
-    '#options': yes_no
-    '#required': true
-  if_yes_what_languages_do_you_speak_:
-    '#type': textfield
-    '#title': 'If Yes, What languages do you speak?'
-    '#states':
-      visible:
-        ':input[name="are_you_bilingual_"]':
-          value: 'Yes'
-  fieldset_statement_of_purpose:
-    '#type': fieldset
-    '#open': true
-    '#title': 'Statement of Purpose'
-    '#description': 'Please read and respond to the prompts below. Statements will be evaluated according to content and writing quality.'
-  what_experiences_have_you_had_in_volunteering_activism_or_community_engagement:
-    '#type': textarea
-    '#title': 'What experiences have you had in volunteering, activism, or community engagement? Please share your engagement experiences at USF or in other communities, and how these have shaped your interest in this program.'
-    '#description': ''
-  what_does_liberation_mean_to_you_what_are_your_interests_passion:
-    '#type': textarea
-    '#title': 'What does liberation mean to you? What are your interests/passions for social justice?'
-  what_local_san_francisco_issues_or_advocacy_areas_are_you_most_interested_in:
-    '#type': textarea
-    '#title': 'What local San Francisco issues or advocacy areas are you most interested in and how do you hope to contribute to local communities through this program?'
-    '#description': ''
-  what_do_you_hope_to_gain_professionally_and_personally_through_the_cea_position:
-    '#type': textarea
-    '#title': 'What do you hope to gain professionally and personally through the CEA position?'
-    '#description': ''
-  resume:
-    '#type': checkbox
-    '#title': Resume
-    '#description': |
-      <p data-renderer-start-pos="1486">Please email your most recent resume to the CEA instructor, Jacqueline Ramos at <a href="mailto:jsramos@usfca.edu">jsramos@usfca.edu</a>.<br />
-      <br />
-      Please Note: Your application will not be complete until we receive your resume.<br />
-      <br />
-      Please select your interview date and time here. Interviews will be 45 minutes virtually or in-person (PST). You will receive an email confirmation and calendar invite of your interview date and time.<br />
-      <br />
-      Please confirm you have read this message by clicking this box.</p>
-      
-    '#required': true
-    '#required_error': 'Please confirm you have read this message'
-  fieldset_reference_0:
-    '#type': fieldset
-    '#title': References
-    '#description': 'Please include 2-3 professional or academic references whom we may contact if needed (professor, former/current work supervisor, or other professional contact). Please include their name, title, and email/phone number.'
-    '#open': true
-  reference:
-    '#type': textarea
-    '#title': References
-  interview_schedule:
-    '#type': processed_text
-    '#admin_title': 'Interview Schedule'
-    '#text': |
-      <p>Please remember to select your interview date and time by accessing the link <a href="https://docs.google.com/spreadsheets/d/1CtWVwBY6ZPLF2rnIRJ_kVrL4qlWxcRdt8HF20AheZdM/edit?usp=sharing" target="_blank">here</a>.</p>
-      
-    '#format': full_html
+elements: "markup:\n  '#type': webform_markup\n  '#markup': |\n    We are accepting applications for 2022-2023 on a rolling basis. <em data-renderer-mark=\"true\">Please Note:</em> Priority will be given to applicants who submit early.<br />\n    <br />\n    For any questions, please contact the instructor, Jacqueline Ramos at <a data-renderer-mark=\"true\" href=\"mailto:jsramos@usfca.edu\" title=\"mailto:jsramos@usfca.edu\">jsramos@usfca.edu</a>\n    \nname_first_middle_last:\n  '#type': textfield\n  '#title': 'Name (First, Middle, Last)'\n  '#description': ''\n  '#required': true\nstudent_id_:\n  '#type': textfield\n  '#title': 'Student ID'\n  '#description': ''\n  '#required': true\ne_mail_address:\n  '#type': textfield\n  '#title': 'E-mail Address'\n  '#description': ''\n  '#required': true\nalternate_e_mail_address:\n  '#type': textfield\n  '#title': 'Alternate E-mail Address'\n  '#description': ''\nlocal_address:\n  '#type': textfield\n  '#title': 'Local Address'\n  '#description': ''\n  '#required': true\nphone_number:\n  '#type': textfield\n  '#title': 'Phone Number'\n  '#description': ''\n  '#required': true\nusf_school_college:\n  '#type': radios\n  '#options':\n    1: 'College of Arts and Sciences'\n    2: 'School of Education'\n    3: 'School of Law'\n    4: 'School of Management'\n    5: 'Nursing and Health Professions'\n    6: Other/Undeclared\n  '#title': 'USF School/College'\n  '#description': ''\n  '#required': true\nmajor:\n  '#type': textfield\n  '#title': Major\n  '#description': ''\n  '#required': true\ncumulative_gpa:\n  '#type': number\n  '#title': 'Cumulative GPA'\n  '#required': true\ncurrent_standing:\n  '#type': radios\n  '#options':\n    1: Freshman\n    2: Sophomore\n    3: Junior\n    4: Senior\n  '#title': 'Current Standing'\n  '#description': ''\ncurrent_semester:\n  '#type': radios\n  '#options':\n    1: 'First Semester'\n    2: 'Second Semester'\n  '#title': 'Current Semester'\n  '#description': ''\nexpected_graduation_date:\n  '#type': date\n  '#title': 'Expected Graduation Date'\n  '#description': ''\n  '#required': true\nplease_list_any_courses_completed_or_in_progress_that_you_find_relevant_to_this_program:\n  '#type': textarea\n  '#title': 'Please list any courses completed or in progress that you find relevant to this program:'\n  '#description': ''\nare_you_bilingual_:\n  '#type': radios\n  '#title': 'Are You Bilingual?'\n  '#options': yes_no\n  '#required': true\nif_yes_what_languages_do_you_speak_:\n  '#type': textfield\n  '#title': 'If Yes, What languages do you speak?'\n  '#states':\n    visible:\n      ':input[name=\"are_you_bilingual_\"]':\n        value: 'Yes'\nfieldset_statement_of_purpose:\n  '#type': fieldset\n  '#open': true\n  '#title': 'Statement of Purpose'\n  '#description': 'Please read and respond to the prompts below. Statements will be evaluated according to content and writing quality.'\nwhat_experiences_have_you_had_in_volunteering_activism_or_community_engagement:\n  '#type': textarea\n  '#title': 'What experiences have you had in volunteering, activism, or community engagement? Please share your engagement experiences at USF or in other communities, and how these have shaped your interest in this program.'\n  '#description': ''\nwhat_does_liberation_mean_to_you_what_are_your_interests_passion:\n  '#type': textarea\n  '#title': 'What does liberation mean to you? What are your interests/passions for social justice?'\nwhat_local_san_francisco_issues_or_advocacy_areas_are_you_most_interested_in:\n  '#type': textarea\n  '#title': 'What local San Francisco issues or advocacy areas are you most interested in and how do you hope to contribute to local communities through this program?'\n  '#description': ''\nwhat_do_you_hope_to_gain_professionally_and_personally_through_the_cea_position:\n  '#type': textarea\n  '#title': 'What do you hope to gain professionally and personally through the CEA position?'\n  '#description': ''\nresume:\n  '#type': checkbox\n  '#title': Resume\n  '#description': |\n    <p data-renderer-start-pos=\"1486\">Please email your most recent resume to the CEA instructor, Jacqueline Ramos at <a href=\"mailto:jsramos@usfca.edu\">jsramos@usfca.edu</a>.<br />\n    <br />\n    Please Note: Your application will not be complete until we receive your resume.<br />\n    <br />\n    Please select your interview date and time here. Interviews will be 45 minutes virtually or in-person (PST). You will receive an email confirmation and calendar invite of your interview date and time.<br />\n    <br />\n    Please confirm you have read this message by clicking this box.</p>\n    \n  '#required': true\n  '#required_error': 'Please confirm you have read this message'\nfieldset_reference_0:\n  '#type': fieldset\n  '#title': References\n  '#description': 'Please include 2-3 professional or academic references whom we may contact if needed (professor, former/current work supervisor, or other professional contact). Please include their name, title, and email/phone number.'\n  '#open': true\nreference:\n  '#type': textarea\n  '#title': References\ninterview_schedule:\n  '#type': processed_text\n  '#admin_title': 'Interview Schedule'\n  '#text': |\n    <p>Please remember to select your interview date and time by accessing the link <a href=\"https://docs.google.com/spreadsheets/d/1CtWVwBY6ZPLF2rnIRJ_kVrL4qlWxcRdt8HF20AheZdM/edit?usp=sharing\" target=\"_blank\">here</a>.</p>\n    \n  '#format': full_html"
 css: ''
 javascript: ''
 settings:
@@ -170,48 +27,40 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
+  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
-  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
+  form_reset: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
-  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
-  form_attributes: {  }
-  form_method: ''
-  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
-  submission_exception_message: ''
-  submission_locked_message: ''
   submission_log: false
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -220,6 +69,11 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -230,13 +84,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -259,9 +113,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
-  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
+  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -345,9 +199,9 @@ access:
 handlers:
   email_2:
     id: email
-    handler_id: email_2
     label: 'Email 2'
     notes: ''
+    handler_id: email_2
     status: true
     conditions: {  }
     weight: 1
@@ -356,17 +210,13 @@ handlers:
         - completed
       to_mail: jsramos@usfca.edu
       to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
       cc_mail: ''
       cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -377,7 +227,11 @@ handlers:
       html: true
       attachments: false
       twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       theme_name: ''
       parameters: {  }
-      debug: false
 variants: {  }
