@@ -1,0 +1,13 @@
+diff --git a/src/WebformElementViews/WebformElementViewsAbstract.php b/src/WebformElementViews/WebformElementViewsAbstract.php
+index 6d90661..02d9652 100644
+--- a/src/WebformElementViews/WebformElementViewsAbstract.php
++++ b/src/WebformElementViews/WebformElementViewsAbstract.php
+@@ -79,7 +79,7 @@ abstract class WebformElementViewsAbstract implements WebformElementViewsInterfa
+     ];
+ 
+     $data[$table_alias]['webform_submission_value'] = [
+-      'title' => Html::escape($element_title),
++      'title' => $element_title,
+       'help' => $this->t('Value of the field %field in webform %webform submission.', [
+         '%field' => $element_title,
+         '%webform' => $webform->label(),
