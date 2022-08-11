@@ -3,7 +3,8 @@
 //npm install gulp -g if it hasn't been done globally
 //npm install gulp gulp-sass gulp-cssmin gulp-concat gulp-imagemin gulp-smushit gulp-uglify --save-dev
 //$ gulp (To run gulp once)
-//$ gulp watch (To continuously watch so changes are automatically compiled) 
+//$ gulp watch (To continuously watch so changes are automatically compiled)
+//For arm64 see https://stackoverflow.com/questions/55921442/how-to-fix-referenceerror-primordials-is-not-defined-in-node-js
 
 var sassFiles = 'sass/src/*.scss',
     cssFiles = 'css',
