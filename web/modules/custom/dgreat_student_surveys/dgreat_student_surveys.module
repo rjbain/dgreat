@@ -73,7 +73,7 @@ function dgreat_student_surveys_form_alter(&$form, FormStateInterface $form_stat
             // Get rid of the extra element we don't want, i.e. '#_webform_states'.
             array_pop($form['elements']);
             // Randomly select one question to keep.
-            $keep = array_rand($form['elements']);
+            (!empty($form['elements'])) ? $keep = array_rand($form['elements']) : $keep = '';
             foreach ($form['elements'] as $key => $element) {
                 if ($key !== $keep) {
                     $form['elements'][$key]['#type'] = 'hidden';
