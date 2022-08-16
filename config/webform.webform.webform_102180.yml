@@ -12,7 +12,7 @@ id: webform_102180
 title: 'HR Commuter Plan and Subsidy Form'
 description: null
 category: null
-elements: |
+elements: |-
   first_name:
     '#type': textfield
     '#title': 'First Name'
@@ -46,17 +46,20 @@ elements: |
     '#required': true
   do_you_have_a_usf_parking_permit:
     '#type': radios
-    '#title': 'Do you have a USF parking permit or will you be purchasing one for Fall 2020?'
+    '#title': 'Do you have a USF parking permit or will you be purchasing one for the upcoming semester?'
     '#options':
       1: 'Yes, I have a current parking permit'
-      2: 'No'
-      3: 'I will be purchasing a permit for Fall 2020'
+      2: 'No, I do not currently have a USF parking permit'
+      3: 'I will be purchasing a permit for the upcoming semester'
     '#required': true
+    '#options__properties': ''
   confirmation_message:
     '#type': processed_text
     '#title': 'Confirmation Message'
     '#description': ''
-    '#text': "<p><em>By entering my name below I agree that I have read and understand the <a href=\"/node/101813\" target=\"_blank\">pre-tax commuter program and USF subsidy eligibility and terms</a> and that I will read and comply with the terms and conditions of Commuter Check Direct (CCD). I agree and certify that orders/products will be used by me only for the purposes of commuting to and from work. I authorize USF to deduct the amount of my order (minus any applicable subsidy) up to the applicable IRS pre-tax limit and any additional post-tax amounts from my paycheck.</em></p>\r\n"
+    '#text': |
+      <p><em>By entering my name below I agree that I have read and understand the <a href="/node/101813" target="_blank">pre-tax commuter program and USF subsidy eligibility and terms</a> and that I will read and comply with the terms and conditions of Commuter Check Direct (CCD). I agree and certify that orders/products will be used by me only for the purposes of commuting to and from work. I authorize USF to deduct the amount of my order (minus any applicable subsidy) up to the applicable IRS pre-tax limit and any additional post-tax amounts from my paycheck.</em></p>
+      
     '#format': full_html
   name:
     '#type': textfield

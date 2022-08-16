@@ -30,66 +30,12 @@ base_table: search_api_index_events
 base_field: search_api_id
 display:
   default:
-    display_plugin: default
     id: default
     display_title: Master
+    display_plugin: default
     position: 0
     display_options:
-      access:
-        type: none
-        options: {  }
-      cache:
-        type: none
-        options: {  }
-      query:
-        type: views_query
-        options:
-          bypass_access: false
-          skip_access: false
-      exposed_form:
-        type: basic
-        options:
-          submit_button: Apply
-          reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-      pager:
-        type: full
-        options:
-          items_per_page: 10
-          offset: 0
-          id: 0
-          total_pages: null
-          tags:
-            previous: '‹ Previous'
-            next: 'Next ›'
-            first: '« First'
-            last: 'Last »'
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
-          quantity: 7
-      style:
-        type: default
-        options:
-          grouping: {  }
-          row_class: ''
-          default_row_class: true
-      row:
-        type: fields
-        options:
-          default_field_elements: true
-          inline: {  }
-          separator: ''
-          hide_empty: false
+      title: 'Events Search'
       fields:
         body:
           id: body
@@ -98,6 +44,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: null
+          entity_field: null
+          plugin_id: search_api_field
           label: ''
           exclude: true
           alter:
@@ -159,9 +108,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: null
-          entity_field: null
-          plugin_id: search_api_field
         title:
           id: title
           table: search_api_index_events
@@ -169,6 +115,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -231,7 +178,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          plugin_id: search_api_field
         title_1:
           id: title_1
           table: search_api_datasource_events_entity_node
@@ -239,6 +185,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -301,8 +249,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_start_date:
           id: field_start_date
           table: search_api_datasource_events_entity_node
@@ -310,6 +256,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -373,8 +321,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_start_date_1:
           id: field_start_date_1
           table: search_api_datasource_events_entity_node
@@ -382,6 +328,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -445,8 +393,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_end_date:
           id: field_end_date
           table: search_api_datasource_events_entity_node
@@ -454,6 +400,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -517,8 +465,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_location:
           id: field_location
           table: search_api_datasource_events_entity_node
@@ -526,6 +472,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -588,8 +536,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_image_url:
           id: field_image_url
           table: search_api_datasource_events_entity_node
@@ -597,6 +543,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -663,8 +611,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         search_api_id:
           id: search_api_id
           table: search_api_index_events
@@ -672,6 +618,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: standard
           label: ''
           exclude: false
           alter:
@@ -713,7 +660,6 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          plugin_id: standard
         nid:
           id: nid
           table: search_api_datasource_events_entity_node
@@ -721,6 +667,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -793,8 +741,6 @@ display:
             format_plural_values:
               - '1'
               - '@count'
-          entity_type: node
-          plugin_id: search_api_field
         field_building:
           id: field_building
           table: search_api_datasource_events_entity_node
@@ -802,6 +748,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -864,78 +812,43 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
-      filters:
-        field_start_date:
-          id: field_start_date
-          table: search_api_index_events
-          field: field_start_date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '>='
-          value:
-            min: ''
-            max: ''
-            value: today
-            type: offset
-          group: 1
-          exposed: true
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 10
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
           expose:
-            use_operator: false
-            operator: field_start_date_op
-            identifier: field_start_date
-            label: 'Start Date'
-            description: null
-            remember: false
-            multiple: false
-            required: false
-            min_placeholder: null
-            max_placeholder: null
-            placeholder: null
-            operator_limit_selection: false
-            operator_list: {  }
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: search_api_date
-      sorts:
-        field_start_date:
-          id: field_start_date
-          table: search_api_index_events
-          field: field_start_date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          plugin_id: search_api
-      title: 'Events Search'
-      header:
-        area_text_custom:
-          id: area_text_custom
-          table: views
-          field: area_text_custom
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: false
-          tokenize: false
-          content: '<h2>Upcoming Events</h2>'
-          plugin_id: text_custom
-      footer: {  }
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 7
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: none
+        options: {  }
+      cache:
+        type: none
+        options: {  }
       empty:
         area_text_custom:
           id: area_text_custom
@@ -944,11 +857,24 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          empty: true
-          tokenize: false
-          content: 'Please check back for upcoming events.'
           plugin_id: text_custom
-      relationships: {  }
+          empty: true
+          content: 'Please check back for upcoming events.'
+          tokenize: false
+      sorts:
+        field_start_date:
+          id: field_start_date
+          table: search_api_index_events
+          field: field_start_date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: field_start_date
+          exposed: false
       arguments:
         search_api_fulltext:
           id: search_api_fulltext
@@ -957,6 +883,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_fulltext
           default_action: ignore
           exception:
             value: all
@@ -981,11 +908,10 @@ display:
           break_phrase: false
           not: false
           parse_mode: terms
+          conjunction: OR
           fields:
             - body
             - title
-          conjunction: OR
-          plugin_id: search_api_fulltext
         field_category:
           id: field_category
           table: search_api_index_events
@@ -993,6 +919,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_term
           default_action: ignore
           exception:
             value: all
@@ -1016,12 +943,11 @@ display:
           validate_options:
             bundles:
               event_category: event_category
+            access: false
             operation: view
             multiple: 0
-            access: false
           break_phrase: false
           not: false
-          plugin_id: search_api_term
         field_search_date:
           id: field_search_date
           table: search_api_index_events
@@ -1029,6 +955,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_date
           default_action: ignore
           exception:
             value: all
@@ -1051,8 +978,82 @@ display:
             fail: 'not found'
           validate_options: {  }
           break_phrase: false
-          not: 0
+          not: false
+      filters:
+        field_start_date:
+          id: field_start_date
+          table: search_api_index_events
+          field: field_start_date
+          relationship: none
+          group_type: group
+          admin_label: ''
           plugin_id: search_api_date
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: today
+            type: offset
+          group: 1
+          exposed: true
+          expose:
+            label: 'Start Date'
+            description: null
+            use_operator: false
+            operator: field_start_date_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_start_date
+            required: false
+            remember: false
+            multiple: false
+            min_placeholder: null
+            max_placeholder: null
+            placeholder: null
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      query:
+        type: search_api_query
+        options:
+          bypass_access: false
+          skip_access: false
+      relationships: {  }
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: false
+          content: '<h2>Upcoming Events</h2>'
+          tokenize: false
+      footer: {  }
       display_extenders: {  }
     cache_metadata:
       max-age: -1
@@ -1071,12 +1072,11 @@ display:
         - 'config:field.storage.node.field_start_date'
         - 'config:search_api.index.events'
   block_1:
-    display_plugin: block
     id: block_1
     display_title: Block
+    display_plugin: block
     position: 1
     display_options:
-      display_extenders: {  }
       arguments:
         search_api_fulltext:
           id: search_api_fulltext
@@ -1085,6 +1085,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_fulltext
           default_action: ignore
           exception:
             value: all
@@ -1109,11 +1110,10 @@ display:
           break_phrase: false
           not: false
           parse_mode: terms
+          conjunction: OR
           fields:
             - body
             - title
-          conjunction: OR
-          plugin_id: search_api_fulltext
         field_category:
           id: field_category
           table: search_api_index_events
@@ -1121,6 +1121,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_term
           default_action: ignore
           exception:
             value: all
@@ -1144,12 +1145,11 @@ display:
           validate_options:
             bundles:
               event_category: event_category
+            access: false
             operation: view
             multiple: 0
-            access: false
           break_phrase: false
           not: false
-          plugin_id: search_api_term
         field_terms:
           id: field_terms
           table: search_api_index_events
@@ -1157,6 +1157,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_term
           default_action: ignore
           exception:
             value: all
@@ -1180,12 +1181,11 @@ display:
           validate_options:
             bundles:
               event_target: event_target
+            access: false
             operation: view
             multiple: 0
-            access: false
           break_phrase: false
           not: false
-          plugin_id: search_api_term
         field_search_date:
           id: field_search_date
           table: search_api_index_events
@@ -1193,6 +1193,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_date
           default_action: ignore
           exception:
             value: all
@@ -1215,12 +1216,7 @@ display:
             fail: 'not found'
           validate_options: {  }
           break_phrase: false
-          not: 0
-          plugin_id: search_api_date
-      defaults:
-        arguments: false
-        filters: false
-        filter_groups: false
+          not: false
       filters:
         field_start_date:
           id: field_start_date
@@ -1229,6 +1225,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_date
           operator: '>='
           value:
             min: ''
@@ -1277,9 +1274,9 @@ display:
               soe: '0'
               box_editor: '0'
               webform_editor: '0'
-            placeholder: ''
             min_placeholder: ''
             max_placeholder: ''
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -1292,11 +1289,15 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: search_api_date
       filter_groups:
         operator: AND
         groups:
           1: AND
+      defaults:
+        arguments: false
+        filters: false
+        filter_groups: false
+      display_extenders: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -1314,12 +1315,11 @@ display:
         - 'config:field.storage.node.field_start_date'
         - 'config:search_api.index.events'
   block_2:
-    display_plugin: block
     id: block_2
     display_title: 'Event by Category - Not Empty "No Results"'
+    display_plugin: block
     position: 2
     display_options:
-      display_extenders: {  }
       arguments:
         field_category:
           id: field_category
@@ -1328,6 +1328,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_term
           default_action: ignore
           exception:
             value: all
@@ -1351,15 +1352,15 @@ display:
           validate_options:
             bundles:
               event_category: event_category
+            access: false
             operation: view
             multiple: 1
-            access: false
           break_phrase: true
           not: false
-          plugin_id: search_api_term
       defaults:
         arguments: false
       display_description: 'Filter events by category'
+      display_extenders: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -1377,53 +1378,11 @@ display:
         - 'config:field.storage.node.field_start_date'
         - 'config:search_api.index.events'
   block_3:
-    display_plugin: block
     id: block_3
     display_title: 'Event by Term - Not Empty "No Results"'
+    display_plugin: block
     position: 3
     display_options:
-      display_extenders: {  }
-      display_description: ''
-      arguments:
-        field_terms:
-          id: field_terms
-          table: search_api_index_events
-          field: field_terms
-          relationship: none
-          group_type: group
-          admin_label: ''
-          default_action: ignore
-          exception:
-            value: all
-            title_enable: false
-            title: All
-          title_enable: false
-          title: ''
-          default_argument_type: fixed
-          default_argument_options:
-            argument: ''
-          default_argument_skip_url: false
-          summary_options: {  }
-          summary:
-            sort_order: asc
-            number_of_records: 0
-            format: default_summary
-          specify_validation: true
-          validate:
-            type: 'entity:taxonomy_term'
-            fail: empty
-          validate_options:
-            bundles:
-              event_terms: event_terms
-            operation: view
-            multiple: 1
-            access: false
-          break_phrase: true
-          not: false
-          plugin_id: search_api_term
-      defaults:
-        arguments: false
-        fields: false
       fields:
         body:
           id: body
@@ -1432,6 +1391,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: null
+          entity_field: null
+          plugin_id: search_api_field
           label: ''
           exclude: true
           alter:
@@ -1493,9 +1455,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: null
-          entity_field: null
-          plugin_id: search_api_field
         title:
           id: title
           table: search_api_index_events
@@ -1503,6 +1462,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -1565,7 +1525,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          plugin_id: search_api_field
         title_1:
           id: title_1
           table: search_api_datasource_events_entity_node
@@ -1573,6 +1532,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -1635,8 +1596,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_start_date:
           id: field_start_date
           table: search_api_datasource_events_entity_node
@@ -1644,6 +1603,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -1707,8 +1668,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_start_date_1:
           id: field_start_date_1
           table: search_api_datasource_events_entity_node
@@ -1716,6 +1675,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -1779,8 +1740,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_end_date:
           id: field_end_date
           table: search_api_datasource_events_entity_node
@@ -1788,6 +1747,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -1851,8 +1812,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_location:
           id: field_location
           table: search_api_datasource_events_entity_node
@@ -1860,6 +1819,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -1922,8 +1883,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_image_url:
           id: field_image_url
           table: search_api_datasource_events_entity_node
@@ -1931,6 +1890,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -1997,8 +1958,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         search_api_id:
           id: search_api_id
           table: search_api_index_events
@@ -2006,6 +1965,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: standard
           label: ''
           exclude: false
           alter:
@@ -2047,7 +2007,6 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          plugin_id: standard
         nid:
           id: nid
           table: search_api_datasource_events_entity_node
@@ -2055,6 +2014,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -2127,8 +2088,6 @@ display:
             format_plural_values:
               - '1'
               - '@count'
-          entity_type: node
-          plugin_id: search_api_field
         field_terms:
           id: field_terms
           table: search_api_datasource_events_entity_node
@@ -2136,6 +2095,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -2218,8 +2179,6 @@ display:
                 display_method: label
               tags:
                 display_method: label
-          entity_type: node
-          plugin_id: search_api_field
         field_building:
           id: field_building
           table: search_api_datasource_events_entity_node
@@ -2227,6 +2186,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -2289,8 +2250,48 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
+      arguments:
+        field_terms:
+          id: field_terms
+          table: search_api_index_events
+          field: field_terms
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_term
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options: {  }
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: true
+          validate:
+            type: 'entity:taxonomy_term'
+            fail: empty
+          validate_options:
+            bundles:
+              event_terms: event_terms
+            access: false
+            operation: view
+            multiple: 1
+          break_phrase: true
+          not: false
+      defaults:
+        fields: false
+        arguments: false
+      display_description: ''
+      display_extenders: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -2309,12 +2310,23 @@ display:
         - 'config:field.storage.node.field_terms'
         - 'config:search_api.index.events'
   block_4:
-    display_plugin: block
     id: block_4
     display_title: 'Event by Category - Empty "No Results"'
+    display_plugin: block
     position: 2
     display_options:
-      display_extenders: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: true
+          content: ''
+          tokenize: false
       arguments:
         field_category:
           id: field_category
@@ -2323,6 +2335,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_term
           default_action: ignore
           exception:
             value: all
@@ -2346,28 +2359,16 @@ display:
           validate_options:
             bundles:
               event_category: event_category
+            access: false
             operation: view
             multiple: 1
-            access: false
           break_phrase: true
           not: false
-          plugin_id: search_api_term
       defaults:
-        arguments: false
         empty: false
+        arguments: false
       display_description: 'Filter events by category'
-      empty:
-        area_text_custom:
-          id: area_text_custom
-          table: views
-          field: area_text_custom
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          tokenize: false
-          content: ''
-          plugin_id: text_custom
+      display_extenders: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -2385,54 +2386,11 @@ display:
         - 'config:field.storage.node.field_start_date'
         - 'config:search_api.index.events'
   block_5:
-    display_plugin: block
     id: block_5
     display_title: 'Event by Term - Empty "No Results"'
+    display_plugin: block
     position: 3
     display_options:
-      display_extenders: {  }
-      display_description: ''
-      arguments:
-        field_terms:
-          id: field_terms
-          table: search_api_index_events
-          field: field_terms
-          relationship: none
-          group_type: group
-          admin_label: ''
-          default_action: ignore
-          exception:
-            value: all
-            title_enable: false
-            title: All
-          title_enable: false
-          title: ''
-          default_argument_type: fixed
-          default_argument_options:
-            argument: ''
-          default_argument_skip_url: false
-          summary_options: {  }
-          summary:
-            sort_order: asc
-            number_of_records: 0
-            format: default_summary
-          specify_validation: true
-          validate:
-            type: 'entity:taxonomy_term'
-            fail: 'not found'
-          validate_options:
-            bundles:
-              event_terms: event_terms
-            operation: view
-            multiple: 1
-            access: false
-          break_phrase: true
-          not: false
-          plugin_id: search_api_term
-      defaults:
-        arguments: false
-        fields: false
-        empty: false
       fields:
         body:
           id: body
@@ -2441,6 +2399,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: null
+          entity_field: null
+          plugin_id: search_api_field
           label: ''
           exclude: true
           alter:
@@ -2502,9 +2463,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: null
-          entity_field: null
-          plugin_id: search_api_field
         title:
           id: title
           table: search_api_index_events
@@ -2512,6 +2470,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -2574,7 +2533,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          plugin_id: search_api_field
         title_1:
           id: title_1
           table: search_api_datasource_events_entity_node
@@ -2582,6 +2540,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -2644,8 +2604,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_start_date:
           id: field_start_date
           table: search_api_datasource_events_entity_node
@@ -2653,6 +2611,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -2716,8 +2676,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_start_date_1:
           id: field_start_date_1
           table: search_api_datasource_events_entity_node
@@ -2725,6 +2683,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -2788,8 +2748,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_end_date:
           id: field_end_date
           table: search_api_datasource_events_entity_node
@@ -2797,6 +2755,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -2860,8 +2820,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_location:
           id: field_location
           table: search_api_datasource_events_entity_node
@@ -2869,6 +2827,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -2931,8 +2891,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_image_url:
           id: field_image_url
           table: search_api_datasource_events_entity_node
@@ -2940,6 +2898,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -3006,8 +2966,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         search_api_id:
           id: search_api_id
           table: search_api_index_events
@@ -3015,6 +2973,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: standard
           label: ''
           exclude: false
           alter:
@@ -3056,7 +3015,6 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          plugin_id: standard
         nid:
           id: nid
           table: search_api_datasource_events_entity_node
@@ -3064,6 +3022,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -3136,8 +3096,6 @@ display:
             format_plural_values:
               - '1'
               - '@count'
-          entity_type: node
-          plugin_id: search_api_field
         field_terms:
           id: field_terms
           table: search_api_datasource_events_entity_node
@@ -3145,6 +3103,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -3227,8 +3187,6 @@ display:
                 display_method: label
               tags:
                 display_method: label
-          entity_type: node
-          plugin_id: search_api_field
         field_building:
           id: field_building
           table: search_api_datasource_events_entity_node
@@ -3236,6 +3194,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -3298,8 +3258,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
       empty:
         area_text_custom:
           id: area_text_custom
@@ -3308,10 +3266,53 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          empty: true
-          tokenize: false
-          content: ''
           plugin_id: text_custom
+          empty: true
+          content: ''
+          tokenize: false
+      arguments:
+        field_terms:
+          id: field_terms
+          table: search_api_index_events
+          field: field_terms
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_term
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options: {  }
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: true
+          validate:
+            type: 'entity:taxonomy_term'
+            fail: 'not found'
+          validate_options:
+            bundles:
+              event_terms: event_terms
+            access: false
+            operation: view
+            multiple: 1
+          break_phrase: true
+          not: false
+      defaults:
+        empty: false
+        fields: false
+        arguments: false
+      display_description: ''
+      display_extenders: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -3330,55 +3331,11 @@ display:
         - 'config:field.storage.node.field_terms'
         - 'config:search_api.index.events'
   block_6:
-    display_plugin: block
     id: block_6
     display_title: 'Event by Term - Empty "No Results" - Limit 5'
+    display_plugin: block
     position: 3
     display_options:
-      display_extenders: {  }
-      display_description: ''
-      arguments:
-        field_terms:
-          id: field_terms
-          table: search_api_index_events
-          field: field_terms
-          relationship: none
-          group_type: group
-          admin_label: ''
-          default_action: ignore
-          exception:
-            value: all
-            title_enable: false
-            title: All
-          title_enable: false
-          title: ''
-          default_argument_type: fixed
-          default_argument_options:
-            argument: ''
-          default_argument_skip_url: false
-          summary_options: {  }
-          summary:
-            sort_order: asc
-            number_of_records: 0
-            format: default_summary
-          specify_validation: true
-          validate:
-            type: 'entity:taxonomy_term'
-            fail: 'not found'
-          validate_options:
-            bundles:
-              event_terms: event_terms
-            operation: view
-            multiple: 1
-            access: false
-          break_phrase: true
-          not: false
-          plugin_id: search_api_term
-      defaults:
-        arguments: false
-        fields: false
-        empty: false
-        pager: false
       fields:
         body:
           id: body
@@ -3387,6 +3344,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: null
+          entity_field: null
+          plugin_id: search_api_field
           label: ''
           exclude: true
           alter:
@@ -3448,9 +3408,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: null
-          entity_field: null
-          plugin_id: search_api_field
         title:
           id: title
           table: search_api_index_events
@@ -3458,6 +3415,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -3520,7 +3478,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          plugin_id: search_api_field
         title_1:
           id: title_1
           table: search_api_datasource_events_entity_node
@@ -3528,6 +3485,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -3590,8 +3549,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_start_date:
           id: field_start_date
           table: search_api_datasource_events_entity_node
@@ -3599,6 +3556,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -3662,8 +3621,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_start_date_1:
           id: field_start_date_1
           table: search_api_datasource_events_entity_node
@@ -3671,6 +3628,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -3734,8 +3693,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_end_date:
           id: field_end_date
           table: search_api_datasource_events_entity_node
@@ -3743,6 +3700,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -3806,8 +3765,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_location:
           id: field_location
           table: search_api_datasource_events_entity_node
@@ -3815,6 +3772,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -3877,8 +3836,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_image_url:
           id: field_image_url
           table: search_api_datasource_events_entity_node
@@ -3886,6 +3843,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -3952,8 +3911,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         search_api_id:
           id: search_api_id
           table: search_api_index_events
@@ -3961,6 +3918,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: standard
           label: ''
           exclude: false
           alter:
@@ -4002,7 +3960,6 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          plugin_id: standard
         nid:
           id: nid
           table: search_api_datasource_events_entity_node
@@ -4010,6 +3967,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -4082,8 +4041,6 @@ display:
             format_plural_values:
               - '1'
               - '@count'
-          entity_type: node
-          plugin_id: search_api_field
         field_terms:
           id: field_terms
           table: search_api_datasource_events_entity_node
@@ -4091,6 +4048,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -4173,8 +4132,6 @@ display:
                 display_method: label
               tags:
                 display_method: label
-          entity_type: node
-          plugin_id: search_api_field
         field_building:
           id: field_building
           table: search_api_datasource_events_entity_node
@@ -4182,6 +4139,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -4244,8 +4203,11 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 5
       empty:
         area_text_custom:
           id: area_text_custom
@@ -4254,15 +4216,54 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          empty: true
-          tokenize: false
-          content: ''
           plugin_id: text_custom
-      pager:
-        type: some
-        options:
-          items_per_page: 5
-          offset: 0
+          empty: true
+          content: ''
+          tokenize: false
+      arguments:
+        field_terms:
+          id: field_terms
+          table: search_api_index_events
+          field: field_terms
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_term
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options: {  }
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: true
+          validate:
+            type: 'entity:taxonomy_term'
+            fail: 'not found'
+          validate_options:
+            bundles:
+              event_terms: event_terms
+            access: false
+            operation: view
+            multiple: 1
+          break_phrase: true
+          not: false
+      defaults:
+        empty: false
+        pager: false
+        fields: false
+        arguments: false
+      display_description: ''
+      display_extenders: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -4280,439 +4281,11 @@ display:
         - 'config:field.storage.node.field_terms'
         - 'config:search_api.index.events'
   page_1:
-    display_plugin: page
     id: page_1
     display_title: Page
+    display_plugin: page
     position: 4
     display_options:
-      display_extenders: {  }
-      path: calendar
-      filters:
-        search_api_fulltext:
-          id: search_api_fulltext
-          table: search_api_index_events
-          field: search_api_fulltext
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: search_api_fulltext_op
-            label: ''
-            description: ''
-            use_operator: false
-            operator: search_api_fulltext_op
-            identifier: search_api_fulltext
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              faculty: '0'
-              all_access: '0'
-              student: '0'
-              online_student: '0'
-              admitted_student: '0'
-              finance: '0'
-              employee: '0'
-              prehire_faculty: '0'
-              prehire_staff: '0'
-              bi_group: '0'
-              vcl_staff: '0'
-              online_intaccept: '0'
-              service_editor: '0'
-              som_ug: '0'
-              som_grad: '0'
-              as_ug: '0'
-              as_grad: '0'
-              sonhp_ug: '0'
-              sonhp_grad: '0'
-              law: '0'
-              soe: '0'
-              box_editor: '0'
-              webform_editor: '0'
-            placeholder: ''
-            operator_limit_selection: false
-            operator_list: {  }
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          parse_mode: terms
-          min_length: null
-          fields:
-            - body
-            - title
-          plugin_id: search_api_fulltext
-        field_end_date_1:
-          id: field_end_date_1
-          table: search_api_index_events
-          field: field_end_date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '>='
-          value:
-            min: ''
-            max: ''
-            value: '-8 hours'
-            type: offset
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            placeholder: ''
-            min_placeholder: ''
-            max_placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: search_api_date
-        field_start_date:
-          id: field_start_date
-          table: search_api_index_events
-          field: field_start_date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '>='
-          value:
-            min: ''
-            max: ''
-            value: ''
-            type: date
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_start_date_op
-            label: 'Start Date'
-            description: ''
-            use_operator: false
-            operator: field_start_date_op
-            identifier: field_start_date
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              faculty: '0'
-              all_access: '0'
-              student: '0'
-              online_student: '0'
-              admitted_student: '0'
-              finance: '0'
-              employee: '0'
-              prehire_faculty: '0'
-              prehire_staff: '0'
-              bi_group: '0'
-              vcl_staff: '0'
-              online_intaccept: '0'
-              service_editor: '0'
-              som_ug: '0'
-              som_grad: '0'
-              as_ug: '0'
-              as_grad: '0'
-              sonhp_ug: '0'
-              sonhp_grad: '0'
-              law: '0'
-              soe: '0'
-              box_editor: '0'
-              webform_editor: '0'
-            placeholder: ''
-            min_placeholder: ''
-            max_placeholder: ''
-            operator_limit_selection: false
-            operator_list: {  }
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: search_api_date
-        field_end_date:
-          id: field_end_date
-          table: search_api_index_events
-          field: field_end_date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '<='
-          value:
-            min: ''
-            max: ''
-            value: ''
-            type: date
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_end_date_op
-            label: 'End Date'
-            description: ''
-            use_operator: false
-            operator: field_end_date_op
-            identifier: field_end_date
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              faculty: '0'
-              all_access: '0'
-              student: '0'
-              online_student: '0'
-              admitted_student: '0'
-              finance: '0'
-              employee: '0'
-              prehire_faculty: '0'
-              prehire_staff: '0'
-              bi_group: '0'
-              vcl_staff: '0'
-              online_intaccept: '0'
-              service_editor: '0'
-              som_ug: '0'
-              som_grad: '0'
-              as_ug: '0'
-              as_grad: '0'
-              sonhp_ug: '0'
-              sonhp_grad: '0'
-              law: '0'
-              soe: '0'
-              box_editor: '0'
-              webform_editor: '0'
-            placeholder: ''
-            min_placeholder: ''
-            max_placeholder: ''
-            operator_limit_selection: false
-            operator_list: {  }
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: search_api_date
-        field_category:
-          id: field_category
-          table: search_api_index_events
-          field: field_category
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_category_op
-            label: Category
-            description: ''
-            use_operator: false
-            operator: field_category_op
-            identifier: field_category
-            required: false
-            remember: false
-            multiple: true
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              faculty: '0'
-              all_access: '0'
-              student: '0'
-              online_student: '0'
-              admitted_student: '0'
-              finance: '0'
-              employee: '0'
-              prehire_faculty: '0'
-              prehire_staff: '0'
-              bi_group: '0'
-              vcl_staff: '0'
-              online_intaccept: '0'
-              service_editor: '0'
-              som_ug: '0'
-              som_grad: '0'
-              as_ug: '0'
-              as_grad: '0'
-              sonhp_ug: '0'
-              sonhp_grad: '0'
-              law: '0'
-              soe: '0'
-              box_editor: '0'
-              webform_editor: '0'
-            reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: event_category
-          hierarchy: true
-          error_message: true
-          plugin_id: search_api_term
-      defaults:
-        filters: false
-        filter_groups: false
-        sorts: false
-        exposed_form: false
-        fields: false
-        arguments: false
-      filter_groups:
-        operator: OR
-        groups:
-          1: AND
-      sorts:
-        field_start_date:
-          id: field_start_date
-          table: search_api_index_events
-          field: field_start_date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          plugin_id: search_api
-      exposed_form:
-        type: bef
-        options:
-          submit_button: Apply
-          reset_button: true
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-          input_required: false
-          text_input_required: 'Select any filter and click on Apply to see results'
-          bef:
-            general:
-              autosubmit: false
-              autosubmit_exclude_textfield: false
-              autosubmit_hide: false
-              input_required: false
-              text_input_required: 'Select any filter and click on Apply to see results'
-              text_input_required_format: basic_html
-              allow_secondary: false
-              secondary_label: 'Advanced options'
-            filter:
-              search_api_fulltext:
-                plugin_id: default
-                advanced:
-                  collapsible: false
-                  is_secondary: false
-                  placeholder_text: Search
-                  rewrite:
-                    filter_rewrite_values: ''
-                  sort_options: false
-              field_start_date:
-                plugin_id: default
-                advanced:
-                  collapsible: false
-                  is_secondary: false
-                  placeholder_text: ''
-                  rewrite:
-                    filter_rewrite_values: ''
-                  sort_options: false
-              field_end_date:
-                plugin_id: default
-                advanced:
-                  collapsible: false
-                  is_secondary: false
-                  placeholder_text: ''
-                  rewrite:
-                    filter_rewrite_values: ''
-                  sort_options: false
-              field_category:
-                plugin_id: bef
-                select_all_none: false
-                select_all_none_nested: false
-                advanced:
-                  collapsible: false
-                  is_secondary: false
-                  placeholder_text: ''
-                  rewrite:
-                    filter_rewrite_values: ''
-                  sort_options: false
-              field_target:
-                plugin_id: bef
-                select_all_none: false
-                select_all_none_nested: false
-                advanced:
-                  collapsible: false
-                  is_secondary: false
-                  placeholder_text: ''
-                  rewrite:
-                    filter_rewrite_values: ''
-                  sort_options: false
-          text_input_required_format: full_html
       fields:
         body:
           id: body
@@ -4721,6 +4294,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: null
+          entity_field: null
+          plugin_id: search_api_field
           label: ''
           exclude: true
           alter:
@@ -4782,9 +4358,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: null
-          entity_field: null
-          plugin_id: search_api_field
         title:
           id: title
           table: search_api_index_events
@@ -4792,6 +4365,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -4854,7 +4428,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          plugin_id: search_api_field
         title_1:
           id: title_1
           table: search_api_datasource_events_entity_node
@@ -4862,6 +4435,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -4924,8 +4499,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_start_date:
           id: field_start_date
           table: search_api_datasource_events_entity_node
@@ -4933,6 +4506,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -4996,8 +4571,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_start_date_1:
           id: field_start_date_1
           table: search_api_datasource_events_entity_node
@@ -5005,6 +4578,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -5068,8 +4643,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_end_date:
           id: field_end_date
           table: search_api_datasource_events_entity_node
@@ -5077,6 +4650,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -5140,8 +4715,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_location:
           id: field_location
           table: search_api_datasource_events_entity_node
@@ -5149,6 +4722,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -5211,8 +4786,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_image_url:
           id: field_image_url
           table: search_api_datasource_events_entity_node
@@ -5220,6 +4793,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -5286,8 +4861,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         search_api_id:
           id: search_api_id
           table: search_api_index_events
@@ -5295,6 +4868,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: standard
           label: ''
           exclude: false
           alter:
@@ -5336,7 +4910,6 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          plugin_id: standard
         nid:
           id: nid
           table: search_api_datasource_events_entity_node
@@ -5344,6 +4917,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -5416,8 +4991,6 @@ display:
             format_plural_values:
               - '1'
               - '@count'
-          entity_type: node
-          plugin_id: search_api_field
         url:
           id: url
           table: search_api_index_events
@@ -5425,6 +4998,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api
           label: ''
           exclude: false
           alter:
@@ -5470,7 +5044,6 @@ display:
           use_highlighting: false
           multi_type: separator
           multi_separator: ', '
-          plugin_id: search_api
         field_building:
           id: field_building
           table: search_api_datasource_events_entity_node
@@ -5478,6 +5051,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -5540,8 +5115,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_thumbnail_image_url:
           id: field_thumbnail_image_url
           table: search_api_datasource_events_entity_node
@@ -5549,6 +5122,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -5615,10 +5190,437 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          input_required: false
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: full_html
+          bef:
+            general:
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_hide: false
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              text_input_required: 'Select any filter and click on Apply to see results'
+              text_input_required_format: basic_html
+            filter:
+              search_api_fulltext:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  placeholder_text: Search
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+              field_start_date:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+              field_end_date:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+              field_category:
+                plugin_id: bef
+                advanced:
+                  sort_options: false
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+                select_all_none: false
+                select_all_none_nested: false
+              field_target:
+                plugin_id: bef
+                advanced:
+                  sort_options: false
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+                select_all_none: false
+                select_all_none_nested: false
+      sorts:
+        field_start_date:
+          id: field_start_date
+          table: search_api_index_events
+          field: field_start_date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: field_start_date
+          exposed: false
       arguments: {  }
+      filters:
+        search_api_fulltext:
+          id: search_api_fulltext
+          table: search_api_index_events
+          field: search_api_fulltext
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_fulltext
+          operator: or
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: search_api_fulltext_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: search_api_fulltext_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: search_api_fulltext
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              editor: '0'
+              faculty: '0'
+              all_access: '0'
+              student: '0'
+              online_student: '0'
+              admitted_student: '0'
+              finance: '0'
+              employee: '0'
+              prehire_faculty: '0'
+              prehire_staff: '0'
+              bi_group: '0'
+              vcl_staff: '0'
+              online_intaccept: '0'
+              service_editor: '0'
+              som_ug: '0'
+              som_grad: '0'
+              as_ug: '0'
+              as_grad: '0'
+              sonhp_ug: '0'
+              sonhp_grad: '0'
+              law: '0'
+              soe: '0'
+              box_editor: '0'
+              webform_editor: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          parse_mode: terms
+          min_length: null
+          fields:
+            - body
+            - title
+        field_end_date_1:
+          id: field_end_date_1
+          table: search_api_index_events
+          field: field_end_date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_date
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: '-8 hours'
+            type: offset
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_start_date:
+          id: field_start_date
+          table: search_api_index_events
+          field: field_start_date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_date
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_start_date_op
+            label: 'Start Date'
+            description: ''
+            use_operator: false
+            operator: field_start_date_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_start_date
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              editor: '0'
+              faculty: '0'
+              all_access: '0'
+              student: '0'
+              online_student: '0'
+              admitted_student: '0'
+              finance: '0'
+              employee: '0'
+              prehire_faculty: '0'
+              prehire_staff: '0'
+              bi_group: '0'
+              vcl_staff: '0'
+              online_intaccept: '0'
+              service_editor: '0'
+              som_ug: '0'
+              som_grad: '0'
+              as_ug: '0'
+              as_grad: '0'
+              sonhp_ug: '0'
+              sonhp_grad: '0'
+              law: '0'
+              soe: '0'
+              box_editor: '0'
+              webform_editor: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_end_date:
+          id: field_end_date
+          table: search_api_index_events
+          field: field_end_date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_date
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_end_date_op
+            label: 'End Date'
+            description: ''
+            use_operator: false
+            operator: field_end_date_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_end_date
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              editor: '0'
+              faculty: '0'
+              all_access: '0'
+              student: '0'
+              online_student: '0'
+              admitted_student: '0'
+              finance: '0'
+              employee: '0'
+              prehire_faculty: '0'
+              prehire_staff: '0'
+              bi_group: '0'
+              vcl_staff: '0'
+              online_intaccept: '0'
+              service_editor: '0'
+              som_ug: '0'
+              som_grad: '0'
+              as_ug: '0'
+              as_grad: '0'
+              sonhp_ug: '0'
+              sonhp_grad: '0'
+              law: '0'
+              soe: '0'
+              box_editor: '0'
+              webform_editor: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_category:
+          id: field_category
+          table: search_api_index_events
+          field: field_category
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_term
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_category_op
+            label: Category
+            description: ''
+            use_operator: false
+            operator: field_category_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_category
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              editor: '0'
+              faculty: '0'
+              all_access: '0'
+              student: '0'
+              online_student: '0'
+              admitted_student: '0'
+              finance: '0'
+              employee: '0'
+              prehire_faculty: '0'
+              prehire_staff: '0'
+              bi_group: '0'
+              vcl_staff: '0'
+              online_intaccept: '0'
+              service_editor: '0'
+              som_ug: '0'
+              som_grad: '0'
+              as_ug: '0'
+              as_grad: '0'
+              sonhp_ug: '0'
+              sonhp_grad: '0'
+              law: '0'
+              soe: '0'
+              box_editor: '0'
+              webform_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: event_category
+          type: select
+          hierarchy: true
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: OR
+        groups:
+          1: AND
+      defaults:
+        exposed_form: false
+        fields: false
+        sorts: false
+        arguments: false
+        filters: false
+        filter_groups: false
       exposed_block: true
+      display_extenders: {  }
+      path: calendar
     cache_metadata:
       max-age: -1
       contexts:

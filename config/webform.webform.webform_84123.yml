@@ -12,10 +12,10 @@ id: webform_84123
 title: 'One Stop - Commencement Faculty Attendance - Dec'
 description: null
 category: null
-elements: |
+elements: |-
   your_information:
     '#type': processed_text
-    '#title': '<h2>Your Information:</h2>'
+    '#title': '<h3>Your Information:</h3>'
     '#description': ''
     '#format': full_html
   first_name:
@@ -51,21 +51,22 @@ elements: |
     '#required': true
   ceremony_selection:
     '#type': processed_text
-    '#title': '<h3>Ceremonies:</h3>'
+    '#title': '<br><h3>Ceremonies:</h3>'
     '#description': ''
     '#format': full_html
   choose_the_ceremonies_you_would_like_to_attend_:
     '#type': checkboxes
-    '#title': 'Choose the ceremonies you would like to attend on Friday, December 13:'
+    '#title': 'Choose the ceremonies you would like to attend on Friday, December 16:'
     '#options':
       'Commencement Mass, 9:30am': 'Commencement Mass, 9:30am'
       'School of Nursing and Health Professions Ceremony, 12pm': 'School of Nursing and Health Professions Ceremony, 12pm'
-      'School of Education Ceremony and School of Management Ceremony, 3pm': 'School of Education Ceremony and School of Management Ceremony, 3pm'
+      'School of Management Ceremony, 3pm': 'School of Management Ceremony, 3pm'
       'College of Arts and Sciences Ceremony, 6pm': 'College of Arts and Sciences Ceremony, 6pm'
     '#required': true
+    '#options__properties': ''
   regalia:
     '#type': processed_text
-    '#title': '<h3>Regalia:</h3>'
+    '#title': '<br><h3>Regalia:</h3>'
     '#description': ''
     '#format': full_html
   need_regalia:
@@ -299,59 +300,7 @@ handlers:
       sender_mail: ''
       sender_name: ''
       subject: 'Commencement Faculty Attendance Form'
-      body: |-
-        <p>Thank you for completing the Commencement Faculty Attendance Form.<br />
-        <br />
-        Your response was:<br />
-        <br />
-        Submitted values are: [webform_submission:values]<br />
-        <br />
-        <br />
-        &nbsp;</p>
-      excluded_elements: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: true
-      attachments: false
-      twig: false
-      theme_name: ''
-      parameters: {  }
-      debug: false
-  email_2:
-    id: email
-    handler_id: email_2
-    label: 'Email 2'
-    notes: ''
-    status: true
-    conditions: {  }
-    weight: 2
-    settings:
-      states:
-        - completed
-      to_mail: aarmstrong3@usfca.edu
-      to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      from_mail: _default
-      from_options: {  }
-      from_name: _default
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      subject: 'Commencement Faculty Attendance form submission'
-      body: |-
-        <p>Commencement Faculty Attendance Form Submitted by:<br />
-        <br />
-        Submitted by user: [webform_submission:user]<br />
-        <br />
-        Submitted values are: [webform_submission:values]<br />
-        <br />
-        The results of this submission may be viewed at: [webform_submission:url]</p>
+      body: "<p>Thank you for completing the Commencement Faculty Attendance Form.<br />\r\n<br />\r\nYour response was:<br />\r\n<br />\r\nSubmitted values are:<br />\r\n<br />\r\n[webform_submission:values]<br />\r\n<br />\r\n<br />\r\n&nbsp;</p>"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -388,7 +337,7 @@ handlers:
       sender_mail: ''
       sender_name: ''
       subject: 'Commencement Faculty Attendance form submission'
-      body: "<p>Commencement Faculty Attendance Form Submitted by:</p>\r\n\r\n<p>Submitted by user: [webform_submission:user]<br />\r\n<br />\r\nSubmitted values are: [webform_submission:values]<br />\r\n<br />\r\nThe results of this submission may be viewed at: [webform_submission:url]</p>"
+      body: "<p>Commencement Faculty Attendance Form Submitted by:</p>\r\n\r\n<p>Submitted by user:<br />\r\n[webform_submission:user]<br />\r\n<br />\r\nSubmitted values are:<br />\r\n[webform_submission:values]<br />\r\n<br />\r\nThe results of this submission may be viewed at:<br />\r\n[webform_submission:url]</p>"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
