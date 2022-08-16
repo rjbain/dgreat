@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.event.field_search_date
     - field.field.node.event.field_start_date
     - field.field.node.event.field_terms
+    - field.field.node.event.field_thumbnail_image_url
     - image.style.thumbnail
     - node.type.event
   module:
@@ -166,6 +167,14 @@ content:
       match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_thumbnail_image_url:
+    weight: 26
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
     region: content
   path:
     type: path
