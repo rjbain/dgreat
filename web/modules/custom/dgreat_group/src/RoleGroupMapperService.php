@@ -117,6 +117,7 @@ class RoleGroupMapperService {
       $this->removeGroupFieldFromUser($user, $group_id);
       return TRUE;
     } catch (\Exception $exception) {
+        return FALSE; // Suppressing the error message because it reporting errors when a user couldn't be removed from a group due to the user not being in the group.
       \Drupal::logger('dgreat_group')->error(
         'Unable to remove user id %u from group id %g',
         ['%u' => $user->id(), '%g' => $group_id]
