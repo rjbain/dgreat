@@ -32,7 +32,7 @@ class CeDiplomaLinkBlock extends BlockBase {
 			}	
 
 		}
-		$plainStudentId = isset($plainStudentId[0]);
+		$plainStudentId = $plainStudentId[0];
 
 		$ENDPOINT = "https://secure.cecredentialtrust.com/Account/ERLSSO"; //Test Endpoint
  		// Enter Values from spreadsheet supplied by Paradigm
