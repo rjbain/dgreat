@@ -1,0 +1,1209 @@
+uuid: 477f7c34-198a-4d5a-acde-a4f86d1c2885
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_end_date
+    - field.storage.node.field_featured
+    - field.storage.node.field_group
+    - field.storage.node.field_guid
+    - field.storage.node.field_start_date
+    - node.type.event
+    - system.menu.admin
+    - taxonomy.vocabulary.event_group
+  module:
+    - better_exposed_filters
+    - datetime
+    - node
+    - taxonomy
+    - user
+id: search_events
+label: 'Search Events'
+module: views
+description: 'Find and Troubleshoot Events'
+tag: ''
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    display_plugin: default
+    id: default
+    display_title: Master
+    position: 0
+    display_options:
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_comment: ''
+          query_tags: {  }
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: full_html
+          bef:
+            general:
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_hide: false
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+            filter:
+              title:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
+              field_start_date_value:
+                plugin_id: default
+                advanced:
+                  placeholder_text: mm/dd/yyyy
+                  collapsible: false
+                  is_secondary: false
+              field_end_date_value:
+                plugin_id: default
+                advanced:
+                  placeholder_text: mm/dd/yyyy
+                  collapsible: false
+                  is_secondary: false
+              field_guid_value:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
+              status_1:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+              field_featured_value:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
+              field_group_target_id:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+      pager:
+        type: full
+        options:
+          items_per_page: 25
+          offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+      style:
+        type: table
+      row:
+        type: fields
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          entity_type: node
+          entity_field: title
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            trim: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          settings:
+            link_to_entity: true
+          plugin_id: field
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Title
+          exclude: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_start_date:
+          id: field_start_date
+          table: node__field_start_date
+          field: field_start_date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Start Date'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_default
+          settings:
+            timezone_override: ''
+            format_type: short
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_end_date:
+          id: field_end_date
+          table: node__field_end_date
+          field: field_end_date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'End Date'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_default
+          settings:
+            timezone_override: ''
+            format_type: short
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Published
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: boolean
+          settings:
+            format: yes-no
+            format_custom_true: ''
+            format_custom_false: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: node
+          entity_field: status
+          plugin_id: field
+        field_group:
+          id: field_group
+          table: node__field_group
+          field: field_group
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Group
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_guid:
+          id: field_guid
+          table: node__field_guid
+          field: field_guid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'EMS Booking ID'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_unformatted
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_featured:
+          id: field_featured
+          table: node__field_featured
+          field: field_featured
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Featured
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_unformatted
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: Edit
+          output_url_as_text: false
+          absolute: false
+          entity_type: node
+          plugin_id: entity_link_edit
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            event: event
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: Title
+            description: ''
+            use_operator: false
+            operator: title_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: title
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              editor: '0'
+              faculty: '0'
+              all_access: '0'
+              student: '0'
+              online_student: '0'
+              admitted_student: '0'
+              finance: '0'
+              employee: '0'
+              prehire_faculty: '0'
+              prehire_staff: '0'
+              bi_group: '0'
+              vcl_staff: '0'
+              online_intaccept: '0'
+              service_editor: '0'
+              som_ug: '0'
+              som_grad: '0'
+              as_ug: '0'
+              as_grad: '0'
+              sonhp_ug: '0'
+              sonhp_grad: '0'
+              law: '0'
+              soe: '0'
+              box_editor: '0'
+              webform_editor: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: title
+          plugin_id: string
+        field_start_date_value:
+          id: field_start_date_value
+          table: node__field_start_date
+          field: field_start_date_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_start_date_value_op
+            label: 'Start Date'
+            description: ''
+            use_operator: false
+            operator: field_start_date_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_start_date_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              editor: '0'
+              faculty: '0'
+              all_access: '0'
+              student: '0'
+              online_student: '0'
+              admitted_student: '0'
+              finance: '0'
+              employee: '0'
+              prehire_faculty: '0'
+              prehire_staff: '0'
+              bi_group: '0'
+              vcl_staff: '0'
+              online_intaccept: '0'
+              service_editor: '0'
+              som_ug: '0'
+              som_grad: '0'
+              as_ug: '0'
+              as_grad: '0'
+              sonhp_ug: '0'
+              sonhp_grad: '0'
+              law: '0'
+              soe: '0'
+              box_editor: '0'
+              webform_editor: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
+        field_end_date_value:
+          id: field_end_date_value
+          table: node__field_end_date
+          field: field_end_date_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_end_date_value_op
+            label: 'End Date'
+            description: ''
+            use_operator: false
+            operator: field_end_date_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_end_date_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              editor: '0'
+              faculty: '0'
+              all_access: '0'
+              student: '0'
+              online_student: '0'
+              admitted_student: '0'
+              finance: '0'
+              employee: '0'
+              prehire_faculty: '0'
+              prehire_staff: '0'
+              bi_group: '0'
+              vcl_staff: '0'
+              online_intaccept: '0'
+              service_editor: '0'
+              som_ug: '0'
+              som_grad: '0'
+              as_ug: '0'
+              as_grad: '0'
+              sonhp_ug: '0'
+              sonhp_grad: '0'
+              law: '0'
+              soe: '0'
+              box_editor: '0'
+              webform_editor: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
+        field_guid_value:
+          id: field_guid_value
+          table: node__field_guid
+          field: field_guid_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_guid_value_op
+            label: 'EMS Booking ID'
+            description: ''
+            use_operator: false
+            operator: field_guid_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_guid_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              editor: '0'
+              faculty: '0'
+              all_access: '0'
+              student: '0'
+              online_student: '0'
+              admitted_student: '0'
+              finance: '0'
+              employee: '0'
+              prehire_faculty: '0'
+              prehire_staff: '0'
+              bi_group: '0'
+              vcl_staff: '0'
+              online_intaccept: '0'
+              service_editor: '0'
+              som_ug: '0'
+              som_grad: '0'
+              as_ug: '0'
+              as_grad: '0'
+              sonhp_ug: '0'
+              sonhp_grad: '0'
+              law: '0'
+              soe: '0'
+              box_editor: '0'
+              webform_editor: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
+        status_1:
+          id: status_1
+          table: node_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: All
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: Published
+            description: ''
+            use_operator: false
+            operator: status_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: status_1
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              editor: '0'
+              faculty: '0'
+              all_access: '0'
+              student: '0'
+              online_student: '0'
+              admitted_student: '0'
+              finance: '0'
+              employee: '0'
+              prehire_faculty: '0'
+              prehire_staff: '0'
+              bi_group: '0'
+              vcl_staff: '0'
+              online_intaccept: '0'
+              service_editor: '0'
+              som_ug: '0'
+              som_grad: '0'
+              as_ug: '0'
+              as_grad: '0'
+              sonhp_ug: '0'
+              sonhp_grad: '0'
+              law: '0'
+              soe: '0'
+              box_editor: '0'
+              webform_editor: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+        field_featured_value:
+          id: field_featured_value
+          table: node__field_featured
+          field: field_featured_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_featured_value_op
+            label: Featured
+            description: ''
+            use_operator: false
+            operator: field_featured_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_featured_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              editor: '0'
+              faculty: '0'
+              all_access: '0'
+              student: '0'
+              online_student: '0'
+              admitted_student: '0'
+              finance: '0'
+              employee: '0'
+              prehire_faculty: '0'
+              prehire_staff: '0'
+              bi_group: '0'
+              vcl_staff: '0'
+              online_intaccept: '0'
+              service_editor: '0'
+              som_ug: '0'
+              som_grad: '0'
+              as_ug: '0'
+              as_grad: '0'
+              sonhp_ug: '0'
+              sonhp_grad: '0'
+              law: '0'
+              soe: '0'
+              box_editor: '0'
+              webform_editor: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
+        field_group_target_id:
+          id: field_group_target_id
+          table: node__field_group
+          field: field_group_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_group_target_id_op
+            label: Group
+            description: ''
+            use_operator: false
+            operator: field_group_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_group_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              editor: '0'
+              faculty: '0'
+              all_access: '0'
+              student: '0'
+              online_student: '0'
+              admitted_student: '0'
+              finance: '0'
+              employee: '0'
+              prehire_faculty: '0'
+              prehire_staff: '0'
+              bi_group: '0'
+              vcl_staff: '0'
+              online_intaccept: '0'
+              service_editor: '0'
+              som_ug: '0'
+              som_grad: '0'
+              as_ug: '0'
+              as_grad: '0'
+              sonhp_ug: '0'
+              sonhp_grad: '0'
+              law: '0'
+              soe: '0'
+              box_editor: '0'
+              webform_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: event_group
+          hierarchy: true
+          error_message: true
+          plugin_id: taxonomy_index_tid
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          order: DESC
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          exposed: false
+          expose:
+            label: ''
+          granularity: second
+      title: 'Search Events'
+      header: {  }
+      footer: {  }
+      empty: {  }
+      relationships: {  }
+      arguments: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_end_date'
+        - 'config:field.storage.node.field_featured'
+        - 'config:field.storage.node.field_group'
+        - 'config:field.storage.node.field_guid'
+        - 'config:field.storage.node.field_start_date'
+  page_1:
+    display_plugin: page
+    id: page_1
+    display_title: Page
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: admin/search-events
+      menu:
+        type: normal
+        title: 'Search Events Administrative View'
+        description: 'Search events with more filtering criteria'
+        expanded: false
+        parent: system.admin_config_content
+        weight: 0
+        context: '0'
+        menu_name: admin
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_end_date'
+        - 'config:field.storage.node.field_featured'
+        - 'config:field.storage.node.field_group'
+        - 'config:field.storage.node.field_guid'
+        - 'config:field.storage.node.field_start_date'
