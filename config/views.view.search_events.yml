@@ -3,14 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_ems_booking_id
+    - field.storage.node.field_ems_reservation_id
     - field.storage.node.field_end_date
     - field.storage.node.field_featured
     - field.storage.node.field_group
-    - field.storage.node.field_guid
     - field.storage.node.field_start_date
     - node.type.event
     - system.menu.admin
     - taxonomy.vocabulary.event_group
+    - user.role.administrator
   module:
     - better_exposed_filters
     - datetime
@@ -32,9 +34,10 @@ display:
     position: 0
     display_options:
       access:
-        type: perm
+        type: role
         options:
-          perm: 'access content'
+          role:
+            administrator: administrator
       cache:
         type: tag
         options: {  }
@@ -446,14 +449,76 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_guid:
-          id: field_guid
-          table: node__field_guid
-          field: field_guid
+        field_ems_booking_id:
+          id: field_ems_booking_id
+          table: node__field_ems_booking_id
+          field: field_ems_booking_id
           relationship: none
           group_type: group
           admin_label: ''
           label: 'EMS Booking ID'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_unformatted
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_ems_reservation_id:
+          id: field_ems_reservation_id
+          table: node__field_ems_reservation_id
+          field: field_ems_reservation_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'EMS Reservation ID'
           exclude: false
           alter:
             alter_text: false
@@ -858,76 +923,6 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: datetime
-        field_guid_value:
-          id: field_guid_value
-          table: node__field_guid
-          field: field_guid_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '='
-          value:
-            min: ''
-            max: ''
-            value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_guid_value_op
-            label: 'EMS Booking ID'
-            description: ''
-            use_operator: false
-            operator: field_guid_value_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_guid_value
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              faculty: '0'
-              all_access: '0'
-              student: '0'
-              online_student: '0'
-              admitted_student: '0'
-              finance: '0'
-              employee: '0'
-              prehire_faculty: '0'
-              prehire_staff: '0'
-              bi_group: '0'
-              vcl_staff: '0'
-              online_intaccept: '0'
-              service_editor: '0'
-              som_ug: '0'
-              som_grad: '0'
-              as_ug: '0'
-              as_grad: '0'
-              sonhp_ug: '0'
-              sonhp_grad: '0'
-              law: '0'
-              soe: '0'
-              box_editor: '0'
-              webform_editor: '0'
-            placeholder: ''
-            min_placeholder: ''
-            max_placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: numeric
         status_1:
           id: status_1
           table: node_field_data
@@ -1135,6 +1130,146 @@ display:
           hierarchy: true
           error_message: true
           plugin_id: taxonomy_index_tid
+        field_ems_booking_id_value:
+          id: field_ems_booking_id_value
+          table: node__field_ems_booking_id
+          field: field_ems_booking_id_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_ems_booking_id_value_op
+            label: 'EMS Booking ID'
+            description: ''
+            use_operator: false
+            operator: field_ems_booking_id_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_ems_booking_id_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              editor: '0'
+              faculty: '0'
+              all_access: '0'
+              student: '0'
+              online_student: '0'
+              admitted_student: '0'
+              finance: '0'
+              employee: '0'
+              prehire_faculty: '0'
+              prehire_staff: '0'
+              bi_group: '0'
+              vcl_staff: '0'
+              online_intaccept: '0'
+              service_editor: '0'
+              som_ug: '0'
+              som_grad: '0'
+              as_ug: '0'
+              as_grad: '0'
+              sonhp_ug: '0'
+              sonhp_grad: '0'
+              law: '0'
+              soe: '0'
+              box_editor: '0'
+              webform_editor: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
+        field_ems_reservation_id_value:
+          id: field_ems_reservation_id_value
+          table: node__field_ems_reservation_id
+          field: field_ems_reservation_id_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_ems_reservation_id_value_op
+            label: 'EMS Reservation ID'
+            description: ''
+            use_operator: false
+            operator: field_ems_reservation_id_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_ems_reservation_id_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              editor: '0'
+              faculty: '0'
+              all_access: '0'
+              student: '0'
+              online_student: '0'
+              admitted_student: '0'
+              finance: '0'
+              employee: '0'
+              prehire_faculty: '0'
+              prehire_staff: '0'
+              bi_group: '0'
+              vcl_staff: '0'
+              online_intaccept: '0'
+              service_editor: '0'
+              som_ug: '0'
+              som_grad: '0'
+              as_ug: '0'
+              as_grad: '0'
+              sonhp_ug: '0'
+              sonhp_grad: '0'
+              law: '0'
+              soe: '0'
+              box_editor: '0'
+              webform_editor: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
       sorts:
         created:
           id: created
@@ -1167,12 +1302,13 @@ display:
         - url.query_args
         - user
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
+        - 'config:field.storage.node.field_ems_booking_id'
+        - 'config:field.storage.node.field_ems_reservation_id'
         - 'config:field.storage.node.field_end_date'
         - 'config:field.storage.node.field_featured'
         - 'config:field.storage.node.field_group'
-        - 'config:field.storage.node.field_guid'
         - 'config:field.storage.node.field_start_date'
   page_1:
     display_plugin: page
@@ -1200,10 +1336,11 @@ display:
         - url.query_args
         - user
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
+        - 'config:field.storage.node.field_ems_booking_id'
+        - 'config:field.storage.node.field_ems_reservation_id'
         - 'config:field.storage.node.field_end_date'
         - 'config:field.storage.node.field_featured'
         - 'config:field.storage.node.field_group'
-        - 'config:field.storage.node.field_guid'
         - 'config:field.storage.node.field_start_date'
