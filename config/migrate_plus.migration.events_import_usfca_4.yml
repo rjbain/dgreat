@@ -53,6 +53,10 @@ source:
       label: Group
       selector: group
     -
+      name: target
+      label: Target
+      selector: target
+    -
       name: building
       label: Building
       selector: building
@@ -76,10 +80,6 @@ source:
       name: featured
       label: Featured
       selector: featured
-    -
-      name: imageAlt
-      label: 'Image Alt Tag'
-      selector: imageAlt
   ids:
     guid:
       type: string
@@ -97,7 +97,6 @@ process:
   field_f_image_url: f_image_url
   field_featured: featured
   field_guid: guid
-  field_image_alt: imageAlt
   field_category:
     plugin: entity_generate
     source: category
@@ -110,6 +109,13 @@ process:
     source: group
     value_key: name
     bundle: event_group
+    entity_type: taxonomy_term
+    ignore_case: true
+  field_target:
+    plugin: entity_generate
+    source: target
+    value_key: name
+    bundle: event_target
     entity_type: taxonomy_term
     ignore_case: true
   field_terms:

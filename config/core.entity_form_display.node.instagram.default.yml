@@ -4,19 +4,15 @@ status: true
 dependencies:
   config:
     - field.field.node.instagram.body
-    - field.field.node.instagram.field_account_name
     - field.field.node.instagram.field_external_id
     - field.field.node.instagram.field_guid
     - field.field.node.instagram.field_image_url
-    - field.field.node.instagram.field_media_type
     - field.field.node.instagram.field_news_link
-    - field.field.node.instagram.field_social_tags
     - field.field.node.instagram.field_type
     - node.type.instagram
   module:
     - link
     - path
-    - scheduler
     - text
 id: node.instagram.default
 targetEntityType: node
@@ -30,7 +26,6 @@ content:
       rows: 9
       summary_rows: 3
       placeholder: ''
-      show_summary: false
     third_party_settings: {  }
     region: content
   created:
@@ -39,14 +34,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_account_name:
-    weight: 129
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_external_id:
     weight: 124
     settings:
@@ -70,14 +57,6 @@ content:
     third_party_settings: {  }
     type: link_default
     region: content
-  field_media_type:
-    weight: 128
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_news_link:
     weight: 123
     settings:
@@ -85,16 +64,6 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
-    region: content
-  field_social_tags:
-    weight: 127
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-      match_limit: 10
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
     region: content
   field_type:
     weight: 126
@@ -116,12 +85,6 @@ content:
       display_label: true
     weight: 15
     region: content
-    third_party_settings: {  }
-  publish_on:
-    type: datetime_timestamp_no_default
-    weight: 30
-    region: content
-    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -152,18 +115,6 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
-      match_limit: 10
     region: content
     third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 30
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  url_redirects:
-    weight: 50
-    settings: {  }
-    third_party_settings: {  }
-    region: content
 hidden: {  }

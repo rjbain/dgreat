@@ -1,16 +1,16 @@
-uuid: 752afe52-5744-4318-9207-a028b322a53c
+uuid: fe637d37-59fd-4663-9dd2-f1e56660b40b
 langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: L59DkG-L2m47tA_R0sTtkHnuGzbHakmGgxgMO9VVZzc
+  default_config_hash: 8J9aFZdUzbHV6w1y727kflHq31ev3U3wy7U-zSWDkeE
 id: member
 label: 'Member profile'
 description: 'Configuration for site members'
 conf:
-  extensions: 'jpg png gif pdf txt xlsx doc'
-  maxsize: !!float 4
-  quota: !!float 1000
+  extensions: 'jpg png gif pdf doc txt docx xls xlsx csv'
+  maxsize: !!float 5
+  quota: !!float 50
   maxwidth: 1800
   maxheight: 1800
   replace: 1
@@ -44,11 +44,4 @@ conf:
         upload_files: true
         delete_files: true
         delete_subfolders: true
-        resize_images: true
-    -
-      path: .
-      permissions:
-        browse_files: true
-        upload_files: true
-        delete_files: true
         resize_images: true

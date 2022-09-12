@@ -4,7 +4,6 @@ status: open
 dependencies: {  }
 open: null
 close: null
-weight: 0
 uid: 350
 template: false
 archive: false
@@ -12,263 +11,92 @@ id: webform_7884
 title: 'Tech Intensives Program Registration Form'
 description: null
 category: null
-elements: "name:\n  '#type': textfield\n  '#default_value': '[current-user:field_user_display_name]'\n  '#title': Name\n  '#description': ''\nusf_email:\n  '#type': email\n  '#size': 20\n  '#default_value': '[current-user:mail]'\n  '#title': 'USF Email'\n  '#description': ''\n  '#required': true\nextension:\n  '#type': textfield\n  '#title': Extension\n  '#description': ''\ndepartment:\n  '#type': select\n  '#options':\n    1: 'Academic Affairs'\n    2: 'Academic Services'\n    3: 'Account Payable'\n    4: Admissions\n    5: 'Advancement Services'\n    6: 'African Studies Program'\n    7: 'Alumni Relations'\n    8: 'Arts and Sciences'\n    9: 'Arts   Architecture'\n    10: 'Asia Pacific Studies'\n    11: ASUSF\n    12: Athletics\n    13: Biology\n    14: 'Budget Office'\n    15: 'Bursar''s Office'\n    16: 'Business Finance'\n    17: 'Campus Dining'\n    18: 'Campus Ministry'\n    19: 'Career Services Center'\n    20: 'Center for the Pacific Rim'\n    21: Chemistry\n    22: 'Classical Studies'\n    23: 'Computer Science'\n    24: 'Communication Studies'\n    25: Counseling\n    26: 'Criminal Justice'\n    27: 'Davies Forum'\n    28: Economics\n    29: Education\n    30: English\n    31: ESL/IEP\n    32: 'Environmental Safety'\n    33: 'Environment Science'\n    34: 'European Studies'\n    35: 'Exerices/Sport Science'\n    36: 'Expository Writing'\n    37: Facilities/Plant\n    38: 'Financial Services'\n    39: 'Fine Performing Arts'\n    40: 'Fromm Institute'\n    41: 'Gender Studies'\n    42: 'General Counsel'\n    43: 'Gleeson Library'\n    44: 'Health Promotion Services'\n    45: History\n    46: 'Human Resources'\n    47: 'Information Technology'\n    48: 'International Relations'\n    49: 'International Student Services'\n    50: 'International Studies'\n    51: Koret\n    52: KUSF\n    53: 'Latino Studies'\n    54: 'Law School'\n    55: 'Learning Center'\n    56: 'Legal Studies'\n    57: 'Leo McCarthy Center'\n    58: 'Loyola Village'\n    59: Math\n    60: 'Media Studies'\n    61: 'Military Science'\n    62: 'Modern Classical Languages'\n    63: Nursing\n    64: 'One Card'\n    65: 'Online Education'\n    66: 'Peace/Justice Studies'\n    67: 'Performing Arts'\n    68: Philosophy\n    69: Physics\n    70: Politics\n    71: 'President Office'\n    72: 'Project Management'\n    73: 'Provost Office'\n    74: Psychology\n    75: 'Public Affairs'\n    76: 'Public Safety'\n    77: Purchasing/Receiving\n    78: Registrar\n    79: 'Residence Life'\n    80: 'Rhetoric and Composition'\n    81: 'Ricci Institute'\n    82: 'School of Management'\n    83: Sociology\n    84: 'Sports Management'\n    85: 'St. Ignatius'\n    86: 'Student Activities'\n    87: 'Theology and Religious Studies'\n    88: 'UC Operations and Services'\n    89: 'University Advancement'\n    90: 'University Life'\n    91: 'Upward Bound'\n    92: 'Web Services'\n    93: Xavier\n  '#title': Department\n  '#description': ''\ndates_select_the_dates_you_will_attend_:\n  '#type': checkboxes\n  '#title': 'Dates (select the dates you will attend) '\n  '#options':\n    'Tuesday, May 31 through Thursday, June 2, 10am-3pm ': 'Tuesday, May 31 through Thursday, June 2, 10am-3pm '\n    'Tuesday, June 7 through Thursday, June 9, 10am-3pm': 'Tuesday, June 7 through Thursday, June 9, 10am-3pm'\nanswer:\n  '#type': textarea\n  '#title': 'Explain a current instructional challenge you are experiencing in a course. Discuss how the use of technology may address and/or resolve the challenge. Please include your course title.'\n  '#description': ''\nipad:\n  '#type': select\n  '#options':\n    1: 'iPad Mini'\n    2: 'iPad Air'\n  '#title': 'Select which iPad model you would like to receive (please check the Apple Store for more information on the iPad models):'\n  '#description': ''\n"
+elements: "name:\n  '#type': textfield\n  '#default_value': \"[current-user:field_user_display_name]\"\n  '#title': Name\n  '#description': \"\"\nusf_email:\n  '#type': email\n  '#size': 20\n  '#default_value': \"[current-user:mail]\"\n  '#title': USF Email\n  '#description': \"\"\n  '#required': true\nextension:\n  '#type': textfield\n  '#title': Extension\n  '#description': \"\"\ndepartment:\n  '#type': select\n  '#options':\n    1: Academic Affairs\n    2: Academic Services\n    3: Account Payable\n    4: Admissions\n    5: Advancement Services\n    6: African Studies Program\n    7: Alumni Relations\n    8: Arts and Sciences\n    9: Arts   Architecture\n    10: Asia Pacific Studies\n    11: ASUSF\n    12: Athletics\n    13: Biology\n    14: Budget Office\n    15: Bursar's Office\n    16: Business Finance\n    17: Campus Dining\n    18: Campus Ministry\n    19: Career Services Center\n    20: Center for the Pacific Rim\n    21: Chemistry\n    22: Classical Studies\n    23: Computer Science\n    24: Communication Studies\n    25: Counseling\n    26: Criminal Justice\n    27: Davies Forum\n    28: Economics\n    29: Education\n    30: English\n    31: ESL/IEP\n    32: Environmental Safety\n    33: Environment Science\n    34: European Studies\n    35: Exerices/Sport Science\n    36: Expository Writing\n    37: Facilities/Plant\n    38: Financial Services\n    39: Fine Performing Arts\n    40: Fromm Institute\n    41: Gender Studies\n    42: General Counsel\n    43: Gleeson Library\n    44: Health Promotion Services\n    45: History\n    46: Human Resources\n    47: Information Technology\n    48: International Relations\n    49: International Student Services\n    50: International Studies\n    51: Koret\n    52: KUSF\n    53: Latino Studies\n    54: Law School\n    55: Learning Center\n    56: Legal Studies\n    57: Leo McCarthy Center\n    58: Loyola Village\n    59: Math\n    60: Media Studies\n    61: Military Science\n    62: Modern Classical Languages\n    63: Nursing\n    64: One Card\n    65: Online Education\n    66: Peace/Justice Studies\n    67: Performing Arts\n    68: Philosophy\n    69: Physics\n    70: Politics\n    71: President Office\n    72: Project Management\n    73: Provost Office\n    74: Psychology\n    75: Public Affairs\n    76: Public Safety\n    77: Purchasing/Receiving\n    78: Registrar\n    79: Residence Life\n    80: Rhetoric and Composition\n    81: Ricci Institute\n    82: School of Management\n    83: Sociology\n    84: Sports Management\n    85: St. Ignatius\n    86: Student Activities\n    87: Theology and Religious Studies\n    88: UC Operations and Services\n    89: University Advancement\n    90: University Life\n    91: Upward Bound\n    92: Web Services\n    93: Xavier\n  '#title': Department\n  '#description': \"\"\ndates:\n  '#description': \"Tuesday, May 31 through Thursday, June 2, 10am-3pm\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Tuesday, May 31 through Thursday, June 2, 10am-3pm\n    2: Tuesday, June 7 through Thursday, June 9, 10am-3pm\n  '#multiple': true\n  '#title': Dates (select the dates you will attend)\n  '#description': \"\"\nanswer:\n  '#type': textarea\n  '#title': Explain a current instructional challenge you are experiencing in a course. Discuss how the use of technology may address and/or resolve the challenge. Please include your course title.\n  '#description': \"\"\nipad:\n  '#type': select\n  '#options':\n    1: iPad Mini\n    2: iPad Air\n  '#title': Select which iPad model you would like to receive (please check the Apple Store for more information on the iPad models):\n  '#description': \"\"\n"
 css: ''
 javascript: ''
 settings:
-  ajax: false
-  ajax_scroll_top: form
-  ajax_progress_type: ''
-  ajax_effect: ''
-  ajax_speed: null
   page: true
-  page_submit_path: ''
-  page_confirm_path: ''
-  page_theme_name: ''
-  form_title: both
-  form_submit_once: false
-  form_exception_message: ''
-  form_open_message: ''
-  form_close_message: ''
-  form_previous_submissions: true
-  form_confidential: false
-  form_confidential_message: ''
-  form_remote_addr: true
-  form_convert_anonymous: false
-  form_prepopulate: false
-  form_prepopulate_source_entity: false
-  form_prepopulate_source_entity_required: false
-  form_prepopulate_source_entity_type: ''
-  form_reset: false
-  form_disable_autocomplete: false
-  form_novalidate: false
-  form_disable_inline_errors: false
-  form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
-  form_autofocus: false
-  form_details_toggle: false
-  form_access_denied: default
-  form_access_denied_title: ''
-  form_access_denied_message: ''
-  form_access_denied_attributes: {  }
-  form_file_limit: ''
-  share: false
-  share_node: false
-  share_theme_name: ''
-  share_title: true
-  share_page_body_attributes: {  }
-  submission_label: ''
-  submission_log: false
-  submission_views: {  }
-  submission_views_replace: {  }
-  submission_user_columns: {  }
-  submission_user_duplicate: false
-  submission_access_denied: default
-  submission_access_denied_title: ''
-  submission_access_denied_message: ''
-  submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
-  previous_submission_message: ''
-  previous_submissions_message: ''
-  autofill: false
-  autofill_message: ''
-  autofill_excluded_elements: {  }
-  wizard_progress_bar: true
-  wizard_progress_pages: false
-  wizard_progress_percentage: false
-  wizard_progress_link: false
-  wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
-  wizard_start_label: ''
-  wizard_preview_link: false
-  wizard_confirmation: true
-  wizard_confirmation_label: ''
-  wizard_track: ''
-  wizard_prev_button_label: ''
-  wizard_next_button_label: ''
-  wizard_toggle: false
-  wizard_toggle_show_label: ''
-  wizard_toggle_hide_label: ''
-  preview: 0
-  preview_label: ''
-  preview_title: ''
-  preview_message: ''
-  preview_attributes: {  }
-  preview_excluded_elements: {  }
-  preview_exclude_empty: true
-  preview_exclude_empty_checkbox: false
-  draft: '0'
-  draft_multiple: false
-  draft_auto_save: false
-  draft_saved_message: ''
-  draft_loaded_message: ''
-  draft_pending_single_message: ''
-  draft_pending_multiple_message: ''
-  confirmation_type: page
-  confirmation_title: ''
-  confirmation_message: '<p>Thank you for your application.</p><p>The CIT staff will review your application and get back to the selected participants.&nbsp;</p><p>For inquiries, please contact&nbsp;<a href="mailto:cit@usfca.edu?subject=Tech%20Intensives%20Registration%20Inquiry" title="Tech Intensives Registration Inquiry">cit@usfca.edu</a>.</p>'
-  confirmation_url: ''
-  confirmation_attributes: {  }
-  confirmation_back: true
-  confirmation_back_label: ''
-  confirmation_back_attributes: {  }
-  confirmation_exclude_query: false
-  confirmation_exclude_token: false
-  confirmation_update: false
-  limit_total: null
-  limit_total_interval: null
-  limit_total_message: ''
-  limit_total_unique: false
-  limit_user: null
-  limit_user_interval: null
-  limit_user_message: ''
-  limit_user_unique: false
-  entity_limit_total: null
-  entity_limit_total_interval: null
-  entity_limit_user: null
-  entity_limit_user_interval: null
-  purge: none
-  purge_days: null
-  results_disabled: false
-  results_disabled_ignore: false
-  results_customize: false
-  token_view: false
-  token_update: false
-  token_delete: false
-  serial_disabled: false
   form_submit_label: ''
+  wizard_progress_bar: true
   wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_message: '<p>Thank you for your application.</p><p>The CIT staff will review your application and get back to the selected participants.&nbsp;</p><p>For inquiries, please contact&nbsp;<a href="mailto:cit@usfca.edu?subject=Tech%20Intensives%20Registration%20Inquiry" title="Tech Intensives Registration Inquiry">cit@usfca.edu</a>.</p>'
+  limit_total: null
+  limit_user: null
 access:
   create:
     roles:
       - anonymous
       - authenticated
     users: {  }
-    permissions: {  }
-  view_any:
-    roles:
-      - editor
-    users: {  }
-    permissions: {  }
-  update_any:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  delete_any:
-    roles:
-      - editor
-    users: {  }
-    permissions: {  }
-  purge_any:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  view_own:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  update_own:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  delete_own:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  administer:
-    roles:
-      - editor
-    users: {  }
-    permissions: {  }
-  test:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  configuration:
-    roles: {  }
-    users: {  }
-    permissions: {  }
 handlers:
   email_1:
     id: email
     label: 'Email 1'
-    notes: ''
     handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
     settings:
+      to_mail: cit@usfca.edu
+      from_mail: '[current-user:mail]'
+      from_name: '[webform-submission:values:name:raw]'
+      subject: default
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
       states:
         - completed
-      to_mail: cit@usfca.edu
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: '[current-user:mail]'
       from_options: {  }
-      from_name: '[webform-submission:values:name:raw]'
-      subject: _default
-      body: _default
-      excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: true
-      attachments: false
       twig: false
       debug: false
       reply_to: ''
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      theme_name: ''
-      parameters: {  }
   email_2:
     id: email
     label: 'Email 2'
-    notes: ''
     handler_id: email_2
     status: true
     conditions: {  }
     weight: 2
     settings:
+      to_mail: '[current-user:mail]'
+      from_mail: cit@usfca.edu
+      from_name: 'USF CIT'
+      subject: default
+      body: default
+      html: false
+      attachments: false
+      excluded_elements: {  }
       states:
         - completed
-      to_mail: '[current-user:mail]'
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: cit@usfca.edu
       from_options: {  }
-      from_name: 'USF CIT'
-      subject: _default
-      body: _default
-      excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: false
-      attachments: false
       twig: false
       debug: false
       reply_to: ''
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      theme_name: ''
-      parameters: {  }
-variants: {  }

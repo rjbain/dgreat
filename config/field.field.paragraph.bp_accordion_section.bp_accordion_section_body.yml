@@ -4,11 +4,8 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.bp_accordion_section_body
-    - paragraphs.paragraphs_type.bp_accordion
     - paragraphs.paragraphs_type.bp_accordion_section
-    - paragraphs.paragraphs_type.bp_columns_two_uneven
     - paragraphs.paragraphs_type.bp_simple
-    - paragraphs.paragraphs_type.video
   module:
     - entity_reference_revisions
 _core:
@@ -29,9 +26,6 @@ settings:
     negate: 0
     target_bundles:
       bp_simple: bp_simple
-      bp_columns_two_uneven: bp_columns_two_uneven
-      bp_accordion: bp_accordion
-      video: video
     target_bundles_drag_drop:
       bp_simple:
         enabled: true
@@ -49,8 +43,8 @@ settings:
         weight: -27
         enabled: false
       bp_columns_two_uneven:
-        enabled: true
         weight: -26
+        enabled: false
       bp_block:
         weight: -25
         enabled: false
@@ -61,8 +55,8 @@ settings:
         weight: -23
         enabled: false
       bp_accordion:
-        enabled: true
         weight: -22
+        enabled: false
       bp_accordion_section:
         weight: -21
         enabled: false
@@ -74,9 +68,6 @@ settings:
         enabled: false
       bp_tab_section:
         weight: -18
-        enabled: false
-      box_styles:
-        weight: 23
         enabled: false
       bp_column_wrapper:
         weight: 28
@@ -90,13 +81,7 @@ settings:
       social_media_link:
         weight: 37
         enabled: false
-      reference:
-        weight: 38
-        enabled: false
       usfcat_updates:
         weight: 38
         enabled: false
-      video:
-        enabled: true
-        weight: 44
 field_type: entity_reference_revisions

@@ -3,10 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.user.user.field_user_cwid
     - field.field.user.user.field_user_display_name
     - field.field.user.user.field_user_group
-    - field.field.user.user.field_usfb_address_date
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
@@ -21,17 +19,13 @@ bundle: user
 mode: default
 content:
   account:
-    weight: 0
+    weight: -10
     region: content
-    settings: {  }
-    third_party_settings: {  }
   contact:
-    weight: 3
+    weight: 5
     region: content
-    settings: {  }
-    third_party_settings: {  }
   field_user_display_name:
-    weight: 6
+    weight: 32
     settings:
       size: 60
       placeholder: ''
@@ -39,23 +33,20 @@ content:
     type: string_textfield
     region: content
   field_user_group:
-    weight: 5
+    weight: 31
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
-      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
   language:
-    weight: 2
+    weight: 0
     region: content
-    settings: {  }
-    third_party_settings: {  }
   path:
     type: path
-    weight: 4
+    weight: 30
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -68,8 +59,6 @@ content:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-    weight: 1
+    weight: -1
     region: content
-hidden:
-  field_user_cwid: true
-  field_usfb_address_date: true
+hidden: {  }

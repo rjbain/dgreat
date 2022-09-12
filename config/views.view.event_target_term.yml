@@ -14,6 +14,7 @@ description: 'View for finding term ids'
 tag: ''
 base_table: taxonomy_term_field_data
 base_field: tid
+core: 8.x
 display:
   default:
     display_plugin: default
@@ -73,14 +74,15 @@ display:
         options:
           grouping: {  }
           row_class: ''
-          default_row_class: false
+          default_row_class: true
+          uses_fields: false
       row:
         type: fields
         options:
-          default_field_elements: false
           inline: {  }
           separator: ''
           hide_empty: false
+          default_field_elements: true
       fields:
         name:
           id: name
@@ -125,7 +127,7 @@ display:
           element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: false
+          element_default_classes: true
           empty: ''
           hide_empty: false
           empty_zero: false
@@ -191,7 +193,7 @@ display:
           element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: false
+          element_default_classes: true
           empty: ''
           hide_empty: false
           empty_zero: false
@@ -222,9 +224,6 @@ display:
           entity_type: taxonomy_term
           entity_field: vid
           plugin_id: bundle
-          expose:
-            operator_limit_selection: false
-            operator_list: {  }
       sorts: {  }
       header: {  }
       footer: {  }

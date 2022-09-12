@@ -4,7 +4,6 @@ status: open
 dependencies: {  }
 open: null
 close: null
-weight: 0
 uid: 206
 template: false
 archive: false
@@ -12,263 +11,92 @@ id: webform_61468
 title: 'Peak Performance Session Evaluation'
 description: null
 category: null
-elements: "intro:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p class=''intro_text_lg''>Thank you for attending one of the Peak Performance Sessions. We are always interested in your feedback and want to know how we can improve our session series.</p><p class=''clear''></p><p>Please use the form below to evaluate the session.</p><p class=''clear''></p>'\n  '#title': Intro\n  '#description': ''\nsession_name:\n  '#type': textfield\n  '#title': 'Please indicate the name of the session you attended:'\n  '#description': ''\n  '#required': true\ndate_attended:\n  '#type': date\n  '#title': 'Date Attended:'\n  '#description': ''\ntime_attended:\n  '#type': time\n  '#title': 'Time of Session:'\n  '#description': ''\nrate_the_session:\n  '#type': radios\n  '#options':\n    1: 1\n    2: 2\n    3: 3\n    4: 4\n    5: 5\n    6: 6\n    7: 7\n    8: 8\n    9: 9\n    10: 10\n  '#title_display': inline\n  '#title': 'Please rate the session (1 lowest, 10 highest)'\n  '#description': ''\nhow_did_you_hear:\n  '#type': textarea\n  '#title': 'How did you hear about this session?'\n  '#description': ''\nknowledge:\n  '#type': radios\n  '#options':\n    1: 'Stayed the same'\n    2: 'Increased slightly'\n    3: 'Increased significantly'\n  '#title': 'After the presentation, my knowledge in the subject matter:'\n  '#description': ''\nwhich_components_of_this_session_engaged_you_check_all_that_appl:\n  '#type': checkboxes\n  '#title': 'Which components of this session engaged you? (Check all that apply)'\n  '#options':\n    Content/Information: Content/Information\n    Introduction/Icebreakers: Introduction/Icebreakers\n    Activities: Activities\n    'Interaction with other attendees': 'Interaction with other attendees'\n    'Handouts/Support Materials': 'Handouts/Support Materials'\n    Others: Others\nothers:\n  '#type': textarea\n  '#title_display': inline\n  '#title': 'If \"Others,\" please explain:'\n  '#description': ''\nmost_meaningful:\n  '#type': textarea\n  '#title': 'What information did you find most meaningful in this session?'\n  '#description': ''\nleast_meaningful:\n  '#type': textarea\n  '#title': 'What information did you find least meaningful in this session?'\n  '#description': ''\nactions:\n  '#type': textarea\n  '#title': 'What actions will you take as a result of this session?'\n  '#description': ''\ncomments:\n  '#type': textarea\n  '#title': 'Additional comments / suggestions (including suggestions for future sessions):'\n  '#description': ''\n"
+elements: "intro:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p class='intro_text_lg'>Thank you for attending one of the Peak Performance Sessions. We are always interested in your feedback and want to know how we can improve our session series.</p><p class='clear'></p><p>Please use the form below to evaluate the session.</p><p class='clear'></p>\"\n  '#title': Intro\n  '#description': \"\"\nsession_name:\n  '#type': textfield\n  '#title': Please indicate the name of the session you attended:\n  '#description': \"\"\n  '#required': true\ndate_attended:\n  '#type': date\n  '#title': Date Attended:\n  '#description': \"\"\ntime_attended:\n  '#type': time\n  '#title': Time of Session:\n  '#description': \"\"\nrate_the_session:\n  '#type': radios\n  '#options':\n    1: 1\n    2: 2\n    3: 3\n    4: 4\n    5: 5\n    6: 6\n    7: 7\n    8: 8\n    9: 9\n    10: 10\n  '#title_display': inline\n  '#title': Please rate the session (1 lowest, 10 highest)\n  '#description': \"\"\nhow_did_you_hear:\n  '#type': textarea\n  '#title': How did you hear about this session?\n  '#description': \"\"\nknowledge:\n  '#type': radios\n  '#options':\n    1: Stayed the same\n    2: Increased slightly\n    3: Increased significantly\n  '#title': After the presentation, my knowledge in the subject matter:\n  '#description': \"\"\ncomponents:\n  '#description': \"Content/Information\\n2\"\n  '#type': checkbox\n  '#options':\n    1: Content/Information\n    2: Introduction/Icebreakers\n    3: Activities\n    4: Interaction with other attendees\n    5: Handouts/Support Materials\n    6: Others\n  '#multiple': true\n  '#title': Which components of this session engaged you? (Check all that apply)\n  '#description': \"\"\nothers:\n  '#type': textarea\n  '#title_display': inline\n  '#title': If \"Others,\" please explain:\n  '#description': \"\"\nmost_meaningful:\n  '#type': textarea\n  '#title': What information did you find most meaningful in this session?\n  '#description': \"\"\nleast_meaningful:\n  '#type': textarea\n  '#title': What information did you find least meaningful in this session?\n  '#description': \"\"\nactions:\n  '#type': textarea\n  '#title': What actions will you take as a result of this session?\n  '#description': \"\"\ncomments:\n  '#type': textarea\n  '#title': Additional comments / suggestions (including suggestions for future sessions):\n  '#description': \"\"\n"
 css: ''
 javascript: ''
 settings:
-  ajax: false
-  ajax_scroll_top: form
-  ajax_progress_type: ''
-  ajax_effect: ''
-  ajax_speed: null
   page: true
-  page_submit_path: ''
-  page_confirm_path: ''
-  page_theme_name: ''
-  form_title: both
-  form_submit_once: false
-  form_exception_message: ''
-  form_open_message: ''
-  form_close_message: ''
-  form_previous_submissions: true
-  form_confidential: false
-  form_confidential_message: ''
-  form_remote_addr: true
-  form_convert_anonymous: false
-  form_prepopulate: false
-  form_prepopulate_source_entity: false
-  form_prepopulate_source_entity_required: false
-  form_prepopulate_source_entity_type: ''
-  form_reset: false
-  form_disable_autocomplete: false
-  form_novalidate: false
-  form_disable_inline_errors: false
-  form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
-  form_autofocus: false
-  form_details_toggle: false
-  form_access_denied: default
-  form_access_denied_title: ''
-  form_access_denied_message: ''
-  form_access_denied_attributes: {  }
-  form_file_limit: ''
-  share: false
-  share_node: false
-  share_theme_name: ''
-  share_title: true
-  share_page_body_attributes: {  }
-  submission_label: ''
-  submission_log: false
-  submission_views: {  }
-  submission_views_replace: {  }
-  submission_user_columns: {  }
-  submission_user_duplicate: false
-  submission_access_denied: default
-  submission_access_denied_title: ''
-  submission_access_denied_message: ''
-  submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
-  previous_submission_message: ''
-  previous_submissions_message: ''
-  autofill: false
-  autofill_message: ''
-  autofill_excluded_elements: {  }
-  wizard_progress_bar: true
-  wizard_progress_pages: false
-  wizard_progress_percentage: false
-  wizard_progress_link: false
-  wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
-  wizard_start_label: ''
-  wizard_preview_link: false
-  wizard_confirmation: true
-  wizard_confirmation_label: ''
-  wizard_track: ''
-  wizard_prev_button_label: ''
-  wizard_next_button_label: ''
-  wizard_toggle: false
-  wizard_toggle_show_label: ''
-  wizard_toggle_hide_label: ''
-  preview: 0
-  preview_label: ''
-  preview_title: ''
-  preview_message: ''
-  preview_attributes: {  }
-  preview_excluded_elements: {  }
-  preview_exclude_empty: true
-  preview_exclude_empty_checkbox: false
-  draft: '0'
-  draft_multiple: false
-  draft_auto_save: false
-  draft_saved_message: ''
-  draft_loaded_message: ''
-  draft_pending_single_message: ''
-  draft_pending_multiple_message: ''
-  confirmation_type: url
-  confirmation_title: ''
-  confirmation_message: ''
-  confirmation_url: 'http://myusf.usfca.edu/student-life/success-workshops'
-  confirmation_attributes: {  }
-  confirmation_back: true
-  confirmation_back_label: ''
-  confirmation_back_attributes: {  }
-  confirmation_exclude_query: false
-  confirmation_exclude_token: false
-  confirmation_update: false
-  limit_total: null
-  limit_total_interval: null
-  limit_total_message: ''
-  limit_total_unique: false
-  limit_user: null
-  limit_user_interval: null
-  limit_user_message: ''
-  limit_user_unique: false
-  entity_limit_total: null
-  entity_limit_total_interval: null
-  entity_limit_user: null
-  entity_limit_user_interval: null
-  purge: none
-  purge_days: null
-  results_disabled: false
-  results_disabled_ignore: false
-  results_customize: false
-  token_view: false
-  token_update: false
-  token_delete: false
-  serial_disabled: false
   form_submit_label: ''
+  wizard_progress_bar: true
   wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: url
+  confirmation_url: 'http://myusf.usfca.edu/student-life/success-workshops'
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
 access:
   create:
     roles:
       - anonymous
       - authenticated
     users: {  }
-    permissions: {  }
-  view_any:
-    roles:
-      - editor
-    users: {  }
-    permissions: {  }
-  update_any:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  delete_any:
-    roles:
-      - editor
-    users: {  }
-    permissions: {  }
-  purge_any:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  view_own:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  update_own:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  delete_own:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  administer:
-    roles:
-      - editor
-    users: {  }
-    permissions: {  }
-  test:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  configuration:
-    roles: {  }
-    users: {  }
-    permissions: {  }
 handlers:
   email_1:
     id: email
     label: 'Email 1'
-    notes: ''
     handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
     settings:
+      to_mail: plorenz@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
       states:
         - completed
-      to_mail: plorenz@usfca.edu
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: _default
       from_options: {  }
-      from_name: _default
-      subject: _default
-      body: _default
-      excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: true
-      attachments: false
       twig: false
       debug: false
       reply_to: ''
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      theme_name: ''
-      parameters: {  }
   email_2:
     id: email
     label: 'Email 2'
-    notes: ''
     handler_id: email_2
     status: true
     conditions: {  }
     weight: 2
     settings:
+      to_mail: drmyers@usfca.edu
+      from_mail: default
+      from_name: default
+      subject: default
+      body: default
+      html: true
+      attachments: false
+      excluded_elements: {  }
       states:
         - completed
-      to_mail: drmyers@usfca.edu
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: _default
       from_options: {  }
-      from_name: _default
-      subject: _default
-      body: _default
-      excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: true
-      attachments: false
       twig: false
       debug: false
       reply_to: ''
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      theme_name: ''
-      parameters: {  }
-variants: {  }

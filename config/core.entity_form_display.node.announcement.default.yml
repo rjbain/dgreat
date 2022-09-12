@@ -13,7 +13,6 @@ dependencies:
     - field.field.node.announcement.field_published_date
     - field.field.node.announcement.field_role
     - field.field.node.announcement.field_subtitle
-    - field.field.node.announcement.field_weight
     - image.style.thumbnail
     - node.type.announcement
   module:
@@ -22,7 +21,6 @@ dependencies:
     - path
     - scheduler
     - text
-    - weight
 id: node.announcement.default
 targetEntityType: node
 bundle: announcement
@@ -35,7 +33,6 @@ content:
       rows: 9
       summary_rows: 3
       placeholder: ''
-      show_summary: false
     third_party_settings: {  }
     region: content
   created:
@@ -44,13 +41,21 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_announcement_audience:
+    weight: 10
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   field_announcement_tags:
     weight: 13
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
-      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
@@ -61,6 +66,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  field_expiration_date:
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
     region: content
   field_featured_image:
     weight: 6
@@ -90,7 +101,6 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
-      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
@@ -101,12 +111,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
-  field_weight:
-    weight: 52
-    settings: {  }
-    third_party_settings: {  }
-    type: weight_selector
     region: content
   path:
     type: path
@@ -161,7 +165,6 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
-      match_limit: 10
     region: content
     third_party_settings: {  }
   unpublish_on:
@@ -173,8 +176,4 @@ content:
   url_redirects:
     weight: 50
     region: content
-    settings: {  }
-    third_party_settings: {  }
-hidden:
-  field_announcement_audience: true
-  field_expiration_date: true
+hidden: {  }

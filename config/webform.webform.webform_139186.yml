@@ -4,7 +4,6 @@ status: open
 dependencies: {  }
 open: null
 close: null
-weight: 0
 uid: 6254
 template: false
 archive: false
@@ -12,300 +11,125 @@ id: webform_139186
 title: 'One Stop - Transfer Credit Request Form'
 description: null
 category: null
-elements: "first:\n  '#type': textfield\n  '#title': 'First Name:'\n  '#description': ''\n  '#required': true\nlast:\n  '#type': textfield\n  '#title': 'Last Name:'\n  '#description': ''\n  '#required': true\nid:\n  '#type': textfield\n  '#title': 'USF ID Number:'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': ''\n  '#required': true\nplease_indicate_which_options_best_describe_your_request_s_:\n  '#type': checkboxes\n  '#title': 'Please indicate which options best describe your request(s):'\n  '#options':\n    'I have transfer credits that do not appear on my degree evaluation. ': 'I have transfer credits that do not appear on my degree evaluation. '\n    'I have transfer credits that appear on my degree evaluation but without the Core Credit they qualify for. ': 'I have transfer credits that appear on my degree evaluation but without the Core Credit they qualify for. '\nmissing_transfer_credits:\n  '#type': processed_text\n  '#title': '<h2>Missing Transfer Credits:</h2>'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"request\"]':\n        checked: true\n  '#format': full_html\na_college1:\n  '#type': textfield\n  '#title': 'What is the name of the college/university where the credits were taken?'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"request\"]':\n        checked: true\na_term1:\n  '#type': textfield\n  '#title': 'When were credits taken (ex. Fall 2017)?'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"request\"]':\n        checked: true\na_college2:\n  '#type': textfield\n  '#title': 'What is the name of the college/university where the credits were taken?'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"a_update1[1]\"]':\n        checked: true\na_term2:\n  '#type': textfield\n  '#title': 'When were credits taken (ex. Fall 2017)?'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"a_update1[1]\"]':\n        checked: true\nmissing_core_credits:\n  '#type': processed_text\n  '#title': '<h2>Missing Core Credits:</h2>'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"request\"]':\n        checked: true\n  '#text': \"<p>Core Codes: C-A1, C-B1, C-B2, C-C1, C-C2, C-D1, C-D2, C-D3, C-E, C-F, CD<br />\\r\\nPlease see <a alt=\\\"Transfer Core Curriculum Courses\\\" href=\\\"https://www.usfca.edu/admission/undergraduate/transfer/core-curriculum\\\" target=\\\"_blank\\\">Transfer Core Curriculum Courses</a> for course examples.</p>\\r\\n\"\n  '#format': full_html\nb_college1:\n  '#type': textfield\n  '#title': 'What is the name of the college/university where the credits were taken?'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"request\"]':\n        checked: true\nb_contest1:\n  '#type': textfield\n  '#title': 'What is the name of the course you wish to contest?'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"request\"]':\n        checked: true\nb_core1:\n  '#type': textfield\n  '#title': 'What core credit requirement do you believe you should be awarded for this course?'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"request\"]':\n        checked: true\nb_college2:\n  '#type': textfield\n  '#title': 'What is the name of the college/university where the credits were taken?'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"b_other1[1]\"]':\n        checked: true\nb_contest2:\n  '#type': textfield\n  '#title': 'What is the name of the course you wish to contest?'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"b_other1[1]\"]':\n        checked: true\nb_core2:\n  '#type': textfield\n  '#title': 'What core credit requirement do you believe you should be awarded for this course?'\n  '#description': ''\n  '#states':\n    visible:\n      ':input[name=\"b_other1[1]\"]':\n        checked: true\n"
+elements: "para:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<p class='intro_text_lg'>Please complete the form below to request updates or changes to your transfer credit. An admission counselor will respond to your inquiry within one business day. Please be advised that in some circumstances, you may be asked to provide additional documentation.</p>\"\n  '#title': para\n  '#description': \"\"\nfirst:\n  '#type': textfield\n  '#title': First Name:\n  '#description': \"\"\n  '#required': true\nlast:\n  '#type': textfield\n  '#title': Last Name:\n  '#description': \"\"\n  '#required': true\nid:\n  '#type': textfield\n  '#title': USF ID Number:\n  '#description': \"\"\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': \"\"\n  '#required': true\nrequest:\n  '#description': \"I have transfer credits that do not appear on my degree evaluation.\\n2\"\n  '#type': checkbox\n  '#options':\n    1: I have transfer credits that do not appear on my degree evaluation.\n    2: I have transfer credits that appear on my degree evaluation but without the Core Credit they qualify for.\n  '#multiple': true\n  '#title': Please indicate which options best describe your request(s): \n  '#description': \"\"\n  '#required': true\nA:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"\"\n  '#title': If A:\n  '#description': \"\"\nmissing_transfer_credits:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h2><br /><span>Missing Transfer Credits:</span></h2>\"\n  '#title': Missing Transfer Credits:\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"request\"]':\n        checked: true\na_college1:\n  '#type': textfield\n  '#title': What is the name of the college/university where the credits were taken?\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"request\"]':\n        checked: true\na_term1:\n  '#type': textfield\n  '#title': When were credits taken (ex. Fall 2017)?\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"request\"]':\n        checked: true\na_update1:\n  '#type': radios\n  '#options':\n    1: Yes\n    2: No\n  '#title': Are there any other schools you need credits updated from?\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"request\"]':\n        checked: true\na_college2:\n  '#type': textfield\n  '#title': What is the name of the college/university where the credits were taken?\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"a_update1[1]\"]':\n        checked: true\na_term2:\n  '#type': textfield\n  '#title': When were credits taken (ex. Fall 2017)?\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"a_update1[1]\"]':\n        checked: true\nB:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"\"\n  '#title': If B:\n  '#description': \"\"\nmissing_core_credits:\n  '#type': processed_text\n  '#format': full_html\n  '#text': \"<h2><br /><span>Missing Core Credits:</span></h2>\"\n  '#title': Missing Core Credits:\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"request\"]':\n        checked: true\nb_college1:\n  '#type': textfield\n  '#title': What is the name of the college/university where the credits were taken?\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"request\"]':\n        checked: true\nb_contest1:\n  '#type': textfield\n  '#title': What is the name of the course you wish to contest?\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"request\"]':\n        checked: true\nb_core1:\n  '#type': textfield\n  '#title': What core credit requirement do you believe you should be awarded for this course?\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"request\"]':\n        checked: true\nb_other1:\n  '#type': radios\n  '#options':\n    1: Yes\n    2: No\n  '#title': Are there any other courses you wish to contest?\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"request\"]':\n        checked: true\nb_college2:\n  '#type': textfield\n  '#title': What is the name of the college/university where the credits were taken?\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"b_other1[1]\"]':\n        checked: true\nb_contest2:\n  '#type': textfield\n  '#title': What is the name of the course you wish to contest?\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"b_other1[1]\"]':\n        checked: true\nb_core2:\n  '#type': textfield\n  '#title': What core credit requirement do you believe you should be awarded for this course?\n  '#description': \"\"\n  '#states':\n    visible:\n      ':input[name=\"b_other1[1]\"]':\n        checked: true\n"
 css: ''
 javascript: ''
 settings:
-  ajax: false
-  ajax_scroll_top: form
-  ajax_progress_type: ''
-  ajax_effect: ''
-  ajax_speed: null
   page: true
-  page_submit_path: ''
-  page_confirm_path: ''
-  page_theme_name: ''
-  form_title: both
-  form_submit_once: false
-  form_exception_message: ''
-  form_open_message: ''
-  form_close_message: ''
-  form_previous_submissions: true
-  form_confidential: false
-  form_confidential_message: ''
-  form_remote_addr: true
-  form_convert_anonymous: false
-  form_prepopulate: false
-  form_prepopulate_source_entity: false
-  form_prepopulate_source_entity_required: false
-  form_prepopulate_source_entity_type: ''
-  form_reset: false
-  form_disable_autocomplete: false
-  form_novalidate: false
-  form_disable_inline_errors: false
-  form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
-  form_autofocus: false
-  form_details_toggle: false
-  form_access_denied: default
-  form_access_denied_title: ''
-  form_access_denied_message: ''
-  form_access_denied_attributes: {  }
-  form_file_limit: ''
-  share: false
-  share_node: false
-  share_theme_name: ''
-  share_title: true
-  share_page_body_attributes: {  }
-  submission_label: ''
-  submission_log: false
-  submission_views: {  }
-  submission_views_replace: {  }
-  submission_user_columns: {  }
-  submission_user_duplicate: false
-  submission_access_denied: default
-  submission_access_denied_title: ''
-  submission_access_denied_message: ''
-  submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
-  previous_submission_message: ''
-  previous_submissions_message: ''
-  autofill: false
-  autofill_message: ''
-  autofill_excluded_elements: {  }
-  wizard_progress_bar: true
-  wizard_progress_pages: false
-  wizard_progress_percentage: false
-  wizard_progress_link: false
-  wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
-  wizard_start_label: ''
-  wizard_preview_link: false
-  wizard_confirmation: true
-  wizard_confirmation_label: ''
-  wizard_track: ''
-  wizard_prev_button_label: ''
-  wizard_next_button_label: ''
-  wizard_toggle: false
-  wizard_toggle_show_label: ''
-  wizard_toggle_hide_label: ''
-  preview: 0
-  preview_label: ''
-  preview_title: ''
-  preview_message: ''
-  preview_attributes: {  }
-  preview_excluded_elements: {  }
-  preview_exclude_empty: true
-  preview_exclude_empty_checkbox: false
-  draft: '0'
-  draft_multiple: false
-  draft_auto_save: false
-  draft_saved_message: ''
-  draft_loaded_message: ''
-  draft_pending_single_message: ''
-  draft_pending_multiple_message: ''
-  confirmation_type: url
-  confirmation_title: ''
-  confirmation_message: ''
-  confirmation_url: 'https://myusf.usfca.edu/transfer-credit-requests/thank-you'
-  confirmation_attributes: {  }
-  confirmation_back: true
-  confirmation_back_label: ''
-  confirmation_back_attributes: {  }
-  confirmation_exclude_query: false
-  confirmation_exclude_token: false
-  confirmation_update: false
-  limit_total: null
-  limit_total_interval: null
-  limit_total_message: ''
-  limit_total_unique: false
-  limit_user: null
-  limit_user_interval: null
-  limit_user_message: ''
-  limit_user_unique: false
-  entity_limit_total: null
-  entity_limit_total_interval: null
-  entity_limit_user: null
-  entity_limit_user_interval: null
-  purge: none
-  purge_days: null
-  results_disabled: false
-  results_disabled_ignore: false
-  results_customize: false
-  token_view: false
-  token_update: false
-  token_delete: false
-  serial_disabled: false
   form_submit_label: ''
+  wizard_progress_bar: true
   wizard_complete: 1
+  preview: 0
+  draft: '0'
+  draft_auto_save: false
+  confirmation_type: url
+  confirmation_url: 'https://myusf.usfca.edu/transfer-credit-requests/thank-you'
+  confirmation_message: ''
+  limit_total: null
+  limit_user: null
 access:
   create:
     roles:
       - anonymous
       - authenticated
     users: {  }
-    permissions: {  }
-  view_any:
-    roles:
-      - editor
-    users: {  }
-    permissions: {  }
-  update_any:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  delete_any:
-    roles:
-      - editor
-    users: {  }
-    permissions: {  }
-  purge_any:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  view_own:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  update_own:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  delete_own:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  administer:
-    roles:
-      - editor
-    users: {  }
-    permissions: {  }
-  test:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  configuration:
-    roles: {  }
-    users: {  }
-    permissions: {  }
 handlers:
   email_1:
     id: email
     label: 'Email 1'
-    notes: ''
     handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
     settings:
+      to_mail: aarmstrong3@usfca.edu
+      from_mail: default
+      from_name: 'USF Transfer Admissions'
+      subject: 'Transfer Credit Requests Form Submitted'
+      body: "Submitted by user: [submission:user]\n<br><br>\nSubmitted values are: [submission:values]\n<br><br>\nThe results of this submission may be viewed at:\n[submission:url]"
+      html: true
+      attachments: false
+      excluded_elements: {  }
       states:
         - completed
-      to_mail: aarmstrong3@usfca.edu
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: _default
       from_options: {  }
-      from_name: 'USF Transfer Admissions'
-      subject: 'Transfer Credit Requests Form Submitted'
-      body: "Submitted by user: [webform_submission:user]<br />\n<br />\nSubmitted values are: [webform_submission:values]<br />\n<br />\nThe results of this submission may be viewed at: [webform_submission:url]"
-      excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: true
-      attachments: false
       twig: false
       debug: false
       reply_to: ''
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      theme_name: ''
-      parameters: {  }
   email_2:
     id: email
     label: 'Email 2'
-    notes: ''
     handler_id: email_2
     status: true
     conditions: {  }
     weight: 2
     settings:
+      to_mail: '[webform-submission:values:email:raw]'
+      from_mail: default
+      from_name: default
+      subject: default
+      body: "Dear [submission:values:first],\n<br><br>\nWe’ve received your request to update your transfer credit. One of our team members will be in touch shortly to give you an update on the status of your request. If you have any follow-up questions afterward, don’t hesitate to email us at transfer@usfca.edu.\n<br><br>\nThanks,\n<br><br>\nUSF admission team"
+      html: true
+      attachments: false
+      excluded_elements: {  }
       states:
         - completed
-      to_mail: '[webform-submission:values:email:raw]'
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: _default
       from_options: {  }
-      from_name: _default
-      subject: _default
-      body: "Dear [webform_submission:values:first],<br />\r\n<br />\r\nWe&#39;ve received your request to update your transfer credit&nbsp;from institutions attended prior to enrolling at the University of San Francisco. We will&nbsp;respond to your request within 10-15 business days. Please be advised that in some circumstances, you may be asked to provide additional documentation such as a course syllabus.<br />\r\n&nbsp;<br />\r\nThanks,<br />\r\n<br />\r\nOffice of the Registrar<br />\r\nTransfercredit@usfca.edu"
-      excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: true
-      attachments: false
       twig: false
       debug: false
       reply_to: ''
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      theme_name: ''
-      parameters: {  }
   email_3:
     id: email
     label: 'Email 3'
-    notes: ''
     handler_id: email_3
     status: true
     conditions: {  }
     weight: 3
     settings:
+      to_mail: transfer@usfca.edu
+      from_mail: default
+      from_name: 'USF Transfer Admissions'
+      subject: 'Transfer Credit Requests Form Submitted'
+      body: "Submitted by user: [submission:user]\n<br><br>\nSubmitted values are: [submission:values]\n<br><br>\nThe results of this submission may be viewed at:\n[submission:url]"
+      html: true
+      attachments: false
+      excluded_elements: {  }
       states:
         - completed
-      to_mail: transfercredit@usfca.edu
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: _default
       from_options: {  }
-      from_name: 'USF Transfer Admissions'
-      subject: 'Transfer Credit Requests Form Submitted'
-      body: "Submitted by user: [webform_submission:user]<br />\r\n<br />\r\nSubmitted values are: [webform_submission:values]<br />\r\n<br />\r\nThe results of this submission may be viewed at: [webform_submission:url]"
-      excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: true
-      attachments: false
       twig: false
       debug: false
       reply_to: ''
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      theme_name: ''
-      parameters: {  }
-variants: {  }

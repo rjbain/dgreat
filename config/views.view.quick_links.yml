@@ -32,6 +32,7 @@ description: ''
 tag: ''
 base_table: group_content_field_data
 base_field: id
+core: 8.x
 display:
   default:
     display_plugin: default
@@ -70,42 +71,28 @@ display:
           text_input_required: 'Select any filter and click on Apply to see results'
           bef:
             general:
-              autosubmit: false
-              autosubmit_exclude_textfield: false
-              autosubmit_hide: false
-              input_required: false
-              text_input_required: 'Select any filter and click on Apply to see results'
-              text_input_required_format: basic_html
               allow_secondary: false
               secondary_label: 'Advanced options'
-            filter:
-              combine:
-                plugin_id: default
-                advanced:
-                  collapsible: false
-                  is_secondary: false
-                  placeholder_text: ''
-                  rewrite:
-                    filter_rewrite_values: ''
-                  sort_options: false
-              field_category_target_id:
-                plugin_id: default
-                advanced:
-                  collapsible: false
-                  is_secondary: false
-                  placeholder_text: ''
-                  rewrite:
-                    filter_rewrite_values: ''
-                  sort_options: false
-              label:
-                plugin_id: default
-                advanced:
-                  collapsible: false
-                  is_secondary: false
-                  placeholder_text: ''
-                  rewrite:
-                    filter_rewrite_values: ''
-                  sort_options: false
+              autosubmit: false
+              autosubmit_hide: false
+            combine:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                placeholder_text: ''
+            field_category_target_id:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            label:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                placeholder_text: ''
           text_input_required_format: basic_html
       pager:
         type: none
@@ -624,9 +611,6 @@ display:
           entity_type: group_content
           entity_field: type
           plugin_id: bundle
-          expose:
-            operator_limit_selection: false
-            operator_list: {  }
         type_1:
           id: type_1
           table: groups_field_data
@@ -652,8 +636,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -719,8 +701,6 @@ display:
               box_editor: '0'
               webform_editor: '0'
             placeholder: ''
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -787,8 +767,6 @@ display:
               box_editor: '0'
               webform_editor: '0'
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -833,8 +811,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -872,8 +848,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1004,7 +978,7 @@ display:
           empty: false
           tokenize: false
           content:
-            value: "<a href=\"/dashboard\">Back to Dashboard</a><br>\n<a class=\"btn btn-default\" href=\"/node/add/favorite_link?edit[field_link_type][und]=quick&destination=/dashboard\" role=\"button\" style=\"float:right\"><span class=\"icon-plus\"></span> Add Quick Link</a>"
+            value: '<a class="btn btn-default" href="/node/add/favorite_link?edit[field_link_type][und]=quick?destination=favorite-links/allapps" role="button" style="float:right"><span class="icon-plus"></span> Add Quick Link</a>'
             format: full_html
           plugin_id: text
       access:
@@ -1718,9 +1692,6 @@ display:
           entity_field: type
           plugin_id: bundle
           group: 1
-          expose:
-            operator_limit_selection: false
-            operator_list: {  }
         type_1:
           id: type_1
           table: groups_field_data
@@ -1746,8 +1717,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1813,8 +1782,6 @@ display:
               box_editor: '0'
               webform_editor: '0'
             placeholder: ''
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1857,8 +1824,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1896,8 +1861,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1936,8 +1899,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1975,8 +1936,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2017,7 +1976,7 @@ display:
     display_options:
       display_extenders: {  }
       display_description: ''
-      title: ''
+      title: 'My Quick Links'
       defaults:
         title: false
         relationships: false
@@ -2123,7 +2082,7 @@ display:
           click_sort_column: uri
           type: link
           settings:
-            trim_length: null
+            trim_length: 80
             url_only: false
             url_plain: false
             rel: '0'
@@ -2215,9 +2174,6 @@ display:
           entity_field: type
           plugin_id: bundle
           group: 1
-          expose:
-            operator_limit_selection: false
-            operator_list: {  }
         type_1:
           id: type_1
           table: groups_field_data
@@ -2243,8 +2199,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2285,8 +2239,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2324,8 +2276,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2364,8 +2314,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2400,7 +2348,7 @@ display:
           empty: false
           tokenize: false
           content:
-            value: '<!--<a href="node/add/favorite_link?edit[field_link_type][und]=quick&destination=/dashboard" class="manageLinks">Add Link</a>-->'
+            value: '<a href="node/add/favorite_link?edit[field_link_type][und]=quick?destination=favorite-links/allapps" class="manageLinks">Add new Quick Link</a>'
             format: full_html
           plugin_id: text
         area_1:
@@ -2413,7 +2361,7 @@ display:
           empty: false
           tokenize: false
           content:
-            value: '<!--<a href="/quick-links" class="addLinks">Manage Links</a>-->'
+            value: '<a href="/quick-links" class="addLinks">Manage Quick Links</a>'
             format: full_html
           plugin_id: text
       empty: {  }
@@ -2466,8 +2414,12 @@ display:
           query_tags: {  }
       group_by: false
       cache:
-        type: none
-        options: {  }
+        type: time
+        options:
+          results_lifespan: 1800
+          results_lifespan_custom: 0
+          output_lifespan: 1800
+          output_lifespan_custom: 0
     cache_metadata:
       max-age: -1
       contexts:
@@ -2590,7 +2542,7 @@ display:
           click_sort_column: uri
           type: link
           settings:
-            trim_length: null
+            trim_length: 80
             url_only: false
             url_plain: false
             rel: '0'
@@ -2782,9 +2734,6 @@ display:
           entity_field: type
           plugin_id: bundle
           group: 1
-          expose:
-            operator_limit_selection: false
-            operator_list: {  }
         type_1:
           id: type_1
           table: groups_field_data
@@ -2810,8 +2759,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2852,8 +2799,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2891,8 +2836,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2931,8 +2874,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2965,37 +2906,13 @@ display:
         title: ''
         description: ''
         weight: 0
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: false
-          tokenize: false
-          content:
-            value: '<a href="/dashboard">Back to Dashboard</a><br>'
-            format: restricted_html
-          plugin_id: text
+      header: {  }
       access:
         type: perm
         options:
           perm: 'access content'
       footer: {  }
-      empty:
-        area_text_custom:
-          id: area_text_custom
-          table: views
-          field: area_text_custom
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          tokenize: false
-          content: '<a href="/dashboard">Back to Dashboard</a><br>'
-          plugin_id: text_custom
+      empty: {  }
       sorts:
         field_weight_value:
           id: field_weight_value

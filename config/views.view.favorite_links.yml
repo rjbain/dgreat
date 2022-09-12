@@ -32,6 +32,7 @@ description: ''
 tag: ''
 base_table: group_content_field_data
 base_field: id
+core: 8.x
 display:
   default:
     display_plugin: default
@@ -70,42 +71,28 @@ display:
           text_input_required: 'Select any filter and click on Apply to see results'
           bef:
             general:
-              autosubmit: false
-              autosubmit_exclude_textfield: false
-              autosubmit_hide: false
-              input_required: false
-              text_input_required: 'Select any filter and click on Apply to see results'
-              text_input_required_format: basic_html
               allow_secondary: false
               secondary_label: 'Advanced options'
-            filter:
-              combine:
-                plugin_id: default
-                advanced:
-                  collapsible: false
-                  is_secondary: false
-                  placeholder_text: ''
-                  rewrite:
-                    filter_rewrite_values: ''
-                  sort_options: false
-              field_category_target_id:
-                plugin_id: default
-                advanced:
-                  collapsible: false
-                  is_secondary: false
-                  placeholder_text: ''
-                  rewrite:
-                    filter_rewrite_values: ''
-                  sort_options: false
-              label:
-                plugin_id: default
-                advanced:
-                  collapsible: false
-                  is_secondary: false
-                  placeholder_text: ''
-                  rewrite:
-                    filter_rewrite_values: ''
-                  sort_options: false
+              autosubmit: false
+              autosubmit_hide: false
+            combine:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                placeholder_text: ''
+            field_category_target_id:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            label:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                placeholder_text: ''
           text_input_required_format: basic_html
       pager:
         type: none
@@ -634,9 +621,6 @@ display:
           entity_type: group_content
           entity_field: type
           plugin_id: bundle
-          expose:
-            operator_limit_selection: false
-            operator_list: {  }
         type_1:
           id: type_1
           table: groups_field_data
@@ -662,8 +646,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -729,8 +711,6 @@ display:
               box_editor: '0'
               webform_editor: '0'
             placeholder: ''
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -797,8 +777,6 @@ display:
               box_editor: '0'
               webform_editor: '0'
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -868,8 +846,6 @@ display:
               box_editor: '0'
               webform_editor: '0'
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -915,8 +891,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -954,8 +928,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -984,7 +956,7 @@ display:
           empty: false
           tokenize: false
           content:
-            value: "<a href=\"/dashboard\">Back to Dashboard</a><br>\n<a class=\"btn btn-default\" href=\"/node/add/favorite_link?destination=favorite-links/allapps\" role=\"button\" style=\"float:right\"><span class=\"icon-plus\"></span> Add Favorite Link</a>"
+            value: '<a class="btn btn-default" href="/node/add/favorite_link?destination=favorite-links/allapps" role="button" style="float:right"><span class="icon-plus"></span> Add Favorite Link</a>'
             format: full_html
           plugin_id: text
       footer:
@@ -1687,9 +1659,6 @@ display:
           entity_field: type
           plugin_id: bundle
           group: 1
-          expose:
-            operator_limit_selection: false
-            operator_list: {  }
         type_1:
           id: type_1
           table: groups_field_data
@@ -1715,8 +1684,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1757,8 +1724,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1796,8 +1761,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1985,7 +1948,7 @@ display:
             url_only: false
             url_plain: false
             rel: '0'
-            target: _blank
+            target: '0'
           group_column: ''
           group_columns: {  }
           group_rows: true
@@ -2021,7 +1984,7 @@ display:
             link_class: ''
             prefix: ''
             suffix: ''
-            target: _blank
+            target: ''
             nl2br: false
             max_length: 0
             word_boundary: true
@@ -2073,9 +2036,6 @@ display:
           entity_field: type
           plugin_id: bundle
           group: 1
-          expose:
-            operator_limit_selection: false
-            operator_list: {  }
         type_1:
           id: type_1
           table: groups_field_data
@@ -2101,8 +2061,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2143,8 +2101,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2182,8 +2138,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2259,12 +2213,16 @@ display:
           empty: true
           tokenize: false
           content:
-            value: "<a href=\"/favorite-links\" class=\"appPref\">Preferences</a>\r\n<a href=\"https://usf.service-now.com/usf?id=my_apps\" class=\"seeMyApps diamond_link_small\" target=\"_blank\">View All  Apps</a>"
+            value: "<a href=\"/favorite-links\" class=\"appPref\">Preferences</a>\n<a href=\"http://www.usfca.edu\" class=\"seeMyApps diamond_link_small\">View All  Apps</a>"
             format: full_html
           plugin_id: text
       cache:
-        type: none
-        options: {  }
+        type: time
+        options:
+          results_lifespan: 1800
+          results_lifespan_custom: 0
+          output_lifespan: 1800
+          output_lifespan_custom: 0
     cache_metadata:
       max-age: -1
       contexts:
@@ -2343,7 +2301,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: true
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -2578,9 +2536,6 @@ display:
           entity_field: type
           plugin_id: bundle
           group: 1
-          expose:
-            operator_limit_selection: false
-            operator_list: {  }
         type_1:
           id: type_1
           table: groups_field_data
@@ -2606,8 +2561,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2648,8 +2601,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2687,8 +2638,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2722,20 +2671,7 @@ display:
         title: ''
         description: ''
         weight: 0
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: false
-          tokenize: false
-          content:
-            value: '<a href="/dashboard">Back to Dashboard</a><br>'
-            format: restricted_html
-          plugin_id: text
+      header: {  }
       access:
         type: perm
         options:
