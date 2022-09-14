@@ -12,7 +12,7 @@ label: 'Import events from events server to MyUSF'
 source:
   plugin: url
   data_fetcher_plugin: http
-  urls: 'https://usfcadev.herokuapp.com/feeds/getEventsMyUSF.php'
+  urls: 'https://jayna.usfca.edu/feeds/events/getEventsMyUSF.php'
   data_parser_plugin: simple_xml
   item_selector: /events/item
   fields:
@@ -80,6 +80,14 @@ source:
       name: imageAlt
       label: imageAlt
       selector: imageAlt
+    -
+      name: emsBookingId
+      label: emsBookingId
+      selector: emsBookingId
+    -
+      name: emsReservationId
+      label: emsReservationId
+      selector: emsReservationId
   ids:
     guid:
       type: string
@@ -99,6 +107,8 @@ process:
   field_featured: featured
   field_guid: guid
   field_image_alt: imageAlt
+  field_ems_booking_id: emsBookingId
+  field_ems_reservation_id: emsReservationId
   field_category:
     plugin: entity_generate
     source: category
