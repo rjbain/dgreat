@@ -1,0 +1,13 @@
+<?php
+
+function dgreat_hide_link_preprocess_node_add_list(&$vars) {
+
+  // Remove a few content types from /node/add page.
+  $types_to_remove = [
+    'favorite_link',
+  ];
+  foreach ($types_to_remove as $type) {
+    unset($vars['content'][$type]);
+    unset($vars['types'][$type]);
+  }
+}
