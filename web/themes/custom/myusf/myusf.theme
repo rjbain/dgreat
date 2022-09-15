@@ -130,6 +130,9 @@ function myusf_preprocess_paragraph__video(&$variables) {
             $vimeo_id = $matches[5];
             $variables['new_vid_url'] = 'https://player.vimeo.com/video/' . $vimeo_id;
         }
+    } else if (strpos($original_video_url, 'panopto') !== false) {
+            $panopto_id = preg_replace("/^https?:\/\/.*\?.*id=([^&]+).*$/", "$1", $original_video_url);
+            $variables['new_vid_url'] = 'https://usfca.hosted.panopto.com/Panopto/Pages/Embed.aspx?id='. $panopto_id;
     }
 }
 
