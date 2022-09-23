@@ -1,32 +1,32 @@
-uuid: d307367f-8573-4b49-b210-8aff3ddfd13b
+uuid: b9a7337a-7dd4-497e-8d1f-7e5eb433b5e1
 langcode: en
 status: true
 dependencies: {  }
-id: arbitrary_type_import
+id: share_page_import
 class: null
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags: null
 migration_group: null
-label: 'Arbitrary Content Import to MyUSF from USFCA'
+label: 'Share Page from USFCA'
 source:
   plugin: url
   data_fetcher_plugin: http
-  urls: 'http://www.usfca.edu/feeds/feed?source=arbitrary-share'
+  urls: 'https://www.usfca.edu/share/feed.xml'
   data_parser_plugin: simple_xml
-  item_selector: /arbitrary/item
+  item_selector: /response/item
   fields:
     -
       name: title
-      label: Title
+      label: title
       selector: title
     -
       name: description
-      label: Description
+      label: description
       selector: description
     -
       name: guid
-      label: GUID
+      label: guid
       selector: guid
   ids:
     guid:
@@ -36,7 +36,7 @@ process:
   body: description
   type:
     plugin: default_value
-    default_value: share_arbitrary
+    default_value: share_page
 destination:
   plugin: 'entity:node'
 migration_dependencies: null
