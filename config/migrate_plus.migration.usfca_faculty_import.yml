@@ -12,7 +12,7 @@ label: 'Faculty Details Import'
 source:
   plugin: url
   data_fetcher_plugin: http
-  urls: 'http://www.usfca.edu/feeds/feed?source=myusf-faculty'
+  urls: 'http://jayna.usfca.edu/feeds/faculty/getFaculty.php'
   data_parser_plugin: simple_xml
   item_selector: /faculty/item
   fields:
@@ -23,83 +23,75 @@ source:
     -
       name: display_title
       label: 'Display Title'
-      selector: display_title
-    -
-      name: banner_id
-      label: 'Banner ID'
-      selector: banner_id
+      selector: title
     -
       name: school
       label: School
-      selector: school
+      selector: role/school
     -
       name: program
       label: Program
-      selector: program
+      selector: role/program
     -
-      name: faculty_department
-      label: 'Faculty Department'
-      selector: faculty_department
-    -
-      name: program_director
-      label: 'Program Director'
-      selector: program_director
+      name: programDirector
+      label: programDirector
+      selector: programDirector
     -
       name: position
       label: Position
-      selector: position
+      selector: role/position
     -
-      name: past_education
-      label: 'Past Education'
-      selector: past_education
+      name: department
+      label: department
+      selector: departments/department
+    -
+      name: education
+      label: education
+      selector: education
     -
       name: expertise
-      label: Expertise
+      label: expertise
       selector: expertise
     -
-      name: first_name
-      label: 'First Name'
-      selector: first_name
+      name: firstName
+      label: firstName
+      selector: firstName
     -
-      name: middle_initial
-      label: 'Middle Initial'
-      selector: middle_initial
+      name: middleName
+      label: middleName
+      selector: middleName
     -
-      name: last_name
-      label: 'Last Name'
-      selector: last_name
+      name: lastName
+      label: lastName
+      selector: lastName
     -
-      name: name_suffix
-      label: 'Name Suffix'
-      selector: name_suffix
+      name: suffix
+      label: suffix
+      selector: suffix
     -
-      name: professional_title
-      label: 'Professional Title'
-      selector: professional_title
+      name: professionalTitle
+      label: professionalTitle
+      selector: professionalTitle
     -
-      name: description
-      label: Description
-      selector: description
-    -
-      name: summary
-      label: Summary
-      selector: summary
+      name: biography
+      label: biography
+      selector: biography
     -
       name: phone
       label: Phone
       selector: phone
     -
-      name: email_address
-      label: 'Email Address'
-      selector: email_address
+      name: email
+      label: email
+      selector: email
     -
-      name: image
-      label: Image
-      selector: image
+      name: media
+      label: media
+      selector: media
     -
-      name: path
-      label: Path
-      selector: path
+      name: sourceUrl
+      label: sourceUrl
+      selector: sourceUrl
     -
       name: guid
       label: GUID
@@ -110,21 +102,20 @@ source:
 process:
   title: title
   field_display_title: display_title
-  field_banner_id: banner_id
   field_position: position
-  field_past_education: past_education
-  field_expertise: expertise
-  field_first_name: first_name
-  field_middle_initial: middle_initial
-  field_last_name: last_name
-  field_name_suffix: name_suffix
-  field_professional_title: professional_title
-  body: description
-  field_summary: summary
+  field_education: education
+  field_expertise_long: expertise
+  field_first_name: firstName
+  field_middle_initial: middleName
+  field_last_name: lastName
+  field_name_suffix: suffix
+  field_professional_title: professionalTitle
+  body: biography
+  field_summary: biography
   field_phone: phone
-  field_email_address: email_address
-  field_image_url: image
-  field_source_url: path
+  field_email_address: email
+  field_image_url: media
+  field_source_url: sourceUrl
   field_guid: guid
   field_faculty_school:
     plugin: entity_generate
@@ -140,16 +131,9 @@ process:
     bundle: faculty_program
     entity_type: taxonomy_term
     ignore_case: true
-  field_faculty_department:
-    plugin: entity_generate
-    source: faculty_department
-    value_key: name
-    bundle: faculty_department
-    entity_type: taxonomy_term
-    ignore_case: true
   field_faculty_program_director:
     plugin: entity_generate
-    source: program_director
+    source: programDirector
     value_key: name
     bundle: faculty_program_director
     entity_type: taxonomy_term
@@ -159,6 +143,13 @@ process:
     source: position
     value_key: name
     bundle: faculty_position
+    entity_type: taxonomy_term
+    ignore_case: true
+  field_faculty_department:
+    plugin: entity_generate
+    source: department
+    value_key: name
+    bundle: faculty_department
     entity_type: taxonomy_term
     ignore_case: true
   type:

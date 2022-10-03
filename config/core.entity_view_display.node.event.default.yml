@@ -7,6 +7,8 @@ dependencies:
     - field.field.node.event.field_additional_info
     - field.field.node.event.field_building
     - field.field.node.event.field_category
+    - field.field.node.event.field_ems_booking_id
+    - field.field.node.event.field_ems_reservation_id
     - field.field.node.event.field_end_date
     - field.field.node.event.field_f_image_url
     - field.field.node.event.field_featured
@@ -61,6 +63,24 @@ content:
       link: true
     third_party_settings: {  }
     weight: 104
+    region: content
+  field_ems_booking_id:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 118
+    region: content
+  field_ems_reservation_id:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 119
     region: content
   field_end_date:
     type: datetime_default

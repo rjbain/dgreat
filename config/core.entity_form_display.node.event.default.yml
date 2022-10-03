@@ -7,6 +7,8 @@ dependencies:
     - field.field.node.event.field_additional_info
     - field.field.node.event.field_building
     - field.field.node.event.field_category
+    - field.field.node.event.field_ems_booking_id
+    - field.field.node.event.field_ems_reservation_id
     - field.field.node.event.field_end_date
     - field.field.node.event.field_f_image_url
     - field.field.node.event.field_featured
@@ -74,6 +76,20 @@ content:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_ems_booking_id:
+    type: number
+    weight: 27
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_ems_reservation_id:
+    type: number
+    weight: 28
+    region: content
+    settings:
       placeholder: ''
     third_party_settings: {  }
   field_end_date:

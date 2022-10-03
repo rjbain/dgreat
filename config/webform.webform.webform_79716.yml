@@ -12,7 +12,7 @@ id: webform_79716
 title: 'Law Student Feedback'
 description: null
 category: null
-elements: |
+elements: |-
   type:
     '#type': select
     '#options':
@@ -21,27 +21,35 @@ elements: |
     '#title': 'Is this feedback on Student Services or the Program of Legal Education'
     '#description': ''
     '#required': true
-  Disclaimer:
+  disclaimer:
     '#type': processed_text
+    '#text': |
+      <h2 data-stringify-type="pre">FORMAL COMPLAINTS ABOUT THE PROGRAM OF LEGAL EDUCATION</h2>
+      
+      <p data-stringify-type="pre">A law student may make a formal complaint to the administration of the law school regarding a significant problem that directly implicates the school's program of legal education and its compliance with the ABA Standards. &nbsp;The process for making and resolving a formal complaint is described below.</p>
+      
+      <ol>
+      	<li data-stringify-type="pre">A law student may submit a complaint in writing to the Associate Dean for Academic Affairs (the "Associate Dean") via email, U.S. mail, personal delivery, or by completing the web-based form.</li>
+      	<li data-stringify-type="pre">The complaint must describe in detail the behavior, program, process, or other matter that is at issue, and explain how the matter implicates the law school's program of legal education and its compliance with a specific, identified ABA Standard.</li>
+      	<li data-stringify-type="pre">The complaint must include the complaining student's full name, official law school e-mail address, and current mailing address.</li>
+      	<li data-stringify-type="pre">When the law school receives a complaint that complies with the foregoing requirements, the Associate Dean shall acknowledge to the complaining student the receipt via email U.S. mail, or personal delivery within three business days.</li>
+      	<li data-stringify-type="pre">Within ten business days of acknowledging the complaint, the Associate Dean or the Associate Dean's designee, shall respond to the substance of the complaint, either in writing or in person, and shall indicate what steps are being taken by the law school to address the complaint. &nbsp;Additionally, if an investigation is necessary, the Associate Dean shall provide the complaining student a substantive response within ten business days after the completion of the investigation.&nbsp;</li>
+      	<li data-stringify-type="pre">A complaining student may appeal a decision to the Dean of the law school within ten business days of the Associate Dean's substantive response. &nbsp;The Dean's decision on appeal shall be final.</li>
+      	<li data-stringify-type="pre">A copy of the complaint and a summary of the process and resolution of the complaint shall be kept in the office of the Associate Dean for a period of eight years from the date of final resolution of the complaint.</li>
+      </ol>
+      
     '#format': full_html
-    '#text': '<h3>Formal Complaints about the Program of Legal Education</h3><p>A law student may make a formal complaint to the administration of the law school regarding a significant problem that directly implicates the school’s program of legal education and its compliance with the ABA Standards.&nbsp; The process for making and resolving a formal complaint is described below.</p><p style=''padding-left: 30px;''><br>1. &nbsp;A law student may submit a complaint in writing to the Associate Dean for Academic Affairs (the “Associate Dean”) via email, U.S. mail, personal delivery, or by completing the web-based form.</p><p style=''padding-left: 30px;''><br>2. &nbsp;The complaint must describe in detail the behavior, program, process, or other matter that is at issue, and explain how the matter implicates the law school’s program of legal education and its compliance with a specific, identified ABA Standard.</p><p style=''padding-left: 30px;''>3. &nbsp;The complaint must&nbsp;include the complaining student’s full name, official law school e-mail address, and current mailing address.</p><p style=''padding-left: 30px;''>4. &nbsp;When the law school receives a complaint that complies with the foregoing requirements, the Associate Dean shall acknowledge to the complaining student the receipt via email U.S. mail, or personal delivery within three business days.</p><p style=''padding-left: 30px;''><br>5. &nbsp;Within&nbsp;ten business days of acknowledging the complaint, the Associate Dean or the Associate Dean’s designee, shall respond to the substance of the complaint, either in writing or in person, and shall indicate what steps are being taken by the law school to address the complaint.&nbsp; Additionally, if an investigation is necessary, the Associate Dean shall provide the complaining student a substantive response within ten business days after the completion of the investigation.&nbsp;</p><p style=''padding-left: 30px;''><br>6. &nbsp;A complaining student may appeal a decision to the Dean of the law school within ten business days of the Associate Dean’s substantive response.&nbsp; The Dean’s decision on appeal shall be final.</p><p style=''padding-left: 30px;''><br>7. &nbsp;A&nbsp;copy of the complaint and a summary of the process and resolution of the complaint shall be kept in the office of the Associate Dean for a period of eight years from the date of final resolution of the complaint.</p>'
-    '#title': 'Program Disclaimer'
-    '#description': ''
-    '#states':
-      visible:
-        ':input[name="type"]':
-          value: education
   service:
     '#type': select
     '#title': 'What law school office or specific student service is your comment pertaining to?'
     '#description': 'NOTE: your comments will be forwarded to the Supervising Dean or Director (noted above) responsible for the department(s) or office(s) that you have selected.'
     '#options':
-      Aid: 'Financial Aid – Director Alan Guerrero'
-      Career: 'Office of Career Services –  Director Tajira McCoy'
-      Registrar: 'Registrar’s Office – Director Stephanie Darcy'
-      Affairs: 'Student Affairs – Assistant Dean Stephanie Carlos'
-      Library: 'Zief Law Library – Amy Wright, Interim Co-Director of the Law Library'
-      Other: 'Other/Unknown – Assistant Dean Stephanie Carlos '
+      Aid: 'Financial Aid'
+      Career: 'Office of Career Services'
+      Registrar: 'Registrar’s Office'
+      Affairs: 'Student Affairs'
+      Library: 'Zief Law Library'
+      Other: Other/Unknown
     '#required': true
   name:
     '#type': textfield
@@ -72,24 +80,22 @@ elements: |
       invisible:
         ':input[name="type"]':
           value: education
-  Detail:
+  please_describe_in_detail_the_behavior_program_process_or_other_:
     '#type': textarea
     '#title': 'Please describe in detail the behavior, program, process, or other matter that is at issue.'
-    '#description': ''
-    '#required': true
     '#states':
       visible:
         ':input[name="type"]':
           value: education
-  Standard:
+    '#required': true
+  explain_how_the_matter_implicates_the_law_school_s_program_of_le:
     '#type': textarea
     '#title': 'Explain how the matter implicates the law school’s program of legal education and its compliance with a specific, identified ABA Standard.'
-    '#description': ''
-    '#required': true
     '#states':
       visible:
         ':input[name="type"]':
           value: education
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -102,7 +108,7 @@ settings:
   page_submit_path: ''
   page_confirm_path: ''
   page_theme_name: ''
-  form_title: both
+  form_title: source_entity_webform
   form_submit_once: false
   form_open_message: ''
   form_close_message: ''
@@ -174,7 +180,7 @@ settings:
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
-  wizard_toggle: false
+  wizard_toggle: true
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
   preview: 0
@@ -443,6 +449,43 @@ handlers:
 
         <p>Submitted values are:</p>
         [webform_submission:values]
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
+  email:
+    id: email
+    handler_id: email
+    label: Email
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 4
+    settings:
+      states:
+        - completed
+      to_mail: deanfreiwald@usfca.edu
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: _default
+      body: _default
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
