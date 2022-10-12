@@ -2,9 +2,9 @@ uuid: 56a008ea-cfbe-44b1-b12f-89b68d789d6f
 langcode: en
 status: open
 dependencies: {  }
-weight: 0
 open: null
 close: null
+weight: 0
 uid: 1293
 template: false
 archive: false
@@ -12,71 +12,7 @@ id: webform_102180
 title: 'HR Commuter Plan and Subsidy Form'
 description: null
 category: null
-elements: |-
-  first_name:
-    '#type': textfield
-    '#title': 'First Name'
-    '#description': ''
-    '#required': true
-  last_name:
-    '#type': textfield
-    '#title': 'Last Name'
-    '#description': ''
-    '#required': true
-  cwid_:
-    '#type': textfield
-    '#title': CWID
-    '#description': ''
-    '#required': true
-  phone:
-    '#type': textfield
-    '#title': Phone
-    '#description': ''
-    '#required': true
-  usf_email:
-    '#type': email
-    '#size': 20
-    '#title': 'USF Email'
-    '#description': ''
-    '#required': true
-  zip_code:
-    '#type': textfield
-    '#title': 'Zip Code'
-    '#description': ''
-    '#required': true
-  do_you_have_a_usf_parking_permit:
-    '#type': radios
-    '#title': 'Do you have a USF parking permit or will you be purchasing one for the upcoming semester?'
-    '#options':
-      1: 'Yes, I have a current parking permit'
-      2: 'No, I do not currently have a USF parking permit'
-      3: 'I will be purchasing a permit for the upcoming semester'
-    '#required': true
-    '#options__properties': ''
-  confirmation_message:
-    '#type': processed_text
-    '#title': 'Confirmation Message'
-    '#description': ''
-    '#text': |
-      <p><em>By entering my name below I agree that I have read and understand the <a href="/node/101813" target="_blank">pre-tax commuter program and USF subsidy eligibility and terms</a> and that I will read and comply with the terms and conditions of Commuter Check Direct (CCD). I agree and certify that orders/products will be used by me only for the purposes of commuting to and from work. I authorize USF to deduct the amount of my order (minus any applicable subsidy) up to the applicable IRS pre-tax limit and any additional post-tax amounts from my paycheck.</em></p>
-      
-    '#format': full_html
-  name:
-    '#type': textfield
-    '#title': Name
-    '#description': ''
-    '#required': true
-  date:
-    '#type': date
-    '#title': Date
-    '#description': ''
-    '#required': true
-  processing:
-    '#type': processed_text
-    '#format': full_html
-    '#text': '<p>Allow 10 Business Days for Processing.</p>'
-    '#title': Processing
-    '#description': ''
+elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\ncwid_:\n  '#type': textfield\n  '#title': CWID\n  '#description': ''\n  '#required': true\nphone:\n  '#type': textfield\n  '#title': Phone\n  '#description': ''\n  '#required': true\nusf_email:\n  '#type': email\n  '#size': 20\n  '#title': 'USF Email'\n  '#description': ''\n  '#required': true\nzip_code:\n  '#type': textfield\n  '#title': 'Zip Code'\n  '#description': ''\n  '#required': true\ndo_you_have_a_usf_parking_permit:\n  '#type': radios\n  '#title': 'Do you have a USF parking permit or will you be purchasing one for the upcoming semester?'\n  '#options':\n    1: 'Yes, I have a current parking permit'\n    2: 'No, I do not currently have a USF parking permit'\n    3: 'I will be purchasing a permit for the upcoming semester'\n  '#required': true\n  '#options__properties': ''\nconfirmation_message:\n  '#type': processed_text\n  '#title': 'Confirmation Message'\n  '#description': ''\n  '#text': |\n    <p><em>By entering my name below I agree that I have read and understand the <a href=\"/node/101813\" target=\"_blank\">pre-tax commuter program and USF subsidy eligibility and terms</a> and that I will read and comply with the terms and conditions of Commuter Check Direct (CCD). I agree and certify that orders/products will be used by me only for the purposes of commuting to and from work. I authorize USF to deduct the amount of my order (minus any applicable subsidy) up to the applicable IRS pre-tax limit and any additional post-tax amounts from my paycheck.</em></p>\n    \n  '#format': full_html\nname:\n  '#type': textfield\n  '#title': Name\n  '#description': ''\n  '#required': true\ndate:\n  '#type': date\n  '#title': Date\n  '#description': ''\n  '#required': true\nprocessing:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p>Allow 10 Business Days for Processing.</p>'\n  '#title': Processing\n  '#description': ''"
 css: ''
 javascript: ''
 settings:
@@ -91,48 +27,40 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
+  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
-  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
+  form_reset: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
-  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
-  form_attributes: {  }
-  form_method: ''
-  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
-  submission_exception_message: ''
-  submission_locked_message: ''
   submission_log: false
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -141,6 +69,11 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -151,13 +84,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -180,9 +113,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
-  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: '<p>Thank you for submitting a commuter plan/subsidy form. If you have any questions, please email <a href="mailto:benefits@usfca.edu">benefits@usfca.edu</a>.</p>'
+  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -266,9 +199,9 @@ access:
 handlers:
   email_1:
     id: email
-    handler_id: email_1
     label: 'Email 1'
     notes: ''
+    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -277,17 +210,13 @@ handlers:
         - completed
       to_mail: 'benefits@usfca.edu,cacruise@usfca.edu,jvuong2@usfca.edu,jbinn@usfca.edu'
       to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
       cc_mail: ''
       cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -298,7 +227,11 @@ handlers:
       html: false
       attachments: true
       twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       theme_name: ''
       parameters: {  }
-      debug: false
 variants: {  }

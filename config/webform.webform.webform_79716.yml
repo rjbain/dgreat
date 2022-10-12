@@ -2,9 +2,9 @@ uuid: 02934653-1d24-45f3-b056-cb658af341cd
 langcode: en
 status: open
 dependencies: {  }
-weight: 0
 open: null
 close: null
+weight: 0
 uid: 1510
 template: false
 archive: false
@@ -12,90 +12,7 @@ id: webform_79716
 title: 'Law Student Feedback'
 description: null
 category: null
-elements: |-
-  type:
-    '#type': select
-    '#options':
-      services: 'Student Services'
-      education: 'Program of Legal Education'
-    '#title': 'Is this feedback on Student Services or the Program of Legal Education'
-    '#description': ''
-    '#required': true
-  disclaimer:
-    '#type': processed_text
-    '#text': |
-      <h2 data-stringify-type="pre">FORMAL COMPLAINTS ABOUT THE PROGRAM OF LEGAL EDUCATION</h2>
-      
-      <p data-stringify-type="pre">A law student may make a formal complaint to the administration of the law school regarding a significant problem that directly implicates the school's program of legal education and its compliance with the ABA Standards. &nbsp;The process for making and resolving a formal complaint is described below.</p>
-      
-      <ol>
-      	<li data-stringify-type="pre">A law student may submit a complaint in writing to the Associate Dean for Academic Affairs (the "Associate Dean") via email, U.S. mail, personal delivery, or by completing the web-based form.</li>
-      	<li data-stringify-type="pre">The complaint must describe in detail the behavior, program, process, or other matter that is at issue, and explain how the matter implicates the law school's program of legal education and its compliance with a specific, identified ABA Standard.</li>
-      	<li data-stringify-type="pre">The complaint must include the complaining student's full name, official law school e-mail address, and current mailing address.</li>
-      	<li data-stringify-type="pre">When the law school receives a complaint that complies with the foregoing requirements, the Associate Dean shall acknowledge to the complaining student the receipt via email U.S. mail, or personal delivery within three business days.</li>
-      	<li data-stringify-type="pre">Within ten business days of acknowledging the complaint, the Associate Dean or the Associate Dean's designee, shall respond to the substance of the complaint, either in writing or in person, and shall indicate what steps are being taken by the law school to address the complaint. &nbsp;Additionally, if an investigation is necessary, the Associate Dean shall provide the complaining student a substantive response within ten business days after the completion of the investigation.&nbsp;</li>
-      	<li data-stringify-type="pre">A complaining student may appeal a decision to the Dean of the law school within ten business days of the Associate Dean's substantive response. &nbsp;The Dean's decision on appeal shall be final.</li>
-      	<li data-stringify-type="pre">A copy of the complaint and a summary of the process and resolution of the complaint shall be kept in the office of the Associate Dean for a period of eight years from the date of final resolution of the complaint.</li>
-      </ol>
-      
-    '#format': full_html
-  service:
-    '#type': select
-    '#title': 'What law school office or specific student service is your comment pertaining to?'
-    '#description': 'NOTE: your comments will be forwarded to the Supervising Dean or Director (noted above) responsible for the department(s) or office(s) that you have selected.'
-    '#options':
-      Aid: 'Financial Aid'
-      Career: 'Office of Career Services'
-      Registrar: 'Registrar’s Office'
-      Affairs: 'Student Affairs'
-      Library: 'Zief Law Library'
-      Other: Other/Unknown
-    '#required': true
-  name:
-    '#type': textfield
-    '#title': Name
-    '#description': ''
-    '#required': true
-  email:
-    '#type': email
-    '#size': 20
-    '#title': Email
-    '#description': ''
-    '#required': true
-  address:
-    '#type': textfield
-    '#title': Address
-    '#description': ''
-    '#required': true
-    '#states':
-      visible:
-        ':input[name="type"]':
-          value: education
-  question_feedback:
-    '#type': textarea
-    '#title': 'Question/Feedback (Please cite specific facts and details where possible when giving feedback)'
-    '#description': ''
-    '#required': true
-    '#states':
-      invisible:
-        ':input[name="type"]':
-          value: education
-  please_describe_in_detail_the_behavior_program_process_or_other_:
-    '#type': textarea
-    '#title': 'Please describe in detail the behavior, program, process, or other matter that is at issue.'
-    '#states':
-      visible:
-        ':input[name="type"]':
-          value: education
-    '#required': true
-  explain_how_the_matter_implicates_the_law_school_s_program_of_le:
-    '#type': textarea
-    '#title': 'Explain how the matter implicates the law school’s program of legal education and its compliance with a specific, identified ABA Standard.'
-    '#states':
-      visible:
-        ':input[name="type"]':
-          value: education
-    '#required': true
+elements: "type:\n  '#type': select\n  '#options':\n    services: 'Student Services'\n    education: 'Program of Legal Education'\n  '#title': 'Is this feedback on Student Services or the Program of Legal Education'\n  '#description': ''\n  '#required': true\ndisclaimer:\n  '#type': processed_text\n  '#text': |\n    <h2 data-stringify-type=\"pre\">FORMAL COMPLAINTS ABOUT THE PROGRAM OF LEGAL EDUCATION</h2>\n    \n    <p data-stringify-type=\"pre\">A law student may make a formal complaint to the administration of the law school regarding a significant problem that directly implicates the school's program of legal education and its compliance with the ABA Standards. &nbsp;The process for making and resolving a formal complaint is described below.</p>\n    \n    <ol>\n    \t<li data-stringify-type=\"pre\">A law student may submit a complaint in writing to the Associate Dean for Academic Affairs (the \"Associate Dean\") via email, U.S. mail, personal delivery, or by completing the web-based form.</li>\n    \t<li data-stringify-type=\"pre\">The complaint must describe in detail the behavior, program, process, or other matter that is at issue, and explain how the matter implicates the law school's program of legal education and its compliance with a specific, identified ABA Standard.</li>\n    \t<li data-stringify-type=\"pre\">The complaint must include the complaining student's full name, official law school e-mail address, and current mailing address.</li>\n    \t<li data-stringify-type=\"pre\">When the law school receives a complaint that complies with the foregoing requirements, the Associate Dean shall acknowledge to the complaining student the receipt via email U.S. mail, or personal delivery within three business days.</li>\n    \t<li data-stringify-type=\"pre\">Within ten business days of acknowledging the complaint, the Associate Dean or the Associate Dean's designee, shall respond to the substance of the complaint, either in writing or in person, and shall indicate what steps are being taken by the law school to address the complaint. &nbsp;Additionally, if an investigation is necessary, the Associate Dean shall provide the complaining student a substantive response within ten business days after the completion of the investigation.&nbsp;</li>\n    \t<li data-stringify-type=\"pre\">A complaining student may appeal a decision to the Dean of the law school within ten business days of the Associate Dean's substantive response. &nbsp;The Dean's decision on appeal shall be final.</li>\n    \t<li data-stringify-type=\"pre\">A copy of the complaint and a summary of the process and resolution of the complaint shall be kept in the office of the Associate Dean for a period of eight years from the date of final resolution of the complaint.</li>\n    </ol>\n    \n  '#format': full_html\nservice:\n  '#type': select\n  '#title': 'What law school office or specific student service is your comment pertaining to?'\n  '#description': 'NOTE: your comments will be forwarded to the Supervising Dean or Director (noted above) responsible for the department(s) or office(s) that you have selected.'\n  '#options':\n    Aid: 'Financial Aid'\n    Career: 'Office of Career Services'\n    Registrar: 'Registrar’s Office'\n    Affairs: 'Student Affairs'\n    Library: 'Zief Law Library'\n    Other: Other/Unknown\n  '#required': true\nname:\n  '#type': textfield\n  '#title': Name\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#title': Email\n  '#description': ''\n  '#required': true\naddress:\n  '#type': textfield\n  '#title': Address\n  '#description': ''\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: education\nquestion_feedback:\n  '#type': textarea\n  '#title': 'Question/Feedback (Please cite specific facts and details where possible when giving feedback)'\n  '#description': ''\n  '#required': true\n  '#states':\n    invisible:\n      ':input[name=\"type\"]':\n        value: education\nplease_describe_in_detail_the_behavior_program_process_or_other_:\n  '#type': textarea\n  '#title': 'Please describe in detail the behavior, program, process, or other matter that is at issue.'\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: education\n  '#required': true\nexplain_how_the_matter_implicates_the_law_school_s_program_of_le:\n  '#type': textarea\n  '#title': 'Explain how the matter implicates the law school’s program of legal education and its compliance with a specific, identified ABA Standard.'\n  '#states':\n    visible:\n      ':input[name=\"type\"]':\n        value: education\n  '#required': true"
 css: ''
 javascript: ''
 settings:
@@ -110,48 +27,40 @@ settings:
   page_theme_name: ''
   form_title: source_entity_webform
   form_submit_once: false
+  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
-  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
+  form_reset: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
-  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
-  form_attributes: {  }
-  form_method: ''
-  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
-  submission_exception_message: ''
-  submission_locked_message: ''
   submission_log: false
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -160,6 +69,11 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -170,13 +84,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -199,9 +113,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: inline
-  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: '<p>Thank you for the feedback.&nbsp;</p>'
+  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -285,9 +199,9 @@ access:
 handlers:
   email_1:
     id: email
-    handler_id: email_1
     label: 'Email Aid'
     notes: ''
+    handler_id: email_1
     status: true
     conditions:
       enabled:
@@ -308,17 +222,13 @@ handlers:
         - completed
       to_mail: lawfinaid@usfca.edu
       to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
       cc_mail: ''
       cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
       from_mail: '[webform_submission:values:email:raw]'
       from_options: {  }
       from_name: '[webform_submission:values:name:raw]'
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       subject: _default
       body: "<p>Submitted by user: [webform_submission:user]</p>\r\n\r\n<p>Submitted values are:</p>\r\n[webform_submission:values]"
       excluded_elements: {  }
@@ -329,14 +239,18 @@ handlers:
       html: true
       attachments: false
       twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       theme_name: ''
       parameters: {  }
-      debug: false
   email_ocp:
     id: email
-    handler_id: email_ocp
     label: 'Email OCP'
     notes: ''
+    handler_id: email_ocp
     status: true
     conditions:
       enabled:
@@ -348,17 +262,13 @@ handlers:
         - completed
       to_mail: tmccoy2@usfca.edu
       to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
       cc_mail: ''
       cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
       from_mail: '[webform_submission:values:email:raw]'
       from_options: {  }
       from_name: '[webform_submission:values:name:raw]'
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       subject: _default
       body: "<p>Submitted by user: [webform_submission:user]</p>\r\n\r\n<p>Submitted values are:</p>\r\n[webform_submission:values]"
       excluded_elements: {  }
@@ -369,14 +279,18 @@ handlers:
       html: true
       attachments: false
       twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       theme_name: ''
       parameters: {  }
-      debug: false
   email_student_affairs:
     id: email
-    handler_id: email_student_affairs
     label: 'Email Student Affairs'
     notes: ''
+    handler_id: email_student_affairs
     status: true
     conditions:
       enabled:
@@ -388,23 +302,15 @@ handlers:
         - completed
       to_mail: shcarlos@usfca.edu
       to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
       cc_mail: ''
       cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
       from_mail: '[webform_submission:values:email:raw]'
       from_options: {  }
       from_name: '[webform_submission:values:name:raw]'
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       subject: _default
-      body: |-
-        <p>Submitted by user: [webform_submission:user]</p>
-
-        <p>Submitted values are:</p>
-        [webform_submission:values]
+      body: "<p>Submitted by user: [webform_submission:user]</p>\n\n<p>Submitted values are:</p>\n[webform_submission:values]"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -413,14 +319,18 @@ handlers:
       html: true
       attachments: false
       twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       theme_name: ''
       parameters: {  }
-      debug: false
   email_library:
     id: email
-    handler_id: email_library
     label: 'Email LIbrary'
     notes: ''
+    handler_id: email_library
     status: true
     conditions:
       enabled:
@@ -432,23 +342,15 @@ handlers:
         - completed
       to_mail: ajwright@usfca.edu
       to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
       cc_mail: ''
       cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
       from_mail: '[webform_submission:values:email:raw]'
       from_options: {  }
       from_name: '[webform_submission:values:name:raw]'
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       subject: _default
-      body: |-
-        <p>Submitted by user: [webform_submission:user]</p>
-
-        <p>Submitted values are:</p>
-        [webform_submission:values]
+      body: "<p>Submitted by user: [webform_submission:user]</p>\n\n<p>Submitted values are:</p>\n[webform_submission:values]"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -457,44 +359,11 @@ handlers:
       html: true
       attachments: false
       twig: false
-      theme_name: ''
-      parameters: {  }
       debug: false
-  email:
-    id: email
-    handler_id: email
-    label: Email
-    notes: ''
-    status: true
-    conditions: {  }
-    weight: 4
-    settings:
-      states:
-        - completed
-      to_mail: deanfreiwald@usfca.edu
-      to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      from_mail: _default
-      from_options: {  }
-      from_name: _default
       reply_to: ''
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      subject: _default
-      body: _default
-      excluded_elements: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: true
-      attachments: false
-      twig: false
       theme_name: ''
       parameters: {  }
-      debug: false
 variants: {  }

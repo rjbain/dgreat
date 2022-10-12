@@ -74,8 +74,8 @@
 {% set summary = node.field_summary.value %}
 {% set position = node.field_position.value %}
 {% set professional_title = node.field_professional_title.value %}
-{% set past_education = content.field_past_education %}
-{% set expertise = content.field_expertise %}
+{% set past_education = content.field_education %}
+{% set expertise = content.field_expertise_long %}
 {% set phone = node.field_phone.value %}
 {% set email_address = node.field_email_address.value %}
 {% set source_url = node.field_source_url.uri %}
@@ -103,7 +103,7 @@
         {% endif %}
       </div>
       <a href="{{ source_url }}" target="_blank">
-        <h2 class="display-title">{{ first_name }} {{ middle_initial }} {{ last_name }} {{ name_suffix }}</h2>
+        <h2 class="display-title">{{ first_name|raw }} {{ middle_initial|raw }} {{ last_name|raw }} {{ name_suffix|raw }}</h2>
       </a>
       <div class="professional_title">{{ professional_title }}</div>
       <div class="faculty_position">{{ position }}</div><br/>
@@ -129,11 +129,11 @@
           {% endautoescape %}
       </div>
       {% if past_education|render|trim is not empty %}
-        <div class="education"><h3>Education</h3> {{ content.field_past_education }}</div>
+        <div class="education"><h3>Education</h3>  {% autoescape false %}{{ node.field_education.value }}{% endautoescape %}</div>
       {% endif %}
 
       {% if expertise|render|trim is not empty %}
-        <div class="expertise"><h3>Expertise</h3> {{ expertise }}</div>
+        <div class="expertise"><h3>Expertise</h3> {% autoescape false %}{{ node.field_expertise_long.value }}{% endautoescape %}</div>
       {% endif %}
     </div>
   </div>

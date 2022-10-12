@@ -130,6 +130,8 @@ function myusf_preprocess_paragraph__video(&$variables) {
             $vimeo_id = $matches[5];
             $variables['new_vid_url'] = 'https://player.vimeo.com/video/' . $vimeo_id;
         }
+    } else if (strpos($original_video_url, 'panopto') !== false) {
+            $variables['new_vid_url'] = $original_video_url;
     }
 }
 
