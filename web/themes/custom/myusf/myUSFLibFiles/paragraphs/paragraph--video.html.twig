@@ -21,9 +21,11 @@
        data-toggle="modal"
        data-target="#videoModal"
        data-theVideo="{{ new_vid_url }}">
-
+    <div class="video-component-icon-wrapper">
+        <span class="video-component_video_icon"></span>
+    </div>
         {{ content.bp_image_field }}
-        <span class="video-component_video_icon"><span class="first_word">Watch</span> <span class="second_word">the Video</span> </span>
+        
         {% if paragraph.field_heading.value %}
             <h2 class="{{ heading }}">{{ paragraph.field_heading.value }}</h2>
         {% endif %}
