@@ -76,7 +76,11 @@
   <div{{ content_attributes.addClass('content') }}>
     <div class="body">
         {% autoescape false %}
-           {{ node.body.value }}
+          {% set body = node.body.value %}
+          {% set body = body|replace({'/sites/default/files': 'https://www.usfca.edu/sites/default/files'}) %}
+          {% set body = body|preg_replace('#(width=\".*?).*?(\")#', '') %}
+          {% set body = body|preg_replace('#(height=\".*?).*?(\")#', '')%}
+          {{ body }}
         {% endautoescape %}
     </div>
     {{ content.field_add_a_paragraph }}
