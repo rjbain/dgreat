@@ -3,7 +3,15 @@
 @mixin sprite ($bgX, $bgY) {
     background: url("/themes/custom/myusf/images/site/icons.svg") no-repeat $bgX $bgY;
 }
+//FOCUS
 
+@mixin focus-styles {
+    box-shadow: 0 0 0 3px $color-focus-light, 0 0 4px 6px $color-focus-dark;
+    // Add support for Windows High Contrast Mode (WHCM)
+    // The transparent color only shows when WHCM is triggered
+    outline: 3px solid transparent;
+    outline-offset: 3px;
+}
 
 // BUTTONS //
 
@@ -21,8 +29,8 @@
     padding: 10px 8px;
     background:$btn_color;
 
-    &:hover,
-    &:focus {
+    &:hover/*,
+    &:focus*/ {
         color: $black;
         background-color: $white;
         transition: background-color .25s linear 0s,border-color .25s linear 0s,box-shadow .25s linear 0s,color .25s linear 0s,opacity .25s linear 0s !important;
