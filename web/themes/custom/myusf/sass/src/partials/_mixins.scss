@@ -3,6 +3,7 @@
 @mixin sprite ($bgX, $bgY) {
     background: url("/themes/custom/myusf/images/site/icons.svg") no-repeat $bgX $bgY;
 }
+
 //FOCUS
 
 @mixin focus-styles {
@@ -11,8 +12,9 @@
     // The transparent color only shows when WHCM is triggered
     outline: 3px solid transparent;
     outline-offset: 3px;
+    background-color: transparent;
 }
- 
+
 // BUTTONS //
 
 @mixin button ($btn_color) {
@@ -29,8 +31,7 @@
     padding: 10px 8px;
     background:$btn_color;
 
-    &:hover/*,
-    &:focus*/ {
+    &:hover {
         color: $black;
         background-color: $white;
         transition: background-color .25s linear 0s,border-color .25s linear 0s,box-shadow .25s linear 0s,color .25s linear 0s,opacity .25s linear 0s !important;
