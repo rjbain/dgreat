@@ -46,20 +46,24 @@ body {
 .skip-link.visually-hidden.focusable:focus {
 	position: relative !important;
 	color: #fff;
-	border-radius: 0;
 }
 
-:focus,
-nav a:focus,
-footer a:focus,
-button:focus,
-a.visually-hidden.focusable.skip-link,
-a.box-link:focus,
-a.login-btn:focus {
+:focus {
+	outline: none!important;	 
+}
+
+:focus-visible,
+nav a:focus-visible,
+footer a:focus-visible,
+button:focus-visible,
+a.dashboard-button:focus-visible,
+a.visually-hidden.focusable.skip-link-visible,
+a.box-link:focus-visible,
+a.login-btn:focus-visible {
 	@include focus-styles;
 }
-a:focus,
-nav.quick-links-nav a:focus {
+a:focus-visible,
+nav.quick-links-nav a:focus-visible {
 	outline: solid 2px $color-focus-dark;
 	background-color: $color-focus-light;
 	box-shadow: none;
