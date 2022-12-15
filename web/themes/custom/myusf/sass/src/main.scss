@@ -50,22 +50,24 @@ body {
 }
 
 :focus {
-	outline: none!important;	 
+	outline: none;	 
 }
 
 :focus-visible,
 nav a:focus-visible,
 footer a:focus-visible,
 button:focus-visible,
-a.dashboard-button:focus-visible,
-a.visually-hidden.focusable.skip-link:focus-visible,
 a.box-link:focus-visible,
-a.login-btn:focus-visible {
+a.button:focus-visible,
+a.card-rollover:focus-visible,
+a.dashboard-button:focus-visible,
+a.login-btn:focus-visible,
+a.visually-hidden.focusable.skip-link:focus-visible {
 	@include focus-styles;
 }
 a:focus-visible,
 nav.quick-links-nav a:focus-visible {
-	outline: solid 2px $color-focus-dark;
+	outline: solid 3px $color-focus-dark;
 	background-color: $color-focus-light;
 	box-shadow: none;
 }
