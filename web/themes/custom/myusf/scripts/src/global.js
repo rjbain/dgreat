@@ -47,14 +47,6 @@
                 $($dropdownLink).parent('li').find('ul.dropdown-menu').removeClass('show');
             });
 
-            // $($dropdownLink).blur(function() {
-            //     $(this).parent('li').toggleClass('show');
-            //     $(this).attr('aria-expanded', function (i, attr) {
-            //         return attr === 'true' ? 'false' : 'true';
-            //     });
-            //     $(this).parent('li').find('ul.dropdown-menu').toggleClass('show');
-            // });
-
             // Fix for Ensemble
             $("[id^=contentView_]").attr("align","center");
 
