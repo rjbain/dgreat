@@ -20,6 +20,8 @@
 
             // Make main menu keyboard accessible.
             let $dropdownLink = $('#block-myusf-mainnavigation li.dropdown a.nav-link');
+            let dropdownOpenLabel = 'Open Sub-Navigation Menu';
+            let dropdownCloseLabel = 'Close Sub-Navigation Menu';
 
             // Open the submenu if you tab to the dropdown and press the Space key.
             $($dropdownLink).keydown(function(e) {
@@ -29,6 +31,10 @@
                     $(this).attr('aria-expanded', function (i, attr) {
                         return attr === 'true' ? 'false' : 'true';
                     });
+                    $(this).attr('aria-label', function (i, attr) {
+                        return attr === dropdownOpenLabel ? dropdownCloseLabel : dropdownOpenLabel;
+                    });
+                    // $(this).attr('aria-label', dropdownCloseLabel);
                     $(this).parent('li').find('ul.dropdown-menu').toggleClass('show');
                 }
             });
@@ -37,6 +43,7 @@
             $($dropdownLink).focus(function() {
                 $($dropdownLink).parent('li').removeClass('show');
                 $($dropdownLink).attr('aria-expanded','false');
+                $($dropdownLink).attr('aria-label', dropdownOpenLabel);
                 $($dropdownLink).parent('li').find('ul.dropdown-menu').removeClass('show');
             });
 
