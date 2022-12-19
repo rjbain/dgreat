@@ -1629,11 +1629,11 @@ div[data-oembed-url]  > iframe {
     }
     ul.pagination {
         border-bottom: 3px solid #fdbb30;
+        border-radius: 0;
         padding-bottom: 1.875rem;
-
         li {
             padding-left: 0;  
-        }  
+        } 
     }
     
     li.jobs-list-li {
@@ -1645,12 +1645,16 @@ div[data-oembed-url]  > iframe {
         &:before {
             content: "";
         }
-        &:hover,
-        &:focus {
-            background-color: $light_beige
+        &:hover {
+            background-color: $light_beige;
         }
         a.job-list-a {
             text-decoration: none;
+            display: inline-block;
+
+            &:hover {
+                background-color: $light_beige;
+            }
 
             .job-title{            
                 font-size: 1rem;
@@ -1659,8 +1663,7 @@ div[data-oembed-url]  > iframe {
                 font-weight: 700;                
                 margin-left: unset!important;
 
-                &:hover,
-                &:focus {
+                &:hover {
                     background-color: unset;
                 }
             }

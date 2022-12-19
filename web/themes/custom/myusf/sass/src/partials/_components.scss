@@ -568,6 +568,7 @@ a.card-rollover {
 
 .pagination {
 	margin-top: .8rem;
+	border-radius: 0;
 
 	.page-item a, .pager__item--next a {
 	    font-size: .85rem;
@@ -611,9 +612,12 @@ a.card-rollover {
 		.page-link {
 			border: none;
 
-			&:hover,
-			&:focus{
+			&:hover{
 				background-color: transparentize($light_gray, .5);
+				text-decoration: underline;
+			}
+			&:focus {
+				box-shadow:none;
 			}
 		}
 	}
@@ -621,8 +625,7 @@ a.card-rollover {
 	.pager__item--next {
 		margin-right: 1.25rem;
 		.page-link {
-			&:hover,
-			&:focus{
+			&:hover{
 				background-color: transparentize($light_gray, .5);
 			}
 		}
