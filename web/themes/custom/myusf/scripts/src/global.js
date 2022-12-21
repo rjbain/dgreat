@@ -19,7 +19,7 @@
             });
 
             // Make main menu keyboard accessible.
-            let $dropdownLink = $('#block-myusf-mainnavigation li.dropdown a.nav-link');
+            let $dropdownLink = $('ul.navbar-nav li.dropdown a.nav-link');
             let dropdownOpenLabel = 'Open Sub-Navigation Menu';
             let dropdownCloseLabel = 'Close Sub-Navigation Menu';
 
