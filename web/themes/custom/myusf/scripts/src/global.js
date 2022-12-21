@@ -26,7 +26,7 @@
             // Open the submenu if you tab to the dropdown and press the Space key.
             $($dropdownLink).keydown(function(e) {
                 if (e.key === ' ' || e.key === 'Spacebar') { // Space Bar key maps to keycode `32`
-                    e.preventDefault()
+                    e.preventDefault();
                     $(this).parent('li').toggleClass('show');
                     $(this).attr('aria-expanded', function (i, attr) {
                         return attr === 'true' ? 'false' : 'true';
@@ -34,7 +34,6 @@
                     $(this).attr('aria-label', function (i, attr) {
                         return attr === dropdownOpenLabel ? dropdownCloseLabel : dropdownOpenLabel;
                     });
-                    // $(this).attr('aria-label', dropdownCloseLabel);
                     $(this).parent('li').find('ul.dropdown-menu').toggleClass('show');
                 }
             });
