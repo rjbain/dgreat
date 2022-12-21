@@ -118,17 +118,18 @@
       </form>
 
       {% if logged_in %}
-        <a href="/dashboard" class="dashboard-button">Dashboard
-        </a>
-      {% endif %}
-
-      {% if logged_in %}
           {#{ drupal_view('user', 'block_1') }#}
           {{ drupal_entity('block', 'user_block') }}
       {% else %}
           <a href="/caslogin" class="login-btn"><span class="btn btn-outline-success">Log In</span></a>
       {% endif %}
     {% endif %}
+
+      {% if logged_in %}
+          <a href="/dashboard" class="dashboard-button">Dashboard
+          </a>
+      {% endif %}
+
       </nav>
       {% if page.hero_image %}
         <div class="hero-image-block">
