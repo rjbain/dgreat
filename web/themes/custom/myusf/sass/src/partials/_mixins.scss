@@ -4,6 +4,16 @@
     background: url("/themes/custom/myusf/images/site/icons.svg") no-repeat $bgX $bgY;
 }
 
+//FOCUS
+
+@mixin focus-styles {
+    box-shadow: 0 0 0 3px $color-focus-light;
+    // Add support for Windows High Contrast Mode (WHCM)
+    // The transparent color only shows when WHCM is triggered
+    outline: 3px solid $color-focus-dark;
+    outline-offset: 3px;
+    background-color: transparent;
+}
 
 // BUTTONS //
 
@@ -19,12 +29,11 @@
     width: 210px;
     min-height:40px;
     padding: 10px 8px;
-    background:$btn_color;
+    background:$btn_color!important;
 
-    &:hover,
-    &:focus {
+    &:hover {
         color: $black;
-        background-color: $white;
+        background-color: $white!important;
         transition: background-color .25s linear 0s,border-color .25s linear 0s,box-shadow .25s linear 0s,color .25s linear 0s,opacity .25s linear 0s !important;
         box-shadow: inset 0 0 0 4px $btn_color;
         font-weight: 700;

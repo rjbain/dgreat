@@ -18,6 +18,12 @@
 nav {
 	padding-top:0!important;
 	padding-bottom:0!important;
+
+	@include media-breakpoint-up(tablet) {
+		li.nav-item:first-child {
+			margin-top: 0;
+		}
+	}
 }
 
 .bg-dark {
@@ -344,6 +350,7 @@ li.menu-item--expanded:hover ul.dropdown-menu {
 
 .navbar-nav .dropdown.show a.nav-link.active {
 	color: $green!important;
+	background: $beige;
 }
 
 .navbar-nav {
@@ -468,6 +475,11 @@ div.search-icon-rollover {
 		padding-left: 0.625rem;
 		padding-top: 0;
 		border: 0;
+
+		&:focus-visible,
+		&:focus-visible::placeholder {
+			color: white;
+		}
 	}
 	input[type=checkbox] {
 		margin-top: 0.9375rem;
@@ -513,7 +525,6 @@ a.login-btn:hover {
 	margin-top: -0.125rem;
 
 	&:hover,
-	&:focus,
 	&:not(:disabled):not(.disabled):active {
 		color: $yellow;
 		border-color: $yellow;
@@ -1249,6 +1260,9 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		border: 1px solid $light_gray;
 		border-top: 0;
 	}
+	li.nav-item a:focus-visible {
+		position: relative;
+	}
 }
 
 /* SIDEBAR SECOND right column
@@ -1632,6 +1646,9 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		@include media-breakpoint-down(landscape_phone) {
 			display: inline-block;
 			width: 100%;
+		}
+		&:first-child {
+			margin-top: 0;
 		}
 	}
 	@include media-breakpoint-up(tablet) {

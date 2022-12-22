@@ -342,8 +342,7 @@
 =============================================== */
 
 a.left.carousel-control {
-    &:hover,
-    &:focus {
+    &:hover {
         &::before {
             position: absolute;
             display: inline-block;
@@ -404,8 +403,7 @@ a.left.carousel-control {
 
 
 a.right.carousel-control {
-    &:hover,
-    &:focus {
+    &:hover {
         &::before {
             position: absolute;
             display: inline-block;
@@ -587,6 +585,10 @@ h2.carousel-overlay:before {
     @include media-breakpoint-down(phone) { 
         margin-left: 0.625rem;
     }
+
+    li:first-child {
+        margin-top: 0;
+    }
 } 
 .usf_dash #carouselControls {
     @include media-breakpoint-down(phone) {
@@ -600,6 +602,12 @@ h2.carousel-overlay:before {
 .carousel-item {
     a {
         text-decoration: none;
+
+        &:focus-visible {
+            margin: 6px;
+            display: inline-block;
+            position: relative;
+        }
     }
     .img-fluid {
         width: 100%;
@@ -1629,11 +1637,13 @@ div[data-oembed-url]  > iframe {
     }
     ul.pagination {
         border-bottom: 3px solid #fdbb30;
+        border-radius: 0;
         padding-bottom: 1.875rem;
-
+        
         li {
+            padding-top: 6px;
             padding-left: 0;  
-        }  
+        } 
     }
     
     li.jobs-list-li {
@@ -1645,12 +1655,16 @@ div[data-oembed-url]  > iframe {
         &:before {
             content: "";
         }
-        &:hover,
-        &:focus {
-            background-color: $light_beige
+        &:hover {
+            background-color: $light_beige;
         }
         a.job-list-a {
             text-decoration: none;
+            display: inline-block;
+
+            &:hover {
+                background-color: $light_beige;
+            }
 
             .job-title{            
                 font-size: 1rem;
@@ -1659,8 +1673,7 @@ div[data-oembed-url]  > iframe {
                 font-weight: 700;                
                 margin-left: unset!important;
 
-                &:hover,
-                &:focus {
+                &:hover {
                     background-color: unset;
                 }
             }

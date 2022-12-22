@@ -13,8 +13,15 @@
     "gulp-smushit": "^1.2.0",
     "gulp-uglify": "^3.0.2"
   },
+  "overrides": {
+    "graceful-fs": "^4.2.10"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.10"
   },
   "author": "",
   "license": "ISC"
