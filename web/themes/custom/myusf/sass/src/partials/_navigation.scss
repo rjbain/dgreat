@@ -123,8 +123,8 @@ nav.navbar {
 .navbar-collapse {
 	@include media-breakpoint-up(desktop) {
 		/*margin-left: -70px;*/
-		margin-left: calc((100% - 992px)/ 2);
-		margin-right: calc(((100% - 992px)/ 2) + 95px);
+		margin-left: calc(((100% - 992px)/ 2) - 70px);
+		margin-right: calc((100% - 992px)/ 2);
 	}
 	@include media-breakpoint-up(midlarge_desktop) {
 		/*margin-left: -95px;*/
@@ -145,6 +145,28 @@ nav.navbar {
 		/*margin-left: -410px;*/
 		margin-left: calc(((100% - 2560px)/ 2) - 15px);
 		margin-right: calc(((100% - 2560px)/ 2) + 200px);
+	}
+}
+
+ul.navbar-nav button {
+	display: flex;
+	background: none;
+	color: #fff;
+	width: 100%;	
+    justify-content: center;
+	padding-left: 5px;
+    padding-right: 5px;
+
+	@include media-breakpoint-down(landscape_phone) {
+		height: 40px;
+	}
+	@include media-breakpoint-up(tablet) {
+		height: 100%;
+	}
+
+	&:hover {
+		color: #00543C!important;
+    	background-color: #DED5B4;
 	}
 }
 
@@ -256,6 +278,9 @@ li.menu-item--expanded:hover ul.dropdown-menu {
 	@include media-breakpoint-down(landscape_phone) {
 		display: none;
 	}
+}
+.navbar-dark .nav-link {
+	color: white;
 }
 #CollapsingNavbar {
 	flex-grow: 1;
@@ -678,11 +703,6 @@ a.dashboard-button{
 		position: absolute;
 		top: 45px;
 		right: 60px;
-
-		&:hover,
-		&:focus {
-
-		}
 	}
 
 	@include media-breakpoint-up(midlarge_desktop) {
@@ -1745,24 +1765,4 @@ a.logo {
 }
 /*NAV EDIT BUTTON
 =================================================*/
-nav#block-myusf-mainnavigation button {
-	display: flex;
-	background: none;
-	color: #fff;
-	width: 100%;	
-    justify-content: center;
-	padding-left: 5px;
-    padding-right: 5px;
 
-	@include media-breakpoint-down(landscape_phone) {
-		height: 40px;
-	}
-	@include media-breakpoint-up(tablet) {
-		height: 100%;
-	}
-
-	&:hover {
-		color: #00543C!important;
-    	background-color: #DED5B4;
-	}
-}
