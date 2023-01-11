@@ -35,11 +35,11 @@ nav {
 nav.navbar {
 	margin-bottom: 2.59rem;
 
-	a.nav-link {
+	button.nav-link {
 		color: $white!important;
 		text-decoration:none;
-		padding-bottom: .87rem;
-		padding-top: .75rem;
+		padding-bottom: 1.15rem;
+		padding-top: 1.1rem;
 		font-weight: 700;
 
 		@include media-breakpoint-up(desktop) {
@@ -66,8 +66,7 @@ nav.navbar {
 		padding-bottom: 0;
 		line-height: 2;
 
-		&.nav-item :hover,
-		&.nav-item :focus {
+		&.nav-item :hover {
 			color: $green!important;
 			background-color: $beige;
 		}
@@ -124,8 +123,8 @@ nav.navbar {
 .navbar-collapse {
 	@include media-breakpoint-up(desktop) {
 		/*margin-left: -70px;*/
-		margin-left: calc(((100% - 992px)/ 2) - 70px);
-		margin-right: calc((100% - 992px)/ 2);
+		margin-left: calc((100% - 992px)/ 2);
+		margin-right: calc(((100% - 992px)/ 2) + 95px);
 	}
 	@include media-breakpoint-up(midlarge_desktop) {
 		/*margin-left: -95px;*/
@@ -160,7 +159,6 @@ nav.navbar {
 		}
 
 		&:hover {
-			background: $beige;
 
 			a, a:hover{
 				color: $green!important;
@@ -180,28 +178,35 @@ nav.navbar {
 		/*margin-left: 35px;
 		margin-top: -50px;*/
 		position: relative;
-		top: -42px;
+		top: -24px;
 	}
 
 	@include media-breakpoint-down(landscape_phone) {
 		margin-left: 0;
-		top:-23px;
-		width:100vw;
+		top:-13px;
+		/*width:100vw;*/
 
 		li {
 			flex-direction: row!important;
 			margin-top: 0.3125rem;
 			padding: 0 0.3125rem!important;
+			text-align: center;
 
-			a {
+			button {
 				font-size: .75rem;
-				line-height: 1.2;
-				text-align: center;
+				line-height: 1.2;				
 				letter-spacing: .025rem;
 				padding-top: 0.3125rem!important;
 				padding-bottom: 0.3125rem!important;
 				margin-top: 0!important;
 				margin-bottom: 0!important;
+				border-right: 1px solid #fff;
+			}
+
+			&:last-of-type {
+				button {
+					border-right: none;
+				}
 			}
 		}
 		.menu-item--expanded.dropdown {
@@ -215,22 +220,18 @@ nav.navbar {
 
 			&:first-child {
 				width: calc( 58px + (( 100vw - 299px) / 6) + (( 100vw - 303px) / 12));
-				border-right: 1px solid $white;
 				@include mobilenav-dropdown(0);
 			}
 			&:nth-child(2) {
 				width: calc( 72px + (( 100vw - 299px) / 6));
-				border-right: 1px solid $white;
 				@include mobilenav-dropdown($shiftSecond);
 			}
 			&:nth-child(3) {
 				width: calc( 53px + (( 100vw - 299px) / 6));
-				border-right: 1px solid $white;
 				@include mobilenav-dropdown($shiftThird);
 			}
 			&:nth-child(4) {
 				width: calc( 66px + (( 100vw - 299px) / 6));
-				border-right: 1px solid $white;
 				@include mobilenav-dropdown($shiftFourth);
 			}
 			&:nth-child(5) {
@@ -280,6 +281,7 @@ li.menu-item--expanded:hover ul.dropdown-menu {
 	@include media-breakpoint-only(tablet) {
 		position: absolute;
 		margin-top: 0;
+		top: 34px;
 	}
 
 	.dropdown-item {
@@ -1744,5 +1746,23 @@ a.logo {
 /*NAV EDIT BUTTON
 =================================================*/
 nav#block-myusf-mainnavigation button {
-	display: none;
+	display: flex;
+	background: none;
+	color: #fff;
+	width: 100%;	
+    justify-content: center;
+	padding-left: 5px;
+    padding-right: 5px;
+
+	@include media-breakpoint-down(landscape_phone) {
+		height: 40px;
+	}
+	@include media-breakpoint-up(tablet) {
+		height: 100%;
+	}
+
+	&:hover {
+		color: #00543C!important;
+    	background-color: #DED5B4;
+	}
 }
