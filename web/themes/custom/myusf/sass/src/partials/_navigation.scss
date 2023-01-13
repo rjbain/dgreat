@@ -71,6 +71,10 @@ nav.navbar {
 			background-color: $beige;
 		}
 	}
+	li.nav-item.menu-item--expanded.dropdown:hover button {
+		color: $green!important;
+		background-color: $beige;;
+	}
 	@include media-breakpoint-down(landscape_phone) {
 		padding:0;
 		height: 98px;
@@ -165,8 +169,8 @@ ul.navbar-nav button {
 	}
 
 	&:hover {
-		color: #00543C!important;
-    	background-color: #DED5B4;
+		color: $green!important;
+    	background-color: $beige;
 	}
 }
 
@@ -181,7 +185,6 @@ ul.navbar-nav button {
 		}
 
 		&:hover {
-
 			a, a:hover{
 				color: $green!important;
 			}
@@ -197,16 +200,13 @@ ul.navbar-nav button {
 
 	@include media-breakpoint-down(tablet) {
 		flex-direction: row;
-		/*margin-left: 35px;
-		margin-top: -50px;*/
 		position: relative;
-		top: -24px;
+		top: -24px;		
 	}
 
 	@include media-breakpoint-down(landscape_phone) {
 		margin-left: 0;
-		top:-13px;
-		/*width:100vw;*/
+		top:-13px;  
 
 		li {
 			flex-direction: row!important;
@@ -214,21 +214,21 @@ ul.navbar-nav button {
 			padding: 0 0.3125rem!important;
 			text-align: center;
 
-			button {
+			&:last-of-type {
+				button {
+					border-right: none;
+				}
+			}
+
+			button {		
 				font-size: .75rem;
-				line-height: 1.2;				
+				line-height: 1.2;
 				letter-spacing: .025rem;
 				padding-top: 0.3125rem!important;
 				padding-bottom: 0.3125rem!important;
 				margin-top: 0!important;
 				margin-bottom: 0!important;
 				border-right: 1px solid #fff;
-			}
-
-			&:last-of-type {
-				button {
-					border-right: none;
-				}
 			}
 		}
 		.menu-item--expanded.dropdown {
