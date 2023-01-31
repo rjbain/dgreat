@@ -46,13 +46,16 @@
                 $($dropdownLink).parent('li').find('ul.dropdown-menu').removeClass('show');
             });
 
-            var $logInBtn = $(".navbar .login-btn");
+            let $logInBtn = $(".navbar .login-btn");
             // When you tab away from the search submit button, go to the login button, then the subnav.
-            $(".navbar .search-options input[type=submit]").blur(function() {
+            $("#search-options input[type=submit]").blur(function() {
+                console.log('submit button was blurred');
                 // If not logged in.
-                if ($logInBtn) {
+                if ($logInBtn.length) {
+                    console.log('login button was found... focusing on it');
                     $logInBtn.focus();
                 } else {
+                    console.log('login button was NOT found... focusing on the other one');
                     // User is logged in.
                     $("#navbarDropdownMenuLink").focus();
                 }
