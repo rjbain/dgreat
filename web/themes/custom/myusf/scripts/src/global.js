@@ -46,6 +46,19 @@
                 $($dropdownLink).parent('li').find('ul.dropdown-menu').removeClass('show');
             });
 
+            var $logInBtn = $(".navbar .login-btn");
+            // When you tab away from the search submit button, go to the login button, then the subnav.
+            $(".navbar .search-options input[type=submit]").blur(function() {
+                // If not logged in.
+                if ($logInBtn) {
+                    $logInBtn.focus();
+                } else {
+                    // User is logged in.
+                    $("#navbarDropdownMenuLink").focus();
+                }
+
+            });
+
             // Fix for Ensemble
             $("[id^=contentView_]").attr("align","center");
 
