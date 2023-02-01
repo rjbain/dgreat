@@ -68,7 +68,7 @@
                 }
             }
             // DEBUGGING
-            $("#main *").focus(function(){ console.log($(this))});
+            // $("#main *").focus(function(){ console.log($(this))});
             // If you focus on the submenu button and open it, tab next to the first link.
             $($submenuBtn).blur(function(){
                 // If the submenu is closed.
@@ -87,10 +87,6 @@
             // When leaving main content area, go to right-hand sidebar.
             $("#block-myusf-content a").last().blur(function() {
                 $("#sidebar_second a").first().focus();
-            });
-            // If the user doesn't open the subnav on mobile, tab to the main content
-            $("#submenuButton.collapsed").blur(function() {
-                $("#block-myusf-content a").first().focus();
             });
 
 
