@@ -67,6 +67,13 @@
                     $submenuBtn.focus();
                 }
             }
+            // If you focus on the submenu button and open it, tab next to the first link.
+            $($submenuBtn).blur(function(){
+                // If the submenu is open
+                if (!$submenuBtn.hasClass("collapsed")) {
+                    $("#sidebar_second a").first().focus();
+                }
+            });
             // When leaving the subnav, go to the main content.
             $("#sidebar_first #CollapsingNavbar .nav-link").last().blur(function() {
                 $("#block-myusf-content a").first().focus();
