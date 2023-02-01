@@ -69,9 +69,13 @@
             }
             // If you focus on the submenu button and open it, tab next to the first link.
             $($submenuBtn).blur(function(){
-                // If the submenu is open
-                if (!$submenuBtn.hasClass("collapsed")) {
-                    $("#sidebar_second a").first().focus();
+                // If the submenu is closed.
+                if ($submenuBtn.hasClass("collapsed")) {
+                    // Go to the main content.
+                    $("#block-myusf-content a").first().focus();
+                } else {
+                    // Otherwise go to the first subnav link.
+                    $("#sidebar_first #CollapsingNavbar .nav-link").first().focus();
                 }
             });
             // When leaving the subnav, go to the main content.
