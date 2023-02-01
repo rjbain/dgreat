@@ -76,7 +76,7 @@
                 $("#sidebar_second a").first().focus();
             });
             // If the user doesn't open the subnav on mobile, tab to the main content
-            $("#submenuButton.showButton").blur(function() {
+            $("#submenuButton.collapsed").blur(function() {
                 $("#block-myusf-content a").first().focus();
             });
 
