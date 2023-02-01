@@ -51,20 +51,30 @@
 
             // When you tab away from the search submit button, go to the login button, then the subnav.
 
-                // If not logged in.
-                if ($logInBtn.length) {
-                    $logInBtn.blur(function() {
-                        console.log('login button was found... focusing on it');
-                        $submenuBtn.focus();
-                    });
-
-                } else {
-                    if ($("#navbarDropdownMenuLink").length) {
-                        console.log('login button was NOT found... focusing on the other one');
-                        // User is logged in.
+            // If not logged in.
+            if ($logInBtn.length) {
+                $logInBtn.blur(function() {
+                    if ($submenuBtn.hasClass('hideButton')) {
+                        $("#sidebar_first #CollapsingNavbar .nav-link").first().focus();
+                    } else {
                         $submenuBtn.focus();
                     }
+                });
+
+            } else {
+                if ($("#navbarDropdownMenuLink").length) {
+                    // User is logged in.
+                    $submenuBtn.focus();
                 }
+            }
+            // When leaving the subnav, go to the main content.
+            $("#sidebar_first #CollapsingNavbar .nav-link").last().blur(function() {
+                $("#block-myusf-content a").first().focus();
+            });
+            // When leaving main content area, go to right-hand sidebar.
+            $("#block-myusf-content a").last().blur(function() {
+                $("#sidebar_second a").first().focus();
+            });
 
 
             // Fix for Ensemble
