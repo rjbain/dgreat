@@ -47,21 +47,25 @@
             });
 
             let $logInBtn = $(".navbar .login-btn");
-            console.log("login button length is: " + $logInBtn.length);
+            let $submenuBtn = $("#submenuButton");
+
             // When you tab away from the search submit button, go to the login button, then the subnav.
-            $("#search-options input.acc-visuallyhidden").blur(function() {
-                console.log('submit button was blurred');
+
                 // If not logged in.
                 if ($logInBtn.length) {
-                    console.log('login button was found... focusing on it');
-                    $logInBtn.focus();
+                    $logInBtn.blur(function() {
+                        console.log('login button was found... focusing on it');
+                        $submenuBtn.focus();
+                    });
+
                 } else {
-                    console.log('login button was NOT found... focusing on the other one');
-                    // User is logged in.
-                    $("#navbarDropdownMenuLink").focus();
+                    if ($("#navbarDropdownMenuLink").length) {
+                        console.log('login button was NOT found... focusing on the other one');
+                        // User is logged in.
+                        $submenuBtn.focus();
+                    }
                 }
 
-            });
 
             // Fix for Ensemble
             $("[id^=contentView_]").attr("align","center");
