@@ -49,7 +49,7 @@
             let $logInBtn = $(".navbar .login-btn");
             console.log("login button length is: " + $logInBtn.length);
             // When you tab away from the search submit button, go to the login button, then the subnav.
-            $("#search-options input[type='submit']").blur(function() {
+            $("#search-options input.acc-visuallyhidden").blur(function() {
                 console.log('submit button was blurred');
                 // If not logged in.
                 if ($logInBtn.length) {
