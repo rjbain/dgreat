@@ -65,7 +65,7 @@
             }
             // If logged in, tab from dashboard button to subnav button.
             $(".dashboard-button").blur(function(){
-                if ($submenuBtn.filter(":visible")) { console.log("submenu button is visible. Focus on the button");
+                if ($submenuBtn.hasClass("hideButton")) { console.log("submenu button is visible. Focus on the button");
                     $submenuBtn.focus();
                 } else { console.log("submenu button is NOT visible. Focus on the first subnav link");
                     $submenuLinks.first().focus();
