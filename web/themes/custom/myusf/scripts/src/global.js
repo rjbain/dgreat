@@ -48,14 +48,14 @@
 
             let $logInBtn = $(".navbar .login-btn");
             let $submenuBtn = $("#submenuButton");
-            let $submenuLinks = $("#sidebar_first #CollapsingNavbar .nav-link");
+            let $submenuLinks = $("#sidebar_first .submenu .nav-link");
 
             // When you tab away from the search submit button, go to the login button, then the subnav.
 
             // If not logged in.
             if ($logInBtn.length) {
                 $logInBtn.blur(function() {
-                    if ($submenuBtn.hasClass('hideButton')) {
+                    if (!$submenuBtn.filter(":visible")) {
                         $submenuLinks.first().focus();
                     } else {
                         $submenuBtn.focus();
@@ -65,9 +65,9 @@
             }
             // If logged in, tab from dashboard button to subnav button.
             $(".dashboard-button").blur(function(){
-                if ($submenuBtn.filter(":visible")) {
+                if ($submenuBtn.filter(":visible")) { console.log("submenu button is visible. Focus on the button");
                     $submenuBtn.focus();
-                } else {
+                } else { console.log("submenu button is NOT visible. Focus on the first subnav link");
                     $submenuLinks.first().focus();
                 }
             })
