@@ -61,12 +61,11 @@
                     }
                 });
 
-            } else {
-                if ($("#navbarDropdownMenuLink").length) {
-                    // User is logged in.
-                    $submenuBtn.focus();
-                }
             }
+            // If logged in, tab from dashboard button to subnav button.
+            $(".dashboard-button").blur(function(){
+                $submenuBtn.focus();
+            })
             // DEBUGGING
             // $("#main *").focus(function(){ console.log($(this))});
             // If you focus on the submenu button and open it, tab next to the first link.
