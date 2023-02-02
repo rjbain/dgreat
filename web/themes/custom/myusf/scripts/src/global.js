@@ -55,7 +55,8 @@
             // If not logged in.
             if ($logInBtn.length) {
                 $logInBtn.blur(function() {
-                    if (!$submenuBtn.filter(":visible")) {
+                    // If the submenu button is hidden.
+                    if ($submenuBtn.hasClass("hideButton")) {
                         $submenuLinks.first().focus();
                     } else {
                         $submenuBtn.focus();
@@ -65,10 +66,10 @@
             }
             // If logged in, tab from dashboard button to subnav button.
             $(".dashboard-button").blur(function(){
-                if ($submenuBtn.hasClass("hideButton")) { console.log("submenu button is visible. Focus on the button");
-                    $submenuBtn.focus();
-                } else { console.log("submenu button is NOT visible. Focus on the first subnav link");
+                if ($submenuBtn.hasClass("hideButton")) { console.log("submenu button is hidden. Focus on the first link.");
                     $submenuLinks.first().focus();
+                } else { console.log("submenu button is is visible. Focus on the button.");
+                    $submenuBtn.focus();
                 }
             })
             // If you focus on the submenu button and open it, tab next to the first link.
