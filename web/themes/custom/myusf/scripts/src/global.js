@@ -65,7 +65,7 @@
             }
             // If logged in, tab from dashboard button to subnav button.
             $(".dashboard-button").blur(function(){
-                if ($submenuBtn.hasClass("collapsed")) {
+                if ($submenuBtn.filter(":visible")) {
                     $submenuBtn.focus();
                 } else {
                     $submenuLinks.first().focus();
