@@ -46,6 +46,53 @@
                 $($dropdownLink).parent('li').find('ul.dropdown-menu').removeClass('show');
             });
 
+            let $logInBtn = $(".navbar .login-btn");
+            let $submenuBtn = $("#submenuButton");
+            let $submenuLinks = $("#sidebar_first .submenu .nav-link");
+
+            // When you tab away from the search submit button, go to the login button, then the subnav.
+
+            // If not logged in.
+            if ($logInBtn.length) {
+                $logInBtn.blur(function() {
+                    // If the submenu button is hidden.
+                    if ($submenuBtn.hasClass("hideButton")) {
+                        $submenuLinks.first().focus();
+                    } else {
+                        $submenuBtn.focus();
+                    }
+                });
+
+            }
+            // If logged in, tab from dashboard button to subnav button.
+            $(".dashboard-button").blur(function(){
+                if ($submenuBtn.hasClass("hideButton")) { console.log("submenu button is hidden. Focus on the first link.");
+                    $submenuLinks.first().focus();
+                } else { console.log("submenu button is is visible. Focus on the button.");
+                    $submenuBtn.focus();
+                }
+            })
+            // If you focus on the submenu button and open it, tab next to the first link.
+            $($submenuBtn).blur(function(){
+                // If the submenu is closed.
+                if ($submenuBtn.hasClass("collapsed")) {
+                    // Go to the main content.
+                    $("#block-myusf-content a").first().focus();
+                } else {
+                    // Otherwise go to the first subnav link.
+                    $submenuLinks.first().focus();
+                }
+            });
+            // When leaving the subnav, go to the main content.
+            $submenuLinks.last().blur(function() {
+                $("#block-myusf-content a").first().focus();
+            });
+            // When leaving main content area, go to right-hand sidebar.
+            $("#block-myusf-content a").last().blur(function() {
+                $("#sidebar_second a").first().focus();
+            });
+
+
             // Fix for Ensemble
             $("[id^=contentView_]").attr("align","center");
 

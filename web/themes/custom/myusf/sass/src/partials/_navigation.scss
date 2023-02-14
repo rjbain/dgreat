@@ -534,6 +534,20 @@ a.login-btn {
 	@include media-breakpoint-up(2560xl_desktop) {
 		margin-right: calc(((100% - 1920px)/ 2) + 40px);
 	}
+
+	@include media-breakpoint-down(landscape_phone) {
+		font-size: .7rem;
+		position: absolute;
+		right: 10px;
+		top: 10px;
+	}
+
+	@include media-breakpoint-down(tablet) {
+		position: absolute;
+		top: 15px;
+		right: 26px;  
+		margin-top: -0.3125rem;
+	}
 }
 
 a.login-btn:hover {
@@ -562,7 +576,7 @@ a.login-btn:hover {
 	&:focus {
 		box-shadow: none;
 	}
-	@include media-breakpoint-down(landscape_phone) {
+/*	@include media-breakpoint-down(landscape_phone) {
 		font-size: .7rem;
 		position: absolute;
 		right: 10px;
@@ -572,9 +586,9 @@ a.login-btn:hover {
 	@include media-breakpoint-down(tablet) {
 		position: absolute;
 		top: 15px;
-		right: 26px;   /* was 20 */
+		right: 26px;  
 		margin-top: -0.3125rem;
-	}
+	}*/
 }
 
 
@@ -723,12 +737,12 @@ a.dashboard-button{
 	}
 
 
-	&::after {
+	a#navbarDropdownMenuLink::after {
 		display: inline-block;
-		position: absolute;
-		top: -25px;  /*was -26px */
-		right: 5px;
-		color: $white;
+		position: relative;
+		/*top: -27px;  was -26px */
+		right: 3px;
+		/*color: $white;*/
 		width: 0;
 		height: 0;
 		margin-left: .255em;
@@ -739,10 +753,14 @@ a.dashboard-button{
 		border-bottom: 0;
 		border-left: .3em solid transparent;
 
-		@include media-breakpoint-only(tablet) {
+		/*@include media-breakpoint-only(tablet) {
 			top:-29px;
 		}
+		@include media-breakpoint-down(phone) {
+			top:-27px;
+		}*/
 	}
+
 	&:hover,
 	&:focus {
 		color:$yellow!important;
@@ -767,18 +785,24 @@ a.dashboard-button{
 
 		a#navbarDropdownMenuLink {
 			color:$yellow!important;
-			margin-top: -0.0625rem;
+			margin-top: -2px;
 
-			@include media-breakpoint-down(landscape_phone) {
-				margin-top: -0.3125rem;
+			@include media-breakpoint-down(tablet) {
+				margin-top: -3px;
+			}
+			@include media-breakpoint-down(phone) {
+				margin-top: -5px;
 			}
 		}
 		&:after {
 			color:$yellow!important;
-			margin-top: 2.75rem;
+			margin-top: 45px;
 
-			@include media-breakpoint-down(landscape_phone) {
-				margin-top: 2.625rem;
+			@include media-breakpoint-down(tablet) {
+				margin-top: 44px;
+			}
+			@include media-breakpoint-down(phone) {
+				margin-top: 42px;
 			}
 		}
 	}
@@ -797,14 +821,20 @@ a.dashboard-button{
 
 	a#navbarDropdownMenuLink {
 		font-weight: 400;
+		font-size:0.75rem;
+		padding-top: 12px;
 		text-align: right;
 		text-transform: lowercase;
 		margin-top: -2.9375rem;
 		background: transparent;
-		padding-right: 1.25rem!important;
+		padding-left: 10px;
+		padding-right: 0!important;
+		right: 0px;
+    	position: relative;
 
 		@include media-breakpoint-down(tablet) {
 			font-size: .7rem!important;
+			right: 12px;
 		}
 		@include media-breakpoint-down(phone) {
 			font-size: .75rem!important;
