@@ -17,7 +17,7 @@ elements: |-
     '#type': item
     '#title': 'Uncashed Check Response Form'
     '#title_display': invisible
-    '#markup': '<h3>Please complete this form to request a reissue of an uncashed refund check</h3>'
+    '#markup': '<h3>Please complete this form to request a reissue or cancellation of an uncashed refund check</h3>'
   view_and_pay_review:
     '#type': item
     '#title': 'View and Pay Review'
@@ -41,19 +41,44 @@ elements: |-
     '#type': email
     '#title': 'USF Email'
     '#required': true
+  do_you_want_your_refund_reissued_or_canceled_and_reapplied_to_yo:
+    '#type': radios
+    '#title': 'Do you want your refund check reissued, or canceled and re-applied to your student account?'
+    '#title_display': before
+    '#description_display': tooltip
+    '#options':
+      'Reissue my refund': 'Reissue my refund'
+      'Cancel the check & re-apply the funds to my student account ': 'Cancel the check & re-apply the funds to my student account  -- (If the check is canceled, the funds will apply to any amount due or remain on your account for future use.)'
+    '#required': true
+    '#format_items': comma
+    '#format_items_html': ''
+    '#format_items_text': ''
+    '#options__properties': ''
   enter_the_check_details_below:
     '#type': textfield
-    '#title': 'Enter the dollar amount of the check(s) you would like reissued.'
+    '#title': 'Enter the dollar amount of the check(s) you would like reissued or canceled.'
     '#title_display': before
     '#required': true
+    '#states':
+      visible:
+        ':input[name="do_you_want_your_refund_reissued_or_canceled_and_reapplied_to_yo"]':
+          checked: true
   what_is_the_issue_date_or_semester_the_check_was_issued_:
     '#type': textfield
-    '#title': 'Enter the issue date or semester the check was issued.'
+    '#title': 'Enter the date or semester the check was issued.'
     '#description': 'If you do not know, please add a time period for reference in the field above.'
     '#required': true
+    '#states':
+      visible:
+        ':input[name="do_you_want_your_refund_reissued_or_canceled_and_reapplied_to_yo"]':
+          checked: true
   enter_the_check_number_optional_:
     '#type': textfield
     '#title': 'Enter the check number (optional).'
+    '#states':
+      visible:
+        ':input[name="do_you_want_your_refund_reissued_or_canceled_and_reapplied_to_yo"]':
+          checked: true
   please_select_the_method_you_would_like_to_use_to_have_your_refu:
     '#type': select
     '#title': 'Please select the method you would like to use to have your refund reissued.'
@@ -61,6 +86,10 @@ elements: |-
       'Direct Deposit': 'Direct Deposit'
       Check: Check
     '#required': true
+    '#states':
+      visible:
+        ':input[name="do_you_want_your_refund_reissued_or_canceled_and_reapplied_to_yo"]':
+          value: 'Reissue my refund'
   preferred_refund_method:
     '#type': item
     '#title': 'Preferred refund method'
@@ -69,7 +98,7 @@ elements: |-
       visible:
         ':input[name="please_select_the_method_you_would_like_to_use_to_have_your_refu"]':
           value: Check
-    '#markup': 'You have indicated that you would like your refund reissued via a paper check. Please note that direct deposit refunds are recommended for faster processing time. You may change your selection and update your direct deposit information on the Student Self-Service if you prefer a direct deposit refund.&nbsp;'
+    '#markup': '<p><strong>You have indicated that you would like your refund reissued via a paper check. Please note that direct deposit refunds are recommended for faster processing time. You may change your selection and update your direct deposit information on the Student Self-Service if you prefer a direct deposit refund.</strong></p>'
   direct_deposit_instructions:
     '#type': item
     '#title': 'Direct Deposit Instructions'
@@ -78,17 +107,24 @@ elements: |-
       visible:
         ':input[name="please_select_the_method_you_would_like_to_use_to_have_your_refu"]':
           value: 'Direct Deposit'
-    '#markup': "<ul>\r\n\t<li>Log on to&nbsp;<a href=\"https://myusf.usfca.edu/\">myUSF</a>.</li>\r\n\t<li>Click on the link for &ldquo;Student Self Service&rdquo;</li>\r\n\t<li>Click on the &quot;Student Account&quot; link and then &quot;Direct Deposit Authorization&quot; to enter the requested information.</li>\r\n</ul>\r\n\r\n<p>You may update or change your direct deposit instructions at any time.&nbsp;Please allow 5 business days for the account to be verified. Payments made prior to verification will be processed as paper checks.</p>"
+    '#markup': |
+      <ul>
+      	<li>Log on to&nbsp;<a href="https://myusf.usfca.edu/">myUSF</a>.</li>
+      	<li>Click on the link for &ldquo;Student Self Service&rdquo;</li>
+      	<li>Click on the &quot;Student Account&quot; link and then &quot;Direct Deposit Authorization&quot; to enter the requested information.</li>
+      </ul>
+      
+      <p>You may update or change your direct deposit instructions at any time.&nbsp;Please allow 5 business days for the account to be verified. Payments made prior to verification will be processed as paper checks.</p>
+      
   direct_deposit_confirmation:
     '#type': checkbox
-    '#title': 'Direct deposit confirmation'
-    '#description': '<h4>I confirm that I have added/ reviewed my direct deposit information on the Student Self-Service and it is accurate.&nbsp;</h4>'
-    '#title_display': invisible
+    '#title': "I confirm that I have added/ reviewed my direct deposit information on the Student Self-Service and it is accurate.\_"
+    '#title_display': inline
+    '#required': true
     '#states':
       visible:
         ':input[name="please_select_the_method_you_would_like_to_use_to_have_your_refu"]':
           value: 'Direct Deposit'
-    '#required': true
   check_instructions:
     '#type': item
     '#title': 'Check Instructions'
@@ -96,29 +132,43 @@ elements: |-
       visible:
         ':input[name="please_select_the_method_you_would_like_to_use_to_have_your_refu"]':
           value: Check
-    '#markup': "<ul>\r\n\t<li>Log on to&nbsp;<a href=\"https://myusf.usfca.edu/\">myUSF</a>.</li>\r\n\t<li>Click on the link for &ldquo;Student Self Service&rdquo;</li>\r\n\t<li>Click on the &quot;Personal Information&quot; link and then &quot;Addresses and Phones&quot;</li>\r\n\t<li>Select &quot;Student Refund Check&quot; in the Type of Address to Insert field to input your address.</li>\r\n</ul>"
+    '#markup': |
+      <ul>
+      	<li>Log on to&nbsp;<a href="https://myusf.usfca.edu/">myUSF</a>.</li>
+      	<li>Click on the link for &ldquo;Student Self Service&rdquo;</li>
+      	<li>Click on the &quot;Personal Information&quot; link and then &quot;Addresses and Phones&quot;</li>
+      	<li>Select &quot;Student Refund Check&quot; in the Type of Address to Insert field to input your address.</li>
+      </ul>
+      
   check_confirmation:
     '#type': checkbox
-    '#title': 'Check confirmation'
-    '#description': '<h4>I confirm that I have added/updated my refund check address.</h4>'
-    '#title_display': invisible
+    '#title': 'I confirm that I have added/updated my refund check address.'
+    '#title_display': inline
+    '#description_display': after
+    '#required': true
     '#states':
       visible:
         ':input[name="please_select_the_method_you_would_like_to_use_to_have_your_refu"]':
           value: Check
-    '#required': true
+  space:
+    '#type': item
+    '#title': Spacing
+    '#title_display': invisible
   thank_you:
     '#type': item
     '#title': 'Thank you'
     '#title_display': invisible
     '#states':
       visible:
+        - ':input[name="do_you_want_your_refund_reissued_or_canceled_and_reapplied_to_yo"]':
+            value: 'Cancel the check & re-apply the funds to my student account '
+        - or
         - ':input[name="direct_deposit_confirmation"]':
             checked: true
         - or
         - ':input[name="check_confirmation"]':
             checked: true
-    '#markup': '<h4>Please click the submit button below to complete your request. Your request will be processed within 3-5 business days. You may view your Current Account Activity on View and Pay for account updates.&nbsp;</h4>'
+    '#markup': '<p><strong>Please click the submit button below to complete your request. Your request will be processed within 5-10 business days. You may view your Current Account Activity on View and Pay for account updates.&nbsp;</strong></p>'
 css: ''
 javascript: ''
 settings:
@@ -224,7 +274,7 @@ settings:
   confirmation_type: page
   confirmation_url: ''
   confirmation_title: 'Thank you for submitting your request'
-  confirmation_message: 'Thank you for completing the uncashed check response form. Your request will be processed within 3-5 business days. You may view your Current Account Activity on View and Pay for account updates. If you opted for a paper check, you will be subject to the USPS delivery times.'
+  confirmation_message: 'Thank you for completing the uncashed check response form. Your request will be processed within 5-10 business days. You may view your Current Account Activity on View and Pay for account updates. If you opted for a paper check, you will be subject to the USPS delivery times.'
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''

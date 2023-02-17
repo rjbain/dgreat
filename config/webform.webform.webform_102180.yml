@@ -39,6 +39,15 @@ elements: |-
     '#title': 'USF Email'
     '#description': ''
     '#required': true
+  your_address:
+    '#type': webform_address
+    '#title': 'Your Address'
+    '#address__required': true
+    '#city__required': true
+    '#state_province__access': false
+    '#postal_code__access': false
+    '#country__access': false
+    '#required': true
   zip_code:
     '#type': textfield
     '#title': 'Zip Code'
@@ -275,7 +284,7 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: 'benefits@usfca.edu,cacruise@usfca.edu,jvuong2@usfca.edu,jbinn@usfca.edu'
+      to_mail: 'benefits@usfca.edu,cacruise@usfca.edu,jvuong2@usfca.edu'
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }

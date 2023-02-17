@@ -8,6 +8,7 @@ dependencies:
     - block_content
     - block_visibility_groups
     - system
+    - user
   theme:
     - myusf
 id: donsathomesidebarlink
@@ -35,3 +36,10 @@ visibility:
     negate: false
     context_mapping: {  }
     pages: "/home\r\n/\r\nhome\r\n/usf-stages-live\r\n/dance-stage\r\n/usf-stages*\r\n/PASJ-20th*"
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      administrator: administrator

@@ -12,7 +12,7 @@ id: webform_136543
 title: 'OMC - Required Email Feedback'
 description: null
 category: null
-elements: |
+elements: |-
   description:
     '#type': processed_text
     '#format': full_html
@@ -50,14 +50,13 @@ elements: |
     '#description': 'What is your role in the USF community?*:'
   other_role:
     '#type': textfield
-    '#title_display': invisible
     '#title': 'Other role:'
-    '#description': ''
+    '#title_display': invisible
     '#required': true
     '#states':
       visible:
-        ':input[name="role[5]"]':
-          checked: true
+        ':input[name="role"]':
+          value: '5'
   email_message_information:
     '#type': processed_text
     '#format': full_html

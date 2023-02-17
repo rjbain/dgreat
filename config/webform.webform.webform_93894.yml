@@ -1,6 +1,6 @@
 uuid: 2ab463fd-c056-453c-b064-1bb2743782df
 langcode: en
-status: open
+status: closed
 dependencies: {  }
 weight: 0
 open: null
@@ -12,7 +12,7 @@ id: webform_93894
 title: 'Enter the IEW Photo Contest!'
 description: null
 category: null
-elements: |
+elements: |-
   first_name:
     '#type': textfield
     '#title': 'First Name'
@@ -33,7 +33,9 @@ elements: |
     '#type': processed_text
     '#title': Notice
     '#description': ''
-    '#text': "<p>Submissions will be accepted from Friday, October 25, until Sunday, November 10, 2019</p>\r\n"
+    '#text': |
+      <p>Submissions will be accepted from Friday, October 21, until Wednesday, November 9.</p>
+      
     '#format': full_html
 css: ''
 javascript: ''
@@ -47,7 +49,7 @@ settings:
   page_submit_path: ''
   page_confirm_path: ''
   page_theme_name: ''
-  form_title: both
+  form_title: source_entity_webform
   form_submit_once: false
   form_open_message: ''
   form_close_message: ''
@@ -119,7 +121,7 @@ settings:
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
-  wizard_toggle: false
+  wizard_toggle: true
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
   preview: 0
@@ -239,7 +241,7 @@ handlers:
       bcc_options: {  }
       cc_mail: ''
       cc_options: {  }
-      from_mail: usf.iew@gmail.com
+      from_mail: pebelloso@usfca.edu
       from_options: {  }
       from_name: 'University of San Francisco'
       reply_to: ''
@@ -247,7 +249,7 @@ handlers:
       sender_mail: ''
       sender_name: ''
       subject: 'IEW Photo Contest | USF'
-      body: 'Thank you for your interest in University of San Francisco&#39;s International Education Week Photo Contest! Submitted by user: [webform_submission:user] [webform_submission:values] To enter the contest: 1. Please reply directly back to this message, attaching up to two (2) photographs per category you wish to enter. The categories are: Action Shots, Cityscapes, Food &amp; Community, #Better Together, and Faculty &amp; Staff 2. For each photograph, please provide the location, a description of the photo, and the date it was taken (if you know it). Good luck! Notice: By submitting your photographs, you hereby irrevocably authorize the University of San Francisco (USF) to copy, exhibit, publish or distribute, any and all such images of you or wherein you appear, including composite or artistic forms and media including electronic posting on the Web, for purposes of publicizing USF programs and for any other lawful purpose. In addition, you waive any right to inspect or approve the finished product, including written copy, wherein your likeness appears. You hereby hold harmless and release and forever discharge University of San Francisco from all claims, demands and causes of action which you, your heirs, representatives, executors, administrators or any other persons acting on your behalf of your estate.'
+      body: "<p>Thank you for your interest in University of San Francisco&#39;s International Education Week Photo Contest!</p>\r\n\r\n<p>Submitted by user: [webform_submission:user] [webform_submission:values]</p>\r\n\r\n<p>To enter the contest:</p>\r\n\r\n<ol>\r\n\t<li>Please reply back directly to this message, attaching up to two (2) photographs per category you wish to enter.<br />\r\n\tThe categories are: Action Shots, Cityscapes, Food &amp; Community, #ForeverTogether, and Faculty &amp; Staff</li>\r\n\t<li>For each photograph, please provide the location, a description of the photo, and the date it was taken (if you know it).</li>\r\n</ol>\r\n\r\n<p>Good luck!</p>\r\n\r\n<p>Notice: By submitting your photographs, you hereby irrevocably authorize the University of San Francisco (USF) to copy, exhibit, publish or distribute, any and all such images of you or wherein you appear, including composite or artistic forms and media including electronic posting on the Web, for purposes of publicizing USF programs and for any other lawful purpose. In addition, you waive any right to inspect or approve the finished product, including written copy, wherein your likeness appears. You hereby hold harmless and release and forever discharge University of San Francisco from all claims, demands and causes of action which you, your heirs, representatives, executors, administrators or any other persons acting on your behalf of your estate.</p>"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -270,7 +272,7 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: usf.iew@gmail.com
+      to_mail: pebelloso@usfca.edu
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
