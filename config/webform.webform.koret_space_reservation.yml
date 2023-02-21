@@ -2,9 +2,9 @@ uuid: 562ad7de-196b-4c7f-8de7-1e7286c20ef1
 langcode: en
 status: open
 dependencies: {  }
-weight: 0
 open: null
 close: null
+weight: 0
 uid: 31661
 template: false
 archive: false
@@ -12,144 +12,7 @@ id: koret_space_reservation
 title: 'Koret Space Reservation'
 description: ''
 category: ''
-elements: |-
-  markup:
-    '#type': webform_markup
-    '#markup': |
-      <p>*Please note: This form must be submitted at least ONE month in advance. All incomplete submissions will be denied.<br />
-      $100 Refundable deposit required to secure your reservation. This will be requested upon confirmation of your reservation approval. Koret Health &amp; Recreation Center will contact Student Leadership and Engagement (SLE) directly for funds from your organization account.</p>
-  current_usf_students_only_:
-    '#type': webform_section
-    '#title': 'Current USF Students Only:'
-    name_first_and_last_:
-      '#type': textfield
-      '#title': 'Name (First And Last):'
-      '#autocomplete': 'off'
-      '#required': true
-    cwid:
-      '#type': textfield
-      '#title': 'CWID:'
-      '#autocomplete': 'off'
-      '#required': true
-    email:
-      '#type': email
-      '#title': 'Email:'
-      '#required': true
-    organization:
-      '#type': textfield
-      '#title': 'Organization:'
-      '#required': true
-  event_name:
-    '#type': textfield
-    '#title': 'Event Name:'
-    '#required': true
-  date:
-    '#type': date
-    '#title': 'Date:'
-    '#required': true
-    '#date_date_min': +1month
-    '#date_date_max': +2years
-  time:
-    '#type': webform_time
-    '#title': 'Time:'
-    '#required': true
-    '#timepicker': true
-    '#time_format': 'g:i A'
-    '#min': '06:00:00'
-    '#max': '22:00:00'
-    '#step': 300
-  number_of_intended_participants:
-    '#type': number
-    '#title': 'Number of Intended Participants:'
-    '#required': true
-  are_all_participants_usf_students_faculty_and_staff_:
-    '#type': webform_buttons
-    '#title': 'Are all participants USF students, faculty, and staff?'
-    '#options':
-      'Yes': 'Yes'
-      'No': 'No'
-    '#required': true
-  brief_description_of_event:
-    '#type': textarea
-    '#title': 'Brief Description of Event:'
-    '#required': true
-  equipment_needed_please_list_all_items_and_quantity_:
-    '#type': textarea
-    '#title': 'Equipment Needed (Please List All Items And Quantity):'
-    '#description': '*Please note that at this time, we are unable to accommodate any volleyball equipment requests.'
-    '#description_display': before
-    '#autocomplete': 'off'
-    '#required': true
-  alternative_event_dates_and_times:
-    '#type': datetime
-    '#title': 'Alternative Event Dates And Times:'
-    '#multiple': true
-    '#required': true
-    '#multiple__add_more_input_label': ''
-    '#date_date_element': datepicker
-    '#date_time_min': '06:00:00'
-    '#date_time_max': '22:00:00'
-    '#date_time_step': '30'
-    '#date_date_min': +1month
-    '#date_date_max': +2years
-  markup_01:
-    '#type': webform_markup
-    '#markup': |
-      <p><strong>**All approved requests will require a $100 credit card refundable deposit.**</strong></p>
-      
-      <h2>Koret Health and Recreation Center Policies</h2>
-      
-      <p><strong>BUILDING RULES</strong>: All persons involved in the activity/event must abide by the Koret Health and Recreation Center (KHRC) building rules, which are not limited to, but include the following:</p>
-      
-      <ul>
-      	<li>A valid USF ID must be presented at all times for access to KHRC.</li>
-      	<li>No ID - no entry - no exceptions.</li>
-      	<li>If your USF photo ID is not recognizable you will be required to show additional photo identification to gain access to the facility.</li>
-      	<li>The Department reserves the right to restrict and/or refuse admittance to its facilities and programs. All University and Departmental policies and procedures must be complied with at all times, including those for each area. These rules are available upon request. Abusive language and/or actions toward a staff person or fellow student may result in loss of privileges and/or suspension from facilities.</li>
-      	<li>All alumni and non-affiliated persons using the facility and/or participating in any recreational sports approved activity/event must pay the appropriate fee, sign the waiver, and have a valid photo ID.</li>
-      	<li>Minors 17 years of age and under are prohibited to participate in any recreational sports approved activity/event unless you are a current USF student.</li>
-      	<li>Shirts are required in all areas of the facility except the pool deck and multipurpose courts. Shoes are required in all areas of the facility except the pool deck and locker-rooms.</li>
-      	<li>Smoking is not permitted at any time.</li>
-      	<li>Eating and drinking are permitted only in designated areas. Do not eat and/or drink in activity areas. If your student organization is requesting catering for the event you must notify KHRC staff before contacting Events Management.</li>
-      	<li>No hard-soled or floor-marking shoes allowed on the hardwood floors of KHRC.</li>
-      	<li>The Department is not responsible for lost or stolen items.</li>
-      	<li>KHRC does not allow photographs to be taken or videotaping in the facility without prior written permission.</li>
-      	<li>KHRC reserves the right to deny any requested student organization activity/event.</li>
-      </ul>
-      <br />
-      <strong>EQUIPMENT:</strong> KHRC provides limited equipment for student organization activities/events. All equipment requested will be reviewed once this application is submitted. Please note that any damage to our equipment will result in additional fines. Please see below for all available equipment.
-      
-      <ul>
-      	<li>Basketballs (Maximum 2)</li>
-      	<li>Table Tennis (Maximum 2 sets)</li>
-      	<li>Flip Scoreboards (Maximum 1)</li>
-      	<li>Reversible Pinnies (Maximum 20)</li>
-      </ul>
-      
-      <p><strong>SIGNAGE:</strong> Please note that nothing may be taped or hung on the walls in any space of KHRC. Violations will result in a fine.</p>
-      
-      <p><strong>CLEANING:</strong> If there is excessive debris or food items on the floor or left in the reserved space, your student organization may be charged a cleaning fine.</p>
-      
-      <p><strong>RELOCATION:</strong> Sometimes the needs of the University Community will take precedence over events; we reserve the right to relocate or reschedule your activity/event. In good faith, we will relocate you to the most suitable alternate location, and notify you with as much notice as possible.</p>
-      
-      <p><strong>DISABILITY ACCOMMODATIONS:</strong> USF reasonably accommodates individuals with disabilities. If you need a disability-related accommodation, please contact KHRC@usfca.edu. Requests must be made at least 14 days in advance of the activity/event. Costs may be applicable dependent on the request.</p>
-      
-      <p><strong>CANCELLATIONS:</strong> Cancellations must be made 2 weeks in advance from the date of your event to receive a full refund of the deposit. Any event cancelled less than 2 weeks in advance will be subjected to the loss of the deposit.</p>
-      
-      <p><strong>Failure to comply with the policies above may result in the loss of privileges for future activities/events for your student organization here at the Koret Health and Recreation Center.</strong></p>
-  print_name:
-    '#type': textfield
-    '#title': 'Print Name:'
-  signature:
-    '#type': webform_signature
-    '#title': 'Signature:'
-    '#description': ''
-  date_:
-    '#type': date
-    '#title': 'Date:'
-  markup_02:
-    '#type': webform_markup
-    '#markup': 'Once you&#39;ve submitted this application, a staff member will reach out to you. Please allow up to 5 business days to review this request.'
+elements: "markup:\n  '#type': webform_markup\n  '#markup': |\n    <p>*Please note: This form must be submitted at least ONE month in advance. All incomplete submissions will be denied.<br />\n    $100 Refundable deposit required to secure your reservation. This will be requested upon confirmation of your reservation approval. Koret Health &amp; Recreation Center will contact Student Leadership and Engagement (SLE) directly for funds from your organization account.</p>\ncurrent_usf_students_only_:\n  '#type': webform_section\n  '#title': 'Current USF Students Only:'\n  name_first_and_last_:\n    '#type': textfield\n    '#title': 'Name (First And Last):'\n    '#autocomplete': 'off'\n    '#required': true\n  cwid:\n    '#type': textfield\n    '#title': 'CWID:'\n    '#autocomplete': 'off'\n    '#required': true\n  email:\n    '#type': email\n    '#title': 'Email:'\n    '#required': true\n  organization:\n    '#type': textfield\n    '#title': 'Organization:'\n    '#required': true\nevent_name:\n  '#type': textfield\n  '#title': 'Event Name:'\n  '#required': true\ndate:\n  '#type': date\n  '#title': 'Date:'\n  '#required': true\n  '#date_date_min': +1month\n  '#date_date_max': +2years\ntime:\n  '#type': webform_time\n  '#title': 'Time:'\n  '#required': true\n  '#timepicker': true\n  '#time_format': 'g:i A'\n  '#min': '06:00:00'\n  '#max': '22:00:00'\n  '#step': 300\nnumber_of_intended_participants:\n  '#type': number\n  '#title': 'Number of Intended Participants:'\n  '#required': true\nare_all_participants_usf_students_faculty_and_staff_:\n  '#type': webform_buttons\n  '#title': 'Are all participants USF students, faculty, and staff?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\nbrief_description_of_event:\n  '#type': textarea\n  '#title': 'Brief Description of Event:'\n  '#required': true\nequipment_needed_please_list_all_items_and_quantity_:\n  '#type': textarea\n  '#title': 'Equipment Needed (Please List All Items And Quantity):'\n  '#description': '*Please note that at this time, we are unable to accommodate any volleyball equipment requests.'\n  '#description_display': before\n  '#autocomplete': 'off'\n  '#required': true\nalternative_event_dates_and_times:\n  '#type': datetime\n  '#title': 'Alternative Event Dates And Times:'\n  '#multiple': true\n  '#required': true\n  '#multiple__add_more_input_label': ''\n  '#date_date_element': datepicker\n  '#date_time_min': '06:00:00'\n  '#date_time_max': '22:00:00'\n  '#date_time_step': '30'\n  '#date_date_min': +1month\n  '#date_date_max': +2years\nmarkup_01:\n  '#type': webform_markup\n  '#markup': |\n    <p><strong>**All approved requests will require a $100 credit card refundable deposit.**</strong></p>\n    \n    <h2>Koret Health and Recreation Center Policies</h2>\n    \n    <p><strong>BUILDING RULES</strong>: All persons involved in the activity/event must abide by the Koret Health and Recreation Center (KHRC) building rules, which are not limited to, but include the following:</p>\n    \n    <ul>\n    \t<li>A valid USF ID must be presented at all times for access to KHRC.</li>\n    \t<li>No ID - no entry - no exceptions.</li>\n    \t<li>If your USF photo ID is not recognizable you will be required to show additional photo identification to gain access to the facility.</li>\n    \t<li>The Department reserves the right to restrict and/or refuse admittance to its facilities and programs. All University and Departmental policies and procedures must be complied with at all times, including those for each area. These rules are available upon request. Abusive language and/or actions toward a staff person or fellow student may result in loss of privileges and/or suspension from facilities.</li>\n    \t<li>All alumni and non-affiliated persons using the facility and/or participating in any recreational sports approved activity/event must pay the appropriate fee, sign the waiver, and have a valid photo ID.</li>\n    \t<li>Minors 17 years of age and under are prohibited to participate in any recreational sports approved activity/event unless you are a current USF student.</li>\n    \t<li>Shirts are required in all areas of the facility except the pool deck and multipurpose courts. Shoes are required in all areas of the facility except the pool deck and locker-rooms.</li>\n    \t<li>Smoking is not permitted at any time.</li>\n    \t<li>Eating and drinking are permitted only in designated areas. Do not eat and/or drink in activity areas. If your student organization is requesting catering for the event you must notify KHRC staff before contacting Events Management.</li>\n    \t<li>No hard-soled or floor-marking shoes allowed on the hardwood floors of KHRC.</li>\n    \t<li>The Department is not responsible for lost or stolen items.</li>\n    \t<li>KHRC does not allow photographs to be taken or videotaping in the facility without prior written permission.</li>\n    \t<li>KHRC reserves the right to deny any requested student organization activity/event.</li>\n    </ul>\n    <br />\n    <strong>EQUIPMENT:</strong> KHRC provides limited equipment for student organization activities/events. All equipment requested will be reviewed once this application is submitted. Please note that any damage to our equipment will result in additional fines. Please see below for all available equipment.\n    \n    <ul>\n    \t<li>Basketballs (Maximum 2)</li>\n    \t<li>Table Tennis (Maximum 2 sets)</li>\n    \t<li>Flip Scoreboards (Maximum 1)</li>\n    \t<li>Reversible Pinnies (Maximum 20)</li>\n    </ul>\n    \n    <p><strong>SIGNAGE:</strong> Please note that nothing may be taped or hung on the walls in any space of KHRC. Violations will result in a fine.</p>\n    \n    <p><strong>CLEANING:</strong> If there is excessive debris or food items on the floor or left in the reserved space, your student organization may be charged a cleaning fine.</p>\n    \n    <p><strong>RELOCATION:</strong> Sometimes the needs of the University Community will take precedence over events; we reserve the right to relocate or reschedule your activity/event. In good faith, we will relocate you to the most suitable alternate location, and notify you with as much notice as possible.</p>\n    \n    <p><strong>DISABILITY ACCOMMODATIONS:</strong> USF reasonably accommodates individuals with disabilities. If you need a disability-related accommodation, please contact KHRC@usfca.edu. Requests must be made at least 14 days in advance of the activity/event. Costs may be applicable dependent on the request.</p>\n    \n    <p><strong>CANCELLATIONS:</strong> Cancellations must be made 2 weeks in advance from the date of your event to receive a full refund of the deposit. Any event cancelled less than 2 weeks in advance will be subjected to the loss of the deposit.</p>\n    \n    <p><strong>Failure to comply with the policies above may result in the loss of privileges for future activities/events for your student organization here at the Koret Health and Recreation Center.</strong></p>\nprint_name:\n  '#type': textfield\n  '#title': 'Print Name:'\nsignature:\n  '#type': webform_signature\n  '#title': 'Signature:'\n  '#description': ''\ndate_:\n  '#type': date\n  '#title': 'Date:'\nmarkup_02:\n  '#type': webform_markup\n  '#markup': 'Once you&#39;ve submitted this application, a staff member will reach out to you. Please allow up to 5 business days to review this request.'"
 css: ''
 javascript: ''
 settings:
@@ -164,48 +27,40 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
+  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
-  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_disable_remote_addr: false
+  form_remote_addr: true
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
+  form_reset: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
-  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
-  form_attributes: {  }
-  form_method: ''
-  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
-  submission_exception_message: ''
-  submission_locked_message: ''
   submission_log: false
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -214,6 +69,11 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -224,13 +84,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -253,9 +113,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
-  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
+  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -337,9 +197,9 @@ access:
 handlers:
   email:
     id: email
-    handler_id: email
     label: Email
     notes: ''
+    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -348,17 +208,13 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:email:raw]'
       to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
       cc_mail: ''
       cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -369,14 +225,18 @@ handlers:
       html: true
       attachments: false
       twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       theme_name: ''
       parameters: {  }
-      debug: false
   email_1:
     id: email
-    handler_id: email_1
     label: Email
     notes: ''
+    handler_id: email_1
     status: true
     conditions: {  }
     weight: 0
@@ -385,17 +245,13 @@ handlers:
         - completed
       to_mail: fchoi2@usfca.edu
       to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
       cc_mail: ''
       cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -406,14 +262,18 @@ handlers:
       html: true
       attachments: false
       twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       theme_name: ''
       parameters: {  }
-      debug: false
   email_3:
     id: email
-    handler_id: email_3
     label: Email
     notes: ''
+    handler_id: email_3
     status: true
     conditions: {  }
     weight: 0
@@ -422,17 +282,13 @@ handlers:
         - completed
       to_mail: cjmiller6@usfca.edu
       to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
       cc_mail: ''
       cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -443,7 +299,11 @@ handlers:
       html: true
       attachments: false
       twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       theme_name: ''
       parameters: {  }
-      debug: false
 variants: {  }

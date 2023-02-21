@@ -47,9 +47,9 @@
 	}
 
 	.panel-heading {
-		a:hover,
-		a:focus {
+		a:hover {
 			background: transparent;
+			text-decoration: underline;
 		}
 		
 	 	a[aria-expanded=false]{	
@@ -72,10 +72,6 @@
 				height: 12px;
 				background: url(/themes/custom/myusf/images/site/icons.svg) -239px -142px no-repeat;*/
 			}
-			&:hover,
-			&:focus {
-				opacity: .6;
-			}
 		}
 
 		a[aria-expanded=true]{	
@@ -94,10 +90,6 @@
 				/*width: 12px;
 				height: 12px;
 				background: url(/themes/custom/myusf/images/site/icons.svg) -259px -142px no-repeat;*/
-			}
-			&:hover,
-				&:focus {
-				opacity: .6;
 			}
 		}
 		
@@ -576,6 +568,7 @@ a.card-rollover {
 
 .pagination {
 	margin-top: .8rem;
+	border-radius: 0;
 
 	.page-item a, .pager__item--next a {
 	    font-size: .85rem;
@@ -619,9 +612,18 @@ a.card-rollover {
 		.page-link {
 			border: none;
 
-			&:hover,
-			&:focus{
+			&:hover{
 				background-color: transparentize($light_gray, .5);
+				text-decoration: underline;
+			}
+			&:focus {
+				box-shadow:none;
+			}
+		}
+		&:first-child,
+		&:last-child {
+			.page-link {
+				border-radius: 0;
 			}
 		}
 	}
@@ -629,8 +631,7 @@ a.card-rollover {
 	.pager__item--next {
 		margin-right: 1.25rem;
 		.page-link {
-			&:hover,
-			&:focus{
+			&:hover{
 				background-color: transparentize($light_gray, .5);
 			}
 		}
@@ -1333,6 +1334,11 @@ content: "";
 	    }
 	}
 }
+
+.video-component-icon-wrapper {
+    position: relative;
+}
+
 .video-component_video_icon {    
     font-size: 1.25rem;
     font-style: normal;
@@ -1342,18 +1348,15 @@ content: "";
     line-height: 1.125;
     text-shadow: -1px 2px 3px rgba(0,0,0,.6);
     text-transform: uppercase;
-    position: relative;
-    top: -70px;
-    left: 30px;
+    position: absolute;
+    top: -20px;
+	left: calc((100% - 46px)/2);
 	display: block;
     padding-left: 3.875rem;
     border: none;
     height: 0;
-
-    @include media-breakpoint-down(desktop) {
-    	left: 25px;
-    }
-
+	z-index: 3;
+    margin-top: 30%;
 
     &:before {
     	width: 50px;
@@ -1366,6 +1369,7 @@ content: "";
 	    content: "";
 	    position: absolute;
 	    left: 0;
+		transform: scale(1.25);
 	}
 
     .first_word {
@@ -1373,7 +1377,7 @@ content: "";
 	    font-style: normal;
 	    font-weight: 300;
 	    color: $white;
-	    display: block;
+	    display: none;
 	    letter-spacing: .3px;
 	    line-height: 1;
 	    position: relative;
@@ -1382,6 +1386,7 @@ content: "";
 	.second_word {
 		position: relative;
     	top: -20px;
+		display: none;
 	}
 }
 

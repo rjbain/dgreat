@@ -53,7 +53,10 @@
           ]
         %}
         {% if item.below %}
-          {{ link(item.title, item.url, {'class': link_classes, 'data-target': '#', 'data-toggle': 'dropdown', 'aria-expanded': 'false'}) }}
+{#          {{ link(item.title, item.url, {'class': link_classes, 'data-target': '#', 'data-toggle': 'dropdown', 'aria-expanded': 'false', 'role': 'button', 'aria-label': 'Open Sub-Navigation Menu'}) }}#}
+{#          {{ link(item.title, item.url, {'class': link_classes, 'data-target': '#', 'data-toggle': 'dropdown', 'aria-expanded': 'false', 'role': 'button', 'aria-label': 'Open Sub-Navigation Menu'}) }}#}
+         
+          <button {{ attributes.addClass(link_classes).setAttribute('data-toggle','dropdown').setAttribute('aria-expanded','false').setAttribute('aria-label','Open Sub-Navigation Menu') }}>{{ item.title }}</button>
           {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
         {% else %}
           {{ link(item.title, item.url, {'class': link_classes}) }}

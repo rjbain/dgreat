@@ -18,6 +18,12 @@
 nav {
 	padding-top:0!important;
 	padding-bottom:0!important;
+
+	@include media-breakpoint-up(tablet) {
+		li.nav-item:first-child {
+			margin-top: 0;
+		}
+	}
 }
 
 .bg-dark {
@@ -29,11 +35,11 @@ nav {
 nav.navbar {
 	margin-bottom: 2.59rem;
 
-	a.nav-link {
+	button.nav-link {
 		color: $white!important;
 		text-decoration:none;
-		padding-bottom: .87rem;
-		padding-top: .75rem;
+		padding-bottom: 1.15rem;
+		padding-top: 1.1rem;
 		font-weight: 700;
 
 		@include media-breakpoint-up(desktop) {
@@ -60,11 +66,14 @@ nav.navbar {
 		padding-bottom: 0;
 		line-height: 2;
 
-		&.nav-item :hover,
-		&.nav-item :focus {
+		&.nav-item :hover {
 			color: $green!important;
 			background-color: $beige;
 		}
+	}
+	li.nav-item.menu-item--expanded.dropdown:hover button {
+		color: $green!important;
+		background-color: $beige;;
 	}
 	@include media-breakpoint-down(landscape_phone) {
 		padding:0;
@@ -143,6 +152,28 @@ nav.navbar {
 	}
 }
 
+ul.navbar-nav button {
+	display: flex;
+	background: none;
+	color: #fff;
+	width: 100%;	
+    justify-content: center;
+	padding-left: 5px;
+    padding-right: 5px;
+
+	@include media-breakpoint-down(landscape_phone) {
+		height: 40px;
+	}
+	@include media-breakpoint-up(tablet) {
+		height: 100%;
+	}
+
+	&:hover {
+		color: $green!important;
+    	background-color: $beige;
+	}
+}
+
 .navbar-nav {
 	border:0;
 	/*margin-left: 120px;*/
@@ -154,8 +185,6 @@ nav.navbar {
 		}
 
 		&:hover {
-			background: $beige;
-
 			a, a:hover{
 				color: $green!important;
 			}
@@ -171,31 +200,35 @@ nav.navbar {
 
 	@include media-breakpoint-down(tablet) {
 		flex-direction: row;
-		/*margin-left: 35px;
-		margin-top: -50px;*/
 		position: relative;
-		top: -42px;
+		top: -24px;		
 	}
 
 	@include media-breakpoint-down(landscape_phone) {
 		margin-left: 0;
-		top:-23px;
-		width:100vw;
+		top:-13px;  
 
 		li {
 			flex-direction: row!important;
 			margin-top: 0.3125rem;
 			padding: 0 0.3125rem!important;
+			text-align: center;
 
-			a {
+			&:last-of-type {
+				button {
+					border-right: none;
+				}
+			}
+
+			button {		
 				font-size: .75rem;
 				line-height: 1.2;
-				text-align: center;
 				letter-spacing: .025rem;
 				padding-top: 0.3125rem!important;
 				padding-bottom: 0.3125rem!important;
 				margin-top: 0!important;
 				margin-bottom: 0!important;
+				border-right: 1px solid #fff;
 			}
 		}
 		.menu-item--expanded.dropdown {
@@ -209,22 +242,18 @@ nav.navbar {
 
 			&:first-child {
 				width: calc( 58px + (( 100vw - 299px) / 6) + (( 100vw - 303px) / 12));
-				border-right: 1px solid $white;
 				@include mobilenav-dropdown(0);
 			}
 			&:nth-child(2) {
 				width: calc( 72px + (( 100vw - 299px) / 6));
-				border-right: 1px solid $white;
 				@include mobilenav-dropdown($shiftSecond);
 			}
 			&:nth-child(3) {
 				width: calc( 53px + (( 100vw - 299px) / 6));
-				border-right: 1px solid $white;
 				@include mobilenav-dropdown($shiftThird);
 			}
 			&:nth-child(4) {
 				width: calc( 66px + (( 100vw - 299px) / 6));
-				border-right: 1px solid $white;
 				@include mobilenav-dropdown($shiftFourth);
 			}
 			&:nth-child(5) {
@@ -250,6 +279,9 @@ li.menu-item--expanded:hover ul.dropdown-menu {
 		display: none;
 	}
 }
+.navbar-dark .nav-link {
+	color: white;
+}
 #CollapsingNavbar {
 	flex-grow: 1;
 }
@@ -274,6 +306,7 @@ li.menu-item--expanded:hover ul.dropdown-menu {
 	@include media-breakpoint-only(tablet) {
 		position: absolute;
 		margin-top: 0;
+		top: 34px;
 	}
 
 	.dropdown-item {
@@ -344,6 +377,7 @@ li.menu-item--expanded:hover ul.dropdown-menu {
 
 .navbar-nav .dropdown.show a.nav-link.active {
 	color: $green!important;
+	background: $beige;
 }
 
 .navbar-nav {
@@ -468,6 +502,11 @@ div.search-icon-rollover {
 		padding-left: 0.625rem;
 		padding-top: 0;
 		border: 0;
+
+		&:focus-visible,
+		&:focus-visible::placeholder {
+			color: white;
+		}
 	}
 	input[type=checkbox] {
 		margin-top: 0.9375rem;
@@ -495,6 +534,20 @@ a.login-btn {
 	@include media-breakpoint-up(2560xl_desktop) {
 		margin-right: calc(((100% - 1920px)/ 2) + 40px);
 	}
+
+	@include media-breakpoint-down(landscape_phone) {
+		font-size: .7rem;
+		position: absolute;
+		right: 10px;
+		top: 10px;
+	}
+
+	@include media-breakpoint-down(tablet) {
+		position: absolute;
+		top: 15px;
+		right: 26px;  
+		margin-top: -0.3125rem;
+	}
 }
 
 a.login-btn:hover {
@@ -513,7 +566,6 @@ a.login-btn:hover {
 	margin-top: -0.125rem;
 
 	&:hover,
-	&:focus,
 	&:not(:disabled):not(.disabled):active {
 		color: $yellow;
 		border-color: $yellow;
@@ -524,7 +576,7 @@ a.login-btn:hover {
 	&:focus {
 		box-shadow: none;
 	}
-	@include media-breakpoint-down(landscape_phone) {
+/*	@include media-breakpoint-down(landscape_phone) {
 		font-size: .7rem;
 		position: absolute;
 		right: 10px;
@@ -534,9 +586,9 @@ a.login-btn:hover {
 	@include media-breakpoint-down(tablet) {
 		position: absolute;
 		top: 15px;
-		right: 26px;   /* was 20 */
+		right: 26px;  
 		margin-top: -0.3125rem;
-	}
+	}*/
 }
 
 
@@ -665,11 +717,6 @@ a.dashboard-button{
 		position: absolute;
 		top: 45px;
 		right: 60px;
-
-		&:hover,
-		&:focus {
-
-		}
 	}
 
 	@include media-breakpoint-up(midlarge_desktop) {
@@ -690,12 +737,12 @@ a.dashboard-button{
 	}
 
 
-	&::after {
+	a#navbarDropdownMenuLink::after {
 		display: inline-block;
-		position: absolute;
-		top: -25px;  /*was -26px */
-		right: 5px;
-		color: $white;
+		position: relative;
+		/*top: -27px;  was -26px */
+		right: 3px;
+		/*color: $white;*/
 		width: 0;
 		height: 0;
 		margin-left: .255em;
@@ -706,10 +753,14 @@ a.dashboard-button{
 		border-bottom: 0;
 		border-left: .3em solid transparent;
 
-		@include media-breakpoint-only(tablet) {
+		/*@include media-breakpoint-only(tablet) {
 			top:-29px;
 		}
+		@include media-breakpoint-down(phone) {
+			top:-27px;
+		}*/
 	}
+
 	&:hover,
 	&:focus {
 		color:$yellow!important;
@@ -734,18 +785,24 @@ a.dashboard-button{
 
 		a#navbarDropdownMenuLink {
 			color:$yellow!important;
-			margin-top: -0.0625rem;
+			margin-top: -2px;
 
-			@include media-breakpoint-down(landscape_phone) {
-				margin-top: -0.3125rem;
+			@include media-breakpoint-down(tablet) {
+				margin-top: -3px;
+			}
+			@include media-breakpoint-down(phone) {
+				margin-top: -5px;
 			}
 		}
 		&:after {
 			color:$yellow!important;
-			margin-top: 2.75rem;
+			margin-top: 45px;
 
-			@include media-breakpoint-down(landscape_phone) {
-				margin-top: 2.625rem;
+			@include media-breakpoint-down(tablet) {
+				margin-top: 44px;
+			}
+			@include media-breakpoint-down(phone) {
+				margin-top: 42px;
 			}
 		}
 	}
@@ -764,14 +821,20 @@ a.dashboard-button{
 
 	a#navbarDropdownMenuLink {
 		font-weight: 400;
+		font-size:0.75rem;
+		padding-top: 12px;
 		text-align: right;
 		text-transform: lowercase;
 		margin-top: -2.9375rem;
 		background: transparent;
-		padding-right: 1.25rem!important;
+		padding-left: 10px;
+		padding-right: 0!important;
+		right: 0px;
+    	position: relative;
 
 		@include media-breakpoint-down(tablet) {
 			font-size: .7rem!important;
+			right: 12px;
 		}
 		@include media-breakpoint-down(phone) {
 			font-size: .75rem!important;
@@ -1249,6 +1312,9 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		border: 1px solid $light_gray;
 		border-top: 0;
 	}
+	li.nav-item a:focus-visible {
+		position: relative;
+	}
 }
 
 /* SIDEBAR SECOND right column
@@ -1598,6 +1664,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	&:focus {
 		color:$yellow!important;
 		background: transparent;
+		text-decoration: underline;
 	}
 
 	@include media-breakpoint-down(phone) {
@@ -1631,6 +1698,9 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		@include media-breakpoint-down(landscape_phone) {
 			display: inline-block;
 			width: 100%;
+		}
+		&:first-child {
+			margin-top: 0;
 		}
 	}
 	@include media-breakpoint-up(tablet) {
@@ -1725,6 +1795,4 @@ a.logo {
 }
 /*NAV EDIT BUTTON
 =================================================*/
-nav#block-myusf-mainnavigation button {
-	display: none;
-}
+
