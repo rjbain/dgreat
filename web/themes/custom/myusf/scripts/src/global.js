@@ -101,7 +101,6 @@
                 $("a[href$='.pdf'], a[href$='.txt']")
                     .attr("target", "_blank")
                     .attr("rel", "noopener")
-                    .attr("aria-label", "Opens in new window")
             });
         }
     };
