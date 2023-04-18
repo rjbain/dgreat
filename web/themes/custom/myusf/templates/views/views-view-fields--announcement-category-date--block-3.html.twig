@@ -34,7 +34,7 @@
 
 {#% set role = fields.field_role.content|split(',') %#}
 
-{% set published_date = fields.field_published_date.content|date("m/d/Y") %}
+{% set published_date = fields.field_published_date.value|date("m/d/Y") %}
 {% set past_date = now|date_modify("-7 days")|date("m/d/Y") %}
 
 {% if date(published_date) >= date(past_date) %}
