@@ -12,7 +12,7 @@ id: webform_139064
 title: 'Request for Travel Stipend Program for Admitted Students'
 description: null
 category: null
-elements: |
+elements: |-
   first_name:
     '#type': textfield
     '#title': 'First Name:'
@@ -58,18 +58,17 @@ elements: |
     '#description': ''
   how_did_you_travel_to_campus:
     '#type': radios
+    '#title': 'How did you travel to campus?'
     '#options':
       1: 'Car (Please email a map showing starting and ending points)'
-      2: 'Plane (Please attach your receipt and travel itinerary)'
-      3: 'Train (Please attach your receipt and travel itinerary)'
-      4: 'Bus (Please attach your receipt and travel itinerary)'
-      5: 'Other (Please attach your receipt and travel itinerary)'
-    '#title': 'How did you travel to campus?'
-    '#description': ''
+      2: 'Plane (Please email your receipt and travel itinerary)'
+      3: 'Train (Please email your receipt and travel itinerary)'
+      4: 'Bus (Please email your receipt and travel itinerary)'
+      5: 'Other (Please email your receipt and travel itinerary)'
+    '#options__properties': ''
   if_requesting_reimbursement_for_hotel_stay_please_attach_receipt_and_list_name_of_hotel_accommodation:
     '#type': textfield
-    '#title': 'If requesting reimbursement for hotel stay please attach receipt and list name of hotel/accommodation:'
-    '#description': ''
+    '#title': 'If requesting reimbursement for hotel stay, please email receipt and list name of hotel/accommodation below:'
   please_share_a_brief_explanation_of_your_financial_need_and_other_reasons_for_requesting_a_travel_stipend:
     '#type': textarea
     '#title': 'Please share a brief explanation of your financial need and other reasons for requesting a travel stipend:'
@@ -161,6 +160,8 @@ settings:
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -261,43 +262,6 @@ access:
     users: {  }
     permissions: {  }
 handlers:
-  email_1:
-    id: email
-    handler_id: email_1
-    label: 'Email 1'
-    notes: ''
-    status: true
-    conditions: {  }
-    weight: 1
-    settings:
-      states:
-        - completed
-      to_mail: lawadmissions@usfca.edu
-      to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      cc_mail: mlmata@usfca.edu
-      cc_options: {  }
-      from_mail: '[webform-submission:values:email:raw]'
-      from_options: {  }
-      from_name: '[webform-submission:values:first_name:raw]'
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      subject: _default
-      body: _default
-      excluded_elements: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: true
-      attachments: false
-      twig: false
-      theme_name: ''
-      parameters: {  }
-      debug: false
   email_2:
     id: email
     handler_id: email_2
@@ -324,6 +288,43 @@ handlers:
       sender_name: ''
       subject: _default
       body: 'Submitted by user: [webform_submission:user] Submitted values are: [webform_submission:values]'
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
+  email:
+    id: email
+    handler_id: email
+    label: Email
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 3
+    settings:
+      states:
+        - completed
+      to_mail: lawadmissions@usfca.edu
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: _default
+      body: _default
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true

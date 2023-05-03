@@ -1,6 +1,6 @@
 uuid: dafde91b-56cc-4a17-9e09-8f1253083948
 langcode: en
-status: closed
+status: open
 dependencies: {  }
 weight: 0
 open: null
@@ -45,7 +45,7 @@ elements: |-
     '#required': true
   current_email:
     '#type': email
-    '#title': 'Current Email'
+    '#title': 'Primary Email'
     '#required': true
   secondary_email:
     '#type': email
@@ -53,19 +53,20 @@ elements: |-
     '#required': true
   current_phone:
     '#type': tel
-    '#title': 'Current Phone'
+    '#title': 'Primary Phone'
     '#required': true
   permanent_phone:
     '#type': tel
     '#title': 'Permanent Phone'
     '#required': true
+    '#access': false
   headshot:
     '#type': textfield
     '#title': Headshot
     '#description': 'Please upload your photo to Google Drive and share the link to it here.'
   social_media_links:
     '#type': textfield
-    '#title': 'Social Media Links'
+    '#title': 'Social Media Links (OPTIONAL)'
     '#multiple': 4
     '#description': 'Please enter links to your social media accounts (Twitter, Facebook, Instagram, LinkedIn).'
   major:
@@ -84,13 +85,7 @@ elements: |-
     '#type': textfield
     '#title': 'Home Institution'
     '#required': true
-  would_you_be_willing_to_write_a_blog_post_if_appointed_:
-    '#type': radios
-    '#title': 'Would you be willing to write a blog post if appointed?'
-    '#options':
-      'Yes': 'Yes'
-      'No': 'No'
-    '#required': true
+    '#access': false
   graduation_date:
     '#type': select
     '#title': 'Graduation Date'
@@ -114,6 +109,37 @@ elements: |-
     '#type': textarea
     '#title': 'If you have a GPA that is lower than the 3.0 minimum requirement, please explain.'
     '#required': true
+  statement_of_purpose_label:
+    '#type': label
+    '#title': 'Statement of Purpose'
+    '#description': '<span style="font-size:11pt; font-variant:normal; white-space:pre-wrap"><span style="font-family:''Times New Roman''"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Statements will be evaluated according to content and writing quality. Please copy and paste or type in the boxes below your statement of purpose. Please proofread.</span></span></span></span></span></span>'
+  statement_of_purpose_label_explanation:
+    '#type': label
+    '#title': 'Statements will be evaluated according to content and writing quality. Please copy and paste or type in the boxes below your statement of purpose. Please proofread.'
+  statement_of_purpose:
+    '#type': textarea
+    '#title': '1. The McCarthy Center''s core values that guide our work include: diversity and inclusion, social justice, collaboration and co-determination, humility, innovation, growth and improvement, and invitational dialogue. Choose two of the values from the McCarthy Center''s list of Core Values and discuss why they resonate with you. How will you incorporate them during your Equity Internship experience?'
+    '#required': true
+  statement_of_purpose_q2:
+    '#type': textarea
+    '#title': '2. What prior experiences have you had with volunteering, activism, policy, service or community engagement? Please share your engagement experiences at USF or in other communities, and how these have shaped your interest in the Equity Interns program.'
+    '#required': true
+  statement_of_purpose_q3:
+    '#type': textarea
+    '#title': '3. Reflect on an experience in the past when you either supported/mentored a young person OR when someone mentored you in your youth. Describe the nature of the experience. What aspects of that relationship were positive and fulfilling? What aspects were challenging? What would you have changed about the experience to make it more meaningful?'
+    '#required': true
+  resume:
+    '#type': textfield
+    '#title': Resume
+    '#description': '<span style="font-size:11pt; font-variant:normal; white-space:pre-wrap"><span style="font-family:''Times New Roman''"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Please upload your resum&eacute; to Google Drive and paste the sharable link here. Your application will not be considered complete until your resume is received.</span></span></span></span></span></span>'
+    '#required': true
+  would_you_be_willing_to_write_a_blog_post_if_appointed_:
+    '#type': radios
+    '#title': 'Would you be willing to write a blog post if appointed?'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+    '#required': true
   how_did_you_hear_about_this_program_:
     '#type': textarea
     '#title': 'How did you hear about this program?'
@@ -124,7 +150,7 @@ elements: |-
     '#required': true
   please_provide_the_contact_information_for_one_faculty_member_or:
     '#type': label
-    '#title': 'Please provide the contact information for one faculty member or employer who is familiar with your skills and abilities and can serve as a reference. We encourage you to reach out to a reference from someone who can speak about your academic development, namely a professor or supervisor. Please do not request a letter of reference from a member of your family.'
+    '#title': 'Reference: Please provide the contact information for one faculty member or employer who is familiar with your skills and abilities and can serve as a reference. We encourage you to reach out to a reference from someone who can speak about your academic and/or professional development, namely a professor or supervisor. Please do not request a letter of reference. We just need a contact that we can talk to.'
   name_of_reference:
     '#type': textfield
     '#title': 'Name of Reference'
@@ -139,7 +165,7 @@ elements: |-
     '#required': true
   permanent_phone_reference:
     '#type': tel
-    '#title': 'Permanent Phone'
+    '#title': Phone
     '#required': true
   email:
     '#type': email
@@ -147,10 +173,10 @@ elements: |-
     '#required': true
   interview_availability_the_selection_committee_will_contact_you_:
     '#type': label
-    '#title': 'Interview Availability: The Selection Committee will contact you regarding a virtual and/or a phone interview following your application submission. '
+    '#title': 'Interview Availability: The Selection Committee will contact you regarding a virtual and/or a phone interview following your application submission. Please provide general timeslots when you would be available for a 20-30 minute interview Mon-Fri, 9:00-5:00.'
   attention_once_you_hit_the_submit_button_a_message_should_appear:
     '#type': label
-    '#title': 'ATTENTION: Once you hit the "submit" button, a message should appear confirming that your application was submitted successfully. If you do not see this message, please either try to resubmit your application or contact us to make sure we did receive it.  SUMBIT button'
+    '#title': 'ATTENTION: Once you hit the "submit" button, a message should appear confirming that your application was submitted successfully. If you do not see this message, please either try to resubmit your application or contact us to make sure we did receive it. SUBMIT button'
 css: ''
 javascript: ''
 settings:
@@ -238,6 +264,8 @@ settings:
   wizard_toggle: true
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -348,7 +376,7 @@ handlers:
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      cc_mail: 'llombre@usfca.edu, bavent@usfca.edu'
+      cc_mail: 'llombre@usfca.edu, smoore3@usfca.edu, debrown@usfca.edu'
       cc_options: {  }
       from_mail: _default
       from_options: {  }

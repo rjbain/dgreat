@@ -13,122 +13,114 @@ title: 'Muscat Scholars Program - Scholar Application'
 description: null
 category: null
 elements: |-
-  instructions:
-    '#type': processed_text
-    '#title': Instructions
-    '#description': ''
-    '#text': |
-      <p>Asterisk (*) indicates the field is required.&nbsp;</p>
-      
-    '#format': full_html
   fieldset_informational_form:
     '#type': fieldset
+    '#title': 'Contact Information'
     '#open': true
-    '#title': Application
-    '#description': ''
     first_name_13:
       '#type': textfield
       '#title': 'First Name'
-      '#description': ''
+      '#title_display': inline
       '#required': true
     last_name_13:
       '#type': textfield
       '#title': 'Last Name'
-      '#description': ''
+      '#title_display': inline
       '#required': true
-    address_1_13:
+    cwid_13:
       '#type': textfield
-      '#title': 'Address 1'
-      '#description': ''
-      '#required': true
-    address_2_13:
-      '#type': textfield
-      '#title': 'Address 2'
-      '#description': ''
-    city_13:
-      '#type': textfield
-      '#title': City
-      '#description': ''
-      '#required': true
-    state_13:
-      '#type': textfield
-      '#title': State
-      '#description': ''
-      '#required': true
-    zip_13:
-      '#type': textfield
-      '#title': Zip
-      '#description': ''
+      '#title': CWID
+      '#description': 'Your campus wide ID (CWID) was provided to you on your letter of acceptance.'
+      '#title_display': inline
+      '#maxlength': 8
       '#required': true
     email_13:
       '#type': textfield
       '#title': Email
-      '#description': ''
+      '#title_display': inline
       '#required': true
     cell_phone_13:
       '#type': textfield
       '#title': 'Cell Phone'
       '#description': ''
       '#required': true
+    agree_to_text:
+      '#type': checkbox
+      '#title': 'I give the Muscat Scholars program permission to text me program invitations and updates.'
+      '#title_display': inline
     home_phone_13:
       '#type': textfield
       '#title': 'Home Phone'
       '#description': ''
-    cwid_13:
+    parent_legal_guardian_name:
       '#type': textfield
-      '#title': CWID
-      '#description': 'Your campus wide ID (CWID) was provided to you on your letter of acceptance. '
+      '#title': 'Family Member/Legal Guardian Name'
       '#required': true
-  application_process:
-    '#type': processed_text
-    '#title': 'Application Process'
-    '#description': ''
-    '#text': |
-      <p>Our application process is very simple. We are asking Scholar applicants to complete a video to introduce themselves. You might hesitate: you've never created a video, you're shy, you don't think your story is compelling. We want you to know that MSP students come from different backgrounds and represent a diverse range of talents, skills, abilities, and cultures. This video is your opportunity to shine - simple honest and well-told stories are more important than flashy production. &nbsp; &nbsp;</p>
-      
-      <p><strong>Your task:</strong> Create a video to introduce yourself to the selection committee, no more than two minutes in length. Your video should tell us 'your story' as well as why you would be a good fit for the Muscat Scholars Program. We would like to know what you bring to the campus and what you're excited about as you start college. We also want you to be yourself.&nbsp;</p>
-      
-      <p>Because your video essay will be your only means for introducing yourself, be creative. Show us your favorite spaces, places, things, but more importantly, tell us your story.</p>
-      
-      <p><span>Your video will be viewed by the selections committee, peer mentors, and staff mentors.&nbsp;<span>Post your video to Youtube. Make your link public but unlisted, if you wish to not be included in Youtube's search results. If we cannot view your video, your application may be delayed in the review process.</span></span></p>
-      
-    '#format': full_html
-  link:
-    '#type': textfield
-    '#title': Link
-    '#description': ''
-    '#required': true
-  housing_plans:
-    '#type': checkboxes
+    parent_legal_guardian_email:
+      '#type': textfield
+      '#title': 'Family Member/Legal Guardian Email'
+      '#required': true
+    parent_agree_to_contact:
+      '#type': checkbox
+      '#title': 'I give the Muscat Scholars program permission to email my family member / legal guardian program invitations and updates.'
+      '#title_display': inline
+    parent_legal_guardian_phone_number:
+      '#type': textfield
+      '#title': 'Family Member/Legal Guardian Phone Number'
+      '#title_display': inline
+      '#required': true
+    parent_agree_to_text:
+      '#type': checkbox
+      '#title': 'I give the Muscat Scholars program permission to text my family member / guardian program invitations and updates.'
+      '#title_display': inline
+  application_short_essays:
+    '#type': fieldset
+    '#title': 'Application Short Essays'
+    outside_of_academics_what_activity_are_you_passionate_about_200_:
+      '#type': textarea
+      '#title': 'Outside of academics, what activity are you passionate about? (200 words max)'
+      '#autocomplete': ''
+      '#required': true
+      '#required_error': 'Please answer this question to complete your application.'
+    how_has_it_shaped_you_as_a_person_200_words_max_:
+      '#type': textarea
+      '#title': 'How has it shaped you as a person? (200 words max)'
+      '#autocomplete': ''
+      '#required': true
+      '#required_error': 'Please answer this question to complete your application.'
+  msp_housing_plans:
+    '#type': fieldset
     '#title': 'Housing Plans'
-    '#description': 'Let&#39;s talk about housing. Scholars might be living in other spaces on campus or not on campus at all! Could you let us know what your plans for housing are going to be in the academic year? If you have any questions about this, please email us at firstyear@usfca.edu'
-    '#title_display': before
-    '#description_display': before
-    '#options':
-      'I''m commuting from home.': 'I''m commuting from home. -- You are living at home and will be commuting daily to USF for classes.'
-      'I''m going to join the Black Living Learning Community.': 'I''m going to join the Black Living Learning Community. -- You have applied and been accepted into the Black Living Learning Community and will be living in Toler Hall. '
-      'I''m going to join the Martin-Baros Scholars Program': 'I''m going to join the Martin-Baros Scholars Program -- You have applied and been accepted to the Martin-Baro Scholars Program and will be living in Gillson Hall.'
-      'I''m going to join the Gender Inclusive Community.': 'I''m going to join the Gender Inclusive Community. -- You have indicated interest in your housing application that you wish to join the Gender Inclusive Living Community in Toler Hall. For more information on the Gender Inclusive Community, please see: https://myusf.usfca.edu/housing/gender-inclusive-housing-community Selecting this option does not grant you housing in this community. '
-      'I have requested accommodations from Student Disability Services for alternative housing.': 'I have requested accommodations from Student Disability Services for alternative housing. -- You are interested in a housing accommodation from Student Disability Services. You must contact Student Disability Services to have this accommodation approved. Selecting this option does not grant you an accommodation. '
-      'I am not planning on joining an LLC/moving off campus.': 'I am not planning on joining a LLC/moving off campus. -- Select this if you are not in a Living Learning Community or living off campus. You''ll be living with the MSP cohort.'
-    '#required': true
-    '#options__properties': ''
-  additional_requirements:
-    '#type': processed_text
-    '#title': 'Additional Requirements'
-    '#description': ''
-    '#text': |
-      <div>Don't forget there are more requirements to complete after you hit submit:</div>
-      
+    please_let_us_know_what_your_plans_for_housing_are_going_to_be_i:
+      '#type': checkboxes
+      '#title': 'Please let us know what your plans for housing are going to be in the academic year. If you have any questions, please email us at firstyear@usfca.edu.'
+      '#options':
+        'I will be living on-campus in my assigned residence hall.': 'I will be living on-campus in my assigned residence hall. -- You have applied for housing.'
+        'I''m commuting from home.': 'I''m commuting from home. -- You are living at home and will be commuting daily to USF for classes.'
+        'I''m going to join the Marshall-Riley Learning Community.': 'I''m going to join the Marshall-Riley Learning Community. -- You have applied and been accepted into the Marshall-Riley Learning Community.'
+        'I''m going to join the Martín-Baró Scholars Program': 'I''m going to join the Martín-Baró Scholars Program -- You have applied and been accepted to the Martín-Baró Scholars Program.'
+        'I''m going to join the Gender Inclusive Community.': 'I''m going to join the Gender Inclusive Community. -- You have indicated interest in your housing application that you wish to join the Gender Inclusive Living Community. For more information on the Gender Inclusive Community, please see: https://myusf.usfca.edu/housing/gender-inclusive-housing-community (Selecting this option does not grant you housing in this community.)'
+        'I have requested accommodations from Student Disability Services for alternative housing.': 'I have requested accommodations from Student Disability Services for alternative housing. -- You are interested in a housing accommodation from Student Disability Services. You must contact Student Disability Services to have this accommodation approved. Selecting this option does not grant you an accommodation.'
+      '#required': true
+      '#required_error': 'Please choose a housing option before submitting your application.'
+      '#options__properties': ''
+  msp_summer_bridge_agreement:
+    '#type': fieldset
+    '#title': 'MSP Summer Bridge Agreement'
+    '#description': |
+      Applying for MSP Summer Bridge 2023 means you can commit to ALL of these requirements:
       <ul>
-      	<li>Have a parent/family member respond to a few questions in the&nbsp;<a href="/casa/muscat/apply/family">Parent/Family/Guardian Application Form&nbsp;»</a></li>
-      	<li>Upon confirmation of your acceptance into the program, you will be sent a link for the program fee.</li>
-      	<li><strong>Incomplete applications will not be considered. PLEASE MAKE SURE BOTH APPLICATIONS ARE COMPLETED.</strong></li>
+      	<li>Taking remote classes July 24 - August 3, 2023</li>
+      	<li>In-person living (early move-in) and participation in MSP Summer Bridge programming August 5 -11, 2023.</li>
       </ul>
+      (Please note, MSP Summer Bridge Programming ends on August 11 and New Student Orientation begins Saturday, August 12 - Monday, August 21, 2023.)
       
-      <p><em>Submitting this application means that you understand and commit to the rules and regulations set forth by the Muscat Scholars Program.</em></p>
-      
-    '#format': full_html
+    '#description_display': before
+    by_applying_to_the_2023_msp_summer_bridge_program_i_agree_to_the:
+      '#type': checkbox
+      '#title': 'By applying to the 2023 MSP Summer Bridge program, I agree to the above mentioned requirements.'
+      '#required': true
+      '#required_error': 'Please check this box to complete your application.'
 css: ''
 javascript: ''
 settings:
@@ -216,6 +208,8 @@ settings:
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -234,7 +228,7 @@ settings:
   confirmation_type: page
   confirmation_url: ''
   confirmation_title: ''
-  confirmation_message: "<p class=\"text_intro\">Thank you for your interest in the Muscat Scholars Program.<span> We will be notifying students of their application status mid-May.</span></p>\r\n\r\n<p>Don't forget there are more requirements to complete. Without these, your application is incomplete!</p>\r\n\r\n<ul>\r\n\t<li>Have a parent/family member respond to a few questions in the <a href=\"https://myusf.usfca.edu/casa/muscat/apply/family\" target=\"_blank\" title=\"Parent Application\">following form</a>.</li>\r\n\t<li>Upon confirmation of your participation, you will be asked to pay a $100 program fee.</li>\r\n</ul>\r\n\r\n<p>You will receive an acceptance letter confirming your participation in the Program.</p>\r\n\r\n<p>For questions, please contact the Center for Academic and Student Achievement at <a href=\"mailto:firstyear@usfca.edu\"></a>firstyear@usfca.edu</a>.</p>\r\n\r\n<p>Thank you for your interest.</p>"
+  confirmation_message: "<p>Thank you for your interest in the Muscat Scholars Summer Bridge Program. We will be notifying students of their application status mid-May.</p>\r\n\r\n<p>You will receive an acceptance letter confirming your participation in the Summer Bridge Program.</p>\r\n\r\n<p>For questions, please contact the Center for Academic and Student Achievement at <a href=\"mailto:firstyear@usfca.edu\"></a>firstyear@usfca.edu</a>.</p>\r\n\r\n<p>Thank you for your interest.</p>"
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''

@@ -1,7 +1,12 @@
 uuid: 9080a9c4-b510-4f28-93f2-ffd1fd460675
 langcode: en
 status: open
-dependencies: {  }
+dependencies:
+  module:
+    - dgreat_student_surveys
+third_party_settings:
+  dgreat_student_surveys:
+    salesforce_id: ''
 weight: 0
 open: null
 close: null
@@ -9,21 +14,19 @@ uid: 52546
 template: false
 archive: false
 id: stories_of_hope
-title: 'Stories of Hope'
+title: 'Stories of Gratitude'
 description: ''
 category: 'University Ministry'
 elements: |-
   name:
     '#type': textfield
-    '#title': Name
-    '#required': true
+    '#title': 'Name (Optional)'
   email:
     '#type': email
-    '#title': Email
-    '#required': true
+    '#title': 'Email (Optional)'
   your_moment_of_hope:
     '#type': textarea
-    '#title': 'Your Moment of Hope'
+    '#title': 'Your Moment of Gratitude'
     '#required': true
 css: ''
 javascript: ''
@@ -112,6 +115,8 @@ settings:
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
