@@ -5,6 +5,15 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.community_post.body
+    - field.field.node.community_post.field_audience
+    - field.field.node.community_post.field_call_to_action
+    - field.field.node.community_post.field_callout_style
+    - field.field.node.community_post.field_community_topic
+    - field.field.node.community_post.field_display_title
+    - field.field.node.community_post.field_image
+    - field.field.node.community_post.field_section
+    - field.field.node.community_post.field_sub_title
+    - field.field.node.community_post.field_weight
     - node.type.community_post
   module:
     - text
@@ -15,19 +24,20 @@ bundle: community_post
 mode: teaser
 content:
   body:
-    label: hidden
     type: text_summary_or_trimmed
-    weight: 101
+    label: hidden
     settings:
       trim_length: 600
     third_party_settings: {  }
+    weight: 101
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
+  field_audience: true
   field_call_to_action: true
   field_callout_style: true
   field_community_topic: true
@@ -37,4 +47,5 @@ hidden:
   field_section: true
   field_sub_title: true
   field_weight: true
+  langcode: true
   search_api_excerpt: true

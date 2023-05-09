@@ -1,146 +1,146 @@
-fetch:
-  frequency: '1'
-  overwrite: '1'
+_core:
+  default_config_hash: dDe-Mk-tgyxkPBScz5RX6IPvItBUUCQnhpJkQ1q3Y4A
+sitewide_token_support: true
 field:
-  field_mapping: 'a:4:{s:4:"name";s:0:"";s:4:"mail";s:0:"";s:15:"field_user_cwid";s:20:"[cas:attribute:cwid]";s:23:"field_user_display_name";s:44:"[cas:attribute:givenname] [cas:attribute:sn]";}'
   sync_frequency: 2
   overwrite: true
   mappings:
     field_user_cwid: '[cas:attribute:cwid]'
     field_user_display_name: '[cas:attribute:givenname] [cas:attribute:sn]'
+  field_mapping: 'a:4:{s:4:"name";s:0:"";s:4:"mail";s:0:"";s:15:"field_user_cwid";s:20:"[cas:attribute:cwid]";s:23:"field_user_display_name";s:44:"[cas:attribute:givenname] [cas:attribute:sn]";}'
 role:
-  role_mapping: 'a:18:{i:0;a:5:{s:3:"rid";s:7:"faculty";s:9:"attribute";s:5:"roles";s:5:"value";s:7:"faculty";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:1;a:5:{s:3:"rid";s:7:"student";s:9:"attribute";s:5:"roles";s:5:"value";s:7:"student";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:2;a:5:{s:3:"rid";s:14:"online_student";s:9:"attribute";s:5:"roles";s:5:"value";s:14:"online_student";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:3;a:5:{s:3:"rid";s:16:"admitted_student";s:9:"attribute";s:5:"roles";s:5:"value";s:9:"intaccept";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:4;a:5:{s:3:"rid";s:7:"finance";s:9:"attribute";s:5:"roles";s:5:"value";s:7:"finance";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:5;a:5:{s:3:"rid";s:8:"employee";s:9:"attribute";s:5:"roles";s:5:"value";s:8:"employee";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:6;a:5:{s:3:"rid";s:15:"prehire_faculty";s:9:"attribute";s:5:"roles";s:5:"value";s:15:"prehire_faculty";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:7;a:5:{s:3:"rid";s:13:"prehire_staff";s:9:"attribute";s:5:"roles";s:5:"value";s:13:"prehire_staff";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:8;a:5:{s:3:"rid";s:9:"vcl_staff";s:9:"attribute";s:5:"roles";s:5:"value";s:9:"vcl_staff";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:9;a:5:{s:3:"rid";s:16:"online_intaccept";s:9:"attribute";s:5:"roles";s:5:"value";s:16:"online_intaccept";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:10;a:5:{s:3:"rid";s:6:"som_ug";s:9:"attribute";s:5:"roles";s:5:"value";s:6:"som_ug";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:11;a:5:{s:3:"rid";s:8:"som_grad";s:9:"attribute";s:5:"roles";s:5:"value";s:8:"som_grad";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:12;a:5:{s:3:"rid";s:5:"as_ug";s:9:"attribute";s:5:"roles";s:5:"value";s:5:"as_ug";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:13;a:5:{s:3:"rid";s:7:"as_grad";s:9:"attribute";s:5:"roles";s:5:"value";s:7:"as_grad";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:14;a:5:{s:3:"rid";s:8:"sonhp_ug";s:9:"attribute";s:5:"roles";s:5:"value";s:8:"sonhp_ug";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:15;a:5:{s:3:"rid";s:10:"sonhp_grad";s:9:"attribute";s:5:"roles";s:5:"value";s:10:"sonhp_grad";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:16;a:5:{s:3:"rid";s:3:"law";s:9:"attribute";s:5:"roles";s:5:"value";s:3:"law";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:17;a:5:{s:3:"rid";s:3:"soe";s:9:"attribute";s:5:"roles";s:5:"value";s:3:"soe";s:6:"method";s:8:"contains";s:6:"delete";i:0;}}'
-  deny_no_match: '0'
-  deny_registration_no_match: false
   sync_frequency: 2
   deny_login_no_match: false
+  deny_registration_no_match: false
   mappings:
     -
       rid: faculty
+      method: contains_any
       attribute: roles
       value: faculty
-      method: contains_any
       negate: false
       remove_without_match: false
     -
       rid: student
+      method: contains_any
       attribute: roles
       value: student
-      method: contains_any
       negate: false
       remove_without_match: false
     -
       rid: online_student
+      method: contains_any
       attribute: roles
       value: online_student
-      method: contains_any
       negate: false
       remove_without_match: false
     -
       rid: admitted_student
+      method: contains_any
       attribute: roles
       value: intaccept
-      method: contains_any
       negate: false
       remove_without_match: false
     -
       rid: finance
+      method: contains_any
       attribute: roles
       value: finance
-      method: contains_any
       negate: false
       remove_without_match: false
     -
       rid: employee
+      method: contains_any
       attribute: roles
       value: employee
-      method: contains_any
       negate: false
       remove_without_match: false
     -
       rid: prehire_faculty
+      method: contains_any
       attribute: roles
       value: prehire_faculty
-      method: contains_any
       negate: false
       remove_without_match: false
     -
       rid: prehire_staff
+      method: contains_any
       attribute: roles
       value: prehire_staff
-      method: contains_any
       negate: false
       remove_without_match: false
     -
       rid: vcl_staff
+      method: contains_any
       attribute: roles
       value: vcl_staff
-      method: contains_any
       negate: false
       remove_without_match: false
     -
       rid: online_intaccept
+      method: contains_any
       attribute: roles
       value: online_intaccept
-      method: contains_any
       negate: false
       remove_without_match: false
     -
       rid: som_ug
+      method: contains_any
       attribute: roles
       value: som_ug
-      method: contains_any
       negate: false
       remove_without_match: false
     -
       rid: som_grad
+      method: contains_any
       attribute: roles
       value: som_grad
-      method: contains_any
       negate: false
       remove_without_match: false
     -
       rid: as_ug
+      method: contains_any
       attribute: roles
       value: as_ug
-      method: contains_any
       negate: false
       remove_without_match: false
     -
       rid: as_grad
+      method: contains_any
       attribute: roles
       value: as_grad
-      method: contains_any
       negate: false
       remove_without_match: false
     -
       rid: sonhp_ug
+      method: contains_any
       attribute: roles
       value: sonhp_ug
-      method: contains_any
       negate: false
       remove_without_match: false
     -
       rid: sonhp_grad
+      method: contains_any
       attribute: roles
       value: sonhp_grad
-      method: contains_any
       negate: false
       remove_without_match: false
     -
       rid: law
+      method: contains_any
       attribute: roles
       value: law
-      method: contains_any
       negate: false
       remove_without_match: false
     -
       rid: soe
+      method: contains_any
       attribute: roles
       value: soe
-      method: contains_any
       negate: false
       remove_without_match: false
-_core:
-  default_config_hash: dDe-Mk-tgyxkPBScz5RX6IPvItBUUCQnhpJkQ1q3Y4A
-sitewide_token_support: true
+  role_mapping: 'a:18:{i:0;a:5:{s:3:"rid";s:7:"faculty";s:9:"attribute";s:5:"roles";s:5:"value";s:7:"faculty";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:1;a:5:{s:3:"rid";s:7:"student";s:9:"attribute";s:5:"roles";s:5:"value";s:7:"student";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:2;a:5:{s:3:"rid";s:14:"online_student";s:9:"attribute";s:5:"roles";s:5:"value";s:14:"online_student";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:3;a:5:{s:3:"rid";s:16:"admitted_student";s:9:"attribute";s:5:"roles";s:5:"value";s:9:"intaccept";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:4;a:5:{s:3:"rid";s:7:"finance";s:9:"attribute";s:5:"roles";s:5:"value";s:7:"finance";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:5;a:5:{s:3:"rid";s:8:"employee";s:9:"attribute";s:5:"roles";s:5:"value";s:8:"employee";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:6;a:5:{s:3:"rid";s:15:"prehire_faculty";s:9:"attribute";s:5:"roles";s:5:"value";s:15:"prehire_faculty";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:7;a:5:{s:3:"rid";s:13:"prehire_staff";s:9:"attribute";s:5:"roles";s:5:"value";s:13:"prehire_staff";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:8;a:5:{s:3:"rid";s:9:"vcl_staff";s:9:"attribute";s:5:"roles";s:5:"value";s:9:"vcl_staff";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:9;a:5:{s:3:"rid";s:16:"online_intaccept";s:9:"attribute";s:5:"roles";s:5:"value";s:16:"online_intaccept";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:10;a:5:{s:3:"rid";s:6:"som_ug";s:9:"attribute";s:5:"roles";s:5:"value";s:6:"som_ug";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:11;a:5:{s:3:"rid";s:8:"som_grad";s:9:"attribute";s:5:"roles";s:5:"value";s:8:"som_grad";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:12;a:5:{s:3:"rid";s:5:"as_ug";s:9:"attribute";s:5:"roles";s:5:"value";s:5:"as_ug";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:13;a:5:{s:3:"rid";s:7:"as_grad";s:9:"attribute";s:5:"roles";s:5:"value";s:7:"as_grad";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:14;a:5:{s:3:"rid";s:8:"sonhp_ug";s:9:"attribute";s:5:"roles";s:5:"value";s:8:"sonhp_ug";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:15;a:5:{s:3:"rid";s:10:"sonhp_grad";s:9:"attribute";s:5:"roles";s:5:"value";s:10:"sonhp_grad";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:16;a:5:{s:3:"rid";s:3:"law";s:9:"attribute";s:5:"roles";s:5:"value";s:3:"law";s:6:"method";s:8:"contains";s:6:"delete";i:0;}i:17;a:5:{s:3:"rid";s:3:"soe";s:9:"attribute";s:5:"roles";s:5:"value";s:3:"soe";s:6:"method";s:8:"contains";s:6:"delete";i:0;}}'
+  deny_no_match: '0'
+fetch:
+  frequency: '1'
+  overwrite: '1'

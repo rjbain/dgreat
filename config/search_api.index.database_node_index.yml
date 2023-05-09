@@ -99,6 +99,9 @@ processor_settings:
   add_url: {  }
   aggregated_field: {  }
   ignorecase:
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
     all_fields: true
     fields:
       - body
@@ -106,12 +109,12 @@ processor_settings:
       - summary
       - title
       - type
-    weights:
-      preprocess_index: -20
-      preprocess_query: -20
   language_with_fallback: {  }
   rendered_item: {  }
   transliteration:
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
     all_fields: true
     fields:
       - body
@@ -119,13 +122,11 @@ processor_settings:
       - summary
       - title
       - type
-    weights:
-      preprocess_index: -20
-      preprocess_query: -20
 tracker_settings:
   default:
     indexing_order: fifo
 options:
-  index_directly: true
   cron_limit: 50
+  index_directly: true
+  track_changes_in_references: true
 server: database_server

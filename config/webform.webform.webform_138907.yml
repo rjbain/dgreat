@@ -2,9 +2,9 @@ uuid: e9921a7d-344a-4a1a-b01c-9a593bec08b3
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 1293
 template: false
 archive: false
@@ -12,7 +12,56 @@ id: webform_138907
 title: 'HR GoUSF Go Move Challenge Story and Photo Submissions Form'
 description: null
 category: null
-elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\nwhat_jesuit_institution_are_you_affiliated_with:\n  '#type': textfield\n  '#title': 'What Jesuit Institution are you affiliated with?'\n  '#description': ''\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#description': ''\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': Title\n  '#description': ''\n  '#required': true\nhow_many_years_have_you_participated_in_the_go_move_challenge:\n  '#type': textfield\n  '#size': 20\n  '#min': 0\n  '#max': 10\n  '#step': null\n  '#unique': false\n  '#title': 'How many years have you participated in the Go Move Challenge?'\n  '#description': ''\n  '#required': true\nwhat_inspired_you_to_join_the_go_move_challenge:\n  '#type': textarea\n  '#title': 'What inspired you to join the Go Move Challenge?'\n  '#description': ''\n  '#required': true\nwhat_are_the_positive_outcomes_if_any_of_your_participation_in_the_go_move_challenge:\n  '#type': textarea\n  '#title': 'What are the positive outcomes, if any, of your participation in the Go Move Challenge?'\n  '#description': ''\n  '#required': true\nis_there_anything_else_you_would_like_to_share:\n  '#type': textarea\n  '#title': 'Is there anything else you would like to share?'\n  '#description': ''\n"
+elements: |
+  first_name:
+    '#type': textfield
+    '#title': 'First Name'
+    '#description': ''
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title': 'Last Name'
+    '#description': ''
+    '#required': true
+  what_jesuit_institution_are_you_affiliated_with:
+    '#type': textfield
+    '#title': 'What Jesuit Institution are you affiliated with?'
+    '#description': ''
+    '#required': true
+  department:
+    '#type': textfield
+    '#title': Department
+    '#description': ''
+    '#required': true
+  title:
+    '#type': textfield
+    '#title': Title
+    '#description': ''
+    '#required': true
+  how_many_years_have_you_participated_in_the_go_move_challenge:
+    '#type': textfield
+    '#size': 20
+    '#min': 0
+    '#max': 10
+    '#step': null
+    '#unique': false
+    '#title': 'How many years have you participated in the Go Move Challenge?'
+    '#description': ''
+    '#required': true
+  what_inspired_you_to_join_the_go_move_challenge:
+    '#type': textarea
+    '#title': 'What inspired you to join the Go Move Challenge?'
+    '#description': ''
+    '#required': true
+  what_are_the_positive_outcomes_if_any_of_your_participation_in_the_go_move_challenge:
+    '#type': textarea
+    '#title': 'What are the positive outcomes, if any, of your participation in the Go Move Challenge?'
+    '#description': ''
+    '#required': true
+  is_there_anything_else_you_would_like_to_share:
+    '#type': textarea
+    '#title': 'Is there anything else you would like to share?'
+    '#description': ''
 css: ''
 javascript: ''
 settings:
@@ -27,40 +76,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +126,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,19 +136,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -113,9 +167,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: '<p>Thank you for submitting your <a href="http://www.gomovechallenge.org/" target="_blank">Go Move Challenge</a> story! If you have any questions, please contact GoUSF@usfca.edu.</p>'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -199,9 +253,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -210,13 +264,17 @@ handlers:
         - completed
       to_mail: skisylia@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -227,11 +285,7 @@ handlers:
       html: false
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

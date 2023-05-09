@@ -3,6 +3,7 @@ type: theme
 description: 'MyUSF Subtheme based on Bootstrap Barrio'
 # version: VERSION
 # core: 8.x
+core_version_requirement: ^8 || ^9
 base theme: bootstrap_barrio
 
 libraries:
@@ -11,9 +12,9 @@ libraries:
 ckeditor_stylesheets:
   - css/site.css
 
-component-libraries:
-  myUSFLib:
-    paths:
+components:
+  namespaces:
+    myUSFLib:
       - myUSFLibFiles
 
 regions:

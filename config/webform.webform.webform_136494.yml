@@ -2,9 +2,9 @@ uuid: 4d8f2a06-454b-4d6d-9e51-35625a224fd1
 langcode: en
 status: closed
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 1293
 template: false
 archive: false
@@ -12,7 +12,203 @@ id: webform_136494
 title: 'HR Merit Award Form: Team Merit'
 description: null
 category: null
-elements: "nominee_information:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h2>Nominee Information</h2>'\n  '#title': 'Nominee Information'\n  '#description': ''\nteam_member_1_name:\n  '#type': textfield\n  '#title': 'Team Member'\n  '#description': ''\n  '#required': true\nteam_member_1_title:\n  '#type': textfield\n  '#title': 'Team Member'\n  '#description': ''\n  '#required': true\nteam_member_2_name:\n  '#type': textfield\n  '#title': 'Team Member'\n  '#description': ''\n  '#required': true\nteam_member_2_title:\n  '#type': textfield\n  '#title': 'Team Member'\n  '#description': ''\n  '#required': true\nteam_member_3_name:\n  '#type': textfield\n  '#title': 'Team Member'\n  '#description': ''\n  '#required': true\nteam_member_3_title:\n  '#type': textfield\n  '#title': 'Team Member'\n  '#description': ''\n  '#required': true\nmore_team:\n  '#type': textarea\n  '#title': 'Additional Team Members and Titles'\n  '#description': ''\nteam_nominee_department:\n  '#type': textfield\n  '#title': 'Team Nominee Department'\n  '#description': ''\n  '#required': true\nteam_nominee_supervisor:\n  '#type': textfield\n  '#title': 'Team Nominee Supervisor'\n  '#description': ''\n  '#required': true\nteam_nominee_supervisor_email_address:\n  '#type': email\n  '#size': 20\n  '#title': 'Team Nominee Supervisor Email Address'\n  '#description': ''\n  '#required': true\nteam_nominee_supervisor_phone_number:\n  '#type': textfield\n  '#size': 20\n  '#min': null\n  '#max': null\n  '#step': null\n  '#unique': false\n  '#title': 'Team Nominee Supervisor Phone Number'\n  '#description': ''\n  '#required': true\nteam_nominee_department_head:\n  '#type': textfield\n  '#title': 'Team Nominee Department Head'\n  '#description': ''\n  '#required': true\nteam_nominee_dean_vice_president:\n  '#type': textfield\n  '#title': 'Team Nominee Dean/Vice President'\n  '#description': ''\n  '#required': true\nnomination_questions:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h2>Nomination Questions</h2>'\n  '#title': 'Nomination Questions'\n  '#description': ''\nq1_explain:\n  '#type': textarea\n  '#title': 'Explain how the members displayed outstanding ability in functioning cohesively and effectively as a team:'\n  '#description': ''\n  '#required': true\nq2_examples:\n  '#type': textarea\n  '#title': 'Give examples to show how the team helped its department/division, the University, and/or community to achieve/stretch goals:'\n  '#description': ''\n  '#required': true\nq3_demonstrate:\n  '#type': textarea\n  '#title': 'Demonstrate how the team exceeded expectations for the responsibility or project assigned:'\n  '#description': ''\n  '#required': true\nreferences:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h2>References</h2>'\n  '#title': References\n  '#description': ''\nreference_list:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p>Please list three peers, work associates, superiors, or students who are familiar with the team’s work and can support this nomination:</p>'\n  '#title': 'reference list'\n  '#description': ''\nreference_1_name:\n  '#type': textfield\n  '#title': Reference\n  '#description': ''\n  '#required': true\nreference_1_phone_number:\n  '#type': textfield\n  '#size': 20\n  '#min': null\n  '#max': null\n  '#step': null\n  '#unique': false\n  '#title': Reference\n  '#description': ''\n  '#required': true\nreference_2_name:\n  '#type': textfield\n  '#title': Reference\n  '#description': ''\n  '#required': true\nreference_2_phone_number:\n  '#type': textfield\n  '#size': 20\n  '#min': null\n  '#max': null\n  '#step': null\n  '#unique': false\n  '#title': Reference\n  '#description': ''\n  '#required': true\nreference_3_name:\n  '#type': textfield\n  '#title': Reference\n  '#description': ''\n  '#required': true\nreference_3_phone_number:\n  '#type': textfield\n  '#size': 20\n  '#min': null\n  '#max': null\n  '#step': null\n  '#unique': false\n  '#title': Reference\n  '#description': ''\n  '#required': true\nnominator_your_information:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h2>Nominator (Your) Information</h2>'\n  '#title': 'Nominator (Your) Information'\n  '#description': ''\nnominator_first_name:\n  '#type': textfield\n  '#title': 'Nominator First Name'\n  '#description': ''\n  '#required': true\nnominator_last_name:\n  '#type': textfield\n  '#title': 'Nominator Last Name'\n  '#description': ''\n  '#required': true\nnominator_department:\n  '#type': textfield\n  '#title': 'Nominator Department'\n  '#description': ''\n  '#required': true\nnominator_title:\n  '#type': textfield\n  '#title': 'Nominator Title'\n  '#description': ''\n  '#required': true\nnominator_usf_email_address:\n  '#type': email\n  '#size': 20\n  '#title': 'Nominator USF Email Address'\n  '#description': ''\n  '#required': true\nnominator_usf_phone_number:\n  '#type': textfield\n  '#size': 20\n  '#min': null\n  '#max': null\n  '#step': null\n  '#unique': false\n  '#title': 'Nominator USF Phone Number'\n  '#description': ''\n  '#required': true\n"
+elements: |
+  nominee_information:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<h2>Nominee Information</h2>'
+    '#title': 'Nominee Information'
+    '#description': ''
+  team_member_1_name:
+    '#type': textfield
+    '#title': 'Team Member'
+    '#description': ''
+    '#required': true
+  team_member_1_title:
+    '#type': textfield
+    '#title': 'Team Member'
+    '#description': ''
+    '#required': true
+  team_member_2_name:
+    '#type': textfield
+    '#title': 'Team Member'
+    '#description': ''
+    '#required': true
+  team_member_2_title:
+    '#type': textfield
+    '#title': 'Team Member'
+    '#description': ''
+    '#required': true
+  team_member_3_name:
+    '#type': textfield
+    '#title': 'Team Member'
+    '#description': ''
+    '#required': true
+  team_member_3_title:
+    '#type': textfield
+    '#title': 'Team Member'
+    '#description': ''
+    '#required': true
+  more_team:
+    '#type': textarea
+    '#title': 'Additional Team Members and Titles'
+    '#description': ''
+  team_nominee_department:
+    '#type': textfield
+    '#title': 'Team Nominee Department'
+    '#description': ''
+    '#required': true
+  team_nominee_supervisor:
+    '#type': textfield
+    '#title': 'Team Nominee Supervisor'
+    '#description': ''
+    '#required': true
+  team_nominee_supervisor_email_address:
+    '#type': email
+    '#size': 20
+    '#title': 'Team Nominee Supervisor Email Address'
+    '#description': ''
+    '#required': true
+  team_nominee_supervisor_phone_number:
+    '#type': textfield
+    '#size': 20
+    '#min': null
+    '#max': null
+    '#step': null
+    '#unique': false
+    '#title': 'Team Nominee Supervisor Phone Number'
+    '#description': ''
+    '#required': true
+  team_nominee_department_head:
+    '#type': textfield
+    '#title': 'Team Nominee Department Head'
+    '#description': ''
+    '#required': true
+  team_nominee_dean_vice_president:
+    '#type': textfield
+    '#title': 'Team Nominee Dean/Vice President'
+    '#description': ''
+    '#required': true
+  nomination_questions:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<h2>Nomination Questions</h2>'
+    '#title': 'Nomination Questions'
+    '#description': ''
+  q1_explain:
+    '#type': textarea
+    '#title': 'Explain how the members displayed outstanding ability in functioning cohesively and effectively as a team:'
+    '#description': ''
+    '#required': true
+  q2_examples:
+    '#type': textarea
+    '#title': 'Give examples to show how the team helped its department/division, the University, and/or community to achieve/stretch goals:'
+    '#description': ''
+    '#required': true
+  q3_demonstrate:
+    '#type': textarea
+    '#title': 'Demonstrate how the team exceeded expectations for the responsibility or project assigned:'
+    '#description': ''
+    '#required': true
+  references:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<h2>References</h2>'
+    '#title': References
+    '#description': ''
+  reference_list:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<p>Please list three peers, work associates, superiors, or students who are familiar with the team’s work and can support this nomination:</p>'
+    '#title': 'reference list'
+    '#description': ''
+  reference_1_name:
+    '#type': textfield
+    '#title': Reference
+    '#description': ''
+    '#required': true
+  reference_1_phone_number:
+    '#type': textfield
+    '#size': 20
+    '#min': null
+    '#max': null
+    '#step': null
+    '#unique': false
+    '#title': Reference
+    '#description': ''
+    '#required': true
+  reference_2_name:
+    '#type': textfield
+    '#title': Reference
+    '#description': ''
+    '#required': true
+  reference_2_phone_number:
+    '#type': textfield
+    '#size': 20
+    '#min': null
+    '#max': null
+    '#step': null
+    '#unique': false
+    '#title': Reference
+    '#description': ''
+    '#required': true
+  reference_3_name:
+    '#type': textfield
+    '#title': Reference
+    '#description': ''
+    '#required': true
+  reference_3_phone_number:
+    '#type': textfield
+    '#size': 20
+    '#min': null
+    '#max': null
+    '#step': null
+    '#unique': false
+    '#title': Reference
+    '#description': ''
+    '#required': true
+  nominator_your_information:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<h2>Nominator (Your) Information</h2>'
+    '#title': 'Nominator (Your) Information'
+    '#description': ''
+  nominator_first_name:
+    '#type': textfield
+    '#title': 'Nominator First Name'
+    '#description': ''
+    '#required': true
+  nominator_last_name:
+    '#type': textfield
+    '#title': 'Nominator Last Name'
+    '#description': ''
+    '#required': true
+  nominator_department:
+    '#type': textfield
+    '#title': 'Nominator Department'
+    '#description': ''
+    '#required': true
+  nominator_title:
+    '#type': textfield
+    '#title': 'Nominator Title'
+    '#description': ''
+    '#required': true
+  nominator_usf_email_address:
+    '#type': email
+    '#size': 20
+    '#title': 'Nominator USF Email Address'
+    '#description': ''
+    '#required': true
+  nominator_usf_phone_number:
+    '#type': textfield
+    '#size': 20
+    '#min': null
+    '#max': null
+    '#step': null
+    '#unique': false
+    '#title': 'Nominator USF Phone Number'
+    '#description': ''
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,40 +223,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +273,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,19 +283,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -113,9 +314,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: '<p>Thank you for submitting a nomination for the Human Resources Team Merit Award. Please do not share this confidential information with anyone. Should you have any additional questions, please contact serviceandmerit@usfca.edu.</p>'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -199,9 +400,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -210,13 +411,17 @@ handlers:
         - completed
       to_mail: serviceandmerit@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -227,11 +432,7 @@ handlers:
       html: false
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

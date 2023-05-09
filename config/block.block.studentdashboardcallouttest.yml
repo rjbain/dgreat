@@ -20,8 +20,8 @@ plugin: 'block_content:7f65f908-b805-40b8-8652-4ed34e6fa82e'
 settings:
   id: 'block_content:7f65f908-b805-40b8-8652-4ed34e6fa82e'
   label: 'Student Dashboard Callout - Student 2'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
@@ -29,18 +29,18 @@ visibility:
   condition_group:
     id: condition_group
     negate: false
-    block_visibility_group: ''
     context_mapping: {  }
+    block_visibility_group: ''
   request_path:
     id: request_path
-    pages: /dashboard
     negate: false
     context_mapping: {  }
+    pages: /dashboard
   user_role:
     id: user_role
-    roles:
-      student: student
-      online_student: online_student
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
+    roles:
+      student: student
+      online_student: online_student

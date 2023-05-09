@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: x6bhN6WZwfVUI_LLMvRJIUW_2c26VTaBozbfXmJWmro
 seckit_xss:
   csp:
     checkbox: true
@@ -6,9 +8,10 @@ seckit_xss:
       webkit: false
     report-only: false
     default-src: '''self'''
-    script-src: '''self'' ''unsafe-inline'' ''unsafe-eval'' data: *.bootstrapcdn.com *.cloudflare.com *.rawgit.com *.cognitoforms.com *.facebook.net *.glia.com *.google.com *.google-analytics.com *.googleapis.com *.googletagmanager.com *.gstatic.com *.jquery.com *.jquery.js *.jsdelivr.net *.kaspersky-labs.com *.newrelic.com *.nr-data.net polyfill.io *.purechat.com *.purechatcdn.com *.salemove.com siteimproveanalytics.com *.syndication.twimg.com *.tableau.com *.twitter.com unpkg.com *.usfca.edu *.bootcss.com'
+    script-src: '''self'' ''unsafe-inline'' ''unsafe-eval'' data: *.bootstrapcdn.com *.cloudflare.com *.rawgit.com *.cognitoforms.com *.facebook.net *.glia.com *.google.com *.google-analytics.com *.googleapis.com *.googletagmanager.com *.gstatic.com *.jquery.com *.jquery.js *.jsdelivr.net *.kaspersky-labs.com *.newrelic.com *.nr-data.net polyfill.io *.purechat.com *.purechatcdn.com *.salemove.com siteimproveanalytics.com *.syndication.twimg.com *.tableau.com *.twitter.com unpkg.com *.usfca.edu *.bootcss.com *.ssa.gov'
     object-src: '''self'''
-    img-src: '''self'' data: *.b-cdn.net *.google.com *.googleapis.com *.githubusercontent.com *.rawgit.com *.gstatic.com *.usfca.edu *.cdninstagram.com *.google-analytics.com *.googleusercontent.com *.service-now.com *.siteimproveanalytics.io *.tableau.com *.twimg.com *.twitter.com *.vimeocdn.com *.ytimg.com *.jquery.com *.jsdelivr.net'
+    style-src: '''self'' ''unsafe-inline'' *.bootstrapcdn.com *.cloudflare.com chosen.css *.cognitoforms.com *.googleapis.com *.google.com *.jquery.com  *.jsdelivr.net *.kaspersky-labs.com wss://pubsub.salemove.com *.salemove.com *.twimg.com *.twitter.com *.bootcss.com *.ssa.gov'
+    img-src: '''self'' data: *.b-cdn.net *.google.com *.googleapis.com *.githubusercontent.com *.rawgit.com *.gstatic.com *.usfca.edu *.cdninstagram.com *.google-analytics.com *.googleusercontent.com *.service-now.com *.siteimproveanalytics.io *.tableau.com *.twimg.com *.twitter.com *.vimeocdn.com *.ytimg.com *.jquery.com *.jsdelivr.net *.ssa.gov'
     media-src: '''self'' *.salemove.com'
     frame-src: '''self'' 138.202.175.186 airtable.com *.app.box.com *.assetworks.com bookwhen.com *.cognitoforms.com echo360.org *.e2ma.net *.facebook.com *.google.com *.ibm.com *.jeffersonfreestate.org *.myatlascms.com *.service-now.com *.tableau.com *.tiki-toki.com *.twitter.com *.usfca.edu *.vimeo.com vimeo.com *.youtube.com *.concept3d.com *.panopto.com *.salesforce.com *.service-now.com'
     frame-ancestors: '''self'''
@@ -18,7 +21,6 @@ seckit_xss:
     report-uri: /report-csp-violation
     upgrade-req: true
     policy-uri: ''
-    style-src: '''self'' ''unsafe-inline'' *.bootstrapcdn.com *.cloudflare.com chosen.css *.cognitoforms.com *.googleapis.com *.google.com *.jquery.com  *.jsdelivr.net *.kaspersky-labs.com wss://pubsub.salemove.com *.salemove.com *.twimg.com *.twitter.com *.bootcss.com'
   x_xss:
     seckit_x_xss_option_disable: Disabled
     seckit_x_xss_option_0: '0'
@@ -52,5 +54,3 @@ seckit_various:
   referrer_policy: false
   referrer_policy_policy: strict-origin-when-cross-origin
   disable_autocomplete: false
-_core:
-  default_config_hash: x6bhN6WZwfVUI_LLMvRJIUW_2c26VTaBozbfXmJWmro

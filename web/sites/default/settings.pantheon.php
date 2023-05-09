@@ -1,5 +1,7 @@
 <?php
 
+// phpcs:ignoreFile
+
 /**
  * @file
  * Pantheon configuration file.
@@ -15,14 +17,7 @@
 /**
  * Version of Pantheon files.
  *
- * This is a monotonically-increasing sequence number that is
- * incremented whenever a change is made to any Pantheon file.
- * Not changed if Drupal core is updated without any change to
- * any Pantheon file.
- *
- * The Pantheon version is included in the git tag only if a
- * release is made that includes changes to Pantheon files, but
- * not to any Drupal files.
+ * This is a monotonically-increasing sequence number.
  */
 if (!defined("PANTHEON_VERSION")) {
   define("PANTHEON_VERSION", "4");
@@ -71,10 +66,10 @@ $is_installer_url = (strpos($_SERVER['SCRIPT_NAME'], '/core/install.php') === 0)
  *
  */
 if ($is_installer_url) {
-  $settings['config_sync_directory'] =  'sites/default/files';
+  $settings['config_sync_directory'] = 'sites/default/files';
 }
 else {
-  $settings['config_sync_directory'] = 'sites/default/config';
+  $settings['config_sync_directory'] = getenv('DOCROOT') ? '../config' : 'sites/default/config';
 }
 
 
@@ -91,7 +86,9 @@ if (
   !$is_installer_url &&
   (isset($_SERVER['PANTHEON_DATABASE_STATE']) && ($_SERVER['PANTHEON_DATABASE_STATE'] == 'empty')) &&
   (empty($GLOBALS['install_state'])) &&
-  (php_sapi_name() != "cli")
+  (php_sapi_name() != "cli") &&
+  ($_ENV['PANTHEON_ENVIRONMENT'] !== "test") &&
+  ($_ENV['PANTHEON_ENVIRONMENT'] !== "live")
 ) {
   include_once __DIR__ . '/../../core/includes/install.core.inc';
   include_once __DIR__ . '/../../core/includes/install.inc';
@@ -201,4 +198,3 @@ if (empty($settings['file_scan_ignore_directories'])) {
     'bower_components',
   ];
 }
-

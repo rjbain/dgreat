@@ -2,9 +2,9 @@ uuid: 33fec63f-ea58-4099-a580-f022e38e0d9e
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 31661
 template: false
 archive: false
@@ -12,7 +12,22 @@ id: speaking_truth_conversations_on_
 title: 'Speaking Truth: Conversations on women, Catholicism, and the Jesuit mission'
 description: 'Event Registration Request Form'
 category: 'The Joan and Ralph Lane Center for Catholic Social Thought & the Ignatian Tradition'
-elements: "information:\n  '#type': webform_markup\n  '#markup': \"<h2>Speaking Truth: Conversations on women, Catholicism, and the Jesuit mission</h2>\\r\\n\\r\\n<p>March 3, 11:30am - 12:30pm<br />\\r\\nLo Schiavo Science 104 - Getty Study</p>\\r\\n\\r\\n<p>How do questions of gender and inclusion align with our Catholic, Jesuit mission? Where do tensions arise? How might this campus community, guided by Ignatian spirituality, work towards greater inclusion of people of all genders, particularly women? This lunchtime conversation will offer space to explore such questions.<br />\\r\\n<br />\\r\\nFacilitators Lisa Cathelyn, M.Div., and Jessie Bazan, M.Div., recently co-authored <em>Dear Joan Chittister: Conversations with Women in the Church</em>. Both women are alumnae of Marquette University and active in collegiate and ecumenical ministry. Their book is a series of honest letters between millennial, Catholic women and Sr. Joan Chittister, OSB, on sisterhood, speaking truth, and standing up to the patriarchy. RSVP below:</p>\"\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\nemail:\n  '#type': email\n  '#title': Email\ncontact:\n  '#type': webform_markup\n  '#markup': \"<strong>Event Contact:</strong><br />\\r\\n<a href=\\\"mailto:lanecenter@usfca.edu\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">lanecenter@usfca.edu</a><br />\\r\\n(415) 422-2822\""
+elements: |-
+  information:
+    '#type': webform_markup
+    '#markup': "<h2>Speaking Truth: Conversations on women, Catholicism, and the Jesuit mission</h2>\r\n\r\n<p>March 3, 11:30am - 12:30pm<br />\r\nLo Schiavo Science 104 - Getty Study</p>\r\n\r\n<p>How do questions of gender and inclusion align with our Catholic, Jesuit mission? Where do tensions arise? How might this campus community, guided by Ignatian spirituality, work towards greater inclusion of people of all genders, particularly women? This lunchtime conversation will offer space to explore such questions.<br />\r\n<br />\r\nFacilitators Lisa Cathelyn, M.Div., and Jessie Bazan, M.Div., recently co-authored <em>Dear Joan Chittister: Conversations with Women in the Church</em>. Both women are alumnae of Marquette University and active in collegiate and ecumenical ministry. Their book is a series of honest letters between millennial, Catholic women and Sr. Joan Chittister, OSB, on sisterhood, speaking truth, and standing up to the patriarchy. RSVP below:</p>"
+  first_name:
+    '#type': textfield
+    '#title': 'First Name'
+  last_name:
+    '#type': textfield
+    '#title': 'Last Name'
+  email:
+    '#type': email
+    '#title': Email
+  contact:
+    '#type': webform_markup
+    '#markup': "<strong>Event Contact:</strong><br />\r\n<a href=\"mailto:lanecenter@usfca.edu\" rel=\"noopener noreferrer\" target=\"_blank\">lanecenter@usfca.edu</a><br />\r\n(415) 422-2822"
 css: ''
 javascript: ''
 settings:
@@ -27,40 +42,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +92,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,19 +102,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -113,9 +133,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -194,9 +214,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -205,13 +225,17 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:email:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: lanecenter@usfca.edu
       from_options: {  }
       from_name: 'Joan and Ralph Lane Center for Catholic Social Thought and the Ignatian Tradition'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'Registration Confirmation: Speaking Truth: Conversations on women, Catholicism, and the Jesuit mission'
       body: _default
       excluded_elements: {  }
@@ -222,11 +246,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

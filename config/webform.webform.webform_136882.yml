@@ -7,9 +7,9 @@ dependencies:
 third_party_settings:
   dgreat_student_surveys:
     salesforce_id: ''
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 9503
 template: false
 archive: false
@@ -17,7 +17,55 @@ id: webform_136882
 title: 'UM Spiritual Exercises of St. Ignatius (19th Annotation)'
 description: ''
 category: 'University Ministry'
-elements: "first_name:\n  '#type': textfield\n  '#title': 'First Name:'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name:'\n  '#description': ''\n  '#required': true\nusf_affiliation:\n  '#type': radios\n  '#options':\n    1: Faculty\n    2: Staff\n    3: Other\n  '#title': 'USF Affiliation:'\n  '#description': ''\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': 'Department:'\n  '#description': ''\n  '#required': true\nusf_e_mail_address:\n  '#type': email\n  '#size': 20\n  '#title': 'USF E-mail Address:'\n  '#description': ''\n  '#required': true\nphone_number:\n  '#type': textfield\n  '#size': 20\n  '#min': null\n  '#max': null\n  '#step': null\n  '#unique': false\n  '#title': 'Phone Number:'\n  '#description': ''\n  '#required': true\nhave_you_met_with_fr_donal_godfrey:\n  '#type': radios\n  '#options':\n    1: 'Yes'\n    2: 'No'\n  '#title': 'Have you met with Fr. Donal Godfrey?'\n  '#description': 'If not, please contact Fr. Donal before registering (godfrey@usfca.edu).'\n  '#required': true\n"
+elements: |
+  first_name:
+    '#type': textfield
+    '#title': 'First Name:'
+    '#description': ''
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title': 'Last Name:'
+    '#description': ''
+    '#required': true
+  usf_affiliation:
+    '#type': radios
+    '#options':
+      1: Faculty
+      2: Staff
+      3: Other
+    '#title': 'USF Affiliation:'
+    '#description': ''
+    '#required': true
+  department:
+    '#type': textfield
+    '#title': 'Department:'
+    '#description': ''
+    '#required': true
+  usf_e_mail_address:
+    '#type': email
+    '#size': 20
+    '#title': 'USF E-mail Address:'
+    '#description': ''
+    '#required': true
+  phone_number:
+    '#type': textfield
+    '#size': 20
+    '#min': null
+    '#max': null
+    '#step': null
+    '#unique': false
+    '#title': 'Phone Number:'
+    '#description': ''
+    '#required': true
+  have_you_met_with_fr_donal_godfrey:
+    '#type': radios
+    '#options':
+      1: 'Yes'
+      2: 'No'
+    '#title': 'Have you met with Fr. Donal Godfrey?'
+    '#description': 'If not, please contact Fr. Donal before registering (godfrey@usfca.edu).'
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -32,40 +80,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -74,11 +130,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -89,19 +140,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -118,9 +171,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -204,9 +257,9 @@ access:
 handlers:
   19th_annotation:
     id: email
+    handler_id: 19th_annotation
     label: '19th Annotation'
     notes: ''
-    handler_id: 19th_annotation
     status: true
     conditions: {  }
     weight: 3
@@ -215,13 +268,17 @@ handlers:
         - completed
       to_mail: 'godfrey@usfca.edu, um@usfca.edu'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: '[webform_submission:values:usf_e_mail_address:raw]'
       from_options: {  }
       from_name: '[webform_submission:values:first_name:raw]'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: '19th Annotation'
       body: _default
       excluded_elements: {  }
@@ -232,11 +289,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

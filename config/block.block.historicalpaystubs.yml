@@ -14,14 +14,14 @@ dependencies:
 id: historicalpaystubs
 theme: myusf
 region: sidebar_second
-weight: 535
+weight: 533
 provider: null
 plugin: 'block_content:acf77d45-3a5f-4ec2-ac1f-0db091f110a3'
 settings:
   id: 'block_content:acf77d45-3a5f-4ec2-ac1f-0db091f110a3'
   label: 'Historical Pay Stubs'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
@@ -29,19 +29,19 @@ visibility:
   condition_group:
     id: condition_group
     negate: false
-    block_visibility_group: ''
     context_mapping: {  }
+    block_visibility_group: ''
   request_path:
     id: request_path
-    pages: "/payroll\r\n/payroll/*"
     negate: false
     context_mapping: {  }
+    pages: "/payroll\r\n/payroll/*"
   user_role:
     id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
     roles:
       faculty: faculty
       student: student
       employee: employee
-    negate: false
-    context_mapping:
-      user: '@user.current_user_context:current_user'

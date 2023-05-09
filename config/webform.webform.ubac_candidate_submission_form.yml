@@ -7,9 +7,9 @@ dependencies:
 third_party_settings:
   dgreat_student_surveys:
     salesforce_id: ''
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 27769
 template: false
 archive: false
@@ -17,7 +17,32 @@ id: ubac_candidate_submission_form
 title: 'UBAC Candidate Submission Form'
 description: ''
 category: UBAC
-elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': Title\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': Department\n  '#required': true\nemail:\n  '#type': email\n  '#title': Email\n  '#required': true\ndescription_of_your_interest_in_the_role:\n  '#type': textarea\n  '#title': 'Description of your Interest in the Role'\n  '#maxlength': 1250\n  '#required': true\nplease_provide_a_link_to_a_photograph_to_list_on_the_ubac_candid:\n  '#type': textfield\n  '#title': 'Please provide a link to a photograph to list on the UBAC candidates page'\n  '#description': 'If you do not provide a link, we will use your <a href=\"https://myusf.usfca.edu/sites/default/files/users/mkrasts/FINAL%2011.11.18%20ModPersInfo-JA-31.pdf\" target=\"_blank\">current workday photo</a>.'\n"
+elements: |
+  name:
+    '#type': textfield
+    '#title': Name
+    '#required': true
+  title:
+    '#type': textfield
+    '#title': Title
+    '#required': true
+  department:
+    '#type': textfield
+    '#title': Department
+    '#required': true
+  email:
+    '#type': email
+    '#title': Email
+    '#required': true
+  description_of_your_interest_in_the_role:
+    '#type': textarea
+    '#title': 'Description of your Interest in the Role'
+    '#maxlength': 1250
+    '#required': true
+  please_provide_a_link_to_a_photograph_to_list_on_the_ubac_candid:
+    '#type': textfield
+    '#title': 'Please provide a link to a photograph to list on the UBAC candidates page'
+    '#description': 'If you do not provide a link, we will use your <a href="https://myusf.usfca.edu/sites/default/files/users/mkrasts/FINAL%2011.11.18%20ModPersInfo-JA-31.pdf" target="_blank">current workday photo</a>.'
 css: ''
 javascript: ''
 settings:
@@ -32,40 +57,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -74,11 +107,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -89,19 +117,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -118,9 +148,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: "<p>Thank you for submitting the materials associated with your candidacy for the University Budget Advisory Council. Reminders concerning the timeline for nominations and elections:</p>\r\n\r\n<p>August 30, 2019: nominations are due.<br />\r\nSeptember 4, 2019: deadline for nominees to confirm their candidacy and submit related materials.<br />\r\nSeptember 6, 2019: balloting starts.<br />\r\nSeptember 12, 2019: reminder to University employees to submit their votes.<br />\r\nSeptember 18, 2019: election closes.<br />\r\nSeptember 19, 2019: results of elections announced, with Vice Provost Hamrick emailing winners to discuss next steps.</p>\r\n\r\n<p>Votes in UBAC elections are confidential. Only full-time University employees can vote. Only one ballot may be submitted by each full-time employee. In the unlikely event of a tie, the Provost and President will resolve the tie. Voters can select between one and six candidates (but no more than six), and no candidate can receive more than one vote from a voter. A final review of ballot totals will be overseen by the Office of the Provost and Office of Marketing Communications as part of determining the outcomes of the elections</p>"
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -202,9 +232,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -213,13 +243,17 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:email:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: ' University Budget Advisory Council'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'Thank you for submitting the materials associated with your candidacy for the University Budget Advisory Council.'
       body: "<p>Thank you for submitting the materials associated with your candidacy for the University Budget Advisory Council. Reminders concerning the timeline for nominations and elections:\r\n</p>\r\n\r\n<p>\r\nAugust 30, 2019: nominations are due.<br>\r\nSeptember 4, 2019: deadline for nominees to confirm their candidacy and submit related materials.<br>\r\nSeptember 6, 2019: balloting starts.<br>\r\nSeptember 12, 2019: reminder to University employees to submit their votes.<br>\r\nSeptember 18, 2019: election closes.<br>\r\nSeptember 19, 2019: results of elections announced, with Vice Provost Hamrick emailing winners to discuss next steps.\r\n</p>\r\n\r\n<p>\r\nVotes in UBAC elections are confidential. Only full-time University employees can vote. Only one ballot may be submitted by each full-time employee. In the unlikely event of a tie, the Provost and President will resolve the tie. Voters can select between one and six candidates (but no more than six), and no candidate can receive more than one vote from a voter. A final review of ballot totals will be overseen by the Office of the Provost and Office of Marketing Communications as part of determining the outcomes of the elections.\r\n</p>\r\n"
       excluded_elements: {  }
@@ -230,11 +264,7 @@ handlers:
       html: true
       attachments: false
       twig: true
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

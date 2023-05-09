@@ -2,9 +2,9 @@ uuid: 038b08cc-0474-457b-a4a6-50b9f2a6961c
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 206
 template: false
 archive: false
@@ -12,7 +12,186 @@ id: webform_72667
 title: 'LWC Peer Tutoring Application'
 description: null
 category: null
-elements: "academic_year_info:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h2>Academic Year Information</h2>'\n  '#title': 'Academic Year Info'\n  '#description': ''\nusf_student_id:\n  '#type': textfield\n  '#title': 'USF Student ID'\n  '#description': ''\n  '#required': true\nname:\n  '#type': textfield\n  '#default_value': '[current-user:field_user_display_name]'\n  '#title': Name\n  '#description': ''\n  '#required': true\nlocal_address_1:\n  '#type': textfield\n  '#title': 'Local Address 1'\n  '#description': ''\n  '#required': true\nlocal_address_2:\n  '#type': textfield\n  '#title': 'Local Address 2'\n  '#description': ''\ncity:\n  '#type': textfield\n  '#title': City\n  '#description': ''\n  '#required': true\nstate_province_territory:\n  '#type': textfield\n  '#title': State/Province/Territory\n  '#description': ''\n  '#required': true\nzip_code:\n  '#type': textfield\n  '#title': 'Zip Code'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': email\n  '#size': 20\n  '#default_value': '[current-user:mail]'\n  '#title': 'Email (for confirmation purposes only)'\n  '#description': ''\n  '#required': true\nphone:\n  '#type': textfield\n  '#title': Phone\n  '#description': ''\n  '#required': true\nalternate_phone_cell:\n  '#type': textfield\n  '#title': 'Alternate Phone/Cell'\n  '#description': ''\nclass:\n  '#type': select\n  '#options':\n    1: Freshman\n    2: Sophomore\n    3: Junior\n    4: Senior\n    5: Graduate\n  '#title_display': inline\n  '#title': Class\n  '#description': ''\n  '#required': true\nmajor:\n  '#type': textfield\n  '#title': Major\n  '#description': ''\n  '#required': true\nintended_graduation_term_year:\n  '#type': textfield\n  '#title': 'Intended Graduation Term/Year'\n  '#description': ''\n  '#required': true\nwork_study:\n  '#type': radios\n  '#options':\n    1: 'Yes'\n    2: 'No'\n  '#title_display': inline\n  '#title': 'Work Study'\n  '#description': ''\npermanent_info:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h2>Permanent Information</h2>'\n  '#title': 'Permanent Info'\n  '#description': ''\nhome_address:\n  '#type': textfield\n  '#title': 'Home Address'\n  '#description': ''\n  '#required': true\nhome_city:\n  '#type': textfield\n  '#title': 'Home City'\n  '#description': ''\n  '#required': true\nhome_state_province:\n  '#type': textfield\n  '#title': 'Home State/Province'\n  '#description': ''\n  '#required': true\nhome_zip_postal_code:\n  '#type': textfield\n  '#title': 'Home Zip/Postal Code'\n  '#description': ''\n  '#required': true\ntutoring_info:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h2>Tutoring Information</h2>'\n  '#title': 'Tutoring Info'\n  '#description': ''\nplease_list_the_course_names:\n  '#type': textarea\n  '#title': 'Please list the course names and numbers that you would like to tutor (list professor''s name and grade received). Please be aware that a grade of A- or better and a recommendation letter is necessary for each course that you choose to tutor.'\n  '#description': ''\n  '#required': true\nstart_term:\n  '#type': radios\n  '#options':\n    1: Fall\n    2: Spring\n    3: Summer\n  '#title_display': inline\n  '#title': 'Start Term'\n  '#description': ''\navailability:\n  '#type': textfield\n  '#title': 'Availability (Sun-Sat)'\n  '#description': ''\ncommitments:\n  '#type': textfield\n  '#title': 'Commitments (work, orgs., etc.)'\n  '#description': ''\nnumber_of_hours:\n  '#type': textfield\n  '#title': 'Number of hours available to commit to peer tutoring'\n  '#description': ''\nwhy_are_you_interested:\n  '#type': textarea\n  '#title': 'Why are you interested in becoming an LWC tutor?'\n  '#description': ''\n  '#required': true\nwhat_relevant_experiences:\n  '#type': textarea\n  '#title': 'What relevant experiences have you had that relate to working as a tutor?'\n  '#description': ''\n  '#required': true\nwhat_relevant_strengths:\n  '#type': textarea\n  '#title': 'What relevant strengths and skills do you possess?'\n  '#description': ''\n  '#required': true\nwhat_skills:\n  '#type': textarea\n  '#title': 'What skills and assets would you like to develop?'\n  '#description': ''\n  '#required': true\nhow_does_this_position:\n  '#type': textarea\n  '#title': 'How does this position fit into your academic and career goals?'\n  '#description': ''\n  '#required': true\nplease_list:\n  '#type': textarea\n  '#title': 'Please list at least two USF faculty references'\n  '#description': ''\n  '#required': true\nis_there_anything_else:\n  '#type': textarea\n  '#title': 'Is there anything else we should know as we consider your application?'\n  '#description': ''\n"
+elements: |
+  academic_year_info:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<h2>Academic Year Information</h2>'
+    '#title': 'Academic Year Info'
+    '#description': ''
+  usf_student_id:
+    '#type': textfield
+    '#title': 'USF Student ID'
+    '#description': ''
+    '#required': true
+  name:
+    '#type': textfield
+    '#default_value': '[current-user:field_user_display_name]'
+    '#title': Name
+    '#description': ''
+    '#required': true
+  local_address_1:
+    '#type': textfield
+    '#title': 'Local Address 1'
+    '#description': ''
+    '#required': true
+  local_address_2:
+    '#type': textfield
+    '#title': 'Local Address 2'
+    '#description': ''
+  city:
+    '#type': textfield
+    '#title': City
+    '#description': ''
+    '#required': true
+  state_province_territory:
+    '#type': textfield
+    '#title': State/Province/Territory
+    '#description': ''
+    '#required': true
+  zip_code:
+    '#type': textfield
+    '#title': 'Zip Code'
+    '#description': ''
+    '#required': true
+  email:
+    '#type': email
+    '#size': 20
+    '#default_value': '[current-user:mail]'
+    '#title': 'Email (for confirmation purposes only)'
+    '#description': ''
+    '#required': true
+  phone:
+    '#type': textfield
+    '#title': Phone
+    '#description': ''
+    '#required': true
+  alternate_phone_cell:
+    '#type': textfield
+    '#title': 'Alternate Phone/Cell'
+    '#description': ''
+  class:
+    '#type': select
+    '#options':
+      1: Freshman
+      2: Sophomore
+      3: Junior
+      4: Senior
+      5: Graduate
+    '#title_display': inline
+    '#title': Class
+    '#description': ''
+    '#required': true
+  major:
+    '#type': textfield
+    '#title': Major
+    '#description': ''
+    '#required': true
+  intended_graduation_term_year:
+    '#type': textfield
+    '#title': 'Intended Graduation Term/Year'
+    '#description': ''
+    '#required': true
+  work_study:
+    '#type': radios
+    '#options':
+      1: 'Yes'
+      2: 'No'
+    '#title_display': inline
+    '#title': 'Work Study'
+    '#description': ''
+  permanent_info:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<h2>Permanent Information</h2>'
+    '#title': 'Permanent Info'
+    '#description': ''
+  home_address:
+    '#type': textfield
+    '#title': 'Home Address'
+    '#description': ''
+    '#required': true
+  home_city:
+    '#type': textfield
+    '#title': 'Home City'
+    '#description': ''
+    '#required': true
+  home_state_province:
+    '#type': textfield
+    '#title': 'Home State/Province'
+    '#description': ''
+    '#required': true
+  home_zip_postal_code:
+    '#type': textfield
+    '#title': 'Home Zip/Postal Code'
+    '#description': ''
+    '#required': true
+  tutoring_info:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<h2>Tutoring Information</h2>'
+    '#title': 'Tutoring Info'
+    '#description': ''
+  please_list_the_course_names:
+    '#type': textarea
+    '#title': 'Please list the course names and numbers that you would like to tutor (list professor''s name and grade received). Please be aware that a grade of A- or better and a recommendation letter is necessary for each course that you choose to tutor.'
+    '#description': ''
+    '#required': true
+  start_term:
+    '#type': radios
+    '#options':
+      1: Fall
+      2: Spring
+      3: Summer
+    '#title_display': inline
+    '#title': 'Start Term'
+    '#description': ''
+  availability:
+    '#type': textfield
+    '#title': 'Availability (Sun-Sat)'
+    '#description': ''
+  commitments:
+    '#type': textfield
+    '#title': 'Commitments (work, orgs., etc.)'
+    '#description': ''
+  number_of_hours:
+    '#type': textfield
+    '#title': 'Number of hours available to commit to peer tutoring'
+    '#description': ''
+  why_are_you_interested:
+    '#type': textarea
+    '#title': 'Why are you interested in becoming an LWC tutor?'
+    '#description': ''
+    '#required': true
+  what_relevant_experiences:
+    '#type': textarea
+    '#title': 'What relevant experiences have you had that relate to working as a tutor?'
+    '#description': ''
+    '#required': true
+  what_relevant_strengths:
+    '#type': textarea
+    '#title': 'What relevant strengths and skills do you possess?'
+    '#description': ''
+    '#required': true
+  what_skills:
+    '#type': textarea
+    '#title': 'What skills and assets would you like to develop?'
+    '#description': ''
+    '#required': true
+  how_does_this_position:
+    '#type': textarea
+    '#title': 'How does this position fit into your academic and career goals?'
+    '#description': ''
+    '#required': true
+  please_list:
+    '#type': textarea
+    '#title': 'Please list at least two USF faculty references'
+    '#description': ''
+    '#required': true
+  is_there_anything_else:
+    '#type': textarea
+    '#title': 'Is there anything else we should know as we consider your application?'
+    '#description': ''
 css: ''
 javascript: ''
 settings:
@@ -27,40 +206,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +256,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,19 +266,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -113,9 +297,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: '<p>Thank you for submitting your application.</p>'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -199,9 +383,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -210,13 +394,17 @@ handlers:
         - completed
       to_mail: lwctutor@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -227,11 +415,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

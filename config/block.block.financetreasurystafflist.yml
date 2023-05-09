@@ -14,14 +14,14 @@ dependencies:
 id: financetreasurystafflist
 theme: myusf
 region: content
-weight: 26
+weight: 11
 provider: null
 plugin: 'block_content:45c79eff-46b6-4420-b869-a89363469e73'
 settings:
   id: 'block_content:45c79eff-46b6-4420-b869-a89363469e73'
   label: 'Finance & Treasury Staff List'
-  provider: block_content
   label_display: visible
+  provider: block_content
   status: true
   info: ''
   view_mode: full
@@ -29,17 +29,17 @@ visibility:
   condition_group:
     id: condition_group
     negate: false
-    block_visibility_group: ''
     context_mapping: {  }
+    block_visibility_group: ''
   request_path:
     id: request_path
-    pages: /finance-treasury/staff
     negate: false
     context_mapping: {  }
+    pages: /finance-treasury/staff
   user_role:
     id: user_role
-    roles:
-      authenticated: authenticated
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
+    roles:
+      authenticated: authenticated

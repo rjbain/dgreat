@@ -15,14 +15,14 @@ _core:
 id: myusf_tools
 theme: myusf
 region: sidebar_second
-weight: 555
+weight: 554
 provider: null
 plugin: 'system_menu_block:tools'
 settings:
   id: 'system_menu_block:tools'
   label: Tools
-  provider: system
   label_display: visible
+  provider: system
   level: 1
   depth: 0
   expand_all_items: false
@@ -30,14 +30,14 @@ visibility:
   condition_group:
     id: condition_group
     negate: false
-    block_visibility_group: ''
     context_mapping: {  }
-  node_type:
-    id: node_type
+    block_visibility_group: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
     bundles:
       article: article
       event: event
       page: page
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'

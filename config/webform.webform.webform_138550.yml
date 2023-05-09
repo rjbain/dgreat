@@ -2,9 +2,9 @@ uuid: a41bdc3f-0bd9-45f0-a4c0-48cd5e306988
 langcode: en
 status: closed
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 31661
 template: false
 archive: false
@@ -12,7 +12,48 @@ id: webform_138550
 title: 'Magis Website Submissions'
 description: null
 category: null
-elements: "submit_an_idea:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h2>Submit an Idea</h2>'\n  '#title': 'Submit an Idea'\n  '#description': ''\nsubmit_ideas:\n  '#type': textarea\n  '#title': 'Share your suggestions, ideas, and comments'\n  '#description': ''\n  '#required': true\ncontact_info:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<h2>Contact Information</h2><p><span>The identity of all contributors will be treated in the strictest confidence.&nbsp;</span>We ask that you submit your name with your idea so that we can contact you if we have additional questions. However,&nbsp;<strong>you are not required to submit your name</strong>.&nbsp;</p>'\n  '#title': 'Contact Information'\n  '#description': ''\nname:\n  '#type': textfield\n  '#title': Name\n  '#description': ''\nemail_address:\n  '#type': email\n  '#size': 20\n  '#title': 'Email Address'\n  '#description': ''\nphone_number:\n  '#type': textfield\n  '#title': 'Phone Number'\n  '#description': ''\naffiliation:\n  '#type': radios\n  '#options':\n    1: 'Undergraduate Student'\n    2: 'Graduate Student'\n    3: Alum\n    4: Faculty\n    5: Administrator/Staff\n  '#title': Affiliation\n  '#description': ''\n  '#required': true\n"
+elements: |
+  submit_an_idea:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<h2>Submit an Idea</h2>'
+    '#title': 'Submit an Idea'
+    '#description': ''
+  submit_ideas:
+    '#type': textarea
+    '#title': 'Share your suggestions, ideas, and comments'
+    '#description': ''
+    '#required': true
+  contact_info:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<h2>Contact Information</h2><p><span>The identity of all contributors will be treated in the strictest confidence.&nbsp;</span>We ask that you submit your name with your idea so that we can contact you if we have additional questions. However,&nbsp;<strong>you are not required to submit your name</strong>.&nbsp;</p>'
+    '#title': 'Contact Information'
+    '#description': ''
+  name:
+    '#type': textfield
+    '#title': Name
+    '#description': ''
+  email_address:
+    '#type': email
+    '#size': 20
+    '#title': 'Email Address'
+    '#description': ''
+  phone_number:
+    '#type': textfield
+    '#title': 'Phone Number'
+    '#description': ''
+  affiliation:
+    '#type': radios
+    '#options':
+      1: 'Undergraduate Student'
+      2: 'Graduate Student'
+      3: Alum
+      4: Faculty
+      5: Administrator/Staff
+    '#title': Affiliation
+    '#description': ''
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,40 +68,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +118,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,19 +128,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -113,9 +159,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''

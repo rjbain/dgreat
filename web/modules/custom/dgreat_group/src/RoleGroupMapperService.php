@@ -2,7 +2,9 @@
 
 namespace Drupal\dgreat_group;
 
-
+use Drupal\Core\Entity\EntityStorageException;
+use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
+use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\group\Entity\Group;
@@ -11,7 +13,7 @@ use Drupal\user\Entity\User;
 class RoleGroupMapperService {
 
   /**
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   * @var EntityTypeManagerInterface
    */
   private $entityTypeManager;
 
@@ -22,7 +24,7 @@ class RoleGroupMapperService {
   /**
    * Ensure that the user's group access matches their roles.
    *
-   * @param \Drupal\Core\Session\AccountInterface $account
+   * @param AccountInterface $account
    *
    * @return array|false
    */
@@ -61,7 +63,7 @@ class RoleGroupMapperService {
   /**
    * Grant a user access to a group based on their role.
    *
-   * @param \Drupal\user\Entity\User $user
+   * @param User $user
    * @param string $group_id
    *
    * @return bool Whether we were able to grant group access.
@@ -71,7 +73,7 @@ class RoleGroupMapperService {
     try {
       $this->ensureUserHasGroupField($user, $group_id);
       // Add the user to the group.
-      /** @var \Drupal\group\Entity\Group $group */
+        /** @var Group $group */
       $group = $this->entityTypeManager
         ->getStorage('group')
         ->load($group_id);
@@ -99,7 +101,7 @@ class RoleGroupMapperService {
   /**
    * Revoke access to groups that the user no longer has roles for.
    *
-   * @param \Drupal\user\Entity\User $user
+   * @param User $user
    * @param $group_id
    *
    * @return bool whether we successfully removed the user from the
@@ -115,6 +117,7 @@ class RoleGroupMapperService {
       $this->removeGroupFieldFromUser($user, $group_id);
       return TRUE;
     } catch (\Exception $exception) {
+        return FALSE; // Suppressing the error message because it reporting errors when a user couldn't be removed from a group due to the user not being in the group.
       \Drupal::logger('dgreat_group')->error(
         'Unable to remove user id %u from group id %g',
         ['%u' => $user->id(), '%g' => $group_id]
@@ -127,7 +130,7 @@ class RoleGroupMapperService {
   /**
    * Check if the user has a role that is mapped to the given group.
    *
-   * @param \Drupal\user\Entity\User $user
+   * @param User $user
    * @param $group_id
    *
    * @return bool
@@ -145,7 +148,7 @@ class RoleGroupMapperService {
    * Check if the user is a member of a given group ID. This is a bit fuzzy
    * because of our group implementation.
    *
-   * @param \Drupal\user\Entity\User $user
+   * @param User $user
    * @param $group_id
    *
    * @return bool
@@ -158,7 +161,7 @@ class RoleGroupMapperService {
   }
 
   /**
-   * @param \Drupal\user\Entity\User $user
+   * @param User $user
    * @param $group_id
    *
    * @return bool
@@ -171,10 +174,10 @@ class RoleGroupMapperService {
   }
 
   /**
-   * @param \Drupal\user\Entity\User $user
+   * @param User $user
    * @param string $group_id
    *
-   * @throws \Drupal\Core\Entity\EntityStorageException
+   * @throws EntityStorageException
    */
   public function ensureUserHasGroupField(User $user, string $group_id): void {
     if (!$this->userHasGroupField($user, $group_id)) {
@@ -186,7 +189,7 @@ class RoleGroupMapperService {
   /**
    * Remove the group field from the user.
    * 
-   * @param \Drupal\user\Entity\User $user
+   * @param User $user
    * @param string $group_id
    * 
    * @return bool
@@ -195,15 +198,16 @@ class RoleGroupMapperService {
     $field = $user->get('field_user_group');
     $values = $field->getValue();
     $index_to_remove = array_search($group_id, array_column($values, 'target_id'));
-    $field->removeItem($index_to_remove);
+    // $field->removeItem($index_to_remove); This was causing the site to timeout.
+      $field->set($index_to_remove, []);
     $user->save();
     return TRUE;
   }
 
   /**
    * @return array|int
-   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
-   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws InvalidPluginDefinitionException
+   * @throws PluginNotFoundException
    */
   public function getMappedGroups() {
     $groups = $this->entityTypeManager

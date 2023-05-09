@@ -4,6 +4,10 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.user.compact
+    - field.field.user.user.field_user_cwid
+    - field.field.user.user.field_user_display_name
+    - field.field.user.user.field_user_group
+    - field.field.user.user.field_usfb_address_date
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
@@ -18,13 +22,20 @@ mode: compact
 content:
   user_picture:
     type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: thumbnail
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
     weight: 0
     region: content
-    settings:
-      image_style: thumbnail
-      image_link: content
-    third_party_settings: {  }
-    label: hidden
 hidden:
+  field_user_cwid: true
+  field_user_display_name: true
   field_user_group: true
+  field_usfb_address_date: true
+  langcode: true
   member_for: true
+  search_api_excerpt: true

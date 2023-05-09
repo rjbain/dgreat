@@ -2,9 +2,9 @@ uuid: 358c0d21-6e7d-48f4-a624-e138a5678e8c
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 27769
 template: false
 archive: false
@@ -12,7 +12,61 @@ id: webform_136121
 title: 'Announcement Submission Form'
 description: null
 category: null
-elements: "your_name:\n  '#type': textfield\n  '#title': 'Your Name:'\n  '#description': ''\n  '#required': true\ncontact_email:\n  '#type': email\n  '#size': 20\n  '#title': 'Contact Email:'\n  '#description': ''\n  '#required': true\ndepartment:\n  '#type': textfield\n  '#title': 'Department:'\n  '#description': ''\n  '#required': true\nannouncement_title:\n  '#type': textfield\n  '#title': 'Announcement Title:'\n  '#description': ''\n  '#required': true\nannouncement_content:\n  '#type': textarea\n  '#title': 'Announcement Content:'\n  '#description': ''\n  '#required': true\nif_you_would_like_to_include_images_or_custom_formatting_please_provide_a_shared_link_to_a_google_drive_or_dropbox_document:\n  '#type': textfield\n  '#title': 'If you would like to include images or custom formatting, please provide a shared link to a google drive or dropbox document/image:'\n  '#description': ''\naudience:\n  '#type': select\n  '#options':\n    1: Staff\n    2: Faculty\n    Student:\n      11: All\n      3: 'Arts and Sciences (Undergraduate)'\n      4: 'Arts and Sciences (Graduate)'\n      5: 'Management (Undergraduate)'\n      6: 'Management (Graduate)'\n      7: 'Nursing and Health Professions (Undergraduate)'\n      8: 'Nursing and Health Professions (Graduate)'\n      9: Law\n      10: Education\n  '#multiple': true\n  '#title': 'Audience:'\n  '#description': ''\n  '#required': true\ndate_of_annoucement:\n  '#type': date\n  '#title': 'Date of Announcement:'\n  '#description': \"Announcements will remain in the event feed for two weeks following posting.\\n\\nPlease allow 24-48 hours from form submission before your announcement appears in the feed.\"\n  '#required': true\n"
+elements: |
+  your_name:
+    '#type': textfield
+    '#title': 'Your Name:'
+    '#description': ''
+    '#required': true
+  contact_email:
+    '#type': email
+    '#size': 20
+    '#title': 'Contact Email:'
+    '#description': ''
+    '#required': true
+  department:
+    '#type': textfield
+    '#title': 'Department:'
+    '#description': ''
+    '#required': true
+  announcement_title:
+    '#type': textfield
+    '#title': 'Announcement Title:'
+    '#description': ''
+    '#required': true
+  announcement_content:
+    '#type': textarea
+    '#title': 'Announcement Content:'
+    '#description': ''
+    '#required': true
+  if_you_would_like_to_include_images_or_custom_formatting_please_provide_a_shared_link_to_a_google_drive_or_dropbox_document:
+    '#type': textfield
+    '#title': 'If you would like to include images or custom formatting, please provide a shared link to a google drive or dropbox document/image:'
+    '#description': ''
+  audience:
+    '#type': select
+    '#options':
+      1: Staff
+      2: Faculty
+      Student:
+        11: All
+        3: 'Arts and Sciences (Undergraduate)'
+        4: 'Arts and Sciences (Graduate)'
+        5: 'Management (Undergraduate)'
+        6: 'Management (Graduate)'
+        7: 'Nursing and Health Professions (Undergraduate)'
+        8: 'Nursing and Health Professions (Graduate)'
+        9: Law
+        10: Education
+    '#multiple': true
+    '#title': 'Audience:'
+    '#description': ''
+    '#required': true
+  date_of_annoucement:
+    '#type': date
+    '#title': 'Date of Announcement:'
+    '#description': "Announcements will remain in the event feed for two weeks following posting.\n\nPlease allow 24-48 hours from form submission before your announcement appears in the feed."
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,40 +81,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +131,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,19 +141,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -113,9 +172,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -199,9 +258,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -210,13 +269,17 @@ handlers:
         - completed
       to_mail: webservices@usfca.edu
       to_options: {  }
-      cc_mail: nkebbas@usfca.edu
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: nkebbas@usfca.edu
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: webservices@usfca.edu
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -227,18 +290,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: webservices@usfca.edu
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_3:
     id: email
+    handler_id: email_3
     label: 'Email 3'
     notes: ''
-    handler_id: email_3
     status: true
     conditions: {  }
     weight: 3
@@ -247,13 +306,17 @@ handlers:
         - completed
       to_mail: '[webform-submission:values:contact_email:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: 'Hi [webform_submission:values:your_name] Thank you for submitting a USF Announcement. Web Services will contact you if any additional information is needed.Submitted by user: [webform_submission:user] Submitted values are: [webform_submission:values]'
       excluded_elements: {  }
@@ -264,11 +327,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

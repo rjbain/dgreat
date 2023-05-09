@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.favorite_link.field_sso
     - field.field.node.favorite_link.field_top_quick_link
     - field.field.node.favorite_link.field_url
+    - field.field.node.favorite_link.field_weight
     - node.type.favorite_link
   module:
     - text
@@ -21,12 +22,12 @@ bundle: favorite_link
 mode: teaser
 content:
   body:
-    label: hidden
-    weight: 0
     type: text_summary_or_trimmed
+    label: hidden
     settings:
       trim_length: 600
     third_party_settings: {  }
+    weight: 0
     region: content
   flag_favorite:
     weight: 10
@@ -42,3 +43,5 @@ hidden:
   field_top_quick_link: true
   field_url: true
   field_weight: true
+  langcode: true
+  search_api_excerpt: true

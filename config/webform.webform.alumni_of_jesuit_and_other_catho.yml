@@ -2,9 +2,9 @@ uuid: 91cfd80e-e70e-4c8c-abda-b9e24e0299aa
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 42945
 template: false
 archive: false
@@ -12,7 +12,45 @@ id: alumni_of_jesuit_and_other_catho
 title: 'Alumni of Jesuit and other Catholic high schools Pizza Party - Fall 2019'
 description: ''
 category: 'University Ministry'
-elements: "first_name:\n  '#type': textfield\n  '#title': '*First Name'\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': '*Last Name'\n  '#required': true\nmyusf_user_name:\n  '#type': textfield\n  '#title': '*myUSF User Name'\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#title': '*USF Email Address'\n  '#required': true\nstudent_level:\n  '#type': radios\n  '#title': '*Student Level'\n  '#options':\n    Freshman: Freshman\n    Sophomore: Sophomore\n    Junior: Junior\n    Senior: Senior\n    'Graduate Student': 'Graduate Student'\n  '#required': true\ncollege_major:\n  '#type': textfield\n  '#title': '*College Major'\n  '#required': true\nwhich_high_school_did_you_attend_:\n  '#type': textfield\n  '#title': '*Which high school did you attend?'\n  '#required': true\nwhat_year_did_you_graduate_from_high_school_:\n  '#type': textfield\n  '#title': '*What year did you graduate from high school?'\n  '#required': true"
+elements: |-
+  first_name:
+    '#type': textfield
+    '#title': '*First Name'
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title': '*Last Name'
+    '#required': true
+  myusf_user_name:
+    '#type': textfield
+    '#title': '*myUSF User Name'
+    '#required': true
+  usf_email_address:
+    '#type': email
+    '#title': '*USF Email Address'
+    '#required': true
+  student_level:
+    '#type': radios
+    '#title': '*Student Level'
+    '#options':
+      Freshman: Freshman
+      Sophomore: Sophomore
+      Junior: Junior
+      Senior: Senior
+      'Graduate Student': 'Graduate Student'
+    '#required': true
+  college_major:
+    '#type': textfield
+    '#title': '*College Major'
+    '#required': true
+  which_high_school_did_you_attend_:
+    '#type': textfield
+    '#title': '*Which high school did you attend?'
+    '#required': true
+  what_year_did_you_graduate_from_high_school_:
+    '#type': textfield
+    '#title': '*What year did you graduate from high school?'
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,40 +65,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace:
     webform_routes: {  }
@@ -71,11 +117,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -86,19 +127,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -115,9 +158,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -199,9 +242,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -210,13 +253,17 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:usf_email_address:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: um@usfca.edu
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: um@usfca.edu
       from_options: {  }
       from_name: 'University Ministry'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: "[USF] Registration Confirmed: Alumni of Jesuit and Other Catholic High Schools Pizza Party\_"
       body: _default
       excluded_elements: {  }
@@ -227,11 +274,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

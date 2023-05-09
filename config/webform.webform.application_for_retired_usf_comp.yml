@@ -2,9 +2,9 @@ uuid: 9697218d-1681-4158-8683-59214749695d
 langcode: en
 status: scheduled
 dependencies: {  }
+weight: 0
 open: null
 close: '2019-12-13T23:59:00'
-weight: 0
 uid: 31661
 template: false
 archive: false
@@ -12,7 +12,76 @@ id: application_for_retired_usf_comp
 title: 'Application for Retired USF Computers'
 description: ''
 category: ''
-elements: "first_and_last_name:\n  '#type': textfield\n  '#title': 'First and Last Name *'\n  '#required': true\ntitle:\n  '#type': textfield\n  '#title': Title\norganization:\n  '#type': textfield\n  '#title': Organization\nemail:\n  '#type': textfield\n  '#title': 'Email *'\n  '#description': 'Please list an email we can contact if we have questions about the information you&#39;ve provided. We will also send our notification letters via email.'\n  '#description_display': before\n  '#required': true\nhow_where_did_you_hear_about_this_program_:\n  '#type': textarea\n  '#title': 'How/Where did you hear about this program?  *'\n  '#required': true\nprovide_a_brief_description_of_your_organization_and_its_affilia:\n  '#type': textarea\n  '#title': 'Provide a brief description of your organization and its affiliation, if any, with USF. *'\n  '#required': true\nprovide_a_description_of_how_your_organization_provides_learning:\n  '#type': textarea\n  '#title': 'Provide a description of how your organization provides learning and service opportunities for USF students and faculty, if applicable. '\nprovide_an_explanation_of_how_the_computers_laptops_or_projector:\n  '#type': textarea\n  '#title': 'Provide an explanation of how the computers or projectors will be used by the organization, including who will install and support them. *'\n  '#required': true\n  '#format_items': comma\nmarkup_01:\n  '#type': webform_markup\n  '#markup': 'Below, please enter the specific number of desktop computers, and/or projectors that you are requesting. Please do not leave it at &quot;whatever is available&quot;.'\npc_desktop:\n  '#type': number\n  '#title': 'PC Desktop'\n  '#placeholder': '0'\nmac_desktop:\n  '#type': number\n  '#title': 'Mac Desktop'\n  '#placeholder': '0'\nany_type_of_desktop_no_preference_for_pc_or_mac_:\n  '#type': number\n  '#title': 'Any type of desktop (no preference for PC or Mac)'\n  '#placeholder': '0'\nprojectors:\n  '#type': number\n  '#title': Projectors\n  '#placeholder': '0'\nplease_share_if_there_is_any_other_information_you_d_like_to_con:\n  '#type': textarea\n  '#title': 'Please share if there is any other information you''d like to convey regarding your request numbers above.'\n  '#format_items': comma\nprovide_any_other_specifications_such_as_processor_speed_or_form:\n  '#type': textarea\n  '#title': 'Provide any other specifications, such as processor speed or form factor (size/shape).'\nplease_agree_to_the_following_statement_:\n  '#type': radios\n  '#title': 'Please agree to the following statement: *'\n  '#description': 'On behalf of our organization, I guarantee we will recycle the equipment responsibly when it is no longer of use to our organization.'\n  '#description_display': before\n  '#options':\n    'Yes, I agree': 'Yes, I agree'\n  '#required': true\nmarkup:\n  '#type': webform_markup\n  '#markup': 'Should you have any questions regarding your application, please feel free to send an email to: <a href=\"mailto:uitcchair@usfca.edu\">uitcchair@usfca.edu</a>.'"
+elements: |-
+  first_and_last_name:
+    '#type': textfield
+    '#title': 'First and Last Name *'
+    '#required': true
+  title:
+    '#type': textfield
+    '#title': Title
+  organization:
+    '#type': textfield
+    '#title': Organization
+  email:
+    '#type': textfield
+    '#title': 'Email *'
+    '#description': 'Please list an email we can contact if we have questions about the information you&#39;ve provided. We will also send our notification letters via email.'
+    '#description_display': before
+    '#required': true
+  how_where_did_you_hear_about_this_program_:
+    '#type': textarea
+    '#title': 'How/Where did you hear about this program?  *'
+    '#required': true
+  provide_a_brief_description_of_your_organization_and_its_affilia:
+    '#type': textarea
+    '#title': 'Provide a brief description of your organization and its affiliation, if any, with USF. *'
+    '#required': true
+  provide_a_description_of_how_your_organization_provides_learning:
+    '#type': textarea
+    '#title': 'Provide a description of how your organization provides learning and service opportunities for USF students and faculty, if applicable. '
+  provide_an_explanation_of_how_the_computers_laptops_or_projector:
+    '#type': textarea
+    '#title': 'Provide an explanation of how the computers or projectors will be used by the organization, including who will install and support them. *'
+    '#required': true
+    '#format_items': comma
+  markup_01:
+    '#type': webform_markup
+    '#markup': 'Below, please enter the specific number of desktop computers, and/or projectors that you are requesting. Please do not leave it at &quot;whatever is available&quot;.'
+  pc_desktop:
+    '#type': number
+    '#title': 'PC Desktop'
+    '#placeholder': '0'
+  mac_desktop:
+    '#type': number
+    '#title': 'Mac Desktop'
+    '#placeholder': '0'
+  any_type_of_desktop_no_preference_for_pc_or_mac_:
+    '#type': number
+    '#title': 'Any type of desktop (no preference for PC or Mac)'
+    '#placeholder': '0'
+  projectors:
+    '#type': number
+    '#title': Projectors
+    '#placeholder': '0'
+  please_share_if_there_is_any_other_information_you_d_like_to_con:
+    '#type': textarea
+    '#title': 'Please share if there is any other information you''d like to convey regarding your request numbers above.'
+    '#format_items': comma
+  provide_any_other_specifications_such_as_processor_speed_or_form:
+    '#type': textarea
+    '#title': 'Provide any other specifications, such as processor speed or form factor (size/shape).'
+  please_agree_to_the_following_statement_:
+    '#type': radios
+    '#title': 'Please agree to the following statement: *'
+    '#description': 'On behalf of our organization, I guarantee we will recycle the equipment responsibly when it is no longer of use to our organization.'
+    '#description_display': before
+    '#options':
+      'Yes, I agree': 'Yes, I agree'
+    '#required': true
+  markup:
+    '#type': webform_markup
+    '#markup': 'Should you have any questions regarding your application, please feel free to send an email to: <a href="mailto:uitcchair@usfca.edu">uitcchair@usfca.edu</a>.'
 css: ''
 javascript: ''
 settings:
@@ -27,40 +96,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +146,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,19 +156,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -113,9 +187,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -198,9 +272,9 @@ access:
 handlers:
   email_2:
     id: email
+    handler_id: email_2
     label: Email
     notes: ''
-    handler_id: email_2
     status: true
     conditions: {  }
     weight: 2
@@ -209,13 +283,17 @@ handlers:
         - completed
       to_mail: vdmoreno@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -226,18 +304,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 3
@@ -246,13 +320,17 @@ handlers:
         - completed
       to_mail: aeyumang@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -263,18 +341,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_1:
     id: email
+    handler_id: email_1
     label: Email
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 3
@@ -283,13 +357,17 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:email:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'USF Retired Computers Application Confirmation'
       body: 'Thank you for your application for USF retired computers. The Retired Computer Allocation Committee will begin reviewing applications at the end of January and notifications will be sent out in early February. Should you have any questions regarding your application, please feel free to send an email to&nbsp;<a data-auth="NotApplicable" href="mailto:uitcchair@usfca.edu" id="LPlnk145173" rel="noopener noreferrer" target="_blank">uitcchair@usfca.edu</a>.'
       excluded_elements: {  }
@@ -300,11 +378,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

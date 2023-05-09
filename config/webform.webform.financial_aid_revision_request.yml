@@ -2,9 +2,9 @@ uuid: 42e337d1-c01e-4194-9294-635b3f3bc202
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 49490
 template: false
 archive: false
@@ -12,7 +12,412 @@ id: financial_aid_revision_request
 title: 'Financial Aid Revision Request'
 description: 'Financial Aid enrollment/ DL revision request form.'
 category: 'Financial Aid'
-elements: "enrollment_update_request:\n  '#type': webform_wizard_page\n  '#title': 'Student Information'\n  usf_student_id_number:\n    '#type': number\n    '#title': 'USF Student ID Number'\n    '#placeholder': 'Student ID #'\n    '#required': true\n    '#min': 10000000\n    '#max': 99999999\n  first_and_last_name:\n    '#type': webform_name\n    '#title': 'First and Last Name'\n    '#required': true\n    '#title__access': false\n    '#first__required': true\n    '#last__required': true\n    '#suffix__access': false\n    '#degree__access': false\n  select_the_aid_year_you_are_requesting_an_adjustment_for:\n    '#type': select\n    '#title': 'Select the aid year you are submitting the revision request for:     '\n    '#options':\n      '2021-2022 (for fall 2021, spring 2022, summer 2022)': '2021-2022 (for fall 2021, spring 2022, summer 2022)'\n    '#required': true\n    '#required_error': 'Please select an aid year you are submitting the request for.'\n  i_have_a_change_in_enrollment_and_request_for_my_cost_of_attenda:\n    '#type': checkbox\n    '#title': 'Enrollment Update Request'\n    '#description': 'Select this option if you have a change in enrollment or to report&nbsp;your enrollment to the Office of Financial Aid if your tuition and fees cost is higher than the standard tuition and fees in your estimated cost of attendance (COA).'\n    '#states':\n      optional:\n        ':input[name=\"federal_direct_loan_adjustments\"]':\n          checked: true\n      required:\n        ':input[name=\"federal_direct_loan_adjustments\"]':\n          unchecked: true\n  federal_direct_loan_adjustments:\n    '#type': checkbox\n    '#title': 'Federal Direct Loan Adjustments'\n    '#description': 'Select this option if you request to increase, decrease, or cancel my Federal Direct Loans. You will need to also select this option if you are requesting or requested a cost of attendance adjustment. Financial Aid will not assume additional loan acceptance. Please review the&nbsp;<a href=\"https://myusf.usfca.edu/financial-aid/loans/federal-direct-loan-limits\" target=\"_blank\">annual and aggregate loan limits</a> as limits apply.'\n    '#states':\n      optional:\n        ':input[name=\"i_have_a_change_in_enrollment_and_request_for_my_cost_of_attenda\"]':\n          checked: true\n      required:\n        ':input[name=\"i_have_a_change_in_enrollment_and_request_for_my_cost_of_attenda\"]':\n          unchecked: true\ni_have_a_change_in_enrollment:\n  '#type': webform_wizard_page\n  '#title': 'I Have a Change in Enrollment'\n  '#states':\n    visible:\n      ':input[name=\"i_have_a_change_in_enrollment_and_request_for_my_cost_of_attenda\"]':\n        checked: true\n  fall_2019_units:\n    '#type': number\n    '#title': 'Fall Units'\n    '#help': 'Please enter the number of units you are enrolled or anticipate to enroll in for the fall semseter. Do not leave blank.'\n    '#required': true\n  winter_intersession_2020_units:\n    '#type': number\n    '#title': 'Winter Intersession Units'\n    '#help': 'Please enter the number of units you are enrolled or anticipate to enroll in for the winter intersession. Do not leave blank.'\n  spring_2020_units:\n    '#type': number\n    '#title': 'Spring Units'\n    '#help': 'Please enter the number of units you are enrolled or anticipate to enroll in for the spring semseter. Do not leave blank.'\n    '#required': true\n  summer_2020_units:\n    '#type': number\n    '#title': 'Summer Units'\n    '#description': \"<strong>Note:&nbsp;</strong>Summer aid is automatically awarded when students enroll in summer classes.&nbsp;<strong>Use this form to report summer units&nbsp;only if&nbsp;the following applies.&nbsp;</strong>Form will not be processed for summer enrollment if they do not apply.&nbsp;<br />\\r\\n<br />\\r\\n1. If you are enrolled or going to enroll in the same number of units between your fall, spring, and summer semesters. For example, 8 units fall, 8 units spring, and 8 units summer.&nbsp;<strong>or</strong><br />\\r\\n2. You are currently enrolled in summer classes.&nbsp;<br />\\r\\n&nbsp;\"\n    '#help': 'Please enter the number of units you are enrolled or anticipate to enroll in for the Summer semseter.&nbsp;'\n    '#description_display': before\n  per_unit_tuition_rate2:\n    '#type': number\n    '#title': 'Per unit tuition rate'\n    '#description': 'Enter this amount if your program is charged a per unit rate. Please refer to&nbsp;<a href=\"https://myusf.usfca.edu/billing-tuition/tuition-fees-2019-2020\">USF Tuition and Fees Schedule</a>. If your program is not charged per unit, <strong>leave this blank</strong>.'\n    '#help': 'Please refer to <a href=\"https://myusf.usfca.edu/billing-tuition/tuition-fees-2019-2020\">USF Tuition and Fees Schedule</a>&nbsp;if your program is charged a per unit rate.&nbsp;'\n    '#field_prefix': $\n  flat_rate_tuition_rate2:\n    '#type': number\n    '#title': 'Flat rate tuition rate'\n    '#description': 'Enter this amount if your program is charged a flat rate. Examples of programs charged a flat rate: Executive MBA, Executive DNP, Full-time JD, and Full-time LLM. Please refer to&nbsp;<a href=\"https://myusf.usfca.edu/billing-tuition/tuition-fees-2019-2020\">USF Tuition and Fees Schedule</a>. If your program is not charged a flat rate, <strong>leave this blank</strong>.'\n    '#help': 'Please refer to <a href=\"https://myusf.usfca.edu/billing-tuition/tuition-fees-2019-2020\">USF Tuition and Fees Schedule</a>&nbsp;if your program is charged a flat rate tuition rate.'\n    '#field_prefix': $\n    '#autocomplete': 'off'\n  flexbox:\n    '#type': webform_flexbox\n    '#align_items': center\n    semester:\n      '#type': select\n      '#title': 'Expected Graduate Term'\n      '#options':\n        Fall: Fall\n        Spring: Spring\n        Summer: Summer\n      '#empty_option': Semester\n      '#required': true\n      '#flex': 0\n    year:\n      '#type': datelist\n      '#title': Year\n      '#title_display': invisible\n      '#required': true\n      '#date_part_order':\n        - year\n      '#date_year_range': '2019:+5'\n  reduction_aid_message:\n    '#type': checkbox\n    '#title': 'I understand that a change in enrollment may result in a reduction to financial aid.'\n    '#title_display': inline\n    '#required': true\n  i_request_to_adjust_my_federal_direct_loans_based_on_my_enrollme:\n    '#type': checkbox\n    '#title': 'I request to adjust my Federal Direct Loans based on my enrollment'\n    '#description': 'Select this option if you are requesting an adjustment to Federal Direct Loans. Financial Aid will not assume additional loan acceptance. Please review the&nbsp;<a href=\"https://myusf.usfca.edu/financial-aid/loans/federal-direct-loan-limits\" target=\"_blank\">annual and aggregate loan limits</a> as limits apply.'\n    '#title_display': inline\nfederal_direct_loans_adjustment:\n  '#type': webform_wizard_page\n  '#title': 'Federal Direct Loans Adjustment'\n  '#states':\n    visible:\n      -\n        ':input[name=\"federal_direct_loan_adjustments\"]':\n          checked: true\n      - or\n      -\n        ':input[name=\"i_request_to_adjust_my_federal_direct_loans_based_on_my_enrollme\"]':\n          checked: true\n  increase_federal_direct_loans:\n    '#type': checkbox\n    '#title': 'Increase Federal Direct Loans'\n    '#description': 'I request to increase my Federal Direct Loan amounts'\n    '#description_display': invisible\n  federal_direct_subsidized_loan:\n    '#type': number\n    '#title': 'Increase Federal Direct Subsidized Loan for Fall 2021 by'\n    '#description': '<h4>Increase Federal Direct Subsidized Loan to&nbsp;$</h4>'\n    '#title_display': inline\n    '#description_display': invisible\n    '#size': '1'\n    '#placeholder': 'Enter Dollar Amount'\n    '#autocomplete': 'off'\n    '#states':\n      visible-slide:\n        ':input[name=\"increase_federal_direct_loans\"]':\n          checked: true\n  increase_federal_direct_subsidized_loan_for_spring_by:\n    '#type': number\n    '#title': 'Increase Federal Direct Subsidized Loan for Spring 2022 by'\n    '#description': '<h4>Increase Federal Direct Subsidized Loan to&nbsp;$</h4>'\n    '#title_display': inline\n    '#description_display': invisible\n    '#size': '1'\n    '#placeholder': 'Enter Dollar Amount'\n    '#autocomplete': 'off'\n    '#states':\n      visible-slide:\n        ':input[name=\"increase_federal_direct_loans\"]':\n          checked: true\n  increase_federal_direct_unsubsidized_loan:\n    '#type': number\n    '#title': 'Increase Federal Direct Unsubsidized Loan for Fall 2021 by'\n    '#description': '<h4>Increase Federal Direct Unsubsidized Loan to $</h4>'\n    '#title_display': inline\n    '#description_display': invisible\n    '#size': '5'\n    '#placeholder': 'Enter Dollar Amount'\n    '#autocomplete': 'off'\n    '#states':\n      visible-slide:\n        ':input[name=\"increase_federal_direct_loans\"]':\n          checked: true\n  increase_federal_direct_unsubsidized_loan_for_spring_by:\n    '#type': number\n    '#title': 'Increase Federal Direct Unsubsidized Loan for Spring 2022 by'\n    '#description': '<h4>Increase Federal Direct Unsubsidized Loan to $</h4>'\n    '#title_display': inline\n    '#description_display': invisible\n    '#size': '5'\n    '#placeholder': 'Enter Dollar Amount'\n    '#autocomplete': 'off'\n    '#states':\n      visible-slide:\n        ':input[name=\"increase_federal_direct_loans\"]':\n          checked: true\n  increase_federal_direct_graduate_plus_loan_by_:\n    '#type': number\n    '#title': 'Increase Federal Direct Graduate PLUS Loan for Fall 2021 by'\n    '#description': '<h4>Increase Federal Direct Graduate PLUS Loan&nbsp;by $</h4>'\n    '#title_display': inline\n    '#description_display': invisible\n    '#size': '5'\n    '#placeholder': 'Enter Dollar Amount'\n    '#autocomplete': 'off'\n    '#states':\n      visible-slide:\n        ':input[name=\"increase_federal_direct_loans\"]':\n          checked: true\n  increase_federal_direct_graduate_plus_loan_for_spring_by:\n    '#type': number\n    '#title': 'Increase Federal Direct Graduate PLUS Loan for Spring 2022 by'\n    '#description': '<h4>Increase Federal Direct Graduate PLUS Loan&nbsp;by $</h4>'\n    '#title_display': inline\n    '#description_display': invisible\n    '#size': '5'\n    '#placeholder': 'Enter Dollar Amount'\n    '#autocomplete': 'off'\n    '#states':\n      visible-slide:\n        ':input[name=\"increase_federal_direct_loans\"]':\n          checked: true\n  decrease_federal_direct_loans:\n    '#type': checkbox\n    '#title': 'Decrease Federal Direct Loans'\n    '#description': 'I request to decrease my Federal Direct Loan amounts'\n    '#description_display': invisible\n  decrease_federal_direct_subsidized_loan_to:\n    '#type': number\n    '#title': 'Decrease Federal Direct Subsidized Loan for Fall 2021 to'\n    '#description': '<h4>Decrease Federal Direct Subsidized Loan to $</h4>'\n    '#title_display': inline\n    '#description_display': invisible\n    '#size': '5'\n    '#placeholder': 'Enter Dollar Amount'\n    '#autocomplete': 'off'\n    '#states':\n      visible-slide:\n        ':input[name=\"decrease_federal_direct_loans\"]':\n          checked: true\n  decrease_federal_direct_subsidized_loan_for_spring_2021_to:\n    '#type': number\n    '#title': 'Decrease Federal Direct Subsidized Loan for Spring 2022 to'\n    '#description': '<h4>Decrease Federal Direct Subsidized Loan to $</h4>'\n    '#title_display': inline\n    '#description_display': invisible\n    '#size': '5'\n    '#placeholder': 'Enter Dollar Amount'\n    '#autocomplete': 'off'\n    '#states':\n      visible-slide:\n        ':input[name=\"decrease_federal_direct_loans\"]':\n          checked: true\n  decrease_federal_direct_unsubsidized_loan_to:\n    '#type': number\n    '#title': 'Decrease Federal Direct Unsubsidized Loan for Fall 2021 to'\n    '#description': '<h4>Decrease Federal Direct Unsubsidized Loan to $</h4>'\n    '#title_display': inline\n    '#description_display': invisible\n    '#placeholder': 'Enter Dollar Amount'\n    '#autocomplete': 'off'\n    '#states':\n      visible-slide:\n        ':input[name=\"decrease_federal_direct_loans\"]':\n          checked: true\n  decrease_federal_direct_unsubsidized_loan_for_spring_2021_to:\n    '#type': number\n    '#title': 'Decrease Federal Direct Unsubsidized Loan for Spring 2022 to'\n    '#description': '<h4>Decrease Federal Direct Unsubsidized Loan to $</h4>'\n    '#title_display': inline\n    '#description_display': invisible\n    '#placeholder': 'Enter Dollar Amount'\n    '#autocomplete': 'off'\n    '#states':\n      visible-slide:\n        ':input[name=\"decrease_federal_direct_loans\"]':\n          checked: true\n  decrease_federal_direct_graduate_plus_loan_to:\n    '#type': number\n    '#title': 'Decrease Federal Direct Graduate PLUS Loan for Fall 2021 to'\n    '#description': '<h4>Decrease Federal Direct Graduate PLUS&nbsp;Loan to $</h4>'\n    '#title_display': inline\n    '#description_display': invisible\n    '#placeholder': 'Enter Dollar Amount'\n    '#autocomplete': 'off'\n    '#states':\n      visible-slide:\n        ':input[name=\"decrease_federal_direct_loans\"]':\n          checked: true\n  decrease_federal_direct_graduate_plus_loan_for_spring_2021_to:\n    '#type': number\n    '#title': 'Decrease Federal Direct Graduate PLUS Loan for Spring 2022 to'\n    '#description': '<h4>Decrease Federal Direct Graduate PLUS&nbsp;Loan to $</h4>'\n    '#title_display': inline\n    '#description_display': invisible\n    '#placeholder': 'Enter Dollar Amount'\n    '#autocomplete': 'off'\n    '#states':\n      visible-slide:\n        ':input[name=\"decrease_federal_direct_loans\"]':\n          checked: true\n  please_cancel_all_undisbursed_federal_direct_loans:\n    '#type': checkbox\n    '#title': 'Cancel  Undisbursed Federal Direct Loans'\n  federal_direct_subsidized_loan2:\n    '#type': checkbox\n    '#title': 'Cancel Federal Direct Subsidized Loan for Fall 2021'\n    '#states':\n      visible:\n        ':input[name=\"please_cancel_all_undisbursed_federal_direct_loans\"]':\n          checked: true\n      required:\n        ':input[name=\"please_cancel_all_undisbursed_federal_direct_loans\"]':\n          checked: true\n        ':input[name=\"federal_direct_unsubsidized_loan\"]':\n          unchecked: true\n        ':input[name=\"federal_direct_graduate_plus_loan\"]':\n          unchecked: true\n  cancel_federal_direct_subsidized_loan_for_spring_2021:\n    '#type': checkbox\n    '#title': 'Cancel Federal Direct Subsidized Loan for Spring 2022'\n    '#states':\n      visible:\n        ':input[name=\"please_cancel_all_undisbursed_federal_direct_loans\"]':\n          checked: true\n      required:\n        ':input[name=\"please_cancel_all_undisbursed_federal_direct_loans\"]':\n          checked: true\n        ':input[name=\"federal_direct_unsubsidized_loan\"]':\n          unchecked: true\n        ':input[name=\"federal_direct_graduate_plus_loan\"]':\n          unchecked: true\n  federal_direct_unsubsidized_loan:\n    '#type': checkbox\n    '#title': 'Cancel Federal Direct Unsubsidized Loan for Fall 2021'\n    '#title_display': inline\n    '#description_display': invisible\n    '#states':\n      visible:\n        ':input[name=\"please_cancel_all_undisbursed_federal_direct_loans\"]':\n          checked: true\n      required:\n        ':input[name=\"please_cancel_all_undisbursed_federal_direct_loans\"]':\n          checked: true\n        ':input[name=\"federal_direct_subsidized_loan2\"]':\n          unchecked: true\n        ':input[name=\"federal_direct_graduate_plus_loan\"]':\n          unchecked: true\n  cancel_federal_direct_unsubsidized_loan_for_spring_2021:\n    '#type': checkbox\n    '#title': 'Cancel Federal Direct Unsubsidized Loan for Spring 2022'\n    '#states':\n      visible:\n        ':input[name=\"please_cancel_all_undisbursed_federal_direct_loans\"]':\n          checked: true\n      required:\n        ':input[name=\"please_cancel_all_undisbursed_federal_direct_loans\"]':\n          checked: true\n        ':input[name=\"federal_direct_subsidized_loan2\"]':\n          unchecked: true\n        ':input[name=\"federal_direct_graduate_plus_loan\"]':\n          unchecked: true\n  federal_direct_graduate_plus_loan:\n    '#type': checkbox\n    '#title': 'Cancel Federal Direct Graduate PLUS Loan for Fall 2021'\n    '#states':\n      visible:\n        ':input[name=\"please_cancel_all_undisbursed_federal_direct_loans\"]':\n          checked: true\n      required:\n        ':input[name=\"please_cancel_all_undisbursed_federal_direct_loans\"]':\n          checked: true\n        ':input[name=\"federal_direct_subsidized_loan2\"]':\n          unchecked: true\n        ':input[name=\"federal_direct_unsubsidized_loan\"]':\n          unchecked: true\n  cancel_federal_direct_graduate_plus_loan_for_spring_2021:\n    '#type': checkbox\n    '#title': 'Cancel Federal Direct Graduate PLUS Loan for Spring 2022'\n    '#states':\n      visible:\n        ':input[name=\"please_cancel_all_undisbursed_federal_direct_loans\"]':\n          checked: true\n      required:\n        ':input[name=\"please_cancel_all_undisbursed_federal_direct_loans\"]':\n          checked: true\n        ':input[name=\"federal_direct_subsidized_loan2\"]':\n          unchecked: true\n        ':input[name=\"federal_direct_unsubsidized_loan\"]':\n          unchecked: true\nagreement:\n  '#type': webform_wizard_page\n  '#title': Agreement\n  terms_and_conditions:\n    '#type': checkbox\n    '#title': 'Terms and Conditions'\n    '#description': \"By submitting this form, I authorize the Office of Financial Aid to make the adjustments submitted on this request form. I agree to notify the Office of Financial Aid with any change in enrollment prior to USF&#39;s semseter <a href=\\\"https://myusf.usfca.edu/registration/academic-calendar\\\" target=\\\"_blank\\\">census date</a>. The Financial Aid Office will review enrollment prior to disbursement date which may result in a adjustment of financial aid if units do not match.&nbsp;<br />\\r\\n<br />\\r\\n<a href=\\\"https://myusf.usfca.edu/registration/academic-calendar\\\" target=\\\"_blank\\\">Semeseter Census Date</a><br />\\r\\n<a href=\\\"https://myusf.usfca.edu/financial-aid/policies\\\" target=\\\"_blank\\\">Financial Aid Disbursement Date</a><br />\\r\\n<a href=\\\"https://myusf.usfca.edu/financial-aid\\\" target=\\\"_blank\\\">Office of Financial Aid</a><br />\\r\\n<br />\\r\\nEmail: <a href=\\\"mailto:Financialaid@usfca.edu?subject=FA%20Revision%20Request%20Webform\\\">Financialaid@usfca.edu</a><br />\\r\\nPhone: (415) 422-3387\"\n    '#title_display': ''\n    '#prepopulate': true\n    '#required': true\n  flexbox_01:\n    '#type': webform_flexbox\n    signature2:\n      '#type': webform_signature\n      '#title': Signature\n      '#required': true\n    date_signed:\n      '#type': date\n      '#title': Date\n      '#prepopulate': true\n      '#required': true\n      '#date_date_min': today\n      '#date_date_max': today\n"
+elements: |
+  enrollment_update_request:
+    '#type': webform_wizard_page
+    '#title': 'Student Information'
+    usf_student_id_number:
+      '#type': number
+      '#title': 'USF Student ID Number'
+      '#placeholder': 'Student ID #'
+      '#required': true
+      '#min': 10000000
+      '#max': 99999999
+    first_and_last_name:
+      '#type': webform_name
+      '#title': 'First and Last Name'
+      '#required': true
+      '#title__access': false
+      '#first__required': true
+      '#last__required': true
+      '#suffix__access': false
+      '#degree__access': false
+    select_the_aid_year_you_are_requesting_an_adjustment_for:
+      '#type': select
+      '#title': 'Select the aid year you are submitting the revision request for:     '
+      '#options':
+        '2021-2022 (for fall 2021, spring 2022, summer 2022)': '2021-2022 (for fall 2021, spring 2022, summer 2022)'
+      '#required': true
+      '#required_error': 'Please select an aid year you are submitting the request for.'
+    i_have_a_change_in_enrollment_and_request_for_my_cost_of_attenda:
+      '#type': checkbox
+      '#title': 'Enrollment Update Request'
+      '#description': 'Select this option if you have a change in enrollment or to report&nbsp;your enrollment to the Office of Financial Aid if your tuition and fees cost is higher than the standard tuition and fees in your estimated cost of attendance (COA).'
+      '#states':
+        optional:
+          ':input[name="federal_direct_loan_adjustments"]':
+            checked: true
+        required:
+          ':input[name="federal_direct_loan_adjustments"]':
+            unchecked: true
+    federal_direct_loan_adjustments:
+      '#type': checkbox
+      '#title': 'Federal Direct Loan Adjustments'
+      '#description': 'Select this option if you request to increase, decrease, or cancel my Federal Direct Loans. You will need to also select this option if you are requesting or requested a cost of attendance adjustment. Financial Aid will not assume additional loan acceptance. Please review the&nbsp;<a href="https://myusf.usfca.edu/financial-aid/loans/federal-direct-loan-limits" target="_blank">annual and aggregate loan limits</a> as limits apply.'
+      '#states':
+        optional:
+          ':input[name="i_have_a_change_in_enrollment_and_request_for_my_cost_of_attenda"]':
+            checked: true
+        required:
+          ':input[name="i_have_a_change_in_enrollment_and_request_for_my_cost_of_attenda"]':
+            unchecked: true
+  i_have_a_change_in_enrollment:
+    '#type': webform_wizard_page
+    '#title': 'I Have a Change in Enrollment'
+    '#states':
+      visible:
+        ':input[name="i_have_a_change_in_enrollment_and_request_for_my_cost_of_attenda"]':
+          checked: true
+    fall_2019_units:
+      '#type': number
+      '#title': 'Fall Units'
+      '#help': 'Please enter the number of units you are enrolled or anticipate to enroll in for the fall semseter. Do not leave blank.'
+      '#required': true
+    winter_intersession_2020_units:
+      '#type': number
+      '#title': 'Winter Intersession Units'
+      '#help': 'Please enter the number of units you are enrolled or anticipate to enroll in for the winter intersession. Do not leave blank.'
+    spring_2020_units:
+      '#type': number
+      '#title': 'Spring Units'
+      '#help': 'Please enter the number of units you are enrolled or anticipate to enroll in for the spring semseter. Do not leave blank.'
+      '#required': true
+    summer_2020_units:
+      '#type': number
+      '#title': 'Summer Units'
+      '#description': "<strong>Note:&nbsp;</strong>Summer aid is automatically awarded when students enroll in summer classes.&nbsp;<strong>Use this form to report summer units&nbsp;only if&nbsp;the following applies.&nbsp;</strong>Form will not be processed for summer enrollment if they do not apply.&nbsp;<br />\r\n<br />\r\n1. If you are enrolled or going to enroll in the same number of units between your fall, spring, and summer semesters. For example, 8 units fall, 8 units spring, and 8 units summer.&nbsp;<strong>or</strong><br />\r\n2. You are currently enrolled in summer classes.&nbsp;<br />\r\n&nbsp;"
+      '#help': 'Please enter the number of units you are enrolled or anticipate to enroll in for the Summer semseter.&nbsp;'
+      '#description_display': before
+    per_unit_tuition_rate2:
+      '#type': number
+      '#title': 'Per unit tuition rate'
+      '#description': 'Enter this amount if your program is charged a per unit rate. Please refer to&nbsp;<a href="https://myusf.usfca.edu/billing-tuition/tuition-fees-2019-2020">USF Tuition and Fees Schedule</a>. If your program is not charged per unit, <strong>leave this blank</strong>.'
+      '#help': 'Please refer to <a href="https://myusf.usfca.edu/billing-tuition/tuition-fees-2019-2020">USF Tuition and Fees Schedule</a>&nbsp;if your program is charged a per unit rate.&nbsp;'
+      '#field_prefix': $
+    flat_rate_tuition_rate2:
+      '#type': number
+      '#title': 'Flat rate tuition rate'
+      '#description': 'Enter this amount if your program is charged a flat rate. Examples of programs charged a flat rate: Executive MBA, Executive DNP, Full-time JD, and Full-time LLM. Please refer to&nbsp;<a href="https://myusf.usfca.edu/billing-tuition/tuition-fees-2019-2020">USF Tuition and Fees Schedule</a>. If your program is not charged a flat rate, <strong>leave this blank</strong>.'
+      '#help': 'Please refer to <a href="https://myusf.usfca.edu/billing-tuition/tuition-fees-2019-2020">USF Tuition and Fees Schedule</a>&nbsp;if your program is charged a flat rate tuition rate.'
+      '#field_prefix': $
+      '#autocomplete': 'off'
+    flexbox:
+      '#type': webform_flexbox
+      '#align_items': center
+      semester:
+        '#type': select
+        '#title': 'Expected Graduate Term'
+        '#options':
+          Fall: Fall
+          Spring: Spring
+          Summer: Summer
+        '#empty_option': Semester
+        '#required': true
+        '#flex': 0
+      year:
+        '#type': datelist
+        '#title': Year
+        '#title_display': invisible
+        '#required': true
+        '#date_part_order':
+          - year
+        '#date_year_range': '2019:+5'
+    reduction_aid_message:
+      '#type': checkbox
+      '#title': 'I understand that a change in enrollment may result in a reduction to financial aid.'
+      '#title_display': inline
+      '#required': true
+    i_request_to_adjust_my_federal_direct_loans_based_on_my_enrollme:
+      '#type': checkbox
+      '#title': 'I request to adjust my Federal Direct Loans based on my enrollment'
+      '#description': 'Select this option if you are requesting an adjustment to Federal Direct Loans. Financial Aid will not assume additional loan acceptance. Please review the&nbsp;<a href="https://myusf.usfca.edu/financial-aid/loans/federal-direct-loan-limits" target="_blank">annual and aggregate loan limits</a> as limits apply.'
+      '#title_display': inline
+  federal_direct_loans_adjustment:
+    '#type': webform_wizard_page
+    '#title': 'Federal Direct Loans Adjustment'
+    '#states':
+      visible:
+        -
+          ':input[name="federal_direct_loan_adjustments"]':
+            checked: true
+        - or
+        -
+          ':input[name="i_request_to_adjust_my_federal_direct_loans_based_on_my_enrollme"]':
+            checked: true
+    increase_federal_direct_loans:
+      '#type': checkbox
+      '#title': 'Increase Federal Direct Loans'
+      '#description': 'I request to increase my Federal Direct Loan amounts'
+      '#description_display': invisible
+    federal_direct_subsidized_loan:
+      '#type': number
+      '#title': 'Increase Federal Direct Subsidized Loan for Fall 2021 by'
+      '#description': '<h4>Increase Federal Direct Subsidized Loan to&nbsp;$</h4>'
+      '#title_display': inline
+      '#description_display': invisible
+      '#size': '1'
+      '#placeholder': 'Enter Dollar Amount'
+      '#autocomplete': 'off'
+      '#states':
+        visible-slide:
+          ':input[name="increase_federal_direct_loans"]':
+            checked: true
+    increase_federal_direct_subsidized_loan_for_spring_by:
+      '#type': number
+      '#title': 'Increase Federal Direct Subsidized Loan for Spring 2022 by'
+      '#description': '<h4>Increase Federal Direct Subsidized Loan to&nbsp;$</h4>'
+      '#title_display': inline
+      '#description_display': invisible
+      '#size': '1'
+      '#placeholder': 'Enter Dollar Amount'
+      '#autocomplete': 'off'
+      '#states':
+        visible-slide:
+          ':input[name="increase_federal_direct_loans"]':
+            checked: true
+    increase_federal_direct_unsubsidized_loan:
+      '#type': number
+      '#title': 'Increase Federal Direct Unsubsidized Loan for Fall 2021 by'
+      '#description': '<h4>Increase Federal Direct Unsubsidized Loan to $</h4>'
+      '#title_display': inline
+      '#description_display': invisible
+      '#size': '5'
+      '#placeholder': 'Enter Dollar Amount'
+      '#autocomplete': 'off'
+      '#states':
+        visible-slide:
+          ':input[name="increase_federal_direct_loans"]':
+            checked: true
+    increase_federal_direct_unsubsidized_loan_for_spring_by:
+      '#type': number
+      '#title': 'Increase Federal Direct Unsubsidized Loan for Spring 2022 by'
+      '#description': '<h4>Increase Federal Direct Unsubsidized Loan to $</h4>'
+      '#title_display': inline
+      '#description_display': invisible
+      '#size': '5'
+      '#placeholder': 'Enter Dollar Amount'
+      '#autocomplete': 'off'
+      '#states':
+        visible-slide:
+          ':input[name="increase_federal_direct_loans"]':
+            checked: true
+    increase_federal_direct_graduate_plus_loan_by_:
+      '#type': number
+      '#title': 'Increase Federal Direct Graduate PLUS Loan for Fall 2021 by'
+      '#description': '<h4>Increase Federal Direct Graduate PLUS Loan&nbsp;by $</h4>'
+      '#title_display': inline
+      '#description_display': invisible
+      '#size': '5'
+      '#placeholder': 'Enter Dollar Amount'
+      '#autocomplete': 'off'
+      '#states':
+        visible-slide:
+          ':input[name="increase_federal_direct_loans"]':
+            checked: true
+    increase_federal_direct_graduate_plus_loan_for_spring_by:
+      '#type': number
+      '#title': 'Increase Federal Direct Graduate PLUS Loan for Spring 2022 by'
+      '#description': '<h4>Increase Federal Direct Graduate PLUS Loan&nbsp;by $</h4>'
+      '#title_display': inline
+      '#description_display': invisible
+      '#size': '5'
+      '#placeholder': 'Enter Dollar Amount'
+      '#autocomplete': 'off'
+      '#states':
+        visible-slide:
+          ':input[name="increase_federal_direct_loans"]':
+            checked: true
+    decrease_federal_direct_loans:
+      '#type': checkbox
+      '#title': 'Decrease Federal Direct Loans'
+      '#description': 'I request to decrease my Federal Direct Loan amounts'
+      '#description_display': invisible
+    decrease_federal_direct_subsidized_loan_to:
+      '#type': number
+      '#title': 'Decrease Federal Direct Subsidized Loan for Fall 2021 to'
+      '#description': '<h4>Decrease Federal Direct Subsidized Loan to $</h4>'
+      '#title_display': inline
+      '#description_display': invisible
+      '#size': '5'
+      '#placeholder': 'Enter Dollar Amount'
+      '#autocomplete': 'off'
+      '#states':
+        visible-slide:
+          ':input[name="decrease_federal_direct_loans"]':
+            checked: true
+    decrease_federal_direct_subsidized_loan_for_spring_2021_to:
+      '#type': number
+      '#title': 'Decrease Federal Direct Subsidized Loan for Spring 2022 to'
+      '#description': '<h4>Decrease Federal Direct Subsidized Loan to $</h4>'
+      '#title_display': inline
+      '#description_display': invisible
+      '#size': '5'
+      '#placeholder': 'Enter Dollar Amount'
+      '#autocomplete': 'off'
+      '#states':
+        visible-slide:
+          ':input[name="decrease_federal_direct_loans"]':
+            checked: true
+    decrease_federal_direct_unsubsidized_loan_to:
+      '#type': number
+      '#title': 'Decrease Federal Direct Unsubsidized Loan for Fall 2021 to'
+      '#description': '<h4>Decrease Federal Direct Unsubsidized Loan to $</h4>'
+      '#title_display': inline
+      '#description_display': invisible
+      '#placeholder': 'Enter Dollar Amount'
+      '#autocomplete': 'off'
+      '#states':
+        visible-slide:
+          ':input[name="decrease_federal_direct_loans"]':
+            checked: true
+    decrease_federal_direct_unsubsidized_loan_for_spring_2021_to:
+      '#type': number
+      '#title': 'Decrease Federal Direct Unsubsidized Loan for Spring 2022 to'
+      '#description': '<h4>Decrease Federal Direct Unsubsidized Loan to $</h4>'
+      '#title_display': inline
+      '#description_display': invisible
+      '#placeholder': 'Enter Dollar Amount'
+      '#autocomplete': 'off'
+      '#states':
+        visible-slide:
+          ':input[name="decrease_federal_direct_loans"]':
+            checked: true
+    decrease_federal_direct_graduate_plus_loan_to:
+      '#type': number
+      '#title': 'Decrease Federal Direct Graduate PLUS Loan for Fall 2021 to'
+      '#description': '<h4>Decrease Federal Direct Graduate PLUS&nbsp;Loan to $</h4>'
+      '#title_display': inline
+      '#description_display': invisible
+      '#placeholder': 'Enter Dollar Amount'
+      '#autocomplete': 'off'
+      '#states':
+        visible-slide:
+          ':input[name="decrease_federal_direct_loans"]':
+            checked: true
+    decrease_federal_direct_graduate_plus_loan_for_spring_2021_to:
+      '#type': number
+      '#title': 'Decrease Federal Direct Graduate PLUS Loan for Spring 2022 to'
+      '#description': '<h4>Decrease Federal Direct Graduate PLUS&nbsp;Loan to $</h4>'
+      '#title_display': inline
+      '#description_display': invisible
+      '#placeholder': 'Enter Dollar Amount'
+      '#autocomplete': 'off'
+      '#states':
+        visible-slide:
+          ':input[name="decrease_federal_direct_loans"]':
+            checked: true
+    please_cancel_all_undisbursed_federal_direct_loans:
+      '#type': checkbox
+      '#title': 'Cancel  Undisbursed Federal Direct Loans'
+    federal_direct_subsidized_loan2:
+      '#type': checkbox
+      '#title': 'Cancel Federal Direct Subsidized Loan for Fall 2021'
+      '#states':
+        visible:
+          ':input[name="please_cancel_all_undisbursed_federal_direct_loans"]':
+            checked: true
+        required:
+          ':input[name="please_cancel_all_undisbursed_federal_direct_loans"]':
+            checked: true
+          ':input[name="federal_direct_unsubsidized_loan"]':
+            unchecked: true
+          ':input[name="federal_direct_graduate_plus_loan"]':
+            unchecked: true
+    cancel_federal_direct_subsidized_loan_for_spring_2021:
+      '#type': checkbox
+      '#title': 'Cancel Federal Direct Subsidized Loan for Spring 2022'
+      '#states':
+        visible:
+          ':input[name="please_cancel_all_undisbursed_federal_direct_loans"]':
+            checked: true
+        required:
+          ':input[name="please_cancel_all_undisbursed_federal_direct_loans"]':
+            checked: true
+          ':input[name="federal_direct_unsubsidized_loan"]':
+            unchecked: true
+          ':input[name="federal_direct_graduate_plus_loan"]':
+            unchecked: true
+    federal_direct_unsubsidized_loan:
+      '#type': checkbox
+      '#title': 'Cancel Federal Direct Unsubsidized Loan for Fall 2021'
+      '#title_display': inline
+      '#description_display': invisible
+      '#states':
+        visible:
+          ':input[name="please_cancel_all_undisbursed_federal_direct_loans"]':
+            checked: true
+        required:
+          ':input[name="please_cancel_all_undisbursed_federal_direct_loans"]':
+            checked: true
+          ':input[name="federal_direct_subsidized_loan2"]':
+            unchecked: true
+          ':input[name="federal_direct_graduate_plus_loan"]':
+            unchecked: true
+    cancel_federal_direct_unsubsidized_loan_for_spring_2021:
+      '#type': checkbox
+      '#title': 'Cancel Federal Direct Unsubsidized Loan for Spring 2022'
+      '#states':
+        visible:
+          ':input[name="please_cancel_all_undisbursed_federal_direct_loans"]':
+            checked: true
+        required:
+          ':input[name="please_cancel_all_undisbursed_federal_direct_loans"]':
+            checked: true
+          ':input[name="federal_direct_subsidized_loan2"]':
+            unchecked: true
+          ':input[name="federal_direct_graduate_plus_loan"]':
+            unchecked: true
+    federal_direct_graduate_plus_loan:
+      '#type': checkbox
+      '#title': 'Cancel Federal Direct Graduate PLUS Loan for Fall 2021'
+      '#states':
+        visible:
+          ':input[name="please_cancel_all_undisbursed_federal_direct_loans"]':
+            checked: true
+        required:
+          ':input[name="please_cancel_all_undisbursed_federal_direct_loans"]':
+            checked: true
+          ':input[name="federal_direct_subsidized_loan2"]':
+            unchecked: true
+          ':input[name="federal_direct_unsubsidized_loan"]':
+            unchecked: true
+    cancel_federal_direct_graduate_plus_loan_for_spring_2021:
+      '#type': checkbox
+      '#title': 'Cancel Federal Direct Graduate PLUS Loan for Spring 2022'
+      '#states':
+        visible:
+          ':input[name="please_cancel_all_undisbursed_federal_direct_loans"]':
+            checked: true
+        required:
+          ':input[name="please_cancel_all_undisbursed_federal_direct_loans"]':
+            checked: true
+          ':input[name="federal_direct_subsidized_loan2"]':
+            unchecked: true
+          ':input[name="federal_direct_unsubsidized_loan"]':
+            unchecked: true
+  agreement:
+    '#type': webform_wizard_page
+    '#title': Agreement
+    terms_and_conditions:
+      '#type': checkbox
+      '#title': 'Terms and Conditions'
+      '#description': "By submitting this form, I authorize the Office of Financial Aid to make the adjustments submitted on this request form. I agree to notify the Office of Financial Aid with any change in enrollment prior to USF&#39;s semseter <a href=\"https://myusf.usfca.edu/registration/academic-calendar\" target=\"_blank\">census date</a>. The Financial Aid Office will review enrollment prior to disbursement date which may result in a adjustment of financial aid if units do not match.&nbsp;<br />\r\n<br />\r\n<a href=\"https://myusf.usfca.edu/registration/academic-calendar\" target=\"_blank\">Semeseter Census Date</a><br />\r\n<a href=\"https://myusf.usfca.edu/financial-aid/policies\" target=\"_blank\">Financial Aid Disbursement Date</a><br />\r\n<a href=\"https://myusf.usfca.edu/financial-aid\" target=\"_blank\">Office of Financial Aid</a><br />\r\n<br />\r\nEmail: <a href=\"mailto:Financialaid@usfca.edu?subject=FA%20Revision%20Request%20Webform\">Financialaid@usfca.edu</a><br />\r\nPhone: (415) 422-3387"
+      '#title_display': ''
+      '#prepopulate': true
+      '#required': true
+    flexbox_01:
+      '#type': webform_flexbox
+      signature2:
+        '#type': webform_signature
+        '#title': Signature
+        '#required': true
+      date_signed:
+        '#type': date
+        '#title': Date
+        '#prepopulate': true
+        '#required': true
+        '#date_date_min': today
+        '#date_date_max': today
 css: ''
 javascript: ''
 settings:
@@ -27,40 +432,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: true
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: true
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +482,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,19 +492,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -113,9 +523,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -197,9 +607,9 @@ access:
 handlers:
   financial_aid_revision_request_confirmation:
     id: email
+    handler_id: financial_aid_revision_request_confirmation
     label: 'Financial Aid Revision Request Confirmation'
     notes: ''
-    handler_id: financial_aid_revision_request_confirmation
     status: true
     conditions: {  }
     weight: 0
@@ -208,13 +618,17 @@ handlers:
         - completed
       to_mail: financialaid@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'FA Revision Request Webform'
       body: "Submitted on [webform_submission:created]<br />\r\nSubmitted by: [webform_submission:user]<br />\r\nSubmitted values are:<br />\r\n[webform_submission:values]"
       excluded_elements: {  }
@@ -225,11 +639,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

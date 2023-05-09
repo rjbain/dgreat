@@ -2,9 +2,9 @@ uuid: d9c0fbe1-5874-4c6b-ae5e-e0574e598301
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 492
 template: false
 archive: false
@@ -12,7 +12,185 @@ id: webform_86711
 title: 'Study Abroad - JEEP - Jesuit Educational Exchange Program Recommendation Online Form'
 description: null
 category: null
-elements: "school_official_instructions:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p><span>To the School Official (Recommender): The student mentioned is a candidate for admission to the University of San Francisco for a semester or academic year under the Jesuit Educational Exchange Program. &nbsp;We would value your candid appraisal of this applicant by completing the following information as soon as possible.&nbsp;</span><br><br><span>USF will use this information only in the evaluation of the student''s application.</span></p>'\n  '#title': 'School Official Instructions'\n  '#description': ''\nfieldset_comparative_evaluation:\n  '#type': fieldset\n  '#open': true\n  '#title': '1. Comparative Evaluation'\n  '#description': ''\n  written_expression_2:\n    '#type': select\n    '#options':\n      1: Poor\n      2: 'Below Average'\n      3: Average\n      4: 'Above Average'\n      5: 'Top 10%'\n      6: 'Top 2%'\n      7: 'No Basis for Comparison'\n    '#title_display': inline\n    '#title': 'Written Expression'\n    '#description': ''\n    '#required': true\n  oral_expression_2:\n    '#type': select\n    '#options':\n      1: Poor\n      2: 'Below Average'\n      3: Average\n      4: 'Above Average'\n      5: 'Top 10%'\n      6: 'Top 2%'\n      7: 'No Basis for Comparison'\n    '#title_display': inline\n    '#title': 'Oral Expression'\n    '#description': ''\n    '#required': true\n  creativity_2:\n    '#type': select\n    '#options':\n      1: Poor\n      2: 'Below Average'\n      3: Average\n      4: 'Above Average'\n      5: 'Top 10%'\n      6: 'Top 2%'\n      7: 'No Basis for Comparison'\n    '#title_display': inline\n    '#title': Creativity\n    '#description': ''\n    '#required': true\n  leadership_2:\n    '#type': select\n    '#options':\n      1: Poor\n      2: 'Below Average'\n      3: Average\n      4: 'Above Average'\n      5: 'Top 10%'\n      6: 'Top 2%'\n      7: 'No Basis for Comparison'\n    '#title_display': inline\n    '#title': Leadership\n    '#description': ''\n    '#required': true\nfieldset_overall_recommendation:\n  '#type': fieldset\n  '#open': true\n  '#title': '2. Overall Recommendation'\n  '#description': ''\n  for_academic_promise_7:\n    '#type': select\n    '#options':\n      1: 'Not Recommended'\n      2: 'Without Enthusiasm'\n      3: 'Fairly Strongly'\n      4: Strongly\n      5: Enthusiastically\n    '#title_display': inline\n    '#title': 'For Academic Promise'\n    '#description': ''\n    '#required': true\n  for_personal_character_7:\n    '#type': select\n    '#options':\n      1: 'Not Recommended'\n      2: 'Without Enthusiasm'\n      3: 'Fairly Strongly'\n      4: Strongly\n      5: Enthusiastically\n    '#title_display': inline\n    '#title': 'For Personal Character'\n    '#description': ''\n    '#required': true\n  how_long_have_you_known_this_candidate_7:\n    '#type': textfield\n    '#title_display': inline\n    '#title': 'How long have you known this candidate?'\n    '#description': ''\n    '#required': true\nfieldset_recommender_information:\n  '#type': fieldset\n  '#open': true\n  '#title': '3. Recommender Information'\n  '#description': ''\n  full_name_11:\n    '#type': textfield\n    '#title_display': inline\n    '#title': 'Full Name'\n    '#description': ''\n    '#required': true\n  position_11:\n    '#type': textfield\n    '#title_display': inline\n    '#title': Position\n    '#description': ''\n    '#required': true\n  institution_11:\n    '#type': textfield\n    '#title_display': inline\n    '#title': Institution\n    '#description': ''\n    '#required': true\n  phone_number_11:\n    '#type': textfield\n    '#title_display': inline\n    '#title': 'Phone Number'\n    '#description': ''\n    '#required': true\n  email_11:\n    '#type': email\n    '#size': 20\n    '#title_display': inline\n    '#title': Email\n    '#description': ''\n    '#required': true\n  address_11:\n    '#type': textfield\n    '#title_display': inline\n    '#title': Address\n    '#description': ''\n    '#required': true\n  city_11:\n    '#type': textfield\n    '#title_display': inline\n    '#title': City\n    '#description': ''\n    '#required': true\n  country_11:\n    '#type': textfield\n    '#title_display': inline\n    '#title': Country\n    '#description': ''\n    '#required': true\n  postal_code_11:\n    '#type': textfield\n    '#title_display': inline\n    '#title': 'Postal Code'\n    '#description': ''\nfieldset_written_evaluation_form:\n  '#type': fieldset\n  '#open': true\n  '#title': '4. Written Evaluation Form'\n  '#description': ''\n  written_evaluation_form_text_21:\n    '#type': processed_text\n    '#format': full_html\n    '#text': '<p><span>The Admissions Committee is interested in your comments concerning the applicant''s intellectual ability and personal character. &nbsp;In particular, we would appreciate your appraisal of the candidate''s potential for intellectual growth, honesty, integrity, and emotional stability.</span></p>'\n    '#title': 'Written Evaluation Form Text'\n    '#description': ''\n  written_evaluation_21:\n    '#type': textarea\n    '#title_display': invisible\n    '#title': 'Written Evaluation'\n    '#description': ''\n    '#required': true\n"
+elements: |
+  school_official_instructions:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<p><span>To the School Official (Recommender): The student mentioned is a candidate for admission to the University of San Francisco for a semester or academic year under the Jesuit Educational Exchange Program. &nbsp;We would value your candid appraisal of this applicant by completing the following information as soon as possible.&nbsp;</span><br><br><span>USF will use this information only in the evaluation of the student''s application.</span></p>'
+    '#title': 'School Official Instructions'
+    '#description': ''
+  fieldset_comparative_evaluation:
+    '#type': fieldset
+    '#open': true
+    '#title': '1. Comparative Evaluation'
+    '#description': ''
+    written_expression_2:
+      '#type': select
+      '#options':
+        1: Poor
+        2: 'Below Average'
+        3: Average
+        4: 'Above Average'
+        5: 'Top 10%'
+        6: 'Top 2%'
+        7: 'No Basis for Comparison'
+      '#title_display': inline
+      '#title': 'Written Expression'
+      '#description': ''
+      '#required': true
+    oral_expression_2:
+      '#type': select
+      '#options':
+        1: Poor
+        2: 'Below Average'
+        3: Average
+        4: 'Above Average'
+        5: 'Top 10%'
+        6: 'Top 2%'
+        7: 'No Basis for Comparison'
+      '#title_display': inline
+      '#title': 'Oral Expression'
+      '#description': ''
+      '#required': true
+    creativity_2:
+      '#type': select
+      '#options':
+        1: Poor
+        2: 'Below Average'
+        3: Average
+        4: 'Above Average'
+        5: 'Top 10%'
+        6: 'Top 2%'
+        7: 'No Basis for Comparison'
+      '#title_display': inline
+      '#title': Creativity
+      '#description': ''
+      '#required': true
+    leadership_2:
+      '#type': select
+      '#options':
+        1: Poor
+        2: 'Below Average'
+        3: Average
+        4: 'Above Average'
+        5: 'Top 10%'
+        6: 'Top 2%'
+        7: 'No Basis for Comparison'
+      '#title_display': inline
+      '#title': Leadership
+      '#description': ''
+      '#required': true
+  fieldset_overall_recommendation:
+    '#type': fieldset
+    '#open': true
+    '#title': '2. Overall Recommendation'
+    '#description': ''
+    for_academic_promise_7:
+      '#type': select
+      '#options':
+        1: 'Not Recommended'
+        2: 'Without Enthusiasm'
+        3: 'Fairly Strongly'
+        4: Strongly
+        5: Enthusiastically
+      '#title_display': inline
+      '#title': 'For Academic Promise'
+      '#description': ''
+      '#required': true
+    for_personal_character_7:
+      '#type': select
+      '#options':
+        1: 'Not Recommended'
+        2: 'Without Enthusiasm'
+        3: 'Fairly Strongly'
+        4: Strongly
+        5: Enthusiastically
+      '#title_display': inline
+      '#title': 'For Personal Character'
+      '#description': ''
+      '#required': true
+    how_long_have_you_known_this_candidate_7:
+      '#type': textfield
+      '#title_display': inline
+      '#title': 'How long have you known this candidate?'
+      '#description': ''
+      '#required': true
+  fieldset_recommender_information:
+    '#type': fieldset
+    '#open': true
+    '#title': '3. Recommender Information'
+    '#description': ''
+    full_name_11:
+      '#type': textfield
+      '#title_display': inline
+      '#title': 'Full Name'
+      '#description': ''
+      '#required': true
+    position_11:
+      '#type': textfield
+      '#title_display': inline
+      '#title': Position
+      '#description': ''
+      '#required': true
+    institution_11:
+      '#type': textfield
+      '#title_display': inline
+      '#title': Institution
+      '#description': ''
+      '#required': true
+    phone_number_11:
+      '#type': textfield
+      '#title_display': inline
+      '#title': 'Phone Number'
+      '#description': ''
+      '#required': true
+    email_11:
+      '#type': email
+      '#size': 20
+      '#title_display': inline
+      '#title': Email
+      '#description': ''
+      '#required': true
+    address_11:
+      '#type': textfield
+      '#title_display': inline
+      '#title': Address
+      '#description': ''
+      '#required': true
+    city_11:
+      '#type': textfield
+      '#title_display': inline
+      '#title': City
+      '#description': ''
+      '#required': true
+    country_11:
+      '#type': textfield
+      '#title_display': inline
+      '#title': Country
+      '#description': ''
+      '#required': true
+    postal_code_11:
+      '#type': textfield
+      '#title_display': inline
+      '#title': 'Postal Code'
+      '#description': ''
+  fieldset_written_evaluation_form:
+    '#type': fieldset
+    '#open': true
+    '#title': '4. Written Evaluation Form'
+    '#description': ''
+    written_evaluation_form_text_21:
+      '#type': processed_text
+      '#format': full_html
+      '#text': '<p><span>The Admissions Committee is interested in your comments concerning the applicant''s intellectual ability and personal character. &nbsp;In particular, we would appreciate your appraisal of the candidate''s potential for intellectual growth, honesty, integrity, and emotional stability.</span></p>'
+      '#title': 'Written Evaluation Form Text'
+      '#description': ''
+    written_evaluation_21:
+      '#type': textarea
+      '#title_display': invisible
+      '#title': 'Written Evaluation'
+      '#description': ''
+      '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,40 +205,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +255,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,19 +265,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -113,9 +296,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -199,9 +382,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -210,13 +393,17 @@ handlers:
         - completed
       to_mail: nobles@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: '[webform-submission:values:email:raw]'
       from_options: {  }
       from_name: '[webform-submission:values:full_name:raw]'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -227,18 +414,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_2:
     id: email
+    handler_id: email_2
     label: 'Email 2'
     notes: ''
-    handler_id: email_2
     status: true
     conditions: {  }
     weight: 2
@@ -247,15 +430,23 @@ handlers:
         - completed
       to_mail: '[webform-submission:values:email:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: studyabroad@usfca.edu
       from_options: {  }
       from_name: 'Study Abroad'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'Confirmation of JEEP Recommendation Form'
-      body: "Your information has been received by the Center for Global Education.\n[webform_submission:values]\n\nIf you have any questions feel free to contact the CGE at (415) 422-6848."
+      body: |-
+        Your information has been received by the Center for Global Education.
+        [webform_submission:values]
+
+        If you have any questions feel free to contact the CGE at (415) 422-6848.
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -264,11 +455,7 @@ handlers:
       html: false
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

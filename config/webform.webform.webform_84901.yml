@@ -2,9 +2,9 @@ uuid: 480148f0-68c3-413d-8272-24a494663436
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 492
 template: false
 archive: false
@@ -12,7 +12,103 @@ id: webform_84901
 title: 'Honorary Degree Nomination Form'
 description: null
 category: null
-elements: "name_of_candidate:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Name of Candidate'\n  '#description': ''\n  '#required': true\nprofession:\n  '#type': textfield\n  '#title_display': inline\n  '#title': Profession\n  '#description': ''\n  '#required': true\nreason_for_nomination:\n  '#type': textarea\n  '#title': 'Describe why you are nominating this person for an honorary degree'\n  '#description': ''\n  '#required': true\nfieldset_candidate_qualifications:\n  '#type': fieldset\n  '#title': 'Candidate Qualifications'\n  '#title_display': invisible\n  '#open': true\n  markup:\n    '#type': webform_markup\n    '#markup': '<em>Please describe how the candidate exemplifies USF&#39;s Mission and Goals in each of the following areas. Successful nominations usually run about two typed pages.</em>'\n  mission_and_goal_fit_4:\n    '#type': textarea\n    '#title': '1. Mission and Goal Fit'\n    '#required': true\n  community_service_4:\n    '#type': textarea\n    '#title': '2. Community Service'\n    '#description': ''\n    '#required': true\n  academic_excellence_4:\n    '#type': textarea\n    '#title': '3. Academic Excellence'\n    '#description': ''\n    '#required': true\n  personal_moral_integrity_4:\n    '#type': textarea\n    '#title': '4. Personal, Moral Integrity'\n    '#description': ''\n    '#required': true\n  recognition_of_peers_4:\n    '#type': textarea\n    '#title': '5. Recognition of Peers'\n    '#description': ''\n    '#required': true\nfieldset_candidate_vitae_bio:\n  '#type': fieldset\n  '#title': 'Candidates Curriculum Vitae or Biographical Sketch'\n  '#title_display': invisible\n  '#open': true\n  markup_01:\n    '#type': webform_markup\n    '#markup': '<em>Please forward the candidate&#39;s curriculum vitae or a biographical sketch to Grace Sanchez (sanchez@usfca.edu).</em>'\n  person_submitting_nomination_10:\n    '#type': textfield\n    '#title_display': inline\n    '#title': 'Name of person submitting nomination'\n    '#description': ''\n    '#required': true\n  person_submitting_nomination_address_10:\n    '#type': textarea\n    '#title': Address\n    '#description': ''\n    '#required': true\n  person_submitting_nomination_phone_10:\n    '#type': textfield\n    '#title_display': inline\n    '#title': Phone\n    '#description': ''\n  person_submitting_nomination_email_10:\n    '#type': email\n    '#size': 20\n    '#title_display': inline\n    '#title': Email\n    '#description': ''\n  relationship_to_nominee_10:\n    '#type': textarea\n    '#title': 'How well do you know the nominee, and what is your relationship?'\n    '#description': ''\n    '#required': true\n  person_submitting_nomination_affiliation_with_usf_10:\n    '#type': textfield\n    '#title_display': inline\n    '#title': 'How are you affiliated with USF?'\n    '#description': ''\n    '#required': true\nfields_required:\n  '#type': processed_text\n  '#format': full_html\n  '#text': '<p><span style=''color: red;''>*</span>All fields are required.</span></p>'\n  '#title': 'Fields required'\n  '#description': ''\n"
+elements: |
+  name_of_candidate:
+    '#type': textfield
+    '#title_display': inline
+    '#title': 'Name of Candidate'
+    '#description': ''
+    '#required': true
+  profession:
+    '#type': textfield
+    '#title_display': inline
+    '#title': Profession
+    '#description': ''
+    '#required': true
+  reason_for_nomination:
+    '#type': textarea
+    '#title': 'Describe why you are nominating this person for an honorary degree'
+    '#description': ''
+    '#required': true
+  fieldset_candidate_qualifications:
+    '#type': fieldset
+    '#title': 'Candidate Qualifications'
+    '#title_display': invisible
+    '#open': true
+    markup:
+      '#type': webform_markup
+      '#markup': '<em>Please describe how the candidate exemplifies USF&#39;s Mission and Goals in each of the following areas. Successful nominations usually run about two typed pages.</em>'
+    mission_and_goal_fit_4:
+      '#type': textarea
+      '#title': '1. Mission and Goal Fit'
+      '#required': true
+    community_service_4:
+      '#type': textarea
+      '#title': '2. Community Service'
+      '#description': ''
+      '#required': true
+    academic_excellence_4:
+      '#type': textarea
+      '#title': '3. Academic Excellence'
+      '#description': ''
+      '#required': true
+    personal_moral_integrity_4:
+      '#type': textarea
+      '#title': '4. Personal, Moral Integrity'
+      '#description': ''
+      '#required': true
+    recognition_of_peers_4:
+      '#type': textarea
+      '#title': '5. Recognition of Peers'
+      '#description': ''
+      '#required': true
+  fieldset_candidate_vitae_bio:
+    '#type': fieldset
+    '#title': 'Candidates Curriculum Vitae or Biographical Sketch'
+    '#title_display': invisible
+    '#open': true
+    markup_01:
+      '#type': webform_markup
+      '#markup': '<em>Please forward the candidate&#39;s curriculum vitae or a biographical sketch to Grace Sanchez (sanchez@usfca.edu).</em>'
+    person_submitting_nomination_10:
+      '#type': textfield
+      '#title_display': inline
+      '#title': 'Name of person submitting nomination'
+      '#description': ''
+      '#required': true
+    person_submitting_nomination_address_10:
+      '#type': textarea
+      '#title': Address
+      '#description': ''
+      '#required': true
+    person_submitting_nomination_phone_10:
+      '#type': textfield
+      '#title_display': inline
+      '#title': Phone
+      '#description': ''
+    person_submitting_nomination_email_10:
+      '#type': email
+      '#size': 20
+      '#title_display': inline
+      '#title': Email
+      '#description': ''
+    relationship_to_nominee_10:
+      '#type': textarea
+      '#title': 'How well do you know the nominee, and what is your relationship?'
+      '#description': ''
+      '#required': true
+    person_submitting_nomination_affiliation_with_usf_10:
+      '#type': textfield
+      '#title_display': inline
+      '#title': 'How are you affiliated with USF?'
+      '#description': ''
+      '#required': true
+  fields_required:
+    '#type': processed_text
+    '#format': full_html
+    '#text': '<p><span style=''color: red;''>*</span>All fields are required.</span></p>'
+    '#title': 'Fields required'
+    '#description': ''
 css: ''
 javascript: ''
 settings:
@@ -27,40 +123,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +173,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,19 +183,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -113,9 +214,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -202,9 +303,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -213,15 +314,22 @@ handlers:
         - completed
       to_mail: sanchez@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: 'Honorary Degree Nomination Form Submission'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
-      body: "Submitted by user: [webform_submission:user]\n<p>Submitted values are:</p>\n[webform_submission:values]"
+      body: |-
+        Submitted by user: [webform_submission:user]
+        <p>Submitted values are:</p>
+        [webform_submission:values]
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -230,18 +338,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_2:
     id: email
+    handler_id: email_2
     label: 'Email 2'
     notes: ''
-    handler_id: email_2
     status: true
     conditions: {  }
     weight: 2
@@ -250,15 +354,23 @@ handlers:
         - completed
       to_mail: '[webform-submission:values:person_submitting_nomination_email:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: 'Honorary Degree Nomination Form Submission'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'Confirmation of Honorary Degree Nomination Form'
-      body: "<p>Submitted by user: [webform_submission:user]</p>\n\n<p>Submitted values are:</p>\n[webform_submission:values]"
+      body: |-
+        <p>Submitted by user: [webform_submission:user]</p>
+
+        <p>Submitted values are:</p>
+        [webform_submission:values]
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -267,11 +379,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

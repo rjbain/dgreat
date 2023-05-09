@@ -2,9 +2,9 @@ uuid: ef062814-d489-4a6c-bb5d-adbdad062435
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 45024
 template: false
 archive: false
@@ -12,7 +12,92 @@ id: star_route_farms
 title: 'Star Route Farms'
 description: ''
 category: ''
-elements: "organizer_s_name:\n  '#type': textfield\n  '#title': 'Organizer''s Name'\n  '#required': true\norganizer_s_department:\n  '#type': textfield\n  '#title': 'Organizer''s Department'\norganizer_s_email:\n  '#type': email\n  '#title': 'Organizer''s Email'\n  '#required': true\norganizer_s_daytime_phone:\n  '#type': textfield\n  '#title': 'Organizer''s Daytime Phone'\n  '#required': true\nevent_name:\n  '#type': textfield\n  '#title': 'Event Name'\n  '#required': true\ndate_s_of_visit:\n  '#type': datelist\n  '#title': 'Date(s) of Visit'\n  '#multiple': true\n  '#required': true\n  '#date_part_order':\n    - year\n    - month\n    - day\nstart_and_end_time:\n  '#type': webform_time\n  '#title': 'Start Time'\n  '#required': true\nend_time:\n  '#type': webform_time\n  '#title': 'End Time'\n  '#required': true\nnumber_of_participants:\n  '#type': number\n  '#title': 'Number of Participants'\n  '#required': true\nare_any_of_the_participants_students_:\n  '#type': radios\n  '#title': 'Are any of the participants students?'\n  '#options':\n    1: 'Yes'\n    0: 'No'\n  '#required': true\nbrief_description_of_activity_at_farm:\n  '#type': textarea\n  '#title': 'Brief Description of Activity at Farm'\n  '#required': true\nwill_event_be_serving_alcohol_:\n  '#type': radios\n  '#title': 'Will alcohol be served at this event?'\n  '#options':\n    1: 'Yes'\n    0: 'No'\n  '#required': true\nwhere_do_you_want_your_event_to_held_:\n  '#type': webform_radios_other\n  '#title': 'Where will the event be held?'\n  '#options':\n    Farmhouse: Farmhouse\n    'Druid''s Hall': 'Druid''s Hall'\n  '#required': true\nwe_will_charge_a_cleaning_fee_for_use_of_druid_s_hall:\n  '#type': textfield\n  '#title': 'We will charge a cleaning fee of $180 for use of Druid''s Hall or the Farmhouse.  Please provide us with your FOAP if you are using one of these facilities.'\ndoes_event_want_a_tour_of_the_farm:\n  '#type': radios\n  '#title': 'Does event want a tour of the farm?'\n  '#options':\n    1: 'Yes'\n    0: 'No'\n  '#required': true\ndo_you_agree_to_the_guidelines_for_academic_programming_at_star_:\n  '#type': radios\n  '#title': 'Do you agree to the Guidelines for Academic Programming at Star Route Farms?'\n  '#description': '<a href=\"http://myusf.usfca.edu/provost/guidelines-for-academic-programming-at-star-route-farms\" target=\"_blank\">Read the Guidelines &raquo;</a>'\n  '#title_display': before\n  '#description_display': before\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\n  '#required': true\n"
+elements: |
+  organizer_s_name:
+    '#type': textfield
+    '#title': 'Organizer''s Name'
+    '#required': true
+  organizer_s_department:
+    '#type': textfield
+    '#title': 'Organizer''s Department'
+  organizer_s_email:
+    '#type': email
+    '#title': 'Organizer''s Email'
+    '#required': true
+  organizer_s_daytime_phone:
+    '#type': textfield
+    '#title': 'Organizer''s Daytime Phone'
+    '#required': true
+  event_name:
+    '#type': textfield
+    '#title': 'Event Name'
+    '#required': true
+  date_s_of_visit:
+    '#type': datelist
+    '#title': 'Date(s) of Visit'
+    '#multiple': true
+    '#required': true
+    '#date_part_order':
+      - year
+      - month
+      - day
+  start_and_end_time:
+    '#type': webform_time
+    '#title': 'Start Time'
+    '#required': true
+  end_time:
+    '#type': webform_time
+    '#title': 'End Time'
+    '#required': true
+  number_of_participants:
+    '#type': number
+    '#title': 'Number of Participants'
+    '#required': true
+  are_any_of_the_participants_students_:
+    '#type': radios
+    '#title': 'Are any of the participants students?'
+    '#options':
+      1: 'Yes'
+      0: 'No'
+    '#required': true
+  brief_description_of_activity_at_farm:
+    '#type': textarea
+    '#title': 'Brief Description of Activity at Farm'
+    '#required': true
+  will_event_be_serving_alcohol_:
+    '#type': radios
+    '#title': 'Will alcohol be served at this event?'
+    '#options':
+      1: 'Yes'
+      0: 'No'
+    '#required': true
+  where_do_you_want_your_event_to_held_:
+    '#type': webform_radios_other
+    '#title': 'Where will the event be held?'
+    '#options':
+      Farmhouse: Farmhouse
+      'Druid''s Hall': 'Druid''s Hall'
+    '#required': true
+  we_will_charge_a_cleaning_fee_for_use_of_druid_s_hall:
+    '#type': textfield
+    '#title': 'We will charge a cleaning fee of $180 for use of Druid''s Hall or the Farmhouse.  Please provide us with your FOAP if you are using one of these facilities.'
+  does_event_want_a_tour_of_the_farm:
+    '#type': radios
+    '#title': 'Does event want a tour of the farm?'
+    '#options':
+      1: 'Yes'
+      0: 'No'
+    '#required': true
+  do_you_agree_to_the_guidelines_for_academic_programming_at_star_:
+    '#type': radios
+    '#title': 'Do you agree to the Guidelines for Academic Programming at Star Route Farms?'
+    '#description': '<a href="http://myusf.usfca.edu/provost/guidelines-for-academic-programming-at-star-route-farms" target="_blank">Read the Guidelines &raquo;</a>'
+    '#title_display': before
+    '#description_display': before
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,40 +112,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +162,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,19 +172,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -113,9 +203,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: 'Thank you for your request. The Provost&#39;s Office will contact you shortly to confirm your reservation. In the interim, if you need additional information, please contact April Randle or at amrandle@usfca.edu. Thank you.'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -197,9 +287,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -208,13 +298,17 @@ handlers:
         - completed
       to_mail: amrandle@usfca.edu
       to_options: {  }
-      cc_mail: ntregarvan@usfca.edu
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ntregarvan@usfca.edu
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -225,18 +319,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_1:
     id: email
+    handler_id: email_1
     label: Email
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 0
@@ -245,13 +335,17 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:organizer_s_email:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: 'Thank you for your request. The Provost&#39;s Office will contact you shortly to confirm your reservation. In the interim, if you need additional information, please contact April Randle or at amrandle@usfca.edu. Thank you.'
       excluded_elements: {  }
@@ -262,11 +356,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

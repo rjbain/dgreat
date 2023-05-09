@@ -2,9 +2,9 @@ uuid: 1643d11a-5287-4b01-b4db-7f8be399d486
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 327
 template: false
 archive: false
@@ -12,7 +12,35 @@ id: webform_8461
 title: 'IT Individual Recognition'
 description: null
 category: null
-elements: "guidelines:\n  '#type': processed_text\n  '#title': 'Guidelines:'\n  '#description': ''\n  '#text': \"<ul>\\n\\t<li>Demonstrates effort above and beyond normal job duties</li>\\n\\t<li>Embodies inclusiveness, respect, diversity, and professionalism</li>\\n\\t<li>Collaborates with customers and colleagues</li>\\n\\t<li>Attentive to customer needs and/or delivering quality services</li>\\n</ul>\\n\"\n  '#format': full_html\nname:\n  '#type': textfield\n  '#default_value': '[current-user:name]'\n  '#title': 'Name:'\n  '#description': ''\n  '#required': true\nemail:\n  '#type': textfield\n  '#default_value': '[current-user:mail]'\n  '#title': 'Email:'\n  '#description': ''\n  '#required': true\nnominee:\n  '#type': textfield\n  '#title': 'Name of person you would like to recognize:'\n  '#description': ''\n  '#required': true\nbrief_description:\n  '#type': textarea\n  '#title': 'Brief description of what they did \"above and beyond\" in helping you or a customer:'\n  '#description': ''\n  '#required': true\n"
+elements: |
+  guidelines:
+    '#type': processed_text
+    '#title': 'Guidelines:'
+    '#description': ''
+    '#text': "<ul>\n\t<li>Demonstrates effort above and beyond normal job duties</li>\n\t<li>Embodies inclusiveness, respect, diversity, and professionalism</li>\n\t<li>Collaborates with customers and colleagues</li>\n\t<li>Attentive to customer needs and/or delivering quality services</li>\n</ul>\n"
+    '#format': full_html
+  name:
+    '#type': textfield
+    '#default_value': '[current-user:name]'
+    '#title': 'Name:'
+    '#description': ''
+    '#required': true
+  email:
+    '#type': textfield
+    '#default_value': '[current-user:mail]'
+    '#title': 'Email:'
+    '#description': ''
+    '#required': true
+  nominee:
+    '#type': textfield
+    '#title': 'Name of person you would like to recognize:'
+    '#description': ''
+    '#required': true
+  brief_description:
+    '#type': textarea
+    '#title': 'Brief description of what they did "above and beyond" in helping you or a customer:'
+    '#description': ''
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,40 +55,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +105,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,19 +115,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -113,9 +146,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: url
+  confirmation_url: its/thank-you
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: its/thank-you
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''

@@ -7,9 +7,9 @@ dependencies:
 third_party_settings:
   dgreat_student_surveys:
     salesforce_id: ''
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 42674
 template: false
 archive: false
@@ -17,7 +17,77 @@ id: delinquent_student_accounts
 title: 'Delinquent Student Accounts'
 description: ''
 category: 'Student Accounts'
-elements: "delinquent_student_accounts:\n  '#type': item\n  '#title': 'Delinquent Student Account Contact Form'\n  '#title_display': invisible\n  '#markup': '<h2><strong>Delinquent Student Accounts Contact Form</strong></h2>'\nname:\n  '#type': webform_name\n  '#title': Name\n  '#title__access': false\n  '#middle__access': false\n  '#suffix__access': false\n  '#degree__access': false\nstudent_id_8_digits_:\n  '#type': textfield\n  '#title': 'Student ID# (8 digits)'\nemail:\n  '#type': email\n  '#title': Email\nis_the_account_you_are_inquiring_about_more_than_one_term_past_d:\n  '#type': radios\n  '#title': 'Is the account you are inquiring about more than one term past due?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\nhas_a_da_delinquent_hold_been_placed_on_the_account_:\n  '#type': radios\n  '#title': 'Has a DA (delinquent) hold been placed on the account?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\nnot_delinquent_:\n  '#type': item\n  '#title': 'Please review your holds to ensure your account is delinquent.'\n  '#states':\n    visible:\n      - ':input[name=\"is_the_account_you_are_inquiring_about_more_than_one_term_past_d\"]':\n          value: 'No'\n      - or\n      - ':input[name=\"has_a_da_delinquent_hold_been_placed_on_the_account_\"]':\n          value: 'No'\n  '#markup': '<p>If you answered no to one of the above questions, your account may not be considered deliquent. Please log into the Student Self-Service to view your holds. If you do not have a DA hold, you may make payment on <a href=\"https://myusf.usfca.edu/billing-tuition/pay\">View and Pay</a> or contact the Student Accounts Office for all payment inquiries. You may contact the Student Accounts Office by phone at 415-422-2571 or by email at studentaccounts@usfca.edu.</p>'\nhas_the_account_been_referred_to_a_third_party_collections_agenc:\n  '#type': radios\n  '#title': 'Has the account been referred to a third-party collections agency?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\nare_you_inquiring_about_how_to_make_payment_because_you_no_longe:\n  '#type': radios\n  '#title': 'Are you inquiring about how to make payment because you no longer have access to View and Pay?'\n  '#options':\n    'Yes': 'Yes'\n    'No': 'No'\npayment_portal:\n  '#type': item\n  '#title': 'Payment portal'\n  '#states':\n    visible:\n      ':input[name=\"are_you_inquiring_about_how_to_make_payment_because_you_no_longe\"]':\n        value: 'Yes'\n  '#markup': \"If you do not have access to View and Pay, please use the following link to make payment on a deliquent account:&nbsp;<a href=\\\"https://myusf.usfca.edu/usfbalance\\\">https://myusf.usfca.edu/usfbalance</a>.<br />\\r\\n<br />\\r\\nYou do not have to submit this form if the payment link satisfies your inquiry.\"\npayment_plan:\n  '#type': checkbox\n  '#title': 'Payment Plan'\n  '#description': '<h4>Check this box if you would like to receive information about a scheduled payment plan for the delinquent account.</h4>'\n  '#title_display': invisible\nattach_proof_of_payment_:\n  '#type': webform_document_file\n  '#title': 'Attach proof of payment.'\n  '#file_extensions': 'gif jpeg txt rtf pdf doc docx odt ppt pptx odp xls xlsx ods'"
+elements: |-
+  delinquent_student_accounts:
+    '#type': item
+    '#title': 'Delinquent Student Account Contact Form'
+    '#title_display': invisible
+    '#markup': '<h2><strong>Delinquent Student Accounts Contact Form</strong></h2>'
+  name:
+    '#type': webform_name
+    '#title': Name
+    '#title__access': false
+    '#middle__access': false
+    '#suffix__access': false
+    '#degree__access': false
+  student_id_8_digits_:
+    '#type': textfield
+    '#title': 'Student ID# (8 digits)'
+  email:
+    '#type': email
+    '#title': Email
+  is_the_account_you_are_inquiring_about_more_than_one_term_past_d:
+    '#type': radios
+    '#title': 'Is the account you are inquiring about more than one term past due?'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+  has_a_da_delinquent_hold_been_placed_on_the_account_:
+    '#type': radios
+    '#title': 'Has a DA (delinquent) hold been placed on the account?'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+  not_delinquent_:
+    '#type': item
+    '#title': 'Please review your holds to ensure your account is delinquent.'
+    '#states':
+      visible:
+        - ':input[name="is_the_account_you_are_inquiring_about_more_than_one_term_past_d"]':
+            value: 'No'
+        - or
+        - ':input[name="has_a_da_delinquent_hold_been_placed_on_the_account_"]':
+            value: 'No'
+    '#markup': '<p>If you answered no to one of the above questions, your account may not be considered deliquent. Please log into the Student Self-Service to view your holds. If you do not have a DA hold, you may make payment on <a href="https://myusf.usfca.edu/billing-tuition/pay">View and Pay</a> or contact the Student Accounts Office for all payment inquiries. You may contact the Student Accounts Office by phone at 415-422-2571 or by email at studentaccounts@usfca.edu.</p>'
+  has_the_account_been_referred_to_a_third_party_collections_agenc:
+    '#type': radios
+    '#title': 'Has the account been referred to a third-party collections agency?'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+  are_you_inquiring_about_how_to_make_payment_because_you_no_longe:
+    '#type': radios
+    '#title': 'Are you inquiring about how to make payment because you no longer have access to View and Pay?'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+  payment_portal:
+    '#type': item
+    '#title': 'Payment portal'
+    '#states':
+      visible:
+        ':input[name="are_you_inquiring_about_how_to_make_payment_because_you_no_longe"]':
+          value: 'Yes'
+    '#markup': "If you do not have access to View and Pay, please use the following link to make payment on a deliquent account:&nbsp;<a href=\"https://myusf.usfca.edu/usfbalance\">https://myusf.usfca.edu/usfbalance</a>.<br />\r\n<br />\r\nYou do not have to submit this form if the payment link satisfies your inquiry."
+  payment_plan:
+    '#type': checkbox
+    '#title': 'Payment Plan'
+    '#description': '<h4>Check this box if you would like to receive information about a scheduled payment plan for the delinquent account.</h4>'
+    '#title_display': invisible
+  attach_proof_of_payment_:
+    '#type': webform_document_file
+    '#title': 'Attach proof of payment.'
+    '#file_extensions': 'gif jpeg txt rtf pdf doc docx odt ppt pptx odp xls xlsx ods'
 css: ''
 javascript: ''
 settings:
@@ -32,40 +102,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -74,11 +152,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -89,19 +162,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -118,9 +193,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''

@@ -23,15 +23,17 @@ mode: default
 content:
   bp_image_field:
     type: image
-    weight: 0
-    region: content
     label: above
     settings:
-      image_style: ''
       image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
+    weight: 0
+    region: content
   bp_link:
-    weight: 1
+    type: link_separate
     label: hidden
     settings:
       trim_length: null
@@ -40,14 +42,14 @@ content:
       rel: '0'
       target: '0'
     third_party_settings: {  }
-    type: link_separate
+    weight: 1
     region: content
   bp_text:
-    weight: 2
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 2
     region: content
 hidden:
   bp_background: true

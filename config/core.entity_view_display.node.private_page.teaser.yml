@@ -5,6 +5,9 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.private_page.body
+    - field.field.node.private_page.field_display_title
+    - field.field.node.private_page.field_migrate_final
+    - field.field.node.private_page.field_role
     - node.type.private_page
   module:
     - text
@@ -15,12 +18,12 @@ bundle: private_page
 mode: teaser
 content:
   body:
-    label: hidden
     type: text_summary_or_trimmed
-    weight: 101
+    label: hidden
     settings:
       trim_length: 600
     third_party_settings: {  }
+    weight: 101
     region: content
   links:
     weight: 100
@@ -29,3 +32,5 @@ hidden:
   field_display_title: true
   field_migrate_final: true
   field_role: true
+  langcode: true
+  search_api_excerpt: true

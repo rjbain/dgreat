@@ -14,14 +14,14 @@ dependencies:
 id: absstafflistprotected
 theme: myusf
 region: content
-weight: 25
+weight: 10
 provider: null
 plugin: 'block_content:6ac7ad3e-8275-402c-8ecd-ea7726b57a99'
 settings:
   id: 'block_content:6ac7ad3e-8275-402c-8ecd-ea7726b57a99'
   label: 'ABS Staff List (protected)'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
@@ -29,17 +29,17 @@ visibility:
   condition_group:
     id: condition_group
     negate: false
-    block_visibility_group: ''
     context_mapping: {  }
+    block_visibility_group: ''
   request_path:
     id: request_path
-    pages: /abs/staff
     negate: false
     context_mapping: {  }
+    pages: /abs/staff
   user_role:
     id: user_role
-    roles:
-      authenticated: authenticated
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
+    roles:
+      authenticated: authenticated

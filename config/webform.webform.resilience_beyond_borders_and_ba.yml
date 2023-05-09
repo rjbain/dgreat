@@ -2,9 +2,9 @@ uuid: 9c374ddc-f98a-4e8d-95d2-1fe2bdb7086a
 langcode: en
 status: closed
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 42945
 template: false
 archive: false
@@ -12,7 +12,38 @@ id: resilience_beyond_borders_and_ba
 title: 'Resilience Beyond Borders and Barriers: A Retreat for Undocumented Students  – Spring 2020'
 description: ''
 category: 'University Ministry'
-elements: "_first_name:\n  '#type': textfield\n  '#title': '*First Name'\n  '#required': true\n_last_name:\n  '#type': textfield\n  '#title': '*Last Name'\n  '#required': true\n_myusf_user_name:\n  '#type': textfield\n  '#title': '*myUSF User Name'\n  '#required': true\n_usf_email_address:\n  '#type': email\n  '#title': '*USF Email Address'\n  '#required': true\n_cell_phone_number:\n  '#type': textfield\n  '#title': '*Cell Phone Number'\n  '#required': true\nclass_standing_a:\n  '#type': radios\n  '#title': '*Class Standing'\n  '#options':\n    Freshman: Freshman\n    Sophomore: Sophomore\n    Junior: Junior\n    Senior: Senior\n    Masters: Masters\n    Doctoral: Doctoral\n  '#required': true"
+elements: |-
+  _first_name:
+    '#type': textfield
+    '#title': '*First Name'
+    '#required': true
+  _last_name:
+    '#type': textfield
+    '#title': '*Last Name'
+    '#required': true
+  _myusf_user_name:
+    '#type': textfield
+    '#title': '*myUSF User Name'
+    '#required': true
+  _usf_email_address:
+    '#type': email
+    '#title': '*USF Email Address'
+    '#required': true
+  _cell_phone_number:
+    '#type': textfield
+    '#title': '*Cell Phone Number'
+    '#required': true
+  class_standing_a:
+    '#type': radios
+    '#title': '*Class Standing'
+    '#options':
+      Freshman: Freshman
+      Sophomore: Sophomore
+      Junior: Junior
+      Senior: Senior
+      Masters: Masters
+      Doctoral: Doctoral
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -27,40 +58,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: '<p>All in-person University Ministry events are canceled for the remainder of the spring semester. We are working on new ways to stay connected to one another, and will be sharing information about virtual events and programs soon.</p>'
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace:
     webform_routes: {  }
@@ -71,11 +110,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -86,19 +120,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -115,9 +151,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -196,9 +232,9 @@ access:
 handlers:
   confirmation_email:
     id: email
+    handler_id: confirmation_email
     label: 'Confirmation Email'
     notes: ''
-    handler_id: confirmation_email
     status: true
     conditions: {  }
     weight: 0
@@ -207,13 +243,17 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:_usf_email_address:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: um@usfca.edu
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: um@usfca.edu
       from_options: {  }
       from_name: 'University Ministry'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: '[USF] Registration Confirmed - Resilience Beyond Borders and Barriers'
       body: "Thank you for registering for <strong>Resilience Beyond Borders and Barriers</strong>. Your registration has been confirmed. Please save this email for future reference.<br />\r\n<br />\r\n<br />\r\n<strong>Resilience Beyond Borders and Barriers: A Retreat for Undocumented Students &nbsp;&ndash; Spring 2020</strong><br />\r\nSaturday, April 18, 2020<br />\r\n10 a.m.&ndash;6 p.m. | Del Santo Reading Room, Lone Mountain Main, Room 270<br />\r\n<br />\r\n<strong>Submitted on</strong>: [webform_submission:created]<br />\r\n<strong>Submitted by</strong>: [webform_submission:user]<br />\r\n<strong>Submitted values are</strong>:<br />\r\n<br />\r\n[webform_submission:values]<br />\r\n<br />\r\n<br />\r\n<br />\r\nSincerely,<br />\r\nUniversity Ministry"
       excluded_elements: {  }
@@ -224,11 +264,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

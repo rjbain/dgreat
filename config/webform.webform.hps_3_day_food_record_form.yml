@@ -7,9 +7,9 @@ dependencies:
 third_party_settings:
   dgreat_student_surveys:
     salesforce_id: ''
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 62501
 template: false
 archive: false
@@ -17,7 +17,64 @@ id: hps_3_day_food_record_form
 title: 'HPS 24 Hour Food Record Form'
 description: ''
 category: ''
-elements: "name:\n  '#type': textfield\n  '#title': Name\n  '#required': true\ngender:\n  '#type': textfield\n  '#title': Sex\n  '#required': true\nage:\n  '#type': textfield\n  '#title': Age\n  '#required': true\nweight:\n  '#type': textfield\n  '#title': Weight\n  '#required': true\nheight:\n  '#type': textfield\n  '#title': Height\n  '#required': true\nphysical_activity_level:\n  '#type': select\n  '#title': 'Physical Activity Level'\n  '#options':\n    Sedentary: Sedentary\n    'Low Active': 'Low Active'\n    Active: Active\n    'Very Active': 'Very Active'\n  '#required': true\ndo_you_have_any_food_allergies_or_intolerances_:\n  '#type': textfield\n  '#title': 'Do you have any food allergies or intolerances?'\n  '#required': true\nbreakfast_if_any_:\n  '#type': textarea\n  '#title': 'Breakfast (if any)'\n  '#description': 'Please include what time you consumed this.'\nlunch_if_any_:\n  '#type': textarea\n  '#title': 'Lunch (if any)'\n  '#description': 'Please include what time you consumed this.'\ndinner_if_any_:\n  '#type': textarea\n  '#title': 'Dinner (if any)'\n  '#description': 'Please include what time you consumed this.'\nsnacks_if_any_:\n  '#type': textarea\n  '#title': 'Snacks (if any)'\n  '#description': 'Please include what time you consumed this.'\nwho_did_you_schedule_your_nutrition_appointment_with_:\n  '#type': textfield\n  '#title': 'Who did you schedule your nutrition appointment with?'\n  '#description': 'If you do not know who you scheduled an appointment with, put in &quot;I don&#39;t know.&quot;'\n  '#required': true\nis_there_any_other_info_we_need_to_know_:\n  '#type': textarea\n  '#title': 'Is there any other info we need to know?'"
+elements: |-
+  name:
+    '#type': textfield
+    '#title': Name
+    '#required': true
+  gender:
+    '#type': textfield
+    '#title': Sex
+    '#required': true
+  age:
+    '#type': textfield
+    '#title': Age
+    '#required': true
+  weight:
+    '#type': textfield
+    '#title': Weight
+    '#required': true
+  height:
+    '#type': textfield
+    '#title': Height
+    '#required': true
+  physical_activity_level:
+    '#type': select
+    '#title': 'Physical Activity Level'
+    '#options':
+      Sedentary: Sedentary
+      'Low Active': 'Low Active'
+      Active: Active
+      'Very Active': 'Very Active'
+    '#required': true
+  do_you_have_any_food_allergies_or_intolerances_:
+    '#type': textfield
+    '#title': 'Do you have any food allergies or intolerances?'
+    '#required': true
+  breakfast_if_any_:
+    '#type': textarea
+    '#title': 'Breakfast (if any)'
+    '#description': 'Please include what time you consumed this.'
+  lunch_if_any_:
+    '#type': textarea
+    '#title': 'Lunch (if any)'
+    '#description': 'Please include what time you consumed this.'
+  dinner_if_any_:
+    '#type': textarea
+    '#title': 'Dinner (if any)'
+    '#description': 'Please include what time you consumed this.'
+  snacks_if_any_:
+    '#type': textarea
+    '#title': 'Snacks (if any)'
+    '#description': 'Please include what time you consumed this.'
+  who_did_you_schedule_your_nutrition_appointment_with_:
+    '#type': textfield
+    '#title': 'Who did you schedule your nutrition appointment with?'
+    '#description': 'If you do not know who you scheduled an appointment with, put in &quot;I don&#39;t know.&quot;'
+    '#required': true
+  is_there_any_other_info_we_need_to_know_:
+    '#type': textarea
+    '#title': 'Is there any other info we need to know?'
 css: ''
 javascript: ''
 settings:
@@ -32,40 +89,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -74,11 +139,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -89,19 +149,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -118,9 +180,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -202,9 +264,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -213,13 +275,17 @@ handlers:
         - completed
       to_mail: jlee112@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: '[USF HPS] 24 Food Record Form Submitted '
       body: _default
       excluded_elements: {  }
@@ -230,11 +296,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

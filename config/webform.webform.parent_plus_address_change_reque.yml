@@ -7,9 +7,9 @@ dependencies:
 third_party_settings:
   dgreat_student_surveys:
     salesforce_id: ''
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 49490
 template: false
 archive: false
@@ -17,7 +17,61 @@ id: parent_plus_address_change_reque
 title: 'Parent PLUS Address Update Request'
 description: 'For Parent PLUS Loan borrower to request an address change for refund check mailing.&nbsp;'
 category: 'Financial Aid'
-elements: "cwid_student_id_number_:\n  '#type': number\n  '#title': 'CWID (Student USF ID Number)'\n  '#description': 'Student ID Number (CWID)'\n  '#autocomplete': 'off'\n  '#required': true\n  '#min': 0\n  '#max': 99999999\nstudent_s_name:\n  '#type': webform_name\n  '#title': 'Student''s Name'\n  '#description': 'Please enter student&#39;s name'\n  '#description_display': invisible\n  '#title__access': false\n  '#first__title': 'Student''s First Name'\n  '#first__required': true\n  '#middle__title': 'Student''s Middle Name'\n  '#last__title': 'Student''s Last Name'\n  '#last__required': true\n  '#suffix__access': false\n  '#degree__access': false\n  '#required': true\nparent_s_information:\n  '#type': webform_contact\n  '#title': 'Parent''s Information To Be Updated'\n  '#title_display': before\n  '#required': true\n  '#name__title': 'Parent''s Full Name'\n  '#name__required': true\n  '#company__access': false\n  '#email__title': 'Parent''s Email Address'\n  '#phone__title': 'Parent''s Phone'\n  '#address__required': true\n  '#city__required': true\n  '#state_province__required': true\n  '#postal_code__required': true\n  '#country__access': false\nparent_plus_loan_refund_to_student:\n  '#type': checkbox\n  '#title': 'Parent PLUS Loan Refund to Student (Optional)'\n  '#description': 'Check this box if you authorize for the Parent PLUS Loan refund to go directly to your student instead of a paper check mailed to you. For instructions on setting up direct deposit for students, please visit&nbsp;<a href=\"https://myusf.usfca.edu/billing-tuition/refunds\">https://myusf.usfca.edu/billing-tuition/refunds</a>.&nbsp;'\nterms_and_conditions:\n  '#type': checkbox\n  '#title': 'Terms and Conditions'\n  '#description': 'By checking this box, I acknowledge that I am the parent borrower on the Parent PLUS Loan submitting this request. I am requesting for the Office of Financial Aid to update my mailing address for any refunds issued as a result of a Parent PLUS Loan. I understand that I can change my request and address at any time by contacting the Office of Financial Aid.&nbsp;&nbsp;'\n  '#required': true\nparent_signature_textfield:\n  '#type': textfield\n  '#title': 'Parent Signature'\n  '#required': true\nby_checking_this_box_and_writing_your_name_in_the_signature_fiel:\n  '#type': checkbox\n  '#title': 'By checking this box and writing your name in the signature field, you allow and request the Office of Financial Aid to make the requested update on the Parent PLUS Loan application. '\n  '#required': true\n"
+elements: |
+  cwid_student_id_number_:
+    '#type': number
+    '#title': 'CWID (Student USF ID Number)'
+    '#description': 'Student ID Number (CWID)'
+    '#autocomplete': 'off'
+    '#required': true
+    '#min': 0
+    '#max': 99999999
+  student_s_name:
+    '#type': webform_name
+    '#title': 'Student''s Name'
+    '#description': 'Please enter student&#39;s name'
+    '#description_display': invisible
+    '#title__access': false
+    '#first__title': 'Student''s First Name'
+    '#first__required': true
+    '#middle__title': 'Student''s Middle Name'
+    '#last__title': 'Student''s Last Name'
+    '#last__required': true
+    '#suffix__access': false
+    '#degree__access': false
+    '#required': true
+  parent_s_information:
+    '#type': webform_contact
+    '#title': 'Parent''s Information To Be Updated'
+    '#title_display': before
+    '#required': true
+    '#name__title': 'Parent''s Full Name'
+    '#name__required': true
+    '#company__access': false
+    '#email__title': 'Parent''s Email Address'
+    '#phone__title': 'Parent''s Phone'
+    '#address__required': true
+    '#city__required': true
+    '#state_province__required': true
+    '#postal_code__required': true
+    '#country__access': false
+  parent_plus_loan_refund_to_student:
+    '#type': checkbox
+    '#title': 'Parent PLUS Loan Refund to Student (Optional)'
+    '#description': 'Check this box if you authorize for the Parent PLUS Loan refund to go directly to your student instead of a paper check mailed to you. For instructions on setting up direct deposit for students, please visit&nbsp;<a href="https://myusf.usfca.edu/billing-tuition/refunds">https://myusf.usfca.edu/billing-tuition/refunds</a>.&nbsp;'
+  terms_and_conditions:
+    '#type': checkbox
+    '#title': 'Terms and Conditions'
+    '#description': 'By checking this box, I acknowledge that I am the parent borrower on the Parent PLUS Loan submitting this request. I am requesting for the Office of Financial Aid to update my mailing address for any refunds issued as a result of a Parent PLUS Loan. I understand that I can change my request and address at any time by contacting the Office of Financial Aid.&nbsp;&nbsp;'
+    '#required': true
+  parent_signature_textfield:
+    '#type': textfield
+    '#title': 'Parent Signature'
+    '#required': true
+  by_checking_this_box_and_writing_your_name_in_the_signature_fiel:
+    '#type': checkbox
+    '#title': 'By checking this box and writing your name in the signature field, you allow and request the Office of Financial Aid to make the requested update on the Parent PLUS Loan application. '
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -32,40 +86,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -74,11 +136,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -89,19 +146,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -118,9 +177,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: ''
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -202,9 +261,9 @@ access:
 handlers:
   parent_plus_address_updated_request_webform:
     id: email
+    handler_id: parent_plus_address_updated_request_webform
     label: 'Parent PLUS Address Updated Request Webform'
     notes: ''
-    handler_id: parent_plus_address_updated_request_webform
     status: true
     conditions: {  }
     weight: 0
@@ -213,13 +272,17 @@ handlers:
         - completed
       to_mail: financialaid@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements: {  }
@@ -230,11 +293,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

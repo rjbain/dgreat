@@ -2,9 +2,9 @@ uuid: 85db8e51-fd12-48c0-813a-cba883f2181d
 langcode: en
 status: open
 dependencies: {  }
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 1333
 template: false
 archive: false
@@ -12,7 +12,67 @@ id: webform_115832
 title: 'HR Service and Merit Awards RSVP Form'
 description: null
 category: null
-elements: "first_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'First Name'\n  '#description': ''\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Last Name'\n  '#description': ''\n  '#required': true\nyour_full_name_as_it_will_appear_on_your_certificate:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'Please enter your full name as you would like it to appear on your certificate and in the printed program:'\n  '#description': ''\n  '#required': true\nusf_email_address:\n  '#type': email\n  '#size': 20\n  '#title_display': inline\n  '#title': 'USF Email Address'\n  '#description': ''\n  '#required': true\nphone_number:\n  '#type': textfield\n  '#size': 20\n  '#min': null\n  '#max': null\n  '#step': null\n  '#unique': false\n  '#title_display': inline\n  '#title': 'Phone Number'\n  '#description': ''\n  '#required': true\nwould_you_like_your_name_to_appear_in_the_program:\n  '#type': select\n  '#options':\n    1: 'YES, please include my name in the printed program.'\n    2: 'NO, I do not want my name included in the printed program.'\n  '#title_display': inline\n  '#title': 'Would you like your name to appear in the Service and Merit Awards Ceremony printed program?'\n  '#description': ''\n  '#required': true\nwill_you_be_attending_the_ceremony:\n  '#type': select\n  '#options':\n    1: 'YES, I will be attending.'\n    2: 'NO, I will not be attending.'\n    3: 'I am unsure if I will be attending.'\n  '#title_display': inline\n  '#title': 'Will you be attending the Service and Merit Awards Ceremony on Thursday, May 3 from 3:30-5 p.m. in the McLaren complex?'\n  '#description': ''\n  '#required': true\nif_you_do_not_attend_the_ceremony_we_will_send_your_certificate_pin_to_your_inter_office_mail_location:\n  '#type': textfield\n  '#title_display': inline\n  '#title': 'If you do not attend the Service and Merit Awards Ceremony, your certificate/pin will be sent to your interoffice mail location. If you would like it sent to an alternate location, please specify below.'\n  '#description': ''\n"
+elements: |
+  first_name:
+    '#type': textfield
+    '#title_display': inline
+    '#title': 'First Name'
+    '#description': ''
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title_display': inline
+    '#title': 'Last Name'
+    '#description': ''
+    '#required': true
+  your_full_name_as_it_will_appear_on_your_certificate:
+    '#type': textfield
+    '#title_display': inline
+    '#title': 'Please enter your full name as you would like it to appear on your certificate and in the printed program:'
+    '#description': ''
+    '#required': true
+  usf_email_address:
+    '#type': email
+    '#size': 20
+    '#title_display': inline
+    '#title': 'USF Email Address'
+    '#description': ''
+    '#required': true
+  phone_number:
+    '#type': textfield
+    '#size': 20
+    '#min': null
+    '#max': null
+    '#step': null
+    '#unique': false
+    '#title_display': inline
+    '#title': 'Phone Number'
+    '#description': ''
+    '#required': true
+  would_you_like_your_name_to_appear_in_the_program:
+    '#type': select
+    '#options':
+      1: 'YES, please include my name in the printed program.'
+      2: 'NO, I do not want my name included in the printed program.'
+    '#title_display': inline
+    '#title': 'Would you like your name to appear in the Service and Merit Awards Ceremony printed program?'
+    '#description': ''
+    '#required': true
+  will_you_be_attending_the_ceremony:
+    '#type': select
+    '#options':
+      1: 'YES, I will be attending.'
+      2: 'NO, I will not be attending.'
+      3: 'I am unsure if I will be attending.'
+    '#title_display': inline
+    '#title': 'Will you be attending the Service and Merit Awards Ceremony on Thursday, May 3 from 3:30-5 p.m. in the McLaren complex?'
+    '#description': ''
+    '#required': true
+  if_you_do_not_attend_the_ceremony_we_will_send_your_certificate_pin_to_your_inter_office_mail_location:
+    '#type': textfield
+    '#title_display': inline
+    '#title': 'If you do not attend the Service and Merit Awards Ceremony, your certificate/pin will be sent to your interoffice mail location. If you would like it sent to an alternate location, please specify below.'
+    '#description': ''
 css: ''
 javascript: ''
 settings:
@@ -27,40 +87,48 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_disable_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
   share: false
   share_node: false
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -69,11 +137,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -84,19 +147,21 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -113,9 +178,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: '<p>Thank you for your response! The 2018 USF Service and Merit Awards Ceremony will be held from 3:30-5 p.m. on Thursday, May 3 in the McLaren Complex. If you are attending the ceremony, please arrive at 3:15 p.m. to pick up your name badge. If you have any questions or need to change your RSVP,<span style="font-size: 1em; font-weight: lighter; background-color: transparent;">&nbsp;please email serviceandmerit@usfca.edu.</span></p>'
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -199,9 +264,9 @@ access:
 handlers:
   email_1:
     id: email
+    handler_id: email_1
     label: 'Email 1'
     notes: ''
-    handler_id: email_1
     status: true
     conditions: {  }
     weight: 1
@@ -210,15 +275,22 @@ handlers:
         - completed
       to_mail: serviceandmerit@usfca.edu
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: _default
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: 'RSVP for the 2017 USF Service and Merit Awards'
-      body: "<p>Submitted by user: [webform_submission:user]</p>\n\n<p>Submitted values are:[webform_submission:values]</p>"
+      body: |-
+        <p>Submitted by user: [webform_submission:user]</p>
+
+        <p>Submitted values are:[webform_submission:values]</p>
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -227,11 +299,7 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
 variants: {  }

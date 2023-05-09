@@ -5,6 +5,7 @@
  * Contains dgreat_group.module.
  */
 
+use Drupal\user\Entity\User;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\dgreat_group\DgreatGroup;
 use Drupal\dgreat_group\DgreatGroupUtility;
@@ -85,6 +86,6 @@ function dgreat_group_user_insert(EntityInterface $entity) {
 /**
  * Implements hook_ENTITY_TYPE_update().
  */
-function dgreat_group_user_update(\Drupal\user\Entity\User $entity) {
+function dgreat_group_user_update(User $entity) {
   (new DgreatGroup($entity))->flagUserDefaultContent($entity);
 }
