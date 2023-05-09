@@ -1123,8 +1123,9 @@ display:
             value: today
             type: offset
           group: 1
-          exposed: true
+          exposed: false
           expose:
+            operator_id: field_start_date_op
             label: 'Start Date'
             description: null
             use_operator: false
@@ -1135,6 +1136,8 @@ display:
             required: false
             remember: false
             multiple: false
+            remember_roles:
+              authenticated: authenticated
             min_placeholder: null
             max_placeholder: null
             placeholder: null
