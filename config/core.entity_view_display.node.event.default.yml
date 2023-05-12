@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.event.body
+    - field.field.node.event.feeds_item
     - field.field.node.event.field_additional_info
     - field.field.node.event.field_building
     - field.field.node.event.field_category
@@ -13,7 +14,7 @@ dependencies:
     - field.field.node.event.field_f_image_url
     - field.field.node.event.field_featured
     - field.field.node.event.field_group
-    - field.field.node.event.field_guid
+    - field.field.node.event.field_guid_gen
     - field.field.node.event.field_image
     - field.field.node.event.field_image_alt
     - field.field.node.event.field_image_url
@@ -120,14 +121,13 @@ content:
     third_party_settings: {  }
     weight: 107
     region: content
-  field_guid:
-    type: number_integer
+  field_guid_gen:
+    type: string
     label: above
     settings:
-      thousand_separator: ''
-      prefix_suffix: true
+      link_to_entity: false
     third_party_settings: {  }
-    weight: 108
+    weight: 120
     region: content
   field_image:
     type: image
@@ -202,6 +202,7 @@ content:
     weight: 100
     region: content
 hidden:
+  feeds_item: true
   field_image_alt: true
   langcode: true
   search_api_excerpt: true

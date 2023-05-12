@@ -1,0 +1,368 @@
+uuid: 3daa69c2-6153-41e3-b8c9-a5a182c1e239
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.event.body
+    - field.field.node.event.field_building
+    - field.field.node.event.field_category
+    - field.field.node.event.field_ems_booking_id
+    - field.field.node.event.field_ems_reservation_id
+    - field.field.node.event.field_end_date
+    - field.field.node.event.field_f_image_url
+    - field.field.node.event.field_featured
+    - field.field.node.event.field_group
+    - field.field.node.event.field_guid_gen
+    - field.field.node.event.field_image_alt
+    - field.field.node.event.field_image_url
+    - field.field.node.event.field_location
+    - field.field.node.event.field_search_date
+    - field.field.node.event.field_start_date
+    - field.field.node.event.field_terms
+    - field.field.node.event.field_thumbnail_image_url
+    - node.type.event
+  module:
+    - feeds_ex
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      d153e3b1-cc22-46c7-bc51-7b9d3f5d5762:
+        separator: ','
+        limit: null
+        uuid: d153e3b1-cc22-46c7-bc51-7b9d3f5d5762
+        plugin: explode
+        source: category
+        weight: 0
+        label: Explode
+      95dea8eb-1199-4a7f-b93c-57388add8b6b:
+        separator: ','
+        limit: null
+        uuid: 95dea8eb-1199-4a7f-b93c-57388add8b6b
+        plugin: explode
+        source: group
+        weight: 0
+        label: Explode
+      5a61ea8b-25e8-45b6-acb8-c26e6f5857f0:
+        separator: ','
+        limit: null
+        uuid: 5a61ea8b-25e8-45b6-acb8-c26e6f5857f0
+        plugin: explode
+        source: terms
+        weight: 0
+        label: Explode
+      4d2a1c8c-0708-4729-b7bd-e34626212f94:
+        find: '&amp;'
+        replace: '&'
+        case_sensitive: false
+        word_boundaries: false
+        whole: false
+        uuid: 4d2a1c8c-0708-4729-b7bd-e34626212f94
+        plugin: find_replace
+        source: displaytitle
+        weight: 0
+        label: 'Find replace'
+      52e93355-fd82-4774-a95e-9c3449d34be8:
+        uuid: 52e93355-fd82-4774-a95e-9c3449d34be8
+        plugin: html_entity_decode
+        source: description
+        weight: 0
+        label: 'HTML entity decode'
+      fc239a0a-6e72-4962-a897-7830ea499bb3:
+        find: '&amp;'
+        replace: '&'
+        case_sensitive: false
+        word_boundaries: false
+        whole: false
+        uuid: fc239a0a-6e72-4962-a897-7830ea499bb3
+        plugin: find_replace
+        source: terms
+        weight: 1
+        label: 'Find replace'
+      91b03a92-c173-44fb-90fd-c924dceb1333:
+        find: '&#039;'
+        replace: ''''
+        case_sensitive: false
+        word_boundaries: false
+        whole: false
+        uuid: 91b03a92-c173-44fb-90fd-c924dceb1333
+        plugin: find_replace
+        source: terms
+        weight: 2
+        label: 'Find replace'
+label: Events
+id: events
+description: 'Feed Importer for Events'
+help: ''
+import_period: 0
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: jsonpath
+parser_configuration:
+  context:
+    value: '$.*'
+  source_encoding:
+    - auto
+  display_errors: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: event
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: true
+  owner_id: 0
+custom_sources:
+  description:
+    value: description
+    label: description
+    machine_name: description
+    type: json
+  building:
+    value: building
+    label: building
+    machine_name: building
+    type: json
+  category:
+    value: category
+    label: category
+    machine_name: category
+    type: json
+  emsbookingid:
+    value: emsBookingId
+    label: emsBookingId
+    machine_name: emsbookingid
+    type: json
+  emsreservationid:
+    value: emsReservationId
+    label: emsReservationId
+    machine_name: emsreservationid
+    type: json
+  enddate:
+    value: endDate
+    label: endDate
+    machine_name: enddate
+    type: json
+  myusffeatured:
+    value: myUsfFeatured
+    label: myUsfFeatured
+    machine_name: myusffeatured
+    type: json
+  eventmedia:
+    value: eventMedia
+    label: eventMedia
+    machine_name: eventmedia
+    type: json
+  guid:
+    value: guid
+    label: guid
+    machine_name: guid
+    type: json
+  group:
+    value: group
+    label: group
+    machine_name: group
+    type: json
+  location:
+    value: location
+    label: location
+    machine_name: location
+    type: json
+  publishedstatus:
+    value: publishedStatus
+    label: publishedStatus
+    machine_name: publishedstatus
+    type: json
+  searchdate:
+    value: searchDate
+    label: searchDate
+    machine_name: searchdate
+    type: json
+  startdate:
+    value: startDate
+    label: startDate
+    machine_name: startdate
+    type: json
+  terms:
+    value: terms
+    label: terms
+    machine_name: terms
+    type: json
+  eventmediathumb:
+    value: eventMediaThumb
+    label: eventMediaThumb
+    machine_name: eventmediathumb
+    type: json
+  displaytitle:
+    value: displayTitle
+    label: displayTitle
+    machine_name: displaytitle
+    type: json
+  urlalias:
+    value: urlAlias
+    label: urlAlias
+    machine_name: urlalias
+    type: json
+  eventmediaalt:
+    value: eventMediaAlt
+    label: eventMediaAlt
+    machine_name: eventmediaalt
+    type: json
+mappings:
+  -
+    target: body
+    map:
+      value: description
+      summary: ''
+    settings:
+      language: ''
+      format: restricted_html
+  -
+    target: field_building
+    map:
+      value: building
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_category
+    map:
+      target_id: category
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_ems_booking_id
+    map:
+      value: emsbookingid
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_ems_reservation_id
+    map:
+      value: emsreservationid
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_end_date
+    map:
+      value: enddate
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_featured
+    map:
+      value: myusffeatured
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_f_image_url
+    map:
+      uri: eventmedia
+      title: ''
+    settings:
+      language: null
+  -
+    target: field_guid_gen
+    map:
+      value: guid
+    settings:
+      language: null
+    unique:
+      value: '1'
+  -
+    target: field_group
+    map:
+      target_id: group
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_location
+    map:
+      value: location
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: status
+    map:
+      value: publishedstatus
+    settings:
+      language: null
+  -
+    target: field_search_date
+    map:
+      value: searchdate
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_start_date
+    map:
+      value: startdate
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_terms
+    map:
+      target_id: terms
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_thumbnail_image_url
+    map:
+      uri: eventmediathumb
+      title: ''
+    settings:
+      language: null
+  -
+    target: title
+    map:
+      value: displaytitle
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: path
+    map:
+      alias: urlalias
+      pathauto: ''
+    settings:
+      language: null
+  -
+    target: field_image_alt
+    map:
+      value: eventmediaalt
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_image_url
+    map:
+      uri: eventmedia
+      title: ''
+    settings:
+      language: null
