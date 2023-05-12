@@ -28,11 +28,11 @@
 
 <div class="box {{ paragraph.field_colors.value }}" style="min-height:{{ height }}px;">
 	<img class="box-image" alt="{{ paragraph.field_image.alt }}" src="{{ file_url(paragraph.field_image.entity.uri.value) }}" />
-	<div class="box-body"> 
+	<div class="box-body">
 		{% if paragraph.field_subheading.value is not empty %}
 		<div class="box-subheader">{{ paragraph.field_subheading.value }}</div>
 		{% endif %}
-		
+
 		{% if paragraph.field_body_text.value is not empty %}
 			{% autoescape false %}
       			{{ description }}
@@ -40,7 +40,7 @@
 		{% endif %}
 
 		{% if paragraph.field_heading.value is not empty %}
-		<div class="box-button"><a class="box-link" href="{{ content.field_link.0['#url'] }}" target="_blank">{{ paragraph.field_heading.value }}</a></div>
+		<div class="box-button"><a class="box-link" href="{{ content.field_link.0['#url'] }}">{{ paragraph.field_heading.value }}</a></div>
 		{% endif %}
 
 	</div>
