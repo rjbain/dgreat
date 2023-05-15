@@ -5,8 +5,10 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.share_page.body
+    - field.field.node.share_page.feeds_item
     - field.field.node.share_page.field_add_a_paragraph
     - field.field.node.share_page.field_display_title
+    - field.field.node.share_page.field_guid_gen
     - node.type.share_page
   module:
     - text
@@ -28,7 +30,9 @@ content:
     weight: 100
     region: content
 hidden:
+  feeds_item: true
   field_add_a_paragraph: true
   field_display_title: true
+  field_guid_gen: true
   langcode: true
   search_api_excerpt: true
