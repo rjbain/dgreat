@@ -1,0 +1,386 @@
+uuid: a54abe22-e17d-45a2-98c3-fd142f290ef3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.faculty.body
+    - field.field.node.faculty.field_display_title
+    - field.field.node.faculty.field_education
+    - field.field.node.faculty.field_email_address
+    - field.field.node.faculty.field_expertise_long
+    - field.field.node.faculty.field_faculty_department
+    - field.field.node.faculty.field_faculty_position
+    - field.field.node.faculty.field_faculty_program
+    - field.field.node.faculty.field_faculty_program_director
+    - field.field.node.faculty.field_faculty_school
+    - field.field.node.faculty.field_first_name
+    - field.field.node.faculty.field_guid
+    - field.field.node.faculty.field_image_url
+    - field.field.node.faculty.field_last_name
+    - field.field.node.faculty.field_middle_initial
+    - field.field.node.faculty.field_name_suffix
+    - field.field.node.faculty.field_phone
+    - field.field.node.faculty.field_position
+    - field.field.node.faculty.field_professional_title
+    - field.field.node.faculty.field_source_url
+    - node.type.faculty
+  module:
+    - feeds_ex
+    - node
+label: Faculty
+id: faculty
+description: 'Feed Importer for Faculty'
+help: ''
+import_period: 3600
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: xml
+parser_configuration:
+  context:
+    value: /faculty/item
+  source_encoding:
+    - auto
+  display_errors: false
+  line_limit: 100
+  use_tidy: false
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: faculty
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: true
+  owner_id: 0
+custom_sources:
+  title:
+    label: title
+    machine_name: title
+    value: title
+    raw: false
+    inner: false
+    type: xml
+  education:
+    label: education
+    machine_name: education
+    value: education
+    raw: false
+    inner: false
+    type: xml
+  email:
+    label: email
+    machine_name: email
+    value: email
+    raw: false
+    inner: false
+    type: xml
+  expertise:
+    label: expertise
+    machine_name: expertise
+    value: expertise
+    raw: false
+    inner: false
+    type: xml
+  expertise_long:
+    label: expertise_long
+    machine_name: expertise_long
+    value: expertise
+    raw: false
+    inner: false
+    type: xml
+  departments_department:
+    value: departments/department
+    label: departments/department
+    machine_name: departments_department
+    type: blank
+  department:
+    label: department
+    machine_name: department
+    value: departments/department
+    raw: false
+    inner: false
+    type: xml
+  position:
+    label: position
+    machine_name: position
+    value: position
+    raw: false
+    inner: false
+    type: xml
+  program:
+    label: program
+    machine_name: program
+    value: program
+    raw: false
+    inner: false
+    type: xml
+  programdirector:
+    label: programDirector
+    machine_name: programdirector
+    value: programDirector
+    raw: false
+    inner: false
+    type: xml
+  school:
+    label: school
+    machine_name: school
+    value: school
+    raw: false
+    inner: false
+    type: xml
+  firstname:
+    label: firstName
+    machine_name: firstname
+    value: firstName
+    raw: false
+    inner: false
+    type: xml
+  guid:
+    label: guid
+    machine_name: guid
+    value: guid
+    raw: false
+    inner: false
+    type: xml
+  media:
+    label: media
+    machine_name: media
+    value: media
+    raw: false
+    inner: false
+    type: xml
+  lastname:
+    label: lastName
+    machine_name: lastname
+    value: lastName
+    raw: false
+    inner: false
+    type: xml
+  middlename:
+    label: middleName
+    machine_name: middlename
+    value: middleName
+    raw: false
+    inner: false
+    type: xml
+  suffix:
+    label: suffix
+    machine_name: suffix
+    value: suffix
+    raw: false
+    inner: false
+    type: xml
+  phone:
+    label: phone
+    machine_name: phone
+    value: phone
+    raw: false
+    inner: false
+    type: xml
+  professionaltitle:
+    label: professionalTitle
+    machine_name: professionaltitle
+    value: professionalTitle
+    raw: false
+    inner: false
+    type: xml
+  sourceurl:
+    label: sourceUrl
+    machine_name: sourceurl
+    value: sourceUrl
+    raw: false
+    inner: false
+    type: xml
+  role_school:
+    label: role_school
+    machine_name: role_school
+    value: role/school
+    raw: false
+    inner: false
+    type: xml
+  role_program:
+    label: role_program
+    machine_name: role_program
+    value: role/program
+    raw: false
+    inner: false
+    type: xml
+  role_position:
+    label: role_position
+    machine_name: role_position
+    value: role/position
+    raw: false
+    inner: false
+    type: xml
+  biography:
+    label: biography
+    machine_name: biography
+    value: biography
+    raw: false
+    inner: false
+    type: xml
+mappings:
+  -
+    target: field_display_title
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_education
+    map:
+      value: education
+    settings:
+      language: ''
+      format: restricted_html
+  -
+    target: field_email_address
+    map:
+      value: email
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_expertise_long
+    map:
+      value: expertise
+    settings:
+      language: ''
+      format: restricted_html
+  -
+    target: field_faculty_department
+    map:
+      target_id: department
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_faculty_position
+    map:
+      target_id: role_position
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_faculty_program
+    map:
+      target_id: role_program
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_faculty_program_director
+    map:
+      target_id: programdirector
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_faculty_school
+    map:
+      target_id: role_school
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_first_name
+    map:
+      value: firstname
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_guid
+    map:
+      value: guid
+    settings:
+      language: null
+    unique:
+      value: '1'
+  -
+    target: field_image_url
+    map:
+      uri: media
+      title: ''
+    settings:
+      language: null
+  -
+    target: field_last_name
+    map:
+      value: lastname
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_middle_initial
+    map:
+      value: middlename
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_name_suffix
+    map:
+      value: suffix
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_phone
+    map:
+      value: phone
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_position
+    map:
+      value: role_position
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_professional_title
+    map:
+      value: professionaltitle
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_source_url
+    map:
+      uri: sourceurl
+      title: ''
+    settings:
+      language: null
+  -
+    target: body
+    map:
+      value: biography
+      summary: biography
+    settings:
+      language: ''
+      format: restricted_html

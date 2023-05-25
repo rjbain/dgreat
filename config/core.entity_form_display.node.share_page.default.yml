@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.node.share_page.body
+    - field.field.node.share_page.feeds_item
     - field.field.node.share_page.field_add_a_paragraph
     - field.field.node.share_page.field_display_title
+    - field.field.node.share_page.field_guid_gen
     - node.type.share_page
   module:
     - paragraphs
@@ -48,6 +50,14 @@ content:
   field_display_title:
     type: string_textfield
     weight: 122
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_guid_gen:
+    type: string_textfield
+    weight: 124
     region: content
     settings:
       size: 60
@@ -122,4 +132,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  feeds_item: true

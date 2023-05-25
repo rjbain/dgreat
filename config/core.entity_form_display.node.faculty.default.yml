@@ -4,11 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.faculty.body
+    - field.field.node.faculty.feeds_item
     - field.field.node.faculty.field_banner_id
     - field.field.node.faculty.field_display_title
     - field.field.node.faculty.field_education
     - field.field.node.faculty.field_email_address
-    - field.field.node.faculty.field_expertise
     - field.field.node.faculty.field_expertise_long
     - field.field.node.faculty.field_faculty_department
     - field.field.node.faculty.field_faculty_position
@@ -21,7 +21,6 @@ dependencies:
     - field.field.node.faculty.field_last_name
     - field.field.node.faculty.field_middle_initial
     - field.field.node.faculty.field_name_suffix
-    - field.field.node.faculty.field_past_education
     - field.field.node.faculty.field_phone
     - field.field.node.faculty.field_position
     - field.field.node.faculty.field_professional_title
@@ -80,14 +79,6 @@ content:
   field_email_address:
     type: string_textfield
     weight: 22
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_expertise:
-    type: string_textfield
-    weight: 30
     region: content
     settings:
       size: 60
@@ -193,14 +184,6 @@ content:
   field_name_suffix:
     type: string_textfield
     weight: 20
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_past_education:
-    type: string_textfield
-    weight: 29
     region: content
     settings:
       size: 60
@@ -315,4 +298,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  feeds_item: true

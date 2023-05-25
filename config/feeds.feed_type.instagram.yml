@@ -1,0 +1,145 @@
+uuid: 75025954-55b9-45d4-9837-1aa1fc01fb0d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.instagram.body
+    - field.field.node.instagram.field_account_name
+    - field.field.node.instagram.field_external_id
+    - field.field.node.instagram.field_guid
+    - field.field.node.instagram.field_image_url
+    - field.field.node.instagram.field_media_type
+    - field.field.node.instagram.field_news_link
+    - node.type.instagram
+  module:
+    - feeds_ex
+    - node
+label: Instagram
+id: instagram
+description: 'Feed importer for Instagram posts'
+help: ''
+import_period: 3600
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: jsonpath
+parser_configuration:
+  context:
+    value: '$.posts.*'
+  source_encoding:
+    - auto
+  display_errors: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: instagram
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  user_screen_name:
+    value: user_screen_name
+    label: user_screen_name
+    machine_name: user_screen_name
+    type: json
+  text:
+    value: text
+    label: text
+    machine_name: text
+    type: json
+  source_identifier:
+    value: source_identifier
+    label: source_identifier
+    machine_name: source_identifier
+    type: json
+  id:
+    value: id
+    label: id
+    machine_name: id
+    type: json
+  image:
+    value: image
+    label: image
+    machine_name: image
+    type: json
+  has_image:
+    value: has_image
+    label: has_image
+    machine_name: has_image
+    type: json
+  url:
+    value: url
+    label: url
+    machine_name: url
+    type: json
+mappings:
+  -
+    target: field_account_name
+    map:
+      value: user_screen_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: body
+    map:
+      value: text
+      summary: ''
+    settings:
+      language: null
+      format: plain_text
+  -
+    target: field_external_id
+    map:
+      value: source_identifier
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_guid
+    map:
+      value: id
+    settings:
+      language: null
+    unique:
+      value: '1'
+  -
+    target: field_image_url
+    map:
+      uri: image
+      title: ''
+    settings:
+      language: null
+  -
+    target: field_media_type
+    map:
+      value: has_image
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_news_link
+    map:
+      uri: url
+      title: ''
+    settings:
+      language: null
+  -
+    target: title
+    map:
+      value: id
+    settings:
+      language: null
+    unique: {  }

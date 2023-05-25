@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.node.share_page.body
+    - field.field.node.share_page.feeds_item
     - field.field.node.share_page.field_add_a_paragraph
     - field.field.node.share_page.field_display_title
+    - field.field.node.share_page.field_guid_gen
     - node.type.share_page
   module:
     - entity_reference_revisions
@@ -40,11 +42,20 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
+  field_guid_gen:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
     weight: 0
     region: content
 hidden:
+  feeds_item: true
   langcode: true
   search_api_excerpt: true

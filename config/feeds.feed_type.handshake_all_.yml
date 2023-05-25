@@ -1,0 +1,147 @@
+uuid: 788587d9-12a4-487f-a3a3-53dab17bcf63
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.jobs_list.body
+    - field.field.node.jobs_list.field_hs_guid
+    - field.field.node.jobs_list.field_job_category
+    - field.field.node.jobs_list.field_job_pub_date
+    - field.field.node.jobs_list.field_url
+    - node.type.jobs_list
+  module:
+    - feeds_ex
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      87238736-9d36-4a6a-9f0a-e8e454ee4852:
+        default_value: all
+        only_if_empty: false
+        uuid: 87238736-9d36-4a6a-9f0a-e8e454ee4852
+        plugin: default_value
+        source: job_category
+        weight: 0
+        label: 'Set value or default value'
+label: 'Handshake (all)'
+id: handshake_all_
+description: 'Handshake Feed Importer for All Jobs'
+help: ''
+import_period: 3600
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: xml
+parser_configuration:
+  context:
+    value: /rss/channel/item
+  source_encoding:
+    - auto
+  display_errors: false
+  line_limit: 100
+  use_tidy: false
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: jobs_list
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  description:
+    label: description
+    machine_name: description
+    value: description
+    raw: false
+    inner: false
+    type: xml
+  guid:
+    label: guid
+    machine_name: guid
+    value: guid
+    raw: false
+    inner: false
+    type: xml
+  job_category:
+    value: job_category
+    label: job_category
+    machine_name: job_category
+    type: blank
+  pubdate:
+    label: pubDate
+    machine_name: pubdate
+    value: pubDate
+    raw: false
+    inner: false
+    type: xml
+  link:
+    label: link
+    machine_name: link
+    value: link
+    raw: false
+    inner: false
+    type: xml
+  title:
+    label: title
+    machine_name: title
+    value: title
+    raw: false
+    inner: false
+    type: xml
+mappings:
+  -
+    target: body
+    map:
+      value: description
+      summary: ''
+    settings:
+      language: null
+      format: plain_text
+  -
+    target: field_hs_guid
+    map:
+      value: guid
+    settings:
+      language: null
+    unique:
+      value: '1'
+  -
+    target: field_job_category
+    map:
+      value: job_category
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_job_pub_date
+    map:
+      value: pubdate
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_url
+    map:
+      uri: link
+      title: ''
+    settings:
+      language: null
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }

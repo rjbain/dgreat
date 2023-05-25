@@ -45,8 +45,8 @@
 {% set position = fields.field_position.content %}
 {% set email_address = fields.field_email_address.content %}
 {% set phone = fields.field_phone.content %}
-{% set past_education = fields.field_past_education.content %}
-{% set expertise = fields.field_expertise.content %}
+{% set education = fields.field_education.content %}
+{% set expertise = fields.field_expertise_long.content %}
 
 
 
@@ -82,8 +82,8 @@
             {% endif %}
           {% endautoescape %}
       </div>
-     {% if past_education|render|trim is not empty %}
-    	<div class="education"><h3>Education</h3> {{ past_education }}</div>
+     {% if education|render|trim is not empty %}
+    	<div class="education"><h3>Education</h3> {{ education }}</div>
     {% endif %}
     {% if expertise|render|trim is not empty %}
       <div class="expertise"><h3>Expertise</h3> {{ expertise }}</div>
