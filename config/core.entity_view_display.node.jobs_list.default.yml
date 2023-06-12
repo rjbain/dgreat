@@ -7,10 +7,11 @@ dependencies:
     - field.field.node.jobs_list.feeds_item
     - field.field.node.jobs_list.field_hs_guid
     - field.field.node.jobs_list.field_job_category
-    - field.field.node.jobs_list.field_job_pub_date
+    - field.field.node.jobs_list.field_published_date
     - field.field.node.jobs_list.field_url
     - node.type.jobs_list
   module:
+    - datetime
     - link
     - text
     - user
@@ -42,13 +43,14 @@ content:
     third_party_settings: {  }
     weight: 105
     region: content
-  field_job_pub_date:
-    type: string
+  field_published_date:
+    type: datetime_default
     label: above
     settings:
-      link_to_entity: false
+      timezone_override: ''
+      format_type: medium
     third_party_settings: {  }
-    weight: 106
+    weight: 107
     region: content
   field_url:
     type: link

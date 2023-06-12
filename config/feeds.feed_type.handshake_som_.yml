@@ -6,7 +6,6 @@ dependencies:
     - field.field.node.jobs_list.body
     - field.field.node.jobs_list.field_hs_guid
     - field.field.node.jobs_list.field_job_category
-    - field.field.node.jobs_list.field_job_pub_date
     - field.field.node.jobs_list.field_url
     - node.type.jobs_list
   module:
@@ -130,13 +129,6 @@ mappings:
       language: null
     unique: {  }
   -
-    target: field_job_pub_date
-    map:
-      value: pubdate
-    settings:
-      language: null
-    unique: {  }
-  -
     target: field_url
     map:
       uri: link
@@ -150,3 +142,10 @@ mappings:
     settings:
       language: null
     unique: {  }
+  -
+    target: field_published_date
+    map:
+      value: pubdate
+    settings:
+      language: null
+      timezone: UTC

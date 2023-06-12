@@ -11,10 +11,12 @@ dependencies:
     - field.field.node.instagram.field_image_url
     - field.field.node.instagram.field_media_type
     - field.field.node.instagram.field_news_link
+    - field.field.node.instagram.field_published_date
     - field.field.node.instagram.field_social_tags
     - field.field.node.instagram.field_type
     - node.type.instagram
   module:
+    - datetime
     - link
     - text
     - user
@@ -86,6 +88,15 @@ content:
       target: ''
     third_party_settings: {  }
     weight: 103
+    region: content
+  field_published_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 110
     region: content
   field_social_tags:
     type: entity_reference_label
