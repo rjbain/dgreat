@@ -95,6 +95,7 @@
     "drupal/stage_file_proxy": "^1.0@alpha",
     "drupal/tamper": "^1.0@alpha",
     "drupal/taxonomy_import": "^2.0",
+    "drupal/tb_megamenu": "^2.0@alpha",
     "drupal/twig_field_value": "^2.0",
     "drupal/twig_tweak": "^2.0",
     "drupal/upgrade_rector": "^1.0@alpha",
@@ -102,6 +103,7 @@
     "drupal/variationcache": "^1.1",
     "drupal/views_field_view": "^1.0@beta",
     "drupal/viewsreference": "^2.0@beta",
+    "drupal/we_megamenu": "^1.13",
     "drupal/webform": "^6.1",
     "drupal/webform_migrate": "^1.0@alpha",
     "drupal/webform_views": "^5.0",
@@ -170,6 +172,11 @@
     ]
   },
   "extra": {
+    "patches": {
+      "drupal/we_megamenu": {
+        "TypeError: Cannot access offset of type string on string":"https://www.drupal.org/files/issues/2023-03-16/we_megamenu-3226361-19.patch"
+      }
+    },
     "installer-types": ["ckeditor-plugin"],
     "installer-paths": {
       "web/core": ["type:drupal-core"],
