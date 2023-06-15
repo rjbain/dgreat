@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.event.body
+    - field.field.node.event.field_additional_info
     - field.field.node.event.field_building
     - field.field.node.event.field_category
     - field.field.node.event.field_ems_booking_id
@@ -221,6 +222,11 @@ custom_sources:
     label: eventMediaAlt
     machine_name: eventmediaalt
     type: json
+  rsvplink:
+    value: rsvpLink
+    label: rsvpLink
+    machine_name: rsvplink
+    type: json
 mappings:
   -
     target: body
@@ -366,3 +372,10 @@ mappings:
       title: ''
     settings:
       language: null
+  -
+    target: field_additional_info
+    map:
+      value: rsvplink
+    settings:
+      language: null
+      format: plain_text

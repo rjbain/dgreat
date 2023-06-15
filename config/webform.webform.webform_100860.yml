@@ -252,22 +252,15 @@ handlers:
       bcc_options: {  }
       cc_mail: ''
       cc_options: {  }
-      from_mail: '[webform-submission:values:email:raw]'
+      from_mail: _default
       from_options: {  }
-      from_name: '[webform-submission:values:first_name:raw]'
+      from_name: _default
       reply_to: ''
       return_path: ''
       sender_mail: ''
       sender_name: ''
       subject: 'Story Idea Pitch Form'
-      body: |-
-        <p>Submitted on [<a href="javascript:void(0);" title="Insert this token into your form">current-date</a>]</p>
-
-        <p>Submitted by user: [webform_submission:user]</p>
-
-        <p>Submitted values are:</p>
-
-        <p>[webform_submission:values]</p>
+      body: "<p>Submitted on [<a href=\"javascript:void(0);\" title=\"Insert this token into your form\">current-date</a>]</p>\r\n\r\n<p>Submitted by user: [webform_submission:user]</p>\r\n\r\n<p>Submitted values are:</p>\r\n\r\n<p>[webform_submission:values]</p>"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -294,11 +287,11 @@ handlers:
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      cc_mail: ''
+      cc_mail: '[webform_submission:values:email:raw]'
       cc_options: {  }
-      from_mail: '[webform-submission:values:email:raw]'
+      from_mail: _default
       from_options: {  }
-      from_name: '[webform-submission:values:first_name:raw]'
+      from_name: _default
       reply_to: ''
       return_path: ''
       sender_mail: ''
