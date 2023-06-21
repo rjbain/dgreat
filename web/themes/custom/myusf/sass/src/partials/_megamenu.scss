@@ -86,6 +86,9 @@
                 }
             }
         }
+        .tbm-collapse {
+            box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+        }
         .tbm-submenu {
             border-top: 0;
             .tbm-link {
@@ -99,6 +102,23 @@
         .tbm-submenu-toggle {
             background-color: #F5F2EA;
             border-left: 0;
+
+            &:before {
+                position: absolute;
+                content: '';
+                display: block;
+                width: 10px;
+                height: 16px;
+                top: 21px;
+                right: 21px;
+                z-index: 1;
+                background: url(/themes/custom/myusf/images/site/icons.svg) -60px -128px no-repeat;
+                transform: unset;
+                border: 0;
+            }
+        }
+        .open>.tbm-link-container>.tbm-submenu-toggle:before {
+            transform: translateY(25%) translateX(0%) rotate(90deg);
         }
         ul.tbm-subnav.level-1 {
             background: $white;
@@ -115,6 +135,12 @@
                     display: none;
                 }
             }
+        }
+        li.tbm-item.level-1.open .tbm-link.level-1.tbm-toggle {
+            text-decoration: none;
+        }
+        li.tbm-item.level-1:last-of-type {
+            border-bottom: 1px solid rgba(0,0,0,0.2);
         }
         .tbm-item.level-2, 
         .tbm-item.level-3 {
