@@ -1,18 +1,18 @@
-uuid: 6a37634a-8ec6-4d8c-9548-636d8007aafe
+uuid: 7b91abdc-871a-4542-8908-8383f04c598f
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_migrate_final
-    - node.type.page
-    - paragraphs.paragraphs_type.migrate
+    - field.storage.node.field_social_media_links
+    - node.type.contact_box
+    - paragraphs.paragraphs_type.social_media_link
   module:
     - entity_reference_revisions
-id: node.page.field_migrate_final
-field_name: field_migrate_final
+id: node.contact_box.field_social_media_links
+field_name: field_social_media_links
 entity_type: node
-bundle: page
-label: Body
+bundle: contact_box
+label: 'Social Media Links'
 description: ''
 required: false
 translatable: false
@@ -22,85 +22,82 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      migrate: migrate
-    negate: 1
+      social_media_link: social_media_link
+    negate: 0
     target_bundles_drag_drop:
       announcement_category_date:
-        weight: 28
-        enabled: false
-      announcement_category_date_embed:
-        weight: 29
-        enabled: false
-      box_styles:
-        weight: 30
-        enabled: false
-      bp_accordion:
-        weight: 17
-        enabled: false
-      bp_accordion_section:
-        weight: 18
-        enabled: false
-      bp_blank:
-        weight: 19
-        enabled: false
-      bp_block:
-        weight: 20
-        enabled: false
-      bp_carousel:
-        weight: 21
-        enabled: false
-      bp_column_wrapper:
-        weight: 25
-        enabled: false
-      bp_columns:
-        weight: 22
-        enabled: false
-      bp_columns_three_uneven:
-        weight: 23
-        enabled: false
-      bp_columns_two_uneven:
-        weight: 24
-        enabled: false
-      bp_image:
         weight: 26
         enabled: false
-      bp_modal:
+      announcement_category_date_embed:
         weight: 27
         enabled: false
-      bp_simple:
+      box_styles:
         weight: 28
         enabled: false
-      bp_tab_section:
-        weight: 30
-        enabled: false
-      bp_tabs:
+      bp_accordion:
         weight: 29
         enabled: false
-      bp_view:
+      bp_accordion_section:
+        weight: 30
+        enabled: false
+      bp_blank:
         weight: 31
         enabled: false
-      bp_webform:
-        weight: 46
+      bp_block:
+        weight: 32
         enabled: false
-      content_reference:
-        weight: 27
+      bp_carousel:
+        weight: 33
+        enabled: false
+      bp_column_wrapper:
+        weight: 34
+        enabled: false
+      bp_columns:
+        weight: 35
+        enabled: false
+      bp_columns_three_uneven:
+        weight: 36
+        enabled: false
+      bp_columns_two_uneven:
+        weight: 37
+        enabled: false
+      bp_image:
+        weight: 38
+        enabled: false
+      bp_modal:
+        weight: 39
+        enabled: false
+      bp_simple:
+        weight: 40
+        enabled: false
+      bp_tab_section:
+        weight: 41
+        enabled: false
+      bp_tabs:
+        weight: 42
+        enabled: false
+      bp_view:
+        weight: 43
+        enabled: false
+      bp_webform:
+        weight: 44
         enabled: false
       events_search:
-        weight: 47
+        weight: 45
         enabled: false
       migrate:
-        weight: 32
-        enabled: true
+        weight: 46
+        enabled: false
       reference:
-        weight: 49
+        weight: 47
         enabled: false
       social_media_link:
-        weight: 50
-        enabled: false
+        weight: 48
+        enabled: true
       usfcat_updates:
-        weight: 51
+        weight: 49
         enabled: false
       video:
-        weight: 52
+        weight: 50
         enabled: false
 field_type: entity_reference_revisions

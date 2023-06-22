@@ -1,0 +1,100 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main content
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+    set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class
+]
+%}
+{# Set vars so we can use filters #}
+{% set first_num = content.field_telephone_number[0]|render %}
+{% set second_num = content.field_telephone_number[1]|render %}
+{% set email_one = content.field_contact_email_address[0]|render %}
+{% set email_two = content.field_contact_email_address[1]|render %}
+{% set addy1 = node.field_address_1.value %}
+{% set addy2 = node.field_address_2.value %}
+{% set addy3 = node.field_address_3.value %}
+{% set contact_title = node.field_contact_title.value %}
+{% set hours = node.field_hours_of_operation.value %}
+{% set body = content.body %}
+{% set appt = node.field_schedule_an_appointment.0.url %}
+{% set block_id = elements.content['#block_content'].id() %}
+<div {{ attributes }}>
+    {{ title_prefix }}
+    {{ title_suffix }}
+    <div{{ attributes.addClass(classes).setAttribute('id', block_id) }}>
+    <div class="block-myusf-contactbox">
+        <h2>{{ contact_title }}</h2>
+        {% if body %}
+            <p class="body">
+                {{ body }}
+            </p>
+        {% endif %}
+        {% if addy1 or addy2 or addy3 %}
+            <p class="address">
+                {{ addy1 }}<br>
+                {{ addy2 }}<br>
+                {{ addy3 }}
+            </p>
+        {% endif %}
+        {% if hours %}
+            <p><strong>Hours</strong>: {{ hours|striptags|trim }}</p>
+        {% endif %}
+        <div class="contact-info">
+        {% if first_num %}
+            <p class="contact tel">{{ first_num }}</p>
+        {% endif %}
+        {% if second_num %}
+            <p class="contact tel">{{ second_num }}</p>
+        {% endif %}
+            
+        {% if email_one %}       
+            <p class="contact email"><a href="mailto:{{ email_one }}">{% autoescape false %}{{ email_one }}{% endautoescape %}</a></p>
+        {% endif %}
+        {% if email_two %}
+            <p class="contact email"><a href="mailto:{{ email_two }}">{% autoescape false %}{{ email_two }}{% endautoescape %}</a></p>
+        {% endif %}
+        </div>
+        <div class="contact-info-links">
+        {% if appt %}
+            <p><a class="button" href="{{ appt }}">Schedule Appointment</a></p>
+        {% endif %}
+            {% for links in content.field_social_media_links %}
+                {% for link in links['#paragraph'].field_social_media_network %}
+                    <p><a class="{{ link.value|lower }}" href="{{ links['#paragraph'].field_social_media_url.uri }}" target="_blank">{{ link.value|replace({"Tumbler":"Tumblr"}) }}</a></p>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+</div>

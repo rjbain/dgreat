@@ -1,0 +1,50 @@
+uuid: ed336b57-0d8e-4bbe-9c35-3edf85cc2883
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.contact_box.body
+    - field.field.node.contact_box.field_address_1
+    - field.field.node.contact_box.field_address_2
+    - field.field.node.contact_box.field_address_3
+    - field.field.node.contact_box.field_contact_email_address
+    - field.field.node.contact_box.field_contact_name
+    - field.field.node.contact_box.field_hours_of_operation
+    - field.field.node.contact_box.field_schedule_an_appointment
+    - field.field.node.contact_box.field_social_media_links
+    - field.field.node.contact_box.field_telephone_number
+    - node.type.contact_box
+  module:
+    - text
+    - user
+id: node.contact_box.teaser
+targetEntityType: node
+bundle: contact_box
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_address_1: true
+  field_address_2: true
+  field_address_3: true
+  field_contact_email_address: true
+  field_contact_name: true
+  field_hours_of_operation: true
+  field_schedule_an_appointment: true
+  field_social_media_links: true
+  field_telephone_number: true
+  langcode: true
+  search_api_excerpt: true

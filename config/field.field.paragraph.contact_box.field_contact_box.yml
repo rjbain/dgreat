@@ -1,0 +1,29 @@
+uuid: 4fdcc246-aa89-46f3-a15a-5610eaf9f6eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contact_box
+    - node.type.contact_box
+    - paragraphs.paragraphs_type.contact_box
+id: paragraph.contact_box.field_contact_box
+field_name: field_contact_box
+entity_type: paragraph
+bundle: contact_box
+label: 'Contact Box'
+description: 'Add an existing contact box to this page'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      contact_box: contact_box
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
