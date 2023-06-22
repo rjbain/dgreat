@@ -1,0 +1,47 @@
+uuid: b78eae8c-a2c6-4390-80c2-66fd168fcdca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.in_content_promo_box.field_body_text
+    - field.field.paragraph.in_content_promo_box.field_call_to_action
+    - field.field.paragraph.in_content_promo_box.field_image
+    - paragraphs.paragraphs_type.in_content_promo_box
+  module:
+    - image
+    - link
+    - text
+id: paragraph.in_content_promo_box.default
+targetEntityType: paragraph
+bundle: in_content_promo_box
+mode: default
+content:
+  field_body_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_call_to_action:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_image:
+    type: image_url
+    label: hidden
+    settings:
+      image_style: full
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true
