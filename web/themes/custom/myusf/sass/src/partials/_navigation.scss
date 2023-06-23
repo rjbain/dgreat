@@ -80,7 +80,7 @@ nav.navbar {
 		height: 98px;
 		z-index: 2;
 	}
-	@include media-breakpoint-up(tablet) {
+	@include media-breakpoint-up(desktop) {
 		padding-right: 2.4rem;
 		height: 85px;
 	}
@@ -89,9 +89,13 @@ nav.navbar {
 .navbar-brand {
 	color: $green!important;
 	margin-left: 0.5625rem;
-
 	position: relative;
-    top: -25px;
+    top: 0px;
+
+	@include media-breakpoint-up(desktop) {
+		position: relative;
+		top: -18px;
+	}
 
 	&:hover,
 	&:focus {
@@ -129,7 +133,7 @@ nav.navbar {
 }
 .navbar-collapse {
 	position: relative;
-	top: 18px;
+	top: 20px;
 
 	@include media-breakpoint-up(desktop) {
 		/*margin-left: -70px;*/
@@ -410,7 +414,7 @@ button.header_search {
 	border: 0;
 	z-index: 10;
 	cursor:pointer;
-	right: 165px;
+	right: 170px;
 	position: absolute;
 	top: 15px;
 	width:20px;
@@ -528,6 +532,8 @@ div.search-icon-rollover {
 a.login-btn {
 	@include media-breakpoint-up(desktop) {
 		margin-right:  -0.5rem;
+		position: relative;
+    	top: -13px;
 	}
 
 	@include media-breakpoint-only(midlarge_desktop) {
@@ -701,7 +707,7 @@ a.dashboard-button{
 
 .login {
 	top:3px;
-	right: 20px;
+	right: 40px;
 	margin-top: 0.375rem;
 	margin-left: 0.3125rem;
 	border-radius: 0;
@@ -771,7 +777,7 @@ a.dashboard-button{
 
 	&:hover,
 	&:focus {
-		color:$yellow!important;
+		color:#fdc95c!important;
 	}
 	&.dropdown:hover::after {
 		color: $yellow;
@@ -792,7 +798,7 @@ a.dashboard-button{
 		}
 
 		a#navbarDropdownMenuLink {
-			color:$yellow!important;
+			color:#fdc95c!important;
 			margin-top: -2px;
 
 			@include media-breakpoint-down(tablet) {
@@ -803,7 +809,7 @@ a.dashboard-button{
 			}
 		}
 		&:after {
-			color:$yellow!important;
+			color:#fdc95c!important;
 			margin-top: 45px;
 
 			@include media-breakpoint-down(tablet) {
@@ -850,7 +856,7 @@ a.dashboard-button{
 
 		&:hover,
 		&:focus {
-			color:$yellow!important;
+			color:#fdc95c!important;
 			margin-top: -2.9375rem;
 			background: transparent;
 		}
@@ -885,7 +891,7 @@ a.dashboard-button{
 
 			&:hover,
 			&:focus {
-				color:$yellow!important;
+				color:#fdc95c!important;
 				background: transparent;
 			}
 		}
