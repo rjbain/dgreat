@@ -38,27 +38,26 @@
 #}
 {%
   set classes = [
-    'paragraph',
-    'paragraph--type--' ~ paragraph.bundle|clean_class,
-    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-    not paragraph.isPublished() ? 'paragraph--unpublished'
-   ]
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'clearfix',
+  ]
 %}
-{% block paragraph %}
 <div{{ attributes.addClass(classes) }}>
-  <div class="paragraph__column">
-    {% if content.bp_header|render %}
-      <h2>{{ content.bp_header }}</h2>
-    {% endif %}  
+  <div class="promo-box">
     <div class="promo-box-image"> 
-      <img src="{{ content.field_image.0['#markup'] }}" alt="{{ paragraph.field_image.alt }}" title=" {{ paragraph.field_image.title }}">
+      <img src="{{ content.field_image.0['#markup'] }}" alt="{{ node.field_image.alt }}" title=" {{ node.field_image.title }}">
     </div>
     <div class="promo-box-text">    
-      {{ content.field_body_text }}
+      {{ content.body }}
     </div> 
     <div class="promo-box-cta">
-      <a href="{{paragraph.field_call_to_action.0.uri }}">{{paragraph.field_call_to_action.0.title }}</a>
+      <a href="{{ node.field_call_to_action.0.uri }}">{{ node.field_call_to_action.0.title }}</a>
     </div>
   </div>
 </div>
-{% endblock paragraph %}
+
