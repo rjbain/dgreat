@@ -24,6 +24,10 @@ nav {
 			margin-top: 0;
 		}
 	}
+
+	li a svg.ext {
+		display: none;
+	}
 }
 
 .bg-dark {
@@ -82,7 +86,7 @@ nav.navbar {
 	}
 	@include media-breakpoint-up(desktop) {
 		padding-right: 2.4rem;
-		height: 85px;
+		height: 96px;
 	}
 }
 
@@ -94,7 +98,7 @@ nav.navbar {
 
 	@include media-breakpoint-up(desktop) {
 		position: relative;
-		top: -18px;
+		top: -23px;
 	}
 
 	&:hover,
@@ -133,7 +137,7 @@ nav.navbar {
 }
 .navbar-collapse {
 	position: relative;
-	top: 20px;
+	top: 26px;
 
 	@include media-breakpoint-up(desktop) {
 		/*margin-left: -70px;*/
@@ -889,6 +893,10 @@ a.dashboard-button{
 				margin-left: -4.375rem;
 			}
 
+			svg {
+				display: none;
+			}
+
 			&:hover,
 			&:focus {
 				color:#fdc95c!important;
@@ -1326,8 +1334,13 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		border: 1px solid $light_gray;
 		border-top: 0;
 	}
-	li.nav-item a:focus-visible {
-		position: relative;
+	li.nav-item a{
+		&:focus-visible {
+			position: relative;
+		}
+		svg.ext {
+			display: none;
+		}
 	}
 }
 
