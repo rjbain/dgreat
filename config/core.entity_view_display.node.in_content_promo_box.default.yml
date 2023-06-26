@@ -5,11 +5,13 @@ dependencies:
   config:
     - field.field.node.in_content_promo_box.body
     - field.field.node.in_content_promo_box.field_call_to_action
+    - field.field.node.in_content_promo_box.field_color
     - field.field.node.in_content_promo_box.field_image
     - node.type.in_content_promo_box
   module:
     - image
     - link
+    - options
     - text
     - user
 id: node.in_content_promo_box.default
@@ -35,6 +37,13 @@ content:
       target: '0'
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_color:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
     region: content
   field_image:
     type: image_url
