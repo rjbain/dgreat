@@ -2525,8 +2525,54 @@ input#edit-submit-community-grid {
 ====================================== */
 .promo-box {
     width: 240px;
-    background: #00543c;
+    background: $green;
 
+    &.turquoise {
+        background: $turquoise;
+    }
+    &.olive {
+        background: $olive;
+    }
+    &.blue {
+        background: $blue;
+    }
+    &.purple {
+        background: $plum;
+    }
+    &.gray {
+        background: $text-gray;
+    }
+    &.green {
+        background: $green;
+    }
+    &.yellow {
+        background: $yellow;
+
+        .promo-box-text {    
+            p {
+                color: $true_black;
+            } 
+            .promo-box-cta {
+                a.diamond_link {
+                    color: $true_black;
+
+                    &:hover {
+                        color: $true_black!important;
+
+                        &:after {
+                            border: 1px solid $white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .promo-box-image {
+        img {
+            width: 100%;
+            margin-top: 0;
+        }
+    }
     .promo-box-text {
         padding: 0.9375rem;
 
