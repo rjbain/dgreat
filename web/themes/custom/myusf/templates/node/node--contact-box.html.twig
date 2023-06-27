@@ -37,6 +37,8 @@
 ]
 %}
 {# Set vars so we can use filters #}
+{% set contact_name = content.field_contact_name %}
+{% set display_title = content.field_display_title %}
 {% set first_num = content.field_telephone_number[0]|render %}
 {% set second_num = content.field_telephone_number[1]|render %}
 {% set email_one = content.field_contact_email_address[0]|render %}
@@ -54,11 +56,14 @@
     {{ title_suffix }}
     <div{{ attributes.addClass(classes).setAttribute('id', block_id) }}>
     <div class="block-myusf-contactbox">
-        <h2>{{ contact_title }}</h2>
+        <h2>{{ display_title }}</h2>
+        <div class="body">
+
         {% if body %}
-            <p class="body">
-                {{ body }}
-            </p>
+            {{ body }}
+        {% endif %}
+        {% if contact_name %}
+            <p class="contact-name">{{ contact_name }}</p>
         {% endif %}
         {% if addy1 or addy2 or addy3 %}
             <p class="address">
@@ -84,6 +89,7 @@
         {% if email_two %}
             <p class="contact email"><a href="mailto:{{ email_two }}">{% autoescape false %}{{ email_two }}{% endautoescape %}</a></p>
         {% endif %}
+            </div>
         </div>
         <div class="contact-info-links">
         {% if appt %}
