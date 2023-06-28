@@ -19,16 +19,15 @@ elements: |-
     '#required': true
   last_name_legal_:
     '#type': textfield
-    '#title': 'Last Name:'
+    '#title': 'Last Name (Legal):'
     '#required': true
   first_name_legal_:
     '#type': textfield
-    '#title': 'First Name:'
+    '#title': 'First Name (Legal):'
     '#required': true
-  diploma_name_:
+  common_name_you_prefer_to_be_listed_in_the_graduation_program_if:
     '#type': textfield
-    '#title': 'Diploma Name (legal name as you would like it to appear on your diploma):'
-    '#required': true
+    '#title': 'Common Name you prefer to be listed in the graduation program (if applicable):'
   usf_email_:
     '#type': email
     '#title': 'USF Email:'
@@ -40,15 +39,6 @@ elements: |-
   cell_phone_:
     '#type': textfield
     '#title': 'Cell Phone:'
-    '#required': true
-  common_name_you_prefer_to_be_listed_in_the_graduation_program_if:
-    '#type': textfield
-    '#title': 'Preferred Name you would like to be printed in the program and read aloud at commencement:'
-    '#required': true
-  name_pronunciation:
-    '#type': textfield
-    '#title': 'Name Pronunciation'
-    '#description': 'Please write out the phonetic pronunciation of your name.'
     '#required': true
   height_:
     '#type': select
@@ -62,6 +52,15 @@ elements: |-
       6: '6-1 to 6-3'
       7: '6-4 to 6-6'
       8: '6-7 to 6-9'
+    '#required': true
+  diploma_name_:
+    '#type': textfield
+    '#title': 'Diploma Name (legal name as you would like it to appear on your diploma):'
+    '#required': true
+  name_pronunciation:
+    '#type': textfield
+    '#title': 'Name Pronunciation'
+    '#description': 'Please write out the phonetic pronunciation of your name.'
     '#required': true
   participating_in_ceremony_:
     '#type': select
@@ -93,8 +92,8 @@ elements: |-
     '#type': select
     '#title': 'Expected Year:'
     '#options':
-      1: '2023'
-      2: '2024'
+      1: '2022'
+      2: '2023'
     '#required': true
   expected_degree_:
     '#type': select
@@ -107,14 +106,56 @@ elements: |-
       7: 'Juris Doctor (J.D.)/Master of Business Administration (MBA)'
       8: 'Master of Legal Studies (MLST) in Taxation'
     '#required': true
+  first_prior_degree_:
+    '#type': select
+    '#title': 'First Prior Degree (start with undergraduate):'
+    '#options':
+      1: B.A.
+      2: B.S.
+      3: BB.A.
+      4: JD
+      5: LL.B.
+      6: LL.M.
+      7: M.A.
+      8: M.S.
+      9: Ph.D
+      10: B.F.A.
+      11: B.S.W.
+      12: M.B.A.
+      13: M.S.W.
+    '#required': true
   other_degree_:
     '#type': textfield
-    '#title': 'First Prior Degree (e.g. BA, BS, MA, etc.):'
-    '#required': true
+    '#title': 'Other Degree:'
+  granting_institution_:
+    '#type': select
+    '#title': 'Granting Institution:'
+    '#options':
+      1: 'University of California, Berkeley'
+      2: 'University of California, Davis'
+      3: 'University of California, Irvine'
+      4: 'University of California, Los Angeles'
+      5: 'University of California, Merced'
+      6: 'University of California, Riverside'
+      7: 'University of California, San Diego'
+      8: 'University of California, San Francisco'
+      9: 'University of California, Santa Barbara'
+      10: 'University of California, Santa Cruz'
+      11: 'California Polytechnic State University, San Luis Obispo'
+      12: 'California State University, East Bay'
+      13: 'California State University, Los Angeles'
+      14: 'California State University, Northridge'
+      15: 'Chapman University'
+      16: 'New York University'
+      22: Other
+      17: 'Rutgers University'
+      18: 'San Diego State University'
+      19: 'San Jose State University'
+      20: 'Santa Clara University'
+      21: 'Sonoma State University'
   other_institution_:
     '#type': textfield
-    '#title': 'Granting Institution:'
-    '#required': true
+    '#title': 'Other Institution:'
   country_:
     '#type': select
     '#title': 'Country:'
@@ -122,12 +163,42 @@ elements: |-
   year_:
     '#type': textfield
     '#title': 'Year:'
+  second_prior_degree_:
+    '#type': select
+    '#title': 'Second Prior Degree:'
+    '#description': 'If you have received another graduate degree (besides the program you are currently completing at USF), please list it here.'
+    '#options':
+      1: B.A.
+      2: B.S.
+      3: BB.A.
+      4: JD
+      5: LL.B.
+      6: LL.M.
+      7: M.A.
+      8: M.S.
+      9: Ph.D
+      10: Other
   other_degree_2:
     '#type': textfield
-    '#title': 'Second Prior Degree:'
+    '#title': 'Other Degree:'
+  granting_institution_2:
+    '#type': select
+    '#title': 'Granting Institution:'
+    '#options':
+      1: 'University of California, Berkeley'
+      2: 'University of California, Davis'
+      3: 'University of California, Irvine'
+      4: 'University of California, Los Angeles'
+      5: 'University of California, Merced'
+      6: 'University of California, Riverside'
+      7: 'University of California, San Diego'
+      8: 'University of California, San Francisco'
+      9: 'University of California, Santa Barbara'
+      10: 'University of California, Santa Cruz'
+      11: Other
   other_institution_2:
     '#type': textfield
-    '#title': 'Granting Institution:'
+    '#title': 'Other Institution:'
   country_2:
     '#type': select
     '#title': 'Country:'
@@ -135,12 +206,41 @@ elements: |-
   year_2:
     '#type': textfield
     '#title': 'Year:'
+  third_prior_degree_:
+    '#type': select
+    '#title': 'Third Prior Degree:'
+    '#options':
+      1: B.A.
+      2: B.S.
+      3: BB.A.
+      4: JD
+      5: LL.B.
+      6: LL.M.
+      7: M.A.
+      8: M.S.
+      9: Ph.D
+      10: Other
   ohter_degree_3:
     '#type': textfield
-    '#title': 'Third Prior Degree:'
+    '#title': 'Other Degree:'
+  granting_institution_3:
+    '#type': select
+    '#title': 'Granting Institution:'
+    '#options':
+      1: 'University of California, Berkeley'
+      2: 'University of California, Davis'
+      3: 'University of California, Irvine'
+      4: 'University of California, Los Angeles'
+      5: 'University of California, Merced'
+      6: 'University of California, Riverside'
+      7: 'University of California, San Diego'
+      8: 'University of California, San Francisco'
+      9: 'University of California, Santa Barbara'
+      10: 'University of California, Santa Cruz'
+      11: Other
   other_institution_3:
     '#type': textfield
-    '#title': 'Granting Institution:'
+    '#title': 'Other Institution:'
   country_3:
     '#type': select
     '#title': 'Country:'
@@ -160,8 +260,8 @@ elements: |-
     '#title': 'Bar Exam year'
     '#options':
       1: N/A
-      2: '2024'
-      3: '2025'
+      2: '2023'
+      3: '2024'
   bar_exam_state:
     '#type': select
     '#title': 'Bar Exam State'
