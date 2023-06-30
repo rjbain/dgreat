@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.instagram.field_image_url
     - field.field.node.instagram.field_media_type
     - field.field.node.instagram.field_news_link
+    - field.field.node.instagram.field_published_date
     - node.type.instagram
   module:
     - feeds_ex
@@ -84,6 +85,11 @@ custom_sources:
     label: url
     machine_name: url
     type: json
+  source_created_at:
+    value: source_created_at
+    label: source_created_at
+    machine_name: source_created_at
+    type: json
 mappings:
   -
     target: field_account_name
@@ -143,3 +149,10 @@ mappings:
     settings:
       language: null
     unique: {  }
+  -
+    target: field_published_date
+    map:
+      value: source_created_at
+    settings:
+      language: null
+      timezone: UTC
