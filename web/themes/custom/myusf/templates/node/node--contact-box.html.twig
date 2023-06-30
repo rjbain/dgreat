@@ -55,55 +55,60 @@
     {{ title_prefix }}
     {{ title_suffix }}
     <div{{ attributes.addClass(classes).setAttribute('id', block_id) }}>
-    <div class="block-myusf-contactbox">
-        <h2>{{ display_title }}</h2>
-        <div class="body">
+        <div class="block-myusf-contactbox in-body">
+            <h2>{{ display_title }}</h2>
+            <div class="contactbox-wrapper">
+                <div class="contact-body">
 
-        {% if body %}
-            {{ body }}
-        {% endif %}
-        {% if contact_name %}
-            <p class="contact-name">{{ contact_name }}</p>
-        {% endif %}
-        {% if addy1 or addy2 or addy3 %}
-            <p class="address">
-                {{ addy1 }}<br>
-                {{ addy2 }}<br>
-                {{ addy3 }}
-            </p>
-        {% endif %}
-        {% if hours %}
-           <p><strong>Hours</strong>:</p>
-            {% for hour in node.field_hours_of_operation %}
-                <p>{{ hour.value|striptags|trim }}</p>
-            {% endfor %}
-        {% endif %}
-        <div class="contact-info">
-        {% if first_num %}
-            <p class="contact tel">{{ first_num }}</p>
-        {% endif %}
-        {% if second_num %}
-            <p class="contact tel">{{ second_num }}</p>
-        {% endif %}
-            
-        {% if email_one %}       
-            <p class="contact email"><a href="mailto:{{ email_one }}">{% autoescape false %}{{ email_one }}{% endautoescape %}</a></p>
-        {% endif %}
-        {% if email_two %}
-            <p class="contact email"><a href="mailto:{{ email_two }}">{% autoescape false %}{{ email_two }}{% endautoescape %}</a></p>
-        {% endif %}
+                    {% if body %}
+                        {{ body }}
+                    {% endif %}
+                    {% if contact_name %}
+                        <p class="contact-name">{{ contact_name }}</p>
+                    {% endif %}
+                    {% if addy1 or addy2 or addy3 %}
+                        <p class="address">
+                            {{ addy1 }}<br>
+                            {{ addy2 }}<br>
+                            {{ addy3 }}
+                        </p>
+                    {% endif %}
+                    {% if hours %}
+                    <p><strong>Hours</strong>:</p>
+                        {% for hour in node.field_hours_of_operation %}
+                            <p>{{ hour.value|striptags|trim }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="contact-info-wrapper">    
+                    <div class="contact-info">
+                            {% if first_num %}
+                                <p class="contact tel">{{ first_num }}</p>
+                            {% endif %}
+                            {% if second_num %}
+                                <p class="contact tel">{{ second_num }}</p>
+                            {% endif %}
+                                
+                            {% if email_one %}       
+                                <p class="contact email"><a href="mailto:{{ email_one }}">{% autoescape false %}{{ email_one }}{% endautoescape %}</a></p>
+                            {% endif %}
+                            {% if email_two %}
+                                <p class="contact email"><a href="mailto:{{ email_two }}">{% autoescape false %}{{ email_two }}{% endautoescape %}</a></p>
+                            {% endif %}
+                        </div>
+                    <div class="contact-info-links">
+                        {% if appt %}
+                            <p><a class="button" href="{{ appt }}">Schedule Appointment</a></p>
+                        {% endif %}
+
+                        {% for links in content.field_social_media_links %}
+                            {% for link in links['#paragraph'].field_social_media_network %}
+                                <p><a class="{{ link.value|lower }}" href="{{ links['#paragraph'].field_social_media_url.uri }}" target="_blank">{{ link.value|replace({"Tumbler":"Tumblr"}) }}</a></p>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="contact-info-links">
-        {% if appt %}
-            <p><a class="button" href="{{ appt }}">Schedule Appointment</a></p>
-        {% endif %}
-            {% for links in content.field_social_media_links %}
-                {% for link in links['#paragraph'].field_social_media_network %}
-                    <p><a class="{{ link.value|lower }}" href="{{ links['#paragraph'].field_social_media_url.uri }}" target="_blank">{{ link.value|replace({"Tumbler":"Tumblr"}) }}</a></p>
-                {% endfor %}
-            {% endfor %}
-        </div>
-    </div>
     </div>
 </div>
