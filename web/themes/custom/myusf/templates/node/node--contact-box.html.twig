@@ -73,7 +73,10 @@
             </p>
         {% endif %}
         {% if hours %}
-            <p><strong>Hours</strong>: {{ hours|striptags|trim }}</p>
+           <p><strong>Hours</strong>:</p>
+            {% for hour in node.field_hours_of_operation %}
+                <p>{{ hour.value|striptags|trim }}</p>
+            {% endfor %}
         {% endif %}
         <div class="contact-info">
         {% if first_num %}
