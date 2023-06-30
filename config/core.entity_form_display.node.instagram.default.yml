@@ -11,10 +11,12 @@ dependencies:
     - field.field.node.instagram.field_image_url
     - field.field.node.instagram.field_media_type
     - field.field.node.instagram.field_news_link
+    - field.field.node.instagram.field_published_date
     - field.field.node.instagram.field_social_tags
     - field.field.node.instagram.field_type
     - node.type.instagram
   module:
+    - datetime
     - link
     - path
     - scheduler
@@ -86,6 +88,12 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
+    third_party_settings: {  }
+  field_published_date:
+    type: datetime_default
+    weight: 130
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_social_tags:
     type: entity_reference_autocomplete
