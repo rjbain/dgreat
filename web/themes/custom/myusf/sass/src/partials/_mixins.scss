@@ -41,6 +41,10 @@
         font-weight: 700;
     }
 
+    svg.ext {
+        display: none;
+    }
+
     @include media-breakpoint-down(phone) {
         width:100%;
     }
@@ -174,6 +178,28 @@
     }
 }
 
+@mixin social_square($social_media, $x, $y) {
+    &::before {
+        position: relative;
+        display: inline-block;
+        content: "";
+        width: 40px;
+        height: 40px;
+        top: 11px;
+        background: url(/themes/custom/myusf/images/site/myusf-icons.png) no-repeat $x $y;
+        background: url(/themes/custom/myusf/images/site/myusf-icons.svg) no-repeat $x $y;
+    }
+
+    &:hover::before,
+    &:focus::before {
+        opacity: 0.5;
+    }
+
+    &:hover, &:focus {
+        background-color:transparent;
+    }
+
+}
 
 @mixin social_gray($social_media, $x, $y) {
     &::before {

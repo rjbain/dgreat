@@ -42,9 +42,6 @@ span.diamond_link {
 .flickr {
     @include social($flickr, -44px, -42px);
 }
-.google.plus {
-    @include social($googleplus, -171px, -42px);
-}
 .instagram {
     @include social($instagram, -2px, 0);
 }
@@ -72,7 +69,6 @@ span.diamond_link {
 
 .facebook,
 .flickr,
-.google.plus,
 .instagram,
 .linkedin,
 .pinterest,
@@ -88,17 +84,49 @@ span.diamond_link {
     }
 }
 
-// SOCIAL MEDIA BUTTONS gray with no text 
+// SOCIAL MEDIA BUTTONS colored with no text 
+.facebook_square {
+    @include social_square($facebook, -44px, 0);
+}
+.flickr_square {
+    @include social_square($flickr, -44px, -42px);
+}
+.instagram_square {
+    @include social_square($instagram, -2px, 0);
+}
+.linkedin_square {
+    @include social_square($linkedin, -2px, -42px);
+}
+.pinterest_square {
+    @include social_square($pinterest, -128px, -42px);
+}
+.tumblr_square{
+    @include social_square($tumblr, -86px, -42px);
+}
+.tumbler_square{
+    @include social_square($tumblr, -86px, -42px);
+}
+.twitter_square {
+    @include social_square($twitter, -86px, 0);
+}
+.vimeo_square {
+    @include social_square($vimeo,-170px, 0);
+}
+.youtube_square {
+    @include social_square($youtube,-129px, 0);
+}
 
+.facebook_square span, .flickr_square span, .instagram_square span, .linkedin_square span, 
+.pinterest_square span, .tumblr_square span, .twitter_square span, .vimeo_square span, .youtube_square span {
+    display: none;
+}
+// SOCIAL MEDIA BUTTONS gray with no text 
 
 .facebook_gray {
     @include social_gray($facebook, -43px, -87px);
 }
 .flickr_gray {
     @include social_gray($flickr, -43px, -129px);
-}
-.googleplus_gray {
-    @include social_gray($googleplus, -170px, -128px);
 }
 .instagram_gray {
     @include social_gray($instagram, -1px, -86px);
@@ -122,7 +150,7 @@ span.diamond_link {
     @include social_gray($youtube,-129px, -86px);
 }
 
-.facebook_gray span, .flickr_gray span, .googleplus_gray span, .instagram_gray span, .linkedin_gray span, 
+.facebook_gray span, .flickr_gray span, .instagram_gray span, .linkedin_gray span, 
 .pinterest_gray span, .tumblr_gray span, .twitter_gray span, .vimeo_gray span, .youtube_gray span {
     display: none;
 }
@@ -182,6 +210,10 @@ button.bp-accordion--button {
     &:focus {
         text-decoration: underline; 
     }
+
+    svg.ext {
+        display: none;
+    }
 }
 p.diamond_link {
     a {   
@@ -211,6 +243,10 @@ p.diamond_link {
     letter-spacing: .5px;
     padding: 0.375rem 2.6875rem 0.5rem 0; 
 
+    svg.ext {
+        display: none;
+    }
+
     &:hover, 
     &:focus {
         text-decoration: underline; 
@@ -229,6 +265,10 @@ p.diamond_link {
     letter-spacing: .5px;
     padding: 0.375rem 2.6875rem 0.5rem 0; 
 
+    svg.ext {
+        display: none;
+    }
+
     &:hover, 
     &:focus {
         text-decoration: underline; 
@@ -246,6 +286,10 @@ p.diamond_link {
     display: inline-block;
     letter-spacing: .5px;
     padding: 0.375rem 2.6875rem 0.5rem 0;
+
+    svg.ext {
+        display: none;
+    }
 
     &:hover, 
     &:focus {

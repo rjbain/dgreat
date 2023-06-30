@@ -2,8 +2,8 @@
 /* MAIN NAV 
 ===================================================*/
 .navbar-menu-wrapper {  //centers menu
-	//display: table;
 	margin: 0 auto;
+	z-index: 20;
 
 	@include media-breakpoint-only(tablet) {
 		margin-top: -0.5625rem;
@@ -25,9 +25,9 @@ nav {
 		}
 	}
 
-	li a svg.ext {
-		display: none;
-	}
+	// li a svg.ext { //turning off external link icon in quick-links
+	// 	display: none;
+	// }
 }
 
 .bg-dark {
@@ -1544,12 +1544,6 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 			a {
 				text-decoration:none;
 				font-weight:600;
-
-				&::after {
-					position: absolute;
-					content: "»";
-					padding-left: 0.1875rem;
-				}
 
 				&:hover,
 				&:focus {
