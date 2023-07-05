@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.in_content_promo_box.field_in_content_promo_box
+    - field.field.paragraph.in_content_promo_box.field_in_content_promo_box_text
+    - field.field.paragraph.in_content_promo_box.field_promo_box_float
     - paragraphs.paragraphs_type.in_content_promo_box
 id: paragraph.in_content_promo_box.default
 targetEntityType: paragraph
@@ -19,6 +21,22 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_in_content_promo_box_text:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_promo_box_float:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
