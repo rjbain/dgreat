@@ -2599,16 +2599,55 @@ input#edit-submit-community-grid {
 /* IN CONTENT  CONTACT BOX PARAGRAPH 
 ========================================== */
 .block-myusf-contactbox.in-body {
+
+    @include media-breakpoint-down(phone) {
+        padding: 0.3125rem 1.125rem 1.5rem 1.125rem!important;
+    }
+
     .contactbox-wrapper {
-        column-count: 2;
-
-        .contact-info p {
-            margin-left: 0;
+        //column-count: 2;
+        .contact-body {
+            @include media-breakpoint-up(tablet) {
+                display: inline-block;
+                width: 47%;
+                margin-right: 6%;
+                float: left;
+                margin-bottom: 10px
+            }
         }
+        .contact-info-wrapper {
+            @include media-breakpoint-up(tablet) {
+                display: inline-block;
+                width: 47%;                
+                position: relative;
+                top: -12px;
+                margin-bottom: 10px
+            }
 
-        .contact-info-links a.ext svg {
-            display: none;
-        }
+            .contact-info {
+                p.contact {
+                    display: block;
+                    margin-left: 0;
+                }
+            }
+    
+            .contact-info-links {
+                margin-bottom: 10px;
+
+                a {
+                    &.social {
+                       // margin-right: 15px;
+
+                        // &:last-of-type {
+                        //     margin-right: 0; 
+                        // }
+                        &.ext svg {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }       
     }
 }
 

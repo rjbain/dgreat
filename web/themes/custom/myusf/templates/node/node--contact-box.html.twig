@@ -74,10 +74,12 @@
                         </p>
                     {% endif %}
                     {% if hours %}
-                    <p><strong>Hours</strong>:</p>
+                    <p class="contact-hours"><strong>Hours</strong>:<br>
+                    
                         {% for hour in node.field_hours_of_operation %}
-                            <p>{{ hour.value|striptags|trim }}</p>
+                           {{ hour.value|striptags|trim }}<br>
                         {% endfor %}
+                    </p>
                     {% endif %}
                 </div>
                 <div class="contact-info-wrapper">    
@@ -103,7 +105,7 @@
 
                         {% for links in content.field_social_media_links %}
                             {% for link in links['#paragraph'].field_social_media_network %}
-                                <p><a class="{{ link.value|lower }}" href="{{ links['#paragraph'].field_social_media_url.uri }}" target="_blank">{{ link.value|replace({"Tumbler":"Tumblr"}) }}</a></p>
+                                <a class="{{ link.value|lower }}_gray social" href="{{ links['#paragraph'].field_social_media_url.uri }}" target="_blank"></a>
                             {% endfor %}
                         {% endfor %}
                     </div>
