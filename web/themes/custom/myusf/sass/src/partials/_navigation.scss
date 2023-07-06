@@ -109,11 +109,12 @@ nav.navbar {
 
 	img {
 		margin-left: 0.3125rem;
+
 		@include media-breakpoint-only(tablet) {
 			margin-left: 3px;
 		}
 		@include media-breakpoint-down(landscape_phone) {
-			margin-left: 0.625rem;
+			margin-left: 1.4375rem;
 		}
 		@include media-breakpoint-up(midlarge_desktop) {
 			margin-left: 0.3125rem;
@@ -122,11 +123,11 @@ nav.navbar {
 			margin-left: 1.25rem;
 		}
 	}
-
 }
 .navbar-collapse {
 	position: relative;
 	top: 2px;
+	margin-left: -16px;
 }
 
 ul.navbar-nav button {
@@ -382,7 +383,7 @@ button.header_search {
 	cursor:pointer;
 	right: 170px;
 	position: absolute;
-	top: 15px;
+	top: 18px;
 	width:20px;
 	height:20px;
 
@@ -441,8 +442,8 @@ div.search-icon-rollover {
 	text-transform: unset;
 	position: absolute;
 	height: 80px;
-	top: -29px;
-	right: 153px;
+	top: -25px;
+	right: 157px;
 	padding-top: 0.625rem!important;
 	padding-left: 1.25rem!important;
 	padding-right: 2.1875rem!important;
@@ -451,13 +452,11 @@ div.search-icon-rollover {
 	color: $white;
 	margin: 1.875rem 0 0 0;
 
-	@include media-breakpoint-only(tablet) {
-		right: 150px;
-		top: -29px;
+	@include media-breakpoint-down(tablet) {
+		right: 147px;
 	}
 	@include media-breakpoint-down(phone) {
 		right: 145px;
-		top: -29px;
 	}
 	@include media-breakpoint-up(midlarge_desktop) {
 		/*right: 233px;*/
@@ -498,8 +497,9 @@ div.search-icon-rollover {
 a.login-btn {
 	@include media-breakpoint-up(desktop) {
 		margin-right:  -0.5rem;
-		position: relative;
-    	top: -13px;
+		position: absolute!important;
+    	top: 14px;
+    	right: 38px;
 	}
 
 	@include media-breakpoint-only(midlarge_desktop) {
@@ -516,15 +516,15 @@ a.login-btn {
 
 	@include media-breakpoint-down(landscape_phone) {
 		font-size: .7rem;
-		position: absolute;
+		position: absolute!important;
 		right: 10px;
 		top: 10px;
 	}
 
 	@include media-breakpoint-down(tablet) {
-		position: absolute;
-		top: 15px;
-		right: 26px;  
+		position: absolute!important;
+		top: 21px;
+		right: 30px;  
 		margin-top: -0.3125rem;
 	}
 }
@@ -620,7 +620,7 @@ a.dashboard-button{
 	display:block;
 	position: absolute!important;
 	right: 15px;
-	top: 15px;
+	top: 16px;
 
 	@include media-breakpoint-down(phone) {
 		right: 15px;
@@ -683,7 +683,7 @@ a.dashboard-button{
 
 	@include media-breakpoint-down(landscape_phone) {
 		top: 120px;
-		right: -5px;
+		right: 2px;
 		position: absolute;
 		margin-top: -4.375rem;
 		margin-right: 3.125rem;
@@ -815,7 +815,7 @@ a.dashboard-button{
 
 		@include media-breakpoint-down(tablet) {
 			font-size: .7rem!important;
-			right: 12px;
+			right: 10px;
 		}
 		@include media-breakpoint-down(phone) {
 			font-size: .75rem!important;
