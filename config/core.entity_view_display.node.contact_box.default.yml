@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.contact_box.field_contact_email_address
     - field.field.node.contact_box.field_contact_name
     - field.field.node.contact_box.field_display_title
+    - field.field.node.contact_box.field_email_contact
     - field.field.node.contact_box.field_hours_of_operation
     - field.field.node.contact_box.field_schedule_an_appointment
     - field.field.node.contact_box.field_social_media_links
@@ -79,6 +80,15 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 11
+    region: content
+  field_email_contact:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 12
     region: content
   field_hours_of_operation:
     type: string
