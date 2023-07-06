@@ -3,7 +3,6 @@
 ===================================================*/
 .navbar-menu-wrapper {  //centers menu
 	margin: 0 auto;
-	z-index: 20;
 
 	@include media-breakpoint-only(tablet) {
 		margin-top: -0.5625rem;
@@ -33,9 +32,11 @@ nav {
 .bg-dark {
 	background-color: $green!important;
 }
-/*nav.navbar a:hover {
-    background: transparent!important;
-}*/
+nav.navbar .navbar-wrapper {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+}
 nav.navbar {
 	margin-bottom: 2.59rem;
 
@@ -85,7 +86,7 @@ nav.navbar {
 		z-index: 2;
 	}
 	@include media-breakpoint-up(desktop) {
-		padding-right: 2.4rem;
+		padding-right: 0;
 		height: 97px;
 	}
 }
@@ -96,24 +97,12 @@ nav.navbar {
 	position: relative;
     top: 0px;
 
-	@include media-breakpoint-up(desktop) {
-		position: relative;
-		top: -23px;
-	}
-
 	&:hover,
 	&:focus {
 		color: $green!important;
 		background: transparent;
 	}
 
-	/*@include media-breakpoint-up(midlarge_desktop) {
-		margin-left: calc((100% - 1440px) / 2);
-	}
-	@include media-breakpoint-up(xl_desktop) {
-        margin-left: calc(((100% - 1530px)/ 2) + 40px);
-    }
-  */
 	@include media-breakpoint-up(1920xl_desktop) {
 		margin-left: calc(((100% - 1920px)/ 2) + 40px);
 	}
@@ -121,7 +110,7 @@ nav.navbar {
 	img {
 		margin-left: 0.3125rem;
 		@include media-breakpoint-only(tablet) {
-			margin-left: 0;
+			margin-left: 3px;
 		}
 		@include media-breakpoint-down(landscape_phone) {
 			margin-left: 0.625rem;
@@ -137,28 +126,7 @@ nav.navbar {
 }
 .navbar-collapse {
 	position: relative;
-	top: 26px;
-
-	// @include media-breakpoint-up(desktop) {
-	// 	margin-left: calc(((100% - 992px)/ 2) - 70px);
-	// 	margin-right: calc((100% - 992px)/ 2);
-	// }
-	// @include media-breakpoint-up(midlarge_desktop) {
-	// 	margin-left: calc(((100% - 1530px)/ 2) - 15px);
-	// 	margin-right: calc(((100% - 1530px)/ 2) + 200px);
-	// }
-	// @include media-breakpoint-up(xl_desktop) {
-	// 	margin-left: calc(((100% - 1700px)/ 2) - 15px);
-	// 	margin-right: calc(((100% - 1700px)/ 2) + 200px);
-	// }
-	// @include media-breakpoint-up(1920xl_desktop) {
-	// 	margin-left: calc(((100% - 1920px)/ 2) - 15px);
-	// 	margin-right: calc(((100% - 1920px)/ 2) + 200px);
-	// }
-	// @include media-breakpoint-up(2560xl_desktop) {
-	// 	margin-left: calc(((100% - 2560px)/ 2) - 15px);
-	// 	margin-right: calc(((100% - 2560px)/ 2) + 200px);
-	// }
+	top: 2px;
 }
 
 ul.navbar-nav button {
@@ -185,7 +153,6 @@ ul.navbar-nav button {
 
 .navbar-nav {
 	border:0;
-	/*margin-left: 120px;*/
 	padding-top: 0;
 
 	.menu-item--expanded.dropdown  {
@@ -651,8 +618,8 @@ a.dashboard-button{
 	height: 22px;
 	background-position: -349px -266px!important; /*was 267*/
 	display:block;
-	position: absolute;
-	right: 30px;
+	position: absolute!important;
+	right: 15px;
 	top: 15px;
 
 	@include media-breakpoint-down(phone) {
@@ -705,8 +672,9 @@ a.dashboard-button{
 //----- LOGIN BUTTON ----//
 
 .login {
-	top:3px;
-	right: 40px;
+	position: absolute;
+	top:48px;
+	right: 70px;
 	margin-top: 0.375rem;
 	margin-left: 0.3125rem;
 	border-radius: 0;
@@ -785,7 +753,7 @@ a.dashboard-button{
 	&.dropdown.show {
 		min-width:90px;
 		height: 150px;
-		top: 33px;
+		top: 3px;
 		background-color: $black;
 		z-index: 10;
 

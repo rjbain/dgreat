@@ -84,53 +84,62 @@
  %}
 {% block head %}
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="site navigation">
-    {% if container_navbar %}
-      {% endif %}
-        <a class="navbar-brand" href="/"><img src="/themes/custom/myusf/images/src/myUSF-logo.svg" alt="myUSF home" /></a>
-        <div class="navbar-collapse">
-          <div class="navbar-menu-wrapper">
+    {# {% if container_navbar %}
+    {% endif %} #}
+    <div class="navbar-wrapper">  
+      <a class="navbar-brand" href="/"><img src="/themes/custom/myusf/images/src/myUSF-logo.svg" alt="myUSF home" /></a>
+
+      <div class="navbar-collapse">
+        <div class="navbar-menu-wrapper">
           {% if page.primary_menu %}
             {{ page.primary_menu }}
           {% else %}
             {{ drupal_menu('main') }}
           {% endif %}
+        </div>
+        {% if page.header_form %}
+          <div class="form-inline navbar-form float-right">
+            {{ page.header_form }}
           </div>
-          {% if page.header_form %}
-            <div class="form-inline navbar-form float-right">
-              {{ page.header_form }}
-            </div>
-          {% endif %}
-        </div>
-    {% if container_navbar %}
-        <button class="header_search" type="button" onclick="toggle()" aria-label="Open search input" aria-expanded="false">
-            <div class="search-icon-rollover"><img src="/themes/custom/myusf/images/src/search-yellow.svg" alt="search"/></div>
-            <div class="search-icon-main"><img src="/themes/custom/myusf/images/src/search-white.svg" alt="search"/></div>
-            <span class="acc-visuallyhidden">Search</span>
-        </button>
-      <form class="form-inline my-2 my-lg-0" action="/results" method="get">
-        <div class="search-options" id="search-options" style="display:none">
-          <input type="hidden" name="myusf_search" value="true">
-          <input class="mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" value="">
-          <br>
-          <input type="checkbox" name="usfca_search" value="true" aria-label="Include USFCA.edu"> Include USFCA.EDU
-            <input type="submit" class="acc-visuallyhidden" value="submit">
-        </div>
-      </form>
+        {% endif %}
+      </div>
 
-      {% if logged_in %}
-          {#{ drupal_view('user', 'block_1') }#}
-          {{ drupal_entity('block', 'user_block') }}
-      {% else %}
-          <a href="/caslogin" class="login-btn"><span class="btn btn-outline-success">Log In</span></a>
+      {% if container_navbar %}
+          <button class="header_search" type="button" onclick="toggle()" aria-label="Open search input" aria-expanded="false">
+              <div class="search-icon-rollover"><img src="/themes/custom/myusf/images/src/search-yellow.svg" alt="search"/></div>
+              <div class="search-icon-main"><img src="/themes/custom/myusf/images/src/search-white.svg" alt="search"/></div>
+              <span class="acc-visuallyhidden">Search</span>
+          </button>
+        <form class="form-inline my-2 my-lg-0" action="/results" method="get">
+          <div class="search-options" id="search-options" style="display:none">
+            <input type="hidden" name="myusf_search" value="true">
+            <input class="mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" value="">
+            <br>
+            <input type="checkbox" name="usfca_search" value="true" aria-label="Include USFCA.edu"> Include USFCA.EDU
+              <input type="submit" class="acc-visuallyhidden" value="submit">
+          </div>
+        </form>
+
+        {% if logged_in %}
+    
+            {{ drupal_entity('block', 'user_block') }}
+        {% else %}
+            <a href="/caslogin" class="login-btn"><span class="btn btn-outline-success">Log In</span></a>
+        {% endif %}
       {% endif %}
-    {% endif %}
 
       {% if logged_in %}
           <a href="/dashboard" class="dashboard-button">Dashboard
           </a>
-      {% endif %}
+      {% endif %} 
+    </div>
+
+       
+
 
       </nav>
+
+
       {% if page.hero_image %}
         <div class="hero-image-block">
             {{ page.hero_image }}
