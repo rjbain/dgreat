@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.contact_box.field_schedule_an_appointment
     - field.field.node.contact_box.field_social_media_links
     - field.field.node.contact_box.field_telephone_number
+    - field.field.node.contact_box.field_telephone_number_ref
     - node.type.contact_box
   module:
     - entity_reference_revisions
@@ -126,6 +127,15 @@ content:
       title: ''
     third_party_settings: {  }
     weight: 5
+    region: content
+  field_telephone_number_ref:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 13
     region: content
   links:
     settings: {  }

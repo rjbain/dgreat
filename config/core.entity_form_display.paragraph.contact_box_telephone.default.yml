@@ -1,0 +1,33 @@
+uuid: 5e5d9e9a-2c9f-4fc1-9197-fcf75fb89145
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.contact_box_telephone.field_telephone
+    - field.field.paragraph.contact_box_telephone.field_title
+    - paragraphs.paragraphs_type.contact_box_telephone
+  module:
+    - telephone
+id: paragraph.contact_box_telephone.default
+targetEntityType: paragraph
+bundle: contact_box_telephone
+mode: default
+content:
+  field_telephone:
+    type: telephone_default
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
