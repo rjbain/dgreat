@@ -48,10 +48,11 @@
   ]
 %}
 
-{% set color = node.field_color.value	%}
+{% set background_color = node.field_color.value	%}
+{% set border_color = node.field_border_color.value	%}
 
 <div{{ attributes.addClass(classes) }}>
-  <div class="promo-box {{ color }}">
+  <div class="promo-box background-{{ background_color }} border-{{ border_color }}">
     <div class="promo-box-image"> 
       <img src="{{ content.field_image.0['#markup'] }}" alt="{{ node.field_image.alt }}" title=" {{ node.field_image.title }}">
     </div>
