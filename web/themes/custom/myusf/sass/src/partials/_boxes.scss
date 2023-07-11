@@ -2527,28 +2527,90 @@ input#edit-submit-community-grid {
 
 /* IN CONTENT PROMO BOX 
 ====================================== */
+.promo-box-parent {
+    margin-bottom: 20px;
+}
+
 .promo-box {
     width: 240px;
     background: $green;
 
-    &.turquoise {
+    &.background-turquoise {
         background: $turquoise;
+
+        &.border-outline {
+            border-color: $turquoise;
+            background-color: $white;
+        }
     }
-    &.olive {
+    &.background-olive {
         background: $olive;
+
+        &.border-outline {
+            border-color: $olive;
+            background-color: $white;
+        }
     }
-    &.blue {
+    &.background-blue {
         background: $blue;
+
+        &.border-outline {
+            border-color: $blue;
+            background-color: $white;
+        }
     }
-    &.purple {
+    &.background-purple {
         background: $plum;
+
+        &.border-outline {
+            border-color: $plum;
+            background-color: $white;
+        }
     }
-    &.gray {
+    &.background-gray {
         background: $text-gray;
+
+        &.border-outline {
+            border-color: $text-gray;
+            background-color: $white;
+        }
     }
-    &.green {
+    &.background-green {
         background: $green;
+
+        &.border-outline {
+            border-color: $green;
+            background-color: $white;
+        }
     }
+
+    &.background-turquoise, &.background-olive,  &.background-blue,
+    &.background-purple, &.background-gray, &.background-green {
+        &.border-outline {
+            border-width: 8px;
+            border-style: solid;
+
+            .promo-box-text {
+                p {
+                    color: $true_black;
+                } 
+                .promo-box-cta {
+                    a.diamond_link {
+                        color: $true_black;
+
+                        &:hover {
+                            color: $true_black!important;
+
+                            &:after {
+                                border: 1px solid $white;
+                            }
+                        }
+                    }
+                }          
+            }
+        }
+    }
+    
     &.yellow {
         background: $yellow;
 
@@ -2595,6 +2657,7 @@ input#edit-submit-community-grid {
         }
     }
 }
+
 
 /* IN CONTENT  CONTACT BOX PARAGRAPH 
 ========================================== */

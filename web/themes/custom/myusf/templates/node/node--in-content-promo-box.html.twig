@@ -53,9 +53,13 @@
 
 <div{{ attributes.addClass(classes) }}>
   <div class="promo-box background-{{ background_color }} border-{{ border_color }}">
+   
+   {% if content.field_image.0['#markup'] %} 
     <div class="promo-box-image"> 
       <img src="{{ content.field_image.0['#markup'] }}" alt="{{ node.field_image.alt }}" title=" {{ node.field_image.title }}">
     </div>
+  {% endif %} 
+
     <div class="promo-box-text">    
       {{ content.body }}
      {% if node.field_call_to_action.0.uri %}
