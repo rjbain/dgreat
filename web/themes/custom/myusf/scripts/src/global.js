@@ -65,7 +65,7 @@
 
             }
           let dashboardButton = $(".dashboard-button");
-          dashboardButton.focus(function(e) {
+          dashboardButton.on('keydown blur', function(e) {
             if (e.shiftKey && e.keyCode === 9) {
               console.log("Reverse tabbed!");
             }
