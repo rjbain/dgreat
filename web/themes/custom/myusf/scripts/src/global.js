@@ -64,14 +64,6 @@
                 });
 
             }
-          let dashboardButton = $(".dashboard-button");
-          dashboardButton.on('keydown blur', function(e) {
-            if (e.shiftKey && e.keyCode === 9) {
-              console.log("Reverse tabbed!");
-            }
-          });
-            // If it's a shift+tab, tab backwards to the previous element
-            $("button.tbm-submenu-toggle").last().focus();
 
             // If logged in, tab from dashboard button to subnav button.
           dashboardButton.blur(function(e){
@@ -100,7 +92,13 @@
             $("#block-myusf-content a").last().blur(function() {
                 $("#sidebar_second a").first().focus();
             });
-
+          let dashboardButton = $(".dashboard-button");
+          dashboardButton.on('keydown blur', function(e) {
+            if (e.shiftKey && e.keyCode === 9) {
+              // If it's a shift+tab, tab backwards to the previous element
+              $("button.tbm-submenu-toggle").last().focus();
+            }
+          });
 
             // Fix for Ensemble
             $("[id^=contentView_]").attr("align","center");
