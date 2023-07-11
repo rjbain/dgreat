@@ -64,7 +64,7 @@
                 });
 
             }
-
+          let dashboardButton = $(".dashboard-button");
             // If logged in, tab from dashboard button to subnav button.
           dashboardButton.blur(function(e){
                 if ($submenuBtn.hasClass("hideButton")) {
@@ -92,7 +92,6 @@
             $("#block-myusf-content a").last().blur(function() {
                 $("#sidebar_second a").first().focus();
             });
-          let dashboardButton = $(".dashboard-button");
           dashboardButton.on('keydown blur', function(e) {
             if (e.shiftKey && e.keyCode === 9) {
               // If it's a shift+tab, tab backwards to the previous element
