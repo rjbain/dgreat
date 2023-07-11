@@ -2529,8 +2529,49 @@ input#edit-submit-community-grid {
 ====================================== */
 .promo-box-parent {
     margin-bottom: 20px;
-}
+    margin-top: 5px;
 
+    &.right {
+        padding-left: 20px;
+    }
+}
+.promo-box-text-parent {
+    ul li {
+        &::marker {
+            color: $yellow;
+        }
+    }
+    ol li {
+        padding-left: 7px;
+
+        &.left {
+            margin-right: 10px;
+        }
+
+        &::marker {
+            color: $olive;
+            font-weight: 800;
+        }
+    }
+
+    &.promo-right {
+        ul, ol {
+            position: relative;
+            padding-left: 20px; //20px;
+            left: 18px;
+            margin-right: 20px;
+        }
+    }
+
+    &.promo-left  {
+        ul, ol {
+            left: 38px;
+            position: relative;
+            margin-right: 40px;
+            margin-left: -40px;
+        }
+    }
+}
 .promo-box {
     width: 240px;
     background: $green;
@@ -2640,7 +2681,7 @@ input#edit-submit-community-grid {
         }
     }
     .promo-box-text {
-        padding: 0.9375rem;
+        padding: 1.25rem;
 
         p {
             color: $white;
