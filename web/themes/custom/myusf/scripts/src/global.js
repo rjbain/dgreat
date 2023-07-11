@@ -64,18 +64,23 @@
                 });
 
             }
+          let dashboardButton = $(".dashboard-button");
+          dashboardButton.focus(function(e) {
+            if (e.shiftKey && e.keyCode === 9) {
+              console.log("Reverse tabbed!");
+            }
+          });
+            // If it's a shift+tab, tab backwards to the previous element
+            $("button.tbm-submenu-toggle").last().focus();
+
             // If logged in, tab from dashboard button to subnav button.
-            $(".dashboard-button").blur(function(e){
-              if (e.shiftKey && e.keyCode === 9) { console.log("Reverse tabbed!");
-                // If it's a shift+tab, tab backwards to the previous element
-                $("button.tbm-submenu-toggle").last().focus();
-              }
-                if ($submenuBtn.hasClass("hideButton")) { console.log("submenu button is hidden. Focus on the first link.");
+          dashboardButton.blur(function(e){
+                if ($submenuBtn.hasClass("hideButton")) {
                     $submenuLinks.first().focus();
-                } else { console.log("submenu button is is visible. Focus on the button.");
+                } else {
                     $submenuBtn.focus();
                 }
-            })
+            });
             // If you focus on the submenu button and open it, tab next to the first link.
             $($submenuBtn).blur(function(){
                 // If the submenu is closed.
