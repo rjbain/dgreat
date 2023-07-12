@@ -67,11 +67,13 @@
           let dashboardButton = $(".dashboard-button");
             // If logged in, tab from dashboard button to subnav button.
           dashboardButton.blur(function(e){
-                if ($submenuBtn.hasClass("hideButton")) {
-                    $submenuLinks.first().focus();
-                } else {
-                    $submenuBtn.focus();
-                }
+            if (!e.shiftKey) {
+              if ($submenuBtn.hasClass("hideButton")) {
+                $submenuLinks.first().focus();
+              } else {
+                $submenuBtn.focus();
+              }
+            }
             });
             // If you focus on the submenu button and open it, tab next to the first link.
             $($submenuBtn).blur(function(){
