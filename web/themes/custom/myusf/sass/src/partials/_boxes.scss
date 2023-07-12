@@ -2533,6 +2533,16 @@ input#edit-submit-community-grid {
 
     &.right {
         padding-left: 20px;
+        @include media-breakpoint-down(phone) {
+            padding-left: 0px;
+            margin-left: 0px;
+        }
+    }
+    &.left {
+        @include media-breakpoint-down(phone) {
+            padding-right: 0px;
+            margin-right: 0px;
+        }
     }
 }
 .promo-box-text-parent {
@@ -2574,7 +2584,12 @@ input#edit-submit-community-grid {
 }
 .promo-box {
     width: 240px;
+    
     background: $green;
+    
+    @include media-breakpoint-down(phone) {
+        width: 100%;
+    }
 
     &.background-turquoise {
         background: $turquoise;
