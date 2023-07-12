@@ -67,14 +67,14 @@
           let dashboardButton = $(".dashboard-button");
             // If logged in, tab from dashboard button to subnav button.
           dashboardButton.blur(function(e){
-            if (!e.shiftKey) {
+            if (!e.shiftKey && e.keyCode === 9) { console.log("Found NO shift key, but a tab key");
               if ($submenuBtn.hasClass("hideButton")) {
                 $submenuLinks.first().focus();
               } else {
                 $submenuBtn.focus();
               }
             } else {
-              if (e.shiftKey && e.keyCode === 9) {
+              if (e.shiftKey && e.keyCode === 9) { console.log("Found shift key and tab key");
                 // If it's a shift+tab, tab backwards to the previous element
                 $("#navbarDropdownMenuLink").focus();
               }
