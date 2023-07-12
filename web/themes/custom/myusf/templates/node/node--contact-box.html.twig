@@ -43,9 +43,6 @@
 {% set second_num = content.field_telephone_number[1]|render %}
 {% set email_one = content.field_contact_email_address[0]|render %}
 {% set email_two = content.field_contact_email_address[1]|render %}
-{% set addy1 = node.field_address_1.value %}
-{% set addy2 = node.field_address_2.value %}
-{% set addy3 = node.field_address_3.value %}
 {% set contact_title = node.field_contact_title.value %}
 {% set hours = node.field_hours_of_operation.value %}
 {% set body = content.body %}
@@ -66,12 +63,19 @@
                     {% if contact_name %}
                         <p class="contact-name">{{ contact_name }}</p>
                     {% endif %}
-                    {% if addy1 or addy2 or addy3 %}
-                        <p class="address">
-                            {{ addy1 }}<br>
-                            {{ addy2 }}<br>
-                            {{ addy3 }}
-                        </p>
+
+
+                    {% if content.field_address %}
+                        {% for items in content.field_address %}
+                            {% for item in items['#paragraph'].field_title %}
+                                <p class="address"><strong>{{ item.value }}</strong></p>
+                            {% endfor %}
+                            <p class="address">
+                            {% for item in items['#paragraph'].field_address %}
+                                {{ item.value }}<br>
+                            {% endfor %}
+                                </p>
+                        {% endfor %}
                     {% endif %}
                     {% if hours %}
                     <p class="contact-hours"><strong>Hours</strong>:<br>

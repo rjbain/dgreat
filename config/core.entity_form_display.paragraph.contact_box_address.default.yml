@@ -1,0 +1,32 @@
+uuid: d4b725e7-69f7-4f91-8ff6-8cf6778f36e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.contact_box_address.field_address
+    - field.field.paragraph.contact_box_address.field_title
+    - paragraphs.paragraphs_type.contact_box_address
+id: paragraph.contact_box_address.default
+targetEntityType: paragraph
+bundle: contact_box_address
+mode: default
+content:
+  field_address:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

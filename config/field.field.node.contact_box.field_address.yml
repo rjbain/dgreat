@@ -1,18 +1,18 @@
-uuid: 6a37634a-8ec6-4d8c-9548-636d8007aafe
+uuid: 4cd06c82-7487-4f2e-ab39-22cdce6087a5
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_migrate_final
-    - node.type.page
-    - paragraphs.paragraphs_type.migrate
+    - field.storage.node.field_address
+    - node.type.contact_box
+    - paragraphs.paragraphs_type.contact_box_address
   module:
     - entity_reference_revisions
-id: node.page.field_migrate_final
-field_name: field_migrate_final
+id: node.contact_box.field_address
+field_name: field_address
 entity_type: node
-bundle: page
-label: Body
+bundle: contact_box
+label: Address
 description: ''
 required: false
 translatable: false
@@ -22,85 +22,97 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      migrate: migrate
-    negate: 1
+      contact_box_address: contact_box_address
+    negate: 0
     target_bundles_drag_drop:
       announcement_category_date:
-        weight: 28
+        weight: 32
         enabled: false
       announcement_category_date_embed:
-        weight: 29
+        weight: 33
         enabled: false
       box_styles:
-        weight: 30
+        weight: 34
         enabled: false
       bp_accordion:
-        weight: 17
+        weight: 35
         enabled: false
       bp_accordion_section:
-        weight: 18
+        weight: 36
         enabled: false
       bp_blank:
-        weight: 19
+        weight: 37
         enabled: false
       bp_block:
-        weight: 20
+        weight: 38
         enabled: false
       bp_carousel:
-        weight: 21
+        weight: 39
         enabled: false
       bp_column_wrapper:
-        weight: 25
+        weight: 40
         enabled: false
       bp_columns:
-        weight: 22
+        weight: 41
         enabled: false
       bp_columns_three_uneven:
-        weight: 23
+        weight: 42
         enabled: false
       bp_columns_two_uneven:
-        weight: 24
+        weight: 43
         enabled: false
       bp_image:
-        weight: 26
+        weight: 44
         enabled: false
       bp_modal:
-        weight: 27
+        weight: 45
         enabled: false
       bp_simple:
-        weight: 28
-        enabled: false
-      bp_tab_section:
-        weight: 30
-        enabled: false
-      bp_tabs:
-        weight: 29
-        enabled: false
-      bp_view:
-        weight: 31
-        enabled: false
-      bp_webform:
         weight: 46
         enabled: false
-      content_reference:
-        weight: 27
-        enabled: false
-      events_search:
+      bp_tab_section:
         weight: 47
         enabled: false
-      migrate:
-        weight: 32
-        enabled: true
-      reference:
+      bp_tabs:
+        weight: 48
+        enabled: false
+      bp_view:
         weight: 49
         enabled: false
-      social_media_link:
+      bp_webform:
         weight: 50
         enabled: false
-      usfcat_updates:
+      contact_box:
         weight: 51
         enabled: false
-      video:
+      contact_box_address:
+        weight: 31
+        enabled: true
+      contact_box_email:
         weight: 52
+        enabled: false
+      contact_box_telephone:
+        weight: 53
+        enabled: false
+      events_search:
+        weight: 54
+        enabled: false
+      in_content_promo_box:
+        weight: 55
+        enabled: false
+      migrate:
+        weight: 56
+        enabled: false
+      reference:
+        weight: 57
+        enabled: false
+      social_media_link:
+        weight: 58
+        enabled: false
+      usfcat_updates:
+        weight: 59
+        enabled: false
+      video:
+        weight: 60
         enabled: false
 field_type: entity_reference_revisions
