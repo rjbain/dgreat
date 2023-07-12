@@ -73,6 +73,11 @@
               } else {
                 $submenuBtn.focus();
               }
+            } else {
+              if (e.shiftKey && e.keyCode === 9) {
+                // If it's a shift+tab, tab backwards to the previous element
+                $("#navbarDropdownMenuLink").focus();
+              }
             }
             });
             // If you focus on the submenu button and open it, tab next to the first link.
@@ -94,12 +99,6 @@
             $("#block-myusf-content a").last().blur(function() {
                 $("#sidebar_second a").first().focus();
             });
-          dashboardButton.on('keydown blur', function(e) {
-            if (e.shiftKey && e.keyCode === 9) {
-              // If it's a shift+tab, tab backwards to the previous element
-              $("button.tbm-submenu-toggle").last().focus();
-            }
-          });
 
             // Fix for Ensemble
             $("[id^=contentView_]").attr("align","center");
