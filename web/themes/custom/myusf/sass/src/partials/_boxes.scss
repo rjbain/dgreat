@@ -2728,20 +2728,25 @@ input#edit-submit-community-grid {
     }
 
     .contactbox-wrapper {
-        //column-count: 2;
+        column-count: 2;
+
+        @include media-breakpoint-down(phone) {
+            column-count: 1;
+        }
+
         .contact-body {
             @include media-breakpoint-up(tablet) {
-                display: inline-block;
-                width: 47%;
+               // display: inline-block;
+               // width: 47%;
                 margin-right: 6%;
-                float: left;
+                //float: left;
                 margin-bottom: 10px
             }
         }
         .contact-info-wrapper {
             @include media-breakpoint-up(tablet) {
-                display: inline-block;
-                width: 47%;                
+                //display: inline-block;
+               // width: 47%;                
                 position: relative;
                 top: -12px;
                 margin-bottom: 10px

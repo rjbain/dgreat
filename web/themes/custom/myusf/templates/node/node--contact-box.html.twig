@@ -70,11 +70,11 @@
                             {% for item in items['#paragraph'].field_title %}
                                 <p class="address"><strong>{{ item.value }}</strong></p>
                             {% endfor %}
-                            <p class="address">
+                            
                             {% for item in items['#paragraph'].field_address %}
-                                {{ item.value }}<br>
+                                <p class="address">{{ item.value }}</p>
                             {% endfor %}
-                                </p>
+                                
                         {% endfor %}
                     {% endif %}
                     {% if hours %}
@@ -90,7 +90,7 @@
                             {% if content.field_telephone_number_ref %} 
                                 {% for items in content.field_telephone_number_ref %}
                                     {% for item in items['#paragraph'].field_title %}
-                                        <p class="contact tel">{{ item.value }}
+                                        <p class="contact tel"><span>{{ item.value }}</span>
                                     {% endfor %}
                                     {% for item in items['#paragraph'].field_telephone %}
                                         <a href="tel:{{ item.value }}">{{ item.value }}</a></p>
