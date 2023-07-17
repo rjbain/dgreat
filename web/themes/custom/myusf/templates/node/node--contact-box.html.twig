@@ -66,16 +66,19 @@
 
 
                     {% if content.field_address %}
-                        {% for items in content.field_address %}
-                            {% for item in items['#paragraph'].field_title %}
-                                <p class="address"><strong>{{ item.value }}</strong></p>
-                            {% endfor %}
-                            
-                            {% for item in items['#paragraph'].field_address %}
-                                <p class="address">{{ item.value }}</p>
-                            {% endfor %}
+                         <p class="address">
+                            {% for items in content.field_address %}
+                           
+                                {% for item in items['#paragraph'].field_title %}
+                                    <strong>{{ item.value }}</strong><br/>
+                                {% endfor %}
                                 
-                        {% endfor %}
+                                {% for item in items['#paragraph'].field_address %}
+                                   {{ item.value }}<br/>
+                                {% endfor %}
+                                                    
+                            {% endfor %}
+                        </p>  
                     {% endif %}
                     {% if hours %}
                     <p class="contact-hours"><strong>Hours</strong>:<br>
@@ -109,14 +112,15 @@
                             {% endif %}
                         </div>
                     <div class="contact-info-links">
-                        {% if appt %}
-                            <p><a class="button" href="{{ appt }}">Schedule Appointment</a></p>
-                        {% endif %}
                         {% for links in content.field_social_media_links %}
                             {% for link in links['#paragraph'].field_social_media_network %}
                                 <a class="{{ link.value|lower }}_gray social" href="{{ links['#paragraph'].field_social_media_url.uri }}" target="_blank"></a>
                             {% endfor %}
                         {% endfor %}
+                        {% if appt %}
+                            <p><a class="button" href="{{ appt }}">Schedule Appointment</a></p>
+                        {% endif %}
+                        
                     </div>
                 </div>
             </div>
