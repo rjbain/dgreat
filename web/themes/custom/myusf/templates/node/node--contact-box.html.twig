@@ -75,8 +75,10 @@
                                 
                                 {% for item in items['#paragraph'].field_address %}
                                    {{ item.value }}<br/>
+                                   {% if loop.last %}
+                                    <br/>
+                                    {% endif %}
                                 {% endfor %}
-                                                    
                             {% endfor %}
                         </p>  
                     {% endif %}
