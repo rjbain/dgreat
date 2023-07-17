@@ -2736,26 +2736,46 @@ input#edit-submit-community-grid {
 
         .contact-body {
             @include media-breakpoint-up(tablet) {
-               // display: inline-block;
-               // width: 47%;
                 margin-right: 6%;
-                //float: left;
-                margin-bottom: 10px
+                margin-bottom: 10px;
+            }
+            p {
+                break-inside: avoid-column; 
+            }
+            .contact-hours {
+                padding-bottom: 1rem;
+
+                @include media-breakpoint-down(phone) {
+                    padding-bottom: 0;
+                }
+            }
+            .contact-name {
+                font-weight: 700;
+            }
+            .address {
+                margin-bottom: 0;
             }
         }
         .contact-info-wrapper {
-            @include media-breakpoint-up(tablet) {
-                //display: inline-block;
-               // width: 47%;                
+            @include media-breakpoint-up(tablet) {              
                 position: relative;
                 top: -12px;
                 margin-bottom: 10px
             }
 
             .contact-info {
+                break-inside: avoid-column; 
+                margin-bottom: 0.25rem;
+
                 p.contact {
                     display: block;
                     margin-left: 0;
+
+                    &.email::before, 
+                    &.tel::before {
+                        top: 14px;
+                        margin-right: 0.3125rem;
+                    }
                 }
             }
     
@@ -2764,14 +2784,23 @@ input#edit-submit-community-grid {
 
                 a {
                     &.social {
-                       // margin-right: 15px;
+                        position: relative;
+                        left: -9px;
 
-                        // &:last-of-type {
-                        //     margin-right: 0; 
-                        // }
                         &.ext svg {
                             display: none;
                         }
+                    }
+                    .instagram_gray.social {
+                        top: -1px;
+                    }
+                }
+                .contact-box-button {
+                    margin-top: 1.5rem;
+                    margin-bottom: 2.5rem;
+
+                    @include media-breakpoint-down(phone) {
+                        margin-bottom: 0;
                     }
                 }
             }
