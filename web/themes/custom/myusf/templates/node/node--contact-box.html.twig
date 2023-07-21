@@ -56,7 +56,6 @@
             <h2>{{ display_title }}</h2>
             <div class="contactbox-wrapper">
                 <div class="contact-body">
-
                     {% if body %}
                         {{ body }}
                     {% endif %}
@@ -64,15 +63,12 @@
                         <p class="contact-name">{{ contact_name }}</p>
                     {% endif %}
 
-
                     {% if content.field_address %}
                          <p class="address">
                             {% for items in content.field_address %}
-                           
                                 {% for item in items['#paragraph'].field_title %}
                                     <strong>{{ item.value }}</strong><br/>
                                 {% endfor %}
-                                
                                 {% for item in items['#paragraph'].field_address %}
                                    {{ item.value }}<br/>
                                    {% if loop.last %}
@@ -92,24 +88,30 @@
                 </div>
                 <div class="contact-info-wrapper">    
                     <div class="contact-info">
-                            {% if content.field_telephone_number_ref %} 
+                            {% if content.field_telephone_number_ref %}
                                 {% for items in content.field_telephone_number_ref %}
-                                    {% for item in items['#paragraph'].field_title %}
-                                        <p class="contact tel"><span>{{ item.value }}</span>
-                                    {% endfor %}
-                                    {% for item in items['#paragraph'].field_telephone %}
-                                        <a href="tel:{{ item.value }}">{{ item.value }}</a></p>
-                                    {% endfor %}
+                                    {% set loopnumber = loop.index0 %} 
+                                    {% set title = content.field_telephone_number_ref[loopnumber]['#paragraph'].field_title.value %}
+                                    {% set phone = content.field_telephone_number_ref[loopnumber]['#paragraph'].field_telephone.value %}
+                                    {% if phone %}
+                                        <p class="contact tel">
+                                            <span>{{ title }}</span>
+                                            <a href="tel:{{ phone }}">{{ phone }}</a>  
+                                        </p>
+                                    {% endif %}
                                 {% endfor %}
                             {% endif %}
                             {% if content.field_email_contact %} 
                                 {% for items in content.field_email_contact %}
-                                    {% for item in items['#paragraph'].field_title %}
-                                        <p class="contact email">{{ item.value }}
-                                    {% endfor %}
-                                    {% for item in items['#paragraph'].field_email %}
-                                        <a href="mailto:{{ item.value }}">{{ item.value }}</a></p>
-                                    {% endfor %}
+                                    {% set loopnumber2 = loop.index0 %} 
+                                    {% set title = content.field_email_contact[loopnumber2]['#paragraph'].field_title.value %}
+                                    {% set email = content.field_email_contact[loopnumber2]['#paragraph'].field_email.value %}
+                                    {% if email %}
+                                        <p class="contact email">
+                                            <span>{{ title }}</span>
+                                            <a href="mailto:{{ email }}">{{ email }}</a>  
+                                        </p>
+                                    {% endif %}
                                 {% endfor %}
                             {% endif %}
                         </div>
@@ -122,7 +124,6 @@
                         {% if appt %}
                             <p class="contact-box-button"><a class="button" href="{{ appt }}">Schedule Appointment</a></p>
                         {% endif %}
-                        
                     </div>
                 </div>
             </div>
