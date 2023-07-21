@@ -1050,6 +1050,20 @@ nav.tabs {
 
 			&.menu-item--expanded a {
 				color: $green;
+				svg.ext {
+					fill: $green;
+					path {
+						stroke: $green;
+					}
+				}
+				&:hover {
+					svg.ext {
+						fill: $true_black;
+						path {
+							stroke:  $true_black;
+						}
+					}
+				}		
 			}
 			&.menu-item--active-trail {
 				background:$light_beige;
@@ -1303,7 +1317,19 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 			position: relative;
 		}
 		svg.ext {
-			display: none;
+			//display: none;
+			fill: $true_black;
+			path {
+				stroke:  $true_black;
+			}
+		}
+		&:hover {
+			svg.ext {
+				fill: $green;
+				path {
+					stroke:  $green;
+				}
+			}
 		}
 	}
 }
