@@ -2526,6 +2526,9 @@ input#edit-submit-community-grid {
 .promo-box-parent {
     margin-bottom: 20px;
     margin-top: 5px;
+    position: relative;
+    z-index: 1;
+
 
     &.right {
         padding-left: 20px;
@@ -2729,7 +2732,9 @@ input#edit-submit-community-grid {
     @include media-breakpoint-down(phone) {
         padding: 0.3125rem 1.125rem 1.5rem 1.125rem!important;
     }
-
+    @include media-breakpoint-only(landscape_phone) {
+        width:unset;
+    }
     .contactbox-wrapper {
         column-count: 2;
         column-gap: 30px;
