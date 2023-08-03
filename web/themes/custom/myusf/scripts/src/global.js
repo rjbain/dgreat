@@ -64,14 +64,18 @@
                 });
 
             }
+          let dashboardButton = $(".dashboard-button");
             // If logged in, tab from dashboard button to subnav button.
-            $(".dashboard-button").blur(function(){
-                if ($submenuBtn.hasClass("hideButton")) { console.log("submenu button is hidden. Focus on the first link.");
-                    $submenuLinks.first().focus();
-                } else { console.log("submenu button is is visible. Focus on the button.");
-                    $submenuBtn.focus();
-                }
-            })
+          dashboardButton.on( 'keydown', function(e) {
+            // If the tab key is active and the shift key is not, move forward.
+            if (!e.shiftKey && e.keyCode === 9) {
+              if ($submenuBtn.hasClass("hideButton")) {
+                $submenuLinks.first().focus();
+              } else {
+                $submenuBtn.focus();
+              }
+            }
+            });
             // If you focus on the submenu button and open it, tab next to the first link.
             $($submenuBtn).blur(function(){
                 // If the submenu is closed.
@@ -91,7 +95,6 @@
             $("#block-myusf-content a").last().blur(function() {
                 $("#sidebar_second a").first().focus();
             });
-
 
             // Fix for Ensemble
             $("[id^=contentView_]").attr("align","center");

@@ -555,31 +555,6 @@ a.right.carousel-control {
 
 /* EVENTS Carousel
 =============================================== */ 
-/*h2.carousel-overlay {
-    position: absolute;
-    font-size: .9rem;
-    font-weight: 700;
-    color: #fff!important;
-    margin: 0;
-    padding-left: 30px;
-    top: -10px;
-    left: 0;
-    z-index: 2;
-    text-shadow: 1px 1px 2px rgba(0,0,0,.9);
-}
-
-h2.carousel-overlay:before {
-    width: calc(100% + 30px);
-    height: 30px;
-    top: 17px;
-    left: 0;
-    background-color: rgba(0,0,0,.5);
-    z-index: -1;
-    display: block;
-    position: absolute;
-    content: "";
-}*/
-
 #carouselControls {
     margin-left: 0.9375rem;
     margin-right: 0.9375rem;
@@ -1140,9 +1115,6 @@ h2.carousel-overlay:before {
 
 /* EVENTS Widget
 =============================================== */ 
-.events-widget-title {
- 
-}
 .events-widget-time {
     font-size: 1rem;
 }
@@ -1400,6 +1372,10 @@ h2.carousel-overlay:before {
         padding: 5px 15px;
         margin: 0 20px 0 0;
 
+        svg.ext {
+	        display: none;
+	    }
+
         &:hover {
             background: $white;
             box-shadow: inset 0 0 0 0.3125rem $yellow;
@@ -1654,41 +1630,40 @@ div[data-oembed-url]  > iframe {
         &:before {
             content: "";
         }
-        &:hover {
-            background-color: $light_beige;
-        }
         a.job-list-a {
             text-decoration: none;
             display: inline-block;
+            margin-bottom: 1rem;
+            line-height: 1;
 
             &:hover {
-                background-color: $light_beige;
-            }
-
-            .job-title{            
-                font-size: 1rem;
-                color: $green;
-                text-transform: capitalize;
-                font-weight: 700;                
-                margin-left: unset!important;
-
-                &:hover {
-                    background-color: unset;
-                }
-            }
-            .job-description {
-                color: $text_gray;
-                font-weight: 400;
-                padding-right: 1.25rem;
-                padding-bottom: 0.9375rem;
-            }
-            .job-date {
-                text-transform: uppercase;
-                font-size: .75rem;
-                color: $text_gray;
-                font-weight: 600;
+                text-decoration: underline;
             }
         }
+        .job-title{            
+            font-size: 1rem;
+            color: $green;
+            text-transform: capitalize;
+            font-weight: 700;                
+            margin-left: unset!important;
+            display: inline;
+
+            &:hover {
+                background-color: unset;
+            }
+        }
+        .job-description {
+            color: $text_gray;
+            font-weight: 400;
+            padding-right: 1.25rem;
+            padding-bottom: 0.9375rem;
+        }
+        .job-date {
+            text-transform: uppercase;
+            font-size: .75rem;
+            color: $text_gray;
+            font-weight: 600;
+        } 
         .view-jobs-list ul li:before {
             content: ""!important;
         }
@@ -2208,20 +2183,7 @@ select#edit-field-community-topic-target-id {
     @include media-breakpoint-down(large_desktop) {
         margin-left: 0;
     }
-/*
-    @include media-breakpoint-only(landscape_phone) {
-        width: 150px;
-    }
-    @include media-breakpoint-up(tablet) {
-        width: 200px;
-    }
-    @include media-breakpoint-up(desktop) {
-        width: 160px;
-    }
-    @include media-breakpoint-up(large_desktop) {
-        width: 220px;
-    }
-*/
+
     option {
         background: #f5f5f5;
     }
@@ -2559,5 +2521,300 @@ input#edit-submit-community-grid {
      }
 }
 
+/* IN CONTENT PROMO BOX 
+====================================== */
+.promo-box-parent {
+    margin-bottom: 20px;
+    margin-top: 5px;
+    position: relative;
+    z-index: 1;
+
+
+    &.right {
+        padding-left: 20px;
+        @include media-breakpoint-down(phone) {
+            padding-left: 0px;
+            margin-left: 0px;
+        }
+    }
+    &.left {
+        @include media-breakpoint-down(phone) {
+            padding-right: 0px;
+            margin-right: 0px;
+        }
+    }
+}
+.promo-box-text-parent {
+    ul li {
+        &::marker {
+            color: $yellow;
+        }
+    }
+    ol li {
+        padding-left: 7px;
+
+        &.left {
+            margin-right: 10px;
+        }
+
+        &::marker {
+            color: $olive;
+            font-weight: 800;
+        }
+    }
+
+    &.promo-right {
+        ul, ol {
+            position: relative;
+            padding-left: 20px; //20px;
+            left: 18px;
+            margin-right: 20px;
+        }
+    }
+
+    &.promo-left  {
+        ul, ol {
+            left: 38px;
+            position: relative;
+            margin-right: 40px;
+            margin-left: -40px;
+        }
+    }
+
+    .callout {
+        width: calc(100% - 260px);
+
+        @include media-breakpoint-down(phone) {
+            width: 100%;
+        }
+    }
+    .button {
+        width: inherit;
+    }
+}
+.promo-box {
+    width: 240px;
+    
+    background: $green;
+    
+    @include media-breakpoint-down(phone) {
+        width: 100%;
+    }
+
+    &.background-turquoise {
+        background: $turquoise;
+
+        &.border-outline {
+            border-color: $turquoise;
+            background-color: $white;
+        }
+    }
+    &.background-olive {
+        background: $olive;
+
+        &.border-outline {
+            border-color: $olive;
+            background-color: $white;
+        }
+    }
+    &.background-blue {
+        background: $blue;
+
+        &.border-outline {
+            border-color: $blue;
+            background-color: $white;
+        }
+    }
+    &.background-purple {
+        background: $plum;
+
+        &.border-outline {
+            border-color: $plum;
+            background-color: $white;
+        }
+    }
+    &.background-gray {
+        background: $text-gray;
+
+        &.border-outline {
+            border-color: $text-gray;
+            background-color: $white;
+        }
+    }
+    &.background-green {
+        background: $green;
+
+        &.border-outline {
+            border-color: $green;
+            background-color: $white;
+        }
+    }
+
+    &.background-turquoise, &.background-olive,  &.background-blue,
+    &.background-purple, &.background-gray, &.background-green {
+        &.border-outline {
+            border-width: 8px;
+            border-style: solid;
+
+            .promo-box-text {
+                p {
+                    color: $true_black;
+                } 
+                .promo-box-cta {
+                    a.diamond_link {
+                        color: $true_black;
+
+                        &:hover {
+                            color: $true_black!important;
+
+                            &:after {
+                                border: 1px solid $white;
+                            }
+                        }
+                    }
+                }          
+            }
+        }
+    }
+    
+    &.yellow {
+        background: $yellow;
+
+        .promo-box-text {    
+            p {
+                color: $true_black;
+            } 
+            .promo-box-cta {
+                a.diamond_link {
+                    color: $true_black;
+
+                    &:hover {
+                        color: $true_black!important;
+
+                        &:after {
+                            border: 1px solid $white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .promo-box-image {
+        img {
+            width: 100%;
+            margin-top: 0;
+        }
+    }
+    .promo-box-text {
+        padding: 1.25rem;
+
+        p {
+            color: $white;
+        }
+
+        .promo-box-cta {
+            a.diamond_link {
+                color: $white;
+
+                &:hover {
+                    color: $white!important;
+                }
+            }
+        }
+    }
+}
+
+
+/* IN CONTENT  CONTACT BOX PARAGRAPH 
+========================================== */
+.block-myusf-contactbox.in-body {
+
+    @include media-breakpoint-down(phone) {
+        padding: 0.3125rem 1.125rem 1.5rem 1.125rem!important;
+    }
+    @include media-breakpoint-only(landscape_phone) {
+        width:unset;
+    }
+    .contactbox-wrapper {
+        column-count: 2;
+        column-gap: 30px;
+
+        @include media-breakpoint-down(phone) {
+            column-count: 1;
+        }
+
+        .contact-body {
+            @include media-breakpoint-up(tablet) {
+                margin-right: 6%;
+                margin-bottom: 10px;
+            }
+            p {
+                break-inside: avoid-column; 
+            }
+            .contact-hours {
+                padding-bottom: 1rem;
+
+                @include media-breakpoint-down(phone) {
+                    padding-bottom: 0;
+                }
+            }
+            .contact-name {
+                font-weight: 700;
+            }
+            .address {
+                margin-bottom: 0;
+            }
+        }
+        .contact-info-wrapper {
+            @include media-breakpoint-up(tablet) {              
+                position: relative;
+                top: -12px;
+                margin-bottom: 10px
+            }
+
+            .contact-info {
+                break-inside: avoid-column; 
+                margin-bottom: 0.25rem;
+
+                p.contact {
+                    display: block;
+                    margin-left: 0;
+
+                    &.email::before, 
+                    &.tel::before {
+                        top: 14px;
+                        margin-right: 0.3125rem;
+                    }
+                }
+            }
+    
+            .contact-info-links {
+                margin-bottom: 10px;
+
+                a {
+                    &.social {
+                        position: relative;
+                        left: -9px;
+
+                        &.ext svg {
+                            display: none;
+                        }
+                    }
+                    .instagram_gray.social {
+                        top: -1px;
+                    }
+                }
+                .contact-box-button {
+                    margin-top: 1.5rem;
+                    margin-bottom: 2.5rem;
+
+                    @include media-breakpoint-down(phone) {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }       
+    }
+}
 
 

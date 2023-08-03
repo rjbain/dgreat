@@ -31,22 +31,22 @@
  * @ingroup themeable
  */
 #}
-<a href="{{ fields.url.content }}">
+
 	<article class="event-calendar-list-item">
 		<div class="events-widget-title">
 			{% if fields.field_thumbnail_image_url.content %}
 				<img src="{{ fields.field_thumbnail_image_url.content }}" align="right" alt="">
 			{% endif %}
-			<h3 class="event-list-title">
-        		{% autoescape false %}
-          			{{ fields.title.content }}
-        		{% endautoescape %}
-			</h3>
+			<a class="event-list-title" href="{{ fields.url.content }}">		
+				{% autoescape false %}
+					{{ fields.title.content }}
+				{% endautoescape %}
+			</a>
 		</div>
 		<div class="events-widget-time">{{ fields.field_start_date.content }}, {{ fields.field_start_date_1.content }} - {{ fields.field_end_date.content }}</div>
 		<div class="events-widget-location">{{ fields.field_building.content }} &ndash; {{ fields.field_location.content }}</div>		
 	</article>
-</a>
+
 <!--<div>
 {#% set terms = fields.field_import_terms.content|split(', ') %}
 {% for term in terms %}

@@ -5,6 +5,9 @@ dependencies:
   config:
     - field.storage.node.field_migrate_final
     - node.type.page
+    - paragraphs.paragraphs_type.contact_box_address
+    - paragraphs.paragraphs_type.contact_box_email
+    - paragraphs.paragraphs_type.contact_box_telephone
     - paragraphs.paragraphs_type.migrate
   module:
     - entity_reference_revisions
@@ -23,8 +26,20 @@ settings:
   handler_settings:
     target_bundles:
       migrate: migrate
+      contact_box_address: contact_box_address
+      contact_box_email: contact_box_email
+      contact_box_telephone: contact_box_telephone
     negate: 1
     target_bundles_drag_drop:
+      announcement_category_date:
+        weight: 28
+        enabled: false
+      announcement_category_date_embed:
+        weight: 29
+        enabled: false
+      box_styles:
+        weight: 30
+        enabled: false
       bp_accordion:
         weight: 17
         enabled: false
@@ -70,7 +85,40 @@ settings:
       bp_view:
         weight: 31
         enabled: false
+      bp_webform:
+        weight: 46
+        enabled: false
+      contact_box:
+        weight: 50
+        enabled: false
+      contact_box_address:
+        weight: 51
+        enabled: true
+      contact_box_email:
+        weight: 52
+        enabled: true
+      contact_box_telephone:
+        weight: 53
+        enabled: true
+      events_search:
+        weight: 47
+        enabled: false
+      in_content_promo_box:
+        weight: 55
+        enabled: false
       migrate:
         weight: 32
         enabled: true
+      reference:
+        weight: 49
+        enabled: false
+      social_media_link:
+        weight: 50
+        enabled: false
+      usfcat_updates:
+        weight: 51
+        enabled: false
+      video:
+        weight: 52
+        enabled: false
 field_type: entity_reference_revisions

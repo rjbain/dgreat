@@ -1,0 +1,25 @@
+uuid: 198d5f92-be25-4ae5-897e-0548cf569ae3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.contact_box.field_contact_box
+    - paragraphs.paragraphs_type.contact_box
+id: paragraph.contact_box.default
+targetEntityType: paragraph
+bundle: contact_box
+mode: default
+content:
+  field_contact_box:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

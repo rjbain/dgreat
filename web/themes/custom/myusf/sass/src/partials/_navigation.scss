@@ -2,7 +2,6 @@
 /* MAIN NAV 
 ===================================================*/
 .navbar-menu-wrapper {  //centers menu
-	display: table;
 	margin: 0 auto;
 
 	@include media-breakpoint-only(tablet) {
@@ -24,14 +23,20 @@ nav {
 			margin-top: 0;
 		}
 	}
+
+	// li a svg.ext { //turning off external link icon in quick-links
+	// 	display: none;
+	// }
 }
 
 .bg-dark {
 	background-color: $green!important;
 }
-/*nav.navbar a:hover {
-    background: transparent!important;
-}*/
+nav.navbar .navbar-wrapper {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+}
 nav.navbar {
 	margin-bottom: 2.59rem;
 
@@ -80,15 +85,17 @@ nav.navbar {
 		height: 98px;
 		z-index: 2;
 	}
-	@include media-breakpoint-up(tablet) {
-		padding-right: 2.4rem;
-		height: 50px;
+	@include media-breakpoint-up(desktop) {
+		padding-right: 0;
+		height: 97px;
 	}
 }
 
 .navbar-brand {
 	color: $green!important;
 	margin-left: 0.5625rem;
+	position: relative;
+    top: 0px;
 
 	&:hover,
 	&:focus {
@@ -96,24 +103,18 @@ nav.navbar {
 		background: transparent;
 	}
 
-	/*@include media-breakpoint-up(midlarge_desktop) {
-		margin-left: calc((100% - 1440px) / 2);
-	}
-	@include media-breakpoint-up(xl_desktop) {
-        margin-left: calc(((100% - 1530px)/ 2) + 40px);
-    }
-  */
 	@include media-breakpoint-up(1920xl_desktop) {
 		margin-left: calc(((100% - 1920px)/ 2) + 40px);
 	}
 
 	img {
 		margin-left: 0.3125rem;
+
 		@include media-breakpoint-only(tablet) {
-			margin-left: 0;
+			margin-left: 3px;
 		}
 		@include media-breakpoint-down(landscape_phone) {
-			margin-left: 0.625rem;
+			margin-left: 1.4375rem;
 		}
 		@include media-breakpoint-up(midlarge_desktop) {
 			margin-left: 0.3125rem;
@@ -122,34 +123,11 @@ nav.navbar {
 			margin-left: 1.25rem;
 		}
 	}
-
 }
 .navbar-collapse {
-	@include media-breakpoint-up(desktop) {
-		/*margin-left: -70px;*/
-		margin-left: calc(((100% - 992px)/ 2) - 70px);
-		margin-right: calc((100% - 992px)/ 2);
-	}
-	@include media-breakpoint-up(midlarge_desktop) {
-		/*margin-left: -95px;*/
-		margin-left: calc(((100% - 1530px)/ 2) - 15px);
-		margin-right: calc(((100% - 1530px)/ 2) + 200px);
-	}
-	@include media-breakpoint-up(xl_desktop) {
-		/*margin-left: -185px;*/
-		margin-left: calc(((100% - 1700px)/ 2) - 15px);
-		margin-right: calc(((100% - 1700px)/ 2) + 200px);
-	}
-	@include media-breakpoint-up(1920xl_desktop) {
-		/*margin-left: -310px;*/
-		margin-left: calc(((100% - 1920px)/ 2) - 15px);
-		margin-right: calc(((100% - 1920px)/ 2) + 200px);
-	}
-	@include media-breakpoint-up(2560xl_desktop) {
-		/*margin-left: -410px;*/
-		margin-left: calc(((100% - 2560px)/ 2) - 15px);
-		margin-right: calc(((100% - 2560px)/ 2) + 200px);
-	}
+	position: relative;
+	top: 2px;
+	margin-left: -16px;
 }
 
 ul.navbar-nav button {
@@ -176,7 +154,6 @@ ul.navbar-nav button {
 
 .navbar-nav {
 	border:0;
-	/*margin-left: 120px;*/
 	padding-top: 0;
 
 	.menu-item--expanded.dropdown  {
@@ -404,9 +381,9 @@ button.header_search {
 	border: 0;
 	z-index: 10;
 	cursor:pointer;
-	right: 165px;
+	right: 170px;
 	position: absolute;
-	top: 15px;
+	top: 18px;
 	width:20px;
 	height:20px;
 
@@ -465,8 +442,8 @@ div.search-icon-rollover {
 	text-transform: unset;
 	position: absolute;
 	height: 80px;
-	top: -29px;
-	right: 153px;
+	top: -25px;
+	right: 157px;
 	padding-top: 0.625rem!important;
 	padding-left: 1.25rem!important;
 	padding-right: 2.1875rem!important;
@@ -475,13 +452,11 @@ div.search-icon-rollover {
 	color: $white;
 	margin: 1.875rem 0 0 0;
 
-	@include media-breakpoint-only(tablet) {
-		right: 150px;
-		top: -29px;
+	@include media-breakpoint-down(tablet) {
+		right: 147px;
 	}
 	@include media-breakpoint-down(phone) {
 		right: 145px;
-		top: -29px;
 	}
 	@include media-breakpoint-up(midlarge_desktop) {
 		/*right: 233px;*/
@@ -522,6 +497,9 @@ div.search-icon-rollover {
 a.login-btn {
 	@include media-breakpoint-up(desktop) {
 		margin-right:  -0.5rem;
+		position: absolute!important;
+    	top: 14px;
+    	right: 38px;
 	}
 
 	@include media-breakpoint-only(midlarge_desktop) {
@@ -538,15 +516,15 @@ a.login-btn {
 
 	@include media-breakpoint-down(landscape_phone) {
 		font-size: .7rem;
-		position: absolute;
+		position: absolute!important;
 		right: 10px;
 		top: 10px;
 	}
 
 	@include media-breakpoint-down(tablet) {
-		position: absolute;
-		top: 15px;
-		right: 26px;  
+		position: absolute!important;
+		top: 21px;
+		right: 30px;  
 		margin-top: -0.3125rem;
 	}
 }
@@ -640,11 +618,12 @@ a.dashboard-button{
 	height: 22px;
 	background-position: -349px -266px!important; /*was 267*/
 	display:block;
-	position: absolute;
-	right: 30px;
+	position: absolute!important;
+	right: 115px; //15px;
+	top: 16px;
 
 	@include media-breakpoint-down(phone) {
-		right: 15px;
+		//right: 30px;
 	}
 
 	@include media-breakpoint-down(landscape_phone) {
@@ -657,20 +636,20 @@ a.dashboard-button{
 
 	@include media-breakpoint-up(midlarge_desktop) {
 		/*right: calc(((100% - 1440px) / 2) - 16px);*/
-		right: 30px;
+		//right: 30px;
 	}
 	@include media-breakpoint-up(xl_desktop) {
 		margin-right: 20px;
-		right:23px;
+		//right:23px;
 	}
 	@include media-breakpoint-up(1920xl_desktop) {
-		right: calc(((100% - 1920px)/ 2) + 25px);
+		//right: calc(((100% - 1920px)/ 2) + 25px);
 	}
 
 	@include media-breakpoint-up(2560xl_desktop) {
-		margin-right: calc(((100% - 1920px) / 2) + 40px); /*margin-right: calc((100% - 1500px) / 2);*/
+		margin-right: calc(((100% - 1920px) / 2) + 90px); /*margin-right: calc(((100% - 1920px) / 2) + 40px);*/
 		padding-right: 1.5625rem;
-		right: 15px;
+		//right: 15px;
 	}
 
 	/*  @include media-breakpoint-down(landscape_phone) {
@@ -693,8 +672,9 @@ a.dashboard-button{
 //----- LOGIN BUTTON ----//
 
 .login {
-	top:21px;
-	right: 20px;
+	position: absolute;
+	top:48px;
+	right: 20px; 
 	margin-top: 0.375rem;
 	margin-left: 0.3125rem;
 	border-radius: 0;
@@ -703,10 +683,10 @@ a.dashboard-button{
 
 	@include media-breakpoint-down(landscape_phone) {
 		top: 120px;
-		right: -5px;
+		right: 10px;
 		position: absolute;
 		margin-top: -4.375rem;
-		margin-right: 3.125rem;
+		//margin-right: 3.125rem;
 
 		&:hover,
 		&:focus {
@@ -717,7 +697,7 @@ a.dashboard-button{
 	@include media-breakpoint-only(tablet) {
 		position: absolute;
 		top: 45px;
-		right: 60px;
+		//right: 60px;
 	}
 
 	@include media-breakpoint-up(midlarge_desktop) {
@@ -729,12 +709,12 @@ a.dashboard-button{
 	}
 
 	@include media-breakpoint-up(1920xl_desktop) {
-		right: calc(((100% - 1920px)/ 2) + 75px);
+		//right: calc(((100% - 1920px)/ 2) + 75px);
 	}
 
 	@include media-breakpoint-up(2560xl_desktop) {
-		margin-right: calc(((100% - 1920px)/ 2) + 100px); /*margin-right: calc(((100% - 1500px) / 2) + 35px);*/
-		right: 10px;
+		margin-right: calc(((100% - 1920px)/ 2) + 50px); /*margin-right: calc(((100% - 1920px)/ 2) + 100px);*/
+		//right: 10px;
 	}
 
 
@@ -764,7 +744,7 @@ a.dashboard-button{
 
 	&:hover,
 	&:focus {
-		color:$yellow!important;
+		color:#fdc95c!important;
 	}
 	&.dropdown:hover::after {
 		color: $yellow;
@@ -773,7 +753,7 @@ a.dashboard-button{
 	&.dropdown.show {
 		min-width:90px;
 		height: 150px;
-		top: 51px;
+		top: 3px;
 		background-color: $black;
 		z-index: 10;
 
@@ -782,10 +762,11 @@ a.dashboard-button{
 		}
 		@include media-breakpoint-down(landscape_phone) {
 			top: 78px!important;
+			right: 10px;
 		}
 
 		a#navbarDropdownMenuLink {
-			color:$yellow!important;
+			color:#fdc95c!important;
 			margin-top: -2px;
 
 			@include media-breakpoint-down(tablet) {
@@ -796,7 +777,7 @@ a.dashboard-button{
 			}
 		}
 		&:after {
-			color:$yellow!important;
+			color:#fdc95c!important;
 			margin-top: 45px;
 
 			@include media-breakpoint-down(tablet) {
@@ -834,8 +815,8 @@ a.dashboard-button{
     	position: relative;
 
 		@include media-breakpoint-down(tablet) {
-			font-size: .7rem!important;
-			right: 12px;
+			//font-size: .7rem!important;
+			right: 10px;
 		}
 		@include media-breakpoint-down(phone) {
 			font-size: .75rem!important;
@@ -843,7 +824,7 @@ a.dashboard-button{
 
 		&:hover,
 		&:focus {
-			color:$yellow!important;
+			color:#fdc95c!important;
 			margin-top: -2.9375rem;
 			background: transparent;
 		}
@@ -876,9 +857,13 @@ a.dashboard-button{
 				margin-left: -4.375rem;
 			}
 
+			svg {
+				display: none;
+			}
+
 			&:hover,
 			&:focus {
-				color:$yellow!important;
+				color:#fdc95c!important;
 				background: transparent;
 			}
 		}
@@ -1065,6 +1050,20 @@ nav.tabs {
 
 			&.menu-item--expanded a {
 				color: $green;
+				svg.ext {
+					fill: $green;
+					path {
+						stroke: $green;
+					}
+				}
+				&:hover {
+					svg.ext {
+						fill: $true_black;
+						path {
+							stroke:  $true_black;
+						}
+					}
+				}		
 			}
 			&.menu-item--active-trail {
 				background:$light_beige;
@@ -1313,8 +1312,25 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		border: 1px solid $light_gray;
 		border-top: 0;
 	}
-	li.nav-item a:focus-visible {
-		position: relative;
+	li.nav-item a{
+		&:focus-visible {
+			position: relative;
+		}
+		svg.ext {
+			//display: none;
+			fill: $true_black;
+			path {
+				stroke:  $true_black;
+			}
+		}
+		&:hover {
+			svg.ext {
+				fill: $green;
+				path {
+					stroke:  $green;
+				}
+			}
+		}
 	}
 }
 
@@ -1519,12 +1535,6 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 				text-decoration:none;
 				font-weight:600;
 
-				&::after {
-					position: absolute;
-					content: "»";
-					padding-left: 0.1875rem;
-				}
-
 				&:hover,
 				&:focus {
 					text-decoration: underline;
@@ -1675,13 +1685,25 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	@include media-breakpoint-down(desktop) {
 		padding: .15rem 0!important;
 	}
+
+	svg.ext {
+		fill: $white;
+		margin-top: -6px;
+		padding-top: 7px;
+		margin-left: 4px;
+		width: 17px;
+
+		path {
+			stroke: $white;
+		}
+	}
 }
 
 .footer-nav {
 	padding-left: 0;
 	list-style: none;
 	margin: 0 9% 3% 16%!important;
-	column-count: 3;
+	column-count: 2; 
 	column-gap: 10px;
 	text-align: center;
 
@@ -1794,6 +1816,8 @@ a.logo {
 		}
 	}
 }
-/*NAV EDIT BUTTON
+/*NAV MENU EDIT 
 =================================================*/
-
+.menu-enabled.draggable svg.ext, .menu-disabled.draggable svg.ext {
+    margin-left: 5px;
+}

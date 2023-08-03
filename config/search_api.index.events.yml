@@ -13,6 +13,7 @@ dependencies:
   module:
     - node
     - search_api
+    - search_api_solr
 id: events
 name: Events
 description: ''
@@ -66,6 +67,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_terms
+  status:
+    label: Published
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    dependencies:
+      module:
+        - node
   title:
     label: Title
     datasource_id: 'entity:node'
@@ -90,6 +99,8 @@ datasource_settings:
 processor_settings:
   add_url: {  }
   aggregated_field: {  }
+  auto_aggregated_fulltext_field: {  }
+  entity_type: {  }
   html_filter:
     weights:
       preprocess_index: -15
@@ -117,6 +128,7 @@ processor_settings:
       - title
   language_with_fallback: {  }
   rendered_item: {  }
+  solr_date_range: {  }
 tracker_settings:
   default:
     indexing_order: fifo

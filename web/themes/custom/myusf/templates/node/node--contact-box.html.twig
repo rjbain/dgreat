@@ -1,0 +1,132 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main content
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+    set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class
+]
+%}
+{# Set vars so we can use filters #}
+{% set contact_name = content.field_contact_name %}
+{% set display_title = content.field_display_title %}
+{% set first_num = content.field_telephone_number[0]|render %}
+{% set second_num = content.field_telephone_number[1]|render %}
+{% set email_one = content.field_contact_email_address[0]|render %}
+{% set email_two = content.field_contact_email_address[1]|render %}
+{% set contact_title = node.field_contact_title.value %}
+{% set hours = node.field_hours_of_operation.value %}
+{% set body = content.body %}
+{% set appt = node.field_schedule_an_appointment.0.url %}
+{% set block_id = elements.content['#block_content'].id() %}
+<div {{ attributes }}>
+    {{ title_prefix }}
+    {{ title_suffix }}
+    <div{{ attributes.addClass(classes).setAttribute('id', block_id) }}>
+        <div class="block-myusf-contactbox in-body">
+            <h2>{{ display_title }}</h2>
+            <div class="contactbox-wrapper">
+                <div class="contact-body">
+                    {% if body %}
+                        {{ body }}
+                    {% endif %}
+                    {% if contact_name %}
+                        <p class="contact-name">{{ contact_name }}</p>
+                    {% endif %}
+
+                    {% if content.field_address %}
+                         <p class="address">
+                            {% for items in content.field_address %}
+                                {% for item in items['#paragraph'].field_title %}
+                                    <strong>{{ item.value }}</strong><br/>
+                                {% endfor %}
+                                {% for item in items['#paragraph'].field_address %}
+                                   {{ item.value }}<br/>
+                                   {% if loop.last %}
+                                    <br/>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        </p>  
+                    {% endif %}
+                    {% if hours %}
+                    <p class="contact-hours"><strong>Hours</strong>:<br>
+                        {% for hour in node.field_hours_of_operation %}
+                           {{ hour.value|striptags|trim }}<br>
+                        {% endfor %}
+                    </p>
+                    {% endif %}
+                </div>
+                <div class="contact-info-wrapper">    
+                    <div class="contact-info">
+                            {% if content.field_telephone_number_ref %}
+                                {% for items in content.field_telephone_number_ref %}
+                                    {% set loopnumber = loop.index0 %} 
+                                    {% set title = content.field_telephone_number_ref[loopnumber]['#paragraph'].field_title.value %}
+                                    {% set phone = content.field_telephone_number_ref[loopnumber]['#paragraph'].field_telephone.value %}
+                                    {% if phone %}
+                                        <p class="contact tel">
+                                            <span>{{ title }}</span>
+                                            <a href="tel:{{ phone }}">{{ phone }}</a>  
+                                        </p>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                            {% if content.field_email_contact %} 
+                                {% for items in content.field_email_contact %}
+                                    {% set loopnumber2 = loop.index0 %} 
+                                    {% set title = content.field_email_contact[loopnumber2]['#paragraph'].field_title.value %}
+                                    {% set email = content.field_email_contact[loopnumber2]['#paragraph'].field_email.value %}
+                                    {% if email %}
+                                        <p class="contact email">
+                                            <span>{{ title }}</span>
+                                            <a href="mailto:{{ email }}">{{ email }}</a>  
+                                        </p>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    <div class="contact-info-links">
+                        {% for links in content.field_social_media_links %}
+                            {% for link in links['#paragraph'].field_social_media_network %}
+                                <a class="{{ link.value|lower }}_gray social" href="{{ links['#paragraph'].field_social_media_url.uri }}" target="_blank"></a>
+                            {% endfor %}
+                        {% endfor %}
+                        {% if appt %}
+                            <p class="contact-box-button"><a class="button" href="{{ appt }}">Schedule Appointment</a></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

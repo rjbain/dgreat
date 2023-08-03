@@ -13,6 +13,8 @@
     outline: 3px solid $color-focus-dark;
     outline-offset: 3px;
     background-color: transparent;
+    position: relative;
+    z-index: 200;
 }
 
 // BUTTONS //
@@ -37,6 +39,10 @@
         transition: background-color .25s linear 0s,border-color .25s linear 0s,box-shadow .25s linear 0s,color .25s linear 0s,opacity .25s linear 0s !important;
         box-shadow: inset 0 0 0 4px $btn_color;
         font-weight: 700;
+    }
+
+    svg.ext {
+        display: none;
     }
 
     @include media-breakpoint-down(phone) {
@@ -171,7 +177,6 @@
         width:90%;
     }
 }
-
 
 @mixin social_gray($social_media, $x, $y) {
     &::before {
