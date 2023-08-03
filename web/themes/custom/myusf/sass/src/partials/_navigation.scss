@@ -33,9 +33,17 @@ nav {
 	background-color: $green!important;
 }
 nav.navbar .navbar-wrapper {
-    position: relative;
-    margin: 0 auto;
-    width: 100%;
+	@include media-breakpoint-up(desktop) {
+		position: relative;
+		margin: 0 auto;
+		width: 100%;
+	}
+	@include media-breakpoint-down(desktop) {
+		form.form-inline.my-2.my-lg-0 {
+			height: unset;
+    		margin-bottom: unset;
+		}
+	}
 }
 nav.navbar {
 	margin-bottom: 2.59rem;
