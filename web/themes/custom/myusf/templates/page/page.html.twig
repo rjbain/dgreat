@@ -78,7 +78,7 @@
 {%
   set sidebarSecondClasses = [
     'sidebar',
-    'col-lg-3',
+    'col-auto',
     'order-last',
   ]
  %}
@@ -105,8 +105,13 @@
       </div>
 
       {% if container_navbar %}
+          <button class="header_search" type="button" aria-label="Open search input" aria-expanded="false">
+              <div class="search-icon-rollover"><img src="/themes/custom/myusf/images/src/search-yellow.svg" alt="search"/></div>
+              <div class="search-icon-main"><img src="/themes/custom/myusf/images/src/search-white.svg" alt="search"/></div>
+              <span class="acc-visuallyhidden">Search</span>
+          </button>
         <form class="form-inline my-2 my-lg-0" action="/results" method="get">
-          <div class="search-options" id="search-options">
+          <div class="search-options" id="search-options" style="display:none">
             <input type="hidden" name="myusf_search" value="true">
             <input class="mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" value="">
             <br>
@@ -173,7 +178,7 @@
       {% endif %}
       {% if page.sidebar_second %}
         <!--<div{{ sidebar_second_attributes }}>-->
-        <div {{ attributes.addClass(sidebarSecondClasses).setAttribute('id', 'sidebar_second') }}>
+        <div {{ attributes.addClass(sidebarSecondClasses).removeClass('col-lg-3').setAttribute('id', 'sidebar_second') }}>
           <aside class="section" aria-label="second sidebar">
             {{ page.sidebar_second }}
               {% if 'dashboard' in url('<current>')|render|render %}
