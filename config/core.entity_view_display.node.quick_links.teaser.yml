@@ -1,0 +1,34 @@
+uuid: b027fce0-c50f-4a0f-90fc-945ded3a280a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.quick_links.body
+    - field.field.node.quick_links.field_link
+    - node.type.quick_links
+  module:
+    - text
+    - user
+id: node.quick_links.teaser
+targetEntityType: node
+bundle: quick_links
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_link: true
+  langcode: true
+  search_api_excerpt: true
