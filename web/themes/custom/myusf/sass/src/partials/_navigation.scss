@@ -450,11 +450,11 @@ div.search-icon-rollover {
 }
 
 #search-options {
-	font-size: .75rem;
+	font-size: .55rem;
 	text-transform: unset;
 	position: absolute;
 	height: 80px;
-	top: -25px;
+	top: -28px;
 	right: 157px;
 	padding-top: 0.625rem!important;
 	padding-left: 1.25rem!important;
@@ -497,12 +497,18 @@ div.search-icon-rollover {
 		}
 	}
 	input[type=checkbox] {
-		//margin-top: 0.9375rem;
+		margin-top: 0.9375rem;
 	}
 
 	.mr-sm-2 {
 		margin-right: unset;
 		font-size: .85rem!important;
+	}
+
+	span {
+		margin-top: 5px;
+		margin-left: 5px;
+		position: absolute;
 	}
 }
 
@@ -1364,6 +1370,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		max-width: 240px;
     	margin-left: 15px!important;
     	margin-right: 15px!important;
+
 		@include media-breakpoint-only(landscape_phone) {
 			width:50%;
 		}
@@ -1508,14 +1515,43 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 
 /* QUICK LINKS right column
 =================================================*/
+#sidebar_second {
+	.quick-links-container {
+		max-width: 240px;	
+		margin-left: 15px!important;
+		margin-right: 15px!important;
+	}
+}
 
+.myApps {
+	.quick-links-container {
+		border: 0!important;
+
+		nav.quick-links-nav { 
+			padding-left: 0;
+
+			li {
+				font-size: .9rem;
+				padding-bottom: 0;
+				line-height: 1.8;
+				
+				a {
+					text-decoration: underline;
+
+					&:hover {
+						color:$black!important;
+						text-decoration: none;
+						background-color: transparentize( $yellow, 0.8);
+					}
+				}
+			}
+		}
+	}
+}
 .quick-links-container{
 	border: 5px solid $green!important;
 	padding: 0.9375rem!important;
-	max-width: 240px;	
-	margin-left: 15px!important;
-	margin-right: 15px!important;
-
+	
 	@include media-breakpoint-only(landscape_phone) {
 		width:50%;
 	}
