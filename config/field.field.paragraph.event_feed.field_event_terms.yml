@@ -1,0 +1,31 @@
+uuid: f7521d2f-6ca1-40fa-8411-0480d925a006
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_event_terms
+    - paragraphs.paragraphs_type.event_feed
+    - taxonomy.vocabulary.event_category
+    - taxonomy.vocabulary.event_terms
+id: paragraph.event_feed.field_event_terms
+field_name: field_event_terms
+entity_type: paragraph
+bundle: event_feed
+label: 'Event Terms'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      event_category: event_category
+      event_terms: event_terms
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: event_category
+field_type: entity_reference

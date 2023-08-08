@@ -1,0 +1,31 @@
+uuid: f9785e5c-6b8f-495d-bef8-9e4542a1facc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.event_feed.field_event_terms
+    - field.field.paragraph.event_feed.field_view_type
+    - paragraphs.paragraphs_type.event_feed
+  module:
+    - options
+id: paragraph.event_feed.default
+targetEntityType: paragraph
+bundle: event_feed
+mode: default
+content:
+  field_event_terms:
+    type: entity_reference_entity_id
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_view_type:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  search_api_excerpt: true
