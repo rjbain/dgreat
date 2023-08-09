@@ -110,11 +110,13 @@
             <input type="hidden" name="myusf_search" value="true">
             <input class="mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" value="">
             <br>
+            {% if 'results' in url %}
             <input type="checkbox" name="usfca_search" value="true" aria-label="Include USFCA.edu"><span> Include USFCA.EDU</span>
+            {% endif %}
               <input type="submit" class="acc-visuallyhidden" value="submit">
           </div>
         </form>
-
+        
         {% if logged_in %}
 
             {{ drupal_entity('block', 'user_block') }}

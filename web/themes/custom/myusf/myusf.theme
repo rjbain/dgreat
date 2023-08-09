@@ -26,6 +26,7 @@ function myusf_preprocess(&$variables) {
   $variables['action'] = htmlentities($action, ENT_QUOTES | ENT_HTML5, 'UTF-8');
   $variables['usfca_search'] = htmlentities($usfca_search, ENT_QUOTES | ENT_HTML5, 'UTF-8');
   $variables['myusf_search'] = htmlentities($myusf_search, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
 }
 
 /**
@@ -186,26 +187,26 @@ function myusf_preprocess_node(&$variables)
 /**
 * myusf_add_regions_to_node
 */
- 
+
 function myusf_add_regions_to_node($allowed_regions, &$variables) {
   // Retrieve active theme
   $theme = \Drupal::theme()->getActiveTheme()->getName();
- 
+
   // Retrieve theme regions
   $available_regions = system_region_list($theme, 'REGIONS_ALL');
- 
+
   // Validate allowed regions with available regions
   $regions = array_intersect(array_keys($available_regions), $allowed_regions);
- 
+
   // For each region
   foreach ($regions as $key => $region) {
- 
+
     // Load region blocks
     $blocks = \Drupal::entityTypeManager()->getStorage('block')->loadByProperties(array('theme' => $theme, 'region' => $region));
- 
+
     // Sort ‘em
     uasort($blocks, 'Drupal\block\Entity\Block::sort');
- 
+
     // Capture viewable blocks and their settings to $build
     $build = array();
     $builder = \Drupal::entityTypeManager()->getViewBuilder('block');
@@ -244,4 +245,9 @@ function myusf_page_attachments_alter(array &$attachments, $variables) {
         ];
         $attachments['#attached']['html_head'][] = [$newtag, 'robots'];
     }
+}
+
+function myusf_preprocess_page(&$variables) {
+  $variables['url'] = $_SERVER['REQUEST_URI'];
+  $variables['#cache']['contexts'][] = 'url.path';
 }
