@@ -18,8 +18,9 @@
             margin-right: 0.5rem;
         }
     }
-    @include media-breakpoint-only(landscape_phone) {
-        width:50%;
+    @include media-breakpoint-down(phone) {
+        width: calc(100% - 15px);
+        max-width: unset;
     }
 
     h2 {
@@ -2820,4 +2821,30 @@ input#edit-submit-community-grid {
     }
 }
 
+/* IN CONTENT QUICK LINKS 
+====================================== */
+.quick-links-parent {
+    width: 260px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    padding-left: 20px;
+    position: relative;
+    z-index: 1;
 
+    @include media-breakpoint-down(landscape_phone) {
+        width: calc(100% - 15px);
+        padding-left: 0;
+        margin-right: 15px;
+    }
+
+    @include media-breakpoint-down(phone) {
+        width:100%;
+       // padding-left: 0;
+    }  
+   
+    .quick-links-container{       
+        @include media-breakpoint-only(landscape_phone) {
+            width:100%;
+        }
+    }
+}
