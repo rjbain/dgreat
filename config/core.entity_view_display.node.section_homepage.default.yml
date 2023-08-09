@@ -1,0 +1,43 @@
+uuid: 35a5185d-2a99-4397-9fe9-f7389dab36db
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.section_homepage.body
+    - field.field.node.section_homepage.field_image
+    - node.type.section_homepage
+  module:
+    - image
+    - text
+    - user
+id: node.section_homepage.default
+targetEntityType: node
+bundle: section_homepage
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true
