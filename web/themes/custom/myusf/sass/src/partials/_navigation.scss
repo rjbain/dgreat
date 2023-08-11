@@ -458,8 +458,7 @@ div.search-icon-rollover {
 	right: 157px;
 	padding-top: 0.625rem!important;
 	padding-left: 1.25rem!important;
-	//padding-right: 2.1875rem!important;
-	//background: $black;
+	padding-right: 0.625rem!important;
 	z-index: 1;
 	color: $white;
 	margin: 1.875rem 0 0 0;
@@ -497,21 +496,34 @@ div.search-icon-rollover {
 		}
 	}
 	input[type=checkbox] {
-		margin-top: 5px;
+		margin-top: 15px;
 	}
-
+	
 	.mr-sm-2 {
 		margin-right: unset;
 		font-size: .85rem!important;
 	}
 
 	span {
-		margin-top: 5px;
+		margin-top: 15px;
 		margin-left: 5px;
 		position: absolute;
 	}
 }
+.search-options {
+	input[type=checkbox],
+		span {
+			display: none;
+		}
+	&:focus, &:focus-within {
+		background: $black;
 
+		input[type=checkbox],
+		span {
+			display: inline-block;
+		}
+	}
+}
 a.login-btn {
 	@include media-breakpoint-up(desktop) {
 		margin-right:  -0.5rem;
