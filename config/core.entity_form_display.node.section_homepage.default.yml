@@ -3,30 +3,20 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.section_homepage.body
     - field.field.node.section_homepage.field_image
+    - field.field.node.section_homepage.field_migrate_final
     - image.style.thumbnail
     - node.type.section_homepage
   module:
     - image
+    - paragraphs
     - path
     - scheduler
-    - text
 id: node.section_homepage.default
 targetEntityType: node
 bundle: section_homepage
 mode: default
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 12
-    region: content
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
   created:
     type: datetime_timestamp
     weight: 3
@@ -40,6 +30,18 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_migrate_final:
+    type: entity_reference_paragraphs
+    weight: 26
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
     third_party_settings: {  }
   langcode:
     type: language_select
