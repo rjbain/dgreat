@@ -2831,20 +2831,16 @@ input#edit-submit-community-grid {
     position: relative;
     z-index: 1;
 
-    @include media-breakpoint-down(landscape_phone) {
-        width: calc(100% - 15px);
-        padding-left: 0;
-        margin-right: 15px;
-    }
-
     @include media-breakpoint-down(phone) {
+        padding-left: 0;
         width:100%;
-       // padding-left: 0;
     }  
    
-    .quick-links-container{       
+    .quick-links-container{  
+        padding: unset!important;     
+
         @include media-breakpoint-only(landscape_phone) {
-            width:260px;
+            width: unset;
         }
     }
 }
