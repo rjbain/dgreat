@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.section_homepage.field_display_title
     - field.field.node.section_homepage.field_image
     - field.field.node.section_homepage.field_migrate_final
+    - field.field.node.section_homepage.field_sub_title
     - node.type.section_homepage
   module:
     - user
@@ -20,7 +22,9 @@ content:
     weight: 100
     region: content
 hidden:
+  field_display_title: true
   field_image: true
   field_migrate_final: true
+  field_sub_title: true
   langcode: true
   search_api_excerpt: true

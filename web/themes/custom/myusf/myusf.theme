@@ -70,6 +70,11 @@ function myusf_preprocess_block(&$vars) {
         }
 
     }
+
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if ($node instanceof \Drupal\node\NodeInterface) {
+      $vars["nid"] = $node->id();
+    }    
 }
 
 

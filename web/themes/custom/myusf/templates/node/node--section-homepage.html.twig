@@ -73,14 +73,10 @@
 %}
 <h1 class="display-title">{{ elements['#title']|striptags }}</h1>
 <div{{ content_attributes.addClass('content') }}>
-  <img src="{{ file_url(node.field_image.entity.uri.value) }}" class="section-home-banner" alt="{{ node.field_image.alt }}" />
   <div class="body">
     {{ content.field_migrate_final.0 }}
   </div>
 </div>
-
-
-
 {% if paragraph_video_exists == true %}
   <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
     <div class="modal-dialog">
