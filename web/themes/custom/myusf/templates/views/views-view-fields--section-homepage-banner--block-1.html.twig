@@ -34,20 +34,21 @@
 {# {% set path = path('<current>') %}
 {% set pageurl = fields.field_page_url.content %}
 {% if path == pageurl %} #}
-<a href="{{ fields.field_news_link.content }}">
+{# <a href="{{ fields.field_news_link.content }}"> #}
+{% if fields.field_image.content %}
 	<div class="hero-image-title-box">
 		{% if fields.field_display_title.content %}
-		<div class="hero_image_title">{{ fields.field_display_title.content }}</div><br>
+		<div class="hero_image_title"><h1>{{ fields.field_display_title.content }}</h1></div><br>
 		{% endif %}
 		{% if fields.field_sub_title.content %}
 			<div class="hero_image_subtitle">{{ fields.field_sub_title.content }}</div><br>
 		{% endif %}
-		{% if fields.body.content %}
+		{# {% if fields.body.content %}
 			<div class="hero_image_body">{{ fields.body.content }}</div>
-		{% endif %}
-	</div>	
-</a>
+		{% endif %} #}
+	</div>
+{# </a> #}
 <div class="hero_image"><img src="{{ fields.field_image.content }}" width="100%" alt="{{ fields.field_image_1.content }}"></div>
 <div class="hero_image_mobile"><img src="{{ fields.field_image.content }}" width="100%" alt="{{ fields.field_image_1.content }}"></div>
-
 {# {% endif %} #}
+{% endif %}

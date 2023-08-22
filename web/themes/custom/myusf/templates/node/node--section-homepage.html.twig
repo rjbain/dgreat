@@ -71,7 +71,11 @@
   'clearfix',
 ]
 %}
+
+{% if node.field_image.isEmpty() %}
 <h1 class="display-title">{{ elements['#title']|striptags }}</h1>
+{% endif %}
+
 <div{{ content_attributes.addClass('content') }}>
   <div class="body">
     {{ content.field_migrate_final.0 }}
