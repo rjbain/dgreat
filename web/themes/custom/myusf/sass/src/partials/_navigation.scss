@@ -467,7 +467,12 @@ div.search-icon-rollover {
 		right: 147px;
 	}
 	@include media-breakpoint-down(phone) {
-		right: 145px;
+		top:14px;
+		right: 4px;
+
+		&:focus {
+			padding-right: 1.25rem!important;
+		}
 	}
 	@include media-breakpoint-up(midlarge_desktop) {
 		/*right: 233px;*/
@@ -489,6 +494,7 @@ div.search-icon-rollover {
 		padding-left: 0.625rem;
 		padding-top: 0;
 		border: 0;
+		border-radius: 0;
 
 		&:focus-visible,
 		&:focus-visible::placeholder {
@@ -1367,12 +1373,16 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 /* SIDEBAR SECOND right column
 =================================================*/
 #sidebar_second {
+	margin-left: 15px!important;
+    margin-right: 15px!important;
+
 	@include media-breakpoint-only(tablet) {
-		width: 29.4%;
-		margin-left: -0.25rem;
+		width: 25.4%; 
 	}
 	@include media-breakpoint-down(phone) {
-		padding-right: 1.25rem;
+		width: calc(100% - 30px)!important;
+		margin-left: auto!important;
+		margin-right: auto!important;
 	}
 
 	.block {
@@ -1380,14 +1390,11 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	}
 	.custom-block2 {
 		max-width: 240px;
-    	margin-left: 15px!important;
-    	margin-right: 15px!important;
 
 		@include media-breakpoint-only(landscape_phone) {
 			width:50%;
 		}
 		@include media-breakpoint-down(phone) {
-	        width: calc(100% - 15px);
 	        max-width: unset;
 	    }
 
@@ -1543,11 +1550,8 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 #sidebar_second {
 	.quick-links-container {
 		max-width: 240px;	
-		margin-left: 15px!important;
-		margin-right: 15px!important;
 
 		@include media-breakpoint-down(phone) {
-			width: calc(100% - 15px);
 			max-width: unset;
 		}
 	}
