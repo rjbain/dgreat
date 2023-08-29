@@ -1034,11 +1034,7 @@ a.right.carousel-control {
     margin: 0 auto;
     color: $white;
     background: transparentize($black, .2);  
-
-    &.section-home-hero-box {
-        padding-top: 0.625rem;
-    }
-
+    padding-top: 0.625rem;
 
     @include media-breakpoint-down(tablet) {
         bottom: 0px;
@@ -1053,9 +1049,10 @@ a.right.carousel-control {
     .hero_image_title h1 {
         color: $white!important;
     }
-
-    .hero_image_title, .hero_image_subtitle, .hero_image_body {
-        display: inline-block;         
+    &.section-home-hero-box .hero_image_title {
+        display: inline-block; 
+    }
+    .hero_image_title, .hero_image_subtitle, .hero_image_body {        
         padding-left: 2rem;
         padding-right: 0.9375rem;   
         padding-bottom: 0.0625rem; 
@@ -1076,7 +1073,7 @@ a.right.carousel-control {
         /* margin-left: 11px!important; */
         
         @include media-breakpoint-up(midlarge_desktop) {
-            padding-left: calc(((100% - 1440px)/ 2) - 10px);
+            //padding-left: calc(((100% - 1440px)/ 2) - 10px);
         }
 
         @include media-breakpoint-down(tablet) {
