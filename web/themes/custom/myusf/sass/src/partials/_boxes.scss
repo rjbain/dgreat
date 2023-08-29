@@ -1034,18 +1034,26 @@ a.right.carousel-control {
     margin: 0 auto;
     color: $white;
     background: transparentize($black, .2);  
-    padding-top: 0.625rem;
+    padding-top: 0.825rem;
+    padding-bottom: 0.825rem;
+
+    &.section-home-hero-box {
+        padding-bottom: 0.225rem;
+    }
 
     @include media-breakpoint-down(tablet) {
         bottom: 0px;
         width: fit-content;//width:96%;
         margin-left: unset;
+        padding-top: 0.625rem;
+        padding-bottom: 0.625rem;
 
         &.section-home-hero-box {
-            padding-top: 0;
+            padding-top: 0.225rem;
+            padding-bottom: 0.225rem
         }
     }
-
+    
     .hero_image_title h1 {
         color: $white!important;
     }
