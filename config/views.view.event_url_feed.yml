@@ -241,14 +241,14 @@ display:
           exposed: false
           granularity: second
       arguments:
-        field_guid_value:
-          id: field_guid_value
-          table: node__field_guid
-          field: field_guid_value
+        field_guid_gen_value:
+          id: field_guid_gen_value
+          table: node__field_guid_gen
+          field: field_guid_gen_value
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: numeric
+          plugin_id: string
           default_action: ignore
           exception:
             value: all
@@ -274,8 +274,12 @@ display:
             type: none
             fail: 'not found'
           validate_options: {  }
+          glossary: false
+          limit: 0
+          case: none
+          path_case: none
+          transform_dash: false
           break_phrase: false
-          not: false
       filters:
         status:
           id: status
