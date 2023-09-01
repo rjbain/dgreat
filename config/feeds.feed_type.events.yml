@@ -53,17 +53,6 @@ third_party_settings:
         source: terms
         weight: 0
         label: Explode
-      4d2a1c8c-0708-4729-b7bd-e34626212f94:
-        find: '&amp;'
-        replace: '&'
-        case_sensitive: false
-        word_boundaries: false
-        whole: false
-        uuid: 4d2a1c8c-0708-4729-b7bd-e34626212f94
-        plugin: find_replace
-        source: displaytitle
-        weight: 0
-        label: 'Find replace'
       52e93355-fd82-4774-a95e-9c3449d34be8:
         uuid: 52e93355-fd82-4774-a95e-9c3449d34be8
         plugin: html_entity_decode
@@ -91,6 +80,51 @@ third_party_settings:
         plugin: find_replace
         source: terms
         weight: 2
+        label: 'Find replace'
+      1327bea6-cfcd-418b-b8bc-f1e5617167fc:
+        uuid: 1327bea6-cfcd-418b-b8bc-f1e5617167fc
+        plugin: html_entity_decode
+        source: building
+        weight: 0
+        label: 'HTML entity decode'
+      bd554f89-5d73-46fe-9674-cbaede010c0b:
+        uuid: bd554f89-5d73-46fe-9674-cbaede010c0b
+        plugin: html_entity_decode
+        source: displaytitle
+        weight: 0
+        label: 'HTML entity decode'
+      f9cb9aa6-e482-4305-9642-fe93211fadf6:
+        find: ''''
+        replace: ’
+        case_sensitive: false
+        word_boundaries: false
+        whole: false
+        uuid: f9cb9aa6-e482-4305-9642-fe93211fadf6
+        plugin: find_replace
+        source: building
+        weight: 1
+        label: 'Find replace'
+      cce2586f-d464-4cf2-aa1b-d6d09afdd326:
+        find: ''''
+        replace: ’
+        case_sensitive: false
+        word_boundaries: false
+        whole: false
+        uuid: cce2586f-d464-4cf2-aa1b-d6d09afdd326
+        plugin: find_replace
+        source: displaytitle
+        weight: 1
+        label: 'Find replace'
+      f41e12c1-91f2-47f9-b5fd-7a57d57d2b4b:
+        find: ''''
+        replace: ’
+        case_sensitive: false
+        word_boundaries: false
+        whole: false
+        uuid: f41e12c1-91f2-47f9-b5fd-7a57d57d2b4b
+        plugin: find_replace
+        source: description
+        weight: 1
         label: 'Find replace'
 label: Events
 id: events
