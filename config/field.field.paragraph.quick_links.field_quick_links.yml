@@ -1,0 +1,29 @@
+uuid: f0b85229-3978-4a3a-8f4f-5e186082902c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_quick_links
+    - node.type.quick_links
+    - paragraphs.paragraphs_type.quick_links
+id: paragraph.quick_links.field_quick_links
+field_name: field_quick_links
+entity_type: paragraph
+bundle: quick_links
+label: 'Quick Links'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      quick_links: quick_links
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

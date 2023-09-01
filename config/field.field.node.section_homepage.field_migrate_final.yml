@@ -1,0 +1,130 @@
+uuid: 57cb5f21-6f3f-44d0-8e44-ec27a284cfbc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_migrate_final
+    - node.type.section_homepage
+    - paragraphs.paragraphs_type.contact_box_address
+    - paragraphs.paragraphs_type.contact_box_email
+    - paragraphs.paragraphs_type.contact_box_telephone
+    - paragraphs.paragraphs_type.migrate
+  module:
+    - entity_reference_revisions
+id: node.section_homepage.field_migrate_final
+field_name: field_migrate_final
+entity_type: node
+bundle: section_homepage
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      contact_box_address: contact_box_address
+      contact_box_email: contact_box_email
+      contact_box_telephone: contact_box_telephone
+      migrate: migrate
+    negate: 1
+    target_bundles_drag_drop:
+      announcement_category_date:
+        weight: 33
+        enabled: false
+      announcement_category_date_embed:
+        weight: 34
+        enabled: false
+      box_styles:
+        weight: 35
+        enabled: false
+      bp_accordion:
+        weight: 36
+        enabled: false
+      bp_accordion_section:
+        weight: 37
+        enabled: false
+      bp_blank:
+        weight: 38
+        enabled: false
+      bp_block:
+        weight: 39
+        enabled: false
+      bp_carousel:
+        weight: 40
+        enabled: false
+      bp_column_wrapper:
+        weight: 41
+        enabled: false
+      bp_columns:
+        weight: 42
+        enabled: false
+      bp_columns_three_uneven:
+        weight: 43
+        enabled: false
+      bp_columns_two_uneven:
+        weight: 44
+        enabled: false
+      bp_image:
+        weight: 45
+        enabled: false
+      bp_modal:
+        weight: 46
+        enabled: false
+      bp_simple:
+        weight: 47
+        enabled: false
+      bp_tab_section:
+        weight: 48
+        enabled: false
+      bp_tabs:
+        weight: 49
+        enabled: false
+      bp_view:
+        weight: 50
+        enabled: false
+      bp_webform:
+        weight: 51
+        enabled: false
+      contact_box:
+        weight: 52
+        enabled: false
+      contact_box_address:
+        weight: 53
+        enabled: true
+      contact_box_email:
+        weight: 54
+        enabled: true
+      contact_box_telephone:
+        weight: 55
+        enabled: true
+      event_feed:
+        weight: 56
+        enabled: false
+      events_search:
+        weight: 57
+        enabled: false
+      in_content_promo_box:
+        weight: 58
+        enabled: false
+      migrate:
+        weight: 59
+        enabled: true
+      quick_links:
+        weight: 60
+        enabled: false
+      reference:
+        weight: 61
+        enabled: false
+      social_media_link:
+        weight: 62
+        enabled: false
+      usfcat_updates:
+        weight: 63
+        enabled: false
+      video:
+        weight: 64
+        enabled: false
+field_type: entity_reference_revisions

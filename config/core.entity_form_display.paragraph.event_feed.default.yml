@@ -1,0 +1,32 @@
+uuid: 5d49e512-5341-4e08-9e77-949d05c7dbf4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.event_feed.field_event_terms
+    - field.field.paragraph.event_feed.field_view_type
+    - paragraphs.paragraphs_type.event_feed
+id: paragraph.event_feed.default
+targetEntityType: paragraph
+bundle: event_feed
+mode: default
+content:
+  field_event_terms:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_view_type:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

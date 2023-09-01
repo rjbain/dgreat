@@ -1,0 +1,30 @@
+uuid: 6fd488a1-8bd7-436e-805b-4e080bbb18cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.section_homepage.field_display_title
+    - field.field.node.section_homepage.field_image
+    - field.field.node.section_homepage.field_migrate_final
+    - field.field.node.section_homepage.field_sub_title
+    - node.type.section_homepage
+  module:
+    - user
+id: node.section_homepage.teaser
+targetEntityType: node
+bundle: section_homepage
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_display_title: true
+  field_image: true
+  field_migrate_final: true
+  field_sub_title: true
+  langcode: true
+  search_api_excerpt: true

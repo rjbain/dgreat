@@ -152,6 +152,8 @@ main#content {
 }
 
 .col {
+	//padding-right: 0;
+
 	@include media-breakpoint-only(tablet) {
 		max-width: 70%;
 		flex-basis: auto;
@@ -164,13 +166,30 @@ main#content {
 	}
 }
 .col.dashboard {
+	margin-right: 15px;
 	@include media-breakpoint-only(tablet) {
 		max-width: 100%;
+	}
+	@include media-breakpoint-up(desktop) {
+		margin-right: 0px;
+	}
+}
+.page-node-139634 {
+	.main-content.col {
+		margin-right: 15px;
+
+		@include media-breakpoint-up(desktop) {
+			margin-right: 0px;
+		}
 	}
 }
 .col-auto {
 	padding-left: 0;
 	padding-right: 0;
+
+	@include media-breakpoint-down(landscape_phone) {
+		width: 100%!important;
+	}
 }
 .page-node-139634, .page-node-140134 {
 	.display-title {
@@ -180,9 +199,11 @@ main#content {
 	.col { //Only for Home page
 		@include media-breakpoint-down(tablet) {
 	    	max-width: 100%!important;
+			flex-basis: 100%;
 		}
 	}
 }
+
 .col-lg-3 {
 	@include media-breakpoint-up(desktop) {
 		/*max-width: unset;*/

@@ -1,0 +1,46 @@
+uuid: 7a9f829f-b9bd-4b77-8980-103b161dc9f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.quick_links.body
+    - field.field.node.quick_links.field_display_title
+    - field.field.node.quick_links.field_link
+    - node.type.quick_links
+  module:
+    - link
+    - user
+id: node.quick_links.default
+targetEntityType: node
+bundle: quick_links
+mode: default
+content:
+  field_display_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_link:
+    type: link_separate
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  langcode: true
+  search_api_excerpt: true
