@@ -613,8 +613,16 @@ a.card-rollover {
 			.page-link {
 				border-radius: 0;
 			}
-		}
+		}		 
 	}
+
+	li:first-child {
+		margin-top: 0px; 
+
+		a[title="Go to first page"] {
+			margin-top: 0px;
+		}
+	} 
 
 	.pager__item--next {
 		margin-right: 1.25rem;
@@ -763,6 +771,13 @@ form#views-exposed-form-announcements-page-page-1 .form-row {
     margin-left: 0;
     margin-top: 1.25rem;
     margin-bottom: 2.5rem;
+
+	@include media-breakpoint-down(tablet) {
+		input#edit-submit-announcements-page {
+			padding-left: 40px;
+			padding-right: 40px;
+		}
+	}
 }
 
 /* ANNOUNCEMENT -- announce detail page
