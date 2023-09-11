@@ -10,6 +10,7 @@
     @include media-breakpoint-only(tablet) {        
         position: relative;
         padding: 0.3125rem 1.125rem!important;
+        max-width: 50%;
 
         h2, p {
             margin-left: 0.5rem;
@@ -2606,16 +2607,22 @@ input#edit-submit-community-grid {
             margin-left: -40px;
         }
     }
-
-    .callout {
-        width: calc(100% - 260px);
-
-        @include media-breakpoint-down(phone) {
-            width: 100%;
-        }
-    }
     .button {
         width: inherit;
+    }
+    table,
+    p.callout {
+        width: calc(100% - 280px);
+    }
+    iframe {
+        width: calc(100% - 280px)!important;
+    }
+    @include media-breakpoint-down(phone) {
+        table,
+        p.callout,
+        iframe {
+            width: 100%!important;
+        }
     }
 }
 .promo-box {
