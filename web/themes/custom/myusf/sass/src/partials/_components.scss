@@ -599,6 +599,7 @@ a.card-rollover {
 		}
 		.page-link {
 			border: none;
+			color: #6b6b6b;
 
 			&:hover{
 				background-color: transparentize($light_gray, .5);
@@ -621,8 +622,28 @@ a.card-rollover {
 
 		a[title="Go to first page"] {
 			margin-top: 0px;
+
+			span[aria-hidden="true"] {
+				font-size: 1.2rem;
+				position: relative;
+				top: -5px;
+			}
+			
 		}
 	} 
+	li {
+		a[title="Go to last page"] {
+			span[aria-hidden="true"] {
+				font-size: 1.2rem;
+				position: relative;
+				top: -5px;
+			}			
+		}
+	} 
+	a[title="Go to previous page"],
+	a[title="Go to next page"] {
+		display: none;
+	}
 
 	.pager__item--next {
 		margin-right: 1.25rem;
