@@ -25,40 +25,11 @@ function dgreat_validate_alias_help($route_name, RouteMatchInterface $route_matc
   }
 }
 
-///**
-// * Implements hook_entity_bundle_field_info_alter().
-// */
-//function dgreat_validate_alias_entity_base_field_info_alter(&$fields, EntityTypeInterface $entity_type, $bundle)
-//{
-//  // Alter node.page.field_service.
-////  if ($entity_type->id() === 'node' && $bundle === 'page') {
-//    $fields['']->addConstraint('CustomAssignableService', []);
-//
-////  }
-//  \Drupal::logger('dgreat_validate_alias')->info('hi');
-//}
-//
-
-//function dgreat_validate_alias_form_page_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-//  $form['path_alias'] = [
-//    '#required' => TRUE
-//  ];
-//}
-
 function dgreat_validate_alias_form_node_form_alter(&$form, $form_state, $form_id) {
   $form['path]'] = [
     '#required' => TRUE
   ];
-//  $form['path'] = [
-//    '#title' => t('Some BS Here'),
-//  ];
-//  $form['path']['#required'] = TRUE;
-//  $form['path'] = array (
-//    '#required' => TRUE,
-//  );
-
   $form['#validate'][] = 'dgreat_validate_alias_form_validate';
-  \Drupal::logger('dgreat_validate_alias')->info('hi');
 }
 
 function dgreat_validate_alias_form_validate($form, &$form_state) {
