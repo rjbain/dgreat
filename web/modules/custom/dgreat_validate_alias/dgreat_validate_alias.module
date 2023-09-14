@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * @file
+ * Contains dgreat_validate_alias.module.
+ */
+
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_help().
+ */
+function dgreat_validate_alias_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the dgreat_validate_alias module.
+    case 'help.page.dgreat_validate_alias':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Make the Alias Field Required') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+///**
+// * Implements hook_entity_bundle_field_info_alter().
+// */
+//function dgreat_validate_alias_entity_base_field_info_alter(&$fields, EntityTypeInterface $entity_type, $bundle)
+//{
+//  // Alter node.page.field_service.
+////  if ($entity_type->id() === 'node' && $bundle === 'page') {
+//    $fields['']->addConstraint('CustomAssignableService', []);
+//
+////  }
+//  \Drupal::logger('dgreat_validate_alias')->info('hi');
+//}
+//
+
+//function dgreat_validate_alias_form_page_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+//  $form['path_alias'] = [
+//    '#required' => TRUE
+//  ];
+//}
+
+function dgreat_validate_alias_form_node_form_alter(&$form, $form_state, $form_id) {
+  $form['path]'] = [
+    '#required' => TRUE
+  ];
+//  $form['path'] = [
+//    '#title' => t('Some BS Here'),
+//  ];
+//  $form['path']['#required'] = TRUE;
+//  $form['path'] = array (
+//    '#required' => TRUE,
+//  );
+
+  $form['#validate'][] = 'dgreat_validate_alias_form_validate';
+  \Drupal::logger('dgreat_validate_alias')->info('hi');
+}
+
+function dgreat_validate_alias_form_validate($form, &$form_state) {
+  if ($form_state->getValue('path')[0]['value'] == '') {
+    $form_state->setErrorByName('path','URL Alias is required.');
+  }
+}
