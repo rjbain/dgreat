@@ -33,7 +33,7 @@ function dgreat_validate_alias_form_node_form_alter(&$form, $form_state, $form_i
 }
 
 function dgreat_validate_alias_form_validate($form, &$form_state) {
-  if ($form_state->getValue('path')[0]['value'] == '') {
+  if ($form_state->getValue('path')[0]['value'] != null) {
     $form_state->setErrorByName('path','URL Alias is required.');
   }
 }
