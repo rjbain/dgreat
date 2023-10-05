@@ -10,6 +10,7 @@
     @include media-breakpoint-only(tablet) {        
         position: relative;
         padding: 0.3125rem 1.125rem!important;
+        max-width: 50%;
 
         h2, p {
             margin-left: 0.5rem;
@@ -1228,6 +1229,15 @@ a.right.carousel-control {
             }
         }
     }
+    a {
+        text-decoration: none;
+
+        h2.display-title {
+            display: inline-block;
+            text-decoration: underline;
+
+        }
+    }
     h2 {
         padding-top: .5rem;
     }
@@ -1633,7 +1643,7 @@ div[data-oembed-url]  > iframe {
         
         li {
             padding-top: 6px;
-            padding-left: 0;  
+            padding-left: 0; 
         } 
     }
     
@@ -2153,6 +2163,7 @@ fieldset.form-item-field-audience-target-id {
     padding: 0!important;
     margin-right: 1.25rem;
     border-image-width:0; 
+    margin-top: 20px;
 }
 
 
@@ -2596,16 +2607,22 @@ input#edit-submit-community-grid {
             margin-left: -40px;
         }
     }
-
-    .callout {
-        width: calc(100% - 260px);
-
-        @include media-breakpoint-down(phone) {
-            width: 100%;
-        }
-    }
     .button {
         width: inherit;
+    }
+    table,
+    p.callout {
+        width: calc(100% - 280px);
+    }
+    iframe {
+        width: calc(100% - 280px)!important;
+    }
+    @include media-breakpoint-down(phone) {
+        table,
+        p.callout,
+        iframe {
+            width: 100%!important;
+        }
     }
 }
 .promo-box {
@@ -2860,4 +2877,20 @@ input#edit-submit-community-grid {
             width: unset;
         }
     }
+}
+
+.quick-links-text-parent {
+    table,
+    p.callout,
+    iframe  {
+        width: calc(100% - 280px)!important;
+    }
+    @include media-breakpoint-down(phone) {
+        table,
+        p.callout,
+        iframe {
+            width: 100%!important;
+        }
+    }
+    
 }

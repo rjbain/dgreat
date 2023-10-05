@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.section_homepage.field_display_title
     - field.field.node.section_homepage.field_image
     - field.field.node.section_homepage.field_migrate_final
+    - field.field.node.section_homepage.field_section
     - field.field.node.section_homepage.field_sub_title
     - image.style.thumbnail
     - node.type.section_homepage
@@ -46,7 +47,7 @@ content:
         enabled: true
   field_migrate_final:
     type: entity_reference_paragraphs
-    weight: 14
+    weight: 15
     region: content
     settings:
       title: Paragraph
@@ -55,6 +56,12 @@ content:
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: ''
+    third_party_settings: {  }
+  field_section:
+    type: options_select
+    weight: 14
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_sub_title:
     type: string_textfield

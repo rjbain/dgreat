@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.section_homepage.field_display_title
     - field.field.node.section_homepage.field_image
     - field.field.node.section_homepage.field_migrate_final
+    - field.field.node.section_homepage.field_section
     - field.field.node.section_homepage.field_sub_title
     - node.type.section_homepage
   module:
@@ -41,6 +42,14 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_section:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
     region: content
   field_sub_title:
     type: string

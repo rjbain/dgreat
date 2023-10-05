@@ -1378,7 +1378,7 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
     margin-right: 15px!important;
 
 	@include media-breakpoint-only(tablet) {
-		width: 25.4%; 
+		width: 100%; 
 	}
 	@include media-breakpoint-down(phone) {
 		width: calc(100% - 30px)!important;
@@ -1392,6 +1392,9 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	.custom-block2 {
 		max-width: 240px;
 
+		@include media-breakpoint-only(tablet) {
+			max-width: 50%; 
+		}
 		@include media-breakpoint-only(landscape_phone) {
 			width:50%;
 		}
@@ -1550,8 +1553,11 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 =================================================*/
 #sidebar_second {
 	.quick-links-container {
-		max-width: 240px;	
-
+		max-width: 240px;
+		
+		@include media-breakpoint-only(tablet) {
+			max-width: 50%; 
+		}
 		@include media-breakpoint-down(phone) {
 			max-width: unset;
 		}

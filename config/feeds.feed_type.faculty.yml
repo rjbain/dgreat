@@ -26,7 +26,53 @@ dependencies:
     - node.type.faculty
   module:
     - feeds_ex
+    - feeds_tamper
     - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      c45a4671-30c7-4107-90b9-61984f6c6347:
+        uuid: c45a4671-30c7-4107-90b9-61984f6c6347
+        plugin: html_entity_decode
+        source: title
+        weight: 0
+        label: 'HTML entity decode'
+      c94e6e90-096e-4564-b979-20b37d04d7ee:
+        uuid: c94e6e90-096e-4564-b979-20b37d04d7ee
+        plugin: html_entity_decode
+        source: education
+        weight: 0
+        label: 'HTML entity decode'
+      09ab4a6c-e139-47fe-871d-1eb282dcf986:
+        uuid: 09ab4a6c-e139-47fe-871d-1eb282dcf986
+        plugin: html_entity_decode
+        source: expertise
+        weight: 0
+        label: 'HTML entity decode'
+      24fad8e5-1b66-4950-95b0-45e028013805:
+        uuid: 24fad8e5-1b66-4950-95b0-45e028013805
+        plugin: html_entity_decode
+        source: firstname
+        weight: 0
+        label: 'HTML entity decode'
+      20470cd4-7214-45a6-aec4-a47e8b18b4e7:
+        uuid: 20470cd4-7214-45a6-aec4-a47e8b18b4e7
+        plugin: html_entity_decode
+        source: lastname
+        weight: 0
+        label: 'HTML entity decode'
+      f70df829-4593-4e49-b04a-36bb592ccc1f:
+        uuid: f70df829-4593-4e49-b04a-36bb592ccc1f
+        plugin: html_entity_decode
+        source: biography
+        weight: 0
+        label: 'HTML entity decode'
+      50e2e3b3-600b-4b2d-bb27-8e428302a1b8:
+        uuid: 50e2e3b3-600b-4b2d-bb27-8e428302a1b8
+        plugin: html_entity_decode
+        source: professionaltitle
+        weight: 0
+        label: 'HTML entity decode'
 label: Faculty
 id: faculty
 description: 'Feed Importer for Faculty'

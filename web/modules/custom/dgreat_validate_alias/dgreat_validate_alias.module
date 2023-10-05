@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Contains dgreat_validate_alias.module.
+ */
+
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_help().
+ */
+function dgreat_validate_alias_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the dgreat_validate_alias module.
+    case 'help.page.dgreat_validate_alias':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Make the Alias Field Required') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+function dgreat_validate_alias_form_node_form_alter(&$form, $form_state, $form_id) {
+  $form['path]'] = [
+    '#required' => TRUE
+  ];
+  $form['#validate'][] = 'dgreat_validate_alias_form_validate';
+}
+
+function dgreat_validate_alias_form_validate($form, &$form_state) {
+  $form_object = $form_state->getFormObject();
+  $node = $form_object->getEntity();
+  $content_type = $node->bundle();
+  $key = $form_state->getValue('path');
+
+  if ($key[0]['alias'] == '') {
+    if ($content_type == 'page' || $content_type == 'private_page' || $content_type == 'section_homepage') {
+      $form_state->setErrorByName('path', 'URL Alias is required.');
+    }
+  }
+}
