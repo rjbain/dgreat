@@ -40,7 +40,7 @@ function dgreat_validate_alias_form_validate($form, &$form_state) {
 
   if ($key[0]['alias'] == '') {
     if ($content_type == 'page' || $content_type == 'private_page' || $content_type == 'section_homepage') {
-      $form_state->setErrorByName('path', 'URL Alias is required.');
+      $form_state->setErrorByName('path', 'URL Alias is required. Please enter an alias');
     }
   }
 }
