@@ -1,19 +1,19 @@
 {{ attach_library('myusf/video-overlays') }}
 {#{% set vid_url = elements['#paragraph'].field_video_url.value.0.uri %}#}
 {% set color = elements['#paragraph'].field_colors.value %}
- 
 
-{% if paragraph.field_heading.value and paragraph.field_body_text.value %} 
-    {% set heading = "video-component-heading" %}  
-{% else %}   
+
+{% if paragraph.field_heading.value and paragraph.field_body_text.value %}
+    {% set heading = "video-component-heading" %}
+{% else %}
     {% set heading = "video-component-heading-only" %}
-{% endif %}   
+{% endif %}
 
-{% if paragraph.field_heading.value and paragraph.field_body_text.value %} 
-    {% set body = "video-component-body" %} 
-{% else %}  
+{% if paragraph.field_heading.value and paragraph.field_body_text.value %}
+    {% set body = "video-component-body" %}
+{% else %}
     {% set body = "video-component-body-only" %}
-{% endif %}  
+{% endif %}
 
 
 <div class="video-component-wrapper">
@@ -25,7 +25,7 @@
         <span class="video-component_video_icon"></span>
     </div>
         {{ content.bp_image_field }}
-        
+
         {% if paragraph.field_heading.value %}
             <h2 class="{{ heading }}">{{ paragraph.field_heading.value }}</h2>
         {% endif %}
@@ -34,7 +34,6 @@
                 {% autoescape false %}{{ paragraph.field_body_text.value }}{% endautoescape %}
             </div>
         {% endif %}
-
     </a>
 </div>
 
