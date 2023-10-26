@@ -36,38 +36,8 @@
  * @ingroup themeable
  */
 #}
-{%
-  set classes = [
-    'node',
-    'node--type-' ~ node.bundle|clean_class,
-    node.isPromoted() ? 'node--promoted',
-    node.isSticky() ? 'node--sticky',
-    not node.isPublished() ? 'node--unpublished',
-    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-    'clearfix',
-  ]
-%}
 
-{% set background_color = node.field_color.value	%}
-{% set border_color = node.field_border_color.value	%}
-
-<div{{ attributes.addClass(classes) }}>
-  <div class="promo-box background-{{ background_color }} border-{{ border_color }}">
-   
-    {% if content.field_image.0['#markup'] %} 
-      <div class="promo-box-image"> 
-        <img src="{{ content.field_image.0['#markup'] }}" alt="{{ node.field_image.alt }}" title=" {{ node.field_image.title }}">
-      </div>
-    {% endif %} 
-
-    <div class="promo-box-text">    
-      {{ content.body }}
-      {% if node.field_call_to_action.0.uri %}
-        <div class="promo-box-cta">
-          <a class="diamond_link" href="{{ node.field_call_to_action.0.url }}">{{ node.field_call_to_action.0.title }}</a>
-        </div>
-      {% endif %} 
-    </div> 
-  </div>
+<div class="paragraph__column">
+  <div class="add-space"></div>
 </div>
 
