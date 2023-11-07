@@ -1,6 +1,6 @@
 uuid: 820e3e8d-61f8-45a0-9a36-83beea50f724
 langcode: en
-status: closed
+status: open
 dependencies:
   module:
     - dgreat_student_surveys
@@ -30,18 +30,22 @@ elements: |-
     '#type': email
     '#title': 'USF Email'
     '#required': true
-  cell_phone_number_in_us_if_applicable_:
-    '#type': tel
-    '#title': 'Cell Phone Number in US (if applicable)'
   usf_student_id_number_example_12345678_:
     '#type': textfield
     '#title': 'USF Student ID Number (Example: 12345678)'
     '#required': true
+  foreign_cell_phone_number:
+    '#type': tel
+    '#title': 'Foreign Cell Phone Number'
+    '#international': true
+  cell_phone_number_in_us_if_applicable_:
+    '#type': tel
+    '#title': 'Cell Phone Number in US (if applicable)'
   sfo_airport_arrival_time_date:
     '#type': radios
     '#title': 'SFO Airport Arrival Date (Please send your corresponding flight itinerary to isss@usfca.edu)'
     '#options':
-      'Saturday, August 12, 2023': 'Saturday, August 12, 2023 -- International Student Move In Day'
+      'Tuesday, January 16, 2024': 'Tuesday, January 16, 2024 -- International Student Move In Day'
     '#required': true
     '#options__properties': ''
   sfo_airport_arrival_time:
@@ -80,9 +84,10 @@ elements: |-
       5: 'Lone Mountain'
       6: 'Lone Mountain East'
       7: 'Loyola Village'
-      8: 'Pedro Arrupe Hall'
-      9: 'Fulton House'
-      10: 'St. Anne''s'
+      8: 'Fulton House'
+      9: 'St. Anne''s'
+      10: 'Pacific Wing'
+    '#options__properties': ''
   have_you_been_fully_vaccinated_by_a_who_approved_vaccine_:
     '#type': textfield
     '#title': 'Have you been fully vaccinated by a WHO approved COVID vaccine?'
@@ -105,7 +110,7 @@ settings:
   page_theme_name: ''
   form_title: source_entity_webform
   form_submit_once: false
-  form_open_message: ''
+  form_open_message: 'The airport reservation form is now open.'
   form_close_message: 'The airport reservation form is now closed.'
   form_exception_message: ''
   form_previous_submissions: true
