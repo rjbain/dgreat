@@ -11,7 +11,7 @@ archive: false
 id: webform_79716
 title: 'Law Student Feedback'
 description: null
-category: null
+categories: {  }
 elements: |-
   type:
     '#type': select
@@ -25,9 +25,9 @@ elements: |-
     '#type': processed_text
     '#text': |
       <h2 data-stringify-type="pre">FORMAL COMPLAINTS ABOUT THE PROGRAM OF LEGAL EDUCATION</h2>
-      
+
       <p data-stringify-type="pre">A law student may make a formal complaint to the administration of the law school regarding a significant problem that directly implicates the school's program of legal education and its compliance with the ABA Standards. &nbsp;The process for making and resolving a formal complaint is described below.</p>
-      
+
       <ol>
       	<li data-stringify-type="pre">A law student may submit a complaint in writing to the Associate Dean for Academic Affairs (the "Associate Dean") via email, U.S. mail, personal delivery, or by completing the web-based form.</li>
       	<li data-stringify-type="pre">The complaint must describe in detail the behavior, program, process, or other matter that is at issue, and explain how the matter implicates the law school's program of legal education and its compliance with a specific, identified ABA Standard.</li>
@@ -35,9 +35,8 @@ elements: |-
       	<li data-stringify-type="pre">When the law school receives a complaint that complies with the foregoing requirements, the Associate Dean shall acknowledge to the complaining student the receipt via email U.S. mail, or personal delivery within three business days.</li>
       	<li data-stringify-type="pre">Within ten business days of acknowledging the complaint, the Associate Dean or the Associate Dean's designee, shall respond to the substance of the complaint, either in writing or in person, and shall indicate what steps are being taken by the law school to address the complaint. &nbsp;Additionally, if an investigation is necessary, the Associate Dean shall provide the complaining student a substantive response within ten business days after the completion of the investigation.&nbsp;</li>
       	<li data-stringify-type="pre">A complaining student may appeal a decision to the Dean of the law school within ten business days of the Associate Dean's substantive response. &nbsp;The Dean's decision on appeal shall be final.</li>
-      	<li data-stringify-type="pre">A copy of the complaint and a summary of the process and resolution of the complaint shall be kept in the office of the Associate Dean for a period of eight years from the date of final resolution of the complaint.</li>
+      	<li data-stringify-type="pre">A copy of the complaint and a summary of the process and resolution of the complaint shall be kept in the office of the Associate Dean for a period of ten&nbsp;years from the date of final resolution of the complaint.</li>
       </ol>
-      
     '#format': full_html
   service:
     '#type': select
@@ -291,17 +290,8 @@ handlers:
     status: true
     conditions:
       enabled:
-        -
-          ':input[name="service"]':
-            value: Aid
-        - or
-        -
-          ':input[name="service"]':
-            value: Registrar
-        - or
-        -
-          ':input[name="service"]':
-            value: Other
+        ':input[name="service"]':
+          value: Aid
     weight: 1
     settings:
       states:
@@ -310,7 +300,7 @@ handlers:
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      cc_mail: ''
+      cc_mail: LawAssociateDean@usfca.edu
       cc_options: {  }
       from_mail: '[webform_submission:values:email:raw]'
       from_options: {  }
@@ -346,11 +336,11 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: tmccoy2@usfca.edu
+      to_mail: kmshorofsky@usfca.edu
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      cc_mail: ''
+      cc_mail: LawAssociateDean@usfca.edu
       cc_options: {  }
       from_mail: '[webform_submission:values:email:raw]'
       from_options: {  }
@@ -381,7 +371,7 @@ handlers:
     conditions:
       enabled:
         ':input[name="service"]':
-          value: Other
+          value: Affairs
     weight: 2
     settings:
       states:
@@ -390,7 +380,7 @@ handlers:
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      cc_mail: ''
+      cc_mail: LawAssociateDean@usfca.edu
       cc_options: {  }
       from_mail: '[webform_submission:values:email:raw]'
       from_options: {  }
@@ -400,11 +390,7 @@ handlers:
       sender_mail: ''
       sender_name: ''
       subject: _default
-      body: |-
-        <p>Submitted by user: [webform_submission:user]</p>
-
-        <p>Submitted values are:</p>
-        [webform_submission:values]
+      body: "<p>Submitted by user: [webform_submission:user]</p>\r\n\r\n<p>Submitted values are:</p>\r\n[webform_submission:values]"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -430,11 +416,11 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: ajwright@usfca.edu
+      to_mail: skmawhinney@usfca.edu
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      cc_mail: ''
+      cc_mail: LawAssociateDean@usfca.edu
       cc_options: {  }
       from_mail: '[webform_submission:values:email:raw]'
       from_options: {  }
@@ -444,11 +430,7 @@ handlers:
       sender_mail: ''
       sender_name: ''
       subject: _default
-      body: |-
-        <p>Submitted by user: [webform_submission:user]</p>
-
-        <p>Submitted values are:</p>
-        [webform_submission:values]
+      body: "<p>Submitted by user: [webform_submission:user]</p>\r\n\r\n<p>Submitted values are:</p>\r\n[webform_submission:values]"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -463,19 +445,62 @@ handlers:
   email:
     id: email
     handler_id: email
-    label: Email
+    label: 'Email education'
     notes: ''
     status: true
-    conditions: {  }
+    conditions:
+      enabled:
+        ':input[name="type"]':
+          value: education
     weight: 4
     settings:
       states:
         - completed
-      to_mail: deanfreiwald@usfca.edu
+      to_mail: LawAssociateDean@usfca.edu
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      cc_mail: gazadeh@usfca.edu
+      cc_mail: eanielsen2@usfca.edu
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
+  email_registrar:
+    id: email
+    handler_id: email_registrar
+    label: 'Email registrar'
+    notes: ''
+    status: true
+    conditions:
+      enabled:
+        ':input[name="service"]':
+          value: Registrar
+    weight: 4
+    settings:
+      states:
+        - completed
+      to_mail: sldarcy@usfca.edu
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: LawAssociateDean@usfca.edu
       cc_options: {  }
       from_mail: _default
       from_options: {  }
@@ -498,3 +523,4 @@ handlers:
       parameters: {  }
       debug: false
 variants: {  }
+category: null
