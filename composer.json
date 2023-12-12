@@ -110,7 +110,6 @@
     "drupal/workbench_access": "^1.0",
     "drupal/xmlsitemap": "^1.5",
     "drush/drush": "^10",
-    "foxy/foxy": "^1.1.2",
     "pantheon-systems/drupal-integrations": "^9",
     "pantheon-systems/quicksilver-pushback": "^2",
     "rvtraveller/qs-composer-installer": "^1.1",
@@ -170,6 +169,11 @@
     ]
   },
   "extra": {
+    "patches": {
+      "drupal/feeds": {
+        "Add update patch for feeds": "https://www.drupal.org/files/issues/2023-09-12/post_update_fails_3378964.patch"
+      }
+    },
     "installer-types": ["ckeditor-plugin"],
     "installer-paths": {
       "web/core": ["type:drupal-core"],
@@ -229,9 +233,6 @@
     "enable-patching": "true"
   },
   "config": {
-    "foxy": {
-      "manager-timeout": 300
-    },
     "optimize-autoloader": true,
     "preferred-install": "dist",
     "sort-packages": true,
@@ -244,7 +245,6 @@
       "rvtraveller/qs-composer-installer": true,
       "zaporylie/composer-drupal-optimizations": true,
       "drupal/core-project-message": true,
-      "foxy/foxy": true,
       "simplesamlphp/composer-module-installer": true,
       "joachim-n/composer-manifest": true,
       "oomphinc/composer-installers-extender": true,
