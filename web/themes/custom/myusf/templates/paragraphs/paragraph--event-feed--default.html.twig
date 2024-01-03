@@ -39,8 +39,8 @@
 <div class="event-feed-wrapper">
     {% set block = paragraph.field_view_type.value|trim %}
     {% set terms = [] %}
-        {% for item in paragraph.field_event_terms	 %}
-        {%  set terms = terms|merge([item.value.target_id]) %}
+        {% for item in paragraph.field_event_terms %}
+        {% set terms = terms|merge([item.value.target_id]) %}
         {% endfor %}
         {% set terms = terms|join('+') %}
         {{ drupal_view('events_search', block, terms) }}
