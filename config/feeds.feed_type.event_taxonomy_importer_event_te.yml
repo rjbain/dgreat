@@ -1,0 +1,76 @@
+uuid: bb66177c-78fd-4a87-bcfa-8705f8504d36
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.event_terms
+  module:
+    - feeds_ex
+    - feeds_tamper
+    - taxonomy
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      4871d185-ef5f-4733-a85a-85a51276aaed:
+        uuid: 4871d185-ef5f-4733-a85a-85a51276aaed
+        plugin: html_entity_decode
+        source: name
+        weight: 0
+        label: 'HTML entity decode'
+      d2619eef-b5df-4b87-a641-d3ea79f09c9b:
+        character: ''
+        side: trim
+        uuid: d2619eef-b5df-4b87-a641-d3ea79f09c9b
+        plugin: trim
+        source: name
+        weight: 1
+        label: 'Characters to trim'
+label: 'Event Taxonomy Importer - Event Terms'
+id: event_taxonomy_importer_event_te
+description: 'Import taxonomy terms from "Event Terms" vocabulary for events'
+help: ''
+import_period: -1
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: jsonpath
+parser_configuration:
+  context:
+    value: '$.*'
+  source_encoding:
+    - auto
+  display_errors: false
+  line_limit: 100
+processor: 'entity:taxonomy_term'
+processor_configuration:
+  values:
+    vid: event_terms
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  authorize: false
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  name:
+    value: name
+    label: name
+    machine_name: name
+    type: json
+mappings:
+  -
+    target: name
+    map:
+      value: name
+    settings:
+      language: null
+    unique:
+      value: 1
