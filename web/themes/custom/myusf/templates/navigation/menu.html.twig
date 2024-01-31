@@ -52,7 +52,13 @@
             item.in_active_trail ? 'active',
           ]
         %}
-        {{ link(item.title, item.url, {'class': link_classes}) }}
+        <a href="{{ item.url }}" {{ link(item.title, item.url, {'class': link_classes}) }} >
+        
+          <svg id="sidebar-menu-link" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 22">
+            <rect width="6" height="22"/>
+          </svg>
+        {{ item.title }}
+        </a>
         {% if item.below %}
           {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
         {% endif %}
