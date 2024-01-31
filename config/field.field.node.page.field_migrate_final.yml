@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_migrate_final
     - node.type.page
+    - paragraphs.paragraphs_type.bp_accordion_section
     - paragraphs.paragraphs_type.contact_box_address
     - paragraphs.paragraphs_type.contact_box_email
     - paragraphs.paragraphs_type.contact_box_telephone
@@ -25,6 +26,7 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
+      bp_accordion_section: bp_accordion_section
       migrate: migrate
       contact_box_address: contact_box_address
       contact_box_email: contact_box_email
@@ -45,7 +47,7 @@ settings:
         enabled: false
       bp_accordion_section:
         weight: 18
-        enabled: false
+        enabled: true
       bp_blank:
         weight: 19
         enabled: false
@@ -100,6 +102,9 @@ settings:
       contact_box_telephone:
         weight: 53
         enabled: true
+      event_feed:
+        weight: 58
+        enabled: false
       events_search:
         weight: 47
         enabled: false
@@ -117,6 +122,9 @@ settings:
         enabled: false
       social_media_link:
         weight: 50
+        enabled: false
+      spacer:
+        weight: 64
         enabled: false
       usfcat_updates:
         weight: 51
