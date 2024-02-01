@@ -4,8 +4,8 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.bp_accordion_section_body
-    - paragraphs.paragraphs_type.bp_accordion
     - paragraphs.paragraphs_type.bp_accordion_section
+    - paragraphs.paragraphs_type.bp_columns
     - paragraphs.paragraphs_type.bp_columns_two_uneven
     - paragraphs.paragraphs_type.bp_simple
     - paragraphs.paragraphs_type.video
@@ -28,8 +28,8 @@ settings:
   handler_settings:
     target_bundles:
       bp_simple: bp_simple
+      bp_columns: bp_columns
       bp_columns_two_uneven: bp_columns_two_uneven
-      bp_accordion: bp_accordion
       video: video
     negate: 0
     target_bundles_drag_drop:
@@ -44,7 +44,7 @@ settings:
         enabled: false
       bp_accordion:
         weight: -22
-        enabled: true
+        enabled: false
       bp_accordion_section:
         weight: -21
         enabled: false
@@ -62,7 +62,7 @@ settings:
         enabled: false
       bp_columns:
         weight: -28
-        enabled: false
+        enabled: true
       bp_columns_three_uneven:
         weight: -27
         enabled: false
