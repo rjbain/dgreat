@@ -1087,12 +1087,11 @@ nav.tabs {
 			&:last-of-type {
 				border: 0;
 			}
-			// &.menu-item--collapsed a:after {
-			// 	left: 5px;
-			// 	position: relative;
-			// 	content: ' »';
-			// 	color: red;
-			// }
+			&.menu-item--collapsed a:after {
+				left: 5px;
+				position: relative;
+				content: ' »';
+			}
 			&.menu-item--expanded a {
 				&:hover {
 					svg.ext {
@@ -1141,6 +1140,7 @@ nav.tabs {
 				&:hover,
 				&:focus {
 					background: transparent;
+					text-decoration: underline;
 				}
 
 				@include media-breakpoint-down(desktop) {
