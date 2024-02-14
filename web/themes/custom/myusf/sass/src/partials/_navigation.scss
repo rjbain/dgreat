@@ -1090,7 +1090,7 @@ nav.tabs {
 			&.menu-item--collapsed a:after {
 				left: 5px;
 				position: relative;
-				content: ' »';
+				content: '»';
 			}
 			&.menu-item--expanded a {
 				&:hover {
@@ -1151,15 +1151,19 @@ nav.tabs {
 				@include media-breakpoint-down(landscape_phone) {
 					padding: 1rem 0.625rem;
 				}
-				&.nav-link.active.is-active:before {
-					content: '';
-					position: relative;
-					display: inline-block;
-					left: -10px;
-					background: url(/themes/custom/myusf/images/site/active-nav-link.svg) no-repeat;
-					width: 6px;
-					height: 22px;
-					position: absolute;
+				&.nav-link.active.is-active {
+					text-decoration: underline;
+					
+					&:before {
+						content: '';
+						position: relative;
+						display: inline-block;
+						left: -10px;
+						background: url(/themes/custom/myusf/images/site/active-nav-link.svg) no-repeat;
+						width: 6px;
+						height: 22px;
+						position: absolute;
+					}
 				}
 			}
 
