@@ -4,8 +4,8 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.bp_accordion_section_body
-    - paragraphs.paragraphs_type.bp_accordion
     - paragraphs.paragraphs_type.bp_accordion_section
+    - paragraphs.paragraphs_type.bp_columns
     - paragraphs.paragraphs_type.bp_columns_two_uneven
     - paragraphs.paragraphs_type.bp_simple
     - paragraphs.paragraphs_type.video
@@ -28,17 +28,23 @@ settings:
   handler_settings:
     target_bundles:
       bp_simple: bp_simple
+      bp_columns: bp_columns
       bp_columns_two_uneven: bp_columns_two_uneven
-      bp_accordion: bp_accordion
       video: video
     negate: 0
     target_bundles_drag_drop:
+      announcement_category_date:
+        weight: 34
+        enabled: false
+      announcement_category_date_embed:
+        weight: 35
+        enabled: false
       box_styles:
         weight: 23
         enabled: false
       bp_accordion:
         weight: -22
-        enabled: true
+        enabled: false
       bp_accordion_section:
         weight: -21
         enabled: false
@@ -56,7 +62,7 @@ settings:
         enabled: false
       bp_columns:
         weight: -28
-        enabled: false
+        enabled: true
       bp_columns_three_uneven:
         weight: -27
         enabled: false
@@ -84,14 +90,41 @@ settings:
       bp_webform:
         weight: 35
         enabled: false
+      contact_box:
+        weight: 53
+        enabled: false
+      contact_box_address:
+        weight: 54
+        enabled: false
+      contact_box_email:
+        weight: 55
+        enabled: false
+      contact_box_telephone:
+        weight: 56
+        enabled: false
+      event_feed:
+        weight: 58
+        enabled: false
+      events_search:
+        weight: 57
+        enabled: false
+      in_content_promo_box:
+        weight: 59
+        enabled: false
       migrate:
         weight: 36
+        enabled: false
+      quick_links:
+        weight: 61
         enabled: false
       reference:
         weight: 38
         enabled: false
       social_media_link:
         weight: 37
+        enabled: false
+      spacer:
+        weight: 64
         enabled: false
       usfcat_updates:
         weight: 38

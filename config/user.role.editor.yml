@@ -14,8 +14,10 @@ dependencies:
     - node.type.section_homepage
     - node.type.twitter
     - node.type.webform
+    - workflows.workflow.editorial
   module:
     - block
+    - content_moderation
     - contextual
     - filter
     - group
@@ -26,6 +28,7 @@ dependencies:
     - toolbar
     - webform
     - webform_submission_log
+    - workbench
     - workbench_access
 id: editor
 label: editor
@@ -39,6 +42,7 @@ permissions:
   - 'access toolbar'
   - 'access webform overview'
   - 'access webform submission log'
+  - 'access workbench'
   - 'administer blocks'
   - 'administer group'
   - 'administer menu'
@@ -47,7 +51,6 @@ permissions:
   - 'create favorite_link content'
   - 'create in_content_promo_box content'
   - 'create page content'
-  - 'create paragraph content announcement_category_date'
   - 'create paragraph content box_styles'
   - 'create paragraph content bp_accordion'
   - 'create paragraph content bp_accordion_section'
@@ -61,7 +64,6 @@ permissions:
   - 'create paragraph content contact_box_email'
   - 'create paragraph content contact_box_telephone'
   - 'create paragraph content event_feed'
-  - 'create paragraph content events_search'
   - 'create paragraph content in_content_promo_box'
   - 'create paragraph content quick_links'
   - 'create paragraph content social_media_link'
@@ -87,7 +89,6 @@ permissions:
   - 'delete own webform'
   - 'delete own webform content'
   - 'delete own webform submission'
-  - 'delete page revisions'
   - 'delete paragraph content announcement_category_date'
   - 'delete paragraph content box_styles'
   - 'delete paragraph content bp_accordion'
@@ -159,10 +160,17 @@ permissions:
   - 'update paragraph content social_media_link'
   - 'update paragraph content spacer'
   - 'update paragraph content video'
+  - 'use editorial transition archive'
+  - 'use editorial transition archived_draft'
+  - 'use editorial transition archived_published'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition publish'
   - 'use text format full_html'
   - 'use workbench access'
   - 'view all revisions'
+  - 'view any unpublished content'
   - 'view favorite_link revisions'
+  - 'view latest version'
   - 'view own unpublished content'
   - 'view own webform submission'
   - 'view page revisions'
@@ -176,3 +184,4 @@ permissions:
   - 'view section_homepage revisions'
   - 'view the administration theme'
   - 'view webform revisions'
+  - 'view workbench access information'

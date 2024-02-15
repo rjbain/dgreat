@@ -1069,12 +1069,19 @@ nav.tabs {
 
 	ul.nav {
 		padding-top:0;
-		margin-left: 0;
+		margin: 0.75rem 0;
+
+		@include media-breakpoint-down(desktop) {
+			margin-left: 10px;
+		}
+
+		@include media-breakpoint-down(phone) {
+			margin-left: 5px
+		}
 
 		li {
 			width: 230px;
 			list-style-type: none;
-			border-bottom: 1px solid $light_gray;
 			padding-bottom: 0;
 
 			@include media-breakpoint-down(desktop) {
@@ -1088,15 +1095,12 @@ nav.tabs {
 			&:last-of-type {
 				border: 0;
 			}
-
+			&.menu-item--collapsed a:after {
+				left: 5px;
+				position: relative;
+				content: '»';
+			}
 			&.menu-item--expanded a {
-				color: $green;
-				svg.ext {
-					fill: $green;
-					path {
-						stroke: $green;
-					}
-				}
 				&:hover {
 					svg.ext {
 						fill: $true_black;
@@ -1106,8 +1110,26 @@ nav.tabs {
 					}
 				}
 			}
-			&.menu-item--active-trail {
-				background:$light_beige;
+			&:first-of-type {
+				a {
+					font-size: 1.1rem;
+					text-transform: uppercase;
+					line-height: 1.1;
+					&:before,
+					&.nav-link.active.is-active:before {
+						top:-1px; 
+						@include media-breakpoint-down(phone) {
+							top: 4px;
+						}
+						@include media-breakpoint-only(tablet) {
+							top: 2px;
+						}
+					}
+
+					@include media-breakpoint-down(phone) {
+						font-size: 1.2rem!important;
+					}
+				}
 			}
 
 			a {
@@ -1116,22 +1138,70 @@ nav.tabs {
 				color: $black;
 				line-height: 1.33;
 				text-decoration: none;
-				text-transform: uppercase;
-				padding: 1rem 0.625rem;
+				margin: 0.5rem 0.625rem;
+				padding: 0; 
+				position: relative;
+
+				@include media-breakpoint-down(desktop) {
+					margin-left:0.35rem;
+				}
+				@include media-breakpoint-only(tablet) {
+					margin-left:0.5rem;
+				}
+				&:before {
+					content: '';
+					position: relative;
+					display: inline-block;
+					top: -2px; 
+					left: -10px;
+					background: url(/themes/custom/myusf/images/site/inactive-nav-link.svg) no-repeat;
+					width: 6px;
+					height: 22px;
+					margin-right: 0.5rem;
+					position: absolute;
+					z-index: -1;
+
+					@include media-breakpoint-down(phone) {
+						//left: -5px;
+						top: 3px;
+					}
+					@include media-breakpoint-only(tablet) {
+						left: -15px;
+					}
+				}
 
 				&:hover,
 				&:focus {
-					color: $green!important;
-					background: $light_beige;
+					background: transparent;
+					text-decoration: underline;
 				}
 
-				@include media-breakpoint-down(desktop) {
-					font-size: 0.8rem;
+				@include media-breakpoint-down(phone) {
+					font-size: 0.9rem!important;
 					line-height: 1.375;
 				}
 
 				@include media-breakpoint-down(landscape_phone) {
-					padding: 1rem 0.625rem;
+					padding: 0.25rem 0.625rem;
+				}
+				&.nav-link.active.is-active {
+					text-decoration: underline;
+
+					&:before {
+						content: '';
+						position: relative;
+						display: inline-block;
+						left: -10px;
+						background: url(/themes/custom/myusf/images/site/active-nav-link.svg) no-repeat;
+						width: 6px;
+						height: 22px;
+						position: absolute;
+						z-index: -1;
+
+						@include media-breakpoint-only(tablet) {
+							left: -18px;
+						}
+					}
 				}
 			}
 
@@ -1139,13 +1209,20 @@ nav.tabs {
 			ul.menu  {
 				padding-top: 0;
 				padding-left: 0.625rem;
-				margin-top: 0;
-				margin-bottom: 0;
+				margin-top: 1.625rem;
+				margin-bottom: -1.25rem;//-0.625rem;
+
+				@include media-breakpoint-only(tablet) {
+					margin-left: 0.4rem;
+				}
+				@include media-breakpoint-down(phone) {
+					margin-left: 0.35rem;
+				}
 
 				li {
 					border-bottom: 0;
 					padding-left: 0;
-					width:220px;
+					width: 220px;
 
 					@include media-breakpoint-down(desktop) {
 						width: 170px;
@@ -1156,56 +1233,62 @@ nav.tabs {
 
 					&:first-of-type {
 						margin-top: -0.625rem;
+
+						a {
+							font-size: .8rem;
+							@include media-breakpoint-down(phone) {
+								font-size: .9rem!important;
+							}
+							&:before,
+							&.nav-link.active.is-active:before {
+								top:-2px;
+
+								@include media-breakpoint-down(phone) {
+									top: 2px;
+								}
+							}
+						}
 					}
 					&:last-of-type {
 						padding-bottom: 0.75rem;
 					}
 
 					a {
-						text-transform: capitalize;
-						font-weight:600;
-						margin-left: 1.125rem;
-						padding: .5rem 0.625rem .5rem 0;
+						font-size: .8rem;
+						text-transform: uppercase;
+						font-weight: 400;
+						margin: 1rem 0.625rem;
+						position: relative;
+
+						@include media-breakpoint-down(phone) {
+							font-size: .9rem!important;
+						}
 
 						&:hover,
 						&:focus {
 							background: transparent;
-							color:$black!important;
-							text-decoration: underline;
-						}
-
-						&.active {
-
-							padding-top: 0!important; /* was 0.25rem!important; */
-							padding-bottom: 0.25rem;
-
-							&::before {
-								display: block;
-								position: relative;
-								content: "";
-								width: 8px;
-								height: 8px;
-								top:13px;
-								left: -18px;
-								background: $yellow;
-								-webkit-transform: rotate(45deg); /* Ch <36, Saf 5.1+, iOS < 9.2, An =<4.4.4 */
-								transform: rotate(45deg); /* IE 10, Fx 16+, Op 12.1+ */
-							}
 						}
 					}
 				}
 
 				// Third-level	menu
 				ul.menu {
-					margin-top: 0;
-					margin-bottom: 0;
+					margin-top: -5px;
+					margin-bottom: 20px;
+					
+					@include media-breakpoint-down(phone) {
+						margin-left: 0.625rem;
+					}
+					@include media-breakpoint-only(tablet) {
+						margin-left: 9px;
+					}
 
 					li {
 						margin: 0 0 -0.625rem;
-						width: 210px;
+						//width: 210px;
 
-						@include media-breakpoint-down(desktop) {
-							width: 170px;
+						@include media-breakpoint-only(tablet) {
+							
 						}
 						@include media-breakpoint-down(landscape_phone) {
 							width: 100%;
@@ -1219,24 +1302,22 @@ nav.tabs {
 					a {
 						font-weight:400;
 						color:$black;
-						padding: 0.3125rem 0.625rem 0.3125rem 0.8125rem;
+						padding: 0.3125rem 0.625rem 0.3125rem 0rem;
 						margin-top: 0.5rem!important;
 						margin-bottom: 1rem;
-						margin-left: 0.5625rem;
+						text-transform: capitalize;
+						position: relative;
 
-
-						&.active:before {
-							display: none;
+						@include media-breakpoint-down(phone) {
+							padding-left: 0.625rem;
+						}
+						@include media-breakpoint-only(tablet) {
+							padding-left: 0;
 						}
 
-						&.active {
-							background-color: transparentize( $green, 0.2);
-							color:$white;
-
-							&:hover,
-							&:focus {
-								color:$white!important;
-							}
+						&:before,
+						&.nav-link.active.is-active:before {
+							top:2px;
 						}
 					}
 				}
@@ -1350,7 +1431,6 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		width: 50%;
 		left: 25%;
 		position: relative;
-		border: 1px solid $light_gray;
 		border-top: 0;
 	}
 	li.nav-item a{

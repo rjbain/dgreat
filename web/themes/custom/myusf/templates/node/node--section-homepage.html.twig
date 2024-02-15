@@ -56,6 +56,7 @@
  * - is_admin: Flag for admin user status. Will be true when the current user
  *   is an administrator.
  *
+ *
  * @see template_preprocess_node()
  */
 #}
@@ -77,8 +78,8 @@
 <h1 class="display-title">{{ content.field_display_title }}</h1>
 {% endif %}
 <div{{ content_attributes.addClass('content') }}>
-  <div class="body">
-    {{ content.field_migrate_final.0 }}
+  <div class="body" >
+    {{ content.field_migrate_final }}
   </div>
 </div>
 {% if paragraph_video_exists == true %}

@@ -3,6 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.page.field_section
+    - field.field.node.private_page.field_section
+    - field.field.node.section_homepage.field_section
     - taxonomy.vocabulary.sections
 id: section
 plural_label: Sections
@@ -11,4 +14,16 @@ scheme: taxonomy
 scheme_settings:
   vocabularies:
     - sections
-  fields: {  }
+  fields:
+    -
+      entity_type: node
+      bundle: page
+      field: field_section
+    -
+      entity_type: node
+      bundle: section_homepage
+      field: field_section
+    -
+      entity_type: node
+      bundle: private_page
+      field: field_section

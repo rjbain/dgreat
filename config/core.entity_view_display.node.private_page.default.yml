@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.private_page.field_display_title
     - field.field.node.private_page.field_migrate_final
     - field.field.node.private_page.field_role
+    - field.field.node.private_page.field_section
     - node.type.private_page
   module:
     - entity_reference_revisions
@@ -16,6 +17,11 @@ targetEntityType: node
 bundle: private_page
 mode: default
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_display_title:
     type: string
     label: hidden
@@ -39,6 +45,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 3
+    region: content
+  field_section:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
     region: content
   links:
     settings: {  }
