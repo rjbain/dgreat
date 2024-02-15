@@ -1071,6 +1071,14 @@ nav.tabs {
 		padding-top:0;
 		margin: 0.75rem 0;
 
+		@include media-breakpoint-down(desktop) {
+			margin-left: 10px;
+		}
+
+		@include media-breakpoint-down(phone) {
+			margin-left: 5px
+		}
+
 		li {
 			width: 230px;
 			list-style-type: none;
@@ -1109,7 +1117,17 @@ nav.tabs {
 					line-height: 1.1;
 					&:before,
 					&.nav-link.active.is-active:before {
-						top:-1px; //4px
+						top:-1px; 
+						@include media-breakpoint-down(phone) {
+							top: 4px;
+						}
+						@include media-breakpoint-only(tablet) {
+							top: 2px;
+						}
+					}
+
+					@include media-breakpoint-down(phone) {
+						font-size: 1.2rem!important;
 					}
 				}
 			}
@@ -1124,17 +1142,32 @@ nav.tabs {
 				padding: 0; 
 				position: relative;
 
+				@include media-breakpoint-down(desktop) {
+					margin-left:0.35rem;
+				}
+				@include media-breakpoint-only(tablet) {
+					margin-left:0.5rem;
+				}
 				&:before {
 					content: '';
 					position: relative;
 					display: inline-block;
-					top: -2px; //5px;
+					top: -2px; 
 					left: -10px;
 					background: url(/themes/custom/myusf/images/site/inactive-nav-link.svg) no-repeat;
 					width: 6px;
 					height: 22px;
 					margin-right: 0.5rem;
 					position: absolute;
+					z-index: -1;
+
+					@include media-breakpoint-down(phone) {
+						//left: -5px;
+						top: 3px;
+					}
+					@include media-breakpoint-only(tablet) {
+						left: -15px;
+					}
 				}
 
 				&:hover,
@@ -1143,17 +1176,17 @@ nav.tabs {
 					text-decoration: underline;
 				}
 
-				@include media-breakpoint-down(desktop) {
-					font-size: 0.8rem;
+				@include media-breakpoint-down(phone) {
+					font-size: 0.9rem!important;
 					line-height: 1.375;
 				}
 
 				@include media-breakpoint-down(landscape_phone) {
-					padding: 1rem 0.625rem;
+					padding: 0.25rem 0.625rem;
 				}
 				&.nav-link.active.is-active {
 					text-decoration: underline;
-					
+
 					&:before {
 						content: '';
 						position: relative;
@@ -1163,6 +1196,11 @@ nav.tabs {
 						width: 6px;
 						height: 22px;
 						position: absolute;
+						z-index: -1;
+
+						@include media-breakpoint-only(tablet) {
+							left: -18px;
+						}
 					}
 				}
 			}
@@ -1173,6 +1211,13 @@ nav.tabs {
 				padding-left: 0.625rem;
 				margin-top: 1.625rem;
 				margin-bottom: -1.25rem;//-0.625rem;
+
+				@include media-breakpoint-only(tablet) {
+					margin-left: 0.4rem;
+				}
+				@include media-breakpoint-down(phone) {
+					margin-left: 0.35rem;
+				}
 
 				li {
 					border-bottom: 0;
@@ -1191,9 +1236,16 @@ nav.tabs {
 
 						a {
 							font-size: .8rem;
+							@include media-breakpoint-down(phone) {
+								font-size: .9rem!important;
+							}
 							&:before,
 							&.nav-link.active.is-active:before {
-								top:-2px;//3px;
+								top:-2px;
+
+								@include media-breakpoint-down(phone) {
+									top: 2px;
+								}
 							}
 						}
 					}
@@ -1208,6 +1260,10 @@ nav.tabs {
 						margin: 1rem 0.625rem;
 						position: relative;
 
+						@include media-breakpoint-down(phone) {
+							font-size: .9rem!important;
+						}
+
 						&:hover,
 						&:focus {
 							background: transparent;
@@ -1219,13 +1275,20 @@ nav.tabs {
 				ul.menu {
 					margin-top: -5px;
 					margin-bottom: 20px;
+					
+					@include media-breakpoint-down(phone) {
+						margin-left: 0.625rem;
+					}
+					@include media-breakpoint-only(tablet) {
+						margin-left: 9px;
+					}
 
 					li {
 						margin: 0 0 -0.625rem;
 						width: 210px;
 
 						@include media-breakpoint-down(desktop) {
-							width: 170px;
+							width: 330px;
 						}
 						@include media-breakpoint-down(landscape_phone) {
 							width: 100%;
@@ -1244,6 +1307,13 @@ nav.tabs {
 						margin-bottom: 1rem;
 						text-transform: capitalize;
 						position: relative;
+
+						@include media-breakpoint-down(phone) {
+							padding-left: 0.625rem;
+						}
+						@include media-breakpoint-only(tablet) {
+							padding-left: 0;
+						}
 
 						&:before,
 						&.nav-link.active.is-active:before {
@@ -1361,7 +1431,6 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		width: 50%;
 		left: 25%;
 		position: relative;
-		border: 1px solid $light_gray;
 		border-top: 0;
 	}
 	li.nav-item a{
