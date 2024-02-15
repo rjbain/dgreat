@@ -497,12 +497,22 @@ img.media-element.file-inline-medium {
 	&.align-right {
 		margin-left:1.875rem;
 		margin-bottom: 0.625rem;
+		@include media-breakpoint-down(landscape_phone) {
+			float: none!important;
+			margin-left: 0;
+		}
+
 	}
 	&.align-left {
 		margin-right:1.875rem;
 		margin-bottom: 0.625rem;
+		@include media-breakpoint-down(landscape_phone) {
+			float: none!important;
+			margin-right: 0;
+		}
 	}
 }
+
 
 
 
