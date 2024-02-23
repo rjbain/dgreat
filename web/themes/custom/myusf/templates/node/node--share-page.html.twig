@@ -72,7 +72,9 @@
     'clearfix',
   ]
 %}
+{% if node.field_display_title.value %} 
 <h1 class="display-title">{{ node.field_display_title.value }}</h1>
+{% endif %}
   <div{{ content_attributes.addClass('content') }}>
     <div class="body">
         {% autoescape false %}
