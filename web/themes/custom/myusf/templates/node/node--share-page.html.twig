@@ -80,8 +80,12 @@
         {% autoescape false %}
           {% set body = node.body.value %}
           {% set body = body|replace({'/sites/default/files': 'https://www.usfca.edu/sites/default/files'}) %}
-          {% set body = body|preg_replace('#(width=\".*?).*?(\")#', '') %}
-          {% set body = body|preg_replace('#(height=\".*?).*?(\")#', '')%}
+          {#% set body = body|preg_replace('#(width=\".*?).*?(\")#', '') %#}
+          {#% set body = body|preg_replace('#(height=\".*?).*?(\")#', '')%#}
+          {% set body = body|preg_replace('#(width=\".*?\" height=\".*?\" src=)#', 'src=')%}
+
+
+          
           {{ body }}
         {% endautoescape %}
     </div>
