@@ -72,14 +72,20 @@
     'clearfix',
   ]
 %}
+{% if node.field_display_title.value %} 
 <h1 class="display-title">{{ node.field_display_title.value }}</h1>
+{% endif %}
   <div{{ content_attributes.addClass('content') }}>
     <div class="body">
         {% autoescape false %}
           {% set body = node.body.value %}
           {% set body = body|replace({'/sites/default/files': 'https://www.usfca.edu/sites/default/files'}) %}
-          {% set body = body|preg_replace('#(width=\".*?).*?(\")#', '') %}
-          {% set body = body|preg_replace('#(height=\".*?).*?(\")#', '')%}
+          {#% set body = body|preg_replace('#(width=\".*?).*?(\")#', '') %#}
+          {#% set body = body|preg_replace('#(height=\".*?).*?(\")#', '')%#}
+          {% set body = body|preg_replace('#(width=\".*?\" height=\".*?\" src=)#', 'src=')%}
+
+
+          
           {{ body }}
         {% endautoescape %}
     </div>
