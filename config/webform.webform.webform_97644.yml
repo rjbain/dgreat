@@ -12,7 +12,7 @@ id: webform_97644
 title: 'One Stop Petition to Enroll at Another Institution'
 description: null
 categories: {  }
-elements: |
+elements: |-
   part_1:
     '#type': processed_text
     '#title': '<h2>Part I: Student Information'
@@ -49,7 +49,9 @@ elements: |
     '#type': processed_text
     '#title': '<h2>Part II: Course Information</h2>'
     '#description': ''
-    '#text': "\n<p>Please fill out all the information below <span style=\"text-decoration: underline;\">for at least one course</span>. You may list anywhere from one to four courses.</p>\n"
+    '#text': |
+
+      <p>Please fill out all the information below <span style="text-decoration: underline;">for at least one course</span>. You may list anywhere from one to four courses.</p>
     '#format': full_html
   course_1:
     '#type': processed_text
@@ -112,15 +114,15 @@ elements: |
     '#type': select
     '#title': Year
     '#options':
+      2026: '2026'
+      2025: '2025'
+      2024: '2024'
       2023: '2023'
       2022: '2022'
       2021: '2021'
       2020: '2020'
       2019: '2019'
       2018: '2018'
-      2017: '2017'
-      2016: '2016'
-      2015: '2015'
     '#required': true
   course_2:
     '#type': processed_text
@@ -547,6 +549,7 @@ settings:
 access:
   create:
     roles:
+      - anonymous
       - authenticated
     users: {  }
     permissions: {  }
@@ -758,4 +761,3 @@ handlers:
       parameters: {  }
       debug: false
 variants: {  }
-category: null
