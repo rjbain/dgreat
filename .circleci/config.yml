@@ -101,17 +101,23 @@ jobs:
             paths:
               - ./web/themes/custom/myusf/node_modules
 
-        - run:
-            name: Check NVM
-            command: source ~/.nvm/nvm.sh && nvm --version && nvm ls 
+        # - run:
+        #     name: Check NVM
+        #     command: source ~/.nvm/nvm.sh && nvm --version && nvm ls 
+
+        # - run:
+        #     name: Install Gulp & Compile Assets
+        #     command: source ~/.nvm/nvm.sh && cd web/themes/custom/myusf && nvm install 10 && sudo npm install -g gulp && npm rebuild node-sass && gulp
+
+
 
         - run:
-            name: Install Gulp
-            command: source ~/.nvm/nvm.sh && cd web/themes/custom/myusf  && nvm install 10 && sudo npm install -g gulp && npm rebuild node-sass && gulp
+            name: Install Gulp & Compile Assets
+            command: cd web/themes/custom/myusf && nvm install 10 && sudo npm install -g gulp && npm rebuild node-sass && gulp
 
-        - run:
-            name: Compile assets
-            command: node -v
+        # - run:
+        #     name: Compile assets
+        #     command: node -v
 
         - persist_to_workspace:
             root: web/themes/custom/myusf
