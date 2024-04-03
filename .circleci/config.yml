@@ -88,9 +88,9 @@ jobs:
         - restore_cache:
             key: dependency-cache-{{ checksum "web/themes/custom/myusf/package.json" }}
 
-        - run:
-            name: Install Deps
-            command: cd web/themes/custom/myusf && npm install
+        # - run:
+        #     name: Install Deps
+        #     command: cd web/themes/custom/myusf && npm install
 
         - run:
             name: Install NVM
@@ -109,11 +109,9 @@ jobs:
         #     name: Install Gulp & Compile Assets
         #     command: source ~/.nvm/nvm.sh && cd web/themes/custom/myusf && nvm install 10 && sudo npm install -g gulp && npm rebuild node-sass && gulp
 
-
-
         - run:
             name: Install Gulp & Compile Assets
-            command: cd web/themes/custom/myusf && nvm install 10 && sudo npm install -g gulp && npm rebuild node-sass && gulp
+            command: source ~/.nvm/nvm.sh && cd web/themes/custom/myusf && nvm install 10 && sudo npm install -g gulp && npm rebuild node-sass && gulp
 
         # - run:
         #     name: Compile assets
