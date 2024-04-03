@@ -100,14 +100,14 @@ jobs:
             name: Install NVM
             command: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 
-        - run:
-            name: Check NVM
-            command: source ~/.nvm/nvm.sh && nvm --version && nvm ls && nvm install 10 && node -v && npm rebuild node-sass && cd web/themes/custom/myusf && gulp
-
         - save_cache:
             key: dependency-cache-{{ checksum "web/themes/custom/myusf/package.json" }}
             paths:
               - ./web/themes/custom/myusf/node_modules
+
+        - run:
+            name: Check NVM
+            command: source ~/.nvm/nvm.sh && nvm --version && nvm ls && nvm install 10 && node -v
 
         - run:
             name: Compile assets
