@@ -103,11 +103,11 @@ jobs:
 
         - run:
             name: Check NVM
-            command: source ~/.nvm/nvm.sh && nvm --version && nvm ls && nvm install 10 && node -v
+            command: source ~/.nvm/nvm.sh && nvm --version && nvm ls && nvm install 10 
 
         - run:
             name: Install Gulp
-            command: sudo npm install -g gulp
+            command: sudo npm install -g gulp && node -v
 
         - run:
             name: Compile assets
