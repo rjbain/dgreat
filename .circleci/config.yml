@@ -97,8 +97,13 @@ jobs:
             command: cd web/themes/custom/myusf && npm install
 
         - run:
+            name: Install NVM
+            command: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+
+        - run:
             name: Check NVM
-            command: nvm ls
+            command: nvm -v
+
 
         - save_cache:
             key: dependency-cache-{{ checksum "web/themes/custom/myusf/package.json" }}
