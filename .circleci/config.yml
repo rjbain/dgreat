@@ -102,7 +102,7 @@ jobs:
 
         - run:
             name: Check NVM
-            command: source ~/.nvm/nvm.sh && nvm --version && nvm ls && nvm install 10 && node -v && cd web/themes/custom/myusf && gulp
+            command: source ~/.nvm/nvm.sh && nvm --version && nvm ls && nvm install 10 && node -v && npm rebuild node-sass && cd web/themes/custom/myusf && gulp
 
         - save_cache:
             key: dependency-cache-{{ checksum "web/themes/custom/myusf/package.json" }}
