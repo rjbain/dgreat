@@ -102,7 +102,7 @@ jobs:
 
         - run:
             name: Check NVM
-            command: source ~/.nvm/nvm.sh && nvm --version && nvm ls && nvm install 10
+            command: source ~/.nvm/nvm.sh && nvm --version && nvm ls && nvm install 10 && node -v
 
         - save_cache:
             key: dependency-cache-{{ checksum "web/themes/custom/myusf/package.json" }}
