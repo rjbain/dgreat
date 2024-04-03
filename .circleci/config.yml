@@ -96,6 +96,10 @@ jobs:
             name: Install Deps
             command: cd web/themes/custom/myusf && npm install
 
+        - run:
+            name: Check NVM
+            command: nvm ls
+
         - save_cache:
             key: dependency-cache-{{ checksum "web/themes/custom/myusf/package.json" }}
             paths:
