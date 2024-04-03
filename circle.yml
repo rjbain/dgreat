@@ -56,7 +56,7 @@ dependencies:
     - cd web/themes/custom/myusf/ && npm install
     - cd web/themes/custom/myusf/ && npm install gulp -g
     - cd web/themes/custom/myusf/ && npm install gulp gulp-sass gulp-cssmin gulp-concat gulp-imagemin gulp-smushit gulp-uglify  --save-dev
-    - cd web/themes/custom/myusf/ && gulp
+    #- cd web/themes/custom/myusf/ && gulp
   post:
     - terminus auth:login -n --machine-token="$TERMINUS_TOKEN"
     - terminus build-env:delete:ci -n "$TERMINUS_SITE" --keep=2 --yes
