@@ -107,7 +107,7 @@ jobs:
 
         - run:
             name: Install Gulp
-            command: sudo npm install -g gulp && nvm install 10  && node -v
+            command: source ~/.nvm/nvm.sh && nvm install 10 && sudo npm install -g gulp && node -v
 
         - run:
             name: Compile assets
