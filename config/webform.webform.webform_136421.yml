@@ -12,12 +12,21 @@ id: webform_136421
 title: 'myUSF Editor''s Agreement'
 description: null
 categories: {  }
-elements: |
+elements: |-
   agreement_information:
     '#type': processed_text
     '#title': 'Agreement Information'
     '#description': ''
-    '#text': "<p>By signing this form, you agree to the following:</p>\r\n\r\n<ul>\r\n\t<li><span>This agreement confirms that you have either completed a myUSF training by CIT or are under the supervision of a University of San Francisco employee that has sufficient myUSF editing experience.&nbsp;</span></li>\r\n\t<li>You have read through and agree to comply with&nbsp;<a href=\"https://myusf.usfca.edu/marketing-communications/accessibility-guide\">University of San Francisco's web accessibility standards</a>. You must complete and pass the Web Accessibility Training course.</li>\r\n\t<li>You have reviewed myUSF's <a href=\"https://myusf.usfca.edu/marketing-communications/editor-resources-myusf\">Editor Resources</a>.</li>\r\n</ul>\r\n\r\n<p>For questions or concerns, please email <a href=\"mailto:webservices@usfca.edu\">webservices@usfca.edu</a>.</p>\r\n"
+    '#text': |
+      <p>By signing this form, you agree to the following:</p>
+
+      <ul>
+      	<li><span>This agreement confirms that you have either completed a myUSF training by CIT or are under the supervision of a University of San Francisco employee that has sufficient myUSF editing experience.&nbsp;</span></li>
+      	<li>You have read through and agree to comply with&nbsp;<a href="https://myusf.usfca.edu/marketing-communications/accessibility-guide">University of San Francisco's web accessibility standards</a>. You must complete and pass the Web Accessibility Training course.</li>
+      	<li>You have reviewed myUSF's <a href="https://myusf.usfca.edu/marketing-communications/editor-resources-myusf">Editor Resources</a>.</li>
+      </ul>
+
+      <p>For questions or concerns, please email <a href="mailto:webservices@usfca.edu">webservices@usfca.edu</a>.</p>
     '#format': full_html
   agree_check:
     '#type': radios
@@ -39,6 +48,11 @@ elements: |
     '#title': Email
     '#description': ''
     '#required': true
+  which_myusf_sections_will_you_be_editing_:
+    '#type': textarea
+    '#title': 'Which myUSF sections will you be editing?'
+    '#description': '<p>Either give the name of the sections (i.e. School of Management) or include the link to a page in each section you will be editing.</p>'
+    '#description_display': after
 css: ''
 javascript: ''
 settings:
@@ -227,6 +241,42 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers: {  }
+handlers:
+  email:
+    id: email
+    handler_id: email
+    label: Email
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: mccole2@usfca.edu
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
 variants: {  }
-category: null
