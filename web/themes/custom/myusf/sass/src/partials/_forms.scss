@@ -317,4 +317,80 @@ form .action button:hover {
 .webform-type-hidden {
   display: none;
 }
+/*--------------------------*/
+
+.tippy-box {
+	.webform-element-help--content {
+		h2 {
+			font-size: 1.2rem;
+			color: $white!important;
+		}
+		p {
+			font-size: .8rem;
+			color: $white;			
+		}
+	}
+}
+.webform-element-help {
+	color: $black;
+	border: 2px solid #e2e2e4;
+    background: #e2e2e4;
+
+	&:focus,
+	&:active,
+	&:hover {
+		border: 2px solid $green;
+    	background: $green;
+	}  
+}
+
+form.webform-submission-form {	
+	.webform-multiple-add {
+		display: none;
+	}
+	.webform-multiple-table {
+		
+		table {
+			tr {
+				background-color: transparent !important;
+				td {
+					padding:0;
+					border-bottom: 0;
+					&.webform-multiple-table--handle{
+						display:none;
+					}
+					&.webform-multiple-table--operations.webform-multiple-table--operations-two {
+						input {
+						   &:first-of-type {
+							   margin: 0 5px 0 0 !important;
+							   position: relative;
+							   top: 5px;
+						   }
+						   &:nth-of-type(2) {
+							   margin: 0 0 10px 30px !important;
+							   position: relative;
+							   top: -15px;
+						   }
+					   }
+				   }
+				}
+			}
+			thead th, th, td, thead > tr  {
+				border-bottom: 0;
+				border-top: 0;
+			}
+			td  {
+				border-top: 0;
+				border-bottom: 0;
+			}
+		}
+		.tabledrag-toggle-weight-wrapper.webform-multiple-tabledrag-toggle-weight { 
+			button {
+				display: none;
+			}
+		}
+	}
+}
+
+
 
