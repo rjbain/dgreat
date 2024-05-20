@@ -353,38 +353,46 @@ form.webform-submission-form {
 	.webform-multiple-add {
 		display: none;
 	}
-	.webform-multiple-table {
+	.webform-multiple-table.webform-multiple-table-responsive {
 		margin-bottom:0;
-		
+			
 		table {
 			tr {
 				background-color: transparent !important;
+				@include media-breakpoint-down(phone) {
+					padding: 1.75em 0 .5rem 0;
+				}
 				td {
 					padding:0;
 					border-bottom: 0;
-					&.webform-multiple-table--handle{
+					&.webform-multiple-table--handle {
 						display:none;
 					}
-					&.webform-multiple-table--operations.webform-multiple-table--operations-two {
-						input {
-						   &:first-of-type {
-							   margin: 0 5px 0 0 !important;
-							   position: relative;
-							   top: 5px;
-							   @include media-breakpoint-down(phone) {
-								  margin: 0 5px 0 15px !important;
-								  top: 9px;
-							   }
-						   }
-						   &:nth-of-type(2) {
-							   margin: 0 0 10px 30px !important;
-							   position: relative;
-							   top: -15px;
-							   @include media-breakpoint-down(phone) {
-								  margin: 0 0 10px 40px !important;
-								  top: -11px;
-							 }
-						   }
+					&.webform-multiple-table--operations {
+						@include media-breakpoint-down(phone) {
+							top: -0.5em;
+						}
+						&.webform-multiple-table--operations-two {
+							input {
+							&:first-of-type {
+								margin: 0 5px 0 0 !important;
+								position: relative;
+								top: 5px;
+								@include media-breakpoint-down(phone) {
+									margin: 0 5px 0 15px !important;
+									top: 9px;
+								}
+							}
+							&:nth-of-type(2) {
+								margin: 0 0 10px 30px !important;
+								position: relative;
+								top: -15px;
+								@include media-breakpoint-down(phone) {
+									margin: 0 0 10px 40px !important;
+									top: -11px;
+								}
+							}
+							}
 					   }
 				   }
 				}
@@ -431,4 +439,3 @@ form.webform-submission-form {
     	font-size: .8rem;
 	}
 }
-
