@@ -33,6 +33,10 @@ form {
 	}
 	fieldset {
 		padding: 0.35em 1.25em 0.95em 0;
+		
+		@include media-breakpoint-down(phone) {
+			padding: 0.35em 0 0 0;
+		}
 
 		small {
 			line-height: 1.4;
@@ -45,7 +49,7 @@ form {
 		}
 	}
 	.fieldset-wrapper {
-		padding-left:20px;
+		//padding-left:20px;
 	}
 	fieldset.form-group {
 	    padding-top: 0;
@@ -185,6 +189,7 @@ li.entitywebformsettings {
 	    span {
 	    	font-size: 1rem;
     		font-weight: 400;
+			padding-left:5px;
 	    }
 	}
 
@@ -317,4 +322,120 @@ form .action button:hover {
 .webform-type-hidden {
   display: none;
 }
+/*--------------------------*/
 
+.tippy-box {
+	.webform-element-help--content {
+		h2 {
+			font-size: 1.2rem;
+			color: $white!important;
+		}
+		p {
+			font-size: .8rem;
+			color: $white;			
+		}
+	}
+}
+.webform-element-help {
+	color: $black;
+	border: 2px solid #e2e2e4;
+    background: #e2e2e4;
+
+	&:focus,
+	&:active,
+	&:hover {
+		border: 2px solid $green;
+    	background: $green;
+	}  
+}
+
+form.webform-submission-form {	
+	.webform-multiple-add {
+		display: none;
+	}
+	.webform-multiple-table.webform-multiple-table-responsive {
+		margin-bottom:0;
+			
+		table {
+			tr {
+				background-color: transparent !important;
+				@include media-breakpoint-down(phone) {
+					padding: 1.75em 0 .5rem 0;
+				}
+				td {
+					padding:0;
+					border-bottom: 0;
+					&.webform-multiple-table--handle {
+						display:none;
+					}
+					&.webform-multiple-table--operations {
+						@include media-breakpoint-down(phone) {
+							top: -0.5em;
+						}
+						&.webform-multiple-table--operations-two {
+							input {
+							&:first-of-type {
+								margin: 0 5px 0 0 !important;
+								position: relative;
+								top: 5px;
+								@include media-breakpoint-down(phone) {
+									margin: 0 5px 0 15px !important;
+									top: 9px;
+								}
+							}
+							&:nth-of-type(2) {
+								margin: 0 0 10px 30px !important;
+								position: relative;
+								top: -15px;
+								@include media-breakpoint-down(phone) {
+									margin: 0 0 10px 40px !important;
+									top: -11px;
+								}
+							}
+							}
+					   }
+				   }
+				}
+			}
+			thead th, th, td, thead > tr  {
+				border-bottom: 0;
+				border-top: 0;
+			}
+			td  {
+				border-top: 0;
+				border-bottom: 0;
+				@include media-breakpoint-down(phone) {
+					.form-type-webform-autocomplete, .form-type-email{ 
+						input {
+							width: 84%
+						}
+					}
+				}
+			}
+		}
+		.tabledrag-toggle-weight-wrapper { 
+			button {
+				display: none;
+			}
+		}
+	}
+}
+
+.webform-flex--container .form-select,
+#edit_basic_address_state_province_chosen {
+    width: 100% !important;
+}
+
+#edit-checkbox--more--content {
+	padding-left: 13px;
+
+	h2 {
+    	font-size: 1rem;
+		margin-top: 5px !important;
+    	margin-bottom: 5px;
+		
+	}
+	p {
+    	font-size: .8rem;
+	}
+}
