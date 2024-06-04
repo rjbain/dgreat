@@ -7,14 +7,14 @@
 {% endif %}
 <nav {{ attributes }}>
   {% if section == 'frontend' %}
-{#    <button class="tbm-button" type="button">#}
-{#      <span class="tbm-button-container">#}
-{#        <span></span>#}
-{#        <span></span>#}
-{#        <span></span>#}
-{#        <span></span>#}
-{#      </span>#}
-{#    </button>#}
+    <button id="tbm-button-id" class="tbm-button" type="button">
+      <span class="tbm-button-container">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
     <div class="tbm-collapse {{ block_config['always-show-submenu'] ? ' always-show' : '' }}">
   {% endif %}
   {{ content }}
@@ -23,9 +23,15 @@
   {% endif %}
 </nav>
 <script>
+  var megaMobileButton = document.getElementById("tbm-button-id");
 {# Add the .tbm--mobile class before there is a chance for a flash of unstyled content. #}
 if (window.matchMedia("(max-width: {{ block_config['breakpoint']}}px)").matches) {
-  document.getElementById("{{ attributes.id }}").classList.add('tbm--mobile')
+  document.getElementById("{{ attributes.id }}").classList.add('tbm--mobile');
+  // remove hidden class from button.
+  megaMobileButton.classList.remove('hidden');
+} else {
+  // add hidden class on desktop view so screenreaders will ignore empty button.
+  megaMobileButton.classList.add('hidden');
 }
 
 {#% set hide_mobile = block_config['hide-mobile-menu'] %#}
