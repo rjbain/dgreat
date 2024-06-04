@@ -7,7 +7,7 @@
 {% endif %}
 <nav {{ attributes }}>
   {% if section == 'frontend' %}
-    <button id="tbm-button-id" class="tbm-button" type="button">
+    <button id="tbm-button-id" class="tbm-button" type="button"><span class="visually-hidden">Mobile Menu</span>
       <span class="tbm-button-container">
         <span></span>
         <span></span>
@@ -27,12 +27,8 @@
 {# Add the .tbm--mobile class before there is a chance for a flash of unstyled content. #}
 if (window.matchMedia("(max-width: {{ block_config['breakpoint']}}px)").matches) {
   document.getElementById("{{ attributes.id }}").classList.add('tbm--mobile');
-  // remove hidden class from button.
-  megaMobileButton.classList.remove('hidden');
   megaMobileButton.setAttribute('aria-hidden', 'false');
 } else {
-  // add hidden class on desktop view so screenreaders will ignore empty button.
-  megaMobileButton.classList.add('hidden');
   megaMobileButton.setAttribute('aria-hidden', 'true');
 }
 
