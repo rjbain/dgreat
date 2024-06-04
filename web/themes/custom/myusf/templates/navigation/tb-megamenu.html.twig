@@ -29,9 +29,11 @@ if (window.matchMedia("(max-width: {{ block_config['breakpoint']}}px)").matches)
   document.getElementById("{{ attributes.id }}").classList.add('tbm--mobile');
   // remove hidden class from button.
   megaMobileButton.classList.remove('hidden');
+  megaMobileButton.setAttribute('aria-hidden', 'false');
 } else {
   // add hidden class on desktop view so screenreaders will ignore empty button.
   megaMobileButton.classList.add('hidden');
+  megaMobileButton.setAttribute('aria-hidden', 'true');
 }
 
 {#% set hide_mobile = block_config['hide-mobile-menu'] %#}
