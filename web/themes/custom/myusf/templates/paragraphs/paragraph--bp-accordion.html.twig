@@ -156,7 +156,7 @@ accordion_active ? 'paragraph--accordion_active--',
     </button>
   {% endif %}
   <div{{ attributes.addClass(classes) }}>
-    <div class="paragraph__column" id="{{ paragraph_id }}" role="tablist" aria-multiselectable="true">
+    <div class="paragraph__column" id="{{ paragraph_id }}" aria-multiselectable="true">
       {% if content.bp_header|render %}
         <h2>{{ content.bp_header }}</h2>
       {% endif %}
@@ -176,12 +176,12 @@ accordion_active ? 'paragraph--accordion_active--',
             {% set show_accordion = '' %}
             {% set aria = 'false' %}
           {% endif %}
-          <div class="card-header panel-heading" role="tab" id="heading-{{ paragraph_id }}-{{ key + 1 }}">
+          <div class="card-header panel-heading" id="heading-{{ paragraph_id }}-{{ key + 1 }}">
             <div class="panel-title">
             {% set h_value = item['#paragraph'].field_accordion_section_header.value %}
             {% if h_value is empty %}
             {% set h_value = "h2" %}
-            {% elseif h_value is not empty %} 
+            {% elseif h_value is not empty %}
             {% set h_value = h_value %}
             {% endif %}
               <a class="{{ (indicator_class) }}" role="button" data-toggle="collapse" data-parent="#{{ paragraph_id }}" href="#collapse-{{ paragraph_id }}-{{ key + 1 }}" aria-expanded="{{ aria }}" aria-controls="collapse-{{ paragraph_id }}-{{ key + 1 }}">
@@ -192,7 +192,7 @@ accordion_active ? 'paragraph--accordion_active--',
               </a>
             </div>
           </div>
-          <div id="collapse-{{ paragraph_id }}-{{ key + 1 }}" class="card-block panel-collapse collapse{{ show_accordion }}" role="tabpanel" aria-labelledby="heading-{{ paragraph_id }}-{{ key + 1 }}">
+          <div id="collapse-{{ paragraph_id }}-{{ key + 1 }}" class="card-block panel-collapse collapse{{ show_accordion }}" aria-labelledby="heading-{{ paragraph_id }}-{{ key + 1 }}">
             {# Loop through all of the accordion section bodies. #}
             {% for body_key, body_item in item['#paragraph'].bp_accordion_section_body %}
               {# Use the same render array as item and set the '#paragraph'. #}

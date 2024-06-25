@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.jobs_list.body
     - field.field.node.jobs_list.field_hs_guid
     - field.field.node.jobs_list.field_job_category
+    - field.field.node.jobs_list.field_published_date
     - field.field.node.jobs_list.field_url
     - node.type.jobs_list
   module:
@@ -51,7 +52,7 @@ processor_configuration:
   langcode: en
   insert_new: 1
   update_existing: 2
-  update_non_existent: _keep
+  update_non_existent: _delete
   skip_hash_check: false
   authorize: true
   revision: false

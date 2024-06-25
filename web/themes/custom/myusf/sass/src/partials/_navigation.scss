@@ -23,10 +23,6 @@ nav {
 			margin-top: 0;
 		}
 	}
-
-	// li a svg.ext { //turning off external link icon in quick-links
-	// 	display: none;
-	// }
 }
 
 .bg-dark {
@@ -37,12 +33,16 @@ nav.navbar .navbar-wrapper {
 		position: relative;
 		margin: 0 auto;
 		width: 100%;
+		max-width:1500px;
 	}
 	@include media-breakpoint-down(desktop) {
 		form.form-inline.my-2.my-lg-0 {
 			height: unset;
     		margin-bottom: unset;
 		}
+	}
+	@include media-breakpoint-up(desktop) {
+		max-width:1500px;
 	}
 
 	.navbar-menu-wrapper .contextual .trigger {
@@ -116,7 +116,9 @@ nav.navbar {
 	}
 
 	@include media-breakpoint-up(1920xl_desktop) {
-		margin-left: calc(((100% - 1920px)/ 2) + 40px);
+		max-width: 1500px;
+    	margin-left: auto;
+    	padding-left: 5px;
 	}
 
 	img {
@@ -129,10 +131,7 @@ nav.navbar {
 			margin-left: 1.4375rem;
 		}
 		@include media-breakpoint-up(midlarge_desktop) {
-			margin-left: 0.3125rem;
-		}
-		@include media-breakpoint-up(xl_desktop) {
-			margin-left: 1.25rem;
+			margin-left: 0;
 		}
 	}
 }
@@ -472,20 +471,10 @@ div.search-icon-rollover {
 	}
 	@include media-breakpoint-down(phone) {
 		top:14px;
-		right: 4px;
+		right: 20px;
 	}
 	@include media-breakpoint-up(midlarge_desktop) {
-		/*right: 233px;*/
-		margin-right: calc(((100% - 1530px)/ 2) - 5px);
-	}
-	@include media-breakpoint-up(xl_desktop) {
-		margin-right: calc(((100% - 1700px)/ 2) + 15px);
-	}
-	@include media-breakpoint-up(1920xl_desktop) {
-		margin-right: calc(((100% - 1920px)/ 2) + 23px);
-	}
-	@include media-breakpoint-up(2560xl_desktop) {
-		margin-right: calc(((100% - 1920px)/ 2) + 83px);
+		margin-right: calc((100% - 1430px)/ 2);
 	}
 
 	input[type="search"] {
@@ -545,14 +534,13 @@ a.login-btn {
 
 	@include media-breakpoint-only(midlarge_desktop) {
 		margin-right: calc(((100% - 1530px)/ 2) - 30px);
+		right:68px;
 	}
 
 	@include media-breakpoint-up(xl_desktop) {
 		padding-right: 0.3125rem;
 		margin-right:0px;
-	}
-	@include media-breakpoint-up(2560xl_desktop) {
-		margin-right: calc(((100% - 1920px)/ 2) + 40px);
+		right:19px;
 	}
 
 	@include media-breakpoint-down(landscape_phone) {
@@ -596,19 +584,6 @@ a.login-btn:hover {
 	&:focus {
 		box-shadow: none;
 	}
-/*	@include media-breakpoint-down(landscape_phone) {
-		font-size: .7rem;
-		position: absolute;
-		right: 10px;
-		top: 10px;
-	}
-
-	@include media-breakpoint-down(tablet) {
-		position: absolute;
-		top: 15px;
-		right: 26px;
-		margin-top: -0.3125rem;
-	}*/
 }
 
 
@@ -660,12 +635,8 @@ a.dashboard-button{
 	background-position: -349px -266px!important; /*was 267*/
 	display:block;
 	position: absolute!important;
-	right: 115px; //15px;
+	right: 130px;//115px; //15px;
 	top: 16px;
-
-	@include media-breakpoint-down(phone) {
-		//right: 30px;
-	}
 
 	@include media-breakpoint-down(landscape_phone) {
 		top: 17px;
@@ -676,32 +647,12 @@ a.dashboard-button{
 	}
 
 	@include media-breakpoint-up(midlarge_desktop) {
-		/*right: calc(((100% - 1440px) / 2) - 16px);*/
-		//right: 30px;
-	}
-	@include media-breakpoint-up(xl_desktop) {
-		margin-right: 20px;
-		//right:23px;
-	}
-	@include media-breakpoint-up(1920xl_desktop) {
-		//right: calc(((100% - 1920px)/ 2) + 25px);
+		right: 160px;
 	}
 
 	@include media-breakpoint-up(2560xl_desktop) {
-		margin-right: calc(((100% - 1920px) / 2) + 90px); /*margin-right: calc(((100% - 1920px) / 2) + 40px);*/
 		padding-right: 1.5625rem;
-		//right: 15px;
 	}
-
-	/*  @include media-breakpoint-down(landscape_phone) {
-              margin-left: 10px;
-      }
-      @include media-breakpoint-up(midlarge_desktop) {
-          margin-left: 5px;
-      }
-      @include media-breakpoint-up(xl_desktop) {
-          margin-left: 20px;
-      } */
 
 	&:hover,
 	&:focus {
@@ -727,7 +678,6 @@ a.dashboard-button{
 		right: 10px;
 		position: absolute;
 		margin-top: -4.375rem;
-		//margin-right: 3.125rem;
 
 		&:hover,
 		&:focus {
@@ -738,33 +688,19 @@ a.dashboard-button{
 	@include media-breakpoint-only(tablet) {
 		position: absolute;
 		top: 45px;
-		//right: 60px;
 	}
 
 	@include media-breakpoint-up(midlarge_desktop) {
-		/*right: calc(((100% - 1440px)/ 2) + 15px);*/
 		right: 30px;
 	}
 	@include media-breakpoint-up(xl_desktop) {
-		right: 50px;
+		right: 20px;
 	}
-
-	@include media-breakpoint-up(1920xl_desktop) {
-		//right: calc(((100% - 1920px)/ 2) + 75px);
-	}
-
-	@include media-breakpoint-up(2560xl_desktop) {
-		margin-right: calc(((100% - 1920px)/ 2) + 50px); /*margin-right: calc(((100% - 1920px)/ 2) + 100px);*/
-		//right: 10px;
-	}
-
 
 	a#navbarDropdownMenuLink::after {
 		display: inline-block;
 		position: relative;
-		/*top: -27px;  was -26px */
 		right: 3px;
-		/*color: $white;*/
 		width: 0;
 		height: 0;
 		margin-left: .255em;
@@ -775,12 +711,6 @@ a.dashboard-button{
 		border-bottom: 0;
 		border-left: .3em solid transparent;
 
-		/*@include media-breakpoint-only(tablet) {
-			top:-29px;
-		}
-		@include media-breakpoint-down(phone) {
-			top:-27px;
-		}*/
 	}
 
 	&:hover,
@@ -852,11 +782,10 @@ a.dashboard-button{
 		background: transparent;
 		padding-left: 10px;
 		padding-right: 0!important;
-		right: 0px;
+		right: 5px;
     	position: relative;
 
 		@include media-breakpoint-down(tablet) {
-			//font-size: .7rem!important;
 			right: 10px;
 		}
 		@include media-breakpoint-down(phone) {
@@ -1469,6 +1398,11 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		margin-left: auto!important;
 		margin-right: auto!important;
 	}
+	&.sidebar-empty {
+		margin-left: 0px !important;
+		margin-right: -8px !important;
+		width: 100%!important;
+	}
 
 	.block {
 		margin-bottom: 2.5rem;
@@ -1859,9 +1793,11 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	@include media-breakpoint-down(phone) {
 		line-height: 1.6;
 	}
-
 	@include media-breakpoint-down(desktop) {
 		padding: .15rem 0!important;
+	}
+	@include media-breakpoint-down(tablet) {
+		padding-left: .5rem!important;
 	}
 
 	svg.ext {
@@ -1922,6 +1858,9 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	@include media-breakpoint-up(large_desktop) {
 		justify-content: flex-start;
 	}
+	@include media-breakpoint-up(midlarge_desktop) {
+		margin-left: 6px!important;
+	}
 }
 
 a.logo {
@@ -1946,6 +1885,9 @@ a.logo {
 		margin-top: 0;/*was -38px*/
 		float: right;
 		right: 23px;
+	}
+	@include media-breakpoint-up(midlarge_desktop) {
+		right:12px;
 	}
 
 	&:hover,
@@ -1990,7 +1932,9 @@ a.logo {
 	.footer-link {
 		@include media-breakpoint-up(tablet) {
 			padding-right: .5rem!important;
-			padding-left: .5rem!important;
+		}
+		@include media-breakpoint-up(midlarge_desktop) {
+			padding-left: .5rem;
 		}
 	}
 }

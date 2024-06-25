@@ -82,6 +82,7 @@
     'order-last',
   ]
  %}
+
 {% block head %}
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="site navigation">
     {# {% if container_navbar %}
@@ -171,9 +172,18 @@
         </aside>
       </div>
       {% endif %}
+ {% if page.sidebar_second|render|striptags|trim is empty%}
+  {%
+    set sidebarSecondEmpty = 'sidebar-empty'
+  %}
+  {% elseif page.sidebar_second|render|striptags|trim is not empty%}
+  {%
+    set sidebarSecondEmpty = ''
+  %}
+ {% endif %}
       {% if page.sidebar_second %}
         <!--<div{{ sidebar_second_attributes }}>-->
-        <div {{ attributes.addClass(sidebarSecondClasses).removeClass('col-lg-3').setAttribute('id', 'sidebar_second') }}>
+        <div {{ attributes.addClass(sidebarSecondClasses, sidebarSecondEmpty).removeClass('col-lg-3').setAttribute('id', 'sidebar_second') }}>
           <aside class="section" aria-label="second sidebar">
             {{ page.sidebar_second }}
               {% if 'dashboard' in url('<current>')|render|render %}
@@ -189,6 +199,7 @@
           </aside>
         </div>
       {% endif %}
+ 
     </div>
   </div>
 {% endblock %}
