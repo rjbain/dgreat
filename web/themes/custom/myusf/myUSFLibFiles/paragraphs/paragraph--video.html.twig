@@ -1,5 +1,5 @@
 {{ attach_library('myusf/video-overlays') }}
-{#{% set vid_url = elements['#paragraph'].field_video_url.value.0.uri %}#}
+{% set vid_url = elements['#paragraph'].field_video_url.value.0.uri %}
 {% set color = elements['#paragraph'].field_colors.value %}
 
 
@@ -17,15 +17,16 @@
 
 
 <div class="video-component-wrapper">
-    <div class="video-component {{ color }}"
+    <a href="#" class="video-component {{ color }}"
        data-toggle="modal"
        data-target="#videoModal"
-       data-theVideo="{{ new_vid_url }}"
+       data-theVideo="{{ vid_url }}"
        aria-label="Watch the video">
     <div class="video-component-icon-wrapper">
         <span class="video-component_video_icon"></span>
     </div>
         {{ content.bp_image_field }}
+    </a>
 
         {% if paragraph.field_heading.value %}
             <h2 class="{{ heading }}">{{ paragraph.field_heading.value }}</h2>
@@ -35,9 +36,7 @@
                 {% autoescape false %}{{ paragraph.field_body_text.value }}{% endautoescape %}
             </div>
         {% endif %}
-    </div>
 </div>
-
 
 
 {#{% if paragraph_video_exists == true %}#}

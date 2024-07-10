@@ -99,7 +99,7 @@
             // Fix for Ensemble
             $("[id^=contentView_]").attr("align","center");
 
-            // Make .pdf and .txt files open in a new window.
+            // // Make .pdf and .txt files open in a new window.
             // $(document).ready(function() {
             //     $("a[href$='.pdf'], a[href$='.txt']")
             //         .attr("target", "_blank")
