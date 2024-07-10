@@ -26,11 +26,11 @@
         <span class="video-component_video_icon"></span>
     </div>
         {{ content.bp_image_field }}
-    </a>
 
         {% if paragraph.field_heading.value %}
             <h2 class="{{ heading }}">{{ paragraph.field_heading.value }}</h2>
         {% endif %}
+    </a>
         {% if paragraph.field_body_text.value %}
             <div class="{{ body }}">
                 {% autoescape false %}{{ paragraph.field_body_text.value }}{% endautoescape %}
