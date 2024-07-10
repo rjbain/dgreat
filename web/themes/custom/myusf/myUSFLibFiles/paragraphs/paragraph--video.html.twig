@@ -17,12 +17,13 @@
 
 
 <div class="video-component-wrapper">
-    <a href="#" class="video-component {{ color }}"
+    <div class="video-component {{ color }}"
        data-toggle="modal"
        data-target="#videoModal"
-       data-theVideo="{{ new_vid_url }}">
+       data-theVideo="{{ new_vid_url }}"
+       aria-label="Watch the video">
     <div class="video-component-icon-wrapper">
-        <span class="video-component_video_icon visually-hidden">Watch Video</span>
+        <span class="video-component_video_icon"></span>
     </div>
         {{ content.bp_image_field }}
 
@@ -34,7 +35,7 @@
                 {% autoescape false %}{{ paragraph.field_body_text.value }}{% endautoescape %}
             </div>
         {% endif %}
-    </a>
+    </div>
 </div>
 
 
