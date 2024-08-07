@@ -20,6 +20,16 @@ conf:
   ignore_usage: false
   folders:
     -
+      path: 'users/[user:name]'
+      permissions:
+        browse_files: true
+        browse_subfolders: true
+        create_subfolders: true
+        upload_files: true
+        delete_files: true
+        delete_subfolders: true
+        resize_images: true
+    -
       path: images
       permissions:
         browse_files: true
@@ -41,4 +51,9 @@ conf:
         resize_images: true
     -
       path: .
-      permissions: {  }
+      permissions:
+        browse_files: true
+        upload_files: true
+        delete_files: true
+        delete_subfolders: true
+        resize_images: true
