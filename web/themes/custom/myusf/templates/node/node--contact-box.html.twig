@@ -118,7 +118,7 @@
                     <div class="contact-info-links">
                         {% for links in content.field_social_media_links %}
                             {% for link in links['#paragraph'].field_social_media_network %}
-                                <a class="{{ link.value|lower }}_gray social" href="{{ links['#paragraph'].field_social_media_url.uri }}" target="_blank" alt="Visit our {{ link.value|lower }}"><span class="visually-hidden">Visit our {{ link.value|lower }}</span></a>
+                                <a class="{{ link.value|lower }}_gray social" href="{{ links['#paragraph'].field_social_media_url.uri }}" target="_blank" aria-label="Visit our {{ link.value|lower }}"><span class="visually-hidden">Visit our {{ link.value|lower }}</span></a>
                             {% endfor %}
                         {% endfor %}
                         {% if appt %}
