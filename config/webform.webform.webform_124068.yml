@@ -39,6 +39,24 @@ elements: |-
     '#title': Email
     '#description': ''
     '#required': true
+  cwid:
+    '#type': textfield
+    '#title': CWID
+  drivers_license_number:
+    '#type': textfield
+    '#title': 'Driver''s License Number'
+    '#description': '*Out-of-State&nbsp;Drivers must submit a scanned version of their license to usftravel in order to request a DMV Motor Vehicle Record. Please allow for up to 4 weeks for processing by the DMV.'
+    '#required': true
+  date_of_birth:
+    '#type': date
+    '#title': 'Date of Birth'
+    '#description': ''
+    '#required': true
+  license_expiration_date:
+    '#type': date
+    '#title': 'License Expiration Date'
+    '#description': ''
+    '#required': true
   department:
     '#type': processed_text
     '#title': 'Department Information'
@@ -59,8 +77,7 @@ elements: |-
   graduation_term:
     '#type': textfield
     '#title': 'Graduation Term'
-    '#description': '<p>(Ex. Spring/20XX)</p>'
-    '#required': true
+    '#description': '(Ex. Spring/2016)'
   title:
     '#type': textfield
     '#title': Title
@@ -92,7 +109,7 @@ elements: |-
       visible:
         ':input[name="will_you_be_driving_a_university_owned_vehicle"]':
           value: 'Yes'
-    '#markup': '<p>Please fill out this <a href="https://myusf.usfca.edu/sites/default/files/users/rdlopez3/Key%20FOB%20Agreement%20Form.pdf">Key FOB Agreement Form</a> and send to Risk Management at <a href="mailto:usftravel@usfca.edu">usftravel@usfca.edu</a>.</p>'
+    '#markup': 'Please fill out this <a href="https://myusf.usfca.edu/sites/default/files/users/rdlopez3/Key%20FOB%20Agreement%20Form.pdf">Key FOB Agreement Form</a> and return to Risk Management Office'
 css: ''
 javascript: ''
 settings:
@@ -320,3 +337,4 @@ handlers:
       parameters: {  }
       debug: false
 variants: {  }
+category: null

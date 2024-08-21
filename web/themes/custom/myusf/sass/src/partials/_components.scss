@@ -1,4 +1,4 @@
-/* ACCORDION (card) 
+/* ACCORDION (card)
 ================================================ */
 
 .card.panel {
@@ -36,7 +36,7 @@
 		height: auto;
 	}
 	.card-block .paragraph__column {
-		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
+		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
 			background: $white;
 	    	z-index: 2;
 	    	margin-left: -0.9375rem!important;
@@ -51,13 +51,13 @@
 			background: transparent;
 			text-decoration: underline;
 		}
-		
-	 	a[aria-expanded=false]{	
-	 		color:$black; 
-	 		opacity: 1;		
+
+	 	a[aria-expanded=false]{
+	 		color:$black;
+	 		opacity: 1;
 			&::after {
 				content: "";
-				position: relative;   
+				position: relative;
 				width: 20px;
 			    height: 20px;
 			    top: -15px;
@@ -67,19 +67,19 @@
 			    background: url(/themes/custom/myusf/images/site/icons.svg) -60px -126px no-repeat;
 
 
-			    
+
 				/*width: 12px;
 				height: 12px;
 				background: url(/themes/custom/myusf/images/site/icons.svg) -239px -142px no-repeat;*/
 			}
 		}
 
-		a[aria-expanded=true]{	
-			color:$black; 
+		a[aria-expanded=true]{
+			color:$black;
 	 		opacity: 1;
 			&::after {
 				content: "";
-				position: relative;    
+				position: relative;
 				width: 20px;
 			    height: 20px;
 			    top: -15px;
@@ -92,7 +92,7 @@
 				background: url(/themes/custom/myusf/images/site/icons.svg) -259px -142px no-repeat;*/
 			}
 		}
-		
+
 	}
 	.panel-collapse>.paragraph {
 		@include media-breakpoint-down(phone) {
@@ -105,7 +105,7 @@
 	}
 }
 
-/* Card -- Homepage feeds 
+/* Card -- Homepage feeds
 ================================================ */
 .card-deck {
 	margin-left: 0;
@@ -120,11 +120,11 @@
 
 	.card {
 		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-		  /* IE10+ CSS styles go here */		  
+		  /* IE10+ CSS styles go here */
 	     	display:inline-block;
 	     	width: 97%;
 		}
-		
+
 	}
 }
 
@@ -132,8 +132,8 @@
     margin-top: 0;
 }
 
-.view-instagram-tiles .view-content.row, 
-.view-twitter-tiles .view-content.row, 
+.view-instagram-tiles .view-content.row,
+.view-twitter-tiles .view-content.row,
 .view-usf-news-tiles .view-content.row {
 	@include media-breakpoint-down(phone) {
     	width: 100%!important;
@@ -145,33 +145,33 @@
     margin: 0 .625rem 2.5rem 0.625rem;
 
     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-	  /* IE10+ CSS styles go here */		
-		margin: 0 .625rem 1.5rem 0.625rem;		  
+	  /* IE10+ CSS styles go here */
+		margin: 0 .625rem 1.5rem 0.625rem;
 	}
     &:first-of-type {
     	margin-left: 0;
     	@include media-breakpoint-down(phone) {
-    		
+
     	}
     }
     &:last-of-type {
     	margin-right: 0;
 
     	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-		  /* IE10+ CSS styles go here */	
+		  /* IE10+ CSS styles go here */
 		 	margin-left:20px;
 		}
     }
 
     @include media-breakpoint-down(phone) {
     	margin:  0 0 2.5rem;
-    	
+
     }
 }
 .view-usf-news-tiles .card {
 	margin-top: 1.25rem;
 }
-.view-twitter-tiles .card {	
+.view-twitter-tiles .card {
 	margin-bottom: 2.5rem;
 }
 
@@ -203,17 +203,17 @@
 		background: $turquoise;
 	}
     &.twitter-bg{
-		background: $twitter;		
+		background: $twitter;
 	}
-	&.gray {	
+	&.gray {
 		background: #757575;
 	}
-	&.white {	
+	&.white {
 		background: $white;
 		border: 1px solid #ccc;
 	}
 }
-.view-instagram-tiles {	
+.view-instagram-tiles {
 	.card-text {
 		@include media-breakpoint-only(landscape_phone) {
 			display:none;
@@ -268,14 +268,14 @@ a.card-rollover {
 				line-height: 1.6;
 			}
 		}
-		
-		&.orange {	
-			.diamond_link_small_white {
-				background:$orange;	
 
-				&:hover {						
+		&.orange {
+			.diamond_link_small_white {
+				background:$orange;
+
+				&:hover {
 					color: black!important;
-				}		
+				}
 			}
 		}
 		&.blue {
@@ -285,56 +285,56 @@ a.card-rollover {
 		    		margin-top: 11.25rem;
 		    	}
 			}
-			
-			.diamond_link_small_white {
-				background:$blue;	
 
-				&:hover {						
+			.diamond_link_small_white {
+				background:$blue;
+
+				&:hover {
 					color: black!important;
-				}	
+				}
 			}
 		}
-		&.gray {	
+		&.gray {
 			.diamond_link_small_white {
-				background:#757575;	
+				background:#757575;
 
-				&:hover {						
+				&:hover {
 					color: black!important;
-				}		
+				}
 			}
 		}
 		&.white {
 			.card-text, .card-text-short {
 				color: $text_gray!important;
-			}	
+			}
 			.diamond_link_small_white {
-				background:$white;	
+				background:$white;
 				color: black;
 
-				&:hover {						
+				&:hover {
 					color: #757575!important;
-				}		
+				}
 			}
 		}
-		&.green {	
+		&.green {
 			.diamond_link_small_white {
-				background:$green;	
+				background:$green;
 
-				&:hover {						
+				&:hover {
 					color: $yellow!important;
-				}		
+				}
 			}
 		}
 
 		.diamond_link_small_white {
 			position: absolute;
-			bottom: 10px; 
+			bottom: 10px;
 
-			&:hover, 
+			&:hover,
 		    &:focus {
-		        text-decoration: none; 
-		    } 
-		   
+		        text-decoration: none;
+		    }
+
 	    	bottom:0;
 		    width: 86.8%;
 		    padding-top: 0.75rem;
@@ -342,7 +342,7 @@ a.card-rollover {
 
 		    &::before {
 		    	top: 20px;
-		    	left: 98px; 
+		    	left: 98px;
 		    }
 		    &::after {
 		    	top: 14px;
@@ -350,8 +350,8 @@ a.card-rollover {
 		    }
 		}
 	}
-   
-	.category {		
+
+	.category {
 		position: absolute;
 	    display: block;
 	    font-size: .8rem;
@@ -361,21 +361,21 @@ a.card-rollover {
 		padding-top: 0.3125rem;
 		top: 0px;
 		left: 0px;
-		z-index: 1;	
+		z-index: 1;
 		text-shadow: 1px 1px 2px rgba(0,0,0,.9);
-	    
+
 	}
 	.category-icon {
-		&::before { 
+		&::before {
 			position: absolute;
 		    display: block;
 			content: "";
 			width: 100px;
-		    height: 30px;	
+		    height: 30px;
 			top: 0px;
 		    left: 0px;
 			z-index: -1;
-			background-color: rgba(0,0,0,.5);	
+			background-color: rgba(0,0,0,.5);
 		}
 		&::after {
 			position: absolute;
@@ -384,10 +384,10 @@ a.card-rollover {
 		    width: 15px;
 		    height: 15px;
 			top: 6px;
-		    left: 10px;   
-			z-index: -1;      
+		    left: 10px;
+			z-index: -1;
 		}
-		
+
 		&.news-icon {
 			&::after {
 				background: url(/themes/custom/myusf/images/site/icons.png) no-repeat -20px -60px ;
@@ -400,25 +400,25 @@ a.card-rollover {
 				background: url(/themes/custom/myusf/images/site/icons.png) no-repeat  -40px -58px ;
 		  		background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat  -40px -58px ;
 		  	}
-		} 
+		}
 		&.twitter-icon {
 			&::after {
 				background: url(/themes/custom/myusf/images/site/icons.png) no-repeat -100px -58px ;
 		  		background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -100px -58px ;
 		  	}
-		} 	
+		}
 	}
-	
+
     img.card-img-top {
     	color:$gray;
-    	height: 180px; 
-    	width: 100%; 
-    	display: block; 
+    	height: 180px;
+    	width: 100%;
+    	display: block;
     	background:$gray;
     	border-radius: 0;
     	margin-top: 0;
     	object-fit: cover;
-    	
+
     	&::after {
 		    background-image: linear-gradient(to bottom,transparent 0,rgba(0,0,0,.3) 100%);
 		}
@@ -428,7 +428,7 @@ a.card-rollover {
     &:focus {
 	    color: $white!important;
 	    background: 0 0!important;
-	 
+
 		&::after {
 	    	display: block;
 		    position: absolute;
@@ -473,12 +473,12 @@ a.card-rollover {
 
 	@include media-breakpoint-down(phone) {
 		display: unset;
-			    
+
 	    width: 300px;
 	    display: block;
 	    text-align: center;
 	    padding: 0.5rem;
-	    margin-top: 1.875rem;	
+	    margin-top: 1.875rem;
 	    margin-left: auto;
 	    margin-right: auto;
 	    border: 1px solid $light_gray;
@@ -487,7 +487,7 @@ a.card-rollover {
 	    	color: $text_gray;
 	    	text-decoration: none;
 	    }
-	    
+
 
 		&::after {
 			position: relative;
@@ -513,7 +513,7 @@ a.card-rollover {
 	 	margin-bottom: 0;
 
 		.event-calendar-list-item {
-			padding-left: 0.625rem;	
+			padding-left: 0.625rem;
 			padding-bottom: 1.25rem;
 			padding-top: 0.9375rem;
 			border-bottom: 1px solid $light_gray;
@@ -526,12 +526,12 @@ a.card-rollover {
 			height: 80px;
 			width: 107px;
 			margin-right: 1.25rem;
-			margin-left: 0.625rem;	
+			margin-left: 0.625rem;
 
 			@include media-breakpoint-down(phone) {
 				width: 80px;
 				height: 60px;
-				margin-bottom: 0.3125rem;		
+				margin-bottom: 0.3125rem;
 			}
 			@include media-breakpoint-down(tablet) {
 				margin-right: 0;
@@ -539,8 +539,8 @@ a.card-rollover {
 			}
 		}
 	}
-	
-		
+
+
 
 
 	@include media-breakpoint-down(phone) {
@@ -563,8 +563,8 @@ a.card-rollover {
 	    font-weight: 300;
 	    color: $text_gray;
 	    line-height: 1.125;
-	    text-decoration: none;	    
-	    display: inline-block;	    
+	    text-decoration: none;
+	    display: inline-block;
 	    padding: 0.625rem;
 	    border: 0;
 		vertical-align: top;
@@ -572,17 +572,17 @@ a.card-rollover {
 
 	.page-item{
 		margin-right: 0.75rem;
-		
-		@include media-breakpoint-down(phone) { 
+
+		@include media-breakpoint-down(phone) {
 			margin-right: 0;
 		}
 
-		&.active{ 
+		&.active{
 			margin-top: 0.125rem;
 
 			a {
 				font-size: .85rem;
-				font-weight: 700;				
+				font-weight: 700;
 				color: $green;
 				line-height: 1.1764;
 			}
@@ -614,11 +614,11 @@ a.card-rollover {
 			.page-link {
 				border-radius: 0;
 			}
-		}		 
+		}
 	}
 
 	li:first-child {
-		margin-top: 0px; 
+		margin-top: 0px;
 
 		a[title="Go to first page"] {
 			margin-top: 0px;
@@ -628,18 +628,18 @@ a.card-rollover {
 				position: relative;
 				top: -5px;
 			}
-			
+
 		}
-	} 
+	}
 	li {
 		a[title="Go to last page"] {
 			span[aria-hidden="true"] {
 				font-size: 1.2rem;
 				position: relative;
 				top: -5px;
-			}			
+			}
 		}
-	} 
+	}
 	a[title="Go to previous page"],
 	a[title="Go to next page"] {
 		display: none;
@@ -661,14 +661,14 @@ a.card-rollover {
 }
 
 .view-news ul li {
-	@include media-breakpoint-down(phone) { 
+	@include media-breakpoint-down(phone) {
 		position:static;
 	}
 }
 
 .paragraph__column ul li.pager__item--next {
 	margin-right: 1.25rem;
-	@include media-breakpoint-down(phone) { 
+	@include media-breakpoint-down(phone) {
 		margin-right: 0;
 	}
 }
@@ -677,7 +677,7 @@ a.card-rollover {
 	left: 0;
 }
 
-a.search_clear{	 
+a.search_clear{
 		position: relative;
 		float: right;
     	right: 0;
@@ -838,7 +838,7 @@ form#views-exposed-form-announcements-page-page-1 .form-row {
 .field--name-field-announcement-tags .field__item {
     display: inline;
      margin-left: 0.3125rem;
-} 
+}
 
 .field--name-field-announcement-audience {
 	display: none;
@@ -900,7 +900,7 @@ figure {
 		text-decoration: none;
 		text-transform: uppercase;
 		font-size: .85rem;
-	
+
 		&::after {
 			content: " »";
 		}
@@ -934,7 +934,7 @@ figure {
     	}
 	}
 	.facets-widget-dropdown {
-	    
+
 	    select.item-list__dropdown.facets-dropdown {
 	    	position:absolute;
 	    	height:41px;
@@ -942,7 +942,7 @@ figure {
 	    	min-width: 136px;
 	    	z-index:20;
 	    	margin-top: 0.1875rem;
-	    	@include media-breakpoint-down(tablet) {  
+	    	@include media-breakpoint-down(tablet) {
 	    		border: 1px solid $light_blue_gray;
 	    	}
 	    	@include media-breakpoint-down(tablet) {
@@ -1003,7 +1003,7 @@ figure {
 	}
 	.view-content {
 		margin-top: 1.875rem;
-	}	
+	}
 }
 
 /*Body area */
@@ -1030,12 +1030,12 @@ figure {
 
 .node--type-usf-service .field--type-text-with-summary {
 	max-width:unset;
-} 
+}
 
-.field--name-field-usfcat-howdoi, 
-.field--name-field-usfcat-policies, 
+.field--name-field-usfcat-howdoi,
+.field--name-field-usfcat-policies,
 .field--name-field-usfcat-audience-ref {
-    margin-top: 1.875rem;	
+    margin-top: 1.875rem;
 
     .field__label {
     	font-weight: 700;
@@ -1043,7 +1043,7 @@ figure {
     	margin-bottom: 0.3125rem;
     }
     .field__item {
-    	margin-bottom: 0.625rem;	
+    	margin-bottom: 0.625rem;
 
     	a {
     		font-size: 1rem;
@@ -1088,10 +1088,10 @@ figure {
 		li {
 			padding-bottom: 0;
 		}
-	}	
+	}
 }
 
-#block-topfacultystaffquestions, #block-topfacultystaffquestions-2{	
+#block-topfacultystaffquestions, #block-topfacultystaffquestions-2{
 	ul {
 		margin-left: -0.5rem;
 	}
@@ -1103,7 +1103,7 @@ figure {
 
 	li.list-group-item {
     	border: 0;
-    	margin-bottom: 0.625rem;	
+    	margin-bottom: 0.625rem;
 	}
 }
 
@@ -1143,7 +1143,7 @@ content: "";
 	    	height: 100%;
 		}
 
-		.field--type-image img, 
+		.field--type-image img,
 	    .field--name-field-user-picture img {
 	   		margin: 0 0 0;
 	   	}
@@ -1270,7 +1270,7 @@ content: "";
 					box-shadow: inset 0 0 0 10px $lime;
 				}
 			}
-		}		
+		}
     }
 }
 
@@ -1285,7 +1285,7 @@ content: "";
 	margin-top: 5px;
 	margin-bottom: 0px;
     padding-top: 12px;
-    padding-bottom: 0px;
+    padding-bottom: 12px;
 
 	@include media-breakpoint-down(desktop) {
 		margin-left: 1.5625rem;
@@ -1337,9 +1337,9 @@ content: "";
 
 .video-component-body-only {
 	color: $white!important;
-    margin-left: 1.875rem;	
+    margin-left: 1.875rem;
     margin-right: 1.875rem;
-    padding-bottom: 0.625rem;	
+    padding-bottom: 0.625rem;
     padding-top: 0.9375rem;
 
     @include media-breakpoint-down(desktop) {
@@ -1363,7 +1363,7 @@ content: "";
     position: relative;
 }
 
-.video-component_video_icon {    
+.video-component_video_icon {
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 700;
@@ -1379,7 +1379,7 @@ content: "";
     padding-left: 3.875rem;
     border: none;
     height: 0;
-	z-index: 3;
+	z-index: 1; //3;
     margin-top: 30%;
 
     &:before {
@@ -1424,9 +1424,9 @@ content: "";
 
 				.modal-body {
 					padding-right: 0;
-					margin-right: -0.625rem;	
+					margin-right: -0.625rem;
 				}
-			}	
+			}
 	}
 	.modal-content {
     	background-color:transparent;
@@ -1452,7 +1452,7 @@ button.close {
     text-shadow: none;
     height:0;
     width:0;
-  
+
 	&:hover,
 	&:focus {
     	color: $white!important;
@@ -1479,7 +1479,7 @@ button.close {
     padding-top: 1.875rem!important;
     height: 0 !important;
     overflow: hidden !important;
-	
+
 	iframe {
 	    position: absolute !important;
 	    top: 0 !important;
@@ -1490,7 +1490,7 @@ button.close {
 }
 
 
-/* COMMENCEMENT SOCIAL MEDIA FEED (card) 
+/* COMMENCEMENT SOCIAL MEDIA FEED (card)
 ================================================ */
 .card-columns {
     column-count: 1;
@@ -1522,7 +1522,7 @@ button.close {
 		.card-title {
 			font-size: .8rem;
 			color: white!important;
-        	text-transform: uppercase;    		
+        	text-transform: uppercase;
     		padding-left: .25rem;
     		padding-bottom: 0.3125rem;
     		background-color: $text-gray;
@@ -1567,7 +1567,7 @@ button.close {
 
 /* SITEWIDE-ALERT
 ================================================ */
- 
+
 .sitewide-alert {
     background-color: #F8F7F0;
     padding: 1rem 1.8rem 0.75rem 2rem;
@@ -1609,7 +1609,7 @@ button.close {
 	    @include media-breakpoint-down(phone) {
 			font-size: 0.85rem;
 			margin-bottom: -0.625rem;
-		    line-height: 1.2941;		    
+		    line-height: 1.2941;
 		    margin-bottom: 0.3125rem;
 	    }
 	}
@@ -1654,7 +1654,7 @@ button.close {
 .alert-text {
     width: 75%!important;
     display: inline-block;
-    
+
     @include media-breakpoint-only(tablet) {
 	    width:65%!important;
 	    font-size: .9rem;
@@ -1760,7 +1760,7 @@ button.close {
 		    	/*text-decoration: underline;*/
 		    }
 		}
-	}	
+	}
 }
 
 
