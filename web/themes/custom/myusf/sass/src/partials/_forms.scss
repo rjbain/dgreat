@@ -48,12 +48,13 @@ form {
 			}
 		}
 	}
-	.fieldset-wrapper {
-		//padding-left:20px;
-	}
 	fieldset.form-group {
 	    padding-top: 0;
 	}
+	/*select {
+		width: fit-content;
+		line-height: 1.5;
+	}*/
 	.form-select,
 	.form_responses select { //for Slate
 	    border-radius: 0;
@@ -63,11 +64,16 @@ form {
     	position: relative;
 		width: 100%;
 
+		line-height: 1.5;
+
     	@include media-breakpoint-down(desktop) {
     		display: block;
     	}
 		@include media-breakpoint-up(desktop) {
-    		width: unset;
+    		//width: unset;
+			//width: 100% !important;
+        	//min-width: fit-content !important;
+			width: max-content !important;
     	}
 	}
 	.checkbox {
