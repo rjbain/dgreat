@@ -1827,10 +1827,30 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		margin: -2% 5% 5% 14%!important;
 		text-align: left;
 	}
-
 	@include media-breakpoint-down(phone) {
 		margin: -2% 5% 5% 5%!important;
 		text-align: left;
+	}
+	@include media-breakpoint-up(tablet) {
+		display: flex;
+		columns: unset;
+		padding-bottom: 0.5rem;
+		margin-bottom: 0!important;
+	}
+	@include media-breakpoint-only(tablet) {
+		justify-content: center;
+		margin: 0 auto!important;
+	}
+	@include media-breakpoint-up(desktop) {
+		padding-top: 0;
+		padding-bottom: .5rem;
+	}
+	@include media-breakpoint-up(large_desktop) {
+		justify-content: flex-start;
+		margin: 0 auto 0 0.9375rem!important;
+	}
+	@include media-breakpoint-up(midlarge_desktop) {
+		margin-left: 6px!important;
 	}
 
 	li.footer-item {
@@ -1841,27 +1861,6 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		&:first-child {
 			margin-top: 0;
 		}
-	}
-	@include media-breakpoint-up(tablet) {
-		display: flex;
-		columns: unset;
-		padding-bottom: 0.5rem;
-		margin: 0 auto 0 0.9375rem!important;
-	}
-
-	@include media-breakpoint-only(tablet) {
-		justify-content: center;
-		margin: 0 auto!important;
-	}
-	@include media-breakpoint-up(desktop) {
-		padding-top: 0;
-	}
-
-	@include media-breakpoint-up(large_desktop) {
-		justify-content: flex-start;
-	}
-	@include media-breakpoint-up(midlarge_desktop) {
-		margin-left: 6px!important;
 	}
 }
 
@@ -1880,11 +1879,12 @@ a.logo {
 	}
 	@include media-breakpoint-up(tablet) {
 		width: 289px;
+		margin: 0.3125rem auto;
 	}
 	@include media-breakpoint-up(large_desktop) {
 		width: 330px;
 		height: 38px;
-		margin-top: 0;/*was -38px*/
+		margin: 0;/*was -38px*/
 		float: right;
 		right: 23px;
 	}
@@ -1923,20 +1923,39 @@ a.logo {
 }
 
 
-.footer-expand-lg .footer-nav {
-	@include media-breakpoint-up(tablet) {
-		-webkit-box-orient: horizontal;
-		-webkit-box-direction: normal;
-		-ms-flex-direction: row;
-		flex-direction: row
-	}
-
-	.footer-link {
-		@include media-breakpoint-up(tablet) {
-			padding-right: .5rem!important;
+.footer-expand-lg {
+	section {
+		&.row {
+			@include media-breakpoint-up(tablet) {
+				flex-direction: column;
+			}
+			@include media-breakpoint-up(large_desktop) {
+				flex-direction: row;
+			}
 		}
-		@include media-breakpoint-up(midlarge_desktop) {
-			padding-left: .5rem;
+	}
+	.footer-nav {
+		@include media-breakpoint-up(tablet) {
+			-webkit-box-orient: horizontal;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: row;
+			flex-direction: row;
+			justify-content: center;
+			margin: unset !important;
+		}
+		@include media-breakpoint-up(large_desktop) {
+			margin: 0 auto 0 0.9375rem!important; 
+		}
+
+		.footer-link {
+			@include media-breakpoint-up(tablet) {
+				padding-left: .25rem!important;
+				padding-right: .25rem!important;
+			}
+			@include media-breakpoint-up(large_desktop) {
+				padding-left: 0!important;
+				padding-right: .5rem!important;
+			}
 		}
 	}
 }
