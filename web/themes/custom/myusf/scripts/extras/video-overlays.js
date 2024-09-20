@@ -12,7 +12,9 @@ function autoPlayYouTubeModal() {
             $(theModal+' iframe').attr('src', '');
             // $(theModal+' iframe').attr('src', videoSRC);
         });
-      $(theModal+' iframe').focus();
+      $(theModal+' iframe').focus(function () {
+        consol.log("focusing on iframe");
+      });
     });
 }
 
