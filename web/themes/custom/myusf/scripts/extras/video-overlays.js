@@ -12,6 +12,7 @@ function autoPlayYouTubeModal() {
             $(theModal+' iframe').attr('src', '');
             // $(theModal+' iframe').attr('src', videoSRC);
         });
+      $(theModal+' iframe').focus();
     });
 }
 
