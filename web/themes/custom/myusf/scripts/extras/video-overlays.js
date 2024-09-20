@@ -7,14 +7,11 @@ function autoPlayYouTubeModal() {
             videoSRCauto = videoSRC+"?autoplay=1";
         // first make sure the src is empty
         $(theModal+' iframe').attr('src', "");
-        $(theModal+' iframe').attr('src', videoSRCauto);
+        $(theModal+' iframe').attr('src', videoSRCauto).focus();
         $(theModal+' button.close, #videoModal').click(function () {
             $(theModal+' iframe').attr('src', '');
             // $(theModal+' iframe').attr('src', videoSRC);
         });
-      $(theModal+' iframe').focus(function () {
-        consol.log("focusing on iframe");
-      });
     });
 }
 
