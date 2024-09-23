@@ -1,4 +1,12 @@
 // Get and autoplay youtube video from datatag.
+function spaceBarControl(vidIframe) {
+  document.addEventListener('keydown',function(e){
+    if(e.key === " ") {
+      e.preventDefault();
+      vidIframe.focus();
+    }
+  });
+}
 function autoPlayYouTubeModal() {
   var trigger = $("body").find('[data-toggle="modal"]');
   trigger.click(function() {
@@ -10,8 +18,9 @@ function autoPlayYouTubeModal() {
     vidIframe.attr('src', "");
     vidIframe.attr('src', videoSRCauto);
 
-    vidIframe.load(function() {
-      $(theModal+' iframe').focus();
+    vidIframe.load(function(e) {
+      vidIframe.focus();
+      spaceBarControl(vidIframe);
     });
 
     $(theModal+' button.close, #videoModal').click(function () {
