@@ -1,5 +1,5 @@
 {{ attach_library('myusf/video-overlays') }}
-{% set vid_url = elements['#paragraph'].field_video_url.value.0.uri %}
+{#{% set vid_url = elements['#paragraph'].field_video_url.value.0.uri %}#}
 {% set color = elements['#paragraph'].field_colors.value %}
 
 
@@ -20,7 +20,7 @@
     <a href="#" class="video-component {{ color }}"
        data-toggle="modal"
        data-target="#videoModal"
-       data-theVideo="{{ vid_url }}">
+       data-theVideo="{{ new_vid_url }}">
     <div class="video-component-icon-wrapper">
         <span class="video-component_video_icon"></span>
     </div>

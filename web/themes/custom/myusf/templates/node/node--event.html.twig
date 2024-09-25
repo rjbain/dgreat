@@ -90,6 +90,13 @@
   <p class="event-location">{{ building }} &mdash; {{ location }}</p>
   <div class="event-additional-info">
     {% autoescape false %}
+      {# Check if the additional_info contains an empty anchor tag #}
+      {% if '></a>' in additional_info %}
+        {# Replace empty anchor tags with the same tag containing "RSVP", preserving attributes #}
+        {% set additional_info = additional_info|replace({
+          '></a>': '>RSVP</a>'
+        }) %}
+      {% endif %}
       {{ additional_info }}
     {% endautoescape %}
   </div>
@@ -110,3 +117,4 @@
 </article>
 <br clear="all">
 <br clear="all">
+

@@ -19,6 +19,7 @@ form {
 		font-size: .9rem;
 	    border-radius: 0;
 		margin-bottom: 0.5rem;
+		height: 52px;
 
 		&:focus {
 			z-index:1;
@@ -48,27 +49,44 @@ form {
 			}
 		}
 	}
-	.fieldset-wrapper {
-		//padding-left:20px;
-	}
 	fieldset.form-group {
 	    padding-top: 0;
 	}
+	/*select {
+		width: fit-content;
+		line-height: 1.5;
+	}*/
 	.form-select,
 	.form_responses select { //for Slate
 	    border-radius: 0;
 	    border: $light_blue_gray solid 1px;
-	    height: 36px;
+	    height: 52px;//36
     	top: 1px;
     	position: relative;
-		width: 100%;
+		width: 100%!important;
 
-    	@include media-breakpoint-down(desktop) {
+		line-height: 1.5;
+
+    	//@include media-breakpoint-down(desktop) {
+		@include media-breakpoint-up(tablet) {
     		display: block;
+			min-width: fit-content;
+			width: 100% !important;
+			min-height: 52px;//40
+        	//padding-top: 7px;
+        	//padding-bottom: 10px;
     	}
-		@include media-breakpoint-up(desktop) {
-    		width: unset;
-    	}
+		//@include media-breakpoint-up(desktop) {
+    		//width: unset;
+			//width: 100% !important;
+        	//min-width: fit-content !important;
+			//width: max-content !important;
+			//display: block;
+			//min-width: fit-content;
+    	//}
+		li {
+			line-height: 1.5!important;
+		}
 	}
 	.checkbox {
 		padding-bottom: 5px;
@@ -191,6 +209,11 @@ li.entitywebformsettings {
     		font-weight: 400;
 			padding-left:5px;
 	    }
+	}
+	.chosen-single {
+		span {
+			overflow: unset;
+		}
 	}
 
 	a.chosen-single {

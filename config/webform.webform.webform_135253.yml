@@ -55,18 +55,24 @@ elements: |-
     '#title': 'Orientation Selection Instructions'
     '#description': ''
     '#text': |
-      <p>Please select a date and time below for each applicable orientation session. NOTE: Until further notice all new employee orientations will take place via Zoom. Once you have selected your orientation date you will receive a Zoom invitation for your orientation.</p>
+      <p>Please select a date and time below for each applicable orientation session. NOTE: All new employee orientations will take place via Zoom. Once you have selected your orientation date you will receive a Zoom invitation for your orientation.</p>
     '#format': full_html
   employment_orientation_selection:
     '#type': select
     '#title': 'Employment and Benefits Orientation Selection'
     '#options':
-      'Oct 3*9:30-11:15 am *Zoom': 'Oct 3*9:30-11:15 am *Zoom'
-      'Oct 17*9:30-11:15 am *Zoom': 'Oct 17*9:30-11:15 am *Zoom'
-      'Oct 31*9:30-11:15 am *Zoom': 'Oct 31*9:30-11:15 am *Zoom'
-      'Nov 13*9:30-11:15 am *Zoom': 'Nov 13*9:30-11:15 am *Zoom'
-      'Nov 28*9:30-11:15 am *Zoom': 'Nov 28*9:30-11:15 am *Zoom'
-      'Dec 12*9:30-11:15 am *Zoom': 'Dec 12*9:30-11:15 am *Zoom'
+      'Jun 11*9:30-11:15 am *Zoom': 'Jun 11*9:30-11:15 am *Zoom'
+      'Jun 25*9:30-11:15 am *Zoom': 'Jun 25*9:30-11:15 am *Zoom'
+      'Jul 9*9:30-11:15 am *Zoom': 'Jul 9*9:30-11:15 am *Zoom'
+      'Jul 23*9:30-11:15 am *Zoom': 'Jul 23*9:30-11:15 am *Zoom'
+      'Aug 6*9:30-11:15 am *Zoom': 'Aug 6*9:30-11:15 am *Zoom'
+      'Aug 20*9:30-11:15 am *Zoom': 'Aug 20*9:30-11:15 am *Zoom'
+      'Sept 5*9:30-11:15 am *Zoom': 'Sept 5*9:30-11:15 am *Zoom'
+      'Sept 17*9:30-11:15 am *Zoom': 'Sept 17*9:30-11:15 am *Zoom'
+      'Oct 1*9:30-11:15 am *Zoom': 'Oct 1*9:30-11:15 am *Zoom'
+      'Oct 8*9:30-11:15 am *Zoom': 'Oct 8*9:30-11:15 am *Zoom'
+      'Oct 22*9:30-11:15 am *Zoom': 'Oct 22*9:30-11:15 am *Zoom'
+      'Nov 5*9:30-11:15 am *Zoom': 'Nov 5*9:30-11:15 am *Zoom'
     '#required': true
 css: ''
 javascript: ''
@@ -175,7 +181,7 @@ settings:
   confirmation_type: page
   confirmation_url: ''
   confirmation_title: ''
-  confirmation_message: '<p>Thank you for registering for your orientation(s). Your link for this session is: <a href="https://usfca.zoom.us/j/3564357539">https://usfca.zoom.us/j/3564357539</a>. Your <span class="JtukPc" jsname="bN97Pc" jsslot=""><span><span><strong>PASSCODE is 72664</strong></span></span></span>. If you have any questions or concerns, please contact Mara Krasts at <a href="mailto:mkrasts@usfca.edu">mkrasts@usfca.edu</a>.</p>'
+  confirmation_message: '<p>Thank you for registering for your orientation(s). Your link for this session is: <a href="https://usfca.zoom.us/j/3564357539">https://usfca.zoom.us/j/3564357539</a>. Your <span class="JtukPc" jsname="bN97Pc" jsslot=""><strong>PASSCODE is 72664</strong></span>. If you have any questions or concerns, please contact Mara Krasts at <a href="mailto:mkrasts@usfca.edu">mkrasts@usfca.edu</a>.</p>'
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -266,7 +272,7 @@ handlers:
     handler_id: email_3
     label: 'Email 3'
     notes: ''
-    status: true
+    status: false
     conditions: {  }
     weight: 5
     settings:
@@ -372,5 +378,41 @@ handlers:
       theme_name: ''
       parameters: {  }
       debug: false
+  email:
+    id: email
+    handler_id: email
+    label: Email
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 6
+    settings:
+      states:
+        - completed
+      to_mail: mkrasts@usfca.edu
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
 variants: {  }
-category: null
