@@ -8,7 +8,8 @@ function spaceBarControl(vidIframe) {
     // Check if the device is an iPad
     if (navigator.userAgent.match(/iPad/i)) {
       // Apply iPad-specific fixes if necessary
-      $("#videoModal.show").click();
+      // $("#videoModal.show").click();
+      $(".modal-content .modal-body").css("outline", "3px solid salmon");
     }
   });
 }
