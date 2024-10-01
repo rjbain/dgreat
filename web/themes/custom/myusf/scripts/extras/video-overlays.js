@@ -9,7 +9,7 @@ function spaceBarControl(vidIframe) {
     if (navigator.userAgent.match(/iPad/i)) {
       // Apply iPad-specific fixes if necessary
       // $("#videoModal.show").click();
-      $(".modal-content .modal-body").css("outline", "3px solid salmon");
+      $(".modal-content .modal-body").css("border", "3px solid salmon");
     }
   });
 }
