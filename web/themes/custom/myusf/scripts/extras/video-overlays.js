@@ -5,6 +5,11 @@ function spaceBarControl(vidIframe) {
       e.preventDefault();
       vidIframe.focus();
     }
+    // Check if the device is an iPad
+    if (navigator.userAgent.match(/iPad/i)) {
+      // Apply iPad-specific fixes if necessary
+      $("#videoModal.show").click();
+    }
   });
 }
 function autoPlayYouTubeModal() {
@@ -19,8 +24,8 @@ function autoPlayYouTubeModal() {
     vidIframe.attr('src', videoSRCauto);
 
     vidIframe.on('load', function () {
-      // vidIframe.focus();
-      // spaceBarControl(vidIframe);
+      vidIframe.focus();
+      spaceBarControl(vidIframe);
     });
 
     $(theModal+' button.close, #videoModal').click(function () {
