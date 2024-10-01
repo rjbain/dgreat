@@ -6,7 +6,7 @@ function spaceBarControl(vidIframe) {
       vidIframe.focus();
     }
     // Check if the device is an iPad
-    if (navigator.userAgent.match(/iPad/i)) {
+    if (navigator.userAgent.match(/Mac/) && navigator.maxTouchPoints) {
       // Apply iPad-specific fixes if necessary
       // $("#videoModal.show").click();
       $(".modal-content .modal-body").css("border", "3px solid salmon");
