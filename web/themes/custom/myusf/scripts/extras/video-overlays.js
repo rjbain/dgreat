@@ -19,8 +19,8 @@ function autoPlayYouTubeModal() {
     vidIframe.attr('src', videoSRCauto);
 
     vidIframe.on('load', function () {
-      vidIframe.focus();
-      spaceBarControl(vidIframe);
+      // vidIframe.focus();
+      // spaceBarControl(vidIframe);
     });
 
     $(theModal+' button.close, #videoModal').click(function () {
