@@ -91,7 +91,7 @@
   ]
 %}
 {% if type in ['checkbox', 'radio'] %}
-  <div{{ attributes.addClass(classes) }}>
+  <div{{ attributes.addClass(classes) }} role="group">
     {% if prefix is not empty %}
       <span class="field-prefix">{{ prefix }}</span>
     {% endif %}
@@ -126,7 +126,7 @@
     {% endif %}
   </div>
 {% else %}
-  <fieldset{{ attributes.addClass(classes, '', float_label ? 'form-floating') }}>
+  <fieldset{{ attributes.addClass(classes, '', float_label ? 'form-floating') }} role="group">
     {% if label_display in ['before', 'invisible'] %}
       {{ label }}
     {% endif %}
