@@ -18,7 +18,7 @@ function autoPlayYouTubeModal() {
     vidIframe.attr('src', "");
     vidIframe.attr('src', videoSRCauto);
 
-    vidIframe.load(function(e) {
+    vidIframe.on('load', function () {
       vidIframe.focus();
       spaceBarControl(vidIframe);
     });
