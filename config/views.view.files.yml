@@ -3,8 +3,12 @@ langcode: en
 status: true
 dependencies:
   module:
+    - csv_serialization
     - file
+    - rest
+    - serialization
     - user
+    - views_data_export
 _core:
   default_config_hash: rRWxAX-IQkJ5viACQRovRkC784EyCl9493GU_G23n2Q
 id: files
@@ -119,58 +123,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        filemime:
-          id: filemime
-          table: file_managed
-          field: filemime
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: file
-          entity_field: filemime
-          plugin_id: field
-          label: 'MIME type'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          type: file_filemime
         filesize:
           id: filesize
           table: file_managed
@@ -223,62 +175,6 @@ display:
           empty_zero: false
           hide_alter_empty: true
           type: file_size
-        status:
-          id: status
-          table: file_managed
-          field: status
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: file
-          entity_field: status
-          plugin_id: field
-          label: Status
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          type: boolean
-          settings:
-            format: custom
-            format_custom_false: Temporary
-            format_custom_true: Permanent
         created:
           id: created
           table: file_managed
@@ -391,74 +287,17 @@ display:
             date_format: medium
             custom_date_format: ''
             timezone: ''
-        count:
-          id: count
-          table: file_usage
-          field: count
-          relationship: fid
-          group_type: sum
-          admin_label: ''
-          plugin_id: numeric
-          label: 'Used in'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: true
-            path: 'admin/content/files/usage/{{ fid }}'
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          set_precision: false
-          precision: 0
-          decimal: .
-          separator: ','
-          format_plural: true
-          format_plural_string: !!binary MSBwbGFjZQNAY291bnQgcGxhY2Vz
-          prefix: ''
-          suffix: ''
-        uid:
-          id: uid
+        uri:
+          id: uri
           table: file_managed
-          field: uid
+          field: uri
           relationship: none
           group_type: group
           admin_label: ''
           entity_type: file
-          entity_field: uid
+          entity_field: uri
           plugin_id: field
-          label: 'User ID'
+          label: URI
           exclude: false
           alter:
             alter_text: false
@@ -499,11 +338,12 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
+          click_sort_column: value
+          type: file_uri
           settings:
-            link: true
-          group_column: target_id
+            link_to_file: false
+            file_download_path: false
+          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -513,59 +353,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        delete_file:
-          id: delete_file
-          table: file_managed
-          field: delete_file
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: file
-          plugin_id: entity_link_delete
-          label: Delete
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: delete
-          output_url_as_text: false
-          absolute: false
       pager:
         type: mini
         options:
@@ -666,7 +453,7 @@ display:
           entity_field: filemime
           plugin_id: string
           operator: word
-          value: ''
+          value: pdf
           group: 1
           exposed: true
           expose:
@@ -685,6 +472,30 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+              editor: '0'
+              faculty: '0'
+              all_access: '0'
+              student: '0'
+              online_student: '0'
+              admitted_student: '0'
+              finance: '0'
+              employee: '0'
+              prehire_faculty: '0'
+              prehire_staff: '0'
+              bi_group: '0'
+              vcl_staff: '0'
+              online_intaccept: '0'
+              service_editor: '0'
+              som_ug: '0'
+              som_grad: '0'
+              as_ug: '0'
+              as_grad: '0'
+              sonhp_ug: '0'
+              sonhp_grad: '0'
+              law: '0'
+              soe: '0'
+              box_editor: '0'
+              webform_editor: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -931,6 +742,43 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user.permissions
+      tags: {  }
+  data_export_1:
+    id: data_export_1
+    display_title: 'Data export'
+    display_plugin: data_export
+    position: 3
+    display_options:
+      style:
+        type: data_export
+        options:
+          formats:
+            csv: csv
+          csv_settings:
+            delimiter: \t
+            enclosure: '"'
+            escape_char: \
+            strip_tags: true
+            trim: true
+            encoding: utf8
+            utf8_bom: '0'
+            use_serializer_encode_only: false
+      display_extenders: {  }
+      path: admin/files_export
+      filename: pdf_files_export.csv
+      automatic_download: true
+      store_in_public_file_directory: true
+      custom_redirect_path: false
+      redirect_to_display: page_1
+      include_query_params: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - request_format
+        - url
         - user.permissions
       tags: {  }
   page_1:
