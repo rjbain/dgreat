@@ -129,11 +129,11 @@ elements: |-
     are_there_consultants_on_the_project:
       '#type': webform_radios_other
       '#title': 'Are there consultants on the project?'
-      '#description': '(Will you will partnering with colleagues at another university or organization? If you indicate &quot;yes&quot;, please give the contact information for them in the project description.)'
+      '#description': '<p>(Will you will partnering with colleagues at another university or organization? If you indicate "yes", please give the contact information for them in the project description.)</p>'
       '#options':
         'No': 'No'
       '#other__option_label': 'Yes'
-      '#other__description': 'If yes, list the consultants with contact information.'
+      '#other__description': 'If yes, what percentage of the proposal budget will be awarded to consultants?'
       '#required': true
       '#options__properties': ''
     cost_sharing_:
@@ -186,6 +186,14 @@ elements: |-
         'Yes': 'Yes'
       '#required': true
       '#options__properties': ''
+    does_your_project_require_course_buy_out_:
+      '#type': webform_radios_other
+      '#title': 'Does your project require course buy-out?'
+      '#options':
+        'No': 'No'
+      '#other__option_label': 'Yes'
+      '#other__description': 'If yes, how many hours? Note: Please discuss with your supervisor in advance.'
+      '#options__properties': ''
   completion_of_the_following_questions_is_required_section:
     '#type': fieldset
     '#title': 'Completion of the following questions is required:'
@@ -207,12 +215,21 @@ elements: |-
       '#required': true
       '#options__properties': ''
     _have_you_sought_irb_approval_:
-      '#type': radios
+      '#type': webform_radios_other
       '#title': ' Have you sought IRB approval?'
       '#options':
         'No': 'No'
-        'Yes': 'Yes'
-      '#other__option_label': other...
+      '#other__option_label': 'Yes'
+      '#other__description': 'If yes, contact IRB at IRBHPS@usfca.edu.'
+      '#required': true
+      '#options__properties': ''
+    does_your_project_involve_animals_:
+      '#type': webform_radios_other
+      '#title': 'Does your project involve animals?'
+      '#options':
+        'No': 'No'
+      '#other__option_label': 'Yes'
+      '#other__description': 'If yes, please contact IACUC at iacuc@usfca.edu.'
       '#required': true
       '#options__properties': ''
     completion_of_the_following_questions_is_required_:
@@ -223,7 +240,7 @@ elements: |-
         'Yes': 'Yes'
     if_so_please_mark_all_appropriate_boxes_if_your_research_does_no:
       '#type': checkboxes
-      '#title': 'If so, please mark all appropriate boxes. If your research does not involve any of these categories please check the box next to the statement at the bottom of this section'
+      '#title': 'If yes, please mark all appropriate boxes. If your research does not involve any of these categories please check the box next to the statement at the bottom of this section'
       '#options':
         'Chemical Hazards ': 'Chemical Hazards '
         'Compressed Gases': 'Compressed Gases'
@@ -240,6 +257,7 @@ elements: |-
         'Radioisotopes (Sealed Sources)': 'Radioisotopes (Sealed Sources)'
         'Laser Hazard': 'Laser Hazard'
       '#options_display': two_columns
+      '#options__properties': ''
     _i_have_reviewed_the_above_list_and_certify_that_my_research_pro:
       '#type': checkbox
       '#title': ' I have reviewed the above list and certify that my research proposal does not involve the use of any of these hazard categories. If this should change in the future I will re-submit this form.'
@@ -485,7 +503,7 @@ handlers:
           text: 'skoirala@usfca.edu, delunar@usfca.edu'
         -
           value: 'School of Law'
-          text: 'freiwald@usfca.edu, esprague@usfca.edu'
+          text: 'jkalb@usfca.edu, esprague@usfca.edu'
         -
           value: 'School of Nursing and Health Professions'
           text: 'efrybowers@usfca.edu, amartinez10@usfca.edu, cmulcahy2@usfca.edu'
