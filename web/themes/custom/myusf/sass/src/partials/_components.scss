@@ -29,6 +29,14 @@
 .paragraph--bp-accordion-container {
 	padding-top: 0;
 	margin-bottom: 2.5rem;
+
+	.paragraph__column ul li {
+		margin-left: .825rem;
+		
+		&:before {
+			margin-left: .825rem;
+		}
+	}
 }
 
 .paragraph.paragraph--type--bp-accordion {
@@ -557,6 +565,13 @@ a.card-rollover {
 .pagination {
 	margin-top: .8rem;
 	border-radius: 0;
+	@include media-breakpoint-down(phone) {
+		margin-left: -10px;
+
+		.pager__item--next {
+			margin-right: 0!important;
+		}
+	}
 
 	.page-item a, .pager__item--next a {
 	    font-size: .85rem;
@@ -1313,7 +1328,7 @@ content: "";
 
 .video-component-body {
 	color: $white!important;
-    margin-left: 1.875rem;
+	margin-left: 1.875rem;
     margin-right: 1.875rem;
     padding-bottom: 0.9375rem;
     padding-top: 0.4375rem;
@@ -1324,9 +1339,10 @@ content: "";
 	}
 
     p {
-	    color: $white!important;
 	    font-size: .9rem;
 	    margin-bottom: 0.3125rem;
+    	max-width: 825px;
+    	margin: 0 auto;
 
 	    @include media-breakpoint-down(desktop) {
 	    	font-size: .85rem;

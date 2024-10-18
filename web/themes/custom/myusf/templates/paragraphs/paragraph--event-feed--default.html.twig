@@ -37,6 +37,26 @@
  */
 #}
 <div class="event-feed-wrapper">
+{% set header = paragraph.field_accordion_section_header.value %}
+{% if header is empty %}
+    {% set header = "h2" %}
+{% else %}
+    {% set header = header %}
+{% endif %}
+
+{% set title = paragraph.field_title.value %}
+{% if title is empty %}
+    {% set title = "Upcoming Events" %}
+{% else %}
+    {% set title = title %}
+{% endif %}
+
+
+
+<{{ header }}>{{ title }}</{{ header }}>
+
+
+
     {% set block = paragraph.field_view_type.value|trim %}
     {% set terms = [] %}
         {% for item in paragraph.field_event_terms %}
