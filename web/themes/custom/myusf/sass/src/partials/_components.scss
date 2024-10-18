@@ -30,8 +30,12 @@
 	padding-top: 0;
 	margin-bottom: 2.5rem;
 
-	.paragraph__column ul li:before {
+	.paragraph__column ul li {
 		margin-left: .825rem;
+		
+		&:before {
+			margin-left: .825rem;
+		}
 	}
 }
 
@@ -561,6 +565,13 @@ a.card-rollover {
 .pagination {
 	margin-top: .8rem;
 	border-radius: 0;
+	@include media-breakpoint-down(phone) {
+		margin-left: -10px;
+
+		.pager__item--next {
+			margin-right: 0!important;
+		}
+	}
 
 	.page-item a, .pager__item--next a {
 	    font-size: .85rem;
