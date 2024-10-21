@@ -3,7 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.event_feed.field_accordion_section_header
     - field.field.paragraph.event_feed.field_event_terms
+    - field.field.paragraph.event_feed.field_title
     - field.field.paragraph.event_feed.field_view_type
     - paragraphs.paragraphs_type.event_feed
 id: paragraph.event_feed.default
@@ -11,9 +13,15 @@ targetEntityType: paragraph
 bundle: event_feed
 mode: default
 content:
+  field_accordion_section_header:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_event_terms:
     type: entity_reference_autocomplete
-    weight: 1
+    weight: 3
     region: content
     settings:
       match_operator: CONTAINS
@@ -21,9 +29,17 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_view_type:
     type: options_select
-    weight: 0
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }

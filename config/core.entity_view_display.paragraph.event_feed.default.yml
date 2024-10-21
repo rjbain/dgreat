@@ -3,7 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.event_feed.field_accordion_section_header
     - field.field.paragraph.event_feed.field_event_terms
+    - field.field.paragraph.event_feed.field_title
     - field.field.paragraph.event_feed.field_view_type
     - paragraphs.paragraphs_type.event_feed
   module:
@@ -13,12 +15,27 @@ targetEntityType: paragraph
 bundle: event_feed
 mode: default
 content:
+  field_accordion_section_header:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
   field_event_terms:
     type: entity_reference_entity_id
     label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
     region: content
   field_view_type:
     type: list_key
