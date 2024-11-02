@@ -150,11 +150,11 @@ accordion_active ? 'paragraph--accordion_active--',
 
 {# Prints Accordion template. #}
 <div class="paragraph--bp-accordion-container">
-  {% if content.bp_accordion_expand['#items'].getString() %}
+  {# {% if content.bp_accordion_expand['#items'].getString() %} #}
     <button type="button" class="btn btn-primary bp-accordion-button" title="{{ 'Click to expand all accordions in this section.'|trans }}">
       {{ 'Expand All'|trans }}
     </button>
-  {% endif %}
+  {# {% endif %} #}
   <div{{ attributes.addClass(classes) }}>
     <div class="paragraph__column" id="{{ paragraph_id }}" aria-multiselectable="true">
       {% if content.bp_header|render %}
