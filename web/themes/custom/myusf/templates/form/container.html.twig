@@ -23,8 +23,4 @@
     has_parent ? 'form-wrapper',
   ]
 %}
-{% if attributes.hasClass('views-element-container') %}
-  {{ children }}
-{% else %}
-  <div{{ attributes.addClass(classes) }}>{{ children }}</div>
-{% endif %}
+<div{{ attributes.addClass(classes) }}>{{ children }}</div>
