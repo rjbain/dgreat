@@ -146,7 +146,8 @@ span.diamond_link {
     }
 }
 
-a.bp-accordion-button {
+a.bp-accordion--button,
+a.bp-accordion-button-toggle-all {
     font-size: 0.7rem;
     font-weight: 600!important;
     background: transparent;
@@ -163,7 +164,9 @@ a.bp-accordion-button {
         background-color: transparentize( $yellow, 0.8);
     }
 }
-
+#toggle-all.bp-accordion-button-toggle-all {
+    float: right;
+}
 .diamond_link, .cta-link {
     @include diamond_button(-300px, -129px, 45deg, $yellow, $white, $yellow);
 
