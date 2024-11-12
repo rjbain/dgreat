@@ -87,7 +87,14 @@
 
 {% set gcal_title = node.title.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
 {% set gcal_desc = node.body.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
-{% set gcal_addl = node.field_additional_info.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
+{# {% set gcal_addl = node.field_additional_info.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %} #}
+
+{% if node.field_additional_info is empty %}
+  {% set gcal_addl = "" %}
+{% else %}
+  {% set gcal_addl = node.field_additional_info.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
+{% endif %}
+
 {% set gcal_loc = node.field_location.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
 {% set gcal_bldg = node.field_building.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
 {% set gcal_sdate = node.field_start_date.value|date('Ymd') %}
@@ -99,7 +106,7 @@
 
 
 
-{% set gcalstr = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" ~ gcal_title ~ "&details=" ~ gcal_addl ~ gcal_desc ~ "&location=" ~ gcal_loc ~ " "  ~ gcal_bldg ~ "&dates=" ~ gcal_sdatetime ~ "/" ~ gcal_edatetime ~"" %}
+{% set gcalstr = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" ~ gcal_title ~ "&details=" ~ gcal_addl ~ gcal_desc ~ "&location=" ~ gcal_loc ~ " " ~ gcal_bldg ~ "&dates=" ~ gcal_sdatetime ~ "/" ~ gcal_edatetime ~"" %}
 
 
 
