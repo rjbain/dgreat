@@ -94,19 +94,8 @@
   {% set gcal_addl = node.field_additional_info.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
 {% endif %}
 
-{% if node.field_location.value is empty %}
-  {% set gcal_loc = "" %}
-{% else %}
-  {% set gcal_loc = node.field_location.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
-{% endif %}
-
-{% if node.field_building is empty %}
-  {% set gcal_bldg = "" %}
-{% else %}
-  {% set gcal_bldg = node.field_building.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
-{% endif %}
-
-
+{% set gcal_loc = node.field_location.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
+{% set gcal_bldg = node.field_building.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
 {% set gcal_sdate = node.field_start_date.value|date('Ymd') %}
 {% set gcal_stime =  node.field_start_date.value|date('His') %}
 {% set gcal_sdatetime = gcal_sdate ~ "T" ~ gcal_stime %}
@@ -157,7 +146,7 @@
       </div>
     </div>
     <div class="event-calendar-icon">
-  	<a href="{{ gcalstr }}">Add to Google Calendar</a>
+  	<a class="diamond_link_small" href="{{ gcalstr }}">Add to Google Calendar</a>
     </div>
     
 
