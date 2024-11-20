@@ -86,7 +86,12 @@
 {% set f_image_url = node.field_f_image_url.uri %}
 
 {% set gcal_title = node.title.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
-{% set gcal_desc = node.body.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
+
+{% if node.body is empty %}
+  {% set gcal_desc = "" %}
+{% else %}
+  {% set gcal_desc = node.body.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
+{% endif %}
 
 {% if node.field_additional_info is empty %}
   {% set gcal_addl = "" %}
@@ -94,8 +99,18 @@
   {% set gcal_addl = node.field_additional_info.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
 {% endif %}
 
-{% set gcal_loc = node.field_location.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
-{% set gcal_bldg = node.field_building.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
+{% if node.field_location is empty %}
+  {% set gcal_loc = "" %}
+{% else %}
+  {% set gcal_loc =  node.field_location.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
+{% endif %}
+
+{% if node.field_building is empty %}
+  {% set gcal_bldg = "" %}
+{% else %}
+  {% set gcal_bldg =  node.field_building.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
+{% endif %}
+
 {% set gcal_sdate = node.field_start_date.value|date('Ymd') %}
 {% set gcal_stime =  node.field_start_date.value|date('His') %}
 {% set gcal_sdatetime = gcal_sdate ~ "T" ~ gcal_stime %}
