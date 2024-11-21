@@ -39,7 +39,7 @@
 
 {{ attach_library('bootstrap_paragraphs/bootstrap-paragraphs') }}
 {{ attach_library('bootstrap_paragraphs/bp-accordion') }}
-{{ attach_library('myusf/toggle-accordion') }}
+{# {{ attach_library('myusf/toggle-accordion') }} #}
 
 {# Renders Width field. #}
 {# Sets class name from values in database. #}
@@ -150,8 +150,9 @@ accordion_active ? 'paragraph--accordion_active--',
 {% set paragraph_id = 'accordion-' ~ paragraph.id.value %}
 
 {# Prints Accordion template. #}
+
 <div class="paragraph--bp-accordion-container">
-<a href="javascript:void(0);" id="toggle-all" class="bp-accordion-button-toggle-all">Open All</a>
+<a href="javascript:void(0);" id="toggle-all-{{ paragraph.id.value }}" class="bp-accordion-button-toggle-all">Open All</a>
   {% if content.bp_accordion_expand['#items'].getString() %}
     <button type="button" class="btn btn-primary bp-accordion-button" title="{{ 'Click to expand all accordions in this section.'|trans }}">
       {{ 'Expand All'|trans }}
@@ -220,3 +221,47 @@ accordion_active ? 'paragraph--accordion_active--',
     </div>
   </div>
 </div>
+
+
+<script>
+// Select the link element by its id 'toggle-all'
+const link{{ paragraph.id.value }} = document.querySelector('#toggle-all-{{ paragraph.id.value }}');
+
+// Function to update the link text based on the state of accordion elements
+function updateLinkText() {
+    const elements{{ paragraph.id.value }} = document.querySelectorAll("[id^='collapse-accordion-{{ paragraph.id.value }}']");
+    const isAnyElementOpen = Array.from(elements{{ paragraph.id.value }}).some(element => element.classList.contains('show'));
+    link{{ paragraph.id.value }}.textContent = isAnyElementOpen ? "Close All" : "Open All";
+}
+// Add an event listener for the click event on the link
+link{{ paragraph.id.value }}.addEventListener('click', function() {
+    // Select all elements whose id starts with 'collapse-accordion'
+    const elements{{ paragraph.id.value }} = document.querySelectorAll("[id^='collapse-accordion-{{ paragraph.id.value }}']");
+    // Check if any element is currently open (has the 'show' class)
+    const isAnyElementOpen = Array.from(elements{{ paragraph.id.value }}).some(element => element.classList.contains('show'));
+    if (isAnyElementOpen) {
+        // If any element is open, close only those elements that are currently open
+        elements{{ paragraph.id.value }}.forEach(element => {
+            if (element.classList.contains('show')) {
+                element.classList.remove('show');
+            }
+        });
+        link{{ paragraph.id.value }}.textContent = "Open All";
+    } else {
+        // If all elements are closed, open only those elements that are currently closed
+        elements{{ paragraph.id.value }}.forEach(element => {
+            if (!element.classList.contains('show')) {
+                element.classList.add('show');
+            }
+        });
+        link{{ paragraph.id.value }}.textContent = "Close All";
+    }
+});
+
+// Set up a MutationObserver to watch for changes to the 'show' class on each element
+const elements{{ paragraph.id.value }} = document.querySelectorAll("[id^='collapse-accordion-{{ paragraph.id.value }}']");
+elements{{ paragraph.id.value }}.forEach(element => {
+    const observer = new MutationObserver(updateLinkText);
+    observer.observe(element, { attributes: true, attributeFilter: ['class'] });
+});
+</script>
