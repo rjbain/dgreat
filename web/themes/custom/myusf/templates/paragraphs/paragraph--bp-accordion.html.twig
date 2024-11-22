@@ -187,7 +187,7 @@ accordion_active ? 'paragraph--accordion_active--',
             {% elseif h_value is not empty %}
             {% set h_value = h_value %}
             {% endif %}
-              <a class="{{ (indicator_class) }}" role="button" data-toggle="collapse" data-parent="#{{ paragraph_id }}" href="#collapse-{{ paragraph_id }}-{{ key + 1 }}" aria-expanded="{{ aria }}" aria-controls="collapse-{{ paragraph_id }}-{{ key + 1 }}">
+              <a class="{{ (indicator_class) }}" role="button" data-toggle="collapse" data-parent="#{{ paragraph_id }}" href="#collapse-{{ paragraph_id }}-{{ key + 1 }}" aria-expanded="{{ aria }}" aria-controls="collapse-{{ paragraph_id }}-{{ key + 1 }}" id="toggle-link-{{ paragraph.id.value }}-{{ key + 1 }}">
                 <{{ h_value }} class="accordion-title-h">
                   {# Print the accordion section title. #}
                   {{ item['#paragraph'].bp_accordion_section_title.value }}
@@ -225,70 +225,19 @@ accordion_active ? 'paragraph--accordion_active--',
 
 <script>
 // Select the link element by its id 'toggle-all'
-{# const link{{ paragraph.id.value }} = document.querySelector('#toggle-all-{{ paragraph.id.value }}');
-
-// Function to update the link text based on the state of accordion elements
-function updateLinkText() {
-    const elements{{ paragraph.id.value }} = document.querySelectorAll("[id^='collapse-accordion-{{ paragraph.id.value }}']");
-    const isAnyElementOpen = Array.from(elements{{ paragraph.id.value }}).some(element => element.classList.contains('show'));
-    link{{ paragraph.id.value }}.textContent = isAnyElementOpen ? "Close All" : "Open All";
-}
-// Add an event listener for the click event on the link
-link{{ paragraph.id.value }}.addEventListener('click', function() {
-    // Select all elements whose id starts with 'collapse-accordion'
-    const elements{{ paragraph.id.value }} = document.querySelectorAll("[id^='collapse-accordion-{{ paragraph.id.value }}']");
-    // Check if any element is currently open (has the 'show' class)
-    const isAnyElementOpen = Array.from(elements{{ paragraph.id.value }}).some(element => element.classList.contains('show'));
-    if (isAnyElementOpen) {
-        // If any element is open, close only those elements that are currently open
-        elements{{ paragraph.id.value }}.forEach(element => {
-            if (element.classList.contains('show')) {
-                element.classList.remove('show');
-                element.setAttribute("aria-expanded", "false");
-            }
-        });
-        link{{ paragraph.id.value }}.textContent = "Open All";
-        link{{ paragraph.id.value }}.setAttribute("aria-expanded", "false");
-    } else {
-        // If all elements are closed, open only those elements that are currently closed
-        elements{{ paragraph.id.value }}.forEach(element => {
-            if (!element.classList.contains('show')) {
-                element.classList.add('show');
-                element.setAttribute("aria-expanded", "true");
-            }
-        });
-        link{{ paragraph.id.value }}.textContent = "Close All";
-        link{{ paragraph.id.value }}.setAttribute("aria-expanded", "true");
-    }
-});
-
-// Set up a MutationObserver to watch for changes to the 'show' class on each element
-const elements{{ paragraph.id.value }} = document.querySelectorAll("[id^='collapse-accordion-{{ paragraph.id.value }}']");
-elements{{ paragraph.id.value }}.forEach(element => {
-    const observer = new MutationObserver(updateLinkText);
-    observer.observe(element, { attributes: true, attributeFilter: ['class'] });
-});
- #}
-
-//new one
-
-
-
-// Select the link element by its id 'toggle-all'
 const link{{ paragraph.id.value }} = document.querySelector('#toggle-all-{{ paragraph.id.value }}');
 
 // Function to update the link text and aria-expanded attributes
 function updateLinkTextAndAria() {
-    const elements{{ paragraph.id.value }} = document.querySelectorAll("[id^='collapse-accordion-{{ paragraph.id.value }}']");
-    const headers{{ paragraph.id.value }} = document.querySelectorAll("a[aria-expanded]"); // Select all `a` tags with aria-expanded
+    const elements = document.querySelectorAll("[id^='collapse-accordion-{{ paragraph.id.value }}']");
     const isAnyElementOpen = Array.from(elements{{ paragraph.id.value }}).some(element => element.classList.contains('show'));
 
     // Update the toggle-all link text
     link{{ paragraph.id.value }}.textContent = isAnyElementOpen ? "Close All" : "Open All";
 
-    // Update aria-expanded for each header
-    headers{{ paragraph.id.value }}.forEach(header => {
-        header.setAttribute('aria-expanded', isAnyElementOpen ? "true" : "false");
+    // Update aria-expanded for each accordion content
+    elements{{ paragraph.id.value }}.forEach(element => {
+        element.setAttribute('aria-expanded', element.classList.contains('show') ? "true" : "false");
     });
 }
 
@@ -296,38 +245,32 @@ function updateLinkTextAndAria() {
 link{{ paragraph.id.value }}.addEventListener('click', function () {
     // Select all elements whose id starts with 'collapse-accordion'
     const elements{{ paragraph.id.value }} = document.querySelectorAll("[id^='collapse-accordion-{{ paragraph.id.value }}']");
-    const headers{{ paragraph.id.value }} = document.querySelectorAll("a[aria-expanded]"); // Select all `a` tags with aria-expanded
+    const headers{{ paragraph.id.value }} = document.querySelectorAll("[id^='toggle-link-{{ paragraph.id.value }}']");
 
     // Check if any element is currently open (has the 'show' class)
     const isAnyElementOpen = Array.from(elements{{ paragraph.id.value }}).some(element => element.classList.contains('show'));
 
     if (isAnyElementOpen) {
-        // If any element is open, close only those elements that are currently open
+        // If any element is open, close all and update aria-expanded to false
         elements{{ paragraph.id.value }}.forEach(element => {
-            if (element.classList.contains('show')) {
-                element.classList.remove('show');
-            }
+            element.classList.remove('show');
         });
-
-        // Update aria-expanded to false
-        headers{{ paragraph.id.value }}.forEach(header => {
-            header.setAttribute('aria-expanded', "false");
+ 
+        headers{{ paragraph.id.value }}.forEach(element => {
+            element.setAttribute('aria-expanded', "false");
         });
-
+ 
         link{{ paragraph.id.value }}.textContent = "Open All";
     } else {
-        // If all elements are closed, open only those elements that are currently closed
+        // If all elements are closed, open all and update aria-expanded to true
         elements{{ paragraph.id.value }}.forEach(element => {
-            if (!element.classList.contains('show')) {
-                element.classList.add('show');
-            }
+            element.classList.add('show');
         });
-
-        // Update aria-expanded to true
-        headers{{ paragraph.id.value }}.forEach(header => {
-            header.setAttribute('aria-expanded', "true");
+ 
+        headers{{ paragraph.id.value }}.forEach(element => {
+            element.setAttribute('aria-expanded', "true");
         });
-
+ 
         link{{ paragraph.id.value }}.textContent = "Close All";
     }
 });
@@ -338,9 +281,4 @@ elements{{ paragraph.id.value }}.forEach(element => {
     const observer = new MutationObserver(updateLinkTextAndAria);
     observer.observe(element, { attributes: true, attributeFilter: ['class'] });
 });
-
-
-
-
-
 </script>
