@@ -84,6 +84,53 @@
 {% set image_url = node.field_image_url.uri %}
 {% set imageAlt = node.field_image_alt.value %}
 {% set f_image_url = node.field_f_image_url.uri %}
+
+{% set gcal_title = node.title.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
+
+{% if node.body is empty %}
+  {% set gcal_desc = "" %}
+{% else %}
+  {% set gcal_desc = node.body.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
+{% endif %}
+
+{% if node.field_additional_info is empty %}
+  {% set gcal_addl = "" %}
+{% else %}
+  {% set gcal_addl = node.field_additional_info.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
+{% endif %}
+
+{% if node.field_location is empty %}
+  {% set gcal_loc = "" %}
+{% else %}
+  {% set gcal_loc =  node.field_location.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
+{% endif %}
+
+{% if node.field_building is empty %}
+  {% set gcal_bldg = "" %}
+{% else %}
+  {% set gcal_bldg =  node.field_building.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
+{% endif %}
+
+{% set gcal_sdate = node.field_start_date.value|date('Ymd') %}
+{% set gcal_stime =  node.field_start_date.value|date('His') %}
+{% set gcal_sdatetime = gcal_sdate ~ "T" ~ gcal_stime %}
+{% set gcal_edate = node.field_end_date.value|date('Ymd') %}
+{% set gcal_etime = node.field_end_date.value|date('His') %}
+{% set gcal_edatetime = gcal_edate ~ "T" ~ gcal_etime %}
+
+
+
+{% set gcalstr = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" ~ gcal_title ~ "&details=" ~ gcal_addl ~ gcal_desc ~ "&location=" ~ gcal_loc ~ " " ~ gcal_bldg ~ "&dates=" ~ gcal_sdatetime ~ "/" ~ gcal_edatetime ~"" %}
+
+
+
+
+
+
+
+
+
+
   <h1 class="title">{{ title }}</h1>
 <article{{ attributes.addClass(classes) }}>
   <p class="event-date"><span class="event-date-day">{{ start_date }}</span> {{ start_time }} - {{ end_time }}</p>
@@ -113,6 +160,12 @@
         {% endautoescape %}
       </div>
     </div>
+    <div class="event-calendar-icon">
+  	<a class="diamond_link_small" href="{{ gcalstr }}">Add to Google Calendar</a>
+    </div>
+    
+
+
   </div>
 </article>
 <br clear="all">
