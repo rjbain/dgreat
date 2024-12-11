@@ -118,9 +118,7 @@
                     <div class="contact-info-links">
                         {% for links in content.field_social_media_links %}
                             {% for link in links['#paragraph'].field_social_media_network %}
-                              {% if link.value != "Twitter" %}
                                 <a class="{{ link.value|lower }}_gray social" href="{{ links['#paragraph'].field_social_media_url.uri }}" target="_blank" aria-label="Visit our {{ link.value|lower }}"><span class="visually-hidden">Visit our {{ link.value|lower }}</span></a>
-                              {% endif %}
                             {% endfor %}
                         {% endfor %}
                         {% if appt %}
