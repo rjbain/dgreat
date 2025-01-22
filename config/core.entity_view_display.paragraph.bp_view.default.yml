@@ -17,6 +17,14 @@ targetEntityType: paragraph
 bundle: bp_view
 mode: default
 content:
+  bp_header:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
   bp_view:
     type: viewsreference_formatter
     label: hidden
@@ -24,11 +32,10 @@ content:
       plugin_types:
         - block
     third_party_settings: {  }
-    weight: 0
+    weight: 1
     region: content
 hidden:
   bp_background: true
-  bp_header: true
   bp_width: true
   created: true
   search_api_excerpt: true
