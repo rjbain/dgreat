@@ -6,6 +6,8 @@
 //$ gulp watch (To continuously watch so changes are automatically compiled)
 //For arm64 see https://stackoverflow.com/questions/55921442/how-to-fix-referenceerror-primordials-is-not-defined-in-node-js
 //Use node 10
+//nvm use 10
+
 
 var sassFiles = 'sass/src/*.scss',
     cssFiles = 'css',

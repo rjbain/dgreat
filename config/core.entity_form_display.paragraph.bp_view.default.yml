@@ -17,15 +17,9 @@ targetEntityType: paragraph
 bundle: bp_view
 mode: default
 content:
-  bp_background:
-    type: options_select
-    weight: 0
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   bp_header:
     type: string_textfield
-    weight: 2
+    weight: 0
     region: content
     settings:
       size: 60
@@ -33,21 +27,17 @@ content:
     third_party_settings: {  }
   bp_view:
     type: viewsreference_autocomplete
-    weight: 3
+    weight: 1
     region: content
     settings:
       match_operator: CONTAINS
-      size: '60'
-      placeholder: ''
       match_limit: 10
-    third_party_settings: {  }
-  bp_width:
-    type: options_select
-    weight: 1
-    region: content
-    settings: {  }
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
 hidden:
+  bp_background: true
+  bp_width: true
   created: true
   status: true
   uid: true
