@@ -8,6 +8,7 @@ dependencies:
     - block_content
     - block_visibility_groups
     - system
+    - user
   theme:
     - myusf
 id: iewvotingcode
@@ -35,3 +36,10 @@ visibility:
     negate: false
     context_mapping: {  }
     pages: /study-abroad/iew-photo-contest-poll
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      administrator: administrator

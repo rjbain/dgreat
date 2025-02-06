@@ -1,6 +1,6 @@
 uuid: 820e3e8d-61f8-45a0-9a36-83beea50f724
 langcode: en
-status: closed
+status: open
 dependencies:
   module:
     - dgreat_student_surveys
@@ -15,9 +15,12 @@ template: false
 archive: false
 id: isss_airport_shuttle_pick_up_for
 title: 'ISSS Airport Pick-up Form'
-description: ''
+description: '<h2>ISSS Airport Shuttle Application Registration</h2>'
 categories: {  }
 elements: |-
+  isss_airport_shuttle_application_registration:
+    '#type': label
+    '#title': 'ISSS Airport Shuttle Application Registration'
   last_family_name:
     '#type': textfield
     '#title': 'Last (Family) Name'
@@ -45,7 +48,7 @@ elements: |-
     '#type': radios
     '#title': 'SFO Airport Arrival Date (Please send your corresponding flight itinerary to isss@usfca.edu)'
     '#options':
-      'Saturday, August 10, 2024': 'Saturday, August 10, 2024 -- International Student Move In Day'
+      'Tuesday, January 14, 2025': 'Tuesday, January 14, 2025 -- International Student Move In Day'
     '#required': true
     '#options__properties': ''
   sfo_airport_arrival_time:
@@ -73,6 +76,7 @@ elements: |-
     '#options':
       1: 'Yes'
       2: 'No'
+    '#required': true
   if_you_have_been_assigned_a_room_on_campus_which_residence_hall_:
     '#type': radios
     '#title': 'If you have been assigned a room on campus, which Residence Hall are you in?'
@@ -95,7 +99,7 @@ elements: |-
     '#access': false
   please_send_your_corresponding_flight_itinerary_to_isss_usfca_ed:
     '#type': label
-    '#title': 'To confirm your airport shuttle reservation, email your flight itinerary to isss@usfca.edu immediately after submitting this form.'
+    '#title': 'Email a copy of your flight itinerary to isss@usfca.edu immediately after submitting this form. It must include your name and flight information. Your airport shuttle reservation cannot be confirmed until your flight itinerary is received by ISSS.'
 css: ''
 javascript: ''
 settings:
