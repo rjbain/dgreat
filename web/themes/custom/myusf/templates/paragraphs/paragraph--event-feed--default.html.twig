@@ -36,32 +36,43 @@
  * @ingroup themeable
  */
 #}
+{% set block = paragraph.field_view_type.value|trim %}
+
+{% set terms = [] %}
+{% for item in paragraph.field_event_terms %}
+    {% set terms = terms|merge([item.value.target_id]) %}
+{% endfor %}
+{% set terms = terms|join('+') %}
+
 <div class="event-feed-wrapper">
-{% set header = paragraph.field_accordion_section_header.value %}
-{% if header is empty %}
-    {% set header = "h2" %}
-{% else %}
-    {% set header = header %}
-{% endif %}
+    {% set header = paragraph.field_accordion_section_header.value %}
+    {% if header is empty %}
+        {% set header = "h2" %}
+    {% else %}
+        {% set header = header %}
+    {% endif %}
 
-{% set title = paragraph.field_title.value %}
-{% if title is empty %}
-    {% set title = "Upcoming Events" %}
-{% else %}
-    {% set title = title %}
-{% endif %}
+    {% if block == "block_4" or block == "block_5" or block == "block_6" %}
+        {% set results = drupal_view_result('events_search', block, terms, true) %}
+        {% if results is empty %}
+        {% else %}
+            {% set title = paragraph.field_title.value %}
+                {% if title is empty %}
+                {% set title = "Upcoming Events" %}
+            {% else %}
+                {% set title = title %}
+            {% endif %}
+        {% endif %}
+    {% else %}
+        {% set title = paragraph.field_title.value %}
+        {% if title is empty %}
+            {% set title = "Upcoming Events" %}
+        {% else %}
+            {% set title = title %}
+        {% endif %}
+    {% endif %}
 
-
-
-<{{ header }}>{{ title }}</{{ header }}>
-
-
-
-    {% set block = paragraph.field_view_type.value|trim %}
-    {% set terms = [] %}
-        {% for item in paragraph.field_event_terms %}
-        {% set terms = terms|merge([item.value.target_id]) %}
-        {% endfor %}
-        {% set terms = terms|join('+') %}
-        {{ drupal_view('events_search', block, terms) }}
+    <{{ header }}>{{ title }}</{{ header }}>
+    {{ drupal_view('events_search', block, terms) }}
 </div>
+
