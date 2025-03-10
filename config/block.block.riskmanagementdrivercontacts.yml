@@ -7,6 +7,7 @@ dependencies:
   module:
     - block_content
     - block_visibility_groups
+    - node
     - system
   theme:
     - myusf
@@ -35,3 +36,10 @@ visibility:
     negate: false
     context_mapping: {  }
     pages: "/risk\r\n/risk/driver\r\n/risk/vehicularpolicy"
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      contact_box: contact_box
