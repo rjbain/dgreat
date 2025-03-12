@@ -44,35 +44,26 @@
 .event-description ul,
 .node--type-announcement .field--type-text-with-summary ul {
 	-webkit-padding-start: 1.25rem;
-	padding-left: 1.25rem;
+	padding-left: 2.25rem;
 	overflow: hidden;
 
 	@include media-breakpoint-down(phone) {
 		-webkit-padding-start: 0;
-		padding-left: 0;
+		padding-left: 1.25rem;
 	}
 
 	li {
-		position: relative;  
-		list-style-type: none;	  	
+		position: relative;    	
 	  	margin-right: 3.125rem;
-	  	padding-left: 1.25rem;
+	  	padding-left: .25rem;
 
 	  	
 	  	@include media-breakpoint-down(phone) {
 	  		margin-right: 0;
 	  	}
 
-		&:before {
-			font-size: 1rem;
+		&::marker {
 			color: $yellow; 	
-			content: "\25A0"; 			 
-			text-align: right;			
-		  	position: absolute;
-		  	left: -32px;
-		  	top: 0; 
-		  	width: 26px;
-		  	padding-left: 1.875rem;
 	    }
 	}
 
