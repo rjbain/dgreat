@@ -2,46 +2,48 @@
 {% extends 'page.html.twig' %}
 
 {% block content %}
-  <div id="pnf-banner">
+  <div id="page-not-found-banner">
     {{ drupal_entity('block_content', 675) }}
   </div>
-    <div class="container">
+  <div class="container page-not-found">
+    <p>Your search came back foggy. Let's clear this up.</p>
         {{ parent() }}
-<style>
-  #sidebar_first, #sidebar_second {
-    display:none;
-  }
-</style>
+    <style>
+      #sidebar_first, #sidebar_second {
+        display:none;
+      }
+    </style>
 
-<!-- For the myUSF only results: -->
+    <!-- For the myUSF only results: -->
 
-<script>
-    // For results depending on cx string
-    (function() {
-        var cx = '005959802884155210049:zgpaemt7_ow';
-        var gcse = document.createElement('script');
-        gcse.type = 'text/javascript';
-        gcse.async = true;
-        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(gcse, s);
-    })();
-</script>
+    <script>
+        // For results depending on cx string
+        (function() {
+            var cx = '005959802884155210049:zgpaemt7_ow';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+        })();
+    </script>
 
-<div>
-    <style>.gsc-adBlock {display:none !important;}.gsc-above-wrapper-area {border: none !important;}</style>
-    <gcse:searchbox-only></gcse:searchbox-only>
-    <hr>
-    <gcse:searchresults-only></gcse:searchresults-only></div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+    <div>
+      <style>.gsc-adBlock {display:none !important;}.gsc-above-wrapper-area {border: none !important;}</style>
+      <gcse:searchbox-only></gcse:searchbox-only>
+      <hr>
+      <gcse:searchresults-only></gcse:searchresults-only>
     </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+  </div>
 {% endblock %}

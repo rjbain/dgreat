@@ -1145,7 +1145,7 @@ a.right.carousel-control {
 }
 
 /* 404 Page not Found Page */
-#pnf-banner {
+#page-not-found-banner {
     position: relative;
     padding-left: 0;
     padding-right: 0;
@@ -1156,6 +1156,38 @@ a.right.carousel-control {
     }
     @include media-breakpoint-down(phone) {
        margin-bottom: 1rem; //-2.1875rem; 
+    }
+
+    .hero-image-title-box {
+        bottom: -80px;
+        background: none;
+
+        .hero_image_title {
+            h1 {
+                color: black!important;
+                background-color: transparent;
+
+                @include media-breakpoint-down(phone) {
+                    padding-left: 20px;
+                }
+            }
+        }
+    }
+}
+
+.container.page-not-found {
+    .content {
+        display: none;
+    }
+
+    p {
+        position: relative;
+        top: 30px;
+        
+        @include media-breakpoint-down(phone) {
+            top: 60px;
+        }
+
     }
 }
 
