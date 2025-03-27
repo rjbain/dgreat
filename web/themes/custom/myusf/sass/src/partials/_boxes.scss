@@ -1162,6 +1162,13 @@ a.right.carousel-control {
         bottom: -80px;
         background: none;
 
+        @include media-breakpoint-down(phone) {
+            bottom: -60px;
+        }
+        @include media-breakpoint-only(tablet) {
+            bottom: -80px;
+        }
+
         .hero_image_title {
             h1 {
                 color: black!important;
@@ -1186,8 +1193,18 @@ a.right.carousel-control {
         
         @include media-breakpoint-down(phone) {
             top: 60px;
+            font-size: 0.85rem;
         }
+    }
 
+    div#___gcse_0,
+    div#___gcse_1 {
+        width: 100%;
+    }
+    div#___gcse_0 table.gsc-search-box {
+        @include media-breakpoint-only(tablet) {
+            width:100%!important;
+        }
     }
 }
 
