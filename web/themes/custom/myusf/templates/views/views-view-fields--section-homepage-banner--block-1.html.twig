@@ -31,7 +31,14 @@
  * @ingroup themeable
  */
 #}
-	<div class="hero-image-title-box section-home-hero-box">
+{% if not fields.field_image.content %}
+	{% set empty_banner_class = "empty" %}
+{% else %}
+	{% set empty_banner_class = "" %}
+{% endif %}
+
+{# {% if fields.field_image.content %} #}
+	<div class="hero-image-title-box section-home-hero-box {{ empty_banner_class }}">
 		{% if fields.field_display_title.content and fields.field_image.content %}
 		<div class="hero_image_title"><h1>{{ fields.field_display_title.content }}</h1></div><br/>
 		{% endif %}
@@ -39,6 +46,7 @@
 			<div class="hero_image_subtitle section-home-hero">{{ fields.field_sub_title.content }}</div>
 		{% endif %}
 	</div>
-<div class="hero_image"><img src="{{ fields.field_image.content }}" width="100%" alt="{{ fields.field_image_1.content }}"></div>
-<div class="hero_image_mobile"><img src="{{ fields.field_image.content }}" width="100%" alt="{{ fields.field_image_1.content }}"></div>
 
+	<div class="hero_image"><img src="{{ fields.field_image.content }}" width="100%" alt="{{ fields.field_image_1.content }}"></div>
+	<div class="hero_image_mobile"><img src="{{ fields.field_image.content }}" width="100%" alt="{{ fields.field_image_1.content }}"></div>
+{# {% endif %} #}

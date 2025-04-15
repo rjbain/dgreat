@@ -1036,7 +1036,8 @@ a.right.carousel-control {
     }
 }
 
-.hero-image-title-box {  
+.hero-image-title-box,
+#page-not-found-banner .hero-image-title-box {  
     position: absolute;
     left: 0;
     bottom: 20px;
@@ -1064,6 +1065,10 @@ a.right.carousel-control {
     }
     @include media-breakpoint-up(midlarge_desktop) {
         padding-left: calc((100% - 1540px)/ 2); 
+
+        &.empty {
+            padding-left: 0;
+        }
     }
     
     .hero_image_title h1 {
@@ -1136,6 +1141,51 @@ a.right.carousel-control {
         }
         @include media-breakpoint-down(phone) {
             display:none;
+        }
+    }
+}
+
+/* 404 Page not Found Page */
+#page-not-found-banner {
+    position: relative;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: -2.6rem;
+
+    @include media-breakpoint-up(landscape_phone) {
+       margin-bottom: -4.85rem;//-3.4375rem;    
+    }
+    @include media-breakpoint-down(phone) {
+       margin-bottom: -1.25rem; //-2.1875rem; 
+    }
+    .hero-image-title-box {
+        padding-top: .725rem;
+        padding-bottom: .725rem;
+    }
+}
+
+.container.page-not-found {
+    .content {
+        display: none;
+    }
+
+    p {
+        position: relative;
+        top: 30px;
+        
+        @include media-breakpoint-down(phone) {
+            top: 60px;
+            font-size: 0.85rem;
+        }
+    }
+
+    div#___gcse_0,
+    div#___gcse_1 {
+        width: 100%;
+    }
+    div#___gcse_0 table.gsc-search-box {
+        @include media-breakpoint-only(tablet) {
+            width:100%!important;
         }
     }
 }
