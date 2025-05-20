@@ -99,12 +99,6 @@
             // Fix for Ensemble
             $("[id^=contentView_]").attr("align","center");
 
-            // // Make .pdf and .txt files open in a new window.
-            // $(document).ready(function() {
-            //     $("a[href$='.pdf'], a[href$='.txt']")
-            //         .attr("target", "_blank")
-            //         .attr("rel", "noopener")
-            // });
         }
     };
     Drupal.behaviors.surveyModal = {
@@ -115,4 +109,114 @@
             }
         }
     };
+
+  // Add our new smooth scroll to accordion behavior
+  Drupal.behaviors.smoothScrollAccordion = {
+    attach: function (context, settings) {
+      // Find all accordion items - adapt selector based on USF site structure
+      const accordionItems = document.querySelectorAll('[id^="accordion-"]');
+
+      /**
+       * Scrolls to element and opens accordion
+       * @param {string} id - The ID of the accordion to scroll to
+       */
+      function scrollToAccordion(id) {
+        const targetElement = document.getElementById(id);
+
+        if (!targetElement) {
+          console.warn(`Accordion with ID "${id}" not found`);
+          return;
+        }
+
+        // Find the accordion header/toggle based on USF site structure
+        const accordionHeader =
+          targetElement.querySelector('.accordion-header') ||
+          targetElement.querySelector('.ui-accordion-header') ||
+          targetElement.querySelector('.field-group-format-toggler') ||
+          targetElement.querySelector('.paragraph--type--accordion .field--name-field-title') ||
+          targetElement.querySelector('[data-toggle="collapse"]') ||
+          targetElement.querySelector('h3.ui-accordion-header') ||
+          targetElement.querySelector('a.accordion-button');
+
+        // Find the accordion content
+        const accordionContent =
+          targetElement.querySelector('.accordion-collapse') ||
+          targetElement.querySelector('.ui-accordion-content') ||
+          targetElement.querySelector('.field-group-accordion-item-body') ||
+          targetElement.querySelector('.paragraph-content') ||
+          (accordionHeader ? document.getElementById(accordionHeader.getAttribute('aria-controls')) : null);
+
+        // Add margin to scroll position to account for fixed headers
+        const headerOffset = 100; // Adjust this value based on your site's header height
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        // Smooth scroll to the accordion with offset
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+
+        // Wait for scroll to complete before opening the accordion
+        setTimeout(() => {
+          // Open the accordion - handle different accordion implementations
+          if (accordionHeader) {
+            // Check if it's a Bootstrap accordion
+            if (accordionContent && accordionContent.classList.contains('collapse')) {
+              // Bootstrap accordion
+              if (!accordionContent.classList.contains('show')) {
+                accordionHeader.click();
+              }
+            }
+            // Check if it's a jQuery UI accordion (commonly used in USF site)
+            else if (accordionHeader.classList.contains('ui-accordion-header')) {
+              if (accordionHeader.classList.contains('ui-accordion-header-collapsed')) {
+                accordionHeader.click();
+              }
+            }
+            // Check if it's a field-group-accordion (common in Drupal)
+            else if (accordionHeader.classList.contains('field-group-format-toggler')) {
+              if (accordionHeader.getAttribute('aria-expanded') === 'false') {
+                accordionHeader.click();
+              }
+            }
+            // Generic implementation - fallback
+            else {
+              const isExpanded = accordionHeader.getAttribute('aria-expanded') === 'true';
+              if (!isExpanded) {
+                accordionHeader.click();
+              }
+            }
+          }
+        }, 500); // Allow time for the scroll to complete
+      }
+
+      // Handle anchor links within the page
+      $(document).once('smoothScrollAccordion').on('click', 'a[href^="#"]', function(e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && href.length > 1) {
+          e.preventDefault();
+          const targetId = href.substring(1);
+          scrollToAccordion(targetId);
+
+          // Update URL hash without jumping
+          if (history.pushState) {
+            history.pushState(null, null, href);
+          } else {
+            location.hash = href;
+          }
+        }
+      });
+
+      // Check for hash in URL on page load - only process once
+      if (context === document && window.location.hash) {
+        const targetId = window.location.hash.substring(1);
+        // Delay to ensure DOM is fully loaded
+        setTimeout(() => {
+          scrollToAccordion(targetId);
+        }, 300); // Longer delay for initial page load to ensure everything is rendered
+      }
+    }
+  };
+
 })(jQuery, Drupal);
