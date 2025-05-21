@@ -110,56 +110,56 @@
         }
     };
 
+
+
+
   Drupal.behaviors.smoothScrollAccordion = {
     initialized: false,
     attach: function (context, settings) {
 
-      function findAccordionHeader(element) {
-        const selectors = [
-          '.accordion-header',
-          '[data-toggle="collapse"]'
-        ];
-        return selectors.reduce((found, sel) => found || element.querySelector(sel), null);
-      }
-
-      function findAccordionContent(element, header) {
-        const selectors = [
-          '.accordion-collapse',
-          '.ui-accordion-content',
-          '.field-group-accordion-item-body',
-          '.paragraph-content'
-        ];
-        let content = selectors.reduce((found, sel) => found || element.querySelector(sel), null);
-        if (!content && header?.getAttribute('aria-controls')) {
-          content = document.getElementById(header.getAttribute('aria-controls'));
-        }
-        return content;
+      function triggerNativeClick(el) {
+        // Use native click, then jQuery fallback
+        const event = new MouseEvent('click', {
+          view: window,
+          bubbles: true,
+          cancelable: true
+        });
+        el.dispatchEvent(event);
+        $(el).trigger('click');
       }
 
       function openAccordion(id) {
-        const targetElement = document.getElementById(id);
-        if (!targetElement) {
-          console.warn(`Accordion with ID "${id}" not found`);
+        const el = document.getElementById(id);
+        if (!el) {
+          console.warn(`Element with ID "${id}" not found.`);
           return;
         }
 
-        const header = findAccordionHeader(targetElement);
-        const content = findAccordionContent(targetElement, header);
-
-        if (!header) return;
-
-        const isBootstrap = content?.classList.contains('collapse');
-        const isJQueryUI = header.classList.contains('ui-accordion-header');
-        const isFieldGroup = header.classList.contains('field-group-format-toggler');
-
+        // Case 1: toggle link directly
         if (
-          (isBootstrap && !content.classList.contains('show')) ||
-          (isJQueryUI && header.classList.contains('ui-accordion-header-collapsed')) ||
-          (isFieldGroup && header.getAttribute('aria-expanded') === 'false') ||
-          (!isBootstrap && !isJQueryUI && !isFieldGroup && header.getAttribute('aria-expanded') !== 'true')
+          el.tagName.toLowerCase() === 'a' &&
+          el.hasAttribute('data-toggle') &&
+          el.getAttribute('data-toggle') === 'collapse' &&
+          el.hasAttribute('aria-controls')
         ) {
-          header.click();
+          const isExpanded = el.getAttribute('aria-expanded') === 'true';
+          if (!isExpanded) {
+            triggerNativeClick(el);
+          }
+          return;
         }
+
+        // Case 2: element contains toggle link
+        const innerToggle = el.querySelector('a[data-toggle="collapse"][aria-controls]');
+        if (innerToggle) {
+          const isExpanded = innerToggle.getAttribute('aria-expanded') === 'true';
+          if (!isExpanded) {
+            triggerNativeClick(innerToggle);
+          }
+          return;
+        }
+
+        console.warn(`Element with ID "${id}" is not a toggle or doesn't contain one.`);
       }
 
       if (!$(document).data('smoothScrollAccordionInitialized')) {
@@ -168,24 +168,25 @@
         $(document).on('click', 'a[href^="#"]', function (e) {
           const href = this.getAttribute('href');
           if (href && href !== '#' && href.length > 1) {
-            e.preventDefault();
             const targetId = href.substring(1);
-            openAccordion(targetId);
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+              e.preventDefault();
+              openAccordion(targetId);
+            }
           }
         });
       }
 
-      if (context === document && window.location.hash && !Drupal.behaviors.smoothScrollAccordion.initialized) {
-        Drupal.behaviors.smoothScrollAccordion.initialized = true;
-
-        const targetId = window.location.hash.substring(1);
+      if (context === document && window.location.hash && !this.initialized) {
+        this.initialized = true;
+        const hashId = window.location.hash.substring(1);
         setTimeout(() => {
-          openAccordion(targetId);
-        }, 300); // Delay ensures DOM is ready
+          openAccordion(hashId);
+        }, 300);
       }
     }
   };
-
 
 
 })(jQuery, Drupal);
