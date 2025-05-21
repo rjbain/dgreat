@@ -203,13 +203,6 @@
             e.preventDefault();
             const targetId = href.substring(1);
             scrollToAccordion(targetId);
-
-            // Update URL hash without jumping
-            if (history.pushState) {
-              history.pushState(null, null, href);
-            } else {
-              location.hash = href;
-            }
           }
         });
       }
@@ -227,5 +220,6 @@
       }
     }
   };
+
 
 })(jQuery, Drupal);
