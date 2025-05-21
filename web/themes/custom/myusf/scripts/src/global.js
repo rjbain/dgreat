@@ -112,6 +112,8 @@
 
   // Add our new smooth scroll to accordion behavior
   Drupal.behaviors.smoothScrollAccordion = {
+    // Add initialization flag
+    initialized: false,
     attach: function (context, settings) {
       // Find all accordion items - adapt selector based on USF site structure
       const accordionItems = document.querySelectorAll('[id^="accordion-"]');
@@ -191,25 +193,32 @@
         }, 500); // Allow time for the scroll to complete
       }
 
-      // Handle anchor links within the page
-      $(document).once('smoothScrollAccordion').on('click', 'a[href^="#"]', function(e) {
-        const href = this.getAttribute('href');
-        if (href !== '#' && href.length > 1) {
-          e.preventDefault();
-          const targetId = href.substring(1);
-          scrollToAccordion(targetId);
+      // Handle anchor links within the page - avoid using once()
+      // Create a flag to track if we've already attached this event
+      if (!$(document).data('smoothScrollAccordionInitialized')) {
+        $(document).data('smoothScrollAccordionInitialized', true);
+        $(document).on('click', 'a[href^="#"]', function(e) {
+          const href = this.getAttribute('href');
+          if (href !== '#' && href.length > 1) {
+            e.preventDefault();
+            const targetId = href.substring(1);
+            scrollToAccordion(targetId);
 
-          // Update URL hash without jumping
-          if (history.pushState) {
-            history.pushState(null, null, href);
-          } else {
-            location.hash = href;
+            // Update URL hash without jumping
+            if (history.pushState) {
+              history.pushState(null, null, href);
+            } else {
+              location.hash = href;
+            }
           }
-        }
-      });
+        });
+      }
 
-      // Check for hash in URL on page load - only process once
-      if (context === document && window.location.hash) {
+      // Check for hash in URL on page load - use a static flag to run only once
+      if (context === document && window.location.hash && !Drupal.behaviors.smoothScrollAccordion.initialized) {
+        // Set flag to ensure this runs only once
+        Drupal.behaviors.smoothScrollAccordion.initialized = true;
+
         const targetId = window.location.hash.substring(1);
         // Delay to ensure DOM is fully loaded
         setTimeout(() => {
