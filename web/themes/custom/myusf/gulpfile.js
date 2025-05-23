@@ -1,5 +1,5 @@
 const { src, dest, series, parallel, watch } = require('gulp');
-const sass = require('gulp-sass')(require('sass'));
+const sass = require('gulp-dart-sass');
 const cleanCSS = require('gulp-clean-css');
 const concat = require('gulp-concat');
 const imagemin = require('gulp-imagemin');
