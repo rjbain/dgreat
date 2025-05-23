@@ -17,9 +17,9 @@ services:
             "http://nginx/"}, "Drupal\\DrupalExtension" : {"drush" :   {
             "root":  "/app/web" }}}}
   node:
-    type: node
+    type: node:18
     build:
-      - "cd $LANDO_MOUNT/web/themes/custom/myusf && npm install && gulp"
+      - "cd $LANDO_MOUNT/web/themes/custom/myusf && npm install"
     globals:
       gulp-cli: "latest"
 tooling:
@@ -27,6 +27,8 @@ tooling:
     service: node
   gulp:
     service: node
+  npx:
+    service: node  
   robo:
     service: appserver
     cmd: /app/vendor/bin/robo --load-from=/app

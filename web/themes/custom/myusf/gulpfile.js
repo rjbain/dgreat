@@ -1,61 +1,67 @@
-//Install GULP in theme folder /web/themes/custom/myusf
-//npm init (Create the package.json file)
-//npm install gulp -g if it hasn't been done globally
-//npm install gulp gulp-sass gulp-cssmin gulp-concat gulp-imagemin gulp-smushit gulp-uglify --save-dev
-//$ gulp (To run gulp once)
-//$ gulp watch (To continuously watch so changes are automatically compiled)
-//For arm64 see https://stackoverflow.com/questions/55921442/how-to-fix-referenceerror-primordials-is-not-defined-in-node-js
-//Use node 10
-//nvm use 10
+const { src, dest, series, parallel, watch } = require('gulp');
+const sass = require('gulp-sass')(require('sass'));
+const cleanCSS = require('gulp-clean-css');
+const concat = require('gulp-concat');
+const imagemin = require('gulp-imagemin');
+const imageminPngquant = require('imagemin-pngquant');
+const terser = require('gulp-terser');
 
+// Paths
+const paths = {
+  styles: {
+    src: 'sass/src/*.scss',
+    dest: 'css',
+    output: 'site.css'
+  },
+  scripts: {
+    src: 'scripts/src/*.js',
+    dest: 'scripts/site',
+    output: 'site.js'
+  },
+  images: {
+    src: 'images/src/*.{png,jpg,jpeg}',
+    dest: 'images/site'
+  }
+};
 
-var sassFiles = 'sass/src/*.scss',
-    cssFiles = 'css',
-    cssSiteFile = 'site.css',
-    imageFiles = 'images/src/*',
-    imageMinFiles = 'images/site/'
-    jsFiles = 'scripts/src/*.js',
-    jsMinFiles = 'scripts/site/';
-    jsSiteFile = 'site.js';
+// Compile SCSS
+function compileSass() {
+  return src(paths.styles.src)
+    .pipe(sass().on('error', sass.logError))
+    .pipe(concat(paths.styles.output))
+    .pipe(cleanCSS())
+    .pipe(dest(paths.styles.dest));
+}
 
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var cssmin = require('gulp-cssmin');
-var concat = require('gulp-concat');
-var imagemin = require('gulp-imagemin');
-var smushit = require('gulp-smushit');
-var uglify = require('gulp-uglify');
+// Combine & Minify JS
+function compileJS() {
+  return src(paths.scripts.src)
+    .pipe(concat(paths.scripts.output))
+    .pipe(terser())
+    .pipe(dest(paths.scripts.dest));
+}
 
-gulp.task('sass', function() {
-    gulp.src(sassFiles)
-        .pipe(sass().on('error', sass.logError))        
-        .pipe(concat(cssSiteFile))
-        .pipe(cssmin())
-        .pipe(gulp.dest(cssFiles));
-});
+// Optimize Images
+function optimizeImages() {
+  return src(paths.images.src)
+    .pipe(imagemin([
+      imageminPngquant({
+        quality: [0.6, 0.8],
+        speed: 1
+      })
+    ]))
+    .pipe(dest(paths.images.dest));
+}
 
-gulp.task('js', function(){
-    return gulp.src(jsFiles)
-        .pipe(concat(jsSiteFile))
-        .pipe(gulp.dest(jsMinFiles))
-        .pipe(uglify())
-        .pipe(gulp.dest(jsMinFiles));
-});
+// Watch Task
+function watchFiles() {
+  watch(paths.styles.src, compileSass);
+  watch(paths.scripts.src, compileJS);
+  watch(paths.images.src, optimizeImages);
+}
 
-gulp.task('imagemin', function() {
-    gulp.src(imageFiles)
-        .pipe(imagemin())
-        .pipe(gulp.dest(imageMinFiles))
-});
-
-//gulp.task('smushit', function () {
-  //  gulp.src(imageFiles)
-   //     .pipe(smushit())
-   //     .pipe(gulp.dest(imageMinFiles));
-//});
-
-gulp.task('default',['sass','imagemin','js']);
-
-gulp.task('watch', function() {
-    gulp.watch(sassFiles, ['sass','js','imagemin'])
-});
+exports.sass = compileSass;
+exports.js = compileJS;
+exports.images = optimizeImages;
+exports.watch = watchFiles;
+exports.default = parallel(compileSass, compileJS, optimizeImages);
