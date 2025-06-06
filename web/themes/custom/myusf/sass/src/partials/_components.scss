@@ -188,7 +188,14 @@
     border: 0;
     border-radius: 0;
     display: inline-block;
-    height: 410px;
+    height: 415px;
+
+	@include media-breakpoint-only(tablet) {
+		height: calc(20vw + 200px);
+	}
+	@include media-breakpoint-up(tablet)  {
+		height: calc(20vw + 230px);
+	}
 
     &.green {
 		background: $green;
@@ -420,13 +427,21 @@ a.card-rollover {
 
     img.card-img-top {
     	color:$gray;
-    	height: 180px;
+    	height: 260px;//180px;
     	width: 100%;
     	display: block;
     	background:$gray;
     	border-radius: 0;
     	margin-top: 0;
     	object-fit: cover;
+
+		@include media-breakpoint-only(tablet) {
+			height: 25vw;
+		}
+
+		@include media-breakpoint-up(desktop)  {
+			height: 20vw; //360px;
+		}
 
     	&::after {
 		    background-image: linear-gradient(to bottom,transparent 0,rgba(0,0,0,.3) 100%);
