@@ -99,12 +99,6 @@
             // Fix for Ensemble
             $("[id^=contentView_]").attr("align","center");
 
-            // // Make .pdf and .txt files open in a new window.
-            // $(document).ready(function() {
-            //     $("a[href$='.pdf'], a[href$='.txt']")
-            //         .attr("target", "_blank")
-            //         .attr("rel", "noopener")
-            // });
         }
     };
     Drupal.behaviors.surveyModal = {
@@ -115,4 +109,120 @@
             }
         }
     };
+
+
+
+
+  Drupal.behaviors.smoothScrollAccordion = {
+    initialized: false,
+    attach: function (context, settings) {
+
+      function triggerNativeClick(el) {
+        const event = new MouseEvent('click', {
+          view: window,
+          bubbles: true,
+          cancelable: true
+        });
+        el.dispatchEvent(event);
+        $(el).trigger('click');
+      }
+
+      function openAccordion(id) {
+        const el = document.getElementById(id);
+        if (!el) {
+          console.warn(`Element with ID "${id}" not found.`);
+          return;
+        }
+
+        // Case 1: Direct toggle link
+        if (
+          el.tagName.toLowerCase() === 'a' &&
+          el.hasAttribute('data-toggle') &&
+          el.getAttribute('data-toggle') === 'collapse' &&
+          el.hasAttribute('aria-controls')
+        ) {
+          const isExpanded = el.getAttribute('aria-expanded') === 'true';
+          if (!isExpanded) {
+            triggerNativeClick(el);
+          }
+          return;
+        }
+
+        // Case 2: Element contains toggle link (like a heading div)
+        const innerToggle = el.querySelector('a[data-toggle="collapse"][aria-controls]');
+        if (innerToggle) {
+          const isExpanded = innerToggle.getAttribute('aria-expanded') === 'true';
+          if (!isExpanded) {
+            triggerNativeClick(innerToggle);
+          }
+          return;
+        }
+
+        console.warn(`Element with ID "${id}" is not a toggle or doesn't contain one.`);
+      }
+
+      function updateHashAfterClick(toggleEl) {
+        const collapseId = toggleEl.getAttribute('aria-controls') ||
+          (toggleEl.getAttribute('href') && toggleEl.getAttribute('href').substring(1));
+        if (!collapseId) return;
+
+        const collapseEl = document.getElementById(collapseId);
+        if (!collapseEl) return;
+
+        // Try aria-labelledby first
+        let headingId = collapseEl.getAttribute('aria-labelledby');
+
+        // Fallback: derive from collapse ID
+        if (!headingId && collapseId.startsWith('collapse-')) {
+          headingId = collapseId.replace('collapse-', 'heading-');
+        }
+
+        if (headingId) {
+          // Wait for animation to complete
+          setTimeout(() => {
+            const isNowExpanded = toggleEl.getAttribute('aria-expanded') === 'true';
+            if (isNowExpanded && window.location.hash !== `#${headingId}`) {
+              if (history.pushState) {
+                history.pushState(null, null, `#${headingId}`);
+              } else {
+                window.location.hash = headingId;
+              }
+            }
+          }, 400); // Bootstrap default animation is ~350ms
+        }
+      }
+
+      if (!$(document).data('smoothScrollAccordionInitialized')) {
+        $(document).data('smoothScrollAccordionInitialized', true);
+
+        $(document).on('click', 'a[href^="#"]', function (e) {
+          const href = this.getAttribute('href');
+          if (href && href !== '#' && href.length > 1) {
+            const targetId = href.substring(1);
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+              e.preventDefault();
+              openAccordion(targetId);
+            }
+          }
+        });
+
+        // Update hash when a toggle is clicked
+        $(document).on('click', 'a[data-toggle="collapse"]', function () {
+          updateHashAfterClick(this);
+        });
+      }
+
+      if (context === document && window.location.hash && !this.initialized) {
+        this.initialized = true;
+        const hashId = window.location.hash.substring(1);
+        setTimeout(() => {
+          openAccordion(hashId);
+        }, 300);
+      }
+    }
+  };
+
+
+
 })(jQuery, Drupal);
