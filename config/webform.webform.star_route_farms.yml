@@ -32,15 +32,10 @@ elements: |-
     '#type': textfield
     '#title': 'Event Name'
     '#required': true
-  date_s_of_visit:
-    '#type': datelist
-    '#title': 'Date(s) of Visit'
-    '#multiple': true
-    '#required': true
-    '#date_part_order':
-      - year
-      - month
-      - day
+  date_of_visit:
+    '#type': date
+    '#title': 'Date of Visit'
+    '#datepicker': true
   start_and_end_time:
     '#type': webform_time
     '#title': 'Start Time'
@@ -75,12 +70,12 @@ elements: |-
     '#type': webform_radios_other
     '#title': 'Where will the event be held?'
     '#options':
-      Farmhouse: Farmhouse
       'Druid''s Hall': 'Druid''s Hall'
+      'Outdoor farm use': 'Outdoor farm use'
     '#required': true
   we_will_charge_a_cleaning_fee_for_use_of_druid_s_hall:
     '#type': textfield
-    '#title': 'We will charge a cleaning fee of $180 for use of Druid''s Hall or the Farmhouse.  Please provide us with your FOAP if you are using one of these facilities.'
+    '#title': 'We will charge a cleaning fee of $180 for use of Druid''s Hall and outside farm use. Please provide us with your FOAP if you are using one of these facilities.'
   does_event_want_a_tour_of_the_farm:
     '#type': radios
     '#title': 'Does event want a tour of the farm?'

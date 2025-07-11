@@ -15,7 +15,7 @@ categories: {  }
 elements: |-
   markup:
     '#type': webform_markup
-    '#markup': '<div class="region region-content"><div class="block block-system" id="block-system-main"><div class="content"><article class="node node-webform node-promoted node-content-102103 clearfix" id="node-102103" role="article"><div class="content clearfix"><div><div class="form-item webform-component webform-component-markup webform-component--summer-in-sacramento"><p><strong>The application for McCarthy Fellows in Sacramento is now closed after the March 1st, 2025 deadline. </strong>Applications submitted after this date will be grouped in the next cycle''s deadline, <strong>October 1, 2025&nbsp;11:59pm PST</strong></p><p><br>If you would like to apply for subsequent summers, we encourage you to apply by the above deadline if you are able and/or schedule an informational meeting to discuss options: amvuong@usfca.edu.&nbsp;</p><p>Please complete the application below, and ensure that we receive all materials<br><br>You must be able to commit to working at an internship for the entire summer time period to participate in the program.</p></div><div class="panel-title fieldset-legend">I. Personal Information</div></div></div></article></div></div></div>'
+    '#markup': '<div class="region region-content"><div class="block block-system" id="block-system-main"><div class="content"><article class="node node-webform node-promoted node-content-102103 clearfix" id="node-102103" role="article"><div class="content clearfix"><div><div class="form-item webform-component webform-component-markup webform-component--summer-in-sacramento"><p><strong>The application for McCarthy Fellows in Sacramento is now open! &nbsp;</strong>Applications must be submitted by the deadline, <strong>October 1, 2025&nbsp;11:59pm PST</strong></p><p><br>If you would like to apply for subsequent summers, we encourage you to apply by the above deadline if you are able and/or schedule an informational meeting to discuss options: amvuong@usfca.edu.&nbsp;</p><p>Please complete the application below, and ensure that we receive all materials<br><br>You must be able to commit to working at an internship for the entire summer time period to participate in the program.</p></div><div class="panel-title fieldset-legend">I. Personal Information</div></div></div></article></div></div></div>'
   last_name_:
     '#type': textfield
     '#title': 'Last Name:'
@@ -137,6 +137,13 @@ elements: |-
     '#type': textfield
     '#title': 'How did you hear about this program?'
     '#required': true
+  do_you_receive_any_tuition_benefit_:
+    '#type': checkboxes
+    '#title': 'Do you receive any tuition benefit?'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+    '#options__properties': ''
   ii_resume_please_submit_a_link_to_a_recent_resume_your_applicati:
     '#type': textarea
     '#title': 'II. Resume. Please submit a link to a recent resume. Your application will not be considered complete without this supplemental component.'
@@ -339,10 +346,13 @@ elements: |-
     '#required': true
   markup_07:
     '#type': webform_markup
-    '#markup': |
-      <div class="panel-title fieldset-legend">VI. Interview Availability</div>
-
-      <div class="panel-body fieldset-wrapper">The Selection Committee will contact you regarding an in-person and/or a phone interview following your application submission.&nbsp;</div>
+    '#markup': '<div class="panel-title fieldset-legend"><strong>VI. Interview Availability</strong></div><div class="panel-body fieldset-wrapper">The Selection Committee will contact you regarding an in-person and/or a phone interview following your application submission.&nbsp;</div>'
+  i_understand_that_if_i_receive_tuition_benefits_i_might_not_be_e:
+    '#type': checkbox
+    '#title': 'I understand that if I receive tuition benefits, I might not be eligible to receive the fellowship award. '
+  i_certify_that_to_the_best_of_my_knowledge_the_provided_informat:
+    '#type': checkbox
+    '#title': 'I certify that, to the best of my knowledge, the provided information is true and accurate.'
   markup_08:
     '#type': webform_markup
     '#markup': '<strong><span><span style="text-decoration:underline">ATTENTION</span>: Once you hit the &quot;submit&quot; button, a message should appear confirming that your application was submitted successfully. If you do not see this message, please either try to resubmit your application or contact us to make sure we did receive it.</span></strong>'

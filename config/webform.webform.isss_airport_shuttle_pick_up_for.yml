@@ -1,6 +1,6 @@
 uuid: 820e3e8d-61f8-45a0-9a36-83beea50f724
 langcode: en
-status: closed
+status: open
 dependencies:
   module:
     - dgreat_student_surveys
@@ -20,7 +20,7 @@ categories: {  }
 elements: |-
   isss_airport_shuttle_application_registration:
     '#type': label
-    '#title': 'ISSS Airport Shuttle Registration'
+    '#title': 'ISSS Airport Shuttle Registration (Fall 2025 New International Students)'
   last_family_name:
     '#type': textfield
     '#title': 'Last (Family) Name'
@@ -37,18 +37,21 @@ elements: |-
     '#type': textfield
     '#title': 'USF Student ID Number (Example: 12345678)'
     '#required': true
-  foreign_cell_phone_number:
+  foreign_cell_phone_number1:
     '#type': tel
-    '#title': 'Foreign Cell Phone Number'
-    '#international': true
+    '#title': 'Foreign Cell Phone Number '
+    '#description': '<p>Enter N/A if this does not apply to you.</p>'
+    '#required': true
   cell_phone_number_in_us_if_applicable_:
     '#type': tel
-    '#title': 'Cell Phone Number in US (if applicable)'
+    '#title': 'Cell Phone Number in US '
+    '#description': '<p>Enter N/A if this does not apply to you.</p>'
+    '#required': true
   sfo_airport_arrival_time_date:
     '#type': radios
     '#title': 'SFO Airport Arrival Date (Please send your corresponding flight itinerary to isss@usfca.edu)'
     '#options':
-      'Tuesday, January 14, 2025': 'Tuesday, January 14, 2025 -- International Student Move In Day'
+      'Wednesday, August 13, 2025': 'Wednesday, August 13, 2025 -- International Student Move In Day'
     '#required': true
     '#options__properties': ''
   sfo_airport_arrival_time:
@@ -91,6 +94,10 @@ elements: |-
       8: 'Fulton House'
       9: 'St. Anne''s'
       10: 'Pacific Wing'
+      13: 'Nagle Hall'
+      11: 'Live off-campus'
+      12: 'Housing Application Pending -- Dorm Not Confirmed'
+    '#required': true
     '#options__properties': ''
   have_you_been_fully_vaccinated_by_a_who_approved_vaccine_:
     '#type': textfield
