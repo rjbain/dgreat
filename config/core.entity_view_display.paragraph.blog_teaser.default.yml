@@ -1,0 +1,25 @@
+uuid: 76b04e7e-de73-4449-9067-504b159291ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.blog_teaser.field_blog_teaser
+    - paragraphs.paragraphs_type.blog_teaser
+  module:
+    - viewsreference
+id: paragraph.blog_teaser.default
+targetEntityType: paragraph
+bundle: blog_teaser
+mode: default
+content:
+  field_blog_teaser:
+    type: viewsreference_formatter
+    label: hidden
+    settings:
+      plugin_types:
+        - block
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true
