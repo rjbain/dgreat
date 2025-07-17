@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.blog_teaser.field_blog_teaser
+    - field.field.paragraph.blog_teaser.field_blog_teaser_title
     - paragraphs.paragraphs_type.blog_teaser
   module:
     - viewsreference
@@ -18,6 +19,14 @@ content:
     settings:
       plugin_types:
         - block
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_blog_teaser_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
     weight: 0
     region: content
