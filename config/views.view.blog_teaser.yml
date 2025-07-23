@@ -291,7 +291,7 @@ display:
         type: some
         options:
           offset: 0
-          items_per_page: 3
+          items_per_page: 6
       exposed_form:
         type: basic
         options:
@@ -429,12 +429,79 @@ display:
         - 'config:field.storage.node.field_teaser_image'
   block_1:
     id: block_1
-    display_title: 'Blogs List'
+    display_title: 'Blog Teaser (3x)'
     display_plugin: block
     position: 1
     display_options:
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 3
+      defaults:
+        pager: false
       display_description: ''
       display_extenders: {  }
+      allow:
+        items_per_page: true
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_blog_category'
+        - 'config:field.storage.node.field_teaser_blog_link'
+        - 'config:field.storage.node.field_teaser_image'
+  block_2:
+    id: block_2
+    display_title: 'Blog Teaser (6x)'
+    display_plugin: block
+    position: 1
+    display_options:
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 6
+      defaults:
+        pager: false
+      display_description: ''
+      display_extenders: {  }
+      allow:
+        items_per_page: true
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_blog_category'
+        - 'config:field.storage.node.field_teaser_blog_link'
+        - 'config:field.storage.node.field_teaser_image'
+  block_3:
+    id: block_3
+    display_title: 'Blog Teaser (9x)'
+    display_plugin: block
+    position: 1
+    display_options:
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 9
+      defaults:
+        pager: false
+      display_description: ''
+      display_extenders: {  }
+      allow:
+        items_per_page: true
     cache_metadata:
       max-age: -1
       contexts:
