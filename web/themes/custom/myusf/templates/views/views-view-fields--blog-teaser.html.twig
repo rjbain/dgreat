@@ -34,9 +34,18 @@
 {% set body = fields.body.content  %}
 <div class="col-md-4 mb-4">
 <div class="card">
+
+
+{% set image = fields.field_teaser_image.content %}
+	{% if image is not empty %}
+		{% set image = image %}
+	{% elseif image is empty %}
+		{% set image = "/themes/custom/myusf/images/site/placeholder-1080x1080.png" %}
+	{% endif %}
+	
 	<a class="card-rollover" href="{{ fields.field_teaser_blog_link.content }}" target="_blank">
 		<div class="category category-icon">{{ fields.field_blog_category.content }}</div>
-		<img alt="" class="card-img-top" src="{{ fields.field_teaser_image.content }}"/>
+		<img alt="" class="card-img-top" src="{{ image}}"/>
 		<div class="card-body"> 
 			<!--<h5 class="card-title">Card title</h5>-->
 			<p class="card-text">{{ body }}</p>
