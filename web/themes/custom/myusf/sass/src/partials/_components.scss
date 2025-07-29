@@ -502,8 +502,29 @@ a.card-rollover {
 /*.col-md-4 {
 	max-width:400px !important
 }*/
-.view-blog-teaser a.card-rollover img.card-img-top {
-	height: unset;
+main#content {
+	background: yellow;
+}
+.view-blog-teaser {
+	.card {
+		height: auto;
+		margin-left: 0;
+		margin-right: 0;
+
+		a.card-rollover {
+			img.card-img-top {
+				height: unset;
+			}
+			.card-body {
+				height: 130px;
+				padding-top: .50rem;
+				background-color: red;
+				p.card-text {
+					display: none;
+				}
+			}
+		}
+	}
 }
 
 /* Calendar -- landing list view
