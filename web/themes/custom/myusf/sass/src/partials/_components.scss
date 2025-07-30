@@ -518,9 +518,29 @@ main#content {
 			.card-body {
 				height: 130px;
 				padding-top: .50rem;
+				padding: 0;
 				//background-color: red;
 				p.card-text {
 					display: none;
+				}
+				.card_link {
+					@include media-breakpoint-down(phone) {
+						font-size: .8rem;
+					}
+					font-size: 1rem;
+					font-weight: 800!important;
+					color: #00543c;
+					text-transform: uppercase;
+					text-decoration: none;
+					position: relative;
+					display: inline-block;
+					letter-spacing: .5px;
+					padding: 0;
+
+					&:hover {
+						color: black;
+						text-decoration: underline;
+					}
 				}
 			}
 		}
