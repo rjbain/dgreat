@@ -1,0 +1,39 @@
+uuid: eed77917-6bec-4354-b6cd-c9007d7d9936
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_blog_teaser
+    - paragraphs.paragraphs_type.blog_teaser
+    - views.view.blog_teaser
+  module:
+    - viewsreference
+id: paragraph.blog_teaser.field_blog_teaser
+field_name: field_blog_teaser
+entity_type: paragraph
+bundle: blog_teaser
+label: 'Blog Teaser'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: b893b510-649d-48b1-b4bd-c547afabe357
+    display_id: block_1
+    data: 'a:5:{s:5:"pager";N;s:8:"argument";N;s:5:"limit";N;s:6:"offset";N;s:5:"title";N;}'
+    options:
+      argument: ''
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+  plugin_types:
+    block: block
+  preselect_views:
+    blog_teaser: blog_teaser
+  enabled_settings:
+    argument: argument
+    limit: 0
+field_type: viewsreference

@@ -497,6 +497,62 @@ a.card-rollover {
 	}
 }
 
+/* Card -- USF Blog feeds
+================================================ */
+/*.col-md-4 {
+	max-width:400px !important
+}*/
+.main-content .custom-block2 .container {
+	padding-left:0;
+}
+
+.view-blog-teaser {
+	.card {
+		height: auto;
+		margin-left: 0;
+		margin-right: 0;
+
+		a.card-rollover {
+			img.card-img-top {
+				height: unset;
+			}
+			.card-body {
+				@include media-breakpoint-down(phone) {
+					height: 30px; //70px;
+				}
+				@include media-breakpoint-down(tablet) {
+					height:70px;
+				}
+
+				height: 90px;//130px
+				padding-top: .50rem;
+				padding: 0;
+				//background-color: red;
+				p.card-text {
+					display: none;
+				}
+				.card_link {
+					@include media-breakpoint-down(phone) {
+						font-size: .85rem;
+					}
+					font-size: 1rem;
+					font-weight: 700!important;
+					color: #00543c;
+					text-decoration: none;
+					position: relative;
+					display: inline-block;
+					letter-spacing: .5px;
+					padding: 0;
+
+					&:hover {
+						color: black;
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+}
 
 /* Calendar -- landing list view
 ================================================ */

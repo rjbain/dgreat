@@ -1,0 +1,159 @@
+uuid: b8e955c5-a6ac-4a51-8b58-19f373ec8a5c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.blog_teaser.body
+    - field.field.node.blog_teaser.field_blog_category
+    - field.field.node.blog_teaser.field_blog_guid
+    - field.field.node.blog_teaser.field_pubdate
+    - field.field.node.blog_teaser.field_teaser_blog_link
+    - field.field.node.blog_teaser.field_teaser_image
+    - node.type.blog_teaser
+  module:
+    - feeds_ex
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      0899fbca-1848-424f-a60b-b37da125e53e:
+        default_value: mccarthy
+        only_if_empty: false
+        uuid: 0899fbca-1848-424f-a60b-b37da125e53e
+        plugin: default_value
+        source: source
+        weight: 0
+        label: 'Set value or default value'
+label: 'McCarthy Center Blog Importer'
+id: mccarthy_center_blog_importer
+description: ''
+help: ''
+import_period: 3600
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: jsonpath
+parser_configuration:
+  context:
+    value: '$.*'
+  source_encoding:
+    - auto
+  display_errors: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: blog_teaser
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  title:
+    value: title
+    label: title
+    machine_name: title
+    type: json
+  excerpt:
+    value: excerpt
+    label: excerpt
+    machine_name: excerpt
+    type: json
+  permalink:
+    value: permalink
+    label: permalink
+    machine_name: permalink
+    type: json
+  source:
+    value: source
+    label: source
+    machine_name: source
+    type: blank
+  thumbnail_full:
+    value: thumbnail-full
+    label: thumbnail-full
+    machine_name: thumbnail_full
+    type: json
+  id:
+    value: id
+    label: id
+    machine_name: id
+    type: json
+  date:
+    value: date
+    label: date
+    machine_name: date
+    type: json
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: body
+    map:
+      value: excerpt
+      summary: ''
+    settings:
+      language: null
+      format: plain_text
+  -
+    target: field_teaser_blog_link
+    map:
+      uri: permalink
+      title: ''
+    settings:
+      language: null
+  -
+    target: field_blog_category
+    map:
+      target_id: source
+    settings:
+      language: ''
+      reference_by: name
+      feeds_item: guid
+      autocreate: 1
+      autocreate_bundle: blog_category
+  -
+    target: field_teaser_image
+    map:
+      target_id: thumbnail_full
+      alt: ''
+      title: ''
+    settings:
+      existing: 2
+      language: null
+      reference_by: filename
+      autocreate: false
+      autocreate_bundle: false
+  -
+    target: field_blog_guid
+    map:
+      value: id
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_pubdate
+    map:
+      value: date
+    settings:
+      language: null
+      timezone: UTC
