@@ -39,97 +39,51 @@
 		padding-left: 2.5rem;
 	}
 }
+.paragraph__column,
+.event-description,
+.node--type-announcement .field--type-text-with-summary {
+	ul {
+		li {
+			margin-left: -5px;
+			padding-left: 4px;
 
-.paragraph__column ul,
-.event-description ul,
-.node--type-announcement .field--type-text-with-summary ul {
-	-webkit-padding-start: 1.25rem;
-	padding-left: 2.25rem;
-	overflow: hidden;
-
-	@include media-breakpoint-down(phone) {
-		-webkit-padding-start: 0;
-		padding-left: 1.25rem;
-	}
-
-	li {
-		position: relative;    	
-	  	margin-right: 3.125rem;
-	  	padding-left: .25rem;
-
-	  	
-	  	@include media-breakpoint-down(phone) {
-	  		margin-right: 0;
-	  	}
-
-		&::marker {
-			color: $yellow; 	
-	    }
-	}
-
-	ul li {
-		margin-right: 0;
-	}
-}
-
-
-.paragraph__column ol,
-.event-description ol, 
-.node--type-announcement .field--type-text-with-summary ol {
-
-	li {
-		position: relative;
-		display:block;
-		list-style-type:lower-latin;
-	  	/* margin-right: 50px;*/
-
-		&:before {
-			font-weight:800;
-		  	color: $olive;
-			backface-visibility:hidden;
-			content:counter(li) ". ";
-			counter-increment:li;
-		  	left: -39px;
-		  	position: absolute;
-		  	text-align: right;
-		  	width: 26px;
-	    }
-	}
-
-	ul li {
-		position: relative;  
-		list-style-type: none;	  	
-	  	margin-right: 0px;
-	  	padding-left: 1.25rem;		
-	  	
-
-		&:before {
-			font-size: 1.1rem;
-			color: $yellow; 	
-			content: "\25A0"; 			 
-			text-align: right;			
-		  	position: absolute;
-		  	left: -32px;
-		  	width: 26px;
-		  	padding-left: 1.875rem;
-	  		display:inline-block;
-			backface-visibility:hidden;
-		    counter-increment: none;
+			&::marker{
+				color: $yellow;
+			}
+		}
+		ol {
+			li {
+				&::marker{
+					color: $olive;
+					font-weight: 800;
+				}
+			}
 		}
 	}
-}
-
-.paragraph__column ol,
-.event-description ol,
-.node--type-announcement .field--type-text-with-summary ol {
-	counter-reset:li;
-
-	@include media-breakpoint-down(phone) {
-		padding-left: 1.75rem;
+	ol {
+		li {
+			padding-left: 6px;
+			&::marker{
+				color: $olive;
+				font-weight: bold;
+			}
+			ul {
+				padding-left: 50px;
+				li {
+					padding-left: 0;
+    				margin-left: -20px;					
+					&::marker{
+						color: $yellow;
+					}
+				}
+			}
+		}
 	}
-	@include media-breakpoint-only(tablet) {
-		padding-left: 3rem;
+	li ol li {
+		margin-left: 2px;
+		padding-left: 6px;
 	}
+	
 }
 
 .paragraph__column img {
@@ -185,29 +139,17 @@ blockquote {
 		padding: 0.625rem 0.625rem	0.625rem 1.25rem; 
 	}
 	
-		&::before {
-			font-size: 3.125rem;	
-			font-weight: 700;
-			color: $yellow;
-			position: relative;
-			top: 20px;
-			right: 10px; 	
-			content: "\201C";
-			line-height: .1;
-			font-style: normal;	   
-		}
-
-	/*	&::after {
-			font-size: 50px;
-			font-weight:bold;
-			color: $yellow;
-			position: relative; //was absolute
-			top: 23px; //was 18px
-			right: -10px; //was 15px
-			content: "\201D";
-			line-height: 0.1;
-			font-style: normal;	
-	}*/
+	&::before {
+		font-size: 3.125rem;	
+		font-weight: 700;
+		color: $yellow;
+		position: relative;
+		top: 20px;
+		right: 10px; 	
+		content: "\201C";
+		line-height: .1;
+		font-style: normal;	   
+	}
 }
 
 .indent, .in_content_indent {
@@ -504,9 +446,6 @@ img.media-element.file-inline-medium {
 		}
 	}
 }
-
-
-
 
 
 
