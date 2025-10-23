@@ -1,7 +1,12 @@
 uuid: 6762df6d-afc1-4665-90bc-cd7af7801a83
 langcode: en
 status: open
-dependencies: {  }
+dependencies:
+  module:
+    - dgreat_student_surveys
+third_party_settings:
+  dgreat_student_surveys:
+    salesforce_id: ''
 weight: 0
 open: null
 close: null
@@ -9,8 +14,8 @@ uid: 6254
 template: false
 archive: false
 id: webform_84123
-title: 'One Stop - Commencement Faculty Attendance - Dec'
-description: null
+title: 'SEM - Commencement Faculty Attendance - Dec'
+description: ''
 categories: {  }
 elements: |-
   your_information:
@@ -56,12 +61,12 @@ elements: |-
     '#format': full_html
   choose_the_ceremonies_you_would_like_to_attend_:
     '#type': checkboxes
-    '#title': 'Choose the ceremonies you would like to attend on Friday, December 13:'
+    '#title': 'Choose the ceremonies you would like to attend on Friday, December 12:'
     '#options':
       'Commencement Mass, 9:30am': 'Commencement Mass, 9:30am'
-      'School of Management Ceremony, 12pm': 'School of Management Ceremony, 12pm'
-      'College of Arts and Sciences Ceremony, 3pm': 'College of Arts and Sciences Ceremony, 3pm'
-      'School of Nursing and Health Professions , 6pm': 'School of Nursing and Health Professions , 6pm'
+      'School of Nursing and Health Professions, 12pm': 'School of Nursing and Health Professions, 12pm'
+      'School of Management, 3pm': 'School of Management, 3pm'
+      'College of Arts and Sciences, 6pm': 'College of Arts and Sciences, 6pm'
     '#required': true
     '#options__properties': ''
   regalia:
@@ -84,6 +89,23 @@ elements: |-
       Cap: Cap
       Gown: Gown
       Hood: Hood
+    '#states':
+      visible:
+        ':input[name="need_regalia"]':
+          value: '1'
+    '#options__properties': ''
+  processed_text:
+    '#type': processed_text
+    '#title': '<br><h2>University Mace:</h2>'
+    '#description': ''
+    '#format': full_html
+  are_you_interested_in_carrying_the_university_mace_for_your_cere:
+    '#type': radios
+    '#title': 'Are you interested in carrying the university mace for your ceremony?'
+    '#options':
+      1: 'Yes'
+      2: 'No'
+    '#options__properties': ''
   comments_or_questions:
     '#type': textarea
     '#title': 'Comments or questions?:'
@@ -340,6 +362,138 @@ handlers:
       sender_name: ''
       subject: 'Commencement Faculty Attendance form submission'
       body: "<p>Commencement Faculty Attendance Form Submitted by:</p>\r\n\r\n<p>Submitted by user:<br />\r\n[webform_submission:user]<br />\r\n<br />\r\nSubmitted values are:<br />\r\n[webform_submission:values]<br />\r\n<br />\r\nThe results of this submission may be viewed at:<br />\r\n[webform_submission:url]</p>"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
+  email_cas_university_mace_volunteer:
+    id: email
+    handler_id: email_cas_university_mace_volunteer
+    label: 'Email - CAS University Mace Volunteer'
+    notes: 'CAS University Mace Volunteer (triggers emails) to send to Tonya Miller miller@usfca.edu'
+    status: true
+    conditions:
+      enabled:
+        ':input[name="school_library"]':
+          value: '1'
+        ':input[name="choose_the_ceremonies_you_would_like_to_attend_[College of Arts and Sciences, 6pm]"]':
+          checked: true
+        ':input[name="are_you_interested_in_carrying_the_university_mace_for_your_cere"]':
+          value: '1'
+    weight: 4
+    settings:
+      states:
+        - completed
+      to_mail: miller@usfca.edu
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: gradcenter@usfca.edu
+      from_options: {  }
+      from_name: 'Graduation Center'
+      reply_to: gradcenter@usfca.edu
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'CAS University Mace Volunteer'
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
+  email_som_university_mace_volunteer:
+    id: email
+    handler_id: email_som_university_mace_volunteer
+    label: 'Email - SOM University Mace Volunteer'
+    notes: 'SOM University Mace Volunteer (triggers emails) to send to Simone Jordan shjordan@usfca.edu'
+    status: true
+    conditions:
+      enabled:
+        ':input[name="choose_the_ceremonies_you_would_like_to_attend_[School of Management, 3pm]"]':
+          checked: true
+        ':input[name="school_library"]':
+          value: '2'
+        ':input[name="are_you_interested_in_carrying_the_university_mace_for_your_cere"]':
+          value: '1'
+    weight: 4
+    settings:
+      states:
+        - completed
+      to_mail: shjordan@usfca.edu
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: gradcenter@usfca.edu
+      from_options: {  }
+      from_name: 'Graduation Center'
+      reply_to: gradcenter@usfca.edu
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'SOM University Mace Volunteer'
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
+  email_sonhp_university_mace_volunteer:
+    id: email
+    handler_id: email_sonhp_university_mace_volunteer
+    label: 'Email - SONHP University Mace Volunteer'
+    notes: 'SONHP University Mace Volunteer (triggers emails) to send to Emily Sklar esklar2@usfca.edu'
+    status: true
+    conditions:
+      enabled:
+        ':input[name="school_library"]':
+          value: '4'
+        ':input[name="choose_the_ceremonies_you_would_like_to_attend_[School of Nursing and Health Professions, 12pm]"]':
+          checked: true
+        ':input[name="are_you_interested_in_carrying_the_university_mace_for_your_cere"]':
+          value: '1'
+    weight: 4
+    settings:
+      states:
+        - completed
+      to_mail: esklar2@usfca.edu
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: gradcenter@usfca.edu
+      from_options: {  }
+      from_name: 'Graduation Center'
+      reply_to: gradcenter@usfca.edu
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'SONHP University Mace Volunteer'
+      body: _default
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true

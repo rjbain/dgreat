@@ -1,6 +1,6 @@
 uuid: d2d70c6b-8eac-4bf3-a2f2-5009b71862ba
 langcode: en
-status: open
+status: closed
 dependencies: {  }
 weight: 0
 open: null
@@ -12,7 +12,7 @@ id: webform_139186
 title: 'One Stop - Transfer Credit Request Form'
 description: null
 categories: {  }
-elements: |
+elements: |-
   first:
     '#type': textfield
     '#title': 'First Name:'
@@ -89,7 +89,9 @@ elements: |
       visible:
         ':input[name="request"]':
           checked: true
-    '#text': "<p>Core Codes: C-A1, C-B1, C-B2, C-C1, C-C2, C-D1, C-D2, C-D3, C-E, C-F, CD<br />\r\nPlease see <a alt=\"Transfer Core Curriculum Courses\" href=\"https://www.usfca.edu/admission/undergraduate/transfer/core-curriculum\" target=\"_blank\">Transfer Core Curriculum Courses</a> for course examples.</p>\r\n"
+    '#text': |
+      <p>Core Codes: C-A1, C-B1, C-B2, C-C1, C-C2, C-D1, C-D2, C-D3, C-E, C-F, CD<br />
+      Please see <a alt="Transfer Core Curriculum Courses" href="https://www.usfca.edu/admission/undergraduate/transfer/core-curriculum" target="_blank">Transfer Core Curriculum Courses</a> for course examples.</p>
     '#format': full_html
   b_college1:
     '#type': textfield
@@ -151,7 +153,7 @@ settings:
   page_submit_path: ''
   page_confirm_path: ''
   page_theme_name: ''
-  form_title: both
+  form_title: source_entity_webform
   form_submit_once: false
   form_open_message: ''
   form_close_message: ''
@@ -445,4 +447,3 @@ handlers:
       parameters: {  }
       debug: false
 variants: {  }
-category: null
