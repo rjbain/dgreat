@@ -12,13 +12,21 @@ id: webform_138451
 title: 'USFCA Event Editor''s Agreement'
 description: null
 categories: {  }
-elements: |
+elements: |-
   agreement_information:
     '#type': processed_text
-    '#format': full_html
-    '#text': '<p>By signing this form, you agree to the following:</p><ul><li>This agreement confirms that you have either completed a USFCA events training by CIT or are under the supervision of a University of San Francisco employee that has sufficient USFCA.edu editing experience.&nbsp;</li><li>You have read through and agree to comply with&nbsp;<a href=''https://myusf.usfca.edu/marketing-communications/accessibility-guide''>University of San Francisco''s web accessibility standards</a>.</li></ul><p>For questions or concerns, please email webservices@usfca.edu.</p>'
     '#title': 'Agreement Information'
     '#description': ''
+    '#text': |
+      <p>By signing this form, you agree to the following:</p>
+
+      <ul>
+      	<li>This agreement confirms that you have&nbsp;completed a USFCA events training by ETS, and are either a full-time staff or faculty member or a student with their supervisor's permission to post events.&nbsp;&nbsp;</li>
+      	<li>You have read through and agree to comply with&nbsp;<a href="https://myusf.usfca.edu/marketing-communications/accessibility-guide">University of San Francisco's web accessibility standards</a>&nbsp;and have completed our accessibility canvas course.</li>
+      </ul>
+
+      <p>For questions or concerns, please email <a href="mailto:webservices@usfca.atlassian.net">webservices@usfca.atlassian.net</a>.</p>
+    '#format': full_html
   agree_check:
     '#type': radios
     '#options':
@@ -225,6 +233,42 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers: {  }
+handlers:
+  email:
+    id: email
+    handler_id: email
+    label: Email
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: mccole2@usfca.edu
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
 variants: {  }
-category: null
