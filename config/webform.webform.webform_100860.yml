@@ -246,7 +246,7 @@ handlers:
     handler_id: email_8
     label: 'Email 8'
     notes: ''
-    status: true
+    status: false
     conditions: {  }
     weight: 8
     settings:
@@ -289,7 +289,7 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: mmcinerney@usfca.edu
+      to_mail: 'mmcinerney@usfca.edu, elliot@usfca.edu'
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
@@ -303,7 +303,7 @@ handlers:
       sender_mail: ''
       sender_name: ''
       subject: 'Story Idea Pitch Form'
-      body: "<p>Submitted on [<a href=\"javascript:void(0);\" title=\"Insert this token into your form\">current-date</a>]</p>\r\n\r\n<p>Submitted by user: [webform_submission:user]</p>\r\n\r\n<p>Submitted values are:</p>\r\n\r\n<p>[webform_submission:values]</p>"
+      body: '<p>Submitted on [<a href="javascript:void(0);" title="Insert this token into your form">current-date</a>]</p><p>Submitted by user: [webform_submission:user]</p><p>Submitted values are:</p><p>[webform_submission:values]</p>'
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
