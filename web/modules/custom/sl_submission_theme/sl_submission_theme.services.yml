@@ -1,0 +1,6 @@
+services:
+  sl_submission_theme.negotiator:
+    class: Drupal\sl_submission_theme\Theme\SubmissionThemeNegotiator
+    tags:
+      # Make sure we run before admin negotiator.
+      - { name: theme_negotiator, priority: 2000 }
