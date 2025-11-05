@@ -46,10 +46,14 @@
 
 <div class="event-feed-wrapper">
     {% set header = paragraph.field_accordion_section_header.value %}
+    {% set header_title = paragraph.field_title.value %}
+
     {% if header is empty %}
-        {% set header = "h2" %}
+        {% set header_start = "<h2>" %}
+        {% set header_end = "</h2>" %}
     {% else %}
-        {% set header = header %}
+        {% set header_start = "<" ~ header ~ ">" %}
+        {% set header_end = "</" ~ header ~ ">" %}
     {% endif %}
 
     {% if block == "block_4" or block == "block_5" or block == "block_6" %}
@@ -71,8 +75,7 @@
             {% set title = title %}
         {% endif %}
     {% endif %}
-
-    <{{ header }}>{{ title }}</{{ header }}>
+    {{ header_start|raw }}{{ title }}{{ header_end|raw }}
     {{ drupal_view('events_search', block, terms) }}
 </div>
 
