@@ -2965,3 +2965,57 @@ input#edit-submit-community-grid {
         }
     }
 }
+
+/* SUBMISSION BOX
+====================================== */
+
+.view-community-picks {
+    .view-header {
+        margin-bottom: 30px;
+    }
+    .item-list li {
+        border: 3px solid $beige; /*#e6dfc7;*/
+        padding: 20px 30px 0 30px;
+        margin-bottom: 20px;
+    }
+    table.rating-table {
+        margin: 1rem 0;
+
+        tr:nth-child(2n+1) {
+            background: transparent;
+        }
+        td.rating-table-td:first-of-type {
+            width: 300px;
+            @include media-breakpoint-down(phone) {
+                width: 150px;
+            }
+            
+            
+        }
+    }
+    .yesno-rating-wrapper > div > label.yesno-rating-label {
+        font-size: .85rem;
+        color: $white;
+        text-transform: uppercase;
+        border: 3px solid $white;
+        padding-top: 8px;
+        width: 90px;
+        height: 40px;    
+        background: $green;
+
+        &:hover {
+            border: 3px solid $green;
+            background-color: $white;
+            color: $green;
+        }
+    }
+
+    .yesno-rating-wrapper > div > div.rating-option-result {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .yesno-rating-wrapper > div.form-type-radio {
+        padding: 0px 30px 0 0;
+    }
+}
