@@ -1,34 +1,35 @@
-uuid: f5cb5a1a-1000-44af-b062-19a1e241019f
+uuid: 32fc32be-0352-4e3e-9e61-96b38c96c746
 langcode: en
 status: true
 dependencies: {  }
-id: points
-label: Points
+id: post_votes
+label: 'Post Votes'
 template: custom
 value_type: points
-entity_types: {  }
+entity_types:
+  - node.submission
 comment_types: {  }
 options:
   -
     value: '1'
-    label: 'Vote Up'
+    label: Up
     class: ''
   -
     value: '-1'
-    label: 'Vote Down'
+    label: Down
     class: ''
 voting:
   use_deadline: 0
   anonymous_window: -2
   user_window: -2
 display:
-  display_label: 'Vote for this submission'
+  display_label: ''
   label_class: ''
-  label_position: hidden
+  label_position: above
   description: ''
   description_class: ''
   description_position: below
   readonly: 0
 results:
   result_type: user_vote_empty
-  result_position: right
+  result_position: hidden

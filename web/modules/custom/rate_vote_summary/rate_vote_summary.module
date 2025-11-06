@@ -1,0 +1,161 @@
+<?php
+
+/**
+ * @file
+ * Custom vote summary integrations for Rate/VotingAPI.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function rate_vote_summary_theme($existing, $type, $theme, $path) {
+  return [
+    'rate_vote_summary' => [
+      'template' => 'rate-vote-summary',
+      'path' => drupal_get_path('module', 'rate_vote_summary') . '/templates',
+      'variables' => [
+        'up_total' => 0,
+        'down_total' => 0,
+        'my_vote' => NULL, // 1, -1, or NULL
+      ],
+    ],
+  ];
+}
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+
+/**
+ * Implements hook_entity_view().
+ *
+ * Injects summary on Submission nodes when rendered in list contexts
+ * (e.g., Views using "Full content"), but NOT on the canonical node page.
+ * We don't place it here; we only compute data and stash attachments. The
+ * actual placement happens in hook_entity_view_alter() via body #suffix.
+ */
+function rate_vote_summary_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  if ($entity->getEntityTypeId() !== 'node' || $entity->bundle() !== 'submission') {
+    return;
+  }
+
+  // Skip standalone node page.
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if ($route_name === 'entity.node.canonical') {
+    return;
+  }
+
+  // Compute tallies now so we can render later.
+  /** @var \Drupal\rate_vote_summary\VoteTallyService $tally */
+  $tally = \Drupal::service('rate_vote_summary.tally');
+  [$up, $down, $mine] = $tally->getTallies((int) $entity->id());
+
+  // Stash values on the build for alter().
+  $build['#rate_vote_summary'] = [
+    'nid' => (int) $entity->id(),
+    'up' => $up,
+    'down' => $down,
+    'mine' => $mine,
+  ];
+
+  // Ensure our JS library and settings get attached at the node level so they
+  // bubble even if we append HTML into a field suffix later.
+  $nid = (int) $entity->id();
+  $wrapper_id = 'rate-vote-summary-' . $nid;
+
+  $build['#attached']['library'][] = 'rate_vote_summary/refresh';
+  $build['#attached']['drupalSettings']['rateVoteSummary'][$nid] = [
+    'wrapperId'  => $wrapper_id,
+    'refreshUrl' => \Drupal\Core\Url::fromRoute(
+      'rate_vote_summary.refresh',
+      ['entity_type' => 'node', 'entity_id' => $nid]
+    )->toString(),
+  ];
+
+  // Personalized + varies by route and URL; avoid staleness.
+  $build['#cache']['contexts'][] = 'user';
+  $build['#cache']['contexts'][] = 'session';
+  $build['#cache']['contexts'][] = 'route';
+  $build['#cache']['contexts'][] = 'url';
+  $build['#cache']['max-age'] = 0;
+}
+
+/**
+ * Implements hook_entity_view_alter().
+ *
+ * Force the summary to render *after* the body by appending to the body's
+ * #suffix markup. This bypasses weight/group ordering issues.
+ */
+function rate_vote_summary_entity_view_alter(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
+  if ($entity->getEntityTypeId() !== 'node' || $entity->bundle() !== 'submission') {
+    return;
+  }
+
+  // Skip canonical node page; we only want list contexts.
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if ($route_name === 'entity.node.canonical') {
+    return;
+  }
+
+  if (empty($build['#rate_vote_summary'])) {
+    return;
+  }
+
+  $info = $build['#rate_vote_summary'];
+  $nid  = (int) ($info['nid'] ?? 0);
+  if (!$nid) {
+    return;
+  }
+
+  // Find the body element in this view build.
+  $body_key = isset($build['content']['body']) ? 'body'
+    : (isset($build['content']['field_body']) ? 'field_body' : NULL);
+
+  if ($body_key && !empty($build['content'][$body_key])) {
+    // Append our HTML AFTER the body has rendered, regardless of weights/groups.
+    $build['content'][$body_key]['#post_render'][] = function ($markup, $element) use ($info, $nid) {
+      $renderer = \Drupal::service('renderer');
+      $html = (string) $renderer->renderRoot(_rate_vote_summary_build_element($info, $nid));
+      return $markup . $html; // body, then summary
+    };
+  }
+  else {
+    // Fallback: if body isn't present, stick it at the very end of content.
+    $build['content']['rate_vote_summary'] = _rate_vote_summary_build_element($info, $nid) + ['#weight' => 1000];
+  }
+}
+
+
+/**
+ * Helper: build the render array for the summary widget.
+ */
+function _rate_vote_summary_build_element(array $info, int $nid): array {
+  $wrapper_id = 'rate-vote-summary-' . $nid;
+
+  // Safely load the node to fetch cache tags; fall back to empty array.
+  $tags = [];
+  try {
+    /** @var \Drupal\node\NodeInterface|null $node */
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
+    if ($node) {
+      $tags = $node->getCacheTags();
+    }
+  }
+  catch (\Throwable $e) {
+    // Ignore; leave $tags as [].
+  }
+
+  return [
+    '#theme' => 'rate_vote_summary',
+    '#up_total' => (int) ($info['up'] ?? 0),
+    '#down_total' => (int) ($info['down'] ?? 0),
+    '#my_vote' => $info['mine'] ?? NULL,
+    '#prefix' => '<div id="' . $wrapper_id . '">',
+    '#suffix' => '</div>',
+    '#cache' => [
+      'contexts' => ['user', 'session', 'route', 'url'],
+      'tags' => $tags,   // <-- use $tags, not $entity
+      'max-age' => 0,
+    ],
+  ];
+}
+

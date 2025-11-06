@@ -1,0 +1,8 @@
+services:
+  rate_vote_summary.tally:
+    class: Drupal\rate_vote_summary\VoteTallyService
+    arguments:
+      - '@database'
+      - '@current_user'
+      - '@config.factory'
+      - '@request_stack'
