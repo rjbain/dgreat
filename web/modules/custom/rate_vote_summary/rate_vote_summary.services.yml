@@ -4,5 +4,6 @@ services:
     arguments:
       - '@database'
       - '@current_user'
-      - '@config.factory'
-      - '@request_stack'
+      - 'node'          # entity type
+      - 'rate_widget'   # column holding the widget key (or 'type' if your schema uses that)
+      - 'post_votes'    # Rate widget machine name
