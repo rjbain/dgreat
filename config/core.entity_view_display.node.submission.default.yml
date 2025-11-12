@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.submission.body
+    - field.field.node.submission.field_community_board
     - node.type.submission
   module:
     - text
@@ -20,6 +21,14 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
+  field_community_board:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 101
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -29,6 +38,11 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 2
+    region: content
+  rate_post_votes:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
   langcode: true

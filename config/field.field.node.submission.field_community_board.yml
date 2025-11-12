@@ -1,0 +1,29 @@
+uuid: fb397350-9e66-4ce7-9e25-5b7229a2fc40
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_community_board
+    - node.type.submission
+    - taxonomy.vocabulary.community_board
+id: node.submission.field_community_board
+field_name: field_community_board
+entity_type: node
+bundle: submission
+label: 'Community Board'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      community_board: community_board
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
