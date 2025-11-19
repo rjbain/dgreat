@@ -58,8 +58,7 @@
 
     {% if block == "block_4" or block == "block_5" or block == "block_6" %}
         {% set results = drupal_view_result('events_search', block, terms, true) %}
-        {% if results is empty %}
-        {% else %}
+        {% if results is not empty %}
             {% set title = paragraph.field_title.value %}
                 {% if title is empty %}
                 {% set title = "Upcoming Events" %}
@@ -75,7 +74,9 @@
             {% set title = title %}
         {% endif %}
     {% endif %}
-    {{ header_start|raw }}{{ title }}{{ header_end|raw }}
+    {% if results is not empty %}
+        {{ header_start|raw }}{{ title }}{{ header_end|raw }}
+    {% endif %}
     {{ drupal_view('events_search', block, terms) }}
 </div>
 
