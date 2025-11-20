@@ -74,7 +74,7 @@
             {% set title = title %}
         {% endif %}
     {% endif %}
-    {% if results is not empty %}
+    {% if title is not empty %}
         {{ header_start|raw }}{{ title }}{{ header_end|raw }}
     {% endif %}
     {{ drupal_view('events_search', block, terms) }}
