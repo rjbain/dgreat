@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function rate_vote_summary_theme($existing, $type, $theme, $path) {
+  return [
+    'rate_vote_summary' => [
+      'variables' => [
+        'up_total' => 0,
+        'down_total' => 0,
+        'my_vote' => NULL,
+      ],
+      'template' => 'rate-vote-summary',
+    ],
+  ];
+}

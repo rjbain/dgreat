@@ -1,0 +1,9 @@
+rate_vote_summary.refresh:
+  path: '/rate-vote-summary/refresh/{entity_type}/{entity_id}'
+  defaults:
+    _controller: '\Drupal\rate_vote_summary\Controller\RefreshController::refresh'
+    _title: 'Rate vote summary refresh'
+  requirements:
+    _permission: 'access content'
+  options:
+    _theme: false

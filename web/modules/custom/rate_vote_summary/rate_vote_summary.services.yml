@@ -1,0 +1,9 @@
+services:
+  rate_vote_summary.tally:
+    class: Drupal\rate_vote_summary\VoteTallyService
+    arguments:
+      - '@database'
+      - '@current_user'
+      - 'node'          # entity type
+      - 'rate_widget'   # column holding the widget key (or 'type' if your schema uses that)
+      - 'post_votes'    # Rate widget machine name
