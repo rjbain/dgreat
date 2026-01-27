@@ -1,0 +1,44 @@
+uuid: 04ac1043-e389-4d37-9acc-36ea680c3990
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.submission.body
+    - field.field.node.submission.field_community_board
+    - node.type.submission
+  module:
+    - text
+    - user
+id: node.submission.teaser
+targetEntityType: node
+bundle: submission
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  rate_points:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  rate_post_votes:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_community_board: true
+  langcode: true
+  search_api_excerpt: true
