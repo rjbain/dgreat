@@ -1,0 +1,26 @@
+{#
+  Theme override for Submission nodes (full view mode).
+  Forces the order: Body → Vote Summary → everything else.
+#}
+<article{{ attributes }}>
+  {{ title_prefix }}
+  {% if label and not page %}
+    <h2{{ title_attributes }}>
+      {{ label }}
+    </h2>
+  {% endif %}
+  {{ title_suffix }}
+
+  {# Body first #}
+  {% if content.body is defined %}
+    {{ content.body }}
+  {% endif %}
+
+  {# Then the vote summary #}
+  {% if content.rate_vote_summary is defined %}
+    {{ content.rate_vote_summary }}
+  {% endif %}
+
+  {# Then the rest of the fields/content #}
+  {{ content|without('body', 'rate_vote_summary') }}
+</article>

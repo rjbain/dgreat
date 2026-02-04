@@ -1,0 +1,24 @@
+<div class="rate-vote-summary">
+  <div class="rate-vote-summary__row">
+    <span class="rate-vote-summary__label">{{ 'Up votes'|t }}:</span>
+    <span class="rate-vote-summary__value">{{ up_total }}</span>
+  </div>
+
+  <div class="rate-vote-summary__row">
+    <span class="rate-vote-summary__label">{{ 'Down votes'|t }}:</span>
+    <span class="rate-vote-summary__value">{{ down_total }}</span>
+  </div>
+
+  <div class="rate-vote-summary__row">
+    <span class="rate-vote-summary__label">{{ 'Your vote'|t }}:</span>
+    <span class="rate-vote-summary__value">
+      {% if my_vote is same as(1) %}
+        {{ 'You upvoted'|t }}
+      {% elseif my_vote is same as(-1) %}
+        {{ 'You downvoted'|t }}
+      {% else %}
+        {{ 'You haven’t voted'|t }}
+      {% endif %}
+    </span>
+  </div>
+</div>

@@ -2965,3 +2965,100 @@ input#edit-submit-community-grid {
         }
     }
 }
+
+/* SUBMISSION BOX
+====================================== */
+
+.view-community-picks {
+    .view-header {
+        margin: 0 25px 30px -15px;
+    }
+    .item-list {
+        margin-right: 15px;
+
+        li {
+            border: 3px solid $beige;
+            padding: 20px 30px 0 30px;
+            margin-bottom: 20px;
+
+            .rate-vote-summary{
+                font-size: 0.85rem;
+                margin-top: 15px;
+
+                &:before {
+                    content: 'TOTAL:';
+                    font-weight: bold;
+                    padding-right: 10px;
+                }
+                .rate-vote-summary__row {
+                    display: inline;
+                    margin-right: 20px;
+
+                    .rate-vote-summary__label {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+
+    table.rating-table {
+        margin: 1rem 0;
+
+        tr:nth-child(2n+1) {
+            background: transparent;
+        }
+        td.rating-table-td:first-of-type {
+            width: 300px;
+        }
+    }
+    .custom-rating-wrapper {
+        @include media-breakpoint-down(phone) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        > div.form-type-radio {
+            padding: 0px 30px 0 0;
+    
+            @include media-breakpoint-down(phone) {
+                padding: 0px 15px 0 15px;
+            }
+        }
+
+        > div > label.custom-rating-label {
+            font-size: .85rem;
+            cursor: pointer;
+            color: $white;
+            text-transform: uppercase;
+            border: 3px solid transparent;
+            padding-top: 8px;
+            width: 90px;
+            height: 40px;    
+            background: $green;
+    
+            &:hover {
+                border: 3px solid $green;
+                background-color: $white;
+                color: $green;
+            }
+
+            &.rate-voted {
+                color: $green;
+                border: 3px solid $green;
+                background: $yellow;
+
+                &:hover {
+                    border: 3px solid $green;
+                    background: $white;                    
+                }
+            }
+        }
+
+        > div > div.rating-option-result {
+            display: none;
+        }
+    }
+}  
+

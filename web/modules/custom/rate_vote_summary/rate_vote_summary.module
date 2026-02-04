@@ -1,0 +1,325 @@
+<?php
+
+/**
+ * @file
+ * Custom vote summary integrations for Rate/VotingAPI.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+use Drupal\Core\Template\Attribute;
+
+/**
+ * Implements hook_theme().
+ */
+function rate_vote_summary_theme($existing, $type, $theme, $path) {
+  return [
+    'rate_vote_summary' => [
+      'template' => 'rate-vote-summary',
+      'path' => drupal_get_path('module', 'rate_vote_summary') . '/templates',
+      'variables' => [
+        'up_total' => 0,
+        'down_total' => 0,
+        'my_vote' => NULL, // 1, -1, or NULL
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_entity_view().
+ *
+ * Injects summary on Submission nodes in list contexts (e.g., Views using
+ * "Full content"), but NOT on the canonical node page.
+ */
+function rate_vote_summary_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  if ($entity->getEntityTypeId() !== 'node' || $entity->bundle() !== 'submission') {
+    return;
+  }
+
+  // Skip standalone node page.
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if ($route_name === 'entity.node.canonical') {
+    return;
+  }
+
+  // Compute tallies now so we can render later.
+  /** @var \Drupal\rate_vote_summary\VoteTallyService $tally */
+  $tally = \Drupal::service('rate_vote_summary.tally');
+  [$up, $down, $mine] = $tally->getTallies((int) $entity->id());
+
+  // Stash values on the build for alter().
+  $build['#rate_vote_summary'] = [
+    'nid' => (int) $entity->id(),
+    'up' => $up,
+    'down' => $down,
+    'mine' => $mine,
+  ];
+
+  // Ensure our JS library and settings get attached at the node level so they
+  // bubble even if we append HTML into a field suffix later.
+  $nid = (int) $entity->id();
+  $wrapper_id = 'rate-vote-summary-' . $nid;
+
+  $build['#attached']['library'][] = 'rate_vote_summary/refresh';
+  // Optional: attach instant-highlight globally (you may also attach in builder).
+  $build['#attached']['library'][] = 'rate_vote_summary/highlight_lite';
+
+  $build['#attached']['drupalSettings']['rateVoteSummary'][$nid] = [
+    'wrapperId'  => $wrapper_id,
+    'refreshUrl' => \Drupal\Core\Url::fromRoute(
+      'rate_vote_summary.refresh',
+      ['entity_type' => 'node', 'entity_id' => $nid]
+    )->toString(),
+  ];
+
+  // Personalized + varies by route and URL; avoid staleness.
+  $build['#cache']['contexts'][] = 'user';
+  $build['#cache']['contexts'][] = 'session';
+  $build['#cache']['contexts'][] = 'route';
+  $build['#cache']['contexts'][] = 'url';
+  $build['#cache']['max-age'] = 0;
+}
+
+/**
+ * Implements hook_entity_view_alter().
+ *
+ * Force the summary to render *after* the body by appending to the body's
+ * #suffix markup. This bypasses weight/group ordering issues.
+ */
+function rate_vote_summary_entity_view_alter(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
+  if ($entity->getEntityTypeId() !== 'node' || $entity->bundle() !== 'submission') {
+    return;
+  }
+
+  // Skip canonical node page; we only want list contexts.
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if ($route_name === 'entity.node.canonical') {
+    return;
+  }
+
+  if (empty($build['#rate_vote_summary'])) {
+    return;
+  }
+
+  $info = $build['#rate_vote_summary'];
+  $nid  = (int) ($info['nid'] ?? 0);
+  if (!$nid) {
+    return;
+  }
+
+  // Find the body element in this view build.
+  $body_key = isset($build['content']['body']) ? 'body'
+    : (isset($build['content']['field_body']) ? 'field_body' : NULL);
+
+  if ($body_key && !empty($build['content'][$body_key])) {
+    // Append our HTML AFTER the body has rendered, regardless of weights/groups.
+    $build['content'][$body_key]['#post_render'][] = function ($markup, $element) use ($info, $nid) {
+      $renderer = \Drupal::service('renderer');
+      $html = (string) $renderer->renderRoot(_rate_vote_summary_build_element($info, $nid));
+      return $markup . $html; // body, then summary
+    };
+  }
+  else {
+    // Fallback: if body isn't present, stick it at the very end of content.
+    $build['content']['rate_vote_summary'] = _rate_vote_summary_build_element($info, $nid) + ['#weight' => 1000];
+  }
+}
+
+/**
+ * Helper: build the render array for the summary widget.
+ */
+function _rate_vote_summary_build_element(array $info, int $nid): array {
+  $wrapper_id = 'rate-vote-summary-' . $nid;
+
+  // Safely load the node to fetch cache tags; fall back to empty array.
+  $tags = [];
+  try {
+    /** @var \Drupal\node\NodeInterface|null $node */
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
+    if ($node) {
+      $tags = $node->getCacheTags();
+    }
+  }
+  catch (\Throwable $e) {
+    // Ignore; leave $tags as [].
+  }
+
+  return [
+    '#theme' => 'rate_vote_summary',
+    '#up_total' => (int) ($info['up'] ?? 0),
+    '#down_total' => (int) ($info['down'] ?? 0),
+    '#my_vote' => $info['mine'] ?? NULL,
+    '#prefix' => '<div id="' . $wrapper_id . '">',
+    '#suffix' => '</div>',
+
+    // Attach instant-highlight JS scoped to this widget (tidy).
+    '#attached' => [
+      'library' => [
+        'rate_vote_summary/refresh',        // your existing library
+        'rate_vote_summary/highlight_lite', // instant highlight on click
+      ],
+    ],
+
+    '#cache' => [
+      'contexts' => ['user', 'session', 'route', 'url'],
+      'tags' => $tags,
+      'max-age' => 0,
+    ],
+  ];
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Tag Rate widget option elements so the contrib template's <label> can be
+ * targeted and (if needed) DB-backed initial highlight can work.
+ */
+function rate_vote_summary_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  // Identify the entity id for this form's context.
+  $entity_id = NULL;
+
+  // Common case: on node pages.
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    if (method_exists($node, 'id')) {
+      $entity_id = (int) $node->id();
+    }
+  }
+
+  // If your form exposes an entity, use that as fallback.
+  if (!$entity_id && !empty($form['#entity']) && method_exists($form['#entity'], 'id')) {
+    $entity_id = (int) $form['#entity']->id();
+  }
+
+  if (!$entity_id) {
+    // If your Rate widget lives in a specific form, you can also key off $form_id.
+    // Otherwise, bail safely.
+    return;
+  }
+
+  // Adjust this to your Rate widget machine name if different.
+  $widget_machine_name = 'post_votes';
+
+  // Heuristic walk: tag radios/checkboxes that look like the Rate options.
+  _rate_vote_summary_tag_rate_options($form, $entity_id, $widget_machine_name);
+
+  // Ensure per-user rendering so voted label highlighting is correct per user.
+  $form['#cache']['contexts'][] = 'user';
+}
+
+/**
+ * Recursively tag radios/checkboxes that look like Rate widget options.
+ *
+ * Adds:
+ *   - data-rate-widget="{machine_name}"
+ *   - data-entity-id="{entity_id}"
+ * to either the option element (#attributes) or per-option labels (#option_attributes).
+ */
+function _rate_vote_summary_tag_rate_options(array &$element, int $entity_id, string $widget_machine_name): void {
+  // Tag individual radio/checkbox option elements.
+  if (!empty($element['#type']) && in_array($element['#type'], ['radio', 'checkbox'], TRUE)) {
+    if (isset($element['#return_value'])) {
+      $element['#attributes']['data-rate-widget'] = $widget_machine_name;
+      $element['#attributes']['data-entity-id'] = (string) $entity_id;
+    }
+  }
+
+  // Tag radios/checkboxes wrapper so labels inherit attributes via #option_attributes.
+  if (!empty($element['#type']) && in_array($element['#type'], ['radios', 'checkboxes'], TRUE)) {
+    if (!empty($element['#options']) && is_array($element['#options'])) {
+      foreach ($element['#options'] as $value => $_label) {
+        $element['#option_attributes'][$value]['data-rate-widget'] = $widget_machine_name;
+        $element['#option_attributes'][$value]['data-entity-id'] = (string) $entity_id;
+      }
+    }
+  }
+
+  // Recurse into children.
+  foreach (Element::children($element) as $child_key) {
+    _rate_vote_summary_tag_rate_options($element[$child_key], $entity_id, $widget_machine_name);
+  }
+}
+
+/**
+ * Preprocess for the rating form-element variant.
+ * Template: modules/contrib/rate/templates/form-element--rating.html.twig
+ *
+ * Strategy:
+ * 1) If Rate already marks the chosen option's label with "rate-voted",
+ *    mirror that by appending "my-vote".
+ * 2) If not (e.g., initial render), and if our form_alter tagged the option
+ *    with data-rate-widget/entity-id, consult VoteTallyService to set "my-vote".
+ */
+function rate_vote_summary_preprocess_form_element__rating(array &$variables) {
+  // Contrib template applies "attributes" to the <label>, so we add class there.
+  $attrs = $variables['attributes'] ?? NULL;
+
+  // Pull current classes on the label.
+  $classes = [];
+  if ($attrs instanceof Attribute) {
+    $classes = (array) ($attrs->getClass() ?? []);
+  }
+  elseif (is_array($attrs) && isset($attrs['class'])) {
+    $classes = (array) $attrs['class'];
+  }
+
+  $append_my_vote = FALSE;
+
+  // 1) Piggyback on Rate's own flag if present.
+  if (in_array('rate-voted', $classes, TRUE)) {
+    $append_my_vote = TRUE;
+  }
+
+  // 2) If not present, try DB-backed detection for initial render.
+  if (!$append_my_vote && !empty($variables['element'])) {
+    $el = $variables['element'];
+
+    // Only for radio/checkbox options.
+    if (!empty($el['#type']) && in_array($el['#type'], ['radio', 'checkbox'], TRUE)) {
+      // Prefer attributes we tagged on the option in form_alter.
+      $opt_attrs = $el['#attributes'] ?? [];
+      $widget = $opt_attrs['data-rate-widget'] ?? NULL;
+      $entity_id = isset($opt_attrs['data-entity-id']) ? (int) $opt_attrs['data-entity-id'] : 0;
+
+      // Fall back to attributes that might have reached the label via #option_attributes.
+      if ((!$widget || !$entity_id) && $attrs instanceof Attribute) {
+        $widget = $attrs->offsetGet('data-rate-widget') ?? $widget;
+        $entity_id = (int) ($attrs->offsetGet('data-entity-id') ?? $entity_id);
+      } elseif ((!$widget || !$entity_id) && is_array($attrs)) {
+        $widget = $attrs['data-rate-widget'] ?? $widget;
+        $entity_id = (int) ($attrs['data-entity-id'] ?? $entity_id);
+      }
+
+      if ($widget === 'post_votes' && $entity_id > 0) {
+        // Compare this option's value with the user's latest vote.
+        $option_value = $el['#return_value'] ?? $el['#value'] ?? NULL;
+        if ($option_value !== NULL) {
+          /** @var \Drupal\rate_vote_summary\VoteTallyService $tally */
+          $tally = \Drupal::service('rate_vote_summary.tally');
+          $my_vote = $tally->getUserVote($entity_id); // 1, -1, or NULL
+          if ($my_vote !== NULL && (int) $option_value === (int) $my_vote) {
+            $append_my_vote = TRUE;
+          }
+        }
+      }
+
+      // Defense in depth: per-user render.
+      $el['#cache']['contexts'][] = 'user';
+      $variables['element'] = $el;
+    }
+  }
+
+  if ($append_my_vote) {
+    if ($attrs instanceof Attribute) {
+      $attrs->addClass('my-vote');
+      $attrs->setAttribute('aria-pressed', 'true');
+      $variables['attributes'] = $attrs;
+    }
+    else {
+      $variables['attributes']['class'][] = 'my-vote';
+      $variables['attributes']['aria-pressed'] = 'true';
+    }
+  }
+}
