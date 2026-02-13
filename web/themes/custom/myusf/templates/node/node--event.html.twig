@@ -83,6 +83,7 @@
 {% set image = file_url(node.field_image.entity.uri.value) %}
 {% set image_url = node.field_image_url.uri %}
 {% set imageAlt = node.field_image_alt.value %}
+{% set imageCaption = node.field_featured_media_caption.value %}
 {% set f_image_url = node.field_f_image_url.uri %}
 
 {% set gcal_title = node.title.value|replace({"&#039;": "%27",'&quot;': "%22"," ": "+",'&': "%26"}) %}
@@ -151,6 +152,11 @@
     <div class="event-image">
       {% if node.field_f_image_url.value %}
         <img src="{{ f_image_url }}" class="image" alt="{{ imageAlt }}">
+      {% endif %}
+    </div>
+    <div class="event-image-caption">
+      {% if imageCaption %}
+        {{imageCaption}}
       {% endif %}
     </div>
     <div class="body">

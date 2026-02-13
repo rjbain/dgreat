@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.event.field_end_date
     - field.field.node.event.field_f_image_url
     - field.field.node.event.field_featured
+    - field.field.node.event.field_featured_media_caption
     - field.field.node.event.field_group
     - field.field.node.event.field_guid_gen
     - field.field.node.event.field_image_alt
@@ -207,6 +208,8 @@ processor_configuration:
   update_existing: 2
   update_non_existent: _delete
   skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
   authorize: true
   revision: false
   expire: -1
@@ -313,6 +316,11 @@ custom_sources:
     label: rsvpLink
     machine_name: rsvplink
     type: json
+  eventmediacaption:
+    value: eventMediaCaption
+    label: eventMediaCaption
+    machine_name: eventmediacaption
+    type: json
 mappings:
   -
     target: body
@@ -337,6 +345,8 @@ mappings:
       language: ''
       reference_by: name
       autocreate: '1'
+      autocreate_bundle: event_category
+      feeds_item: false
   -
     target: field_ems_booking_id
     map:
@@ -379,7 +389,7 @@ mappings:
     settings:
       language: null
     unique:
-      value: '1'
+      value: 1
   -
     target: field_group
     map:
@@ -388,6 +398,8 @@ mappings:
       language: ''
       reference_by: name
       autocreate: '1'
+      autocreate_bundle: event_group
+      feeds_item: false
   -
     target: field_location
     map:
@@ -423,6 +435,8 @@ mappings:
       language: ''
       reference_by: name
       autocreate: '1'
+      autocreate_bundle: event_terms
+      feeds_item: false
   -
     target: field_thumbnail_image_url
     map:
@@ -465,3 +479,9 @@ mappings:
     settings:
       language: null
       format: plain_text
+  -
+    target: field_featured_media_caption
+    map:
+      value: eventmediacaption
+    settings:
+      language: null
