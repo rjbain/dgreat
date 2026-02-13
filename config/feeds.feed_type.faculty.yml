@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.base_field_override.node.faculty.status
     - field.field.node.faculty.body
     - field.field.node.faculty.field_display_title
     - field.field.node.faculty.field_education
@@ -103,6 +104,8 @@ processor_configuration:
   update_existing: 2
   update_non_existent: _delete
   skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
   authorize: true
   revision: false
   expire: -1
@@ -275,6 +278,13 @@ custom_sources:
     raw: false
     inner: false
     type: xml
+  published:
+    label: published
+    machine_name: published
+    value: published
+    raw: false
+    inner: false
+    type: xml
 mappings:
   -
     target: field_display_title
@@ -312,6 +322,8 @@ mappings:
       language: ''
       reference_by: name
       autocreate: '1'
+      autocreate_bundle: faculty_department
+      feeds_item: false
   -
     target: field_faculty_position
     map:
@@ -320,6 +332,8 @@ mappings:
       language: ''
       reference_by: name
       autocreate: '1'
+      autocreate_bundle: faculty_position
+      feeds_item: false
   -
     target: field_faculty_program
     map:
@@ -328,6 +342,8 @@ mappings:
       language: ''
       reference_by: name
       autocreate: '1'
+      autocreate_bundle: faculty_program
+      feeds_item: false
   -
     target: field_faculty_program_director
     map:
@@ -336,6 +352,8 @@ mappings:
       language: ''
       reference_by: name
       autocreate: '1'
+      autocreate_bundle: faculty_program_director
+      feeds_item: false
   -
     target: field_faculty_school
     map:
@@ -344,6 +362,8 @@ mappings:
       language: ''
       reference_by: name
       autocreate: '1'
+      autocreate_bundle: faculty_school
+      feeds_item: false
   -
     target: field_first_name
     map:
@@ -358,7 +378,7 @@ mappings:
     settings:
       language: null
     unique:
-      value: '1'
+      value: 1
   -
     target: field_image_url
     map:
@@ -430,3 +450,9 @@ mappings:
     settings:
       language: ''
       format: restricted_html
+  -
+    target: status
+    map:
+      value: published
+    settings:
+      language: null
