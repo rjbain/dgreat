@@ -10,9 +10,9 @@ dependencies:
     - field.field.node.event.field_ems_booking_id
     - field.field.node.event.field_ems_reservation_id
     - field.field.node.event.field_end_date
+    - field.field.node.event.field_event_image_caption
     - field.field.node.event.field_f_image_url
     - field.field.node.event.field_featured
-    - field.field.node.event.field_featured_media_caption
     - field.field.node.event.field_group
     - field.field.node.event.field_guid_gen
     - field.field.node.event.field_image_alt
@@ -208,8 +208,6 @@ processor_configuration:
   update_existing: 2
   update_non_existent: _delete
   skip_hash_check: false
-  skip_validation: false
-  skip_validation_types: {  }
   authorize: true
   revision: false
   expire: -1
@@ -480,7 +478,7 @@ mappings:
       language: null
       format: plain_text
   -
-    target: field_featured_media_caption
+    target: field_event_image_caption
     map:
       value: eventmediacaption
     settings:
