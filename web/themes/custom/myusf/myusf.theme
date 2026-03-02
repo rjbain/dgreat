@@ -1,5 +1,7 @@
 <?php
 use \Drupal\block_content\BlockContentInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
 use \Drupal\paragraphs\Entity\Paragraph;
 
 /**
@@ -185,6 +187,75 @@ function myusf_preprocess_node(&$variables)
     myusf_add_regions_to_node($allowed_regions, $variables);
   }
 
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function myusf_preprocess_views_view(&$variables) {
+  $variables['selected_event_category_links'] = [];
+
+  if ($variables['id'] === 'events_search') {
+    $variables['selected_event_category_links'] = myusf_build_selected_event_category_links();
+    $variables['#cache']['contexts'][] = 'url.query_args';
+    $variables['#cache']['contexts'][] = 'url.path';
+  }
+}
+
+/**
+ * Builds selected event category links from the current query string.
+ */
+function myusf_build_selected_event_category_links() {
+  $request = \Drupal::request();
+  $category_filters = $request->query->all('field_category');
+  $category_ids = [];
+  $default_student_events_id = 2461;
+  $is_student_events_page = \Drupal::service('path_alias.manager')->getAliasByPath($request->getPathInfo()) === '/calendar/student-events';
+
+  if (is_array($category_filters)) {
+    foreach ($category_filters as $value) {
+      if (is_scalar($value) && ctype_digit((string) $value)) {
+        $category_ids[] = (int) $value;
+      }
+    }
+  }
+
+  $category_ids = array_values(array_unique($category_ids));
+  if (!$category_ids && $is_student_events_page) {
+    $category_ids = [$default_student_events_id];
+  }
+
+  if (!$category_ids) {
+    return [];
+  }
+
+  $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadMultiple($category_ids);
+  $current_query = $request->query->all();
+  $links = [];
+
+  foreach ($category_ids as $category_id) {
+    if (empty($terms[$category_id])) {
+      continue;
+    }
+
+    $link_query = $current_query;
+    $link_query['field_category'] = [
+      $category_id => $category_id,
+    ];
+    $link_url = $is_student_events_page
+      ? Url::fromUserInput('/calendar', ['query' => $link_query])
+      : Url::fromRoute('<current>', [], ['query' => $link_query]);
+    $link_text = ($is_student_events_page && $category_id === $default_student_events_id)
+      ? 'Student Events'
+      : $terms[$category_id]->label();
+
+    $links[] = Link::fromTextAndUrl(
+      $link_text,
+      $link_url
+    )->toRenderable();
+  }
+
+  return $links;
 }
 
 /**

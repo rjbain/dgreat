@@ -55,7 +55,13 @@
       {{ attachment_before }}
     </div>
   {% endif %}
-
+  {% if selected_event_category_links %}
+    <div class="event-search-tags">
+      {% for selected_event_category_link in selected_event_category_links %}
+        {{ selected_event_category_link }}
+      {% endfor %}
+    </div>
+  {% endif %}
   {% if rows %}
     <div class="view-content">
       {{ rows }}
