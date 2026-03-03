@@ -55,11 +55,18 @@
       {{ attachment_before }}
     </div>
   {% endif %}
-  {% if selected_event_category_links %}
+  {% if selected_event_category_tags %}
     <div class="event-search-tags">
-      {% for selected_event_category_link in selected_event_category_links %}
-        {{ selected_event_category_link }}
+      <span class="event-search-tags__title">Your Selections</span>
+      {% for selected_event_category_tag in selected_event_category_tags %}
+        <span class="event-search-tag">
+          {{ selected_event_category_tag.label_link }}
+          <a href="{{ selected_event_category_tag.remove_url }}" class="event-search-tag__remove" aria-label="Remove {{ selected_event_category_tag.label }}">x</a>
+        </span>
       {% endfor %}
+      {% if clear_all_event_category_url %}
+        <a href="{{ clear_all_event_category_url }}" class="event-search-tags__clear-all">Clear All</a>
+      {% endif %}
     </div>
   {% endif %}
   {% if rows %}
