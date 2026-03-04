@@ -57,17 +57,21 @@
   {% endif %}
   {% if selected_event_category_tags %}
     <div class="event-search-tags">
-      <span class="event-search-tags__title">Your Selections</span>
+      <span class="event-search-tags__title">Your Selections:</span>
+<div class="event-search-tag-wrapper">      
       {% for selected_event_category_tag in selected_event_category_tags %}
-        <span class="event-search-tag">
-          {{ selected_event_category_tag.label_link }}
-          <a href="{{ selected_event_category_tag.remove_url }}" class="event-search-tag__remove" aria-label="Remove {{ selected_event_category_tag.label }}">x</a>
-        </span>
+        <div class="event-search-tag">
+          <span>
+            {{ selected_event_category_tag.label_link }}
+            <a href="{{ selected_event_category_tag.remove_url }}" class="event-search-tag__remove" aria-label="Remove {{ selected_event_category_tag.label }}"><span class="close-tag">×</span></a>
+          </span>
+        </div>
       {% endfor %}
       {% if clear_all_event_category_url %}
         <a href="{{ clear_all_event_category_url }}" class="event-search-tags__clear-all">Clear All</a>
       {% endif %}
     </div>
+</div>
   {% endif %}
   {% if rows %}
     <div class="view-content">

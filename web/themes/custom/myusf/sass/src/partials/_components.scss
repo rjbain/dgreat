@@ -598,6 +598,56 @@ a.card-rollover {
 .view-events-search {
 	margin-top: 1rem;
 
+	.event-search-tags {
+		font-size: .70rem;
+		font-weight: 400;
+		color: #454545;
+		line-height: 1.8; 
+		display: flex;
+		padding: .625rem;
+		border: 0;
+		text-transform: uppercase;
+
+		.event-search-tags__title {
+			font-weight: 600;
+			margin-right: 1.5rem;
+			margin-top: 15px;
+		}
+		.event-search-tag-wrapper {
+			width: calc(100% - 135px);
+		}	
+		.event-search-tag {
+			background: $light_gray_60;
+			padding: 7px 5px 7px 10px;
+			margin-right: 10px;
+			display: inline;
+
+			span {
+				display: inline-block;
+
+				a {
+					text-decoration: none;
+					&:hover, :focus {
+						background-color: transparent;
+					}
+	
+					&.event-search-tag__remove span {
+						font-size: 1.3rem;
+						font-weight: 300;
+						position: relative;
+						top: 3px;
+						padding-left: 3px;
+					}
+				}
+			}
+		}
+		a.event-search-tags__clear-all {
+			margin-left: 1rem;
+			display: inline-block;
+			background: transparent;
+		}
+	}
+
 	.views-row {
 	 	margin-bottom: 0;
 
