@@ -16,7 +16,7 @@ use Drupal\user\Entity\User;
  *
  * @ViewsFilter("user_weight_filter_sort")
  */
-class UserWeightsSortFilter extends FilterPluginBase implements ContainerFactoryPluginInterface {
+final class UserWeightsSortFilter extends FilterPluginBase implements ContainerFactoryPluginInterface {
 
   /**
    * The database connection to which to dump route information.
@@ -57,7 +57,7 @@ class UserWeightsSortFilter extends FilterPluginBase implements ContainerFactory
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
+    return new self(
       $configuration,
       $plugin_id,
       $plugin_definition,

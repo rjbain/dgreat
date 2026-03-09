@@ -23,9 +23,9 @@ versions in sites/all/themes will take precedence over versions of the same
 themes that are here. Alternatively, the sites/your_site_name/themes directory
 pattern may be used to restrict themes to a specific site instance.
 
-FO MO INFORMATION
+MORE INFORMATION
 -----------------
 
-Refer to the "Appearance" section of the README.txt in the Drupal root directory
+Refer to the "Appearance" section of the README.md in the Drupal root directory
 for further information on customizing the appearance of Drupal with custom
 themes.

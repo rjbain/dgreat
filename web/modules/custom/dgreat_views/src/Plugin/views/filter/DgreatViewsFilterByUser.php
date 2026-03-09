@@ -19,7 +19,7 @@ use Drupal\user\Entity\User;
  *
  * @ViewsFilter("dgreat_views_filter_by_user")
  */
-class DgreatViewsFilterByUser extends FilterPluginBase implements ContainerFactoryPluginInterface {
+final class DgreatViewsFilterByUser extends FilterPluginBase implements ContainerFactoryPluginInterface {
 
   /**
    * The database connection to which to dump route information.
@@ -60,7 +60,7 @@ class DgreatViewsFilterByUser extends FilterPluginBase implements ContainerFacto
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
+    return new self(
       $configuration,
       $plugin_id,
       $plugin_definition,

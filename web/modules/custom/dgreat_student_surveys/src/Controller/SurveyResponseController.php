@@ -29,9 +29,11 @@ class SurveyResponseController extends ControllerBase {
     }
 
     $surveys = \Drupal::entityQuery('webform')
+      ->accessCheck(FALSE)
       ->condition('category', 'student_survey', '=')
       ->execute();
     $responses = \Drupal::entityQuery('webform_submission')
+      ->accessCheck(FALSE)
       ->condition('webform_id', $surveys, 'IN')
       ->condition('created', $from_date, '>')
       ->execute();
@@ -102,6 +104,7 @@ class SurveyResponseController extends ControllerBase {
    */
   private function getSubmissionsBySurvey($relevant_survey) {
     return \Drupal::entityQuery('webform_submission')
+      ->accessCheck(FALSE)
       ->condition('webform_id', $relevant_survey)
       ->execute();
   }

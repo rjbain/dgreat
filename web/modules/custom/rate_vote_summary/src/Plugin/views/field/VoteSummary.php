@@ -13,15 +13,15 @@ use Drupal\rate_vote_summary\VoteTallyService;
 /**
  * @ViewsField("rate_vote_summary_field")
  */
-class VoteSummary extends FieldPluginBase implements ContainerFactoryPluginInterface {
+final class VoteSummary extends FieldPluginBase implements ContainerFactoryPluginInterface {
 
   protected VoteTallyService $tally;
-  protected RendererInterface $renderer;
+  protected RendererInterface $voteSummaryRenderer;
 
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    $instance = new static($configuration, $plugin_id, $plugin_definition);
+    $instance = new self($configuration, $plugin_id, $plugin_definition);
     $instance->tally = $container->get('rate_vote_summary.tally');
-    $instance->renderer = $container->get('renderer');
+    $instance->voteSummaryRenderer = $container->get('renderer');
     return $instance;
   }
 
@@ -56,7 +56,7 @@ class VoteSummary extends FieldPluginBase implements ContainerFactoryPluginInter
     ];
 
     // Render to markup for the field cell.
-    return $this->renderer->renderRoot($build);
+    return $this->voteSummaryRenderer->renderRoot($build);
   }
 
 }
