@@ -4,7 +4,8 @@
 
             // Remove focus from buttons after clicking.
 
-            $(".nav-item").mouseleave(function(){
+            // Scope to front-end navbar items to avoid interfering with admin toolbar nav.
+            $(".navbar .nav-item").mouseleave(function(){
                 this.blur();
             });
             $(".carousel-control-next").mouseleave(function(){
@@ -103,9 +104,14 @@
     };
     Drupal.behaviors.surveyModal = {
         attach: function (context, settings) {
-            // Using once() to apply the myCustomBehaviour effect when you want to run just one function.
-            if ($('#studentSurveyModal').length && drupalSettings.dgreatStudentSurveys.hasSeen !== true) {
-                $('#studentSurveyModal').once('surveyModal').modal('show');
+            const hasSeenSurvey = settings?.dgreatStudentSurveys?.hasSeen === true;
+            const $surveyModal = $(context)
+              .find('#studentSurveyModal')
+              .addBack('#studentSurveyModal')
+              .not('[data-survey-modal-processed]');
+
+            if ($surveyModal.length && !hasSeenSurvey) {
+                $surveyModal.attr('data-survey-modal-processed', 'true').modal('show');
             }
         }
     };
