@@ -83,15 +83,12 @@ final class UserWeightsSortFilter extends FilterPluginBase implements ContainerF
     $uid = $this->currentUser->id();
     $name = $this->view->id();
 
-    $results = $this->db->select('user_weights', 'u')
-      ->fields('u', ['entity_id'])
+    $count = (int) $this->db->select('user_weights', 'u')
       ->condition('uid', $uid)
       ->condition('view_name', $name)
-      ->orderBy('weight', 'ASC')
+      ->countQuery()
       ->execute();
-
-    $results->allowRowCount = TRUE;
-    $count = $results->rowCount();
+    $count = (int) $count->fetchField();
 
     // Sort by our user weights.
     if (!$count) {
