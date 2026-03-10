@@ -104,14 +104,21 @@
     };
     Drupal.behaviors.surveyModal = {
         attach: function (context, settings) {
-            const hasSeenSurvey = settings?.dgreatStudentSurveys?.hasSeen === true;
+            const hasSeenSurvey = !!(
+              settings &&
+              settings.dgreatStudentSurveys &&
+              settings.dgreatStudentSurveys.hasSeen === true
+            );
             const $surveyModal = $(context)
               .find('#studentSurveyModal')
               .addBack('#studentSurveyModal')
               .not('[data-survey-modal-processed]');
 
             if ($surveyModal.length && !hasSeenSurvey) {
-                $surveyModal.attr('data-survey-modal-processed', 'true').modal('show');
+                $surveyModal.attr('data-survey-modal-processed', 'true');
+                if (typeof $surveyModal.modal === 'function') {
+                    $surveyModal.modal('show');
+                }
             }
         }
     };
