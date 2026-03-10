@@ -17,15 +17,20 @@ terminus -n build:env:merge "$TERMINUS_SITE.$TERMINUS_ENV" --yes
 # php_version) before running Drush commands.
 terminus -n env:code-rebuild "$TERMINUS_SITE.dev"
 
-# Remove stale references to a removed module that can break core post-updates.
+# Remove stale references to removed modules that can break updates/config import.
 terminus -n drush "$TERMINUS_SITE.dev" -- php:eval '
 $config = \Drupal::configFactory()->getEditable("core.extension");
 $modules = $config->get("module") ?: [];
-if (isset($modules["easy_install"])) {
-  unset($modules["easy_install"]);
-  $config->set("module", $modules)->save(TRUE);
+foreach (["easy_install", "password_compatibility", "jquery_ui_slider", "jquery_ui_touch_punch"] as $stale_module) {
+  if (isset($modules[$stale_module])) {
+    unset($modules[$stale_module]);
+  }
 }
-\Drupal::keyValue("system.schema")->delete("easy_install");
+$config->set("module", $modules)->save(TRUE);
+$schema = \Drupal::keyValue("system.schema");
+foreach (["easy_install", "password_compatibility", "jquery_ui_slider", "jquery_ui_touch_punch"] as $stale_module) {
+  $schema->delete($stale_module);
+}
 '
 
 # Run updatedb on the dev environment
