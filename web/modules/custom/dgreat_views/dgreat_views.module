@@ -193,13 +193,13 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
 
       // Grab the count first to make sure we have rows to manipulate.
       $uid = \Drupal::currentUser()->id();
-      $count = (int) $db
+      $count_query = $db
         ->select('user_weights', 'u')
         ->condition('uid', $uid)
         ->condition('view_name', $name)
         ->countQuery()
         ->execute();
-      $count = (int) $count->fetchField();
+      $count = (int) $count_query->fetchField();
 
       if ($count && isset($view->result)) {
         $new_results = [];
