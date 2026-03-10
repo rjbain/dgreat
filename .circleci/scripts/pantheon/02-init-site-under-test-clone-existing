@@ -13,6 +13,10 @@ set -eo pipefail
 terminus -n env:wake "$TERMINUS_SITE.dev"
 terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
 
+# Rebuild runtime code so Pantheon applies the branch pantheon.yml runtime
+# settings (e.g. php_version) before running Drush commands.
+terminus -n env:code-rebuild "$TERMINUS_SITE.$TERMINUS_ENV"
+
 # Run updatedb to ensure that the cloned database is updated for the new code.
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
 
