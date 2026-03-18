@@ -17,6 +17,15 @@ terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify
 # settings (e.g. php_version) before running Drush commands.
 terminus -n env:code-rebuild "$TERMINUS_SITE.$TERMINUS_ENV"
 
+# Clear stale Drupal caches before bootstrap-dependent Drush commands.
+terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "
+TRUNCATE cache_bootstrap;
+TRUNCATE cache_config;
+TRUNCATE cache_container;
+TRUNCATE cache_default;
+TRUNCATE cache_discovery;
+"
+
 # Remove stale references to removed modules that can break updates/config import.
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- php:eval '
 $config = \Drupal::configFactory()->getEditable("core.extension");
