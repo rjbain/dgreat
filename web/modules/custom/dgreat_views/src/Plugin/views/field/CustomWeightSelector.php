@@ -119,7 +119,7 @@ final class CustomWeightSelector extends FieldPluginBase implements ContainerFac
     ];
 
     if (isset($_COOKIE['STYXKEY_ids'])) {
-      setcookie('STYXKEY_ids', NULL, -1, '/');
+      setcookie('STYXKEY_ids', '', -1, '/');
     }
 
 

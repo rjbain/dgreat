@@ -1,0 +1,13 @@
+diff --git a/src/Entity/GroupRole.php b/src/Entity/GroupRole.php
+index c009684..804af74 100644
+--- a/src/Entity/GroupRole.php
++++ b/src/Entity/GroupRole.php
+@@ -312,7 +312,7 @@ class GroupRole extends ConfigEntityBundleBase implements GroupRoleInterface {
+     parent::postLoad($storage, $entities);
+     // Sort the queried roles by their weight.
+     // See \Drupal\Core\Config\Entity\ConfigEntityBase::sort().
+-    uasort($entities, 'static::sort');
++    uasort($entities, [static::class, 'sort']);
+   }
+ 
+   /**
