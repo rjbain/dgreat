@@ -608,6 +608,12 @@ a.card-rollover {
 		border: 0;
 		text-transform: uppercase;
 
+		@include media-breakpoint-down(phone) {
+			flex-direction: column;
+			padding-left: 0;
+			padding-right: 0;
+		}
+
 		.event-search-tags__title {
 			font-weight: 600;
 			margin-right: 1.5rem;
@@ -615,6 +621,10 @@ a.card-rollover {
 		}
 		.event-search-tag-wrapper {
 			width: calc(100% - 135px);
+
+			@include media-breakpoint-down(phone) {
+				width: 100%;
+			}
 		}	
 		.event-search-tag {
 			background: $light_gray_60;
@@ -645,6 +655,10 @@ a.card-rollover {
 			margin-left: 1rem;
 			display: inline-block;
 			background: transparent;
+
+			@include media-breakpoint-down(phone) {
+				margin-left: 0;
+			}
 		}
 	}
 
