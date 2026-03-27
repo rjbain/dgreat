@@ -596,6 +596,10 @@ a.card-rollover {
 .view-events-search {
 	margin-top: 1rem;
 
+	@include media-breakpoint-down(phone) {
+		width: 80vw!important;
+	}	
+
 	.event-search-tags {
 		font-size: .70rem;
 		font-weight: 400;
@@ -615,7 +619,11 @@ a.card-rollover {
 		.event-search-tags__title {
 			font-weight: 700;
 			margin-right: 1.5rem;
-			margin-top: 12px;
+			margin-top: 8px;
+
+			@include media-breakpoint-down(phone) {
+				margin-bottom: 10px;
+			}
 		}
 		.event-search-tag-wrapper {
 			width: calc(100% - 135px);
@@ -629,7 +637,7 @@ a.card-rollover {
 			padding: 0 10px;
 			margin-right: 10px;
 			margin-bottom: 10px;
-  			height: 30px;
+  			height: 28px;
 			display: inline-block;
 
 			span {
