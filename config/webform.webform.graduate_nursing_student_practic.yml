@@ -18,7 +18,7 @@ title: 'KPNSA Sponsored Graduate Nursing Student Health Requirement Form'
 description: ''
 categories:
   - 'School of Nursing and Health Professions'
-elements: |
+elements: |-
   student_name:
     '#type': textfield
     '#title': 'Student Name'
@@ -34,7 +34,8 @@ elements: |
   i_will_be_performing_coursework_text:
     '#type': processed_text
     '#display_on': both
-    '#text': "<p><strong>Please provide the name and site of the employer where you will perform your clinical/practicum/field coursework:</strong></p>\r\n"
+    '#text': |
+      <p><strong>Please provide the name and site of the employer where you will perform your clinical/practicum/field coursework:</strong></p>
     '#format': full_html
   employer_name:
     '#type': textfield
@@ -54,7 +55,6 @@ elements: |
     '#required': true
     '#required_error': 'Please enter your start date.'
     '#format_items': comma
-    '#datepicker': true
     '#date_date_format': m/d/Y
   rn_license_number_:
     '#type': textfield
@@ -74,7 +74,6 @@ elements: |
     '#required': true
     '#required_error': 'This field is required.'
     '#format_items': comma
-    '#datepicker': true
     '#date_date_format': m/d/Y
   expiration_date:
     '#type': date
@@ -82,11 +81,11 @@ elements: |
     '#required': true
     '#required_error': 'This field is required.'
     '#format_items': comma
-    '#datepicker': true
     '#date_date_format': m/d/Y
   health_immunizations_certs_text:
     '#type': processed_text
-    '#text': "<p>Your&nbsp;health immunizations and certifications must be&nbsp;current and all of your&nbsp;health clearance information must be&nbsp;current and on file with your&nbsp;employer identified above.</p>\r\n"
+    '#text': |
+      <p>Your&nbsp;health immunizations and certifications must be&nbsp;current and all of your&nbsp;health clearance information must be&nbsp;current and on file with your&nbsp;employer identified above.</p>
     '#format': full_html
   signature_date:
     '#type': date
@@ -94,7 +93,6 @@ elements: |
     '#required': true
     '#required_error': 'Please enter today''s date.'
     '#format_items': comma
-    '#datepicker': true
     '#date_date_format': m/d/Y
   student_signature:
     '#type': webform_signature
@@ -104,7 +102,8 @@ elements: |
     '#required_error': 'Please provide your signature in the gray space.'
   i_attest_language:
     '#type': processed_text
-    '#text': "<p>By completing this form, you&nbsp;attest that you are&nbsp;currently employed and your&nbsp;health records are on file with you&nbsp;employer. If requested, you&nbsp;will be able to provide proof of valid health records within 48 business hours. You&nbsp;further attest that your&nbsp;employer-held health records are equal to those required by the University of San Francisco, School of Nursing and Health Professions’ program health requirements (as listed above).</p>\r\n"
+    '#text': |
+      <p>By completing this form, you&nbsp;attest that you are&nbsp;currently employed and your&nbsp;health records are on file with you&nbsp;employer. If requested, you&nbsp;will be able to provide proof of valid health records within 48 business hours. You&nbsp;further attest that your&nbsp;employer-held health records are equal to those required by the University of San Francisco, School of Nursing and Health Professions’ program health requirements (as listed above).</p>
     '#format': full_html
   actions:
     '#type': webform_actions

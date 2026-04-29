@@ -12,7 +12,7 @@ id: webform_84901
 title: 'Honorary Degree Nomination Form'
 description: null
 categories: {  }
-elements: |
+elements: |-
   name_of_candidate:
     '#type': textfield
     '#title_display': inline
@@ -69,7 +69,7 @@ elements: |
     '#open': true
     markup_01:
       '#type': webform_markup
-      '#markup': '<em>Please forward the candidate&#39;s curriculum vitae or a biographical sketch to Grace Sanchez (sanchez@usfca.edu).</em>'
+      '#markup': '<p><em>Please forward the candidate''s curriculum vitae or a biographical sketch to <strong>Paige Sorgen (</strong></em><a href="mailto:psorgen@usfca.edu"><em><strong>psorgen@usfca.edu</strong></em></a><em><strong>).</strong></em></p>'
     person_submitting_nomination_10:
       '#type': textfield
       '#title_display': inline
@@ -312,11 +312,11 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: sanchez@usfca.edu
+      to_mail: psorgen@usfca.edu
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      cc_mail: ''
+      cc_mail: tabora@usfca.edu
       cc_options: {  }
       from_mail: _default
       from_options: {  }
@@ -326,10 +326,7 @@ handlers:
       sender_mail: ''
       sender_name: ''
       subject: _default
-      body: |-
-        Submitted by user: [webform_submission:user]
-        <p>Submitted values are:</p>
-        [webform_submission:values]
+      body: '<p>Submitted by user: [webform_submission:user]</p><p>Submitted values are:</p><p>[webform_submission:values]</p>'
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -383,4 +380,3 @@ handlers:
       parameters: {  }
       debug: false
 variants: {  }
-category: null
