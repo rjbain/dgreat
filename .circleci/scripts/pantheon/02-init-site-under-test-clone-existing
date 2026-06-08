@@ -30,31 +30,49 @@ TRUNCATE cache_discovery;
 # import. Use raw SQL so this step does not require a full Drupal bootstrap.
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "
 UPDATE config
-SET data = REPLACE(
-  REPLACE(
-    REPLACE(
-      data,
-      CONCAT('  easy_install: 0', CHAR(10)),
-      ''
-    ),
-    CONCAT('  jquery_ui_slider: 0', CHAR(10)),
-    ''
-  ),
-  CONCAT('  jquery_ui_touch_punch: 0', CHAR(10)),
-  ''
+SET data = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+  data,
+  CONCAT('  bootstrap_library: 0', CHAR(10)), ''
+), CONCAT('  ckeditor: 0', CHAR(10)), ''
+), CONCAT('  config_filter: 0', CHAR(10)), ''
+), CONCAT('  delete_all: 0', CHAR(10)), ''
+), CONCAT('  easy_install: 0', CHAR(10)), ''
+), CONCAT('  jquery_ui_slider: 0', CHAR(10)), ''
+), CONCAT('  jquery_ui_touch_punch: 0', CHAR(10)), ''
+), CONCAT('  nodeaccess: 0', CHAR(10)), ''
+), CONCAT('  simple_sitemap: 0', CHAR(10)), ''
+), CONCAT('  tour: 0', CHAR(10)), ''
+), CONCAT('  upgrade_rector: 0', CHAR(10)), ''
+), CONCAT('  usfb_address: 0', CHAR(10)), ''
+), CONCAT('  usf_services_page: 0', CHAR(10)), ''
 )
 WHERE name = 'core.extension';
 DELETE FROM key_value
 WHERE collection = 'system.schema'
-  AND name IN ('easy_install', 'jquery_ui_slider', 'jquery_ui_touch_punch');
+  AND name IN (
+    'bootstrap_library',
+    'ckeditor',
+    'config_filter',
+    'delete_all',
+    'easy_install',
+    'jquery_ui_slider',
+    'jquery_ui_touch_punch',
+    'nodeaccess',
+    'simple_sitemap',
+    'tour',
+    'upgrade_rector',
+    'usfb_address',
+    'usf_services_page',
+    'variationcache',
+    'webform_location_geocomplete',
+    'webform_toggles'
+  );
 "
 
 # Run updatedb to ensure that the cloned database is updated for the new code.
-terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
-
-# If any modules, or theme files have been moved around or reorganized, in order to avoid
-# "The website encountered an unexpected error. Please try again later." error on First Visit
-terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
+# Skip the automatic cache flush because the upgrade path still contains a
+# broken cache bin on this branch; config import will continue from there.
+terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y --no-cache-clear
 
 # If exported configuration is available, then import it.
 if [ -f "config/system.site.yml" ] ; then
