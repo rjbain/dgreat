@@ -1,0 +1,16 @@
+diff --git a/includes/webform.install.inc b/includes/webform.install.inc
+index 793d31d..bf5ab64 100644
+--- a/includes/webform.install.inc
++++ b/includes/webform.install.inc
+@@ -228,7 +228,11 @@ function _webform_update_admin_settings() {
+ function _webform_update_webform_handler_settings() {
+   // Issue #2863986: Allow updating modules with new service dependencies.
+-  \Drupal::service('kernel')->rebuildContainer();
++  try {
++    \Drupal::service('kernel')->rebuildContainer();
++  }
++  catch (\Throwable $e) {
++  }
+ 
+   // Get the default configuration (aka settings) for all handlers provided
+   // by the Webform module.
