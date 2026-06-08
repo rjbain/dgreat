@@ -14,3 +14,20 @@ index 793d31d..bf5ab64 100644
  
    // Get the default configuration (aka settings) for all handlers provided
    // by the Webform module.
+diff --git a/includes/webform.install.update.inc b/includes/webform.install.update.inc
+index 1f3d7f0..d9c2667 100644
+--- a/includes/webform.install.update.inc
++++ b/includes/webform.install.update.inc
+@@ -4355,7 +4355,11 @@ function webform_update_8640() {
+  * Issue #3439662: Allow a WebformEmailHandler to specify the language of an email message.
+  */
+ function webform_update_8641() {
+-  _webform_update_webform_handler_settings();
++  try {
++    _webform_update_webform_handler_settings();
++  }
++  catch (\Throwable $e) {
++  }
+ }
+ 
+ /**
