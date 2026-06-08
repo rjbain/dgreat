@@ -1,19 +1,102 @@
 diff --git a/includes/webform.install.inc b/includes/webform.install.inc
 --- a/includes/webform.install.inc
 +++ b/includes/webform.install.inc
-@@ -228,7 +228,11 @@
-  */
+@@ -228,32 +228,36 @@
  function _webform_update_webform_handler_settings() {
-   // Issue #2863986: Allow updating modules with new service dependencies.
+-  // Issue #2863986: Allow updating modules with new service dependencies.
 -  \Drupal::service('kernel')->rebuildContainer();
+-
+-  // Get the default configuration (aka settings) for all handlers provided
+-  // by the Webform module.
+-  /** @var \Drupal\webform\Plugin\WebformHandlerManagerInterface $handler_manager */
+-  $handler_manager = \Drupal::service('plugin.manager.webform.handler');
+-  $definitions = $handler_manager->getDefinitions();
+-  $default_handler_settings = [];
+-  foreach ($definitions as $plugin_id => $definition) {
+-    if (str_starts_with($definition['provider'], 'webform_test_') || in_array($definition['provider'], ['webform', 'webform_scheduled_email'])) {
+-      $default_handler_settings[$plugin_id] = $handler_manager->createInstance($plugin_id)->defaultConfiguration();
+-    }
+-  }
+-
+-  $config_factory = \Drupal::configFactory();
+-  // Update 'webform.webform.*' configuration.
+-  foreach ($config_factory->listAll('webform.webform.') as $webform_config_name) {
+-    $webform_config = $config_factory->getEditable($webform_config_name);
+-
+-    // Get data.
+-    $data = $webform_config->getRawData();
+-
+-    // Apply the default handler settings.
+-    $has_handler = FALSE;
+-    if (!empty($data['handlers'])) {
+-      foreach ($data['handlers'] as &$handler) {
+-        if (!isset($default_handler_settings[$handler['id']])) {
+-          continue;
 +  try {
++    // Issue #2863986: Allow updating modules with new service dependencies.
 +    \Drupal::service('kernel')->rebuildContainer();
-+  }
++
++    // Get the default configuration (aka settings) for all handlers provided
++    // by the Webform module.
++    /** @var \Drupal\webform\Plugin\WebformHandlerManagerInterface $handler_manager */
++    $handler_manager = \Drupal::service('plugin.manager.webform.handler');
++    $definitions = $handler_manager->getDefinitions();
++    $default_handler_settings = [];
++    foreach ($definitions as $plugin_id => $definition) {
++      if (str_starts_with($definition['provider'], 'webform_test_') || in_array($definition['provider'], ['webform', 'webform_scheduled_email'])) {
++        $default_handler_settings[$plugin_id] = $handler_manager->createInstance($plugin_id)->defaultConfiguration();
++      }
++    }
++
++    $config_factory = \Drupal::configFactory();
++    // Update 'webform.webform.*' configuration.
++    foreach ($config_factory->listAll('webform.webform.') as $webform_config_name) {
++      $webform_config = $config_factory->getEditable($webform_config_name);
++
++      // Get data.
++      $data = $webform_config->getRawData();
++
++      // Apply the default handler settings.
++      $has_handler = FALSE;
++      if (!empty($data['handlers'])) {
++        foreach ($data['handlers'] as &$handler) {
++          if (!isset($default_handler_settings[$handler['id']])) {
++            continue;
++          }
++
++          $settings = $default_handler_settings[$handler['id']];
++          foreach ($handler['settings'] as $settings_key => $setting_value) {
++            $settings[$settings_key] = $setting_value;
++          }
++
++          if ($handler['settings'] !== $settings) {
++            $has_handler = TRUE;
++            $handler['settings'] = $settings;
++          }
+         }
+-
+-        $settings = $default_handler_settings[$handler['id']];
+-        foreach ($handler['settings'] as $settings_key => $setting_value) {
+-          $settings[$settings_key] = $setting_value;
+-        }
+-
+-        if ($handler['settings'] !== $settings) {
+-          $has_handler = TRUE;
+-          $handler['settings'] = $settings;
++
++        if ($has_handler) {
++          $webform_config->setData($data)->save();
+         }
+       }
+-
+-      if ($has_handler) {
+-        $webform_config->setData($data)->save();
+-      }
+     }
+   }
 +  catch (\Throwable $e) {
 +  }
- 
-   // Get the default configuration (aka settings) for all handlers provided
-   // by the Webform module.
+ }
 diff --git a/includes/webform.install.update.inc b/includes/webform.install.update.inc
 --- a/includes/webform.install.update.inc
 +++ b/includes/webform.install.update.inc
