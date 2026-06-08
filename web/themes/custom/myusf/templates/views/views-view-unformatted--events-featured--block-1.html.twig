@@ -18,7 +18,7 @@
 
 
 <!--<h2 class="carousel-overlay">School of Management Events</h2>-->
-<div id="carouselControls" class="carousel slide" data-ride="carousel"  data-interval="10000">
+<div id="carouselControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="10000">
   <ol class="carousel-indicators">
 
 {% for row in rows %}
@@ -29,7 +29,7 @@
       {% set active = "" %}
     {% endif %}
 
-  <li data-target="#carouselControls" data-slide-to="{{ counter }}" class="{{ active }}"></li>
+  <li data-bs-target="#carouselControls" data-bs-slide-to="{{ counter }}" class="{{ active }}"></li>
 {% endfor %}
 
   </ol>
@@ -38,12 +38,12 @@
 	{{ row.content }}
 {% endfor %}
  </div>
-  <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+  <a class="carousel-control-prev" href="#carouselControls" role="button" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
+    <span class="visually-hidden">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+  <a class="carousel-control-next" href="#carouselControls" role="button" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
+    <span class="visually-hidden">Next</span>
   </a>
 </div>
