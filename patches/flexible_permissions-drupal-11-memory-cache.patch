@@ -1,0 +1,32 @@
+diff --git a/flexible_permissions.services.yml b/flexible_permissions.services.yml
+index f94e0d7..d291ff6 100644
+--- a/flexible_permissions.services.yml
++++ b/flexible_permissions.services.yml
+@@ -6,7 +6,7 @@ services:
+       - { name: 'access_policy' }
+   flexible_permissions.chain_calculator:
+     class: 'Drupal\flexible_permissions\ChainPermissionCalculator'
+-    arguments: ['@variation_cache.flexible_permissions', '@variation_cache.flexible_permissions_memory', '@cache.flexible_permissions_memory', '@account_switcher']
++    arguments: ['@variation_cache.flexible_permissions', '@variation_cache.flexible_permissions_memory', '@cache.memory', '@account_switcher']
+     tags:
+       - { name: 'service_collector', call: 'addCalculator', tag: 'flexible_permission_calculator' }
+   flexible_permissions.checker:
+@@ -19,13 +19,6 @@ services:
+     factory: ['@cache_factory', 'get']
+     arguments: ['flexible_permissions']
+-  cache.flexible_permissions_memory:
+-    class: 'Drupal\Core\Cache\MemoryCache\MemoryCacheInterface'
+-    tags:
+-      - { name: 'cache.bin.memory', default_backend: 'cache.backend.memory.memory' }
+-    factory: ['@cache_factory', 'get']
+-    arguments: ['flexible_permissions_memory']
+-
+   # Build a variation cache on top of them to handle cache redirects.
+   variation_cache.flexible_permissions:
+     class: 'Drupal\Core\Cache\VariationCacheInterface'
+@@ -34,4 +28,4 @@ services:
+   variation_cache.flexible_permissions_memory:
+     class: 'Drupal\Core\Cache\VariationCacheInterface'
+     factory: ['@variation_cache_factory', 'get']
+-    arguments: ['flexible_permissions_memory']
++    arguments: ['memory']
