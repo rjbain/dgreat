@@ -113,3 +113,16 @@ diff --git a/includes/webform.install.update.inc b/includes/webform.install.upda
  }
  
  /**
+@@ -4363,7 +4367,11 @@
+  * Issue #3449549: Webform 'remote_post' handler doesn't exclude fields without access.
+  */
+ function webform_update_8642() {
+-  _webform_update_webform_handler_settings();
++  try {
++    _webform_update_webform_handler_settings();
++  }
++  catch (\Throwable $e) {
++  }
+ }
+ 
+ /**
