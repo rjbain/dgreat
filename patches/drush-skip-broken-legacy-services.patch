@@ -17,3 +17,28 @@ index baab579..8f5da16 100644
  
          // Find the containerless commands, and command info alterers
          $bootstrapCommandClasses = $this->serviceManager->bootstrapCommandClasses();
+diff --git a/src/Commands/core/UpdateDBCommands.php b/src/Commands/core/UpdateDBCommands.php
+index 7629d8c..8cd9507 100644
+--- a/src/Commands/core/UpdateDBCommands.php
++++ b/src/Commands/core/UpdateDBCommands.php
+@@ -471,10 +471,16 @@ class UpdateDBCommands extends DrushCommands
+      */
+     public static function cacheRebuild(): void
+     {
+-        drupal_flush_all_caches();
+-        \Drupal::service('kernel')->rebuildContainer();
+-        // Load the module data which has been removed when the container was
+-        // rebuilt.
++        try {
++            drupal_flush_all_caches();
++            \Drupal::service('kernel')->rebuildContainer();
++        } catch (\Throwable $e) {
++            Drush::logger()->warning('Skipping inter-update cache rebuild due to error: ' . $e->getMessage());
++            return;
++        }
++
++        // Load the module data which has been removed when the container was
++        // rebuilt.
+         $module_handler = \Drupal::moduleHandler();
+         $module_handler->loadAll();
+         $module_handler->invokeAll('rebuild');
