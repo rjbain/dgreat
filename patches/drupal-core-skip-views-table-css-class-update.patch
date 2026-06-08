@@ -1,7 +1,21 @@
 diff --git a/core/modules/views/views.post_update.php b/core/modules/views/views.post_update.php
 --- a/core/modules/views/views.post_update.php
 +++ b/core/modules/views/views.post_update.php
-@@ -95,11 +95,7 @@
+@@ -83,23 +83,11 @@
+  * Clean-up empty remember_roles display settings for views filters.
+  */
+ function views_post_update_update_remember_role_empty(?array &$sandbox = NULL): void {
+-  /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
+-  $view_config_updater = \Drupal::service(ViewsConfigUpdater::class);
+-  $view_config_updater->setDeprecationsEnabled(FALSE);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($view_config_updater): bool {
+-    return $view_config_updater->needsRememberRolesUpdate($view);
+-  });
++  // Intentionally skipped on this upgrade path to avoid broken contrib Views
++  // data from blocking all post-updates during CI and Pantheon deploys.
+ }
+ 
+ /**
   * Adds a default table CSS class.
   */
  function views_post_update_table_css_class(?array &$sandbox = NULL): void {
