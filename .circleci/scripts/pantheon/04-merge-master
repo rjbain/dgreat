@@ -26,21 +26,28 @@ TRUNCATE cache_default;
 TRUNCATE cache_discovery;
 "
 
-# Remove stale references to removed modules that can break updates/config import.
-terminus -n drush "$TERMINUS_SITE.dev" -- php:eval '
-$config = \Drupal::configFactory()->getEditable("core.extension");
-$modules = $config->get("module") ?: [];
-foreach (["easy_install", "jquery_ui_slider", "jquery_ui_touch_punch"] as $stale_module) {
-  if (isset($modules[$stale_module])) {
-    unset($modules[$stale_module]);
-  }
-}
-$config->set("module", $modules)->save(TRUE);
-$schema = \Drupal::keyValue("system.schema");
-foreach (["easy_install", "jquery_ui_slider", "jquery_ui_touch_punch"] as $stale_module) {
-  $schema->delete($stale_module);
-}
-'
+# Remove stale references to removed modules that can break updates/config
+# import. Use raw SQL so this step does not require a full Drupal bootstrap.
+terminus -n drush "$TERMINUS_SITE.dev" -- sql:query "
+UPDATE config
+SET data = REPLACE(
+  REPLACE(
+    REPLACE(
+      data,
+      CONCAT('  easy_install: 0', CHAR(10)),
+      ''
+    ),
+    CONCAT('  jquery_ui_slider: 0', CHAR(10)),
+    ''
+  ),
+  CONCAT('  jquery_ui_touch_punch: 0', CHAR(10)),
+  ''
+)
+WHERE name = 'core.extension';
+DELETE FROM key_value
+WHERE collection = 'system.schema'
+  AND name IN ('easy_install', 'jquery_ui_slider', 'jquery_ui_touch_punch');
+"
 
 # Run updatedb on the dev environment
 terminus -n drush $TERMINUS_SITE.dev -- updatedb --yes
