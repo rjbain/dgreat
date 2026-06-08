@@ -1,0 +1,19 @@
+diff --git a/src/Boot/DrupalBoot8.php b/src/Boot/DrupalBoot8.php
+index baab579..8f5da16 100644
+--- a/src/Boot/DrupalBoot8.php
++++ b/src/Boot/DrupalBoot8.php
+@@ -241,7 +241,13 @@ class DrupalBoot8 extends DrupalBoot
+         $serviceFinder = new LegacyServiceFinder($moduleHandler, Drush::config());
+         $drushServiceFiles = $serviceFinder->getDrushServiceFiles();
+         $legacyServiceInstantiator = new LegacyServiceInstantiator($container, $this->logger);
+-        $legacyServiceInstantiator->loadServiceFiles($drushServiceFiles);
++        try {
++            $legacyServiceInstantiator->loadServiceFiles($drushServiceFiles);
++        } catch (\Throwable $e) {
++            $this->logger->warning('Skipping legacy drush.services.yml bootstrap due to error: ' . $e->getMessage());
++            $drushServiceFiles = [];
++            $legacyServiceInstantiator = new LegacyServiceInstantiator($container, $this->logger);
++        }
+ 
+         // Find the containerless commands, and command info alterers
+         $bootstrapCommandClasses = $this->serviceManager->bootstrapCommandClasses();
