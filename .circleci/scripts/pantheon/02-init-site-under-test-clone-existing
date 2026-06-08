@@ -67,6 +67,18 @@ WHERE collection = 'system.schema'
     'webform_location_geocomplete',
     'webform_toggles'
   );
+UPDATE config
+SET data = CASE
+  WHEN data NOT LIKE CONCAT('%', CHAR(10), '  flexible_permissions: 0', CHAR(10), '%')
+    AND data LIKE CONCAT('%', CHAR(10), '  group: 0', CHAR(10), '%')
+  THEN REPLACE(
+    data,
+    CONCAT('  group: 0', CHAR(10)),
+    CONCAT('  flexible_permissions: 0', CHAR(10), '  group: 0', CHAR(10))
+  )
+  ELSE data
+END
+WHERE name = 'core.extension';
 "
 
 # Run updatedb to ensure that the cloned database is updated for the new code.
