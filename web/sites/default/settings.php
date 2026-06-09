@@ -5,6 +5,29 @@
  */
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
 
+if (isset($_ENV['PANTHEON_ENVIRONMENT']) && $_ENV['PANTHEON_ENVIRONMENT'] === 'lando') {
+  $databases['default']['default'] = [
+    'database' => 'pantheon',
+    'username' => 'pantheon',
+    'password' => 'pantheon',
+    'prefix' => '',
+    'host' => 'database',
+    'port' => '3306',
+    'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
+    'driver' => 'mysql',
+  ];
+  $_SERVER['PANTHEON_DATABASE_STATE'] = 'active';
+}
+
+/**
+ * Load local overrides before Pantheon logic so local environment flags and
+ * database settings are available during early bootstrap checks.
+ */
+$local_settings = __DIR__ . "/settings.local.php";
+if (file_exists($local_settings)) {
+  include $local_settings;
+}
+
 /**
  * Include the Pantheon-specific settings file.
  *
@@ -21,14 +44,6 @@ include __DIR__ . "/settings.pantheon.php";
  */
 
 $settings['config_sync_directory'] = dirname(DRUPAL_ROOT) . '/config';
-
-/**
- * If there is a local settings file, then include it
- */
-$local_settings = __DIR__ . "/settings.local.php";
-if (file_exists($local_settings)) {
-  include $local_settings;
-}
 
 # When on Pantheon, connect to a D7 database.
 $migrate_settings = __DIR__ . "/settings.migrate-on-pantheon.php";

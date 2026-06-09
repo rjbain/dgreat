@@ -1,0 +1,20 @@
+--- sitewide_alert.libraries.yml
++++ sitewide_alert.libraries.yml
+@@ -1,9 +1,3 @@
+-# Global/3rd party libraries
+-polyfill:
+-  version: 3
+-  js:
+-    https://polyfill.io/v3/polyfill.min.js?features=fetch: { type: external, minified: true }
+-
+ # Sitewide Alert Component
+ init:
+   version: VERSION
+@@ -13,7 +7,6 @@ init:
+     theme:
+       css/sitewide_alert.css: {}
+   dependencies:
+-    - sitewide_alert/polyfill
+     - core/drupal
+     - core/drupalSettings
+     - core/once

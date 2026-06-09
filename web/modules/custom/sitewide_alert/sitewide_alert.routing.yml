@@ -1,0 +1,39 @@
+sitewide_alert.sitewide_alerts_controller_load:
+  path: '/sitewide_alert/load'
+  defaults:
+    _controller: '\Drupal\sitewide_alert\Controller\SitewideAlertsController::load'
+    _title: 'load'
+  requirements:
+    _permission: 'view published sitewide alert entities'
+
+entity.sitewide_alert.config_form:
+  path: '/admin/config/sitewide_alerts'
+  defaults:
+    _form: '\Drupal\sitewide_alert\Form\SitewideAlertConfigForm'
+    _title: 'Sitewide Alert Global Settings'
+  requirements:
+    _permission: 'administer sitewide alert'
+  options:
+    _admin_route: TRUE
+
+entity.sitewide_alert.canonical:
+  path: '/admin/content/sitewide_alert/{sitewide_alert}'
+  defaults:
+    _entity_form: 'sitewide_alert.edit'
+    _title_callback: '\Drupal\sitewide_alert\Controller\SitewideAlertController::editTitle'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _entity_access: 'sitewide_alert.update'
+    block_content: \d+
+
+entity.sitewide_alert.edit_form:
+  path: '/admin/content/sitewide_alert/{sitewide_alert}'
+  defaults:
+    _entity_form: 'sitewide_alert.edit'
+    _title_callback: '\Drupal\sitewide_alert\Controller\SitewideAlertController::editTitle'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _entity_access: 'sitewide_alert.update'
+    block_content: \d+

@@ -16,7 +16,6 @@ use Drupal\rate_vote_summary\VoteTallyService;
 class VoteSummary extends FieldPluginBase implements ContainerFactoryPluginInterface {
 
   protected VoteTallyService $tally;
-  protected RendererInterface $renderer;
 
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     $instance = new static($configuration, $plugin_id, $plugin_definition);

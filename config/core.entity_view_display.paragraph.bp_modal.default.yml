@@ -5,14 +5,17 @@ dependencies:
   config:
     - field.field.paragraph.bp_modal.bp_background
     - field.field.paragraph.bp_modal.bp_header
+    - field.field.paragraph.bp_modal.bp_margin
     - field.field.paragraph.bp_modal.bp_modal_body
     - field.field.paragraph.bp_modal.bp_modal_button_text
     - field.field.paragraph.bp_modal.bp_modal_footer
     - field.field.paragraph.bp_modal.bp_modal_title
+    - field.field.paragraph.bp_modal.bp_padding
     - field.field.paragraph.bp_modal.bp_width
     - paragraphs.paragraphs_type.bp_modal
   module:
     - entity_reference_revisions
+    - options
 _core:
   default_config_hash: 0PmBiXZLN2ZxqXMPlJWXpjOMtxB8o0Ivt44Gl3E4HpE
 id: paragraph.bp_modal.default
@@ -20,6 +23,13 @@ targetEntityType: paragraph
 bundle: bp_modal
 mode: default
 content:
+  bp_margin:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
   bp_modal_body:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -53,6 +63,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 1
+    region: content
+  bp_padding:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
     region: content
 hidden:
   bp_background: true

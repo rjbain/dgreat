@@ -4,11 +4,13 @@ status: true
 dependencies:
   config:
     - group.type.groups
+    - user.role.authenticated
 id: groups-outsider
 label: Outsider
 weight: -101
-internal: true
-audience: outsider
+admin: false
+scope: outsider
+global_role: authenticated
 group_type: groups
-permissions_ui: true
-permissions: {  }
+permissions:
+  - 'view group'

@@ -11,11 +11,11 @@ dependencies:
     - image.style.thumbnail
     - node.type.in_content_promo_box
   module:
+    - content_moderation
     - image
     - imce
     - link
     - path
-    - scheduler
     - text
 id: node.in_content_promo_box.default
 targetEntityType: node
@@ -75,6 +75,12 @@ content:
     settings:
       include_locked: true
     third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   path:
     type: path
     weight: 6
@@ -87,12 +93,6 @@ content:
     region: content
     settings:
       display_label: true
-    third_party_settings: {  }
-  publish_on:
-    type: datetime_timestamp_no_default
-    weight: 7
-    region: content
-    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -126,15 +126,11 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 8
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   url_redirects:
     weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  publish_on: true
+  unpublish_on: true

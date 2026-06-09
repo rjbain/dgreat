@@ -1,0 +1,16 @@
+services:
+  sitewide_alert.sitewide_alert_manager:
+    class: Drupal\sitewide_alert\SitewideAlertManager
+    arguments:
+      [
+        '@entity_type.manager',
+        '@datetime.time',
+        '@language_manager',
+        '@entity.repository',
+      ]
+  sitewide_alert.sitewide_alert_renderer:
+    class: Drupal\sitewide_alert\SitewideAlertRenderer
+    arguments: ['@config.factory', '@router.admin_context', '@current_user']
+  sitewide_alert.cli_commands:
+    class: Drupal\sitewide_alert\CliCommands
+    arguments: ['@entity_type.manager']

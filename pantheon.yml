@@ -1,9 +1,9 @@
 api_version: 1
 web_docroot: true
-php_version: 8.1
+php_version: 8.3
 database:
-  version: 10.4
-drush_version: 10
+  version: 10.6
+drush_version: 13
 
 workflows:
   deploy_product:
@@ -16,8 +16,3 @@ workflows:
         type: webphp
         description: 'Run composer install & drupal-scaffold'
         script: private/scripts/deploy_product/composer-install.php
-  sync_code:
-    after:
-      - type: webphp
-        description: Push changes back to GitHub if needed
-        script: private/scripts/quicksilver/quicksilver-pushback/push-back.php

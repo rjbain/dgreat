@@ -19,10 +19,10 @@ dependencies:
     - field.field.node.contact_box.field_telephone_number_ref
     - node.type.contact_box
   module:
+    - content_moderation
     - link
     - paragraphs
     - path
-    - scheduler
     - text
 id: node.contact_box.default
 targetEntityType: node
@@ -156,6 +156,12 @@ content:
     settings:
       include_locked: true
     third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   path:
     type: path
     weight: 15
@@ -168,12 +174,6 @@ content:
     region: content
     settings:
       display_label: true
-    third_party_settings: {  }
-  publish_on:
-    type: datetime_timestamp_no_default
-    weight: 16
-    region: content
-    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -207,12 +207,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 17
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   url_redirects:
     weight: 18
     region: content
@@ -224,3 +218,5 @@ hidden:
   field_address_3: true
   field_contact_email_address: true
   field_telephone_number: true
+  publish_on: true
+  unpublish_on: true

@@ -1,4 +1,4 @@
-name: dgreat
+name: dgreatd11
 recipe: pantheon
 config:
   framework: drupal8
@@ -7,6 +7,8 @@ config:
   id: 41cad7fe-472d-43a9-a470-d391b9622376
   xdebug: true
 services:
+  database:
+    type: mariadb:10.6
   appserver:
     build_as_root:
       - curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
@@ -41,7 +43,7 @@ tooling:
     cmd: app/vendor/bin/robo test
   drush:
     service: appserver
-    cmd: drush --uri=https://dgreat.lndo.site
+    cmd: drush --uri=https://dgreatd11.lndo.site
   drupal:
     service: appserver
     cmd: /app/vendor/bin/drupal

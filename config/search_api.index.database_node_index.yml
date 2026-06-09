@@ -8,7 +8,7 @@ dependencies:
     - search_api.server.database_server
   module:
     - node
-    - search_api
+    - search_api_solr
 id: database_node_index
 name: 'Database Node Index'
 description: ''
@@ -67,7 +67,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: title
     type: text
-    boost: !!float 8
+    boost: 8.0
     dependencies:
       module:
         - node

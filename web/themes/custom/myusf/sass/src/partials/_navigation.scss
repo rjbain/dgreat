@@ -94,12 +94,12 @@ nav.navbar {
 	}
 	@include media-breakpoint-down(landscape_phone) {
 		padding:0;
-		height: 98px;
+		min-height: 98px;
 		z-index: 2;
 	}
 	@include media-breakpoint-up(desktop) {
 		padding-right: 0;
-		height: 97px;
+		min-height: 97px;
 	}
 }
 
@@ -1399,9 +1399,11 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 		margin-right: auto!important;
 	}
 	&.sidebar-empty {
-		margin-left: 0px !important;
-		margin-right: -8px !important;
-		width: 100%!important;
+		flex: 0 0 0 !important;
+		width: 0 !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		overflow: hidden !important;
 	}
 
 	.block {

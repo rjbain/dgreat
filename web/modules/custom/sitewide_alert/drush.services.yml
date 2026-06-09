@@ -1,0 +1,6 @@
+services:
+  sitewide_alert.commands:
+    class: Drupal\sitewide_alert\Drush\Commands\SitewideAlertCommands
+    arguments: ['@sitewide_alert.cli_commands']
+    tags:
+      - { name: drush.command }

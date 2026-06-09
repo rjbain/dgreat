@@ -1,0 +1,22 @@
+uuid: 67d7e4c1-73d0-41f9-9439-56af9ac5a34d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group_relationship.group_roles
+    - group.relationship_type.announcement-group_membership
+id: group_relationship.announcement-group_membership.group_roles
+field_name: group_roles
+entity_type: group_relationship
+bundle: announcement-group_membership
+label: Roles
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'group_type:group_role'
+  handler_settings:
+    group_type_id: announcement
+field_type: entity_reference

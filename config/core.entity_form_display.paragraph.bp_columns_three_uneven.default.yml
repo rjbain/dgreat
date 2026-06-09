@@ -7,9 +7,12 @@ dependencies:
     - field.field.paragraph.bp_columns_three_uneven.bp_column_content_3
     - field.field.paragraph.bp_columns_three_uneven.bp_column_style_3
     - field.field.paragraph.bp_columns_three_uneven.bp_header
+    - field.field.paragraph.bp_columns_three_uneven.bp_margin
+    - field.field.paragraph.bp_columns_three_uneven.bp_padding
     - field.field.paragraph.bp_columns_three_uneven.bp_width
     - paragraphs.paragraphs_type.bp_columns_three_uneven
   module:
+    - field_group
     - paragraphs
 _core:
   default_config_hash: FhwuozScv-Q1EloGIz7kz1hrG5A53Bv7L8vfLkcnJkw
@@ -50,6 +53,18 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  bp_margin:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  bp_padding:
+    type: options_select
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   bp_width:
     type: options_select
     weight: 1
@@ -60,3 +75,23 @@ hidden:
   created: true
   status: true
   uid: true
+third_party_settings:
+  field_group:
+    group_styles:
+      children:
+        - bp_background
+        - bp_margin
+        - bp_padding
+        - bp_width
+      label: Styles
+      region: content
+      parent_name: ''
+      weight: 5
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true

@@ -3,9 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.bp_simple.bp_margin
+    - field.field.paragraph.bp_simple.bp_padding
     - field.field.paragraph.bp_simple.bp_text
     - paragraphs.paragraphs_type.bp_simple
   module:
+    - options
     - text
 _core:
   default_config_hash: bxN1tJcdaoRlv2G7dZgN_nfUy4rsdOmqgPcs04HzIdc
@@ -14,6 +17,20 @@ targetEntityType: paragraph
 bundle: bp_simple
 mode: default
 content:
+  bp_margin:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  bp_padding:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
   bp_text:
     type: text_default
     label: hidden

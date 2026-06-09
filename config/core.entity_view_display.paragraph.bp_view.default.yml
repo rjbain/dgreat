@@ -5,10 +5,13 @@ dependencies:
   config:
     - field.field.paragraph.bp_view.bp_background
     - field.field.paragraph.bp_view.bp_header
+    - field.field.paragraph.bp_view.bp_margin
+    - field.field.paragraph.bp_view.bp_padding
     - field.field.paragraph.bp_view.bp_view
     - field.field.paragraph.bp_view.bp_width
     - paragraphs.paragraphs_type.bp_view
   module:
+    - options
     - viewsreference
 _core:
   default_config_hash: Q4Zemwcib9q-022d2TYMKL8I1Ca_nMkmLJui3lUmhJ4
@@ -24,6 +27,20 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 0
+    region: content
+  bp_margin:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  bp_padding:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
     region: content
   bp_view:
     type: viewsreference_formatter

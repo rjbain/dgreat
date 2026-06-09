@@ -1,0 +1,187 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the sitewide_alert module.
+ */
+
+use Drupal\user\Entity\Role;
+use Drupal\user\RoleInterface;
+
+/**
+ * Implements hook_install().
+ */
+function sitewide_alert_install() {
+  // Grant the "view published sitewide alert entities" permission to all users
+  // by default.
+  if (\Drupal::moduleHandler()->moduleExists('user')) {
+    user_role_grant_permissions(RoleInterface::ANONYMOUS_ID, ['view published sitewide alert entities']);
+    user_role_grant_permissions(RoleInterface::AUTHENTICATED_ID, ['view published sitewide alert entities']);
+  }
+}
+
+/**
+ * Set the new automated refresh config option to keep the current behavior.
+ */
+function sitewide_alert_update_8001(&$sandbox) {
+  $config_factory = \Drupal::configFactory();
+  $config_factory->getEditable('sitewide_alert.settings')->set('automatic_refresh', 1)->save();
+}
+
+/**
+ * Rename revision column from 'revision_log' to 'revision_log_message'.
+ */
+function sitewide_alert_update_9001() {
+  $entity_type_id = 'sitewide_alert';
+  $current_field_name = 'revision_log';
+  $target_field_name = 'revision_log_message';
+  // 1. Get the table name.
+  $table_name = \Drupal::entityTypeManager()->getDefinition($entity_type_id)->getRevisionTable();
+  // 2. Check if the change should be applied.
+  $schema = \Drupal::database()->schema();
+  if (!$schema->fieldExists($table_name, $current_field_name)) {
+    // We are good the column 'revision_log' does not exist.
+    return;
+  }
+  // 3. Rename the revision metadata key in the entity type.
+  _sitewide_alert_rename_metadata_key($entity_type_id, $target_field_name);
+  // 4. Rename the field in the last installed field storage definitions.
+  _sitewide_alert_rename_field_storage_definition($entity_type_id, $current_field_name, $target_field_name);
+  // 5. Rename the field in the entity storage schema.
+  $field_schema = _sitewide_alert_rename_field_entity_storage_schema($entity_type_id, $current_field_name, $target_field_name, $table_name);
+  // 6. Update the column name in the database table.
+  if (!empty($field_schema)) {
+    $schema->changeField($table_name, $current_field_name, $target_field_name, $field_schema);
+  }
+}
+
+/**
+ * Populate the 'view published sitewide alert entities' permission.
+ *
+ * Add the 'view published sitewide alert entities' permission for roles that
+ * have the 'access content' permission.
+ */
+function sitewide_alert_update_9002() {
+  foreach (array_filter(Role::loadMultiple(), static fn($role) => $role->hasPermission('access content')) as $role) {
+    $role
+      ->grantPermission('view published sitewide alert entities')
+      ->save();
+  }
+}
+
+/**
+ * Rename the 'revision_log_message' revision metadata key in the entity type.
+ *
+ * @param string $entity_type_id
+ *   The entity type ID.
+ * @param string $target_field_name
+ *   The target field name.
+ */
+function _sitewide_alert_rename_metadata_key(string $entity_type_id, string $target_field_name): void {
+  // Change the Revision metadata key in the entity type.
+  /** @var \Drupal\Core\Entity\ContentEntityType $entity_type */
+  $entity_type = \Drupal::entityDefinitionUpdateManager()->getEntityType($entity_type_id);
+  $metadata_key = 'revision_log_message';
+  $metadata_key_value = $entity_type->getRevisionMetadataKey($metadata_key);
+  if ($metadata_key_value === $target_field_name) {
+    // The metadata key already has the target value, we are good.
+    return;
+  }
+  // Set the metadata key value.
+  $entity_type->setRevisionMetadataKey($metadata_key, $target_field_name);
+  /** @var \Drupal\Core\Entity\EntityLastInstalledSchemaRepositoryInterface $schema_repository */
+  $schema_repository = \Drupal::service('entity.last_installed_schema.repository');
+  // Store the changes in the last installed definition.
+  $schema_repository->setLastInstalledDefinition($entity_type);
+}
+
+/**
+ * Rename a given field in its last installed field storage definitions.
+ *
+ * @param string $entity_type_id
+ *   The entity type ID.
+ * @param string $current_field_name
+ *   The current field name.
+ * @param string $target_field_name
+ *   The target field name.
+ */
+function _sitewide_alert_rename_field_storage_definition(string $entity_type_id, string $current_field_name, string $target_field_name): void {
+  /** @var \Drupal\Core\Entity\EntityLastInstalledSchemaRepositoryInterface $schema_repository */
+  $schema_repository = \Drupal::service('entity.last_installed_schema.repository');
+  $field_storage_definitions = $schema_repository->getLastInstalledFieldStorageDefinitions($entity_type_id);
+  $field_definition_changed = FALSE;
+  /** @var \Drupal\Core\Field\BaseFieldDefinition $target_field_definition */
+  $target_field_definition = NULL;
+  if (isset($field_storage_definitions[$current_field_name])) {
+    $target_field_definition = $field_storage_definitions[$current_field_name];
+    // Delete the old field definition.
+    unset($field_storage_definitions[$current_field_name]);
+    $field_definition_changed = TRUE;
+  }
+  if (!$target_field_definition) {
+    return;
+  }
+  // Rename the field in the field definition.
+  $target_field_definition->setName($target_field_name);
+  if (!isset($field_storage_definitions[$target_field_name])) {
+    // Add the new field definition.
+    $field_storage_definitions[$target_field_name] = $target_field_definition;
+    $field_definition_changed = TRUE;
+  }
+  if ($field_definition_changed) {
+    // Stores the changes.
+    $schema_repository->setLastInstalledFieldStorageDefinitions($entity_type_id, $field_storage_definitions);
+  }
+}
+
+/**
+ * Rename a given field entity storage schema.
+ *
+ * @param string $entity_type_id
+ *   The entity type ID.
+ * @param string $current_field_name
+ *   The current field name.
+ * @param string $target_field_name
+ *   The target field name.
+ * @param string $table_name
+ *   The table name.
+ *
+ * @return array|null
+ *   The field schema.
+ */
+function _sitewide_alert_rename_field_entity_storage_schema(string $entity_type_id, string $current_field_name, string $target_field_name, string $table_name): ?array {
+  $key_value = \Drupal::keyValue('entity.storage_schema.sql');
+  $key_name = $entity_type_id . '.field_schema_data.' . $current_field_name;
+  $table_storage_schema = $key_value->get($key_name);
+  $field_schema = $table_storage_schema[$table_name]['fields'][$current_field_name] ?? NULL;
+  if (empty($field_schema)) {
+    // The 'revision_log' schema does not exist, therefore stop here.
+    return NULL;
+  }
+  // Delete the current field schema.
+  unset($table_storage_schema[$table_name]['fields'][$current_field_name]);
+  // Add the target field schema.
+  $table_storage_schema[$table_name]['fields'][$target_field_name] = $field_schema;
+  // Stores the changes.
+  $key_value->delete($key_name);
+  $new_key_name = $entity_type_id . '.field_schema_data.' . $target_field_name;
+  $key_value->set($new_key_name, $table_storage_schema);
+  // Return the field schema.
+  return $field_schema;
+}
+
+/**
+ * Set default cache max age value to 15 seconds.
+ */
+function sitewide_alert_update_9003() {
+  $config_factory = \Drupal::configFactory();
+  $config_factory->getEditable('sitewide_alert.settings')->set('cache_max_age', 15)->save();
+}
+
+/**
+ * Set display order of alerts to ascending to match existing functionality.
+ */
+function sitewide_alert_update_9004() {
+  $config_factory = \Drupal::configFactory();
+  $config_factory->getEditable('sitewide_alert.settings')->set('display_order', 'ascending')->save();
+}
