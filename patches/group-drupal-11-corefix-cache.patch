@@ -1,9 +1,17 @@
 diff --git a/group.services.yml b/group.services.yml
 --- a/group.services.yml
 +++ b/group.services.yml
-@@ -114,9 +114,8 @@
-   # Wrappers for Flexible permissions services.
-   group_permission.calculator:
+@@ -53,7 +53,6 @@
+       - ['appendBackend', ['@cache.memory']]
+       - ['appendBackend', ['@cache.group_memberships']]
+     tags:
+-      - { name: 'cache.bin.memory' }
+ 
+   cache_context.route.group:
+     class: 'Drupal\group\Cache\Context\RouteGroupCacheContext'
+@@ -114,9 +113,8 @@
+  # Wrappers for Flexible permissions services.
+  group_permission.calculator:
 -    class: 'Drupal\group\Access\GroupPermissionCalculator'
 -    arguments: ['@flexible_permissions.chain_calculator']
 +    class: 'Drupal\group\Access\NullGroupPermissionCalculator'
