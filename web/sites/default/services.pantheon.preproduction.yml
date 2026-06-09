@@ -25,3 +25,9 @@ parameters:
     # discard the cookie. The value 0 means "until the browser is closed".
     # @default 2000000
     cookie_lifetime: 28800 # 8hrs
+
+services:
+  cache_tags.invalidator:
+    lazy: true
+  cache_tags.invalidator.checksum:
+    lazy: true
