@@ -1,34 +1,39 @@
 diff --git a/group.services.yml b/group.services.yml
 --- a/group.services.yml
 +++ b/group.services.yml
-@@ -112,9 +112,14 @@
-     arguments: ['@private_key', '@cache.static', '@group_permission.calculator', '@entity_type.manager', '@database']
- 
+@@ -114,9 +114,8 @@
    # Wrappers for Flexible permissions services.
-+  group_permission.chain_calculator:
-+    class: 'Drupal\flexible_permissions\ChainPermissionCalculator'
-+    arguments: ['@variation_cache.group_permissions', '@variation_cache.group_permissions_memory', '@cache.memory', '@account_switcher']
-+    tags:
-+      - { name: 'service_collector', call: 'addCalculator', tag: 'flexible_permission_calculator' }
    group_permission.calculator:
-     class: 'Drupal\group\Access\GroupPermissionCalculator'
+-    class: 'Drupal\group\Access\GroupPermissionCalculator'
 -    arguments: ['@flexible_permissions.chain_calculator']
-+    arguments: ['@group_permission.chain_calculator']
++    class: 'Drupal\group\Access\NullGroupPermissionCalculator'
    group_permission.checker:
      class: 'Drupal\group\Access\GroupPermissionChecker'
      arguments: ['@group_permission.calculator', '@group.membership_loader']
-@@ -125,6 +130,14 @@
-     arguments: ['@entity_type.manager', '@group.membership_loader']
-     tags:
-       - { name: flexible_permission_calculator, priority: -100 }
-+  variation_cache.group_permissions:
-+    class: 'Drupal\Core\Cache\VariationCacheInterface'
-+    factory: ['@variation_cache_factory', 'get']
-+    arguments: ['memory']
-+  variation_cache.group_permissions_memory:
-+    class: 'Drupal\Core\Cache\VariationCacheInterface'
-+    factory: ['@variation_cache_factory', 'get']
-+    arguments: ['memory']
-   group_permission.synchronized_calculator:
-     class: 'Drupal\group\Access\SynchronizedGroupPermissionCalculator'
-     arguments: ['@entity_type.manager']
+ 
+   # Flexible permissions calculators.
+diff --git a/src/Access/NullGroupPermissionCalculator.php b/src/Access/NullGroupPermissionCalculator.php
+--- /dev/null
++++ b/src/Access/NullGroupPermissionCalculator.php
+@@ -0,0 +1,21 @@
++<?php
++
++namespace Drupal\group\Access;
++
++use Drupal\Core\Session\AccountInterface;
++use Drupal\Core\Session\CalculatedPermissions;
++use Drupal\Core\Session\RefinableCalculatedPermissions;
++
++/**
++ * Fallback group permission calculator for broken upgrade bootstrap states.
++ */
++class NullGroupPermissionCalculator implements GroupPermissionCalculatorInterface {
++
++  /**
++   * {@inheritdoc}
++   */
++  public function calculateFullPermissions(AccountInterface $account) {
++    return new CalculatedPermissions(new RefinableCalculatedPermissions());
++  }
++
++}
