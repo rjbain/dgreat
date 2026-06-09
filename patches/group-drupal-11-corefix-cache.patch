@@ -1,38 +1,34 @@
 diff --git a/group.services.yml b/group.services.yml
-index 20ab0dd..ca11403 100644
 --- a/group.services.yml
 +++ b/group.services.yml
-@@ -106,7 +106,7 @@ services:
-   # @todo Rename to group_permission.hash_generator in 8.2.0.
-   group.permissions_hash_generator:
-     class: 'Drupal\group\Access\GroupPermissionsHashGenerator'
--    arguments: ['@private_key', '@cache.static', '@group_permission.chain_calculator']
-+    arguments: ['@private_key', '@cache.memory', '@group_permission.chain_calculator']
-   group_permission.chain_calculator:
-     class: 'Drupal\group\Access\ChainGroupPermissionCalculator'
--    arguments: ['@variation_cache.group_default', '@variation_cache.corefix_static_no_serialize', '@cache.corefix_static_no_serialize', '@account_switcher']
-+    arguments: ['@variation_cache.group_default', '@variation_cache.corefix_static_no_serialize', '@cache.memory', '@account_switcher']
-     tags:
-       - { name: service_collector, call: addCalculator, tag: group_permission_calculator }
-   group_permission.checker:
-@@ -157,14 +157,6 @@ services:
-   # @todo Follow up in: https://www.drupal.org/project/drupal/issues/2973286
-   # @todo Follow up in: https://www.drupal.org/project/drupal/issues/3016690
-   # @todo Create core bug: entity.memory_cache is not a registered bin?
--  cache.backend.corefix_memory_no_serialize:
--    class: Drupal\group\CoreFix\Cache\MemoryCacheFactory
--  cache.corefix_static_no_serialize:
--    class: Drupal\Core\Cache\CacheBackendInterface
--    tags:
--      - { name: cache.bin, default_backend: cache.backend.corefix_memory_no_serialize }
--    factory: cache_factory:get
--    arguments: [corefix_static_no_serialize]
+@@ -112,9 +112,14 @@
+     arguments: ['@private_key', '@cache.static', '@group_permission.calculator', '@entity_type.manager', '@database']
  
-   # Core also has a tendency to not allow people to vary their caches by cache
-   # contexts unless they abuse the render cache's built-in tools. We've fixed
-@@ -181,4 +173,4 @@ services:
-   variation_cache.corefix_static_no_serialize:
-     class: Drupal\variationcache\Cache\VariationCacheInterface
-     factory: variation_cache_factory:get
--    arguments: [corefix_static_no_serialize]
-+    arguments: [memory]
+   # Wrappers for Flexible permissions services.
++  group_permission.chain_calculator:
++    class: 'Drupal\flexible_permissions\ChainPermissionCalculator'
++    arguments: ['@variation_cache.group_permissions', '@variation_cache.group_permissions_memory', '@cache.memory', '@account_switcher']
++    tags:
++      - { name: 'service_collector', call: 'addCalculator', tag: 'flexible_permission_calculator' }
+   group_permission.calculator:
+     class: 'Drupal\group\Access\GroupPermissionCalculator'
+-    arguments: ['@flexible_permissions.chain_calculator']
++    arguments: ['@group_permission.chain_calculator']
+   group_permission.checker:
+     class: 'Drupal\group\Access\GroupPermissionChecker'
+     arguments: ['@group_permission.calculator', '@group.membership_loader']
+@@ -125,6 +130,14 @@
+     arguments: ['@entity_type.manager', '@group.membership_loader']
+     tags:
+       - { name: flexible_permission_calculator, priority: -100 }
++  variation_cache.group_permissions:
++    class: 'Drupal\Core\Cache\VariationCacheInterface'
++    factory: ['@variation_cache_factory', 'get']
++    arguments: ['memory']
++  variation_cache.group_permissions_memory:
++    class: 'Drupal\Core\Cache\VariationCacheInterface'
++    factory: ['@variation_cache_factory', 'get']
++    arguments: ['memory']
+   group_permission.synchronized_calculator:
+     class: 'Drupal\group\Access\SynchronizedGroupPermissionCalculator'
+     arguments: ['@entity_type.manager']
