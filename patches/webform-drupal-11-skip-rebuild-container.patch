@@ -1,0 +1,28 @@
+diff --git a/includes/webform.install.update.inc b/includes/webform.install.update.inc
+--- a/includes/webform.install.update.inc
++++ b/includes/webform.install.update.inc
+@@ -4356,14 +4356,22 @@
+  * Issue #3439662: Allow a WebformEmailHandler to specify the language of an email message.
+  */
+ function webform_update_8641() {
+-  _webform_update_webform_handler_settings();
++  try {
++    _webform_update_webform_handler_settings();
++  }
++  catch (\Throwable $e) {
++  }
+ }
+ 
+ /**
+  * Issue #3449549: Webform 'remote_post' handler doesn't exclude fields without access.
+  */
+ function webform_update_8642() {
+-  _webform_update_webform_handler_settings();
++  try {
++    _webform_update_webform_handler_settings();
++  }
++  catch (\Throwable $e) {
++  }
+ }
+ 
+ /**

@@ -37,10 +37,16 @@ function dgreat_nodes_form_alter(&$form, FormStateInterface $form_state, $form_i
 
 
   if (in_array($form_id, $fav_links_nodes)) {
+    $request = \Drupal::request();
+    $query = $request->query->all();
+    $link_type = $request->query->get('field_link_type');
 
-    $query =  \Drupal::request()->query->get('edit');
-    if (isset($query['field_link_type']['und'])) {
-      $form['field_link_type']['widget']['#default_value'] = $query['field_link_type']['und'];
+    if (!$link_type && isset($query['edit']['field_link_type']['und'])) {
+      $link_type = $query['edit']['field_link_type']['und'];
+    }
+
+    if ($link_type) {
+      $form['field_link_type']['widget']['#default_value'] = $link_type;
     }
 
     $user = \Drupal::currentUser()->getRoles();

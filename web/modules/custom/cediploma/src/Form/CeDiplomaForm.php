@@ -79,12 +79,12 @@ class CeDiplomaForm extends FormBase {
 
 
 
-  public function validate(array $form, FormStateInterface $form_state) {
-  // Validate the postal code is entered when Ireland is not selected.
-  if (empty(trim($form_state['values']['cename']))) {
-    form_set_error('cename', t('The cename is required.'));
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+    $cename = trim((string) $form_state->getValue('cename'));
+    if ($cename === '') {
+      $form_state->setErrorByName('cename', $this->t('The cename is required.'));
+    }
   }
-}
 
 
    /**
@@ -102,9 +102,9 @@ class CeDiplomaForm extends FormBase {
           define('CURL_SSLVERSION_TLSv1_2', 6); // 6 = TLS 1.2
       }
       // Set default and init parameters
-      $jsondefault = preg_replace('/\s+/', ' ', utf8_encode('{
+      $jsondefault = preg_replace('/\s+/', ' ', '{
               "result_table": ""
-          }'));
+          }');
 
       $output = json_decode($jsondefault);
 

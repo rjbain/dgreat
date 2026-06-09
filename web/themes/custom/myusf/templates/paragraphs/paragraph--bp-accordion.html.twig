@@ -170,52 +170,54 @@ accordion_active ? 'paragraph--accordion_active--',
           {% set indicator_class = 'normal' %}
         {%  endif %}
         {# Loop through all of the accordion sections. #}
-        {% for key, item in content.bp_accordion_section if key|first != '#' %}
-          {# Set variables if accordion should be shown. #}
-          {% if item['#paragraph'].bp_show_button.value %}
-            {% set show_accordion = ' in' %}
-            {% set aria = 'true' %}
-          {% else %}
-            {% set show_accordion = '' %}
-            {% set aria = 'false' %}
-          {% endif %}
-          <div class="card-header panel-heading" id="heading-{{ paragraph_id }}-{{ key + 1 }}">
-            <div class="panel-title">
-            {% set h_value = item['#paragraph'].field_accordion_section_header.value %}
-            {% if h_value is empty %}
-            {% set h_value = "h2" %}
-            {% elseif h_value is not empty %}
-            {% set h_value = h_value %}
+        {% for key, item in content.bp_accordion_section %}
+          {% if key|first != '#' %}
+            {# Set variables if accordion should be shown. #}
+            {% if item['#paragraph'].bp_show_button.value %}
+              {% set show_accordion = ' in' %}
+              {% set aria = 'true' %}
+            {% else %}
+              {% set show_accordion = '' %}
+              {% set aria = 'false' %}
             {% endif %}
-              <a class="{{ (indicator_class) }}" role="button" data-toggle="collapse" data-parent="#{{ paragraph_id }}" href="#collapse-{{ paragraph_id }}-{{ key + 1 }}" aria-expanded="{{ aria }}" aria-controls="collapse-{{ paragraph_id }}-{{ key + 1 }}" id="toggle-link-{{ paragraph.id.value }}-{{ key + 1 }}">
-                <{{ h_value }} class="accordion-title-h">
-                  {# Print the accordion section title. #}
-                  {{ item['#paragraph'].bp_accordion_section_title.value }}
-                </{{ h_value }}>
-              </a>
-            </div>
-          </div>
-          <div id="collapse-{{ paragraph_id }}-{{ key + 1 }}" class="card-block panel-collapse collapse-accordion collapse{{ show_accordion }}" aria-labelledby="heading-{{ paragraph_id }}-{{ key + 1 }}">
-            {# Loop through all of the accordion section bodies. #}
-            {% for body_key, body_item in item['#paragraph'].bp_accordion_section_body %}
-              {# Use the same render array as item and set the '#paragraph'. #}
-              {% set section_body = item %}
-              {% set lang = section_body['#paragraph'].langcode[0].value %}
-              {# Check if a translation exists #}
-              {% if section_body['#paragraph'].bp_accordion_section_body[body_key].entity.hasTranslation(lang) %}
-                {# Load the entity for the current translation #}
-              	{% set section_translation= section_body['#paragraph'].bp_accordion_section_body[body_key].entity.getTranslation(lang) %}
-              {% else %}
-                {# Load the source entity #}
-              	{% set section_translation= section_body['#paragraph'].bp_accordion_section_body[body_key].entity %}
+            <div class="card-header panel-heading" id="heading-{{ paragraph_id }}-{{ key + 1 }}">
+              <div class="panel-title">
+              {% set h_value = item['#paragraph'].field_accordion_section_header.value %}
+              {% if h_value is empty %}
+              {% set h_value = "h2" %}
+              {% elseif h_value is not empty %}
+              {% set h_value = h_value %}
               {% endif %}
-              {% set section_body = section_body|merge({'#paragraph': section_translation}) %}
-              {# Remove the cache keys so it doesn't repeat the first value. #}
-              {% set section_body = section_body|merge({'#cache': {}}) %}
-              {# Print the compiled section body. #}
-              {{ section_body }}
-            {% endfor %}
-          </div>
+                <a class="{{ (indicator_class) }}" role="button" data-toggle="collapse" data-parent="#{{ paragraph_id }}" href="#collapse-{{ paragraph_id }}-{{ key + 1 }}" aria-expanded="{{ aria }}" aria-controls="collapse-{{ paragraph_id }}-{{ key + 1 }}" id="toggle-link-{{ paragraph.id.value }}-{{ key + 1 }}">
+                  <{{ h_value }} class="accordion-title-h">
+                    {# Print the accordion section title. #}
+                    {{ item['#paragraph'].bp_accordion_section_title.value }}
+                  </{{ h_value }}>
+                </a>
+              </div>
+            </div>
+            <div id="collapse-{{ paragraph_id }}-{{ key + 1 }}" class="card-block panel-collapse collapse-accordion collapse{{ show_accordion }}" aria-labelledby="heading-{{ paragraph_id }}-{{ key + 1 }}">
+              {# Loop through all of the accordion section bodies. #}
+              {% for body_key, body_item in item['#paragraph'].bp_accordion_section_body %}
+                {# Use the same render array as item and set the '#paragraph'. #}
+                {% set section_body = item %}
+                {% set lang = section_body['#paragraph'].langcode[0].value %}
+                {# Check if a translation exists #}
+                {% if section_body['#paragraph'].bp_accordion_section_body[body_key].entity.hasTranslation(lang) %}
+                  {# Load the entity for the current translation #}
+                  {% set section_translation= section_body['#paragraph'].bp_accordion_section_body[body_key].entity.getTranslation(lang) %}
+                {% else %}
+                  {# Load the source entity #}
+                  {% set section_translation= section_body['#paragraph'].bp_accordion_section_body[body_key].entity %}
+                {% endif %}
+                {% set section_body = section_body|merge({'#paragraph': section_translation}) %}
+                {# Remove the cache keys so it doesn't repeat the first value. #}
+                {% set section_body = section_body|merge({'#cache': {}}) %}
+                {# Print the compiled section body. #}
+                {{ section_body }}
+              {% endfor %}
+            </div>
+          {% endif %}
         {% endfor %}
       </div>
     </div>
@@ -230,13 +232,13 @@ const link{{ paragraph.id.value }} = document.querySelector('#toggle-all-{{ para
 // Function to update the link text and aria-expanded attributes
 function updateLinkTextAndAria() {
     const elements = document.querySelectorAll("[id^='collapse-accordion-{{ paragraph.id.value }}']");
-    const isAnyElementOpen = Array.from(elements{{ paragraph.id.value }}).some(element => element.classList.contains('show'));
+    const isAnyElementOpen = Array.from(elements).some(element => element.classList.contains('show'));
 
     // Update the toggle-all link text
     link{{ paragraph.id.value }}.textContent = isAnyElementOpen ? "Close All" : "Open All";
 
     // Update aria-expanded for each accordion content
-    elements{{ paragraph.id.value }}.forEach(element => {
+    elements.forEach(element => {
         element.setAttribute('aria-expanded', element.classList.contains('show') ? "true" : "false");
     });
 }

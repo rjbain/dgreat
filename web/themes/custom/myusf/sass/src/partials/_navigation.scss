@@ -1401,7 +1401,15 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	&.sidebar-empty {
 		margin-left: 0px !important;
 		margin-right: -8px !important;
-		width: 100%!important;
+		width: auto!important;
+		flex: 0 0 270px;
+		max-width: 270px;
+
+		@include media-breakpoint-down(tablet) {
+			width: 100%!important;
+			flex: 0 0 100%;
+			max-width: 100%;
+		}
 	}
 
 	.block {

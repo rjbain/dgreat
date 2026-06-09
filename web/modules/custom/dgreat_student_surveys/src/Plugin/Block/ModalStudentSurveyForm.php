@@ -43,6 +43,8 @@ class ModalStudentSurveyForm extends WebformBlock {
       \Drupal::service('session')->set('student_surveys_has_seen_recently', TRUE);
       return $build;
     }
+
+    return [];
   }
 
   public function getCacheMaxAge() {
@@ -97,6 +99,7 @@ class ModalStudentSurveyForm extends WebformBlock {
     }
 
     return \Drupal::entityQuery('webform_submission')
+      ->accessCheck(TRUE)
       ->condition('webform_id', $webform->id())
       ->condition('uid', $account->id())
       ->count()

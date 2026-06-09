@@ -11,5 +11,9 @@ set -eo pipefail
 # Create a new multidev site to test on
 terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
 
+# Rebuild runtime code so Pantheon applies the branch pantheon.yml runtime
+# settings (e.g. php_version) before running Drush commands.
+terminus -n env:code-rebuild "$TERMINUS_SITE.$TERMINUS_ENV"
+
 # Re-run the site installation process
 terminus -n build:env:install "$TERMINUS_SITE.$TERMINUS_ENV" --site-name="$TEST_SITE_NAME" --account-mail="$ADMIN_EMAIL" --account-pass="$ADMIN_PASSWORD"

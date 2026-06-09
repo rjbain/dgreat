@@ -16,7 +16,7 @@ use Drupal\user\Entity\User;
  *
  * @ViewsFilter("user_weight_filter_sort")
  */
-class UserWeightsSortFilter extends FilterPluginBase implements ContainerFactoryPluginInterface {
+final class UserWeightsSortFilter extends FilterPluginBase implements ContainerFactoryPluginInterface {
 
   /**
    * The database connection to which to dump route information.
@@ -57,7 +57,7 @@ class UserWeightsSortFilter extends FilterPluginBase implements ContainerFactory
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
+    return new self(
       $configuration,
       $plugin_id,
       $plugin_definition,
@@ -83,15 +83,12 @@ class UserWeightsSortFilter extends FilterPluginBase implements ContainerFactory
     $uid = $this->currentUser->id();
     $name = $this->view->id();
 
-    $results = $this->db->select('user_weights', 'u')
-      ->fields('u', ['entity_id'])
+    $count_query = $this->db->select('user_weights', 'u')
       ->condition('uid', $uid)
       ->condition('view_name', $name)
-      ->orderBy('weight', 'ASC')
+      ->countQuery()
       ->execute();
-
-    $results->allowRowCount = TRUE;
-    $count = $results->rowCount();
+    $count = (int) $count_query->fetchField();
 
     // Sort by our user weights.
     if (!$count) {

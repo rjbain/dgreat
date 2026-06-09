@@ -159,12 +159,16 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
  * to see updated results after a code deploy.
  */
 if (isset($_ENV['PANTHEON_ROLLING_TMP']) && isset($_ENV['PANTHEON_DEPLOYMENT_IDENTIFIER'])) {
+  // Force Drupal to generate a fresh compiled service container on every
+  // Pantheon deploy. This avoids reusing stale cached container definitions
+  // across major-version upgrades during automated Drush operations.
+  $settings['deployment_identifier'] = $_ENV['PANTHEON_DEPLOYMENT_IDENTIFIER'];
+
   // Relocate the compiled twig files to <binding-dir>/tmp/ROLLING/twig.
   // The location of ROLLING will change with every deploy.
   $settings['php_storage']['twig']['directory'] = $_ENV['PANTHEON_ROLLING_TMP'];
   // Ensure that the compiled twig templates will be rebuilt whenever the
   // deployment identifier changes.  Note that a cache rebuild is also necessary.
-  $settings['deployment_identifier'] = $_ENV['PANTHEON_DEPLOYMENT_IDENTIFIER'];
   $settings['php_storage']['twig']['secret'] = $_ENV['DRUPAL_HASH_SALT'] . $settings['deployment_identifier'];
 }
 
@@ -173,9 +177,9 @@ if (isset($_ENV['PANTHEON_ROLLING_TMP']) && isset($_ENV['PANTHEON_DEPLOYMENT_IDE
  * Drupal 8. This service provider handles operations such as clearing the
  * Pantheon edge cache whenever the Drupal cache is rebuilt.
  */
-if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
-  $GLOBALS['conf']['container_service_providers']['PantheonServiceProvider'] = '\Pantheon\Internal\PantheonServiceProvider';
-}
+// Disable the legacy Pantheon service provider on this Drupal 11 upgrade
+// branch. Its cache services are causing container/runtime failures on
+// multidev and are not required for basic site functionality.
 
 /**
  * "Trusted host settings" are not necessary on Pantheon; traffic will only

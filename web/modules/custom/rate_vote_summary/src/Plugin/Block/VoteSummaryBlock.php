@@ -18,13 +18,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   category = @Translation("Custom")
  * )
  */
-class VoteSummaryBlock extends BlockBase implements ContainerFactoryPluginInterface {
+final class VoteSummaryBlock extends BlockBase implements ContainerFactoryPluginInterface {
 
   protected VoteTallyService $tally;
   protected RouteMatchInterface $routeMatch;
 
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    $instance = new static($configuration, $plugin_id, $plugin_definition);
+    $instance = new self($configuration, $plugin_id, $plugin_definition);
     $instance->tally = $container->get('rate_vote_summary.tally');
     $instance->routeMatch = $container->get('current_route_match');
     return $instance;

@@ -1,0 +1,23 @@
+diff --git a/core/modules/views/views.post_update.php b/core/modules/views/views.post_update.php
+--- a/core/modules/views/views.post_update.php
++++ b/core/modules/views/views.post_update.php
+@@ -84,8 +84,3 @@
+ function views_post_update_update_remember_role_empty(?array &$sandbox = NULL): void {
+-  /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
+-  $view_config_updater = \Drupal::service(ViewsConfigUpdater::class);
+-  $view_config_updater->setDeprecationsEnabled(FALSE);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($view_config_updater): bool {
+-    return $view_config_updater->needsRememberRolesUpdate($view);
+-  });
++  // Intentionally skipped on this upgrade path to avoid broken contrib Views.
+ }
+@@ -96,8 +91,3 @@
+ function views_post_update_table_css_class(?array &$sandbox = NULL): void {
+-  /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
+-  $view_config_updater = \Drupal::service(ViewsConfigUpdater::class);
+-  $view_config_updater->setDeprecationsEnabled(FALSE);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($view_config_updater): bool {
+-    return $view_config_updater->needsTableCssClassUpdate($view);
+-  });
++  // Intentionally skipped on this upgrade path to avoid broken contrib Views.
+ }

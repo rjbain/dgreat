@@ -1,0 +1,14 @@
+diff --git a/core.services.yml b/core.services.yml
+--- a/core.services.yml
++++ b/core.services.yml
+@@ -1388,7 +1388,7 @@ services:
+   router_listener:
+     class: Drupal\Core\Http\EventListener\RouterListener
+     arguments: ['@router', '@request_stack', '@router.request_context']
+   options_request_listener:
+     class: Drupal\Core\EventSubscriber\OptionsRequestSubscriber
+-    arguments: ['@router.route_provider']
++    arguments: ['@router.route_provider.lazy_builder']
+   bare_html_page_renderer:
+     class: Drupal\Core\Render\BareHtmlPageRenderer
+     arguments: ['@renderer', '@html_response.attachments_processor', '@Drupal\Core\Extension\ThemeSettingsProvider']

@@ -1,0 +1,47 @@
+diff --git a/group.services.yml b/group.services.yml
+--- a/group.services.yml
++++ b/group.services.yml
+@@ -53,7 +53,6 @@
+       - ['appendBackend', ['@cache.memory']]
+       - ['appendBackend', ['@cache.group_memberships']]
+     tags:
+-      - { name: 'cache.bin.memory' }
+ 
+   cache_context.route.group:
+     class: 'Drupal\group\Cache\Context\RouteGroupCacheContext'
+@@ -114,9 +113,8 @@
+  # Wrappers for Flexible permissions services.
+  group_permission.calculator:
+-    class: 'Drupal\group\Access\GroupPermissionCalculator'
+-    arguments: ['@flexible_permissions.chain_calculator']
++    class: 'Drupal\group\Access\NullGroupPermissionCalculator'
+   group_permission.checker:
+     class: 'Drupal\group\Access\GroupPermissionChecker'
+     arguments: ['@group_permission.calculator', '@group.membership_loader']
+ 
+   # Flexible permissions calculators.
+diff --git a/src/Access/NullGroupPermissionCalculator.php b/src/Access/NullGroupPermissionCalculator.php
+--- /dev/null
++++ b/src/Access/NullGroupPermissionCalculator.php
+@@ -0,0 +1,21 @@
++<?php
++
++namespace Drupal\group\Access;
++
++use Drupal\Core\Session\AccountInterface;
++use Drupal\Core\Session\CalculatedPermissions;
++use Drupal\Core\Session\RefinableCalculatedPermissions;
++
++/**
++ * Fallback group permission calculator for broken upgrade bootstrap states.
++ */
++class NullGroupPermissionCalculator implements GroupPermissionCalculatorInterface {
++
++  /**
++   * {@inheritdoc}
++   */
++  public function calculateFullPermissions(AccountInterface $account) {
++    return new CalculatedPermissions(new RefinableCalculatedPermissions());
++  }
++
++}

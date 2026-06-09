@@ -1,8 +1,5 @@
 {
   "patches": {
-    "drupal/group": {
-      "https://dgo.to/3197610 TypeError: Argument 2 passed to GroupRoleStorage Issue": "https://www.drupal.org/files/issues/2021-05-23/3197610-2-type-error.patch"
-    },
     "drupal/tb_megamenu": {
       "https://dgo.to/3378533 Replace Span with Button": "https://www.drupal.org/files/issues/2023-08-01/tb_megamenu-replace-span-with-button-3378533-1.patch"
     },
@@ -16,10 +13,27 @@
       "PHP Fatal error: Declaration of encode($data, $options = 448) must be compatible with encode($data, int $options = 448, string $indent = self::INDENT_DEFAULT): string": "./patches/foxy.patch.txt"
     },
     "drupal/webform": {
-      "Removing the polyfill-fastly.io library of webform.libraries.yml": "https://www.drupal.org/files/issues/2024-07-02/3458611-removing-the-polyfill-io.patch"
+      "Remove external polyfill-fastly script from webform libraries": "./patches/webform-remove-polyfill.patch",
+      "Drupal 11: tolerate container rebuild failure during webform updates": "./patches/webform-drupal-11-skip-rebuild-container.patch"
     },
     "drupal/sitewide_alert": {
-      "Remove polyfill script": "https://www.drupal.org/files/issues/2023-05-23/sitewide_alert-polyfill-3362024-3.patch"
+      "Remove external polyfill.io script from sitewide_alert libraries": "./patches/sitewide_alert-remove-polyfill.patch"
+    },
+    "drupal/flexible_permissions": {
+      "Drupal 11: use core memory cache services during bootstrap": "./patches/flexible_permissions-drupal-11-memory-cache.patch"
+    },
+    "drupal/group": {
+      "Drupal 11: replace Group corefix cache bin with core memory cache": "./patches/group-drupal-11-corefix-cache.patch"
+    },
+    "drupal/config_split": {
+      "Drupal 11: disable Config Split Drush command bootstrap": "./patches/config_split-disable-drush-commands.patch"
+    },
+    "drush/drush": {
+      "Drupal 11 CI: skip broken legacy drush.services bootstrap": "./patches/drush-skip-broken-legacy-services.patch"
+    },
+    "drupal/core": {
+      "Drupal 11 CI: skip views table CSS class post-update": "./patches/drupal-core-skip-views-table-css-class-update.patch",
+      "Drupal 11: make options request listener use lazy route provider": "./patches/drupal-core-options-request-listener-lazy-route-provider.patch"
     }
   }
 }

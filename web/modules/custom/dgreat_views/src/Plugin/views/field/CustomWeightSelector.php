@@ -20,7 +20,7 @@ use Drupal\Core\Session\AccountInterface;
  *
  * @ViewsField("custom_weight_selector")
  */
-class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPluginInterface {
+final class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPluginInterface {
 
   /**
    * The database connection to which to dump route information.
@@ -61,7 +61,7 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
+    return new self(
       $configuration,
       $plugin_id,
       $plugin_definition,
@@ -119,7 +119,7 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
     ];
 
     if (isset($_COOKIE['STYXKEY_ids'])) {
-      setcookie('STYXKEY_ids', NULL, -1, '/');
+      setcookie('STYXKEY_ids', '', -1, '/');
     }
 
 

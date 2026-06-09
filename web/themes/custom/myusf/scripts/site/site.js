@@ -1,1 +1,264 @@
-!function(t,e){e.behaviors.mainJS={attach:function(e,n){t(".nav-item").mouseleave((function(){this.blur()})),t(".carousel-control-next").mouseleave((function(){this.blur()})),t(".carousel-control-prev").mouseleave((function(){this.blur()})),t(".header_search").mouseleave((function(){this.blur()}));let o=t("ul.navbar-nav li.dropdown button.nav-link"),a="Open Sub-Navigation Menu";t(o).keydown((function(e){" "!==e.key&&"Spacebar"!==e.key||(e.preventDefault(),t(this).parent("li").toggleClass("show"),t(this).attr("aria-expanded",(function(t,e){return"true"===e?"false":"true"})),t(this).attr("aria-label",(function(t,e){return e===a?"Close Sub-Navigation Menu":a})),t(this).parent("li").find("ul.dropdown-menu").toggleClass("show"))})),t(o).focus((function(){t(o).parent("li").removeClass("show"),t(o).attr("aria-expanded","false"),t(o).attr("aria-label",a),t(o).parent("li").find("ul.dropdown-menu").removeClass("show")}));let i=t(".navbar .login-btn"),s=t("#submenuButton"),r=t("#sidebar_first .submenu .nav-link");i.length&&i.blur((function(){s.hasClass("hideButton")?r.first().focus():s.focus()})),t(".dashboard-button").on("keydown",(function(t){t.shiftKey||9!==t.keyCode||(s.hasClass("hideButton")?r.first().focus():s.focus())})),t(s).blur((function(){s.hasClass("collapsed")?t("#block-myusf-content a").first().focus():r.first().focus()})),r.last().blur((function(){t("#block-myusf-content a").first().focus()})),t("#block-myusf-content a").last().blur((function(){t("#sidebar_second a").first().focus()})),t("[id^=contentView_]").attr("align","center")}},e.behaviors.surveyModal={attach:function(e,n){t("#studentSurveyModal").length&&!0!==drupalSettings.dgreatStudentSurveys.hasSeen&&t("#studentSurveyModal").once("surveyModal").modal("show")}},e.behaviors.smoothScrollAccordion={initialized:!1,attach:function(e,n){function o(e){const n=new MouseEvent("click",{view:window,bubbles:!0,cancelable:!0});e.dispatchEvent(n),t(e).trigger("click")}function a(t){const e=document.getElementById(t);if(!e)return void console.warn(`Element with ID "${t}" not found.`);if("a"===e.tagName.toLowerCase()&&e.hasAttribute("data-toggle")&&"collapse"===e.getAttribute("data-toggle")&&e.hasAttribute("aria-controls")){return void("true"===e.getAttribute("aria-expanded")||o(e))}const n=e.querySelector('a[data-toggle="collapse"][aria-controls]');if(n){"true"===n.getAttribute("aria-expanded")||o(n)}else console.warn(`Element with ID "${t}" is not a toggle or doesn't contain one.`)}if(t(document).data("smoothScrollAccordionInitialized")||(t(document).data("smoothScrollAccordionInitialized",!0),t(document).on("click",'a[href^="#"]',(function(t){const e=this.getAttribute("href");if(e&&"#"!==e&&e.length>1){const n=e.substring(1);document.getElementById(n)&&(t.preventDefault(),a(n))}})),t(document).on("click",'a[data-toggle="collapse"]',(function(){!function(t){const e=t.getAttribute("aria-controls")||t.getAttribute("href")&&t.getAttribute("href").substring(1);if(!e)return;const n=document.getElementById(e);if(!n)return;let o=n.getAttribute("aria-labelledby");!o&&e.startsWith("collapse-")&&(o=e.replace("collapse-","heading-")),o&&setTimeout((()=>{"true"===t.getAttribute("aria-expanded")&&window.location.hash!==`#${o}`&&(history.pushState?history.pushState(null,null,`#${o}`):window.location.hash=o)}),400)}(this)}))),e===document&&window.location.hash&&!this.initialized){this.initialized=!0;const t=window.location.hash.substring(1);setTimeout((()=>{a(t)}),300)}}}}(jQuery,Drupal);
+(function ($, Drupal) {
+    Drupal.behaviors.mainJS = {
+        attach: function (context, settings) {
+
+            // Remove focus from buttons after clicking.
+
+            // Scope to front-end navbar items to avoid interfering with admin toolbar nav.
+            $(".navbar .nav-item").mouseleave(function(){
+                this.blur();
+            });
+            $(".carousel-control-next").mouseleave(function(){
+                this.blur();
+            });
+            $(".carousel-control-prev").mouseleave(function(){
+                this.blur();
+            });
+
+            $(".header_search").mouseleave(function(){
+                this.blur();
+            });
+
+            // Make main menu keyboard accessible.
+            let $dropdownLink = $('ul.navbar-nav li.dropdown button.nav-link');
+            let dropdownOpenLabel = 'Open Sub-Navigation Menu';
+            let dropdownCloseLabel = 'Close Sub-Navigation Menu';
+
+            // Open the submenu if you tab to the dropdown and press the Space key.
+            $($dropdownLink).keydown(function(e) {
+                if (e.key === ' ' || e.key === 'Spacebar') { // Space Bar key maps to keycode `32`
+                    e.preventDefault();
+                    $(this).parent('li').toggleClass('show');
+                    $(this).attr('aria-expanded', function (i, attr) {
+                        return attr === 'true' ? 'false' : 'true';
+                    });
+                    $(this).attr('aria-label', function (i, attr) {
+                        return attr === dropdownOpenLabel ? dropdownCloseLabel : dropdownOpenLabel;
+                    });
+                    $(this).parent('li').find('ul.dropdown-menu').toggleClass('show');
+                }
+            });
+
+            // When you focus on a dropdown link, close any open submenus.
+            $($dropdownLink).focus(function() {
+                $($dropdownLink).parent('li').removeClass('show');
+                $($dropdownLink).attr('aria-expanded','false');
+                $($dropdownLink).attr('aria-label', dropdownOpenLabel);
+                $($dropdownLink).parent('li').find('ul.dropdown-menu').removeClass('show');
+            });
+
+            let $logInBtn = $(".navbar .login-btn");
+            let $submenuBtn = $("#submenuButton");
+            let $submenuLinks = $("#sidebar_first .submenu .nav-link");
+
+            // When you tab away from the search submit button, go to the login button, then the subnav.
+
+            // If not logged in.
+            if ($logInBtn.length) {
+                $logInBtn.blur(function() {
+                    // If the submenu button is hidden.
+                    if ($submenuBtn.hasClass("hideButton")) {
+                        $submenuLinks.first().focus();
+                    } else {
+                        $submenuBtn.focus();
+                    }
+                });
+
+            }
+          let dashboardButton = $(".dashboard-button");
+            // If logged in, tab from dashboard button to subnav button.
+          dashboardButton.on( 'keydown', function(e) {
+            // If the tab key is active and the shift key is not, move forward.
+            if (!e.shiftKey && e.keyCode === 9) {
+              if ($submenuBtn.hasClass("hideButton")) {
+                $submenuLinks.first().focus();
+              } else {
+                $submenuBtn.focus();
+              }
+            }
+            });
+            // If you focus on the submenu button and open it, tab next to the first link.
+            $($submenuBtn).blur(function(){
+                // If the submenu is closed.
+                if ($submenuBtn.hasClass("collapsed")) {
+                    // Go to the main content.
+                    $("#block-myusf-content a").first().focus();
+                } else {
+                    // Otherwise go to the first subnav link.
+                    $submenuLinks.first().focus();
+                }
+            });
+            // When leaving the subnav, go to the main content.
+            $submenuLinks.last().blur(function() {
+                $("#block-myusf-content a").first().focus();
+            });
+            // When leaving main content area, go to right-hand sidebar.
+            $("#block-myusf-content a").last().blur(function() {
+                $("#sidebar_second a").first().focus();
+            });
+
+            // Fix for Ensemble
+            $("[id^=contentView_]").attr("align","center");
+
+        }
+    };
+    Drupal.behaviors.surveyModal = {
+        attach: function (context, settings) {
+            const hasSeenSurvey = !!(
+              settings &&
+              settings.dgreatStudentSurveys &&
+              settings.dgreatStudentSurveys.hasSeen === true
+            );
+            const $surveyModal = $(context)
+              .find('#studentSurveyModal')
+              .addBack('#studentSurveyModal')
+              .not('[data-survey-modal-processed]');
+
+            if ($surveyModal.length && !hasSeenSurvey) {
+                $surveyModal.attr('data-survey-modal-processed', 'true');
+                if (typeof $surveyModal.modal === 'function') {
+                    $surveyModal.modal('show');
+                }
+            }
+        }
+    };
+
+
+
+
+  Drupal.behaviors.smoothScrollAccordion = {
+    initialized: false,
+    attach: function (context, settings) {
+
+      function triggerNativeClick(el) {
+        const event = new MouseEvent('click', {
+          view: window,
+          bubbles: true,
+          cancelable: true
+        });
+        el.dispatchEvent(event);
+        $(el).trigger('click');
+      }
+
+      function openAccordion(id) {
+        const el = document.getElementById(id);
+        if (!el) {
+          console.warn(`Element with ID "${id}" not found.`);
+          return;
+        }
+
+        // Case 1: Direct toggle link
+        if (
+          el.tagName.toLowerCase() === 'a' &&
+          el.hasAttribute('data-toggle') &&
+          el.getAttribute('data-toggle') === 'collapse' &&
+          el.hasAttribute('aria-controls')
+        ) {
+          const isExpanded = el.getAttribute('aria-expanded') === 'true';
+          if (!isExpanded) {
+            triggerNativeClick(el);
+          }
+          return;
+        }
+
+        // Case 2: Element contains toggle link (like a heading div)
+        const innerToggle = el.querySelector('a[data-toggle="collapse"][aria-controls]');
+        if (innerToggle) {
+          const isExpanded = innerToggle.getAttribute('aria-expanded') === 'true';
+          if (!isExpanded) {
+            triggerNativeClick(innerToggle);
+          }
+          return;
+        }
+
+        console.warn(`Element with ID "${id}" is not a toggle or doesn't contain one.`);
+      }
+
+      function isAccordionTarget(id, el) {
+        if (!id || !el) {
+          return false;
+        }
+
+        if (id.startsWith('heading-') || id.startsWith('collapse-accordion')) {
+          return true;
+        }
+
+        if (el.matches('.collapse-accordion, [id^="collapse-accordion"], [id^="heading-"]')) {
+          return true;
+        }
+
+        if (el.querySelector('a[data-toggle="collapse"][aria-controls]')) {
+          return true;
+        }
+
+        return false;
+      }
+
+      function updateHashAfterClick(toggleEl) {
+        const collapseId = toggleEl.getAttribute('aria-controls') ||
+          (toggleEl.getAttribute('href') && toggleEl.getAttribute('href').substring(1));
+        if (!collapseId) return;
+
+        const collapseEl = document.getElementById(collapseId);
+        if (!collapseEl) return;
+
+        // Try aria-labelledby first
+        let headingId = collapseEl.getAttribute('aria-labelledby');
+
+        // Fallback: derive from collapse ID
+        if (!headingId && collapseId.startsWith('collapse-')) {
+          headingId = collapseId.replace('collapse-', 'heading-');
+        }
+
+        if (headingId) {
+          // Wait for animation to complete
+          setTimeout(() => {
+            const isNowExpanded = toggleEl.getAttribute('aria-expanded') === 'true';
+            if (isNowExpanded && window.location.hash !== `#${headingId}`) {
+              if (history.pushState) {
+                history.pushState(null, null, `#${headingId}`);
+              } else {
+                window.location.hash = headingId;
+              }
+            }
+          }, 400); // Bootstrap default animation is ~350ms
+        }
+      }
+
+      if (!$(document).data('smoothScrollAccordionInitialized')) {
+        $(document).data('smoothScrollAccordionInitialized', true);
+
+        $(document).on('click', 'a[href^="#"]', function (e) {
+          const href = this.getAttribute('href');
+          if (href && href !== '#' && href.length > 1) {
+            const targetId = href.substring(1);
+            const targetEl = document.getElementById(targetId);
+            if (targetEl && isAccordionTarget(targetId, targetEl)) {
+              e.preventDefault();
+              openAccordion(targetId);
+            }
+          }
+        });
+
+        // Update hash when a toggle is clicked
+        $(document).on('click', 'a[data-toggle="collapse"]', function () {
+          updateHashAfterClick(this);
+        });
+      }
+
+      if (context === document && window.location.hash && !this.initialized) {
+        this.initialized = true;
+        const hashId = window.location.hash.substring(1);
+        setTimeout(() => {
+          const hashTarget = document.getElementById(hashId);
+          if (hashTarget && isAccordionTarget(hashId, hashTarget)) {
+            openAccordion(hashId);
+          }
+        }, 300);
+      }
+    }
+  };
+
+
+
+})(jQuery, Drupal);

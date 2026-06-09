@@ -7,6 +7,7 @@ use Drupal\Core\PageCache\ResponsePolicy\KillSwitch;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\Url;
 use Drupal\flag\FlagServiceInterface;
+use Drupal\user\Entity\Role;
 use Drupal\user\RoleInterface;
 use Drupal\views\Plugin\views\relationship\RelationshipPluginBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -18,7 +19,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @ViewsRelationship("dgreat_flag_relationship")
  */
-class DgreatViewsFlaggingRelationship extends RelationshipPluginBase {
+final class DgreatViewsFlaggingRelationship extends RelationshipPluginBase {
 
   /**
    * The Page Cache Kill switch.
@@ -72,7 +73,7 @@ class DgreatViewsFlaggingRelationship extends RelationshipPluginBase {
     $flag_service = $container->get('flag');
     $page_cache_kill_switch = $container->get('page_cache_kill_switch');
     $current_user = $container->get('current_user');
-    return new static($configuration, $plugin_id, $plugin_definition, $page_cache_kill_switch, $flag_service, $current_user);
+    return new self($configuration, $plugin_id, $plugin_definition, $page_cache_kill_switch, $flag_service, $current_user);
   }
 
   /**
@@ -153,7 +154,12 @@ class DgreatViewsFlaggingRelationship extends RelationshipPluginBase {
         'value' => '***CURRENT_USER***',
         'numeric' => TRUE,
       ];
-      $flag_roles = user_roles(FALSE, "flag " . $flag->id());
+      $flag_roles = [];
+      foreach (Role::loadMultiple() as $role_id => $role) {
+        if ($role->hasPermission('flag ' . $flag->id())) {
+          $flag_roles[$role_id] = $role;
+        }
+      }
       if (isset($flag_roles[RoleInterface::ANONYMOUS_ID]) && $this->currentUser->isAnonymous()) {
         // Disable page caching for anonymous users.
         $this->pageCacheKillSwitch->trigger();

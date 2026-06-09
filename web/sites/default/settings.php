@@ -85,24 +85,25 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT']) && php_sapi_name() != 'cli') {
   }
 }
 
-// Configure Redis
-
-if (defined('PANTHEON_ENVIRONMENT')) {
+// Configure Redis for web requests on Pantheon. Keep CLI/Drush on the default
+// database-backed bins so container/cache bootstrap is isolated from any stale
+// Redis state during automated updates and config imports.
+if (defined('PANTHEON_ENVIRONMENT') && php_sapi_name() !== 'cli') {
     // Include the Redis services.yml file. Adjust the path if you installed to a contrib or other subdirectory.
     $settings['container_yamls'][] = 'modules/redis/example.services.yml';
 
-    //phpredis is built into the Pantheon application container.
+    // phpredis is built into the Pantheon application container.
     $settings['redis.connection']['interface'] = 'PhpRedis';
     // These are dynamic variables handled by Pantheon.
     $settings['redis.connection']['host']      = $_ENV['CACHE_HOST'];
     $settings['redis.connection']['port']      = $_ENV['CACHE_PORT'];
     $settings['redis.connection']['password']  = $_ENV['CACHE_PASSWORD'];
 
-    $settings['cache']['default'] = 'cache.backend.redis'; // Use Redis as the default cache.
+    $settings['cache']['default'] = 'cache.backend.redis';
     $settings['cache_prefix']['default'] = 'pantheon-redis';
 
     // Set Redis to not get the cache_form (no performance difference).
-    $settings['cache']['bins']['form']      = 'cache.backend.database';
+    $settings['cache']['bins']['form'] = 'cache.backend.database';
 }
 
 // Redirect thridparty css from old path to new.

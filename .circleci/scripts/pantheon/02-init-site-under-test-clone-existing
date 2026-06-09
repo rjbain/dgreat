@@ -13,12 +13,115 @@ set -eo pipefail
 terminus -n env:wake "$TERMINUS_SITE.dev"
 terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
 
-# Run updatedb to ensure that the cloned database is updated for the new code.
-terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
+# Rebuild runtime code so Pantheon applies the branch pantheon.yml runtime
+# settings (e.g. php_version) before running Drush commands.
+terminus -n env:code-rebuild "$TERMINUS_SITE.$TERMINUS_ENV"
 
-# If any modules, or theme files have been moved around or reorganized, in order to avoid
-# "The website encountered an unexpected error. Please try again later." error on First Visit
-terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
+# Clear stale Drupal caches before bootstrap-dependent Drush commands.
+terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "
+TRUNCATE cache_bootstrap;
+TRUNCATE cache_config;
+TRUNCATE cache_container;
+TRUNCATE cache_default;
+TRUNCATE cache_discovery;
+"
+
+# Remove stale references to removed modules that can break updates/config
+# import. Use raw SQL so this step does not require a full Drupal bootstrap.
+terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "
+UPDATE config
+SET data = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+  data,
+  CONCAT('  bootstrap_library: 0', CHAR(10)), ''
+), CONCAT('  ckeditor: 0', CHAR(10)), ''
+), CONCAT('  config_filter: 0', CHAR(10)), ''
+), CONCAT('  delete_all: 0', CHAR(10)), ''
+), CONCAT('  easy_install: 0', CHAR(10)), ''
+), CONCAT('  jquery_ui_slider: 0', CHAR(10)), ''
+), CONCAT('  jquery_ui_touch_punch: 0', CHAR(10)), ''
+), CONCAT('  nodeaccess: 0', CHAR(10)), ''
+), CONCAT('  simple_sitemap: 0', CHAR(10)), ''
+), CONCAT('  tour: 0', CHAR(10)), ''
+), CONCAT('  upgrade_rector: 0', CHAR(10)), ''
+), CONCAT('  usfb_address: 0', CHAR(10)), ''
+), CONCAT('  usf_services_page: 0', CHAR(10)), ''
+)
+WHERE name = 'core.extension';
+DELETE FROM key_value
+WHERE collection = 'system.schema'
+  AND name IN (
+    'bootstrap_library',
+    'ckeditor',
+    'config_filter',
+    'delete_all',
+    'easy_install',
+    'jquery_ui_slider',
+    'jquery_ui_touch_punch',
+    'nodeaccess',
+    'simple_sitemap',
+    'tour',
+    'upgrade_rector',
+    'usfb_address',
+    'usf_services_page',
+    'variationcache',
+    'webform_location_geocomplete',
+    'webform_toggles'
+  );
+UPDATE config
+SET data = CASE
+  WHEN data NOT LIKE CONCAT('%', CHAR(10), '  flexible_permissions: 0', CHAR(10), '%')
+  THEN REPLACE(
+    data,
+    CONCAT('module:', CHAR(10)),
+    CONCAT('module:', CHAR(10), '  flexible_permissions: 0', CHAR(10))
+  )
+  ELSE data
+END
+WHERE name = 'core.extension';
+UPDATE config
+SET data = REGEXP_REPLACE(
+  data,
+  CONCAT(
+    '(',
+    '  bootstrap_library: [0-9]+|',
+    '  ckeditor: [0-9]+|',
+    '  config_filter: [0-9]+|',
+    '  delete_all: [0-9]+|',
+    '  easy_install: [0-9]+|',
+    '  jquery_ui_slider: [0-9]+|',
+    '  jquery_ui_touch_punch: [0-9]+|',
+    '  nodeaccess: [0-9]+|',
+    '  simple_sitemap: [0-9]+|',
+    '  tour: [0-9]+|',
+    '  upgrade_rector: [0-9]+|',
+    '  usfb_address: [0-9]+|',
+    '  usf_services_page: [0-9]+',
+    ')',
+    CHAR(10)
+  ),
+  ''
+)
+WHERE name = 'core.extension';
+DELETE FROM config
+WHERE name LIKE 'block.block.adminimal_theme_%'
+   OR name LIKE 'block.block.seven_%';
+UPDATE config
+SET data = REGEXP_REPLACE(
+  data,
+  CONCAT('theme:', CHAR(10), '([[:space:]]{2}[^', CHAR(10), ']+:', ' [0-9]+', CHAR(10), ')*', 'profile:'),
+  CONCAT('theme:', CHAR(10), '  claro: 0', CHAR(10), '  bootstrap_barrio: 0', CHAR(10), '  myusf: 0', CHAR(10), 'profile:')
+)
+WHERE name = 'core.extension';
+"
+
+# Repair Group tables on cloned databases that skipped the Group 2 -> 3
+# storage migration but already have Group 3 configuration.
+terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- php:script scripts/pantheon/repair_group_schema.php
+
+# Run updatedb to ensure that the cloned database is updated for the new code.
+# Skip the automatic cache flush because the upgrade path still contains a
+# broken cache bin on this branch; config import will continue from there.
+terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y --no-cache-clear
 
 # If exported configuration is available, then import it.
 if [ -f "config/system.site.yml" ] ; then

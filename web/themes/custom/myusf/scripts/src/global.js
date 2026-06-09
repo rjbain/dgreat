@@ -4,7 +4,8 @@
 
             // Remove focus from buttons after clicking.
 
-            $(".nav-item").mouseleave(function(){
+            // Scope to front-end navbar items to avoid interfering with admin toolbar nav.
+            $(".navbar .nav-item").mouseleave(function(){
                 this.blur();
             });
             $(".carousel-control-next").mouseleave(function(){
@@ -103,9 +104,21 @@
     };
     Drupal.behaviors.surveyModal = {
         attach: function (context, settings) {
-            // Using once() to apply the myCustomBehaviour effect when you want to run just one function.
-            if ($('#studentSurveyModal').length && drupalSettings.dgreatStudentSurveys.hasSeen !== true) {
-                $('#studentSurveyModal').once('surveyModal').modal('show');
+            const hasSeenSurvey = !!(
+              settings &&
+              settings.dgreatStudentSurveys &&
+              settings.dgreatStudentSurveys.hasSeen === true
+            );
+            const $surveyModal = $(context)
+              .find('#studentSurveyModal')
+              .addBack('#studentSurveyModal')
+              .not('[data-survey-modal-processed]');
+
+            if ($surveyModal.length && !hasSeenSurvey) {
+                $surveyModal.attr('data-survey-modal-processed', 'true');
+                if (typeof $surveyModal.modal === 'function') {
+                    $surveyModal.modal('show');
+                }
             }
         }
     };
@@ -161,6 +174,26 @@
         console.warn(`Element with ID "${id}" is not a toggle or doesn't contain one.`);
       }
 
+      function isAccordionTarget(id, el) {
+        if (!id || !el) {
+          return false;
+        }
+
+        if (id.startsWith('heading-') || id.startsWith('collapse-accordion')) {
+          return true;
+        }
+
+        if (el.matches('.collapse-accordion, [id^="collapse-accordion"], [id^="heading-"]')) {
+          return true;
+        }
+
+        if (el.querySelector('a[data-toggle="collapse"][aria-controls]')) {
+          return true;
+        }
+
+        return false;
+      }
+
       function updateHashAfterClick(toggleEl) {
         const collapseId = toggleEl.getAttribute('aria-controls') ||
           (toggleEl.getAttribute('href') && toggleEl.getAttribute('href').substring(1));
@@ -200,7 +233,7 @@
           if (href && href !== '#' && href.length > 1) {
             const targetId = href.substring(1);
             const targetEl = document.getElementById(targetId);
-            if (targetEl) {
+            if (targetEl && isAccordionTarget(targetId, targetEl)) {
               e.preventDefault();
               openAccordion(targetId);
             }
@@ -217,7 +250,10 @@
         this.initialized = true;
         const hashId = window.location.hash.substring(1);
         setTimeout(() => {
-          openAccordion(hashId);
+          const hashTarget = document.getElementById(hashId);
+          if (hashTarget && isAccordionTarget(hashId, hashTarget)) {
+            openAccordion(hashId);
+          }
         }, 300);
       }
     }
