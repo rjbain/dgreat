@@ -136,6 +136,10 @@ jobs:
                 command: composer -n build-assets
 
             - run:
+                name: remove nested .git directories from composer dev-branch packages
+                command: find . -mindepth 2 -name .git -type d -not -path './.git' -exec rm -rf {} +
+
+            - run:
                 name: prepare database for site-under test
                 command: ./.circleci/scripts/pantheon/02-init-site-under-test-clone-existing
                 # command: ./.circleci/scripts/pantheon/02-init-site-under-test-reinstall-new
