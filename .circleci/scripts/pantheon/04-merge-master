@@ -78,6 +78,9 @@ SET data = CASE
   ELSE data
 END
 WHERE name = 'core.extension';
+DELETE FROM config
+WHERE name LIKE 'block.block.adminimal_theme_%'
+   OR name LIKE 'block.block.seven_%';
 "
 
 # Run updatedb on the dev environment, but skip the automatic cache flush
