@@ -78,6 +78,30 @@ SET data = CASE
   ELSE data
 END
 WHERE name = 'core.extension';
+UPDATE config
+SET data = REGEXP_REPLACE(
+  data,
+  CONCAT(
+    '(',
+    '  bootstrap_library: [0-9]+|',
+    '  ckeditor: [0-9]+|',
+    '  config_filter: [0-9]+|',
+    '  delete_all: [0-9]+|',
+    '  easy_install: [0-9]+|',
+    '  jquery_ui_slider: [0-9]+|',
+    '  jquery_ui_touch_punch: [0-9]+|',
+    '  nodeaccess: [0-9]+|',
+    '  simple_sitemap: [0-9]+|',
+    '  tour: [0-9]+|',
+    '  upgrade_rector: [0-9]+|',
+    '  usfb_address: [0-9]+|',
+    '  usf_services_page: [0-9]+',
+    ')',
+    CHAR(10)
+  ),
+  ''
+)
+WHERE name = 'core.extension';
 DELETE FROM config
 WHERE name LIKE 'block.block.adminimal_theme_%'
    OR name LIKE 'block.block.seven_%';
