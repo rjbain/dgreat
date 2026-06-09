@@ -28,6 +28,16 @@ parameters:
 
 services:
   cache_tags.invalidator:
+    class: Drupal\Core\Cache\CacheTagsInvalidator
     lazy: true
+    tags:
+      - { name: service_collector, call: addInvalidator, tag: cache_tags_invalidator }
+      - { name: service_collector, call: addBin, tag: cache.bin }
+      - { name: service_collector, call: addBin, tag: cache.bin.memory }
   cache_tags.invalidator.checksum:
+    class: Drupal\Core\Cache\DatabaseCacheTagsChecksum
+    arguments: ['@database']
     lazy: true
+    tags:
+      - { name: cache_tags_invalidator }
+      - { name: backend_overridable }
