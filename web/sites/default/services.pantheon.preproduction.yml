@@ -27,6 +27,22 @@ parameters:
     cookie_lifetime: 28800 # 8hrs
 
 services:
+  Drupal\menu_link_content\Hook\MenuLinkContentHooks:
+    class: Drupal\menu_link_content\Hook\MenuLinkContentHooks
+    autowire: true
+    autoconfigure: true
+    lazy: true
+  plugin.manager.menu.link:
+    class: Drupal\Core\Menu\MenuLinkManager
+    arguments: ['@menu.tree_storage', '@menu_link.static.overrides', '@module_handler']
+    lazy: true
+  menu.tree_storage:
+    class: Drupal\Core\Menu\MenuTreeStorage
+    arguments: ['@database', '@cache.menu', '@cache_tags.invalidator', 'menu_tree']
+    public: false
+    lazy: true
+    tags:
+      - { name: backend_overridable }
   cache_tags.invalidator:
     class: Drupal\Core\Cache\CacheTagsInvalidator
     lazy: true
