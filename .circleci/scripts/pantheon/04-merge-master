@@ -105,6 +105,20 @@ WHERE name = 'core.extension';
 DELETE FROM config
 WHERE name LIKE 'block.block.adminimal_theme_%'
    OR name LIKE 'block.block.seven_%';
+UPDATE config
+SET data = '_core:
+  default_config_hash: fOjer9hADYYnbCJVZMFZIIM1azTFWyg84ZkFDHfAbUg
+admin: claro
+default: myusf
+'
+WHERE name = 'system.theme';
+UPDATE config
+SET data = REGEXP_REPLACE(
+  data,
+  CONCAT('theme:', CHAR(10), '([[:space:]]{2}[^', CHAR(10), ']+:', ' [0-9]+', CHAR(10), ')*', 'profile:'),
+  CONCAT('theme:', CHAR(10), '  claro: 0', CHAR(10), '  bootstrap_barrio: 0', CHAR(10), '  myusf: 0', CHAR(10), 'profile:')
+)
+WHERE name = 'core.extension';
 "
 
 # Run updatedb on the dev environment, but skip the automatic cache flush
