@@ -177,9 +177,9 @@ if (isset($_ENV['PANTHEON_ROLLING_TMP']) && isset($_ENV['PANTHEON_DEPLOYMENT_IDE
  * Drupal 8. This service provider handles operations such as clearing the
  * Pantheon edge cache whenever the Drupal cache is rebuilt.
  */
-if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
-  $GLOBALS['conf']['container_service_providers']['PantheonServiceProvider'] = '\Pantheon\Internal\PantheonServiceProvider';
-}
+// Disable the legacy Pantheon service provider on this Drupal 11 upgrade
+// branch. Its cache services are causing container/runtime failures on
+// multidev and are not required for basic site functionality.
 
 /**
  * "Trusted host settings" are not necessary on Pantheon; traffic will only
