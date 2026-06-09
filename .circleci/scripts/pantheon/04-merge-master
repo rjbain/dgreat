@@ -114,6 +114,10 @@ SET data = REGEXP_REPLACE(
 WHERE name = 'core.extension';
 "
 
+# Repair Group tables on cloned databases that skipped the Group 2 -> 3
+# storage migration but already have Group 3 configuration.
+terminus -n drush "$TERMINUS_SITE.dev" -- php:script scripts/pantheon/repair_group_schema.php
+
 # Run updatedb on the dev environment, but skip the automatic cache flush
 # until the remaining Drupal 11 cache-bin issue is resolved.
 terminus -n drush $TERMINUS_SITE.dev -- updatedb --yes --no-cache-clear

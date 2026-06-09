@@ -114,6 +114,10 @@ SET data = REGEXP_REPLACE(
 WHERE name = 'core.extension';
 "
 
+# Repair Group tables on cloned databases that skipped the Group 2 -> 3
+# storage migration but already have Group 3 configuration.
+terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- php:script scripts/pantheon/repair_group_schema.php
+
 # Run updatedb to ensure that the cloned database is updated for the new code.
 # Skip the automatic cache flush because the upgrade path still contains a
 # broken cache bin on this branch; config import will continue from there.
