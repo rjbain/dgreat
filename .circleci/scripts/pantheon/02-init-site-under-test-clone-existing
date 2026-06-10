@@ -13,6 +13,11 @@ set -eo pipefail
 terminus -n env:wake "$TERMINUS_SITE.dev"
 terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
 
+# Enable flexible_permissions before anything else — group_permission.calculator
+# depends on flexible_permissions.chain_calculator. Without this, drush cr
+# (and all subsequent drush commands) fail with a container compilation error.
+terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- pm-enable flexible_permissions -y
+
 # Clear caches BEFORE updatedb so stale entity type handler class names from
 # the cloned DB (e.g. Group 1.x class names) are flushed before update hooks
 # run. Without this, group_update_10300 fails with
