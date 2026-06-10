@@ -22,21 +22,35 @@ terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify
 #
 # drush sql:query only needs a DB connection (bootstrap level 4), not the full
 # service container, so it works even when the container is broken.
-# We pipe the current core.extension blob through PHP in the CI container,
-# add flexible_permissions, and write back using UNHEX(hex) to avoid any
-# MySQL escaping issues with the serialized PHP string.
+# We capture raw SQL output to a file; terminus/drush may prepend a column-name
+# header row ("data") or other lines, so PHP scans all lines for the serialized
+# blob rather than relying on grep (which would exit 1 under pipefail if the
+# blob line didn't appear first).
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query \
-  "SELECT data FROM config WHERE name='core.extension'" 2>/dev/null \
-  | grep '^a:' > /tmp/core_ext.txt || true
-# Note: '|| true' prevents grep's exit code 1 (no match) from killing the
-# script under 'set -eo pipefail'. An empty /tmp/core_ext.txt is handled
-# below by the '-s' (non-empty) check.
+  "SELECT data FROM config WHERE name='core.extension'" \
+  > /tmp/core_ext_raw.txt 2>/dev/null || true
 
-if [ -s /tmp/core_ext.txt ]; then
-  UPDATE_SQL=$(php << 'PHPEOF'
+UPDATE_SQL=$(php << 'PHPEOF'
 <?php
-$d = @unserialize(trim(file_get_contents('/tmp/core_ext.txt')));
-if (!is_array($d) || !isset($d['module'])) { exit(0); }
+$raw = file_get_contents('/tmp/core_ext_raw.txt');
+// Find the first line that looks like a serialized PHP array/string.
+$blob = '';
+foreach (explode("\n", $raw) as $line) {
+    $line = trim($line);
+    if (preg_match('/^[asbidOC]:\d+/', $line)) {
+        $blob = $line;
+        break;
+    }
+}
+if (!$blob) {
+    fwrite(STDERR, "core.extension blob not found in SQL output — skipping.\n");
+    exit(0);
+}
+$d = @unserialize($blob);
+if (!is_array($d) || !isset($d['module'])) {
+    fwrite(STDERR, "core.extension could not be unserialized — skipping.\n");
+    exit(0);
+}
 if (array_key_exists('flexible_permissions', $d['module'])) {
     fwrite(STDERR, "flexible_permissions already in core.extension, skipping.\n");
     exit(0);
@@ -47,10 +61,12 @@ ksort($d['module']);
 echo "UPDATE config SET data=UNHEX('" . bin2hex(serialize($d)) . "') WHERE name='core.extension';";
 PHPEOF
 )
-  if [[ "$UPDATE_SQL" == UPDATE* ]]; then
-    terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "$UPDATE_SQL"
-    echo "flexible_permissions registered in core.extension."
-  fi
+
+if [[ "$UPDATE_SQL" == UPDATE* ]]; then
+  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "$UPDATE_SQL"
+  echo "flexible_permissions registered in core.extension."
+else
+  echo "flexible_permissions injection skipped (already present or blob not found)."
 fi
 
 # Clear caches BEFORE updatedb so stale entity type handler class names from
