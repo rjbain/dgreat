@@ -47,16 +47,6 @@ PHPEOF
   fi
 fi
 
-# Rename Group 2.x tables to Group 3.x names if not already done.
-# group_update_10300 short-circuits when configs are already in v3 format,
-# so the physical table rename may not happen automatically.
-terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query \
-  "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema=DATABASE() AND table_name='group_content'" \
-  2>/dev/null | grep -q '^1$' && \
-  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query \
-    "RENAME TABLE group_content TO group_relationship, group_content_field_data TO group_relationship_field_data;" \
-  2>/dev/null && echo "Group tables renamed." || true
-
 # Clear caches BEFORE updatedb so stale entity type handler class names from
 # the cloned DB (e.g. Group 1.x class names) are flushed before update hooks
 # run. Without this, group_update_10300 fails with
