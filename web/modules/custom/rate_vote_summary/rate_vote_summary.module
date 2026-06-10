@@ -18,7 +18,7 @@ function rate_vote_summary_theme($existing, $type, $theme, $path) {
   return [
     'rate_vote_summary' => [
       'template' => 'rate-vote-summary',
-      'path' => drupal_get_path('module', 'rate_vote_summary') . '/templates',
+      'path' => \Drupal::service('extension.list.module')->getPath('rate_vote_summary') . '/templates',
       'variables' => [
         'up_total' => 0,
         'down_total' => 0,
