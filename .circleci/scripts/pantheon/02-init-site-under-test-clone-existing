@@ -27,7 +27,10 @@ terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify
 # MySQL escaping issues with the serialized PHP string.
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query \
   "SELECT data FROM config WHERE name='core.extension'" 2>/dev/null \
-  | grep '^a:' > /tmp/core_ext.txt
+  | grep '^a:' > /tmp/core_ext.txt || true
+# Note: '|| true' prevents grep's exit code 1 (no match) from killing the
+# script under 'set -eo pipefail'. An empty /tmp/core_ext.txt is handled
+# below by the '-s' (non-empty) check.
 
 if [ -s /tmp/core_ext.txt ]; then
   UPDATE_SQL=$(php << 'PHPEOF'
