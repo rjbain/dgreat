@@ -1,6 +1,7 @@
 var cex = document.getElementById("CollapsingNavbar");
 var cbt = document.getElementById("submenuButton");
 function rClass(x) {
+    if (!cex || !cbt) { return; }
     if (x.matches) {
         cex.classList.remove("show");
         cbt.classList.add("showButton");

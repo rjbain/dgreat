@@ -854,10 +854,11 @@ a.login-btn:hover {
 
 //--- TOOLBAR TRAY for ADMIN Login ---//
 
-// The Drupal toolbar bar requires body.toolbar-fixed to get position:fixed,
-// but that class fails to apply on the homepage. Force it here so the bar
+// The Drupal toolbar bar requires body.toolbar-oriented to get position:fixed,
+// but that class is never added on the homepage. Force it here so the bar
 // stays sticky on scroll. z-index:1041 beats Bootstrap .navbar (z-index:1000).
-body.path-frontpage .toolbar-oriented .toolbar-bar {
+// Note: do NOT use body.toolbar-oriented selector — it's absent on the frontpage.
+body.path-frontpage .toolbar-bar {
 	position: fixed !important;
 	top: 0;
 	z-index: 1041;
