@@ -13,10 +13,39 @@ set -eo pipefail
 terminus -n env:wake "$TERMINUS_SITE.dev"
 terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
 
-# Enable flexible_permissions before anything else — group_permission.calculator
-# depends on flexible_permissions.chain_calculator. Without this, drush cr
-# (and all subsequent drush commands) fail with a container compilation error.
-terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- pm-enable flexible_permissions -y
+# flexible_permissions must be registered in core.extension BEFORE any drush
+# command that bootstraps Drupal.  drush pm-enable itself bootstraps and hits
+# the same "non-existent service" container error, so we fix at DB level.
+#
+# drush sql:query only needs a DB connection (bootstrap level 4), not the full
+# service container, so it works even when the container is broken.
+# We pipe the current core.extension blob through PHP in the CI container,
+# add flexible_permissions, and write back using UNHEX(hex) to avoid any
+# MySQL escaping issues with the serialized PHP string.
+terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query \
+  "SELECT data FROM config WHERE name='core.extension'" 2>/dev/null \
+  | grep '^a:' > /tmp/core_ext.txt
+
+if [ -s /tmp/core_ext.txt ]; then
+  UPDATE_SQL=$(php << 'PHPEOF'
+<?php
+$d = @unserialize(trim(file_get_contents('/tmp/core_ext.txt')));
+if (!is_array($d) || !isset($d['module'])) { exit(0); }
+if (array_key_exists('flexible_permissions', $d['module'])) {
+    fwrite(STDERR, "flexible_permissions already in core.extension, skipping.\n");
+    exit(0);
+}
+$d['module']['flexible_permissions'] = 0;
+ksort($d['module']);
+// UNHEX avoids every SQL-escaping concern with the serialized PHP blob.
+echo "UPDATE config SET data=UNHEX('" . bin2hex(serialize($d)) . "') WHERE name='core.extension';";
+PHPEOF
+)
+  if [[ "$UPDATE_SQL" == UPDATE* ]]; then
+    terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "$UPDATE_SQL"
+    echo "flexible_permissions registered in core.extension."
+  fi
+fi
 
 # Clear caches BEFORE updatedb so stale entity type handler class names from
 # the cloned DB (e.g. Group 1.x class names) are flushed before update hooks
