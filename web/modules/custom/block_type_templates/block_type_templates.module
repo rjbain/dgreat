@@ -1,0 +1,79 @@
+<?php
+
+/**
+ * @file
+ * Provides the necessary hooks for the block_type_templates module.
+ */
+
+use Drupal\block_content\BlockContentInterface;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function block_type_templates_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.block_type_templates':
+      $output = '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t("Provides modular design components, affording consistent patterns driven through Drupal's block system.") . '</p>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function block_type_templates_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  $content = $variables['elements']['content'];
+  if (isset($content['#block_content']) && $content['#block_content'] instanceof BlockContentInterface) {
+    // Add 'block--block-content-BLOCK-TYPE.html.twig'.
+    $block_type_suggestions[] = 'block__block_content_' . $content['#block_content']->bundle();
+
+    // Add 'block--block-content-BLOCK-TYPE--VIEW-MODE.html.twig'.
+    $block_type_suggestions[] = 'block__block_content_' . $content['#block_content']->bundle() . '__' . $content['#view_mode'];
+
+    // Because block__block_content exists twice in $suggestions,
+    // the suggestion arrays are reversed for further processing.
+    $suggestions_rev = array_reverse($suggestions);
+    $block_type_suggestions = array_reverse($block_type_suggestions);
+
+    // Insert the block type and view mode suggestions between
+    // block__block_content and the block instance-specific suggestions.
+    $index = array_search('block__block_content', $suggestions_rev);
+    if (is_numeric($index)) {
+      array_splice($suggestions_rev, $index, 0, $block_type_suggestions);
+      $suggestions = array_reverse($suggestions_rev);
+    }
+    // If block__block_content isn't present as a suggestion.
+    else {
+      $suggestions_rev = array_merge($suggestions_rev, $block_type_suggestions);
+      $suggestions = array_reverse($suggestions_rev);
+    }
+  }
+  // Block suggestions for custom block bundles.
+  if (isset($variables['elements']['content']['#block_content'])) {
+    array_splice($suggestions, 1, 0, 'block__block_content_' . $variables['elements']['content']['#block_content']->bundle());
+  }
+  // Remove duplicates.
+  $suggestions = array_unique($suggestions);
+}
+
+/**
+ * Implements template_preprocess_block().
+ */
+function block_type_templates_preprocess_block(&$variables) {
+  // Inline blocks are placed with Layout Builder.
+  if ($variables['base_plugin_id'] == 'inline_block') {
+    $variables['attributes']['class'][] = 'inline-block';
+    $bundle = Html::cleanCssIdentifier($variables['derivative_plugin_id']);
+    $variables['attributes']['class'][] = 'block-type--' . $bundle;
+  }
+
+  // Block content blocks are placed with block layout.
+  if ($variables['base_plugin_id'] == 'block_content') {
+    $variables['attributes']['class'][] = 'block-content';
+    $bundle = Html::cleanCssIdentifier($variables['elements']['content']['#block_content']->bundle());
+    $variables['attributes']['class'][] = 'block-type--' . $bundle;
+  }
+}

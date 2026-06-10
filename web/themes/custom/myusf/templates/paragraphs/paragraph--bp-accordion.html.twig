@@ -170,7 +170,8 @@ accordion_active ? 'paragraph--accordion_active--',
           {% set indicator_class = 'normal' %}
         {%  endif %}
         {# Loop through all of the accordion sections. #}
-        {% for key, item in content.bp_accordion_section if key|first != '#' %}
+        {% for key, item in content.bp_accordion_section %}
+          {% if key|first != '#' %}
           {# Set variables if accordion should be shown. #}
           {% if item['#paragraph'].bp_show_button.value %}
             {% set show_accordion = ' in' %}
@@ -216,6 +217,7 @@ accordion_active ? 'paragraph--accordion_active--',
               {{ section_body }}
             {% endfor %}
           </div>
+          {% endif %}
         {% endfor %}
       </div>
     </div>

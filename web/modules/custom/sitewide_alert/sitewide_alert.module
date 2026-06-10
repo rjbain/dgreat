@@ -1,0 +1,96 @@
+<?php
+
+/**
+ * @file
+ * Contains sitewide_alert.module.
+ */
+
+use Drupal\Core\Render\Element;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function sitewide_alert_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the sitewide_alert module.
+    case 'help.page.sitewide_alert':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides ability to display an alert message at the top of all pages.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function sitewide_alert_theme() {
+  return [
+    'sitewide_alert' => [
+      'render element' => 'elements',
+    ],
+  ];
+}
+
+/**
+ * Prepares sitewide alert variables for twig template.
+ */
+function template_preprocess_sitewide_alert(&$variables) {
+  /** @var \Drupal\sitewide_alert\Entity\SitewideAlertInterface $sitewideAlert */
+  $sitewideAlert = $variables['elements']['#sitewide_alert'];
+  $variables['sitewide_alert'] = $sitewideAlert;
+
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  $variables['label'] = $sitewideAlert->label();
+
+  $variables['id'] = $sitewideAlert->id();
+  $variables['uuid'] = $sitewideAlert->uuid();
+  $variables['is_dismissible'] = $sitewideAlert->isDismissible();
+  $variables['style'] = $sitewideAlert->getStyle();
+  $variables['style_class'] = $sitewideAlert->getStyleClass();
+
+  $variables['attributes']['class'] = [
+    'sitewide-alert',
+    'alert',
+    $sitewideAlert->getStyleClass(),
+  ];
+
+  // The data-uuid attribute is needed for the dynamic loading via JS to work.
+  $variables['attributes']['data-uuid'] = $sitewideAlert->uuid();
+
+  // Helpful $content variable for template.
+  $variables['content'] = [];
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function sitewide_alert_theme_suggestions_sitewide_alert(array $variables) {
+  $suggestions = [];
+  /** @var \Drupal\sitewide_alert\Entity\SitewideAlertInterface $sitewideAlert */
+  $sitewideAlert = $variables['elements']['#sitewide_alert'];
+
+  $suggestions[] = 'sitewide_alert__' . $sitewideAlert->getStyle();
+  $suggestions[] = 'sitewide_alert__' . ($sitewideAlert->isDismissible() ? 'dismissible' : 'notdismissible');
+  $suggestions[] = 'sitewide_alert__' . $sitewideAlert->getStyle() . '__' . ($sitewideAlert->isDismissible() ? 'dismissible' : 'notdismissible');
+
+  return $suggestions;
+}
+
+/**
+ * Implements hook_page_top().
+ */
+function sitewide_alert_page_top(array &$page_top) {
+  // Bail out if block submodule is enabled.
+  if (\Drupal::service('module_handler')->moduleExists('sitewide_alert_block')) {
+    return;
+  }
+
+  $page_top['sitewide_alert'] = \Drupal::service('sitewide_alert.sitewide_alert_renderer')->build();
+}

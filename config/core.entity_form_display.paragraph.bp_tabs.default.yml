@@ -5,10 +5,13 @@ dependencies:
   config:
     - field.field.paragraph.bp_tabs.bp_background
     - field.field.paragraph.bp_tabs.bp_header
+    - field.field.paragraph.bp_tabs.bp_margin
+    - field.field.paragraph.bp_tabs.bp_padding
     - field.field.paragraph.bp_tabs.bp_tab_section
     - field.field.paragraph.bp_tabs.bp_width
     - paragraphs.paragraphs_type.bp_tabs
   module:
+    - field_group
     - paragraphs
 _core:
   default_config_hash: Bk3XwJh637yaOtKWqivmcQQBa_YwjWPyqkXjZV5bnLs
@@ -30,6 +33,18 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  bp_margin:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  bp_padding:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
     third_party_settings: {  }
   bp_tab_section:
     type: entity_reference_paragraphs
@@ -53,3 +68,23 @@ hidden:
   created: true
   status: true
   uid: true
+third_party_settings:
+  field_group:
+    group_styles:
+      children:
+        - bp_background
+        - bp_margin
+        - bp_padding
+        - bp_width
+      label: Styles
+      region: content
+      parent_name: ''
+      weight: 5
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true

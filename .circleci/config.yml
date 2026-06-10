@@ -1,7 +1,7 @@
 # https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
 defaults: &defaults
   docker:
-    - image: quay.io/pantheon-public/build-tools-ci:8.x-php8.1
+    - image: quay.io/pantheon-public/build-tools-ci:8.x-php8.3
   working_directory: ~/example_drops_8_composer
   environment:
     #=========================================================================
@@ -136,6 +136,10 @@ jobs:
                 command: composer -n build-assets
 
             - run:
+                name: remove nested .git directories from composer dev-branch packages
+                command: find . -mindepth 2 -name .git -type d -not -path './.git' -exec rm -rf {} +
+
+            - run:
                 name: prepare database for site-under test
                 command: ./.circleci/scripts/pantheon/02-init-site-under-test-clone-existing
                 # command: ./.circleci/scripts/pantheon/02-init-site-under-test-reinstall-new
@@ -195,3 +199,7 @@ workflows:
       - build_deploy_and_test:
           requires:
             - build_theme
+          filters:
+            branches:
+              only:
+                - master

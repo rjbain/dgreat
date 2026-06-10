@@ -18,7 +18,6 @@ dependencies:
     - image
     - link
     - path
-    - scheduler
     - text
 id: node.blog_teaser.default
 targetEntityType: node
@@ -107,12 +106,6 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
-  publish_on:
-    type: datetime_timestamp_no_default
-    weight: 30
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   status:
     type: boolean_checkbox
     weight: 120
@@ -145,12 +138,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 30
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   url_redirects:
     weight: 50
     region: content
@@ -158,3 +145,5 @@ content:
     third_party_settings: {  }
 hidden:
   feeds_item: true
+  publish_on: true
+  unpublish_on: true

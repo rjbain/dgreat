@@ -6,8 +6,12 @@ dependencies:
     - field.field.paragraph.bp_block.bp_background
     - field.field.paragraph.bp_block.bp_block
     - field.field.paragraph.bp_block.bp_header
+    - field.field.paragraph.bp_block.bp_margin
+    - field.field.paragraph.bp_block.bp_padding
     - field.field.paragraph.bp_block.bp_width
     - paragraphs.paragraphs_type.bp_block
+  module:
+    - options
 _core:
   default_config_hash: rHxXo8hw7T92573Rg146q19-KpR2tN3gRZZKCQD7O90
 id: paragraph.bp_block.default
@@ -23,6 +27,20 @@ content:
       link: true
     third_party_settings: {  }
     weight: 0
+    region: content
+  bp_margin:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  bp_padding:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
     region: content
 hidden:
   bp_background: true

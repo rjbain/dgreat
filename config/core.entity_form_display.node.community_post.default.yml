@@ -16,10 +16,10 @@ dependencies:
     - image.style.thumbnail
     - node.type.community_post
   module:
+    - content_moderation
     - image
     - link
     - path
-    - scheduler
     - text
     - weight
 id: node.community_post.default
@@ -112,6 +112,12 @@ content:
     settings:
       include_locked: true
     third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   path:
     type: path
     weight: 16
@@ -124,12 +130,6 @@ content:
     region: content
     settings:
       display_label: true
-    third_party_settings: {  }
-  publish_on:
-    type: datetime_timestamp_no_default
-    weight: 17
-    region: content
-    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -163,15 +163,11 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 18
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   url_redirects:
     weight: 19
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  publish_on: true
+  unpublish_on: true

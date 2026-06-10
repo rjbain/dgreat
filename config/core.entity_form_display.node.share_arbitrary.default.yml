@@ -6,8 +6,8 @@ dependencies:
     - field.field.node.share_arbitrary.body
     - node.type.share_arbitrary
   module:
+    - content_moderation
     - path
-    - scheduler
     - text
 id: node.share_arbitrary.default
 targetEntityType: node
@@ -37,6 +37,12 @@ content:
     settings:
       include_locked: true
     third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   path:
     type: path
     weight: 30
@@ -49,12 +55,6 @@ content:
     region: content
     settings:
       display_label: true
-    third_party_settings: {  }
-  publish_on:
-    type: datetime_timestamp_no_default
-    weight: 30
-    region: content
-    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -88,15 +88,11 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 30
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   url_redirects:
     weight: 50
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  publish_on: true
+  unpublish_on: true

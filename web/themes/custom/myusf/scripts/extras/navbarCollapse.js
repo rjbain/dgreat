@@ -1,6 +1,7 @@
 var cex = document.getElementById("CollapsingNavbar");
 var cbt = document.getElementById("submenuButton");
 function rClass(x) {
+    if (!cex || !cbt) return;
     if (x.matches) {
         cex.classList.remove("show");
         cbt.classList.add("showButton");
@@ -12,5 +13,11 @@ function rClass(x) {
     }
 }
 var x = window.matchMedia("(max-width: 991px)")
-rClass(x)
-x.addListener(rClass)
+if (cex && cbt) {
+    rClass(x);
+    if (x.addEventListener) {
+        x.addEventListener("change", rClass);
+    } else {
+        x.addListener(rClass);
+    }
+}

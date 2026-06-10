@@ -3,10 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.bp_simple.bp_margin
+    - field.field.paragraph.bp_simple.bp_padding
     - field.field.paragraph.bp_simple.bp_text
     - paragraphs.paragraphs_type.bp_simple
   module:
-    - text
+    - field_group
+    - paragraphs
 _core:
   default_config_hash: IrBQEWXazkx3OWYdI_hYgoZ55zDck796K5gswlMbnwI
 id: paragraph.bp_simple.default
@@ -14,6 +17,18 @@ targetEntityType: paragraph
 bundle: bp_simple
 mode: default
 content:
+  bp_margin:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  bp_padding:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   bp_text:
     type: text_textarea
     weight: 3
@@ -26,3 +41,23 @@ hidden:
   created: true
   status: true
   uid: true
+third_party_settings:
+  field_group:
+    group_styles:
+      children:
+        - bp_background
+        - bp_margin
+        - bp_padding
+        - bp_width
+      label: Styles
+      region: content
+      parent_name: ''
+      weight: 5
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true

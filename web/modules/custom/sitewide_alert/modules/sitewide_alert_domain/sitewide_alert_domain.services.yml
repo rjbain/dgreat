@@ -1,0 +1,15 @@
+services:
+  sitewide_alert_domain.sitewide_alert_manager:
+    public: false
+    class: Drupal\sitewide_alert_domain\SitewideAlertDomainManager
+    decorates: sitewide_alert.sitewide_alert_manager
+    decoration_priority: 9
+    arguments:
+      [
+        '@sitewide_alert_domain.sitewide_alert_manager.inner',
+        '@entity_type.manager',
+        '@datetime.time',
+        '@language_manager',
+        '@entity.repository',
+        '@domain.negotiator',
+      ]

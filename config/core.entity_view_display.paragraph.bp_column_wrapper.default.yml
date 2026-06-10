@@ -4,9 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.bp_column_wrapper.bp_column_content_w
+    - field.field.paragraph.bp_column_wrapper.bp_margin
+    - field.field.paragraph.bp_column_wrapper.bp_padding
     - paragraphs.paragraphs_type.bp_column_wrapper
   module:
     - entity_reference_revisions
+    - options
 _core:
   default_config_hash: MQgbuYues9w0OGMfeSHL4GAKznRcYeJi3sa7Y4_-_Lo
 id: paragraph.bp_column_wrapper.default
@@ -22,6 +25,20 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 0
+    region: content
+  bp_margin:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  bp_padding:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
     region: content
 hidden:
   created: true

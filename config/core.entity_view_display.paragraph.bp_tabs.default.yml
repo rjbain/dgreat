@@ -5,11 +5,14 @@ dependencies:
   config:
     - field.field.paragraph.bp_tabs.bp_background
     - field.field.paragraph.bp_tabs.bp_header
+    - field.field.paragraph.bp_tabs.bp_margin
+    - field.field.paragraph.bp_tabs.bp_padding
     - field.field.paragraph.bp_tabs.bp_tab_section
     - field.field.paragraph.bp_tabs.bp_width
     - paragraphs.paragraphs_type.bp_tabs
   module:
     - entity_reference_revisions
+    - options
 _core:
   default_config_hash: F9uNNMoroa_kxer1F8trRUsxTekLTBv37-zwvUosm7o
 id: paragraph.bp_tabs.default
@@ -17,6 +20,20 @@ targetEntityType: paragraph
 bundle: bp_tabs
 mode: default
 content:
+  bp_margin:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  bp_padding:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
   bp_tab_section:
     type: entity_reference_revisions_entity_view
     label: hidden

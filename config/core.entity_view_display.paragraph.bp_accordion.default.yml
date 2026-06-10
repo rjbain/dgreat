@@ -4,9 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.bp_accordion.bp_accordion_section
+    - field.field.paragraph.bp_accordion.bp_margin
+    - field.field.paragraph.bp_accordion.bp_padding
     - paragraphs.paragraphs_type.bp_accordion
   module:
     - entity_reference_revisions
+    - options
 _core:
   default_config_hash: rpf9oQ5Et9gNdK5Tw2d_Arpme6-F5Sto4_xd0dQMxoQ
 id: paragraph.bp_accordion.default
@@ -22,6 +25,20 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 0
+    region: content
+  bp_margin:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  bp_padding:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
     region: content
 hidden:
   created: true
