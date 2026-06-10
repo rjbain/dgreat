@@ -13,6 +13,12 @@ set -eo pipefail
 terminus -n env:wake "$TERMINUS_SITE.dev"
 terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
 
+# Clear caches BEFORE updatedb so stale entity type handler class names from
+# the cloned DB (e.g. Group 1.x class names) are flushed before update hooks
+# run. Without this, group_update_10300 fails with
+# "Class name must be a valid object or a string".
+terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
+
 # Run updatedb to ensure that the cloned database is updated for the new code.
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
 
