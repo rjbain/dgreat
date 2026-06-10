@@ -2,6 +2,9 @@
 
 set -eo pipefail
 
+# Print each command before executing for easier CI log diagnosis
+set -x
+
 #
 # This script prepares the site-under-test by cloning the database from
 # an existing site.
@@ -54,7 +57,9 @@ fi
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
 
 # Run updatedb to ensure that the cloned database is updated for the new code.
-terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
+# --no-cache-clear avoids a second bootstrap cycle; we clear caches explicitly below.
+terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb --yes --no-cache-clear
+echo "updatedb exit code: $?"
 
 # If any modules, or theme files have been moved around or reorganized, in order to avoid
 # "The website encountered an unexpected error. Please try again later." error on First Visit
@@ -62,5 +67,10 @@ terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
 
 # If exported configuration is available, then import it.
 if [ -f "config/system.site.yml" ] ; then
-  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes
+  # Run config-import up to 2 times; a second pass resolves ordering issues where
+  # one import creates entities another config depends on.
+  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes \
+    && echo "config-import succeeded on first pass." \
+    || { echo "config-import FAILED on first pass — retrying..."; \
+         terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes; }
 fi
