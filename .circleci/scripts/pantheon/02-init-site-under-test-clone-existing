@@ -28,7 +28,10 @@ terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify
 # blob line didn't appear first).
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query \
   "SELECT data FROM config WHERE name='core.extension'" \
-  > /tmp/core_ext_raw.txt 2>/dev/null || true
+  > /tmp/core_ext_raw.txt 2>&1 || true
+# Note: 2>&1 captures both stdout and stderr into the file. On Pantheon,
+# terminus may route the SQL result through stderr rather than stdout.
+# PHP below filters for the serialized blob regardless of surrounding noise.
 
 UPDATE_SQL=$(php << 'PHPEOF'
 <?php
