@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5079c7dde6dcabfb915157e6a04f825e",
+    "content-hash": "43bf63feb0263f1e7ceb362ee916f531",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5782,30 +5782,26 @@
         },
         {
             "name": "drupal/linkit",
-            "version": "6.1.7",
+            "version": "7.0.15",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/linkit.git",
-                "reference": "6.1.7"
+                "reference": "7.0.15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/linkit-6.1.7.zip",
-                "reference": "6.1.7",
-                "shasum": "15bb27596fa076b0afbbe3e3a7587c1ee69ded9f"
+                "url": "https://ftp.drupal.org/files/projects/linkit-7.0.15.zip",
+                "reference": "7.0.15",
+                "shasum": "d3bfd8cb99d838d6489b4682b6977c390eef60d2"
             },
             "require": {
-                "drupal/core": "^10.1"
-            },
-            "require-dev": {
-                "drupal/ckeditor": "*",
-                "drupal/imce": "*"
+                "drupal/core": "^10.1 || ^11"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "6.1.7",
-                    "datestamp": "1752532708",
+                    "version": "7.0.15",
+                    "datestamp": "1778859808",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5921,25 +5917,26 @@
         },
         {
             "name": "drupal/migrate_plus",
-            "version": "6.0.5",
+            "version": "6.0.10",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/migrate_plus.git",
-                "reference": "6.0.5"
+                "reference": "6.0.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/migrate_plus-6.0.5.zip",
-                "reference": "6.0.5",
-                "shasum": "441e91086feaca7a6f1acf1735023fff0dfc5e1e"
+                "url": "https://ftp.drupal.org/files/projects/migrate_plus-6.0.10.zip",
+                "reference": "6.0.10",
+                "shasum": "f891dd9485c8937e90d169c5bf70303a36ca73ac"
             },
             "require": {
-                "drupal/core": ">=9.1",
-                "php": ">=7.4"
+                "drupal/core": "^10.5 || ^11",
+                "php": ">=8.2"
             },
             "require-dev": {
                 "drupal/migrate_example_advanced_setup": "*",
-                "drupal/migrate_example_setup": "*"
+                "drupal/migrate_example_setup": "*",
+                "sainsburys/guzzle-oauth2-plugin": "^3"
             },
             "suggest": {
                 "ext-soap": "*",
@@ -5948,8 +5945,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "6.0.5",
-                    "datestamp": "1732124623",
+                    "version": "6.0.10",
+                    "datestamp": "1769180622",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6802,41 +6799,59 @@
         },
         {
             "name": "drupal/search_api_pantheon",
-            "version": "3.0.2",
+            "version": "8.4.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/search_api_pantheon.git",
-                "reference": "3.0.2"
+                "reference": "8.4.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/search_api_pantheon-3.0.2.zip",
-                "reference": "3.0.2",
-                "shasum": "969b9141b78eabf4b187ce17dc7af89a30f38f03"
+                "url": "https://ftp.drupal.org/files/projects/search_api_pantheon-8.4.1.zip",
+                "reference": "8.4.1",
+                "shasum": "ddf8f3e2670aa582e773cb1f4103e3c1345d0b86"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9 || ^10",
-                "drupal/search_api_solr": "^4.2",
-                "drupal/search_api_solr_legacy": "*"
+                "drupal/core": "^10 || ^11",
+                "drupal/search_api_solr": "^4.2"
             },
             "require-dev": {
-                "drupal/coder": "2.0-beta1",
-                "drupal/drupal-extension": "^3.4",
-                "drush-ops/behat-drush-endpoint": "*",
-                "squizlabs/php_codesniffer": "2.0.*@dev"
+                "drupal/coder": "@stable",
+                "drupal/search_api_solr": "*",
+                "squizlabs/php_codesniffer": "@stable"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.0.2",
-                    "datestamp": "1678536742",
+                    "version": "8.4.1",
+                    "datestamp": "1772813545",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^10 || ^11"
+                    }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
+            "scripts": {
+                "code:fix": [
+                    "vendor/bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",
+                    "vendor/bin/phpcbf . --ignore=vendor src modules"
+                ],
+                "code:lint": [
+                    "vendor/bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",
+                    "vendor/bin/phpcs --ignore=RoboFile.php,vendor . "
+                ],
+                "pre-commit": [
+                    "composer validate --strict",
+                    "@code:fix",
+                    "@code:lint"
+                ]
+            },
             "license": [
                 "GPL-2.0-or-later"
             ],
@@ -6886,7 +6901,7 @@
                     "homepage": "https://www.drupal.org/user/1538790"
                 }
             ],
-            "description": "Search API + Solr + Pantheon integration",
+            "description": "Connection module for Pantheon Search (solr 8)",
             "homepage": "https://www.drupal.org/project/search_api_pantheon",
             "support": {
                 "source": "https://git.drupalcode.org/project/search_api_pantheon"
@@ -6994,60 +7009,6 @@
                 "source": "http://git.drupal.org/project/search_api_solr.git",
                 "issues": "https://www.drupal.org/project/issues/search_api_solr",
                 "chat": "https://drupalchat.me/channel/search"
-            }
-        },
-        {
-            "name": "drupal/search_api_solr_legacy",
-            "version": "4.3.10",
-            "require": {
-                "drupal/core": "^10.2 || ^11.0",
-                "drupal/search_api_solr": "*"
-            },
-            "type": "metapackage",
-            "extra": {
-                "drupal": {
-                    "version": "4.3.10",
-                    "datestamp": "1745427496",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "amateescu",
-                    "homepage": "https://www.drupal.org/user/729614"
-                },
-                {
-                    "name": "berdir",
-                    "homepage": "https://www.drupal.org/user/214652"
-                },
-                {
-                    "name": "cspitzlay",
-                    "homepage": "https://www.drupal.org/user/419305"
-                },
-                {
-                    "name": "drunken monkey",
-                    "homepage": "https://www.drupal.org/user/205582"
-                },
-                {
-                    "name": "mkalkbrenner",
-                    "homepage": "https://www.drupal.org/user/124705"
-                },
-                {
-                    "name": "nick_vh",
-                    "homepage": "https://www.drupal.org/user/122682"
-                }
-            ],
-            "description": "Add support for older unsupported Solr versions (3.6, >=4.5, 5.x).",
-            "homepage": "https://www.drupal.org/project/search_api_solr",
-            "support": {
-                "source": "https://git.drupalcode.org/project/search_api_solr"
             }
         },
         {
@@ -7365,39 +7326,37 @@
         },
         {
             "name": "drupal/stage_file_proxy",
-            "version": "2.1.5",
+            "version": "3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/stage_file_proxy.git",
-                "reference": "2.1.5"
+                "reference": "3.1.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/stage_file_proxy-2.1.5.zip",
-                "reference": "2.1.5",
-                "shasum": "6f5974c106d45211e54945e4d9f5bbf8ec6699de"
+                "url": "https://ftp.drupal.org/files/projects/stage_file_proxy-3.1.6.zip",
+                "reference": "3.1.6",
+                "shasum": "06b7196c0c367dc079ab937e1f6b85fc28c2bcc2"
             },
             "require": {
-                "drupal/core": "^9 || ^10",
-                "php": ">=8"
+                "drupal/core": "^10.3 || ^11",
+                "php": ">=8.1"
+            },
+            "conflict": {
+                "drush/drush": "<12"
             },
             "require-dev": {
                 "drupal/coder": "^8.3",
-                "drush/drush": "^11 || ^12"
+                "drush/drush": ">=12"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.1.5",
-                    "datestamp": "1719499510",
+                    "version": "3.1.6",
+                    "datestamp": "1757610587",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
-                    }
-                },
-                "drush": {
-                    "services": {
-                        "stage_file_proxy.drush.services.yml": "^11"
                     }
                 }
             },
