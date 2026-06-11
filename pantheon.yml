@@ -20,7 +20,7 @@ workflows:
     after:
       - type: webphp
         description: Clear compiled Drupal service container after code deploy
-        script: private/scripts/clear-compiled-container.php
+        script: web/private/scripts/clear-compiled-container.php
       - type: webphp
         description: Push changes back to GitHub if needed
         script: private/scripts/quicksilver/quicksilver-pushback/push-back.php

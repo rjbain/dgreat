@@ -15,28 +15,43 @@
  * is forced to recompile the container from scratch using the new code.
  *
  * On Pantheon, sites/default/files is mounted at /files.
+ * Quicksilver webphp scripts run from the webroot (/code/web/).
  */
+
+echo "Clearing compiled Drupal service container...\n";
 
 $storage_paths = [
   '/files/php/storage',
-  // Fallback: resolve via symlink from webroot
   __DIR__ . '/../../../sites/default/files/php/storage',
 ];
 
+$deleted = 0;
 $cleared = FALSE;
+
 foreach ($storage_paths as $dir) {
   $real = realpath($dir);
   if ($real && is_dir($real)) {
-    $files = glob($real . '/*.php') ?: [];
-    foreach ($files as $file) {
-      unlink($file);
+    // Use RecursiveIterator to handle hashed subdirectories.
+    $iterator = new RecursiveIteratorIterator(
+      new RecursiveDirectoryIterator($real, RecursiveDirectoryIterator::SKIP_DOTS),
+      RecursiveIteratorIterator::CHILD_FIRST
+    );
+    foreach ($iterator as $file) {
+      if ($file->isFile() && $file->getExtension() === 'php') {
+        unlink($file->getPathname());
+        $deleted++;
+      }
     }
-    echo "Cleared " . count($files) . " compiled container file(s) from: $real\n";
+    echo "Cleared $deleted compiled container file(s) from: $real\n";
     $cleared = TRUE;
     break;
   }
 }
 
 if (!$cleared) {
-  echo "No compiled container files found to clear (path does not exist yet).\n";
+  echo "No compiled container storage directory found — nothing to clear.\n";
+  echo "Checked paths:\n";
+  foreach ($storage_paths as $p) {
+    echo "  $p (realpath: " . (realpath($p) ?: 'does not exist') . ")\n";
+  }
 }
