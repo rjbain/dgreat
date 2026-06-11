@@ -2,13 +2,11 @@
 
 namespace Drupal\dgreat_views\Plugin\views\filter;
 
-use Drupal\Core\Database\Query\Condition;
 use Drupal\views\Plugin\views\filter\FilterPluginBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Database\Connection;
-use Drupal\Component\Utility\Html;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\user\Entity\User;
 
@@ -96,31 +94,14 @@ class DgreatViewsFilterByUser extends FilterPluginBase implements ContainerFacto
       return;
     }
 
-    // Remove duplicates.
-    $gids = array_unique($gids);
-
-    $query = $this->db
-      ->select('node_field_data', 'n')
-      ->fields('n', ['nid'])
-      ->condition('type', 'favorite_link')
-      ->condition('uid', $uid);
-
-    // Loop through and grab our content ids.
-    foreach ($query->execute()->fetchAll() as $result) {
-      $nids[] = $result->nid;
-    }
-
-    if (!empty($nids)) {
-      // Setup the conditions.
-      $conditions = new Condition('AND');
-      $conditions->condition('nid', $nids, 'IN');
-
-      // Hook up the query.
-      $this->query->addWhere(0, $conditions);
-    }
-    else {
-      $this->query->addWhereExpression(0, '1 = 0');
-    }
+    // Restrict results to content that belongs to the user's groups.
+    // group_relationship_field_data is the base table of this view; its gid
+    // column links each piece of group content to its parent group. Filtering
+    // on that column is the correct way to scope results to the current user's
+    // groups — querying by node uid (previous approach) only returned nodes
+    // authored by the user, which is always empty for most end users.
+    $gids = array_unique(array_map('intval', $gids));
+    $this->query->addWhere(0, 'group_relationship_field_data.gid', $gids, 'IN');
   }
 
 }
