@@ -92,7 +92,7 @@ class DgreatViewsFilterByUser extends FilterPluginBase implements ContainerFacto
     }
 
     if (empty($gids)) {
-      $this->query->addWhere(0, 0);
+      $this->query->addWhereExpression(0, '1 = 0');
       return;
     }
 
@@ -119,7 +119,7 @@ class DgreatViewsFilterByUser extends FilterPluginBase implements ContainerFacto
       $this->query->addWhere(0, $conditions);
     }
     else {
-      $this->query->addWhere(0, 0);
+      $this->query->addWhereExpression(0, '1 = 0');
     }
   }
 
