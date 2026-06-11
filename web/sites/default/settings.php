@@ -135,3 +135,21 @@ if (($_ENV['PANTHEON_ENVIRONMENT'] === 'live') || ($_ENV['PANTHEON_ENVIRONMENT']
   $config['system.file']['path']['temporary'] = __DIR__ . '/files/tmp';
   $settings['file_temp_path'] = __DIR__ . '/files/tmp';
 }
+
+// On Pantheon dev and multidev environments, redirect the compiled Drupal service
+// container (php_storage) to /tmp instead of sites/default/files/php/storage.
+//
+// Why: when a multidev is created from dev, Pantheon clones the files mount —
+// including any compiled container PHP files built against the old Drupal version.
+// If a major upgrade (e.g. D10→D11) changed constructor signatures, the stale
+// compiled container causes a fatal error on the very first `drush cr`.
+//
+// /tmp on Pantheon is per-appserver and ephemeral — it is never cloned between
+// environments, so there can be no stale container from a previous Drupal version.
+// The container is simply recompiled fresh on first bootstrap after each deploy.
+if (isset($_ENV['PANTHEON_ENVIRONMENT'])
+  && $_ENV['PANTHEON_ENVIRONMENT'] !== 'live'
+  && $_ENV['PANTHEON_ENVIRONMENT'] !== 'test') {
+  $settings['php_storage']['service_container']['directory'] = '/tmp/drupal_php_storage';
+  $settings['php_storage']['twig']['directory'] = '/tmp/drupal_php_storage';
+}
