@@ -153,7 +153,12 @@ class DgreatViewsFlaggingRelationship extends RelationshipPluginBase {
         'value' => '***CURRENT_USER***',
         'numeric' => TRUE,
       ];
-      $flag_roles = user_roles(FALSE, "flag " . $flag->id());
+      // user_roles() was removed in Drupal 11; replicate its behaviour inline.
+      $all_roles = \Drupal::entityTypeManager()
+        ->getStorage('user_role')
+        ->loadMultiple();
+      $permission = 'flag ' . $flag->id();
+      $flag_roles = array_filter($all_roles, fn($role) => $role->hasPermission($permission));
       if (isset($flag_roles[RoleInterface::ANONYMOUS_ID]) && $this->currentUser->isAnonymous()) {
         // Disable page caching for anonymous users.
         $this->pageCacheKillSwitch->trigger();
