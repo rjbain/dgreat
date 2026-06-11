@@ -72,6 +72,13 @@ else
   echo "flexible_permissions injection skipped (already present or blob not found)."
 fi
 
+# Truncate cache_container BEFORE drush cr. After a Drupal major-version upgrade
+# (e.g. D10 → D11) the compiled service container cached in cache_container is
+# built against the old core and will fatal on boot (e.g. MemoryBackend::__construct
+# argument count change). drush cr cannot self-bootstrap to fix this, so we must
+# clear it at the SQL level first.
+terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "TRUNCATE cache_container;" || true
+
 # Clear caches BEFORE updatedb so stale entity type handler class names from
 # the cloned DB (e.g. Group 1.x class names) are flushed before update hooks
 # run. Without this, group_update_10300 fails with
