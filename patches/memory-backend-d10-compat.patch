@@ -1,0 +1,14 @@
+--- a/core/lib/Drupal/Core/Cache/MemoryBackend.php
++++ b/core/lib/Drupal/Core/Cache/MemoryBackend.php
+@@ -33,7 +33,12 @@ class MemoryBackend implements CacheBackendInterface, CacheTagsInvalidatorInterf
+    * @param \Drupal\Component\Datetime\TimeInterface $time
+    *   The time service.
+    */
+-  public function __construct(protected TimeInterface $time) {
++  // phpcs:ignore
++  // Default value added for backward compatibility: Drupal 10 compiled service
++  // containers call new MemoryBackend() with 0 arguments. The Time fallback
++  // reads $_SERVER['REQUEST_TIME'] so it is safe in both CLI and web contexts.
++  // Remove this default once all environments are running D11-compiled containers.
++  public function __construct(protected TimeInterface $time = new \Drupal\Component\Datetime\Time()) {
+   }
