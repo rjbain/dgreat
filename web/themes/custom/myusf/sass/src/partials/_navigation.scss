@@ -1574,7 +1574,15 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 }
 
 .path-dashboard #sidebar_second {
-	
+	// The sidebar-empty class adds width:100% !important, but on the dashboard
+	// the sidebar always has content injected by the page template (cediplomalinkblock,
+	// etc.) after the empty-check runs, so we must cancel that override here.
+	&.sidebar-empty {
+		width: auto!important;
+		margin-left: 15px!important;
+		margin-right: 15px!important;
+	}
+
 	@include media-breakpoint-only(tablet) {
 		width: 50%;
 
