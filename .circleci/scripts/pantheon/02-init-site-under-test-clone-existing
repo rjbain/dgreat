@@ -109,7 +109,10 @@ if [ -f "config/system.site.yml" ] ; then
   terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "
     DELETE FROM config WHERE name LIKE 'block.block.adminimal_theme_%';
     DELETE FROM config WHERE name LIKE 'block.block.seven_%';
+    DELETE FROM config WHERE name LIKE 'tour.tour.%';
+    DELETE FROM config WHERE name LIKE 'core.entity_view_mode.tour.%';
     DELETE FROM config WHERE name = 'adminimal_theme.settings';
+    DELETE FROM config WHERE name = 'seven.settings';
     DELETE FROM config WHERE name = 'editor.editor.full_html';
   " || true
 
