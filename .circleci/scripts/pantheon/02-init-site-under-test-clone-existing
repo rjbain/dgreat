@@ -72,15 +72,13 @@ else
   echo "flexible_permissions injection skipped (already present or blob not found)."
 fi
 
-# Clear the compiled service container BEFORE drush cr. After a Drupal major-version
-# upgrade (e.g. D10 → D11) the compiled container is stale and fatals on boot
-# (e.g. MemoryBackend::__construct argument count change). Drupal stores the compiled
-# container in TWO places that must both be cleared:
-#   1. cache_container DB table  — cleared via SQL
-#   2. sites/default/files/php/storage/ — cleared via SSH rm
-# drush cr cannot self-bootstrap to fix this, so we clear both at the OS/SQL level.
+# The Quicksilver sync_code hook (private/scripts/clear-compiled-container.php)
+# already deleted the compiled container PHP files from the filesystem when
+# build:env:create deployed the code above. Those files would otherwise cause
+# a fatal bootstrap error after a major Drupal upgrade (e.g. D10→D11) because
+# the old compiled container references changed constructor signatures.
+# Truncate cache_container as belt-and-suspenders for the DB-side entry.
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "TRUNCATE cache_container;" || true
-terminus -n ssh "$TERMINUS_SITE.$TERMINUS_ENV" -- 'rm -rf /files/php/storage/ 2>/dev/null; echo "PHP storage cleared"' || true
 
 # Clear caches BEFORE updatedb so stale entity type handler class names from
 # the cloned DB (e.g. Group 1.x class names) are flushed before update hooks
