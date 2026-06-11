@@ -152,4 +152,19 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT'])
   && $_ENV['PANTHEON_ENVIRONMENT'] !== 'test') {
   $settings['php_storage']['service_container']['directory'] = '/tmp/drupal_php_storage';
   $settings['php_storage']['twig']['directory'] = '/tmp/drupal_php_storage';
+  // Force the 'container' cache bin to use MySQL instead of Redis.
+  //
+  // On Pantheon, Redis is the default cache backend AND is cloned from dev
+  // when a multidev is created. This means the Redis 'container' bin can
+  // contain a compiled container definition built against the old Drupal
+  // version (e.g. D10). Even with php_storage redirected to /tmp (empty),
+  // Drupal falls back to the 'container' cache bin to regenerate the PHP
+  // file — and if that bin returns a D10 definition, the resulting container
+  // calls MemoryBackend::__construct() with 0 args (D11 requires 1), causing
+  // a fatal error before `drush cr` can complete.
+  //
+  // By forcing 'container' to use the database backend, our CI pre-step of
+  // TRUNCATE cache_container (MySQL) reliably removes the stale definition,
+  // so Drupal compiles a fresh D11 container on first bootstrap.
+  $settings['cache']['bins']['container'] = 'cache.backend.database';
 }
