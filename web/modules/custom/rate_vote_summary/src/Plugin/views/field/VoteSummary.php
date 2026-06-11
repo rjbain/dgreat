@@ -4,7 +4,6 @@ namespace Drupal\rate_vote_summary\Plugin\views\field;
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\Core\Render\RendererInterface;
 use Drupal\views\Plugin\views\field\FieldPluginBase;
 use Drupal\views\ResultRow;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -16,7 +15,6 @@ use Drupal\rate_vote_summary\VoteTallyService;
 class VoteSummary extends FieldPluginBase implements ContainerFactoryPluginInterface {
 
   protected VoteTallyService $tally;
-  protected RendererInterface $renderer;
 
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     $instance = new static($configuration, $plugin_id, $plugin_definition);
