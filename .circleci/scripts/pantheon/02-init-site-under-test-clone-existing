@@ -80,19 +80,16 @@ fi
 # Truncate cache_container as belt-and-suspenders for the DB-side entry.
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "TRUNCATE cache_container;" || true
 
-# Clear caches BEFORE updatedb so stale entity type handler class names from
-# the cloned DB (e.g. Group 1.x class names) are flushed before update hooks
-# run. Without this, group_update_10300 fails with
-# "Class name must be a valid object or a string".
-terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
-
-# Run updatedb to ensure that the cloned database is updated for the new code.
-# --no-cache-clear avoids a second bootstrap cycle; we clear caches explicitly below.
+# Run updatedb FIRST so D11 schema changes (e.g. the 'alias' column added to
+# the router table) are in place before drush cr tries to rebuild routes.
+#
+# Previously we ran drush cr before updatedb to flush stale Group 1.x entity
+# type handler class names (group_update_10300). That module is now upgraded
+# to a D11-compatible version so the old constraint no longer applies.
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb --yes --no-cache-clear
 echo "updatedb exit code: $?"
 
-# If any modules, or theme files have been moved around or reorganized, in order to avoid
-# "The website encountered an unexpected error. Please try again later." error on First Visit
+# Clear caches after updatedb so all registry/route/theme changes take effect.
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
 
 # If exported configuration is available, then import it.
