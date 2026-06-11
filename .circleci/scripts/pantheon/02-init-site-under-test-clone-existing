@@ -94,6 +94,61 @@ terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
 
 # If exported configuration is available, then import it.
 if [ -f "config/system.site.yml" ] ; then
+  # Before config-import, remove stale config from the DB (cloned from D10 dev)
+  # that references modules/themes which no longer exist in D11.
+  #
+  # - adminimal_theme was removed from composer.json; blocks for it remain in
+  #   the cloned database. Config import can't delete them without the theme code.
+  # - seven theme was removed in D11.
+  # - ckeditor (v4) was removed in D11 (replaced by ckeditor5).
+  # - jquery_ui_slider, jquery_ui_touch_punch, tour, webform_location_geocomplete,
+  #   webform_toggles: no longer in codebase.
+  #
+  # We delete them directly from the config table so Drupal treats them as
+  # "not installed" rather than "to be uninstalled", bypassing module-existence checks.
+  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "
+    DELETE FROM config WHERE name LIKE 'block.block.adminimal_theme_%';
+    DELETE FROM config WHERE name LIKE 'block.block.seven_%';
+    DELETE FROM config WHERE name = 'adminimal_theme.settings';
+    DELETE FROM config WHERE name = 'editor.editor.full_html';
+  " || true
+
+  # Also update core.extension in the DB to remove the non-existent modules/themes
+  # so Drupal does not try to uninstall them (which would fail without the code).
+  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query \
+    "SELECT data FROM config WHERE name='core.extension'" \
+    > /tmp/core_ext_raw2.txt 2>&1 || true
+
+  CLEAN_SQL=$(php << 'PHPEOF'
+<?php
+$raw = file_get_contents('/tmp/core_ext_raw2.txt');
+$blob = '';
+foreach (explode("\n", $raw) as $line) {
+    $line = trim($line);
+    if (preg_match('/^[asbidOC]:\d+/', $line)) { $blob = $line; break; }
+}
+if (!$blob) { exit(0); }
+$d = @unserialize($blob);
+if (!is_array($d)) { exit(0); }
+$remove_modules = ['ckeditor','jquery_ui_slider','jquery_ui_touch_punch','tour',
+                   'webform_location_geocomplete','webform_toggles'];
+$remove_themes  = ['seven','adminimal_theme'];
+$changed = FALSE;
+foreach ($remove_modules as $m) {
+    if (isset($d['module'][$m])) { unset($d['module'][$m]); $changed = TRUE; }
+}
+foreach ($remove_themes as $t) {
+    if (isset($d['theme'][$t])) { unset($d['theme'][$t]); $changed = TRUE; }
+}
+if (!$changed) { exit(0); }
+echo "UPDATE config SET data=UNHEX('" . bin2hex(serialize($d)) . "') WHERE name='core.extension';";
+PHPEOF
+  )
+  if [[ "$CLEAN_SQL" == UPDATE* ]]; then
+    terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "$CLEAN_SQL"
+    echo "Removed non-existent D11 modules/themes from core.extension in DB."
+  fi
+
   # Run config-import up to 2 times; a second pass resolves ordering issues where
   # one import creates entities another config depends on.
   terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes \
