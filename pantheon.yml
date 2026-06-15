@@ -6,6 +6,11 @@ database:
 drush_version: 10
 
 workflows:
+  deploy:
+    after:
+      - type: webphp
+        description: Install CKEditor Media Embed JS library
+        script: web/private/scripts/quicksilver/ckeditor-media-embed-install.php
   deploy_product:
     after:
       -
