@@ -33,5 +33,14 @@ workflows:
         description: Clear compiled Drupal service container after code deploy
         script: web/private/scripts/clear-compiled-container.php
       - type: webphp
+        description: Install CKEditor Media Embed JS library
+        script: web/private/scripts/quicksilver/ckeditor-media-embed-install.php
+      - type: webphp
+        description: Download Webform external JS libraries
+        script: web/private/scripts/quicksilver/webform-libraries-download.php
+      - type: webphp
+        description: Download Chosen JS library
+        script: web/private/scripts/quicksilver/chosen-library-download.php
+      - type: webphp
         description: Push changes back to GitHub if needed
         script: private/scripts/quicksilver/quicksilver-pushback/push-back.php
