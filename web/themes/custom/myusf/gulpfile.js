@@ -2,8 +2,6 @@ const { src, dest, series, parallel, watch } = require('gulp');
 const sass = require('gulp-dart-sass');
 const cleanCSS = require('gulp-clean-css');
 const concat = require('gulp-concat');
-const imagemin = require('gulp-imagemin');
-const imageminPngquant = require('imagemin-pngquant');
 const terser = require('gulp-terser');
 
 // Paths
@@ -44,12 +42,6 @@ function compileJS() {
 // Optimize Images
 function optimizeImages() {
   return src(paths.images.src)
-    .pipe(imagemin([
-      imageminPngquant({
-        quality: [0.6, 0.8],
-        speed: 1
-      })
-    ]))
     .pipe(dest(paths.images.dest));
 }
 

@@ -26,6 +26,71 @@ function dgreat_nodes_help($route_name, RouteMatchInterface $route_match) {
 }
 
 /**
+ * Implements hook_entity_bundle_field_info_alter().
+ *
+ * Attaches a validation constraint to bp_column_content on bp_columns
+ * paragraphs so that editors cannot save more than 3 column items.
+ * This enforces the intended maximum at the entity level (UI and API)
+ * without requiring a cardinality change in the field storage config.
+ */
+function dgreat_nodes_entity_bundle_field_info_alter(&$fields, \Drupal\Core\Entity\EntityTypeInterface $entity_type, $bundle) {
+  if ($entity_type->id() === 'paragraph'
+    && $bundle === 'bp_columns'
+    && isset($fields['bp_column_content'])) {
+    $fields['bp_column_content']->addConstraint('BpColumnsMaxItems', ['max' => 3]);
+  }
+}
+
+/**
+ * Implements hook_field_widget_complete_form_alter().
+ *
+ * When a bp_columns paragraph already has 3 column content items, hides the
+ * "Add" dropbutton and replaces it with a plain-language message. This gives
+ * editors immediate feedback at the widget level rather than a surprise error
+ * at save time, and works in tandem with the BpColumnsMaxItems entity
+ * constraint which remains the hard enforcement layer.
+ *
+ * Note: hook_field_widget_complete_form_alter() requires Drupal 9.2+.
+ */
+function dgreat_nodes_field_widget_complete_form_alter(&$field_widget_complete_form, FormStateInterface $form_state, array $context) {
+  // In Drupal 9.5 the context array does not include a field_definition key.
+  // Retrieve it from the items object instead. Guard against non-standard
+  // context structures that external or contrib code might produce.
+  if (empty($context['items']) || !method_exists($context['items'], 'getFieldDefinition')) {
+    return;
+  }
+
+  /** @var \Drupal\Core\Field\FieldDefinitionInterface $field_definition */
+  $field_definition = $context['items']->getFieldDefinition();
+
+  // bp_column_content is only defined on bp_columns so the field name alone
+  // is a safe enough guard.
+  if ($field_definition->getName() !== 'bp_column_content') {
+    return;
+  }
+
+  $widget = &$field_widget_complete_form['widget'];
+
+  // Count rendered paragraph items by counting integer-keyed children.
+  // This is more reliable than #max_delta with the paragraphs widget and
+  // stays accurate across AJAX rebuilds as items are added or removed.
+  $item_count = count(array_filter(array_keys($widget), 'is_int'));
+
+  if ($item_count >= 3) {
+    // Always write to the add_more slot. When the button exists this replaces
+    // it in place, preserving its position. When Drupal has already removed it
+    // (storage cardinality fully reached), this re-creates the slot at the end
+    // of the widget array — the same position the button would have occupied.
+    $widget['add_more'] = [
+      '#type' => 'html_tag',
+      '#tag' => 'p',
+      '#value' => t('The maximum of 3 column items has been reached. To change the column structure, please remove an existing item first.'),
+      '#attributes' => ['class' => ['bp-columns-limit-reached'], 'style' => 'color: red;'],
+    ];
+  }
+}
+
+/**
  * Implements hook_form_alter().
  */
 function dgreat_nodes_form_alter(&$form, FormStateInterface $form_state, $form_id) {
