@@ -172,15 +172,7 @@
         </aside>
       </div>
       {% endif %}
- {% if page.sidebar_second|render|striptags|trim is empty%}
-  {%
-    set sidebarSecondEmpty = 'sidebar-empty'
-  %}
-  {% elseif page.sidebar_second|render|striptags|trim is not empty%}
-  {%
-    set sidebarSecondEmpty = ''
-  %}
- {% endif %}
+ {% set sidebarSecondEmpty = page.sidebar_second ? '' : 'sidebar-empty' %}
       {% if page.sidebar_second %}
         <!--<div{{ sidebar_second_attributes }}>-->
         <div {{ attributes.addClass(sidebarSecondClasses, sidebarSecondEmpty).removeClass('col-lg-3').setAttribute('id', 'sidebar_second') }}>
