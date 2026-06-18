@@ -38,7 +38,7 @@
 #}
 
 {{ attach_library('bootstrap_paragraphs/bootstrap-paragraphs') }}
-{{ attach_library('bootstrap_paragraphs/bp-accordion') }}
+{{ attach_library('myusf/bp-accordion-css') }}
 {# {{ attach_library('myusf/toggle-accordion') }} #}
 
 {# Renders Width field. #}
@@ -173,7 +173,7 @@ accordion_active ? 'paragraph--accordion_active--',
         {% for key, item in content.bp_accordion_section|filter((item, key) => key|first != '#') %}
           {# Set variables if accordion should be shown. #}
           {% if item['#paragraph'].bp_show_button.value %}
-            {% set show_accordion = ' in' %}
+            {% set show_accordion = ' show' %}
             {% set aria = 'true' %}
           {% else %}
             {% set show_accordion = '' %}
@@ -187,7 +187,7 @@ accordion_active ? 'paragraph--accordion_active--',
             {% elseif h_value is not empty %}
             {% set h_value = h_value %}
             {% endif %}
-              <a class="{{ (indicator_class) }}" role="button" data-toggle="collapse" data-parent="#{{ paragraph_id }}" href="#collapse-{{ paragraph_id }}-{{ key + 1 }}" aria-expanded="{{ aria }}" aria-controls="collapse-{{ paragraph_id }}-{{ key + 1 }}" id="toggle-link-{{ paragraph.id.value }}-{{ key + 1 }}">
+              <a class="{{ (indicator_class) }}" role="button" data-bs-toggle="collapse" data-bs-parent="#{{ paragraph_id }}" href="#collapse-{{ paragraph_id }}-{{ key + 1 }}" aria-expanded="{{ aria }}" aria-controls="collapse-{{ paragraph_id }}-{{ key + 1 }}" id="toggle-link-{{ paragraph.id.value }}-{{ key + 1 }}">
                 <{{ h_value }} class="accordion-title-h">
                   {# Print the accordion section title. #}
                   {{ item['#paragraph'].bp_accordion_section_title.value }}
@@ -224,61 +224,52 @@ accordion_active ? 'paragraph--accordion_active--',
 
 
 <script>
-// Select the link element by its id 'toggle-all'
-const link{{ paragraph.id.value }} = document.querySelector('#toggle-all-{{ paragraph.id.value }}');
-
-// Function to update the link text and aria-expanded attributes
-function updateLinkTextAndAria() {
-    const elements = document.querySelectorAll("[id^='collapse-accordion-{{ paragraph.id.value }}']");
-    const isAnyElementOpen = Array.from(elements{{ paragraph.id.value }}).some(element => element.classList.contains('show'));
-
-    // Update the toggle-all link text
-    link{{ paragraph.id.value }}.textContent = isAnyElementOpen ? "Close All" : "Open All";
-
-    // Update aria-expanded for each accordion content
-    elements{{ paragraph.id.value }}.forEach(element => {
-        element.setAttribute('aria-expanded', element.classList.contains('show') ? "true" : "false");
-    });
-}
-
-// Add an event listener for the click event on the link
-link{{ paragraph.id.value }}.addEventListener('click', function () {
-    // Select all elements whose id starts with 'collapse-accordion'
+(function () {
+    const link{{ paragraph.id.value }} = document.querySelector('#toggle-all-{{ paragraph.id.value }}');
     const elements{{ paragraph.id.value }} = document.querySelectorAll("[id^='collapse-accordion-{{ paragraph.id.value }}']");
     const headers{{ paragraph.id.value }} = document.querySelectorAll("[id^='toggle-link-{{ paragraph.id.value }}']");
 
-    // Check if any element is currently open (has the 'show' class)
-    const isAnyElementOpen = Array.from(elements{{ paragraph.id.value }}).some(element => element.classList.contains('show'));
-
-    if (isAnyElementOpen) {
-        // If any element is open, close all and update aria-expanded to false
-        elements{{ paragraph.id.value }}.forEach(element => {
-            element.classList.remove('show');
-        });
- 
-        headers{{ paragraph.id.value }}.forEach(element => {
-            element.setAttribute('aria-expanded', "false");
-        });
- 
-        link{{ paragraph.id.value }}.textContent = "Open All";
-    } else {
-        // If all elements are closed, open all and update aria-expanded to true
-        elements{{ paragraph.id.value }}.forEach(element => {
-            element.classList.add('show');
-        });
- 
-        headers{{ paragraph.id.value }}.forEach(element => {
-            element.setAttribute('aria-expanded', "true");
-        });
- 
-        link{{ paragraph.id.value }}.textContent = "Close All";
+    if (!link{{ paragraph.id.value }} || !elements{{ paragraph.id.value }}.length) {
+        return;
     }
-});
 
-// Set up a MutationObserver to watch for changes to the 'show' class on each element
-const elements{{ paragraph.id.value }} = document.querySelectorAll("[id^='collapse-accordion-{{ paragraph.id.value }}']");
-elements{{ paragraph.id.value }}.forEach(element => {
-    const observer = new MutationObserver(updateLinkTextAndAria);
-    observer.observe(element, { attributes: true, attributeFilter: ['class'] });
-});
+    function updateLinkTextAndAria() {
+        const isAnyElementOpen = Array.from(elements{{ paragraph.id.value }}).some((element) => element.classList.contains('show'));
+
+        link{{ paragraph.id.value }}.textContent = isAnyElementOpen ? 'Close All' : 'Open All';
+
+        headers{{ paragraph.id.value }}.forEach((element) => {
+            const collapseId = element.getAttribute('aria-controls');
+            const collapseElement = collapseId ? document.getElementById(collapseId) : null;
+            if (collapseElement) {
+                element.setAttribute('aria-expanded', collapseElement.classList.contains('show') ? 'true' : 'false');
+            }
+        });
+    }
+
+    link{{ paragraph.id.value }}.addEventListener('click', function () {
+        const isAnyElementOpen = Array.from(elements{{ paragraph.id.value }}).some((element) => element.classList.contains('show'));
+
+        headers{{ paragraph.id.value }}.forEach((element) => {
+            const collapseId = element.getAttribute('aria-controls');
+            const collapseElement = collapseId ? document.getElementById(collapseId) : null;
+            const shouldBeOpen = !isAnyElementOpen;
+
+            if (collapseElement && collapseElement.classList.contains('show') !== shouldBeOpen) {
+                element.dispatchEvent(new MouseEvent('click', {
+                    view: window,
+                    bubbles: true,
+                    cancelable: true
+                }));
+            }
+        });
+    });
+
+    elements{{ paragraph.id.value }}.forEach((element) => {
+        element.addEventListener('shown.bs.collapse', updateLinkTextAndAria);
+        element.addEventListener('hidden.bs.collapse', updateLinkTextAndAria);
+    });
+
+    updateLinkTextAndAria();
+})();
 </script>

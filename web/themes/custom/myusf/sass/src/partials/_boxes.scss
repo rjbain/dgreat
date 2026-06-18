@@ -607,6 +607,25 @@ a.right.carousel-control {
         margin-bottom: 0;
     }
 }
+
+// Bootstrap 5 JS uses start/end carousel transition classes.
+// The site still relies on Bootstrap 4 CSS for layout, so we bridge the
+// carousel animation classes here to keep slides moving directly adjacent.
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+    display: block;
+}
+
+.carousel-item-next:not(.carousel-item-start),
+.active.carousel-item-end {
+    transform: translateX(100%);
+}
+
+.carousel-item-prev:not(.carousel-item-end),
+.active.carousel-item-start {
+    transform: translateX(-100%);
+}
 .carousel-control-prev {
     opacity: 1;
     @include diamond_button(-80px, -128px, 45deg, transparent, $yellow, $green);
@@ -3061,4 +3080,3 @@ input#edit-submit-community-grid {
         }
     }
 }  
-
