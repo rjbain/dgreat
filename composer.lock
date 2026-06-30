@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3323b298dcf4058d1b90638afd6f9587",
+    "content-hash": "af201554ae24f0ff92f269215ee291ee",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6745,32 +6745,33 @@
         },
         {
             "name": "drupal/search_api_pantheon",
-            "version": "8.4.1",
+            "version": "8.5.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/search_api_pantheon.git",
-                "reference": "8.4.1"
+                "reference": "8.5.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/search_api_pantheon-8.4.1.zip",
-                "reference": "8.4.1",
-                "shasum": "ddf8f3e2670aa582e773cb1f4103e3c1345d0b86"
+                "url": "https://ftp.drupal.org/files/projects/search_api_pantheon-8.5.0.zip",
+                "reference": "8.5.0",
+                "shasum": "b8404e805f7fc41411e0974640f7c2c0b68ec33b"
             },
             "require": {
                 "drupal/core": "^10 || ^11",
-                "drupal/search_api_solr": "^4.2"
+                "drupal/search_api_solr": "^4.3",
+                "php": ">=8.1"
             },
             "require-dev": {
-                "drupal/coder": "@stable",
+                "drupal/coder": "^8.3",
                 "drupal/search_api_solr": "*",
                 "squizlabs/php_codesniffer": "@stable"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.4.1",
-                    "datestamp": "1772813545",
+                    "version": "8.5.0",
+                    "datestamp": "1782761407",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6785,11 +6786,11 @@
             "notification-url": "https://packages.drupal.org/8/downloads",
             "scripts": {
                 "code:fix": [
-                    "vendor/bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",
+                    "vendor/bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer,vendor/slevomat/coding-standard,vendor/sirbrillig/phpcs-variable-analysis",
                     "vendor/bin/phpcbf . --ignore=vendor src modules"
                 ],
                 "code:lint": [
-                    "vendor/bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",
+                    "vendor/bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer,vendor/slevomat/coding-standard,vendor/sirbrillig/phpcs-variable-analysis",
                     "vendor/bin/phpcs --ignore=RoboFile.php,vendor . "
                 ],
                 "pre-commit": [
@@ -6802,6 +6803,10 @@
                 "GPL-2.0-or-later"
             ],
             "authors": [
+                {
+                    "name": "afolabiba",
+                    "homepage": "https://www.drupal.org/user/3869103"
+                },
                 {
                     "name": "anaispantheor",
                     "homepage": "https://www.drupal.org/user/3846519"
@@ -6835,10 +6840,6 @@
                     "homepage": "https://www.drupal.org/user/3581210"
                 },
                 {
-                    "name": "scottbuscemi",
-                    "homepage": "https://www.drupal.org/user/3829532"
-                },
-                {
                     "name": "stevector",
                     "homepage": "https://www.drupal.org/user/179805"
                 },
@@ -6847,7 +6848,7 @@
                     "homepage": "https://www.drupal.org/user/1538790"
                 }
             ],
-            "description": "Connection module for Pantheon Search (solr 8)",
+            "description": "Connection module for Pantheon Search",
             "homepage": "https://www.drupal.org/project/search_api_pantheon",
             "support": {
                 "source": "https://git.drupalcode.org/project/search_api_pantheon"
@@ -7305,29 +7306,29 @@
         },
         {
             "name": "drupal/tamper",
-            "version": "1.0.0-beta2",
+            "version": "1.0.0-rc1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/tamper.git",
-                "reference": "8.x-1.0-beta2"
+                "reference": "8.x-1.0-rc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/tamper-8.x-1.0-beta2.zip",
-                "reference": "8.x-1.0-beta2",
-                "shasum": "bcd42c323465d4a3c91a76726b486a7f33b35f77"
+                "url": "https://ftp.drupal.org/files/projects/tamper-8.x-1.0-rc1.zip",
+                "reference": "8.x-1.0-rc1",
+                "shasum": "b785c71bce59f23ebfb71e7e4d00abe730e019ef"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9 || ^10 || ^11"
+                "drupal/core": "^10.2 || ^11"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-beta2",
-                    "datestamp": "1763649430",
+                    "version": "8.x-1.0-rc1",
+                    "datestamp": "1782504874",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "message": "RC releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -7343,6 +7344,10 @@
                 {
                     "name": "jamesdixon",
                     "homepage": "https://www.drupal.org/user/762570"
+                },
+                {
+                    "name": "mandclu",
+                    "homepage": "https://www.drupal.org/user/52136"
                 },
                 {
                     "name": "megachriz",
@@ -21707,7 +21712,7 @@
         "drupal/feeds_ex": 10,
         "drupal/feeds_tamper": 10,
         "drupal/simple_block": 10,
-        "drupal/tamper": 15,
+        "drupal/tamper": 5,
         "drupal/views_field_view": 10,
         "drupal/viewsreference": 10,
         "drupal/webform": 5
