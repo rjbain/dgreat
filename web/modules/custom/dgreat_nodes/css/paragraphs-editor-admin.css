@@ -8,6 +8,7 @@
 .field--widget-entity-reference-paragraphs .paragraphs-subform [class*="layout-region"] {
   min-width: 0 !important;
   max-width: 100% !important;
+  overflow: visible !important;
 }
 
 .field--widget-paragraphs .paragraphs-subform .ck.ck-editor,
@@ -28,6 +29,7 @@
   width: 100% !important;
   max-width: 100% !important;
   box-sizing: border-box !important;
+  overflow: visible !important;
 }
 
 .field--widget-paragraphs .paragraphs-subform .ck.ck-toolbar,
@@ -46,4 +48,18 @@
 .field--widget-paragraphs .paragraphs-subform,
 .field--widget-entity-reference-paragraphs .paragraphs-subform {
   overflow-x: hidden;
+  overflow-y: visible;
+  position: relative;
+  z-index: 1;
+}
+
+.field--widget-paragraphs .paragraphs-subform .ck.ck-editor,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .ck.ck-editor {
+  position: relative;
+  z-index: 20;
+}
+
+.field--widget-paragraphs .paragraphs-subform .ck.ck-dropdown .ck.ck-dropdown__panel,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .ck.ck-dropdown .ck.ck-dropdown__panel {
+  z-index: 1261 !important;
 }
