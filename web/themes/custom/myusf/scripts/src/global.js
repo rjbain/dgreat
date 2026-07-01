@@ -46,6 +46,17 @@
                 $($dropdownLink).parent('li').find('ul.dropdown-menu').removeClass('show');
             });
 
+            let $userMenu = $('.login.dropdown', context);
+            $userMenu.off('.userMenuShowState');
+
+            $userMenu.on('shown.bs.dropdown.userMenuShowState', function() {
+                $(this).addClass('show');
+            });
+
+            $userMenu.on('hidden.bs.dropdown.userMenuShowState', function() {
+                $(this).removeClass('show');
+            });
+
             let $logInBtn = $(".navbar .login-btn");
             let $submenuBtn = $("#submenuButton");
             let $submenuLinks = $("#sidebar_first .submenu .nav-link");
