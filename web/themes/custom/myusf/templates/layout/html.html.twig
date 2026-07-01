@@ -80,11 +80,17 @@
 </script>
 <script src="https://catalog.usfca.edu/widget-api/widget-api.min.js"></script>
   <script>
-    $('.acalog').acalogWidgetize({
-      gateway: 'https://catalog.usfca.edu',
-      data: 'catalogs',
-      catalogType: 'Catalog'
-    });
+    (function ($) {
+      if (!$ || !$.fn || !$.fn.acalogWidgetize) {
+        return;
+      }
+
+      $('.acalog').acalogWidgetize({
+        gateway: 'https://catalog.usfca.edu',
+        data: 'catalogs',
+        catalogType: 'Catalog'
+      });
+    })(window.jQuery);
   </script>
 
   </body>

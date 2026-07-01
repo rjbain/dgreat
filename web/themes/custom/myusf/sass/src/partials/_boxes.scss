@@ -590,6 +590,11 @@ a.right.carousel-control {
     z-index: -2;
 }
 .carousel-item {
+    float: left;
+    width: 100%;
+    margin-right: -100%;
+    backface-visibility: hidden;
+
     a {
         text-decoration: none;
 
@@ -608,6 +613,10 @@ a.right.carousel-control {
     }
 }
 
+.carousel-inner {
+    overflow: hidden;
+}
+
 // Bootstrap 5 JS uses start/end carousel transition classes.
 // The site still relies on Bootstrap 4 CSS for layout, so we bridge the
 // carousel animation classes here to keep slides moving directly adjacent.
@@ -615,6 +624,11 @@ a.right.carousel-control {
 .carousel-item-prev,
 .carousel-item.active {
     display: block;
+}
+
+.carousel-item-next.carousel-item-start,
+.carousel-item-prev.carousel-item-end {
+    transform: translateX(0);
 }
 
 .carousel-item-next:not(.carousel-item-start),

@@ -30,6 +30,10 @@ function dgreat_nodes_help($route_name, RouteMatchInterface $route_match) {
  */
 function dgreat_nodes_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
+  if (_dgreat_nodes_form_has_paragraphs_widget($form)) {
+    $form['#attached']['library'][] = 'dgreat_nodes/paragraphs_editor_admin';
+  }
+
   $fav_links_nodes = [
     'node_favorite_link_form',
     'node_favorite_link_edit_form'
@@ -38,8 +42,8 @@ function dgreat_nodes_form_alter(&$form, FormStateInterface $form_state, $form_i
 
   if (in_array($form_id, $fav_links_nodes)) {
 
-    $query =  \Drupal::request()->query->get('edit');
-    if (isset($query['field_link_type']['und'])) {
+    $query = \Drupal::request()->query->all('edit');
+    if (isset($query['field_link_type']['und']) && is_scalar($query['field_link_type']['und'])) {
       $form['field_link_type']['widget']['#default_value'] = $query['field_link_type']['und'];
     }
 
@@ -50,4 +54,33 @@ function dgreat_nodes_form_alter(&$form, FormStateInterface $form_state, $form_i
       $form['field_group_audience']['#access'] = FALSE;
     }
   }
+}
+
+/**
+ * Checks whether a form contains a paragraphs widget.
+ */
+function _dgreat_nodes_form_has_paragraphs_widget(array $element) {
+  if (!empty($element['#inline_paragraphs_widget'])) {
+    return TRUE;
+  }
+
+  if (!empty($element['#field_widget']) && $element['#field_widget'] === 'entity_reference_paragraphs') {
+    return TRUE;
+  }
+
+  if (!empty($element['#attributes']['class']) && in_array('field--widget-paragraphs', $element['#attributes']['class'], TRUE)) {
+    return TRUE;
+  }
+
+  foreach ($element as $key => $child) {
+    if (is_string($key) && $key !== '' && $key[0] === '#') {
+      continue;
+    }
+
+    if (is_array($child) && _dgreat_nodes_form_has_paragraphs_widget($child)) {
+      return TRUE;
+    }
+  }
+
+  return FALSE;
 }
