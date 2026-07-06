@@ -2,64 +2,260 @@
 .field--widget-paragraphs .paragraphs-subform .form-wrapper,
 .field--widget-paragraphs .paragraphs-subform .form-item,
 .field--widget-paragraphs .paragraphs-subform [class*="layout-region"],
+.field--widget-paragraphs .field-multiple-table,
+.field--widget-paragraphs .field-multiple-table tbody,
+.field--widget-paragraphs .field-multiple-table tr.draggable,
+.field--widget-paragraphs .field-multiple-table td,
 .field--widget-entity-reference-paragraphs .paragraphs-subform,
 .field--widget-entity-reference-paragraphs .paragraphs-subform .form-wrapper,
 .field--widget-entity-reference-paragraphs .paragraphs-subform .form-item,
-.field--widget-entity-reference-paragraphs .paragraphs-subform [class*="layout-region"] {
+.field--widget-entity-reference-paragraphs .paragraphs-subform [class*="layout-region"],
+.field--widget-entity-reference-paragraphs .field-multiple-table,
+.field--widget-entity-reference-paragraphs .field-multiple-table tbody,
+.field--widget-entity-reference-paragraphs .field-multiple-table tr.draggable,
+.field--widget-entity-reference-paragraphs .field-multiple-table td {
   min-width: 0 !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+  height: auto !important;
+}
+
+.field--widget-paragraphs .field-multiple-table td,
+.field--widget-entity-reference-paragraphs .field-multiple-table td {
+  vertical-align: top !important;
+}
+
+.field--widget-paragraphs .paragraph-top,
+.field--widget-entity-reference-paragraphs .paragraph-top {
+  align-items: start !important;
+  grid-auto-rows: auto !important;
+}
+
+.field--widget-paragraphs .paragraph-top .paragraphs-actions,
+.field--widget-entity-reference-paragraphs .paragraph-top .paragraphs-actions {
+  align-self: start !important;
+}
+
+.field--widget-paragraphs .paragraphs-subform > .form-wrapper,
+.field--widget-entity-reference-paragraphs .paragraphs-subform > .form-wrapper {
+  display: block;
+  min-height: 0;
+}
+
+.field--widget-paragraphs .paragraphs-subform .js-text-format-wrapper,
+.field--widget-paragraphs .paragraphs-subform .filter-wrapper,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .js-text-format-wrapper,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .filter-wrapper {
+  display: block !important;
+  clear: both !important;
+  width: 100% !important;
   max-width: 100% !important;
   overflow: visible !important;
 }
 
+.field--widget-paragraphs .paragraphs-subform .filter-wrapper,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .filter-wrapper {
+  margin-top: 0.75rem !important;
+}
+
+.field--widget-paragraphs .paragraphs-subform .filter-wrapper::after,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .filter-wrapper::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.field--widget-paragraphs .paragraphs-subform .filter-wrapper .form-item,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .filter-wrapper .form-item {
+  display: inline-block;
+  max-width: calc(100% - 12rem);
+  vertical-align: top;
+}
+
+.field--widget-paragraphs .paragraphs-subform .filter-help,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .filter-help {
+  clear: none !important;
+}
+
 .field--widget-paragraphs .paragraphs-subform .ck.ck-editor,
 .field--widget-paragraphs .paragraphs-subform .ck.ck-editor__main,
-.field--widget-paragraphs .paragraphs-subform .ck.ck-editor__editable,
 .field--widget-paragraphs .paragraphs-subform .ck.ck-sticky-panel,
 .field--widget-paragraphs .paragraphs-subform .ck.ck-sticky-panel__content,
 .field--widget-paragraphs .paragraphs-subform .ck-editor__top,
 .field--widget-paragraphs .paragraphs-subform .ck-reset_all,
 .field--widget-entity-reference-paragraphs .paragraphs-subform .ck.ck-editor,
 .field--widget-entity-reference-paragraphs .paragraphs-subform .ck.ck-editor__main,
-.field--widget-entity-reference-paragraphs .paragraphs-subform .ck.ck-editor__editable,
 .field--widget-entity-reference-paragraphs .paragraphs-subform .ck.ck-sticky-panel,
 .field--widget-entity-reference-paragraphs .paragraphs-subform .ck.ck-sticky-panel__content,
 .field--widget-entity-reference-paragraphs .paragraphs-subform .ck-editor__top,
-.field--widget-entity-reference-paragraphs .paragraphs-subform .ck-reset_all {
+.field--widget-entity-reference-paragraphs .paragraphs-subform .ck-reset_all,
+.ck.ck-editor,
+.ck.ck-editor__main,
+.ck.ck-sticky-panel,
+.ck.ck-sticky-panel__content,
+.ck-editor__top,
+.ck-reset_all {
   min-width: 0 !important;
   width: 100% !important;
   max-width: 100% !important;
   box-sizing: border-box !important;
-  overflow: visible !important;
+}
+
+.field--widget-paragraphs .paragraphs-subform .ck.ck-editor,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .ck.ck-editor,
+.field--widget-paragraphs .paragraphs-subform .ck.ck-editor__main,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .ck.ck-editor__main,
+.ck.ck-editor,
+.ck.ck-editor__main {
+  overflow: hidden !important;
 }
 
 .field--widget-paragraphs .paragraphs-subform .ck.ck-toolbar,
 .field--widget-paragraphs .paragraphs-subform .ck.ck-toolbar__items,
 .field--widget-entity-reference-paragraphs .paragraphs-subform .ck.ck-toolbar,
-.field--widget-entity-reference-paragraphs .paragraphs-subform .ck.ck-toolbar__items {
+.field--widget-entity-reference-paragraphs .paragraphs-subform .ck.ck-toolbar__items,
+.ck.ck-toolbar,
+.ck.ck-toolbar__items {
   flex-wrap: wrap !important;
   max-width: 100% !important;
 }
 
 .field--widget-paragraphs .paragraphs-subform .ck.ck-editor__editable_inline,
-.field--widget-entity-reference-paragraphs .paragraphs-subform .ck.ck-editor__editable_inline {
+.field--widget-entity-reference-paragraphs .paragraphs-subform .ck.ck-editor__editable_inline,
+.ck.ck-editor__editable_inline,
+.ck.ck-content {
   overflow-wrap: anywhere;
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
 }
 
 .field--widget-paragraphs .paragraphs-subform,
 .field--widget-entity-reference-paragraphs .paragraphs-subform {
   overflow-x: hidden;
   overflow-y: visible;
-  position: relative;
-  z-index: 1;
 }
 
 .field--widget-paragraphs .paragraphs-subform .ck.ck-editor,
 .field--widget-entity-reference-paragraphs .paragraphs-subform .ck.ck-editor {
-  position: relative;
-  z-index: 20;
+  position: static !important;
+}
+
+.field--widget-paragraphs .paragraphs-subform textarea + .ck.ck-editor,
+.field--widget-entity-reference-paragraphs .paragraphs-subform textarea + .ck.ck-editor,
+.js-text-format-wrapper textarea + .ck.ck-editor {
+  display: block;
+}
+
+.field--widget-paragraphs .paragraphs-subform textarea[data-ckeditor5-id],
+.field--widget-entity-reference-paragraphs .paragraphs-subform textarea[data-ckeditor5-id],
+.js-text-format-wrapper textarea[data-ckeditor5-id],
+.field--widget-paragraphs .paragraphs-subform textarea:has(+ .ck.ck-editor),
+.field--widget-entity-reference-paragraphs .paragraphs-subform textarea:has(+ .ck.ck-editor),
+.js-text-format-wrapper textarea:has(+ .ck.ck-editor) {
+  display: none !important;
 }
 
 .field--widget-paragraphs .paragraphs-subform .ck.ck-dropdown .ck.ck-dropdown__panel,
 .field--widget-entity-reference-paragraphs .paragraphs-subform .ck.ck-dropdown .ck.ck-dropdown__panel {
   z-index: 1261 !important;
+}
+
+.ck.ck-content img,
+.ck.ck-content table,
+.ck.ck-content figure,
+.ck.ck-content pre,
+.ck.ck-content blockquote {
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+.ck.ck-content table {
+  display: block;
+  overflow-x: auto;
+}
+
+.ck.ck-editor__editable {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  position: relative !important;
+  max-width: 100% !important;
+  contain: layout paint;
+}
+
+.ck.ck-editor__editable > * {
+  max-width: 100% !important;
+}
+
+.ck.ck-editor__editable p,
+.ck.ck-editor__editable div,
+.ck.ck-editor__editable span,
+.ck.ck-editor__editable li {
+  max-width: 100% !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+@media (max-width: 48rem) {
+  .field--widget-paragraphs .paragraph-top,
+  .field--widget-entity-reference-paragraphs .paragraph-top {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    grid-template-rows: auto auto auto !important;
+    row-gap: 0.5rem !important;
+  }
+
+  .field--widget-paragraphs .paragraph-top .paragraph-type,
+  .field--widget-entity-reference-paragraphs .paragraph-top .paragraph-type {
+    grid-row: 1 !important;
+    grid-column: 1 !important;
+  }
+
+  .field--widget-paragraphs .paragraph-top .paragraph-info,
+  .field--widget-entity-reference-paragraphs .paragraph-top .paragraph-info {
+    grid-row: 2 !important;
+    grid-column: 1 / -1 !important;
+    min-width: 0 !important;
+  }
+
+  .field--widget-paragraphs .paragraph-top .paragraph-summary,
+  .field--widget-entity-reference-paragraphs .paragraph-top .paragraph-summary {
+    grid-row: 3 !important;
+    grid-column: 1 / -1 !important;
+    overflow: visible !important;
+    white-space: normal !important;
+  }
+
+  .field--widget-paragraphs .paragraph-top .paragraphs-actions,
+  .field--widget-entity-reference-paragraphs .paragraph-top .paragraphs-actions {
+    grid-row: 1 !important;
+    grid-column: 2 !important;
+  }
+
+  .field--widget-paragraphs .paragraphs-subform,
+  .field--widget-entity-reference-paragraphs .paragraphs-subform {
+    margin-top: 0.75rem !important;
+  }
+
+  .field--widget-paragraphs .paragraphs-subform .filter-wrapper .form-item,
+  .field--widget-entity-reference-paragraphs .paragraphs-subform .filter-wrapper .form-item,
+  .field--widget-paragraphs .paragraphs-subform .filter-help,
+  .field--widget-entity-reference-paragraphs .paragraphs-subform .filter-help {
+    display: block !important;
+    float: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .field--widget-paragraphs .paragraphs-subform .filter-help,
+  .field--widget-entity-reference-paragraphs .paragraphs-subform .filter-help {
+    margin-top: 0.5rem !important;
+    padding-top: 0 !important;
+  }
+
+  .ck.ck-editor__main > :is(.ck-editor__editable, .ck-source-editing-area) {
+    max-height: 16rem !important;
+    min-height: max(14rem, var(--ck-min-height));
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
 }

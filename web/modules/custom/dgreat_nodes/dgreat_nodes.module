@@ -30,7 +30,7 @@ function dgreat_nodes_help($route_name, RouteMatchInterface $route_match) {
  */
 function dgreat_nodes_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
-  if (_dgreat_nodes_form_has_paragraphs_widget($form)) {
+  if (_dgreat_nodes_form_has_paragraphs_widget($form) || _dgreat_nodes_form_has_text_format_widget($form)) {
     $form['#attached']['library'][] = 'dgreat_nodes/paragraphs_editor_admin';
   }
 
@@ -78,6 +78,27 @@ function _dgreat_nodes_form_has_paragraphs_widget(array $element) {
     }
 
     if (is_array($child) && _dgreat_nodes_form_has_paragraphs_widget($child)) {
+      return TRUE;
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Checks whether a form contains a text format widget.
+ */
+function _dgreat_nodes_form_has_text_format_widget(array $element) {
+  if (!empty($element['#type']) && $element['#type'] === 'text_format') {
+    return TRUE;
+  }
+
+  foreach ($element as $key => $child) {
+    if (is_string($key) && $key !== '' && $key[0] === '#') {
+      continue;
+    }
+
+    if (is_array($child) && _dgreat_nodes_form_has_text_format_widget($child)) {
       return TRUE;
     }
   }
