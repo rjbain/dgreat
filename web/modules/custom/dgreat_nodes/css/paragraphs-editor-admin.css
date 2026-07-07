@@ -50,6 +50,16 @@
   box-sizing: border-box !important;
 }
 
+/* Force the table to fill its container. Without this, contain: inline-size
+   on the subform drops its min-content contribution to 0, leaving only
+   .paragraph-top's 150px grid column to size the <td>, making the subform
+   appear narrow. width: 100% lets auto layout distribute the full container
+   width so the content <td> — and the subform inside it — get full space. */
+.field--widget-paragraphs .field-multiple-table,
+.field--widget-entity-reference-paragraphs .field-multiple-table {
+  width: 100% !important;
+}
+
 .field--widget-paragraphs .field-multiple-table td,
 .field--widget-entity-reference-paragraphs .field-multiple-table td {
   vertical-align: top !important;
@@ -70,6 +80,50 @@
 .field--widget-entity-reference-paragraphs .paragraphs-subform > .form-wrapper {
   display: block;
   min-height: 0;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Webform paragraph widgets render a details element and nested wrappers
+   directly inside the subform. Keep every direct child full-width so the
+   "Webform settings" panel does not collapse to its summary width. */
+.field--widget-paragraphs .paragraphs-subform > *,
+.field--widget-entity-reference-paragraphs .paragraphs-subform > *,
+.field--widget-paragraphs .paragraphs-subform .field--type-webform,
+.field--widget-paragraphs .paragraphs-subform .field--widget-webform-entity-reference-select,
+.field--widget-paragraphs .paragraphs-subform .field--name-bp-webform,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .field--type-webform,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .field--widget-webform-entity-reference-select,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .field--name-bp-webform,
+.field--widget-paragraphs .paragraphs-subform .claro-details,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .claro-details,
+.field--widget-paragraphs .paragraphs-subform details,
+.field--widget-entity-reference-paragraphs .paragraphs-subform details,
+.field--widget-paragraphs .paragraphs-subform .claro-details__wrapper,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .claro-details__wrapper,
+.field--widget-paragraphs .paragraphs-subform .details-wrapper,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .details-wrapper,
+.field--widget-paragraphs .paragraphs-subform .form-textarea-wrapper,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .form-textarea-wrapper,
+.field--widget-paragraphs .paragraphs-subform textarea,
+.field--widget-entity-reference-paragraphs .paragraphs-subform textarea {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.field--widget-paragraphs .paragraphs-subform .field--type-webform,
+.field--widget-paragraphs .paragraphs-subform .field--widget-webform-entity-reference-select,
+.field--widget-paragraphs .paragraphs-subform .field--name-bp-webform,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .field--type-webform,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .field--widget-webform-entity-reference-select,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .field--name-bp-webform {
+  contain: none !important;
+  overflow: visible !important;
 }
 
 .field--widget-paragraphs .paragraphs-subform .js-text-format-wrapper,
@@ -167,6 +221,53 @@
 .field--widget-entity-reference-paragraphs .paragraphs-subform {
   contain: inline-size !important;
   overflow-x: hidden !important;
+}
+
+/* ── Gin layout fix: flex-row table needs explicit width ───────────────────────
+ *
+ * Gin wraps all paragraphs fields in .paragraphs-tabs-wrapper and makes the
+ * .field-multiple-table tbody display:block and each .draggable row
+ * display:flex. This flex layout means table auto-sizing no longer governs
+ * column widths; the table needs explicit width:100% so the content flex cell
+ * (td:nth-child(2), flex:1 0 0) expands to fill the container.
+ */
+.paragraphs-tabs-wrapper .field-multiple-table {
+  width: 100% !important;
+}
+
+.paragraphs-tabs-wrapper .field-multiple-table .draggable > td:nth-child(2) {
+  flex: 1 0 0 !important;
+  min-width: 0 !important;
+}
+
+.paragraphs-tabs-wrapper .paragraphs-subform {
+  width: 100% !important;
+}
+
+.paragraphs-tabs-wrapper .paragraphs-subform details,
+.paragraphs-tabs-wrapper .paragraphs-subform .claro-details {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* bp_webform field: ensure the webform select and settings panel fill
+   the available column width inside the paragraph subform. */
+.paragraphs-tabs-wrapper .paragraphs-subform .field--name-bp-webform,
+.paragraphs-tabs-wrapper .paragraphs-subform .field--name-bp-webform > .form-item,
+.paragraphs-tabs-wrapper .paragraphs-subform .field--name-bp-webform > .form-wrapper,
+.paragraphs-tabs-wrapper .paragraphs-subform .field--name-bp-webform details,
+.paragraphs-tabs-wrapper .paragraphs-subform .field--name-bp-webform .claro-details,
+.paragraphs-tabs-wrapper .paragraphs-subform .field--name-bp-webform .details-wrapper,
+.paragraphs-tabs-wrapper .paragraphs-subform .field--name-bp-webform .claro-details__wrapper,
+.paragraphs-tabs-wrapper .paragraphs-subform .field--name-bp-webform .form-textarea-wrapper,
+.paragraphs-tabs-wrapper .paragraphs-subform .field--name-bp-webform textarea {
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .field--widget-paragraphs .paragraphs-subform .ck.ck-editor,
