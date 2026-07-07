@@ -647,9 +647,9 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: group_permission
+        type: perm
         options:
-          group_permission: 'access group_node overview'
+          perm: 'administer group'
       cache:
         type: tag
         options: {  }
@@ -939,15 +939,14 @@ display:
       display_extenders: {  }
       path: group/%group/nodes
       menu:
-        type: tab
-        title: Nodes
+        type: none
+        title: ''
         description: ''
-        weight: 25
-        enabled: true
         expanded: false
-        menu_name: main
         parent: ''
+        weight: 0
         context: '0'
+        menu_name: main
     cache_metadata:
       max-age: -1
       contexts:
