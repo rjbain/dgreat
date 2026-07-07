@@ -20,6 +20,36 @@
   height: auto !important;
 }
 
+
+/* fieldset/details default to min-width: min-content — reset so they don't
+   prevent the content td from shrinking. */
+.field--widget-paragraphs .paragraphs-subform fieldset,
+.field--widget-paragraphs .paragraphs-subform details,
+.field--widget-entity-reference-paragraphs .paragraphs-subform fieldset,
+.field--widget-entity-reference-paragraphs .paragraphs-subform details {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Make select fill its allocated cell width instead of sizing to longest option. */
+.field--widget-paragraphs .paragraphs-subform select,
+.field--widget-entity-reference-paragraphs .paragraphs-subform select {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+/* Constrain textarea and its wrapper (e.g. webform CodeMirror default_data). */
+.field--widget-paragraphs .paragraphs-subform .form-textarea-wrapper,
+.field--widget-paragraphs .paragraphs-subform textarea,
+.field--widget-entity-reference-paragraphs .paragraphs-subform .form-textarea-wrapper,
+.field--widget-entity-reference-paragraphs .paragraphs-subform textarea {
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
 .field--widget-paragraphs .field-multiple-table td,
 .field--widget-entity-reference-paragraphs .field-multiple-table td {
   vertical-align: top !important;
@@ -130,10 +160,13 @@
   white-space: normal;
 }
 
+/* contain: inline-size removes the subform from the table auto-layout
+   min-content width calculation, so select elements with long option labels
+   can no longer force the table column wider than the page. */
 .field--widget-paragraphs .paragraphs-subform,
 .field--widget-entity-reference-paragraphs .paragraphs-subform {
-  overflow-x: hidden;
-  overflow-y: visible;
+  contain: inline-size !important;
+  overflow-x: hidden !important;
 }
 
 .field--widget-paragraphs .paragraphs-subform .ck.ck-editor,
