@@ -185,14 +185,9 @@
   box-sizing: border-box !important;
 }
 
-.field--widget-paragraphs .paragraphs-subform .ck.ck-editor,
-.field--widget-entity-reference-paragraphs .paragraphs-subform .ck.ck-editor,
-.field--widget-paragraphs .paragraphs-subform .ck.ck-editor__main,
-.field--widget-entity-reference-paragraphs .paragraphs-subform .ck.ck-editor__main,
-.ck.ck-editor,
-.ck.ck-editor__main {
-  overflow: hidden !important;
-}
+/* overflow:hidden was removed from .ck.ck-editor / .ck.ck-editor__main because
+   it clips the absolutely-positioned toolbar dropdown panels (e.g. Styles).
+   contain:inline-size on .paragraphs-subform already prevents column widening. */
 
 .field--widget-paragraphs .paragraphs-subform .ck.ck-toolbar,
 .field--widget-paragraphs .paragraphs-subform .ck.ck-toolbar__items,
@@ -216,11 +211,12 @@
 
 /* contain: inline-size removes the subform from the table auto-layout
    min-content width calculation, so select elements with long option labels
-   can no longer force the table column wider than the page. */
+   can no longer force the table column wider than the page.
+   overflow-x is intentionally NOT set here — hiding overflow clips the
+   absolutely-positioned CKEditor toolbar dropdowns (e.g. Styles). */
 .field--widget-paragraphs .paragraphs-subform,
 .field--widget-entity-reference-paragraphs .paragraphs-subform {
   contain: inline-size !important;
-  overflow-x: hidden !important;
 }
 
 /* ── Gin layout fix: flex-row table needs explicit width ───────────────────────
