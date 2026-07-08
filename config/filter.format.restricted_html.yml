@@ -3,7 +3,10 @@ langcode: en
 status: true
 dependencies:
   module:
+    - ckeditor_media_embed
     - editor
+    - linkit
+    - media
 _core:
   default_config_hash: KUjJ8Ti_ZJSlhGM88E_mhJP-8mmQRNUB6RFof615Kt0
 name: 'Full HTML'
@@ -14,57 +17,94 @@ filters:
     id: editor_file_reference
     provider: editor
     status: true
-    weight: -42
+    weight: -46
+    settings: {  }
+  entity_links:
+    id: entity_links
+    provider: filter
+    status: false
+    weight: -39
     settings: {  }
   filter_align:
     id: filter_align
     provider: filter
     status: true
-    weight: -46
+    weight: -49
     settings: {  }
   filter_autop:
     id: filter_autop
     provider: filter
     status: false
-    weight: -49
+    weight: -44
     settings: {  }
   filter_caption:
     id: filter_caption
     provider: filter
     status: true
-    weight: -45
+    weight: -48
+    settings: {  }
+  filter_ckeditor_media_embed:
+    id: filter_ckeditor_media_embed
+    provider: ckeditor_media_embed
+    status: false
+    weight: -40
     settings: {  }
   filter_html:
     id: filter_html
     provider: filter
     status: false
-    weight: -50
+    weight: -45
     settings:
-      allowed_html: '<em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <a href hreflang class="diamond_link_small diamond_link_small_white button green"> <img src alt data-entity-type data-entity-uuid data-entity-substitution> <sup> <hr> <p class="text-intro note cite indent callout narrow block-right callout-tinted"> <span class="caps"> <div class="two-column"> <table> <caption> <tbody> <thead> <tfoot> <th> <td> <tr>'
+      allowed_html: '<p class="text-intro note indent callout thin narrow callout-tinted buttonMarginFix clear block_left block_right block_float_none"> <span class="caps"> <cite class="cite"> <a class="diamond_link diamond_link_white diamond_link_small diamond_link_small_white button green download_link"> <h2 class="clear"> <h3 class="clear">'
       filter_html_help: true
       filter_html_nofollow: false
   filter_html_escape:
     id: filter_html_escape
     provider: filter
     status: false
-    weight: -47
+    weight: -42
     settings: {  }
   filter_html_image_secure:
     id: filter_html_image_secure
     provider: filter
     status: false
-    weight: -44
+    weight: -41
     settings: {  }
   filter_htmlcorrector:
     id: filter_htmlcorrector
     provider: filter
     status: true
-    weight: -43
+    weight: -47
+    settings: {  }
+  filter_image_lazy_load:
+    id: filter_image_lazy_load
+    provider: filter
+    status: true
+    weight: -38
     settings: {  }
   filter_url:
     id: filter_url
     provider: filter
     status: false
-    weight: -48
+    weight: -43
     settings:
       filter_url_length: 72
+  linkit:
+    id: linkit
+    provider: linkit
+    status: true
+    weight: -50
+    settings:
+      title: false
+      media_substitution: metadata
+  media_embed:
+    id: media_embed
+    provider: media
+    status: true
+    weight: -37
+    settings:
+      default_view_mode: default
+      allowed_view_modes: {  }
+      allowed_media_types:
+        image: image
+        video: video
