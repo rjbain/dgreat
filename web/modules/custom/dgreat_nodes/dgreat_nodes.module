@@ -57,6 +57,15 @@ function dgreat_nodes_form_alter(&$form, FormStateInterface $form_state, $form_i
 }
 
 /**
+ * Implements hook_page_attachments().
+ */
+function dgreat_nodes_page_attachments(array &$attachments) {
+  if (\Drupal::service('router.admin_context')->isAdminRoute()) {
+    $attachments['#attached']['library'][] = 'dgreat_nodes/admin_overrides';
+  }
+}
+
+/**
  * Checks whether a form contains a paragraphs widget.
  */
 function _dgreat_nodes_form_has_paragraphs_widget(array $element) {
