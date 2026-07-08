@@ -4,7 +4,6 @@ namespace Drupal\usf_dashboard\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
 
 /**
  * USF Dashboard block form.
@@ -14,14 +13,14 @@ class USFDashboardBlockForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function getFormId() {
+  public function getFormId(): string {
     return 'usf_dashboard_block_form';
   }
 
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state) {
+  public function buildForm(array $form, FormStateInterface $form_state): array {
     // How many paragraphs?
     // $options = new array();
     $options = array_combine(range(1, 10), range(1, 10));
@@ -53,7 +52,7 @@ class USFDashboardBlockForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array &$form, FormStateInterface $form_state) {
+  public function validateForm(array &$form, FormStateInterface $form_state): void {
     $phrases = $form_state->getValue('phrases');
     if (!is_numeric($phrases)) {
       $form_state->setErrorByName('phrases', $this->t('Please use a number.'));
@@ -71,7 +70,7 @@ class USFDashboardBlockForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     $form_state->setRedirect(
       'usf_dashboard.generate',
       [

@@ -3,31 +3,23 @@
 namespace Drupal\usf_dashboard\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Url;
-// Change following https://www.drupal.org/node/2457593
-// See https://www.drupal.org/node/2549395 for deprecate methods information
-// use Drupal\Component\Utility\SafeMarkup;.
 use Drupal\Component\Utility\Html;
 
 /**
- * Use Html instead SAfeMarkup.
+ * Returns the dashboard page.
  */
 class USFDashboardController extends ControllerBase {
 
   /**
-   *
+   * Builds the dashboard page render array.
    */
-  public function dashboard() {
+  public function dashboard(): array {
     // Default settings.
     $config = \Drupal::config('usf_dashboard.settings');
     // Page title and source text.
     $page_title = $config->get('usf_dashboard.page_title');
-    $block_text = $config->get('usf_dashboard.block_text');
 
-    // $element['#title'] = SafeMarkup::checkPlain($page_title);
     $element['#title'] = Html::escape($page_title);
-
-    // Theme function.
     $element['#theme'] = 'usf_dashboard';
 
     return $element;
