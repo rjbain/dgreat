@@ -60,7 +60,7 @@ function dgreat_nodes_form_alter(&$form, FormStateInterface $form_state, $form_i
  * Implements hook_page_attachments().
  */
 function dgreat_nodes_page_attachments(array &$attachments) {
-  if (\Drupal::service('router.admin_context')->isAdminRoute()) {
+  if (\Drupal::currentUser()->hasPermission('access toolbar')) {
     $attachments['#attached']['library'][] = 'dgreat_nodes/admin_overrides';
   }
 }
