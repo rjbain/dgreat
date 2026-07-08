@@ -42,7 +42,11 @@ function dgreat_nodes_form_alter(&$form, FormStateInterface $form_state, $form_i
 
   if (in_array($form_id, $fav_links_nodes)) {
 
-    $query = \Drupal::request()->query->all('edit');
+    $query = \Drupal::request()->query->get('edit');
+    if (!is_array($query)) {
+      $query = [];
+    }
+
     if (isset($query['field_link_type']['und']) && is_scalar($query['field_link_type']['und'])) {
       $form['field_link_type']['widget']['#default_value'] = $query['field_link_type']['und'];
     }
