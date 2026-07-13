@@ -25,7 +25,15 @@
   Drupal.behaviors.dgreatAdminToolbarOverrides = {
     attach(context) {
       once('dgreat-toolbar-prune', '#toolbar-item-administration-tray', context).forEach((tray) => {
-        tray.querySelectorAll('a[href]').forEach((link) => {
+        const structureLink = tray.querySelector('a[href="/admin/structure"]');
+        const structureItem = structureLink ? structureLink.closest('li.menu-item') : null;
+        const structureMenu = structureItem ? structureItem.querySelector(':scope > ul.toolbar-menu') : null;
+
+        if (!structureMenu) {
+          return;
+        }
+
+        structureMenu.querySelectorAll(':scope > li.menu-item > a[href]').forEach((link) => {
           const path = normalizePath(link.getAttribute('href') || '');
           if (!HIDDEN_TOOLBAR_PATHS.has(path)) {
             return;
