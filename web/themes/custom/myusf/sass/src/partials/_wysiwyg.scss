@@ -139,7 +139,6 @@ blockquote, blockquote p {
 }
 blockquote {
 	position: relative;
-	margin: 0;
 	padding-left: 2.5rem;
 	padding-right: 3.125rem;	
 
@@ -272,18 +271,20 @@ img {
     margin-top: 0.4375rem;
 
 	&.align-right {
+    	float: right!important;
     	margin-left: 1.5625rem;	
     	margin-bottom: 1rem;
-    	width: unset;
 	}
 	&.align-left  {
+    	float: left;
     	margin-right: 1.5625rem;	
     	margin-bottom: 1rem;
-    	width: unset;
 	}
 	&.align-center {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
 		margin-bottom: 1rem;
-		width: unset;
 	}
 }
 p img {
@@ -294,10 +295,20 @@ p img {
 }
 .caption-img {
 	&.align-right {
+	    float: right!important;
 	    margin-left: 1.5625rem;	
+	    margin-bottom: 1rem;
 	}
 	&.align-left {
+	    float: left;
 	    margin-right: 1.5625rem;	
+	    margin-bottom: 1rem;
+	}
+	&.align-center {
+	    display: table;
+	    margin-left: auto;
+	    margin-right: auto;
+	    margin-bottom: 1rem;
 	}
 }
 
@@ -454,6 +465,5 @@ img.media-element.file-inline-medium {
 		}
 	}
 }
-
 
 
