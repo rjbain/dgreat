@@ -1,3 +1,102 @@
 /**
  * Toolbar overrides for users who can access the Drupal toolbar.
  */
+
+ /* ADMIN MENU TOP
+=================================== */
+
+/*#toolbar-item-administration-tray .toolbar-lining,
+ul.toolbar-menu,
+.toolbar .toolbar-menu li {
+  background-color: #4c4c4c!important;
+ }
+ .toolbar .toolbar-menu li a {
+  color: white;
+} */
+#toolbar-bar,
+.toolbar-menu li {
+  font-size: 0.8125rem;
+}
+.toolbar-horizontal .toolbar-tray > .toolbar-lining {
+    padding-right: 0!important;
+}
+.toolbar-tray-horizontal .toolbar-menu .level-1 > .toolbar-box a {
+    padding-inline-end: 1em!important;
+}
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon.is-active::before {
+  filter: unset;
+}
+
+li.menu-item.menu-item--expanded.menu-item__admin_toolbar_tools-help {
+  padding-bottom: 0.3em;
+}
+
+/* Drop icon */
+.toolbar .toolbar-bar #toolbar-item-administration-search.toolbar-icon-default::before,
+.toolbar .toolbar-bar .toolbar-menu-administration .toolbar-icon.toolbar-icon-default::before,
+.toolbar .toolbar-bar .toolbar-menu-administration .toolbar-icon-default.responsive-preview-icon::before,
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.toolbar-icon-default::before,
+.toolbar .toolbar-bar .toolbar-icon-toggle-vertical.toolbar-icon-default::before,
+.toolbar .toolbar-bar .toolbar-icon-toggle-horizontal.toolbar-icon-default::before {
+  mask-size: 20px 20px !important;
+}
+
+/* padding at the bottom of the dropdown items */
+.toolbar-tray a,
+.toolbar-tray a:visited {
+  padding: 1em 1.3333em 0.5em 1.3333em;
+}
+
+
+/* ===================================
+       WYSIWYG
+=================================== */
+.js .field--widget-entity-reference-paragraphs .dropbutton-wrapper {
+  margin-right: 0.75rem !important;
+  margin-top: 0 !important;
+}
+
+.field-actions {
+  padding-top: 10px !important;
+}
+.js .paragraph-type-title {
+    flex-basis: 60%!important;
+}
+
+/* Link icon - Open file browser */
+.ck.ck-balloon-rotator {
+    width: 500px;
+}
+.ck.ck-form .ck.ck-input-text {
+    width: 400px!important;
+}
+.ck.ck-labeled-field-view>.ck.ck-labeled-field-view__input-wrapper {
+    flex-direction: column;
+}
+.imce-selector-button.imce-url-button::after {
+    content: "Open File Browser";
+    text-decoration: underline;
+    position: relative;
+    top: 4px;
+}
+.imce-selector-button.imce-url-button:hover::after {
+    text-decoration: none;
+}
+/* Accordions */
+.field--widget-entity-reference-paragraphs .paragraphs-subform > .form-wrapper {
+  margin-bottom: 1rem;
+}
+
+/* Box styles */
+td > .form-item > .claro-autocomplete > .form-element {
+  width: 98% !important;
+}
+
+.form-managed-file.no-upload {
+  max-width: 95% !important;
+}
+
+td input.button {
+  margin-top: 26px;
+}
+

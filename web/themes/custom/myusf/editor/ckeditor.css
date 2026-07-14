@@ -228,17 +228,52 @@
 }
 
 /* TABLE */
+.ck-content figure.table,
+.ck-content figure.table.ck-widget,
+.ck-content figure.table.ck-widget.ck-widget_with-selection-handle,
+.ck-content figure.table.ck-widget.ck-widget_with-selection-handle.ck-widget_selected,
+.ck-content .table:not(.layout-table) {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
 
-.ck-content table, .ck-content table p {
-	font-size: .8rem!important;
+.ck-content figure.table:not(.layout-table) > table,
+.ck-content figure.table:not(.layout-table) > table th,
+.ck-content figure.table:not(.layout-table) > table td {
+  border: 1px solid #fff !important;
 }
+
+.ck-content figure.table:not(.layout-table)>table>tbody>tr>td, 
+.ck-content figure.table:not(.layout-table)>table>tbody>tr>th, 
+.ck-content figure.table:not(.layout-table)>table>thead>tr>td, 
+.ck-content figure.table:not(.layout-table)>table>thead>tr>th, 
+.ck-content table.table:not(.layout-table)>tbody>tr>td, 
+.ck-content table.table:not(.layout-table)>tbody>tr>th, 
+.ck-content table.table:not(.layout-table)>thead>tr>td, 
+.ck-content table.table:not(.layout-table)>thead>tr>th  {
+  padding: 10px!important;
+}
+
+.ck.ck-content table {
+  display: table !important;
+  border-collapse: collapse;
+}
+
+.ck-content table,
+.ck-content table p {
+  font-size: 0.8rem !important;
+}
+
 .ck-content table li {
-	font-size: .8rem;
-    line-height: 1.625;
+  font-size: 0.8rem;
+  line-height: 1.625;
 }
+
 .ck-content table {
   margin: 0 0 2.5rem 0;
-  width: 100%!important;
+  width: 100% !important;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
@@ -252,52 +287,164 @@
   text-align: center;
 }
 
-.ck-content table tr th {
-  background: #636363;
-}
-
 .ck-content .table-non-responsive {
-	overflow-x: unset;
+  overflow-x: unset;
 }
 
 .ck-content th {
-	line-height:1.5;
-	padding-top: 0.625rem!important;
-	padding-bottom: 0.625rem!important;
-}	
+  line-height: 1.5;
+  padding-top: 0.625rem !important;
+  padding-bottom: 0.625rem !important;
+  border-end-end-radius: 0 !important;
+  border-start-end-radius: 0 !important;
+  border-start-start-radius: 0 !important;
+  border-end-start-radius: 0 !important;
+}
+
+.ck-content table tr th {
+  background: #636363;
+  padding: .5625rem;
+  line-height: 1.4;
+}
+
+.ck-content .table th,
+.ck-content .table td {
+  border-top: 1px solid #fff !important;
+}
 
 .ck-content th[scope="col"] {
   text-transform: uppercase;
   height: 45px;
   vertical-align: middle;
-  background: #00543c!important;
+  color: #fff;
+  background: #00543c !important;
 }
 
 .ck-content th[scope="row"] {
-  font-weight:400;
-  color: #2A2A2A;
+  font-weight: 400!important;
+  color: #2a2a2a;
   background: rgba(221, 218, 209, 0.5); /* #DDDAD1 */
 }
 
 .ck-content th a {
-  color:#00543c!important;
+  color: #00543c !important;
 }
 
 .ck-content tr {
-	border-bottom: 0;
+  border-bottom: 0;
 }
+
 .ck-content tr:nth-child(2n) {
   background: rgba(243, 240, 228, 0.3); /* #F3F0E4 */
 }
-.ck-content tr:nth-child(2n+1){
+
+.ck-content tr:nth-child(2n+1) {
   background: rgba(222, 213, 180, 0.5); /* #DED5B4 */
 }
+
 .ck-content tr td,
 .ck-content tr th {
   padding: 0.5625rem;
   line-height: 1.4;
 }
 
+/* BUTTON */
+.ck-content .button {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 210px;
+  min-height: 40px;
+  padding: 10px 8px;
+  font-size: 0.8rem!important;
+  font-weight: 700;
+  line-height: 1.2rem;
+  font-family: "Open Sans", sans-serif !important;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 0!important;
+  background: #00543c !important;
+}
+
+.ck-content .button.blue {
+  background: #007ea5 !important;
+}
+
+.ck-content .button.olive {
+  background: #687e31 !important;
+}
+
+.ck-content .button.orange {
+  background: #c25400 !important;
+}
+
+.ck-content .button.plum {
+  background: #8e0f75 !important;
+}
+
+.ck-content .button.terra_cotta {
+  background: #b30000 !important;
+}
+
+.ck-content .button.turquoise {
+  background: #008575 !important;
+}
+
+.ck-content .button.yellow {
+  color: #000;
+  background: #fdbb30 !important;
+}
+
+.ck-content .button:hover,
+.ck-content .button:focus {
+  color: #2A2A2A;
+  background-color: #fff !important;
+  transition: background-color .25s linear 0s, border-color .25s linear 0s, box-shadow .25s linear 0s, color .25s linear 0s, opacity .25s linear 0s !important;
+  box-shadow: inset 0 0 0 4px #00543c;
+  font-weight: 700;
+}
+
+.ck-content .button.blue:hover,
+.ck-content .button.blue:focus {
+  box-shadow: inset 0 0 0 4px #007EA5;
+}
+
+.ck-content .button.olive:hover,
+.ck-content .button.olive:focus {
+  box-shadow: inset 0 0 0 4px #687e31;
+}
+
+.ck-content .button.orange:hover,
+.ck-content .button.orange:focus {
+  box-shadow: inset 0 0 0 4px #c25400;
+}
+
+.ck-content .button.plum:hover,
+.ck-content .button.plum:focus {
+  box-shadow: inset 0 0 0 4px #8e0f75;
+}
+
+.ck-content .button.terra_cotta:hover,
+.ck-content .button.terra_cotta:focus {
+  box-shadow: inset 0 0 0 4px #B30000;
+}
+
+.ck-content .button.turquoise:hover,
+.ck-content .button.turquoise:focus {
+  box-shadow: inset 0 0 0 4px #008575;
+}
+
+.ck-content .button.yellow:hover,
+.ck-content .button.yellow:focus {
+  color: #000;
+  box-shadow: inset 0 0 0 4px #FDBB30;
+}
+
+.ck-content .button svg.ext {
+  display: none;
+}
 
 /* CALLOUTS */
 .ck-content .callout {
@@ -352,11 +499,13 @@
 .ck-content .callout.narrow.block-left,
 .ck-content .callout.narrow.block_left {
   margin: 0.375rem 1.25rem 1.75rem 0;
+  float: left;
 }
 
 .ck-content .callout.narrow.block-right,
 .ck-content .callout.narrow.block_right {
   margin: 0.375rem 0 1.75rem 1.25rem;
+  float: right;
 }
 
 .ck-content .callout-tinted {
