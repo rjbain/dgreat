@@ -89,7 +89,7 @@ function dgreat_nodes_form_alter(&$form, FormStateInterface $form_state, $form_i
 
   if (in_array($form_id, $fav_links_nodes)) {
 
-    $query = \Drupal::request()->query->get('edit');
+    $query = \Drupal::request()->query->all('edit');
     if (!is_array($query)) {
       $query = [];
     }
