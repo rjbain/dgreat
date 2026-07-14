@@ -26,7 +26,9 @@ ul.toolbar-menu,
 .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon.is-active::before {
   filter: unset;
 }
-
+.toolbar .menu-item {
+    padding-bottom: 0;
+}
 li.menu-item.menu-item--expanded.menu-item__admin_toolbar_tools-help {
   padding-bottom: 0.3em;
 }
@@ -38,13 +40,24 @@ li.menu-item.menu-item--expanded.menu-item__admin_toolbar_tools-help {
 .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.toolbar-icon-default::before,
 .toolbar .toolbar-bar .toolbar-icon-toggle-vertical.toolbar-icon-default::before,
 .toolbar .toolbar-bar .toolbar-icon-toggle-horizontal.toolbar-icon-default::before {
-  mask-size: 20px 20px !important;
+  mask-size: 20px 20px!important;
+}
+
+.toolbar .toolbar-icon.toolbar-handle::before, 
+.toolbar .toolbar-handle.responsive-preview-icon::before, 
+.toolbar .toolbar-icon.toolbar-handle.open::before, 
+.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle::before, 
+.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open::before, 
+.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded::before {
+  height: 8px!important;
+  mask-size: 10px 10px!important;
+  right: 3px !important;
 }
 
 /* padding at the bottom of the dropdown items */
 .toolbar-tray a,
 .toolbar-tray a:visited {
-  padding: 1em 1.3333em 0.5em 1.3333em;
+  padding: 0.75em 1.55em 0.5em 1.3333em; /*1em 1.3333em 0.5em 1.3333em; */
 }
 
 
