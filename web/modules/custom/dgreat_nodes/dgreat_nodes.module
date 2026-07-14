@@ -26,6 +26,53 @@ function dgreat_nodes_help($route_name, RouteMatchInterface $route_match) {
 }
 
 /**
+ * Implements hook_entity_bundle_field_info_alter().
+ *
+ * Attaches a validation constraint to bp_column_content on bp_columns
+ * paragraphs so editors cannot save more than 3 column items.
+ */
+function dgreat_nodes_entity_bundle_field_info_alter(&$fields, \Drupal\Core\Entity\EntityTypeInterface $entity_type, $bundle) {
+  if ($entity_type->id() === 'paragraph'
+    && $bundle === 'bp_columns'
+    && isset($fields['bp_column_content'])) {
+    $fields['bp_column_content']->addConstraint('BpColumnsMaxItems', ['max' => 3]);
+  }
+}
+
+/**
+ * Implements hook_field_widget_complete_form_alter().
+ *
+ * Replaces the add-more control with a message when bp_columns already has
+ * the maximum number of column items.
+ */
+function dgreat_nodes_field_widget_complete_form_alter(&$field_widget_complete_form, FormStateInterface $form_state, array $context) {
+  if (empty($context['items']) || !method_exists($context['items'], 'getFieldDefinition')) {
+    return;
+  }
+
+  /** @var \Drupal\Core\Field\FieldDefinitionInterface $field_definition */
+  $field_definition = $context['items']->getFieldDefinition();
+  if ($field_definition->getName() !== 'bp_column_content') {
+    return;
+  }
+
+  $widget = &$field_widget_complete_form['widget'];
+  $item_count = count(array_filter(array_keys($widget), 'is_int'));
+
+  if ($item_count >= 3) {
+    $widget['add_more'] = [
+      '#type' => 'html_tag',
+      '#tag' => 'p',
+      '#value' => t('The maximum of 3 column items has been reached. To change the column structure, please remove an existing item first.'),
+      '#attributes' => [
+        'class' => ['bp-columns-limit-reached'],
+        'style' => 'color: red;',
+      ],
+    ];
+  }
+}
+
+/**
  * Implements hook_form_alter().
  */
 function dgreat_nodes_form_alter(&$form, FormStateInterface $form_state, $form_id) {
