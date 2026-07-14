@@ -20,7 +20,8 @@
     <a href="#" class="video-component {{ color }}"
        data-toggle="modal"
        data-target="#videoModal"
-       data-theVideo="{{ new_vid_url }}">
+       data-the-video="{{ new_vid_url|default('') }}"
+       data-video-href="{{ new_vid_url|default('') }}">
     <div class="video-component-icon-wrapper">
         <span class="video-component_video_icon"></span>
     </div>
@@ -47,5 +48,3 @@
     {#</iframe>#}
 
 {#{% endif %}#}
-
-

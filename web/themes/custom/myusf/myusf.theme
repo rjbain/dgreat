@@ -119,26 +119,59 @@ function myusf_theme_suggestions_page_alter(&$suggestions, $variables, $hook) {
  */
 
 function myusf_preprocess_paragraph__video(&$variables) {
-    $original_video_url = $variables['paragraph']->field_video_url[0]->uri;
+    $variables['new_vid_url'] = '';
+
+    if (empty($variables['paragraph']->field_video_url[0]->uri)) {
+        return;
+    }
+
+    $original_video_url = trim($variables['paragraph']->field_video_url[0]->uri);
+
+    if ($original_video_url === '') {
+        return;
+    }
 
     // Is it a youtube link?
     if (strpos($original_video_url, 'youtu') !== false) {
-        // Get the video ID number
-        $youtube_preg = preg_match("/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/", $original_video_url, $matches);
-        if ($youtube_preg > 0) {
-            $youtube_id = $matches[1];
-            $variables['new_vid_url'] = 'https://www.youtube.com/embed/' . $youtube_id;
+        $youtube_id = '';
+        $parts = parse_url($original_video_url);
+
+        if (!empty($parts['host']) && strpos($parts['host'], 'youtu.be') !== false && !empty($parts['path'])) {
+            $youtube_id = trim($parts['path'], '/');
+        }
+        elseif (!empty($parts['query'])) {
+            parse_str($parts['query'], $query);
+            if (!empty($query['v']) && is_scalar($query['v'])) {
+                $youtube_id = $query['v'];
+            }
         }
 
-    } else if (strpos($original_video_url, 'vimeo') !== false) {
+        if (!$youtube_id) {
+            $youtube_preg = preg_match("/(?:youtu\.be\/|youtube\.com\/(?:(?:embed|v|vi|shorts)\/|.*[?&]v=))([^\?&\"'>\/]+)/", $original_video_url, $matches);
+            if ($youtube_preg > 0 && !empty($matches[1])) {
+                $youtube_id = $matches[1];
+            }
+        }
+
+        if ($youtube_id) {
+            $variables['new_vid_url'] = 'https://www.youtube.com/embed/' . $youtube_id;
+            return;
+        }
+    }
+    elseif (strpos($original_video_url, 'vimeo') !== false) {
         $vimeo_preg = preg_match('/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/', $original_video_url, $matches);
-        if ($vimeo_preg > 0) {
+        if ($vimeo_preg > 0 && !empty($matches[5])) {
             $vimeo_id = $matches[5];
             $variables['new_vid_url'] = 'https://player.vimeo.com/video/' . $vimeo_id;
+            return;
         }
-    } else if (strpos($original_video_url, 'panopto') !== false) {
-            $variables['new_vid_url'] = $original_video_url;
     }
+    elseif (strpos($original_video_url, 'panopto') !== false) {
+        $variables['new_vid_url'] = $original_video_url;
+        return;
+    }
+
+    $variables['new_vid_url'] = $original_video_url;
 }
 
 
