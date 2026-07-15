@@ -32,6 +32,15 @@ ul.toolbar-menu,
 li.menu-item.menu-item--expanded.menu-item__admin_toolbar_tools-help {
   padding-bottom: 0.3em;
 }
+#admin-toolbar-search-field-tab .form-item {
+  padding: 0.3125rem 0!important;
+}
+@media only screen and (min-width: 36em) {
+    .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon {
+        padding-right: 1rem!important;
+        padding-left: 2.1rem!important;
+    }
+}
 
 /* Drop icon */
 .toolbar .toolbar-bar #toolbar-item-administration-search.toolbar-icon-default::before,
@@ -58,6 +67,11 @@ li.menu-item.menu-item--expanded.menu-item__admin_toolbar_tools-help {
 .toolbar-tray a,
 .toolbar-tray a:visited {
   padding: 0.75em 1.55em 0.5em 1.3333em; /*1em 1.3333em 0.5em 1.3333em; */
+}
+
+/* Sticky Buttons under admin bar (Save, Preview) fix */
+:where(*) .region-sticky__items__inner {
+      padding-top: 30px!important;
 }
 
 
@@ -95,6 +109,10 @@ li.menu-item.menu-item--expanded.menu-item__admin_toolbar_tools-help {
 .imce-selector-button.imce-url-button:hover::after {
     text-decoration: none;
 }
+/* Big Image spacing issue fix */
+figure.image.ck-widget.image_resized.ck-widget_with-resizer.ck-widget_selected {
+    height: auto !important;
+}
 /* Accordions */
 .field--widget-entity-reference-paragraphs .paragraphs-subform > .form-wrapper {
   margin-bottom: 1rem;
@@ -111,5 +129,15 @@ td > .form-item > .claro-autocomplete > .form-element {
 
 td input.button {
   margin-top: 26px;
+}
+
+/* iPad wysiwyg Edit button fix */
+:where(*) .dropbutton__toggle {
+  width: 1.5rem!important;
+  height: 1.5rem!important;
+}
+:where(*) .dropbutton__item:first-of-type > * {
+  padding-top: 0!important;
+  padding-bottom: 0!important;
 }
 
