@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Update hooks for the dgreat_group module.
+ */
+
+/**
+ * Marks upgraded Group relationship type IDs as legacy-compatible.
+ */
+function dgreat_group_update_8101() {
+  \Drupal::state()->set('group_update_10300_detected_legacy_version', TRUE);
+
+  return t('Enabled legacy Group relationship type ID lookups for upgraded group content plugins.');
+}
