@@ -82,12 +82,14 @@ li.menu-item.menu-item--expanded.menu-item__admin_toolbar_tools-help {
   margin-right: 0.75rem !important;
   margin-top: 0 !important;
 }
-
 .field-actions {
   padding-top: 10px !important;
 }
 .js .paragraph-type-title {
     flex-basis: 60%!important;
+}
+em.placeholder {
+    padding-left: 5px;
 }
 
 /* Link icon - Open file browser */
@@ -136,7 +138,11 @@ td input.button {
   width: 1.5rem!important;
   height: 1.5rem!important;
 }
-:where(*) .dropbutton__item:first-of-type > * {
+/*:where(*) .dropbutton__item:first-of-type > * {
+  padding-top: 0;
+  padding-bottom: 0;
+}*/
+.dropbutton__item:first-of-type .no-touchevents .dropbutton--extrasmall & > * {
   padding-top: 0!important;
   padding-bottom: 0!important;
 }
