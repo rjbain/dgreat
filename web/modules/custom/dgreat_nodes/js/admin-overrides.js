@@ -2,7 +2,7 @@
  * Admin-only toolbar overrides.
  */
 (function (Drupal, once) {
-  const HIDDEN_TOOLBAR_PATHS = new Set([
+  const HIDDEN_STRUCTURE_PATHS = new Set([
     '/admin/structure/comment',
     '/admin/structure/contact',
     '/admin/structure/display-modes',
@@ -11,6 +11,9 @@
     '/admin/structure/migrate',
     '/admin/structure/rate_widgets',
     '/admin/structure/vote-types',
+  ]);
+  const HIDDEN_ADD_CONTENT_PATHS = new Set([
+    '/node/add/favorite_link',
   ]);
 
   function normalizePath(value) {
@@ -25,26 +28,37 @@
   Drupal.behaviors.dgreatAdminToolbarOverrides = {
     attach(context) {
       once('dgreat-toolbar-prune', '#toolbar-item-administration-tray', context).forEach((tray) => {
-        const structureLink = tray.querySelector('a[href="/admin/structure"]');
-        const structureItem = structureLink ? structureLink.closest('li.menu-item') : null;
-        const structureMenu = structureItem ? structureItem.querySelector(':scope > ul.toolbar-menu') : null;
+        const structureMenu = getDirectChildMenu(tray, '/admin/structure');
+        const addContentMenu = getDirectChildMenu(tray, '/node/add');
 
-        if (!structureMenu) {
-          return;
+        if (structureMenu) {
+          pruneDirectChildLinks(structureMenu, HIDDEN_STRUCTURE_PATHS);
         }
 
-        structureMenu.querySelectorAll(':scope > li.menu-item > a[href]').forEach((link) => {
-          const path = normalizePath(link.getAttribute('href') || '');
-          if (!HIDDEN_TOOLBAR_PATHS.has(path)) {
-            return;
-          }
-
-          const item = link.closest('li.menu-item');
-          if (item) {
-            item.remove();
-          }
-        });
+        if (addContentMenu) {
+          pruneDirectChildLinks(addContentMenu, HIDDEN_ADD_CONTENT_PATHS);
+        }
       });
     },
   };
+
+  function getDirectChildMenu(tray, href) {
+    const link = tray.querySelector(`a[href="${href}"]`);
+    const item = link ? link.closest('li.menu-item') : null;
+    return item ? item.querySelector(':scope > ul.toolbar-menu') : null;
+  }
+
+  function pruneDirectChildLinks(menu, hiddenPaths) {
+    menu.querySelectorAll(':scope > li.menu-item > a[href]').forEach((link) => {
+      const path = normalizePath(link.getAttribute('href') || '');
+      if (!hiddenPaths.has(path)) {
+        return;
+      }
+
+      const item = link.closest('li.menu-item');
+      if (item) {
+        item.remove();
+      }
+    });
+  }
 })(Drupal, once);
