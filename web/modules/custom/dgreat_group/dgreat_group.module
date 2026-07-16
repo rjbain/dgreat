@@ -17,6 +17,7 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\group\Entity\GroupRelationshipInterface;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\node\Entity\Node;
+use Drupal\Core\Entity\EntityTypeInterface;
 
 /**
  * Implements hook_help().
@@ -98,6 +99,14 @@ function dgreat_group_user_update(User $entity) {
  * Implements hook_entity_access().
  */
 function dgreat_group_entity_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  if ($entity instanceof GroupRelationshipInterface) {
+    if (in_array($operation, ['view', 'update'], TRUE) && in_array('administrator', $account->getRoles(), TRUE)) {
+      return AccessResult::allowed()->cachePerPermissions();
+    }
+
+    return AccessResult::neutral();
+  }
+
   if (!$entity instanceof GroupInterface) {
     return AccessResult::neutral();
   }
@@ -156,4 +165,17 @@ function dgreat_group_group_relationship_delete(GroupRelationshipInterface $enti
   /** @var \Drupal\dgreat_group\RoleGroupMapperService $mapper */
   $mapper = \Drupal::service('dgreat_group.role_mapper');
   $mapper->removeGroupFieldFromUser($dgreat_group_user, (string) $entity->getGroup()->id());
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function dgreat_group_entity_type_alter(array &$entity_types) {
+  if (isset($entity_types['group']) && $entity_types['group'] instanceof EntityTypeInterface) {
+    $entity_types['group']->setListBuilderClass('Drupal\\dgreat_group\\Entity\\Controller\\EditorScopedGroupListBuilder');
+  }
+
+  if (isset($entity_types['group_relationship']) && $entity_types['group_relationship'] instanceof EntityTypeInterface) {
+    $entity_types['group_relationship']->setListBuilderClass('Drupal\\dgreat_group\\Entity\\Controller\\AdministratorGroupRelationshipListBuilder');
+  }
 }

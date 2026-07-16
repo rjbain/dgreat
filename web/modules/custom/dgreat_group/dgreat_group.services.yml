@@ -3,3 +3,7 @@ services:
     class: Drupal\dgreat_group\RoleGroupMapperService
     arguments:
       - '@entity_type.manager'
+  dgreat_group.group_route_subscriber:
+    class: Drupal\dgreat_group\Routing\GroupRouteSubscriber
+    tags:
+      - { name: event_subscriber }
