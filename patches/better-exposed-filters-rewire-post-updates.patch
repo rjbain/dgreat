@@ -1,0 +1,110 @@
+--- a/better_exposed_filters.post_update.php
++++ b/better_exposed_filters.post_update.php
+@@ -33,7 +33,7 @@
+ function better_exposed_filters_post_update_combine_param(?array &$sandbox = NULL): void {
+   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
+   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($config_updater): bool {
++  _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
+     return $config_updater->updateCombineParam($view);
+   });
+ }
+@@ -44,7 +44,7 @@
+ function better_exposed_filters_post_update_soft_limit(?array &$sandbox = NULL): void {
+   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
+   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($config_updater): bool {
++  _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
+     return $config_updater->updateSoftLimitParams($view);
+   });
+ }
+@@ -55,7 +55,7 @@
+ function better_exposed_filters_post_update_single_checkbox_param_key(?array &$sandbox = NULL): void {
+   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
+   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($config_updater): bool {
++  _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
+     return $config_updater->updateSingleCheckboxFilters($view);
+   });
+ }
+@@ -66,7 +66,7 @@
+ function better_exposed_filters_post_update_open_by_default_param_key(?array &$sandbox = NULL): void {
+   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
+   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($config_updater): bool {
++  _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
+     return $config_updater->updateAddOpenByDefaultKey($view);
+   });
+ }
+@@ -77,7 +77,7 @@
+ function better_exposed_filters_post_update_field_classes_param_key(?array &$sandbox = NULL): void {
+   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
+   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($config_updater): bool {
++  _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
+     return $config_updater->updateAddFieldClassesKey($view);
+   });
+ }
+@@ -88,7 +88,7 @@
+ function better_exposed_filters_post_update_slider_tooltip_keys(?array &$sandbox = NULL): void {
+   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
+   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($config_updater): bool {
++  _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
+     return $config_updater->updateSliderTooltipKeys($view);
+   });
+ }
+@@ -99,7 +99,7 @@
+ function better_exposed_filters_post_update_autosubmit_breakpoint_key(?array &$sandbox = NULL): void {
+   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
+   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($config_updater): bool {
++  _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
+     return $config_updater->updateAutoSubmitBreakpoint($view);
+   });
+ }
+@@ -110,7 +110,7 @@
+ function better_exposed_filters_post_update_autosubmit_sort_only_key(?array &$sandbox = NULL): void {
+   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
+   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($config_updater): bool {
++  _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
+     return $config_updater->updateAutoSubmitSortOnlyKey($view);
+   });
+ }
+@@ -121,7 +121,7 @@
+ function better_exposed_filters_post_update_sort_options_defaults(?array &$sandbox = NULL): void {
+   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
+   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($config_updater): bool {
++  _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
+     return $config_updater->updateSortOptionsDefaults($view);
+   });
+ }
+@@ -132,7 +132,7 @@
+ function better_exposed_filters_post_update_slider_placement_key(?array &$sandbox = NULL): void {
+   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
+   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($config_updater): bool {
++  _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
+     return $config_updater->updateSliderPlacementKey($view);
+   });
+ }
+@@ -143,7 +143,7 @@
+ function better_exposed_filters_post_update_remove_sort_options_unsupported_key(?array &$sandbox = NULL): void {
+   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
+   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($config_updater): bool {
++  _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
+     return $config_updater->removeSortOptionsUnsupportedKey($view);
+   });
+ }
+@@ -154,7 +154,7 @@
+ function better_exposed_filters_post_update_scrollable_params(?array &$sandbox = NULL): void {
+   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
+   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($config_updater): bool {
++  _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
+     return $config_updater->updateScrollableParams($view);
+   });
+ }
