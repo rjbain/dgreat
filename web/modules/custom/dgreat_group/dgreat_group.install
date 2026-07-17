@@ -13,3 +13,50 @@ function dgreat_group_update_8101() {
 
   return t('Enabled legacy Group relationship type ID lookups for upgraded group content plugins.');
 }
+
+/**
+ * Repairs partially migrated Group 3 schema metadata after Drupal 10 upgrades.
+ */
+function dgreat_group_update_8102() {
+  $database = \Drupal::database();
+  $schema = $database->schema();
+  $entity_type_manager = \Drupal::entityTypeManager();
+  $entity_field_manager = \Drupal::service('entity_field.manager');
+  $last_installed_schema_repository = \Drupal::service('entity.last_installed_schema.repository');
+  $storage_schema = \Drupal::keyValue('entity.storage_schema.sql');
+
+  if ($schema->tableExists('group_content') && !$schema->tableExists('group_relationship')) {
+    $schema->renameTable('group_content', 'group_relationship');
+  }
+
+  if ($schema->tableExists('group_content_field_data') && !$schema->tableExists('group_relationship_field_data')) {
+    $schema->renameTable('group_content_field_data', 'group_relationship_field_data');
+  }
+
+  if ($storage_schema->has('group_content.entity_schema_data') && !$storage_schema->has('group_relationship.entity_schema_data')) {
+    $storage_schema->set('group_relationship.entity_schema_data', $storage_schema->get('group_content.entity_schema_data'));
+  }
+
+  foreach ($storage_schema->getAll() as $key => $value) {
+    if (str_starts_with($key, 'group_content.field_schema_data.')) {
+      $new_key = str_replace('group_content.field_schema_data.', 'group_relationship.field_schema_data.', $key);
+      if (!$storage_schema->has($new_key)) {
+        $storage_schema->set($new_key, $value);
+      }
+      $storage_schema->delete($key);
+    }
+  }
+
+  $storage_schema->delete('group_content.entity_schema_data');
+
+  $last_installed_schema_repository->setLastInstalledDefinition($entity_type_manager->getDefinition('group_relationship'));
+  $last_installed_schema_repository->setLastInstalledDefinition($entity_type_manager->getDefinition('group_relationship_type'));
+  $last_installed_schema_repository->setLastInstalledDefinition($entity_type_manager->getDefinition('group_config_wrapper'));
+  $last_installed_schema_repository->setLastInstalledFieldStorageDefinitions('group_relationship', $entity_field_manager->getFieldStorageDefinitions('group_relationship'));
+  $last_installed_schema_repository->deleteLastInstalledDefinition('group_content');
+  $last_installed_schema_repository->deleteLastInstalledDefinition('group_content_type');
+
+  \Drupal::state()->set('group_update_10300_detected_legacy_version', FALSE);
+
+  return t('Repaired Group relationship schema tables and installed entity metadata after a partial upgrade.');
+}
