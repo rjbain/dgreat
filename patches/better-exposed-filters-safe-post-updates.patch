@@ -1,12 +1,9 @@
-diff --git a/better_exposed_filters.post_update.php b/better_exposed_filters.post_update.php
-index 5414cd0..5437fc8 100644
 --- a/better_exposed_filters.post_update.php
 +++ b/better_exposed_filters.post_update.php
-@@ -8,6 +8,23 @@ use Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater;
- use Drupal\Core\Config\Entity\ConfigEntityUpdater;
+@@ -10,6 +10,24 @@
  use Drupal\views\ViewEntityInterface;
  
-+/**
+ /**
 + * Safely runs a BEF config updater across view config entities.
 + */
 +function _better_exposed_filters_safe_update(?array &$sandbox, callable $callback): void {
@@ -24,102 +21,7 @@ index 5414cd0..5437fc8 100644
 +  }, TRUE);
 +}
 +
- /**
++/**
   * If using combined sort, set the combine_param config to 'sort_bef_combine'.
   */
-@@ -15,7 +32,7 @@ function better_exposed_filters_post_update_combine_param(?array &$sandbox = NUL
-   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
-   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
-   _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
--    return $config_updater->updateCombineParam($view);
-+    return $config_updater->updateCombineParam($view);
-   });
- }
-@@ -26,7 +43,7 @@ function better_exposed_filters_post_update_soft_limit(?array &$sandbox = NULL):
-   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
-   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
-   _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
--    return $config_updater->updateSoftLimitParams($view);
-+    return $config_updater->updateSoftLimitParams($view);
-   });
- }
-@@ -37,7 +54,7 @@ function better_exposed_filters_post_update_single_checkbox_param_key(?array &$s
-   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
-   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
-   _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
--    return $config_updater->updateSingleCheckboxFilters($view);
-+    return $config_updater->updateSingleCheckboxFilters($view);
-   });
- }
-@@ -48,7 +65,7 @@ function better_exposed_filters_post_update_open_by_default_param_key(?array &$s
-   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
-   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
-   _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
--    return $config_updater->updateAddOpenByDefaultKey($view);
-+    return $config_updater->updateAddOpenByDefaultKey($view);
-   });
- }
-@@ -59,7 +76,7 @@ function better_exposed_filters_post_update_field_classes_param_key(?array &$san
-   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
-   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
-   _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
--    return $config_updater->updateAddFieldClassesKey($view);
-+    return $config_updater->updateAddFieldClassesKey($view);
-   });
- }
-@@ -70,7 +87,7 @@ function better_exposed_filters_post_update_slider_tooltip_keys(?array &$sandbox
-   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
-   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
-   _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
--    return $config_updater->updateSliderTooltipKeys($view);
-+    return $config_updater->updateSliderTooltipKeys($view);
-   });
- }
-@@ -81,7 +98,7 @@ function better_exposed_filters_post_update_autosubmit_breakpoint_key(?array &$s
-   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
-   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
-   _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
--    return $config_updater->updateAutoSubmitBreakpoint($view);
-+    return $config_updater->updateAutoSubmitBreakpoint($view);
-   });
- }
-@@ -92,7 +109,7 @@ function better_exposed_filters_post_update_autosubmit_sort_only_key(?array &$sa
-   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
-   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
-   _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
--    return $config_updater->updateAutoSubmitSortOnlyKey($view);
-+    return $config_updater->updateAutoSubmitSortOnlyKey($view);
-   });
- }
-@@ -103,7 +120,7 @@ function better_exposed_filters_post_update_sort_options_defaults(?array &$sandb
-   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
-   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
-   _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
--    return $config_updater->updateSortOptionsDefaults($view);
-+    return $config_updater->updateSortOptionsDefaults($view);
-   });
- }
-@@ -114,7 +131,7 @@ function better_exposed_filters_post_update_slider_placement_key(?array &$sandbo
-   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
-   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
-   _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
--    return $config_updater->updateSliderPlacementKey($view);
-+    return $config_updater->updateSliderPlacementKey($view);
-   });
- }
-@@ -125,7 +142,7 @@ function better_exposed_filters_post_update_remove_sort_options_unsupported_key(
-   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
-   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
-   _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
--    return $config_updater->removeSortOptionsUnsupportedKey($view);
-+    return $config_updater->removeSortOptionsUnsupportedKey($view);
-   });
- }
-@@ -136,7 +153,7 @@ function better_exposed_filters_post_update_scrollable_params(?array &$sandbox =
-   /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
-   $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
-   _better_exposed_filters_safe_update($sandbox, function (ViewEntityInterface $view) use ($config_updater): bool {
--    return $config_updater->updateScrollableParams($view);
-+    return $config_updater->updateScrollableParams($view);
-   });
- }
+ function better_exposed_filters_post_update_combine_param(?array &$sandbox = NULL): void {

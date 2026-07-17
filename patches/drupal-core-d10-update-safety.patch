@@ -1,14 +1,12 @@
-diff --git a/core/modules/editor/editor.post_update.php b/core/modules/editor/editor.post_update.php
-index c95f637..0c46536 100644
 --- a/core/modules/editor/editor.post_update.php
 +++ b/core/modules/editor/editor.post_update.php
-@@ -46,8 +46,13 @@ function editor_post_update_image_lazy_load(): void {
+@@ -52,7 +52,13 @@
   */
  function editor_post_update_sanitize_image_upload_settings(&$sandbox = []) {
    $config_entity_updater = \Drupal::classResolver(ConfigEntityUpdater::class);
-+  $editor_manager = \Drupal::service('plugin.manager.editor');
- 
 -  $callback = function (EditorInterface $editor) {
++  $editor_manager = \Drupal::service('plugin.manager.editor');
++
 +  $callback = function (EditorInterface $editor) use ($editor_manager) {
 +    if (!$editor_manager->hasDefinition($editor->getEditor())) {
 +      return FALSE;
@@ -17,23 +15,19 @@ index c95f637..0c46536 100644
      $image_upload_settings = $editor->getImageUploadSettings();
      // Only update if the editor has image uploads:
      // - empty image upload settings
-@@ -59,7 +64,7 @@ function editor_post_update_sanitize_image_upload_settings(&$sandbox = []) {
-       || ($image_upload_settings['status'] == FALSE && count($image_upload_settings) >= 2)
+@@ -64,5 +70,5 @@
        || $image_upload_settings['status'] == TRUE;
    };
  
 -  $config_entity_updater->update($sandbox, 'editor', $callback);
 +  $config_entity_updater->update($sandbox, 'editor', $callback, TRUE);
  }
-diff --git a/core/modules/views/views.post_update.php b/core/modules/views/views.post_update.php
-index 1ac8394..f5ba36e 100644
 --- a/core/modules/views/views.post_update.php
 +++ b/core/modules/views/views.post_update.php
-@@ -8,6 +8,23 @@ use Drupal\Core\Config\Entity\ConfigEntityUpdater;
- use Drupal\views\ViewEntityInterface;
+@@ -10,6 +10,24 @@
  use Drupal\views\ViewsConfigUpdater;
  
-+/**
+ /**
 + * Safely runs a Views config updater across view config entities.
 + */
 +function _views_safe_config_update(?array &$sandbox, callable $callback): void {
@@ -51,10 +45,11 @@ index 1ac8394..f5ba36e 100644
 +  }, TRUE);
 +}
 +
- /**
++/**
   * Implements hook_removed_post_updates().
   */
-@@ -57,7 +74,7 @@ function views_post_update_boolean_custom_titles(?array &$sandbox = NULL): void
+ function views_removed_post_updates() {
+@@ -55,7 +73,7 @@
  function views_post_update_oembed_eager_load(?array &$sandbox = NULL): void {
    /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
    $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
@@ -63,7 +58,7 @@ index 1ac8394..f5ba36e 100644
      return $view_config_updater->needsOembedEagerLoadFieldUpdate($view);
    });
  }
-@@ -68,7 +85,7 @@ function views_post_update_oembed_eager_load(?array &$sandbox = NULL): void {
+@@ -66,7 +84,7 @@
  function views_post_update_responsive_image_lazy_load(?array &$sandbox = NULL): void {
    /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
    $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
@@ -72,7 +67,7 @@ index 1ac8394..f5ba36e 100644
      return $view_config_updater->needsResponsiveImageLazyLoadFieldUpdate($view);
    });
  }
-@@ -79,7 +96,7 @@ function views_post_update_responsive_image_lazy_load(?array &$sandbox = NULL):
+@@ -77,7 +95,7 @@
  function views_post_update_timestamp_formatter(?array &$sandbox = NULL): void {
    /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
    $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
@@ -81,19 +76,16 @@ index 1ac8394..f5ba36e 100644
      return $view_config_updater->needsTimestampFormatterTimeDiffUpdate($view);
    });
  }
-@@ -91,10 +108,9 @@ function views_post_update_fix_revision_id_part(&$sandbox = NULL): void {
+@@ -89,7 +107,7 @@
    /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
    $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
    $view_config_updater->setDeprecationsEnabled(FALSE);
--  \Drupal::classResolver(ConfigEntityUpdater::class)
--    ->update($sandbox, 'view', function (ViewEntityInterface $view) use ($view_config_updater) {
--      return $view_config_updater->needsRevisionFieldHyphenFix($view);
--    });
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($view_config_updater) {
 +  _views_safe_config_update($sandbox, function (ViewEntityInterface $view) use ($view_config_updater) {
-+    return $view_config_updater->needsRevisionFieldHyphenFix($view);
-+  });
+     return $view_config_updater->needsRevisionFieldHyphenFix($view);
+   });
  }
-@@ -105,7 +121,7 @@ function views_post_update_fix_revision_id_part(&$sandbox = NULL): void {
+@@ -100,7 +118,7 @@
  function views_post_update_add_missing_labels(&$sandbox = NULL): void {
    /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
    $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
@@ -102,7 +94,7 @@ index 1ac8394..f5ba36e 100644
      return $view_config_updater->addLabelIfMissing($view);
    });
  }
-@@ -126,7 +142,7 @@ function views_post_update_remove_skip_cache_setting(): void {
+@@ -121,7 +139,7 @@
  function views_post_update_remove_default_argument_skip_url(?array &$sandbox = NULL): void {
    /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
    $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
@@ -111,7 +103,7 @@ index 1ac8394..f5ba36e 100644
      return $view_config_updater->needsDefaultArgumentSkipUrlUpdate($view);
    });
  }
-@@ -137,7 +153,7 @@ function views_post_update_remove_default_argument_skip_url(?array &$sandbox = N
+@@ -132,7 +150,7 @@
  function views_post_update_taxonomy_filter_user_context(?array &$sandbox = NULL): void {
    /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
    $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
@@ -120,7 +112,7 @@ index 1ac8394..f5ba36e 100644
      return $view_config_updater->needsTaxonomyTermFilterUpdate($view);
    });
  }
-@@ -148,7 +164,7 @@ function views_post_update_taxonomy_filter_user_context(?array &$sandbox = NULL)
+@@ -143,7 +161,7 @@
  function views_post_update_pager_heading(?array &$sandbox = NULL): void {
    /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
    $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
@@ -129,7 +121,7 @@ index 1ac8394..f5ba36e 100644
      return $view_config_updater->needsPagerHeadingUpdate($view);
    });
  }
-@@ -159,7 +175,7 @@ function views_post_update_pager_heading(?array &$sandbox = NULL): void {
+@@ -154,7 +172,7 @@
  function views_post_update_rendered_entity_field_cache_metadata(?array &$sandbox = NULL): void {
    /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
    $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
@@ -138,8 +130,7 @@ index 1ac8394..f5ba36e 100644
      return $view_config_updater->needsRenderedEntityFieldUpdate($view);
    });
  }
-@@ -171,7 +187,7 @@ function views_post_update_rendered_entity_field_cache_metadata(?array &$sandbox
- function views_post_update_views_data_argument_plugin_id(?array &$sandbox = NULL): void {
+@@ -166,7 +184,7 @@
    /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
    $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
    $view_config_updater->setDeprecationsEnabled(FALSE);
