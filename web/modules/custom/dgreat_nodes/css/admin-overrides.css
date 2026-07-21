@@ -26,8 +26,6 @@ ul.toolbar-menu,
 .toolbar-tray-horizontal ul li.menu-item .menu-item {
     border-block-end: 1px solid #c5c5c5!important;
 }
-/* --- END Admin 2nd row color change ------*/
-
 #toolbar-bar,
 .toolbar-menu li {
   font-size: 0.8125rem;
@@ -41,9 +39,9 @@ ul.toolbar-menu,
 .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon.is-active::before {
   filter: unset;
 }
-.toolbar .menu-item {
-    padding-bottom: 8px; /* 0*/
-}
+/*.toolbar .menu-item {
+    padding-bottom: 8px;  0
+}*/
 li.menu-item.menu-item--expanded.menu-item__admin_toolbar_tools-help {
   padding-bottom: 0.3em;
 }
@@ -78,9 +76,63 @@ li.menu-item.menu-item--expanded.menu-item__admin_toolbar_tools-help {
 }
 
 /* padding at the bottom of the dropdown items */
-.toolbar-tray a,
-.toolbar-tray a:visited {
+#toolbar-item-shortcuts-tray .toolbar-tray a, 
+#toolbar-item-shortcuts-tray .toolbar-tray a:visited,
+#toolbar-item-devel-tray .toolbar-tray a,
+#toolbar-item-devel-tray .toolbar-tray a:visited,
+#toolbar-item-user-tray .toolbar-tray a,
+#toolbar-item-user-tray .toolbar-tray a:visited {
+  padding: 1em 1.3333em 0.5em 1.3333em;
+}
+/* Edit Mode */
+.gin--edit-form #toolbar-item-administration-tray .toolbar-tray a,
+.gin--edit-form #toolbar-item-administration-tray .toolbar-tray a:visited,
+.gin--edit-form #toolbar-item-devel-tray .toolbar-tray a,
+.gin--edit-form #toolbar-item-devel-tray .toolbar-tray a:visited,
+.gin--edit-form #toolbar-item-workbench-tray .toolbar-tray a,
+.gin--edit-form #toolbar-item-workbench-tray .toolbar-tray a:visited {
   padding: 0.75em 1.55em 0.5em 1.3333em; /*1em 1.3333em 0.5em 1.3333em; */
+}
+.gin--edit-form #toolbar-item-shortcuts-tray .toolbar-tray a,
+.gin--edit-form #toolbar-item-shortcuts-tray .toolbar-tray a:visited,
+.gin--edit-form #toolbar-item-user-tray .toolbar-tray a,
+.gin--edit-form #toolbar-item-user-tray .toolbar-tray a:visited {
+  padding: 1em 1.3333em 0.5em 1.3333em;
+}
+.toolbar-menu li.menu-item.menu-item--expanded.menu-item__admin_toolbar_tools-help {
+  padding-bottom: 0 !important;
+}
+.toolbar-menu li{
+    padding-bottom: 0!important;
+}
+.toolbar-menu li:first-child {
+  margin-top: 0px!important;
+}
+.toolbar-menu li.menu-item {
+  padding-bottom: 0 !important;
+}
+
+.toolbar-tray a:hover, 
+.toolbar .toolbar-menu .toolbar-menu a:hover {
+  color: #222330;
+}
+.toolbar-horizontal .toolbar-tray .menu-item a:hover,
+.toolbar-horizontal .toolbar-tray .menu-item a:focus {
+  background-color: rgba(5, 80, 230, 0.1);
+}
+
+#toolbar-item-administration-tray ul.toolbar-menu a:focus, 
+#toolbar-item-administration-tray ul.toolbar-menu a:hover, 
+#toolbar-item-devel-tray ul.toolbar-menu a:focus, 
+#toolbar-item-devel-tray ul.toolbar-menu a:hover, 
+#toolbar-item-shortcuts-tray ul.toolbar-menu a:focus, 
+#toolbar-item-shortcuts-tray ul.toolbar-menu a:hover, 
+#toolbar-item-user-tray ul.toolbar-menu a:focus, 
+#toolbar-item-user-tray ul.toolbar-menu a:hover, 
+#toolbar-item-workbench-tray ul.toolbar-menu a:focus, 
+#toolbar-item-workbench-tray ul.toolbar-menu a:hover {
+  background-color: rgba(5, 80, 230, 0.1)!important;
+  color: #222330!important;
 }
 
 /* ===================================
