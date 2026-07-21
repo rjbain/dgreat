@@ -5,15 +5,6 @@
  /* ADMIN MENU TOP
 =================================== */
 
-/*#toolbar-item-administration-tray .toolbar-lining,
-ul.toolbar-menu,
-.toolbar .toolbar-menu li {
-  background-color: #4c4c4c!important;
- }
- .toolbar .toolbar-menu li a {
-  color: white;
-} */
-
 #toolbar-item-administration-tray .toolbar-lining,
 #toolbar-item-user-tray .toolbar-lining,
 #toolbar-item-shortcuts-tray .toolbar-lining,
@@ -75,7 +66,6 @@ li.menu-item.menu-item--expanded.menu-item__admin_toolbar_tools-help {
 .toolbar .toolbar-bar .toolbar-icon-toggle-horizontal.toolbar-icon-default::before {
   mask-size: 20px 20px!important;
 }
-
 .toolbar .toolbar-icon.toolbar-handle::before, 
 .toolbar .toolbar-handle.responsive-preview-icon::before, 
 .toolbar .toolbar-icon.toolbar-handle.open::before, 
@@ -92,12 +82,6 @@ li.menu-item.menu-item--expanded.menu-item__admin_toolbar_tools-help {
 .toolbar-tray a:visited {
   padding: 0.75em 1.55em 0.5em 1.3333em; /*1em 1.3333em 0.5em 1.3333em; */
 }
-
-/* Sticky Buttons under admin bar (Save, Preview) fix */
-/* :where(*) .region-sticky__items__inner {
-      padding-top: 30px!important;
-} */
-
 
 /* ===================================
        WYSIWYG
@@ -139,6 +123,7 @@ em.placeholder {
 figure.image.ck-widget.image_resized.ck-widget_with-resizer.ck-widget_selected {
     height: auto !important;
 }
+
 /* Accordions */
 .field--widget-entity-reference-paragraphs .paragraphs-subform > .form-wrapper {
   margin-bottom: 1rem;
@@ -148,11 +133,9 @@ figure.image.ck-widget.image_resized.ck-widget_with-resizer.ck-widget_selected {
 td > .form-item > .claro-autocomplete > .form-element {
   width: 98% !important;
 }
-
 .form-managed-file.no-upload {
   max-width: 95% !important;
 }
-
 td input.button {
   margin-top: 26px;
 }
@@ -162,15 +145,12 @@ td input.button {
   width: 1.5rem!important;
   height: 1.5rem!important;
 }
-/*:where(*) .dropbutton__item:first-of-type > * {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-.dropbutton__item:first-of-type .no-touchevents .dropbutton--extrasmall & > * {
-  padding-top: 0!important;
-  padding-bottom: 0!important;
-}*/
 li.edit.dropbutton__item.dropbutton__item--extrasmall.dropbutton-action input,
 :where(*) .dropbutton__item:first-of-type > * {
     padding: 5px 15px!important;
+}
+
+/* Getting rid of 'update image url' icon */
+button.ck.ck-button.ck-off[data-cke-tooltip-text="Update image URL"] {
+    display: none;
 }
