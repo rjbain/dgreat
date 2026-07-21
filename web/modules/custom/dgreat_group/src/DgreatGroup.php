@@ -90,11 +90,11 @@ class DgreatGroup {
   }
 
   /**
-   * Adds the groups to the quick links on creation.
+   * Prepares the groups for quick links before the initial save.
    *
    * @return bool
    */
-  public function addQuickLinkGroups() {
+  public function prepareQuickLinkGroups() {
     // Grab the quick link field.
     $quick_link = $this->entity->get('field_link_type')->getValue();
 
@@ -114,12 +114,39 @@ class DgreatGroup {
 
       // Apply the groups.
       $this->entity->set('field_group_audience', $gids);
-      $this->entity->save();
+
+      return TRUE;
+    }
+
+    return FALSE;
+  }
+
+  /**
+   * Completes quick link setup that requires the node to already exist.
+   *
+   * @return bool
+   */
+  public function finalizeQuickLinkGroups() {
+    // Grab the quick link field.
+    $quick_link = $this->entity->get('field_link_type')->getValue();
+
+    if (isset($quick_link[0]['value']) && $quick_link[0]['value'] === 'quick') {
+      $uid = \Drupal::currentUser()->id();
+      $user = User::load($uid);
+
+      if ($user === NULL || $this->entity->id() === NULL) {
+        return FALSE;
+      }
 
       // Flag the content.
       $flag_service = \Drupal::service('flag');
       $flag = $flag_service->getFlagById('favorite');
       $node = Node::load($this->entity->id());
+
+      if ($flag === NULL || $node === NULL) {
+        return FALSE;
+      }
+
       $flag_service->flag($flag, $node, $user);
 
       // Add this to the user weights table.
