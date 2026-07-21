@@ -780,3 +780,43 @@
 .ck.ck-balloon-panel.ck-balloon-panel_position_border-side_right.ck-balloon-panel_visible.ck-powered-by-balloon {
   display: none;
 }
+
+/* DOWNLOAD LINK */
+.ck-content .download_link {
+  font-size: 14px;
+  border: 1px solid #b2b2b4;
+  color: #00543c !important;
+  display: inline-block;
+  line-height: 1.2;
+  margin-top: 1.5625rem;
+  margin-bottom: 1.5625rem;
+  padding: 1.375rem 1.875rem;
+  font-weight: 400 !important;
+  text-decoration: none;
+}
+
+.ck-content .download_link::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 0.625rem;
+  background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -450px -60px;
+}
+
+.ck-content .download_link:hover,
+.ck-content .download_link:focus {
+  color: #00543c !important;
+  background-color: #e9e9e9;
+  text-decoration: underline;
+}
+
+.ck-content .download_link img.file-icon {
+  display: none;
+}
+
+@media (max-width: 37.49rem) {
+  .ck-content .download_link {
+    width: 100%;
+  }
+}
