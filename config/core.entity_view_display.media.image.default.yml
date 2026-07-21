@@ -3,7 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.image.field_category
     - field.field.media.image.field_media_image
+    - field.field.media.image.field_size
     - image.style.large
     - media.type.image
   module:
@@ -15,6 +17,14 @@ targetEntityType: media
 bundle: image
 mode: default
 content:
+  field_category:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
   field_media_image:
     type: image
     label: visually_hidden
@@ -25,6 +35,14 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_size:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
     region: content
 hidden:
   created: true

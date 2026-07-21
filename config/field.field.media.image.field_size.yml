@@ -1,0 +1,29 @@
+uuid: 9493f31b-1a94-4f80-8466-bd811a5343b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_size
+    - media.type.image
+    - taxonomy.vocabulary.size
+id: media.image.field_size
+field_name: field_size
+entity_type: media
+bundle: image
+label: Size
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      size: size
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
