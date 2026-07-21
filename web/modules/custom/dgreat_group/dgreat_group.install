@@ -19,77 +19,87 @@ function dgreat_group_update_8101() {
  */
 function dgreat_group_update_8104(&$sandbox = NULL) {
   $database = \Drupal::database();
-  $entity_type_manager = \Drupal::entityTypeManager();
-  $membership_storage = $entity_type_manager->getStorage('group_relationship');
 
   if (!isset($sandbox['initialized'])) {
     $sandbox['initialized'] = TRUE;
     $sandbox['processed'] = 0;
     $sandbox['current_id'] = 0;
     $sandbox['fixed'] = 0;
-    $sandbox['missing_group'] = 0;
     $sandbox['missing_role'] = 0;
 
     $sandbox['total'] = (int) $database->select('group_relationship_field_data', 'grfd')
       ->condition('grfd.plugin_id', 'group_membership')
+      ->condition('grfd.group_type', ['groups', 'spaces'], 'IN')
       ->countQuery()
       ->execute()
       ->fetchField();
   }
 
   $query = $database->select('group_relationship_field_data', 'grfd');
-  $query->fields('grfd', ['id', 'gid', 'type']);
+  $query->leftJoin('group_relationship__group_roles', 'grgr', 'grgr.entity_id = grfd.id');
+  $query->fields('grfd', ['id', 'type', 'langcode', 'group_type']);
   $query->condition('grfd.plugin_id', 'group_membership');
+  $query->condition('grfd.group_type', ['groups', 'spaces'], 'IN');
   $query->condition('grfd.id', $sandbox['current_id'], '>');
+  $query->isNull('grgr.entity_id');
   $query->orderBy('grfd.id', 'ASC');
-  $query->range(0, 50);
+  $query->range(0, 250);
   $memberships = $query->execute()->fetchAllAssoc('id');
 
   if (empty($memberships)) {
     $sandbox['#finished'] = 1;
-    return t('Backfilled @fixed missing group membership role assignments. Skipped @missing_group memberships with missing groups and @missing_role memberships with no default role.', [
+    return t('Backfilled @fixed missing group membership role assignments. Skipped @missing_role memberships with no default role.', [
       '@fixed' => $sandbox['fixed'],
-      '@missing_group' => $sandbox['missing_group'],
       '@missing_role' => $sandbox['missing_role'],
     ]);
   }
 
+  $rows = [];
   foreach ($memberships as $membership_id => $membership_row) {
     $sandbox['current_id'] = (int) $membership_id;
     $sandbox['processed']++;
-
-    $existing_role = $database->select('group_relationship__group_roles', 'grgr')
-      ->fields('grgr', ['group_roles_target_id'])
-      ->condition('grgr.entity_id', $membership_id)
+    $role_id = $membership_row->group_type . '-member';
+    $role_exists = $database->select('config', 'c')
+      ->fields('c', ['name'])
+      ->condition('c.name', 'group.role.' . $role_id)
       ->range(0, 1)
       ->execute()
       ->fetchField();
 
-    if ($existing_role) {
-      continue;
-    }
-
-    $membership = $membership_storage->load($membership_id);
-    if (!$membership) {
-      continue;
-    }
-
-    $group = $membership->getGroup();
-    if (!$group) {
-      $sandbox['missing_group']++;
-      continue;
-    }
-
-    $role_id = $group->bundle() . '-member';
-    $role = $entity_type_manager->getStorage('group_role')->load($role_id);
-    if (!$role) {
+    if (!$role_exists) {
       $sandbox['missing_role']++;
       continue;
     }
 
-    $membership->addRole($role_id);
-    $membership->save();
-    $sandbox['fixed']++;
+    $rows[] = [
+      'bundle' => $membership_row->type,
+      'deleted' => 0,
+      'entity_id' => (int) $membership_id,
+      'revision_id' => (int) $membership_id,
+      'langcode' => $membership_row->langcode,
+      'delta' => 0,
+      'group_roles_target_id' => $role_id,
+    ];
+  }
+
+  if ($rows) {
+    $insert = $database->insert('group_relationship__group_roles')
+      ->fields([
+        'bundle',
+        'deleted',
+        'entity_id',
+        'revision_id',
+        'langcode',
+        'delta',
+        'group_roles_target_id',
+      ]);
+
+    foreach ($rows as $row) {
+      $insert->values($row);
+    }
+
+    $insert->execute();
+    $sandbox['fixed'] += count($rows);
   }
 
   if (!empty($sandbox['total'])) {
