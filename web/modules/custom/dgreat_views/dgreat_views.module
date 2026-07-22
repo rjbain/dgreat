@@ -10,6 +10,7 @@ use Drupal\views\ViewExecutable;
 use Drupal\user\Entity\User;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\views\Form\ViewsForm;
+use Drupal\node\Entity\Node;
 
 /**
  * Implements hook_help().
@@ -31,14 +32,14 @@ function dgreat_views_help($route_name, RouteMatchInterface $route_match) {
  * Implements hook_ENTITY_TYPE_insert().
  */
 function dgreat_views_flagging_insert(EntityInterface $entity) {
-  _dgreat_views_adjust_flag_entities($entity);
+  _dgreat_views_adjust_flag_entities($entity, TRUE);
 }
 
 /**
  * Implements hook_ENTITY_TYPE_delete().
  */
 function dgreat_views_flagging_delete(EntityInterface $entity) {
-  _dgreat_views_adjust_flag_entities($entity);
+  _dgreat_views_adjust_flag_entities($entity, FALSE);
 }
 
 /**
@@ -114,6 +115,10 @@ function dgreat_views_views_pre_view(ViewExecutable $view, $display_id, array &$
   $name = $view->id();
   $display = $view->current_display;
 
+  if ($display === 'all_apps' && in_array($name, ['quick_links', 'favorite_links'], TRUE)) {
+    _dgreat_views_sync_flaggings_from_weights(\Drupal::currentUser()->id(), $name);
+  }
+
   switch ($name) {
     case 'favorite_links':
 
@@ -141,7 +146,6 @@ function dgreat_views_views_pre_view(ViewExecutable $view, $display_id, array &$
           $view->removeHandler($display, 'field', 'field_group_audience');
           $view->removeHandler($display, 'field', 'edit_node');
           $view->removeHandler($display, 'field', 'delete_node');
-          $view->removeHandler($display, 'filter', 'combine');
         }
 
         if (in_array('administrator', $user_roles)) {
@@ -149,6 +153,110 @@ function dgreat_views_views_pre_view(ViewExecutable $view, $display_id, array &$
         }
       }
       break;
+  }
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function dgreat_views_views_query_alter(ViewExecutable $view, $query) {
+  if ($view->id() !== 'quick_links' || $view->current_display !== 'all_apps') {
+    return;
+  }
+
+  $uid = \Drupal::currentUser()->id();
+  if (!$uid) {
+    $query->addWhereExpression(0, '1 = 0');
+    return;
+  }
+
+  $rows = \Drupal::database()->select('user_weights', 'u')
+    ->fields('u', ['entity_id'])
+    ->condition('uid', $uid)
+    ->condition('view_name', 'quick_links_history')
+    ->orderBy('weight', 'ASC')
+    ->execute()
+    ->fetchCol();
+
+  $history_nids = array_values(array_unique(array_map('intval', $rows)));
+  if (empty($history_nids)) {
+    $query->addWhereExpression(0, '1 = 0');
+    return;
+  }
+
+  $active_rows = \Drupal::database()->select('user_weights', 'u')
+    ->fields('u', ['entity_id'])
+    ->condition('uid', $uid)
+    ->condition('view_name', 'quick_links')
+    ->condition('entity_id', $history_nids, 'IN')
+    ->execute()
+    ->fetchCol();
+
+  $active_nids = array_values(array_unique(array_map('intval', $active_rows)));
+  $nids = array_values(array_diff($history_nids, $active_nids));
+  if (empty($nids)) {
+    $query->addWhereExpression(0, '1 = 0');
+    return;
+  }
+
+  $query->addWhere(0, 'node_field_data_group_relationship_field_data.nid', $nids, 'IN');
+}
+
+/**
+ * Ensures dashboard links tracked in user_weights also have a favorite flag.
+ *
+ * @param int $uid
+ *   The user ID.
+ * @param string $view_name
+ *   The view_name stored in user_weights.
+ */
+function _dgreat_views_sync_flaggings_from_weights(int $uid, string $view_name): void {
+  if (!$uid) {
+    return;
+  }
+
+  $db = \Drupal::database();
+  $nids = $db->select('user_weights', 'u')
+    ->fields('u', ['entity_id'])
+    ->condition('uid', $uid)
+    ->condition('view_name', $view_name)
+    ->execute()
+    ->fetchCol();
+
+  if (empty($nids)) {
+    return;
+  }
+
+  $existing = $db->select('flagging', 'f')
+    ->fields('f', ['entity_id'])
+    ->condition('uid', $uid)
+    ->condition('flag_id', 'favorite')
+    ->condition('entity_type', 'node')
+    ->condition('entity_id', $nids, 'IN')
+    ->execute()
+    ->fetchCol();
+
+  $missing = array_diff($nids, $existing);
+  if (empty($missing)) {
+    return;
+  }
+
+  $storage = \Drupal::entityTypeManager()->getStorage('flagging');
+  foreach ($missing as $nid) {
+    $node = Node::load($nid);
+    if (!$node) {
+      continue;
+    }
+
+    $flagging = $storage->create([
+      'uid' => $uid,
+      'session_id' => NULL,
+      'flag_id' => 'favorite',
+      'entity_id' => $nid,
+      'entity_type' => $node->getEntityTypeId(),
+      'global' => 0,
+    ]);
+    $flagging->save();
   }
 }
 
@@ -167,20 +275,64 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
 
       $view->result = _dgreat_views_remove_duplicates($view->result);
 
+      // Quick Links "All Links" should not show the entire system catalog.
+      // It should only show links this user has added before, including links
+      // they later removed from the dashboard.
+      if ($display === 'all_apps' && $name === 'quick_links') {
+        $uid = \Drupal::currentUser()->id();
+        $db = \Drupal::database();
+        $rows = $db->select('user_weights', 'u')
+          ->fields('u', ['entity_id', 'weight'])
+          ->condition('uid', $uid)
+          ->condition('view_name', 'quick_links_history')
+          ->orderBy('weight', 'ASC')
+          ->execute()
+          ->fetchAll();
+
+        if (empty($rows)) {
+          $view->result = [];
+          return;
+        }
+
+        $historical_nids = array_map(static fn($row) => (int) $row->entity_id, $rows);
+        $historical_weights = [];
+        foreach ($rows as $row) {
+          $historical_weights[(int) $row->entity_id] = (int) $row->weight;
+        }
+
+        $filtered_results = [];
+        foreach ($view->result as $result) {
+          $nid = (int) $result->node_field_data_group_relationship_field_data_nid;
+          if (in_array($nid, $historical_nids, TRUE)) {
+            $filtered_results[] = $result;
+          }
+        }
+
+        usort($filtered_results, static function ($a, $b) use ($historical_weights) {
+          $a_nid = (int) $a->node_field_data_group_relationship_field_data_nid;
+          $b_nid = (int) $b->node_field_data_group_relationship_field_data_nid;
+          return ($historical_weights[$a_nid] ?? PHP_INT_MAX) <=> ($historical_weights[$b_nid] ?? PHP_INT_MAX);
+        });
+
+        $view->result = $filtered_results;
+        $view->total_rows = count($filtered_results);
+        if (isset($view->pager)) {
+          $view->pager->total_items = count($filtered_results);
+          $view->pager->updatePageInfo();
+        }
+        return;
+      }
+
+      if ($display === 'all_apps' && $name === 'favorite_links') {
+        return;
+      }
+
       // Adds in the default links for my_links displays.
       $results = _dgreat_views_apply_defaults($view->result, $name);
       if ($results !== NULL) {
         $view->result = $results;
       }
       else {
-        return;
-      }
-
-      // Don't try and load user weights for admins
-      // on the all quick links view for now.
-      $roles = \Drupal::currentUser()->getRoles();
-      if (in_array('administrator', $roles)
-          && $name == 'quick_links' && $display == 'all_apps') {
         return;
       }
 
@@ -224,47 +376,10 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
         $view->result = $new_results;
       }
       else {
-        $weight = 0;
-        // Add the defaults to the user weight on first pass.
-        foreach ($view->result as $result) {
-          $nid = $result->node_field_data_group_relationship_field_data_nid;
-          $check = $db
-            ->select('user_weights', 'u')
-            ->fields('u', ['weight'])
-            ->condition('uid', $uid)
-            ->condition('entity_id', $nid)
-            ->condition('view_name', $name)
-            ->execute()
-            ->fetchField();
-
-          $weight++;
-          if ($check === FALSE) {
-            // Insert new item in weights table.
-            $db->insert('user_weights')
-              ->fields([
-                'entity_id' => $nid,
-                'uid' => $uid,
-                'view_name' => $name,
-                'weight' => $weight,
-              ])
-              ->execute();
-
-          }
-          else {
-            // Update the weights table.
-            $db->update('user_weights')
-              ->condition('uid', $uid)
-              ->condition('entity_id', $nid)
-              ->condition('view_name', $name)
-              ->fields([
-                'entity_id' => $nid,
-                'uid' => $uid,
-                'view_name' => $name,
-                'weight' => $weight,
-              ])
-              ->execute();
-          }
-        }
+        // Personal link views should only display links the user explicitly
+        // added. If there are no saved user_weights rows yet, do not seed the
+        // entire current result set into the user's dashboard.
+        $view->result = [];
       }
 
       break;
@@ -342,27 +457,23 @@ function _dgreat_views_apply_defaults($results, $name) {
   $db = \Drupal::database();
 
   // Grab all the default entity ids of the group.
-  if ($name == 'favorite_links') {
-    $query = $db
-      ->select('group__field_default_favorite_links', 'g')
-      ->fields('g', ['field_default_favorite_links_target_id'])
-      ->condition('entity_id', $gids, 'IN');
-  }
-
-  if ($name == 'quick_links') {
-    $query = $db
-      ->select('group__field_default_quick_links', 'g')
-      ->fields('g', ['field_default_quick_links_target_id'])
-      ->condition('entity_id', $gids, 'IN');
+  if (in_array($name, ['favorite_links', 'quick_links'], TRUE)) {
+    // Favorite and quick links should reflect the user's current add/remove
+    // choices. Group defaults may seed the initial flag/user_weight records
+    // elsewhere, but they should not be forced back onto the dashboard after
+    // removal.
+    $query = NULL;
   }
 
   // Loop through and grab our content ids.
-  foreach ($query->execute()->fetchAll() as $result) {
-    if ($name == 'favorite_links') {
-      $nids[] = $result->field_default_favorite_links_target_id;
-    }
-    if ($name == 'quick_links') {
-      $nids[] = $result->field_default_quick_links_target_id;
+  if ($query) {
+    foreach ($query->execute()->fetchAll() as $result) {
+      if ($name == 'favorite_links') {
+        $nids[] = $result->field_default_favorite_links_target_id;
+      }
+      if ($name == 'quick_links') {
+        $nids[] = $result->field_default_quick_links_target_id;
+      }
     }
   }
 
@@ -412,6 +523,10 @@ function _dgreat_views_apply_defaults($results, $name) {
     }
   }
 
+  if (in_array($name, ['favorite_links', 'quick_links'], TRUE)) {
+    return _dgreat_views_remove_duplicates($defaults);
+  }
+
   // Merge the results setting defaults on top.
   $merge = array_merge_recursive($defaults, $view_results);
   $results = _dgreat_views_remove_duplicates($merge);
@@ -421,17 +536,96 @@ function _dgreat_views_apply_defaults($results, $name) {
 /**
  * Helper function update the user weights table for flagged entities.
  *
- * @param $entity
- *   The EntityInterface object. *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ *   The entity being flagged or unflagged.
+ * @param bool $is_flagged
+ *   TRUE when a flag is being created, FALSE when it is being removed.
  */
-function _dgreat_views_adjust_flag_entities($entity) {
-  // Adds items from user_weights after flagging.
+function _dgreat_views_adjust_flag_entities(EntityInterface $entity, bool $is_flagged) {
   $nid = $entity->get('entity_id')->getValue();
   $uid = $entity->get('uid')->getValue();
 
-  \Drupal::state()->set('flagged_fav', TRUE);
+  \Drupal::state()->set('flagged_fav', $is_flagged);
 
   if (isset($nid[0]["value"]) && isset($uid[0]["target_id"])) {
+    $db = \Drupal::database();
+    $account_id = (int) $uid[0]["target_id"];
+    $entity_id = (int) $nid[0]["value"];
+    $node = Node::load($entity_id);
+
+    // Quick-link dashboard add/remove actions are driven by flagging, but the
+    // flag links do not consistently carry a destination query parameter.
+    // Detect quick-link nodes directly so we always maintain the active
+    // dashboard rows and the persistent all-apps history rows.
+    if ($node && $node->bundle() === 'favorite_link' && $node->hasField('field_link_type')) {
+      $link_type = $node->get('field_link_type')->value;
+
+      if ($link_type === 'quick') {
+        $check = $db
+          ->select('user_weights', 'u')
+          ->fields('u', ['entity_id'])
+          ->condition('uid', $account_id)
+          ->condition('entity_id', $entity_id)
+          ->condition('view_name', 'quick_links')
+          ->execute()
+          ->fetchField();
+
+        $history_check = $db
+          ->select('user_weights', 'u')
+          ->fields('u', ['entity_id'])
+          ->condition('uid', $account_id)
+          ->condition('entity_id', $entity_id)
+          ->condition('view_name', 'quick_links_history')
+          ->execute()
+          ->fetchField();
+
+        $weight = (int) $db
+          ->query("SELECT COALESCE(MAX(weight), 0) FROM {user_weights} WHERE uid = :uid", [':uid' => $account_id])
+          ->fetchField();
+
+        if ($is_flagged) {
+          if ($check === FALSE) {
+            $db->insert('user_weights')
+              ->fields([
+                'entity_id' => $entity_id,
+                'uid' => $account_id,
+                'view_name' => 'quick_links',
+                'weight' => $weight + 1,
+              ])
+              ->execute();
+          }
+
+          if ($history_check === FALSE) {
+            $db->insert('user_weights')
+              ->fields([
+                'entity_id' => $entity_id,
+                'uid' => $account_id,
+                'view_name' => 'quick_links_history',
+                'weight' => $weight + 1,
+              ])
+              ->execute();
+          }
+        }
+        else {
+          if ($history_check === FALSE) {
+            $db->insert('user_weights')
+              ->fields([
+                'entity_id' => $entity_id,
+                'uid' => $account_id,
+                'view_name' => 'quick_links_history',
+                'weight' => $weight + 1,
+              ])
+              ->execute();
+          }
+
+          $db->delete('user_weights')
+            ->condition('uid', $account_id)
+            ->condition('entity_id', $entity_id)
+            ->condition('view_name', 'quick_links')
+            ->execute();
+        }
+      }
+    }
 
     // Need to use the $_GET params here since we are within the flagging
     // mechanisms and can;t get proper routes otherwise.
@@ -444,7 +638,6 @@ function _dgreat_views_adjust_flag_entities($entity) {
       $name = isset($view_get[1]) ? $view_get[1] : '';
 
       if (!empty($name)) {
-        $db = \Drupal::database();
         $check = $db
           ->select('user_weights', 'u')
           ->fields('u', ['entity_id'])
@@ -460,29 +653,84 @@ function _dgreat_views_adjust_flag_entities($entity) {
           ->query($sql, [':uid' => $uid[0]["target_id"]])
           ->fetchField();
 
-        if ($check === FALSE) {
-          // Insert new item in weights table.
-          $db->insert('user_weights')
-            ->fields([
-              'entity_id' => $nid[0]["value"],
-              'uid' => $uid[0]["target_id"],
-              'view_name' => $name,
-              'weight' => $weight + 1,
-            ])
-            ->execute();
+        if ($is_flagged) {
+          if ($check === FALSE) {
+            // Insert new item in weights table.
+            $db->insert('user_weights')
+              ->fields([
+                'entity_id' => $nid[0]["value"],
+                'uid' => $uid[0]["target_id"],
+                'view_name' => $name,
+                'weight' => $weight + 1,
+              ])
+              ->execute();
+          }
+          else {
+            // Update the weights table.
+            $db->update('user_weights')
+              ->condition('uid', $uid[0]["target_id"])
+              ->condition('entity_id', $nid[0]["value"])
+              ->condition('view_name', $name)
+              ->fields([
+                'entity_id' => $nid[0]["value"],
+                'uid' => $uid[0]["target_id"],
+                'view_name' => $name,
+                'weight' => $weight + 1,
+              ])
+              ->execute();
+          }
+
+          // Keep a persistent history row so /quick-links/allapps can show
+          // links the user removed and let them add those links back later.
+          $history_check = $db
+            ->select('user_weights', 'u')
+            ->fields('u', ['entity_id'])
+            ->condition('uid', $uid[0]["target_id"])
+            ->condition('entity_id', $nid[0]["value"])
+            ->condition('view_name', 'quick_links_history')
+            ->execute()
+            ->fetchField();
+
+          if ($history_check === FALSE) {
+            $db->insert('user_weights')
+              ->fields([
+                'entity_id' => $nid[0]["value"],
+                'uid' => $uid[0]["target_id"],
+                'view_name' => 'quick_links_history',
+                'weight' => $weight + 1,
+              ])
+              ->execute();
+          }
         }
-        else {
-          // Update the weights table.
-          $db->update('user_weights')
+        elseif ($check !== FALSE) {
+          // Preserve a persistent history row so removed quick links can be
+          // shown on /quick-links/allapps and added back later, even if the
+          // link predates the dedicated history tracking.
+          $history_check = $db
+            ->select('user_weights', 'u')
+            ->fields('u', ['entity_id'])
+            ->condition('uid', $uid[0]["target_id"])
+            ->condition('entity_id', $nid[0]["value"])
+            ->condition('view_name', 'quick_links_history')
+            ->execute()
+            ->fetchField();
+
+          if ($name === 'quick_links' && $history_check === FALSE) {
+            $db->insert('user_weights')
+              ->fields([
+                'entity_id' => $nid[0]["value"],
+                'uid' => $uid[0]["target_id"],
+                'view_name' => 'quick_links_history',
+                'weight' => $weight + 1,
+              ])
+              ->execute();
+          }
+
+          // Remove the link from the user's ordered list when it is unflagged.
+          $db->delete('user_weights')
             ->condition('uid', $uid[0]["target_id"])
             ->condition('entity_id', $nid[0]["value"])
             ->condition('view_name', $name)
-            ->fields([
-              'entity_id' => $nid[0]["value"],
-              'uid' => $uid[0]["target_id"],
-              'view_name' => $name,
-              'weight' => $weight + 1,
-            ])
             ->execute();
         }
       }

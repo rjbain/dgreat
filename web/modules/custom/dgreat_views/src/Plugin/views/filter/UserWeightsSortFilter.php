@@ -92,11 +92,16 @@ class UserWeightsSortFilter extends FilterPluginBase implements ContainerFactory
       ->fetchAll();
     $count = count($rows);
 
-    // Sort by our user weights.
     if (!$count) {
-      // Just sort by title if there are no user weights yet.
+      // No saved links for this user on this view, so return no rows.
+      $this->query->addWhereExpression(0, '1 = 0');
       $this->query->addOrderBy($this->tableAlias, 'title', 'ASC');
+      return;
     }
+
+    $nids = array_map(static fn($row) => (int) $row->entity_id, $rows);
+    $this->query->addWhere(0, $this->tableAlias . '.nid', $nids, 'IN');
+    $this->query->addOrderBy($this->tableAlias, 'title', 'ASC');
   }
 
 }
