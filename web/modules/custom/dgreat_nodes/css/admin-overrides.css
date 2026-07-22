@@ -202,7 +202,8 @@ li.edit.dropbutton__item.dropbutton__item--extrasmall.dropbutton-action input,
     padding: 5px 15px!important;
 }
 
-/* Getting rid of 'update image url' icon */
-.ck button[data-cke-tooltip-text="Insert image via URL"] {
+/* Hide the image URL button across CKEditor state changes */
+.ck button[data-cke-tooltip-text*="image via URL"],
+.ck button[data-cke-tooltip-text*="image URL"] {
   display: none !important;
 }
