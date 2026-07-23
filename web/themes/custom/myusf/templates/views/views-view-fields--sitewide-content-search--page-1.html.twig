@@ -1,0 +1,62 @@
+{#
+/**
+ * @file
+ * Theme override for fields in the sitewide content search page view.
+ *
+ * Cleans up the indexed paragraph text so search results show a more readable
+ * excerpt instead of comma-separated fragments from multi-value content.
+ *
+ * Available variables:
+ * - view: The view object.
+ * - fields: A list of fields, each one contains:
+ *   - content: The output of the field.
+ *   - raw: The raw data for the field, if it exists.
+ *   - class: The safe class ID to use.
+ *   - handler: The Views field handler controlling this field.
+ *
+ * @see template_preprocess_views_view_fields()
+ */
+#}
+{% set title = fields.field_display_title.content|render|striptags|trim %}
+{% set url = fields.field_display_title.raw %}
+{% set raw_excerpt = fields.bp_text.content|render|striptags %}
+{% set raw_excerpt = raw_excerpt|replace({
+  '&nbsp;': ' ',
+  '&#160;': ' ',
+  ' ': ' '
+})|trim %}
+{% set excerpt_parts = raw_excerpt|split(',') %}
+{% set excerpt = '' %}
+{% set fallback_excerpt = '' %}
+
+{% for part in excerpt_parts %}
+  {% set cleaned_part = part|replace({
+    '&nbsp;': ' ',
+    '&#160;': ' ',
+    ' ': ' '
+  })|trim %}
+  {% if cleaned_part and fallback_excerpt == '' %}
+    {% set fallback_excerpt = cleaned_part %}
+  {% endif %}
+  {% if cleaned_part|length > 40 and excerpt == '' %}
+    {% set excerpt = cleaned_part %}
+  {% endif %}
+{% endfor %}
+
+{% if excerpt == '' %}
+  {% set excerpt = fallback_excerpt %}
+{% endif %}
+
+<article class="sitewide-content-search-result">
+  {% if fields.field_display_title.content %}
+    <h3 class="sitewide-content-search-result__title">
+      {{ fields.field_display_title.content }}
+    </h3>
+  {% endif %}
+
+  {% if excerpt %}
+    <div class="sitewide-content-search-result__excerpt">
+      {{ excerpt }}
+    </div>
+  {% endif %}
+</article>

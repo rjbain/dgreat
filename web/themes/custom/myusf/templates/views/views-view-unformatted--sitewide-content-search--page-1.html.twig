@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Theme override for unformatted rows in the sitewide content search page.
+ *
+ * Adds a horizontal rule between results for the page_1 display only.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+
+{% for row in rows %}
+  <div{{ row.attributes.addClass('sitewide-content-search__result') }}>
+    {{ row.content }}
+  </div>
+  {% if not loop.last %}
+    <hr class="sitewide-content-search__divider">
+  {% endif %}
+{% endfor %}
