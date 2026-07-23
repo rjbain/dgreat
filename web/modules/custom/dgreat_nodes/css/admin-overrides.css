@@ -171,8 +171,19 @@ em.placeholder {
 .imce-selector-button.imce-url-button:hover::after {
     text-decoration: none;
 }
-/* Big Image spacing issue fix */
-figure.image.ck-widget.image_resized.ck-widget_with-resizer.ck-widget_selected {
+/* Big Image spacing issue fix.
+   A resized image stores an inline height on the <figure> that describes the
+   image alone, but the figure box also has to hold the <figcaption>. height:auto
+   lets it size to its real content.
+
+   This must NOT be limited to .ck-widget_selected. When it was, the figure
+   snapped back to the stored inline height the moment focus left the widget —
+   e.g. when the caret moves into the caption — shrinking the box by exactly the
+   caption's height. The caption then slid down into the image toolbar balloon,
+   which is anchored to the figure box, so the balloon covered the caption while
+   you were typing in it. Applying it unconditionally keeps the figure, caption
+   and balloon geometry identical in every selection state. */
+figure.image.ck-widget.image_resized.ck-widget_with-resizer {
     height: auto !important;
 }
 
