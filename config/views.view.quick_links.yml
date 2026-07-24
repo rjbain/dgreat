@@ -870,7 +870,7 @@ display:
           admin_label: 'Group content Content'
           entity_type: group_relationship
           plugin_id: group_relationship_to_entity
-          required: true
+          required: false
           group_relation_plugins:
             'group_node:favorite_link': 'group_node:favorite_link'
             'group_node:article': '0'
@@ -896,7 +896,7 @@ display:
           admin_label: Flags
           entity_type: node
           plugin_id: flag_relationship
-          required: true
+          required: false
           flag: favorite
           user_scope: current
       group_by: false
@@ -1772,6 +1772,45 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        user_weights:
+          id: user_weights
+          table: node_field_data
+          field: user_weights
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: user_weight_filter_sort
+          operator: '='
+          value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
         user_filter:
           id: user_filter
           table: node_field_data
@@ -2244,6 +2283,45 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        user_weights:
+          id: user_weights
+          table: node_field_data
+          field: user_weights
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: user_weight_filter_sort
+          operator: '='
+          value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:
@@ -2306,7 +2384,7 @@ display:
           admin_label: Flags
           entity_type: node
           plugin_id: flag_relationship
-          required: false
+          required: true
           flag: favorite
           user_scope: current
       group_by: false
