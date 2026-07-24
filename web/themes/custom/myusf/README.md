@@ -62,4 +62,3 @@ To trigger the pipeline, push changes to GitHub.
 ## 🙋‍♀️ Support
 
 Contact the web development team or refer to the `lando.yml` file for advanced configurations.
-[redeploy]
