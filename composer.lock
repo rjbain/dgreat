@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ed7d9cd7f1abe758da24f7383d393f9",
+    "content-hash": "de6b49c941d55c9d256a913440e5f332",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -7509,45 +7509,100 @@
         },
         {
             "name": "drupal/search_api_pantheon",
-            "version": "3.0.2",
+            "version": "8.2.2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/search_api_pantheon.git",
-                "reference": "3.0.2"
+                "reference": "8.2.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/search_api_pantheon-3.0.2.zip",
-                "reference": "3.0.2",
-                "shasum": "969b9141b78eabf4b187ce17dc7af89a30f38f03"
+                "url": "https://ftp.drupal.org/files/projects/search_api_pantheon-8.2.2.zip",
+                "reference": "8.2.2",
+                "shasum": "d850a1c64460301b715533bdeea2c464c4454090"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9 || ^10",
-                "drupal/search_api_solr": "^4.2",
-                "drupal/search_api_solr_legacy": "*"
+                "drupal/core": "^9.4 || ^10",
+                "drupal/search_api_solr": "^4.3",
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-zip": "*",
+                "guzzlehttp/guzzle": "^6.5.7|^7.5",
+                "http-interop/http-factory-guzzle": "^1.0",
+                "kint-php/kint": "^4.1|^5",
+                "php": ">=7.4",
+                "psr/event-dispatcher": "^1.0",
+                "symfony/finder": "^4.4|^5|^6",
+                "symfony/yaml": "^4.4|^5|^6"
             },
             "require-dev": {
-                "drupal/coder": "2.0-beta1",
-                "drupal/drupal-extension": "^3.4",
-                "drush-ops/behat-drush-endpoint": "*",
-                "squizlabs/php_codesniffer": "2.0.*@dev"
+                "consolidation/robo": "^3.0",
+                "czproject/git-php": "^4.0",
+                "drupal/coder": "@stable",
+                "drupal/search_api_solr": "*",
+                "phpunit/phpunit": "@stable",
+                "psy/psysh": "@stable",
+                "squizlabs/php_codesniffer": "@stable"
+            },
+            "suggest": {
+                "drupal/facets": "^1.8",
+                "drupal/search_api_autocomplete": "^1",
+                "drupal/search_api_page": "^1.0",
+                "drupal/search_api_spellcheck": "^3",
+                "kint-php/kint": "@stable"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.0.2",
-                    "datestamp": "1678536742",
+                    "version": "8.2.2",
+                    "datestamp": "1732037989",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^10"
+                    }
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Drupal\\search_api_pantheon\\": "src/",
+                    "Drupal\\search_api_pantheon\\tests\\": "tests/",
+                    "Drupal\\search_api\\": "vendor/drupal/search_api/src/",
+                    "Drupal\\search_api_solr\\": "vendor/drupal/search_api_solr/src/"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
+            "scripts": {
+                "code:test": [
+                    "vendor/bin/phpunit -c ./phpunit.xml"
+                ],
+                "code:fix": [
+                    "vendor/bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",
+                    "vendor/bin/phpcbf . --ignore=RoboFile.php,vendor src modules"
+                ],
+                "code:lint": [
+                    "vendor/bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",
+                    "vendor/bin/phpcs --ignore=RoboFile.php,vendor . "
+                ],
+                "pre-commit": [
+                    "composer validate --strict",
+                    "@code:fix",
+                    "@code:lint",
+                    "@code:test"
+                ]
+            },
             "license": [
-                "GPL-2.0-or-later"
+                "MIT"
             ],
             "authors": [
+                {
+                    "name": "afolabiba",
+                    "homepage": "https://www.drupal.org/user/3869103"
+                },
                 {
                     "name": "anaispantheor",
                     "homepage": "https://www.drupal.org/user/3846519"
@@ -7565,6 +7620,10 @@
                     "homepage": "https://www.drupal.org/user/1349780"
                 },
                 {
+                    "name": "metasim",
+                    "homepage": "https://www.drupal.org/user/3714887"
+                },
+                {
                     "name": "pantheon-ci",
                     "homepage": "https://www.drupal.org/user/3735947"
                 },
@@ -7577,19 +7636,11 @@
                     "homepage": "https://www.drupal.org/user/3581210"
                 },
                 {
-                    "name": "scottbuscemi",
-                    "homepage": "https://www.drupal.org/user/3829532"
-                },
-                {
                     "name": "stevector",
                     "homepage": "https://www.drupal.org/user/179805"
-                },
-                {
-                    "name": "sumitmadan",
-                    "homepage": "https://www.drupal.org/user/1538790"
                 }
             ],
-            "description": "Search API + Solr + Pantheon integration",
+            "description": "Connection module for Pantheon Search (solr 8)",
             "homepage": "https://www.drupal.org/project/search_api_pantheon",
             "support": {
                 "source": "https://git.drupalcode.org/project/search_api_pantheon"
@@ -7695,60 +7746,6 @@
                 "source": "http://git.drupal.org/project/search_api_solr.git",
                 "issues": "https://www.drupal.org/project/issues/search_api_solr",
                 "chat": "https://drupalchat.me/channel/search"
-            }
-        },
-        {
-            "name": "drupal/search_api_solr_legacy",
-            "version": "4.3.3",
-            "require": {
-                "drupal/core": "^9.3 || ^10.0",
-                "drupal/search_api_solr": "*"
-            },
-            "type": "metapackage",
-            "extra": {
-                "drupal": {
-                    "version": "4.3.3",
-                    "datestamp": "1712757702",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "amateescu",
-                    "homepage": "https://www.drupal.org/user/729614"
-                },
-                {
-                    "name": "berdir",
-                    "homepage": "https://www.drupal.org/user/214652"
-                },
-                {
-                    "name": "cspitzlay",
-                    "homepage": "https://www.drupal.org/user/419305"
-                },
-                {
-                    "name": "drunken monkey",
-                    "homepage": "https://www.drupal.org/user/205582"
-                },
-                {
-                    "name": "mkalkbrenner",
-                    "homepage": "https://www.drupal.org/user/124705"
-                },
-                {
-                    "name": "nick_vh",
-                    "homepage": "https://www.drupal.org/user/122682"
-                }
-            ],
-            "description": "Add support for older unsupported Solr versions (3.6, >=4.5, 5.x).",
-            "homepage": "https://www.drupal.org/project/search_api_solr",
-            "support": {
-                "source": "https://git.drupalcode.org/project/search_api_solr"
             }
         },
         {
@@ -10567,6 +10564,129 @@
                 "source": "https://github.com/mtibben/html2text/tree/4.3.2"
             },
             "time": "2024-08-20T02:43:29+00:00"
+        },
+        {
+            "name": "http-interop/http-factory-guzzle",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/http-interop/http-factory-guzzle.git",
+                "reference": "c2c859ceb05c3f42e710b60555f4c35b6a4a3995"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/http-interop/http-factory-guzzle/zipball/c2c859ceb05c3f42e710b60555f4c35b6a4a3995",
+                "reference": "c2c859ceb05c3f42e710b60555f4c35b6a4a3995",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/psr7": "^1.7||^2.0",
+                "php": ">=7.3",
+                "psr/http-factory": "^1.0"
+            },
+            "provide": {
+                "psr/http-factory-implementation": "^1.0"
+            },
+            "require-dev": {
+                "http-interop/http-factory-tests": "^0.9",
+                "phpunit/phpunit": "^9.5"
+            },
+            "suggest": {
+                "guzzlehttp/psr7": "Includes an HTTP factory starting in version 2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Http\\Factory\\Guzzle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "An HTTP Factory using Guzzle PSR7",
+            "keywords": [
+                "factory",
+                "http",
+                "psr-17",
+                "psr-7"
+            ],
+            "support": {
+                "issues": "https://github.com/http-interop/http-factory-guzzle/issues",
+                "source": "https://github.com/http-interop/http-factory-guzzle/tree/1.2.1"
+            },
+            "time": "2025-12-15T11:28:16+00:00"
+        },
+        {
+            "name": "kint-php/kint",
+            "version": "4.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kint-php/kint.git",
+                "reference": "7601bfd95ccc50a1b903c2764b31d00919e8edd9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kint-php/kint/zipball/7601bfd95ccc50a1b903c2764b31d00919e8edd9",
+                "reference": "7601bfd95ccc50a1b903c2764b31d00919e8edd9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "phpspec/prophecy-phpunit": "^2",
+                "phpunit/phpunit": "^9.0",
+                "seld/phar-utils": "^1.0",
+                "symfony/finder": "^3.0 || ^4.0 || ^5.0",
+                "vimeo/psalm": "^4.0"
+            },
+            "suggest": {
+                "kint-php/kint-helpers": "Provides extra helper functions",
+                "kint-php/kint-twig": "Provides d() and s() functions in twig templates"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "init.php"
+                ],
+                "psr-4": {
+                    "Kint\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Vollebregt",
+                    "homepage": "https://github.com/jnvsor"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/kint-php/kint/graphs/contributors"
+                }
+            ],
+            "description": "Kint - debugging tool for PHP developers",
+            "homepage": "https://kint-php.github.io/kint/",
+            "keywords": [
+                "debug",
+                "kint",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/kint-php/kint/issues",
+                "source": "https://github.com/kint-php/kint/tree/4.2.3"
+            },
+            "time": "2022-10-01T20:16:33+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
@@ -18466,71 +18586,6 @@
             "time": "2025-12-12T08:56:22+00:00"
         },
         {
-            "name": "kint-php/kint",
-            "version": "4.2.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kint-php/kint.git",
-                "reference": "7601bfd95ccc50a1b903c2764b31d00919e8edd9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kint-php/kint/zipball/7601bfd95ccc50a1b903c2764b31d00919e8edd9",
-                "reference": "7601bfd95ccc50a1b903c2764b31d00919e8edd9",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.0",
-                "phpspec/prophecy-phpunit": "^2",
-                "phpunit/phpunit": "^9.0",
-                "seld/phar-utils": "^1.0",
-                "symfony/finder": "^3.0 || ^4.0 || ^5.0",
-                "vimeo/psalm": "^4.0"
-            },
-            "suggest": {
-                "kint-php/kint-helpers": "Provides extra helper functions",
-                "kint-php/kint-twig": "Provides d() and s() functions in twig templates"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "init.php"
-                ],
-                "psr-4": {
-                    "Kint\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jonathan Vollebregt",
-                    "homepage": "https://github.com/jnvsor"
-                },
-                {
-                    "name": "Contributors",
-                    "homepage": "https://github.com/kint-php/kint/graphs/contributors"
-                }
-            ],
-            "description": "Kint - debugging tool for PHP developers",
-            "homepage": "https://kint-php.github.io/kint/",
-            "keywords": [
-                "debug",
-                "kint",
-                "php"
-            ],
-            "support": {
-                "issues": "https://github.com/kint-php/kint/issues",
-                "source": "https://github.com/kint-php/kint/tree/4.2.3"
-            },
-            "time": "2022-10-01T20:16:33+00:00"
-        },
-        {
             "name": "mikey179/vfsstream",
             "version": "v1.6.12",
             "source": {
@@ -21242,7 +21297,7 @@
     },
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": {},
-    "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.2.0"
 }
