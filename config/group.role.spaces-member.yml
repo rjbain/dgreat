@@ -7,11 +7,17 @@ dependencies:
 id: spaces-member
 label: Member
 weight: -100
-internal: true
-audience: member
+admin: false
+scope: individual
+global_role: null
 group_type: spaces
-permissions_ui: true
 permissions:
   - 'view group'
+  - 'view group_node:favorite_link entity'
+  - 'view group_node:favorite_link content'
   - 'update own group_node:page entity'
   - 'view group_node:page entity'
+  - 'view group_node:section_homepage entity'
+  - 'view group_node:favorite_link relationship'
+  - 'view group_node:page relationship'
+  - 'view group_node:section_homepage relationship'

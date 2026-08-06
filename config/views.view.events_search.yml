@@ -946,6 +946,7 @@ display:
         type: full
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 10
           total_pages: null
           id: 0
@@ -977,7 +978,7 @@ display:
         type: none
         options: {  }
       cache:
-        type: none
+        type: search_api_none
         options: {  }
       empty:
         area_text_custom:
@@ -1024,7 +1025,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options: {  }
           summary:
             sort_order: asc
@@ -1060,7 +1060,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options: {  }
           summary:
             sort_order: asc
@@ -1096,7 +1095,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options: {  }
           summary:
             sort_order: asc
@@ -1269,7 +1267,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options: {  }
           summary:
             sort_order: asc
@@ -1305,7 +1302,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options: {  }
           summary:
             sort_order: asc
@@ -1341,7 +1337,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options: {  }
           summary:
             sort_order: asc
@@ -1377,7 +1372,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options: {  }
           summary:
             sort_order: asc
@@ -1421,32 +1415,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              faculty: '0'
-              all_access: '0'
-              student: '0'
-              online_student: '0'
-              admitted_student: '0'
-              finance: '0'
-              employee: '0'
-              prehire_faculty: '0'
-              prehire_staff: '0'
-              bi_group: '0'
-              vcl_staff: '0'
-              online_intaccept: '0'
-              service_editor: '0'
-              som_ug: '0'
-              som_grad: '0'
-              as_ug: '0'
-              as_grad: '0'
-              sonhp_ug: '0'
-              sonhp_grad: '0'
-              law: '0'
-              soe: '0'
-              box_editor: '0'
-              webform_editor: '0'
             min_placeholder: ''
             max_placeholder: ''
             placeholder: ''
@@ -1552,7 +1520,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options: {  }
           summary:
             sort_order: asc
@@ -2612,7 +2579,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options: {  }
           summary:
             sort_order: asc
@@ -2691,7 +2657,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options: {  }
           summary:
             sort_order: asc
@@ -3764,7 +3729,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options: {  }
           summary:
             sort_order: asc
@@ -4844,7 +4808,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options: {  }
           summary:
             sort_order: asc
@@ -5912,7 +5875,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options: {  }
           summary:
             sort_order: asc
@@ -6880,7 +6842,10 @@ display:
           bef:
             general:
               autosubmit: false
+              auto_submit_sort_only: false
+              autosubmit_breakpoint: ''
               autosubmit_exclude_textfield: false
+              autosubmit_textfield_minimum_length: 3
               autosubmit_hide: false
               input_required: false
               allow_secondary: false
@@ -6892,51 +6857,86 @@ display:
                 plugin_id: default
                 advanced:
                   sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   placeholder_text: Search
                   rewrite:
                     filter_rewrite_values: ''
                   collapsible: false
+                  open_by_default: false
                   is_secondary: false
+                  hide_label: false
+                  field_classes: ''
               field_start_date:
                 plugin_id: default
                 advanced:
                   sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   placeholder_text: ''
                   rewrite:
                     filter_rewrite_values: ''
                   collapsible: false
+                  open_by_default: false
                   is_secondary: false
+                  hide_label: false
+                  field_classes: ''
               field_end_date:
                 plugin_id: default
                 advanced:
                   sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   placeholder_text: ''
                   rewrite:
                     filter_rewrite_values: ''
                   collapsible: false
+                  open_by_default: false
                   is_secondary: false
+                  hide_label: false
+                  field_classes: ''
               field_category:
                 plugin_id: bef
                 advanced:
                   sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   placeholder_text: ''
                   rewrite:
                     filter_rewrite_values: ''
                   collapsible: false
+                  open_by_default: false
                   is_secondary: false
+                  hide_label: false
+                  field_classes: ''
                 select_all_none: false
                 select_all_none_nested: false
+                soft_limit: 0
+                soft_limit_label_less: 'Show less'
+                soft_limit_label_more: 'Show more'
+                scrollable: false
+                scrollable_height: 300
               field_target:
                 plugin_id: bef
                 advanced:
                   sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   placeholder_text: ''
                   rewrite:
                     filter_rewrite_values: ''
                   collapsible: false
+                  open_by_default: false
                   is_secondary: false
+                  hide_label: false
+                  field_classes: ''
                 select_all_none: false
                 select_all_none_nested: false
+                soft_limit: 0
+                soft_limit_label_less: 'Show less'
+                soft_limit_label_more: 'Show more'
+                scrollable: false
+                scrollable_height: 300
       sorts:
         field_start_date:
           id: field_start_date
@@ -6979,32 +6979,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              faculty: '0'
-              all_access: '0'
-              student: '0'
-              online_student: '0'
-              admitted_student: '0'
-              finance: '0'
-              employee: '0'
-              prehire_faculty: '0'
-              prehire_staff: '0'
-              bi_group: '0'
-              vcl_staff: '0'
-              online_intaccept: '0'
-              service_editor: '0'
-              som_ug: '0'
-              som_grad: '0'
-              as_ug: '0'
-              as_grad: '0'
-              sonhp_ug: '0'
-              sonhp_grad: '0'
-              law: '0'
-              soe: '0'
-              box_editor: '0'
-              webform_editor: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -7098,32 +7072,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              faculty: '0'
-              all_access: '0'
-              student: '0'
-              online_student: '0'
-              admitted_student: '0'
-              finance: '0'
-              employee: '0'
-              prehire_faculty: '0'
-              prehire_staff: '0'
-              bi_group: '0'
-              vcl_staff: '0'
-              online_intaccept: '0'
-              service_editor: '0'
-              som_ug: '0'
-              som_grad: '0'
-              as_ug: '0'
-              as_grad: '0'
-              sonhp_ug: '0'
-              sonhp_grad: '0'
-              law: '0'
-              soe: '0'
-              box_editor: '0'
-              webform_editor: '0'
             min_placeholder: ''
             max_placeholder: ''
             placeholder: ''
@@ -7169,32 +7117,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              faculty: '0'
-              all_access: '0'
-              student: '0'
-              online_student: '0'
-              admitted_student: '0'
-              finance: '0'
-              employee: '0'
-              prehire_faculty: '0'
-              prehire_staff: '0'
-              bi_group: '0'
-              vcl_staff: '0'
-              online_intaccept: '0'
-              service_editor: '0'
-              som_ug: '0'
-              som_grad: '0'
-              as_ug: '0'
-              as_grad: '0'
-              sonhp_ug: '0'
-              sonhp_grad: '0'
-              law: '0'
-              soe: '0'
-              box_editor: '0'
-              webform_editor: '0'
             min_placeholder: ''
             max_placeholder: ''
             placeholder: ''
@@ -7236,32 +7158,6 @@ display:
             multiple: true
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              faculty: '0'
-              all_access: '0'
-              student: '0'
-              online_student: '0'
-              admitted_student: '0'
-              finance: '0'
-              employee: '0'
-              prehire_faculty: '0'
-              prehire_staff: '0'
-              bi_group: '0'
-              vcl_staff: '0'
-              online_intaccept: '0'
-              service_editor: '0'
-              som_ug: '0'
-              som_grad: '0'
-              as_ug: '0'
-              as_grad: '0'
-              sonhp_ug: '0'
-              sonhp_grad: '0'
-              law: '0'
-              soe: '0'
-              box_editor: '0'
-              webform_editor: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -8278,7 +8174,10 @@ display:
           bef:
             general:
               autosubmit: false
+              auto_submit_sort_only: false
+              autosubmit_breakpoint: ''
               autosubmit_exclude_textfield: false
+              autosubmit_textfield_minimum_length: 3
               autosubmit_hide: false
               input_required: false
               allow_secondary: false
@@ -8290,51 +8189,86 @@ display:
                 plugin_id: default
                 advanced:
                   sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   placeholder_text: Search
                   rewrite:
                     filter_rewrite_values: ''
                   collapsible: false
+                  open_by_default: false
                   is_secondary: false
+                  hide_label: false
+                  field_classes: ''
               field_start_date:
                 plugin_id: default
                 advanced:
                   sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   placeholder_text: ''
                   rewrite:
                     filter_rewrite_values: ''
                   collapsible: false
+                  open_by_default: false
                   is_secondary: false
+                  hide_label: false
+                  field_classes: ''
               field_end_date:
                 plugin_id: default
                 advanced:
                   sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   placeholder_text: ''
                   rewrite:
                     filter_rewrite_values: ''
                   collapsible: false
+                  open_by_default: false
                   is_secondary: false
+                  hide_label: false
+                  field_classes: ''
               field_category:
                 plugin_id: bef
                 advanced:
                   sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   placeholder_text: ''
                   rewrite:
                     filter_rewrite_values: ''
                   collapsible: false
+                  open_by_default: false
                   is_secondary: false
+                  hide_label: false
+                  field_classes: ''
                 select_all_none: false
                 select_all_none_nested: false
+                soft_limit: 0
+                soft_limit_label_less: 'Show less'
+                soft_limit_label_more: 'Show more'
+                scrollable: false
+                scrollable_height: 300
               field_target:
                 plugin_id: bef
                 advanced:
                   sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   placeholder_text: ''
                   rewrite:
                     filter_rewrite_values: ''
                   collapsible: false
+                  open_by_default: false
                   is_secondary: false
+                  hide_label: false
+                  field_classes: ''
                 select_all_none: false
                 select_all_none_nested: false
+                soft_limit: 0
+                soft_limit_label_less: 'Show less'
+                soft_limit_label_more: 'Show more'
+                scrollable: false
+                scrollable_height: 300
       sorts:
         field_start_date:
           id: field_start_date
@@ -8377,32 +8311,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              faculty: '0'
-              all_access: '0'
-              student: '0'
-              online_student: '0'
-              admitted_student: '0'
-              finance: '0'
-              employee: '0'
-              prehire_faculty: '0'
-              prehire_staff: '0'
-              bi_group: '0'
-              vcl_staff: '0'
-              online_intaccept: '0'
-              service_editor: '0'
-              som_ug: '0'
-              som_grad: '0'
-              as_ug: '0'
-              as_grad: '0'
-              sonhp_ug: '0'
-              sonhp_grad: '0'
-              law: '0'
-              soe: '0'
-              box_editor: '0'
-              webform_editor: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -8496,32 +8404,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              faculty: '0'
-              all_access: '0'
-              student: '0'
-              online_student: '0'
-              admitted_student: '0'
-              finance: '0'
-              employee: '0'
-              prehire_faculty: '0'
-              prehire_staff: '0'
-              bi_group: '0'
-              vcl_staff: '0'
-              online_intaccept: '0'
-              service_editor: '0'
-              som_ug: '0'
-              som_grad: '0'
-              as_ug: '0'
-              as_grad: '0'
-              sonhp_ug: '0'
-              sonhp_grad: '0'
-              law: '0'
-              soe: '0'
-              box_editor: '0'
-              webform_editor: '0'
             min_placeholder: ''
             max_placeholder: ''
             placeholder: ''
@@ -8567,32 +8449,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              faculty: '0'
-              all_access: '0'
-              student: '0'
-              online_student: '0'
-              admitted_student: '0'
-              finance: '0'
-              employee: '0'
-              prehire_faculty: '0'
-              prehire_staff: '0'
-              bi_group: '0'
-              vcl_staff: '0'
-              online_intaccept: '0'
-              service_editor: '0'
-              som_ug: '0'
-              som_grad: '0'
-              as_ug: '0'
-              as_grad: '0'
-              sonhp_ug: '0'
-              sonhp_grad: '0'
-              law: '0'
-              soe: '0'
-              box_editor: '0'
-              webform_editor: '0'
             min_placeholder: ''
             max_placeholder: ''
             placeholder: ''
@@ -8680,32 +8536,6 @@ display:
             multiple: true
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              faculty: '0'
-              all_access: '0'
-              student: '0'
-              online_student: '0'
-              admitted_student: '0'
-              finance: '0'
-              employee: '0'
-              prehire_faculty: '0'
-              prehire_staff: '0'
-              bi_group: '0'
-              vcl_staff: '0'
-              online_intaccept: '0'
-              service_editor: '0'
-              som_ug: '0'
-              som_grad: '0'
-              as_ug: '0'
-              as_grad: '0'
-              sonhp_ug: '0'
-              sonhp_grad: '0'
-              law: '0'
-              soe: '0'
-              box_editor: '0'
-              webform_editor: '0'
             reduce: false
           is_grouped: false
           group_info:

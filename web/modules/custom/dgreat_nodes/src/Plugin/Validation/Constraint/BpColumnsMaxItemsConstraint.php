@@ -5,12 +5,7 @@ namespace Drupal\dgreat_nodes\Plugin\Validation\Constraint;
 use Symfony\Component\Validator\Constraint;
 
 /**
- * Limits the number of items in bp_columns' bp_column_content field to 3.
- *
- * Applied via hook_entity_bundle_field_info_alter() in dgreat_nodes.module.
- * Using a validation constraint (rather than changing field storage
- * cardinality) allows existing over-limit content to remain readable and
- * editable while preventing any new saves that exceed the maximum.
+ * Limits bp_columns content to three items.
  *
  * @Constraint(
  *   id = "BpColumnsMaxItems",

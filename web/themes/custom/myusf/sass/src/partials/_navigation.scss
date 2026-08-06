@@ -854,6 +854,16 @@ a.login-btn:hover {
 
 //--- TOOLBAR TRAY for ADMIN Login ---//
 
+// The Drupal toolbar bar requires body.toolbar-oriented to get position:fixed,
+// but that class is never added on the homepage. Force it here so the bar
+// stays sticky on scroll. z-index:1041 beats Bootstrap .navbar (z-index:1000).
+// Note: do NOT use body.toolbar-oriented selector — it's absent on the frontpage.
+body.path-frontpage .toolbar-bar {
+	position: fixed !important;
+	top: 0;
+	z-index: 1041;
+}
+
 #toolbar-item-workbench-tray,
 #toolbar-item-devel-tray,
 #toolbar-item-shortcuts-tray,
@@ -1564,7 +1574,15 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 }
 
 .path-dashboard #sidebar_second {
-	
+	// The sidebar-empty class adds width:100% !important, but on the dashboard
+	// the sidebar always has content injected by the page template (cediplomalinkblock,
+	// etc.) after the empty-check runs, so we must cancel that override here.
+	&.sidebar-empty {
+		width: auto!important;
+		margin-left: 15px!important;
+		margin-right: 15px!important;
+	}
+
 	@include media-breakpoint-only(tablet) {
 		width: 50%;
 
@@ -1840,9 +1858,10 @@ button.navbar-toggler.navbar-toggler-right.collapsed{
 	svg.ext {
 		fill: $white;
 		margin-top: -6px;
-		padding-top: 7px;
+		padding-top: 2px;
 		margin-left: 4px;
-		width: 17px;
+		width: 14px;
+		Height: 14px;
 
 		path {
 			stroke: $white;

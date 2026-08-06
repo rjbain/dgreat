@@ -1,7 +1,7 @@
 # https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
 defaults: &defaults
   docker:
-    - image: quay.io/pantheon-public/build-tools-ci:8.x-php8.1
+    - image: quay.io/pantheon-public/build-tools-ci:8.x-php8.3
   working_directory: ~/example_drops_8_composer
   environment:
     #=========================================================================
@@ -36,7 +36,7 @@ defaults: &defaults
     # BUILD_TOOLS_VERSION: ^2.0.0-alpha4
     TERM: dumb
 
-version: 2
+version: 2.1
 jobs:
     # @todo: common initialization: 'composer install' for the site-under-test
     build:
@@ -185,7 +185,7 @@ jobs:
     # 09-cleanup-fixtures
 
 workflows:
-  version: 2
+  version: 2.1
   build_and_test:
     jobs:
       # Install dev dependencies and do simple tests (sniff, unit tests, etc.)

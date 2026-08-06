@@ -12,7 +12,12 @@ use Drupal\dgreat_group\DgreatGroupUtility;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\dgreat_group\RoleGroupMapperService;
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\group\Entity\GroupRelationshipInterface;
+use Drupal\group\Entity\GroupInterface;
 use Drupal\node\Entity\Node;
+use Drupal\Core\Entity\EntityTypeInterface;
 
 /**
  * Implements hook_help().
@@ -88,4 +93,89 @@ function dgreat_group_user_insert(EntityInterface $entity) {
  */
 function dgreat_group_user_update(User $entity) {
   (new DgreatGroup($entity))->flagUserDefaultContent($entity);
+}
+
+/**
+ * Implements hook_entity_access().
+ */
+function dgreat_group_entity_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  if ($entity instanceof GroupRelationshipInterface) {
+    if (in_array($operation, ['view', 'update'], TRUE) && in_array('administrator', $account->getRoles(), TRUE)) {
+      return AccessResult::allowed()->cachePerPermissions();
+    }
+
+    return AccessResult::neutral();
+  }
+
+  if (!$entity instanceof GroupInterface) {
+    return AccessResult::neutral();
+  }
+
+  if (!in_array($operation, ['view', 'update', 'delete'], TRUE)) {
+    return AccessResult::neutral();
+  }
+
+  if (in_array('administrator', $account->getRoles(), TRUE)) {
+    return AccessResult::allowed()->cachePerPermissions();
+  }
+
+  return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_group_relationship_insert().
+ */
+function dgreat_group_group_relationship_insert(GroupRelationshipInterface $entity) {
+  $dgreat_group_user = $entity->getEntity();
+
+  if (!$dgreat_group_user instanceof User) {
+    return;
+  }
+
+  $group = $entity->getGroup();
+
+  // Space creators need an explicit group role or they cannot see their own
+  // newly-created group in access-checked listings like /admin/group.
+  if ($group->bundle() === 'spaces' && (int) $group->getOwnerId() === (int) $dgreat_group_user->id()) {
+    $membership = $group->getMember($dgreat_group_user);
+    if ($membership) {
+      $role_ids = array_map(fn($role) => $role->id(), $membership->getRoles());
+      if (!in_array('spaces-administrator', $role_ids, TRUE)) {
+        $membership->addRole('spaces-administrator');
+        $membership->getGroupRelationship()->save();
+      }
+    }
+  }
+
+  /** @var \Drupal\dgreat_group\RoleGroupMapperService $mapper */
+  $mapper = \Drupal::service('dgreat_group.role_mapper');
+  $mapper->ensureUserHasGroupField($dgreat_group_user, (string) $group->id());
+}
+
+/**
+ * Implements hook_group_relationship_delete().
+ */
+function dgreat_group_group_relationship_delete(GroupRelationshipInterface $entity) {
+  $dgreat_group_user = $entity->getEntity();
+
+  if (!$dgreat_group_user instanceof User) {
+    return;
+  }
+
+  /** @var \Drupal\dgreat_group\RoleGroupMapperService $mapper */
+  $mapper = \Drupal::service('dgreat_group.role_mapper');
+  $mapper->removeGroupFieldFromUser($dgreat_group_user, (string) $entity->getGroup()->id());
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function dgreat_group_entity_type_alter(array &$entity_types) {
+  if (isset($entity_types['group']) && $entity_types['group'] instanceof EntityTypeInterface) {
+    $entity_types['group']->setListBuilderClass('Drupal\\dgreat_group\\Entity\\Controller\\EditorScopedGroupListBuilder');
+  }
+
+  if (isset($entity_types['group_relationship']) && $entity_types['group_relationship'] instanceof EntityTypeInterface) {
+    $entity_types['group_relationship']->setListBuilderClass('Drupal\\dgreat_group\\Entity\\Controller\\AdministratorGroupRelationshipListBuilder');
+  }
 }

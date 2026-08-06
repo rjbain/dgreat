@@ -29,9 +29,7 @@ function dgreat_nodes_help($route_name, RouteMatchInterface $route_match) {
  * Implements hook_entity_bundle_field_info_alter().
  *
  * Attaches a validation constraint to bp_column_content on bp_columns
- * paragraphs so that editors cannot save more than 3 column items.
- * This enforces the intended maximum at the entity level (UI and API)
- * without requiring a cardinality change in the field storage config.
+ * paragraphs so editors cannot save more than 3 column items.
  */
 function dgreat_nodes_entity_bundle_field_info_alter(&$fields, \Drupal\Core\Entity\EntityTypeInterface $entity_type, $bundle) {
   if ($entity_type->id() === 'paragraph'
@@ -44,48 +42,32 @@ function dgreat_nodes_entity_bundle_field_info_alter(&$fields, \Drupal\Core\Enti
 /**
  * Implements hook_field_widget_complete_form_alter().
  *
- * When a bp_columns paragraph already has 3 column content items, hides the
- * "Add" dropbutton and replaces it with a plain-language message. This gives
- * editors immediate feedback at the widget level rather than a surprise error
- * at save time, and works in tandem with the BpColumnsMaxItems entity
- * constraint which remains the hard enforcement layer.
- *
- * Note: hook_field_widget_complete_form_alter() requires Drupal 9.2+.
+ * Replaces the add-more control with a message when bp_columns already has
+ * the maximum number of column items.
  */
 function dgreat_nodes_field_widget_complete_form_alter(&$field_widget_complete_form, FormStateInterface $form_state, array $context) {
-  // In Drupal 9.5 the context array does not include a field_definition key.
-  // Retrieve it from the items object instead. Guard against non-standard
-  // context structures that external or contrib code might produce.
   if (empty($context['items']) || !method_exists($context['items'], 'getFieldDefinition')) {
     return;
   }
 
   /** @var \Drupal\Core\Field\FieldDefinitionInterface $field_definition */
   $field_definition = $context['items']->getFieldDefinition();
-
-  // bp_column_content is only defined on bp_columns so the field name alone
-  // is a safe enough guard.
   if ($field_definition->getName() !== 'bp_column_content') {
     return;
   }
 
   $widget = &$field_widget_complete_form['widget'];
-
-  // Count rendered paragraph items by counting integer-keyed children.
-  // This is more reliable than #max_delta with the paragraphs widget and
-  // stays accurate across AJAX rebuilds as items are added or removed.
   $item_count = count(array_filter(array_keys($widget), 'is_int'));
 
   if ($item_count >= 3) {
-    // Always write to the add_more slot. When the button exists this replaces
-    // it in place, preserving its position. When Drupal has already removed it
-    // (storage cardinality fully reached), this re-creates the slot at the end
-    // of the widget array — the same position the button would have occupied.
     $widget['add_more'] = [
       '#type' => 'html_tag',
       '#tag' => 'p',
       '#value' => t('The maximum of 3 column items has been reached. To change the column structure, please remove an existing item first.'),
-      '#attributes' => ['class' => ['bp-columns-limit-reached'], 'style' => 'color: red;'],
+      '#attributes' => [
+        'class' => ['bp-columns-limit-reached'],
+        'style' => 'color: red;',
+      ],
     ];
   }
 }
@@ -95,6 +77,10 @@ function dgreat_nodes_field_widget_complete_form_alter(&$field_widget_complete_f
  */
 function dgreat_nodes_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
+  if (_dgreat_nodes_form_has_paragraphs_widget($form) || _dgreat_nodes_form_has_text_format_widget($form)) {
+    $form['#attached']['library'][] = 'dgreat_nodes/paragraphs_editor_admin';
+  }
+
   $fav_links_nodes = [
     'node_favorite_link_form',
     'node_favorite_link_edit_form'
@@ -103,8 +89,12 @@ function dgreat_nodes_form_alter(&$form, FormStateInterface $form_state, $form_i
 
   if (in_array($form_id, $fav_links_nodes)) {
 
-    $query =  \Drupal::request()->query->get('edit');
-    if (isset($query['field_link_type']['und'])) {
+    $query = \Drupal::request()->query->all('edit');
+    if (!is_array($query)) {
+      $query = [];
+    }
+
+    if (isset($query['field_link_type']['und']) && is_scalar($query['field_link_type']['und'])) {
       $form['field_link_type']['widget']['#default_value'] = $query['field_link_type']['und'];
     }
 
@@ -115,4 +105,63 @@ function dgreat_nodes_form_alter(&$form, FormStateInterface $form_state, $form_i
       $form['field_group_audience']['#access'] = FALSE;
     }
   }
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function dgreat_nodes_page_attachments(array &$attachments) {
+  if (\Drupal::currentUser()->hasPermission('access toolbar')) {
+    $attachments['#attached']['library'][] = 'dgreat_nodes/admin_overrides';
+  }
+}
+
+/**
+ * Checks whether a form contains a paragraphs widget.
+ */
+function _dgreat_nodes_form_has_paragraphs_widget(array $element) {
+  if (!empty($element['#inline_paragraphs_widget'])) {
+    return TRUE;
+  }
+
+  if (!empty($element['#field_widget']) && $element['#field_widget'] === 'entity_reference_paragraphs') {
+    return TRUE;
+  }
+
+  if (!empty($element['#attributes']['class']) && in_array('field--widget-paragraphs', $element['#attributes']['class'], TRUE)) {
+    return TRUE;
+  }
+
+  foreach ($element as $key => $child) {
+    if (is_string($key) && $key !== '' && $key[0] === '#') {
+      continue;
+    }
+
+    if (is_array($child) && _dgreat_nodes_form_has_paragraphs_widget($child)) {
+      return TRUE;
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Checks whether a form contains a text format widget.
+ */
+function _dgreat_nodes_form_has_text_format_widget(array $element) {
+  if (!empty($element['#type']) && $element['#type'] === 'text_format') {
+    return TRUE;
+  }
+
+  foreach ($element as $key => $child) {
+    if (is_string($key) && $key !== '' && $key[0] === '#') {
+      continue;
+    }
+
+    if (is_array($child) && _dgreat_nodes_form_has_text_format_widget($child)) {
+      return TRUE;
+    }
+  }
+
+  return FALSE;
 }

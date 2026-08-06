@@ -30,6 +30,7 @@ class RoleGroupMapperService {
    */
   public function reconcileGroupAccess(AccountInterface $account) {
     // Transmogrify the Account to a full on user.
+    $user = NULL;
     try {
       $user = $this->entityTypeManager->getStorage('user')
                                       ->load($account->id());
@@ -37,26 +38,27 @@ class RoleGroupMapperService {
       $groups = $this->getMappedGroups();
       // Map over the groups, if the user doesn't have the right role,
       // Remove them, if they do have the right role, open up the gates.
-      $results = collect($groups)->map(function ($group) use ($user) {
+      $results = array_map(function ($group) use ($user) {
         if ($this->userHasGroupRole($user, $group)) {
           $this->grantGroupAccess($user, $group);
           $result = 'added';
-        } else {
+        }
+        else {
           $this->revokeGroupAccess($user, $group);
           $result = 'removed';
         }
         return ['group' => $group, 'result' => $result];
-      });
-      return $results->toArray();
+      }, $groups);
+      return $results;
     } catch (\Exception $exception) {
       \Drupal::logger('dgreat_group')->error(
         'Failed to reconcile group access for user id %u: Error %e',
         [
-          '%u' => $user->id(),
+          '%u' => $user ? $user->id() : $account->id(),
           '%e' => $exception->getMessage()
         ]
       );
-      return false;
+      return FALSE;
     }
   }
 
@@ -117,11 +119,7 @@ class RoleGroupMapperService {
       $this->removeGroupFieldFromUser($user, $group_id);
       return TRUE;
     } catch (\Exception $exception) {
-        return FALSE; // Suppressing the error message because it reporting errors when a user couldn't be removed from a group due to the user not being in the group.
-      \Drupal::logger('dgreat_group')->error(
-        'Unable to remove user id %u from group id %g',
-        ['%u' => $user->id(), '%g' => $group_id]
-      );
+      // Suppress noisy removal failures when the user is not a member.
       return FALSE;
     }
   }
@@ -137,11 +135,18 @@ class RoleGroupMapperService {
    */
   public function userHasGroupRole(User $user, $group_id): bool {
     $group = Group::load($group_id);
+    if (!$group) {
+      return FALSE;
+    }
     $mapped_roles = $group->get('field_mapped_roles')->getValue();
 
-    return collect($mapped_roles)->filter(function ($role) use ($user) {
-        return in_array($role['target_id'], $user->getRoles());
-      })->count() >= 1;
+    foreach ($mapped_roles as $role) {
+      if (in_array($role['target_id'], $user->getRoles(), TRUE)) {
+        return TRUE;
+      }
+    }
+
+    return FALSE;
   }
 
   /**
@@ -167,10 +172,13 @@ class RoleGroupMapperService {
    * @return bool
    */
   private function userHasGroupField(User $user, $group_id): bool {
-    return collect($user->get('field_user_group')->getValue())
-        ->filter(function ($group) use ($group_id) {
-          return $group['target_id'] == $group_id;
-        })->count() >= 1;
+    foreach ($user->get('field_user_group')->getValue() as $group) {
+      if ((string) $group['target_id'] === (string) $group_id) {
+        return TRUE;
+      }
+    }
+
+    return FALSE;
   }
 
   /**

@@ -1,0 +1,133 @@
+uuid: 2f7c1931-34d0-4d33-ae9a-7727f7a01f1a
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.restricted_html
+  module:
+    - ckeditor5
+format: restricted_html
+editor: ckeditor5
+settings:
+  toolbar:
+    items:
+      - heading
+      - bold
+      - italic
+      - '|'
+      - sourceEditing
+      - style
+      - blockQuote
+      - link
+      - bulletedList
+      - numberedList
+      - alignment
+      - removeFormat
+      - insertTable
+      - imce_image
+      - drupalInsertImage
+      - drupalMedia
+  plugins:
+    ckeditor5_alignment:
+      enabled_alignments:
+        - center
+        - justify
+        - left
+        - right
+    ckeditor5_heading:
+      enabled_headings:
+        - heading2
+        - heading3
+        - heading4
+        - heading5
+        - heading6
+    ckeditor5_imageResize:
+      allow_resize: true
+    ckeditor5_list:
+      properties:
+        reversed: true
+        startIndex: true
+        styles: false
+      multiBlock: true
+    ckeditor5_sourceEditing:
+      allowed_tags: {  }
+    ckeditor5_style:
+      styles:
+        -
+          label: 'text intro'
+          element: '<p class="text-intro">'
+        -
+          label: CAPS
+          element: '<span class="caps">'
+        -
+          label: note
+          element: '<p class="note">'
+        -
+          label: CITE
+          element: '<cite class="cite">'
+        -
+          label: indent
+          element: '<p class="indent">'
+        -
+          label: Callout
+          element: '<p class="callout">'
+        -
+          label: Thin
+          element: '<p class="callout thin">'
+        -
+          label: '---Narrow'
+          element: '<p class="callout narrow">'
+        -
+          label: '---Thin Narrow'
+          element: '<p class="callout narrow thin">'
+        -
+          label: Solid
+          element: '<p class="callout-tinted">'
+        -
+          label: '-Solid Narrow'
+          element: '<p class="callout-tinted narrow">'
+        -
+          label: 'Button Margin Fix'
+          element: '<p class="buttonMarginFix">'
+        -
+          label: 'Clear Paragraph'
+          element: '<p class="clear">'
+        -
+          label: 'Diamond Link'
+          element: '<a class="diamond_link">'
+        -
+          label: 'White Diamond'
+          element: '<a class="diamond_link_white">'
+        -
+          label: 'Small Diamond'
+          element: '<a class="diamond_link_small">'
+        -
+          label: 'Small White Diamond'
+          element: '<a class="diamond_link_small_white">'
+        -
+          label: Button
+          element: '<a class="button green">'
+        -
+          label: 'Download link'
+          element: '<a class="download_link">'
+        -
+          label: 'Float Left'
+          element: '<p class="block_left">'
+        -
+          label: 'Float Right'
+          element: '<p class="block_right">'
+        -
+          label: 'Float None'
+          element: '<p class="block_float_none">'
+        -
+          label: 'Clear H2'
+          element: '<h2 class="clear">'
+        -
+          label: 'Clear H3'
+          element: '<h3 class="clear">'
+    linkit_extension:
+      linkit_enabled: false
+    media_media:
+      allow_view_mode_override: false
+image_upload:
+  status: false

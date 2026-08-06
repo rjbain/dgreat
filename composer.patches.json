@@ -1,8 +1,5 @@
 {
   "patches": {
-    "drupal/group": {
-      "https://dgo.to/3197610 TypeError: Argument 2 passed to GroupRoleStorage Issue": "https://www.drupal.org/files/issues/2021-05-23/3197610-2-type-error.patch"
-    },
     "drupal/tb_megamenu": {
       "https://dgo.to/3378533 Replace Span with Button": "https://www.drupal.org/files/issues/2023-08-01/tb_megamenu-replace-span-with-button-3378533-1.patch"
     },
@@ -12,14 +9,18 @@
     "drupal/feeds": {
       "Add update patch for feeds": "https://www.drupal.org/files/issues/2023-09-12/post_update_fails_3378964.patch"
     },
-    "foxy/foxy": {
-      "PHP Fatal error: Declaration of encode($data, $options = 448) must be compatible with encode($data, int $options = 448, string $indent = self::INDENT_DEFAULT): string": "./patches/foxy.patch.txt"
-    },
     "drupal/webform": {
-      "Removing the polyfill-fastly.io library of webform.libraries.yml": "https://www.drupal.org/files/issues/2024-07-02/3458611-removing-the-polyfill-io.patch"
+      "Remove polyfill-fastly.io from webform choices library": "./patches/webform-remove-polyfill-fastly.patch"
     },
-    "drupal/sitewide_alert": {
-      "Remove polyfill script": "https://www.drupal.org/files/issues/2023-05-23/sitewide_alert-polyfill-3362024-3.patch"
+    "drupal/better_exposed_filters": {
+      "Skip malformed legacy views during Drupal 10 BEF post updates": "./patches/better-exposed-filters-safe-post-updates.patch",
+      "Rewire Drupal 10 BEF post updates to safe wrapper": "./patches/better-exposed-filters-rewire-post-updates.patch"
+    },
+    "drupal/core": {
+      "Skip malformed legacy configs during Drupal 10 core post updates": "./patches/drupal-core-d10-update-safety.patch"
+    },
+    "drupal/group": {
+      "Preserve current handlers during legacy Group 2 to 3 update path": "./patches/group-d10-legacy-update-safety.patch"
     }
   }
 }

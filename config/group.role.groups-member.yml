@@ -7,18 +7,19 @@ dependencies:
 id: groups-member
 label: Member
 weight: -100
-internal: true
-audience: member
+admin: false
+scope: individual
+global_role: null
 group_type: groups
-permissions_ui: true
 permissions:
   0: 'update own group_membership content'
   1: 'update own group_node:favorite_link entity'
   2: 'view group_node:favorite_link entity'
+  6: 'view group_node:favorite_link content'
   3: 'update own group_node:usf_service entity'
   4: 'view group_node:usf_service entity'
   5: 'view group'
-  8: 'create group_node:favorite_link entity'
-  11: 'create group_node:favorite_link content'
-  12: 'create group_node:usf_service entity'
-  15: 'create group_node:usf_service content'
+  16: 'view group_node:favorite_link relationship'
+  23: 'view group_node:page relationship'
+  24: 'view group_node:section_homepage relationship'
+  18: 'view group_membership relationship'

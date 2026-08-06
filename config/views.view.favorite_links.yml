@@ -9,7 +9,7 @@ dependencies:
     - field.storage.node.field_sso
     - field.storage.node.field_url
     - flag.flag.favorite
-    - group.content_type.groups-group_node-favorite_link
+    - group.relationship_type.groups-group_node-favorite_link
     - group.type.groups
     - taxonomy.vocabulary.event_category
     - user.role.administrator
@@ -30,7 +30,7 @@ label: 'Favorite Links'
 module: views
 description: ''
 tag: ''
-base_table: group_content_field_data
+base_table: group_relationship_field_data
 base_field: id
 display:
   default:
@@ -93,7 +93,7 @@ display:
           hide_alter_empty: true
         label:
           id: label
-          table: group_content_field_data
+          table: group_relationship_field_data
           field: label
           relationship: none
           group_type: group
@@ -539,6 +539,9 @@ display:
               secondary_label: 'Advanced options'
               text_input_required: 'Select any filter and click on Apply to see results'
               text_input_required_format: basic_html
+              autosubmit_textfield_minimum_length: 3
+              autosubmit_breakpoint: ''
+              auto_submit_sort_only: false
             filter:
               combine:
                 plugin_id: default
@@ -549,6 +552,11 @@ display:
                     filter_rewrite_values: ''
                   collapsible: false
                   is_secondary: false
+                  hide_label: false
+                  field_classes: ''
+                  open_by_default: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
               field_category_target_id:
                 plugin_id: default
                 advanced:
@@ -558,6 +566,11 @@ display:
                     filter_rewrite_values: ''
                   collapsible: false
                   is_secondary: false
+                  hide_label: false
+                  field_classes: ''
+                  open_by_default: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
               label:
                 plugin_id: default
                 advanced:
@@ -567,6 +580,11 @@ display:
                     filter_rewrite_values: ''
                   collapsible: false
                   is_secondary: false
+                  hide_label: false
+                  field_classes: ''
+                  open_by_default: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
       access:
         type: role
         options:
@@ -582,9 +600,9 @@ display:
       filters:
         type:
           id: type
-          table: group_content_field_data
+          table: group_relationship_field_data
           field: type
-          entity_type: group_content
+          entity_type: group_relationship
           entity_field: type
           plugin_id: bundle
           value:
@@ -660,32 +678,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              faculty: '0'
-              all_access: '0'
-              student: '0'
-              online_student: '0'
-              admitted_student: '0'
-              finance: '0'
-              employee: '0'
-              prehire_faculty: '0'
-              prehire_staff: '0'
-              bi_group: '0'
-              vcl_staff: '0'
-              online_intaccept: '0'
-              service_editor: '0'
-              som_ug: '0'
-              som_grad: '0'
-              as_ug: '0'
-              as_grad: '0'
-              sonhp_ug: '0'
-              sonhp_grad: '0'
-              law: '0'
-              soe: '0'
-              box_editor: '0'
-              webform_editor: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -728,32 +720,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              faculty: '0'
-              all_access: '0'
-              student: '0'
-              online_student: '0'
-              admitted_student: '0'
-              finance: '0'
-              employee: '0'
-              prehire_faculty: '0'
-              prehire_staff: '0'
-              bi_group: '0'
-              vcl_staff: '0'
-              online_intaccept: '0'
-              service_editor: '0'
-              som_ug: '0'
-              som_grad: '0'
-              as_ug: '0'
-              as_grad: '0'
-              sonhp_ug: '0'
-              sonhp_grad: '0'
-              law: '0'
-              soe: '0'
-              box_editor: '0'
-              webform_editor: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -799,32 +765,6 @@ display:
             multiple: true
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              faculty: '0'
-              all_access: '0'
-              student: '0'
-              online_student: '0'
-              admitted_student: '0'
-              finance: '0'
-              employee: '0'
-              prehire_faculty: '0'
-              prehire_staff: '0'
-              bi_group: '0'
-              vcl_staff: '0'
-              online_intaccept: '0'
-              service_editor: '0'
-              som_ug: '0'
-              som_grad: '0'
-              as_ug: '0'
-              as_grad: '0'
-              sonhp_ug: '0'
-              sonhp_grad: '0'
-              law: '0'
-              soe: '0'
-              box_editor: '0'
-              webform_editor: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -965,6 +905,7 @@ display:
           empty_table: false
           caption: ''
           description: ''
+          class: ''
       row:
         type: fields
       query:
@@ -978,27 +919,27 @@ display:
       relationships:
         gc__node:
           id: gc__node
-          table: group_content_field_data
+          table: group_relationship_field_data
           field: gc__node
           relationship: none
           group_type: group
           admin_label: 'Group content Content'
-          entity_type: group_content
-          plugin_id: group_content_to_entity
+          entity_type: group_relationship
+          plugin_id: group_relationship_to_entity
           required: true
-          group_content_plugins:
+          group_relation_plugins:
             'group_node:favorite_link': 'group_node:favorite_link'
             'group_node:article': '0'
             'group_node:event': '0'
             'group_node:page': '0'
         gid:
           id: gid
-          table: group_content_field_data
+          table: group_relationship_field_data
           field: gid
           relationship: none
           group_type: group
           admin_label: Group
-          entity_type: group_content
+          entity_type: group_relationship
           entity_field: gid
           plugin_id: standard
           required: true
@@ -1690,9 +1631,9 @@ display:
       filters:
         type:
           id: type
-          table: group_content_field_data
+          table: group_relationship_field_data
           field: type
-          entity_type: group_content
+          entity_type: group_relationship
           entity_field: type
           plugin_id: bundle
           value:
@@ -2052,9 +1993,9 @@ display:
       filters:
         type:
           id: type
-          table: group_content_field_data
+          table: group_relationship_field_data
           field: type
-          entity_type: group_content
+          entity_type: group_relationship
           entity_field: type
           plugin_id: bundle
           value:
@@ -2217,27 +2158,27 @@ display:
       relationships:
         gc__node:
           id: gc__node
-          table: group_content_field_data
+          table: group_relationship_field_data
           field: gc__node
           relationship: none
           group_type: group
           admin_label: 'Group content Content'
-          entity_type: group_content
-          plugin_id: group_content_to_entity
+          entity_type: group_relationship
+          plugin_id: group_relationship_to_entity
           required: true
-          group_content_plugins:
+          group_relation_plugins:
             'group_node:favorite_link': 'group_node:favorite_link'
             'group_node:article': '0'
             'group_node:event': '0'
             'group_node:page': '0'
         gid:
           id: gid
-          table: group_content_field_data
+          table: group_relationship_field_data
           field: gid
           relationship: none
           group_type: group
           admin_label: Group
-          entity_type: group_content
+          entity_type: group_relationship
           entity_field: gid
           plugin_id: standard
           required: true
@@ -2559,9 +2500,9 @@ display:
       filters:
         type:
           id: type
-          table: group_content_field_data
+          table: group_relationship_field_data
           field: type
-          entity_type: group_content
+          entity_type: group_relationship
           entity_field: type
           plugin_id: bundle
           value:
@@ -2720,27 +2661,27 @@ display:
       relationships:
         gc__node:
           id: gc__node
-          table: group_content_field_data
+          table: group_relationship_field_data
           field: gc__node
           relationship: none
           group_type: group
           admin_label: 'Group content Content'
-          entity_type: group_content
-          plugin_id: group_content_to_entity
+          entity_type: group_relationship
+          plugin_id: group_relationship_to_entity
           required: true
-          group_content_plugins:
+          group_relation_plugins:
             'group_node:favorite_link': 'group_node:favorite_link'
             'group_node:article': '0'
             'group_node:event': '0'
             'group_node:page': '0'
         gid:
           id: gid
-          table: group_content_field_data
+          table: group_relationship_field_data
           field: gid
           relationship: none
           group_type: group
           admin_label: Group
-          entity_type: group_content
+          entity_type: group_relationship
           entity_field: gid
           plugin_id: standard
           required: true

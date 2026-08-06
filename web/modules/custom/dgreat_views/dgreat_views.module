@@ -170,7 +170,7 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
       // Adds in the default links for my_links displays.
       $results = _dgreat_views_apply_defaults($view->result, $name);
       if ($results !== NULL) {
-        $view->results = $results;
+        $view->result = $results;
       }
       else {
         return;
@@ -193,20 +193,20 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
 
       // Grab the count first to make sure we have rows to manipulate.
       $uid = \Drupal::currentUser()->id();
-      $query = $db
+      $rows = $db
         ->select('user_weights', 'u')
         ->fields('u', ['entity_id'])
         ->condition('uid', $uid)
         ->condition('view_name', $name)
-        ->execute();
-      $query->allowRowCount = TRUE;
-      $count = $query->rowCount();
+        ->execute()
+        ->fetchAll();
+      $count = count($rows);
 
       if ($count && isset($view->result)) {
         $new_results = [];
 
         foreach ($view->result as $result) {
-          $nid = $result->node_field_data_group_content_field_data_nid;
+          $nid = $result->node_field_data_group_relationship_field_data_nid;
 
           $weight = $db->select('user_weights', 'u')
             ->fields('u', ['weight'])
@@ -227,7 +227,7 @@ function dgreat_views_views_pre_render(ViewExecutable $view) {
         $weight = 0;
         // Add the defaults to the user weight on first pass.
         foreach ($view->result as $result) {
-          $nid = $result->node_field_data_group_content_field_data_nid;
+          $nid = $result->node_field_data_group_relationship_field_data_nid;
           $check = $db
             ->select('user_weights', 'u')
             ->fields('u', ['weight'])
@@ -384,7 +384,7 @@ function _dgreat_views_apply_defaults($results, $name) {
 
   // Check for the defaults in the loaded array.
   foreach ($view_results as $key => $result) {
-    $check = $result->node_field_data_group_content_field_data_nid;
+    $check = $result->node_field_data_group_relationship_field_data_nid;
     if (in_array($check, $nids)) {
       $defaults[] = $result;
     }

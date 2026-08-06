@@ -1,3 +1,7 @@
+bootstrap5-js:
+  js:
+    scripts/extras/bootstrap.bundle.min.js: { minified: true }
+
 global-styling:
   version: "1"
   js:
@@ -5,6 +9,8 @@ global-styling:
   css:
     component:
       css/site.css: {}
+  dependencies:
+    - myusf/bootstrap5-js
 
 datepicker-block:
   version: "1.0.x"
@@ -20,8 +26,7 @@ menu-collapse-block:
   js:
     scripts/extras/navbarCollapse.js: {}
 video-overlays:
-  version: "1"
-  header: true
+  version: "2"
   js:
     scripts/extras/video-overlays.js: {}
   dependencies:
@@ -37,6 +42,11 @@ toggle-accordion:
   version: "1"
   js:
     scripts/extras/toggle-accordion.js: {}
+bp-accordion-css:
+  version: "1"
+  css:
+    component:
+      /modules/contrib/bootstrap_paragraphs/css/bootstrap-paragraphs-accordion.min.css: { preprocess: false }
 smooth-scroll:
   version: "1"
   js:

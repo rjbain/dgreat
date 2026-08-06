@@ -46,6 +46,17 @@
                 $($dropdownLink).parent('li').find('ul.dropdown-menu').removeClass('show');
             });
 
+            let $userMenu = $('.login.dropdown', context);
+            $userMenu.off('.userMenuShowState');
+
+            $userMenu.on('shown.bs.dropdown.userMenuShowState', function() {
+                $(this).addClass('show');
+            });
+
+            $userMenu.on('hidden.bs.dropdown.userMenuShowState', function() {
+                $(this).removeClass('show');
+            });
+
             let $logInBtn = $(".navbar .login-btn");
             let $submenuBtn = $("#submenuButton");
             let $submenuLinks = $("#sidebar_first .submenu .nav-link");
@@ -105,7 +116,11 @@
         attach: function (context, settings) {
             // Using once() to apply the myCustomBehaviour effect when you want to run just one function.
             if ($('#studentSurveyModal').length && drupalSettings.dgreatStudentSurveys.hasSeen !== true) {
-                $('#studentSurveyModal').once('surveyModal').modal('show');
+                $('#studentSurveyModal').once('surveyModal').each(function () {
+                    if (window.bootstrap && window.bootstrap.Modal) {
+                        window.bootstrap.Modal.getOrCreateInstance(this).show();
+                    }
+                });
             }
         }
     };
@@ -134,12 +149,21 @@
           return;
         }
 
+        const isCollapseTarget = el.classList.contains('collapse') || el.classList.contains('collapse-accordion');
+        const toggleSelector = `[aria-controls="${id}"][data-bs-toggle="collapse"], [aria-controls="${id}"][data-toggle="collapse"], [href="#${id}"][data-bs-toggle="collapse"], [href="#${id}"][data-toggle="collapse"]`;
+
+        // Case 0: Direct collapse panel target.
+        if (isCollapseTarget) {
+          const directToggle = document.querySelector(toggleSelector);
+          if (directToggle && directToggle.getAttribute('aria-expanded') !== 'true') {
+            triggerNativeClick(directToggle);
+          }
+          return;
+        }
+
         // Case 1: Direct toggle link
         if (
-          el.tagName.toLowerCase() === 'a' &&
-          el.hasAttribute('data-toggle') &&
-          el.getAttribute('data-toggle') === 'collapse' &&
-          el.hasAttribute('aria-controls')
+          el.matches('[data-bs-toggle="collapse"][aria-controls], [data-toggle="collapse"][aria-controls]')
         ) {
           const isExpanded = el.getAttribute('aria-expanded') === 'true';
           if (!isExpanded) {
@@ -149,7 +173,7 @@
         }
 
         // Case 2: Element contains toggle link (like a heading div)
-        const innerToggle = el.querySelector('a[data-toggle="collapse"][aria-controls]');
+        const innerToggle = el.querySelector('[data-bs-toggle="collapse"][aria-controls], [data-toggle="collapse"][aria-controls]');
         if (innerToggle) {
           const isExpanded = innerToggle.getAttribute('aria-expanded') === 'true';
           if (!isExpanded) {
@@ -201,6 +225,18 @@
             const targetId = href.substring(1);
             const targetEl = document.getElementById(targetId);
             if (targetEl) {
+              const isCollapseToggle = this.matches('[data-bs-toggle="collapse"], [data-toggle="collapse"]');
+              const isAccordionTarget = targetEl.classList.contains('collapse') || targetEl.classList.contains('collapse-accordion');
+
+              if (!isCollapseToggle && !isAccordionTarget) {
+                return;
+              }
+
+              if (this.matches('[data-bs-toggle="collapse"], [data-toggle="collapse"]')) {
+                updateHashAfterClick(this);
+                return;
+              }
+
               e.preventDefault();
               openAccordion(targetId);
             }
@@ -208,7 +244,7 @@
         });
 
         // Update hash when a toggle is clicked
-        $(document).on('click', 'a[data-toggle="collapse"]', function () {
+        $(document).on('click', '[data-bs-toggle="collapse"], [data-toggle="collapse"]', function () {
           updateHashAfterClick(this);
         });
       }

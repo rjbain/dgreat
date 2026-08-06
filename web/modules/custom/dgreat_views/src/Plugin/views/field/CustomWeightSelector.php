@@ -119,7 +119,7 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
     ];
 
     if (isset($_COOKIE['STYXKEY_ids'])) {
-      setcookie('STYXKEY_ids', NULL, -1, '/');
+      setcookie('STYXKEY_ids', '', -1, '/');
     }
 
 
@@ -154,7 +154,7 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
 
         $nid = $entity->get('entity_id')->getValue();
         $weight = (isset($nid[0]["target_id"]))
-          ? $result[$nid[0]["target_id"]] : 0;
+          ? ($result[$nid[0]["target_id"]] ?? 0) : 0;
 
         $form[$this->options['id']][$row_index]['weight'] = [
           '#type' => 'select',
@@ -270,7 +270,7 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
     // Reset or Drupal state and cookie.
     \Drupal::state()->set('flagged_fav', FALSE);
     if (isset($_COOKIE['STYXKEY_ids'])) {
-      setcookie('STYXKEY_ids', NULL, -1, '/');
+      setcookie('STYXKEY_ids', '', -1, '/');
     }
   }
 

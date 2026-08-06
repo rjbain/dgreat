@@ -1,75 +1,130 @@
-uuid: dbb74b75-f03d-4a96-b5e4-92ca967af580
+uuid: 596193b4-3199-435a-954a-f24291bb43ec
 langcode: en
 status: true
 dependencies:
   config:
     - filter.format.full_html
   module:
-    - ckeditor
+    - ckeditor5
 format: full_html
-editor: ckeditor
+editor: ckeditor5
 settings:
   toolbar:
-    rows:
-      -
-        -
-          name: Formatting
-          items:
-            - Bold
-            - Italic
-            - Superscript
-            - '-'
-            - SpecialChar
-            - JustifyLeft
-            - JustifyCenter
-            - JustifyRight
-            - RemoveFormat
-            - Cut
-            - Copy
-            - PasteText
-        -
-          name: Lists
-          items:
-            - BulletedList
-            - NumberedList
-        -
-          name: Format
-          items:
-            - Blockquote
-            - HorizontalRule
-            - Format
-        -
-          name: Styles
-          items:
-            - Styles
-        -
-          name: Links
-          items:
-            - DrupalLink
-            - DrupalUnlink
-        -
-          name: Media
-          items:
-            - ImceImage
-            - Table
-        -
-          name: Tools
-          items:
-            - Undo
-            - Redo
-            - Source
-            - Maximize
+    items:
+      - heading
+      - bold
+      - italic
+      - '|'
+      - sourceEditing
+      - style
+      - blockQuote
+      - link
+      - bulletedList
+      - numberedList
+      - alignment
+      - removeFormat
+      - insertTable
+      - imce_link
+      - imce_image
   plugins:
-    stylescombo:
-      styles: "p.text-intro|text intro\r\nspan.caps|CAPS\r\np.note|note\r\ncite.cite|CITE\r\np.indent|indent\r\np.callout|Callout\r\np.callout.thin|Thin\r\np.callout.narrow|---Narrow\r\np.callout.narrow.thin|---Thin Narrow\r\np.callout-tinted|Solid\r\np.callout-tinted.narrow|-Solid Narrow\r\np.buttonMarginFix|Button Margin Fix\r\np.clear|Clear Paragraph\r\na.diamond_link|Diamond Link\r\na.diamond_link_white|White Diamond\r\na.diamond_link_small|Small Diamond \r\na.diamond_link_small_white|Small White Diamond\r\na.button.green|Button\r\na.download_link|Download link\r\nimg.block_left|Image Float Left\r\nimg.block_right|Image Float Right\r\nimg.block_float_none|Image Float None\r\np.block_left|Float Left\r\np.block_right|Float Right\r\np.block_float_none|Float None\r\nh2.clear|Clear H2\r\nh3.clear|Clear H3"
-    drupallink:
+    ckeditor5_alignment:
+      enabled_alignments:
+        - center
+        - left
+        - right
+    ckeditor5_heading:
+      enabled_headings:
+        - heading2
+        - heading3
+        - heading4
+        - heading5
+        - heading6
+    ckeditor5_list:
+      properties:
+        reversed: true
+        startIndex: true
+        styles: false
+      multiBlock: true
+    ckeditor5_sourceEditing:
+      allowed_tags: {  }
+    ckeditor5_style:
+      styles:
+        -
+          label: 'text intro'
+          element: '<p class="text-intro">'
+        -
+          label: CAPS
+          element: '<span class="caps">'
+        -
+          label: note
+          element: '<p class="note">'
+        -
+          label: CITE
+          element: '<cite class="cite">'
+        -
+          label: indent
+          element: '<p class="indent">'
+        -
+          label: Callout
+          element: '<p class="callout">'
+        -
+          label: Thin
+          element: '<p class="callout thin">'
+        -
+          label: '---Narrow'
+          element: '<p class="callout narrow">'
+        -
+          label: '---Thin Narrow'
+          element: '<p class="callout narrow thin">'
+        -
+          label: Solid
+          element: '<p class="callout-tinted">'
+        -
+          label: '-Solid Narrow'
+          element: '<p class="callout-tinted narrow">'
+        -
+          label: 'Button Margin Fix'
+          element: '<p class="buttonMarginFix">'
+        -
+          label: 'Clear Paragraph'
+          element: '<p class="clear">'
+        -
+          label: 'Diamond Link'
+          element: '<a class="diamond_link">'
+        -
+          label: 'White Diamond'
+          element: '<a class="diamond_link_white">'
+        -
+          label: 'Small Diamond'
+          element: '<a class="diamond_link_small">'
+        -
+          label: 'Small White Diamond'
+          element: '<a class="diamond_link_small_white">'
+        -
+          label: Button
+          element: '<a class="button green">'
+        -
+          label: 'Download link'
+          element: '<a class="download_link">'
+        -
+          label: 'Float Left'
+          element: '<p class="block_left">'
+        -
+          label: 'Float Right'
+          element: '<p class="block_right">'
+        -
+          label: 'Float None'
+          element: '<p class="block_float_none">'
+        -
+          label: 'Clear H2'
+          element: '<h2 class="clear">'
+        -
+          label: 'Clear H3'
+          element: '<h3 class="clear">'
+    linkit_extension:
       linkit_enabled: true
-      linkit_profile: default_profile
+      linkit_profile: default
+    media_media:
+      allow_view_mode_override: false
 image_upload:
   status: false
-  scheme: public
-  directory: inline-images
-  max_size: ''
-  max_dimensions:
-    width: null
-    height: null

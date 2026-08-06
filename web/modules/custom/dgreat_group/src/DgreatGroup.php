@@ -48,13 +48,13 @@ class DgreatGroup {
         }
 
         // Lets skip if the node already exists in that group.
-        $check = $group->getContentByEntityId($plugin_id, $this->entity->id());
+        $check = $group->getRelationshipsByEntity($this->entity, $plugin_id);
         if (!empty($check)) {
           continue;
         }
 
         // Add the content to the group.
-        $group->addContent($this->entity, $plugin_id);
+        $group->addRelationship($this->entity, $plugin_id);
       }
     }
 
