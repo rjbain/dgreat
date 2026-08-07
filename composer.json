@@ -50,6 +50,7 @@
     "drupal/feeds_tamper": "^2.0@beta",
     "drupal/file_delete": "^3.0",
     "drupal/flag": "^5.0.3",
+    "drupal/flexible_permissions": "^2.0",
     "drupal/gin": "^4.0",
     "drupal/group": "^3.0",
     "drupal/honeypot": "^2",
@@ -183,7 +184,7 @@
     "build-env": {
       "install-cms": [
         "drush site-install standard --account-mail={account-mail} --account-name={account-name} --account-pass={account-pass} --site-mail={site-mail} --site-name={site-name} --yes",
-        "drush pm-enable config_direct_save simple_block --yes",
+        "drush pm-enable simple_block --yes",
         "drush pm-uninstall block_content --yes"
       ],
       "export-configuration": "drush config-export --yes"
