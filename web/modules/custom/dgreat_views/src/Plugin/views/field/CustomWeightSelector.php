@@ -135,15 +135,15 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
       $result[$r->entity_id] = $r->weight;
     }
 
+    $option_values = [];
+
     // Adjust options to user_weights ranges if need be.
     if (!empty($results)) {
-      $min = min($results);
-      $max = max($results);
-      $range = range($min->weight, $max->weight);
-      $options = array_combine($range, $range);
+      $weights = array_map(static fn($row) => (int) $row->weight, $results);
+      $option_values = range(min($weights), max($weights));
     }
     else {
-      $options = WeightSelectorWidget::rangeOptions($this->options['range']);
+      $option_values = array_map('intval', array_keys(WeightSelectorWidget::rangeOptions($this->options['range'])));
     }
 
     // At this point, the query has already been run, so we can access the results.
@@ -156,9 +156,10 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
         $weight = (isset($nid[0]["target_id"]))
           ? ($result[$nid[0]["target_id"]] ?? 0) : 0;
 
+        $option_values[] = (int) $weight;
         $form[$this->options['id']][$row_index]['weight'] = [
           '#type' => 'select',
-          '#options' => $options,
+          '#options' => [],
           '#default_value' => $weight,
           '#attributes' => ['class' => ['weight-selector']],
         ];
@@ -167,10 +168,12 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
 
       }
       else {
+        $default_value = (int) $this->getValue($row);
+        $option_values[] = $default_value;
         $form[$this->options['id']][$row_index]['weight'] = [
           '#type' => 'select',
-          '#options' => $options,
-          '#default_value' => $this->getValue($row),
+          '#options' => [],
+          '#default_value' => $default_value,
           '#attributes' => ['class' => ['weight-selector']],
         ];
       }
@@ -193,6 +196,16 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
     // Set our cookie to be used to grab values.
     if (!empty($values)) {
       setcookie('STYXKEY_ids', json_encode($values), time()+360, '/');
+    }
+
+    $option_values = array_unique($option_values);
+    sort($option_values);
+    $options = array_combine($option_values, $option_values);
+
+    foreach ($form[$this->options['id']] as $row_index => &$row_form) {
+      if (is_array($row_form) && isset($row_form['weight'])) {
+        $row_form['weight']['#options'] = $options;
+      }
     }
   }
 
@@ -219,10 +232,11 @@ class CustomWeightSelector extends FieldPluginBase implements ContainerFactoryPl
         // If this is flagged, use the cookie's weight.
         // This is due to the flagging JS borking the form_state.
         if (\Drupal::state()->get('flagged_fav', FALSE)) {
-          $ids = json_decode($_COOKIE['STYXKEY_ids'], TRUE);
+          $ids = isset($_COOKIE['STYXKEY_ids']) ? json_decode($_COOKIE['STYXKEY_ids'], TRUE) : [];
+          $ids = is_array($ids) ? $ids : [];
           $key = array_keys($ids, $nid[0]["target_id"]);
           // Match up our Cookie to the POST array keys (which is the correct order).
-          $weight = isset($_POST["field_weight"][$key[0]]["weight"]) ?
+          $weight = isset($key[0], $_POST["field_weight"][$key[0]]["weight"]) ?
             $_POST["field_weight"][$key[0]]["weight"] : $row['weight'];
         }
         else {

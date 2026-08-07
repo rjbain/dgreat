@@ -271,20 +271,27 @@ img {
     margin-top: 0.4375rem;
 
 	&.align-right {
-    	float: right!important;
     	margin-left: 1.5625rem;	
     	margin-bottom: 1rem;
+    	width: unset;
+		@include media-breakpoint-down(phone) {
+			width:100%;
+		}
 	}
 	&.align-left  {
-    	float: left;
     	margin-right: 1.5625rem;	
     	margin-bottom: 1rem;
+    	width: unset;
+		@include media-breakpoint-down(phone) {
+			width:100%;
+		}
 	}
 	&.align-center {
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
 		margin-bottom: 1rem;
+		width: unset;
+		@include media-breakpoint-down(phone) {
+			width:100%;
+		}
 	}
 }
 p img {

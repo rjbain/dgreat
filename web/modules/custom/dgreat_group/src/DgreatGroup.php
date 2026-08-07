@@ -90,11 +90,11 @@ class DgreatGroup {
   }
 
   /**
-   * Adds the groups to the quick links on creation.
+   * Prepares the groups for quick links before the initial save.
    *
    * @return bool
    */
-  public function addQuickLinkGroups() {
+  public function prepareQuickLinkGroups() {
     // Grab the quick link field.
     $quick_link = $this->entity->get('field_link_type')->getValue();
 
@@ -114,12 +114,41 @@ class DgreatGroup {
 
       // Apply the groups.
       $this->entity->set('field_group_audience', $gids);
-      $this->entity->save();
+
+      return TRUE;
+    }
+
+    return FALSE;
+  }
+
+  /**
+   * Completes quick link setup that requires the node to already exist.
+   *
+   * @return bool
+   */
+  public function finalizeQuickLinkGroups() {
+    // Grab the quick link field.
+    $quick_link = $this->entity->get('field_link_type')->getValue();
+
+    if (isset($quick_link[0]['value']) && $quick_link[0]['value'] === 'quick') {
+      $uid = \Drupal::currentUser()->id();
+      $user = User::load($uid);
+
+      if ($user === NULL || $this->entity->id() === NULL) {
+        return FALSE;
+      }
 
       // Flag the content.
       $flag_service = \Drupal::service('flag');
       $flag = $flag_service->getFlagById('favorite');
       $node = Node::load($this->entity->id());
+
+      if ($flag === NULL || $node === NULL) {
+        return FALSE;
+      }
+
+      $this->ensureQuickLinkMembershipRoles($user);
+
       $flag_service->flag($flag, $node, $user);
 
       // Add this to the user weights table.
@@ -165,10 +194,72 @@ class DgreatGroup {
           ->execute();
       }
 
+      // Keep a persistent history row so removed quick links can still appear
+      // on /quick-links/allapps and be added back later.
+      $history_check = $db
+        ->select('user_weights', 'u')
+        ->fields('u', ['entity_id'])
+        ->condition('uid', $uid)
+        ->condition('entity_id', $this->entity->id())
+        ->condition('view_name', 'quick_links_history')
+        ->execute()
+        ->fetchField();
+
+      if ($history_check === FALSE) {
+        $db->insert('user_weights')
+          ->fields([
+            'entity_id' => $this->entity->id(),
+            'uid' => $uid,
+            'view_name' => 'quick_links_history',
+            'weight' => $weight + 1,
+          ])
+          ->execute();
+      }
+
       return TRUE;
     }
 
     return FALSE;
+  }
+
+  /**
+   * Ensures the quick link creator has default roles on audience groups.
+   *
+   * Some upgraded memberships are missing rows in
+   * group_relationship__group_roles, which prevents the creator from viewing
+   * their own quick links on the dashboard. When a quick link is created, we
+   * self-heal any missing default member roles for its audience groups.
+   *
+   * @param \Drupal\user\Entity\User $user
+   *   The quick link creator.
+   */
+  protected function ensureQuickLinkMembershipRoles(User $user) {
+    $groups = $this->entity->get('field_group_audience')->getValue();
+
+    foreach ($groups as $group_item) {
+      if (empty($group_item['target_id'])) {
+        continue;
+      }
+
+      $group = Group::load($group_item['target_id']);
+      if ($group === NULL) {
+        continue;
+      }
+
+      $membership = $group->getMember($user);
+      if (!$membership) {
+        continue;
+      }
+
+      $default_role_id = $group->bundle() . '-member';
+      $role_ids = array_map(static fn($role) => $role->id(), $membership->getRoles());
+      if (in_array($default_role_id, $role_ids, TRUE)) {
+        continue;
+      }
+
+      $membership->addRole($default_role_id);
+      $membership->getGroupRelationship()->save();
+    }
   }
 
   /**

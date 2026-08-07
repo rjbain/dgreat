@@ -3,7 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.image.field_category
     - field.field.media.image.field_media_image
+    - field.field.media.image.field_size
     - image.style.thumbnail
     - media.type.image
   module:
@@ -22,6 +24,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_category:
+    type: options_select
+    weight: 101
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_media_image:
     type: image_image
     weight: 0
@@ -29,6 +37,12 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_size:
+    type: options_select
+    weight: 102
+    region: content
+    settings: {  }
     third_party_settings: {  }
   langcode:
     type: language_select
