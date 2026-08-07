@@ -3,40 +3,35 @@
 set -eo pipefail
 set -x
 
-#
-# This script prepares the site-under-test by cloning the database from
-# an existing site.
-#
-# Use EITHER this script OR the re-install-new script; do not run both.
-#
-
 terminus -n env:wake "$TERMINUS_SITE.dev"
 terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
 
-# Now that flexible_permissions is a real Composer dependency in this branch,
-# do not try to patch core.extension directly in SQL. Let the deployed code
-# bootstrap normally and run DB updates first.
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb --yes || true
-echo "updatedb exit code: $?"
+echo "updatedb attempted."
 
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr || true
 
 if [ -f "config/system.site.yml" ] ; then
-  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "
-    DELETE FROM config WHERE name LIKE 'block.block.adminimal_theme_%';
-    DELETE FROM config WHERE name LIKE 'block.block.seven_%';
-    DELETE FROM config WHERE name LIKE 'tour.tour.%';
-    DELETE FROM config WHERE name LIKE 'core.entity_view_mode.tour.%';
-    DELETE FROM config WHERE name = 'adminimal_theme.settings';
-    DELETE FROM config WHERE name = 'seven.settings';
-    DELETE FROM config WHERE name = 'editor.editor.full_html';
-  " || true
+  CONFIG_TABLE_CHECK=$(terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "SHOW TABLES LIKE 'config';" 2>/dev/null || true)
 
-  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query \
-    "SELECT HEX(data) FROM config WHERE name='core.extension'" \
-    > /tmp/core_ext_raw2.txt 2>&1 || true
+  if [[ "$CONFIG_TABLE_CHECK" == *config* ]]; then
+    echo "Config table exists; proceeding with config cleanup/import."
 
-  CLEAN_SQL=$(php << 'PHPEOF'
+    terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "
+      DELETE FROM config WHERE name LIKE 'block.block.adminimal_theme_%';
+      DELETE FROM config WHERE name LIKE 'block.block.seven_%';
+      DELETE FROM config WHERE name LIKE 'tour.tour.%';
+      DELETE FROM config WHERE name LIKE 'core.entity_view_mode.tour.%';
+      DELETE FROM config WHERE name = 'adminimal_theme.settings';
+      DELETE FROM config WHERE name = 'seven.settings';
+      DELETE FROM config WHERE name = 'editor.editor.full_html';
+    " || true
+
+    terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query \
+      "SELECT HEX(data) FROM config WHERE name='core.extension'" \
+      > /tmp/core_ext_raw2.txt 2>&1 || true
+
+    CLEAN_SQL=$(php << 'PHPEOF'
 <?php
 $raw = file_get_contents('/tmp/core_ext_raw2.txt');
 if (!preg_match('/([0-9A-F]{100,})/i', $raw, $matches)) {
@@ -60,15 +55,18 @@ foreach ($remove_themes as $t) {
 if (!$changed) { exit(0); }
 echo "UPDATE config SET data=UNHEX('" . bin2hex(serialize($d)) . "') WHERE name='core.extension';";
 PHPEOF
-  )
+    )
 
-  if [[ "$CLEAN_SQL" == UPDATE* ]]; then
-    terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "$CLEAN_SQL"
-    echo "Removed non-existent modules/themes from core.extension in DB."
+    if [[ "$CLEAN_SQL" == UPDATE* ]]; then
+      terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "$CLEAN_SQL"
+      echo "Removed non-existent modules/themes from core.extension in DB."
+    fi
+
+    terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes \
+      && echo "config-import succeeded on first pass." \
+      || { echo "config-import FAILED on first pass — retrying..."; \
+           terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes; }
+  else
+    echo "Config table missing; skipping config cleanup/import."
   fi
-
-  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes \
-    && echo "config-import succeeded on first pass." \
-    || { echo "config-import FAILED on first pass — retrying..."; \
-         terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes; }
 fi
