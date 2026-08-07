@@ -207,6 +207,7 @@ function group_update_10300(&$sandbox) {
   $definition->set('id', 'group_relationship_type');
   $definition->set('config_prefix', 'relationship_type');
   $definition->set('bundle_of', 'group_content');
+  $definition = _group_sync_definition_handlers($definition, \Drupal::entityTypeManager()->getDefinition('group_relationship_type'));
   $last_installed_schema_repository->setLastInstalledDefinition($definition);
   $definition_update_manager->updateEntityType($definition);
 
@@ -214,11 +215,31 @@ function group_update_10300(&$sandbox) {
   $definition->set('id', 'group_relationship');
   $definition->set('bundle_entity_type', 'group_relationship_type');
   $definition->set('field_ui_base_route', 'entity.group_relationship_type.edit_form');
+  $definition = _group_sync_definition_handlers($definition, \Drupal::entityTypeManager()->getDefinition('group_relationship'));
   $last_installed_schema_repository->setLastInstalledDefinition($definition);
   $definition_update_manager->updateEntityType($definition);
 
   $last_installed_schema_repository->deleteLastInstalledDefinition('group_content');
   $last_installed_schema_repository->deleteLastInstalledDefinition('group_content_type');
+}
+
+/**
+ * Copies the current entity class and handlers onto an updated definition.
+ *
+ * Legacy Group 2 definitions can still reference removed classes such as
+ * GroupContent and GroupContentType. When Drupal 10 applies the renamed Group 3
+ * definitions, those stale class references can crash the update pipeline.
+ */
+function _group_sync_definition_handlers($updated_definition, $current_definition) {
+  $updated_definition->setClass($current_definition->getClass());
+
+  foreach ($current_definition->getHandlerClasses() as $handler_type => $handler_class) {
+    if (is_string($handler_class) && $handler_class !== '') {
+      $updated_definition->setHandlerClass($handler_type, $handler_class);
+    }
+  }
+
+  return $updated_definition;
 }
 
 /**

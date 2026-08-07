@@ -158,14 +158,3 @@ function better_exposed_filters_post_update_scrollable_params(?array &$sandbox =
     return $config_updater->updateScrollableParams($view);
   });
 }
-
-/**
- * Add soft_limit_include_children param key.
- */
-function better_exposed_filters_post_update_soft_limit_include_children(?array &$sandbox = NULL): void {
-  /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
-  $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($config_updater): bool {
-    return $config_updater->updateSoftLimitIncludeChildrenParam($view);
-  });
-}
