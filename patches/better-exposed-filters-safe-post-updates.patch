@@ -1,0 +1,27 @@
+--- a/better_exposed_filters.post_update.php
++++ b/better_exposed_filters.post_update.php
+@@ -10,6 +10,24 @@
+ use Drupal\views\ViewEntityInterface;
+ 
+ /**
++ * Safely runs a BEF config updater across view config entities.
++ */
++function _better_exposed_filters_safe_update(?array &$sandbox, callable $callback): void {
++  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($callback): bool {
++    try {
++      return (bool) $callback($view);
++    }
++    catch (\Throwable $e) {
++      \Drupal::logger('better_exposed_filters')->warning('Skipped BEF post-update for view @view because it could not be loaded cleanly: @message', [
++        '@view' => $view->id(),
++        '@message' => $e->getMessage(),
++      ]);
++      return FALSE;
++    }
++  }, TRUE);
++}
++
++/**
+  * If using combined sort, set the combine_param config to 'sort_bef_combine'.
+  */
+ function better_exposed_filters_post_update_combine_param(?array &$sandbox = NULL): void {

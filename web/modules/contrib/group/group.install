@@ -1,0 +1,365 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the group module.
+ */
+
+use Drupal\Core\Config\Entity\Query\QueryFactory;
+use Drupal\Core\Entity\EntityLastInstalledSchemaRepositoryInterface;
+use Drupal\Core\Entity\Sql\DefaultTableMapping;
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\field\FieldStorageConfigInterface;
+
+/**
+ * Implements hook_update_last_removed().
+ */
+function group_update_last_removed() {
+  return 9210;
+}
+
+/**
+ * Updates database and fields from Group 2 to Group 3.
+ */
+function group_update_10300(&$sandbox) {
+  $state = \Drupal::state();
+  $config_factory = \Drupal::configFactory();
+  $group_content_type_configs = $config_factory->listAll('group.content_type.');
+
+  // Short-circuit the following updates if we are already on version 3.
+  if (empty($group_content_type_configs)) {
+    $state->set('group_update_10300_detected_legacy_version', FALSE);
+    return t('Module was already on v3, skipping upgrade path.');
+  }
+  $state->set('group_update_10300_detected_legacy_version', TRUE);
+
+  $table_mapping = \Drupal::entityTypeManager()->getStorage('group_relationship')->getTableMapping();
+  assert($table_mapping instanceof DefaultTableMapping);
+
+  $last_installed_schema_repository = \Drupal::service('entity.last_installed_schema.repository');
+  assert($last_installed_schema_repository instanceof EntityLastInstalledSchemaRepositoryInterface);
+
+  $installed_storage_schema = \Drupal::keyValue('entity.storage_schema.sql');
+  $definition_update_manager = \Drupal::entityDefinitionUpdateManager();
+
+  // Update field storages and DB tables that were created for group_content.
+  $field_storage_definitions = $last_installed_schema_repository->getLastInstalledFieldStorageDefinitions('group_content');
+  foreach ($field_storage_definitions as $fsd) {
+    if ($fsd instanceof BaseFieldDefinition) {
+      $fsd->setTargetEntityTypeId('group_relationship');
+      $schema = $installed_storage_schema->get('group_content.field_schema_data.' . $fsd->getName());
+      $installed_storage_schema->set('group_relationship.field_schema_data.' . $fsd->getName(), $schema);
+    }
+    elseif ($fsd instanceof FieldStorageConfigInterface) {
+      if ($requires_storage = $table_mapping->requiresDedicatedTableStorage($fsd)) {
+        $old_table = $table_mapping->getDedicatedDataTableName($fsd);
+      }
+
+      $old_id = $fsd->id();
+      $new_id = str_replace('group_content.', 'group_relationship.', $fsd->id());
+
+      $old_config = $config_factory->getEditable('field.storage.' . $old_id);
+      $new_config = $config_factory->getEditable('field.storage.' . $new_id);
+      $new_config->setData($old_config->getRawData());
+      $new_config->set('entity_type', 'group_relationship');
+      $new_config->set('id', $new_id);
+      $new_config->save(TRUE);
+      $old_config->delete();
+
+      $fsd->set('entity_type', 'group_relationship');
+      $fsd->set('id', $new_id);
+
+      if ($requires_storage) {
+        $new_table = $table_mapping->getDedicatedDataTableName($fsd);
+        \Drupal::database()->schema()->renameTable($old_table, $new_table);
+      }
+    }
+    else {
+      throw new \Exception('Found a group_content field we could not move to group_relationship.');
+    }
+
+    $last_installed_schema_repository->setLastInstalledFieldStorageDefinition($fsd);
+  }
+
+  // Update entity references that were pointing to group_content.
+  foreach ($last_installed_schema_repository->getLastInstalledDefinitions() as $entity_type) {
+    $field_storage_definitions = $last_installed_schema_repository->getLastInstalledFieldStorageDefinitions($entity_type->id());
+    foreach ($field_storage_definitions as $fsd) {
+      if ($fsd->getType() !== 'entity_reference') {
+        continue;
+      }
+      if ($fsd->getSetting('target_type') !== 'group_content') {
+        continue;
+      }
+      if ($fsd instanceof BaseFieldDefinition) {
+        // @todo Throw a warning saying a base or bundle field has changed and needs updating in code.
+      }
+      elseif ($fsd instanceof FieldStorageConfigInterface) {
+        $config = $config_factory->getEditable('field.storage.' . $fsd->id());
+        $settings = $config->get('settings');
+        $settings['target_type'] = 'group_relationship';
+        $config->set('settings', $settings);
+        $config->save(TRUE);
+      }
+      else {
+        throw new \Exception('Found an entity_reference field storage definition we could not alter the settings for.');
+      }
+
+      $fsd->setSetting('target_type', 'group_relationship');
+      $last_installed_schema_repository->setLastInstalledFieldStorageDefinition($fsd);
+    }
+  }
+
+  // Update all group_content_type entities to become group_relationship_type.
+  foreach ($group_content_type_configs as $old_id) {
+    $new_id = str_replace('group.content_type.', 'group.relationship_type.', $old_id);
+
+    $old_config = $config_factory->getEditable($old_id);
+    $new_config = $config_factory->getEditable($new_id);
+    $new_config->setData($old_config->getRawData());
+    $new_config->save(TRUE);
+    $old_config->delete();
+  }
+
+  // Delete the old config key store for QueryFactory.
+  \Drupal::keyValue(QueryFactory::CONFIG_LOOKUP_PREFIX . 'group_content_type')->deleteAll();
+
+  // Update field instances on group_content entities.
+  foreach ($config_factory->listAll('field.field.group_content.') as $old_name) {
+    $old_config = $config_factory->getEditable($old_name);
+
+    $new_name = str_replace('group_content.', 'group_relationship.', $old_name);
+    $new_id = str_replace('group_content.', 'group_relationship.', $old_config->get('id'));
+
+    $new_config = $config_factory->getEditable($new_name);
+    $new_config->setData($old_config->getRawData());
+    $new_config->set('entity_type', 'group_relationship');
+    $new_config->set('id', $new_id);
+
+    if ($dependencies = $new_config->get('dependencies')) {
+      if (!empty($dependencies['config'])) {
+        $dependencies['config'] = array_map(function ($dependency_name) {
+          $search = [
+            'group.content_type.',
+            'field.storage.group_content.',
+          ];
+          $replace = [
+            'group.relationship_type.',
+            'field.storage.group_relationship.',
+          ];
+          return str_replace($search, $replace, $dependency_name);
+        }, $dependencies['config']);
+        $new_config->set('dependencies', $dependencies);
+      }
+    }
+
+    $new_config->save(TRUE);
+    $old_config->delete();
+  }
+
+  // The bundle field map is only updated when using the update manager.
+  // See \Drupal\Core\Entity\EntityFieldManager::getFieldMap() for more info on
+  // how the key value collection is used for this purpose.
+  $bundle_field_map_store = \Drupal::keyValue('entity.definitions.bundle_field_map');
+  $bundle_field_map = $bundle_field_map_store->get('group_content');
+  $bundle_field_map_store->set('group_relationship', $bundle_field_map);
+  $bundle_field_map_store->delete('group_content');
+
+  // Update form and view modes for changed instances.
+  foreach (['entity_form_display', 'entity_view_display'] as $display_key) {
+    foreach ($config_factory->listAll("core.$display_key.group_content.") as $old_name) {
+      $old_config = $config_factory->getEditable($old_name);
+
+      $new_name = str_replace('group_content.', 'group_relationship.', $old_name);
+      $new_id = str_replace('group_content.', 'group_relationship.', $old_config->get('id'));
+
+      $new_config = $config_factory->getEditable($new_name);
+      $new_config->setData($old_config->getRawData());
+      $new_config->set('targetEntityType', 'group_relationship');
+      $new_config->set('id', $new_id);
+
+      if ($dependencies = $new_config->get('dependencies')) {
+        if (!empty($dependencies['config'])) {
+          $dependencies['config'] = array_map(function ($dependency_name) {
+            $search = [
+              'group.content_type.',
+              'field.storage.group_content.',
+              'field.field.group_content.',
+            ];
+            $replace = [
+              'group.relationship_type.',
+              'field.storage.group_relationship.',
+              'field.field.group_relationship.',
+            ];
+            return str_replace($search, $replace, $dependency_name);
+          }, $dependencies['config']);
+          $new_config->set('dependencies', $dependencies);
+        }
+      }
+
+      $new_config->save(TRUE);
+      $old_config->delete();
+    }
+  }
+
+  // Update the entity type definitions directly so the DB is left untouched.
+  $definition = $last_installed_schema_repository->getLastInstalledDefinition('group_content_type');
+  $definition->set('id', 'group_relationship_type');
+  $definition->set('config_prefix', 'relationship_type');
+  $definition->set('bundle_of', 'group_content');
+  $definition = _group_sync_definition_handlers($definition, \Drupal::entityTypeManager()->getDefinition('group_relationship_type'));
+  $last_installed_schema_repository->setLastInstalledDefinition($definition);
+  $definition_update_manager->updateEntityType($definition);
+
+  $definition = $last_installed_schema_repository->getLastInstalledDefinition('group_content');
+  $definition->set('id', 'group_relationship');
+  $definition->set('bundle_entity_type', 'group_relationship_type');
+  $definition->set('field_ui_base_route', 'entity.group_relationship_type.edit_form');
+  $definition = _group_sync_definition_handlers($definition, \Drupal::entityTypeManager()->getDefinition('group_relationship'));
+  $last_installed_schema_repository->setLastInstalledDefinition($definition);
+  $definition_update_manager->updateEntityType($definition);
+
+  $last_installed_schema_repository->deleteLastInstalledDefinition('group_content');
+  $last_installed_schema_repository->deleteLastInstalledDefinition('group_content_type');
+}
+
+/**
+ * Copies the current entity class and handlers onto an updated definition.
+ *
+ * Legacy Group 2 definitions can still reference removed classes such as
+ * GroupContent and GroupContentType. When Drupal 10 applies the renamed Group 3
+ * definitions, those stale class references can crash the update pipeline.
+ */
+function _group_sync_definition_handlers($updated_definition, $current_definition) {
+  $updated_definition->setClass($current_definition->getClass());
+
+  foreach ($current_definition->getHandlerClasses() as $handler_type => $handler_class) {
+    if (is_string($handler_class) && $handler_class !== '') {
+      $updated_definition->setHandlerClass($handler_type, $handler_class);
+    }
+  }
+
+  return $updated_definition;
+}
+
+/**
+ * Updates indexes from Group 2 to Group 3.
+ */
+function group_update_10301(&$sandbox) {
+  // Short-circuit the update if we are already on version 3.
+  if (!\Drupal::state()->get('group_update_10300_detected_legacy_version', FALSE)) {
+    return t('Module was already on v3, skipping upgrade path.');
+  }
+
+  $definition_update_manager = \Drupal::entityDefinitionUpdateManager();
+  $last_installed_schema_repository = \Drupal::service('entity.last_installed_schema.repository');
+  assert($last_installed_schema_repository instanceof EntityLastInstalledSchemaRepositoryInterface);
+
+  $field_storage_definitions = $last_installed_schema_repository->getLastInstalledFieldStorageDefinitions('group_relationship');
+  $entity_type = $last_installed_schema_repository->getLastInstalledDefinition('group_relationship');
+  $definition_update_manager->updateFieldableEntityType($entity_type, $field_storage_definitions, $sandbox);
+}
+
+/**
+ * Updates views from Group 2 to Group 3.
+ */
+function group_update_10302(&$sandbox) {
+  // Short-circuit the update if we are already on version 3.
+  if (!\Drupal::state()->get('group_update_10300_detected_legacy_version', FALSE)) {
+    return t('Module was already on v3, skipping upgrade path.');
+  }
+
+  $config_factory = \Drupal::configFactory();
+
+  if (\Drupal::moduleHandler()->moduleExists('views')) {
+    foreach ($config_factory->listAll('views.view.') as $view_name) {
+      $view = $config_factory->getEditable($view_name);
+      $view->setData(_group_update_view_with_a_bazooka($view->getRawData()))->save(TRUE);
+      $view->save(TRUE);
+    }
+  }
+}
+
+/**
+ * Replaces ALL mention of group_content in a Views view's data.
+ *
+ * This is a radical approach in that it makes no assumptions other than any
+ * mention of group_content on Group v3 or up being wrong and needing
+ * replacement with group_relationship. Which explains the function name.
+ *
+ * @param array $data
+ *   The view data to fire the bazooka at.
+ *
+ * @return array
+ *   The data with all replacements made.
+ */
+function _group_update_view_with_a_bazooka(array $data): array {
+  $search = ['group_content_plugins', 'group.content_type.', 'group_content'];
+  $replace = ['group_relation_plugins', 'group.relationship_type.', 'group_relationship'];
+
+  // As we loop over every item in the array, we fill a new one so that order
+  // of keys is preserved even if we change the key name.
+  $new_data = [];
+
+  foreach ($data as $key => $value) {
+    $new_key = str_replace($search, $replace, $key);
+
+    if (is_string($value)) {
+      $new_data[$new_key] = str_replace($search, $replace, $value);
+    }
+    elseif (is_array($value)) {
+      $new_data[$new_key] = _group_update_view_with_a_bazooka($value);
+    }
+    else {
+      $new_data[$new_key] = $value;
+    }
+  }
+
+  return $new_data;
+}
+
+/**
+ * Updates views to drop obsolete key.
+ */
+function group_update_10303(&$sandbox) {
+  if (\Drupal::moduleHandler()->moduleExists('views')) {
+    $view = \Drupal::configFactory()->getEditable('views.view.group_members');
+    if (!$view->isNew()) {
+      $view->clear('display.default.display_options.arguments.gid.default_argument_skip_url');
+      $view->save(TRUE);
+    }
+  }
+}
+
+/**
+ * Make state key for tracking if we came from version 2 clearly defined.
+ */
+function group_update_10304(&$sandbox) {
+  $state = \Drupal::state();
+
+  // Previous updates ran with new state entry, do nothing.
+  if (!is_null($state->get('group_update_10300_detected_legacy_version'))) {
+    return t('State key was properly set before, skipping update.');
+  }
+
+  // Previous updates ran with old state entry, convert to new state entry.
+  $old_value = (bool) $state->get('group_update_10300_detected_version', FALSE);
+  $state->set('group_update_10300_detected_legacy_version', !$old_value);
+  $state->delete('group_update_10300_detected_version');
+}
+
+/**
+ * Upgrade group_relationship type ER field.
+ */
+function group_update_10305(&$sandbox) {
+  // Short-circuit the update if we are already on version 3.
+  if (!\Drupal::state()->get('group_update_10300_detected_legacy_version', FALSE)) {
+    return t('Module was already on v3, skipping upgrade path.');
+  }
+
+  $definition_update_manager = \Drupal::entityDefinitionUpdateManager();
+  $field_storage_definition = $definition_update_manager->getFieldStorageDefinition('type', 'group_relationship');
+  assert($field_storage_definition instanceof BaseFieldDefinition);
+  $field_storage_definition->setSetting('target_type', 'group_relationship_type');
+  $definition_update_manager->updateFieldStorageDefinition($field_storage_definition);
+}

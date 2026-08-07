@@ -153,14 +153,6 @@ jobs:
                 command: terminus --no-interaction connection:set "$TERMINUS_SITE.$TERMINUS_ENV" -- sftp
 
             - run:
-                name: Install Chosen Plugin
-                command: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- chosenplugin
-
-            - run:
-                name: Install CKEditor Plugins
-                command: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- ckeditor_media_embed:install -y
-
-            - run:
                 name: Change mode back to Git
                 command: terminus --no-interaction connection:set "$TERMINUS_SITE.$TERMINUS_ENV" -- git
 

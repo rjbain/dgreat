@@ -32,10 +32,10 @@
     "drupal/config_ignore": "^3.4",
     "drupal/config_import_de": "^1.0",
     "drupal/config_split": "^2.0",
-    "drupal/core": "^11.4.1",
-    "drupal/core-composer-scaffold": "^11.4.1",
-    "drupal/core-project-message": "^11.4.1",
-    "drupal/core-recommended": "^11.4.1",
+    "drupal/core": "^10.4",
+    "drupal/core-composer-scaffold": "^10.4",
+    "drupal/core-project-message": "^10.4",
+    "drupal/core-recommended": "^10.4",
     "drupal/ctools": "^4.0",
     "drupal/delete_all": "^3.0",
     "drupal/devel": "^5.5",
@@ -50,7 +50,8 @@
     "drupal/feeds_tamper": "^2.0@beta",
     "drupal/file_delete": "^3.0",
     "drupal/flag": "^5.0.3",
-    "drupal/gin": "^5.0",
+    "drupal/flexible_permissions": "^2.0",
+    "drupal/gin": "^4.0",
     "drupal/group": "^3.0",
     "drupal/honeypot": "^2",
     "drupal/imce": "^3.0",
@@ -80,14 +81,14 @@
     "drupal/search_api_solr": "^4.3",
     "drupal/seckit": "^2.0",
     "drupal/sendgrid_integration": "^2.2",
-    "drupal/seven": "^2.0@beta",
+    "drupal/seven": "^1.0",
     "drupal/simple_block": "^1.0@beta",
     "drupal/sitewide_alert": "^3.1",
     "drupal/stage_file_proxy": "^3.1.6",
     "drupal/tamper": "^1.0@RC",
     "drupal/taxonomy_import": "^2.0",
     "drupal/tb_megamenu": "^3.0",
-    "drupal/tour": "^3.0",
+    "drupal/tour": "^2.0",
     "drupal/twig_field_value": "^2.0",
     "drupal/twig_tweak": "^3.0",
     "drupal/unpublished_404": "^2.0",
@@ -118,14 +119,14 @@
     "behat/mink-extension": "^2.2",
     "consolidation/robo": "^5.0",
     "drupal/coder": "^8.2.12",
-    "drupal/core-dev": "^11",
+    "drupal/core-dev": "^10.4",
     "drupal/drupal-extension": "^5.0",
     "drush-ops/behat-drush-endpoint": "^0.0.4",
     "kint-php/kint": "^4.1",
     "mikey179/vfsstream": "^1.2",
     "phpspec/prophecy-phpunit": "^2",
-    "phpstan/phpstan": "^2.1",
-    "phpunit/phpunit": "^11.5"
+    "phpstan/phpstan": "^1.12",
+    "phpunit/phpunit": "^9.6"
   },
   "conflict": {
       "drupal/drupal": "*",
@@ -183,7 +184,7 @@
     "build-env": {
       "install-cms": [
         "drush site-install standard --account-mail={account-mail} --account-name={account-name} --account-pass={account-pass} --site-mail={site-mail} --site-name={site-name} --yes",
-        "drush pm-enable config_direct_save simple_block --yes",
+        "drush pm-enable simple_block --yes",
         "drush pm-uninstall block_content --yes"
       ],
       "export-configuration": "drush config-export --yes"
@@ -229,6 +230,9 @@
     "enable-patching": "true"
   },
   "config": {
+    "audit": {
+      "block-insecure": false
+    },
     "foxy": {
       "enabled": false,
       "manager-timeout": 300

@@ -1,0 +1,141 @@
+--- a/core/modules/editor/editor.post_update.php
++++ b/core/modules/editor/editor.post_update.php
+@@ -52,7 +52,13 @@
+  */
+ function editor_post_update_sanitize_image_upload_settings(&$sandbox = []) {
+   $config_entity_updater = \Drupal::classResolver(ConfigEntityUpdater::class);
+-  $callback = function (EditorInterface $editor) {
++  $editor_manager = \Drupal::service('plugin.manager.editor');
++
++  $callback = function (EditorInterface $editor) use ($editor_manager) {
++    if (!$editor_manager->hasDefinition($editor->getEditor())) {
++      return FALSE;
++    }
++
+     $image_upload_settings = $editor->getImageUploadSettings();
+     // Only update if the editor has image uploads:
+     // - empty image upload settings
+@@ -64,5 +70,5 @@
+       || $image_upload_settings['status'] == TRUE;
+   };
+ 
+-  $config_entity_updater->update($sandbox, 'editor', $callback);
++  $config_entity_updater->update($sandbox, 'editor', $callback, TRUE);
+ }
+--- a/core/modules/views/views.post_update.php
++++ b/core/modules/views/views.post_update.php
+@@ -10,6 +10,24 @@
+ use Drupal\views\ViewsConfigUpdater;
+ 
+ /**
++ * Safely runs a Views config updater across view config entities.
++ */
++function _views_safe_config_update(?array &$sandbox, callable $callback): void {
++  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($callback): bool {
++    try {
++      return (bool) $callback($view);
++    }
++    catch (\Throwable $e) {
++      \Drupal::logger('views')->warning('Skipped Views post-update for view @view because it could not be updated cleanly: @message', [
++        '@view' => $view->id(),
++        '@message' => $e->getMessage(),
++      ]);
++      return FALSE;
++    }
++  }, TRUE);
++}
++
++/**
+  * Implements hook_removed_post_updates().
+  */
+ function views_removed_post_updates() {
+@@ -55,7 +73,7 @@
+ function views_post_update_oembed_eager_load(?array &$sandbox = NULL): void {
+   /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
+   $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($view_config_updater): bool {
++  _views_safe_config_update($sandbox, function (ViewEntityInterface $view) use ($view_config_updater): bool {
+     return $view_config_updater->needsOembedEagerLoadFieldUpdate($view);
+   });
+ }
+@@ -66,7 +84,7 @@
+ function views_post_update_responsive_image_lazy_load(?array &$sandbox = NULL): void {
+   /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
+   $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($view_config_updater): bool {
++  _views_safe_config_update($sandbox, function (ViewEntityInterface $view) use ($view_config_updater): bool {
+     return $view_config_updater->needsResponsiveImageLazyLoadFieldUpdate($view);
+   });
+ }
+@@ -77,7 +95,7 @@
+ function views_post_update_timestamp_formatter(?array &$sandbox = NULL): void {
+   /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
+   $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($view_config_updater): bool {
++  _views_safe_config_update($sandbox, function (ViewEntityInterface $view) use ($view_config_updater): bool {
+     return $view_config_updater->needsTimestampFormatterTimeDiffUpdate($view);
+   });
+ }
+@@ -89,7 +107,7 @@
+   /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
+   $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
+   $view_config_updater->setDeprecationsEnabled(FALSE);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($view_config_updater) {
++  _views_safe_config_update($sandbox, function (ViewEntityInterface $view) use ($view_config_updater) {
+     return $view_config_updater->needsRevisionFieldHyphenFix($view);
+   });
+ }
+@@ -100,7 +118,7 @@
+ function views_post_update_add_missing_labels(&$sandbox = NULL): void {
+   /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
+   $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($view_config_updater): bool {
++  _views_safe_config_update($sandbox, function (ViewEntityInterface $view) use ($view_config_updater): bool {
+     return $view_config_updater->addLabelIfMissing($view);
+   });
+ }
+@@ -121,7 +139,7 @@
+ function views_post_update_remove_default_argument_skip_url(?array &$sandbox = NULL): void {
+   /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
+   $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($view_config_updater): bool {
++  _views_safe_config_update($sandbox, function (ViewEntityInterface $view) use ($view_config_updater): bool {
+     return $view_config_updater->needsDefaultArgumentSkipUrlUpdate($view);
+   });
+ }
+@@ -132,7 +150,7 @@
+ function views_post_update_taxonomy_filter_user_context(?array &$sandbox = NULL): void {
+   /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
+   $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($view_config_updater): bool {
++  _views_safe_config_update($sandbox, function (ViewEntityInterface $view) use ($view_config_updater): bool {
+     return $view_config_updater->needsTaxonomyTermFilterUpdate($view);
+   });
+ }
+@@ -143,7 +161,7 @@
+ function views_post_update_pager_heading(?array &$sandbox = NULL): void {
+   /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
+   $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($view_config_updater): bool {
++  _views_safe_config_update($sandbox, function (ViewEntityInterface $view) use ($view_config_updater): bool {
+     return $view_config_updater->needsPagerHeadingUpdate($view);
+   });
+ }
+@@ -154,7 +172,7 @@
+ function views_post_update_rendered_entity_field_cache_metadata(?array &$sandbox = NULL): void {
+   /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
+   $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($view_config_updater): bool {
++  _views_safe_config_update($sandbox, function (ViewEntityInterface $view) use ($view_config_updater): bool {
+     return $view_config_updater->needsRenderedEntityFieldUpdate($view);
+   });
+ }
+@@ -166,7 +184,7 @@
+   /** @var \Drupal\views\ViewsConfigUpdater $view_config_updater */
+   $view_config_updater = \Drupal::classResolver(ViewsConfigUpdater::class);
+   $view_config_updater->setDeprecationsEnabled(FALSE);
+-  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($view_config_updater): bool {
++  _views_safe_config_update($sandbox, function (ViewEntityInterface $view) use ($view_config_updater): bool {
+     return $view_config_updater->needsEntityArgumentUpdate($view);
+   });
+ }
