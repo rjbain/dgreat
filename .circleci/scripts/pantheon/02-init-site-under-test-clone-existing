@@ -1,30 +1,11 @@
 #!/bin/bash
 
 set -eo pipefail
-
-# Print each command before executing for easier CI log diagnosis
 set -x
 
-#
-# This script prepares the site-under-test by cloning the database from
-# an existing site.
-#
-# Use EITHER this script OR the re-install-new script; do not run both.
-#
-
-# Create a new multidev site to test on
 terminus -n env:wake "$TERMINUS_SITE.dev"
 terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
 
-# flexible_permissions must be registered in core.extension BEFORE any drush
-# command that bootstraps Drupal. drush pm-enable itself bootstraps and hits
-# the same "non-existent service" container error, so we fix at DB level.
-#
-# drush sql:query only needs a DB connection (bootstrap level 4), not the full
-# service container, so it works even when the container is broken.
-#
-# Query HEX(data) instead of raw BLOB data. This avoids terminal/output-layer
-# mangling of serialized bytes and makes parsing reliable in CI logs.
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query \
   "SELECT HEX(data) FROM config WHERE name='core.extension'" \
   > /tmp/core_ext_raw.txt 2>&1 || true
@@ -32,18 +13,11 @@ terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query \
 UPDATE_SQL=$(php << 'PHPEOF'
 <?php
 $raw = file_get_contents('/tmp/core_ext_raw.txt');
-$hex = '';
-foreach (explode("\n", $raw) as $line) {
-    $line = trim($line);
-    if (preg_match('/^[0-9A-F]+$/i', $line)) {
-        $hex = $line;
-        break;
-    }
-}
-if (!$hex) {
+if (!preg_match('/([0-9A-F]{100,})/i', $raw, $matches)) {
     fwrite(STDERR, "core.extension hex blob not found in SQL output — skipping.\n");
     exit(0);
 }
+$hex = $matches[1];
 $blob = @hex2bin($hex);
 if ($blob === false) {
     fwrite(STDERR, "core.extension hex blob could not be decoded — skipping.\n");
@@ -71,18 +45,13 @@ else
   echo "flexible_permissions injection skipped (already present or blob not found)."
 fi
 
-# The Quicksilver sync_code hook already deleted compiled container PHP files.
-# Truncate cache_container as belt-and-suspenders for the DB-side entry.
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "TRUNCATE cache_container;" || true
 
-# Run updatedb FIRST so schema changes are in place before drush cr.
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb --yes --no-cache-clear
 echo "updatedb exit code: $?"
 
-# Clear caches after updatedb so all registry/route/theme changes take effect.
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
 
-# If exported configuration is available, then import it.
 if [ -f "config/system.site.yml" ] ; then
   terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "
     DELETE FROM config WHERE name LIKE 'block.block.adminimal_theme_%';
@@ -101,12 +70,10 @@ if [ -f "config/system.site.yml" ] ; then
   CLEAN_SQL=$(php << 'PHPEOF'
 <?php
 $raw = file_get_contents('/tmp/core_ext_raw2.txt');
-$hex = '';
-foreach (explode("\n", $raw) as $line) {
-    $line = trim($line);
-    if (preg_match('/^[0-9A-F]+$/i', $line)) { $hex = $line; break; }
+if (!preg_match('/([0-9A-F]{100,})/i', $raw, $matches)) {
+    exit(0);
 }
-if (!$hex) { exit(0); }
+$hex = $matches[1];
 $blob = @hex2bin($hex);
 if ($blob === false) { exit(0); }
 $d = @unserialize($blob);
