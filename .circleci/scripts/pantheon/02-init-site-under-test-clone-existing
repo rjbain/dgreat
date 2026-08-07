@@ -3,54 +3,23 @@
 set -eo pipefail
 set -x
 
+#
+# This script prepares the site-under-test by cloning the database from
+# an existing site.
+#
+# Use EITHER this script OR the re-install-new script; do not run both.
+#
+
 terminus -n env:wake "$TERMINUS_SITE.dev"
 terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
 
-terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query \
-  "SELECT HEX(data) FROM config WHERE name='core.extension'" \
-  > /tmp/core_ext_raw.txt 2>&1 || true
-
-UPDATE_SQL=$(php << 'PHPEOF'
-<?php
-$raw = file_get_contents('/tmp/core_ext_raw.txt');
-if (!preg_match('/([0-9A-F]{100,})/i', $raw, $matches)) {
-    fwrite(STDERR, "core.extension hex blob not found in SQL output — skipping.\n");
-    exit(0);
-}
-$hex = $matches[1];
-$blob = @hex2bin($hex);
-if ($blob === false) {
-    fwrite(STDERR, "core.extension hex blob could not be decoded — skipping.\n");
-    exit(0);
-}
-$d = @unserialize($blob);
-if (!is_array($d) || !isset($d['module'])) {
-    fwrite(STDERR, "core.extension could not be unserialized — skipping.\n");
-    exit(0);
-}
-if (array_key_exists('flexible_permissions', $d['module'])) {
-    fwrite(STDERR, "flexible_permissions already in core.extension, skipping.\n");
-    exit(0);
-}
-$d['module']['flexible_permissions'] = 0;
-ksort($d['module']);
-echo "UPDATE config SET data=UNHEX('" . bin2hex(serialize($d)) . "') WHERE name='core.extension';";
-PHPEOF
-)
-
-if [[ "$UPDATE_SQL" == UPDATE* ]]; then
-  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "$UPDATE_SQL"
-  echo "flexible_permissions registered in core.extension."
-else
-  echo "flexible_permissions injection skipped (already present or blob not found)."
-fi
-
-terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "TRUNCATE cache_container;" || true
-
-terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb --yes --no-cache-clear
+# Now that flexible_permissions is a real Composer dependency in this branch,
+# do not try to patch core.extension directly in SQL. Let the deployed code
+# bootstrap normally and run DB updates first.
+terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb --yes || true
 echo "updatedb exit code: $?"
 
-terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
+terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr || true
 
 if [ -f "config/system.site.yml" ] ; then
   terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "
@@ -92,9 +61,10 @@ if (!$changed) { exit(0); }
 echo "UPDATE config SET data=UNHEX('" . bin2hex(serialize($d)) . "') WHERE name='core.extension';";
 PHPEOF
   )
+
   if [[ "$CLEAN_SQL" == UPDATE* ]]; then
     terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "$CLEAN_SQL"
-    echo "Removed non-existent D11 modules/themes from core.extension in DB."
+    echo "Removed non-existent modules/themes from core.extension in DB."
   fi
 
   terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes \
