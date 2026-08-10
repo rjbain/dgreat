@@ -305,17 +305,31 @@ p img {
 	    float: right!important;
 	    margin-left: 1.5625rem;	
 	    margin-bottom: 1rem;
+		@include media-breakpoint-down(phone) {
+			width:100%;
+			float: none!important;
+			margin-left: 0;
+		}
 	}
 	&.align-left {
 	    float: left;
 	    margin-right: 1.5625rem;	
 	    margin-bottom: 1rem;
+		@include media-breakpoint-down(phone) {
+			width:100%;
+			float: none;
+			margin-right: 0;
+		}
 	}
 	&.align-center {
 	    display: table;
 	    margin-left: auto;
 	    margin-right: auto;
 	    margin-bottom: 1rem;
+		@include media-breakpoint-down(phone) {
+			width:100%;
+			float: none;
+		}
 	}
 }
 
