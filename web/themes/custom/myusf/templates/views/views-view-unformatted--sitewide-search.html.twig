@@ -16,6 +16,10 @@
  */
 #}
 <div class="sitewide-search-results">
+  {% if sitewide_search_results_count_text %}
+    <div class="sitewide-search-results__count">{{ sitewide_search_results_count_text }}</div>
+  {% endif %}
+
   {% for row in rows %}
     <div{{ row.attributes.addClass('sitewide-search-results__item') }}>
       {{ row.content }}

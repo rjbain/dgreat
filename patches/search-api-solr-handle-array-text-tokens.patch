@@ -1,0 +1,15 @@
+diff --git a/src/Plugin/search_api/backend/SearchApiSolrBackend.php b/src/Plugin/search_api/backend/SearchApiSolrBackend.php
+index 97ab78a..0f31a9d 100644
+--- a/src/Plugin/search_api/backend/SearchApiSolrBackend.php
++++ b/src/Plugin/search_api/backend/SearchApiSolrBackend.php
+@@ -2776,8 +2776,8 @@ class SearchApiSolrBackend extends SolrBackendPluginBase implements SolrBackend
+ 
+           case 'text':
+             /** @var \Drupal\search_api\Plugin\search_api\data_type\value\TextValueInterface $value */
+-            $tokens = $value->getTokens();
+-            if (is_array($tokens) && !empty($tokens)) {
++            $tokens = is_array($value) ? $value : $value->getTokens();
++            if (is_array($tokens) && !empty($tokens) && isset($tokens[0]) && is_object($tokens[0]) && method_exists($tokens[0], 'getText')) {
+               $boost = 0.0;
+               // @todo Remove together with search_api_solr_legacy.
+               $legacy_solr_version = FALSE;
