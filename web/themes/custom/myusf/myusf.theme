@@ -326,8 +326,37 @@ function myusf_clean_search_result_summary($summary, array $search_keywords = []
   $first_character = mb_substr($summary, 0, 1);
   $remaining_summary = mb_substr($summary, 1);
   $summary = mb_strtoupper($first_character) . $remaining_summary;
+  $summary = myusf_truncate_search_result_summary($summary, 250);
 
   return myusf_highlight_search_keywords($summary, $search_keywords);
+}
+
+/**
+ * Truncates a search result summary to a fixed character length.
+ */
+function myusf_truncate_search_result_summary($summary, $max_length = 250) {
+  $summary = trim((string) $summary);
+  $max_length = (int) $max_length;
+
+  if ($summary === '' || $max_length <= 0) {
+    return '';
+  }
+
+  if (mb_strlen($summary) <= $max_length) {
+    return $summary;
+  }
+
+  $truncated_summary = mb_substr($summary, 0, $max_length + 1);
+  $last_space_position = mb_strrpos($truncated_summary, ' ');
+
+  if ($last_space_position !== FALSE && $last_space_position > (int) floor($max_length * 0.6)) {
+    $truncated_summary = mb_substr($truncated_summary, 0, $last_space_position);
+  }
+  else {
+    $truncated_summary = mb_substr($truncated_summary, 0, $max_length);
+  }
+
+  return rtrim($truncated_summary, " \t\n\r\0\x0B,;:-") . '...';
 }
 
 /**

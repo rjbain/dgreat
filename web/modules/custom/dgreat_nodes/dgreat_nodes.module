@@ -7,6 +7,9 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\search_api\IndexInterface;
 
 
 /**
@@ -117,6 +120,36 @@ function dgreat_nodes_page_attachments(array &$attachments) {
 }
 
 /**
+ * Implements hook_search_api_index_items_alter().
+ */
+function dgreat_nodes_search_api_index_items_alter(IndexInterface $index, array &$items) {
+  if ($index->id() !== 'sitewide_search') {
+    return;
+  }
+
+  foreach ($items as $item) {
+    if ($item->getDatasourceId() !== 'entity:node') {
+      continue;
+    }
+
+    $node = $item->getOriginalObject()?->getValue();
+    if (!$node instanceof \Drupal\node\NodeInterface || !$node->hasField('field_migrate_final')) {
+      continue;
+    }
+
+    $text = _dgreat_nodes_extract_reference_field_text($node->get('field_migrate_final'));
+    if ($text === '') {
+      continue;
+    }
+
+    $field = $item->getField('field_migrate_final');
+    if ($field) {
+      $field->setValues([$text]);
+    }
+  }
+}
+
+/**
  * Checks whether a form contains a paragraphs widget.
  */
 function _dgreat_nodes_form_has_paragraphs_widget(array $element) {
@@ -164,4 +197,52 @@ function _dgreat_nodes_form_has_text_format_widget(array $element) {
   }
 
   return FALSE;
+}
+
+/**
+ * Extracts searchable text from an entity reference field and nested entities.
+ */
+function _dgreat_nodes_extract_reference_field_text(FieldItemListInterface $items, array &$visited = []) {
+  $values = [];
+
+  foreach ($items->referencedEntities() as $entity) {
+    if (!$entity instanceof ContentEntityInterface) {
+      continue;
+    }
+
+    $entity_key = $entity->getEntityTypeId() . ':' . $entity->id();
+    if (isset($visited[$entity_key])) {
+      continue;
+    }
+    $visited[$entity_key] = TRUE;
+
+    foreach ($entity->getFields() as $field_name => $field_items) {
+      if ($field_items->isEmpty() || $field_name === 'search_api_excerpt') {
+        continue;
+      }
+
+      $definition = $field_items->getFieldDefinition();
+      $field_type = $definition->getType();
+
+      if (in_array($field_type, ['entity_reference', 'entity_reference_revisions'], TRUE)) {
+        $nested_text = _dgreat_nodes_extract_reference_field_text($field_items, $visited);
+        if ($nested_text !== '') {
+          $values[] = $nested_text;
+        }
+        continue;
+      }
+
+      foreach ($field_items as $field_item) {
+        $item_values = $field_item->getValue();
+        foreach (['value', 'summary'] as $property) {
+          if (!empty($item_values[$property]) && is_scalar($item_values[$property])) {
+            $values[] = (string) $item_values[$property];
+          }
+        }
+      }
+    }
+  }
+
+  $text = trim(strip_tags(implode(' ', $values)));
+  return preg_replace('/\s+/', ' ', $text) ?? '';
 }
