@@ -150,6 +150,15 @@ processor_settings:
   solr_date_range:
     weights:
       preprocess_index: 0
+  type_boost:
+    weights:
+      preprocess_index: 0
+    boosts:
+      'entity:node':
+        datasource_boost: '1.0'
+        bundle_boosts:
+          page: '1.0'
+          section_homepage: '2.0'
 tracker_settings:
   default:
     indexing_order: fifo
