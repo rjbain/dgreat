@@ -128,23 +128,21 @@ function dgreat_nodes_search_api_index_items_alter(IndexInterface $index, array 
   }
 
   foreach ($items as $item) {
-    if ($item->getDatasourceId() !== 'entity:node') {
-      continue;
-    }
+    if ($item->getDatasourceId() === 'entity:node') {
+      $node = $item->getOriginalObject()?->getValue();
+      if (!$node instanceof \Drupal\node\NodeInterface || !$node->hasField('field_migrate_final')) {
+        continue;
+      }
 
-    $node = $item->getOriginalObject()?->getValue();
-    if (!$node instanceof \Drupal\node\NodeInterface || !$node->hasField('field_migrate_final')) {
-      continue;
-    }
+      $text = _dgreat_nodes_extract_reference_field_text($node->get('field_migrate_final'));
+      if ($text === '') {
+        continue;
+      }
 
-    $text = _dgreat_nodes_extract_reference_field_text($node->get('field_migrate_final'));
-    if ($text === '') {
-      continue;
-    }
-
-    $field = $item->getField('field_migrate_final');
-    if ($field) {
-      $field->setValues([$text]);
+      $field = $item->getField('field_migrate_final');
+      if ($field) {
+        $field->setValues([$text]);
+      }
     }
   }
 }

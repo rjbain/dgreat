@@ -93,6 +93,15 @@ field_settings:
       module:
         - file
         - media
+  media_extracted_content:
+    label: 'Document extracted content'
+    datasource_id: 'entity:media'
+    property_path: media_extracted_content
+    type: text
+    boost: 8.0
+    dependencies:
+      module:
+        - media
   media_name:
     label: Name
     datasource_id: 'entity:media'
@@ -142,6 +151,7 @@ processor_settings:
   aggregated_field: {  }
   auto_aggregated_fulltext_field: {  }
   custom_value: {  }
+  dgreat_document_extracted_content: {  }
   entity_type: {  }
   html_filter:
     weights:
@@ -152,6 +162,7 @@ processor_settings:
       - field_display_title
       - field_migrate_final
       - media_document_filename
+      - media_extracted_content
       - media_name
       - title
     title: true
@@ -173,6 +184,7 @@ processor_settings:
       - field_display_title
       - field_migrate_final
       - media_document_filename
+      - media_extracted_content
       - media_name
       - title
     ignorable: "['¿¡!?,.:;]"
