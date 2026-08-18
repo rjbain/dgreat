@@ -274,10 +274,21 @@ function myusf_preprocess_views_view_fields(array &$variables) {
   $variables['result_path_breadcrumb'] = [];
   $variables['result_path_breadcrumb_text'] = '';
   $variables['cleaned_summary'] = '';
+  $variables['result_title'] = '';
   $search_keywords = myusf_get_sitewide_search_keywords();
+
+  if (!empty($variables['fields']['field_display_title']->content)) {
+    $variables['result_title'] = $variables['fields']['field_display_title']->content;
+  }
+  elseif (!empty($variables['fields']['media_name']->content)) {
+    $variables['result_title'] = $variables['fields']['media_name']->content;
+  }
 
   if (!empty($variables['fields']['field_migrate_final']->content)) {
     $variables['cleaned_summary'] = myusf_clean_search_result_summary($variables['fields']['field_migrate_final']->content, $search_keywords);
+  }
+  elseif (!empty($variables['fields']['media_document_filename']->content)) {
+    $variables['cleaned_summary'] = myusf_clean_search_result_summary($variables['fields']['media_document_filename']->content, $search_keywords);
   }
 
   $item = $variables['row']->_item ?? NULL;
@@ -298,16 +309,18 @@ function myusf_preprocess_views_view_fields(array &$variables) {
   }
 
   $path = parse_url($url, PHP_URL_PATH) ?: '';
+  $host = parse_url($url, PHP_URL_HOST) ?: 'myusf.usfca.edu';
   $segments = array_values(array_filter(explode('/', trim($path, '/')), static function ($segment) {
     return $segment !== '';
   }));
 
   if (!$segments) {
+    $variables['result_path_breadcrumb_text'] = $host;
     return;
   }
 
   $variables['result_path_breadcrumb'] = $segments;
-  $variables['result_path_breadcrumb_text'] = 'myusf.usfca.edu > ' . implode(' > ', $segments);
+  $variables['result_path_breadcrumb_text'] = $host . ' > ' . implode(' > ', $segments);
 }
 
 /**

@@ -5,8 +5,10 @@ dependencies:
   config:
     - field.storage.node.field_display_title
     - field.storage.node.field_migrate_final
+    - field.storage.media.field_media_document
     - search_api.server.sitewide_search
   module:
+    - media
     - node
     - search_api_solr
 third_party_settings:
@@ -79,6 +81,27 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_migrate_final
+  media_document_filename:
+    label: 'Document » File » File name'
+    datasource_id: 'entity:media'
+    property_path: 'field_media_document:entity:filename'
+    type: text
+    boost: 3.0
+    dependencies:
+      config:
+        - field.storage.media.field_media_document
+      module:
+        - file
+        - media
+  media_name:
+    label: Name
+    datasource_id: 'entity:media'
+    property_path: name
+    type: text
+    boost: 8.0
+    dependencies:
+      module:
+        - media
   status:
     label: Published
     datasource_id: 'entity:node'
@@ -97,6 +120,14 @@ field_settings:
       module:
         - node
 datasource_settings:
+  'entity:media':
+    bundles:
+      default: false
+      selected:
+        - document
+    languages:
+      default: true
+      selected: {  }
   'entity:node':
     bundles:
       default: false
@@ -120,6 +151,8 @@ processor_settings:
     fields:
       - field_display_title
       - field_migrate_final
+      - media_document_filename
+      - media_name
       - title
     title: true
     alt: true
@@ -139,6 +172,8 @@ processor_settings:
     fields:
       - field_display_title
       - field_migrate_final
+      - media_document_filename
+      - media_name
       - title
     ignorable: "['¿¡!?,.:;]"
     ignorable_classes:
