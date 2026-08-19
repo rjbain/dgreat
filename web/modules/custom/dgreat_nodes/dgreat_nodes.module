@@ -127,22 +127,30 @@ function dgreat_nodes_search_api_index_items_alter(IndexInterface $index, array 
     return;
   }
 
-  foreach ($items as $item) {
-    if ($item->getDatasourceId() === 'entity:node') {
-      $node = $item->getOriginalObject()?->getValue();
-      if (!$node instanceof \Drupal\node\NodeInterface || !$node->hasField('field_migrate_final')) {
-        continue;
-      }
+  foreach ($items as $item_id => $item) {
+    $entity = $item->getOriginalObject()?->getValue();
+    if (is_object($entity) && method_exists($entity, 'isPublished') && !$entity->isPublished()) {
+      unset($items[$item_id]);
+      continue;
+    }
 
-      $text = _dgreat_nodes_extract_reference_field_text($node->get('field_migrate_final'));
-      if ($text === '') {
-        continue;
-      }
+    if ($item->getDatasourceId() !== 'entity:node') {
+      continue;
+    }
 
-      $field = $item->getField('field_migrate_final');
-      if ($field) {
-        $field->setValues([$text]);
-      }
+    $node = $entity;
+    if (!$node instanceof \Drupal\node\NodeInterface || !$node->hasField('field_migrate_final')) {
+      continue;
+    }
+
+    $text = _dgreat_nodes_extract_reference_field_text($node->get('field_migrate_final'));
+    if ($text === '') {
+      continue;
+    }
+
+    $field = $item->getField('field_migrate_final');
+    if ($field) {
+      $field->setValues([$text]);
     }
   }
 }

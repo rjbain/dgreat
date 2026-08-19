@@ -275,13 +275,17 @@ function myusf_preprocess_views_view_fields(array &$variables) {
   $variables['result_path_breadcrumb_text'] = '';
   $variables['cleaned_summary'] = '';
   $variables['result_title'] = '';
+  $variables['result_title_markup'] = '';
+  $variables['result_url'] = '';
   $search_keywords = myusf_get_sitewide_search_keywords();
 
   if (!empty($variables['fields']['field_display_title']->content)) {
-    $variables['result_title'] = $variables['fields']['field_display_title']->content;
+    $variables['result_title_markup'] = $variables['fields']['field_display_title']->content;
+    $variables['result_title'] = trim(strip_tags((string) $variables['fields']['field_display_title']->content));
   }
   elseif (!empty($variables['fields']['media_name']->content)) {
-    $variables['result_title'] = $variables['fields']['media_name']->content;
+    $variables['result_title_markup'] = $variables['fields']['media_name']->content;
+    $variables['result_title'] = trim(strip_tags((string) $variables['fields']['media_name']->content));
   }
 
   if (!empty($variables['fields']['field_migrate_final']->content)) {
@@ -302,14 +306,25 @@ function myusf_preprocess_views_view_fields(array &$variables) {
   }
 
   try {
-    $url = $original->toUrl('canonical')->toString();
+    if ($original instanceof \Drupal\media\MediaInterface && $original->bundle() === 'document' && $original->hasField('field_media_document') && !$original->get('field_media_document')->isEmpty()) {
+      $file = $original->get('field_media_document')->entity;
+      if ($file) {
+        $url = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
+        $variables['result_title_markup'] = '<a href="' . htmlspecialchars($url, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '">' . htmlspecialchars($variables['result_title'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</a>';
+      }
+    }
+
+    if (empty($url)) {
+      $url = $original->toUrl('canonical')->toString();
+    }
   }
   catch (\Exception $exception) {
     return;
   }
 
+  $variables['result_url'] = $url;
   $path = parse_url($url, PHP_URL_PATH) ?: '';
-  $host = parse_url($url, PHP_URL_HOST) ?: 'myusf.usfca.edu';
+  $host = 'myusf.usfca.edu';
   $segments = array_values(array_filter(explode('/', trim($path, '/')), static function ($segment) {
     return $segment !== '';
   }));
