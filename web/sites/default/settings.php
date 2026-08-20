@@ -53,7 +53,15 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && php_sapi_name() != "cli") {
       header("HTTP/1.0 301 Moved Permanently");
       header("Location: https://myusf.usfca.edu/its/ets");
       exit();
-    }   
+    }
+}
+
+if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && php_sapi_name() != "cli") {
+  if ($_SERVER["HTTP_HOST"] == "dli.usfca.edu") {
+    header("HTTP/1.0 301 Moved Permanently");
+    header("Location: https://myusf.usfca.edu/dli");
+    exit();
+  }
 }
 
 if (isset($_ENV['PANTHEON_ENVIRONMENT']) && php_sapi_name() != 'cli') {
