@@ -8,7 +8,7 @@
  */
 
 echo "Updating CKEditor Media Embed library...\n";
-passthru('drush ckeditor_media_embed:update', $exit_code);
+passthru('drush ckeditor_media_embed:update -y', $exit_code);
 
 if ($exit_code === 0) {
   echo "CKEditor Media Embed library updated successfully.\n";
