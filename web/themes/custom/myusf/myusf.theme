@@ -2,6 +2,8 @@
 use \Drupal\block_content\BlockContentInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Render\Markup;
 use \Drupal\paragraphs\Entity\Paragraph;
 
 /**
@@ -236,6 +238,206 @@ function myusf_preprocess_views_view(&$variables) {
     $variables['#cache']['contexts'][] = 'url.query_args';
     $variables['#cache']['contexts'][] = 'url.path';
   }
+}
+
+/**
+ * Implements hook_preprocess_views_view_unformatted().
+ */
+function myusf_preprocess_views_view_unformatted(array &$variables) {
+  if (($variables['view']->id() ?? NULL) !== 'sitewide_search') {
+    return;
+  }
+
+  $total_rows = (int) ($variables['view']->total_rows ?? 0);
+  $variables['sitewide_search_results_count_text'] = $total_rows === 1
+    ? '1 result'
+    : $total_rows . ' results';
+}
+
+/**
+ * Implements hook_theme_suggestions_views_view_fields_alter().
+ */
+function myusf_theme_suggestions_views_view_fields_alter(array &$suggestions, array $variables) {
+  if (($variables['view']->id() ?? NULL) === 'sitewide_search') {
+    $suggestions[] = 'views_view_fields__sitewide_search';
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_view_fields().
+ */
+function myusf_preprocess_views_view_fields(array &$variables) {
+  if (($variables['view']->id() ?? NULL) !== 'sitewide_search') {
+    return;
+  }
+
+  $variables['result_path_breadcrumb'] = [];
+  $variables['result_path_breadcrumb_text'] = '';
+  $variables['cleaned_summary'] = '';
+  $variables['result_title'] = '';
+  $variables['result_title_markup'] = '';
+  $variables['result_url'] = '';
+  $search_keywords = myusf_get_sitewide_search_keywords();
+
+  if (!empty($variables['fields']['field_display_title']->content)) {
+    $variables['result_title_markup'] = $variables['fields']['field_display_title']->content;
+    $variables['result_title'] = trim(strip_tags((string) $variables['fields']['field_display_title']->content));
+  }
+  elseif (!empty($variables['fields']['media_name']->content)) {
+    $variables['result_title_markup'] = $variables['fields']['media_name']->content;
+    $variables['result_title'] = trim(strip_tags((string) $variables['fields']['media_name']->content));
+  }
+
+  if (!empty($variables['fields']['field_migrate_final']->content)) {
+    $variables['cleaned_summary'] = myusf_clean_search_result_summary($variables['fields']['field_migrate_final']->content, $search_keywords);
+  }
+  elseif (!empty($variables['fields']['media_document_filename']->content)) {
+    $variables['cleaned_summary'] = myusf_clean_search_result_summary($variables['fields']['media_document_filename']->content, $search_keywords);
+  }
+
+  $item = $variables['row']->_item ?? NULL;
+  if (!$item || !$item->getOriginalObject()) {
+    return;
+  }
+
+  $original = $item->getOriginalObject()->getValue();
+  if (!$original || !method_exists($original, 'toUrl')) {
+    return;
+  }
+
+  try {
+    if ($original instanceof \Drupal\media\MediaInterface && $original->bundle() === 'document' && $original->hasField('field_media_document') && !$original->get('field_media_document')->isEmpty()) {
+      $file = $original->get('field_media_document')->entity;
+      if ($file) {
+        $url = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
+        $variables['result_title_markup'] = '<a href="' . htmlspecialchars($url, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '">' . htmlspecialchars($variables['result_title'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</a>';
+      }
+    }
+
+    if (empty($url)) {
+      $url = $original->toUrl('canonical')->toString();
+    }
+  }
+  catch (\Exception $exception) {
+    return;
+  }
+
+  $variables['result_url'] = $url;
+  $path = parse_url($url, PHP_URL_PATH) ?: '';
+  $host = 'myusf.usfca.edu';
+  $segments = array_values(array_filter(explode('/', trim($path, '/')), static function ($segment) {
+    return $segment !== '';
+  }));
+
+  if (!$segments) {
+    $variables['result_path_breadcrumb_text'] = $host;
+    return;
+  }
+
+  $variables['result_path_breadcrumb'] = $segments;
+  $variables['result_path_breadcrumb_text'] = $host . ' > ' . implode(' > ', $segments);
+}
+
+/**
+ * Normalizes the sitewide search summary snippet for cleaner display.
+ */
+function myusf_clean_search_result_summary($summary, array $search_keywords = []) {
+  $summary = html_entity_decode((string) $summary, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+  $summary = trim(strip_tags($summary));
+  $summary = preg_replace('/\s+/u', ' ', $summary) ?? '';
+  $summary = ltrim($summary, " \t\n\r\0\x0B'\"`.,;:-");
+
+  if ($summary === '') {
+    return '';
+  }
+
+  $first_character = mb_substr($summary, 0, 1);
+  $remaining_summary = mb_substr($summary, 1);
+  $summary = mb_strtoupper($first_character) . $remaining_summary;
+  $summary = myusf_truncate_search_result_summary($summary, 250);
+
+  return myusf_highlight_search_keywords($summary, $search_keywords);
+}
+
+/**
+ * Truncates a search result summary to a fixed character length.
+ */
+function myusf_truncate_search_result_summary($summary, $max_length = 250) {
+  $summary = trim((string) $summary);
+  $max_length = (int) $max_length;
+
+  if ($summary === '' || $max_length <= 0) {
+    return '';
+  }
+
+  if (mb_strlen($summary) <= $max_length) {
+    return $summary;
+  }
+
+  $truncated_summary = mb_substr($summary, 0, $max_length + 1);
+  $last_space_position = mb_strrpos($truncated_summary, ' ');
+
+  if ($last_space_position !== FALSE && $last_space_position > (int) floor($max_length * 0.6)) {
+    $truncated_summary = mb_substr($truncated_summary, 0, $last_space_position);
+  }
+  else {
+    $truncated_summary = mb_substr($truncated_summary, 0, $max_length);
+  }
+
+  return rtrim($truncated_summary, " \t\n\r\0\x0B,;:-") . '...';
+}
+
+/**
+ * Gets the current sitewide search keywords.
+ */
+function myusf_get_sitewide_search_keywords() {
+  $query = \Drupal::request()->query->get('search_api_fulltext');
+  if (!is_string($query) || trim($query) === '') {
+    return [];
+  }
+
+  preg_match_all('/"[^"]+"|\S+/', $query, $matches);
+  $keywords = [];
+
+  foreach ($matches[0] ?? [] as $keyword) {
+    $keyword = trim($keyword, " \t\n\r\0\x0B\"");
+    if ($keyword !== '') {
+      $keywords[] = $keyword;
+    }
+  }
+
+  return array_values(array_unique($keywords));
+}
+
+/**
+ * Highlights search keywords in the rendered summary snippet.
+ */
+function myusf_highlight_search_keywords($summary, array $search_keywords = []) {
+  $escaped_summary = Html::escape($summary);
+  if (!$search_keywords) {
+    return $escaped_summary;
+  }
+
+  usort($search_keywords, static function ($a, $b) {
+    return mb_strlen($b) <=> mb_strlen($a);
+  });
+
+  $pattern_parts = [];
+  foreach ($search_keywords as $keyword) {
+    $pattern_parts[] = preg_quote(Html::escape($keyword), '/');
+  }
+
+  if (!$pattern_parts) {
+    return $escaped_summary;
+  }
+
+  $highlighted_summary = preg_replace(
+    '/' . implode('|', $pattern_parts) . '/iu',
+    '<strong>$0</strong>',
+    $escaped_summary
+  );
+
+  return Markup::create($highlighted_summary ?? $escaped_summary);
 }
 
 /**

@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Theme override for a sitewide search result row.
+ */
+#}
+<article class="sitewide-search-result">
+  <h3 class="sitewide-search-result__title">
+    {% autoescape false %}
+      {{ result_title_markup ?: result_title }}
+    {% endautoescape %}
+  </h3>
+
+  {% if result_path_breadcrumb_text %}
+    <div class="sitewide-search-result__breadcrumb" aria-label="Result path">
+      {{ result_path_breadcrumb_text }}
+    </div>
+  {% endif %}
+
+  {% if cleaned_summary %}
+    <div class="sitewide-search-result__summary">
+      {{ cleaned_summary }}
+    </div>
+  {% endif %}
+</article>
