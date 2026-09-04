@@ -36,6 +36,7 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
   weight: 20,
   settings: [
     "normalize_existing" => FALSE,
+    "promote_scoped_cells" => TRUE,
   ],
 )]
 class TableHeaderScope extends FilterBase {
@@ -46,40 +47,78 @@ class TableHeaderScope extends FilterBase {
   private const VALID_SCOPES = ['col', 'row', 'colgroup', 'rowgroup'];
 
   /**
+   * A table with this class is left entirely untouched by the filter.
+   */
+  private const EXEMPT_CLASS = 'no-table-filter';
+
+  /**
    * {@inheritdoc}
    */
   public function process($text, $langcode) {
     $result = new FilterProcessResult($text);
 
-    // Cheap bail-out: nothing to do if there are no header cells at all.
-    if (stripos($text, '<th') === FALSE) {
+    // Cheap bail-out: nothing to do if there are no table cells at all.
+    if (stripos($text, '<td') === FALSE && stripos($text, '<th') === FALSE) {
       return $result;
     }
 
-    $normalize = (bool) $this->settings['normalize_existing'];
+    // Read defensively: a filter enabled before a setting was introduced has
+    // stored config without that key (Drupal does not merge nested plugin
+    // defaults into a partial settings array), so fall back to the defaults.
+    $normalize = (bool) ($this->settings['normalize_existing'] ?? FALSE);
+    $promote = (bool) ($this->settings['promote_scoped_cells'] ?? TRUE);
 
     $dom = Html::load($text);
     $changed = FALSE;
 
-    foreach ($dom->getElementsByTagName('th') as $th) {
+    // Cells promoted from <td> carry an editor-authored scope; track them so
+    // the structural normalize pass below never overwrites that intent.
+    $promoted = new \SplObjectStorage();
+
+    // Pass 1: reconcile scope on <td> cells.
+    //
+    // CKEditor 5 cannot model an individual header cell, so a <th> an editor
+    // adds via Source editing is reverted to <td> on load while (if allowlisted
+    // for GHS) keeping its scope attribute — an invalid <td scope="...">.
+    // Promote those to real header cells; drop any leftover invalid scope,
+    // which is meaningless on a <td> and must never render.
+    foreach (iterator_to_array($dom->getElementsByTagName('td')) as $td) {
+      if (!$td->hasAttribute('scope') || $this->isExempt($td)) {
+        continue;
+      }
+      $scope = trim($td->getAttribute('scope'));
+      if ($promote && in_array($scope, self::VALID_SCOPES, TRUE)) {
+        $promoted->attach($this->rename($td, 'th'));
+      }
+      else {
+        $td->removeAttribute('scope');
+      }
+      $changed = TRUE;
+    }
+
+    // Pass 2: ensure every <th> carries a scope value.
+    foreach (iterator_to_array($dom->getElementsByTagName('th')) as $th) {
+      if ($this->isExempt($th)) {
+        continue;
+      }
       $structural = $this->structuralScope($th);
       $existing = trim($th->getAttribute('scope'));
 
       if ($existing === '') {
-        // Add-if-missing: the common case for CKEditor 5 output.
+        // Add-if-missing: the common case for CKEditor 5 header rows/columns.
         $th->setAttribute('scope', $structural);
         $changed = TRUE;
       }
-      elseif ($normalize) {
-        // Respect deliberate span scopes; correct only plain/invalid values
-        // that disagree with the cell's structural position.
+      elseif ($normalize && !$promoted->contains($th)) {
+        // Respect deliberate span scopes and editor-authored (promoted) values;
+        // correct only plain values that disagree with structural position.
         $isGroupScope = in_array($existing, ['colgroup', 'rowgroup'], TRUE);
         if (!$isGroupScope && $existing !== $structural) {
           $th->setAttribute('scope', $structural);
           $changed = TRUE;
         }
       }
-      // Otherwise: an existing scope is deliberate (Source editing, migration,
+      // Otherwise an existing scope is deliberate (Source editing, migration,
       // pasted markup) — leave it untouched.
     }
 
@@ -88,6 +127,51 @@ class TableHeaderScope extends FilterBase {
     }
 
     return $result;
+  }
+
+  /**
+   * Renames an element while preserving its attributes and children.
+   *
+   * @param \DOMElement $element
+   *   The element to rename.
+   * @param string $tag
+   *   The new tag name.
+   *
+   * @return \DOMElement
+   *   The replacement element, now in the document in place of the original.
+   */
+  private function rename(\DOMElement $element, string $tag): \DOMElement {
+    $new = $element->ownerDocument->createElement($tag);
+    foreach (iterator_to_array($element->attributes) as $attr) {
+      $new->setAttribute($attr->nodeName, $attr->nodeValue);
+    }
+    while ($element->firstChild) {
+      $new->appendChild($element->firstChild);
+    }
+    $element->parentNode->replaceChild($new, $element);
+    return $new;
+  }
+
+  /**
+   * Checks whether a cell's containing table opts out of the filter.
+   *
+   * A <table> carrying the EXEMPT_CLASS is left completely untouched, giving
+   * editors (or themers) a way to disable scope handling for a specific table.
+   *
+   * @param \DOMElement $cell
+   *   The <td> or <th> element.
+   *
+   * @return bool
+   *   TRUE if the nearest ancestor table opts out.
+   */
+  private function isExempt(\DOMElement $cell): bool {
+    for ($node = $cell->parentNode; $node instanceof \DOMElement; $node = $node->parentNode) {
+      if (strtolower($node->nodeName) === 'table') {
+        $classes = preg_split('/\s+/', trim($node->getAttribute('class')), -1, PREG_SPLIT_NO_EMPTY);
+        return in_array(self::EXEMPT_CLASS, $classes, TRUE);
+      }
+    }
+    return FALSE;
   }
 
   /**
@@ -123,11 +207,17 @@ class TableHeaderScope extends FilterBase {
    * {@inheritdoc}
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
+    $form['promote_scoped_cells'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Promote scoped &lt;td&gt; cells to &lt;th&gt;'),
+      '#default_value' => $this->settings['promote_scoped_cells'],
+      '#description' => $this->t('CKEditor 5 cannot mark an individual cell as a header, so a &lt;th&gt; added via Source editing reverts to &lt;td&gt; while keeping its scope attribute. When enabled, a &lt;td&gt; with a valid scope ("col"/"row"/"colgroup"/"rowgroup") is rendered as a proper &lt;th&gt;. Requires the scope attribute to be allowlisted for the format so it survives editing. Invalid scope values on &lt;td&gt; are stripped regardless.'),
+    ];
     $form['normalize_existing'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Normalize existing scope values'),
       '#default_value' => $this->settings['normalize_existing'],
-      '#description' => $this->t('By default an existing scope attribute is respected (assumed deliberate). Enable this to overwrite a plain "col"/"row" value that conflicts with the header cell\'s structural position — useful for cleaning up migrated content. Deliberate "colgroup"/"rowgroup" values are always preserved.'),
+      '#description' => $this->t('By default an existing scope attribute is respected (assumed deliberate). Enable this to overwrite a plain "col"/"row" value that conflicts with the header cell\'s structural position — useful for cleaning up migrated content. Deliberate "colgroup"/"rowgroup" values, and values on promoted cells, are always preserved.'),
     ];
     return $form;
   }

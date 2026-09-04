@@ -29,6 +29,31 @@ authored via Source editing or brought in by a migration). The optional
 value that conflicts with the cell's structural position, while always
 preserving deliberate `colgroup`/`rowgroup` values.
 
+## Individual header cells
+
+CKEditor 5 can only mark whole header rows/columns, not a single cell. A `<th>`
+added via Source editing reverts to `<td>` on load, but keeps its `scope`
+attribute. This filter therefore **promotes any `<td scope="col|row|colgroup|
+rowgroup">` to a real `<th>`** on render (preserving the authored scope), and
+strips invalid `scope` values off `<td>`. Editor workflow for a one-off header
+cell: in Source editing, add `scope="col"` (or `row`) to the `<td>`.
+
+This only works if the `scope` attribute survives editing. On formats **without**
+"Limit allowed HTML tags" (e.g. the `full_html` / WYSIWYG format), it already
+does — no configuration needed. Only on a format that *does* restrict HTML would
+you need to add `scope` to the allowed attributes of `<td>`/`<th>`. **Do not
+enable "Limit allowed HTML tags" on a currently-unrestricted format** just for
+this — it strips all non-allowlisted markup sitewide.
+
+## Opting a table out
+
+Add the class `no-table-filter` to a `<table>` and the filter leaves that entire
+table alone — no scope added, promoted, or stripped:
+
+```html
+<table class="no-table-filter"> ... </table>
+```
+
 ## Setup
 
 1. Enable the module:
