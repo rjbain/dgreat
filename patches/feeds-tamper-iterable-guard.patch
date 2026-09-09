@@ -1,0 +1,19 @@
+--- src/EventSubscriber/FeedsSubscriber.php
++++ src/EventSubscriber/FeedsSubscriber.php
+@@ -126,12 +126,11 @@ class FeedsSubscriber implements EventSubscriberInterface {
+           // Many plugins expect a scalar value but the current value of the
+           // pipeline might be multiple scalars and in this case the current
+           // value needs to be iterated and each scalar separately transformed.
+-          if ($multiple && !$definition['handle_multiples']) {
++          if ($multiple && !$definition['handle_multiples'] && is_iterable($item_value)) {
+             $new_value = [];
+-            // @todo throw exception if $item_value is not an array.
+             foreach ($item_value as $scalar_value) {
+               $new_value[] = $tamper->tamper($scalar_value, $tamperable_item);
+             }
+             $item_value = $new_value;
+           }
+           else {
+   /**
+    * @covers ::afterParse
+    * @covers ::alterItem

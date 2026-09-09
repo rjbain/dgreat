@@ -7,12 +7,12 @@
  * is gitignored under /web/libraries, so it must be fetched after every deploy.
  */
 
-echo "Installing CKEditor Media Embed library...\n";
-passthru('drush ckeditor_media_embed:install', $exit_code);
+echo "Updating CKEditor Media Embed library...\n";
+passthru('drush ckeditor_media_embed:update -y', $exit_code);
 
 if ($exit_code === 0) {
-  echo "CKEditor Media Embed library installed successfully.\n";
+  echo "CKEditor Media Embed library updated successfully.\n";
 }
 else {
-  echo "ERROR: CKEditor Media Embed library install failed (exit code: $exit_code).\n";
+  echo "ERROR: CKEditor Media Embed library update failed (exit code: $exit_code).\n";
 }

@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - dgreat_table_scope
     - editor
     - linkit
     - media
@@ -12,6 +13,13 @@ name: WYSIWYG
 format: full_html
 weight: -10
 filters:
+  dgreat_table_header_scope:
+    id: dgreat_table_header_scope
+    provider: dgreat_table_scope
+    status: true
+    weight: 20
+    settings:
+      normalize_existing: false
   editor_file_reference:
     id: editor_file_reference
     provider: editor
