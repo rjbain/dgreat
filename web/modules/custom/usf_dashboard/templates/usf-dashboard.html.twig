@@ -12,6 +12,7 @@ Available variables (usf_dashboard.module)
 * dashboard_content.dashboard_user.name.value
 
 #}
+{{ attach_library('myusf/datepicker-block') }}
 {% if ('faculty' not in user.getroles) and ('all_access' not in user.getroles) and ('student' not in user.getroles) and ('online_student' not in user.getroles) and ('admitted_student' not in user.getroles) and ('finance' not in user.getroles) and ('employee' not in user.getroles) and ('prehire_faculty' not in user.getroles) and ('prehire_staff' not in user.getroles)  and ('bi_group' not in user.getroles)  and ('vcl-staff' not in user.getroles)  and ('online_intaccept' not in user.getroles) %}
          {% set myclass = 'noroleRole' %}
 {% endif %}
@@ -117,10 +118,30 @@ Available variables (usf_dashboard.module)
                 {% endif %}            
 
             </div>
-            <div class="row">           
-                <div class="col-12">
+            <div class="row dashboard-featured-events-search">           
+                <div class="col-lg-8">
                     <h2>Featured Events</h2>
                     {{ drupal_view('events_featured', 'block_1') }}
+                </div>
+                <div class="col-lg-4 dashboard-events-search">
+                    <h2>Search Events</h2>
+                    <form action="/calendar" method="get" class="dashboard-events-search-form">
+                        <div class="form-group">
+                            <label for="dashboard-event-keywords">Keywords</label>
+                            <input type="text" id="dashboard-event-keywords" name="search_api_fulltext" class="form-search form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-field-start-date">Start Date</label>
+                            <input type="text" id="edit-field-start-date" name="field_start_date" class="form-text form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-field-end-date">End Date</label>
+                            <input type="text" id="edit-field-end-date" name="field_end_date" class="form-text form-control">
+                        </div>
+                        <div class="button-form">
+                            <input type="submit" value="Apply" class="button btn btn-primary">
+                        </div>
+                    </form>
                 </div>
                 <div class="col-12 eventsLink">
 
@@ -196,4 +217,3 @@ Available variables (usf_dashboard.module)
         </div>
     </div>
    {% endif %} 
-
