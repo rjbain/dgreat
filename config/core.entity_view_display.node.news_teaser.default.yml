@@ -7,8 +7,13 @@ dependencies:
     - field.field.node.news_teaser.feeds_item
     - field.field.node.news_teaser.field_guid
     - field.field.node.news_teaser.field_image_url
+    - field.field.node.news_teaser.field_introtext
+    - field.field.node.news_teaser.field_pubdate
+    - field.field.node.news_teaser.field_source_url
+    - field.field.node.news_teaser.field_teaser
     - node.type.news_teaser
   module:
+    - datetime
     - link
     - text
     - user
@@ -44,6 +49,41 @@ content:
       target: ''
     third_party_settings: {  }
     weight: 13
+    region: content
+  field_introtext:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 121
+    region: content
+  field_pubdate:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_source_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 118
+    region: content
+  field_teaser:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 120
     region: content
   links:
     settings: {  }

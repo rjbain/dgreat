@@ -4,7 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.news_teaser.body
+    - field.field.node.news_teaser.field_guid
     - field.field.node.news_teaser.field_image_url
+    - field.field.node.news_teaser.field_introtext
+    - field.field.node.news_teaser.field_pubdate
+    - field.field.node.news_teaser.field_source_url
+    - field.field.node.news_teaser.field_teaser
     - node.type.news_teaser
   module:
     - feeds_ex
@@ -69,11 +74,53 @@ custom_sources:
     raw: false
     inner: false
     type: xml
+  richtext:
+    label: richText
+    machine_name: richtext
+    value: richText
+    raw: false
+    inner: false
+    type: xml
+  teaser:
+    label: teaser
+    machine_name: teaser
+    value: teaser
+    raw: false
+    inner: false
+    type: xml
+  introtext:
+    label: introText
+    machine_name: introtext
+    value: introText
+    raw: false
+    inner: false
+    type: xml
+  link:
+    label: link
+    machine_name: link
+    value: link
+    raw: false
+    inner: false
+    type: xml
+  nid:
+    label: nid
+    machine_name: nid
+    value: nid
+    raw: false
+    inner: false
+    type: xml
+  pubdate:
+    label: pubDate
+    machine_name: pubdate
+    value: pubDate
+    raw: false
+    inner: false
+    type: xml
 mappings:
   -
     target: body
     map:
-      value: description
+      value: richtext
       summary: ''
     settings:
       language: null
@@ -91,5 +138,38 @@ mappings:
       value: title
     settings:
       language: null
+    unique: {  }
+  -
+    target: field_teaser
+    map:
+      value: teaser
+    settings:
+      language: null
+  -
+    target: field_introtext
+    map:
+      value: introtext
+    settings:
+      language: null
+  -
+    target: field_source_url
+    map:
+      uri: link
+      title: ''
+    settings:
+      language: null
+  -
+    target: field_guid
+    map:
+      value: nid
+    settings:
+      language: null
     unique:
       value: 1
+  -
+    target: field_pubdate
+    map:
+      value: pubdate
+    settings:
+      language: null
+      timezone: UTC

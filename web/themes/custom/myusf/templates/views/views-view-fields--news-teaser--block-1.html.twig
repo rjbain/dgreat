@@ -7,14 +7,32 @@
  */
 #}
 {% set image_url = fields.field_image_url.content|striptags|trim %}
-{% set body = row._entity.body.value %}
+{% set teaser = row._entity.hasField('field_teaser') ? row._entity.field_teaser.value : '' %}
+{% set title = fields.title.content|striptags|trim %}
+{% set source_url = fields.field_source_url is defined ? fields.field_source_url.content|striptags|trim : '' %}
+{% set pubdate = fields.field_pubdate is defined ? fields.field_pubdate.content|striptags|trim : '' %}
+{% if source_url is empty and row._entity.hasField('field_source_url') and not row._entity.field_source_url.isEmpty() %}
+    {% set source_url = row._entity.field_source_url.uri %}
+{% endif %}
+{% if pubdate is empty and row._entity.hasField('field_pubdate') and not row._entity.field_pubdate.isEmpty() %}
+    {% set pubdate = row._entity.field_pubdate.value %}
+{% endif %}
 
 <div class="card">
     {% if image_url %}
-        <img alt="" class="card-img-top" src="{{ 'https://www.usfca.edu' ~ image_url }}" />
+        <img alt="" class="card-img-top" src="{{ image_url }}" />
     {% endif %}
     <div class="card-body">
-        <h5 class="card-title">{{ fields.title.content }}</h5>
-        <div class="card-text">{{ body|raw }}</div>
+        <h5 class="card-title">
+            {% if source_url %}
+                <a href="{{ source_url }}" target="_blank" rel="noopener">{{ title }}</a>
+            {% else %}
+                {{ title }}
+            {% endif %}
+        </h5>
+        {% if pubdate %}
+            <div class="card-date small">{{ pubdate|date('F j, Y') }}</div>
+        {% endif %}
+        <div class="card-text">{{ teaser|raw }}</div>
     </div>
 </div>
