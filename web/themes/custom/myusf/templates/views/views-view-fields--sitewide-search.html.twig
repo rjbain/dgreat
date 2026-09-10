@@ -6,9 +6,15 @@
 #}
 <article class="sitewide-search-result">
   <h3 class="sitewide-search-result__title">
-    {% autoescape false %}
-      {{ result_title_markup ?: result_title }}
-    {% endautoescape %}
+    {% if result_title_markup %}
+      {% autoescape false %}
+        {{ result_title_markup }}
+      {% endautoescape %}
+    {% elseif result_url %}
+      <a href="{{ result_url }}">{{ result_title }}</a>
+    {% else %}
+      {{ result_title }}
+    {% endif %}
   </h3>
 
   {% if result_path_breadcrumb_text %}

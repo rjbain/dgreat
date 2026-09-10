@@ -10,6 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\search_api\IndexInterface;
+use Drupal\search_api\Query\QueryInterface;
 
 
 /**
@@ -84,6 +85,18 @@ function dgreat_nodes_form_alter(&$form, FormStateInterface $form_state, $form_i
     $form['#attached']['library'][] = 'dgreat_nodes/paragraphs_editor_admin';
   }
 
+  if ($form_id === 'views_exposed_form') {
+    $view = $form_state->get('view');
+    if ($view && $view->id() === 'sitewide_search') {
+      $form['files_only'] = [
+        '#type' => 'checkbox',
+        '#title' => t('Files Only'),
+        '#default_value' => (int) \Drupal::request()->query->get('files_only', 0),
+        '#weight' => 10,
+      ];
+    }
+  }
+
   $fav_links_nodes = [
     'node_favorite_link_form',
     'node_favorite_link_edit_form'
@@ -153,6 +166,21 @@ function dgreat_nodes_search_api_index_items_alter(IndexInterface $index, array 
       $field->setValues([$text]);
     }
   }
+}
+
+/**
+ * Implements hook_search_api_query_alter().
+ */
+function dgreat_nodes_search_api_query_alter(QueryInterface $query) {
+  if ($query->getIndex()->id() !== 'sitewide_search') {
+    return;
+  }
+
+  if (!\Drupal::request()->query->getBoolean('files_only')) {
+    return;
+  }
+
+  $query->addCondition('search_api_datasource', 'entity:media');
 }
 
 /**

@@ -278,6 +278,7 @@ function myusf_preprocess_views_view_fields(array &$variables) {
   $variables['result_title_markup'] = '';
   $variables['result_url'] = '';
   $search_keywords = myusf_get_sitewide_search_keywords();
+  $item = $variables['row']->_item ?? NULL;
 
   if (!empty($variables['fields']['field_display_title']->content)) {
     $variables['result_title_markup'] = $variables['fields']['field_display_title']->content;
@@ -291,11 +292,13 @@ function myusf_preprocess_views_view_fields(array &$variables) {
   if (!empty($variables['fields']['field_migrate_final']->content)) {
     $variables['cleaned_summary'] = myusf_clean_search_result_summary($variables['fields']['field_migrate_final']->content, $search_keywords);
   }
+  elseif ($media_extracted_content = myusf_get_search_api_item_field_value($item, 'media_extracted_content')) {
+    $variables['cleaned_summary'] = myusf_clean_search_result_summary($media_extracted_content, $search_keywords);
+  }
   elseif (!empty($variables['fields']['media_document_filename']->content)) {
     $variables['cleaned_summary'] = myusf_clean_search_result_summary($variables['fields']['media_document_filename']->content, $search_keywords);
   }
 
-  $item = $variables['row']->_item ?? NULL;
   if (!$item || !$item->getOriginalObject()) {
     return;
   }
@@ -310,7 +313,9 @@ function myusf_preprocess_views_view_fields(array &$variables) {
       $file = $original->get('field_media_document')->entity;
       if ($file) {
         $url = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
-        $variables['result_title_markup'] = '<a href="' . htmlspecialchars($url, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '">' . htmlspecialchars($variables['result_title'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</a>';
+        $link_text = $variables['result_title'] ?: $file->getFilename();
+        $variables['result_title_markup'] = '<a href="' . htmlspecialchars($url, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '">' . htmlspecialchars($link_text, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</a>';
+        $variables['result_title'] = $link_text;
       }
     }
 
@@ -336,6 +341,26 @@ function myusf_preprocess_views_view_fields(array &$variables) {
 
   $variables['result_path_breadcrumb'] = $segments;
   $variables['result_path_breadcrumb_text'] = $host . ' > ' . implode(' > ', $segments);
+}
+
+/**
+ * Gets a plain field value from a Search API result item.
+ */
+function myusf_get_search_api_item_field_value($item, $field_id) {
+  if (!$item || !method_exists($item, 'getField')) {
+    return '';
+  }
+
+  $field = $item->getField($field_id);
+  if (!$field || !method_exists($field, 'getValues')) {
+    return '';
+  }
+
+  $values = array_filter(array_map(static function ($value) {
+    return is_scalar($value) ? trim((string) $value) : '';
+  }, $field->getValues()));
+
+  return implode(' ', $values);
 }
 
 /**
