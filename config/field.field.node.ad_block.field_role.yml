@@ -1,0 +1,21 @@
+uuid: 6f46f5dd-9c21-4632-8e3e-59af6deac4a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_role
+    - node.type.ad_block
+id: node.ad_block.field_role
+field_name: field_role
+entity_type: node
+bundle: ad_block
+label: 'User Role'
+description: 'Select the user roles that should see this ad. Leave empty to show the ad to all users.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user_role'
+  handler_settings: {  }
+field_type: entity_reference

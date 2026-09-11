@@ -61,6 +61,14 @@ function template_preprocess_usf_dashboard(&$variables) {
   $fav_links_block = Block::load('views_block__favorite_links_block');
   $quick_links_block = Block::load('views_block__quick_links_block');
   $block = Block::load('dashboardannouncements');
+  $tag_ids = [];
+  $tags = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_term')
+    ->loadTree('tags');
+
+  foreach ($tags as $tag) {
+    $tag_ids[] = $tag->tid;
+  }
 
   // Get the events_slider view.
   // $display_id = 'default';
@@ -80,10 +88,71 @@ function template_preprocess_usf_dashboard(&$variables) {
     "quick_links" => \Drupal::entityTypeManager()
       ->getViewBuilder('block')
       ->view($quick_links_block, 'full', NULL),
+    "tag_ids" => $tag_ids ? implode(',', $tag_ids) : 'all',
+    "has_ad_blocks" => usf_dashboard_has_visible_ad_blocks(),
     //"events_slider" => $events_slider->buildRenderable($display_id),
     "announcements" => \Drupal::entityTypeManager()
       ->getViewBuilder('block')
       ->view($block, 'full', NULL),
   ];
 
+}
+
+/**
+ * Implements hook_preprocess_views_view_fields().
+ */
+function usf_dashboard_preprocess_views_view_fields(&$variables) {
+  if ($variables['view']->id() !== 'ad_blocks') {
+    return;
+  }
+
+  $node = $variables['row']->_entity ?? NULL;
+  $variables['show_ad_block'] = FALSE;
+
+  if (!$node || !$node->hasField('field_role') || $node->get('field_role')->isEmpty()) {
+    $variables['show_ad_block'] = TRUE;
+    return;
+  }
+
+  $user_roles = \Drupal::currentUser()->getRoles();
+  foreach ($node->get('field_role') as $role) {
+    if (in_array($role->target_id, $user_roles, TRUE)) {
+      $variables['show_ad_block'] = TRUE;
+      return;
+    }
+  }
+}
+
+/**
+ * Determines whether the current user has visible dashboard ad blocks.
+ */
+function usf_dashboard_has_visible_ad_blocks(): bool {
+  $ids = \Drupal::entityTypeManager()
+    ->getStorage('node')
+    ->getQuery()
+    ->accessCheck(TRUE)
+    ->condition('status', 1)
+    ->condition('type', 'ad_block')
+    ->execute();
+
+  if (!$ids) {
+    return FALSE;
+  }
+
+  $user_roles = \Drupal::currentUser()->getRoles();
+  $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($ids);
+
+  foreach ($nodes as $node) {
+    if (!$node->hasField('field_role') || $node->get('field_role')->isEmpty()) {
+      return TRUE;
+    }
+
+    foreach ($node->get('field_role') as $role) {
+      if (in_array($role->target_id, $user_roles, TRUE)) {
+        return TRUE;
+      }
+    }
+  }
+
+  return FALSE;
 }

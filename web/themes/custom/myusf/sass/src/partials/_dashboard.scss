@@ -25,6 +25,84 @@
    		margin-bottom: 2.1875rem;
 		height:560px;
 		border: 1px solid $gray;
+		display: flex;
+		flex-wrap: nowrap;
+
+		.appsLinksMain {
+			position: relative;
+			flex: 1 1 auto;
+			min-width: 0;
+			height: 100%;
+		}
+
+		.appsAnnouncements {
+			flex: 0 0 285px;
+			max-width: 285px;
+			margin-left: 1.25rem;
+			padding: 1.25rem 0.9375rem 1.25rem 1.25rem;
+			border-left: 1px solid $plum;
+			overflow: hidden;
+
+			h2 {
+				margin-bottom: 1rem;
+				color: $plum!important;
+				font-size: 1rem;
+				line-height: 1.25;
+				text-transform: uppercase!important;
+			}
+
+			.views-field-title {
+				margin-left: 0;
+				margin-bottom: 0.625rem;
+				line-height: 1.25;
+
+				a {
+					margin-left: 0!important;
+					color: $black!important;
+					font-size: .86rem;
+					font-weight: 700;
+					line-height: 1.25;
+					text-decoration: none;
+
+					&::after {
+						content: " »";
+					}
+
+					&:hover,
+					&:focus {
+						color: $green!important;
+						text-decoration: underline;
+						background-color: transparent;
+					}
+				}
+			}
+
+			.new-announcement-sidebar {
+				display: inline;
+				margin-right: 0.1875rem;
+				color: $plum;
+				font-size: .75rem;
+				font-weight: 700;
+				text-transform: uppercase;
+			}
+
+			.view-footer {
+				margin-top: 1rem;
+				text-align: right;
+
+				a {
+					color: $black!important;
+					font-size: .75rem;
+					font-weight: 700;
+					text-decoration: none;
+					text-transform: uppercase;
+
+					&::after {
+						content: " »";
+					}
+				}
+			}
+		}
 
 		&.noroleRole { 
 			height: 570px;
@@ -35,7 +113,25 @@
 		}
 
 		@include media-breakpoint-down(tablet) {
-			height: 700px;
+			height: auto;
+			flex-wrap: wrap;
+
+			.appsLinksMain,
+			.appsAnnouncements {
+				flex: 0 0 100%;
+				max-width: 100%;
+			}
+
+			.appsLinksMain {
+				height: 700px;
+			}
+
+			.appsAnnouncements {
+				margin-top: 1.25rem;
+				margin-left: 0;
+				border-left: 0;
+				border-top: 1px solid $plum;
+			}
 		}
 
 		@include media-breakpoint-down(landscape_phone) {
@@ -45,10 +141,14 @@
 		}
 
 		@include media-breakpoint-down(phone) {
-			height: 860px;
+			height: auto;
 
 			&.noroleRole { 
-				height: 600px;
+				height: auto;
+			}
+
+			.appsLinksMain {
+				height: 860px;
 			}
 		}
 		
@@ -1341,6 +1441,95 @@ div.view-quick-links.view-id-quick_links {
 			
 		@include media-breakpoint-down(phone) { 
 			padding: 0;
+		}
+	}
+}
+
+
+/*  Dashboard Ad Blocks
+===================================================*/
+
+.usf_dash {
+	.dashboard-ad-blocks {
+		margin-bottom: 1.875rem;
+
+		.view-content {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1.25rem;
+			align-items: stretch;
+		}
+
+		.views-row:empty {
+			display: none;
+		}
+	}
+
+	.dashboard-ad-block {
+		width: 300px;
+		height: 130px;
+		padding: 1.25rem;
+		overflow: hidden;
+		background: $green;
+		color: $white;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		&.dashboard-ad-block--blue {
+			background: $blue;
+		}
+
+		&.dashboard-ad-block--gray {
+			background: $dark_gray;
+		}
+
+		&.dashboard-ad-block--olive {
+			background: $olive;
+		}
+
+		&.dashboard-ad-block--purple {
+			background: $plum;
+		}
+
+		&.dashboard-ad-block--turquoise {
+			background: $turquoise;
+		}
+
+		&.dashboard-ad-block--yellow {
+			background: $yellow;
+			color: $black;
+
+			.dashboard-ad-block__body,
+			.dashboard-ad-block__body p {
+				color: $black;
+			}
+
+			.dashboard-ad-block__body a {
+				color: $green;
+
+				&:hover,
+				&:focus {
+					color: $black!important;
+				}
+			}
+		}
+
+		.dashboard-ad-block__body,
+		.dashboard-ad-block__body p {
+			color: $white;
+			font-size: .95rem;
+			line-height: 1.35;
+		}
+
+		.dashboard-ad-block__body a {
+			color: $yellow;
+
+			&:hover,
+			&:focus {
+				color: $white!important;
+				background-color: transparent;
+			}
 		}
 	}
 }

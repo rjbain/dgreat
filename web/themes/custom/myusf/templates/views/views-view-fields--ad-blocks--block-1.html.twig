@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Theme override to display a dashboard ad block.
+ *
+ * @see template_preprocess_views_view_fields()
+ */
+#}
+{% if show_ad_block %}
+  {% set ad_color = row._entity.hasField('field_color') and not row._entity.field_color.isEmpty() ? row._entity.field_color.value : 'green' %}
+  <div class="dashboard-ad-block dashboard-ad-block--{{ ad_color|clean_class }}">
+    <div class="dashboard-ad-block__body">{{ fields.body.content }}</div>
+  </div>
+{% endif %}
