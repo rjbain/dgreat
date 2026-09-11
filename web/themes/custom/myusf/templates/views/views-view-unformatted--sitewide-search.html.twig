@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * Theme override to display unformatted rows for the sitewide search view.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+<div class="sitewide-search-results">
+  {% if sitewide_search_results_count_text %}
+    <div class="sitewide-search-results__count">{{ sitewide_search_results_count_text }}</div>
+  {% endif %}
+
+  {% for row in rows %}
+    <div{{ row.attributes.addClass('sitewide-search-results__item') }}>
+      {{ row.content }}
+    </div>
+    {% if not loop.last %}
+      <hr class="sitewide-search-results__divider" />
+    {% endif %}
+  {% endfor %}
+</div>

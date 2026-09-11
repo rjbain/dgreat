@@ -5,9 +5,8 @@
  * Contains dgreat_validate_alias.module.
  */
 
-use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
  * Implements hook_help().
@@ -25,22 +24,38 @@ function dgreat_validate_alias_help($route_name, RouteMatchInterface $route_matc
   }
 }
 
-function dgreat_validate_alias_form_node_form_alter(&$form, $form_state, $form_id) {
-  $form['path]'] = [
-    '#required' => TRUE
-  ];
+/**
+ * Implements hook_form_FORM_ID_alter() for node forms.
+ */
+function dgreat_validate_alias_form_node_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
   $form['#validate'][] = 'dgreat_validate_alias_form_validate';
 }
 
-function dgreat_validate_alias_form_validate($form, &$form_state) {
+/**
+ * Validates node URL aliases.
+ */
+function dgreat_validate_alias_form_validate(array &$form, FormStateInterface $form_state): void {
   $form_object = $form_state->getFormObject();
   $node = $form_object->getEntity();
   $content_type = $node->bundle();
-  $key = $form_state->getValue('path');
+  $path = $form_state->getValue('path') ?? [];
+  $alias = trim((string) ($path[0]['alias'] ?? ''));
 
-  if ($key[0]['alias'] == '') {
-    if ($content_type == 'page' || $content_type == 'private_page' || $content_type == 'section_homepage') {
-      $form_state->setErrorByName('path', 'URL Alias is required. Please enter an alias');
-    }
+  $alias_required_bundles = [
+    'page',
+    'private_page',
+    'section_homepage',
+  ];
+
+  if ($alias === '' && in_array($content_type, $alias_required_bundles, TRUE)) {
+    $form_state->setErrorByName('path][0][alias', t('URL alias is required. Please enter an alias.'));
+    return;
+  }
+
+  // Reserve /public and its descendants, without also matching /publications.
+  if (preg_match('@^/public(?:/|$)@i', $alias) && !\Drupal::currentUser()->hasPermission('use reserved public aliases')) {
+    $message = t('Only administrators may use URL aliases beginning with /public.');
+    $form['path']['widget'][0]['alias']['#description'] = $message;
+    $form_state->setErrorByName('path][0][alias', $message);
   }
 }

@@ -1,0 +1,34 @@
+uuid: 2b1f02d3-5beb-4f17-9422-a31f70860785
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.ad_block.body
+    - field.field.node.ad_block.field_color
+    - field.field.node.ad_block.field_role
+    - field.field.node.ad_block.field_weight
+    - node.type.ad_block
+  module:
+    - text
+    - user
+id: node.ad_block.default
+targetEntityType: node
+bundle: ad_block
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_color: true
+  field_role: true
+  field_weight: true
+  langcode: true
+  search_api_excerpt: true

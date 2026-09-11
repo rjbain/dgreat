@@ -23,8 +23,86 @@
 		margin-left: 0;
    		margin-right: 0;
    		margin-bottom: 2.1875rem;
-		background: transparentize($light_beige, .5);
 		height:560px;
+		border: 1px solid $gray;
+		display: flex;
+		flex-wrap: nowrap;
+
+		.appsLinksMain {
+			position: relative;
+			flex: 1 1 auto;
+			min-width: 0;
+			height: 100%;
+		}
+
+		.appsAnnouncements {
+			flex: 0 0 285px;
+			max-width: 285px;
+			margin-left: 1.25rem;
+			padding: 1.25rem 0.9375rem 1.25rem 1.25rem;
+			border-left: 1px solid $plum;
+			overflow: hidden;
+
+			h2 {
+				margin-bottom: 1rem;
+				color: $plum!important;
+				font-size: 1rem;
+				line-height: 1.25;
+				text-transform: uppercase!important;
+			}
+
+			.views-field-title {
+				margin-left: 0;
+				margin-bottom: 0.625rem;
+				line-height: 1.25;
+
+				a {
+					margin-left: 0!important;
+					color: $black!important;
+					font-size: .86rem;
+					font-weight: 700;
+					line-height: 1.25;
+					text-decoration: none;
+
+					&::after {
+						content: " »";
+					}
+
+					&:hover,
+					&:focus {
+						color: $green!important;
+						text-decoration: underline;
+						background-color: transparent;
+					}
+				}
+			}
+
+			.new-announcement-sidebar {
+				display: inline;
+				margin-right: 0.1875rem;
+				color: $plum;
+				font-size: .75rem;
+				font-weight: 700;
+				text-transform: uppercase;
+			}
+
+			.view-footer {
+				margin-top: 1rem;
+				text-align: right;
+
+				a {
+					color: $black!important;
+					font-size: .75rem;
+					font-weight: 700;
+					text-decoration: none;
+					text-transform: uppercase;
+
+					&::after {
+						content: " »";
+					}
+				}
+			}
+		}
 
 		&.noroleRole { 
 			height: 570px;
@@ -35,7 +113,25 @@
 		}
 
 		@include media-breakpoint-down(tablet) {
-			height: 700px;
+			height: auto;
+			flex-wrap: wrap;
+
+			.appsLinksMain,
+			.appsAnnouncements {
+				flex: 0 0 100%;
+				max-width: 100%;
+			}
+
+			.appsLinksMain {
+				height: 700px;
+			}
+
+			.appsAnnouncements {
+				margin-top: 1.25rem;
+				margin-left: 0;
+				border-left: 0;
+				border-top: 1px solid $plum;
+			}
 		}
 
 		@include media-breakpoint-down(landscape_phone) {
@@ -45,10 +141,14 @@
 		}
 
 		@include media-breakpoint-down(phone) {
-			height: 860px;
+			height: auto;
 
 			&.noroleRole { 
-				height: 600px;
+				height: auto;
+			}
+
+			.appsLinksMain {
+				height: 860px;
 			}
 		}
 		
@@ -58,6 +158,7 @@
 				color: $blue!important;
 				@include media-breakpoint-up(desktop) {
 					margin-left: 0.3125rem;
+					margin-bottom: .75rem;
 				}
 			}
 			&:last-child h2 {
@@ -78,7 +179,8 @@
 			height:360px;
 			margin-left: 1.25rem;
 			margin-right: 1.25rem;
-			padding-top: 1.25rem;
+			padding-top: 0.75rem;
+			padding-left: 0;
 
 			@include media-breakpoint-down(phone) {
 				margin-left: 0;
@@ -147,15 +249,9 @@
 				table {
 					display:table;
 					position:absolute;
-					/*left: 620px;
-					width:200px;*/
-					width:33%!important;
-					left:66.3%;
+					width:38%!important;
+					left:36%;
 					height:140px;
-
-					@media screen and (min-width: 1060px) {
-						/*width: 200px!important;*/
-					}
 
 					@include media-breakpoint-down(desktop) {
 				    	/*left: 485px;
@@ -181,37 +277,30 @@
 					}
 					
 					tr {
+						/*to align text links #10-14 on the right*/
+						&:nth-child(10), &:nth-child(11), &:nth-child(12), &:nth-child(13), &:nth-child(14) {
+							position: relative;
+    						top: -155px;
+							left: 230px;
+						}
+						/*colored ones */
 						&:first-child td, &:nth-child(2) td, &:nth-child(3) td, &:nth-child(4) td {
 							position: absolute;
 						    width: 130px;
 						    height: 130px;
 						    margin: 0px;
 						    top: 0;
-						    padding: 0.625rem!important;
-						    text-align:center!important;
-							line-height: 115px;
+						    padding: .35rem .625rem!important;//0.625rem!important;
 							margin-left: 0;
+							left: -95%;
 
-							@media screen and (min-width: 1090px) {
-								width: 120px!important;
-						    	height: 120px!important;
-						    	line-height: 7.8125; /* was 100px */
-							}
-							@media screen and (min-width: 1300px) {
-								width: 140px!important;
-    							height: 140px!important;
-    							line-height: 9.765!important; /* was 125px*/
-							}
-							
 							@include media-breakpoint-up(desktop) {
-						    	width: 110px;
-						    	height: 110px;
-						    	line-height: 7.03125; /* was 90px */
+						    	width: 230px;//110px;
+						    	height: 38px;//110px;
 							}
 						    @include media-breakpoint-down(tablet) {
 								width: 130px;
 						    	height: 130px;
-						    	line-height: 8.203125; /* was 105px */
 							}
 							@include media-breakpoint-down(phone) {
 							 	position: unset;
@@ -225,12 +314,12 @@
 						    	color:$white;
 						    	font-size:.85rem!important;
 						    	line-height: 1.41!important;
-						    	text-transform: uppercase!important;
-						    	display: inline-block;
-								vertical-align: middle;
-								
+								text-decoration: none;
+
 								svg.ext {
-									display: none;
+									path {
+										stroke:white;
+									}
 								}
 
 								@include media-breakpoint-down(desktop) {
@@ -250,16 +339,10 @@
 
 						&:first-child td {						
 						    background: $olive;
-						    left: -200%;
 						    margin-top:0;
 
-
-						   /* @include media-breakpoint-up(large_desktop) {
-						    	left: -200%!important;
-							}*/
 						    @include media-breakpoint-down(tablet) {
 						    	left: -320px!important;
-						    	/*left: -201%!important;*/
 						    	margin-top: 0;
 						    }
 						    @include media-breakpoint-down(phone) {
@@ -285,13 +368,9 @@
 
 						&:nth-child(2) td {
 						    background: $plum;
-						    /*left: -470px;*/
-						    left: -149.5%;
 						    margin-top:0;
+							top:50px;
 
-						    @include media-breakpoint-down(large_desktop) {
-						    	left: -150%!important;
-							}
 						    @include media-breakpoint-down(tablet) {
 						    	left: -170px!important;
 						    	margin-top: 0;
@@ -304,13 +383,9 @@
 
 						&:nth-child(3) td {
 						    background: $turquoise;
-						    /*left: -320px;*/
-						    left: -99%;
 						    margin-top:0;
+							top:100px;
 
-						    @include media-breakpoint-down(large_desktop) {
-						    	left: -99%!important;
-							}
 						    @include media-breakpoint-down(tablet) {
 						    	left: -320px!important;
 						    	/*left: -201%!important;*/
@@ -323,13 +398,8 @@
 						}
 						&:nth-child(4) td {
 						    background: $orange;
-						    /*left: -170px;*/
-						    left: -48%;
 						    margin-top:0;
-
-						    @include media-breakpoint-down(large_desktop) {
-						    	left: -48%!important;
-							}
+							top:150px;
 
 						    @include media-breakpoint-down(tablet) {
 						    	left: -170px!important;
@@ -363,7 +433,7 @@
 							 }
 
 							a {
-								font-size: .9rem!important;
+								font-size: .85rem!important;
 								font-weight: 600;
 								color: $blue;
 
@@ -450,9 +520,9 @@
 		.separator {
 		    position: absolute;
 		    top: 275px;
-		    height: 2px;
+		    height: 1px;
 		    width: calc(100% - 78px);
-		    background: $light_gray;
+		    background: $gray;
 		    margin-left: 24px;
 		    left: 15px!important;
 
@@ -1376,11 +1446,126 @@ div.view-quick-links.view-id-quick_links {
 }
 
 
+/*  Dashboard Ad Blocks
+===================================================*/
+
+.usf_dash {
+	.dashboard-ad-blocks {
+		margin-bottom: 1.875rem;
+
+		.view-content {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1.25rem;
+			align-items: stretch;
+		}
+
+		.views-row:empty {
+			display: none;
+		}
+	}
+
+	.dashboard-ad-block {
+		width: 300px;
+		height: 130px;
+		padding: 1.25rem;
+		overflow: hidden;
+		background: $green;
+		color: $white;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		&.dashboard-ad-block--blue {
+			background: $blue;
+		}
+
+		&.dashboard-ad-block--gray {
+			background: $dark_gray;
+		}
+
+		&.dashboard-ad-block--olive {
+			background: $olive;
+		}
+
+		&.dashboard-ad-block--purple {
+			background: $plum;
+		}
+
+		&.dashboard-ad-block--turquoise {
+			background: $turquoise;
+		}
+
+		&.dashboard-ad-block--yellow {
+			background: $yellow;
+			color: $black;
+
+			.dashboard-ad-block__body,
+			.dashboard-ad-block__body p {
+				color: $black;
+			}
+
+			.dashboard-ad-block__body a {
+				color: $green;
+
+				&:hover,
+				&:focus {
+					color: $black!important;
+				}
+			}
+		}
+
+		.dashboard-ad-block__body,
+		.dashboard-ad-block__body p {
+			color: $white;
+			font-size: .95rem;
+			line-height: 1.35;
+		}
+
+		.dashboard-ad-block__body a {
+			color: $yellow;
+
+			&:hover,
+			&:focus {
+				color: $white!important;
+				background-color: transparent;
+			}
+		}
+	}
+}
+
+
 
 /*  Announcements
 ===================================================*/ 
 
 .usf_dash {
+	.dashboard-news-teaser-cards {
+		align-items: stretch;
+		margin-bottom: 2.5rem;
+
+		.card {
+			display: flex;
+			flex-direction: column;
+			height: auto;
+			min-height: 0;
+		}
+
+		.card-img-top {
+			height: auto;
+		}
+
+		.card-body {
+			flex: 1 1 auto;
+			height: auto;
+		}
+
+		.card-text {
+			font-size: 1rem;
+			line-height: 1.5;
+		}
+	}
+
 	.view-dashboard-announements {
 		margin-top: 1.5rem;
 	}
