@@ -138,8 +138,8 @@ Available variables (usf_dashboard.module)
                     <h2>Featured Events</h2>
                     {{ drupal_view('events_featured', 'block_1') }}
                 </div>
-                <div class="col-lg-4 dashboard-event-list-widget">
-                    <form action="/dashboard" method="get" class="dashboard-event-list-filter">
+                <div id="dashboard-event-list-widget" class="col-lg-4 dashboard-event-list-widget">
+                    <form action="/dashboard#dashboard-event-list-widget" method="get" class="dashboard-event-list-filter">
                         <label for="dashboard-event-category" class="sr-only visually-hidden">Filter events</label>
                         <select id="dashboard-event-category" name="dashboard_event_category" class="form-control" onchange="this.form.submit()">
                             {% for value, label in dashboard_content.event_category_options %}
