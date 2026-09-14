@@ -35,7 +35,7 @@ Available variables (usf_dashboard.module)
 {% elseif logged_in %}
     <div class="row usf_dash">
         <div class="col-12"> {# Left "main" column #}
-            <div class="row appsLinks {{ myclass }}">
+            <div class="row appsLinks {{ dashboard_content.role_classes }} {{ myclass }}">
                 <div class="appsLinksMain">
                 {% if ('faculty' not in user.getroles) and ('all_access' not in user.getroles) and ('student' not in user.getroles) and ('online_student' not in user.getroles) and ('admitted_student' not in user.getroles) and ('finance' not in user.getroles) and ('employee' not in user.getroles) and ('prehire_faculty' not in user.getroles) and ('prehire_staff' not in user.getroles)  and ('bi_group' not in user.getroles)  and ('vcl-staff' not in user.getroles)  and ('online_intaccept' not in user.getroles) %}
 
@@ -138,25 +138,16 @@ Available variables (usf_dashboard.module)
                     <h2>Featured Events</h2>
                     {{ drupal_view('events_featured', 'block_1') }}
                 </div>
-                <div class="col-lg-4 dashboard-events-search">
-                    <h2>Search Events</h2>
-                    <form action="/calendar" method="get" class="dashboard-events-search-form">
-                        <div class="form-group">
-                            <label for="dashboard-event-keywords">Keywords</label>
-                            <input type="text" id="dashboard-event-keywords" name="search_api_fulltext" class="form-search form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="edit-field-start-date">Start Date</label>
-                            <input type="text" id="edit-field-start-date" name="field_end_date" class="form-text form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="edit-field-end-date">End Date</label>
-                            <input type="text" id="edit-field-end-date" name="field_start_date" class="form-text form-control">
-                        </div>
-                        <div class="button-form">
-                            <input type="submit" value="Apply" class="button btn btn-primary">
-                        </div>
+                <div class="col-lg-4 dashboard-event-list-widget">
+                    <form action="/dashboard" method="get" class="dashboard-event-list-filter">
+                        <label for="dashboard-event-category" class="sr-only visually-hidden">Filter events</label>
+                        <select id="dashboard-event-category" name="dashboard_event_category" class="form-control" onchange="this.form.submit()">
+                            {% for value, label in dashboard_content.event_category_options %}
+                                <option value="{{ value }}"{{ dashboard_content.dashboard_event_category == value ? ' selected' }}>{{ label }}</option>
+                            {% endfor %}
+                        </select>
                     </form>
+                    {{ drupal_view('event_block', 'block_1', dashboard_content.dashboard_event_category) }}
                 </div>
                 <div class="col-12 eventsLink">
 
