@@ -53,8 +53,30 @@ function dgreat_validate_alias_form_validate(array &$form, FormStateInterface $f
   }
 
   // Reserve /public and its descendants, without also matching /publications.
-  if (preg_match('@^/public(?:/|$)@i', $alias) && !\Drupal::currentUser()->hasPermission('use reserved public aliases')) {
-    $message = t('Only administrators may use URL aliases beginning with /public.');
+  // Non-administrators may retain an existing restricted alias while editing.
+  $is_restricted_alias = (bool) preg_match('@^/public(?:/|$)@i', $alias);
+  $was_restricted_alias = FALSE;
+  $is_existing_alias = FALSE;
+
+  if (!$node->isNew()) {
+    $original_node = \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->loadUnchanged($node->id());
+
+    if ($original_node) {
+      $langcode = $node->language()->getId();
+      if ($original_node->hasTranslation($langcode)) {
+        $original_node = $original_node->getTranslation($langcode);
+      }
+
+      $original_alias = trim((string) $original_node->get('path')->alias);
+      $was_restricted_alias = (bool) preg_match('@^/public(?:/|$)@i', $original_alias);
+      $is_existing_alias = $alias === $original_alias;
+    }
+  }
+
+  if (($is_restricted_alias || $was_restricted_alias) && !$is_existing_alias && !\Drupal::currentUser()->hasPermission('use reserved public aliases')) {
+    $message = t('Only administrators may create or change URL aliases beginning with /public.');
     $form['path']['widget'][0]['alias']['#description'] = $message;
     $form_state->setErrorByName('path][0][alias', $message);
   }
