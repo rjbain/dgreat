@@ -7,7 +7,6 @@
 	@include clearTableFormat;
 
 	table {
-	    /*margin-left: 15px;*/
 	    margin-right: 0.9375rem;  
 
 	     @include media-breakpoint-down(phone) {
@@ -23,7 +22,7 @@
 		margin-left: 0;
    		margin-right: 0;
    		margin-bottom: 2.1875rem;
-		height:560px;
+		//height:560px;
 		border: 1px solid $gray;
 		display: flex;
 		flex-wrap: nowrap;
@@ -37,31 +36,64 @@
 
 		.appsAnnouncements {
 			flex: 0 0 285px;
-			max-width: 285px;
+			max-width: 210px; //285px;
 			margin-left: 1.25rem;
 			padding: 1.25rem 0.9375rem 1.25rem 1.25rem;
 			border-left: 1px solid $plum;
 			overflow: hidden;
 
-			h2 {
+			/*h2 {
 				margin-bottom: 1rem;
 				color: $plum!important;
 				font-size: 1rem;
 				line-height: 1.25;
 				text-transform: uppercase!important;
+			}*/
+			h2 {
+				font-size: 1.025rem;
+				font-weight: 700;
+				color: $plum !important;
+				text-transform: uppercase!important;
+				border: 0;
+				//padding: 1.25rem 0.9375rem 0 0.9375rem;
+
+				@include media-breakpoint-down(phone) {
+					padding-left: 1.25rem;
+				}
+			}
+			a.appsAnnouncementsViewAll {
+				text-transform: uppercase;
+				text-align: right;
+				font-size: .75rem;
+				font-weight: 700!important;
+				color: #6B6B6B!important;
+				text-decoration: none;
+				display: block;
+				padding-top: .5rem;
+				padding-bottom: .625rem;
+				margin: 0 1.3125rem 0.5rem 0;
+
+				&:after {
+					content: "»";
+					padding-left: 0.1875rem;
+				}
+				&:hover {
+					text-decoration: underline;;
+					background-color: transparent;
+				}
 			}
 
-			.views-field-title {
+			/*.views-field-title {
 				margin-left: 0;
 				margin-bottom: 0.625rem;
 				line-height: 1.25;
 
 				a {
 					margin-left: 0!important;
-					color: $black!important;
-					font-size: .86rem;
-					font-weight: 700;
-					line-height: 1.25;
+					color: $text_gray;//$black!important;
+					font-size: .85rem;
+					font-weight: 600;
+					line-height: 1.1;//1.25;
 					text-decoration: none;
 
 					&::after {
@@ -75,15 +107,35 @@
 						background-color: transparent;
 					}
 				}
-			}
+			}*/
+			.views-field-title {
+			   font-size: .85rem;
+			   font-weight: 600;
+			   color: $text_gray !important;
+			   line-height: 1.1rem;
+			   margin: 0 0.3125rem 0.5rem 0;
+			   padding: 0.2em 0.5em 0 0;
+
+			   a {
+				   color: $text_gray;
+				   text-decoration:none;
+				   font-weight:600;
+   
+				   &:after {
+					   content: "»";
+					   padding-left: 0.1875rem;
+				   }
+   
+				   &:hover,
+				   &:focus {
+					   text-decoration: underline;
+					   background:transparent;
+				   }
+			   }
+		   }
 
 			.new-announcement-sidebar {
 				display: inline;
-				margin-right: 0.1875rem;
-				color: $plum;
-				font-size: .75rem;
-				font-weight: 700;
-				text-transform: uppercase;
 			}
 
 			.view-footer {
@@ -188,7 +240,16 @@
 			}
 
 			h2 {
-				margin-bottom: 1.25rem;
+				/* NEW */
+				font-size: 1.025rem;
+				font-weight: 700;
+				color: #8e0f75 !important;
+				text-transform: uppercase !important;
+				border: 0;
+				margin: 0 0 1rem;
+				/* ---- */
+
+				//margin-bottom: 1.25rem;
 				@include media-breakpoint-down(phone) {
 					margin-left: 1.25rem;
 					font-size: 1.3rem;
@@ -201,7 +262,7 @@
 			}
 
 			#block-views-block-favorite-links-block {
-
+background: yellow;
 				.view-content {
 					height: 195px; 
 					overflow-y: auto;
@@ -497,7 +558,7 @@
 
 					a.seeMyApps {
 						text-decoration:none;
-						top: -40px;
+						//top: -40px;
 						margin-left: 0.125rem;
 
 						@include media-breakpoint-down(tablet) {
@@ -518,9 +579,9 @@
 		}
 
 		.separator {
-		    position: absolute;
+		   // position: absolute;
 		    top: 275px;
-		    height: 1px;
+		    //height: 1px;
 		    width: calc(100% - 78px);
 		    background: $gray;
 		    margin-left: 24px;
@@ -538,8 +599,8 @@
 			}
 		}
 		.defaultQuickLinks {
-			position:absolute;
-			top:298px;
+			//position:absolute;
+			//top:298px;
 			left:0;
 			height:180px;
 			margin-left: 0.625rem;
@@ -553,6 +614,15 @@
 		    }
 
 			h2 {
+				/* NEW */
+				font-size: 1.025rem;
+				font-weight: 700;
+				color: #8e0f75 !important;
+				text-transform: uppercase !important;
+				border: 0;
+				margin: 0 0 1rem;
+				/* ---- */
+
 				padding-left: 1.75rem;
 				color: $turquoise!important; 
 
@@ -569,6 +639,7 @@
 			}
 
 			#block-views-block-default-quick-links-block {
+background: palegreen;
 				.view-content {
 					height: 200px; 
 					width: 30%;
@@ -739,8 +810,8 @@
 			}
 		}
 		.myQuickLinks {
-			position: absolute;
-			top: 298px;
+			//position: absolute;
+			//top: 298px;
 			left: 31%;
 			height: 210px;
 			margin-left: 0.625rem;
@@ -757,6 +828,15 @@
 		    }
 
 			h2 {
+				/* NEW */
+				font-size: 1.025rem;
+				font-weight: 700;
+				color: #8e0f75 !important;
+				text-transform: uppercase !important;
+				border: 0;
+				margin: 0 0 1rem;
+				/* ---- */
+
 				padding-left: 1.3125rem;
 				@include media-breakpoint-down(phone) {
 		    		padding-left: 1.375rem;
@@ -771,6 +851,7 @@
 			}
 
 			#block-views-block-quick-links-block {
+background: palevioletred;				
 				.view-content {
 					height: 180px;
 				    overflow: auto;	
@@ -1068,9 +1149,8 @@
 	/*margin-top:  97px;*/
 }
 
-#sidebar_second img {
-	width: 100%;
-	margin-top:0;
+#sidebar_second {
+	display: none;
 
 }
 aside.section div:first-child {
@@ -1686,7 +1766,7 @@ div.view-quick-links.view-id-quick_links {
 
 /*  Announcements
 ===================================================*/ 
-
+/*
 .usf_dash {
 	.dashboard-news-teaser-cards {
 		align-items: stretch;
@@ -1780,6 +1860,7 @@ div.view-quick-links.view-id-quick_links {
 	    }
 	}
 }
+	*/
 
 /* myApps fix - favorite-links show wight link bg fix */
 .tabledrag-toggle-weight-wrapper button.btn-secondary {
