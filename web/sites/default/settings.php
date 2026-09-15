@@ -53,7 +53,15 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && php_sapi_name() != "cli") {
       header("HTTP/1.0 301 Moved Permanently");
       header("Location: https://myusf.usfca.edu/its/ets");
       exit();
-    }   
+    }
+}
+
+if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && php_sapi_name() != "cli") {
+  if ($_SERVER["HTTP_HOST"] == "dli.usfca.edu") {
+    header("HTTP/1.0 301 Moved Permanently");
+    header("Location: https://myusf.usfca.edu/dli");
+    exit();
+  }
 }
 
 if (isset($_ENV['PANTHEON_ENVIRONMENT']) && php_sapi_name() != 'cli') {
@@ -167,4 +175,19 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT'])
   // TRUNCATE cache_container (MySQL) reliably removes the stale definition,
   // so Drupal compiles a fresh D11 container on first bootstrap.
   $settings['cache']['bins']['container'] = 'cache.backend.database';
+}
+
+// Drupal recommends READ COMMITTED for MySQL/MariaDB.
+if (!empty($databases) && is_array($databases)) {
+  foreach ($databases as $database_key => $targets) {
+    if (!is_array($targets)) {
+      continue;
+    }
+    foreach ($targets as $target_key => $connection) {
+      if (($connection['driver'] ?? NULL) !== 'mysql') {
+        continue;
+      }
+      $databases[$database_key][$target_key]['init_commands']['isolation_level'] = 'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED';
+    }
+  }
 }

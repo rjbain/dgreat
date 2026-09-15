@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - ckeditor_media_embed
+    - dgreat_table_scope
     - editor
     - linkit
     - media
@@ -13,6 +14,13 @@ name: 'Full HTML'
 format: restricted_html
 weight: -9
 filters:
+  dgreat_table_header_scope:
+    id: dgreat_table_header_scope
+    provider: dgreat_table_scope
+    status: true
+    weight: 20
+    settings:
+      normalize_existing: false
   editor_file_reference:
     id: editor_file_reference
     provider: editor

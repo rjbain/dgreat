@@ -20,6 +20,14 @@ class GroupRouteSubscriber extends RouteSubscriberBase {
       unset($requirements['_group_permission']);
       $route->setRequirements($requirements);
     }
+
+    if ($route = $collection->get('view.group_members.page_1')) {
+      $route->setOption('_admin_route', TRUE);
+    }
+
+    if ($route = $collection->get('entity.group_relationship.canonical')) {
+      $route->setOption('_admin_route', TRUE);
+    }
   }
 
 }
