@@ -9,6 +9,7 @@ use Drupal\views\Views;
 use Drupal\block\Entity\Block;
 use Drupal\user\Entity\User;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Component\Utility\Html;
 use Drupal\user\Entity\Role;
 
 /**
@@ -54,13 +55,30 @@ function template_preprocess_usf_dashboard(&$variables) {
   // Load the system role objects.
   $role_objects = Role::loadMultiple();
   // Get the current user's id.
-  $uid = \Drupal::currentUser()->id();
+  $current_user = \Drupal::currentUser();
+  $uid = $current_user->id();
   $user = User::load($uid);
+  $role_classes = array_diff($current_user->getRoles(), ['anonymous', 'authenticated']);
+  $role_classes = array_map([Html::class, 'getClass'], $role_classes);
 
   // Get blocks.
   $fav_links_block = Block::load('views_block__favorite_links_block');
   $quick_links_block = Block::load('views_block__quick_links_block');
   $block = Block::load('dashboardannouncements');
+  $tag_ids = [];
+  $tags = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_term')
+    ->loadTree('tags');
+
+  foreach ($tags as $tag) {
+    $tag_ids[] = $tag->tid;
+  }
+  $event_category_options = [
+    'all' => t('All Items'),
+    '2451' => t('Faculty & Staff'),
+    '2461' => t('Student'),
+  ];
+  $dashboard_event_category = usf_dashboard_get_event_category_filter();
 
   // Get the events_slider view.
   // $display_id = 'default';
@@ -74,16 +92,103 @@ function template_preprocess_usf_dashboard(&$variables) {
   $variables['dashboard_content'] = [
     "dashboard_user" => $user,
     "system_roles" => $role_objects,
+    "role_classes" => implode(' ', $role_classes),
     "fav_links" => \Drupal::entityTypeManager()
       ->getViewBuilder('block')
       ->view($fav_links_block, 'full', NULL),
     "quick_links" => \Drupal::entityTypeManager()
       ->getViewBuilder('block')
       ->view($quick_links_block, 'full', NULL),
+    "tag_ids" => $tag_ids ? implode(',', $tag_ids) : 'all',
+    "has_ad_blocks" => usf_dashboard_has_visible_ad_blocks(),
+    "event_category_options" => $event_category_options,
+    "dashboard_event_category" => $dashboard_event_category,
     //"events_slider" => $events_slider->buildRenderable($display_id),
     "announcements" => \Drupal::entityTypeManager()
       ->getViewBuilder('block')
       ->view($block, 'full', NULL),
   ];
 
+}
+
+/**
+ * Gets the dashboard event category filter for the current request.
+ */
+function usf_dashboard_get_event_category_filter(): string {
+  $allowed_values = ['all', '2451', '2461'];
+  $requested = \Drupal::request()->query->get('dashboard_event_category');
+
+  if (in_array($requested, $allowed_values, TRUE)) {
+    return $requested;
+  }
+
+  $user_roles = \Drupal::currentUser()->getRoles();
+  if (in_array('faculty', $user_roles, TRUE) || in_array('employee', $user_roles, TRUE)) {
+    return '2451';
+  }
+
+  if (in_array('student', $user_roles, TRUE)) {
+    return '2461';
+  }
+
+  return 'all';
+}
+
+/**
+ * Implements hook_preprocess_views_view_fields().
+ */
+function usf_dashboard_preprocess_views_view_fields(&$variables) {
+  if ($variables['view']->id() !== 'ad_blocks') {
+    return;
+  }
+
+  $node = $variables['row']->_entity ?? NULL;
+  $variables['show_ad_block'] = FALSE;
+
+  if (!$node || !$node->hasField('field_role') || $node->get('field_role')->isEmpty()) {
+    $variables['show_ad_block'] = TRUE;
+    return;
+  }
+
+  $user_roles = \Drupal::currentUser()->getRoles();
+  foreach ($node->get('field_role') as $role) {
+    if (in_array($role->target_id, $user_roles, TRUE)) {
+      $variables['show_ad_block'] = TRUE;
+      return;
+    }
+  }
+}
+
+/**
+ * Determines whether the current user has visible dashboard ad blocks.
+ */
+function usf_dashboard_has_visible_ad_blocks(): bool {
+  $ids = \Drupal::entityTypeManager()
+    ->getStorage('node')
+    ->getQuery()
+    ->accessCheck(TRUE)
+    ->condition('status', 1)
+    ->condition('type', 'ad_block')
+    ->execute();
+
+  if (!$ids) {
+    return FALSE;
+  }
+
+  $user_roles = \Drupal::currentUser()->getRoles();
+  $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($ids);
+
+  foreach ($nodes as $node) {
+    if (!$node->hasField('field_role') || $node->get('field_role')->isEmpty()) {
+      return TRUE;
+    }
+
+    foreach ($node->get('field_role') as $role) {
+      if (in_array($role->target_id, $user_roles, TRUE)) {
+        return TRUE;
+      }
+    }
+  }
+
+  return FALSE;
 }

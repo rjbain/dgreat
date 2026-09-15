@@ -12,10 +12,13 @@ Available variables (usf_dashboard.module)
 * dashboard_content.dashboard_user.name.value
 
 #}
+{{ attach_library('myusf/datepicker-block') }}
 {% if ('faculty' not in user.getroles) and ('all_access' not in user.getroles) and ('student' not in user.getroles) and ('online_student' not in user.getroles) and ('admitted_student' not in user.getroles) and ('finance' not in user.getroles) and ('employee' not in user.getroles) and ('prehire_faculty' not in user.getroles) and ('prehire_staff' not in user.getroles)  and ('bi_group' not in user.getroles)  and ('vcl-staff' not in user.getroles)  and ('online_intaccept' not in user.getroles) %}
          {% set myclass = 'noroleRole' %}
 {% endif %}
 {% set role = user.getroles|join(',') %}
+{% set userRole = role %}
+{% set ids = dashboard_content.tag_ids|default('all') %}
 <h1 class="acc-visuallyhiddenDashboardH1">My Dashboard</h1>
 {% if not logged_in %}
     <div class="row usf_dash">
@@ -32,7 +35,8 @@ Available variables (usf_dashboard.module)
 {% elseif logged_in %}
     <div class="row usf_dash">
         <div class="col-12"> {# Left "main" column #}
-            <div class="row appsLinks {{ myclass }}">
+            <div class="row appsLinks {{ dashboard_content.role_classes }} {{ myclass }}">
+                <div class="appsLinksMain">
                 {% if ('faculty' not in user.getroles) and ('all_access' not in user.getroles) and ('student' not in user.getroles) and ('online_student' not in user.getroles) and ('admitted_student' not in user.getroles) and ('finance' not in user.getroles) and ('employee' not in user.getroles) and ('prehire_faculty' not in user.getroles) and ('prehire_staff' not in user.getroles)  and ('bi_group' not in user.getroles)  and ('vcl-staff' not in user.getroles)  and ('online_intaccept' not in user.getroles) %}
 
                     <div class="col-sm myApps">
@@ -115,12 +119,35 @@ Available variables (usf_dashboard.module)
                     </div>
 
                 {% endif %}            
+                </div>
 
+                <div class="appsAnnouncements">
+                    <h2>Announcements</h2>
+                    {{ drupal_view('announcement_category_date', 'block_3', userRole, ids) }}
+                    <a href="/announcements" class="appsAnnouncementsViewAll">View All</a>
+                </div>
             </div>
-            <div class="row">           
-                <div class="col-12">
+            {% if dashboard_content.has_ad_blocks %}
+                <div class="dashboard-ad-blocks">
+                    <h2>Important Stuff</h2>
+                    {{ drupal_view('ad_blocks', 'block_1') }}
+                </div>
+            {% endif %}
+            <div class="row dashboard-featured-events-search">           
+                <div class="col-lg-8">
                     <h2>Featured Events</h2>
                     {{ drupal_view('events_featured', 'block_1') }}
+                </div>
+                <div id="dashboard-event-list-widget" class="col-lg-4 dashboard-event-list-widget">
+                    <form action="/dashboard#dashboard-event-list-widget" method="get" class="dashboard-event-list-filter">
+                        <label for="dashboard-event-category" class="sr-only visually-hidden">Filter events</label>
+                        <select id="dashboard-event-category" name="dashboard_event_category" class="form-control" onchange="this.form.submit()">
+                            {% for value, label in dashboard_content.event_category_options %}
+                                <option value="{{ value }}"{{ dashboard_content.dashboard_event_category == value ? ' selected' }}>{{ label }}</option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                    {{ drupal_view('event_block', 'block_1', dashboard_content.dashboard_event_category) }}
                 </div>
                 <div class="col-12 eventsLink">
 
@@ -155,6 +182,30 @@ Available variables (usf_dashboard.module)
                     {% endif %}
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12">
+                 <h2>News</h2>
+                    {{ drupal_view('news_teaser', 'block_1') }}
+                </div>
+            </div>
+            <!-- curator -->
+            <div class="row">           
+                <div class="col-12">
+                    <!-- Place <div> tag where you want the feed to appear -->
+                    <div id="curator-feed-digital-signage-temporary-layout"><a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a></div>
+
+                    <!-- The Javascript can be moved to the end of the html page before the </body> tag -->
+                    <script type="text/javascript">
+                    /* curator-feed-digital-signage-temporary-layout */
+                    (function(){
+                    var i,e,d=document,s="script";i=d.createElement("script");i.async=1;i.charset="UTF-8";
+                    i.src="https://cdn.curator.io/published/281c2aab-4981-4d82-aab2-8faf2a223d4f.js";
+                    e=d.getElementsByTagName(s)[0];e.parentNode.insertBefore(i, e);
+                    })();
+                    </script>
+                </div>
+            </div>
+                
                 <!--<div class="row">
                     <div class="col-sm">
                         <h2>Announcements</h2>
@@ -173,5 +224,3 @@ Available variables (usf_dashboard.module)
         </div>
     </div>
    {% endif %} 
-
-
