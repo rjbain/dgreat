@@ -3,8 +3,20 @@
 set -eo pipefail
 set -x
 
+run_with_heartbeat() {
+  "$@" &
+  local command_pid=$!
+
+  while kill -0 "$command_pid" 2>/dev/null; do
+    sleep 60
+    echo "Still waiting for command to finish: $* ($(date -u '+%Y-%m-%dT%H:%M:%SZ'))"
+  done
+
+  wait "$command_pid"
+}
+
 terminus -n env:wake "$TERMINUS_SITE.dev"
-terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
+run_with_heartbeat terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
 
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb --yes || true
 echo "updatedb attempted."
