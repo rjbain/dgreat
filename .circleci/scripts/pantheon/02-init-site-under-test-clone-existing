@@ -27,7 +27,28 @@ if [ -f "config/system.site.yml" ] ; then
   CONFIG_TABLE_CHECK=$(terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "SHOW TABLES LIKE 'config';" 2>/dev/null || true)
 
   if [[ "$CONFIG_TABLE_CHECK" == *config* ]]; then
-    echo "Config table exists; proceeding with config cleanup/import."
+    REQUIRED_TABLES_CHECK=$(terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "
+      SELECT table_name
+      FROM information_schema.tables
+      WHERE table_schema = DATABASE()
+      AND table_name IN (
+        'config',
+        'key_value',
+        'taxonomy_term_data',
+        'taxonomy_term_field_data'
+      );
+    " 2>/dev/null || true)
+
+    if [[ "$REQUIRED_TABLES_CHECK" != *config* ]] ||
+       [[ "$REQUIRED_TABLES_CHECK" != *key_value* ]] ||
+       [[ "$REQUIRED_TABLES_CHECK" != *taxonomy_term_data* ]] ||
+       [[ "$REQUIRED_TABLES_CHECK" != *taxonomy_term_field_data* ]]; then
+      echo "Required Drupal tables are missing; skipping config cleanup/import."
+      echo "$REQUIRED_TABLES_CHECK"
+      exit 0
+    fi
+
+    echo "Required Drupal tables exist; proceeding with config cleanup/import."
 
     terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "
       DELETE FROM config WHERE name LIKE 'block.block.adminimal_theme_%';
