@@ -46,13 +46,18 @@
     {% set newclass = "nope" %}
 {% endif %}
 
+{% set title = fields.title.content|render|trim %}
+{% set url = fields.view_node.content|render|trim %}
+
+{% if title is not empty and url is not empty %}
 		<li>
 		<div class="views-field views-field-title">
 		<span class="field-content">
 			{% if newclass == "new-announcement" %}
     			<span class="new-announcement-sidebar">New </span>
 			{% endif %}
-			<a class = "{{ newclass }}" href="{{ fields.view_node.content }}">{{ fields.title.content }}</a> 
+			<a class = "{{ newclass }}" href="{{ url }}">{{ title }}</a> 
 		</span>
 		</div>
 		</li>
+{% endif %}
