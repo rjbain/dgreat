@@ -15,8 +15,37 @@ run_with_heartbeat() {
   wait "$command_pid"
 }
 
+check_required_tables() {
+  REQUIRED_TABLES_CHECK=$(terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "
+    SELECT table_name
+    FROM information_schema.tables
+    WHERE table_schema = DATABASE()
+    AND table_name IN (
+      'config',
+      'key_value',
+      'path_alias',
+      'taxonomy_term_data',
+      'taxonomy_term_field_data',
+      'watchdog'
+    );
+  " 2>/dev/null || true)
+
+  if [[ "$REQUIRED_TABLES_CHECK" != *config* ]] ||
+     [[ "$REQUIRED_TABLES_CHECK" != *key_value* ]] ||
+     [[ "$REQUIRED_TABLES_CHECK" != *path_alias* ]] ||
+     [[ "$REQUIRED_TABLES_CHECK" != *taxonomy_term_data* ]] ||
+     [[ "$REQUIRED_TABLES_CHECK" != *taxonomy_term_field_data* ]] ||
+     [[ "$REQUIRED_TABLES_CHECK" != *watchdog* ]]; then
+    echo "Required Drupal tables are missing; skipping Drupal bootstrap/config steps."
+    echo "$REQUIRED_TABLES_CHECK"
+    exit 0
+  fi
+}
+
 terminus -n env:wake "$TERMINUS_SITE.dev"
 run_with_heartbeat terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
+
+check_required_tables
 
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb --yes || true
 echo "updatedb attempted."
@@ -27,27 +56,6 @@ if [ -f "config/system.site.yml" ] ; then
   CONFIG_TABLE_CHECK=$(terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "SHOW TABLES LIKE 'config';" 2>/dev/null || true)
 
   if [[ "$CONFIG_TABLE_CHECK" == *config* ]]; then
-    REQUIRED_TABLES_CHECK=$(terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "
-      SELECT table_name
-      FROM information_schema.tables
-      WHERE table_schema = DATABASE()
-      AND table_name IN (
-        'config',
-        'key_value',
-        'taxonomy_term_data',
-        'taxonomy_term_field_data'
-      );
-    " 2>/dev/null || true)
-
-    if [[ "$REQUIRED_TABLES_CHECK" != *config* ]] ||
-       [[ "$REQUIRED_TABLES_CHECK" != *key_value* ]] ||
-       [[ "$REQUIRED_TABLES_CHECK" != *taxonomy_term_data* ]] ||
-       [[ "$REQUIRED_TABLES_CHECK" != *taxonomy_term_field_data* ]]; then
-      echo "Required Drupal tables are missing; skipping config cleanup/import."
-      echo "$REQUIRED_TABLES_CHECK"
-      exit 0
-    fi
-
     echo "Required Drupal tables exist; proceeding with config cleanup/import."
 
     terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "
