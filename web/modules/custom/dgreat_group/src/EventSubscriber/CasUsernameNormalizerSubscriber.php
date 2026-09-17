@@ -26,7 +26,7 @@ class CasUsernameNormalizerSubscriber implements EventSubscriberInterface {
 
     $stored_authname = $this->database->select('authmap', 'a')
       ->fields('a', ['authname'])
-      ->condition('module', 'cas')
+      ->condition('provider', 'cas')
       ->where('LOWER([authname]) = :username', [':username' => strtolower($username)])
       ->range(0, 1)
       ->execute()
