@@ -8,6 +8,10 @@ config:
   id: 41cad7fe-472d-43a9-a470-d391b9622376
   xdebug: false
 services:
+  database:
+    type: mariadb:10.6
+    config:
+      database: conf/mysql.cnf
   appserver:
     build_as_root:
       - curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
