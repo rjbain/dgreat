@@ -5,13 +5,9 @@ dependencies:
   config:
     - field.storage.node.field_display_title
     - field.storage.node.field_migrate_final
-    - field.storage.media.field_media_document
     - search_api.index.sitewide_search
   module:
-    - dgreat_nodes
     - entity_reference_revisions
-    - file
-    - media
     - search_api
 id: sitewide_search
 label: 'Sitewide Search'
@@ -455,7 +451,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: search/new
+      path: results
     cache_metadata:
       max-age: -1
       contexts:
