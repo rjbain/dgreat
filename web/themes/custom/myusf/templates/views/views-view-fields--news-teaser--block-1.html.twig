@@ -22,13 +22,13 @@
 <div class="card">
     <img alt="" class="card-img-top" src="{{ image_url ?: placeholder_image_url }}" />
     <div class="card-body">
-        <h5 class="card-title">
+        <h3 class="card-title">
             {% if source_url %}
                 <a href="{{ source_url }}" target="_blank" rel="noopener">{{ title }}</a>
             {% else %}
                 {{ title }}
             {% endif %}
-        </h5>
+        </h3>
         {% if pubdate %}
             <div class="card-date small">{{ pubdate|date('F j, Y') }}</div>
         {% endif %}
