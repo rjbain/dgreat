@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Theme override to display dashboard event block rows.
+ *
+ * @see template_preprocess_views_view_fields()
+ */
+#}
+{% set event = row._entity %}
+{% set start_date = event.field_start_date.value|default('') %}
+{% set end_date = event.field_end_date.value|default('') %}
+{% set category_label = event.hasField('field_category') and not event.field_category.isEmpty() ? event.field_category.0.entity.label : 'Event' %}
+
+<article class="dashboard-event-item">
+  <div class="dashboard-event-item__date">
+    {% if start_date %}
+      <span class="dashboard-event-item__day">{{ start_date|date('j') }}</span>
+      <span class="dashboard-event-item__month">{{ start_date|date('M') }}</span>
+    {% endif %}
+  </div>
+  <div class="dashboard-event-item__content">
+    <h3 class="dashboard-event-item__title">{{ fields.title.content }}</h3>
+    {% if start_date %}
+      <div class="dashboard-event-item__time">
+        {{ start_date|date('g:i A') }}{% if end_date %} - {{ end_date|date('g:i A') }}{% endif %}
+      </div>
+    {% endif %}
+    <a href="{{ path('entity.node.canonical', {'node': event.id}) }}" class="dashboard-event-item__rsvp">+ RSVP</a>
+  </div>
+  <div class="dashboard-event-item__meta">
+    <span class="dashboard-event-item__pill">{{ category_label }}</span>
+  </div>
+</article>

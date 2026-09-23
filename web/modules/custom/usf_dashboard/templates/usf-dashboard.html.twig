@@ -12,10 +12,13 @@ Available variables (usf_dashboard.module)
 * dashboard_content.dashboard_user.name.value
 
 #}
+{{ attach_library('myusf/datepicker-block') }}
 {% if ('faculty' not in user.getroles) and ('all_access' not in user.getroles) and ('student' not in user.getroles) and ('online_student' not in user.getroles) and ('admitted_student' not in user.getroles) and ('finance' not in user.getroles) and ('employee' not in user.getroles) and ('prehire_faculty' not in user.getroles) and ('prehire_staff' not in user.getroles)  and ('bi_group' not in user.getroles)  and ('vcl-staff' not in user.getroles)  and ('online_intaccept' not in user.getroles) %}
          {% set myclass = 'noroleRole' %}
 {% endif %}
 {% set role = user.getroles|join(',') %}
+{% set userRole = role %}
+{% set ids = dashboard_content.tag_ids|default('all') %}
 <h1 class="acc-visuallyhiddenDashboardH1">My Dashboard</h1>
 {% if not logged_in %}
     <div class="row usf_dash">
@@ -32,7 +35,8 @@ Available variables (usf_dashboard.module)
 {% elseif logged_in %}
     <div class="row usf_dash">
         <div class="col-12"> {# Left "main" column #}
-            <div class="row appsLinks {{ myclass }}">
+            <div class="row appsLinks">
+                <div class="appsLinksMain">
                 {% if ('faculty' not in user.getroles) and ('all_access' not in user.getroles) and ('student' not in user.getroles) and ('online_student' not in user.getroles) and ('admitted_student' not in user.getroles) and ('finance' not in user.getroles) and ('employee' not in user.getroles) and ('prehire_faculty' not in user.getroles) and ('prehire_staff' not in user.getroles)  and ('bi_group' not in user.getroles)  and ('vcl-staff' not in user.getroles)  and ('online_intaccept' not in user.getroles) %}
 
                     <div class="col-sm myApps">
@@ -41,7 +45,7 @@ Available variables (usf_dashboard.module)
 
                 {% else %}
                     <!-- Beginning  of temp FavApps -->
-                    <div class="col-sm myApps">
+                    <div class="col-sm myApps {{ dashboard_content.role_classes }} {{ myclass }}">
                         <h2>Top Apps</h2>
                         {#% if dashboard_content.fav_links %#}
                             {#{ dashboard_content.fav_links }#}
@@ -52,109 +56,140 @@ Available variables (usf_dashboard.module)
                             </div>
                         </div>
                     </div>
-                        <!--<div class="views-element-container settings-tray-editable block block-views block-views-blockfavorite-links-block" id="block-views-block-favorite-links-block">
-                            <div class="content">
-                                <div class="col-auto">
-                                    <div class="view view-favorite-links view-id-favorite_links view-display-id-block">
-                                        <div class="view-content row">
-                                            <div class="table-responsive col">
-                                                <table class="table views-table views-view-table cols-0">
-                                                    <tbody>
-                                                            {#{ drupal_view('quick_favs', 'block_2', role) }#}
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-  
-                                        <div class="view-footer">
-                                            <a href="https://login.usfca.edu/ui/main#launch:pad" class="seeMyApps diamond_link_small" target="_blank">View All Apps</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>                    
-                    </div>-->
+                        
                     <!-- End of temp FavApps -->
                   
         
                     <div class="separator"></div>
-                    <div class="col-sm defaultQuickLinks">
-                            <h2>Popular Links</h2>
-                                <div id="block-views-block-default-quick-links-block">
-                                    <div class="content">
-                                        <div class="col-auto">
-                                            <div class="view-content row">
-                                                <div class="table-responsive col">
-                                                    <table class="table views-table views-view-table cols-1">
-                                                        <thead class=''>
-                                                            <tr>
-                                                                <th id="view-title-table-column" class="views-field views-field-title" scope="col">Title</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                             {{ drupal_view('quick_favs', 'block_1', role) }}
-                                                        </tbody>
-                                                    </table>
+                    <div class="quickLinks-wrapper">
+                        <div class="col-sm defaultQuickLinks {{ dashboard_content.role_classes }} {{ myclass }}">
+                                <h2>Popular Links</h2>
+                                    <div id="block-views-block-default-quick-links-block">
+                                        <div class="content">
+                                            <div class="col-auto">
+                                                <div class="view-content row">
+                                                    <div class="table-responsive col">
+                                                        <table class="table views-table views-view-table cols-1">
+                                                            <thead class=''>
+                                                                <tr>
+                                                                    <th id="view-title-table-column" class="views-field views-field-title" scope="col">Title</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {{ drupal_view('quick_favs', 'block_1', role) }}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                    </div>
-                    <div class="col-sm myQuickLinks">
-                    
-                        {#% if dashboard_content.dashboard_user.name.value is not empty %#}
-                            <!--<h2>{#{ dashboard_content.dashboard_user.name.value }#}'s Links</h2>-->
-                        <h2>{{ drupal_entity('block', 'user_block_dashboard') }}&apos;s Links</h2>
-                            {% if dashboard_content.quick_links %}
-                                {{ dashboard_content.quick_links }}
-                            {% endif %}
-                        <div class="view-footer">
-                            <a href="node/add/favorite_link?edit[field_link_type][und]=quick&amp;destination=/dashboard" class="manageLinks">Add Links</a><a href="/quick-links" class="addLinks">Manage Links</a>
+                        </div>
+                        <div class="col-sm myQuickLinks {{ dashboard_content.role_classes }} {{ myclass }}">
+                        
+                            {#% if dashboard_content.dashboard_user.name.value is not empty %#}
+                                <!--<h2>{#{ dashboard_content.dashboard_user.name.value }#}'s Links</h2>-->
+                            <h2>{{ drupal_entity('block', 'user_block_dashboard') }}&apos;s Links</h2>
+                                {% if dashboard_content.quick_links %}
+                                    {{ dashboard_content.quick_links }}
+                                {% endif %}
+                            <div class="view-footer">
+                                <a href="node/add/favorite_link?edit[field_link_type][und]=quick&amp;destination=/dashboard" class="manageLinks">Add Links</a><a href="/quick-links" class="addLinks">Manage Links</a>
+                            </div>
                         </div>
                     </div>
-
                 {% endif %}            
+                </div>
 
+                <div class="appsAnnouncements">
+                    <h2>Announcements</h2>
+                    {{ drupal_view('announcement_category_date', 'block_3', userRole, ids) }}
+                    <a href="/announcements" class="appsAnnouncementsViewAll">View All</a>
+                </div>
             </div>
-            <div class="row">           
-                <div class="col-12">
+            {% if dashboard_content.has_ad_blocks %}
+                <div class="dashboard-ad-blocks">
+                    <div class="col-12">
+                        <h2>Important Stuff</h2>
+                        {{ drupal_view('ad_blocks', 'block_1') }}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="row dashboard-featured-events-search">           
+                <div class="col-lg-8">
                     <h2>Featured Events</h2>
                     {{ drupal_view('events_featured', 'block_1') }}
+
+                    <div class="col-12 eventsLink">
+
+                        {#% if ('as_ug' in user.getroles) or ('som_ug' in user.getroles) or ('sonhp_ug' in user.getroles)  %#}
+                            {#% set target = 'Undergraduate Students' #}
+                            {#{ drupal_view('event_target_term', 'block_1', target) }#}
+                        {#% endif %#}
+
+                        {% if ('student' in user.getroles) and ('as_grad' not in user.getroles) and ('som_grad' not in user.getroles) and ('sonhp_grad' not in user.getroles) and ('soe' not in user.getroles)  %}
+                            {% set target = 'Undergraduate Students' %}
+                            {{ drupal_view('event_target_term', 'block_1', target) }}
+                        {% endif %}
+
+                        {% if ('as_grad' in user.getroles) or ('som_grad' in user.getroles) or ('sonhp_grad' in user.getroles) or ('soe' in user.getroles) or ('law' in user.getroles) %}
+                            {% set target = 'Graduate Students' %}
+                            {{ drupal_view('event_target_term', 'block_1', target) }}
+                        {% endif %}
+                        
+                        {% if ('faculty' in user.getroles) or ('prehire faculty' in user.getroles) %}
+                            {% set target = 'Faculty' %}
+                            {{ drupal_view('event_target_term', 'block_1', target) }}
+                        {% endif %}
+
+                        {% if ('employee' in user.getroles) or ('prehire staff' in user.getroles) %}
+                            {% set target = 'Staff' %}
+                            {{ drupal_view('event_target_term', 'block_1', target) }}
+                        {% endif %}
+
+                        {% if ('student' not in user.getroles) and ('as_ug' not in user.getroles) and ('som_ug' not in user.getroles) and ('sonhp_ug' not in user.getroles) and ('as_grad' not in user.getroles) and ('som_grad' not in user.getroles) and ('sonhp_grad' not in user.getroles) and ('law' not in user.getroles) and ('faculty' not in user.getroles) and ('prehire faculty' not in user.getroles) and ('employee' not in user.getroles) and ('prehire staff' not in user.getroles)  %}
+                            <a href="/calendar">View More Events</a>
+
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="col-12 eventsLink">
-
-                    {#% if ('as_ug' in user.getroles) or ('som_ug' in user.getroles) or ('sonhp_ug' in user.getroles)  %#}
-                        {#% set target = 'Undergraduate Students' #}
-                        {#{ drupal_view('event_target_term', 'block_1', target) }#}
-                    {#% endif %#}
-
-                    {% if ('student' in user.getroles) and ('as_grad' not in user.getroles) and ('som_grad' not in user.getroles) and ('sonhp_grad' not in user.getroles) and ('soe' not in user.getroles)  %}
-                        {% set target = 'Undergraduate Students' %}
-                        {{ drupal_view('event_target_term', 'block_1', target) }}
-                    {% endif %}
-
-                    {% if ('as_grad' in user.getroles) or ('som_grad' in user.getroles) or ('sonhp_grad' in user.getroles) or ('soe' in user.getroles) or ('law' in user.getroles) %}
-                        {% set target = 'Graduate Students' %}
-                        {{ drupal_view('event_target_term', 'block_1', target) }}
-                    {% endif %}
-                    
-                    {% if ('faculty' in user.getroles) or ('prehire faculty' in user.getroles) %}
-                        {% set target = 'Faculty' %}
-                        {{ drupal_view('event_target_term', 'block_1', target) }}
-                    {% endif %}
-
-                    {% if ('employee' in user.getroles) or ('prehire staff' in user.getroles) %}
-                        {% set target = 'Staff' %}
-                        {{ drupal_view('event_target_term', 'block_1', target) }}
-                    {% endif %}
-
-                    {% if ('student' not in user.getroles) and ('as_ug' not in user.getroles) and ('som_ug' not in user.getroles) and ('sonhp_ug' not in user.getroles) and ('as_grad' not in user.getroles) and ('som_grad' not in user.getroles) and ('sonhp_grad' not in user.getroles) and ('law' not in user.getroles) and ('faculty' not in user.getroles) and ('prehire faculty' not in user.getroles) and ('employee' not in user.getroles) and ('prehire staff' not in user.getroles)  %}
-                        <a href="/calendar">View More Events</a>
-
-                    {% endif %}
+                <div id="dashboard-event-list-widget" class="col-lg-4 dashboard-event-list-widget">
+                    <form action="/dashboard#dashboard-event-list-widget" method="get" class="dashboard-event-list-filter">
+                        <label for="dashboard-event-category" class="sr-only visually-hidden">Filter events</label>
+                        <select id="dashboard-event-category" name="dashboard_event_category" class="form-control" onchange="this.form.submit()">
+                            {% for value, label in dashboard_content.event_category_options %}
+                                <option value="{{ value }}"{{ dashboard_content.dashboard_event_category == value ? ' selected' }}>{{ label }}</option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                    {{ drupal_view('event_block', 'block_1', dashboard_content.dashboard_event_category) }}
                 </div>
             </div>
+            <div class="row dashboard-news">
+                <div class="col-12">
+                 <h2>News</h2>
+                    {{ drupal_view('news_teaser', 'block_1') }}
+                </div>
+            </div>
+            <!-- curator -->
+            <div class="row dashboard-social-media">           
+                <div class="col-12">
+                    <h2>Social Media</h2>
+                    <!-- Place <div> tag where you want the feed to appear -->
+                    <div id="curator-feed-digital-signage-temporary-layout"><a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a></div>
+
+                    <!-- The Javascript can be moved to the end of the html page before the </body> tag -->
+                    <script type="text/javascript">
+                    /* curator-feed-digital-signage-temporary-layout */
+                    (function(){
+                    var i,e,d=document,s="script";i=d.createElement("script");i.async=1;i.charset="UTF-8";
+                    i.src="https://cdn.curator.io/published/281c2aab-4981-4d82-aab2-8faf2a223d4f.js";
+                    e=d.getElementsByTagName(s)[0];e.parentNode.insertBefore(i, e);
+                    })();
+                    </script>
+                </div>
+            </div>
+                
                 <!--<div class="row">
                     <div class="col-sm">
                         <h2>Announcements</h2>
@@ -173,5 +208,3 @@ Available variables (usf_dashboard.module)
         </div>
     </div>
    {% endif %} 
-
-
