@@ -50,9 +50,21 @@ Available variables (usf_dashboard.module)
                         {#% if dashboard_content.fav_links %#}
                             {#{ dashboard_content.fav_links }#}
                         {#% endif %#}
-                        <div id="block-views-block-favorite-links-block">
-                            <div class="content">
-                                {{ drupal_view('favorite_links', 'block') }}
+                        <div class="favorite-links-wrapper">
+                            <div id="block-views-block-favorite-links-block-first-column">
+                                <div class="content">
+                                    {{ drupal_view('favorite_links', 'block') }}
+                                </div>
+                            </div>
+                            <div id="block-views-block-favorite-links-block-second-column">
+                                <div class="content">
+                                    {{ drupal_view('favorite_links', 'block') }}
+                                </div>
+                            </div>
+                            <div id="block-views-block-favorite-links-block-third-column">
+                                <div class="content">
+                                    {{ drupal_view('favorite_links', 'block') }}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -90,12 +102,15 @@ Available variables (usf_dashboard.module)
                             {#% if dashboard_content.dashboard_user.name.value is not empty %#}
                                 <!--<h2>{#{ dashboard_content.dashboard_user.name.value }#}'s Links</h2>-->
                             <h2>{{ drupal_entity('block', 'user_block_dashboard') }}&apos;s Links</h2>
+                            <div class="view-header">
+                                <a href="node/add/favorite_link?edit[field_link_type][und]=quick&amp;destination=/dashboard" class="addLinks">Add Links</a><a href="/quick-links" class="manageLinks">Manage Links</a>
+                            </div>
                                 {% if dashboard_content.quick_links %}
                                     {{ dashboard_content.quick_links }}
                                 {% endif %}
-                            <div class="view-footer">
+                            <!-- TESTING VIEW_HEADER <div class="view-footer">
                                 <a href="node/add/favorite_link?edit[field_link_type][und]=quick&amp;destination=/dashboard" class="manageLinks">Add Links</a><a href="/quick-links" class="addLinks">Manage Links</a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 {% endif %}            

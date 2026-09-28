@@ -65,343 +65,405 @@
 			    max-width: 100%!important;
 			    overflow-x: initial;
 			}
-
-			#block-views-block-favorite-links-block {
-				.view-content {
-					margin-left: 0px;
-					margin-right: 0px; 		
-					
-					@include media-breakpoint-down(tablet) {
-						height: 340px;
-					}
-
-					@include media-breakpoint-down(phone) {
-				        width:100%;
-				        height: 340px;
-				        margin-top: 1.25rem;
-				        margin-left: 0;
-						margin-right: 0; 
-				    }	
-				}
-				-webkit-overflow-scrolling: auto;			
-				::-webkit-scrollbar {
-				    -webkit-appearance: none;
-				    width: 7px;
-    				height: 7px;
-				}
-				::-webkit-scrollbar-thumb {
-				    border-radius: 4px;
-				    background-color: rgba(0,0,0,.5);
-				    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
-				}
-				.table-responsive.col {
-					padding-left: 0;
-					padding-right:0;
-					max-width: 100%;
-				}
-				table {
-					display:table;
-					position:relative;//absolute;
-					width:34%!important;//38
-					left:31%;//36
-					margin-left: 1.25rem;
-
-				    @include media-breakpoint-down(tablet) {
-						left: 320px;
-    					width: 300px;
-    					width:50%!important;
-    					margin-top: 0.625rem;
-					}
-					@include media-breakpoint-down(phone) {
-					 	left: 0px;
-					    width: 86%!important;
-					    margin-top: 0;
-					    margin-left: 1.25rem;
-					    border-spacing: 0 10px;
-					    border-collapse: separate;
-					}
-					thead {
-						display: none;
-					}					
-					tr {
-						td {
-							width:206px;
-							line-height: 1rem;
-							padding: .3125rem 0 .3125rem 1rem !important;//0.3125rem 1rem!important;
-
-							@include media-breakpoint-down(phone) {  
-							    padding-left: 0!important; 
-							}
-
-							 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-							 	padding-bottom: 0;
-							 }
-
-							a {
-								font-size: .85rem!important;
-								font-weight: 600;
-								color: $text_gray;
-
-								svg.ext {
-									fill: $text_gray;
-									
-									path {
-										stroke: $text_gray;
-									}
-								}
-							}
-						}
-						/*colored ones */
-						&:first-child td, &:nth-child(2) td, &:nth-child(3) td, &:nth-child(4) td {
-							position: absolute;
-						    //width: 130px;
-						    //height: 130px;
-						    margin: 0px;
-						    top: 0;
-						    //padding: .35rem .625rem!important;//0.625rem!important;
-							margin-left: 0;
-							left: -100%;
-							padding: .3125rem 0 !important;
-    						text-align: center;
-
-							@include media-breakpoint-up(desktop) {
-						    	width: 225px;
-						    	height: 38px;
-							}
-						 /*   @include media-breakpoint-down(tablet) {
-								width: 130px;
-						    	height: 130px;
-							}*/
-							@include media-breakpoint-down(phone) {
-							 	position: unset;
-							 	width: 100%;
-						    	height: 50px!important;
-						    	line-height: unset;
-						    	margin-top: 1.25rem;
-							}
-
-						    a {
-						    	color:$white;
-						    	font-size:.85rem!important;
-						    	line-height: 1.41!important;
-								text-decoration: none;
-
-								svg.ext {
-									fill: white;
-									path {
-										stroke:white;
-									}
-								}
-
-								@include media-breakpoint-down(desktop) {
-				    				font-size:.85rem!important;
-								}
-								@include media-breakpoint-down(phone) {
-									padding: 0.3125rem 0.625rem!important;
-								}
-
-						    	&:hover {
-									text-decoration: underline;
-									color: $white!important;
-									background: transparent;
-								}
-						    }
-						}
-						&:first-child td {						
-						    background: $olive;
-						    margin-top:0;
-
-						  /*  @include media-breakpoint-down(tablet) {
-						    	left: -320px!important;
-						    	margin-top: 0;
-						    }*/
-						    @include media-breakpoint-down(phone) {
-								left:0!important;
-								top:0;
-							}
-
-							/*Safari only */
-							@media not all and (min-resolution:.001dpcm){ 
-								left: -202%!important;
-
-								@supports (-webkit-appearance:none) {
-							        @include media-breakpoint-up(large_desktop) {
-						    			left: -202%!important;
-									}
-									@include media-breakpoint-down(tablet) {
-								    	left: -320px!important;
-								    }
-								}
-							}			
-						}
-						&:nth-child(2) td {
-						    background: $plum;
-						    margin-top:0;
-							top:50px;
-
-						    @include media-breakpoint-down(tablet) {
-						    	left: -170px!important;
-						    	margin-top: 0;
-						    }
-						    @include media-breakpoint-down(phone) {
-								left:0!important;
-								top:0;
-							}	
-						}
-						&:nth-child(3) td {
-						    background: $turquoise;
-						    margin-top:0;
-							top:100px;
-
-						    @include media-breakpoint-down(tablet) {
-						    	left: -320px!important;
-						    	/*left: -201%!important;*/
-    							top: 150px;
-						    }
-						    @include media-breakpoint-down(phone) {
-								left:0!important;
-								top:0;
-							}	
-						}
-						&:nth-child(4) td {
-						    background: $orange;
-						    margin-top:0;
-							top:150px;
-
-						    @include media-breakpoint-down(tablet) {
-						    	left: -170px!important;
-    							top: 150px;
-						    }
-						    @include media-breakpoint-down(phone) {
-								left:0!important;
-								top:0;
-							}	
-						}						
-						&:nth-child(5) td {
-							@include media-breakpoint-down(phone) {
-							    padding-top: 0.625rem!important;    
-							}
-						}
-						&:last-child td {
-							padding-bottom: 0.75rem!important;
-						}
-					}
-				} 
+			.favorite-links-wrapper {
+				display: flex;
 				
-				.view-footer {
-					a.appPref {
 
-						font-size: 0;
-
-						&::before {
-							display: inline-block;
-						    content: "";
-						    position: absolute;
-						    width: 25px;
-						    height: 25px;
-						    top: 17px;//25px;
-							left:110px;
-						    opacity: .6;
-					    	margin: auto 0.625rem auto auto;
-					    	background: url(/themes/custom/myusf/images/site/icons.png) no-repeat -545px -102px;
-					    	background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -545px -102px;
-
-					    	@include media-breakpoint-down(phone) {
-					    		right: -10px;
-					    	}
-						}
-						&:hover::before,
-					    &:focus::before {
-					    	opacity:.8;
-					    }
-
-					    /* IE10+ CSS styles go here */
-						@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
-							font-size:.8rem; 
-							position:absolute;
-							top: -37px;
-							right: 25px;
-							color: $green;
-							text-decoration: underline;
-
-							&::before {
-								display:none;
-							}
-							&:hover::before,
-						    &:focus::before {
-						    	text-decoration:none;
-						    }
-						}
-					}
-
-					a.seeMyApps {
-						text-decoration:none;
-						margin-left: 0.125rem;
-						
-						//position: absolute;
-						//top: 11px;
-						//right: 65px;
-						position: relative;
-						top: -110px;
-						left: 70px;
+				#block-views-block-favorite-links-block-first-column,
+				#block-views-block-favorite-links-block-second-column,
+				#block-views-block-favorite-links-block-third-column  {
+					.view-content {
+						margin-left: 0px;
+						margin-right: 0px; 	
 
 						@include media-breakpoint-down(tablet) {
-					    	top: -30px;
-					    }
-					    @include media-breakpoint-down(phone) {
-					    	top: 10px;
-					    	left: 15px;
-					    }
-
-						&:hover,
-						&:focus {
-							text-decoration: underline;
+							height: 340px;
 						}
-					} 
-				}
-			}
-			&.employee {
-				#block-views-block-favorite-links-block {
-					height: 245px;
 
+						@include media-breakpoint-down(phone) {
+							width:100%;
+							height: 340px;
+							margin-top: 1.25rem;
+							margin-left: 0;
+							margin-right: 0; 
+						}	
+					}
+					.table-responsive.col {
+						padding-left: 0;
+						padding-right:0;
+						max-width: 100%;
+					}
 					table {
+						display:table;
+						position:relative;//absolute;
+
+						@include media-breakpoint-down(tablet) {
+							left: 320px;
+							width: 300px;
+							width:50%!important;
+							margin-top: 0.625rem;
+						}
+						@include media-breakpoint-down(phone) {
+							left: 0px;
+							width: 86%!important;
+							margin-top: 0;
+							margin-left: 1.25rem;
+							border-spacing: 0 10px;
+							border-collapse: separate;
+						}
+						thead {
+							display: none;
+						}					
 						tr {
-							/*to align text links #10-14 on the right*/
-							&:nth-child(10), &:nth-child(11), &:nth-child(12), &:nth-child(13), &:nth-child(14) {
-								position: relative;
-								top: -155px;
-								left: 225px;
+							td {
+								width:206px;
+								line-height: 1.5;
+								padding: .3125rem 0 .3125rem 1rem !important;//0.3125rem 1rem!important;
+
+								@include media-breakpoint-down(phone) {  
+									padding-left: 0!important; 
+								}
+
+								@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+									padding-bottom: 0;
+								}
+
+								a {
+									font-size: .85rem!important;
+									font-weight: 600;
+									color: $text_gray;
+									position: relative;
+      								top: 5px;
+
+									svg.ext {
+										fill: $text_gray;
+										width: 15px;
+    									height: 15px;
+										
+										path {
+											stroke: $text_gray;
+										}
+									}
+								}
 							}
 						}
 					}
-					.view-footer {
+				}
+				#block-views-block-favorite-links-block-first-column {	
+					width: 33.5%;
+
+					table {
+						
+						tr {			
+							/*colored ones */
+							&:first-child td, &:nth-child(2) td, &:nth-child(3) td, &:nth-child(4) td {
+								position: absolute;
+								margin: 0px;
+								left: 0;
+								padding: .3125rem 0 !important;
+								text-align: center;
+
+								@include media-breakpoint-up(desktop) {
+									width: 225px;
+									height: 38px;
+								}
+							/*   @include media-breakpoint-down(tablet) {
+									width: 130px;
+									height: 130px;
+								}*/
+								@include media-breakpoint-down(phone) {
+									position: unset;
+									width: 100%;
+									height: 50px!important;
+									line-height: unset;
+									margin-top: 1.25rem;
+								}
+
+								a {
+									color:$white;
+									font-size:.85rem!important;
+									line-height: 1.41!important;
+									text-decoration: none;
+
+									svg.ext {
+										fill: white;
+
+										path {
+											stroke:white;
+										}
+									}
+
+									@include media-breakpoint-down(desktop) {
+										font-size:.85rem!important;
+									}
+									@include media-breakpoint-down(phone) {
+										padding: 0.3125rem 0.625rem!important;
+									}
+
+									&:hover {
+										text-decoration: underline;
+										color: $white!important;
+										background: transparent;
+									}
+								}
+							}
+							&:first-child td {						
+								background: $olive;
+								margin-top:0;
+
+							/*  @include media-breakpoint-down(tablet) {
+									left: -320px!important;
+									margin-top: 0;
+								}*/
+								@include media-breakpoint-down(phone) {
+									left:0!important;
+									top:0;
+								}
+
+								/*Safari only */
+								@media not all and (min-resolution:.001dpcm){ 
+									left: -202%!important;
+
+									@supports (-webkit-appearance:none) {
+										@include media-breakpoint-up(large_desktop) {
+											left: -202%!important;
+										}
+										@include media-breakpoint-down(tablet) {
+											left: -320px!important;
+										}
+									}
+								}			
+							}
+							&:nth-child(2) td {
+								background: $plum;
+								margin-top:0;
+								top:50px;
+
+								@include media-breakpoint-down(tablet) {
+									left: -170px!important;
+									margin-top: 0;
+								}
+								@include media-breakpoint-down(phone) {
+									left:0!important;
+									top:0;
+								}	
+							}
+							&:nth-child(3) td {
+								background: $turquoise;
+								margin-top:0;
+								top:100px;
+
+								@include media-breakpoint-down(tablet) {
+									left: -320px!important;
+									/*left: -201%!important;*/
+									top: 150px;
+								}
+								@include media-breakpoint-down(phone) {
+									left:0!important;
+									top:0;
+								}	
+							}
+							&:nth-child(4) td {
+								background: $orange;
+								margin-top:0;
+								top:150px;
+
+								@include media-breakpoint-down(tablet) {
+									left: -170px!important;
+									top: 150px;
+								}
+								@include media-breakpoint-down(phone) {
+									left:0!important;
+									top:0;
+								}	
+							}
+							&:nth-child(n + 5) {
+								display:none;
+							}						
+						}
+					} 				
+					.view-header {
+						height: 0;
+
+						a.appPref {
+
+							font-size: 0;
+
+							&::before {
+								display: inline-block;
+								content: "";
+								position: absolute;
+								width: 25px;
+								height: 25px;
+								top: 17px;//25px;
+								left:110px;
+								opacity: .6;
+								margin: auto 0.625rem auto auto;
+								background: url(/themes/custom/myusf/images/site/icons.png) no-repeat -545px -102px;
+								background: url(/themes/custom/myusf/images/site/icons.svg) no-repeat -545px -102px;
+
+								@include media-breakpoint-down(phone) {
+									right: -10px;
+								}
+							}
+							&:hover::before,
+							&:focus::before {
+								opacity:.8;
+							}
+
+							/* IE10+ CSS styles go here */
+							@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
+								font-size:.8rem; 
+								position:absolute;
+								top: -37px;
+								right: 25px;
+								color: $green;
+								text-decoration: underline;
+
+								&::before {
+									display:none;
+								}
+								&:hover::before,
+								&:focus::before {
+									text-decoration:none;
+								}
+							}
+						}
+
 						a.seeMyApps {
-							top: -110px;
+							text-decoration:none;
+							margin-left: 0.125rem;
+							position: absolute;
+							top: 260px;
+							left: 70px;
+
+							@include media-breakpoint-down(tablet) {
+								top: -30px;
+							}
+							@include media-breakpoint-down(phone) {
+								top: 10px;
+								left: 15px;
+							}
+
+							&:hover,
+							&:focus {
+								text-decoration: underline;
+							}
+						} 
+					}
+				}
+				#block-views-block-favorite-links-block-second-column {				
+					flex-basis: 0;
+					flex-grow: 1;
+					max-width: 33%;//100%;		
+				}
+				#block-views-block-favorite-links-block-third-column {
+					flex-basis: 0;
+					flex-grow: 1;
+					max-width: 33%;//100%;
+
+					-webkit-overflow-scrolling: auto;
+			
+					::-webkit-scrollbar {
+						-webkit-appearance: none;
+						width: 7px;
+						height: 7px;
+					}
+
+					::-webkit-scrollbar-thumb {
+						border-radius: 4px;
+						background-color: rgba(0,0,0,.5);
+						-webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+					}				
+				}
+				#block-views-block-favorite-links-block-second-column,
+				#block-views-block-favorite-links-block-third-column  {
+					.view-header {
+						display: none;
+					}
+				}
+			}
+			&.employee,
+			&.student {
+				.favorite-links-wrapper {
+					height: 250px;
+
+					#block-views-block-favorite-links-block-second-column {
+						table {
+							tr {	
+								&:nth-child(n + 1):nth-child(-n + 4) {
+									display:none;
+								}
+								&:nth-child(n + 10) {
+									display:none;
+								}
+								&:last-child td {
+									padding-bottom: 0.75rem!important;
+								}	
+							}
+						}
+					}		
+
+					#block-views-block-favorite-links-block-third-column {
+						.view-content {
+							height: 230px;
+							overflow: auto;
+							overflow-x: hidden;
+							margin-right: -8px;
+
+							table {
+								tr {	
+									&:nth-child(-n + 9) {
+										display:none;
+									}
+									&:last-child td {
+										padding-bottom: 0.75rem!important;
+									}	
+								}
+							}		
 						}
 					}
 				}
 			}
 			&.faculty {
-				#block-views-block-favorite-links-block {
+				.favorite-links-wrapper {
 					height: 315px;
-					table {
-						tr {
-							/*to align text links #14-22 on the right*/
-							&:nth-child(14), &:nth-child(15), &:nth-child(16), &:nth-child(17), &:nth-child(18), 
-							&:nth-child(19), &:nth-child(20), &:nth-child(21), &:nth-child(22) {
-								position: relative;
-								top: -279px;
-								left: 225px;
+				
+					#block-views-block-favorite-links-block-second-column {
+						table {
+							tr {	
+								&:nth-child(n + 1):nth-child(-n + 4) {
+									display:none;
+								}
+								&:nth-child(n + 14) {
+									display:none;
+								}
+								&:last-child td {
+									padding-bottom: 0.75rem!important;
+								}	
 							}
 						}
-					}
-					.view-footer {
-						a.seeMyApps {
-							top: -359px;
+					}		
+					#block-views-block-favorite-links-block-third-column {
+						.view-content {
+							height: 290px;
+							overflow: auto;
+							overflow-x: hidden;
+							margin-right: -8px;
+
+							table {
+								tr {	
+									&:nth-child(-n + 13) {
+										display:none;
+									}
+									&:last-child td {
+										padding-bottom: 0.75rem!important;
+									}	
+								}
+							}		
 						}
 					}
 				}
-		
 			}
 		}
 		.separator {
@@ -426,6 +488,7 @@
 		.quickLinks-wrapper {
 			display: flex;
 			margin-left: 2vw;
+			margin-right: -7px;
 		}
 		.defaultQuickLinks {
 			padding:0;
@@ -459,19 +522,19 @@
 			    overflow-x: initial;
 			}
 
-			&.employee {
+			&.employee,
+			.student {
 				#block-views-block-default-quick-links-block {
 					.view-content {
-						height: 162px; 
-						margin-right: 10px;
+						height: 182px; 
+						
 					}
 				}
 			}
 			&.faculty {
 				#block-views-block-default-quick-links-block {
 					.view-content {
-						height: 196px; 
-						margin-right: 10px;
+						height: 216px; 
 					}
 				}
 			}
@@ -479,6 +542,9 @@
 			#block-views-block-default-quick-links-block {
 				.view-content {
 					overflow-y: auto;
+					overflow: auto;
+					overflow-x: hidden;
+					margin-right: 10px;
 
 					@include media-breakpoint-down(desktop) {
 				        height: 200px;
@@ -562,65 +628,24 @@
 							font-size: .9rem!important;
 							font-weight: 600;
 							color: $text_gray;
+							position: relative;
+      						top: 5px;
+
+							svg.ext {
+								fill: $text_gray;
+								width: 15px;
+								height: 15px;
+								
+								path {
+									stroke: $text_gray;
+								}
+							}
 
 							 @include media-breakpoint-down(phone) {
 							 	white-space: normal;
 							 }
 						}
 					}
-				}
-				
-				.view-footer {
-					a.addLinks {
-						font-size: 0;
-
-						&::before {
-							display: inline-block;
-						    content: "";
-						    position: absolute;
-						    width: 25px;
-						    height: 25px;
-						    top: -34px;
-						    right: -30px;
-						    opacity: .6;
-					    	margin: auto 0.625rem auto auto;
-					    	background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -545px -102px;
-					    	background: url(/themes/custom/myusf/images/src/icons.svg) no-repeat -545px -102px;
-
-					    	@include media-breakpoint-down(phone) {
-					    		right: 15px;
-					    	}
-						}
-						&:hover::before,
-					    &:focus::before {
-					    	opacity:.8;
-					    }
-					}
-					a.manageLinks {
-						font-size: 0;
-
-						&::before {
-							display: inline-block;
-						    content: "";
-						    position: absolute;
-						    width: 25px;
-						    height: 25px;
-						    top: -35px;
-						    right: 0px;
-						    opacity: .6;
-					    	margin: auto 0.625rem auto auto;
-					    	background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -575px -102px;
-					    	background: url(/themes/custom/myusf/images/src/icons.svg) no-repeat -575px -102px;
-
-					    	@include media-breakpoint-down(phone) {
-					    		right: 55px;
-					    	}
-						}
-						&:hover::before,
-					    &:focus::before {
-					    	opacity:.8;
-					    }
-					}				    
 				}
 			}
 		}
@@ -652,25 +677,33 @@
 		    		padding-bottom: 0.625rem;
 		    	}
 			}
+			.view-header {
+				height:0;
+			}
 
 			.table-responsive.col {
 			    max-width: 100%!important;
 			    overflow-x: initial;
 			}
 
-			&.employee {
+			&.employee,
+			.student {
 				#block-views-block-quick-links-block {
 					.view-content {
-						height: 162px; 
-						margin-right: 10px;
+						height: 182px; 
+						overflow: auto;
+						overflow-x: hidden;
+						margin-right: -8px;
 					}
 				}
 			}
 			&.faculty {
 				#block-views-block-quick-links-block {
 					.view-content {
-						height: 196px; 
-						margin-right: 10px;
+						height: 216px; 
+						overflow: auto;
+						overflow-x: hidden;
+						margin-right: -8px;
 					}
 				}
 			}
@@ -773,6 +806,18 @@
 							font-size: .9rem!important;
 							font-weight: 600;
 							color: $text_gray;
+							position: relative;
+      						top: 5px;
+
+							svg.ext {
+								fill: $text_gray;
+								width: 15px;
+								height: 15px;
+								
+								path {
+									stroke: $text_gray;
+								}
+							}
 
 							 @include media-breakpoint-down(phone) {
 							 	white-space: normal;
@@ -781,7 +826,7 @@
 					}
 				}				
 			}
-			.view-footer {
+			.view-header {
 				a.addLinks {
 					font-size: 0;
 
@@ -792,11 +837,12 @@
 					    width: 25px;
 					    height: 25px;
 					    top: 17px;
-					    right: 0px;
+					    right: 30px;
 					    opacity: .6;
 				    	margin: auto 0.625rem auto auto;
-				    	background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -545px -102px;
-				    	background: url(/themes/custom/myusf/images/src/icons.svg) no-repeat -545px -102px;
+						background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -575px -102px;
+				    	
+				    
 
 				    	@include media-breakpoint-down(phone) {
 				    		right: 1.25rem!important;
@@ -829,11 +875,11 @@
 					    width: 25px;
 					    height: 25px;
 					    top: 17px;
-					    right: 30px;
+					    right: 0px;
 					    opacity: .6;
 				    	margin: auto 0.625rem auto auto;
-				    	background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -575px -102px;
-				    	background: url(/themes/custom/myusf/images/src/icons.svg) no-repeat -575px -102px;
+				    	background: url(/themes/custom/myusf/images/src/icons.png) no-repeat -545px -102px;
+				    	
 
 				    	@include media-breakpoint-down(phone) {
 				    		right: 55px!important;
@@ -933,7 +979,7 @@
 				display: inline;
 			}
 
-			.view-footer {
+		/*	.view-footer {
 				margin-top: 1rem;
 				text-align: right;
 
@@ -948,7 +994,7 @@
 						content: " »";
 					}
 				}
-			}
+			}*/
 		}
 		@include media-breakpoint-down(desktop) {
 /*------>		height: 580px;*/	
@@ -1460,6 +1506,7 @@ div.view-quick-links.view-id-quick_links {
 				border-right: 1px solid $light_gray;
 				padding-right: 0.875rem;
 				text-transform: uppercase;
+				width: 55px;
 			}
 
 			.dashboard-event-item__day {
@@ -1581,7 +1628,7 @@ div.view-quick-links.view-id-quick_links {
 			color: #8e0f75 !important;
 			text-transform: uppercase !important;
 			border: 0;
-			margin: 0 0 1rem -1.9375rem;
+			margin: 0 0 1rem -0.9375rem;
 		}
 	}
 
@@ -1776,15 +1823,20 @@ div.view-quick-links.view-id-quick_links {
 .usf_dash {
 	.dashboard-social-media {
 		h2 {
-			/* NEW */
 			font-size: 1.25rem;
 			font-weight: 700;
 			color: #8e0f75 !important;
 			text-transform: uppercase !important;
 			border: 0;
 			margin: 0 0 1rem;
-			/* ---- */
-		
+
+			.crt-post {
+				.crt-image {
+					img {
+						margin-top: 0;
+					}
+				}
+			}
 		}
 	
 	}
