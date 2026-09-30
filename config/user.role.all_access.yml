@@ -3,6 +3,15 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.announcement_category_date_embed
+    - block_content.type.callout_block
+    - block_content.type.contact
+    - block_content.type.custom_block
+    - block_content.type.main_navigation_block
+    - block_content.type.page_banner
+    - block_content.type.paragraph_view_block
+    - block_content.type.quick_links
+    - block_content.type.section_homepage_banner
     - filter.format.full_html
     - node.type.announcement
     - node.type.community_post
@@ -17,10 +26,10 @@ dependencies:
     - workflows.workflow.editorial
   module:
     - block
+    - block_content
     - content_moderation
     - contextual
     - file
-    - file_delete
     - filter
     - group
     - node
@@ -41,6 +50,7 @@ weight: 5
 is_admin: null
 permissions:
   - 'access administration pages'
+  - 'access block library'
   - 'access content'
   - 'access content overview'
   - 'access contextual links'
@@ -57,11 +67,16 @@ permissions:
   - 'administer taxonomy'
   - 'administer url aliases'
   - 'create announcement content'
+  - 'create announcement_category_date_embed block content'
+  - 'create callout_block block content'
   - 'create community_post content'
+  - 'create contact block content'
   - 'create contact_box content'
+  - 'create custom_block block content'
   - 'create favorite_link content'
   - 'create in_content_promo_box content'
   - 'create page content'
+  - 'create page_banner block content'
   - 'create paragraph content box_styles'
   - 'create paragraph content bp_accordion'
   - 'create paragraph content bp_accordion_section'
@@ -81,9 +96,12 @@ permissions:
   - 'create paragraph content social_media_link'
   - 'create paragraph content spacer'
   - 'create paragraph content video'
+  - 'create paragraph_view_block block content'
   - 'create private_page content'
+  - 'create quick_links block content'
   - 'create quick_links content'
   - 'create section_homepage content'
+  - 'create section_homepage_banner block content'
   - 'create spaces group'
   - 'create url aliases'
   - 'create webform'
@@ -97,7 +115,6 @@ permissions:
   - 'delete any webform content'
   - 'delete any webform submission'
   - 'delete favorite_link revisions'
-  - 'delete files'
   - 'delete own announcement content'
   - 'delete own contact_box content'
   - 'delete own favorite_link content'
@@ -136,13 +153,20 @@ permissions:
   - 'delete section_homepage revisions'
   - 'delete webform revisions'
   - 'edit any announcement content'
+  - 'edit any announcement_category_date_embed block content'
+  - 'edit any callout_block block content'
   - 'edit any community_post content'
+  - 'edit any contact block content'
   - 'edit any contact_box content'
+  - 'edit any custom_block block content'
   - 'edit any in_content_promo_box content'
   - 'edit any page content'
+  - 'edit any paragraph_view_block block content'
   - 'edit any private_page content'
+  - 'edit any quick_links block content'
   - 'edit any quick_links content'
   - 'edit any section_homepage content'
+  - 'edit any section_homepage_banner block content'
   - 'edit any webform'
   - 'edit any webform content'
   - 'edit own announcement content'
@@ -197,6 +221,15 @@ permissions:
   - 'use workbench access'
   - 'view all revisions'
   - 'view announcement revisions'
+  - 'view any announcement_category_date_embed block content history'
+  - 'view any callout_block block content history'
+  - 'view any contact block content history'
+  - 'view any custom_block block content history'
+  - 'view any main_navigation_block block content history'
+  - 'view any page_banner block content history'
+  - 'view any paragraph_view_block block content history'
+  - 'view any quick_links block content history'
+  - 'view any section_homepage_banner block content history'
   - 'view any unpublished content'
   - 'view any webform submission'
   - 'view favorite_link revisions'
@@ -209,6 +242,7 @@ permissions:
   - 'view quick_links revisions'
   - 'view section_homepage revisions'
   - 'view the administration theme'
+  - 'view unpublished block content'
   - 'view unpublished paragraphs'
   - 'view webform revisions'
   - 'view workbench access information'
