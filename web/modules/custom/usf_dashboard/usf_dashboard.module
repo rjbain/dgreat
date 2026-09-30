@@ -6,6 +6,7 @@
  */
 
 use Drupal\views\Views;
+use Drupal\views\ViewExecutable;
 use Drupal\block\Entity\Block;
 use Drupal\user\Entity\User;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -143,20 +144,38 @@ function usf_dashboard_preprocess_views_view_fields(&$variables) {
   }
 
   $node = $variables['row']->_entity ?? NULL;
-  $variables['show_ad_block'] = FALSE;
+  $variables['show_ad_block'] = usf_dashboard_ad_block_is_visible($node);
+}
 
-  if (!$node || !$node->hasField('field_role') || $node->get('field_role')->isEmpty()) {
-    $variables['show_ad_block'] = TRUE;
+/**
+ * Implements hook_views_pre_render().
+ */
+function usf_dashboard_views_pre_render(ViewExecutable $view) {
+  if ($view->id() !== 'ad_blocks') {
     return;
   }
 
+  $view->result = array_values(array_filter($view->result, function ($row) {
+    return usf_dashboard_ad_block_is_visible($row->_entity ?? NULL);
+  }));
+}
+
+/**
+ * Determines whether an ad block is visible to the current user.
+ */
+function usf_dashboard_ad_block_is_visible($node): bool {
+  if (!$node || !$node->hasField('field_role') || $node->get('field_role')->isEmpty()) {
+    return TRUE;
+  }
+
   $user_roles = \Drupal::currentUser()->getRoles();
-  foreach ($node->get('field_role') as $role) {
-    if (in_array($role->target_id, $user_roles, TRUE)) {
-      $variables['show_ad_block'] = TRUE;
-      return;
+  foreach ($node->get('field_role') as $ad_block_role) {
+    if (in_array($ad_block_role->target_id, $user_roles, TRUE)) {
+      return TRUE;
     }
   }
+
+  return FALSE;
 }
 
 /**
@@ -175,18 +194,11 @@ function usf_dashboard_has_visible_ad_blocks(): bool {
     return FALSE;
   }
 
-  $user_roles = \Drupal::currentUser()->getRoles();
   $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($ids);
 
   foreach ($nodes as $node) {
-    if (!$node->hasField('field_role') || $node->get('field_role')->isEmpty()) {
+    if (usf_dashboard_ad_block_is_visible($node)) {
       return TRUE;
-    }
-
-    foreach ($node->get('field_role') as $role) {
-      if (in_array($role->target_id, $user_roles, TRUE)) {
-        return TRUE;
-      }
     }
   }
 
