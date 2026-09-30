@@ -25,16 +25,34 @@
 		border: 1px solid $gray;
 		display: flex;
 		flex-wrap: nowrap;
+		@include media-breakpoint-down(tablet) {
+			height: auto;
+			flex-wrap: wrap;
+		}
+		@include media-breakpoint-down(phone) {
+			height: auto;
+		}
 
 		.appsLinksMain {
 			position: relative;
 			flex: 1 1 auto;
 			min-width: 0;
 			height: 100%;
+			@include media-breakpoint-down(tablet) {				
+				flex: 0 0 100%;
+				max-width: 100%;
+				height: 700px;
+			}
+			@include media-breakpoint-down(phone) {
+				height: auto;
+			}
 		}
 
 		&.noroleRole { 
-			height: 570px;
+			height: 570px;		
+			@include media-breakpoint-down(phone) {
+				height: auto;
+			}
 		}
 
 		.myApps {
@@ -57,7 +75,6 @@
 
 				@include media-breakpoint-down(phone) {
 					margin-left: 1.25rem;
-					font-size: 1.3rem;
 				}
 			}
 
@@ -632,8 +649,8 @@
 			
 			@include media-breakpoint-down(phone) {
 				display: block;
-    			position: absolute;
-    			top: 30px;
+				position: static;
+				top: auto;
 				width: 100%;
 				margin-left: 0;
 				padding-top: 10px;
@@ -647,11 +664,11 @@
 		    	top: 440px;
 		    }
 		    @include media-breakpoint-down(phone) {
-		    	//top: 515px;
+		    	top: 60px;
 				left: 0;
     			width: 100%;
 				border-right: 0;
-				border-top: 1px solid #454545;
+				//border-top: 1px solid #454545;
         		padding-top: 10px;
 
 				table {
@@ -671,8 +688,7 @@
 				padding-top: .8rem;
 
 				@include media-breakpoint-down(phone) {
-		    		padding-left: .75rem;
-		    		font-size: 1.3rem;
+		    		padding-left: 1.25rem;
 		    		padding-bottom: 0.625rem;
 		    	}
 			}
@@ -707,16 +723,11 @@
 					overflow: auto;
 					overflow-x: hidden;
 					margin-right: 10px;
-
-					@include media-breakpoint-down(desktop) {
-				        height: 200px;
-				    }
 					
 					@include media-breakpoint-down(phone) {
-				        height: unset;
+				        height:150px !important;
 				        margin-top: -0.6875rem;
-				        //width:  89%;
-
+						margin-left: -5px;
 				    }
 					.table-responsive.col {
 						max-width: 100%!important;
@@ -823,10 +834,10 @@
 		    	top: 440px;
 		    }
 		    @include media-breakpoint-down(phone) {
-		    	//top: 685px;
+		    	top: 70px;
 		    	left: 0;
     			width: 100%;
-				border-top: 1px solid #454545;
+				//border-top: 1px solid #454545;
 				padding-top: 10px;
 				margin-left: 0;
 
@@ -846,8 +857,8 @@
 				padding-top: 0.8rem;
 
 				@include media-breakpoint-down(phone) {
-		    		padding-left: 1.375rem;
-		    		font-size: 1.3rem;
+		    		padding-left: .35rem;
+		    		//font-size: 1.3rem;
 		    		padding-bottom: 0.625rem;
 
 		    	}
@@ -869,10 +880,7 @@
 			&.prehire-faculty {
 				#block-views-block-quick-links-block {
 					.view-content {
-						height: 160px; 
-						overflow: auto;
-						overflow-x: hidden;
-						margin-right: -8px;
+						height: 160px; 						
 					}
 				}
 			}
@@ -880,27 +888,21 @@
 				#block-views-block-quick-links-block {
 					.view-content {
 						height: 200px; 
-						overflow: auto;
-						overflow-x: hidden;
-						margin-right: -8px;
 					}
 				}
 			}
 
 			#block-views-block-quick-links-block {			
 				.view-content {
-				    overflow: auto;	
+				    overflow: auto;
+					overflow-x: hidden;
+					margin-right: -8px;
 				    margin-left: 0.125rem;
-					margin-right: -0.625rem; 
+					//margin-right: -0.625rem; 
 					width:100%;
-
-
-					@include media-breakpoint-down(desktop) {
-				        height: 200px;
-				    }
 					
 					@include media-breakpoint-down(phone) {
-				        height: 112px;
+				        height: 108px!important;
 				        margin-top: -0.6875rem;
 				        width: 96%;
 				    }
@@ -908,14 +910,6 @@
 				    .views-row {
 					    margin-bottom: 0.625rem;
 					}
-					@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){ 
-						width:50%!important;
-					}
-					/* Microsoft Edge Browser 12+ (All) - @supports method */
-					@supports (-ms-ime-align: auto){ 
-						width:50%!important;
-					}
-
 				}
 				-webkit-overflow-scrolling: auto;
 				
@@ -1020,7 +1014,7 @@
 				    
 
 				    	@include media-breakpoint-down(phone) {
-				    		right: 1.25rem!important;
+				    		right: 0rem!important;
 				    	}
 					}
 					&:hover::before,
@@ -1057,7 +1051,7 @@
 				    	
 
 				    	@include media-breakpoint-down(phone) {
-				    		right: 55px!important;
+				    		right: 2.5rem!important;
 				    	}
 					}
 					&:hover::before,
@@ -1081,11 +1075,23 @@
 		}
 		.appsAnnouncements {
 			flex: 0 0 24%; //0 0 285px;
-			//max-width: 210px; //285px;
 			margin-left: 1.25rem;
 			padding: 1rem 1.5vw 0 2vw;//1.25rem 0.9375rem 1.25rem 1.25rem;
 			border-left: 1px solid $text_gray;
 			overflow: hidden;
+
+			@include media-breakpoint-down(tablet) {	
+				flex: 0 0 100%;
+				max-width: 100%;
+				margin-top: 5.25rem;
+				margin-left: 0;
+				border-left: 0;
+				border-top: 1px solid;
+			}
+
+			@include media-breakpoint-down(phone) {
+				margin-top:5.25rem;
+			}
 
 			h2 {
 				font-size: 1.025rem;
@@ -1096,7 +1102,10 @@
 				//padding: 1.25rem 0.9375rem 0 0.9375rem;
 
 				@include media-breakpoint-down(phone) {
-					padding-left: 1.25rem;
+					font-size: 1.25rem;
+					padding-left: .75rem;
+					padding-top: 1rem;
+					color: $black;
 				}
 			}
 			a.appsAnnouncementsViewAll {
@@ -1120,95 +1129,43 @@
 					background-color: transparent;
 				}
 			}
+			.views-element-container {
+    			margin-left: 14px;
+				margin-right: 10px;
 
-			.views-field-title {
-			   font-size: .85rem;
-			   font-weight: 600;
-			   color: $text_gray !important;
-			   line-height: 1.1rem;
-			   margin: 0 0 0.5rem 0;
-			   padding: 0.2em 0 0 0;
-
-			   a {
+				.views-field-title {
 					font-size: .85rem;
-			   		font-weight: 600;
-				   	color: $text_gray;
+					font-weight: 600;
+					color: $text_gray !important;
 					line-height: 1.1rem;
-				   	text-decoration:none;
-				   	font-weight:600;
-   
-				   	&:after {
-					   content: "»";
-					   padding-left: 0.1875rem;
-				   	}
-   
-				   &:hover,
-				   &:focus {
-					   text-decoration: underline;
-					   background:transparent;
-				   }
-			   }
-		   }
+					margin: 0 0 0.5rem 0;
+					padding: 0.2em 0 0 0;
 
-			.new-announcement-sidebar {
-				display: inline;
-			}
+					a {
+							font-size: .85rem;
+							font-weight: 600;
+							color: $text_gray;
+							line-height: 1.1rem;
+							text-decoration:none;
+							font-weight:600;
 
-		/*	.view-footer {
-				margin-top: 1rem;
-				text-align: right;
-
-				a {
-					color: $black!important;
-					font-size: .75rem;
-					font-weight: 700;
-					text-decoration: none;
-					text-transform: uppercase;
-
-					&::after {
-						content: " »";
+							@include media-breakpoint-down(phone) {
+								font-size: .9rem;
+								line-height: 1.5rem;
+							}
+		
+							&:after {
+							content: "»";
+							padding-left: 0.1875rem;
+							}
+		
+						&:hover,
+						&:focus {
+							text-decoration: underline;
+							background:transparent;
+						}
 					}
 				}
-			}*/
-		}
-		@include media-breakpoint-down(desktop) {
-/*------>		height: 580px;*/	
-		}
-		@include media-breakpoint-down(tablet) {
-			height: auto;
-			flex-wrap: wrap;
-
-			.appsLinksMain,
-			.appsAnnouncements {
-				flex: 0 0 100%;
-				max-width: 100%;
-			}
-
-			.appsLinksMain {
-				height: 700px;
-			}
-
-			.appsAnnouncements {
-				margin-top: 1.25rem;
-				margin-left: 0;
-				border-left: 0;
-				border-top: 1px solid $plum;
-			}
-		}
-		@include media-breakpoint-down(landscape_phone) {
-			&.noroleRole { 
-				height: 570px;
-			}
-		}
-		@include media-breakpoint-down(phone) {
-			height: auto;
-
-			&.noroleRole { 
-				height: auto;
-			}
-
-			.appsLinksMain {
-				height: 860px;
 			}
 		}
 	}
@@ -1799,6 +1756,11 @@ div.view-quick-links.view-id-quick_links {
 			margin-right: .9375rem; //.9375rem = 15px
 			margin-bottom: 1.875rem; //30px
 			margin-left: .9375rem;
+
+			@include media-breakpoint-down(phone) {
+				display: block;
+    			width: 100%;
+			}
 		}
 
 		.views-row:empty {
