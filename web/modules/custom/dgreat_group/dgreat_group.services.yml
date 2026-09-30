@@ -7,3 +7,9 @@ services:
     class: Drupal\dgreat_group\Routing\GroupRouteSubscriber
     tags:
       - { name: event_subscriber }
+  dgreat_group.cas_username_normalizer:
+    class: Drupal\dgreat_group\EventSubscriber\CasUsernameNormalizerSubscriber
+    arguments:
+      - '@database'
+    tags:
+      - { name: event_subscriber }
