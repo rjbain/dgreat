@@ -318,7 +318,7 @@
 							left: 70px;
 
 							@include media-breakpoint-down(tablet) {
-								top: -30px;
+								top: 270px;
 							}
 							@include media-breakpoint-down(phone) {
 								top: 425px;
@@ -523,7 +523,7 @@
 			&.prehire-staff,
 			&.prehire-faculty {
 				.favorite-links-wrapper {
-					@include media-breakpoint-up(desktop) {
+					@include media-breakpoint-up(tablet) {
 						height: 250px;
 					}
 
@@ -534,7 +534,7 @@
 									&:nth-child(n + 1):nth-child(-n + 4) {
 										display:none;
 									}
-									&:nth-child(n + 10) {
+									&:nth-child(n + 11) { //10
 										display:none;
 									}
 									&:last-child td {
@@ -567,7 +567,7 @@
 
 								table {
 									tr {	
-										&:nth-child(-n + 9) {
+										&:nth-child(-n + 10) { //9
 											display:none;
 										}
 										&:last-child td {
@@ -1105,7 +1105,7 @@
 					font-size: 1.25rem;
 					padding-left: .75rem;
 					padding-top: 1rem;
-					color: $black;
+					color: $black!important;
 				}
 			}
 			a.appsAnnouncementsViewAll {
@@ -1576,6 +1576,9 @@ div.view-quick-links.view-id-quick_links {
 			&.col-lg-4 {
 				//flex: 0 0 30.333333%;
 				max-width: 30.333333%;
+				@include media-breakpoint-down(phone) { 
+					max-width: 92%;
+				}
 			}
 
 			.dashboard-event-list-filter {
@@ -1626,8 +1629,8 @@ div.view-quick-links.view-id-quick_links {
 			column-gap: 0.875rem;
 			align-items: center;
 			width: 100%;
-			min-height: 110px;
-			padding: 1rem 0 0 0;
+			//min-height: 110px;
+			padding: 1rem 0;
 			background: $white;
 			//border-right: 0.375rem solid $green;
 			box-sizing: border-box;
@@ -1646,7 +1649,7 @@ div.view-quick-links.view-id-quick_links {
 			.dashboard-event-item__day {
 				display: block;
 				color: $true_black;
-				font-size: 2rem;
+				font-size: 1.5rem; //2rem;
 				font-weight: 800;
 				line-height: 1;
 			}
@@ -1673,7 +1676,7 @@ div.view-quick-links.view-id-quick_links {
 				text-transform: none;
 
 				a {
-					font-size: 1rem;
+					font-size: .9rem; //1rem
 					color: $black!important;
 					font-weight: 800;
 					line-height: 1.2;
@@ -1692,8 +1695,8 @@ div.view-quick-links.view-id-quick_links {
 			.dashboard-event-item__rsvp {
 				display: block;
 				color: $black;
-				font-size: .9rem;
-				font-weight: 600;
+				font-size: .75rem;//.9rem;
+				//font-weight: 600;
 				line-height: 1.35;
 			}
 
@@ -1724,6 +1727,7 @@ div.view-quick-links.view-id-quick_links {
 
 			.dashboard-event-item__meta {
 				grid-column: 2;
+				display: none;
 			}
 
 			@include media-breakpoint-down(phone) {
@@ -1849,6 +1853,10 @@ div.view-quick-links.view-id-quick_links {
 
 .usf_dash {
 	.dashboard-news {
+		@include media-breakpoint-down(phone) { 
+			margin-left: 0;
+    		margin-right: 0;
+		}
 		h2 {
 			/* NEW */
 			font-size: 1.25rem;
@@ -1857,8 +1865,10 @@ div.view-quick-links.view-id-quick_links {
 			text-transform: uppercase !important;
 			border: 0;
 			margin: 0 0 1rem;
-			/* ---- */
-		
+			
+			@include media-breakpoint-down(phone) { 
+				margin-left: -15px;
+			}
 		}
 	}
 	.dashboard-news-teaser-cards {
@@ -1873,6 +1883,8 @@ div.view-quick-links.view-id-quick_links {
 
 			.card-img-top {
 				height: auto;
+				border-top-left-radius: 0;
+				border-top-right-radius: 0;
 			}
 			h3.card-title a {
 				font-size: .9rem;
@@ -1974,6 +1986,12 @@ div.view-quick-links.view-id-quick_links {
 			border: 0;
 			margin: 0 0 1rem;
 		}
+		.crt-col-0 article {
+			margin-left: 0 !important;
+		}
+		[class^="crt-"]:last-child article {
+			margin-right: 0!important;
+			}
 		.crt-image {
 			img {
 				margin-top: 0;
