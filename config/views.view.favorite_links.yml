@@ -874,13 +874,25 @@ display:
           default_row_class: true
           columns:
             link_flag: link_flag
+            field_url: field_url
             title: title
-            field_default_favorite_links: title
+            body: body
+            field_category: field_category
+            field_sso: field_sso
+            field_group_audience: field_group_audience
+            edit_node: edit_node
+            delete_node: delete_node
+            field_weight: field_weight
           default: '-1'
           info:
             link_flag:
               sortable: false
               default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_url:
               align: ''
               separator: ''
               empty_column: false
@@ -892,7 +904,45 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            field_default_favorite_links:
+            body:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_category:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_sso:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_group_audience:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            edit_node:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            delete_node:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_weight:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -908,6 +958,13 @@ display:
           class: ''
       row:
         type: fields
+        options:
+          default_field_elements: false
+          inline:
+            title: title
+            field_weight: field_weight
+          separator: ''
+          hide_empty: false
       query:
         type: views_query
         options:
@@ -1000,6 +1057,7 @@ display:
         - 'config:field.storage.node.field_category'
         - 'config:field.storage.node.field_group_audience'
         - 'config:field.storage.node.field_sso'
+        - flag.flag.favorite
   all_apps:
     id: all_apps
     display_title: Administrator
@@ -1803,6 +1861,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - user
         - user.roles
       tags:
         - 'config:field.storage.node.body'
@@ -1810,6 +1869,7 @@ display:
         - 'config:field.storage.node.field_group_audience'
         - 'config:field.storage.node.field_sso'
         - 'config:field.storage.node.field_url'
+        - flag.flag.favorite
   block:
     id: block
     display_title: 'Fav Links Block'
@@ -2196,8 +2256,7 @@ display:
           user_scope: current
       group_by: false
       display_description: ''
-      header: {  }
-      footer:
+      header:
         area:
           id: area
           table: views
@@ -2211,15 +2270,18 @@ display:
             value: "<a href=\"/favorite-links\" class=\"appPref\">Preferences</a>\r\n<a href=\"https://usf.service-now.com/usf?id=my_apps\" class=\"seeMyApps diamond_link_small\" target=\"_blank\">View All  Apps</a>"
             format: full_html
           tokenize: false
+      footer: {  }
       display_extenders: {  }
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - user
         - user.permissions
       tags:
         - 'config:field.storage.node.field_url'
+        - flag.flag.favorite
   my_links:
     id: my_links
     display_title: 'My Favorite Links'
@@ -2400,6 +2462,7 @@ display:
           type: string
           settings:
             link_to_entity: false
+            link_rel: canonical
           group_column: entity_id
           group_columns: {  }
           group_rows: true
@@ -2734,6 +2797,8 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - user
         - user.permissions
       tags:
         - 'config:field.storage.node.field_url'
+        - flag.flag.favorite

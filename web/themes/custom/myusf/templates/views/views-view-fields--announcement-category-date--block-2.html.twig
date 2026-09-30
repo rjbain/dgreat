@@ -37,10 +37,10 @@
 {#% set roles = fields.field_role.content %#}
 {#% set userRole = user.getroles %#}
 {#% set userRole = userRole|join(', ') %#}
-{% set published_date = fields.field_published_date.content|date("m/d/Y") %}
-{% set past_date = now|date_modify("-7 days")|date("m/d/Y") %}
+{% set published_date = row._entity.field_published_date.value %}
+{% set past_date = now|date_modify("-7 days") %}
 
-{% if date(published_date) >= date(past_date) %}
+{% if published_date and date(published_date) >= past_date %}
 	{% set newclass = "new-announcement" %}
 	{% else %}
     {% set newclass = "nope" %}

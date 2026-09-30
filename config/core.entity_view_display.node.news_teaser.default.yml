@@ -1,0 +1,96 @@
+uuid: 917e4aeb-3e0f-4be1-bac4-d6777aefdf95
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.news_teaser.body
+    - field.field.node.news_teaser.feeds_item
+    - field.field.node.news_teaser.field_guid
+    - field.field.node.news_teaser.field_image_url
+    - field.field.node.news_teaser.field_introtext
+    - field.field.node.news_teaser.field_pubdate
+    - field.field.node.news_teaser.field_source_url
+    - field.field.node.news_teaser.field_teaser
+    - node.type.news_teaser
+  module:
+    - datetime
+    - link
+    - text
+    - user
+id: node.news_teaser.default
+targetEntityType: node
+bundle: news_teaser
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_guid:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 119
+    region: content
+  field_image_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_introtext:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 121
+    region: content
+  field_pubdate:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_source_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 118
+    region: content
+  field_teaser:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 120
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  feeds_item: true
+  langcode: true
+  search_api_excerpt: true

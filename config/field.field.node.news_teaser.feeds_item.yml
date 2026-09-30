@@ -1,0 +1,23 @@
+uuid: 3d3c6ec2-8c07-4dfa-a7cc-85d8d32117c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.feeds_item
+    - node.type.news_teaser
+  module:
+    - feeds
+id: node.news_teaser.feeds_item
+field_name: feeds_item
+entity_type: node
+bundle: news_teaser
+label: 'Feeds item'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:feeds_feed'
+  handler_settings: {  }
+field_type: feeds_item

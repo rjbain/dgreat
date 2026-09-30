@@ -1,0 +1,24 @@
+uuid: bcdfe07f-c2a3-4dfb-9579-07bd1295753b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_weight
+    - node.type.ad_block
+  module:
+    - weight
+id: node.ad_block.field_weight
+field_name: field_weight
+entity_type: node
+bundle: ad_block
+label: Weight
+description: 'Controls the display order of ad blocks. Lower numbers appear first.'
+required: false
+translatable: true
+default_value:
+  -
+    value: '0'
+default_value_callback: ''
+settings:
+  range: '20'
+field_type: weight

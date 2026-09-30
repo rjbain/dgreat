@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Theme override to display news teaser rows as Bootstrap cards.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+<div class="card-deck dashboard-news-teaser-cards">
+{% for row in rows|slice(0, 3) %}
+    {{ row.content }}
+{% endfor %}
+</div>
