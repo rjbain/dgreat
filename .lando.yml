@@ -21,6 +21,9 @@ services:
             {"extensions" : {"Behat\\MinkExtension" : {"base_url" :
             "http://nginx/"}, "Drupal\\DrupalExtension" : {"drush" :   {
             "root":  "/app/web" }}}}
+  database:
+    config:
+      database: conf/mysql.cnf
   node:
     type: node:18
     build:
