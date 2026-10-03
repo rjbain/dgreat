@@ -232,3 +232,22 @@ function dgreat_group_update_8104(&$sandbox = NULL) {
     $sandbox['#finished'] = 1;
   }
 }
+
+/**
+ * Refreshes Group entity definition metadata after Drupal 11 upgrades.
+ */
+function dgreat_group_update_8105() {
+  $entity_type_manager = \Drupal::entityTypeManager();
+  $last_installed_schema_repository = \Drupal::service('entity.last_installed_schema.repository');
+
+  foreach (['group_relationship', 'group_config_wrapper'] as $entity_type_id) {
+    $last_installed_schema_repository->setLastInstalledDefinition(
+      $entity_type_manager->getDefinition($entity_type_id)
+    );
+  }
+
+  \Drupal::service('entity_field.manager')->clearCachedFieldDefinitions();
+  drupal_flush_all_caches();
+
+  return t('Refreshed installed Group entity definitions after Drupal 11 updates.');
+}
