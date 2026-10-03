@@ -274,3 +274,17 @@ function dgreat_group_update_8105() {
 
   return t('Refreshed installed Group entity and field storage definitions after Drupal 11 updates.');
 }
+
+/**
+ * Aligns CKEditor Media Embed metadata with Drupal core's CKEditor version.
+ */
+function dgreat_group_update_8106() {
+  \Drupal::configFactory()
+    ->getEditable('ckeditor_media_embed.settings')
+    ->set('plugins_version_installed', '47.6.3')
+    ->save(TRUE);
+
+  drupal_flush_all_caches();
+
+  return t('Updated CKEditor Media Embed installed plugin metadata for Drupal core 11.4.');
+}
