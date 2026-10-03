@@ -1,37 +1,72 @@
-CKEditor&nbsp;5 media embed feature
-========================================
+# CKEditor 5 Media embed, for Drupal
 
-[![npm version](https://badge.fury.io/js/%40ckeditor%2Fckeditor5-media-embed.svg)](https://www.npmjs.com/package/@ckeditor/ckeditor5-media-embed)
-[![codecov](https://codecov.io/gh/ckeditor/ckeditor5/branch/master/graph/badge.svg)](https://codecov.io/gh/ckeditor/ckeditor5)
-[![CircleCI](https://circleci.com/gh/ckeditor/ckeditor5.svg?style=shield)](https://app.circleci.com/pipelines/github/ckeditor/ckeditor5?branch=master)
+This repository packages the **build output** of the
+[`@ckeditor/ckeditor5-media-embed`](https://www.npmjs.com/package/@ckeditor/ckeditor5-media-embed)
+plugin as a Composer `drupal-library`, so `drupal/ckeditor_media_embed` can require it the way
+`drupal/anchor_link` requires
+[`vardot/ckeditor5-anchor-drupal`](https://github.com/Vardot/ckeditor5-anchor-drupal) — with
+Composer, rather than a Drush download or a copy out of `node_modules`.
 
-This package implements the media embed feature for CKEditor&nbsp;5. You can use it to insert embeddable media such as YouTube or Vimeo videos and tweets into your rich text content.
+Only what Drupal serves is shipped: `build/`, the `lang/` contexts and `theme/`.
 
 ## Installation
 
-This plugin is part of the `ckeditor5` package. Install the whole package to use it.
-
 ```bash
-npm install ckeditor5
+composer require vardot/ckeditor5-media-embed-drupal
 ```
 
-## Create free account
+This package declares **no `require` of its own**. It is a built JavaScript asset,
+not PHP: requiring `drupal/core` here would pull Drupal core and about 130 other
+packages in just to place one file, and it would say nothing useful, because the
+constraint that actually matters is the CKEditor 5 version core bundles — which a
+Composer constraint on `drupal/core` cannot express. That coupling is carried by
+the tag you require, and by the table below.
 
-If you want to check full CKEditor&nbsp;5 capabilities, sign up for a [free non-commitment 14-day trial](https://portal.ckeditor.com/checkout?plan=free).
+It works out of the box — **the consuming project adds nothing**.
 
-## Demo
+`drupal/ckeditor_media_embed` loads the plugin from
+`libraries/ckeditor5/plugins/media-embed/build/media-embed.js`, which is a nested directory that
+the usual `web/libraries/{$name}` installer path cannot produce on its own. This package places
+itself there instead, by declaring `composer/installers`' own
+[`extra.installer-name`](https://github.com/composer/installers#custom-install-names):
 
-Check out the [demo in the media embed feature guide](https://ckeditor.com/docs/ckeditor5/latest/features/media-embed.html#demo).
+```json
+"extra": {
+  "installer-name": "ckeditor5/plugins/media-embed"
+}
+```
 
-## Documentation
+That overrides `{$name}` for this package only, so the project keeps the single generic
+`"web/libraries/{$name}": ["type:drupal-library"]` rule it already has, with no extra plugin and no
+per-package path.
 
-See the [`@ckeditor/ckeditor5-media-embed` package](https://ckeditor.com/docs/ckeditor5/latest/api/media-embed.html) page in [CKEditor&nbsp;5 documentation](https://ckeditor.com/docs/ckeditor5/latest/).
+## Versioning — match Drupal core's CKEditor 5
 
-## License
+**A CKEditor 5 plugin must be built against the same CKEditor 5 version Drupal core bundles.**
+Mixing minors makes the editor fail with `ckeditor-duplicated-modules`. Read core's version from
+`web/core/core.libraries.yml` (the `ckeditor5:` entry) and require the tag that matches it:
 
-Licensed under a dual-license model, this software is available under:
+| Drupal core | CKEditor 5 in core | Require |
+|---|---|---|
+| 11.4.x | 47.6.2 | `~47.6.2` |
 
-* the [GNU General Public License Version 2 or later](https://www.gnu.org/licenses/gpl.html),
-* or commercial license terms from CKSource Holding sp. z o.o.
+## Licence, and why not the LTS line
 
-For more information, see: [https://ckeditor.com/legal/ckeditor-licensing-options](https://ckeditor.com/legal/ckeditor-licensing-options).
+Tags here are built **only from GPL dual-licensed CKEditor 5 releases**.
+
+CKEditor 5 releases from 47.7.0 on that line are the **Long Term Support edition**, which CKSource
+publishes under a **commercial licence only** — there is no GPL option, so they cannot be
+redistributed here or shipped in a GPL-2.0-or-later Drupal distribution. `47.6.2` is the last
+GPL dual-licensed release of the 47.6 line, and it is the one Drupal 11.4 core bundles.
+
+See [LICENSE.md](LICENSE.md) — GNU General Public License Version 2 or later, or commercial terms
+from CKSource. © 2003–2026 CKSource Holding sp. z o.o.
+
+## Upstream
+
+- Source: https://github.com/ckeditor/ckeditor5 (`packages/ckeditor5-media-embed`)
+- Documentation: https://ckeditor.com/docs/ckeditor5/latest/features/media-embed.html
+
+## Maintainers
+
+- [Vardot](https://github.com/vardot)
