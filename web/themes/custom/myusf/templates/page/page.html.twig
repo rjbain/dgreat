@@ -82,9 +82,6 @@
     'order-last',
   ]
  %}
-{% set current_path_segments = path('<current>')|trim('/')|split('/') %}
-{% set show_navbar_search = current_path_segments|first != 'public' %}
-
 {% block head %}
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="site navigation">
     {# {% if container_navbar %}
@@ -108,11 +105,11 @@
       </div>
 
       {% if container_navbar %}
-        {% if show_navbar_search %}
-          <form class="form-inline my-2 my-lg-0" action="/results" method="get">
+        {% if logged_in %}
+          <form class="form-inline my-2 my-lg-0" action="/results" method="get" autocomplete="off">
             <div class="search-options" id="search-options">
               <input type="hidden" name="myusf_search" value="true">
-              <input class="mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search_api_fulltext" value="">
+              <input class="mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search_api_fulltext" value="" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false">
               <br>
               <span><a href="https://www.usfca.edu/search" target="_blank">Search USFCA.EDU</a></span>
                 <input type="submit" class="acc-visuallyhidden" value="submit">
