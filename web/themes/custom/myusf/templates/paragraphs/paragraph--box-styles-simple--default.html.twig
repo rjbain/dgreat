@@ -1,0 +1,57 @@
+{% set description = paragraph.field_body_text.value %}
+	{% if paragraph.field_height.value %}
+		{% set height = paragraph.field_height.value %}
+	{% else %}
+		{% set height = 400 %}
+	{% endif %}
+
+	{% if paragraph.field_colors.value %}
+		{% set color = paragraph.field_colors.value %}
+	{% else %}
+		{% set color = "none" %}
+	{% endif %}
+
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+   not paragraph.isPublished() ? 'paragraph--unpublished'
+   ]
+%}
+
+{% block paragraph %}
+
+<div{{ attributes.addClass(classes) }}>
+
+<div class="box simple {{ paragraph.field_colors.value }}" style="min-height:{{ height }}px;">
+	<img class="box-image" alt="{{ paragraph.field_image.alt }}" src="{{ file_url(paragraph.field_image.entity.uri.value) }}" />
+	<div class="box-body">
+		{% if paragraph.field_subheading.value is not empty %}
+		<div class="box-subheader">{{ paragraph.field_subheading.value }}</div>
+		{% endif %}
+
+		{% if paragraph.field_body_text.value is not empty %}
+			{% autoescape false %}
+      			{{ description }}
+    		{% endautoescape %}
+		{% endif %}
+
+		{% if paragraph.field_heading.value is not empty %}
+		<div class="box-button"><a class="box-link" href="{{ content.field_link.0['#url'] }}">{{ paragraph.field_heading.value }}</a></div>
+		{% endif %}
+
+	</div>
+</div>
+<div class="simple-body">
+	{% if paragraph.field_simple_text.value is not empty %}
+		{% autoescape false %}
+      		{{ paragraph.field_simple_text.value }}
+    	{% endautoescape %}
+	{% endif %}
+
+
+</div>
+
+</div>
+{% endblock paragraph %}

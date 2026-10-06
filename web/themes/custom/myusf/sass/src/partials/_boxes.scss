@@ -1561,6 +1561,34 @@ a.right.carousel-control {
          border-top: 7px solid $lime;
     }
 }
+.box.simple {
+    margin-bottom: 2.5rem;
+}
+.paragraph.paragraph--type--bp-columns
+  .paragraph--type--bp-columns__3col {
+    .paragraph--type--box-styles-simple > .simple-body {
+        color: red;
+        padding: 0 20px;
+        padding-right: calc(20px + 1vw);
+        padding-left: calc(20px + 1vw);
+        margin-right: -1vw;
+        margin-left: -1vw;
+      //border-right: 1px solid red;
+    }
+
+     &:nth-of-type(2) .paragraph--type--box-styles-simple > .simple-body {
+        border-right: 1px solid red;
+        border-left: 1px solid red;
+
+        @include media-breakpoint-down(phone){
+            border:0;
+        }
+     }
+    /* &:last-of-type .paragraph--type--box-styles-simple > .simple-body {
+      border-right: 0;
+    } */
+}
+
 
 //TEST for aligning the boxes on the left and right with other content
 @media (max-width: 767px) {

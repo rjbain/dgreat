@@ -1,0 +1,91 @@
+uuid: 99c085ae-c07c-4e68-9489-eeeab474e414
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.box_styles_simple.field_body_text
+    - field.field.paragraph.box_styles_simple.field_colors
+    - field.field.paragraph.box_styles_simple.field_heading
+    - field.field.paragraph.box_styles_simple.field_height
+    - field.field.paragraph.box_styles_simple.field_image
+    - field.field.paragraph.box_styles_simple.field_link
+    - field.field.paragraph.box_styles_simple.field_simple_text
+    - field.field.paragraph.box_styles_simple.field_subheading
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.box_styles_simple
+  module:
+    - image
+    - imce
+    - link
+    - text
+id: paragraph.box_styles_simple.default
+targetEntityType: paragraph
+bundle: box_styles_simple
+mode: default
+content:
+  field_body_text:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_colors:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_heading:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_height:
+    type: number
+    weight: 6
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_image:
+    type: image_image
+    weight: 4
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings:
+      imce:
+        enabled: true
+  field_link:
+    type: link_default
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_simple_text:
+    type: text_textarea
+    weight: 7
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_subheading:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -85,7 +85,7 @@ function dgreat_nodes_form_alter(&$form, FormStateInterface $form_state, $form_i
     $form['#attached']['library'][] = 'dgreat_nodes/paragraphs_editor_admin';
   }
 
-  if ($form_id === 'views_exposed_form') {
+/*  if ($form_id === 'views_exposed_form') {
     $view = $form_state->get('view');
     if ($view && $view->id() === 'sitewide_search') {
       $form['files_only'] = [
@@ -95,7 +95,7 @@ function dgreat_nodes_form_alter(&$form, FormStateInterface $form_state, $form_i
         '#weight' => 10,
       ];
     }
-  }
+  } */
 
   $fav_links_nodes = [
     'node_favorite_link_form',

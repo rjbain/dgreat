@@ -47,9 +47,6 @@ Available variables (usf_dashboard.module)
                     <!-- Beginning  of temp FavApps -->
                     <div class="col-sm myApps {{ dashboard_content.role_classes }} {{ myclass }}">
                         <h2>Top Apps</h2>
-                        {#% if dashboard_content.fav_links %#}
-                            {#{ dashboard_content.fav_links }#}
-                        {#% endif %#}
                         <div class="favorite-links-wrapper">
                             <div id="block-views-block-favorite-links-block-first-column">
                                 <div class="content">
@@ -99,8 +96,6 @@ Available variables (usf_dashboard.module)
                         </div>
                         <div class="col-sm myQuickLinks {{ dashboard_content.role_classes }} {{ myclass }}">
                         
-                            {#% if dashboard_content.dashboard_user.name.value is not empty %#}
-                                <!--<h2>{#{ dashboard_content.dashboard_user.name.value }#}'s Links</h2>-->
                             <h2>{{ drupal_entity('block', 'user_block_dashboard') }}&apos;s Links</h2>
                             <div class="view-header">
                                 <a href="node/add/favorite_link?edit[field_link_type][und]=quick&amp;destination=/dashboard" class="addLinks">Add Links</a><a href="/quick-links" class="manageLinks">Manage Links</a>
@@ -108,15 +103,12 @@ Available variables (usf_dashboard.module)
                                 {% if dashboard_content.quick_links %}
                                     {{ dashboard_content.quick_links }}
                                 {% endif %}
-                            <!-- TESTING VIEW_HEADER <div class="view-footer">
-                                <a href="node/add/favorite_link?edit[field_link_type][und]=quick&amp;destination=/dashboard" class="manageLinks">Add Links</a><a href="/quick-links" class="addLinks">Manage Links</a>
-                            </div> -->
                         </div>
                     </div>
                 {% endif %}            
                 </div>
 
-                <div class="appsAnnouncements">
+                <div class="appsAnnouncements {{ dashboard_content.role_classes }} {{ myclass }}">
                     <h2>Announcements</h2>
                     {{ drupal_view('announcement_category_date', 'block_3', userRole, ids) }}
                     <a href="/announcements" class="appsAnnouncementsViewAll">View All</a>
@@ -204,13 +196,6 @@ Available variables (usf_dashboard.module)
                     </script>
                 </div>
             </div>
-                
-                <!--<div class="row">
-                    <div class="col-sm">
-                        <h2>Announcements</h2>
-                        {#{ drupal_view('dashboard_announements', 'block_1', role) }#}
-                    </div>
-                </div>-->
                 <div class="row">
                     <div class="col-sm">          
                         {{ drupal_view('dashboard_blocks', 'block_1', role) }}

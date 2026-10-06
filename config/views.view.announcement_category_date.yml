@@ -531,15 +531,18 @@ display:
             operator_limit_selection: false
             operator_list: {  }
       style:
-        type: default
+        type: html_list
         options:
           grouping: {  }
           row_class: ''
           default_row_class: false
+          type: ul
+          wrapper_class: item-list
+          class: ''
       row:
         type: fields
         options:
-          default_field_elements: true
+          default_field_elements: false
           inline: {  }
           separator: ''
           hide_empty: false
@@ -676,7 +679,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: numeric
+          plugin_id: entity_target_id
           default_action: ignore
           exception:
             value: all
@@ -708,6 +711,7 @@ display:
             multiple: 1
           break_phrase: true
           not: false
+          target_entity_type_id: taxonomy_term
       query:
         type: views_query
         options:
