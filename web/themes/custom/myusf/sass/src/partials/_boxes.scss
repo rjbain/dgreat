@@ -1567,21 +1567,37 @@ a.right.carousel-control {
 .paragraph.paragraph--type--bp-columns
   .paragraph--type--bp-columns__3col {
     .paragraph--type--box-styles-simple > .simple-body {
-        padding: 0 20px;
+        padding-top: 0 20px;
         padding-right: calc(20px + 1vw);
         padding-left: calc(20px + 1vw);
         margin-right: -1vw;
         margin-left: -1vw;
     }
 
-     &:nth-of-type(2) .paragraph--type--box-styles-simple > .simple-body {
+    .paragraph--type--bp-simple .simple-body {
+        padding-top: 0 20px;
+        padding-right: calc(20px + 1vw);
+        padding-left: calc(20px + 1vw);
+        margin-right: -1vw;
+        margin-left: -1vw;
+    }
+
+    &:nth-of-type(2) .paragraph--type--box-styles-simple > .simple-body {
         border-right: 1px solid $text_gray;
         border-left: 1px solid $text_gray;
 
         @include media-breakpoint-down(phone){
             border:0;
         }
-     }
+    }
+    &:nth-of-type(2) .paragraph--type--bp-simple .simple-body {
+        border-right: 1px solid $text_gray;
+        border-left: 1px solid $text_gray;
+
+        @include media-breakpoint-down(phone){
+            border:0;
+        }
+    }
 }
 
 
