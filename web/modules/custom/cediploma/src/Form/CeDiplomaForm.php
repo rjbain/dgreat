@@ -180,13 +180,15 @@ class CeDiplomaForm extends FormBase {
                   }
           }
 
-      $json_output = json_encode($output, JSON_UNESCAPED_SLASHES); //JSON_UNESCAPED_SLASHES Available since PHP 5.4
+      $result_html = $output->result_table !== ''
+        ? '<table>' . $output->result_table . '</table>'
+        : '';
 
       $response = new AjaxResponse();
       $response->addCommand(
        new HtmlCommand(
          '.result_message',
-          $json_output
+          $result_html
          )
       );
 
