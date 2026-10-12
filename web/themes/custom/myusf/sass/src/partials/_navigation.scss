@@ -499,10 +499,12 @@ div.search-icon-rollover {
 	input[type=checkbox] {
 		margin-top: 15px;
 	}
+	
 	.search-usfca {
 		margin-top: 10px;
 
 		a {
+			display: none;
 			color: white;
 
 			&:hover,
@@ -510,6 +512,7 @@ div.search-icon-rollover {
 				color: #fff !important;
    				text-decoration: none;
     			background: transparent;
+				
 			}
 			svg.ext {
 				fill: white;
@@ -523,7 +526,11 @@ div.search-icon-rollover {
 			}
 		}
 	}
-	
+	&:focus-within {
+		.search-usfca a {
+			display: block;
+		}
+	}
 	.mr-sm-2 {
 		margin-right: unset;
 		font-size: .85rem!important;

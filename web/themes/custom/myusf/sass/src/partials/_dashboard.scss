@@ -105,7 +105,7 @@
 						}
 
 						@include media-breakpoint-down(phone) {
-							width:100%;
+							//width:100%;
 							height: 352px;
 							overflow: auto;
 							overflow-x: hidden;
@@ -428,11 +428,12 @@
 
 						@include media-breakpoint-down(tablet) {
 							height: 340px;
+							width: 98%;
 						}
 
 						@include media-breakpoint-down(phone) {
 							width:100%;
-							height: 340px;
+							//height: 340px;
 							margin-left: 0;
 							margin-right: 0; 
 						}	
@@ -730,6 +731,7 @@
 				        height:150px !important;
 				        margin-top: -0.6875rem;
 						margin-left: -5px;
+						margin-right: 6px;
 				    }
 					.table-responsive.col {
 						max-width: 100%!important;
@@ -900,13 +902,16 @@
 					overflow-x: hidden;
 					margin-right: -8px;
 				    margin-left: 0.125rem;
-					//margin-right: -0.625rem; 
 					width:100%;
+
+					@include media-breakpoint-only(tablet) {
+						width: 95%;
+					}
 					
 					@include media-breakpoint-down(phone) {
 				        height: 108px!important;
 				        margin-top: -0.6875rem;
-				        width: 96%;
+				        width: 97.2%; //96%
 				    }
 
 				    .views-row {
@@ -1560,6 +1565,25 @@ div.view-quick-links.view-id-quick_links {
 		#carouselControls {
 			width: 100%;
 			margin: 0 .9375rem 2.5rem .9375rem; //.9375rem = 15px
+
+			@include media-breakpoint-only(tablet) { 
+				margin: 0 .6375rem 2.5rem .9375rem;
+			}
+
+			@include media-breakpoint-down(phone) { 
+				.carousel-control-prev::after {
+					width: 40px;
+					height: 40px;
+					top: 198px;
+					left: -20px;
+				}
+				.carousel-control-next::after {
+					width: 40px;
+					height: 40px;
+					top: 198px;
+					right: -20px;
+				}
+			}
 		}
 
 		.carousel-item {
@@ -1602,10 +1626,18 @@ div.view-quick-links.view-id-quick_links {
 			border: 1px solid $gray;
 			padding: 1rem;
 			margin: 43px -.9375rem 1.875rem .9375rem;
+
+			@include media-breakpoint-only(tablet) { 
+				margin: 43px -.9375rem 1.875rem 1.25rem;
+			}
 		
 			&.col-lg-4 {
 				//flex: 0 0 30.333333%;
 				max-width: 30.333333%;
+
+				@include media-breakpoint-only(tablet) { 
+					max-width: 29.333333%;
+				}
 				@include media-breakpoint-down(phone) { 
 					max-width: 92%;
 				}
@@ -1814,7 +1846,7 @@ div.view-quick-links.view-id-quick_links {
 	}
 
 	.dashboard-ad-block {
-		height: 180px;
+		height: 230px; //180
 		padding: 1.25rem;
 		overflow: hidden;
 		background: $green;
@@ -1858,9 +1890,13 @@ div.view-quick-links.view-id-quick_links {
 		}
 		.dashboard-ad-block__body {
 			p {
-			color: $white;
-			font-size: .95rem;
-			line-height: 1.35;
+				color: $white;
+				font-size: .85rem;
+				line-height: 1.35;
+
+				&.ad-text-half {
+					width: 50%;
+				}
 			}
 
 			h3 {
@@ -1876,6 +1912,27 @@ div.view-quick-links.view-id-quick_links {
 					background-color: transparent;
 				}
 			}
+			.ad-image-top {
+				margin: -1.25rem;
+				margin-bottom: 10px;
+				width: calc(100% + 2.5rem);
+				height: auto;
+			}
+			.ad-image-right {
+				width: 50%;
+				height: auto;
+				float: right;
+				margin-right: -1.25rem;
+				bottom: -1.25rem;
+				position: relative;
+			}
+
+			&:has(.vertically-centered) {
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			} 
 		}
 	}
 }
