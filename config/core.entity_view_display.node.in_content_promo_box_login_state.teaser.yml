@@ -1,0 +1,38 @@
+uuid: 6e8fcb73-63cf-475f-9f76-fc2ce9655d5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.in_content_promo_box_login_state.field_border_color
+    - field.field.node.in_content_promo_box_login_state.field_color
+    - field.field.node.in_content_promo_box_login_state.field_logged_in_content
+    - field.field.node.in_content_promo_box_login_state.field_logged_out_content
+    - node.type.in_content_promo_box_login_state
+  module:
+    - text
+    - user
+id: node.in_content_promo_box_login_state.teaser
+targetEntityType: node
+bundle: in_content_promo_box_login_state
+mode: teaser
+content:
+  field_logged_out_content:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_border_color: true
+  field_color: true
+  field_logged_in_content: true
+  langcode: true
+  search_api_excerpt: true

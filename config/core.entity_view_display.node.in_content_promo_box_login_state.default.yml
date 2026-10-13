@@ -1,0 +1,55 @@
+uuid: dd652cab-9005-4529-8b71-3d23bbbac9d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.in_content_promo_box_login_state.field_border_color
+    - field.field.node.in_content_promo_box_login_state.field_color
+    - field.field.node.in_content_promo_box_login_state.field_logged_in_content
+    - field.field.node.in_content_promo_box_login_state.field_logged_out_content
+    - node.type.in_content_promo_box_login_state
+  module:
+    - options
+    - text
+    - user
+id: node.in_content_promo_box_login_state.default
+targetEntityType: node
+bundle: in_content_promo_box_login_state
+mode: default
+content:
+  field_border_color:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_color:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_logged_in_content:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_logged_out_content:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 99
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

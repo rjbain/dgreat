@@ -179,6 +179,22 @@ function myusf_preprocess_paragraph__video(&$variables) {
 
 function myusf_preprocess_node(&$variables)
 {
+    if ($variables['node']->bundle() === 'in_content_promo_box_login_state') {
+        $account = \Drupal::currentUser();
+        $user = \Drupal\user\Entity\User::load($account->id());
+        $display_name = '';
+
+        if ($user && $user->hasField('field_user_display_name') && !$user->get('field_user_display_name')->isEmpty()) {
+            $display_name = $user->get('field_user_display_name')->value;
+        }
+
+        $variables['current_username'] = Html::escape($account->getAccountName());
+        $variables['current_displayname'] = Html::escape($display_name);
+        $variables['#cache']['contexts'][] = 'user';
+        $variables['elements']['#cache']['contexts'][] = 'user';
+        $variables['content']['#cache']['contexts'][] = 'user';
+    }
+
     // Check for a video on the page.
     // Need this for knowing when to print out the modal overlay markup.
     $node = $variables['node'];

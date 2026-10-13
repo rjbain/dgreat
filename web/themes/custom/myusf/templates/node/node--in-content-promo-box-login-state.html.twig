@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Theme implementation for promo boxes with logged in/logged out content.
+ */
+#}
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'clearfix',
+  ]
+%}
+
+{% set background_color = node.field_color.value %}
+{% set border_color = node.field_border_color.value %}
+{% set state_content = logged_in ? content.field_logged_in_content : content.field_logged_out_content %}
+{% set rendered_state_content = state_content|render %}
+
+<div{{ attributes.addClass(classes) }}>
+  <div class="promo-box background-{{ background_color }} border-{{ border_color }}">
+    <div class="promo-box-text">
+      {{ logged_in ? rendered_state_content|replace({'{{ username }}': current_username, '{{ displayname }}': current_displayname})|raw : rendered_state_content }}
+    </div>
+  </div>
+</div>
