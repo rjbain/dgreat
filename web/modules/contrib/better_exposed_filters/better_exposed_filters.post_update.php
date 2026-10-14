@@ -169,3 +169,25 @@ function better_exposed_filters_post_update_soft_limit_include_children(?array &
     return $config_updater->updateSoftLimitIncludeChildrenParam($view);
   });
 }
+
+/**
+ * Set default value for new per-filter "no_reset" option.
+ */
+function better_exposed_filters_post_update_no_reset_key(?array &$sandbox = NULL): void {
+  /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
+  $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
+  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($config_updater): bool {
+    return $config_updater->updateAddNoResetKey($view);
+  });
+}
+
+/**
+ * Set default value for the new exposed sort "no_reset" option.
+ */
+function better_exposed_filters_post_update_sort_no_reset_key(?array &$sandbox = NULL): void {
+  /** @var \Drupal\better_exposed_filters\BetterExposedFiltersConfigUpdater $config_updater */
+  $config_updater = \Drupal::classResolver(BetterExposedFiltersConfigUpdater::class);
+  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function (ViewEntityInterface $view) use ($config_updater): bool {
+    return $config_updater->updateAddSortNoResetKey($view);
+  });
+}
