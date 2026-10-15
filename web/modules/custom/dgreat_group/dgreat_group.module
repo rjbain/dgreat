@@ -155,7 +155,6 @@ function dgreat_group_group_relationship_insert(GroupRelationshipInterface $enti
       $role_ids = array_map(fn($role) => $role->id(), $membership->getRoles());
       if (!in_array('spaces-administrator', $role_ids, TRUE)) {
         $membership->addRole('spaces-administrator');
-        $membership->getGroupRelationship()->save();
       }
     }
   }

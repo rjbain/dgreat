@@ -6,6 +6,17 @@
  */
 
 /**
+ * Implements hook_update_dependencies().
+ */
+function dgreat_group_update_dependencies() {
+  // These updates rebuild entity fields and need Group 4 relationship config.
+  return [
+    'scheduler' => [8201 => ['group' => 11401]],
+    'bootstrap_paragraphs' => [8205 => ['group' => 11401]],
+  ];
+}
+
+/**
  * Marks upgraded Group relationship type IDs as legacy-compatible.
  */
 function dgreat_group_update_8101() {

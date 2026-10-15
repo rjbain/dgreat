@@ -258,7 +258,6 @@ class DgreatGroup {
       }
 
       $membership->addRole($default_role_id);
-      $membership->getGroupRelationship()->save();
     }
   }
 
