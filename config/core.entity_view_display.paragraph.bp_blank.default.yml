@@ -5,10 +5,13 @@ dependencies:
   config:
     - field.field.paragraph.bp_blank.bp_background
     - field.field.paragraph.bp_blank.bp_header
+    - field.field.paragraph.bp_blank.bp_margin
+    - field.field.paragraph.bp_blank.bp_padding
     - field.field.paragraph.bp_blank.bp_unrestricted
     - field.field.paragraph.bp_blank.bp_width
     - paragraphs.paragraphs_type.bp_blank
   module:
+    - options
     - text
 _core:
   default_config_hash: oWUPnq4ptG9AK2wadMZcpAq1TmpFBKXkWSYdLjQHeVw
@@ -17,6 +20,20 @@ targetEntityType: paragraph
 bundle: bp_blank
 mode: default
 content:
+  bp_margin:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  bp_padding:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
   bp_unrestricted:
     type: text_default
     label: hidden

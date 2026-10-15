@@ -542,6 +542,8 @@ display:
               secondary_label: 'Advanced options'
               text_input_required: 'Select any filter and click on Apply to see results'
               text_input_required_format: basic_html
+              preserve_url_params: false
+              preserve_url_params_list: ''
             filter:
               combine:
                 plugin_id: default
@@ -555,6 +557,7 @@ display:
                   collapsible: false
                   open_by_default: false
                   is_secondary: false
+                  no_reset: false
                   hide_label: false
                   field_classes: ''
               field_category_target_id:
@@ -569,6 +572,7 @@ display:
                   collapsible: false
                   open_by_default: false
                   is_secondary: false
+                  no_reset: false
                   hide_label: false
                   field_classes: ''
               label:
@@ -583,6 +587,7 @@ display:
                   collapsible: false
                   open_by_default: false
                   is_secondary: false
+                  no_reset: false
                   hide_label: false
                   field_classes: ''
       access:
@@ -1000,6 +1005,7 @@ display:
         - 'config:field.storage.node.field_category'
         - 'config:field.storage.node.field_group_audience'
         - 'config:field.storage.node.field_sso'
+        - flag.flag.favorite
   all_apps:
     id: all_apps
     display_title: Administrator
@@ -1803,6 +1809,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - user
         - user.roles
       tags:
         - 'config:field.storage.node.body'
@@ -1810,6 +1817,7 @@ display:
         - 'config:field.storage.node.field_group_audience'
         - 'config:field.storage.node.field_sso'
         - 'config:field.storage.node.field_url'
+        - flag.flag.favorite
   block:
     id: block
     display_title: 'Fav Links Block'
@@ -2217,9 +2225,11 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - user
         - user.permissions
       tags:
         - 'config:field.storage.node.field_url'
+        - flag.flag.favorite
   my_links:
     id: my_links
     display_title: 'My Favorite Links'
@@ -2734,6 +2744,8 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - user
         - user.permissions
       tags:
         - 'config:field.storage.node.field_url'
+        - flag.flag.favorite

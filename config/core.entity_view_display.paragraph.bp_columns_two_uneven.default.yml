@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.paragraph.bp_columns_two_uneven.bp_column_content_2
     - field.field.paragraph.bp_columns_two_uneven.bp_column_style_2
+    - field.field.paragraph.bp_columns_two_uneven.bp_margin
+    - field.field.paragraph.bp_columns_two_uneven.bp_padding
     - paragraphs.paragraphs_type.bp_columns_two_uneven
   module:
     - entity_reference_revisions
@@ -31,6 +33,20 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  bp_margin:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  bp_padding:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
     region: content
 hidden:
   created: true

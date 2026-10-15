@@ -17,6 +17,7 @@ dependencies:
     - image.style.thumbnail
     - node.type.announcement
   module:
+    - content_moderation
     - datetime
     - image
     - path
@@ -115,6 +116,12 @@ content:
     settings:
       include_locked: true
     third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   path:
     type: path
     weight: 3
@@ -130,12 +137,12 @@ content:
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 26
+    weight: 52
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 20
+    weight: 50
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -173,7 +180,7 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 27
+    weight: 54
     region: content
     settings: {  }
     third_party_settings: {  }
