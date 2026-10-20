@@ -94,19 +94,11 @@ function myusf_theme_suggestions_block_alter(&$suggestions, $variables) {
  * Implements hook_theme_suggestions_HOOK_alter().
  */
 function myusf_theme_suggestions_page_alter(&$suggestions, $variables, $hook) {
-  /**
-     * 404 template suggestion.
-     */
-  if (!is_null(Drupal::requestStack()->getCurrentRequest()->attributes->get('exception'))) {
-    $status_code = Drupal::requestStack()->getCurrentRequest()->attributes->get('exception')->getStatusCode();
-    switch ($status_code) {
-      case 404:{
-        $suggestions[] = 'page__' . (string) $status_code;
-        break;
-}
-      default:
-        break;
-    }
+  $exception = \Drupal::request()->attributes->get('exception');
+  // Include direct previews and Drupal's custom error-page subrequests.
+  if (\Drupal::routeMatch()->getRouteName() === 'dgreat_public_pages.not_found'
+    || ($exception instanceof \Symfony\Component\HttpKernel\Exception\HttpExceptionInterface && $exception->getStatusCode() === 404)) {
+    $suggestions[] = 'page__404';
   }
 }
 
