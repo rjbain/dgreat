@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_migrate_final
     - node.type.section_homepage
+    - paragraphs.paragraphs_type.bp_blank
     - paragraphs.paragraphs_type.contact_box_address
     - paragraphs.paragraphs_type.contact_box_email
     - paragraphs.paragraphs_type.contact_box_telephone
@@ -25,6 +26,7 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
+      bp_blank: bp_blank
       contact_box_address: contact_box_address
       contact_box_email: contact_box_email
       contact_box_telephone: contact_box_telephone
@@ -51,7 +53,7 @@ settings:
         enabled: false
       bp_blank:
         weight: -62
-        enabled: false
+        enabled: true
       bp_block:
         weight: -61
         enabled: false
