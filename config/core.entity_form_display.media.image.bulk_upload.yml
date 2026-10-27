@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.bulk_upload
+    - field.field.media.image.field_category
+    - field.field.media.image.field_media_image
+    - field.field.media.image.field_size
+    - media.type.image
+id: media.image.bulk_upload
+targetEntityType: media
+bundle: image
+mode: bulk_upload
+content:
+  field_category:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_media_image: true
+  field_size: true
+  langcode: true
+  name: true
+  path: true
+  status: true
+  uid: true
