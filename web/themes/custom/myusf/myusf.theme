@@ -290,11 +290,11 @@ function myusf_preprocess_views_view_fields(array &$variables) {
 
   if (!empty($variables['fields']['field_display_title']->content)) {
     $variables['result_title_markup'] = $variables['fields']['field_display_title']->content;
-    $variables['result_title'] = trim(strip_tags((string) $variables['fields']['field_display_title']->content));
+    $variables['result_title'] = html_entity_decode(trim(strip_tags((string) $variables['fields']['field_display_title']->content)), ENT_QUOTES | ENT_HTML5, 'UTF-8');
   }
   elseif (!empty($variables['fields']['media_name']->content)) {
     $variables['result_title_markup'] = $variables['fields']['media_name']->content;
-    $variables['result_title'] = trim(strip_tags((string) $variables['fields']['media_name']->content));
+    $variables['result_title'] = html_entity_decode(trim(strip_tags((string) $variables['fields']['media_name']->content)), ENT_QUOTES | ENT_HTML5, 'UTF-8');
   }
 
   if (!empty($variables['fields']['field_migrate_final']->content)) {
@@ -448,7 +448,7 @@ function myusf_get_sitewide_search_keywords() {
 function myusf_highlight_search_keywords($summary, array $search_keywords = []) {
   $escaped_summary = Html::escape($summary);
   if (!$search_keywords) {
-    return $escaped_summary;
+    return Markup::create($escaped_summary);
   }
 
   usort($search_keywords, static function ($a, $b) {
@@ -461,7 +461,7 @@ function myusf_highlight_search_keywords($summary, array $search_keywords = []) 
   }
 
   if (!$pattern_parts) {
-    return $escaped_summary;
+    return Markup::create($escaped_summary);
   }
 
   $highlighted_summary = preg_replace(
