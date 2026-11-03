@@ -41,6 +41,31 @@ class GroupStorageRepairTest extends KernelTestBase {
     $this->assertArrayNotHasKey('group_relationship', $changes);
   }
 
+  public function testMissingTableWithInstalledFieldsIsRecreated(): void {
+    $this->installEntitySchema('group_config_wrapper');
+    $this->container->get('database')->schema()->dropTable('group_config_wrapper');
+    $schema_repository = $this->container->get('keyvalue')->get('entity.storage_schema.sql');
+    $schema_repository->delete('group_config_wrapper.entity_schema_data');
+    foreach (['id', 'bundle', 'entity_id'] as $name) {
+      $schema_repository->delete('group_config_wrapper.field_schema_data.' . $name);
+    }
+    dgreat_group_update_8105();
+    $this->assertTrue($this->container->get('database')->schema()->tableExists('group_config_wrapper'));
+    $this->assertArrayNotHasKey('group_config_wrapper', $this->container->get('entity.definition_update_manager')->getChangeList());
+    dgreat_group_update_8105();
+    $this->assertArrayNotHasKey('group_config_wrapper', $this->container->get('entity.definition_update_manager')->getChangeList());
+  }
+
+  public function testIncompatibleInstalledWrapperFieldsAreRejected(): void {
+    $fields = $this->container->get('entity_field.manager')->getFieldStorageDefinitions('group_config_wrapper');
+    $fields['bundle'] = clone $fields['bundle'];
+    $fields['bundle']->setSetting('max_length', 64);
+    $this->container->get('entity.last_installed_schema.repository')->setLastInstalledFieldStorageDefinitions('group_config_wrapper', $fields);
+    $this->expectException(UpdateException::class);
+    $this->expectExceptionMessage('installed fields differ');
+    dgreat_group_update_8105();
+  }
+
   public function testLegacyIndexTableMetadataIsNormalized(): void {
     $repository = $this->container->get('keyvalue')->get('entity.storage_schema.sql');
     $key = 'group_relationship.entity_schema_data';

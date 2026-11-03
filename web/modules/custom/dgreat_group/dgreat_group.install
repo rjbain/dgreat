@@ -247,11 +247,17 @@ function dgreat_group_update_8105() {
   $wrapper_table_exists = $schema->tableExists($wrapper->getBaseTable());
   $wrapper_fields = $repository->getLastInstalledFieldStorageDefinitions('group_config_wrapper');
 
-  // Update 8102 recorded this entity definition without installing its storage.
-  // Recreate it only when both the table and installed fields are absent. An
-  // existing partial table needs inspection rather than a metadata-only repair.
-  if (!$wrapper_table_exists && $wrapper_fields) {
-    throw new \Drupal\Core\Utility\UpdateException('Config wrapper has installed fields but no table. Review its storage before retrying.');
+  // Legacy repairs can record the entity and field definitions without ever
+  // creating the table. Existing compatible metadata does not prevent storage
+  // installation; reject changed fields rather than silently replacing them.
+  $current_wrapper_fields = $field_manager->getFieldStorageDefinitions('group_config_wrapper');
+  if (!$wrapper_table_exists) {
+    foreach ($wrapper_fields as $name => $original) {
+      $current = $current_wrapper_fields[$name] ?? NULL;
+      if (!$current || $current->getType() !== $original->getType() || $current->getColumns() !== $original->getColumns() || $current->getCardinality() !== $original->getCardinality() || $current->hasCustomStorage() !== $original->hasCustomStorage() || $current->isRevisionable() !== $original->isRevisionable()) {
+        throw new \Drupal\Core\Utility\UpdateException('Config wrapper installed fields differ from the current definitions. Review its storage before retrying.');
+      }
+    }
   }
   if ($wrapper_table_exists && !empty($changes['group_config_wrapper']['field_storage_definitions'])) {
     throw new \Drupal\Core\Utility\UpdateException('Config wrapper has a partial field schema. Review its storage before retrying.');
@@ -334,7 +340,7 @@ function dgreat_group_update_8105() {
   }
 
   if (!$wrapper_table_exists) {
-    $update_manager->installFieldableEntityType($wrapper, $field_manager->getFieldStorageDefinitions('group_config_wrapper'));
+    $update_manager->installFieldableEntityType($wrapper, $current_wrapper_fields);
   }
   elseif (!empty($changes['group_config_wrapper']['entity_type'])) {
     $update_manager->updateEntityType($wrapper);
