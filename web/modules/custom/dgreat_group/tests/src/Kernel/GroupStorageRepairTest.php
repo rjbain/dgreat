@@ -21,6 +21,7 @@ class GroupStorageRepairTest extends KernelTestBase {
     require_once __DIR__ . '/../../../dgreat_group.install';
     $this->installEntitySchema('group');
     $this->installEntitySchema('group_relationship');
+    $this->installConfig(['group']);
     $definition = $this->container->get('entity_type.manager')->getDefinition('group_config_wrapper');
     $this->container->get('entity.last_installed_schema.repository')->setLastInstalledDefinition($definition);
   }
@@ -102,6 +103,48 @@ class GroupStorageRepairTest extends KernelTestBase {
     $this->assertArrayHasKey('group_relationship', $updated);
     $this->assertArrayHasKey('group_relationship_field_data', $updated);
     $this->assertArrayNotHasKey('group_relationship', $this->container->get('entity.definition_update_manager')->getChangeList());
+  }
+
+  public function testAllSqlMetadataMissingWithExistingData(): void {
+    $this->installEntitySchema('group_config_wrapper');
+    $database = $this->container->get('database');
+    $database->schema()->dropTable('group_config_wrapper');
+    $repository = $this->container->get('keyvalue')->get('entity.storage_schema.sql');
+    foreach (array_keys($repository->getAll()) as $key) {
+      if (str_starts_with($key, 'group_relationship.') || str_starts_with($key, 'group_config_wrapper.')) {
+        $repository->delete($key);
+      }
+    }
+    $database->insert('group_relationship')->fields(['id' => 1, 'uuid' => 'c9587f02-a1b4-4aeb-adac-582c85c55d46', 'type' => 'test', 'langcode' => 'en'])->execute();
+    $row = ['id' => 1, 'type' => 'test', 'langcode' => 'en', 'uid' => 1, 'gid' => 1, 'entity_id' => 1, 'label' => 'Preserve relationship', 'created' => 1, 'changed' => 1, 'plugin_id' => 'group_membership', 'group_type' => 'groups', 'default_langcode' => 1];
+    $database->insert('group_relationship_field_data')->fields($row)->execute();
+    $before = $database->select('group_relationship_field_data', 'r')->fields('r')->execute()->fetchAssoc();
+    foreach (['gid', 'entity_id'] as $column) {
+      $database->schema()->changeField('group_relationship_field_data', $column, $column, ['type' => 'int', 'unsigned' => TRUE, 'not null' => FALSE]);
+    }
+    $group_type_columns = $this->container->get('entity_field.manager')->getFieldStorageDefinitions('group_relationship')['group_type']->getColumns();
+    $group_type_column = reset($group_type_columns);
+    $group_type_column['not null'] = TRUE;
+    $database->schema()->changeField('group_relationship_field_data', 'group_type', 'group_type', $group_type_column);
+    $database->insert('group_relationship__group_roles')->fields(['bundle' => 'test', 'deleted' => 0, 'entity_id' => 1, 'revision_id' => 1, 'langcode' => 'en', 'delta' => 0, 'group_roles_target_id' => 'groups-member'])->execute();
+    $role_before = $database->select('group_relationship__group_roles', 'r')->fields('r')->execute()->fetchAssoc();
+    dgreat_group_update_8105();
+    $this->assertSame($role_before, $database->select('group_relationship__group_roles', 'r')->fields('r')->execute()->fetchAssoc());
+    $this->assertSame($before, $database->select('group_relationship_field_data', 'r')->fields('r')->execute()->fetchAssoc());
+    $changes = $this->container->get('entity.definition_update_manager')->getChangeList();
+    $this->assertArrayNotHasKey('group_relationship', $changes);
+    $this->assertArrayNotHasKey('group_config_wrapper', $changes);
+    dgreat_group_update_8105();
+    $this->assertArrayNotHasKey('group_relationship', $this->container->get('entity.definition_update_manager')->getChangeList());
+  }
+
+  public function testWrongPhysicalColumnTypeIsRejected(): void {
+    $repository = $this->container->get('keyvalue')->get('entity.storage_schema.sql');
+    $repository->delete('group_relationship.field_schema_data.uuid');
+    $this->container->get('database')->schema()->changeField('group_relationship', 'uuid', 'uuid', ['type' => 'int', 'not null' => TRUE]);
+    $this->expectException(UpdateException::class);
+    $this->expectExceptionMessage('separately reviewed conversion: group_relationship.uuid');
+    dgreat_group_update_8105();
   }
 
   public function testPartialWrapperSchemaIsRejectedBeforeChanges(): void {

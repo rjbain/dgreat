@@ -300,6 +300,15 @@ function dgreat_group_update_8105() {
   $installed_fields = $repository->getLastInstalledFieldStorageDefinitions('group_relationship');
   $normalized_field_schemas = [];
   $missing_field_schemas = [];
+  $schema_inspector = new class($entity_type_manager, $entity_type_manager->getDefinition('group_relationship'), $entity_type_manager->getStorage('group_relationship'), \Drupal::database(), $field_manager) extends \Drupal\group\Entity\Storage\GroupRelationshipStorageSchema {
+
+    public function inspectFieldSchema(\Drupal\Core\Field\FieldStorageDefinitionInterface $field): array {
+      return $this->getSchemaFromStorageDefinition($field);
+    }
+
+  };
+  $column_repairs = [];
+
   foreach ($relationship_fields as $name => $field) {
     $original = $installed_fields[$name] ?? NULL;
     if (!$original || $field->getType() !== $original->getType() || $field->getColumns() !== $original->getColumns() || $field->getCardinality() !== $original->getCardinality() || $field->hasCustomStorage() !== $original->hasCustomStorage() || $field->isRevisionable() !== $original->isRevisionable()) {
@@ -308,23 +317,38 @@ function dgreat_group_update_8105() {
     $field_key = 'group_relationship.field_schema_data.' . $name;
     $field_schema = $schema_repository->get($field_key, []);
     if (!$field_schema) {
-      // Update 8103 added these columns manually, with shorter varchar lengths,
-      // but never installed their field schema metadata. Only widen strings;
-      // refuse conversions or null values rather than changing existing data.
-      if (!in_array($name, ['plugin_id', 'group_type'], TRUE)) {
-        throw new \Drupal\Core\Utility\UpdateException('Unexpected missing Group field schema metadata.');
+      // Some migrated databases have no SQL schema metadata at all. Inspect
+      // each actual column against Group's schema (including its overrides)
+      // before registering the field. Never infer correctness from metadata.
+      foreach ($schema_inspector->inspectFieldSchema($field) as $table => $expected_schema) {
+        if (!$schema->tableExists($table)) {
+          throw new \Drupal\Core\Utility\UpdateException('Group field table is missing: ' . $table);
+        }
+        $actual_columns = \Drupal::database()->query('SHOW FULL COLUMNS FROM {' . $table . '}')->fetchAllAssoc('Field');
+        foreach ($expected_schema['fields'] as $column => $specification) {
+          $actual = $actual_columns[$column] ?? NULL;
+          $type = strtolower($schema->getFieldTypeMap()[$specification['type'] . ':' . ($specification['size'] ?? 'normal')] ?? '');
+          $actual_type = $actual ? strtolower(preg_replace('/\b(tinyint|smallint|mediumint|int|bigint)\(\d+\)/', '$1', $actual->Type)) : '';
+          if (in_array($type, ['varchar', 'char'], TRUE)) {
+            $type .= '(' . $specification['length'] . ')';
+          }
+          if (!empty($specification['unsigned'])) {
+            $type .= ' unsigned';
+          }
+          $can_widen = $actual && in_array($specification['type'], ['varchar', 'varchar_ascii'], TRUE) && preg_match('/^varchar\((\d+)\)$/', $actual_type, $matches) && (int) $matches[1] <= $specification['length'];
+          if (!$actual || ($actual_type !== $type && !$can_widen) || ($specification['type'] === 'varchar_ascii' && !str_starts_with($actual->Collation, 'ascii_')) || ($specification['type'] === 'serial' && !str_contains($actual->Extra, 'auto_increment'))) {
+            throw new \Drupal\Core\Utility\UpdateException('Group field column requires a separately reviewed conversion: ' . $table . '.' . $column);
+          }
+          $not_null = !empty($specification['not null']);
+          if ($not_null && \Drupal::database()->select($table, 'r')->isNull($column)->countQuery()->execute()->fetchField()) {
+            throw new \Drupal\Core\Utility\UpdateException('Required Group field column contains NULL values: ' . $table . '.' . $column);
+          }
+          if ($actual_type !== $type || ($actual->Null === 'NO') !== $not_null) {
+            $column_repairs[$table][$column] = $specification;
+          }
+        }
       }
-      $columns = $field->getColumns();
-      $specification = reset($columns);
-      $actual = \Drupal::database()->query('SHOW FULL COLUMNS FROM {group_relationship_field_data}')->fetchAllAssoc('Field')[$name] ?? NULL;
-      if (!$actual || !preg_match('/^varchar\((\d+)\)$/', $actual->Type, $matches) || !in_array($specification['type'], ['varchar', 'varchar_ascii'], TRUE) || (int) $matches[1] > $specification['length'] || ($specification['type'] === 'varchar_ascii' && !str_starts_with($actual->Collation, 'ascii_'))) {
-        throw new \Drupal\Core\Utility\UpdateException('Group relationship string columns need a separately reviewed conversion.');
-      }
-      if (\Drupal::database()->select('group_relationship_field_data', 'r')->isNull($name)->countQuery()->execute()->fetchField()) {
-        throw new \Drupal\Core\Utility\UpdateException('Group relationship string columns contain NULL values.');
-      }
-      $specification['not null'] = TRUE;
-      $missing_field_schemas[$name] = $specification;
+      $missing_field_schemas[$name] = $field;
     }
     foreach (array_keys($field_schema) as $old_table) {
       if ($old_table === 'group_content' || str_starts_with($old_table, 'group_content_')) {
@@ -358,9 +382,22 @@ function dgreat_group_update_8105() {
     $update_manager->updateEntityType($entity_type_manager->getDefinition('group_relationship'));
   }
 
-  foreach ($missing_field_schemas as $name => $specification) {
-    $schema->changeField('group_relationship_field_data', $name, $name, $specification);
-    $update_manager->installFieldStorageDefinition($name, 'group_relationship', $relationship_fields[$name]->getProvider(), $relationship_fields[$name]);
+  foreach ($column_repairs as $table => $columns) {
+    foreach ($columns as $column => $specification) {
+      $schema->changeField($table, $column, $column, $specification);
+    }
+  }
+  foreach ($missing_field_schemas as $name => $field) {
+    // The field-create API recreates unique keys without checking whether they
+    // already exist. Remove only the exact keys it is about to recreate.
+    foreach ($schema_inspector->inspectFieldSchema($field) as $table => $field_schema) {
+      foreach ($field_schema['unique keys'] ?? [] as $key => $columns) {
+        if ($schema->indexExists($table, $key)) {
+          $schema->dropUniqueKey($table, $key);
+        }
+      }
+    }
+    $update_manager->installFieldStorageDefinition($name, 'group_relationship', $field->getProvider(), $field);
   }
 
   // Entity differences hide field differences in Drupal's change list, so
