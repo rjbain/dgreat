@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - group.type.spaces
+    - user.role.all_access
   enforced:
     config:
       - user.role.all_access
@@ -14,4 +15,15 @@ admin: false
 scope: outsider
 global_role: all_access
 group_type: spaces
-permissions: {  }
+permissions:
+  - 'update any group_node:favorite_link entity'
+  - 'update any group_node:page entity'
+  - 'update any group_node:section_homepage entity'
+  - 'update own group_node:favorite_link entity'
+  - 'update own group_node:page entity'
+  - 'update own group_node:section_homepage entity'
+  - 'view group'
+  - 'view group_node:favorite_link entity'
+  - 'view group_node:page entity'
+  - 'view own unpublished group_node:page entity'
+  - 'view unpublished group_node:page entity'

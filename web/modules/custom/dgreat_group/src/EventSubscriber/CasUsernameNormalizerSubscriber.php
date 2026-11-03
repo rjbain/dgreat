@@ -43,7 +43,6 @@ class CasUsernameNormalizerSubscriber implements EventSubscriberInterface {
   public static function getSubscribedEvents(): array {
     return [
       CasPreUserLoadEvent::class => 'matchStoredUsernameCasing',
-      'cas.pre_user_load' => 'matchStoredUsernameCasing',
     ];
   }
 

@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_migrate_final
     - node.type.private_page
+    - paragraphs.paragraphs_type.bp_blank
     - paragraphs.paragraphs_type.migrate
   module:
     - entity_reference_revisions
@@ -22,6 +23,7 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
+      bp_blank: bp_blank
       migrate: migrate
     negate: 1
     target_bundles_drag_drop:
@@ -45,7 +47,7 @@ settings:
         enabled: false
       bp_blank:
         weight: -66
-        enabled: false
+        enabled: true
       bp_block:
         weight: -65
         enabled: false
