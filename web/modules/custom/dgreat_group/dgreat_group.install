@@ -232,3 +232,145 @@ function dgreat_group_update_8104(&$sandbox = NULL) {
     $sandbox['#finished'] = 1;
   }
 }
+
+/**
+ * Completes Group storage installation after the legacy metadata repair.
+ */
+function dgreat_group_update_8105() {
+  $entity_type_manager = \Drupal::entityTypeManager();
+  $field_manager = \Drupal::service('entity_field.manager');
+  $repository = \Drupal::service('entity.last_installed_schema.repository');
+  $update_manager = \Drupal::entityDefinitionUpdateManager();
+  $schema = \Drupal::database()->schema();
+  $changes = $update_manager->getChangeList();
+  $wrapper = $entity_type_manager->getDefinition('group_config_wrapper');
+  $wrapper_table_exists = $schema->tableExists($wrapper->getBaseTable());
+  $wrapper_fields = $repository->getLastInstalledFieldStorageDefinitions('group_config_wrapper');
+
+  // Update 8102 recorded this entity definition without installing its storage.
+  // Recreate it only when both the table and installed fields are absent. An
+  // existing partial table needs inspection rather than a metadata-only repair.
+  if (!$wrapper_table_exists && $wrapper_fields) {
+    throw new \Drupal\Core\Utility\UpdateException('Config wrapper has installed fields but no table. Review its storage before retrying.');
+  }
+  if ($wrapper_table_exists && !empty($changes['group_config_wrapper']['field_storage_definitions'])) {
+    throw new \Drupal\Core\Utility\UpdateException('Config wrapper has a partial field schema. Review its storage before retrying.');
+  }
+
+  // Preflight both entities before making schema changes. This hook handles
+  // missing wrapper storage and index changes, not entity data migrations.
+  foreach (['group_config_wrapper', 'group_relationship'] as $entity_type_id) {
+    $definition = $entity_type_manager->getDefinition($entity_type_id);
+    $original = $repository->getLastInstalledDefinition($entity_type_id);
+    if (!$original || $entity_type_manager->getStorage($entity_type_id)->requiresEntityDataMigration($definition, $original)) {
+      throw new \Drupal\Core\Utility\UpdateException('Group storage requires a separately reviewed entity data migration.');
+    }
+  }
+  if (!$schema->tableExists($entity_type_manager->getDefinition('group_relationship')->getBaseTable())) {
+    throw new \Drupal\Core\Utility\UpdateException('Group relationship storage is incomplete. Review its schema before retrying.');
+  }
+
+  // The legacy repair copied index metadata under the new entity ID, but
+  // retained its old table names. Keep the recorded index names so Drupal can
+  // drop the real legacy indexes, and point them at the tables already renamed.
+  $schema_repository = \Drupal::keyValue('entity.storage_schema.sql');
+  $schema_key = 'group_relationship.entity_schema_data';
+  $relationship_schema = $schema_repository->get($schema_key, []);
+  $normalized_schema = $relationship_schema;
+  foreach (['group_content' => 'group_relationship', 'group_content_field_data' => 'group_relationship_field_data'] as $old_table => $new_table) {
+    if (isset($normalized_schema[$old_table])) {
+      if ($schema->tableExists($old_table) || !$schema->tableExists($new_table) || isset($normalized_schema[$new_table])) {
+        throw new \Drupal\Core\Utility\UpdateException('Group has ambiguous legacy index table metadata. Review its storage before retrying.');
+      }
+      $normalized_schema[$new_table] = $normalized_schema[$old_table];
+      unset($normalized_schema[$old_table]);
+    }
+  }
+
+  // The same legacy copy left old table names in per-field metadata. Only
+  // accept unchanged field storage definitions; column migrations are outside
+  // this repair. Drupal's field update API will reconcile the index metadata.
+  $relationship_fields = $field_manager->getFieldStorageDefinitions('group_relationship');
+  $installed_fields = $repository->getLastInstalledFieldStorageDefinitions('group_relationship');
+  $normalized_field_schemas = [];
+  $missing_field_schemas = [];
+  foreach ($relationship_fields as $name => $field) {
+    $original = $installed_fields[$name] ?? NULL;
+    if (!$original || $field->getType() !== $original->getType() || $field->getColumns() !== $original->getColumns() || $field->getCardinality() !== $original->getCardinality() || $field->hasCustomStorage() !== $original->hasCustomStorage() || $field->isRevisionable() !== $original->isRevisionable()) {
+      throw new \Drupal\Core\Utility\UpdateException('Group relationship field definitions changed. Review their data migration before retrying.');
+    }
+    $field_key = 'group_relationship.field_schema_data.' . $name;
+    $field_schema = $schema_repository->get($field_key, []);
+    if (!$field_schema) {
+      // Update 8103 added these columns manually, with shorter varchar lengths,
+      // but never installed their field schema metadata. Only widen strings;
+      // refuse conversions or null values rather than changing existing data.
+      if (!in_array($name, ['plugin_id', 'group_type'], TRUE)) {
+        throw new \Drupal\Core\Utility\UpdateException('Unexpected missing Group field schema metadata.');
+      }
+      $columns = $field->getColumns();
+      $specification = reset($columns);
+      $actual = \Drupal::database()->query('SHOW FULL COLUMNS FROM {group_relationship_field_data}')->fetchAllAssoc('Field')[$name] ?? NULL;
+      if (!$actual || !preg_match('/^varchar\((\d+)\)$/', $actual->Type, $matches) || !in_array($specification['type'], ['varchar', 'varchar_ascii'], TRUE) || (int) $matches[1] > $specification['length'] || ($specification['type'] === 'varchar_ascii' && !str_starts_with($actual->Collation, 'ascii_'))) {
+        throw new \Drupal\Core\Utility\UpdateException('Group relationship string columns need a separately reviewed conversion.');
+      }
+      if (\Drupal::database()->select('group_relationship_field_data', 'r')->isNull($name)->countQuery()->execute()->fetchField()) {
+        throw new \Drupal\Core\Utility\UpdateException('Group relationship string columns contain NULL values.');
+      }
+      $specification['not null'] = TRUE;
+      $missing_field_schemas[$name] = $specification;
+    }
+    foreach (array_keys($field_schema) as $old_table) {
+      if ($old_table === 'group_content' || str_starts_with($old_table, 'group_content_')) {
+        $new_table = 'group_relationship' . substr($old_table, strlen('group_content'));
+        if ($schema->tableExists($old_table) || !$schema->tableExists($new_table) || isset($field_schema[$new_table])) {
+          throw new \Drupal\Core\Utility\UpdateException('Group has ambiguous legacy field table metadata. Review its storage before retrying.');
+        }
+        $field_schema[$new_table] = $field_schema[$old_table];
+        unset($field_schema[$old_table]);
+      }
+    }
+    $normalized_field_schemas[$field_key] = $field_schema;
+  }
+
+  if (!$wrapper_table_exists) {
+    $update_manager->installFieldableEntityType($wrapper, $field_manager->getFieldStorageDefinitions('group_config_wrapper'));
+  }
+  elseif (!empty($changes['group_config_wrapper']['entity_type'])) {
+    $update_manager->updateEntityType($wrapper);
+  }
+
+  if ($normalized_schema !== $relationship_schema) {
+    $schema_repository->set($schema_key, $normalized_schema);
+  }
+
+  foreach ($normalized_field_schemas as $field_key => $field_schema) {
+    $schema_repository->set($field_key, $field_schema);
+  }
+
+  if (!empty($changes['group_relationship']['entity_type'])) {
+    $update_manager->updateEntityType($entity_type_manager->getDefinition('group_relationship'));
+  }
+
+  foreach ($missing_field_schemas as $name => $specification) {
+    $schema->changeField('group_relationship_field_data', $name, $name, $specification);
+    $update_manager->installFieldStorageDefinition($name, 'group_relationship', $relationship_fields[$name]->getProvider(), $relationship_fields[$name]);
+  }
+
+  // Entity differences hide field differences in Drupal's change list, so
+  // inspect the fields again after the entity indexes have been updated.
+  $field_changes = $update_manager->getChangeList()['group_relationship']['field_storage_definitions'] ?? [];
+  foreach ($field_changes as $name => $change) {
+    if ($change !== \Drupal\Core\Entity\EntityDefinitionUpdateManagerInterface::DEFINITION_UPDATED) {
+      throw new \Drupal\Core\Utility\UpdateException('Unexpected Group relationship field installation or removal.');
+    }
+    $update_manager->updateFieldStorageDefinition($relationship_fields[$name]);
+  }
+
+  $remaining = $update_manager->getChangeList();
+  if (isset($remaining['group_config_wrapper']) || isset($remaining['group_relationship'])) {
+    throw new \Drupal\Core\Utility\UpdateException('Group storage still has pending definition changes. Review the remaining schema differences.');
+  }
+
+  return t('Installed missing Config wrapper storage and synchronized Group relationship indexes.');
+}
