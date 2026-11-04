@@ -6,7 +6,6 @@ dependencies:
     - field.field.media.image.field_category
     - field.field.media.image.field_media_image
     - field.field.media.image.field_size
-    - image.style.large
     - media.type.image
   module:
     - image
@@ -17,21 +16,35 @@ targetEntityType: media
 bundle: image
 mode: default
 content:
+  field_category:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
   field_media_image:
     type: image
     label: visually_hidden
     settings:
       image_link: ''
-      image_style: large
+      image_style: ''
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: 0
+    weight: 1
+    region: content
+  field_size:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
     region: content
 hidden:
   created: true
-  field_category: true
-  field_size: true
   langcode: true
   name: true
   search_api_excerpt: true
