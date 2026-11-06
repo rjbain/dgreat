@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - media
     - node
 label: Default
 id: default
@@ -18,4 +19,15 @@ matchers:
       substitution_type: canonical
       limit: 100
       include_unpublished: false
+    weight: 0
+  eec5948a-5186-414c-a255-464050e406d5:
+    id: 'entity:media'
+    uuid: eec5948a-5186-414c-a255-464050e406d5
+    settings:
+      metadata: ''
+      bundles:
+        document: document
+      group_by_bundle: false
+      substitution_type: media
+      limit: 100
     weight: 0

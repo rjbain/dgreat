@@ -1,0 +1,25 @@
+uuid: a79a6d19-2dbd-4851-90e5-3f0f026410dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.shared_content.field_shared_content
+    - paragraphs.paragraphs_type.shared_content
+id: paragraph.shared_content.default
+targetEntityType: paragraph
+bundle: shared_content
+mode: default
+content:
+  field_shared_content:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

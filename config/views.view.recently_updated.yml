@@ -4,13 +4,16 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.storage.node.field_section
     - node.type.page
     - node.type.private_page
     - node.type.section_homepage
+    - taxonomy.vocabulary.sections
     - user.role.administrator
     - user.role.all_access
   module:
     - node
+    - taxonomy
     - user
 id: recently_updated
 label: 'Recently Updated'
@@ -439,7 +442,7 @@ display:
           value:
             min: ''
             max: ''
-            value: '-2 years'
+            value: '-3 years'
             type: offset
           group: 1
           exposed: false
@@ -690,6 +693,51 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        field_section_target_id:
+          id: field_section_target_id
+          table: node__field_section
+          field: field_section_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_section_target_id_op
+            label: Section
+            description: 'Choose a section or All for no section restriction.'
+            use_operator: false
+            operator: field_section_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_section_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: sections
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
       style:
         type: table
         options:
@@ -752,7 +800,18 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
-      header: {  }
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: true
+          content: '<p><a href="/admin/recently-updated/without-section">Show content without a section</a></p>'
+          tokenize: false
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -773,6 +832,370 @@ display:
     display_options:
       display_extenders: {  }
       path: admin/recently-updated
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.roles
+      tags: {  }
+  page_without_section:
+    id: page_without_section
+    display_title: 'Content without a section'
+    display_plugin: page
+    position: 2
+    display_options:
+      title: 'Not Recently Updated — Content without a section'
+      defaults:
+        title: false
+        filters: false
+        filter_groups: false
+        header: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        changed:
+          id: changed
+          table: node_field_data
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: changed
+          plugin_id: date
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: '-3 years'
+            type: offset
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            page: page
+            private_page: private_page
+            section_homepage: section_homepage
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_display_title_value:
+          id: field_display_title_value
+          table: node__field_display_title
+          field: field_display_title_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_display_title_value_op
+            label: 'Display Title'
+            description: ''
+            use_operator: false
+            operator: field_display_title_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_display_title_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: Title
+            description: ''
+            use_operator: false
+            operator: title_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: title
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        changed_1:
+          id: changed_1
+          table: node_field_data
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: changed
+          plugin_id: date
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: changed_1_op
+            label: From
+            description: ''
+            use_operator: false
+            operator: changed_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: changed_1
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: MM/DD/YYYY
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        changed_2:
+          id: changed_2
+          table: node_field_data
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: changed
+          plugin_id: date
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: changed_2_op
+            label: Changed
+            description: ''
+            use_operator: false
+            operator: changed_2_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: changed_2
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: MM/DD/YYYY
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_section_target_id:
+          id: field_section_target_id
+          table: node__field_section
+          field: field_section_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: empty
+          value: {  }
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_section_target_id_op
+            label: Section
+            description: ''
+            use_operator: false
+            operator: field_section_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_section_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: sections
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: true
+          content: '<p><a href="/admin/recently-updated">Show content across all sections</a></p>'
+          tokenize: false
+      display_extenders: {  }
+      path: admin/recently-updated/without-section
     cache_metadata:
       max-age: -1
       contexts:
