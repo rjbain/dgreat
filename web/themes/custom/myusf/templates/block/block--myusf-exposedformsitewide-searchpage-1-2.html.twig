@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Sitewide search block: retain the form and text field without its submit button.
+ */
+#}
+{% extends "@myusf/block/block.html.twig" %}
+
+{% block content %}
+  <div{{ content_attributes.addClass('content') }}>
+    {{ content|merge({'actions': content.actions|without('submit')}) }}
+  </div>
+{% endblock %}
