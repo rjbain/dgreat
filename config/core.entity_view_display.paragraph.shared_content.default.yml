@@ -1,0 +1,23 @@
+uuid: e8b8664f-e38a-4619-b4bf-24f65a5b68c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.shared_content.field_shared_content
+    - paragraphs.paragraphs_type.shared_content
+id: paragraph.shared_content.default
+targetEntityType: paragraph
+bundle: shared_content
+mode: default
+content:
+  field_shared_content:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true
