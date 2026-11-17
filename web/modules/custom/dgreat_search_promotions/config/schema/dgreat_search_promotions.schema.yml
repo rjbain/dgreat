@@ -1,0 +1,16 @@
+dgreat_search_promotions.settings:
+  type: config_object
+  label: 'Search promotions'
+  mapping:
+    rules:
+      type: sequence
+      label: 'Phrase-to-page rules'
+      sequence:
+        type: mapping
+        mapping:
+          phrase:
+            type: string
+            label: 'Search phrase'
+          nid:
+            type: integer
+            label: 'Node ID'

@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.page.field_display_title
     - field.field.node.page.field_migrate_final
+    - field.field.node.page.field_search_keywords
     - field.field.node.page.field_section
     - node.type.page
   module:
@@ -43,6 +44,14 @@ content:
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: ''
+    third_party_settings: {  }
+  field_search_keywords:
+    type: string_textarea
+    weight: 10
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
     third_party_settings: {  }
   field_section:
     type: options_select

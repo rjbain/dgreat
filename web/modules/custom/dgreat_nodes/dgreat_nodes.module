@@ -156,6 +156,17 @@ function dgreat_nodes_search_api_index_items_alter(IndexInterface $index, array 
       continue;
     }
 
+    foreach (['title', 'field_display_title'] as $field_id) {
+      if (!$node->hasField($field_id) || $node->get($field_id)->isEmpty()) {
+        continue;
+      }
+      $field = $item->getField($field_id);
+      if ($field) {
+        $value = $node->get($field_id)->value;
+        $field->setValues([preg_replace('/(?<=\p{L})\/(?=\p{L})/u', ' ', $value) ?? $value]);
+      }
+    }
+
     $text = _dgreat_nodes_extract_reference_field_text($node->get('field_migrate_final'));
     if ($text === '') {
       continue;

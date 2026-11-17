@@ -1,0 +1,6 @@
+services:
+  dgreat_search_promotions.query_subscriber:
+    class: Drupal\dgreat_search_promotions\EventSubscriber\PromotionQuerySubscriber
+    arguments: ['@config.factory', '@entity_type.manager']
+    tags:
+      - { name: event_subscriber }

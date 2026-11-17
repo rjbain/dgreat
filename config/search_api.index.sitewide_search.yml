@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_display_title
     - field.storage.node.field_migrate_final
+    - field.storage.node.field_search_keywords
     - field.storage.media.field_media_document
     - search_api.server.sitewide_search
   module:
@@ -69,7 +70,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: field_display_title
     type: text
-    boost: 3.0
+    boost: 12.0
     dependencies:
       config:
         - field.storage.node.field_display_title
@@ -78,10 +79,19 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: field_migrate_final
     type: text
-    boost: 8.0
+    boost: 4.0
     dependencies:
       config:
         - field.storage.node.field_migrate_final
+  field_search_keywords:
+    label: 'Search keywords'
+    datasource_id: 'entity:node'
+    property_path: field_search_keywords
+    type: text
+    boost: 10.0
+    dependencies:
+      config:
+        - field.storage.node.field_search_keywords
   media_document_filename:
     label: 'Document » File » File name'
     datasource_id: 'entity:media'
@@ -126,7 +136,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: title
     type: text
-    boost: 8.0
+    boost: 12.0
     dependencies:
       module:
         - node
@@ -163,6 +173,7 @@ processor_settings:
     fields:
       - field_display_title
       - field_migrate_final
+      - field_search_keywords
       - media_document_filename
       - media_extracted_content
       - media_name
@@ -185,6 +196,7 @@ processor_settings:
     fields:
       - field_display_title
       - field_migrate_final
+      - field_search_keywords
       - media_document_filename
       - media_extracted_content
       - media_name
