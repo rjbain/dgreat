@@ -1,4 +1,4 @@
-name: dgreat
+name: dgreataisolr
 recipe: pantheon
 config:
   framework: drupal10
@@ -7,7 +7,17 @@ config:
   site: dgreat
   id: 41cad7fe-472d-43a9-a470-d391b9622376
   xdebug: false
+  index: false
 services:
+  index:
+    type: solr:9.9
+    core: dgreat
+    portforward: true
+    config:
+      dir: conf/solr9
+    overrides:
+      environment:
+        SOLR_MODULES: analysis-extras,extraction,langid
   database:
     type: mariadb:10.6
     config:
@@ -46,7 +56,7 @@ tooling:
     cmd: app/vendor/bin/robo test
   drush:
     service: appserver
-    cmd: drush --uri=https://dgreat.lndo.site
+    cmd: drush --uri=https://dgreataisolr.lndo.site
   drupal:
     service: appserver
     cmd: /app/vendor/bin/drupal
