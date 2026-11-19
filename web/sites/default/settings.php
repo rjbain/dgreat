@@ -191,3 +191,16 @@ if (!empty($databases) && is_array($databases)) {
     }
   }
 }
+
+// Keep the shared AI Solr configuration portable between Pantheon and Lando.
+if (getenv('LANDO_APP_NAME') === 'dgreataisolr') {
+  $config['search_api.server.solr_ai']['backend_config']['connector'] = 'standard';
+  $config['search_api.server.solr_ai']['backend_config']['environment'] = 'local';
+  $config['search_api.server.solr_ai']['backend_config']['connector_config'] = [
+    'scheme' => 'http', 'host' => 'index', 'port' => 8983, 'path' => '/',
+    'core' => 'dgreat', 'solr_version' => '9.9.0', 'timeout' => 10, 'index_timeout' => 60,
+  ];
+}
+elseif (getenv('PANTHEON_ENVIRONMENT')) {
+  $config['search_api.server.solr_ai']['backend_config']['environment'] = getenv('PANTHEON_ENVIRONMENT');
+}

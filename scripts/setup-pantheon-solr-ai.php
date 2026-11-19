@@ -15,7 +15,7 @@ use Drupal\views\Entity\View;
 if (getenv('PANTHEON_ENVIRONMENT') !== 'pr-748' || getenv('PANTHEON_SITE') !== '41cad7fe-472d-43a9-a470-d391b9622376') {
   throw new RuntimeException('This setup is restricted to dgreat.pr-748.');
 }
-$directory = dirname(DRUPAL_ROOT) . '/dev_config/solr-ai/';
+$directory = dirname(DRUPAL_ROOT) . '/config/';
 $read = static function (string $name) use ($directory): array {
   $data = Yaml::decode(file_get_contents($directory . $name . '.yml'));
   unset($data['uuid'], $data['_core']);
@@ -32,10 +32,13 @@ if (!$key) {
   $key->save();
 }
 \Drupal::state()->delete('myusf_solr_ai.preserved_openai_key');
-\Drupal::configFactory()->getEditable('ai_provider_openai.settings')->set('api_key', 'openai')->save();
-\Drupal::configFactory()->getEditable('ai.settings')->set('default_providers.embeddings', [
-  'provider_id' => 'openai', 'model_id' => 'text-embedding-3-small',
-])->save();
+foreach (['ai.settings', 'ai_provider_openai.settings'] as $name) {
+  $editable = \Drupal::configFactory()->getEditable($name);
+  foreach ($read($name) as $setting => $value) {
+    $editable->set($setting, $value);
+  }
+  $editable->save();
+}
 $field_type = SolrFieldType::load('knn_vector_und_9_0_0');
 // Module installation creates this entity with 1024 dimensions. Align it
 // with text-embedding-3-small even when the default entity already exists.

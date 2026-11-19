@@ -98,31 +98,11 @@ Extract the generated archive into `conf/solr9`, then run
 
 ## Pantheon follow-up
 
-The secret-free configuration snapshot is in `dev_config/solr-ai`. It contains
-the current search server, index, View, embedding defaults, provider key
-reference, and vector field type. It deliberately excludes `key.key.openai` and
-the actual key value. These files are separate from the normal configuration
-sync directory and are not imported automatically.
-
-The exported server uses the local `index:8983` connector. Configure the
-Pantheon connector before importing that server on Pantheon. Enable the
-required modules first, create a Key named `openai` with the environment's
-secure provider, and then import the adapted configuration. OpenAI Provider
-can select that key at `/admin/config/ai/providers/openai`.
-
-The Key module's File provider accepts a path rather than an API key value.
-Use a Pantheon runtime secret with the Pantheon Secrets Key provider on the
-hosted site. Choosing the Configuration provider instead would store the
-secret in Drupal's database/configuration, where it can enter future exports.
-
-`pantheon.yml` requests Solr 9. Before
-Multidev testing, enable Pantheon Search, use the Pantheon connector instead of
-the local `index:8983` connector, install the runtime API secret, and post the
-Solr schema. The local setup script refuses to run outside `dgreataisolr`.
-
-Pantheon's dense-vector integration guide describes experimental contributed
-modules; the integration itself is not a supported Pantheon feature:
-https://docs.pantheon.io/guides/pantheon-search/solr-drupal/dense-vector-search
+The authoritative AI search configuration is in `config/` and uses Pantheon's
+connector. The historical snapshot in `dev_config/solr-ai` uses the local
+connector and is no longer the deployment source. Both exclude the OpenAI
+secret. Each environment supplies its own Key named `openai`, selected at
+`/admin/config/ai/providers/openai`.
 
 ## Local site chatbot
 
@@ -138,10 +118,19 @@ Validation: `lando php vendor/bin/phpunit --bootstrap web/core/tests/bootstrap.p
 
 ## PR Multidev restoration
 
-CircleCI imports the main production configuration during each PR build. That configuration does not include the AI experiment, so it can uninstall the AI modules and delete their configuration. For `dgreat.pr-748` only, the CI initialization script now preserves an existing `openai` Key configuration in temporary Drupal state before import, enables the experimental modules afterward, and runs `scripts/setup-pantheon-solr-ai.php`. The restoration script checks both the Pantheon site UUID and environment before making changes, restores only missing AI entities, selects the Pantheon Solr connector, posts the vector schema, and grants chat access to signed-in users. It removes the temporary key state after restoration. Production configuration remains unchanged.
+CircleCI imports the main configuration during each PR build. Previously the AI experiment was absent from that directory, allowing imports to uninstall the modules. The shared export now includes it. For `dgreat.pr-748` only, the CI initialization script now preserves an existing `openai` Key configuration in temporary Drupal state before import, enables the experimental modules afterward, and runs `scripts/setup-pantheon-solr-ai.php`. The restoration script checks both the Pantheon site UUID and environment before making changes, restores required AI entities and processors, selects the Pantheon Solr connector, posts the vector schema, and grants chat access to signed-in users. It removes the temporary key state after restoration. These files take effect wherever this branch’s configuration is imported.
 
 The restoration script creates an empty `openai` key entry when no saved key exists. Enter the API key at `/admin/config/system/keys/manage/openai`; do not export or commit that key configuration. The script does not copy local credentials. Replacing the entire Multidev database still requires re-entering any credentials not present in the replacement database. Indexing can be started at `/admin/config/search/search-api/index/solr_ai` after the key is configured.
 
 The CI Multidev guard accepts either Pantheon's site name or its UUID. Restoration also replaces embedding fields/processors stripped from a surviving index during module uninstall. Before reinstalling a disabled dense-vector module, it removes that module's orphaned vector-field default, then recreates it at 1536 dimensions. This avoids an existing-configuration installation error and ensures long pages pass through the 8,000-token limiter and validated embedding processor.
 
 AI restoration runs as scoped EXIT cleanup after PR database initialization, including when a configuration import fails partway through. It preserves the original nonzero CI status rather than reporting a failed import as successful. Avoid running manual index configuration changes while an older deployment is still importing configuration into the same Multidev.
+
+
+## Shared AI configuration
+
+The authoritative AI search configuration is now in `config/`, which CircleCI imports. This includes the enabled AI modules in `core.extension`, AI/OpenAI settings, the Solr server and 1536-dimension field type, index fields/processors, AI search view, and signed-in chatbot permissions. `scripts/setup-pantheon-solr-ai.php` reads these same files; the old `dev_config/solr-ai` snapshot is retained only as a historical local snapshot.
+
+The shared server uses Pantheon's connector. `settings.php` selects the standard local connector only for `dgreataisolr` and sets the Solr environment per Pantheon environment. The OpenAI key entity is excluded from exports and preserved during import with `config_ignore` (`key.key.openai`); each environment supplies its own key. Do not commit `key.key.openai.yml` or `.local/` files. The PR restoration script remains a fallback and uploads the Solr schema.
+
+Future local exports should update the AI files in `config/` while retaining the Pantheon connector in the exported server file. Review the diff to avoid exporting unrelated local settings or credentials. Once this branch is deployed, configuration imports keep the AI modules and search configuration enabled instead of uninstalling the experiment. These settings also enable AI on any environment that imports this branch's main configuration; there is no production deployment in this change.

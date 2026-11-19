@@ -1,0 +1,139 @@
+uuid: 6ce0bf8d-4698-4f2d-bb3c-1cd878b27ba9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_title
+    - search_api.server.solr_ai
+  module:
+    - dgreat_solr_ai
+    - node
+    - search_api_solr
+    - search_api_solr_dense_vector
+third_party_settings:
+  search_api_solr:
+    dense_vector:
+      enable_vector_rerank: true
+      dense_vector_rank_plugin: pure_vector
+      plugin_configuration:
+        top_k: 10
+        minimum_return: 0.5
+        minimum_traverse: 0
+  dgreat_solr_ai:
+    skip_index_moderation: true
+id: solr_ai
+name: 'Solr AI Pages'
+description: null
+read_only: false
+field_settings:
+  body:
+    label: 'Rendered page text'
+    property_path: rendered_item
+    type: text
+    configuration:
+      roles:
+        - anonymous
+      view_mode:
+        'entity:node':
+          ':default': default
+  body_vector:
+    label: 'Page embedding'
+    property_path: rendered_item
+    type: solr_densevector
+    configuration:
+      roles:
+        - anonymous
+      view_mode:
+        'entity:node':
+          ':default': default
+  field_display_title:
+    label: 'Display Title'
+    datasource_id: 'entity:node'
+    property_path: field_display_title
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_display_title
+  node_grants:
+    label: 'Node access information'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
+  status:
+    label: Boolean
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    dependencies:
+      module:
+        - node
+  uid:
+    label: 'Entity reference'
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: false
+      selected:
+        - page
+        - section_homepage
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  auto_aggregated_fulltext_field: {  }
+  content_access: {  }
+  custom_value: {  }
+  dgreat_solr_embedding_text:
+    weights:
+      preprocess_index: 90
+  entity_status: {  }
+  entity_type: {  }
+  html_filter:
+    all_fields: false
+    fields:
+      - body
+    title: false
+    alt: false
+    tags: {  }
+  language_with_fallback: {  }
+  rendered_item: {  }
+  solr_date_range: {  }
+  solr_densevector:
+    weights:
+      preprocess_index: 100
+    ai_provider: openai
+    ai_model_id: text-embedding-3-small
+    vector_dimension: 1536
+    similarity_function: cosine
+    content_field: body
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  cron_limit: 0
+  delete_on_fail: true
+  index_directly: false
+  track_changes_in_references: true
+server: solr_ai
