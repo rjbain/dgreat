@@ -62,6 +62,12 @@ PHPEOF
       echo "Removed non-existent modules/themes from core.extension in DB."
     fi
 
+    # Preserve the manually entered test key across the full config import.
+    # Only this experiment's Multidev is affected; no secret enters Git or logs.
+    if [[ "$TERMINUS_SITE.$TERMINUS_ENV" == "dgreat.pr-748" ]]; then
+      terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- php:eval '$key = Drupal::config("key.key.openai")->getRawData(); if ($key) { Drupal::state()->set("myusf_solr_ai.preserved_openai_key", $key); }'
+    fi
+
     terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes \
       && echo "config-import succeeded on first pass." \
       || { echo "config-import FAILED on first pass — retrying..."; \
@@ -69,4 +75,11 @@ PHPEOF
   else
     echo "Config table missing; skipping config cleanup/import."
   fi
+fi
+
+# The AI experiment is deliberately outside the production config sync set.
+if [[ "$TERMINUS_SITE.$TERMINUS_ENV" == "dgreat.pr-748" ]]; then
+  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- pm:enable ai ai_provider_openai search_api_solr_dense_vector dgreat_solr_ai myusf_site_chat --yes
+  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- php:script scripts/setup-pantheon-solr-ai.php
+  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- cache:rebuild
 fi
