@@ -1,0 +1,7 @@
+{# Search result excerpts are plain text and remain autoescaped. #}
+<article class="ai-search-result">
+  <h3 class="ai-search-result__title">{{ fields.field_display_title.content }}</h3>
+  {% if ai_search_excerpt %}
+    <p class="ai-search-result__excerpt">{{ ai_search_excerpt }}</p>
+  {% endif %}
+</article>

@@ -6,6 +6,8 @@ dependencies:
     - filter.format.full_html
     - filter.format.webform_default
   module:
+    - ai_chatbot
+    - myusf_site_chat
     - filter
     - flag
     - media
@@ -20,6 +22,8 @@ label: 'authenticated user'
 weight: 1
 is_admin: false
 permissions:
+  - 'access deepchat api'
+  - 'access myusf site chat'
   - 'access content'
   - 'access user profiles'
   - 'flag favorite'

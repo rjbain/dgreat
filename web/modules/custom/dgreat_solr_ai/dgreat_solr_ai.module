@@ -1,0 +1,27 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\dgreat_solr_ai\Plugin\search_api\processor\ReliableDenseVector;
+
+/**
+ * Implements hook_search_api_processor_info_alter().
+ */
+function dgreat_solr_ai_search_api_processor_info_alter(array &$definitions): void {
+  if (isset($definitions['solr_densevector'])) {
+    $definitions['solr_densevector']['class'] = ReliableDenseVector::class;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dgreat_solr_ai_form_search_api_index_status_alter(array &$form, FormStateInterface $form_state): void {
+  $index = $form['#index'] ?? NULL;
+  if ($index && $index->id() === 'solr_ai' && isset($form['index']['batch_size'])) {
+    $form['index']['batch_size']['#type'] = 'number';
+    $form['index']['batch_size']['#default_value'] = 1;
+    $form['index']['batch_size']['#min'] = 1;
+    $form['index']['batch_size']['#max'] = 1;
+    $form['index']['batch_size']['#description'] = t('Semantic indexing processes one item per web request to avoid the proxy timeout. Larger batches can be run with Drush.');
+  }
+}
