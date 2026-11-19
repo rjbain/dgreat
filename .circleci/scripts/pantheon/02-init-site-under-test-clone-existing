@@ -3,6 +3,24 @@
 set -eo pipefail
 set -x
 
+# The AI experiment is outside the production configuration sync set.
+restore_pr_ai() {
+  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- cache:rebuild || return 1
+  # A surviving vector field can block reinstallation of its disabled module.
+  # Setup recreates this experiment-specific default with 1536 dimensions.
+  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- php:eval 'if (!Drupal::moduleHandler()->moduleExists("search_api_solr_dense_vector")) { Drupal::configFactory()->getEditable("search_api_solr.solr_field_type.knn_vector_und_9_0_0")->delete(); }' || return 1
+  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- pm:enable ai ai_provider_openai search_api_solr_dense_vector dgreat_solr_ai myusf_site_chat --yes || return 1
+  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- php:script scripts/setup-pantheon-solr-ai.php || return 1
+  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- cache:rebuild || return 1
+}
+
+finish_pr_ai() {
+  local original_status=$?
+  trap - EXIT
+  restore_pr_ai || exit 1
+  exit "$original_status"
+}
+
 terminus -n env:wake "$TERMINUS_SITE.dev"
 terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
 
@@ -10,6 +28,12 @@ terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb --yes || true
 echo "updatedb attempted."
 
 terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr || true
+
+# Even a failed/partial config import must leave the experiment operational.
+# Preserve the original CI failure status after restoring the AI configuration.
+if [[ "$TERMINUS_ENV" == "pr-748" && ( "$TERMINUS_SITE" == "dgreat" || "$TERMINUS_SITE" == "41cad7fe-472d-43a9-a470-d391b9622376" ) ]]; then
+  trap finish_pr_ai EXIT
+fi
 
 if [ -f "config/system.site.yml" ] ; then
   CONFIG_TABLE_CHECK=$(terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- sql:query "SHOW TABLES LIKE 'config';" 2>/dev/null || true)
@@ -75,15 +99,4 @@ PHPEOF
   else
     echo "Config table missing; skipping config cleanup/import."
   fi
-fi
-
-# The AI experiment is deliberately outside the production config sync set.
-if [[ "$TERMINUS_ENV" == "pr-748" && ( "$TERMINUS_SITE" == "dgreat" || "$TERMINUS_SITE" == "41cad7fe-472d-43a9-a470-d391b9622376" ) ]]; then
-  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- cache:rebuild
-  # A surviving vector field can block reinstallation of its disabled module.
-  # Setup recreates this experiment-specific default with 1536 dimensions.
-  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- php:eval 'if (!Drupal::moduleHandler()->moduleExists("search_api_solr_dense_vector")) { Drupal::configFactory()->getEditable("search_api_solr.solr_field_type.knn_vector_und_9_0_0")->delete(); }'
-  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- pm:enable ai ai_provider_openai search_api_solr_dense_vector dgreat_solr_ai myusf_site_chat --yes
-  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- php:script scripts/setup-pantheon-solr-ai.php
-  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- cache:rebuild
 fi
