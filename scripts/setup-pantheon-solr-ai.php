@@ -37,9 +37,14 @@ if (!$key) {
   'provider_id' => 'openai', 'model_id' => 'text-embedding-3-small',
 ])->save();
 $field_type = SolrFieldType::load('knn_vector_und_9_0_0');
+// Module installation creates this entity with 1024 dimensions. Align it
+// with text-embedding-3-small even when the default entity already exists.
+$field_data = $read('search_api_solr.solr_field_type.knn_vector_und_9_0_0');
 if (!$field_type) {
-  SolrFieldType::create($read('search_api_solr.solr_field_type.knn_vector_und_9_0_0'))->save();
+  $field_type = SolrFieldType::create($field_data);
 }
+$field_type->set('field_type', $field_data['field_type']);
+$field_type->save();
 $server = Server::load('solr_ai');
 if (!$server) {
   $data = $read('search_api.server.solr_ai');
