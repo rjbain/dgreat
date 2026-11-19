@@ -1,4 +1,4 @@
-# DGreat Solr semantic-search experiment
+# MyUSF Solr semantic-search experiment
 
 This checkout is separate from `../myusf-ai`. Its Lando application is
 `dgreataisolr`, with its own MariaDB 10.6 database, Redis, and Solr 9.9 core.
@@ -123,3 +123,15 @@ Solr schema. The local setup script refuses to run outside `dgreataisolr`.
 Pantheon's dense-vector integration guide describes experimental contributed
 modules; the integration itself is not a supported Pantheon feature:
 https://docs.pantheon.io/guides/pantheon-search/solr-drupal/dense-vector-search
+
+## Local site chatbot
+
+The custom `myusf_site_chat` module connects the Drupal AI Chatbot interface directly to the existing `solr_ai` Search API index. It does not require the deprecated bundled AI Search module or a separate vector database.
+
+After enabling it with `lando drush en myusf_site_chat -y`, run `lando drush php:script scripts/setup-local-site-chat.php`. This setup script is restricted to the `dgreataisolr` Lando app and grants signed-in users the two chat permissions. Visit `/ask-myusf` while signed in. Anonymous access is disabled by default. No Multidev configuration is changed by this setup.
+
+The connector retrieves up to five published pages, checks the current user's node access, and sends the question and relevant excerpts to OpenAI using the existing `openai` key and `gpt-4o-mini`. It accepts only structured answers that claim support and cite retrieved source IDs; citation links are built by Drupal. It declines when evidence is insufficient. These safeguards reduce unsupported answers but do not guarantee factual accuracy. The interface includes a disclosure about sending questions and excerpts to OpenAI.
+
+Requests are limited to 20 per hour per IP. Questions are capped at 2,000 characters, each source excerpt at 10,000 characters, and generated output at 700 tokens. The existing embedding index covers the first 8,000 tokens of each rendered page. Follow-up user questions are supplied as context; retrieval uses the current question, so explicit follow-ups work best. This is a local prototype; browser reloads do not preserve server-side conversation history.
+
+Validation: `lando php vendor/bin/phpunit --bootstrap web/core/tests/bootstrap.php --no-configuration web/modules/custom/myusf_site_chat/tests/src/Unit/SiteChatTest.php` checks rejected unsupported/invented citations. `lando drush php:script scripts/test-local-site-chat.php` makes real OpenAI calls against local Solr, testing a financial-aid answer and an off-topic refusal. Run the latter only when intending to consume API tokens.
