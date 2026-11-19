@@ -55,8 +55,26 @@ if (!$server) {
   $server = Server::create($data);
   $server->save();
 }
-if (!Index::load('solr_ai')) {
-  Index::create($read('search_api.index.solr_ai'))->save();
+$index_data = $read('search_api.index.solr_ai');
+$index = Index::load('solr_ai');
+if (!$index) {
+  Index::create($index_data)->save();
+}
+else {
+  // Uninstalling processors during config import can strip them from an
+  // otherwise surviving index. Restore the experiment's fields/processors.
+  $changed = FALSE;
+  foreach (['field_settings', 'processor_settings', 'third_party_settings'] as $setting) {
+    $current = $index->get($setting) ?: [];
+    $expected = array_replace($current, $index_data[$setting] ?? []);
+    if ($current !== $expected) {
+      $index->set($setting, $expected);
+      $changed = TRUE;
+    }
+  }
+  if ($changed) {
+    $index->save();
+  }
 }
 if (!View::load('ai_search')) {
   View::create($read('views.view.ai_search'))->save();
