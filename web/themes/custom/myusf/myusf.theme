@@ -247,6 +247,10 @@ function myusf_preprocess_node(&$variables)
  * Implements hook_preprocess_views_view().
  */
 function myusf_preprocess_views_view(&$variables) {
+  if ($variables['id'] === 'ai_search' && \Drupal::moduleHandler()->moduleExists('dgreat_solr_ai')) {
+    $variables['attachment_after'][] = \Drupal\dgreat_solr_ai\Usage\SearchUsage::buildForView($variables['view']);
+  }
+
   $variables['selected_event_category_tags'] = [];
   $variables['clear_all_event_category_url'] = NULL;
 

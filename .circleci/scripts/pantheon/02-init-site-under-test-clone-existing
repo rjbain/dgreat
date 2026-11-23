@@ -3,7 +3,7 @@
 set -eo pipefail
 set -x
 
-# The AI experiment is outside the production configuration sync set.
+# Keep the AI experiment usable even if the shared config import fails.
 restore_pr_ai() {
   terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- cache:rebuild || return 1
   # A surviving vector field can block reinstallation of its disabled module.

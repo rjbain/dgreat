@@ -204,3 +204,10 @@ if (getenv('LANDO_APP_NAME') === 'dgreataisolr') {
 elseif (getenv('PANTHEON_ENVIRONMENT')) {
   $config['search_api.server.solr_ai']['backend_config']['environment'] = getenv('PANTHEON_ENVIRONMENT');
 }
+
+// Temporary usage panels for the AI experiment's Multidev only.
+if (getenv('PANTHEON_ENVIRONMENT') === 'pr-748'
+  && getenv('PANTHEON_SITE') === '41cad7fe-472d-43a9-a470-d391b9622376') {
+  $settings['myusf_site_chat_show_usage'] = TRUE;
+  $settings['myusf_ai_search_show_usage'] = TRUE;
+}

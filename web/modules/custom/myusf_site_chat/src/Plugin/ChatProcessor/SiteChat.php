@@ -13,6 +13,8 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Component\Utility\Html;
 use Drupal\search_api\Entity\Index;
+use Drupal\Core\Site\Settings;
+use Drupal\myusf_site_chat\Usage\RequestUsage;
 
 #[ChatProcessor(
   id: 'myusf_site_chat',
@@ -22,6 +24,7 @@ use Drupal\search_api\Entity\Index;
 final class SiteChat extends ChatProcessorBase {
 
   private string $sourcesMarkup = '';
+  private ?RequestUsage $usage = NULL;
   public const UNKNOWN = 'I could not find enough information in this website to answer that. Please try a more specific question or use the site search.';
 
   public function access(AccountInterface $account): AccessResultInterface {
@@ -33,11 +36,12 @@ final class SiteChat extends ChatProcessorBase {
   }
 
   public function getPostResponseMarkup(): string {
-    return $this->sourcesMarkup;
+    return $this->sourcesMarkup . ($this->usage?->markup() ?? '');
   }
 
   public function doExecute(): ChatOutput {
     $this->sourcesMarkup = '';
+    $this->usage = Settings::get('myusf_site_chat_show_usage', getenv('LANDO_APP_NAME') === 'dgreataisolr') ? new RequestUsage() : NULL;
     $messages = array_values(array_filter($this->input->getMessages(), fn($m) => $m->getRole() === 'user'));
     $question = mb_substr(trim(($messages ? $messages[array_key_last($messages)]->getText() : '')), 0, 2000);
     if ($question === '') {
@@ -52,6 +56,9 @@ final class SiteChat extends ChatProcessorBase {
     $query->keys($question)->setFulltextFields(['body', 'title']);
     $query->addCondition('status', 1);
     $query->setOption('search_api_access_account', \Drupal::currentUser());
+    if ($this->usage) {
+      $this->usage->embedding = $this->countTokens($question, 'text-embedding-3-small');
+    }
     $sources = [];
     foreach ($query->execute()->getResultItems() as $item) {
       $entity = $item->getOriginalObject()->getValue();
@@ -80,6 +87,13 @@ final class SiteChat extends ChatProcessorBase {
     $provider = \Drupal::service('ai.provider')->createInstance('openai');
     $provider->setConfiguration(['temperature' => 0, 'max_tokens' => 700]);
     $response = $provider->chat($input, 'gpt-4o-mini', ['myusf_site_chat']);
+    if ($this->usage) {
+      $reported = $response->getTokenUsage();
+      $this->usage->chatEstimated = $reported->input === NULL || $reported->output === NULL;
+      $this->usage->input = $reported->input ?? $this->countTokens($input->getSystemPrompt() . $input->toString() . json_encode($input->getChatStructuredJsonSchema()), 'gpt-4o-mini') + 16;
+      $this->usage->output = $reported->output ?? $this->countTokens($response->getNormalized()->getText(), 'gpt-4o-mini');
+      $this->usage->cached = $reported->cached ?? 0;
+    }
     $answer = json_decode($response->getNormalized()->getText(), TRUE);
     if (!self::validAnswer($answer, array_keys($sources))) {
       return $this->reply(self::UNKNOWN);
@@ -99,6 +113,12 @@ final class SiteChat extends ChatProcessorBase {
       && is_string($answer['answer'] ?? NULL) && trim($answer['answer']) !== ''
       && is_array($answer['source_ids'] ?? NULL) && $answer['source_ids'] !== []
       && array_filter($answer['source_ids'], fn($id) => !is_int($id) || !in_array($id, $ids, TRUE)) === [];
+  }
+
+  private function countTokens(string $text, string $model): int {
+    $tokenizer = \Drupal::service('ai.tokenizer');
+    $tokenizer->setModel($model);
+    return count($tokenizer->getTokens($text));
   }
 
   private function reply(string $text): ChatOutput {
