@@ -745,6 +745,18 @@
     color: white;
     margin: 0 !important;
 }
+/* Saved media previews can retain an old inline width inside the resize widget.
+ * Let the widget control the preview size when reopening content for editing.
+ */
+.ck-content .drupal-media.ck-widget_with-resizer > [data-drupal-media-preview] > .image_resized {
+  width: 100% !important;
+}
+
+.ck-content .drupal-media.ck-widget_with-resizer > [data-drupal-media-preview] img {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Linkit Link color fixes */
 .ck.ck-form.ck-link-form.ck-vertical-form, 
 .ck.ck-form.ck-link-form.ck-responsive-form{

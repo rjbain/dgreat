@@ -85,7 +85,28 @@
         return;
       }
 
-      $('.acalog').acalogWidgetize({
+      var catalogWidgets = $('.acalog');
+
+      // Acalog changes placeholder hrefs after Drupal's initial behavior pass.
+      // Observe only those anchors, before starting the asynchronous widget.
+      // Icon and accessibility attribute changes cannot retrigger this observer.
+      if (window.MutationObserver) {
+        catalogWidgets.filter('a').each(function () {
+          var link = this;
+          var observer = new MutationObserver(function () {
+            if (/^https?:\/\//i.test(link.getAttribute('href') || '') &&
+                link.parentElement && window.Drupal &&
+                Drupal.behaviors.extlink && Drupal.behaviors.extlink.attach) {
+              // Use the parent because extlink searches descendants of context.
+              // Run only extlink, avoiding unrelated behaviors on this content.
+              Drupal.behaviors.extlink.attach(link.parentElement, window.drupalSettings);
+            }
+          });
+          observer.observe(link, { attributes: true, attributeFilter: ['href'] });
+        });
+      }
+
+      catalogWidgets.acalogWidgetize({
         gateway: 'https://catalog.usfca.edu',
         data: 'catalogs',
         catalogType: 'Catalog'
